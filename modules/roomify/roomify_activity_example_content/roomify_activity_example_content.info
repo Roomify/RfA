@@ -1,8 +1,0 @@
-name = Roomify Activity Example Content
-description = Provides example properties and users for the Roomify Distro.
-core = 7.x
-package = Roomify
-version = 7.x-1.0
-
-dependencies[] = roomify_activity
-dependencies[] = roomify_activity_property

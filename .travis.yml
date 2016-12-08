@@ -46,9 +46,6 @@ before_script:
   # Remove xdebug for the moment. We aren't generating code coverage, and it slows us down.
   - phpenv config-rm xdebug.ini
 
-  # Set github access token for composer.
-  - git config --global github.accesstoken $GITHUB_OAUTH_TOKEN
-
   # Update composer.
   - composer -n self-update
 
@@ -80,7 +77,6 @@ before_script:
   # Install the selected product.
   - cd drupal
   - php -d sendmail_path=$(which true) ~/.composer/vendor/bin/drush.php --yes site-install roomify roomify_install_welcome.travis_tests=1 roomify_install_welcome.roomify_product="${PRODUCT}" --db-url=mysql://drupal:drupal@127.0.0.1/drupal --account-name=admin --account-pass=admin --site-mail=webmaster@roomify.us --site-name="${PRODUCT}"
-  - cat sites/default/settings.php
   # Install required libraries.
   - drush composer-json-rebuild
   - drush composer-manager install
@@ -138,7 +134,7 @@ before_deploy:
 
 deploy:
   provider: releases
-  api_key: $GITHUB_OAUTH_TOKEN
+  api_key: $CI_USER_TOKEN
   file: "${TRAVIS_BUILD_DIR}/roomify-${PRODUCT}-${THEME}.${TRAVIS_TAG}.zip"
   skip_cleanup: true
   on:
