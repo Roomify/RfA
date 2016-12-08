@@ -2,13 +2,13 @@
 
 /**
  * @file
- * File roomify_travel_theme.entityqueue_default.inc.
+ * File roomify_system.entityqueue_default.inc.
  */
 
 /**
  * Implements hook_entityqueue_default_queues().
  */
-function roomify_travel_theme_entityqueue_default_queues() {
+function roomify_system_entityqueue_default_queues() {
   $export = array();
 
   $queue = new EntityQueue();

@@ -13,6 +13,4 @@ dependencies[] = search_api_db
 dependencies[] = views
 
 files[] = views/roomify_travel_theme.views.inc
-files[] = views/roomify_travel_theme_handler_starting_price.inc
-files[] = views/roomify_travel_theme_handler_areas_properties.inc
 files[] = views/roomify_travel_theme_handler_addtoany.inc

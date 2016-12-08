@@ -541,3 +541,15 @@ function roomify_system_update_7030() {
   module_enable(array('roomify_base_theme', 'roomify_pages_manager'));
   drupal_flush_all_caches();
 }
+
+/**
+ * Enable Entityqueue and Roomify Homepage modules.
+ */
+function roomify_system_update_7031() {
+  module_enable(array('entityqueue'));
+  if (module_exists('roomify_travel_homepage')) {
+    module_disable(array('roomify_travel_homepage'));
+    module_enable(array('roomify_homepage'));
+  }
+  drupal_flush_all_caches();
+}

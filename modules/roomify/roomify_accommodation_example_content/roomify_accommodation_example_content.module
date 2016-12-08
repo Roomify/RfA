@@ -56,140 +56,11 @@ function roomify_example_content_create_location_example_node() {
 }
 
 /**
- * Create the homepage landing page node.
+ * Enable the Roomify Homepage module.
  */
 function roomify_example_content_create_homepage_node() {
-  global $theme_key;
-
-  $hotel_file = file_get_contents(drupal_get_path('module', 'roomify_accommodation_example_content') . '/default_images/homepage/santorini1.jpg');
-  $hotel_file = file_save_data($hotel_file, roomify_system_file_dir() . 'hotel.jpg', FILE_EXISTS_RENAME);
-
-  $standard_file = file_get_contents(drupal_get_path('module', 'roomify_accommodation_example_content') . '/default_images/homepage/santorini2.jpg');
-  $standard_file = file_save_data($standard_file, roomify_system_file_dir() . 'standard.jpg', FILE_EXISTS_RENAME);
-
-  $deluxe_file = file_get_contents(drupal_get_path('module', 'roomify_accommodation_example_content') . '/default_images/homepage/beach1.jpg');
-  $deluxe_file = file_save_data($deluxe_file, roomify_system_file_dir() . 'deluxe.jpg', FILE_EXISTS_RENAME);
-
-  $node = new stdClass();
-
-  $node->title = 'Welcome to Roomify for Accommodations';
-  $node->type = 'landing_page';
-  node_object_prepare($node);
-
-  $node->language = LANGUAGE_NONE;
-  $node->uid = 1;
-  $node->status = 1;
-
-  $node->path['pathauto'] = 1;
-
-  $node = node_submit($node);
-  $node->field_landing_page_css_class[LANGUAGE_NONE][0]['value'] = 'roomify-distro-homepage';
-  $node->field_landing_page_css_class[LANGUAGE_NONE][0]['format'] = '';
-  $node->field_landing_page_css_class[LANGUAGE_NONE][0]['safe_value'] = 'roomify-distro-homepage';
-
-  $node->field_landing_page_edge_to_edge[LANGUAGE_NONE][0]['value'] = '1';
-
-  node_save($node);
-
-  variable_set('site_frontpage', 'node/' . $node->nid);
-
-  // AVAILABILITY SEARCH.
-  $paragraph = new ParagraphsItemEntity(array('field_name' => 'field_landing_page_rows', 'bundle' => '1_column_row'));
-  $paragraph->is_new = TRUE;
-  $paragraph->field_cta_class[LANGUAGE_NONE][0]['value'] = 'agency_1_column_row';
-  $paragraph->field_row_css_class[LANGUAGE_NONE][0]['value'] = 'availability-search';
-  $paragraph->field_row_css_class[LANGUAGE_NONE][0]['format'] = '';
-  $paragraph->field_row_css_class[LANGUAGE_NONE][0]['safe_value'] = 'availability-search';
-  $paragraph->field_cta_edge_to_edge[LANGUAGE_NONE][0]['value'] = 1;
-  $paragraph->setHostEntity('node', $node);
-  $paragraph->save();
-
-  $block = db_query('SELECT * FROM {block} WHERE module = :module AND delta = :delta AND theme = :theme', array(':module' => 'roomify_listing_availability_search_block', ':delta' => 'roomify_property_search', ':theme' => $theme_key))->fetchObject();
-
-  $first_col = new ParagraphsItemEntity(array('field_name' => 'field_first_column', 'bundle' => 'block'));
-  $first_col->is_new = TRUE;
-  $first_col->field_cta_block[LANGUAGE_NONE][0]['value'] = $block->bid;
-  $first_col->setHostEntity('paragraphs_item', $paragraph);
-  $first_col->save();
-
-  // GALLERY.
-  $paragraph = new ParagraphsItemEntity(array('field_name' => 'field_landing_page_rows', 'bundle' => '1_column_row'));
-  $paragraph->is_new = TRUE;
-  $paragraph->field_cta_class[LANGUAGE_NONE][0]['value'] = 'agency_1_column_row';
-  $paragraph->field_row_css_class[LANGUAGE_NONE][0]['value'] = 'slideshow';
-  $paragraph->field_row_css_class[LANGUAGE_NONE][0]['format'] = '';
-  $paragraph->field_row_css_class[LANGUAGE_NONE][0]['safe_value'] = 'slideshow';
-  $paragraph->field_cta_edge_to_edge[LANGUAGE_NONE][0]['value'] = 1;
-  $paragraph->setHostEntity('node', $node);
-  $paragraph->save();
-
-  $first_col = new ParagraphsItemEntity(array('field_name' => 'field_first_column', 'bundle' => 'slideshow'));
-  $first_col->is_new = TRUE;
-  $first_col->field_cta_gallery[LANGUAGE_NONE][0] = array(
-    'fid' => $hotel_file->fid,
-    'filename' => $hotel_file->filename,
-    'filemime' => $hotel_file->filemime,
-    'uid' => 1,
-    'uri' => $hotel_file->uri,
-    'status' => 1,
-    'display' => 1,
-  );
-  $first_col->field_cta_gallery[LANGUAGE_NONE][1] = array(
-    'fid' => $deluxe_file->fid,
-    'filename' => $deluxe_file->filename,
-    'filemime' => $deluxe_file->filemime,
-    'uid' => 1,
-    'uri' => $deluxe_file->uri,
-    'status' => 1,
-    'display' => 1,
-  );
-  $first_col->field_cta_gallery[LANGUAGE_NONE][2] = array(
-    'fid' => $standard_file->fid,
-    'filename' => $standard_file->filename,
-    'filemime' => $standard_file->filemime,
-    'uid' => 1,
-    'uri' => $standard_file->uri,
-    'status' => 1,
-    'display' => 1,
-  );
-
-  $first_col->setHostEntity('paragraphs_item', $paragraph);
-  $first_col->save();
-
-  // PROPERTIES.
-  $paragraph = new ParagraphsItemEntity(array('field_name' => 'field_landing_page_rows', 'bundle' => '3_columns_row'));
-  $paragraph->is_new = TRUE;
-  $paragraph->field_cta_class[LANGUAGE_NONE][0]['value'] = 'agency_3_columns_row';
-  $paragraph->field_row_css_class[LANGUAGE_NONE][0]['value'] = 'properties';
-  $paragraph->field_row_css_class[LANGUAGE_NONE][0]['format'] = '';
-  $paragraph->field_row_css_class[LANGUAGE_NONE][0]['safe_value'] = 'properties';
-  $paragraph->field_cta_edge_to_edge[LANGUAGE_NONE][0]['value'] = 1;
-  $paragraph->field_cta_row_title[LANGUAGE_NONE][0]['value'] = 'Our Properties';
-  $paragraph->setHostEntity('node', $node);
-  $paragraph->save();
-
-  $properties = roomify_property_load_multiple(FALSE, array('name' => array('Casa sul mare', 'Casa Azzurra', 'Miles Boutique Hotel')));
-
-  $property = array_shift($properties);
-  $first_col = new ParagraphsItemEntity(array('field_name' => 'field_first_column', 'bundle' => 'property'));
-  $first_col->is_new = TRUE;
-  $first_col->field_cta_property[LANGUAGE_NONE][0]['target_id'] = $property->property_id;
-  $first_col->setHostEntity('paragraphs_item', $paragraph);
-  $first_col->save();
-
-  $property = array_shift($properties);
-  $second_col = new ParagraphsItemEntity(array('field_name' => 'field_second_column', 'bundle' => 'property'));
-  $second_col->is_new = TRUE;
-  $second_col->field_cta_property[LANGUAGE_NONE][0]['target_id'] = $property->property_id;
-  $second_col->setHostEntity('paragraphs_item', $paragraph);
-  $second_col->save();
-
-  $property = array_shift($properties);
-  $third_col = new ParagraphsItemEntity(array('field_name' => 'field_third_column', 'bundle' => 'property'));
-  $third_col->is_new = TRUE;
-  $third_col->field_cta_property[LANGUAGE_NONE][0]['target_id'] = $property->property_id;
-  $third_col->setHostEntity('paragraphs_item', $paragraph);
-  $third_col->save();
+  module_enable(array('roomify_homepage'));
+  drupal_flush_all_caches();
 }
 
 /**
@@ -1128,6 +999,7 @@ function roomify_accommodation_example_content_multi_property() {
   roomify_example_content_create_location_example_node();
 
   // Create Homepage.
+  variable_set('roomify_accommodation_example_content', 'multi_property');
   roomify_example_content_create_homepage_node();
 
   $property_ids = array(
@@ -1141,7 +1013,6 @@ function roomify_accommodation_example_content_multi_property() {
     $conversation_id_2,
   );
 
-  variable_set('roomify_accommodation_example_content', 'multi_property');
   variable_set('roomify_accommodation_example_content_property_id', $property_ids);
   variable_set('roomify_accommodation_example_content_conversation_id', $conversation_ids);
 

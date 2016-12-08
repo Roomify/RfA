@@ -12,3 +12,5 @@ dependencies[] = logintoboggan
 dependencies[] = variable_realm
 
 files[] = views/roomify_system_handler_edit_link_field.inc
+files[] = views/roomify_system_handler_areas_properties.inc
+files[] = views/roomify_system_handler_starting_price.inc
