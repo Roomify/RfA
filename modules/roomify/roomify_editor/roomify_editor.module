@@ -1,0 +1,49 @@
+<?php
+
+/**
+ * @file
+ * Code for the Agency Editor feature.
+ */
+
+include_once 'roomify_editor.features.inc';
+
+/**
+ * Implements hook_wysiwyg_plugin().
+ */
+function roomify_editor_wysiwyg_plugin($editor, $version) {
+  $plugins = array();
+
+  if ($editor == 'ckeditor' && version_compare($version, '4.0', '>=')) {
+    $plugins['glyphicons'] = array(
+      'url' => 'http://ckeditor.com/addon/glyphicons',
+      'buttons' => array(
+        'Glyphicons' => t('Bootstrap Glyphicon'),
+      ),
+      'load' => TRUE,
+      'internal' => TRUE,
+    );
+  }
+
+  return $plugins;
+}
+
+/**
+ * Implements hook_wysiwyg_editor_settings_alter().
+ */
+function roomify_editor_wysiwyg_editor_settings_alter(&$settings, $context) {
+  if ($context['profile']->editor == 'ckeditor') {
+    $settings['customConfig'] = base_path() . drupal_get_path('module', 'roomify_editor') . '/js/ckeditor_config.js';
+  }
+}
+
+/**
+ * Implements hook_roomify_rights().
+ */
+function roomify_editor_roomify_rights() {
+  $rights['roomify_editor'] = array(
+    'anonymous user' => array('use text format filtered_text'),
+    'authenticated user' => array('use text format filtered_text'),
+  );
+
+  return $rights;
+}

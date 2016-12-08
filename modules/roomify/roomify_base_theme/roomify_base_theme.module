@@ -1,0 +1,15 @@
+<?php
+
+/**
+ * @file
+ * Code for the Roomify Base Theme module.
+ */
+
+/**
+ * Implements hook_ctools_plugin_api().
+ */
+function roomify_base_theme_ctools_plugin_api($module = NULL, $api = NULL) {
+  if ($module == "page_manager" && $api == "pages_default") {
+    return array("version" => "1");
+  }
+}

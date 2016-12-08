@@ -1,0 +1,11 @@
+name = Roomify Accommodation Group
+description = Roomify Accommodation Group.
+core = 7.x
+
+package = Roomify
+
+dependencies[] = group
+dependencies[] = gadd
+dependencies[] = gnode
+dependencies[] = gprofile2
+dependencies[] = override_node_options

@@ -1,0 +1,68 @@
+<?php
+
+/**
+ * @file
+ * Code for the Roomify roomify_mapping feature.
+ */
+
+include_once 'roomify_mapping.features.inc';
+
+/**
+ * Implements hook_form_FORM_ID_alter().
+ * FORM_ID = location_node_form.
+ */
+function roomify_mapping_form_location_node_form_alter(&$form, $form_state) {
+  if (variable_get('roomify_installed_product', '') == 'accommodations') {
+    $form['field_location_how_to_get_here']['#access'] = FALSE;
+    isset($form['language']['#value']) ? $language = $form['language']['#value'] : $language = LANGUAGE_NONE;
+    $form['field_accommodation'][$language]['#title'] = t('Property');
+    $form['field_accommodation'][$language]['#description'] = t('Mark this checkbox to make this location as a property, to help distingush it on the map from other points of departure locations.');
+  }
+  else {
+    $form['#validate'][] = 'roomify_mapping_location_single_accommodation_validate';
+  }
+}
+
+/**
+ * Custom validation callback for location node form.
+ */
+function roomify_mapping_location_single_accommodation_validate($form, &$form_state) {
+  if ($form_state['values']['field_accommodation']['und'][0]['value']) {
+    if (variable_get('roomify_mapping_location_accommodation', FALSE)) {
+      if ($form_state['values']['nid'] != variable_get('roomify_mapping_location_accommodation', FALSE)) {
+        form_set_error('field_accommodation', t("You can't set more than one node as accommodation, your current accommodation's id is !current_accommodation.", array('!current_accommodation' => l(variable_get('roomify_mapping_location_accommodation', FALSE), 'node/' . variable_get('roomify_mapping_location_accommodation', FALSE)))));
+      }
+    }
+    else {
+      if ($form_state['values']['nid']) {
+        variable_set('roomify_mapping_location_accommodation', $form_state['values']['nid']);
+      }
+      else {
+        $form_state['node']->set_accommodation = TRUE;
+      }
+    }
+  }
+  else {
+    if ($form_state['values']['nid'] == variable_get('roomify_mapping_location_accommodation', FALSE)) {
+      variable_set('roomify_mapping_location_accommodation', FALSE);
+    }
+  }
+}
+
+/**
+ * Implements hook_node_insert().
+ */
+function roomify_mapping_node_insert($node) {
+  if (isset($node->set_accommodation)) {
+    variable_set('roomify_mapping_location_accommodation', $node->nid);
+  }
+}
+
+/**
+ * Implements hook_views_pre_render().
+ */
+function roomify_mapping_views_pre_render(&$view) {
+  if ($view->name == 'location' && $view->current_display == 'panel_pane_1') {
+    $view->empty['area']->options['content'] = '<div class="messages messages--warning">' . t('1. To view your vacation rental on the map please add longitude and latitude info in the location page for the accommodation.') . '<br>' . t('2. To help visitors find you, <a href="@add_location">create departure points from key locations</a>, such as the closest airport, train station, interstate highway, etc. They will also be able to see directions from those points to your place.', array('@add_location' => url('node/add/location'))) . '</div>';
+  }
+}

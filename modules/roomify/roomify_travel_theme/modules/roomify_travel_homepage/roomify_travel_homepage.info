@@ -1,0 +1,6 @@
+name = Roomify Travel Homepage
+description = Roomify Travel Homepage
+core = 7.x
+package = Roomify Travel
+
+dependencies[] = roomify_travel_theme

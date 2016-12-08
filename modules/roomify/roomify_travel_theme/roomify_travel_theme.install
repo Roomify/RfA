@@ -1,0 +1,158 @@
+<?php
+
+/**
+ * @file
+ */
+
+/**
+ * Implements hook_install().
+ */
+function roomify_travel_theme_install() {
+  $default_theme = 'roomify_travel';
+  $admin_theme = 'roomify_adminimal_theme';
+
+  // Disable all themes.
+  db_update('system')
+    ->fields(array('status' => 0))
+    ->condition('type', 'theme')
+    ->execute();
+
+  // Enable default theme.
+  db_update('system')
+    ->fields(array('status' => 1))
+    ->condition('type', 'theme')
+    ->condition('name', $default_theme)
+    ->execute();
+
+  // Enable bootstrap theme.
+  db_update('system')
+    ->fields(array('status' => 1))
+    ->condition('type', 'theme')
+    ->condition('name', 'bootstrap')
+    ->execute();
+
+  db_update('system')
+    ->fields(array('status' => 1))
+    ->condition('type', 'theme')
+    ->condition('name', 'adminimal')
+    ->execute();
+  // Block setup.
+  $blocks = array(
+    array(
+      'module' => 'panels_mini',
+      'delta' => 'sidebar',
+      'theme' => $default_theme,
+      'status' => 1,
+      'weight' => 0,
+      'region' => 'sidebar_toggle_menu',
+      'pages' => '',
+      'cache' => -1,
+    ),
+    array(
+      'module' => 'panels_mini',
+      'delta' => 'footer',
+      'theme' => $default_theme,
+      'status' => 1,
+      'weight' => 0,
+      'region' => 'footer',
+      'pages' => '',
+      'cache' => -1,
+    ),
+  );
+
+  // Drop system / user blocks to ensure correct building.
+  db_delete('block')->condition('module', 'system')->execute();
+  db_delete('block')->condition('module', 'user')->execute();
+
+  // Add in our custom blocks. (defined above)
+  $query = db_insert('block')->fields(array(
+    'module',
+    'delta',
+    'theme',
+    'status',
+    'weight',
+    'region',
+    'pages',
+    'cache',
+  ));
+  foreach ($blocks as $block) {
+    $query->values($block);
+  }
+  $query->execute();
+
+  variable_set('theme_default', $default_theme);
+
+  // Some settings for the default theme.
+  $default_theme_settings = variable_get('theme_' . $default_theme . '_settings', array());
+
+  $default_theme_settings['toggle_logo'] = 0;
+  $default_theme_settings['toggle_name'] = 1;
+  $default_theme_settings['toggle_slogan'] = 0;
+  $default_theme_settings['toggle_secondary_menu'] = 0;
+  $default_theme_settings['bootstrap_navbar_position'] = '';
+  $default_theme_settings['bootstrap_fluid_container'] = 1;
+
+  variable_set('theme_' . $default_theme . '_settings', $default_theme_settings);
+
+  roomify_system_create_update_menu_link('Areas', 'areas', 'main-menu', -5);
+  roomify_system_create_update_menu_link('Properties', 'availability-search', 'main-menu', -10);
+
+  // Enable Properties Current Search.
+  $current_search = variable_get('current_search_searchers', array());
+  $current_search['properties'] = 'search_api@properties_index';
+  variable_set('current_search_searchers', $current_search);
+
+  roomify_change_listing_slider_image_style();
+}
+
+/**
+ *
+ */
+function roomify_change_listing_slider_image_style() {
+  $instance_info = field_read_instance('roomify_property', 'field_sp_gallery', 'casa_property');
+  unset($instance_info['widget']['settings']['manualcrop_styles_list']['property_slider']);
+  $instance_info['widget']['settings']['manualcrop_styles_list']['roomify_1200x720'] = 'roomify_1200x720';
+  field_update_instance($instance_info);
+
+  $instance_info = field_read_instance('roomify_property', 'field_sp_gallery', 'locanda_property');
+  unset($instance_info['widget']['settings']['manualcrop_styles_list']['property_slider']);
+  $instance_info['widget']['settings']['manualcrop_styles_list']['roomify_1200x720'] = 'roomify_1200x720';
+  field_update_instance($instance_info);
+
+}
+
+/**
+ * Enable the Entityqueue module.
+ */
+function roomify_travel_theme_update_7001() {
+  module_enable(array('entityqueue'));
+}
+
+/**
+ * Re-index nodes.
+ */
+function roomify_travel_theme_update_7002() {
+  // Re-index blogposts.
+  $search_api_index = search_api_index_load('blogposts_index');
+  $search_api_index->clear();
+  search_api_index_items($search_api_index, -1);
+
+  // Re-index things to do.
+  $search_api_index = search_api_index_load('things_to_do_index');
+  $search_api_index->clear();
+  search_api_index_items($search_api_index, -1);
+}
+
+/**
+ * Enable module 'Languageicons'.
+ */
+function roomify_travel_theme_update_7003() {
+  module_enable(array('languageicons'));
+}
+
+/**
+ * Change listing image style.
+ */
+function roomify_travel_theme_update_7004() {
+  roomify_change_listing_slider_image_style();
+}

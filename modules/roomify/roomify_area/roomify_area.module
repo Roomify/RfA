@@ -1,0 +1,158 @@
+<?php
+
+/**
+ * @file
+ */
+
+/**
+ * Implements hook_ctools_plugin_api().
+ */
+function roomify_area_ctools_plugin_api($module = NULL, $api = NULL) {
+  if ($module == "page_manager" && $api == "pages_default") {
+    return array("version" => "1");
+  }
+}
+
+/**
+ * Implements hook_views_api().
+ */
+function roomify_area_views_api($module = NULL, $api = NULL) {
+  return array("api" => "3.0");
+}
+
+/**
+ * Creates an Area Vocabulary.
+ */
+function roomify_area_create_area_vocabulary() {
+  $vocabulary = (object) array(
+    'name' => 'Area',
+    'description' => 'A vocabulary used by the Roomify Listing module to describe Locations',
+    'machine_name' => 'location',
+  );
+
+  if (!taxonomy_vocabulary_machine_name_load('location')) {
+    taxonomy_vocabulary_save($vocabulary);
+  }
+}
+
+/**
+ * Implements hook_form_FORM_ID_alter().
+ *
+ * FORM_ID = property_bat_facets_availability
+ * Select the default Area and hide from the form.
+ */
+function roomify_area_form_property_bat_facets_availability_alter(&$form, &$form_state, $form_id) {
+  $term = menu_get_object('taxonomy_term', 2);
+  if (isset($term->tid)) {
+    $form['container']['location']['#default_value'] = $term->tid;
+    $form['container']['location']['#access'] = FALSE;
+  }
+}
+
+/**
+ * Implements hook_form_FORM_ID_alter().
+ *
+ * FORM_ID = taxonomy_form_term
+ * Add custom submit to location term submit.
+ */
+function roomify_area_form_taxonomy_form_term_alter(&$form, &$form_state, $form_id) {
+  $form['#submit'][] = 'custom_roomify_area_submit';
+}
+
+/**
+ *
+ */
+function custom_roomify_area_submit(&$form, &$form_state) {
+  if (isset($form_state['term']->vocabulary_machine_name)) {
+    if ($form_state['term']->vocabulary_machine_name == 'location') {
+
+      $form_state['redirect'] = drupal_get_path_alias('taxonomy/term/' . $form_state['tid']);
+
+    }
+  }
+}
+
+/**
+ * Implements hook_panels_pane_content_alter().
+ */
+function roomify_area_panels_pane_content_alter($content, $pane, $args, $contexts) {
+  if (isset($pane->subtype)) {
+    if ($pane->subtype == 'taxonomy_term:field_field_link_to_area_blog') {
+      if (!empty($content->content[0]['#markup'])) {
+        $title = $contexts['argument_term_1']->title;
+        $title = strtolower($title);
+        $link = l($content->content[0]['#markup'], 'blog/' . strtr($title, ' ', '-'));
+        $content->content[0]['#markup'] = $link;
+      }
+    }
+  }
+}
+
+/**
+ * Implements hook_block_info().
+ */
+function roomify_area_block_info() {
+  $blocks = array();
+  $blocks['roomify_areas'] = array(
+    'info' => t('Roomify Areas'),
+  );
+
+  return $blocks;
+}
+
+/**
+ * Implements hook_block_view().
+ */
+function roomify_area_block_view($delta = '') {
+  $block = array();
+
+  switch ($delta) {
+    case 'roomify_areas':
+      $block['content'] = roomify_areas_block();
+      break;
+  }
+
+  return $block;
+}
+
+/**
+ * Returns the html of areas.
+ */
+function roomify_areas_block() {
+  $location = taxonomy_vocabulary_machine_name_load('location');
+  $areas = taxonomy_get_tree($location->vid);
+
+  $block_content = '';
+  $image = '';
+  $info = '';
+
+  foreach ($areas as $term) {
+    $area = taxonomy_term_load($term->tid);
+    if (!empty($area->field_area_featured_image)) {
+      $featured_image = field_get_items('taxonomy_term', $area, 'field_area_featured_image');
+
+      $image = array('style_name' => 'homepage_features', 'path' => $featured_image[0]['uri']);
+      $name = $area->name;
+      $title = $name;
+      $title = strtolower($title);
+      $short_description = field_get_items('taxonomy_term', $area, 'field_area_short_description');
+      if (!empty($short_description[0]['value'])) {
+        $info = $short_description[0]['value'];
+      }
+      $block_content .=
+        '<div class="roomify-overlay-item roomify-area-item col-md-4 col-sm-6 col-xs-12">
+          <div class="hovereffect">'
+            . theme('image_style', $image) .
+            '<div class="overlay">
+              <a class="overlay-link" href=' . url(drupal_get_path_alias('taxonomy/term/' . $area->tid)) . '>
+                <h2> ' . $name . ' </h2>
+                <div class="overlay-info">' . $info . '</div>
+              </a>
+            </div>
+          </div>
+        </div>';
+    }
+  }
+
+  return $block_content;
+}

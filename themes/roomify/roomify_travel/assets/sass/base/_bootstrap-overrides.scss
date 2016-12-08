@@ -1,0 +1,12 @@
+// Bootstrap Overrides
+
+/* set a max-width for horizontal fluid layout and make it centered */
+.btn {
+  font-weight: 400;
+}
+
+.container {
+  @media (min-width: $screen-lg) {
+    width: 1200px;
+  }
+}

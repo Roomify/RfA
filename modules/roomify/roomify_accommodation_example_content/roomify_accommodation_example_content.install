@@ -1,0 +1,13 @@
+<?php
+
+/**
+ * @file
+ * Install, update and uninstall functions for the Roomify Accommodation Example Content module.
+ */
+
+/**
+ *
+ */
+function roomify_accommodation_example_content_7001() {
+  variable_set('roomify_accommodation_example_content', 'multi_property');
+}

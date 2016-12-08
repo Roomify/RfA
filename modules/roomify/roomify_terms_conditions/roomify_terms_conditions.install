@@ -1,0 +1,41 @@
+<?php
+
+/**
+ * @file
+ * Installation for roomify_terms_conditions.
+ */
+
+/**
+ * Implements hook_install().
+ */
+function roomify_terms_conditions_install() {
+  $variable_realm_list = variable_get('variable_realm_list_language', array());
+  $variable_realm_list[] = 'roomify_terms_conditions_body';
+  $variable_realm_list[] = 'roomify_terms_conditions_message';
+
+  variable_set('variable_realm_list_language', $variable_realm_list);
+}
+
+/**
+ * Implements hook_uninstall().
+ */
+function roomify_terms_conditions_uninstall() {
+  $variable_realm_list = variable_get('variable_realm_list_language', array());
+  foreach ($variable_realm_list as $id => $variable) {
+    if ($variable == 'roomify_terms_conditions_body' || $variable == 'roomify_terms_conditions_message') {
+      unset($variable_realm_list[$id]);
+    }
+  }
+  variable_set('variable_realm_list_language', $variable_realm_list);
+}
+
+/**
+ * Add Terms and conditions variables as translatable.
+ */
+function roomify_terms_conditions_update_7001() {
+  $variable_realm_list = variable_get('variable_realm_list_language', array());
+  $variable_realm_list[] = 'roomify_terms_conditions_body';
+  $variable_realm_list[] = 'roomify_terms_conditions_message';
+
+  variable_set('variable_realm_list_language', $variable_realm_list);
+}

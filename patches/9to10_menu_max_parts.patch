@@ -1,0 +1,13 @@
+diff --git a/includes/menu.inc b/includes/menu.inc
+index 0814f79..1fe5a64 100644
+--- a/includes/menu.inc
++++ b/includes/menu.inc
+@@ -269,7 +269,7 @@ define('MENU_SITE_ONLINE', 5);
+  /**
+  * The maximum number of path elements for a menu callback
+  */
+-define('MENU_MAX_PARTS', 9);
++define('MENU_MAX_PARTS', 10);
+ 
+ 
+ /**

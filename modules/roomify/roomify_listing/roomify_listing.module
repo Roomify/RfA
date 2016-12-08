@@ -1,0 +1,1182 @@
+<?php
+
+/**
+ * @file
+ * Code for the Roomify Listing feature.
+ */
+
+include_once 'roomify_listing.features.inc';
+
+/**
+ * Defining some unit availability states that will be used throughout.
+ */
+define('NOT_AVAILABLE', 'not_available');
+define('AVAILABLE', 'available');
+define('REQUESTED', 'requested');
+define('BOOKED', 'booked');
+
+/**
+ * Implements hook_ctools_plugin_directory().
+ */
+function roomify_listing_ctools_plugin_directory($owner, $plugin_type) {
+  if ($owner == 'ctools' && $plugin_type == 'content_types') {
+    return 'plugins/content_types';
+  }
+}
+
+/**
+ * Implements hook_views_handlers().
+ */
+function roomify_listing_views_handlers() {
+  return array(
+    'info' => array(
+      'path' => drupal_get_path('roomify_listing', 'views'),
+    ),
+    'handlers' => array(
+      // The name of my handler.
+      'roomify_listing_handler_type_book_this_field' => array(
+        // The name of the handler we are extending.
+        'parent' => 'bat_type_handler_link_field',
+      ),
+    ),
+  );
+}
+
+/**
+ * Implements hook_commerce_tax_type_info().
+ */
+function roomify_listing_commerce_tax_type_info() {
+  return array(
+    'property_tax' => array(
+      'name' => 'property_tax',
+      'display_title' => 'Property tax',
+      'description' => 'A basic type for taxes that do not display inclusive with product prices.',
+      'display_inclusive' => 0,
+      'round_mode' => 0,
+      'rule' => 'commerce_tax_type_property_tax',
+      'module' => 'commerce_tax_ui',
+      'title' => 'Property tax',
+      'admin_list' => TRUE,
+    ),
+  );
+}
+
+/**
+ * Implements hook_menu_alter().
+ */
+function roomify_listing_menu_alter(&$items) {
+  $items['admin/bat/config/types/manage/%bat_type/units/add']['access callback'] = 'roomify_listing_add_units_access_callback';
+  $items['admin/bat/config/types/manage/%bat_type/units/add']['access arguments'] = array(5);
+
+  $items['entityform/%entityform']['title callback'] = 'roomify_listing_entityform_page_title';
+}
+
+/**
+ * Access callback for the 'Add Units' menu.
+ */
+function roomify_listing_add_units_access_callback($type) {
+  if ($type->type == 'home') {
+    return FALSE;
+  }
+  else {
+    return user_access('create bat_unit entities');
+  }
+}
+
+/**
+ * Menu title callback for showing individual entities.
+ */
+function roomify_listing_entityform_page_title($entityform, $op = 'view') {
+  if (!empty($entityform)) {
+    $entityform_type = entityform_get_types($entityform->type);
+
+    switch ($op) {
+      case 'submit':
+        return $entityform_type->label;
+
+      default:
+        return $entityform_type->label;
+    }
+  }
+}
+
+/**
+ * Implements hook_menu_local_tasks_alter().
+ *
+ * Alter View tab on Unit edit pages.
+ */
+function roomify_listing_menu_local_tasks_alter(&$data, $router_item, $root_path) {
+  global $user;
+
+  if (!empty($data['tabs'])) {
+    $paths = array(
+      0 => 'admin/bat/config/types/manage/%/edit',
+      1 => 'admin/bat/config/types/manage/%/units',
+      2 => 'admin/bat/config/types/manage/%/translate',
+    );
+
+    if (in_array($root_path, $paths)) {
+      $type = bat_type_load(arg(5));
+
+      $property_id = field_get_items('bat_type', $type, 'field_st_property_reference');
+      if (isset($property_id[0]['target_id'])) {
+        $new_view_tab = array(
+          '#theme' => 'menu_local_task',
+          '#weight' => 20,
+          '#link' => array(
+            'path' => 'admin/bat/config/property/manage/' . $property_id[0]['target_id'],
+            'access_callback' => array('roomify_property_access'),
+            'tab_parent' => 'admin/bat/config/property/manage/' . $property_id[0]['target_id'],
+            'tab_root' => 'admin/bat/config/property/manage/' . $property_id[0]['target_id'],
+            'title' => t('Back to Property'),
+            'href' => 'admin/bat/config/property/manage/' . $property_id[0]['target_id'],
+            'access' => TRUE,
+            'localized_options' => array(
+              'attributes' => array('class' => array('pushed-right')),
+            ),
+          ),
+        );
+
+        $view_tab = array(
+          '#theme' => 'menu_local_task',
+          '#weight' => -20,
+          '#link' => array(
+            'path' => 'room-type/' . $type->type_id,
+            'access_callback' => array('bat_type_access'),
+            'tab_parent' => 'admin/bat/config/types/manage/' . $type->type_id,
+            'tab_root' => 'admin/bat/config/types/manage//' . $type->type_id,
+            'title' => t('View'),
+            'href' => 'room-type/' . $type->type_id,
+            'access' => TRUE,
+            'localized_options' => array(),
+          ),
+        );
+      }
+
+      $view_id = 0;
+
+      foreach ($data['tabs'][0]['output'] as $id => $content) {
+        if ($content['#link']['title'] == t('Edit')) {
+          $data['tabs'][0]['output'][$id]['#weight'] = -18;
+        }
+        if ($content['#link']['title'] == t('Manage Availability')) {
+          $data['tabs'][0]['output'][$id]['#weight'] = -16;
+        }
+        if ($content['#link']['title'] == t('Manage Pricing')) {
+          $data['tabs'][0]['output'][$id]['#weight'] = -14;
+        }
+        if ($content['#link']['title'] == t('Channel Management')) {
+          $data['tabs'][0]['output'][$id]['#weight'] = -12;
+        }
+        if ($content['#link']['title'] == t('Manage Commissions')) {
+          $data['tabs'][0]['output'][$id]['#weight'] = -10;
+        }
+        if ($content['#link']['path'] == 'admin/bat/config/types/manage/%/view') {
+          unset($data['tabs'][0]['output'][$id]);
+          $view_id = $id;
+        }
+      }
+
+      if (isset($new_view_tab)) {
+        if (isset($data['tabs'][0]['output'][$view_id])) {
+          $data['tabs'][0]['output'][] = $new_view_tab;
+        }
+        else {
+          $data['tabs'][0]['output'][$view_id] = $new_view_tab;
+        }
+      }
+      if (isset($view_tab)) {
+        $data['tabs'][0]['output'][] = $view_tab;
+      }
+    }
+
+    if (strpos($root_path, 'admin/bat/config/property/manage/%') === 0) {
+      $property = roomify_property_load(arg(5));
+
+      foreach ($data['tabs'][0]['output'] as $id => $content) {
+        if ($content['#link']['title'] == t('Edit')) {
+          $data['tabs'][0]['output'][$id]['#weight'] = -18;
+        }
+        if ($content['#link']['title'] == t('Manage availability')) {
+          $data['tabs'][0]['output'][$id]['#weight'] = -16;
+        }
+        if ($content['#link']['title'] == t('Manage pricing')) {
+          $data['tabs'][0]['output'][$id]['#weight'] = -14;
+        }
+      }
+
+      if ($property->type == 'casa_property' || $property->type == 'locanda_property') {
+        $path = 'listing/' . $property->property_id;
+      }
+      else {
+        $path = 'activity/' . $property->property_id;
+      }
+
+      $data['tabs'][0]['output'][] = array(
+        '#theme' => 'menu_local_task',
+        '#weight' => -20,
+        '#link' => array(
+          'path' => $path,
+          'access_callback' => array('bat_type_access'),
+          'title' => t('View'),
+          'href' => $path,
+          'access' => TRUE,
+          'localized_options' => array(),
+        ),
+      );
+    }
+  }
+}
+
+/**
+ * Implements hook_form_FORM_ID_alter().
+ *
+ * FORM_ID = bat_type_edit_form.
+ */
+function roomify_listing_form_bat_type_edit_form_alter(&$form, &$form_state) {
+  // Hide the Type Description in Home Bundle, until we don't use it.
+  if (isset($form['field_st_description']) && $form['#bundle'] == 'home') {
+    $form['field_st_description']['#access'] = FALSE;
+  }
+  $form['actions']['submit']['#submit'][] = 'roomify_listing_edit_form_submit';
+
+  if (isset($form['field_rates_ranges'])) {
+    for ($i = 0; $i <= $form['field_rates_ranges'][LANGUAGE_NONE]['#max_delta']; $i++) {
+      $form['field_rates_ranges'][LANGUAGE_NONE][$i]['field_rate_reference']['#access'] = FALSE;
+
+      $form['field_rates_ranges'][LANGUAGE_NONE][$i]['field_min_people']['#prefix'] = '<div style="display: inline-block; margin-right: 15px;">';
+      $form['field_rates_ranges'][LANGUAGE_NONE][$i]['field_min_people']['#suffix'] = '</div>';
+
+      $form['field_rates_ranges'][LANGUAGE_NONE][$i]['field_max_people']['#prefix'] = '<div style="display: inline-block; margin-right: 25px;">';
+      $form['field_rates_ranges'][LANGUAGE_NONE][$i]['field_max_people']['#suffix'] = '</div>';
+    }
+  }
+}
+
+/**
+ * Implements hook_field_collection_item_delete().
+ */
+function roomify_listing_field_collection_item_delete(FieldCollectionItemEntity $field_collection_item) {
+  if ($field_collection_item->field_name == 'field_rates_ranges') {
+    // Remove all attached rates.
+    $item_wrapper = entity_metadata_wrapper('field_collection_item', $field_collection_item);
+    foreach ($item_wrapper->field_rate_reference->value() as $rate) {
+      $rate->delete();
+    }
+  }
+}
+
+/**
+ * Implements hook_entity_insert().
+ */
+function roomify_listing_entity_insert($entity, $type) {
+  global $user;
+
+  if ($type == 'roomify_property' && $entity->type == 'standard_property') {
+    if (!isset($entity->field_sp_owner[LANGUAGE_NONE][0]['target_id'])) {
+      $entity->field_sp_owner[LANGUAGE_NONE][0]['target_id'] = $user->uid;
+      field_attach_update($type, $entity);
+    }
+
+    roomify_listing_edit_property_tax($entity);
+  }
+
+  if ($type == 'bat_type') {
+    if ($entity->type == 'home' || $entity->type == 'room') {
+      roomify_listing_update_rates($entity);
+    }
+  }
+}
+
+/**
+ * Implements hook_entity_presave().
+ */
+function roomify_listing_entity_presave($entity, $type) {
+  global $user;
+
+  if ($type == 'roomify_property') {
+    if ($entity->type == 'casa_property' || $entity->type == 'locanda_property') {
+      if (isset($entity->is_new) && $entity->is_new) {
+        $entity->field_sp_manager[LANGUAGE_NONE][0]['target_id'] = $entity->uid;
+      }
+      else {
+        if (!isset($entity->field_sp_owner[LANGUAGE_NONE][0]['target_id'])) {
+          $entity->field_sp_owner[LANGUAGE_NONE][0]['target_id'] = $user->uid;
+        }
+      }
+    }
+
+    if ($entity->type == 'casa_property') {
+      foreach ($entity->property_bat_type_reference[LANGUAGE_NONE] as $type) {
+        if ($bat_type = bat_type_load($type['target_id'])) {
+          $bat_type->name = $entity->name;
+          $bat_type->save();
+        }
+      }
+    }
+  }
+  elseif ($type == 'bat_type') {
+    if ($entity->type == 'home') {
+      $i = 1;
+
+      $units = bat_unit_load_multiple(FALSE, array('type_id' => $entity->type_id));
+      foreach ($units as $unit) {
+        $unit->name = $entity->name . ' ' . $i++;
+        $unit->save();
+      }
+    }
+  }
+}
+
+/**
+ * Implements hook_entity_update().
+ */
+function roomify_listing_entity_update($entity, $type) {
+  if ($type == 'bat_event' && $entity->type == 'availability') {
+    // Update dates on attached booking object.
+    if (isset($entity->event_booking_reference[LANGUAGE_NONE][0]['target_id'])) {
+      $booking = bat_booking_load($entity->event_booking_reference[LANGUAGE_NONE][0]['target_id']);
+
+      $start_date_object = new DateTime($entity->start_date);
+      $end_date_object = new DateTime($entity->end_date);
+      $end_date_object->add(new DateInterval('PT1M'));
+
+      $start_date = $start_date_object->format('Y-m-d H:i:s');
+      $end_date = $end_date_object->format('Y-m-d H:i:s');
+
+      if ($booking->booking_start_date[LANGUAGE_NONE][0]['value'] != $start_date ||
+          $booking->booking_end_date[LANGUAGE_NONE][0]['value'] != $end_date) {
+        $booking->booking_start_date[LANGUAGE_NONE][0]['value'] = $start_date;
+        $booking->booking_end_date[LANGUAGE_NONE][0]['value'] = $end_date;
+
+        $booking->save();
+
+        $line_item = commerce_line_item_load($booking->booking_line_item_reference[LANGUAGE_NONE][0]['target_id']);
+
+        $unit = bat_unit_load($entity->event_bat_unit_reference[LANGUAGE_NONE][0]['target_id']);
+        $type = bat_type_load($unit->type_id);
+        $property = roomify_property_load($type->field_st_property_reference[LANGUAGE_NONE][0]['target_id']);
+
+        $nights = $start_date_object->diff($end_date_object)->days;
+
+        $line_item->line_item_label = roomify_system_get_line_item_label($type, $property, $start_date_object, $end_date_object, $nights);
+
+        commerce_line_item_save($line_item);
+      }
+    }
+  }
+
+  if ($type == 'roomify_property' && ($entity->type == 'casa_property' || $entity->type == 'locanda_property')) {
+    roomify_listing_edit_property_tax($entity);
+  }
+
+  if ($type == 'bat_type') {
+    if ($entity->type == 'home' || $entity->type == 'room') {
+      roomify_listing_update_rates($entity);
+    }
+  }
+}
+
+/**
+ * @param $type
+ */
+function roomify_listing_update_rates($type) {
+  $entity_wrapper = entity_metadata_wrapper('bat_type', $type);
+
+  foreach ($entity_wrapper->field_rates_ranges->value() as $field_collection) {
+    if (isset($field_collection->field_rate_reference[LANGUAGE_NONE][0]['target_id'])) {
+      $standard_rate = roomify_rate_load($field_collection->field_rate_reference[LANGUAGE_NONE][0]['target_id']);
+      $weekly_rate = roomify_rate_load($field_collection->field_rate_reference[LANGUAGE_NONE][1]['target_id']);
+      $monthly_rate = roomify_rate_load($field_collection->field_rate_reference[LANGUAGE_NONE][2]['target_id']);
+
+      $range_label = '';
+      $rate_restriction = roomify_rate_restriction_load($standard_rate->rate_restrictions[LANGUAGE_NONE][0]['target_id']);
+      if (isset($field_collection->field_min_people[LANGUAGE_NONE][0]['value'])) {
+        $rate_restriction->rate_minimum_people[LANGUAGE_NONE][0]['value'] = $field_collection->field_min_people[LANGUAGE_NONE][0]['value'];
+        $range_label .= 'Min people: ' . $field_collection->field_min_people[LANGUAGE_NONE][0]['value'];
+      }
+      else {
+        $rate_restriction->rate_minimum_people = array();
+      }
+      if (isset($field_collection->field_max_people[LANGUAGE_NONE][0]['value'])) {
+        $rate_restriction->rate_maximum_people[LANGUAGE_NONE][0]['value'] = $field_collection->field_max_people[LANGUAGE_NONE][0]['value'];
+        $range_label .= ((!empty($range_label)) ? ', ' : '') . 'Max people: ' . $field_collection->field_max_people[LANGUAGE_NONE][0]['value'];
+      }
+      else {
+        $rate_restriction->rate_maximum_people = array();
+      }
+      $rate_restriction->save();
+      $standard_rate->name = 'Standard (' . $range_label . ')';
+      $standard_rate->save();
+
+      $range_label = '';
+      $rate_restriction = roomify_rate_restriction_load($weekly_rate->rate_restrictions[LANGUAGE_NONE][0]['target_id']);
+      if (isset($field_collection->field_min_people[LANGUAGE_NONE][0]['value'])) {
+        $rate_restriction->rate_minimum_people[LANGUAGE_NONE][0]['value'] = $field_collection->field_min_people[LANGUAGE_NONE][0]['value'];
+        $range_label .= 'Min people: ' . $field_collection->field_min_people[LANGUAGE_NONE][0]['value'];
+      }
+      else {
+        $rate_restriction->rate_minimum_people = array();
+      }
+      if (isset($field_collection->field_max_people[LANGUAGE_NONE][0]['value'])) {
+        $rate_restriction->rate_maximum_people[LANGUAGE_NONE][0]['value'] = $field_collection->field_max_people[LANGUAGE_NONE][0]['value'];
+        $range_label .= ((!empty($range_label)) ? ', ' : '') . 'Max people: ' . $field_collection->field_max_people[LANGUAGE_NONE][0]['value'];
+      }
+      else {
+        $rate_restriction->rate_maximum_people = array();
+      }
+      $rate_restriction->save();
+      $weekly_rate->name = 'Weekly (' . $range_label . ')';
+      $weekly_rate->save();
+
+      $range_label = '';
+      $rate_restriction = roomify_rate_restriction_load($monthly_rate->rate_restrictions[LANGUAGE_NONE][0]['target_id']);
+      if (isset($field_collection->field_min_people[LANGUAGE_NONE][0]['value'])) {
+        $rate_restriction->rate_minimum_people[LANGUAGE_NONE][0]['value'] = $field_collection->field_min_people[LANGUAGE_NONE][0]['value'];
+        $range_label .= 'Min people: ' . $field_collection->field_min_people[LANGUAGE_NONE][0]['value'];
+      }
+      else {
+        $rate_restriction->rate_minimum_people = array();
+      }
+      if (isset($field_collection->field_max_people[LANGUAGE_NONE][0]['value'])) {
+        $rate_restriction->rate_maximum_people[LANGUAGE_NONE][0]['value'] = $field_collection->field_max_people[LANGUAGE_NONE][0]['value'];
+        $range_label .= ((!empty($range_label)) ? ', ' : '') . 'Max people: ' . $field_collection->field_max_people[LANGUAGE_NONE][0]['value'];
+      }
+      else {
+        $rate_restriction->rate_maximum_people = array();
+      }
+      $rate_restriction->save();
+      $monthly_rate->name = 'Monthly (' . $range_label . ')';
+      $monthly_rate->save();
+    }
+    else {
+      $range = array();
+      if (isset($field_collection->field_min_people[LANGUAGE_NONE][0]['value'])) {
+        $range['min'] = $field_collection->field_min_people[LANGUAGE_NONE][0]['value'];
+      }
+      if (isset($field_collection->field_max_people[LANGUAGE_NONE][0]['value'])) {
+        $range['max'] = $field_collection->field_max_people[LANGUAGE_NONE][0]['value'];
+      }
+
+      if (!empty($range)) {
+        $rates = roomify_system_create_standard_rates_per_person($type, array($range));
+
+        $rates = reset($rates);
+
+        $field_collection->field_rate_reference[LANGUAGE_NONE][0]['target_id'] = $rates['standard']->rate_id;
+        $field_collection->field_rate_reference[LANGUAGE_NONE][1]['target_id'] = $rates['weekly']->rate_id;
+        $field_collection->field_rate_reference[LANGUAGE_NONE][2]['target_id'] = $rates['monthly']->rate_id;
+
+        $field_collection->save();
+      }
+    }
+  }
+}
+
+/**
+ *
+ */
+function roomify_listing_edit_property_tax($property) {
+  if (isset($property->field_tax_enable[LANGUAGE_NONE][0]['value']) &&
+      $property->field_tax_enable[LANGUAGE_NONE][0]['value'] == '1' &&
+      isset($property->field_tax_description[LANGUAGE_NONE][0]['value']) &&
+      isset($property->field_tax_rate[LANGUAGE_NONE][0]['value'])) {
+
+    $title = $property->field_tax_description[LANGUAGE_NONE][0]['value'];
+    $rate = substr(number_format($property->field_tax_rate[LANGUAGE_NONE][0]['value'] / 100, 10), 1);
+
+    if (isset($property->field_tax_rule_id[LANGUAGE_NONE][0]['value']) && !empty($property->field_tax_rule_id[LANGUAGE_NONE][0]['value'])) {
+      $name = $property->field_tax_rule_id[LANGUAGE_NONE][0]['value'];
+
+      $tax_rate = commerce_tax_rate_load($name);
+
+      // Update Title, Display title and Rate of existing tax.
+      $tax_rate['title'] = $title;
+      $tax_rate['display_title'] = $title;
+      $tax_rate['rate'] = $rate;
+
+      commerce_tax_ui_tax_rate_save($tax_rate);
+      commerce_tax_rates_reset();
+    }
+    else {
+      // Generate new tax machine name.
+      $name = preg_replace('@[^a-z0-9_]+@', '_', strtolower($title));
+      $base_name = $name;
+
+      $i = 0;
+      while (commerce_tax_rate_load($name)) {
+        $name = $base_name . '_' . $i++;
+      }
+
+      // Create a new "Listing tax".
+      $tax_rate = array(
+        'name' => $name,
+        'title' => $title,
+        'display_title' => $title,
+        'description' => '',
+        'rate' => $rate,
+        'type' => 'property_tax',
+        'default_rules_component' => '1',
+        'module' => 'roomify_listing',
+        'is_new' => TRUE,
+      );
+
+      commerce_tax_ui_tax_rate_save($tax_rate);
+      commerce_tax_rates_reset();
+
+      // Alter rule component to apply this tax only for this property.
+      $rule = rules_config_load('commerce_tax_rate_' . $name);
+      $rule->condition('roomify_listing_property_comparison', array('entity:select' => 'commerce-line-item', 'property_id' => $property->property_id));
+      $rule->save();
+
+      // Save machine name of created tax.
+      $property->field_tax_rule_id[LANGUAGE_NONE][0]['value'] = $name;
+      field_attach_update('roomify_property', $property);
+    }
+  }
+  elseif (isset($property->field_tax_rule_id[LANGUAGE_NONE][0]['value']) && !empty($property->field_tax_rule_id[LANGUAGE_NONE][0]['value'])) {
+
+    // Delete existing Tax rule.
+    commerce_tax_ui_tax_rate_delete($property->field_tax_rule_id[LANGUAGE_NONE][0]['value']);
+
+    // Empty tax fields on property entity.
+    $property->field_tax_rule_id[LANGUAGE_NONE][0]['value'] = '';
+    $property->field_tax_description[LANGUAGE_NONE][0]['value'] = '';
+    $property->field_tax_rate[LANGUAGE_NONE][0]['value'] = NULL;
+    field_attach_update('roomify_property', $property);
+  }
+}
+
+/**
+ * Custom roomify_listing_edit form validate.
+ */
+function roomify_listing_edit_form_submit(&$form, &$form_state) {
+  global $user;
+
+  $type = $form_state['bat_type'];
+
+  // The Type is not new.
+  if (!isset($type->is_new)) {
+    // Redirect user to the edit page.
+    $form_state['redirect'] = 'admin/bat/config/types/manage/' . $type->type_id . '/edit';
+  }
+}
+
+/**
+ * Creates an Area Type vocabulary.
+ */
+function roomify_listing_create_area_type_vocabulary() {
+  $vocabulary = (object) array(
+    'name' => 'Area Type',
+    'description' => 'A vocabulary used by the Roomify Listing module to describe Area Types',
+    'machine_name' => 'area_type',
+    'i18n_mode' => '1',
+  );
+
+  if (!taxonomy_vocabulary_machine_name_load('area_type')) {
+    taxonomy_vocabulary_save($vocabulary);
+  }
+}
+
+/**
+ * Creates an Amenities vocabulary.
+ */
+function roomify_listing_create_amenities_vocabulary() {
+  $amenites_vocabulary = (object) array(
+    'name' => 'Amenities',
+    'description' => 'A vocabulary used by the Roomify Listing module to describe amenities',
+    'machine_name' => 'amenities',
+    'i18n_mode' => '1',
+  );
+
+  if (!taxonomy_vocabulary_machine_name_load('amenities')) {
+    taxonomy_vocabulary_save($amenites_vocabulary);
+    roomify_listing_create_example_amenities_terms();
+  }
+}
+
+/**
+ * A List of example amenities.
+ */
+function roomify_listing_example_amenities() {
+  return array(
+    t('TV'),
+    t('Cable TV'),
+    t('Air Conditioning'),
+    t('Heating'),
+    t('Kitchen'),
+    t('Internet'),
+    t('Wireless Internet'),
+    t('Breakfast'),
+    t('Smoke Detector'),
+    t('Carbon Monoxide Detector'),
+    t('Doorman'),
+    t('Elevator'),
+    t('Suitable for Events'),
+    t('Family/Kid friendy'),
+    t('Fire Extinguisher'),
+    t('First aid kit'),
+    t('Free Parking on Premises'),
+    t('Gym'),
+    t('Hot tub'),
+    t('Indoor Fireplace'),
+    t('Minibar'),
+    t('Pets Allowed'),
+    t('Pool'),
+    t('Shampoo'),
+    t('Smoking Allowed'),
+    t('Washer'),
+    t('Wireless Intercom'),
+    t('Dryer'),
+    t('Towels'),
+  );
+}
+
+/**
+ * Creates Amenities example terms.
+ */
+function roomify_listing_create_example_amenities_terms() {
+  foreach (roomify_listing_example_amenities() as $name) {
+    $vocabulary = taxonomy_vocabulary_machine_name_load('amenities');
+    $term = new stdClass();
+    $term->name = $name;
+    $term->vid = $vocabulary->vid;
+    taxonomy_term_save($term);
+  }
+}
+
+/**
+ * Implements hook_theme_registry_alter().
+ */
+function roomify_listing_theme_registry_alter(&$theme_registry) {
+  // Defined path to the current module.
+  $module_path = drupal_get_path('module', 'roomify_listing');
+  // Find all .tpl.php files in this module's folder recursively.
+  $template_file_objects = drupal_find_theme_templates($theme_registry, '.tpl.php', $module_path);
+  // Iterate through all found template file objects.
+  foreach ($template_file_objects as $key => $template_file_object) {
+    // If the template has not already been overridden by a theme.
+    if (!isset($theme_registry[$key]['theme path']) || !preg_match('#/themes/#', $theme_registry[$key]['theme path'])) {
+      // Alter the theme path and template elements.
+      $theme_registry[$key]['theme path'] = $module_path;
+      $theme_registry[$key] = array_merge($theme_registry[$key], $template_file_object);
+      $theme_registry[$key]['type'] = 'module';
+    }
+  }
+}
+
+/**
+ * Implements hook_roomify_conversations_user_picture().
+ */
+function roomify_listing_roomify_conversations_user_picture($account) {
+  if ($profile = profile2_load_by_user($account, 'property_owner')) {
+    if ($image = field_get_items('profile2', $profile, 'property_owner_image')) {
+      return $image[0]['uri'];
+    }
+  }
+
+  if ($profile = profile2_load_by_user($account, 'guest')) {
+    if ($image = field_get_items('profile2', $profile, 'guest_image')) {
+      return $image[0]['uri'];
+    }
+  }
+}
+
+/**
+ * Implements hook_form_FORM_ID_alter().
+ *
+ * FORM_ID = listing_enquiry_entityform_edit_form.
+ */
+function roomify_listing_form_listing_enquiry_entityform_edit_form_alter(&$form, &$form_state) {
+  $type = bat_type_load($_GET['field_listing_enquiry_type_ref']);
+  $property = roomify_property_load($type->field_st_property_reference[LANGUAGE_NONE][0]['target_id']);
+
+  if ($property->type == 'locanda_property') {
+    drupal_set_title(t('Booking Request for @property_name - @type_name', array('@property_name' => $property->name, '@type_name' => $type->name)));
+  }
+  else {
+    drupal_set_title(t('Booking Request for @property_name', array('@property_name' => $property->name)));
+  }
+
+  // For logged in users prefill and hide the email field.
+  if (user_is_logged_in()) {
+    global $user;
+
+    if (isset($form['#entity']->is_new) && $form['#entity']->is_new) {
+      $form['field_listing_enquiry_email'][LANGUAGE_NONE][0]['email']['#default_value'] = $user->mail;
+      $form['field_listing_enquiry_email'][LANGUAGE_NONE][0]['#access'] = FALSE;
+    }
+  }
+
+  $form['field_listing_enquiry_price'][LANGUAGE_NONE][0]['#access'] = FALSE;
+
+  // Prefill Enquiry with information from search.
+  if (isset($_SESSION['enquiry'])) {
+    $enquiry = $_SESSION['enquiry'];
+
+    if ($_GET['field_listing_enquiry_type_ref'] == $enquiry['type_id']) {
+      $form['field_listing_enquiry_price'][LANGUAGE_NONE][0]['amount']['#default_value'] = $enquiry['amount'];
+
+      $form['field_listing_enquiry_arr_date'][LANGUAGE_NONE][0]['#disabled'] = TRUE;
+      $form['field_listing_enquiry_arr_date'][LANGUAGE_NONE][0]['#default_value']['value'] = $enquiry['start_date']->format('Y-m-d');
+      $form['field_listing_enquiry_arr_date'][LANGUAGE_NONE][0]['#date_items']['value'] = $enquiry['start_date']->format('Y-m-d');
+
+      $form['field_listing_enquiry_dep_date'][LANGUAGE_NONE][0]['#disabled'] = TRUE;
+      $form['field_listing_enquiry_dep_date'][LANGUAGE_NONE][0]['#default_value']['value'] = $enquiry['end_date']->format('Y-m-d');
+      $form['field_listing_enquiry_dep_date'][LANGUAGE_NONE][0]['#date_items']['value'] = $enquiry['end_date']->format('Y-m-d');
+
+      if (isset($enquiry['group_size'])) {
+        $form['field_listing_enquiry_guests'][LANGUAGE_NONE][0]['#disabled'] = TRUE;
+        $form['field_listing_enquiry_guests'][LANGUAGE_NONE][0]['value']['#default_value'] = $enquiry['group_size'];
+      }
+    }
+  }
+
+  $form['#attached']['js'] = array(
+    drupal_get_path('module', 'bat') . '/js/bat_date_popup.js',
+    array(
+      'data' => array(
+        'bat' => array(
+          'batDateGranularity' => 'bat_daily',
+        ),
+      ),
+      'type' => 'setting',
+    ),
+  );
+
+  $form['actions']['submit']['#attributes']['class'][] = 'btn-primary';
+}
+
+/**
+ * Implements hook_date_combo_process_alter().
+ */
+function roomify_listing_date_combo_process_alter(&$element, &$form_state, $context) {
+  if ($element['#field_name'] == 'field_listing_enquiry_arr_date') {
+    $element['value']['#datepicker_options'] = array('endDateSelector' => '#edit-field-listing-enquiry-dep-date-und-0-value .form-text', 'minDate' => '+' . variable_get('bat_event_start_date', 0) . 'd');
+  }
+
+  if ($element['#field_name'] == 'field_listing_enquiry_dep_date') {
+    $element['value']['#datepicker_options'] = array('startDateSelector' => '#edit-field-listing-enquiry-arr-date-und-0-value .form-text', 'minDate' => '+' . variable_get('bat_event_start_date', 0) . 'd');
+  }
+}
+
+/**
+ * Implements hook_default_cer().
+ */
+function roomify_listing_default_cer() {
+  $items = array();
+
+  $items['bat_booking:roomify_accommodation_booking:booking_event_reference*bat_event:availability:event_booking_reference'] = entity_import('cer', '{
+    "cer_bidirectional" : { "und" : [ { "value" : "1" } ] },
+    "cer_enabled" : { "und" : [ { "value" : "1" } ] },
+    "cer_left" : { "und" : [
+        { "path" : "bat_booking:roomify_accommodation_booking:booking_event_reference" }
+      ]
+    },
+    "cer_right" : { "und" : [ { "path" : "bat_event:availability:event_booking_reference" } ] },
+    "cer_weight" : { "und" : [ { "value" : "0" } ] },
+    "identifier" : "bat_booking:roomify_accommodation_booking:booking_event_reference*bat_event:availability:event_booking_reference",
+    "rdf_mapping" : []
+  }');
+
+  $items['bat_booking:conversation_booking:booking_event_reference*bat_event:availability:event_booking_reference'] = entity_import('cer', '{
+    "cer_bidirectional" : { "und" : [ { "value" : "1" } ] },
+    "cer_enabled" : { "und" : [ { "value" : "1" } ] },
+    "cer_left" : { "und" : [
+        { "path" : "bat_booking:conversation_booking:booking_event_reference" }
+      ]
+    },
+    "cer_right" : { "und" : [ { "path" : "bat_event:availability:event_booking_reference" } ] },
+    "cer_weight" : { "und" : [ { "value" : "0" } ] },
+    "identifier" : "bat_booking:conversation_booking:booking_event_reference*bat_event:availability:event_booking_reference",
+    "rdf_mapping" : []
+  }');
+
+  $items['roomify_property:casa_property:property_bat_type_reference*bat_type:home:field_st_property_reference'] = entity_import('cer', '{
+    "identifier" : "roomify_property:casa_property:property_bat_type_reference*bat_type:home:field_st_property_reference",
+    "cer_bidirectional" : { "und" : [ { "value" : "1" } ] },
+    "cer_enabled" : { "und" : [ { "value" : "1" } ] },
+    "cer_weight" : { "und" : [ { "value" : "0" } ] },
+    "cer_left" : { "und" : [
+        { "path" : "roomify_property:casa_property:property_bat_type_reference" }
+      ]
+    },
+    "cer_right" : { "und" : [ { "path" : "bat_type:home:field_st_property_reference" } ] },
+    "rdf_mapping" : []
+  }');
+
+  $items['roomify_property:locanda_property:property_bat_type_reference*bat_type:room:field_st_property_reference'] = entity_import('cer', '{
+    "identifier" : "roomify_property:locanda_property:property_bat_type_reference*bat_type:room:field_st_property_reference",
+    "cer_bidirectional" : { "und" : [ { "value" : "1" } ] },
+    "cer_enabled" : { "und" : [ { "value" : "1" } ] },
+    "cer_weight" : { "und" : [ { "value" : "0" } ] },
+    "cer_left" : { "und" : [
+        { "path" : "roomify_property:locanda_property:property_bat_type_reference" }
+      ]
+    },
+    "cer_right" : { "und" : [ { "path" : "bat_type:room:field_st_property_reference" } ] },
+    "rdf_mapping" : []
+  }');
+
+  return $items;
+}
+
+/**
+ * Implements hook_form_alter().
+ */
+function roomify_listing_form_alter(&$form, &$form_state, $form_id) {
+  global $user;
+
+  // Alterations for property editing forms.
+  $roomify_property_edit_forms = array(
+    'roomify_property_edit_casa_property_form',
+    'roomify_property_edit_locanda_property_form',
+    'roomify_property_edit_single_day_activity_property_form',
+    'roomify_property_edit_multi_day_activity_property_form',
+  );
+
+  if (in_array($form['#form_id'], $roomify_property_edit_forms)) {
+    $form['actions']['submit']['#validate'][] = 'custom_roomify_property_validate';
+    $form['actions']['submit']['#submit'][] = 'custom_roomify_property_submit';
+
+    if (isset($form['field_tax_rule_id'])) {
+      $form['field_tax_rule_id']['#access'] = FALSE;
+    }
+
+    // Hide 'Ownership' fields for non 'roomify manager' users.
+    if (!user_access('update any roomify_property entity')) {
+      $form['field_sp_owner']['#access'] = FALSE;
+      $form['field_sp_manager']['#access'] = FALSE;
+    }
+
+    if (in_array('group manager', $user->roles) && isset($form['#entity']->group)) {
+      $group = group_load($form['#entity']->group);
+      $has_access = group_access('administer group', $group, $user);
+      if (isset($form['#bundle'])) {
+        $bundle = $form['#bundle'];
+        $has_access = $has_access || group_access("update any $bundle property", $group, $user);
+        if ($has_access) {
+          $form['field_sp_owner']['#access'] = TRUE;
+          $form['field_sp_manager']['#access'] = TRUE;
+        }
+      }
+    }
+  }
+
+  // Home BAT type and Room BAT type.
+  if ($form['#form_id'] == 'bat_type_edit_home_form' || $form['#form_id'] == 'bat_type_edit_room_form' || $form['#form_id'] == 'bat_type_edit_form') {
+    if (isset($form['field_st_property_reference'])) {
+      $form['field_st_property_reference']['#access'] = FALSE;
+    }
+  }
+}
+
+/**
+ * Implements hook_views_bulk_operations_form_alter().
+ */
+function roomify_listing_views_bulk_operations_form_alter(&$form, &$form_state, $vbo) {
+  if (isset($vbo->view->args[0])) {
+    if ($type = bat_type_load($vbo->view->args[0])) {
+      if ($type->type == 'home') {
+        if ($form_state['step'] == 'views_form_views_form') {
+          if (isset($form['select']['operation']['#options']['action::views_bulk_operations_delete_item'])) {
+            unset($form['select']['operation']['#options']['action::views_bulk_operations_delete_item']);
+          }
+        }
+      }
+    }
+  }
+}
+
+/**
+ * Custom roomify property submit function.
+ */
+function custom_roomify_property_submit(&$form, &$form_state) {
+  $form_state['redirect'] = 'admin/bat/config/property/manage/' . $form_state['roomify_property']->property_id;
+}
+
+/**
+ * Custom roomify property validate function.
+ */
+function custom_roomify_property_validate(&$form, &$form_state) {
+  // If no owner is set, fill this with the author.
+  $owner = $form_state['values']['field_sp_owner'][LANGUAGE_NONE][0]['target_id'];
+  if (empty($owner)) {
+    if ($author = user_load_by_name($form_state['values']['author_name'])) {
+      $form_state['values']['field_sp_owner'][LANGUAGE_NONE][0]['target_id'] = $author->uid;
+    }
+  }
+
+  // Set user manager as property author.
+  if (isset($form_state['values']['field_sp_manager'][LANGUAGE_NONE][0]['target_id'])) {
+    if ($manager = user_load($form_state['values']['field_sp_manager'][LANGUAGE_NONE][0]['target_id'])) {
+      $form_state['values']['author_name'] = $manager->name;
+    }
+  }
+}
+
+/**
+ * Given a property id returns the lowest default price of all its types.
+ */
+function get_lower_default_price_property_types($property_id) {
+  if ($property = entity_load_single('roomify_property', $property_id)) {
+
+    // Extract the type with the lower price.
+    $bat_types = field_get_items('roomify_property', $property, 'property_bat_type_reference');
+    $lower_price = 0;
+
+    reset($bat_types);
+    $first = key($bat_types);
+    foreach ($bat_types as $key => $type_id) {
+      $type = bat_type_load($type_id['target_id']);
+
+      if ($default_price = field_get_items('bat_type', $type, 'field_st_default_price')) {
+        $price_value = $default_price[0]['amount'];
+
+        if ($key === $first && isset($price_value)) {
+          // FIRST TYPE.
+          $lower_price = $price_value;
+        }
+        else {
+          if (isset($price_value) && $price_value < $lower_price) {
+            $lower_price = $price_value;
+          }
+        }
+      }
+    }
+
+    if ($lower_price) {
+      $price = commerce_currency_format($lower_price, $default_price[0]['currency_code']);
+
+      return ($price);
+    }
+  }
+}
+
+/**
+ * Implements hook_form_FORM_ID_alter().
+ */
+function roomify_listing_form_commerce_tax_ui_tax_rate_form_alter(&$form, $form_state) {
+  // Don't allow users to create property taxes.
+  unset($form['tax_rate']['type']['#options']['property_tax']);
+}
+
+/**
+ * Implements hook_default_panels_mini().
+ */
+function roomify_listing_default_panels_mini() {
+  $export = array();
+
+  $mini = new stdClass();
+  $mini->disabled = FALSE; /* Edit this to true to make a default mini disabled initially */
+  $mini->api_version = 1;
+  $mini->name = 'property_location';
+  $mini->category = '';
+  $mini->admin_title = 'Property Location';
+  $mini->admin_description = '';
+  $mini->requiredcontexts = array(
+    0 => array(
+      'identifier' => 'Roomify Property',
+      'keyword' => 'roomify_property',
+      'name' => 'entity:roomify_property',
+      'entity_id' => '',
+      'optional' => 0,
+      'id' => 1,
+    ),
+  );
+  $mini->contexts = array();
+  $mini->relationships = array();
+  $display = new panels_display();
+  $display->layout = 'bootstrap_two_columns';
+  $display->layout_settings = array();
+  $display->panel_settings = array(
+    'style_settings' => array(
+      'default' => NULL,
+      'left' => NULL,
+      'right' => NULL,
+    ),
+  );
+  $display->cache = array();
+  $display->title = '';
+  $display->uuid = '3bc6abee-e568-4a3a-813b-19fc716e0b54';
+  $display->content = array();
+  $display->panels = array();
+  $pane = new stdClass();
+  $pane->pid = 'new-0ec8999e-e8fa-47d4-9ca7-ff8b491e93fe';
+  $pane->panel = 'left';
+  $pane->type = 'entity_field';
+  $pane->subtype = 'roomify_property:field_sp_how_to_reach';
+  $pane->shown = TRUE;
+  $pane->access = array();
+  $pane->configuration = array(
+    'label' => 'title',
+    'formatter' => 'text_default',
+    'delta_limit' => 0,
+    'delta_offset' => '0',
+    'delta_reversed' => FALSE,
+    'formatter_settings' => array(),
+    'context' => 'requiredcontext_entity:roomify_property_1',
+    'override_title' => 1,
+    'override_title_text' => 'How to reach the place',
+    'override_title_heading' => 'h3',
+  );
+  $pane->cache = array();
+  $pane->style = array(
+    'settings' => NULL,
+  );
+  $pane->css = array();
+  $pane->extras = array();
+  $pane->position = 0;
+  $pane->locks = array();
+  $pane->uuid = '0ec8999e-e8fa-47d4-9ca7-ff8b491e93fe';
+  $display->content['new-0ec8999e-e8fa-47d4-9ca7-ff8b491e93fe'] = $pane;
+  $display->panels['left'][0] = 'new-0ec8999e-e8fa-47d4-9ca7-ff8b491e93fe';
+  $pane = new stdClass();
+  $pane->pid = 'new-087690a1-7784-4aa2-a3fb-103659362f3e';
+  $pane->panel = 'left';
+  $pane->type = 'entity_field';
+  $pane->subtype = 'roomify_property:field_sp_essentials';
+  $pane->shown = TRUE;
+  $pane->access = array();
+  $pane->configuration = array(
+    'label' => 'title',
+    'formatter' => 'text_default',
+    'delta_limit' => 0,
+    'delta_offset' => '0',
+    'delta_reversed' => FALSE,
+    'formatter_settings' => array(),
+    'context' => 'requiredcontext_entity:roomify_property_1',
+    'override_title' => 1,
+    'override_title_text' => 'Essentials Nearby',
+    'override_title_heading' => 'h3',
+  );
+  $pane->cache = array();
+  $pane->style = array(
+    'settings' => NULL,
+  );
+  $pane->css = array();
+  $pane->extras = array();
+  $pane->position = 1;
+  $pane->locks = array();
+  $pane->uuid = '087690a1-7784-4aa2-a3fb-103659362f3e';
+  $display->content['new-087690a1-7784-4aa2-a3fb-103659362f3e'] = $pane;
+  $display->panels['left'][1] = 'new-087690a1-7784-4aa2-a3fb-103659362f3e';
+  $pane = new stdClass();
+  $pane->pid = 'new-2845eea5-2278-40d3-a8c7-2338f9f6bdaa';
+  $pane->panel = 'right';
+  $pane->type = 'views_panes';
+  $pane->subtype = 'property-panel_pane_5';
+  $pane->shown = TRUE;
+  $pane->access = array();
+  $pane->configuration = array();
+  $pane->cache = array();
+  $pane->style = array(
+    'settings' => NULL,
+  );
+  $pane->css = array();
+  $pane->extras = array();
+  $pane->position = 0;
+  $pane->locks = array();
+  $pane->uuid = '2845eea5-2278-40d3-a8c7-2338f9f6bdaa';
+  $display->content['new-2845eea5-2278-40d3-a8c7-2338f9f6bdaa'] = $pane;
+  $display->panels['right'][0] = 'new-2845eea5-2278-40d3-a8c7-2338f9f6bdaa';
+  $pane = new stdClass();
+  $pane->pid = 'new-3729b356-0461-40a2-8159-01996ec78a07';
+  $pane->panel = 'right';
+  $pane->type = 'entity_field';
+  $pane->subtype = 'roomify_property:field_sp_address';
+  $pane->shown = TRUE;
+  $pane->access = array();
+  $pane->configuration = array(
+    'label' => 'hidden',
+    'formatter' => 'text_default',
+    'delta_limit' => 0,
+    'delta_offset' => '0',
+    'delta_reversed' => FALSE,
+    'formatter_settings' => array(),
+    'context' => 'requiredcontext_entity:roomify_property_1',
+    'override_title' => 1,
+    'override_title_text' => '',
+    'override_title_heading' => 'h2',
+  );
+  $pane->cache = array();
+  $pane->style = array(
+    'settings' => NULL,
+  );
+  $pane->css = array();
+  $pane->extras = array();
+  $pane->position = 1;
+  $pane->locks = array();
+  $pane->uuid = '3729b356-0461-40a2-8159-01996ec78a07';
+  $display->content['new-3729b356-0461-40a2-8159-01996ec78a07'] = $pane;
+  $display->panels['right'][1] = 'new-3729b356-0461-40a2-8159-01996ec78a07';
+  $display->hide_title = PANELS_TITLE_FIXED;
+  $display->title_pane = 'new-0ec8999e-e8fa-47d4-9ca7-ff8b491e93fe';
+  $mini->display = $display;
+
+  $export['property_location'] = $mini;
+
+  return $export;
+}
+
+/**
+ * Implements hook_menu().
+ */
+function roomify_listing_menu() {
+  $items['admin/config/content/rcs'] = array(
+    'title' => 'Roomify Customer support',
+    'description' => 'Add a message to show to the user in some pages',
+    'page callback' => 'drupal_get_form',
+    'page arguments' => array('roomify_customer_support_form'),
+    'access callback' => 'user_access',
+    'access arguments' => array('administer roomify_customer_support'),
+    'type' => MENU_NORMAL_ITEM,
+  );
+
+  return $items;
+}
+
+/**
+ * Implements hook_permission().
+ */
+function roomify_listing_permission() {
+  return array(
+    'administer roomify_customer_support' => array(
+      'title' => t('Administer Roomify customer support'),
+      'description' => t('Permission to allow user to configure the Roomify Customer support message.'),
+      'restrict access' => TRUE,
+    ),
+  );
+}
+
+/**
+ * Roomify Customer support form
+ */
+function roomify_customer_support_form() {
+  $pages = array(
+    'availability_page' => t('Availability Page'),
+    'blog_page' => t('Blog Page'),
+    'blog_node' => t('Individual Blogpost pages'),
+    'things_to_do_page' => t('Things to Do page'),
+    'things_to_do_node' => t('Individual things to do pages'),
+    'property_page' => t('Property Page'),
+    'type_page' => t('Room Type Page'),
+  );
+
+  $form['roomify_customer_support_page'] = array(
+    '#type' => 'checkboxes',
+    '#title' => t('Select the pages where the message should be visible'),
+    '#default_value' => variable_get('roomify_customer_support_page', array()),
+    '#options' => $pages,
+  );
+
+  $message = variable_get('roomify_customer_support_message', array('value' => '', 'format' => NULL));
+
+  $form['roomify_customer_support_message'] = array(
+    '#type' => 'text_format',
+    '#title' => t('Message'),
+    '#format' => $message['format'],
+    '#default_value' => $message['value'],
+  );
+  return system_settings_form($form);
+}

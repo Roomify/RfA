@@ -1,0 +1,53 @@
+.page-taxonomy-tags {
+	.pane-term-name {
+		display: none;
+	}
+	.pane-blog-panel-pane-8 {
+    .pane-title {
+      display: none;
+    }
+    .view-display-id-panel_pane_8 {
+      .view-content {
+        margin: 0 auto;
+      }
+      .masonry-item {
+        border-radius: 5px;
+        width: 320px;
+        margin: 25px 0px;
+        .views-field-field-featured-image {
+          img {
+            border-radius: 5px 5px 0 0;
+          }
+        }
+        .views-field-body {
+          background-color: white;
+          color: #565656;
+          font-weight: 300;
+          padding: 0px 10px 10px 10px;
+          border-radius: 0px 0px 5px 5px;
+          .field-content {
+            padding-top: 10px;
+            .views-more-link {
+              display: block;
+              margin-top: 10px;
+            }
+          }
+        }
+        .views-field-title { 
+          background: white;
+          padding: 10px;
+          border-bottom: 1px solid #E0E0E0;
+          a {
+            color: #565656;
+            font-size: 16px;
+            font-weight: 700;
+          }
+        }
+        &:hover {
+          opacity: .86;
+        }
+        @include transition(250ms opacity ease-out);
+      }
+    }
+  }
+}

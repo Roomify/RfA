@@ -1,0 +1,8 @@
+name = Roomify Casa Event UI
+description = Interface support for Casa events.
+core = 7.x
+
+package = Roomify Casa
+
+dependencies[] = roomify_casa
+dependencies[] = bat_fullcalendar

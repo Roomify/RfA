@@ -1,0 +1,37 @@
+#deposit-options .date-padding .description,
+#deposit-options .date-padding label {
+  display: none;
+}
+
+#deposit-options .date-padding,
+#deposit-options .container-inline-date .form-item .form-item {
+  float: none;
+}
+
+#deposit-options .date-padding input {
+  margin-left: 10px;
+}
+
+#deposit-options input.form-text {
+  margin-left: 10px;
+  margin-right: 5px;
+}
+
+#deposit-options .tabledrag-toggle-weight-wrapper {
+	display: none;
+}
+#deposit-options-table .form-wrapper {
+	margin-bottom: 0;
+}
+#deposit-options-table .form-wrapper input[type="submit"] {
+	margin-bottom: 0;
+	margin-left: 25px;
+}
+#deposit-options-table a.tabledrag-handle .handle {
+  margin-top: -1px;
+}
+
+.form-item-roomify-accommodation-booking-deposit-multiply input {
+  margin-left: 5px;
+  margin-right: 5px;
+}

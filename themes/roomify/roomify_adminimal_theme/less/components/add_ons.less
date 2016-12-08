@@ -1,0 +1,44 @@
+.view-add-ons {
+  .view-header {
+    display: inline-block;
+    margin-top: 15px;
+    margin-bottom: 40px;
+    .add-on-button {
+      background: @green;
+      color: white;
+      font-size: 18px;
+    }
+  }
+  .views-row {
+    display: inline-block;
+    width: 100%;
+    border-bottom: 1px solid #E4E4E4;
+    padding: 25px 10px;
+    &:hover {
+      background: #ECECEC;
+    }
+    .transition(150ms background ease-in-out);
+    .views-field-title {
+      .field-content {
+        font-weight: 400;
+        font-size: 24px;
+      }
+    }
+    .views-field-field-add-on-image {
+      float: left;
+      margin-right: 25px;
+      img {
+        border-radius: 5px;
+      }
+    }
+    .views-field-commerce-price {
+      font-size: 24px;
+      margin-bottom: 15px;
+    }
+    .views-field-field-add-on-description {
+      font-size: 16px;
+      font-weight: 300;
+      line-height: 1.5em;
+    }
+  }
+}

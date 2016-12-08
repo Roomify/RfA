@@ -1,0 +1,5 @@
+name = Roomify Accommodation Options
+description = Roomify Accommodation Options
+core = 7.x
+
+package = Roomify

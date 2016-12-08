@@ -1,0 +1,43 @@
+// Sidebar styles
+
+// Sidebar Left
+#sidebar-left {
+	@extend .hidden-xs;
+	@include make-sm-column(4);
+}
+
+
+// Sidebar Right
+#sidebar-right {
+	@extend .hidden-xs;
+	@include make-sm-column(4);
+	@extend .pull-right;
+	
+	.widget {
+		
+		.widget-title {
+			
+		}
+		
+		.widget-text {
+			
+			a.read-more {
+				
+			}
+			
+			img {
+				width:100%;
+				height:auto;
+			}
+			
+		}
+		
+		&.widget-image {
+			
+			.widget-text {
+
+			}
+		}		
+	}
+}
+

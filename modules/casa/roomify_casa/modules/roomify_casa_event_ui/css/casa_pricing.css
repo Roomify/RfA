@@ -1,0 +1,120 @@
+/* Ensure that datepicker is visible in the modal popup. */
+#ui-datepicker-div {
+  z-index: 1005 !important;
+}
+
+.casa-pricing-calendar {
+  display: table;
+  width: 100%;
+}
+.casa-pricing-calendar .calendar-links,
+.casa-pricing-calendar .calendar-set {
+  display: table-cell;
+  vertical-align: middle;
+}
+.casa-pricing-calendar .calendar-links div {
+  margin: 15px 0;
+  font-size: 20px;
+}
+.casa-pricing-calendar .calendar-links {
+  width: 250px;
+}
+
+.casa-pricing-calendar .fc-resource-area tr .fc-cell-content:hover {
+  background: #FFFFE0;
+  cursor: pointer;
+}
+
+.casa-pricing-calendar .fc-resource-area tr .fc-cell-content {
+  position: relative;
+}
+.casa-pricing-calendar .fc-resource-area tr .fc-cell-content:after {
+  content: "edit";
+  position: absolute;
+  right: 15px;
+  top: 0;
+  padding-top: 8px;
+  padding-bottom: 8px;
+  display: none;
+  color: gray;
+}
+.casa-pricing-calendar .fc-resource-area tr.show-edit .fc-cell-content:after {
+  display: block;
+}
+
+#price-tester div {
+  margin-bottom: 10px;
+  font-size: 15px;
+  font-family: "Open Sans", "Segoe UI", "Helvetica", sans-serif;
+}
+
+#roomify-casa-event-ui-pricing-update-form .form-item-start-date-date label,
+#roomify-casa-event-ui-pricing-update-form .form-item-start-date-date .description,
+#roomify-casa-event-ui-pricing-update-form .form-item-end-date-date label,
+#roomify-casa-event-ui-pricing-update-form .form-item-end-date-date .description {
+  display: none;
+}
+
+#roomify-casa-event-ui-pricing-update-form .form-item-start-date .date-padding,
+#roomify-casa-event-ui-pricing-update-form .form-item-end-date .date-padding,
+#roomify-casa-event-ui-pricing-update-form .form-item-start-date .form-item,
+#roomify-casa-event-ui-pricing-update-form .form-item-end-date .form-item {
+  float: none;
+}
+
+#roomify-casa-event-ui-pricing-update-form .row1 {
+  margin-bottom: 10px;
+}
+
+#roomify-casa-event-ui-pricing-update-form .row1 label {
+  display: none;
+}
+
+#roomify-casa-event-ui-pricing-update-form .form-item-day-options label {
+  font-weight: normal;
+  margin-right: 10px;
+}
+
+#roomify-casa-event-ui-pricing-update-form .form-item-day-options {
+  margin-right: 20px;
+}
+
+#roomify-casa-event-ui-pricing-update-form  .bat-date-range {
+  margin-right: 20px;
+}
+#roomify-casa-event-ui-pricing-update-form  .bat-date-range input {
+  text-align: center;
+}
+
+#roomify-casa-event-ui-pricing-update-form .form-item-price input {
+  text-align: right;
+}
+
+.bat-management-form.bat-event-form .event-details {
+  font-size: 14px;
+  margin-bottom: 10px;
+}
+
+#ui-datepicker-div.rich-popup {
+  width: 36em;
+}
+
+.ui-state-default {
+  text-align: center !important;
+}
+.ui-datepicker-calendar .price {
+  text-align: center;
+  font-size: 12px;
+  color: #A52A2A;
+  background: #DDD;
+  height: 20px;
+  min-width: 55px;
+}
+
+.ui-datepicker-calendar .ui-state-active + .price {
+  background: #0074BD;
+  color: #EFFDEF;
+}
+.ui-datepicker-calendar .ui-state-highlight + .price {
+  background: #FFFCE5;
+}

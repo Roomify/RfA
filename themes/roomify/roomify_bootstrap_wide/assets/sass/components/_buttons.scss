@@ -1,0 +1,33 @@
+// Button Styles
+
+.button {
+	padding:14px 40px;
+	text-transform: uppercase;
+	display:inline-block;
+	
+	&.button-sm {
+		padding:8px 20px;
+		font-size:12px;
+	}
+	
+	&.button-md {
+		padding:14px 40px;
+		font-size:14px;
+	}
+	
+	&.button-lg {
+		padding:18px 60px;
+		font-size:16px;
+	}
+	
+	&.button-clear {
+		background:transparent;
+		color:white;
+		border:1px solid white;
+		
+		&:hover {
+			background:white;
+			border:1px solid white;
+		}
+	}
+}

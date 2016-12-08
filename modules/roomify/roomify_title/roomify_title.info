@@ -1,0 +1,10 @@
+name = Roomify Title
+description = Exports the title field.
+core = 7.x
+package = Roomify
+dependencies[] = features
+dependencies[] = text
+dependencies[] = title
+features[features_api][] = api:2
+features[field_base][] = name_field
+features[field_base][] = title_field

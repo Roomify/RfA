@@ -1,0 +1,61 @@
+// Homepage Styles
+
+body.roomify-distro-homepage {
+  .paragraphs-items {
+    padding: 0;
+  }
+  .availability-search {
+    position: relative;
+    .paragraphs-items {
+      padding: 0px;
+    }
+    .paragraphs-item-block {
+      width: 100%;
+      display: block !important;
+      @media (min-width: $screen-sm) {
+        position: absolute;
+      }
+      #property-bat-facets-availability {
+        z-index: 10;
+        @media (max-width: $screen-sm) {
+          padding-right: 5px;
+        }
+        @media (min-width: $screen-sm) {
+          position: absolute;
+        }
+        width: 100%;
+        top: 210px;
+        padding: 10px 0px 10px 15px;
+        .form-item {
+          label {
+            color: black;
+            @media (max-width: $screen-sm) {
+              display: none;
+            }
+          }
+        }
+        background: rgba(255, 255, 255, 0.64);
+        .search-availability-submit {
+          @media (min-width: $screen-md) {
+            margin-top: 30px;
+          }
+        }
+        @media (max-width: $screen-xs) {
+          .search-availability-submit,
+          .bat-date-range {
+            margin-top: 5px;
+          }
+        }
+      }
+    }
+  }
+  .properties {
+    .field-name-field-cta-row-title {
+      text-align: center;
+      padding-top: 0;
+    }
+    .paragraph-property {
+      border: 2px solid #E5E5E5;
+    }
+  }
+}

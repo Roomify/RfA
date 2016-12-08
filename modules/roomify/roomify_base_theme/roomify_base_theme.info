@@ -1,0 +1,7 @@
+name = Roomify Base Theme
+description = Roomify Base Theme
+core = 7.x
+package = Roomify
+dependencies[] = ctools
+dependencies[] = page_manager
+dependencies[] = roomify_pages_manager

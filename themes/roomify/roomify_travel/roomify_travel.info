@@ -1,0 +1,54 @@
+name = 'Roomify Travel'
+description = Uses the Bootstrap Framework Sass source files and must be compiled (not for beginners).
+core = 7.x
+base theme = bootstrap
+
+
+;;;;;;;;;;;;;;;;;;;;;
+;; Regions
+;;;;;;;;;;;;;;;;;;;;;
+
+regions[navigation]     			= 'Navigation'
+regions[pre_header]						= 'Pre Header'
+regions[header]         			= 'Top Bar'
+regions[highlighted]    			= 'Highlighted'
+regions[help]           			= 'Help'
+regions[sidebar_toggle_menu] 	= 'Sidebar Toggle Menu'
+regions[content]        			= 'Content'
+regions[sidebar_first]  			= 'Primary'
+regions[sidebar_second] 			= 'Secondary'
+regions[footer]         			= 'Footer'
+regions[page_top]       			= 'Page top'
+regions[page_bottom]    			= 'Page bottom'
+
+
+;;;;;;;;;;;;;;;;;;;;;
+;; Stylesheets
+;;;;;;;;;;;;;;;;;;;;;
+
+stylesheets[all][] = assets/css/style.css
+stylesheets[all][] = color/color.css
+
+;;;;;;;;;;;;;;;;;;;;;
+;; Scripts
+;;;;;;;;;;;;;;;;;;;;;
+
+scripts[] = 'assets/bootstrap/javascripts/affix.js'
+scripts[] = 'assets/bootstrap/javascripts/alert.js'
+scripts[] = 'assets/bootstrap/javascripts/button.js'
+scripts[] = 'assets/bootstrap/javascripts/carousel.js'
+scripts[] = 'assets/bootstrap/javascripts/collapse.js'
+scripts[] = 'assets/bootstrap/javascripts/dropdown.js'
+scripts[] = 'assets/bootstrap/javascripts/modal.js'
+scripts[] = 'assets/bootstrap/javascripts/tooltip.js'
+scripts[] = 'assets/bootstrap/javascripts/popover.js'
+scripts[] = 'assets/bootstrap/javascripts/scrollspy.js'
+scripts[] = 'assets/bootstrap/javascripts/tab.js'
+scripts[] = 'assets/bootstrap/javascripts/transition.js'
+
+scripts[] = assets/scripts/roomify_travel.js
+
+plugins[panels][layouts] = layouts
+
+; Disable the CDN provider so compiled source files can be used.
+settings[bootstrap_cdn] = ''

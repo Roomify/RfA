@@ -1,0 +1,15 @@
+name = Roomify Contact
+description = Roomify Contact
+core = 7.x
+package = Roomify
+version = 7.x-1.0
+
+dependencies[] = ctools
+dependencies[] = email
+dependencies[] = entity
+dependencies[] = entityform
+dependencies[] = features
+dependencies[] = menu
+dependencies[] = page_manager
+dependencies[] = strongarm
+dependencies[] = text

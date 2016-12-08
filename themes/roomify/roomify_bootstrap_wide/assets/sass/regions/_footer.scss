@@ -1,0 +1,89 @@
+// Footer Styles
+
+footer {
+  // @extend .container;
+  background:#333333;
+  padding-top:35px;
+  padding-bottom:35px;
+  text-align: center;
+  
+  .footer-row {
+    @include make-row();
+    max-width:1120px;
+    margin:0 auto;
+    
+    .block {
+      @include make-xs-column(12);
+      
+      .footer-social-icons {
+        @extend .clearfix;
+        margin:0 auto 20px auto;
+        max-width:260px;
+        
+        .rrssb-buttons li {
+          float:none;
+          display:inline-block;
+          padding:0;
+          margin:0;
+          text-align: center;
+          line-height:1;
+          
+          a {
+            display:inline-block;
+            height:32px;
+            width:32px;
+            padding:0;
+            margin:0;
+            line-height:32px;
+            @include border-radius(100px);
+            background:white;
+            
+            .rrssb-icon svg,
+            .rrssb-icon svg path,
+            .rrssb-icon svg polygon {
+              fill:#000;
+            }
+            
+            .rrssb-text {
+              display:none;
+            }
+          }
+        }
+      }
+    }
+    .pane-roomify-social-profiles-roomify-social-profiles {
+      display: inline-block;
+      width: 100%;
+      margin: 0 auto;
+      margin-bottom: 10px;
+      .pane-content {
+        display: inline-block;
+        margin: 0 auto;
+        .rsp-social-icon {
+          list-style: none;
+          width: 25px;
+          border-radius: 50%;
+          padding: 3px;
+          margin: 6px;
+          &:hover {
+            opacity: 0.86;
+          }
+          svg {
+            width: 15px;
+            position: relative;
+            top: 2px;
+          }
+        }
+      }
+    }
+  }
+}
+
+footer .footer-row .rsp-social-icon {
+  background: white;
+}
+
+footer .footer-row .rsp-social-icon svg {
+  fill: white;
+}
+    

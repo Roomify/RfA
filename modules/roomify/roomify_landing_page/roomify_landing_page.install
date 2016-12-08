@@ -1,0 +1,196 @@
+<?php
+
+/**
+ * @file
+ * Install and update hooks for Roomify Landing Page feature.
+ */
+
+/**
+ * Enables ffc module.
+ */
+function roomify_landing_page_update_7001() {
+  module_enable(array('ffc'));
+}
+
+/**
+ * Allow the creation of slideshow's paragraphs.
+ */
+function roomify_landing_page_update_7002() {
+  // 1 Column.
+  $instance = field_read_instance('paragraphs_item', 'field_first_column', '1_column_row');
+  $instance['settings']['allowed_bundles']['slideshow'] = 'slideshow';
+  field_update_instance($instance);
+
+  // 2 Columns.
+  $instance = field_read_instance('paragraphs_item', 'field_first_column', '2_columns_row');
+  $instance['settings']['allowed_bundles']['slideshow'] = 'slideshow';
+  field_update_instance($instance);
+
+  $instance = field_read_instance('paragraphs_item', 'field_second_column', '2_columns_row');
+  $instance['settings']['allowed_bundles']['slideshow'] = 'slideshow';
+  field_update_instance($instance);
+
+  // 3 Columns.
+  $instance = field_read_instance('paragraphs_item', 'field_first_column', '3_columns_row');
+  $instance['settings']['allowed_bundles']['slideshow'] = 'slideshow';
+  field_update_instance($instance);
+
+  $instance = field_read_instance('paragraphs_item', 'field_second_column', '3_columns_row');
+  $instance['settings']['allowed_bundles']['slideshow'] = 'slideshow';
+  field_update_instance($instance);
+
+  $instance = field_read_instance('paragraphs_item', 'field_third_column', '3_columns_row');
+  $instance['settings']['allowed_bundles']['slideshow'] = 'slideshow';
+  field_update_instance($instance);
+
+  // 4 Columns.
+  $instance = field_read_instance('paragraphs_item', 'field_first_column', '4_columns_row');
+  $instance['settings']['allowed_bundles']['slideshow'] = 'slideshow';
+  field_update_instance($instance);
+
+  $instance = field_read_instance('paragraphs_item', 'field_second_column', '4_columns_row');
+  $instance['settings']['allowed_bundles']['slideshow'] = 'slideshow';
+  field_update_instance($instance);
+
+  $instance = field_read_instance('paragraphs_item', 'field_third_column', '4_columns_row');
+  $instance['settings']['allowed_bundles']['slideshow'] = 'slideshow';
+  field_update_instance($instance);
+
+  $instance = field_read_instance('paragraphs_item', 'field_fourth_column', '4_columns_row');
+  $instance['settings']['allowed_bundles']['slideshow'] = 'slideshow';
+  field_update_instance($instance);
+}
+
+/**
+ * Allow the creation of area's paragraphs.
+ */
+function roomify_landing_page_update_7003() {
+  // 1 Column.
+  $instance = field_read_instance('paragraphs_item', 'field_first_column', '1_column_row');
+  $instance['settings']['allowed_bundles']['area'] = 'area';
+  field_update_instance($instance);
+
+  // 2 Columns.
+  $instance = field_read_instance('paragraphs_item', 'field_first_column', '2_columns_row');
+  $instance['settings']['allowed_bundles']['area'] = 'area';
+  field_update_instance($instance);
+
+  $instance = field_read_instance('paragraphs_item', 'field_second_column', '2_columns_row');
+  $instance['settings']['allowed_bundles']['area'] = 'area';
+  field_update_instance($instance);
+
+  // 3 Columns.
+  $instance = field_read_instance('paragraphs_item', 'field_first_column', '3_columns_row');
+  $instance['settings']['allowed_bundles']['area'] = 'area';
+  field_update_instance($instance);
+
+  $instance = field_read_instance('paragraphs_item', 'field_second_column', '3_columns_row');
+  $instance['settings']['allowed_bundles']['area'] = 'area';
+  field_update_instance($instance);
+
+  $instance = field_read_instance('paragraphs_item', 'field_third_column', '3_columns_row');
+  $instance['settings']['allowed_bundles']['area'] = 'area';
+  field_update_instance($instance);
+
+  // 4 Columns.
+  $instance = field_read_instance('paragraphs_item', 'field_first_column', '4_columns_row');
+  $instance['settings']['allowed_bundles']['area'] = 'area';
+  field_update_instance($instance);
+
+  $instance = field_read_instance('paragraphs_item', 'field_second_column', '4_columns_row');
+  $instance['settings']['allowed_bundles']['area'] = 'area';
+  field_update_instance($instance);
+
+  $instance = field_read_instance('paragraphs_item', 'field_third_column', '4_columns_row');
+  $instance['settings']['allowed_bundles']['area'] = 'area';
+  field_update_instance($instance);
+
+  $instance = field_read_instance('paragraphs_item', 'field_fourth_column', '4_columns_row');
+  $instance['settings']['allowed_bundles']['area'] = 'area';
+  field_update_instance($instance);
+}
+
+/**
+ * Remove thumbs from slideshow paragraph.
+ */
+function roomify_landing_page_update_7004() {
+  $instance_info = field_read_instance('paragraphs_item', 'field_cta_gallery', 'slideshow');
+  $instance_info['widget']['settings']['manualcrop_thumblist'] = 0;
+  field_update_instance($instance_info);
+}
+
+/**
+ * Set default language on node of type "Landing page" with language 'und'.
+ */
+function roomify_landing_page_update_7005(&$sandbox) {
+  $feature = features_get_features('roomify_landing_page');
+  $components = array_keys($feature->info['features']);
+  features_revert(array('roomify_landing_page' => $components));
+
+  $nids = db_query('SELECT nid FROM {node} WHERE type = :type', array(':type' => 'landing_page'))->fetchCol();
+
+  if (!isset($sandbox['progress'])) {
+    $sandbox['progress'] = 0;
+    $sandbox['current_node'] = 0;
+    $sandbox['max'] = count($nids);
+  }
+
+  $limit = 30;
+  $result = db_select('node')
+    ->fields('node', array('nid'))
+    ->condition('nid', $sandbox['current_node'], '>')
+    ->condition('type', 'landing_page')
+    ->orderBy('nid', 'ASC')
+    ->range(0, $limit)
+    ->execute();
+
+  foreach ($result as $row) {
+    $node = node_load($row->nid);
+    node_save($node);
+
+    if ($node->language == 'und') {
+      $language = language_default('language');
+
+      db_update('node')
+        ->fields(array('language' => $language))
+        ->condition('nid', $row->nid)
+        ->execute();
+    }
+    else {
+      $language = $node->language;
+    }
+
+    db_update('field_data_field_landing_page_rows')
+      ->fields(array('language' => $language))
+      ->condition('entity_id', $row->nid)
+      ->condition('entity_type', 'node')
+      ->execute();
+
+    db_update('field_revision_field_landing_page_rows')
+      ->fields(array('language' => $language))
+      ->condition('entity_id', $row->nid)
+      ->condition('entity_type', 'node')
+      ->execute();
+
+    db_update('entity_translation')
+      ->fields(array('language' => $language))
+      ->condition('entity_id', $row->nid)
+      ->condition('entity_type', 'node')
+      ->execute();
+
+    db_update('entity_translation_revision')
+      ->fields(array('language' => $language))
+      ->condition('entity_id', $row->nid)
+      ->condition('entity_type', 'node')
+      ->execute();
+
+    $sandbox['progress']++;
+    $sandbox['current_node'] = $row->nid;
+  }
+
+  $sandbox['#finished'] = empty($sandbox['max']) ? 1 : ($sandbox['progress'] / $sandbox['max']);
+
+  // To display a message to the user when the update is completed, return it.
+  // If you do not want to display a completion message, simply return nothing.
+  return t('Landing pages have been updated succesfully!');
+}

@@ -1,0 +1,36 @@
+<?php
+
+/**
+ * @file
+ * Code for the Roomify Search feature.
+ */
+
+include_once 'roomify_search.features.inc';
+
+/**
+ * Implements hook_page_alter().
+ */
+function roomify_search_page_alter(&$page) {
+  if (strpos(current_path(), 'availability-search') !== FALSE) {
+    // Kill breadcrumb, set to empty array.
+    drupal_set_breadcrumb(array());
+  }
+}
+
+/**
+ * Implements hook_views_handlers().
+ */
+function roomify_search_views_handlers() {
+  return array(
+    'info' => array(
+      'path' => drupal_get_path('roomify_search', 'views'),
+    ),
+    'handlers' => array(
+      // The name of my handler.
+      'roomify_search_handler_type_property_types' => array(
+        // The name of the handler we are extending.
+        'parent' => 'views_handler_field',
+      ),
+    ),
+  );
+}

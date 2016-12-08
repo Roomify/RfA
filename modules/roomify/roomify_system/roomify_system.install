@@ -1,0 +1,543 @@
+<?php
+
+/**
+ * @file
+ */
+
+/**
+ * Implements hook_install().
+ */
+function roomify_system_install() {
+  variable_set('bat_event_state_start_day', 'Set booking start day');
+  variable_set('bat_event_state_booking_must_start', 'Booking start day must be');
+  variable_set('bat_event_state_minimum_stay', 'Minimum Booking Length is');
+  variable_set('bat_event_state_maximum_stay', 'Maximum Booking Length is');
+  variable_set('bat_event_state_booking_if_start', 'Only if booking starts on a specific day');
+}
+
+/**
+ * Set 'E-mail format' to 'Rich Text'.
+ */
+function roomify_system_update_7001() {
+  variable_set('mimemail_format', 'rich_text');
+}
+
+/**
+ * Disable 'Roomify Activity' module and enable 'Roomify Things to do'.
+ */
+function roomify_system_update_7002() {
+  module_disable(array('roomify_activity'));
+  module_enable(array('roomify_things_to_do'));
+}
+
+/**
+ * Set apporpriate error display level.
+ */
+function roomify_system_update_7003() {
+  variable_set('error_level', 0);
+}
+
+/**
+ * Disable update notifications module.
+ */
+function roomify_system_update_7004() {
+  module_disable(array('update'));
+}
+
+/**
+ * Enable module 'Commerce Cart Expiration'.
+ */
+function roomify_system_update_7005() {
+  module_enable(array('commerce_cart_expiration'));
+}
+
+/**
+ * Replace epsacrop module with manualcrop.
+ */
+function roomify_system_update_7006() {
+  // Enable Manual Crop.
+  module_enable(array('manualcrop'));
+
+  // Move crops from epsacrop to manualcrop.
+  _move_crops_from_epsa_to_manual_crop();
+
+  // Remove EpsaCrops from types.
+  foreach (array('room', 'home') as $type_bundle) {
+    $instance_info = field_read_instance('bat_type', 'field_st_gallery', $type_bundle);
+    // Unset Epsacrop settings.
+    unset($instance_info['settings']['epsacrop']);
+    // Add Manual Crop Settings.
+    $instance_info['widget']['settings'] = array(
+      'manualcrop_crop_info' => 1,
+      'manualcrop_default_crop_area' => 1,
+      'manualcrop_enable' => 1,
+      'manualcrop_inline_crop' => 0,
+      'manualcrop_instant_crop' => 1,
+      'manualcrop_instant_preview' => 1,
+      'manualcrop_keyboard' => 1,
+      'manualcrop_maximize_default_crop_area' => 1,
+      'manualcrop_require_cropping' => array(),
+      'manualcrop_styles_list' => array(
+        'homepage_features' => 'homepage_features',
+        'roomify_4_3' => 'roomify_4_3',
+      ),
+      'manualcrop_styles_mode' => 'include',
+      'manualcrop_thumblist' => 1,
+      'preview_image_style' => 'thumbnail',
+      'progress_indicator' => 'throbber',
+    );
+
+    field_update_instance($instance_info);
+  }
+  // Remove EpsaCrops from Properties.
+  foreach (array('casa_property', 'locanda_property') as $property_bundle) {
+    $instance_info = field_read_instance('roomify_property', 'field_sp_featured_image', $property_bundle);
+    // Unset Epsacrop settings.
+    unset($instance_info['settings']['epsacrop']);
+    // Add Manual Crop Settings.
+    $instance_info['widget']['settings'] = array(
+      'manualcrop_crop_info' => 1,
+      'manualcrop_default_crop_area' => 1,
+      'manualcrop_enable' => 1,
+      'manualcrop_inline_crop' => 0,
+      'manualcrop_instant_crop' => 1,
+      'manualcrop_instant_preview' => 1,
+      'manualcrop_keyboard' => 1,
+      'manualcrop_maximize_default_crop_area' => 1,
+      'manualcrop_require_cropping' => array(),
+      'manualcrop_styles_list' => array(
+        'homepage_features' => 'homepage_features',
+        'roomify_4_3' => 'roomify_4_3',
+        'square' => 'square',
+      ),
+      'manualcrop_styles_mode' => 'include',
+      'manualcrop_thumblist' => 1,
+      'preview_image_style' => 'thumbnail',
+      'progress_indicator' => 'throbber',
+    );
+
+    field_update_instance($instance_info);
+
+    $instance_info = field_read_instance('roomify_property', 'field_sp_gallery', $property_bundle);
+
+    // Unset Epsacrop settings.
+    unset($instance_info['settings']['epsacrop']);
+    // Add Manual Crop Settings.
+    $instance_info['widget']['settings'] = array(
+      'manualcrop_crop_info' => 1,
+      'manualcrop_default_crop_area' => 1,
+      'manualcrop_enable' => 1,
+      'manualcrop_inline_crop' => 0,
+      'manualcrop_instant_crop' => 1,
+      'manualcrop_instant_preview' => 1,
+      'manualcrop_keyboard' => 1,
+      'manualcrop_maximize_default_crop_area' => 1,
+      'manualcrop_require_cropping' => array(
+        'property_slider' => 'property_slider',
+      ),
+      'manualcrop_styles_list' => array(
+        'property_slider' => 'property_slider',
+      ),
+      'manualcrop_styles_mode' => 'include',
+      'manualcrop_thumblist' => 1,
+      'preview_image_style' => 'thumbnail',
+      'progress_indicator' => 'throbber',
+    );
+
+    field_update_instance($instance_info);
+
+    $instance_info = field_read_instance('roomify_property', 'field_sp_highlight_image1', $property_bundle);
+
+    // Unset Epsacrop settings.
+    unset($instance_info['settings']['epsacrop']);
+    // Add Manual Crop Settings.
+    $instance_info['widget']['settings'] = array(
+      'manualcrop_crop_info' => 1,
+      'manualcrop_default_crop_area' => 1,
+      'manualcrop_enable' => 1,
+      'manualcrop_inline_crop' => 0,
+      'manualcrop_instant_crop' => 1,
+      'manualcrop_instant_preview' => 1,
+      'manualcrop_keyboard' => 1,
+      'manualcrop_maximize_default_crop_area' => 1,
+      'manualcrop_require_cropping' => array(),
+      'manualcrop_styles_list' => array(
+        'highlight' => 'highlight',
+      ),
+      'manualcrop_styles_mode' => 'include',
+      'manualcrop_thumblist' => 1,
+      'preview_image_style' => 'thumbnail',
+      'progress_indicator' => 'throbber',
+    );
+
+    field_update_instance($instance_info);
+
+    $instance_info = field_read_instance('roomify_property', 'field_sp_highlight_image2', $property_bundle);
+
+    // Unset Epsacrop settings.
+    unset($instance_info['settings']['epsacrop']);
+    // Add Manual Crop Settings.
+    $instance_info['widget']['settings'] = array(
+      'manualcrop_crop_info' => 1,
+      'manualcrop_default_crop_area' => 1,
+      'manualcrop_enable' => 1,
+      'manualcrop_inline_crop' => 0,
+      'manualcrop_instant_crop' => 1,
+      'manualcrop_instant_preview' => 1,
+      'manualcrop_keyboard' => 1,
+      'manualcrop_maximize_default_crop_area' => 1,
+      'manualcrop_require_cropping' => array(),
+      'manualcrop_styles_list' => array(
+        'highlight' => 'highlight',
+      ),
+      'manualcrop_styles_mode' => 'include',
+      'manualcrop_thumblist' => 1,
+      'preview_image_style' => 'thumbnail',
+      'progress_indicator' => 'throbber',
+    );
+
+    field_update_instance($instance_info);
+
+    $instance_info = field_read_instance('roomify_property', 'field_sp_highlight_image3', $property_bundle);
+
+    // Unset Epsacrop settings.
+    unset($instance_info['settings']['epsacrop']);
+    // Add Manual Crop Settings.
+    $instance_info['widget']['settings'] = array(
+      'manualcrop_crop_info' => 1,
+      'manualcrop_default_crop_area' => 1,
+      'manualcrop_enable' => 1,
+      'manualcrop_inline_crop' => 0,
+      'manualcrop_instant_crop' => 1,
+      'manualcrop_instant_preview' => 1,
+      'manualcrop_keyboard' => 1,
+      'manualcrop_maximize_default_crop_area' => 1,
+      'manualcrop_require_cropping' => array(),
+      'manualcrop_styles_list' => array(
+        'highlight' => 'highlight',
+      ),
+      'manualcrop_styles_mode' => 'include',
+      'manualcrop_thumblist' => 1,
+      'preview_image_style' => 'thumbnail',
+      'progress_indicator' => 'throbber',
+    );
+
+    field_update_instance($instance_info);
+  }
+
+  // Remove EpsaCrops from Profiles.
+  $instance_info = field_read_instance('profile2', 'property_owner_image', 'property_owner');
+
+  // Unset Epsacrop settings.
+  unset($instance_info['settings']['epsacrop']);
+  // Add Manual Crop Settings.
+  $instance_info['widget']['settings'] = array(
+    'manualcrop_crop_info' => 1,
+    'manualcrop_default_crop_area' => 1,
+    'manualcrop_enable' => 1,
+    'manualcrop_inline_crop' => 0,
+    'manualcrop_instant_crop' => 1,
+    'manualcrop_instant_preview' => 1,
+    'manualcrop_keyboard' => 1,
+    'manualcrop_maximize_default_crop_area' => 1,
+    'manualcrop_require_cropping' => array(),
+    'manualcrop_styles_list' => array(
+      'highlight' => 'highlight',
+    ),
+    'manualcrop_styles_mode' => 'include',
+    'manualcrop_thumblist' => 1,
+    'preview_image_style' => 'thumbnail',
+    'progress_indicator' => 'throbber',
+  );
+
+  field_update_instance($instance_info);
+
+  $instance_info = field_read_instance('profile2', 'guest_image', 'guest');
+
+  // Unset Epsacrop settings.
+  unset($instance_info['settings']['epsacrop']);
+  // Add Manual Crop Settings.
+  $instance_info['widget']['settings'] = array(
+    'manualcrop_crop_info' => 1,
+    'manualcrop_default_crop_area' => 1,
+    'manualcrop_enable' => 1,
+    'manualcrop_inline_crop' => 0,
+    'manualcrop_instant_crop' => 1,
+    'manualcrop_instant_preview' => 1,
+    'manualcrop_keyboard' => 1,
+    'manualcrop_maximize_default_crop_area' => 1,
+    'manualcrop_require_cropping' => array(),
+    'manualcrop_styles_list' => array(
+      'homepage_features' => 'homepage_features',
+      'square' => 'square',
+    ),
+    'manualcrop_styles_mode' => 'include',
+    'manualcrop_thumblist' => 1,
+    'preview_image_style' => 'thumbnail',
+    'progress_indicator' => 'throbber',
+  );
+
+  field_update_instance($instance_info);
+
+  // Remove Epsacrops from Location Term.
+  $instance_info = field_read_instance('taxonomy_term', 'field_area_featured_image', 'location');
+
+  // Unset Epsacrop settings.
+  unset($instance_info['settings']['epsacrop']);
+  // Add Manual Crop Settings.
+  $instance_info['widget']['settings'] = array(
+    'manualcrop_crop_info' => 1,
+    'manualcrop_default_crop_area' => 1,
+    'manualcrop_enable' => 1,
+    'manualcrop_inline_crop' => 0,
+    'manualcrop_instant_crop' => 1,
+    'manualcrop_instant_preview' => 1,
+    'manualcrop_keyboard' => 1,
+    'manualcrop_maximize_default_crop_area' => 1,
+    'manualcrop_require_cropping' => array(),
+    'manualcrop_styles_list' => array(
+      'homepage_features' => 'homepage_features',
+    ),
+    'manualcrop_styles_mode' => 'include',
+    'manualcrop_thumblist' => 1,
+    'preview_image_style' => 'thumbnail',
+    'progress_indicator' => 'throbber',
+  );
+
+  field_update_instance($instance_info);
+
+  // Disable Epsacrop!
+  module_disable(array('epsacrop'));
+}
+
+/**
+ * Migrate crops from epsacrop to manualcrop.
+ */
+function _move_crops_from_epsa_to_manual_crop() {
+  $styles = array();
+  foreach (image_styles() as $style => $name) {
+    $styles[$style] = $style;
+  }
+  $crops = db_query("SELECT fid, coords FROM epsacrop_files");
+  foreach ($crops as $crop) {
+    $fid = $crop->fid;
+    $coords = drupal_json_decode(unserialize($crop->coords));
+    foreach ($coords[$fid] as $epsaid => $data) {
+      list($dummy, $isid) = explode('-', $epsaid);
+      if (empty($styles[$isid])) {
+        continue;
+      }
+      $style = $styles[$isid];
+      try {
+        db_query("INSERT INTO manualcrop (fid, style_name, x, y, width, height) VALUES (:fid, :style, :x, :y, :width, :height)", array(
+          ':fid' => $fid,
+          ':style' => $style,
+          ':x' => $data['x'],
+          ':y' => $data['y'],
+          ':width' => $data['w'],
+          ':height' => $data['h'],
+        ));
+      }
+      catch (Exception $e) {
+      }
+    }
+  }
+}
+
+/**
+ * Remove required crop from Listing Gallery.
+ */
+function roomify_system_update_7007() {
+  foreach (array('casa_property', 'locanda_property') as $property_bundle) {
+    $instance_info = field_read_instance('roomify_property', 'field_sp_gallery', $property_bundle);
+    $instance_info['widget']['settings']['manualcrop_require_cropping'] = array();
+    field_update_instance($instance_info);
+  }
+}
+
+/**
+ * Enable module 'User One'.
+ */
+function roomify_system_update_7008() {
+  module_enable(array('userone'));
+}
+
+/**
+ * Enable module 'Panels translation'.
+ */
+function roomify_system_update_7009() {
+  module_enable(array('i18n_panels'));
+}
+
+/**
+ * Change colors.
+ */
+function roomify_system_update_7010() {
+  $in_conversation = bat_event_load_state_by_machine_name('in_conversation');
+  $in_conversation['color'] = '#6F826C';
+  bat_event_save_state($in_conversation, 'availability');
+
+  $requested = bat_event_load_state_by_machine_name('requested');
+  $requested['color'] = '#928F7B';
+  bat_event_save_state($requested, 'availability');
+}
+
+/**
+ * Enable module 'Color'.
+ */
+function roomify_system_update_7011() {
+  module_enable(array('color'));
+}
+
+/**
+ * Enable module 'ImageApi Optimize' and set as default image toolkit.
+ */
+function roomify_system_update_7012() {
+  module_enable(array('imageapi_optimize'));
+  variable_set('image_toolkit', 'imageapi_optimize');
+}
+
+/**
+ * Set GD as default image toolkit.
+ */
+function roomify_system_update_7013() {
+  variable_set('image_toolkit', 'gd');
+  variable_set('image_jpeg_quality', '100');
+}
+
+/**
+ * Enable module 'Date Views'.
+ */
+function roomify_system_update_7014() {
+  module_enable(array('date_views'));
+}
+
+/**
+ * Update Checkout Complete message.
+ */
+function roomify_system_update_7015() {
+  $message['format'] = 'filtered_text';
+  $message['value'] = 'Your reservation number is [commerce-order:order-number]. You can <a href="[commerce-order:url]">view your reservation</a> on your account page when logged in.
+  <br><br>
+  <a href="[site:url]">Return to the front page.</a>';
+
+  variable_set('commerce_checkout_completion_message', $message);
+
+}
+
+/**
+ * Enable module 'EntityForm i18n' and set the entity as translatable.
+ */
+function roomify_system_update_7016() {
+  module_enable(array('entityform_i18n'));
+  $translatable_entities = variable_get('entity_translation_entity_types', array());
+  $translatable_entities['entityform'] = 'entityform';
+
+  variable_set('entity_translation_entity_types', $translatable_entities);
+}
+
+/**
+ * Enable module 'EntityForm Translation'.
+ */
+function roomify_system_update_7017() {
+  module_enable(array('entityform_i18n'));
+}
+
+/**
+ * Enable module 'BAT Event State Constraints'.
+ */
+function roomify_system_update_7018() {
+  module_enable(array('bat_event_state_constraints'));
+}
+
+/**
+ * Set strings for fields of type 'BAT Event State Constraints'.
+ */
+function roomify_system_update_7019() {
+  variable_set('bat_event_state_start_day', 'Set booking start day');
+  variable_set('bat_event_state_booking_must_start', 'Booking start day must be');
+  variable_set('bat_event_state_minimum_stay', 'Minimum Booking Length is');
+  variable_set('bat_event_state_maximum_stay', 'Maximum Booking Length is');
+  variable_set('bat_event_state_booking_if_start', 'Only if booking starts on a specific day');
+}
+
+/**
+ * Set all Main menu items as expanded.
+ */
+function roomify_system_update_7020() {
+  db_update('menu_links')
+    ->fields(array('expanded' => 1))
+    ->condition('menu_name', 'main-menu')
+    ->execute();
+}
+
+/**
+ * Enable module 'Search API sorts'.
+ */
+function roomify_system_update_7021() {
+  module_enable(array('search_api_sorts'));
+}
+
+/**
+ * Enable module 'Views Data Export'.
+ */
+function roomify_system_update_7022() {
+  module_enable(array('views_data_export'));
+}
+
+/**
+ * Enable module 'Metatag: OpenGraph'.
+ */
+function roomify_system_update_7023() {
+  module_enable(array('metatag_opengraph'));
+}
+
+/**
+ * Enable module 'Roomify Translate'.
+ */
+function roomify_system_update_7024() {
+  module_enable(array('roomify_translate'));
+}
+
+/**
+ * Enable module 'Roomify Offers'.
+ */
+function roomify_system_update_7025() {
+  module_enable(array('roomify_offers'));
+}
+
+/**
+ * Enable module 'Job Scheduler'.
+ */
+function roomify_system_update_7026() {
+  module_enable(array('job_scheduler'));
+}
+
+/**
+ * Enable module 'Better db updates'.
+ */
+function roomify_system_update_7027() {
+  module_enable(array('better_db_updates'));
+}
+
+/**
+ * Enable module 'Drag Drop File'.
+ */
+function roomify_system_update_7028() {
+  module_enable(array('dragdropfile'));
+}
+
+/**
+ * Enable module 'Roomify Title'.
+ */
+function roomify_system_update_7029() {
+  module_enable(array('roomify_title'));
+}
+
+/**
+ * Enable module 'Roomify Base Theme' and 'Roomify Pages Manager'.
+ */
+function roomify_system_update_7030() {
+  module_enable(array('roomify_base_theme', 'roomify_pages_manager'));
+  drupal_flush_all_caches();
+}

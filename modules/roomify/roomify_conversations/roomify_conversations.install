@@ -1,0 +1,259 @@
+<?php
+
+/**
+ * @file
+ * Install, update and uninstall functions for the roomify_conversations module.
+ */
+
+/**
+ * Implements hook_install().
+ */
+function roomify_conversations_install() {
+  module_load_include('inc', 'roomify_conversations', 'roomify_conversations.fields');
+
+  roomify_conversations_create_conversation_type();
+
+  roomify_conversations_create_booking_type();
+
+  roomify_conversations_create_in_conversation_state();
+
+  roomify_conversations_add_message_conversation_reference_field();
+
+  roomify_conversations_add_conversation_booking_reference_field();
+}
+
+/**
+ * Implements hook_uninstall().
+ */
+function roomify_conversations_uninstall() {
+  roomify_conversations_delete_booking_type();
+
+  roomify_conversations_delete_in_conversation_state();
+}
+
+/**
+ * Implements hook_schema().
+ */
+function roomify_conversations_schema() {
+  $schema = array();
+
+  $schema['roomify_conversations'] = array(
+    'description' => 'The base table for conversation entities.',
+    'fields' => array(
+      'conversation_id' => array(
+        'description' => 'Primary Key: Identifier for a Conversation.',
+        'type' => 'serial',
+        'unsigned' => TRUE,
+        'not null' => TRUE,
+      ),
+      'type' => array(
+        'description' => 'The {conversation_type}.type of this Conversation.',
+        'type' => 'varchar',
+        'length' => 255,
+        'not null' => TRUE,
+        'default' => '',
+      ),
+      'language' => array(
+        'description' => 'The language of the Conversation.',
+        'type' => 'varchar',
+        'length' => 32,
+        'not null' => TRUE,
+        'default' => '',
+      ),
+      'name' => array(
+        'description' => 'The name of the Conversation - a human-readable identifier.',
+        'type' => 'varchar',
+        'length' => 255,
+        'not null' => TRUE,
+        'default' => '',
+      ),
+      'created' => array(
+        'description' => 'The Unix timestamp when the Conversation was created.',
+        'type' => 'int',
+        'not null' => TRUE,
+        'default' => 0,
+      ),
+      'changed' => array(
+        'description' => 'The Unix timestamp when the Conversation was most recently saved.',
+        'type' => 'int',
+        'not null' => TRUE,
+        'default' => 0,
+      ),
+      'uid' => array(
+        'description' => 'The {users}.uid that created this conversation.',
+        'type' => 'int',
+        'not null' => TRUE,
+        'default' => 0,
+      ),
+      'data' => array(
+        'type' => 'blob',
+        'not null' => FALSE,
+        'size' => 'big',
+        'serialize' => TRUE,
+        'description' => 'A serialized array of additional data.',
+      ),
+    ),
+    'primary key' => array('conversation_id'),
+  );
+
+  $schema['roomify_conversation_types'] = array(
+    'description' => 'The base table for Types.',
+    'fields' => array(
+      'id' => array(
+        'type' => 'serial',
+        'not null' => TRUE,
+        'description' => 'Primary Key: Identifier for a Type.',
+      ),
+      'type' => array(
+        'description' => 'The {type_bundle}.type of this Type.',
+        'type' => 'varchar',
+        'length' => 255,
+        'not null' => TRUE,
+      ),
+      'label' => array(
+        'description' => 'The human-readable name of this conversation type.',
+        'type' => 'varchar',
+        'length' => 255,
+        'not null' => TRUE,
+        'default' => '',
+      ),
+      'data' => array(
+        'type' => 'blob',
+        'not null' => FALSE,
+        'size' => 'big',
+        'serialize' => TRUE,
+        'description' => 'A serialized array of additional data.',
+      ),
+      'status' => array(
+        'type' => 'int',
+        'not null' => TRUE,
+        'default' => 0x01,
+        'size' => 'tiny',
+        'description' => 'The exportable status of the entity.',
+      ),
+      'module' => array(
+        'description' => 'The name of the providing module if the entity has been defined in code.',
+        'type' => 'varchar',
+        'length' => 255,
+        'not null' => FALSE,
+      ),
+    ),
+    'primary key' => array('id'),
+    'unique keys' => array(
+      'type' => array('type'),
+    ),
+  );
+
+  return $schema;
+}
+
+/**
+ * Create "Conversation Booking" booking type.
+ */
+function roomify_conversations_create_booking_type() {
+  module_load_include('inc', 'roomify_conversations', 'roomify_conversations.fields');
+
+  $booking_type = bat_booking_type_create(array(
+    'label' => 'Conversation Booking',
+    'type' => 'conversation_booking',
+  ));
+
+  $booking_type->save();
+
+  roomify_conversations_add_booking_event_reference_field();
+  roomify_conversations_add_booking_price_field();
+  roomify_conversations_add_booking_conversation_reference_field();
+  roomify_conversations_add_booking_full_name();
+  roomify_conversations_add_booking_address();
+  roomify_conversations_add_booking_telephone();
+  roomify_conversations_add_group_guest();
+  roomify_conversations_add_accommodation_booking_reference_field();
+}
+
+/**
+ * Delete "Conversation Booking" booking type.
+ */
+function roomify_conversations_delete_booking_type() {
+  if ($booking_type = bat_booking_type_load('conversation_booking')) {
+    bat_booking_type_delete($booking_type);
+  }
+}
+
+/**
+ * Create "Standard" conversation type.
+ */
+function roomify_conversations_create_conversation_type() {
+  module_load_include('inc', 'roomify_conversations', 'roomify_conversations.fields');
+
+  $conversation_type = roomify_conversation_type_create(array(
+    'label' => 'Standard',
+    'type' => 'standard',
+  ));
+
+  $conversation_type->save();
+
+  roomify_conversations_add_booking_reference_field();
+  roomify_conversations_add_inquiry_reference_field();
+  roomify_conversations_add_unit_type_reference_field();
+  roomify_conversations_add_guest_user_reference_field();
+  roomify_conversations_add_owner_user_reference_field();
+  roomify_conversations_add_start_date_field();
+  roomify_conversations_add_end_date_field();
+}
+
+/**
+ * Add new 'Availability' event state 'In Conversation'.
+ */
+function roomify_conversations_create_in_conversation_state() {
+  $event_state = array(
+    'machine_name' => 'in_conversation',
+    'label' => 'In Conversation',
+    'color' => '#6F826C',
+    'calendar_label' => 'Conversation',
+    'locked' => 1,
+    'blocking' => 1,
+  );
+
+  bat_event_save_state($event_state, 'availability');
+}
+
+/**
+ * Delete 'Availability' event state 'In Conversation'.
+ */
+function roomify_conversations_delete_in_conversation_state() {
+  db_delete('bat_event_state')
+    ->condition('machine_name', 'in_conversation')
+    ->execute();
+}
+
+/**
+ * Add telephone field to Conversation Bookings.
+ */
+function roomify_conversations_update_7001() {
+  module_load_include('inc', 'roomify_conversations', 'roomify_conversations.fields');
+
+  roomify_conversations_add_booking_telephone();
+
+  $groups = field_group_read_groups(array(
+    'entity_type' => 'bat_booking',
+    'bundle'      => 'conversation_booking',
+    'view_mode'   => 'full',
+  ));
+
+  $guest_group = $groups['bat_booking']['conversation_booking']['form']['group_guest'];
+  $guest_group->children[0] = 'booking_full_name';
+  $guest_group->children[1] = 'booking_telephone';
+  $guest_group->children[2] = 'booking_address';
+
+  field_group_group_save($guest_group);
+}
+
+/**
+ * Add references from accommodation booking to conversation booking and vice versa.
+ */
+function roomify_conversations_update_7002() {
+  module_load_include('inc', 'roomify_conversations', 'roomify_conversations.fields');
+
+  roomify_conversations_add_conversation_booking_reference_field();
+  roomify_conversations_add_accommodation_booking_reference_field();
+}

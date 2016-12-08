@@ -1,0 +1,19 @@
+// Bootstrap Overrides
+
+/* set a max-width for horizontal fluid layout and make it centered */
+
+@media (min-width: 1200px) {
+  .container {
+    // width: 990px;
+  }
+}
+
+
+
+// Make bootstrap menu hover instead of click
+
+@media (min-width: 768px) {
+	.dropdown:hover .dropdown-menu {
+		display: block;
+	}
+}

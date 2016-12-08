@@ -1,0 +1,6 @@
+name = Roomify Social Feeds
+description = Roomify Social Feeds
+core = 7.x
+package = Roomify
+
+dependencies[] = fb_likebox

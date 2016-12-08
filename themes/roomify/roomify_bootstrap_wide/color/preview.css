@@ -1,0 +1,93 @@
+#preview #header,
+#preview #footer {
+  height: 50px;
+  width: 800px;
+  display: inline-block;
+  padding: 8px 16px;
+}
+
+#preview .logo {
+  height: 100%;
+  width: 25%;
+  display: inline-block;
+  float: left;
+  text-align: center;
+}
+#preview .logo img {
+  max-height: 100%;
+}
+
+#preview .main-menu {
+  float: left;
+  width: 70%;
+  text-align: right;
+}
+
+#preview .main-menu .menu {
+  float: right;
+}
+#preview .menu li {
+  display: inline-block;
+  float: left;
+  list-style: none;
+  padding: 15px;
+}
+#preview .menu li a {
+  color: #7C7C7C;
+  font-weight: 600;
+}
+
+
+#preview .roomify-sidebar-link {
+  margin-left: 20px;
+  width: 30px;
+  height: 30px;
+  padding: 0;
+}
+#preview .roomify-sidebar-link a {
+  width: 30px;
+  height: 30px;
+  display: inline-block;
+  position: relative;
+  top: 8px;
+}
+
+
+#preview #main-content {
+  width: 800px;
+  display: inline-block;
+}
+#preview #main-content .content {
+  padding: 40px;
+  font-size: 16px;
+  line-height: 2em;
+}
+
+#preview footer .content {
+  text-align: center;
+  padding: 15px;
+  color: #7c7c7c;
+  font-weight: 600;
+}
+
+#color_scheme_form #palette {
+  margin-bottom: 30px;
+}
+
+#color_scheme_form .form-item-scheme {  
+  margin-bottom: 30px;
+}
+
+#color_scheme_form .form-item-scheme label {
+  margin-right: 20px;
+}
+#color_scheme_form .color-form {
+  max-width: 65em;
+}
+#color_scheme_form #palette .form-item {
+  width: 40em;
+  height: 3em;
+}
+#color_scheme_form #palette .form-item label{
+  width: 18em;
+}

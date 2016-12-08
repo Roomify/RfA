@@ -1,0 +1,59 @@
+<?php
+
+/**
+ * @file
+ * Provides functionality and configuration for the Roomify Casa module.
+ */
+
+/**
+ * Implements hook_form_FORM_ID_alter().
+ *
+ * FORM_ID = views_exposed_form.
+ */
+function roomify_casa_form_views_exposed_form_alter(&$form, &$form_state) {
+  // Events admin view exposed filters.
+  if ($form['#id'] == 'views-exposed-form-casa-bookings-page-1') {
+    $form['start_date']['#type'] = 'date_popup';
+    $form['start_date']['#date_format'] = 'd/m/Y';
+    $form['start_date']['#date_label_position'] = 'before';
+
+    $form['end_date']['#type'] = 'date_popup';
+    $form['end_date']['#date_format'] = 'd/m/Y';
+    $form['end_date']['#date_label_position'] = 'before';
+
+    $form['#attached']['css'][] = array(
+      'data' => '.views-exposed-form .views-exposed-widget { height: 70px; }',
+      'type' => 'inline',
+    );
+  }
+}
+
+/**
+ * Implements hook_form_FORMID_alter().
+ *
+ * Hide form to add additional types on Casa properties.
+ */
+function roomify_casa_form_roomify_property_edit_casa_property_form_alter(&$form, &$form_state) {
+  $form['property_bat_type_reference'][LANGUAGE_NONE]['actions']['#access'] = FALSE;
+}
+
+/**
+ * Implements hook_views_pre_build().
+ */
+function roomify_casa_views_pre_build(&$view) {
+  if ($view->name == 'property_types' && $view->current_display == 'block_1') {
+    if (isset($view->args[0])) {
+      $property = entity_load_single('roomify_property', $view->args[0]);
+      if ($property->type == 'casa_property') {
+
+        // You'll have your own list of fields to remove.
+        $fields_to_remove = array('nothing_1');
+
+        foreach ($fields_to_remove as $field_name) {
+          unset($view->field[$field_name]);
+          unset($view->display_handler->handlers['field'][$field_name]);
+        }
+      }
+    }
+  }
+}

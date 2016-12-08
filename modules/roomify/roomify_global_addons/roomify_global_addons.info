@@ -1,0 +1,8 @@
+name = Roomify Global Addons
+description = Roomify Global Addons
+core = 7.x
+package = Roomify
+version = 7.x-1.0
+
+dependencies[] = commerce_checkout_progress
+dependencies[] = commerce_product_ui

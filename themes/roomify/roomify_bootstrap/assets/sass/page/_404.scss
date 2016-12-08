@@ -1,0 +1,13 @@
+// 404 Page Styles
+
+body.error404 {
+	
+	.page-content-center {
+		text-align: center;
+		
+		a.button-404 {
+			@extend .button;
+			@extend .button-md;
+		}
+	}
+}

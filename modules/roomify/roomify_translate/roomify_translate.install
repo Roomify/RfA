@@ -1,0 +1,132 @@
+<?php
+
+/**
+ * @file
+ * Installation for roomify_translate.
+ */
+
+/**
+ * Implements hook_install().
+ */
+function roomify_translate_install() {
+  roomify_translate_entities_translation_settings();
+
+  _roomify_translate_replace_name_fields();
+
+  _roomify_translate_update_locations();
+
+  _roomify_translate_update_taxonomies();
+}
+
+/**
+ * Settings for properties and types translation.
+ */
+function roomify_translate_update_7001() {
+  roomify_translate_entities_translation_settings();
+}
+
+/**
+ * Make terms translatable.
+ */
+function roomify_translate_update_7002() {
+  $amenities = taxonomy_vocabulary_machine_name_load('amenities');
+  $amenities->i18n_mode = '1';
+  taxonomy_vocabulary_save($amenities);
+
+  $property_type = taxonomy_vocabulary_machine_name_load('property_type');
+  $property_type->i18n_mode = '1';
+  taxonomy_vocabulary_save($property_type);
+
+  $activity_type = taxonomy_vocabulary_machine_name_load('activity');
+  $activity_type->i18n_mode = '1';
+  taxonomy_vocabulary_save($activity_type);
+
+  $area_type = taxonomy_vocabulary_machine_name_load('area_type');
+  $area_type->i18n_mode = '1';
+  taxonomy_vocabulary_save($area_type);
+
+  $category = taxonomy_vocabulary_machine_name_load('category');
+  $category->i18n_mode = '1';
+  taxonomy_vocabulary_save($category);
+
+  _roomify_translate_update_locations();
+
+  _roomify_translate_update_taxonomies();
+
+  _roomify_translate_replace_name_fields();
+}
+
+/**
+ * Set up entity translations for Area terms.
+ */
+function _roomify_translate_update_locations() {
+  // Update Locations.
+  $language = language_default('language');
+  $vocab = taxonomy_vocabulary_machine_name_load('location');
+  $vid = $vocab->vid;
+
+  db_update('taxonomy_term_data')
+    ->fields(array('language' => $language))
+    ->condition('vid', $vid)
+    ->condition('language', 'und')
+    ->execute();
+
+  $translatables_entitities = variable_get('entity_translation_entity_types', array());
+  $translatables_entitities['taxonomy_term'] = 'taxonomy_term';
+  variable_set('entity_translation_entity_types', $translatables_entitities);
+
+  $location_settings = variable_get('entity_translation_settings_taxonomy_term__location', array());
+  $location_settings['default_language'] = 'xx-et-default';
+  $location_settings['hide_language_selector'] = '1';
+  $location_settings['exclude_language_none'] = '1';
+  $location_settings['lock_language'] = '0';
+  $location_settings['shared_fields_original_only'] = '0';
+  variable_set('entity_translation_settings_taxonomy_term__location', $location_settings);
+
+}
+
+/**
+ * Replace name fields on taxonomy terms.
+ */
+function _roomify_translate_replace_name_fields() {
+  if (title_field_replacement_toggle('taxonomy_term', 'property_type', 'name')) {
+    title_field_replacement_batch_set('taxonomy_term', 'property_type', 'name');
+  }
+  if (title_field_replacement_toggle('taxonomy_term', 'amenities', 'name')) {
+    title_field_replacement_batch_set('taxonomy_term', 'amenities', 'name');
+  }
+  if (title_field_replacement_toggle('taxonomy_term', 'area_type', 'name')) {
+    title_field_replacement_batch_set('taxonomy_term', 'area_type', 'name');
+  }
+  if (title_field_replacement_toggle('taxonomy_term', 'category', 'name')) {
+    title_field_replacement_batch_set('taxonomy_term', 'category', 'name');
+  }
+  if (title_field_replacement_toggle('taxonomy_term', 'activity', 'name')) {
+    title_field_replacement_batch_set('taxonomy_term', 'activity', 'name');
+  }
+}
+
+/**
+ * Update vocabularies languages.
+ */
+function _roomify_translate_update_taxonomies() {
+  $vocabularies = array(
+    'activity',
+    'property_type',
+    'amenities',
+    'area_type',
+    'category',
+  );
+  foreach ($vocabularies as $vocabulary) {
+    // Update Vocabulary language.
+    $language = language_default('language');
+    $vocab = taxonomy_vocabulary_machine_name_load($vocabulary);
+    $vid = $vocab->vid;
+
+    db_update('taxonomy_term_data')
+      ->fields(array('language' => $language))
+      ->condition('vid', $vid)
+      ->condition('language', 'und')
+      ->execute();
+  }
+}

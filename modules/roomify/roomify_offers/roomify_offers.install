@@ -1,0 +1,126 @@
+<?php
+
+/**
+ * Implements hook_install().
+ */
+function roomify_offers_install() {
+  roomify_offers_create_special_offer_rate_type();
+  roomify_offers_create_special_offer_percentage_rate_type();
+
+  roomify_offers_create_percentage_discount_event_type();
+}
+
+/**
+ * Create "Special Offer" rate type.
+ */
+function roomify_offers_create_special_offer_rate_type() {
+  module_load_include('inc', 'roomify_offers', 'roomify_offers.fields');
+
+  $rate_type = roomify_rate_type_create(array(
+    'label' => 'Special Offer',
+    'type' => 'special_offer',
+  ));
+
+  $rate_type->save();
+
+  roomify_offers_add_description_field('special_offer');
+  roomify_offers_add_start_date_field('special_offer');
+  roomify_offers_add_end_date_field('special_offer');
+  roomify_offers_add_property_reference_field('special_offer');
+}
+
+/**
+ * Create "Special Offer (percentage)" rate type.
+ */
+function roomify_offers_create_special_offer_percentage_rate_type() {
+  module_load_include('inc', 'roomify_offers', 'roomify_offers.fields');
+
+  $rate_type = roomify_rate_type_create(array(
+    'label' => 'Special Offer (percentage)',
+    'type' => 'special_offer_percentage',
+  ));
+
+  $rate_type->data['default_value_field'] = 'rate_discount';
+
+  $rate_type->save();
+
+  roomify_offers_add_description_field('special_offer_percentage');
+  roomify_offers_add_start_date_field('special_offer_percentage');
+  roomify_offers_add_end_date_field('special_offer_percentage');
+  roomify_offers_add_property_reference_field('special_offer_percentage');
+  roomify_offers_add_rate_discount_field('special_offer_percentage');
+}
+
+/**
+ * Creates the default Percentage discount event type.
+ */
+function roomify_offers_create_percentage_discount_event_type() {
+  module_load_include('inc', 'roomify_offers', 'roomify_offers.fields');
+
+  $event = new BatEventType(array(
+    'label' => 'Percentage discount',
+    'type' => 'percentage_discount',
+    'fixed_event_states' => 0,
+    'event_granularity' => 'bat_daily',
+    'default_event_value_field_ids' => array(
+      'percentage_discount' => 'pricing_discount',
+    ),
+    'target_entity_type' => 'roomify_rate',
+  ));
+
+  bat_event_type_save($event);
+
+  roomify_offers_add_event_discount_field('percentage_discount');
+}
+
+/**
+ * Set 'Better Formats' options for field 'offer_description'.
+ */
+function roomify_offers_update_7001() {
+  $instance_info = field_read_instance('roomify_rate', 'offer_description', 'special_offer');
+
+  $instance_info['settings']['better_formats'] = array(
+    'allowed_formats_toggle' => 1,
+    'allowed_formats' => array(
+      'landing_page_text' => 'landing_page_text',
+      'filtered_text' => 0,
+      'rich_text' => 0,
+      'filtered_html' => 0,
+      'full_html' => 0,
+      'plain_text' => 0,
+    ),
+    'default_order_toggle' => 0,
+    'default_order_wrapper' => array(),
+  );
+
+  field_update_instance($instance_info);
+}
+
+/**
+ * Add "Special Offer (percentage)" rate type.
+ */
+function roomify_offers_update_7002() {
+  roomify_offers_create_special_offer_percentage_rate_type();
+}
+
+/**
+ * Add "Percentage discount" event type.
+ */
+function roomify_offers_update_7003() {
+  roomify_offers_create_percentage_discount_event_type();
+}
+
+/**
+ * Add description text on start date and end date fields.
+ */
+function roomify_offers_update_7004() {
+  foreach (array('special_offer', 'special_offer_percentage') as $bundle) {
+    $instance_info = field_read_instance('roomify_rate', 'offer_start_date', $bundle);
+    $instance_info['description'] = 'This offer will be available when making a booking on or after this date/time';
+    field_update_instance($instance_info);
+
+    $instance_info = field_read_instance('roomify_rate', 'offer_end_date', $bundle);
+    $instance_info['description'] = 'This offer will no longer be available when making a booking after this date/time';
+    field_update_instance($instance_info);
+  }
+}

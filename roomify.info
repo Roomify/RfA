@@ -1,0 +1,234 @@
+; Packaging information for agency
+name = "Roomify"
+description = "For vacation rentals, hotels and multi-property agencies"
+;exclusive = "1"
+core = "7.x"
+
+; ----------
+; Dependencies
+; ----------
+
+; Core Drupal Modules
+dependencies[] = block
+dependencies[] = comment
+dependencies[] = contextual
+dependencies[] = color
+dependencies[] = dblog
+dependencies[] = field
+dependencies[] = field_sql_storage
+dependencies[] = field_ui
+dependencies[] = rdf
+dependencies[] = file
+dependencies[] = filter
+dependencies[] = image
+dependencies[] = list
+dependencies[] = menu
+dependencies[] = node
+dependencies[] = number
+dependencies[] = options
+dependencies[] = path
+dependencies[] = system
+dependencies[] = taxonomy
+dependencies[] = text
+dependencies[] = user
+
+; ----------------
+; Key Dependencies
+; ----------------
+
+; Entity
+dependencies[] = entity
+dependencies[] = entity_translation
+dependencies[] = xautoload
+
+; CTools and Panels
+dependencies[] = ctools
+dependencies[] = page_manager
+dependencies[] = panels
+dependencies[] = panels_mini
+dependencies[] = i18n_panels
+
+; Views
+dependencies[] = views_content
+dependencies[] = views
+dependencies[] = views_data_export
+;dependencies[] = views_ui
+;dependencies[] = views_php
+
+; Rules
+dependencies[] = rules
+dependencies[] = rules_conditional
+
+; Variable
+dependencies[] = variable
+
+; Date/Time
+dependencies[] = date
+dependencies[] = date_api
+dependencies[] = date_popup
+dependencies[] = date_views
+
+; User interface
+dependencies[] = jquery_update
+
+; Fields
+dependencies[] = addressfield
+dependencies[] = entityreference
+dependencies[] = geofield
+dependencies[] = entityreference_prepopulate
+
+; Core Rooms
+dependencies[] = bat
+dependencies[] = bat_booking
+dependencies[] = bat_event_state_constraints
+
+; Commerce
+;dependencies[] = commerce
+;dependencies[] = commerce_cart
+;dependencies[] = commerce_checkout
+;dependencies[] = commerce_checkout_progress
+;dependencies[] = commerce_customer
+;dependencies[] = commerce_customer_ui
+;dependencies[] = commerce_features
+;dependencies[] = commerce_line_item
+;dependencies[] = commerce_order
+;dependencies[] = commerce_order_ui
+;dependencies[] = commerce_price
+;dependencies[] = commerce_product
+;dependencies[] = commerce_product_pricing
+;dependencies[] = commerce_product_reference
+;dependencies[] = commerce_product_ui
+;dependencies[] = commerce_tax
+;dependencies[] = commerce_tax_ui
+;dependencies[] = commerce_ui
+
+; Commerce (contrib)
+dependencies[] = commerce_cart_expiration
+
+; Utilities
+dependencies[] = backup_migrate
+;dependencies[] = commerce_reports
+
+; Composer
+dependencies[] = composer_manager
+
+; Roomify
+dependencies[] = roomify_system
+dependencies[] = roomify_property
+dependencies[] = roomify_rate
+dependencies[] = roomify_sidebar
+dependencies[] = roomify_rights
+dependencies[] = roomify_conversations
+dependencies[] = roomify_dashboard
+dependencies[] = roomify_contact
+dependencies[] = roomify_offers
+dependencies[] = roomify_page
+dependencies[] = roomify_search
+dependencies[] = roomify_social_profiles
+dependencies[] = roomify_terms_conditions
+dependencies[] = roomify_translate
+dependencies[] = roomify_base_theme
+dependencies[] = roomify_pages_manager
+dependencies[] = roomify_social_feeds
+;dependencies[] = roomify_booking_views
+;dependencies[] = roomify_listing_faceted_search
+;dependencies[] = roomify_landing_page
+;dependencies[] = rooms_channel_manager
+;dependencies[] = rooms_notification
+;dependencies[] = rooms_commission_rates
+
+; Bean
+;dependencies[] = bean
+;dependencies[] = bean_admin_ui
+
+; Development
+;dependencies[] = profiler_builder
+;dependencies[] = module_filter
+
+; Location
+;dependencies[] = getdirections
+
+; Other
+dependencies[] = addtoany
+dependencies[] = adminimal_admin_menu
+dependencies[] = better_formats
+dependencies[] = better_messages
+dependencies[] = content_menu
+dependencies[] = entity_token
+dependencies[] = imageapi_optimize
+dependencies[] = inline_entity_form
+dependencies[] = link
+dependencies[] = pet
+;dependencies[] = classy_paragraphs
+;dependencies[] = diff
+;dependencies[] = editablefields
+;dependencies[] = entity_background
+;dependencies[] = entitycache
+dependencies[] = entityform
+dependencies[] = entityform_block
+dependencies[] = entityform_notifications
+;dependencies[] = environment_indicator
+;dependencies[] = facetapi_pretty_paths
+;dependencies[] = fast_404
+;dependencies[] = geophp
+;dependencies[] = google_tag
+;dependencies[] = icon
+;dependencies[] = ip2country
+;dependencies[] = leaflet
+;dependencies[] = leaflet_more_maps
+;dependencies[] = leaflet_views
+;dependencies[] = less
+;dependencies[] = libraries
+;dependencies[] = maillog
+;dependencies[] = menu_admin_per_menu
+;dependencies[] = mimemail
+;dependencies[] = paragraphs
+;dependencies[] = pathauto
+;dependencies[] = publishcontent
+;dependencies[] = redirect
+dependencies[] = role_delegation
+;dependencies[] = role_export
+;dependencies[] = rrssb
+;dependencies[] = search_api_ranges
+;dependencies[] = slick
+;dependencies[] = slick_ui
+;dependencies[] = slick_views
+;dependencies[] = strongarm
+dependencies[] = taxonomy_access_fix
+dependencies[] = userone
+;dependencies[] = token
+;dependencies[] = view_unpublished
+
+; Users
+dependencies[] = profile2
+
+; XML sitemap
+;dependencies[] = xmlsitemap
+;dependencies[] = xmlsitemap_custom
+;dependencies[] = xmlsitemap_node
+;dependencies[] = xmlsitemap_taxonomy
+
+; Features
+;dependencies[] = features
+;dependencies[] = agency_amenities
+;dependencies[] = agency_homepage
+;dependencies[] = agency_units
+;dependencies[] = agency_users
+;dependencies[] = agency_page
+;dependencies[] = agency_paragraphs
+;dependencies[] = agency_system
+;dependencies[] = agency_features_views
+;dependencies[] = agency_fees
+;dependencies[] = agency_image_styles
+;dependencies[] = agency_property_map
+;dependencies[] = agency_property_page_view
+;dependencies[] = agency_theme
+;dependencies[] = agency_editor
+;dependencies[] = agency_blog
+;dependencies[] = agency_review
+;dependencies[] = agency_social_settings
+;dependencies[] = agency_contact_form
+;dependencies[] = agency_booking_manager
+;dependencies[] = agency_reports
+;dependencies[] = agency_terms_conditions
+;dependencies[] = pet_to_users_role

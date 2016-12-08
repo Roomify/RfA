@@ -1,0 +1,182 @@
+// Typography styles
+
+/* Text meant only for screen readers */
+.screen-reader-text {
+  clip: rect(1px, 1px, 1px, 1px);
+  position: absolute !important;
+}
+.screen-reader-text:hover,
+.screen-reader-text:active,
+.screen-reader-text:focus {
+  background-color: #F1F1F1;
+  border-radius: 3px;
+  box-shadow: 0 0 2px 2px rgba(0, 0, 0, 0.6);
+  clip: auto !important;
+  color: #21759B;
+  display: block;
+  font-size: 14px;
+  font-weight: bold;
+  height: auto;
+  left: 5px;
+  line-height: normal;
+  padding: 15px 23px 14px;
+  text-decoration: none;
+  top: 5px;
+  width: auto;
+  z-index: 100000; /* Above WP toolbar */
+}
+
+
+
+// Open Sans
+$open-sans: 'Open Sans', sans-serif;
+
+
+// Body Font
+
+body {
+	font-family:$open-sans;
+	font-size:14px;
+	font-weight:400;
+	color:#7C7C7C;
+	} 
+
+strong {
+	font-family:$open-sans;
+	font-weight:bold;
+}
+
+// Headings
+
+// General Header Styles
+
+h1, h2, h3, h4, h5, h6 {
+	margin:0 0 10px 0;
+	padding:0;
+	font-family:$open-sans;
+	font-weight:600;
+	color:#000;
+	line-height:1.4;
+	
+}
+
+// Content Headings
+
+	h1 {
+		font-size:30px;
+		font-weight:normal;
+		margin-bottom:20px;	
+		line-height:1.6;
+		
+	}
+	
+	h2 {
+		font-size:26px;
+		margin-bottom:20px;	
+		line-height:1;
+	}
+	
+	h3 {
+		font-size:18px;
+		margin-bottom:20px;
+	}
+	
+	h4 {
+		font-size:14px;
+	}
+	
+	h5 {
+		font-size:12px;
+	}
+	
+	h6 {
+		font-size:11px;
+	}
+
+
+// Paragraph styles
+
+p {
+	margin-bottom:14px;
+	line-height:1.8;
+}
+
+// General styles
+
+img {
+
+	&.alignleft {
+		float:left;
+		margin:0 20px 20px 0;
+	}
+
+	&.alignright {
+		float:right;
+		margin:0 0 20px 20px;
+	}
+}
+
+// Links
+
+a {
+	text-decoration: none;
+
+	&:hover {
+		text-decoration: none;
+	}
+
+}
+
+
+blockquote {
+	border-left:5px solid grey;
+}
+
+
+// Content List styles
+.entry-content {
+
+	h1 {
+		font-size:24px;
+		font-weight:normal;
+		font-style:italic;
+		margin-bottom:20px;	
+		line-height:1.6;
+	}
+
+	hr {
+		margin-top: 40px;
+		border-top:1px solid #cfc9b5;
+		margin-bottom: 40px;
+	}
+
+	ul {
+		margin:0 0 30px 20px;
+
+		li {
+			list-style-type: square;
+			margin-bottom:8px;
+			line-height:1.4;
+			
+			&:last-child {
+				margin-bottom:0;
+			}
+		}
+			
+	}
+
+	ol {
+		margin:0 0 30px 20px;
+		
+		li {
+			list-style-type: decimal;
+			margin-bottom:8px;
+			line-height:1.4;
+			
+			&:last-child {
+				margin-bottom:0;
+			}
+		}
+	}
+
+}

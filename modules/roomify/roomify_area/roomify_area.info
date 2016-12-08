@@ -1,0 +1,12 @@
+name = Roomify Area
+description = Roomify Area taxonomy term pages
+core = 7.x
+package = Roomify
+
+dependencies[] = ctools
+dependencies[] = page_manager
+dependencies[] = roomify_landing_page
+dependencies[] = views
+dependencies[] = views_bootstrap
+dependencies[] = views_content
+dependencies[] = views_load_more

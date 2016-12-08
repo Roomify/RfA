@@ -1,0 +1,29 @@
+default:
+  suites:
+    default:
+      contexts:
+        - FeatureContext
+        - Drupal\DrupalExtension\Context\MinkContext
+        - Drupal\DrupalExtension\Context\MessageContext
+        - Drupal\DrupalExtension\Context\DrushContext
+        - Roomify\RoomifyExtension\Context\RoomifyContext
+  extensions:
+    Behat\MinkExtension:
+      base_url:  'http://127.0.0.1:8888'
+      files_path:  '%paths.base%/testing_files'
+      selenium2:
+        browser: chrome
+      javascript_session: 'selenium2'
+    Drupal\DrupalExtension:
+      blackbox: ~
+      api_driver: 'drupal'
+      drush_driver: 'drush'
+      drush:
+        root: ../..
+      selectors:
+        message_selector: '.messages'
+        error_message_selector: '.messages.messages-error'
+        success_message_selector: '.messages.messages-status'
+
+imports:
+  - behat.local.yml

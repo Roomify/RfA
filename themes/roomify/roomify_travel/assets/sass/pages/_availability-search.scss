@@ -1,0 +1,1202 @@
+.page-activities-search,
+.page-availability-search {
+  .page-header {
+    display: none;
+  }
+  .panel-sl-left-content-wrapper {
+     @media (min-width: $screen-md) {
+      margin-top: 55px;
+    }
+  }
+  .pane-roomify-customer-message {
+    @include make-xs-column(12);
+    margin-bottom: 15px;
+  }
+  #property-bat-facets-availability .form-wrapper {
+    @media (min-width: $screen-md) {
+      .form-item-group-size,
+      .bat-date-range,
+      .form-item-location {
+        margin-bottom: 15px;
+        @include make-md-column(12);
+        select,
+        input {
+          background: white;
+        }
+        label {
+          display: none;
+        }
+      }
+      .search-availability-submit {
+        margin-top: 0;
+        width: 100%;
+        button {
+          font-size: 15px;
+          height: auto;
+        }
+        &:hover {
+          margin-top: 0;
+        }
+      }
+
+      .bat-date-range {
+        width: 100%;
+        display: table;
+        margin: 0 auto;
+        @include make-md-column(12);
+        .start-date,
+        .end-date {
+          width: 100%;
+          padding: 0;
+        }
+      }
+    }
+  }
+
+  .panel_sl_left {
+    @media (min-width: $screen-md) {
+      padding-right: 0;
+    }
+  }
+  .panel_sl_content {
+    margin-top: 50px;
+    @media (min-width: $screen-md) {
+      padding-left: 0;
+      margin-top: 0px;
+      position: relative;
+      bottom: 53px;
+      .ui-tabs .ui-tabs-panel,
+      .ui-tabs .ui-tabs-nav {
+        border-left: 0;
+        border-width: 1px;
+        li.ui-state-default {
+          float: right;
+          border-width: 1px;
+          border-bottom: 0px;
+          &:first-child {
+            margin-right: 0px;
+          }
+        }
+      }
+    }
+  }
+
+  // LIST VIEW.
+  .view-display-id-panel_pane_1 {
+    .property-row {
+      a {
+        color: initial;
+      }
+    }
+    .views-row {
+      display: inline-block;
+      width: 100%;
+      position: relative;
+      padding: 10px;
+      padding-bottom: 40px;
+      border-bottom: 1px solid #D4D4D4;
+      color: #3C3C3C;
+      a {
+        color: initial;
+      }
+      @media (min-width: $screen-md) {
+        padding: 20px;
+      }
+      @include transition(150ms background ease);
+      &:hover {
+        background: #F4F4F4;
+        @include transition(150ms background ease);
+      }
+      img {
+        width: 100%;
+        max-width: 400px;
+        border-radius: 2px;
+      }
+      .views-field-field-sp-featured-image {
+        display: inline-block;
+        float: left;
+        width: 50%;
+        margin-right: 3%;
+        @media (max-width: $screen-sm) {
+          width: 100%;
+          margin-bottom: 15px;
+        }
+        img {
+          border: 1px solid #ececec;
+          border-radius: 2px;
+        }
+      }
+      .views-field-name {
+        margin-bottom: 10px;
+        font-weight: 400;
+        display: inline-block;
+        width: 45%;
+        @include h3();
+        @media (max-width: $screen-sm) {
+          width: 100%;
+          margin-bottom: 15px;
+        }
+      }
+     .views-field-field-sp-area {
+        margin-bottom: 15px;
+        font-weight: 400;
+        display: inline-block;
+        width: 45%;
+        .glyphicon {
+          margin-right: 6px;
+          color: $blue;
+        }
+        @media (max-width: $screen-sm) {
+          width: 100%;
+          margin-bottom: 15px;
+        }
+      }
+      .views-field-field-sp-short-description {
+        margin-bottom: 15px;
+        font-weight: 400;
+        display: inline-block;
+        width: 45%;
+        font-style: italic;
+        .glyphicon {
+          display: none;
+        }
+        @media (max-width: $screen-sm) {
+          width: 100%;
+          margin-bottom: 15px;
+        }
+      }
+      .views-field-property-types {
+        width: 45%;
+        display: inline-block;
+        @media (max-width: $screen-sm) {
+          margin-bottom: 15px;
+          width: 100%;
+        }
+        .types {
+          display: inline-block;
+          width: 100%;
+          overflow-y: scroll;
+          &::-webkit-scrollbar {
+            display: none;
+          }
+          margin-top: 10px;
+          max-height: 60%;
+          table {
+            width: 100%;
+          }
+          .type-icons {
+            .icon {
+              width: 15%;
+              height: 20px;
+              padding-bottom: 15px;
+              &.name {
+                width: 40%;
+                text-indent: -9999999px;
+              }
+              &.capacity {
+                background-image: url('../images/small/capacity_gray.png');
+                text-indent: -9999999px;
+                background-repeat: no-repeat;
+                background-position: center center;
+              }
+              &.bedrooms {
+                background-image: url('../images/small/beds_gray.png');
+                text-indent: -9999999px;
+                background-repeat: no-repeat;
+                background-position: center center;
+              }
+              &.price {
+                width: 30%;
+                background-image: url('../images/small/price_gray.png');
+                text-indent: -9999999px;
+                background-repeat: no-repeat;
+                background-position: 75% center;
+              }
+            }
+          }
+          .type-row {
+            width: 100%;
+            margin-top: 10px;
+            .row-element {
+              width: 15%;
+              padding: 5px;
+              text-align: center;
+              &.name {
+                width: 38%;
+                margin-left: 2%;
+                text-align: left;
+                padding-left: 0;
+                font-weight: 400;
+              }
+              &.price {
+                width: 30%;
+                text-align: right;
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+
+  // GRID VIEW.
+  .view-display-id-panel_pane_3 {
+    .property-row {
+      margin-bottom: 35px;
+      position: relative;
+      a {
+        color: initial;
+        display: block;
+      }
+      .views-field-name {
+        margin-bottom: 15px;
+        font-weight: 400;
+        @include h3();
+        @media (max-width: $screen-sm) {
+          width: 100%;
+          margin-bottom: 15px;
+        }
+        h2 {
+          margin-top: 0px;
+        }
+      }
+      .views-field-field-sp-featured-image {
+        img {
+          border: 1px solid #ececec;
+          border-radius: 2px;
+        }
+      }
+      .property-info {
+        display: none;
+        overflow-y: scroll;
+        &::-webkit-scrollbar {
+          display: none;
+        }
+      }
+      &:hover {
+        .featured-image-with-description {
+          position: relative;
+          .property-info {
+            display: block;
+            position: absolute;
+            visibility: visible;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.35);
+            @include transition(150ms display ease-in);
+            .description {
+              text-align: center;
+              color: white;
+              margin: 20px 0;
+              padding: 0 5px;
+              font-style: italic;
+            }
+            .property-types-table {
+              width: 100%;
+              display: inline-block;
+              padding: 0 5px;
+              @media (max-width: $screen-sm) {
+                margin-bottom: 15px;
+                width: 100%;
+              }
+              .types {
+                display: inline-block;
+                width: 100%;
+                margin-top: 10px;
+                max-height: 60%;
+                table {
+                  width: 100%;
+                }
+                .type-icons {
+                  .icon {
+                    width: 20%;
+                    height: 25px;
+                    &.name {
+                      width:40%;
+                      text-indent: -9999999px;
+                    }
+                    &.capacity {
+                      background-image: url('../images/small/capacity_small.png');
+                      text-indent: -9999999px;
+                      background-repeat: no-repeat;
+                      background-position: center center;
+                    }
+                    &.bedrooms {
+                      background-image: url('../images/small/beds_small.png');
+                      text-indent: -9999999px;
+                      background-repeat: no-repeat;
+                      background-position: center center;
+                    }
+                    &.price {
+                      background-image: url('../images/small/price_small.png');
+                      text-indent: -9999999px;
+                      background-repeat: no-repeat;
+                      background-position: center center;
+                    }
+                  }
+                }
+                .type-row {
+                  width: 100%;
+                  margin-top: 10px;
+                  .row-element {
+                    width: 20%;
+                    padding: 10px;
+                    text-align: center;
+                    color: white;
+                    &.name {
+                      width: 38%;
+                      margin-left: 2%;
+                      text-align: left;
+                      padding-left: 5px;
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+    .views-field-property-types {
+      width: 45%;
+      display: inline-block;
+      @media (max-width: $screen-sm) {
+        margin-bottom: 15px;
+        width: 100%;
+      }
+      .types {
+        display: inline-block;
+        width: 100%;
+        overflow-y: scroll;
+        &::-webkit-scrollbar {
+          display: none;
+        }
+        margin-top: 10px;
+        max-height: 60%;
+        table {
+          width: 100%;
+        }
+        .type-icons {
+          .icon {
+            width: 20%;
+            height: 25px;
+            &.name {
+              width:40%;
+              text-indent: -9999999px;
+            }
+            &.capacity {
+              background-image: url('../images/small/capacity_gray.png');
+              text-indent: -9999999px;
+              background-repeat: no-repeat;
+              background-position: center center;
+            }
+            &.bedrooms {
+              background-image: url('../images/small/beds_gray.png');
+              text-indent: -9999999px;
+              background-repeat: no-repeat;
+              background-position: center center;
+            }
+            &.price {
+              background-image: url('../images/small/price_gray.png');
+              text-indent: -9999999px;
+              background-repeat: no-repeat;
+              background-position: center center;
+            }
+          }
+        }
+        .type-row {
+          width: 100%;
+          margin-top: 10px;
+          .row-element {
+            width: 20%;
+            padding: 10px;
+            text-align: center;
+            &.name {
+              width: 38%;
+              margin-left: 2%;
+              text-align: left;
+              padding-left: 0;
+              font-weight: 400;
+            }
+          }
+        }
+      }
+    }
+
+    .views-row {
+      .views-field-field-sp-short-description {
+        margin-bottom: 15px;
+        font-weight: 400;
+        display: inline-block;
+        width: 45%;
+        font-style: italic;
+        @media (max-width: $screen-sm) {
+          width: 100%;
+          margin-bottom: 15px;
+        }
+      }
+      .views-field-property-types {
+        width: 45%;
+        display: inline-block;
+        @media (max-width: $screen-sm) {
+          margin-bottom: 15px;
+          width: 100%;
+        }
+        .types {
+          display: inline-block;
+          width: 100%;
+          overflow-y: scroll;
+          &::-webkit-scrollbar {
+            display: none;
+          }
+          margin-top: 10px;
+          max-height: 60%;
+          table {
+            width: 100%;
+          }
+          .type-icons {
+            .icon {
+              width: 20%;
+              height: 25px;
+              &.name {
+                width:40%;
+                text-indent: -9999999px;
+              }
+              &.capacity {
+                background-image: url('../images/small/capacity_gray.png');
+                text-indent: -9999999px;
+                background-repeat: no-repeat;
+                background-position: center center;
+              }
+              &.bedrooms {
+                background-image: url('../images/small/beds_gray.png');
+                text-indent: -9999999px;
+                background-repeat: no-repeat;
+                background-position: center center;
+              }
+              &.price {
+                background-image: url('../images/small/price_gray.png');
+                text-indent: -9999999px;
+                background-repeat: no-repeat;
+                background-position: center center;
+              }
+            }
+          }
+          .type-row {
+            width: 100%;
+            margin-top: 10px;
+            .row-element {
+              width: 20%;
+              padding: 10px;
+              text-align: center;
+              &.name {
+                width: 38%;
+                margin-left: 2%;
+                text-align: left;
+                padding-left: 0;
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+  // MAP VIEW
+  .view-display-id-panel_pane_2 {
+    #leaflet-map {
+      .leaflet-popup {
+        .leaflet-popup-content {
+          max-width: 250px;
+        }
+        a {
+          font-size: 18px;
+        }
+        .roomify-property-short-description {
+          margin: 5px 0;
+          font-size: 15px;
+        }
+        .roomify-property-image {
+          display: inline-block;
+          max-width: 250px;
+          margin: 5px 0;
+          img {
+            width: 100% !important;
+            border-radius: 5px;
+            min-width: 120px;
+          }
+        }
+      }
+    }
+  }
+}
+#property-bat-activity-facets-availability,
+#roomify-property-search-block-form,
+#property-bat-facets-availability {
+  .form-wrapper {
+    @include make-row();
+    margin-bottom: 0;
+
+    @media (max-width: $screen-sm) {
+      margin-right: 0;
+    }
+
+    .container-inline-date .date-padding {
+      float: none;
+    }
+    .container-inline-date > .form-item { // negate default styles
+      margin: 0;
+    }
+
+    .container-inline-date .form-item { // negate default styles
+      width: 100%;
+    }
+
+    .container-inline-date .form-item input {
+      width: 100%;
+    }
+
+    .control-label {
+      display: block;
+      font-size: 16px;
+      font-weight: 400;
+      margin-bottom: 5px;
+    }
+    select,
+    input {
+      width: 100%;
+      height: 37px;
+      border-radius:0;
+      background:#F4F4F4;
+      border:1px solid #D4D3D3;
+    }
+    .form-item-group-size,
+    .form-item-location  {
+      @include make-xs-column(12);
+      @include make-sm-column(12);
+      @include make-md-column(3);
+      @media (max-width: $screen-sm-max) {
+        margin-bottom: 15px;
+      }
+    }
+    .form-item-group-size {
+      @include make-xs-column(12);
+      @include make-sm-column(6);
+      @include make-md-column(2);
+    }
+    .bat-date-range {
+      @include make-xs-column(12);
+      @include make-sm-column(12);
+      @include make-md-column(5);
+      @media (max-width: $screen-sm) {
+        padding-right: 0;
+      }
+      .start-date {
+        float:left;
+        @include make-xs-column(12);
+        @include make-sm-column(6);
+        margin-bottom: 15px;
+        @media (max-width: $screen-sm) {
+          padding-right: 0;
+        }
+
+        .form-type-textfield label, // Removed the word "Date"
+        .help-block {// Removed the help text "E.g.,
+          display:none;
+        }
+      }
+
+      .end-date {
+        float:right;
+        @include make-xs-column(12);
+        @include make-sm-column(6);
+        margin-bottom: 15px;
+        @media (max-width: $screen-sm) {
+          padding-right: 0;
+        }
+
+        .form-type-textfield label, // Removed the word "Date"
+        .help-block {// Removed the help text "E.g., 2016-03-05"
+          display: none;
+        }
+      }
+    }
+    .search-availability-submit,
+    .search-submit {
+      @include make-xs-column(12);
+      @include make-sm-column(2);
+      margin-top: 20px;
+      @media (min-width: $screen-sm) {
+        margin-top: 32px;
+      }
+      .form-submit {
+        @extend .btn-danger;
+        text-transform: capitalize;
+        padding: 6px;
+        font-size: 15px;
+        width: 100%;
+      }
+    }
+    input, select, .form-control {
+      border-radius: 2px;
+      -webkit-appearance: inherit;
+      -moz-appearance: inherit;
+      -webkit-border-radius: 2px;
+      color: #353535;
+      font-size: 15px;
+      &.form-text::-webkit-input-placeholder {
+        color: #353535;
+      }
+      &.form-text::-moz-placeholder {
+        color: #353535;
+      }
+      &.form-text:-moz-placeholder {
+        color: #353535;
+      }
+    }
+  }
+}
+
+.page-availability-search {
+  .panel-sl-left-content-wrapper {
+    .panel_sl_left {
+      // FACETS
+      .panel_content {
+        border: 1px solid #ececec;
+        background: white;
+      }
+      .pane-current-search-properties,
+      .panel-pane.pane-block {
+        display: inline-block;
+        width: 100%;
+        background: #f9f9f9;
+        .pane-title {
+          font-size: 16px;
+          margin-bottom: 10px;
+          padding: 10px;
+          background: #d8d8d8;
+          color: #666;
+          border-bottom: 1px solid #d0d0d0;
+          border-top: 1px solid #d0d0d0;
+          .glyphicon {
+            display: none;
+          }
+        }
+        .pane-content {
+          padding: 15px;
+          a {
+            color: initial;
+          }
+        }
+        &#availability-search-facet {
+          padding-bottom: 25px;
+          .pane-title {
+            background: $blue;
+            padding: 10px 0;
+            text-align: center;
+            color: white;
+            font-size: 18px;
+            border-bottom: 1px solid #116e92;
+            position: relative;
+            margin-bottom: 15px;
+            &:after {
+              content: "";
+              width: 0;
+              height: 0;
+              border-style: solid;
+              border-width: 15px 30px 0 30px;
+              border-color: #006699 transparent transparent transparent;
+              position: absolute;
+              bottom: 0;
+              left: calc(50% - 30px);
+              top: 35px;
+            }
+          }
+        }
+        &.pane-current-search-properties {
+          .pane-content {
+          }
+          .current-search-item {
+            .filter-main {
+              text-align: right;
+              a {
+                margin-bottom: 25px;
+                color: white;
+              }
+            }
+            ul {
+              padding-left: 0px;
+              li {
+                margin-right: 15px;
+                color: #595959;
+                width: 100%;
+                position: relative;
+                list-style: none;
+                border-bottom: 1px solid #ececec;
+                padding: 10px 0;
+                display: inline-block;
+                a {
+                  position: absolute;
+                  right: 4px;
+                  background: url(../images/x.png) no-repeat right;
+                  background: url("../images/x.svg") no-repeat right, linear-gradient(transparent, transparent);
+                  color: transparent;
+                  width: 14px;
+                  margin-left: 8px;
+                  top: 15px;
+                  height: 16px;
+                  background-size: contain;
+                }
+              }
+            }
+          }
+        }
+        .facetapi-facetapi-checkbox-links {
+          padding-left: 0;
+          padding-right: 0;
+          line-height: 1.8em;
+          li {
+            &:last-child {
+              border-bottom: 0;
+            }
+            input {
+              margin-right: .5em;
+            }
+          }
+        }
+       .search-api-ranges-widget {
+          position: relative;
+          .text-range {
+            display: none;
+          }
+          .range-slider-box {
+            display: block;
+            margin-top: 35px;
+            padding: 0 6px;
+            margin-right: 15px;
+            margin-bottom: 30px;
+          }
+          .ui-slider-horizontal {
+            height: .5em;
+            top: 8px;
+          }
+          .ui-slider-handle {
+            border-radius: 50%;
+            background: $blue;
+            bottom: -8px;
+            width: 1em;
+            height: 1em;
+          }
+          .range-box-left {
+            position: absolute;
+            top: -40px;
+            left: 5px;
+            .form-item {
+              margin-top: 0;
+            }
+            .form-item-range-from {
+              label {
+                display: none;
+              }
+              input {
+                float: left;
+                padding: 0;
+                background: none repeat scroll 0 0 transparent;
+                border: none;
+                box-shadow: none;
+                font-size: 16px;
+                width: auto;
+              }
+            }
+          }
+          .range-box-right {
+            position: absolute;
+            top: -40px;
+            right: 18px;
+            .form-item {
+              margin-top: 0;
+            }
+            .form-item-range-to {
+              text-align: right;
+              label {
+                display: none;
+              }
+              input {
+                float: left;
+                text-align: right;
+                padding: 0;
+                background: none repeat scroll 0 0 transparent;
+                border: none;
+                box-shadow: none;
+                font-size: 16px;
+                width: auto;
+              }
+            }
+          }
+          .form-submit {
+            @include button-variant(#FFFFFF, #127BA3, #158CBA);
+          }
+        }
+      }
+    }
+  }
+}
+
+#property-bat-activity-facets-availability {
+   .form-wrapper .form-item-location {
+    @include make-xs-column(12);
+    @include make-sm-column(5);
+  }
+  .form-wrapper .activity-date-range {
+    @include make-xs-column(12);
+    @include make-sm-column(3);
+    @media (max-width: $screen-sm) {
+      padding-right: 0;
+    }
+    .start-date {
+      float:left;
+      @include make-sm-column(12);
+      @media (max-width: $screen-sm) {
+        padding-right: 0;
+      }
+
+      .form-type-textfield label, // Removed the word "Date"
+      .help-block {// Removed the help text "E.g.,
+        display:none;
+      }
+    }
+  }
+}
+
+.pane-search-api-sorts-search-sorts {
+  float: right;
+  margin-bottom: 15px;
+
+  .search-api-sorts {
+    margin-bottom: 0;
+    li {
+      display: inline-block;
+      a {
+        color: #6b6b6b;
+      }
+      svg {
+        width: 24px;
+        height: 24px;
+        left: 12px;
+        position: relative;
+        top: 7px;
+        background: #006699;
+        padding: 3px;
+        path {
+          fill: white;
+        }
+      }
+      &:first-child {
+        padding: 0 10px 0 15px;
+        &:before {
+          width: 30px;
+          height: 30px;
+          background: url('../../images/sort.png') no-repeat center center;
+          background: url("../../images/sort.svg") center center no-repeat, linear-gradient(transparent, transparent);
+          content: '';
+          display: inline-block;
+          background-size: 30px 30px;
+          position: relative;
+          top: 10px;
+          right: 5px;
+        }
+      }
+      &:last-child {
+        padding: 0 0px 0 15px;
+        &:before {
+          width: 30px;
+          height: 30px;
+          background: url('../../images/price-sort.png') no-repeat center center;
+          background: url("../../images/price-sort.svg") center center no-repeat, linear-gradient(transparent, transparent);
+          content: '';
+          display: inline-block;
+          background-size: 25px 25px;
+          position: relative;
+          top: 10px;
+          right: 0px;
+        }
+      }
+      .sort-item {
+        &.active-sort {
+          text-decoration: underline;
+          font-weight: bold;
+          color: #000;
+        }
+        img {
+          display: inline-block;
+          margin-left: 10px;
+          opacity: 0.6;
+        }
+      }
+    }
+  }
+}
+
+.pane-properties-index-panel-pane-4 {
+  .view-properties-index {
+    .views-row {
+      display: inline-block;
+      width: 100%;
+      padding: 25px 0;
+      border-bottom: 1px solid #ECECEC;
+      .views-field-field-sp-featured-image {
+        @include make-xs-column(12, 0);
+        @include make-sm-column(12, 0);
+        @include make-md-column(4, 0);
+        height: 204px;
+        img {
+          height: 204px;
+          width: auto;
+        }
+        @media (max-width: $screen-sm-max) {
+          height: 100%;
+          img {
+            width: 100%;
+            height: 100%;
+            display: table;
+            margin: 0 auto;
+          }
+        }
+      }
+      .property-details {
+        @include make-xs-column(12, 0);
+        @include make-sm-column(12, 0);
+        @include make-md-column(8);
+        height: 204px;
+        background: #f9f9f9;
+        @media (max-width: $screen-sm-max) {
+          height: auto;
+        }
+        .name {
+          font-size: 18px;
+          margin-top: 6px;
+          margin-bottom: 10px;
+          font-weight: 400;
+
+        }
+        .price {
+          position: absolute;
+          right: 6px;
+          font-size: 18px;
+          top: 8px;
+          color: #4CAF50;
+          font-weight: 300;
+          @media (max-width: $screen-xs) {
+            width: 100%;
+            position: relative;
+            display: inline-block;
+            margin-bottom: 10px;
+            right: 0;
+            top: 0;
+          }
+        }
+        .short-description {
+          color: #666;
+          margin-bottom: 20px;
+        }
+        .table-responsive {
+          border: none;
+        }
+        table {
+          font-size: 10px;
+          td {
+            padding: 5px 10px;
+            vertical-align: middle;
+            cursor: default;
+            &:empty {
+              display: none;
+            }
+          }
+          .area {
+            position: relative;
+            color: #666;
+            font-size: 10px;
+            &:before {
+              background: url("../images/location_tab.png") center center no-repeat;
+              background: url("../images/location_tab.svg") center center no-repeat, linear-gradient(transparent, transparent);
+              content: "";
+              display: inline-block;
+              width: 20px;
+              height: 20px;
+              margin-right: 3px;
+              top: 3px;
+              position: relative;
+            }
+            &:empty {
+              &:before {
+                display: none;
+              }
+            }
+          }
+          .property-type {
+            position: relative;
+            color: #666;
+            font-size: 10px;
+            &:before {
+              background: url("../images/property_type_tab.png") center center no-repeat;
+              background: url("../images/property_type_tab.svg") center center no-repeat, linear-gradient(transparent, transparent);
+              content: "";
+              display: inline-block;
+              width: 15px;
+              height: 20px;
+              margin-right: 10px;
+              top: 3px;
+              left: 5px;
+              position: relative;
+            }
+            &:empty {
+              &:before {
+                display: none;
+              }
+            }
+          }
+          .single-beds {
+            position: relative;
+            color: #666;
+            font-size: 10px;
+            &:before {
+              background: url("../images/single_beds.png") center center no-repeat;
+              background: url("../images/single_beds.svg") center center no-repeat, linear-gradient(transparent, transparent);
+              content: "";
+              display: inline-block;
+              width: 25px;
+              height: 25px;
+              margin-right: 10px;
+              top: 6px;
+              left: 2px;
+              position: relative;
+            }
+            &:empty {
+              &:before {
+                display: none;
+              }
+            }
+          }
+          .double-beds {
+            position: relative;
+            color: #666;
+            font-size: 10px;
+            &:before {
+              background: url("../images/double_beds.png") center center no-repeat;
+              background: url("../images/double_beds.svg") center center no-repeat, linear-gradient(transparent, transparent);
+              content: "";
+              display: inline-block;
+              width: 25px;
+              height: 25px;
+              margin-right: 10px;
+              top: 6px;
+              left: 2px;
+              position: relative;
+            }
+            &:empty {
+              &:before {
+                display: none;
+              }
+            }
+          }
+          .capacity {
+            position: relative;
+            color: #666;
+            font-size: 10px;
+            &:before {
+              background: url("../images/users.png") center center no-repeat;
+              background: url("../images/users.svg") center center no-repeat, linear-gradient(transparent, transparent);
+              content: "";
+              display: inline-block;
+              width: 20px;
+              height: 25px;
+              margin-right: 10px;
+              top: 5px;
+              left: 2px;
+              position: relative;
+            }
+            &:empty {
+              &:before {
+                display: none;
+              }
+            }
+          }
+          .bathrooms {
+            position: relative;
+            color: #666;
+            font-size: 10px;
+            &:before {
+              background: url("../images/bath.png") center center no-repeat;
+              background: url("../images/bath.svg") center center no-repeat, linear-gradient(transparent, transparent);
+              content: "";
+              display: inline-block;
+              width: 19px;
+              height: 24px;
+              margin-right: 10px;
+              top: 5px;
+              left: 2px;
+              position: relative;
+            }
+            &:empty {
+              &:before {
+                display: none;
+              }
+            }
+          }
+          .area-type {
+            position: relative;
+            color: #666;
+            font-size: 10px;
+            &:before {
+              background: url("../images/compass.png") center center no-repeat;
+              background: url("../images/compass.svg") center center no-repeat, linear-gradient(transparent, transparent);
+              content: "";
+              display: inline-block;
+              width: 18px;
+              height: 18px;
+              margin-right: 10px;
+              top: 5px;
+              left: 2px;
+              position: relative;
+            }
+            &:empty {
+              &:before {
+                display: none;
+              }
+            }
+          }
+        }
+        .book-now {
+          position: absolute;
+          right: 8px;
+          bottom: 8px;
+          color: white;
+          font-size: 10px;
+          @include button-variant(#000000, rgb(237, 237, 237), #e0d9d7);
+          color: rgb(80, 80, 80);
+          font-weight: 400;
+          @media (max-width: $screen-sm) {
+            display: none;
+          }
+        }
+      }
+    }
+  }
+}
+
+.pane-properties-index-panel-pane-1,
+.pane-properties-index-panel-pane-3 {
+  clear: both;
+}
+
+#properties-tabs .panel_sl_content {
+  margin-bottom: 0px;
+  margin-top: 20px;
+  position: relative;
+  bottom: 50px;
+  z-index: 12;
+}
+#properties-tabs .panel-content-bottom {
+  position: relative;
+  bottom: 32px;
+}

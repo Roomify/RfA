@@ -1,0 +1,90 @@
+// Main content styles
+
+// Home page only
+
+body.home {
+	
+	#content {
+		padding:0;
+	}
+	
+}
+
+// Site container
+
+.site-container {
+	@extend .container-fluid;
+	padding:0;
+	background:white;
+	-webkit-box-shadow: 0px 0px 15px 0px rgba(0,0,0,0.3);
+	-moz-box-shadow: 0px 0px 15px 0px rgba(0,0,0,0.3);
+	box-shadow: 0px 0px 15px 0px rgba(0,0,0,0.3);
+}
+
+// Site wide
+	
+.content-row {
+	position: relative;
+	@include make-row();
+	max-width:1120px;
+	margin:0 auto;
+	padding-bottom:100px;
+	
+	
+	#main-content {
+		@include make-xs-column(12);
+		min-height: 0;
+	}
+	
+	&.has-sidebar-first {
+		
+		#main-content {
+			@include make-xs-column(12);
+			@include make-sm-column(8);
+		}	
+	}
+	
+	&.has-sidebar-second {
+		
+		#main-content {
+			@include make-xs-column(12);
+			@include make-sm-column(8);
+			
+		}	
+	}
+}
+
+.roomify-landing-page-edgy-node {
+  max-width: 100%;
+  width: 100%;
+  #main-content {
+  	padding: 0;
+  }
+}
+
+
+// Section Styles
+
+.section-container {
+	// @extend .container;
+	// background:white;
+	
+	.section-row {
+		@include make-row();
+		
+		max-width:1120px;
+		margin:0 auto;
+	}
+}
+
+.panel-pane.pane-roomify-social-feed-render {
+  display: inline-block;
+  width: 100%;
+  margin: 25px 0;
+  .pane-content {
+    display: inline-block;
+    width: 100%;
+    border: 1px solid #DEDEDE;
+    padding: 5px;
+  }
+}

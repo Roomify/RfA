@@ -1,0 +1,43 @@
+/* Ensure that datepicker is visible in the modal popup. */
+#ui-datepicker-div {
+  z-index: 1005 !important;
+}
+
+.casa-availability-calendar {
+  display: table;
+  width: 100%;
+}
+.casa-availability-calendar .calendar-links,
+.casa-availability-calendar .calendar-set {
+  display: table-cell;
+  vertical-align: middle;
+}
+.casa-availability-calendar .calendar-links div {
+  margin: 15px 0;
+  font-size: 20px;
+}
+.casa-availability-calendar.calendar-links {
+  width: 250px;
+}
+
+#roomify-casa-event-ui-bulk-update-form .form-item-event-types,
+#roomify-casa-event-ui-bulk-update-form #unit-type-wrapper {
+  float: left;
+  margin-right: 10px;
+}
+
+#roomify-casa-event-ui-bulk-update-form input[type="submit"] {
+  margin-top: 1.6em;
+}
+
+#roomify-casa-event-ui-bulk-update-form .bat-date-range,
+#roomify-casa-event-ui-bulk-update-form .form-type-select {
+  float: left;
+  margin: 0 20px 0 0;
+  clear: none;
+  padding: 0;
+}
+
+#roomify-casa-event-ui-bulk-update-form input[type="submit"] {
+  margin-top: 1.1em;
+}

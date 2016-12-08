@@ -1,0 +1,127 @@
+<?php
+
+/**
+ * @file
+ * Install and update hooks for roomify_mapping module.
+ */
+
+/**
+ * Implements hook_uninstall().
+ */
+function roomify_mapping_uninstall() {
+  variable_del('roomify_mapping_location_accommodation');
+}
+
+/**
+ * Re-save all "Location" nodes to update title field.
+ */
+function roomify_mapping_update_7001(&$sandbox) {
+
+  $feature = features_get_features('roomify_mapping');
+  $components = array_keys($feature->info['features']);
+  features_revert(array('roomify_mapping' => $components));
+
+  $defaul_lang = language_default();
+  $nids = db_query('SELECT nid FROM {node} WHERE type = :type', array(':type' => 'location'))->fetchCol();
+
+  if (!isset($sandbox['progress'])) {
+    $sandbox['progress'] = 0;
+    $sandbox['current_node'] = 0;
+    $sandbox['max'] = count($nids);
+  }
+
+  $limit = 30;
+  $result = db_select('node')
+    ->fields('node', array('nid'))
+    ->condition('nid', $sandbox['current_node'], '>')
+    ->condition('type', 'location')
+    ->orderBy('nid', 'ASC')
+    ->range(0, $limit)
+    ->execute();
+
+  foreach ($result as $row) {
+    $node = node_load($row->nid, NULL, TRUE);
+    node_save($node);
+    $sandbox['progress']++;
+    $sandbox['current_node'] = $node->nid;
+  }
+
+  $sandbox['#finished'] = empty($sandbox['max']) ? 1 : ($sandbox['progress'] / $sandbox['max']);
+
+  return t('Locations have been updated succesfully!');
+
+}
+
+/**
+ * Set default language on node of type "Location" with language 'und'.
+ */
+function roomify_mapping_update_7002(&$sandbox) {
+  $feature = features_get_features('roomify_mapping');
+  $components = array_keys($feature->info['features']);
+  features_revert(array('roomify_mapping' => $components));
+
+  $nids = db_query('SELECT nid FROM {node} WHERE type = :type', array(':type' => 'location'))->fetchCol();
+
+  if (!isset($sandbox['progress'])) {
+    $sandbox['progress'] = 0;
+    $sandbox['current_node'] = 0;
+    $sandbox['max'] = count($nids);
+  }
+
+  $limit = 30;
+  $result = db_select('node')
+    ->fields('node', array('nid'))
+    ->condition('nid', $sandbox['current_node'], '>')
+    ->condition('type', 'location')
+    ->orderBy('nid', 'ASC')
+    ->range(0, $limit)
+    ->execute();
+
+  foreach ($result as $row) {
+    $node = node_load($row->nid);
+    node_save($node);
+
+    if ($node->language == 'und') {
+      $language = language_default('language');
+
+      db_update('node')
+        ->fields(array('language' => $language))
+        ->condition('nid', $row->nid)
+        ->execute();
+    }
+    else {
+      $language = $node->language;
+    }
+
+    db_update('field_data_field_location_description')
+      ->fields(array('language' => $language))
+      ->condition('entity_id', $row->nid)
+      ->condition('entity_type', 'node')
+      ->execute();
+
+    db_update('field_revision_field_location_description')
+      ->fields(array('language' => $language))
+      ->condition('entity_id', $row->nid)
+      ->condition('entity_type', 'node')
+      ->execute();
+
+    db_update('entity_translation')
+      ->fields(array('language' => $language))
+      ->condition('entity_id', $row->nid)
+      ->condition('entity_type', 'node')
+      ->execute();
+
+    db_update('entity_translation_revision')
+      ->fields(array('language' => $language))
+      ->condition('entity_id', $row->nid)
+      ->condition('entity_type', 'node')
+      ->execute();
+
+    $sandbox['progress']++;
+    $sandbox['current_node'] = $row->nid;
+  }
+
+  $sandbox['#finished'] = empty($sandbox['max']) ? 1 : ($sandbox['progress'] / $sandbox['max']);
+
+  return t('Locations have been updated succesfully!');
+}

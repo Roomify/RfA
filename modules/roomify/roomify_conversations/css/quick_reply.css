@@ -1,0 +1,24 @@
+#modalContent div.ctools-modal-content {
+  min-width: 520px !important;
+}
+#modalContent div.ctools-modal-content .modal-header .modal-title {
+  display: none;
+}
+#modalContent div.ctools-modal-content #roomify-conversations-quick-reply-form h2 {
+  font-size: 16px;
+}
+#modalContent div.ctools-modal-content #roomify-conversations-quick-reply-form h4 {
+  font-size: 14px;
+  margin-bottom: 4px;
+}
+div.ctools-modal-content #roomify-conversations-quick-reply-form .form-item-reply .resizable-textarea {
+  margin-left: 0;
+  width: 100%;
+}
+#modalContent div.ctools-modal-content #roomify-conversations-quick-reply-form input[type=submit] {
+  margin-top: 0;
+}
+#modalContent div.ctools-modal-content #roomify-conversations-quick-reply-form input[id^=edit-submit] {
+  float: right;
+  margin-bottom: 8px;
+}

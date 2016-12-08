@@ -1,0 +1,597 @@
+<?php
+
+/**
+ * @file
+ */
+
+define('ROOMIFY_ACCOMMODATION_OPTIONS_ADD', 'add');
+define('ROOMIFY_ACCOMMODATION_OPTIONS_ADD_DAILY', 'add-daily');
+define('ROOMIFY_ACCOMMODATION_OPTIONS_SUB', 'sub');
+define('ROOMIFY_ACCOMMODATION_OPTIONS_SUB_DAILY', 'sub-daily');
+define('ROOMIFY_ACCOMMODATION_OPTIONS_REPLACE', 'replace');
+define('ROOMIFY_ACCOMMODATION_OPTIONS_INCREASE', 'increase');
+define('ROOMIFY_ACCOMMODATION_OPTIONS_DECREASE', 'decrease');
+define('ROOMIFY_ACCOMMODATION_OPTIONS_PRICE_SINGLE_OCCUPANCY', 'single_occupancy');
+define('ROOMIFY_ACCOMMODATION_OPTIONS_DYNAMIC_MODIFIER', 'dynamic_modifier');
+define('ROOMIFY_ACCOMMODATION_OPTIONS_OPTIONAL', 'optional');
+define('ROOMIFY_ACCOMMODATION_OPTIONS_MANDATORY', 'mandatory');
+define('ROOMIFY_ACCOMMODATION_OPTIONS_ONREQUEST', 'on_request');
+
+/**
+ * Implements hook_menu().
+ */
+function roomify_accommodation_options_menu() {
+  $items['roomify_accommodation_options/ajax'] = array(
+    'title' => 'Remove item callback',
+    'page callback' => 'roomify_accommodation_options_remove_js',
+    'delivery callback' => 'ajax_deliver',
+    'access callback' => TRUE,
+    'theme callback' => 'ajax_base_page_theme',
+    'type' => MENU_CALLBACK,
+    'file path' => 'includes',
+    'file' => 'form.inc',
+  );
+
+  return $items;
+}
+
+/**
+ * Implements hook_field_info().
+ */
+function roomify_accommodation_options_field_info() {
+  return array(
+    'roomify_accommodation_options' => array(
+      'label' => t('Type Options'),
+      'description' => t('Bat Type options.'),
+      'settings' => array(),
+      'default_widget' => 'roomify_accommodation_options_combined',
+      'default_formatter' => 'roomify_accommodation_options_default',
+      'property_type' => 'roomify_accommodation_options',
+      'property_callbacks' => array('roomify_accommodation_options_property_info_callback'),
+    ),
+  );
+}
+
+/**
+ * Property callback for the Entity Metadata framework.
+ */
+function roomify_accommodation_options_property_info_callback(&$info, $entity_type, $field, $instance, $field_type) {
+  // Apply the default.
+  entity_metadata_field_default_property_callback($info, $entity_type, $field, $instance, $field_type);
+
+  // Finally add in instance specific property info.
+  $name = $field['field_name'];
+  $property = &$info[$entity_type]['bundles'][$instance['bundle']]['properties'][$name];
+  $property['type'] = ($field['cardinality'] != 1) ? 'list<roomify_accommodation_options>' : 'roomify_accommodation_options';
+  $property['property info'] = roomify_accommodation_options_data_property_info('Type options');
+  $property['getter callback'] = 'entity_metadata_field_verbatim_get';
+  $property['setter callback'] = 'entity_metadata_field_verbatim_set';
+}
+
+/**
+ * Defines info for the properties of the roomify_accommodation_options data structure.
+ */
+function roomify_accommodation_options_data_property_info($name = NULL) {
+  // Build an array of basic property information
+  // for roomify_accommodation_options.
+  $properties = array(
+    'name' => array(
+      'label' => 'Name',
+      'type' => 'text',
+      'getter callback' => 'entity_property_verbatim_get',
+      'setter callback' => 'entity_property_verbatim_set',
+    ),
+    'quantity' => array(
+      'label' => 'Quantity',
+      'type' => 'integer',
+      'getter callback' => 'entity_property_verbatim_get',
+      'setter callback' => 'entity_property_verbatim_set',
+    ),
+    'operation' => array(
+      'label' => 'Operation',
+      'type' => 'text',
+      'getter callback' => 'entity_property_verbatim_get',
+      'setter callback' => 'entity_property_verbatim_set',
+    ),
+    'value' => array(
+      'label' => 'Value',
+      'type' => 'integer',
+      'getter callback' => 'entity_property_verbatim_get',
+      'setter callback' => 'entity_property_verbatim_set',
+    ),
+    'type' => array(
+      'label' => 'Type',
+      'type' => 'text',
+      'getter callback' => 'entity_property_verbatim_get',
+      'setter callback' => 'entity_property_verbatim_set',
+    ),
+  );
+
+  // Add the default values for each of
+  // the roomify_accommodation_options properties.
+  foreach ($properties as &$value) {
+    $value += array(
+      'description' => !empty($name) ? t('!label of field %name', array('!label' => $value['label'], '%name' => $name)) : '',
+    );
+  }
+
+  return $properties;
+}
+
+/**
+ * Implements hook_field_is_empty().
+ */
+function roomify_accommodation_options_field_is_empty($item, $field) {
+  return empty($item['name']) || empty($item['quantity']) || !(is_numeric($item['quantity']) && is_int((int) $item['quantity']))
+    || empty($item['value']) || !is_numeric($item['value'])
+    || empty($item['operation']) || !in_array($item['operation'], array_keys(roomify_accommodation_options_price_options()));
+}
+
+/**
+ * Implements hook_field_widget_info().
+ */
+function roomify_accommodation_options_field_widget_info() {
+  return array(
+    'roomify_accommodation_options_combined' => array(
+      'label' => t('Combined text field'),
+      'field types' => array('roomify_accommodation_options'),
+      'settings' => array(),
+    ),
+  );
+}
+
+/**
+ * Implements hook_field_formatter_info().
+ */
+function roomify_accommodation_options_field_formatter_info() {
+  return array(
+    'roomify_accommodation_options_default' => array(
+      'label' => t('roomify_accommodation_options Options Default'),
+      'field types' => array('roomify_accommodation_options'),
+    ),
+    'roomify_accommodation_options_price' => array(
+      'label' => t('roomify_accommodation_options Options Price'),
+      'field types' => array('roomify_accommodation_options'),
+    ),
+    'roomify_accommodation_options_admin' => array(
+      'label' => t('roomify_accommodation_options Options Administrator'),
+      'field types' => array('roomify_accommodation_options'),
+    ),
+  );
+}
+
+/**
+ * Implements hook_field_formatter_view().
+ */
+function roomify_accommodation_options_field_formatter_view($entity_type, $entity, $field, $instance, $langcode, $items, $display) {
+  $element = array();
+
+  switch ($display['type']) {
+    case 'roomify_accommodation_options_default':
+      foreach ($items as $delta => $item) {
+        $element[$delta] = array('#markup' => "{$item['quantity']} x {$item['name']}");
+      }
+      break;
+
+    case 'roomify_accommodation_options_price':
+      $currency_setting = commerce_currency_load(commerce_default_currency());
+      $currency_symbol = $currency_setting['symbol'];
+
+      foreach ($items as $delta => $item) {
+        $price = t('@currency_symbol@amount', array(
+          '@currency_symbol' => $currency_symbol,
+          '@amount' => number_format($item['value'], 2, '.', ''),
+        ));
+
+        if ($item['value'] > 0) {
+          $element[$delta] = array('#markup' => "{$item['quantity']} x {$item['name']} - {$price}");
+        }
+        else {
+          $element[$delta] = array('#markup' => "{$item['quantity']} x {$item['name']}");
+        }
+      }
+      break;
+
+    case 'roomify_accommodation_options_admin':
+      foreach ($items as $delta => $item) {
+        $element[$delta] = array('#markup' => "{$item['quantity']} x {$item['name']} - {$item['operation']} {$item['value']}");
+      }
+      break;
+  }
+
+  return $element;
+}
+
+/**
+ * Implements hook_field_widget_form().
+ */
+function roomify_accommodation_options_field_widget_form(&$form, &$form_state, $field, $instance, $langcode, $items, $delta, $element) {
+  if ($instance['widget']['type'] == 'roomify_accommodation_options_combined') {
+    $field_parents = $element['#field_parents'];
+    $field_name = $element['#field_name'];
+    $language = $element['#language'];
+
+    $parents = array_merge($field_parents, array($field_name, $language, $delta));
+
+    $element['name'] = array(
+      '#type' => 'textfield',
+      '#title' => t('Name'),
+      '#default_value' => isset($items[$delta]['name']) ? $items[$delta]['name'] : NULL,
+      '#attributes' => array(
+        'class' => array('roomify_accommodation_options-option--name'),
+      ),
+    );
+    $element['quantity'] = array(
+      '#type' => 'select',
+      '#title' => t('Quantity'),
+      '#options' => drupal_map_assoc(range(1, 10, 1)),
+      '#default_value' => isset($items[$delta]['quantity']) ? $items[$delta]['quantity'] : NULL,
+      '#description' => t('How many of this add-on should be available'),
+      '#attributes' => array(
+        'class' => array('roomify_accommodation_options-option--quantity'),
+      ),
+    );
+    $price_options = roomify_accommodation_options_price_options();
+    $element['operation'] = array(
+      '#type' => 'select',
+      '#title' => t('Operation'),
+      '#options' => $price_options,
+      '#default_value' => isset($items[$delta]['operation']) ? $items[$delta]['operation'] : NULL,
+      '#attributes' => array(
+        'class' => array('roomify_accommodation_options-option--operation'),
+      ),
+    );
+    $element['value'] = array(
+      '#type' => 'textfield',
+      '#title' => t('Value'),
+      '#size' => 10,
+      '#default_value' => isset($items[$delta]['value']) ? $items[$delta]['value'] : NULL,
+      '#element_validate' => array('element_validate_integer_positive'),
+      '#attributes' => array(
+        'class' => array('roomify_accommodation_options-option--value'),
+      ),
+    );
+    $type_options = array(
+      ROOMIFY_ACCOMMODATION_OPTIONS_OPTIONAL => t('Optional'),
+      ROOMIFY_ACCOMMODATION_OPTIONS_MANDATORY => t('Mandatory'),
+      ROOMIFY_ACCOMMODATION_OPTIONS_ONREQUEST => t('On Request'),
+    );
+    $element['type'] = array(
+      '#type' => 'select',
+      '#title' => t('Type'),
+      '#options' => $type_options,
+      '#default_value' => isset($items[$delta]['type']) ? $items[$delta]['type'] : 'optional',
+      '#attributes' => array(
+        'class' => array('roomify_accommodation_options-option--type'),
+      ),
+    );
+
+    $element['remove'] = array(
+      '#delta' => $delta,
+      '#name' => implode('_', $parents) . '_remove_button',
+      '#type' => 'submit',
+      '#value' => t('Remove'),
+      '#validate' => array(),
+      '#submit' => array('roomify_accommodation_options_remove_submit'),
+      '#limit_validation_errors' => array(),
+      '#ajax' => array(
+        'path' => 'roomify_accommodation_options/ajax',
+        'effect' => 'fade',
+      ),
+      '#attributes' => array(
+        'class' => array('roomify_accommodation_options-option--remove-button'),
+      ),
+    );
+
+    $element['#attached']['css'] = array(drupal_get_path('module', 'roomify_accommodation_options') . '/css/roomify_accommodation_options_widget.css');
+
+    return $element;
+  }
+}
+
+/**
+ * Page callback to handle AJAX for removing a rooms options item.
+ *
+ * This is a direct page callback. The actual job of deleting the item is
+ * done in the submit handler for the button, so all we really need to
+ * do is process the form and then generate output. We generate this
+ * output by doing a replace command on the id of the entire form element.
+ */
+function roomify_accommodation_options_remove_js() {
+  // drupal_html_id() very helpfully ensures that all html IDS are unique
+  // on a page. Unfortunately what it doesn't realize is that the IDs
+  // we are generating are going to replace IDs that already exist, so
+  // this actually works against us.
+  if (isset($_POST['ajax_html_ids'])) {
+    unset($_POST['ajax_html_ids']);
+  }
+
+  list($form, $form_state, $form_id, $form_build_id, $commands) = ajax_get_form();
+  drupal_process_form($form['#form_id'], $form, $form_state);
+
+  // Get the information on what we're removing.
+  $button = $form_state['triggering_element'];
+  // Go two levels up in the form, to the whole widget.
+  $element = drupal_array_get_nested_value($form, array_slice($button['#array_parents'], 0, -3));
+  // Now send back the proper AJAX command to replace it.
+  $commands[] = ajax_command_replace('#' . $element['#id'], drupal_render($element));
+  $return = array(
+    '#type' => 'ajax',
+    '#commands' => $commands,
+  );
+
+  // Because we're doing this ourselves, messages aren't automatic. We have
+  // to add them.
+  $messages = theme('status_messages');
+  if ($messages) {
+    $return['#commands'][] = ajax_command_prepend('#' . $element['#id'], $messages);
+  }
+
+  return $return;
+}
+
+/**
+ * Submit callback to remove an item from the field UI multiple wrapper.
+ *
+ * When a remove button is submitted, we need to find the item that it
+ * referenced and delete it. Since field UI has the deltas as a straight
+ * unbroken array key, we have to renumber everything down. Since we do this
+ * we *also* need to move all the deltas around in the $form_state['values'],
+ * $form_state['input'], and $form_state['field'] so that user changed values
+ * follow. This is a bit of a complicated process.
+ */
+function roomify_accommodation_options_remove_submit($form, &$form_state) {
+  $button = $form_state['triggering_element'];
+  $delta = $button['#delta'];
+
+  // Where in the form we'll find the parent element.
+  $address = array_slice($button['#array_parents'], 0, -2);
+
+  // Go one level up in the form, to the widgets container.
+  $parent_element = drupal_array_get_nested_value($form, $address);
+  $field_name = $parent_element['#field_name'];
+  $langcode = $parent_element['#language'];
+  $parents = $parent_element['#field_parents'];
+
+  $field_state = field_form_get_state($parents, $field_name, $langcode, $form_state);
+
+  // Go ahead and renumber everything from our delta to the last
+  // item down one. This will overwrite the item being removed.
+  for ($i = $delta; $i <= $field_state['items_count']; $i++) {
+    $old_element_address = array_merge($address, array($i + 1));
+    $new_element_address = array_merge($address, array($i));
+
+    $moving_element = drupal_array_get_nested_value($form, $old_element_address);
+    $moving_element_value = drupal_array_get_nested_value($form_state['values'], $old_element_address);
+    $moving_element_input = drupal_array_get_nested_value($form_state['input'], $old_element_address);
+    $moving_element_field = drupal_array_get_nested_value($form_state['field'], $old_element_address);
+
+    // Tell the element where it's being moved to.
+    $moving_element['#parents'] = $new_element_address;
+
+    // Move the element around.
+    form_set_value($moving_element, $moving_element_value, $form_state);
+    drupal_array_set_nested_value($form_state['input'], $moving_element['#parents'], $moving_element_input);
+    drupal_array_set_nested_value($form_state['field'], $moving_element['#parents'], $moving_element_field);
+  }
+
+  // Then remove the last item. But we must not go negative.
+  if ($field_state['items_count'] > 0) {
+    $field_state['items_count']--;
+  }
+
+  // Fix the weights. Field UI lets the weights be in a range of
+  // (-1 * item_count) to (item_count). This means that when we remove one,
+  // the range shrinks; weights outside of that range then get set to
+  // the first item in the select by the browser, floating them to the top.
+  // We use a brute force method because we lost weights on both ends
+  // and if the user has moved things around, we have to cascade because
+  // if I have items weight weights 3 and 4, and I change 4 to 3 but leave
+  // the 3, the order of the two 3s now is undefined and may not match what
+  // the user had selected.
+  $input = drupal_array_get_nested_value($form_state['input'], $address);
+  // Sort by weight.
+  uasort($input, '_field_sort_items_helper');
+
+  // Reweight everything in the correct order.
+  $weight = -1 * $field_state['items_count'];
+  foreach ($input as $key => $item) {
+    if ($item) {
+      $input[$key]['_weight'] = $weight++;
+    }
+  }
+
+  drupal_array_set_nested_value($form_state['input'], $address, $input);
+  field_form_set_state($parents, $field_name, $langcode, $form_state, $field_state);
+
+  $form_state['rebuild'] = TRUE;
+}
+
+/**
+ * Returns the available price options for booking_unit options field.
+ */
+function roomify_accommodation_options_price_options() {
+  return array(
+    ROOMIFY_ACCOMMODATION_OPTIONS_ADD => t('Add to price'),
+    ROOMIFY_ACCOMMODATION_OPTIONS_ADD_DAILY => t('Add to price per night'),
+    ROOMIFY_ACCOMMODATION_OPTIONS_SUB => t('Subtract from price'),
+    ROOMIFY_ACCOMMODATION_OPTIONS_SUB_DAILY => t('Subtract from price per night'),
+    ROOMIFY_ACCOMMODATION_OPTIONS_REPLACE => t('Replace price'),
+    ROOMIFY_ACCOMMODATION_OPTIONS_INCREASE => t('Increase price by % amount'),
+    ROOMIFY_ACCOMMODATION_OPTIONS_DECREASE => t('Decrease price by % amount'),
+  );
+}
+
+/**
+ * Implements hook_commerce_line_item_type_info().
+ */
+function roomify_accommodation_options_commerce_line_item_type_info() {
+  return array(
+    'roomify_accommodation_option' => array(
+      'name' => t('Roomify Accommodation Option'),
+      'description' => t('Represents a booking option.'),
+      'product' => FALSE,
+      'add_form_submit_value' => t('Add option'),
+      'base' => 'roomify_accommodation_option_line_item',
+    ),
+  );
+}
+
+/**
+ * @param array $line_item_type
+ *   The line item type object.
+ */
+function roomify_accommodation_option_line_item_configuration($line_item_type) {
+  module_load_include('inc', 'roomify_accommodation_booking', 'roomify_accommodation_booking.fields');
+
+  roomify_accommodation_booking_line_item_add_booking_reference('roomify_accommodation_option');
+}
+
+/**
+ * Implements hook_line_item_title().
+ */
+function roomify_accommodation_options_line_item_title($line_item) {
+  // Use the line item's label for the title.
+  return ($line_item->line_item_label);
+}
+
+/**
+ * Returns available options given a Bat type.
+ *
+ * @param BatType $type
+ *   The type from which to retrieve options.
+ *
+ * @return array
+ *   The available options for the given type.
+ */
+function roomify_accommodation_options_get_type_options(BatType $type) {
+  $options = &drupal_static(__FUNCTION__);
+
+  if (isset($options['types'][$type->type_id])) {
+    return $options['types'][$type->type_id];
+  }
+
+  $type_options = is_array(field_get_items('bat_type', $type, 'field_addons')) ? field_get_items('bat_type', $type, 'field_addons') : array();
+  $options['types'][$type->type_id] = $type_options;
+
+  return $options['types'][$type->type_id];
+}
+
+/**
+ * Converts option human name to its machine name.
+ *
+ * @param string $option_name
+ *   The human option name.
+ * @param string $pattern
+ *   The pattern used to convert. By default "/[^a-z0-9_]+/".
+ * @param string $replacement
+ *   The replacement string. By default "_".
+ *
+ * @return string
+ *   The option machine name.
+ */
+function roomify_accommodation_options_get_machine_name($option_name, $pattern = '/[^a-z0-9_]+/', $replacement = '_') {
+  return preg_replace($pattern, $replacement, drupal_strtolower($option_name));
+}
+
+/**
+ * Given an option, return a string that explains the operation.
+ */
+function roomify_accommodation_options_get_operation_label($option) {
+  $label = '';
+
+  $currency_setting = commerce_currency_load(commerce_default_currency());
+  $currency_symbol = $currency_setting['symbol'];
+
+  switch ($option['operation']) {
+    case 'add':
+      $label = t('+@amount@currency_symbol to price', array(
+        '@amount' => $option['value'],
+        '@currency_symbol' => $currency_symbol,
+      ));
+      break;
+
+    case 'add-daily':
+      $label = t('+@amount@currency_symbol per night to price', array(
+        '@amount' => $option['value'],
+        '@currency_symbol' => $currency_symbol,
+      ));
+      break;
+
+    case 'sub-daily':
+      $label = t('-@amount@currency_symbol per night from price', array(
+        '@amount' => $option['value'],
+        '@currency_symbol' => $currency_symbol,
+      ));
+      break;
+
+    case 'replace':
+      $label = t('Replace price with @amount@currency_symbol', array(
+        '@amount' => $option['value'],
+        '@currency_symbol' => $currency_symbol,
+      ));
+      break;
+
+    case 'increase':
+      $label = t('Increase price by @amount%', array(
+        '@amount' => $option['value'],
+      ));
+      break;
+
+    case 'decrease':
+      $label = t('Decrease price by @amount%', array(
+        '@amount' => $option['value'],
+      ));
+      break;
+
+    case 'sub':
+      $label = t('-@amount@currency_symbol from price', array(
+        '@amount' => $option['value'],
+        '@currency_symbol' => $currency_symbol,
+      ));
+      break;
+  }
+
+  return $label;
+}
+
+/**
+ * Calculate the price for an option.
+ */
+function roomify_accommodation_options_get_option_price($booking_price, $option, $quantity, $nights) {
+  $price = 0;
+
+  switch ($option['operation']) {
+    case ROOMIFY_ACCOMMODATION_OPTIONS_ADD:
+      $price += $option['value'];
+      break;
+
+    case ROOMIFY_ACCOMMODATION_OPTIONS_ADD_DAILY:
+      $price += $option['value'] * $nights;
+      break;
+
+    case ROOMIFY_ACCOMMODATION_OPTIONS_SUB:
+      $price -= $option['value'];
+      break;
+
+    case ROOMIFY_ACCOMMODATION_OPTIONS_SUB_DAILY:
+      $price -= $option['value'] * $nights;
+      break;
+
+    // NB: This will only be correctly calculated for a single add-on
+    // with the replace price operation per order.
+    case ROOMIFY_ACCOMMODATION_OPTIONS_REPLACE:
+      $price = $option['value'] - $booking_price;
+      break;
+
+    case ROOMIFY_ACCOMMODATION_OPTIONS_INCREASE:
+      $price += $booking_price * $option['value'] / 100;
+      break;
+
+    case ROOMIFY_ACCOMMODATION_OPTIONS_DECREASE:
+      $price -= $booking_price * $option['value'] / 100;
+      break;
+  }
+
+  return $price * 100;
+}

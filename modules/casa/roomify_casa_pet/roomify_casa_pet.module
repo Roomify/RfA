@@ -1,0 +1,98 @@
+<?php
+
+/**
+ * @file
+ * Provides functionality and configuration for the Roomify Casa PET module.
+ */
+
+/**
+ * Implements hook_views_api().
+ */
+function roomify_casa_pet_views_api() {
+  return array(
+    'api' => 3,
+    'path' => drupal_get_path('module', 'roomify_casa_pet') . '/views',
+  );
+}
+
+/**
+ * Implements hook_form_FORM_ID_alter().
+ *
+ * To modify the body field description in PET template edit forms,
+ * and hide the token selection options.
+ *
+ * FORM_ID = pet_form
+ */
+function roomify_casa_pet_form_pet_form_alter(&$form, &$form_state) {
+  // Hide the Token fieldset.
+  unset($form['tokens']);
+
+  $pet_name = $form['name']['#default_value'];
+  $body_default = t('The body of the email template. May include any of the following tokens: <em>Site Name</em> : [site:name]  <em>Site Url</em> : [site:abs-url] <em>Login Url</em> : [site:login-url]');
+
+  // Set a default value for all template mimemail fields,
+  // and the body field for any template without a custom description.
+  $form['mail_body']['#description'] = $body_default;
+  $form['mimemail']['mail_body_plain']['#description'] = t('The plain text body of the email template. May include any of the tokens specified in the body description above. If left empty Mime Mail will use <a href="http://api.drupal.org/api/drupal/includes%21mail.inc/function/drupal_html_to_text/7">drupal_html_to_text()</a> to create a plain text version of the email.');
+
+  // Custom descriptions for each roomify created template,
+  // with the tokens that will work in that template.
+  switch ($pet_name) {
+    case 'booking_cancelled':
+      $form['mail_body']['#description'] = $body_default . t('</br></br>Tokens specific to this template: <em>Property Name</em> :  [roomify_property:name] <em>Room Name</em> : [bat_type:name] <em>Booking Start Date</em> : [bat_booking:booking-start-date:custom:m/d/Y] <em>Booking End Date</em> : [bat_booking:booking-end-date:custom:m/d/Y]');
+      break;
+
+    case 'booking_com_booking_updated':
+      $form['mail_body']['#description'] = $body_default . t('</br></br>Tokens specific to this template: <em>Property Name</em> :  [roomify_property:name] <em>Room Name</em> : [bat_type:name] <em>Booking Start Date</em> : [bat_booking:booking-start-date:bat_daily] <em>Booking End Date</em> : [bat_booking:booking-end-date:bat_daily] <em>Total Price</em> : [bat_booking:field-bcom-total-price] <em>Currency</em> : [bat_booking:field-bcom-currency-code] <em> Commission Amount</em> : [bat_booking:field-bcom-commission-amount] <em>Customer First Name</em> : [bat_booking:field-bcom-first-name] <em>Customer Last Name</em> : [bat_booking:field-bcom-last-name] <em>Customer Email</em> : [bat_booking:field-bcom-email] <em>Customer Address</em> : [bat_booking:field-bcom-address] <em>Customer Telephone</em> : [bat_booking:field-bcom-telephone]');
+      break;
+
+    case 'new_booking_enquiry':
+      $form['mail_body']['#description'] = $body_default . t('</br></br>Tokens specific to this template: <em>Link to Enquiry</em> : [entityform:url] <em>Room Name</em> : [bat_type:name] <em>Name of Property Owner</em> : [bat_type:name:field-owner:name] <em>Name of Guest</em> : [entityform:field-listing-enquiry-name]/[entityform:field-last-name] <em>Arrival/Departure Dates</em> : [entityform:field-listing-enquiry-arr-date]/[[entityform:field-listing-enquiry-dep-date] <em>Guest Email</em> : [entityform:field-listing-enquiry-email] <em>No. of Guests</em> : [entityform:field-listing-enquiry-guests] <em>Additional Information Provided</em> : [entityform:field-listing-enquiry-info]');
+      break;
+
+    case 'new_conversation_message':
+      $form['mail_body']['#description'] = $body_default . t('</br></br>Tokens specific to this template: <em>Name of message author</em> :  [message:user:name] <em>Content of Message</em> : [conversation:message] <em>Link to Conversation</em> : [conversation:url]');
+      break;
+
+    case 'new_booking_offer':
+      $form['mail_body']['#description'] = $body_default . t('</br></br>Tokens specific to this template: <em>Property Name</em> :  [conversation:field-conversation-unit:name] <em>Name of Property Owner</em> : [conversation:field-conversation-user-owner:name] <em>Link to Conversation</em> : [conversation:url]');
+      break;
+
+    case 'new_order':
+      $form['mail_body']['#description'] = $body_default . t('</br></br>Tokens specific to this template: <em>Property Name</em> :  [roomify_property:name] <em>Room Name</em> : [bat_type:name] <em>Booking Start Date</em> : [bat_booking:booking-start-date:bat_daily] <em>Booking End Date</em> : [bat_booking:booking-end-date:bat_daily] <em>Total Price</em> : [bat_booking:booking_price] <em>Customer Name</em> : [bat_booking:booking-full-name] <em>Customer Email</em> : [commerce-line-item:order:mail] <em>Customer Address</em> : [commerce-order:commerce-customer-billing:commerce_customer_address] <em>Customer Telephone</em> : [bat_booking:booking-telephone] <em>View Order Url</em> : [commerce-line-item:order:view-url]');
+      break;
+
+    case 'order_confirmation':
+      $form['mail_body']['#description'] = $body_default . t('</br></br>Tokens specific to this template: <em>Booking reference number</em> : [commerce-order:order-number], <em>Link to view order receipt</em> : [commerce-order:customer-url], <em>Login name of customer</em> : [commerce-order:owner:name], <em>Property Name</em> : [roomify_property:name], <em>Room Name</em> : [bat_type:name], <em>Property/Room Details</em> : [roomify_property:property-details] <br>');
+      break;
+
+    case 'new_user_account_message':
+    case 'password_reset':
+      $form['mail_body']['#description'] = $body_default . t("</br></br>Tokens specific to this template: <em>New user's name</em> : [user:name] <em>Login link</em> : [user:one-time-login-url] </br>");
+      break;
+
+    case 'withdraw_offer':
+      $form['mail_body']['#description'] = $body_default . t('</br></br>Tokens specific to this template: <em>Property Name</em> : [roomify_property:name] <em>Conversation Url</em> : [conversation:url] </br>');
+  }
+}
+
+/**
+ * Implements hook_menu_alter().
+ */
+function roomify_casa_pet_menu_alter(&$items) {
+  $items['admin/structure/pets']['access callback'] = '_accesscheck';
+}
+
+/**
+ * Deny access to PET management for everyone except user 1.
+ */
+function _accesscheck() {
+  global $user;
+
+  if ($user->uid !== '1') {
+    return FALSE;
+  }
+  else {
+    return TRUE;
+  }
+}

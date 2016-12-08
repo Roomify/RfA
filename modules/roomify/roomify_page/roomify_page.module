@@ -1,0 +1,8 @@
+<?php
+
+/**
+ * @file
+ * Code for the Roomify Page feature.
+ */
+
+include_once 'roomify_page.features.inc';

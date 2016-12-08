@@ -1,0 +1,63 @@
+<?php
+
+/**
+ * @file
+ * Code for the Roomify Internationalization feature.
+ */
+
+/**
+ * Implements hook_module_implements_alter().
+ */
+function roomify_i18n_module_implements_alter(&$implementations, $hook) {
+  if ($hook == 'form_alter' && isset($implementations['roomify_i18n'])) {
+    $group = $implementations['roomify_i18n'];
+    unset($implementations['roomify_i18n']);
+    $implementations['roomify_i18n'] = $group;
+  }
+}
+
+/**
+ * Implements hook_form_alter().
+ */
+function roomify_i18n_form_alter(&$form, &$form_state, $form_id) {
+  if (isset($form['translation']) && $form['translation']['#type'] == 'fieldset') {
+    $form['translation']['#group'] = 'additional_settings';
+  }
+
+}
+
+/**
+ * Roomify Properties and Types translation settings.
+ */
+function roomify_i18n_entities_translation_settings() {
+  $settings['default_language'] = 'xx-et-default';
+  $settings['hide_language_selector'] = 1;
+  $settings['exclude_language_none '] = 0;
+  $settings['lock_language'] = 0;
+  $settings['shared_fields_original_only'] = 0;
+
+  variable_set('entity_translation_settings_roomify_property__casa_property', $settings);
+  variable_set('entity_translation_settings_roomify_property__locanda_property', $settings);
+  variable_set('entity_translation_settings_bat_type__home', $settings);
+  variable_set('entity_translation_settings_bat_type__room', $settings);
+}
+
+/**
+ * Implements hook_roomify_rights().
+ */
+function roomify_i18n_roomify_rights() {
+
+  $rights['roomify_i18n'] = array(
+    'roomify manager' => array(
+      'translate node entities',
+      'translate bat_type entities',
+      'translate roomify_property entities',
+    ),
+    'property owner' => array(
+      'translate bat_type entities',
+      'translate roomify_property entities',
+    ),
+  );
+
+  return $rights;
+}

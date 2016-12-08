@@ -1,0 +1,12 @@
+<?php
+
+/**
+ * @file
+ */
+
+/**
+ * Implements hook_enable().
+ */
+function roomify_accommodations_group_dashboard_enable() {
+  variable_set('group_pm_group_view_disabled', FALSE);
+}

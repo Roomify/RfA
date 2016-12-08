@@ -1,0 +1,14 @@
+.field-widget-roomify-accommodation-options-combined .field-multiple-table .form-item {
+  float: left;
+  margin-right: 20px;
+}
+
+.field-widget-roomify-accommodation-options-combined .rooms-option--remove-button {
+  clear: both;
+  float: right;
+}
+
+.field-widget-roomify-accommodation-options-combined .ajax-progress {
+  float: right;
+  margin: 5px 10px 0 0;
+}

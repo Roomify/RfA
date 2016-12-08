@@ -1,0 +1,7 @@
+name = Roomify Accommodation Example Bookings
+description = Provides example Bookings.
+core = 7.x
+package = Roomify
+version = 7.x-1.0
+
+dependencies[] = roomify_accommodation_example_content

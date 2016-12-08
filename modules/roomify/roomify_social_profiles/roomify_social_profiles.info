@@ -1,0 +1,9 @@
+name = Roomify Social Profiles
+description = Roomify Social Profiles
+core = 7.x
+package = Roomify
+
+dependencies[] = libraries
+dependencies[] = jquery_update
+
+stylesheets[all][] = css/roomify_social_profiles.css

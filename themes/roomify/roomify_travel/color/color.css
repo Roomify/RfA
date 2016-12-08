@@ -1,0 +1,61 @@
+/* HEADER */
+body header.roomify-header { background-color: #ffffff; }
+body.node-type-homepage header.roomify-header {background:  transparent;}
+/* WIDE LOCANDA HOMEPAGE */
+@media screen and (max-width: 767px) {
+  body.page-locanda-listing header {
+    background-color: #ffffff;
+  }
+}
+
+body.page-locanda-listing header {
+	background-color: #ffffff;
+}
+
+/* FOOTER */
+body footer.roomify-footer { background-color: #15262f; }
+
+
+/* SITE NAME - LINKS HEADER/FOOTER */
+body header.roomify-header .navbar-collapse nav ul.navbar-nav > li > a,
+body header.roomify-header a.name,
+body footer.roomify-footer a { color: #484848; }
+
+/* USER ICON */
+.roomify-sidebar-menu-toggle svg { fill: #484848; }
+/* HAMBURGER MENU */
+body header.roomify-header .navbar-toggle .icon-bar {
+  background: #484848;
+}
+/* SVG FOOTER */
+.roomify-footer .rsp-social-icon svg {
+  fill: #484848;
+}
+
+body header.roomify-header .navbar-collapse nav ul.navbar-nav li .submenu-button:after,
+body header.roomify-header .navbar-collapse nav ul.navbar-nav li .submenu-button:before {
+  background-color: #484848;
+}
+
+
+/* ON HOVER LINKS HEADER/FOOTER */
+body header.roomify-header .navbar-collapse nav ul.navbar-nav > li > a:hover,
+body header.roomify-header a.name:hover,
+body footer.roomify-footer a:hover { color: #000000; }
+
+body footer.roomify-footer .rsp-social-icon { background: #ffffff; }
+
+/* USER ICON */
+.roomify-sidebar-menu-toggle svg:hover { fill: #000000; }
+/* HAMBURGER MENU */
+body header.roomify-header .navbar-toggle:hover .icon-bar {
+  background: #000000;
+}
+
+body header.roomify-header .navbar-collapse  nav ul.navbar-nav li .dropdown-menu li a:hover {
+	color: #ffffff;
+	background: #15262f;
+}
+
+/* TEXT HEADER/FOOTER */
+body footer.roomify-footer { color: #f8f8f8; }

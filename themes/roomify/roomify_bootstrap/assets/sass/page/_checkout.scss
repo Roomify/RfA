@@ -1,0 +1,249 @@
+.page-checkout {
+  .view-commerce-cart-summary {
+    .roomify-accommodation-option {
+      .views-field-line-item-title {
+        padding-left: 20px;
+      }
+    }
+  }
+  .link-to-cart {
+    a {
+      margin-right: 10px;
+      padding: 10px 20px;
+      border: 0;
+      margin-bottom: 30px;
+    }
+  }
+  .view-my-cart {
+    table {
+      font-size: 14px;
+      border: 0;
+      thead {
+        tr {
+          border-bottom: 1px solid #F5F5F5;
+          th {
+            font-weight: 600;
+            padding-bottom: 5px;
+            text-transform: uppercase;
+            border: 0;
+          }
+        }
+      }
+      tbody {
+        tr {
+          border-bottom: 1px solid #F5F5F5;
+          td {
+            font-weight: 300;
+            vertical-align: middle;
+            padding: 10px 0;
+            border: 0;
+            background-color: white;
+            border-bottom: 1px solid #F5F5F5;
+            @media (max-width: $screen-md) {
+              padding-bottom: 10px;
+            }
+            &.views-field-edit-quantity {
+              input {
+                width: 55px;
+                text-align: center;
+              }
+            }
+          }
+        }
+      }
+      .footable-row-detail-value {
+        padding-bottom: 5px;
+      }
+      .form-group {
+        margin-bottom: 0;
+      }
+    }
+    .line-item-summary {
+      margin: 15px 0;
+      font-size: 18px;
+    }
+  }
+  .view-add-ons {
+    .row {
+      .col {
+        margin-bottom: 30px;
+        .views-field-title {
+          margin-bottom: 10px;
+          font-size: 18px;
+        }
+        .views-field-field-add-on-image {
+          margin-bottom: 15px;
+          img {
+            border-radius: 5px;
+          }
+        }
+        .views-field-commerce-price {
+          position: relative;
+          text-align: left;
+          width: 100%;
+          .field-content {
+            position: absolute;
+            bottom: 30px;
+            left: 5px;
+            padding: 5px 20px;
+            background: #5CA5B8;
+            color: white;
+            font-size: 16px;
+            border: 2px solid white;
+            border-radius: 5px;
+          }
+        }
+      }
+    }
+  }
+  fieldset.panel-default {
+    margin-bottom: 35px;
+    legend.panel-heading {
+      padding: 20px 30px;
+      margin: 0;
+      font-size: 16px;
+      background: #4A4A4A;
+      color: #F6F6F6;
+      text-transform: uppercase;
+    }
+    &.checkout-buttons {
+      border: 0;
+      box-shadow: none;
+      border-top: 2px solid rgba(181, 181, 181, 0.18);
+      margin-top: 30px;
+      padding-top: 35px;
+      .checkout-continue {
+        @extend .btn-success;
+        margin-right: 10px;
+        padding: 10px 20px;
+      }
+      .button-operator {
+        margin-right: 10px;
+      }
+      .checkout-back,
+      .checkout-cancel {
+        @extend .btn-danger;
+        margin-right: 10px;
+        padding: 10px 20px;
+        &:hover {
+          text-decoration: none;
+        }
+      }
+    }
+  }
+  fieldset.customer_profile_billing {
+    .form-group {
+      margin-bottom: 25px;
+    }
+  }
+  #commerce-checkout-form-review {
+    .checkout-help {
+      margin-bottom: 15px;
+    }
+  }
+  #edit-commerce-payment-payment-method {
+    .form-item-commerce-payment-payment-method {
+      margin-bottom: 30px;
+      .commerce-paypal-icon {
+        display: inline-block;
+        top: 0px;
+        margin-right: 15px;
+      }
+      .commerce-paypal-icons {
+        margin-top: 10px;
+        img {
+          display: inline-block;
+          float: left;
+          margin-right: 5px;
+          &.commerce-paypal-icon {
+            position: initial;
+          }
+        }
+      }
+    }
+  }
+  .commerce-credit-card-expiration {
+    .commerce-month-year-divider {
+      margin: 0 10px;
+    }
+    .form-item-commerce-payment-payment-details-credit-card-exp-month {
+      label {
+        width: 100%;
+        display: inline-block;
+      }
+      .form-select {
+        width: 20%;
+        display: inline-block;
+        float: left;
+        @media (max-width: $screen-xs){
+          width: 40%;
+        }
+      }
+    }
+    .form-item-commerce-payment-payment-details-credit-card-exp-year {
+      .form-select {
+        width: 20% !important;
+        display: inline-block;
+        @media (max-width: $screen-xs){
+          width: 40% !important;
+        }
+      }
+    }
+  }
+}
+
+ol.inline.commerce-checkout-progress {
+  width: 100%;
+  display: inline-block;
+  margin-top: 15px;
+  margin-bottom: 35px;
+  color: white;
+  text-transform: uppercase;
+  padding: 20px;
+  font-size: 16px;
+  background: #4A4A4A;
+  color: #F6F6F6;
+  li {
+    width: 20%;
+    text-align: center;
+    font-size: 14px;
+    &.active {
+      text-decoration: underline;
+      color: #5BC0DE;
+      &:before {
+        color: white;
+        content: "► ";
+        display: inline-block;
+        top: 2px;
+        right: 8px;
+        position: relative;
+        color: #5BC0DE;
+      }
+    }
+  }
+  @media (max-width: $screen-xs) {
+    background: transparent;
+    li {
+      background: black;
+      width: 100%;
+      padding: 10px 0;
+      margin-bottom: 5px;
+    } 
+  }
+}
+
+
+.page-cart {
+  .view-commerce-cart-form {
+    .views-field-commerce-unit-price,
+    .views-field-edit-delete,
+    .views-field-commerce-total {
+      text-align: center;
+    }
+    .line-item-summary {
+      margin: 20px 0;
+      font-size: 16px;
+      font-weight: 600;
+    }
+  }
+}

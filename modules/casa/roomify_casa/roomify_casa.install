@@ -1,0 +1,116 @@
+<?php
+
+/**
+ * @file
+ * Install, update and uninstall functions for the Roomify Casa module.
+ */
+
+/**
+ * Implements hook_install().
+ */
+function roomify_casa_install() {
+  // Create Casa property type.
+  roomify_casa_create_casa_property_type();
+
+  // Create Home type.
+  roomify_casa_create_home_type();
+
+  // Add availability and pricing events field to the Home bundle.
+  $home_bundle = bat_type_bundle_load('home');
+  $home_bundle->default_event_value_field_ids['availability'] = 'field_st_default_availability';
+  $home_bundle->default_event_value_field_ids['pricing'] = 'field_st_default_price';
+
+  bat_type_bundle_save($home_bundle);
+}
+
+/**
+ * Implements hook_uninstall().
+ */
+function roomify_casa_uninstall() {
+  roomify_casa_delete_home_type();
+
+  roomify_casa_delete_casa_property_type();
+}
+
+/**
+ * Create an example location node.
+ */
+function roomify_casa_create_location_example_node() {
+  $location = new stdClass();
+  $location->type = 'location';
+  $location->title = 'My Property';
+  $location->language = LANGUAGE_NONE;
+  $location->field_accommodation[LANGUAGE_NONE][0]['value'] = '1';
+  $location->field_address[LANGUAGE_NONE][0]['country'] = 'IT';
+  $location->field_address[LANGUAGE_NONE][0]['administrative_area'] = 'PA';
+  $location->field_address[LANGUAGE_NONE][0]['locality'] = 'Cefalù';
+  $location->field_address[LANGUAGE_NONE][0]['postal_code'] = '90015';
+  $location->field_address[LANGUAGE_NONE][0]['thoroughfare'] = 'Lungomare Giuseppe Giardina 21';
+  $location->field_map_coordinates[LANGUAGE_NONE][0]['lat'] = '38.03656625437375';
+  $location->field_map_coordinates[LANGUAGE_NONE][0]['lon'] = '14.018212568717217';
+
+  node_save($location);
+}
+
+/**
+ * Create the Casa property type.
+ */
+function roomify_casa_create_casa_property_type() {
+  module_load_include('inc', 'roomify_listing', 'roomify_listing.fields');
+
+  $property_type = new RoomifyPropertyType(array(
+    'label' => 'Casa',
+    'type' => 'casa_property',
+  ));
+
+  roomify_property_type_save($property_type);
+
+  roomify_listing_create_property_fields('casa_property');
+
+  roomify_listing_add_casa_field_tax_description_dependency();
+  roomify_listing_add_casa_field_tax_rate_dependency();
+}
+
+/**
+ * Create the Home type.
+ */
+function roomify_casa_create_home_type() {
+  module_load_include('inc', 'roomify_listing', 'roomify_listing.fields');
+
+  $bat_type_bundle = new BatTypeBundle(array(
+    'label' => 'Home',
+    'type' => 'home',
+  ));
+
+  bat_type_bundle_save($bat_type_bundle);
+
+  roomify_listing_create_standard_type_fields('home');
+}
+
+/**
+ * Delete the Home type.
+ */
+function roomify_casa_delete_home_type() {
+  if ($type = bat_type_bundle_load('home')) {
+    $type->delete();
+  }
+}
+
+/**
+ * Delete the Casa property type.
+ */
+function roomify_casa_delete_casa_property_type() {
+  if ($property_type = roomify_property_type_load('casa_property')) {
+    $property_type->delete();
+  }
+}
+
+/**
+ * Update default price field widget.
+ */
+function roomify_casa_update_7001() {
+  // Fetch an instance info array.
+  $instance_info = field_info_instance('bat_type', 'field_st_default_price', 'home');
+  $instance_info['widget']['type'] = 'commerce_price_full';
+  field_update_instance($instance_info);
+}

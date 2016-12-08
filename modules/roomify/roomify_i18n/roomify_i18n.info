@@ -1,0 +1,13 @@
+name = Roomify Internationalization
+description = Internationalization for the Roomify Distro
+core = 7.x
+package = Roomify
+version = 7.x-1.0
+
+dependencies[] = entity_translation
+dependencies[] = i18n_string
+dependencies[] = i18n_taxonomy
+dependencies[] = i18n_translation
+dependencies[] = i18n_variable
+dependencies[] = i18nviews
+dependencies[] = title

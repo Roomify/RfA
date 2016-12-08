@@ -1,0 +1,7 @@
+name = Roomify Accommodation Group Dashboard
+description = Roomify Accommodation Group Dashboard.
+core = 7.x
+
+package = Roomify
+
+dependencies[] = roomify_accommodations_group

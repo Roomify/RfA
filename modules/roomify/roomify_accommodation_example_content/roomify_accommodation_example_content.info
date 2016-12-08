@@ -1,0 +1,10 @@
+name = Roomify Accommodation Example Content
+description = Provides example properties and users for the Roomify Distro.
+core = 7.x
+package = Roomify
+version = 7.x-1.0
+
+dependencies[] = roomify_listing
+dependencies[] = roomify_casa
+dependencies[] = roomify_locanda
+dependencies[] = roomify_system

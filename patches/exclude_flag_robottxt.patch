@@ -1,0 +1,9 @@
+diff --git a/robots.txt b/robots.txt
+index ff9e286..fc8153a 100644
+--- a/robots.txt
++++ b/robots.txt
+@@ -55,3 +55,4 @@ Disallow: /?q=user/password/
+ Disallow: /?q=user/register/
+ Disallow: /?q=user/login/
+ Disallow: /?q=user/logout/
++Disallow: /flag/

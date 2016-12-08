@@ -1,0 +1,14 @@
+name = Roomify System
+description = Core tweaks for Roomify
+core = 7.x
+package = Roomify
+
+dependencies[] = commerce_checkout
+dependencies[] = ctools
+dependencies[] = file_entity
+dependencies[] = panels
+dependencies[] = panels_mini
+dependencies[] = logintoboggan
+dependencies[] = variable_realm
+
+files[] = views/roomify_system_handler_edit_link_field.inc

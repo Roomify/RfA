@@ -1,0 +1,256 @@
+<?php
+
+/**
+ * @file
+ * Code for the Roomify Dashboard feature.
+ */
+
+include_once 'roomify_dashboard.features.inc';
+
+/**
+ * Implements hook_ctools_plugin_directory().
+ */
+function roomify_dashboard_ctools_plugin_directory($owner, $plugin_type) {
+  if ($owner == 'ctools' && !empty($plugin_type)) {
+    return "plugins/{$plugin_type}";
+  }
+}
+
+/**
+ * Implements hook_admin_paths().
+ */
+function roomify_dashboard_admin_paths() {
+  $paths = array(
+    'user' => TRUE,
+    'user/*' => TRUE,
+    'user/*/stays' => TRUE,
+    'user/*/conversations' => TRUE,
+  );
+
+  return $paths;
+}
+
+/**
+ * Implements hook_roomify_rights().
+ */
+function roomify_dashboard_roomify_rights() {
+  $rights['roomify_dashboard'] = array(
+    'authenticated user' => array(
+      'view the administration theme',
+    ),
+  );
+
+  return $rights;
+}
+
+/**
+ * Implements hook_views_pre_render().
+ *
+ * Add ctools modal JS when displaying properties view.
+ */
+function roomify_dashboard_views_pre_render(&$view) {
+  // Add necessary css/js for modals.
+  $modal_views = array(
+    'properties',
+    'property_types',
+    'user_conversations',
+  );
+  if (in_array($view->name, $modal_views)) {
+    roomify_dashboard_setup_modal();
+  }
+
+  // Hide the Type name in Conversations views if this is a Casa Property.
+  if ($view->name == 'user_conversations') {
+    $results = &$view->result;
+    foreach ($results as $key => $result) {
+      $type = $result->bat_types_field_data_conversation_unit_type_ref_type;
+      if ($type == 'home') {
+        unset($result->bat_types_field_data_conversation_unit_type_ref_name);
+      }
+    }
+  }
+
+  // Hide the Type name in Bookings views if this is a Casa Property.
+  if ($view->name == 'dashboard_bookings') {
+    $results = &$view->result;
+    foreach ($results as $key => $result) {
+      $type = $result->bat_types_bat_units_type;
+      if ($type == 'home') {
+        unset($result->bat_types_bat_units_name);
+      }
+    }
+  }
+
+  if ($view->name == 'properties') {
+    $view->header['area']->options['content'] = l(t('add property'), 'admin/bat/config/property/wizard/nojs', array('attributes' => array('class' => 'button add-property-button ctools-use-modal ctools-modal-roomify-dashboard-modal-style')));
+  }
+}
+
+/**
+ * Helper function - setup for dashboard modals.
+ */
+function roomify_dashboard_setup_modal() {
+  ctools_include('modal');
+  ctools_modal_add_js();
+
+  drupal_add_js(drupal_get_path('module', 'roomify_dashboard') . '/js/roomify_dashboard_modal.js');
+  drupal_add_css(drupal_get_path('module', 'roomify_dashboard') . '/css/roomify_dashboard_modal.css');
+  drupal_add_js(array('roomify-dashboard-modal-style' => roomify_dashboard_modal_style()), 'setting');
+}
+
+/**
+ * Return array with dashboard modal style.
+ */
+function roomify_dashboard_modal_style() {
+  return array(
+    'modalSize' => array(
+      'type' => 'fixed',
+      'width' => 0,
+      'height' => 0,
+    ),
+    'closeImage' => theme('image', array(
+      'path' => drupal_get_path('module', 'roomify_dashboard') . ('/images/close.png'),
+      'height' => '25px',
+      'title' => t('Close window'),
+      'alt' => t('Close window'),
+    )),
+    'closeText' => '',
+  );
+}
+
+/**
+ * Implements hook_views_default_views_alter().
+ */
+function roomify_dashboard_views_default_views_alter(&$views) {
+  // Show all line items (including add-ons without associated products) in the
+  // commerce view order view.
+  if (isset($views['commerce_line_item_table'])) {
+    unset($views['commerce_line_item_table']->display['default']->display_options['filters']['product_line_item_type']);
+  }
+}
+
+/**
+ * Implements hook_form_FORM_ID_alter().
+ * FORM_ID = entityform_delete_form.
+ */
+function roomify_dashboard_form_entityform_delete_form_alter(&$form, &$form_state) {
+  $form['#submit'][] = 'redirect_to_contact_submissions';
+  $form['actions']['cancel']['#href'] = 'form-submissions';
+}
+
+/**
+ * Implements hook_form_FORM_ID_alter().
+ * FORM_ID = contact_entityform_edit_form.
+ */
+function roomify_dashboard_form_contact_entityform_edit_form_alter(&$form, &$form_state) {
+  $form['actions']['save']['#submit'][] = 'redirect_to_contact_submissions';
+}
+
+/**
+ * Custom submit function to redirect users.
+ */
+function redirect_to_contact_submissions(&$form, &$form_state) {
+  $form_state['redirect'] = 'form-submissions';
+}
+
+/**
+ * Implements hook_form_alter().
+ */
+function roomify_dashboard_form_alter(&$form, &$form_state, $form_id) {
+  if ($form['#id'] == 'views-exposed-form-dashboard-bookings-page-1') {
+
+    $form['#attached']['css'][] = array(
+      'data' => '.views-widget-filter-booking_start_date_value label, .views-widget-filter-booking_end_date_value label { padding-bottom: 5px !important; } .views-exposed-form .views-exposed-widget .form-submit { margin-top: 2.3em !important; }',
+      'type' => 'inline',
+    );
+  }
+}
+
+/**
+ * Implements hook_form_FORM_ID_alter().
+ * FORM_ID = pet_form.
+ */
+function roomify_dashboard_form_pet_form_alter(&$form, &$form_state) {
+  $form['actions']['cancel']['#href'] = '/email-templates';
+
+  $form['#submit'][] = 'redirect_to_email_templates_view';
+}
+
+/**
+ * Custom submit function to redirect users.
+ */
+function redirect_to_email_templates_view(&$form, &$form_state) {
+  $form_state['redirect'] = 'email-templates';
+}
+
+/**
+ * Implements hook_user_login().
+ */
+function roomify_dashboard_user_login(&$edit, $account) {
+  // Check if we are coming from /user/reset and don't set the destination if so.
+  if (arg(1) == "reset") {
+    // Do nothing.
+  }
+  else {
+    // Redirect user to dashboard.
+    $_GET['destination'] = 'user';
+  }
+}
+
+/**
+ * Implements hook_page_alter().
+ */
+function roomify_dashboard_page_alter(&$page) {
+  global $user;
+
+  if (!variable_get('roomify_testing_environment', FALSE)) {
+    // Add 'Documentation' link.
+    $valid_role = array_intersect($user->roles, array(
+      'administrator',
+      'roomify manager',
+      'property owner',
+      'content editor',
+    ));
+
+    if (!empty($valid_role) || $user->uid == 1) {
+      drupal_add_css(drupal_get_path('module', 'roomify_dashboard') . '/css/roomify_dashboard_help.css');
+
+      if (module_exists('roomify_cloud_support')) {
+        $valid_urls = array(
+          'admin',
+          'user',
+        );
+
+        if (in_array(arg(0), $valid_urls) && user_access('view support popup')) {
+          drupal_add_js(drupal_get_path('module', 'roomify_dashboard') . '/js/roomify_dashboard_help.js');
+        }
+      }
+
+      $link = 'http://docs.roomify.us/roomify_accommodations/index.html';
+
+      $help_file = file_get_contents(drupal_get_path('module', 'roomify_dashboard') . '/roomify_dashboard_help.json');
+
+      foreach (json_decode($help_file, TRUE) as $row) {
+        if (drupal_match_path(current_path(), $row['url'])) {
+          $link = $row['doc'];
+        }
+      }
+
+      $info_icon = '<img src="/' . drupal_get_path('module', 'roomify_dashboard') . '/images/info.png">';
+      $page['content']['help']['content']['#markup'] = '<a target="_blank" href="' . $link . '"><div class="help-icon">' . $info_icon . '<span>' . t('Documentation') . '</span></div></a>';
+    }
+  }
+}
+
+/**
+ * Implements hook_views_data_alter().
+ */
+function roomify_dashboard_views_data_alter(&$data) {
+  $data['commerce_order']['property_image'] = array(
+    'field' => array(
+      'title' => t('Roomify Property Image'),
+      'help' => t('Display the property image.'),
+      'handler' => 'roomify_dashboard_handler_commerce_order_property_image',
+    ),
+  );
+}

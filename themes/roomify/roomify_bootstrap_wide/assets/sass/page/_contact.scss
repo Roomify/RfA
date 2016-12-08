@@ -1,0 +1,248 @@
+// Contact Page Styles
+
+.page-eform-submit-listing-enquiry {
+  .entitytype-listing_enquiry-form {
+    width: 90%;
+    margin: 0 auto;
+    .date-combo {
+      border: none;
+      -webkit-box-shadow: none;
+      box-shadow: none;
+      margin-bottom: 0;
+      legend {
+        background: none;
+        border: none;
+        width: auto;
+        float: left;
+        margin: 0;
+        padding-left: 0;
+        color: #7C7C7C;
+        min-width: 140px;
+        padding: 0
+      }
+      .panel-body {
+        display: inline-block;
+        padding: 0;
+        .date-padding {
+          padding-top: 0;
+          padding-bottom: 0;
+        }
+      }
+      .container-inline-date {
+        label,
+        .help-block {
+          display: none;
+        }
+        .form-item {
+          margin-bottom: 0;
+        }
+      }
+    }
+    .form-actions {
+      float: right;
+    }
+    .field-type-email,
+    .field-type-number-integer,
+    .field-type-text {
+      label, input {
+        display: inline-block;
+        width: auto;
+      }
+      label {
+        margin-right: 6px;
+        min-width: 140px;
+      }
+    }
+    .field-type-datetime {
+      display: inline-block;
+      width: 50%;
+    }
+    .field-type-number-integer {
+      clear: both;
+    }
+    .field-type-email,
+    .field-type-datetime,
+    .field-type-number-integer,
+    .field-type-text {
+      margin: 15px 0;
+    }
+    .field-type-email {
+      margin-top: 30px;
+    }
+    .field-type-text-long {
+      margin: 30px 0;
+    }
+  }
+}
+
+.page-contact-us {
+  .entitytype-contact-form {
+    margin-top: 20px;
+    width: 90%;
+    margin: 0 auto;
+    .date-combo {
+      border: none;
+      -webkit-box-shadow: none;
+      box-shadow: none;
+      margin-bottom: 0;
+      legend {
+        background: none;
+        border: none;
+        width: auto;
+        float: left;
+        margin: 0;
+        padding-left: 0;
+        color: #7C7C7C;
+        min-width: 100px;
+        padding: 0
+      }
+      .panel-body {
+        display: inline-block;
+        padding: 0;
+        .date-padding {
+          padding-top: 0;
+          padding-bottom: 0;
+        }
+      }
+      .container-inline-date {
+        label,
+        .help-block {
+          display: none;
+        }
+        .form-item {
+          margin-bottom: 0;
+        }
+      }
+    }
+    .field-name-field-contact-arrival,
+    .field-name-field-contact-departure {
+      margin-bottom: 30px;
+      @media (max-width: $screen-xs) {
+        .date-padding {
+          padding-left: 0;
+        }
+      }
+    }
+    .field-name-field-contact-arrival,
+    .field-name-field-contact-departure,
+    .field-name-field-contact-first-name,
+    .field-name-field-contact-last-name {
+      @include make-sm-column(6);
+      margin-bottom: 30px;
+      label {
+        font-weight: 400;
+        font-size: 16px;
+      }
+    }
+    .field-name-field-contact-telephone,
+    .field-name-field-contact-mail-address {
+      @include make-sm-column(6);
+      label {
+        font-weight: 400;
+        font-size: 16px;
+      }
+      @media (min-width: $screen-sm) {
+        margin-right: 50%;
+      }
+      margin-bottom: 30px;
+      input {
+        width: 100%;;
+      }
+    }
+    .field-name-field-booking-request,
+    .field-name-field-contact-more-informations {
+      @include make-sm-column(12);
+      input {
+        width: 100%;;
+      }
+    }
+    .form-actions {
+      padding-left: 15px;
+    }
+  }
+}
+
+
+.page-entityform {
+  .tabs--primary {
+    display: none;
+  }
+  .back-link {
+    float: right;
+    margin-top: -55px;
+  }
+  .entity-entityform {
+    font-size: 15px;
+    .field-name-field-listing-enquiry-info,
+    .field-name-field-listing-enquiry-name,
+    .field-name-field-listing-enquiry-email,
+    .field-name-field-listing-enquiry-guests,
+    .field-name-field-listing-enquiry-type-ref,
+    .field-name-field-listing-enquiry-dep-date,
+    .field-name-field-listing-enquiry-arr-date {
+      padding: 10px;
+      border: 1px solid #E6E6E6;
+      min-height: 120px;
+      width: 25%;
+      display: inline-block;
+      @media (max-width: $screen-sm) {
+        width: 50%;
+      }
+      .field-label {
+        width: 100%;
+        text-transform: uppercase;
+        text-align: center;
+        font-size: 16px;
+        margin-top: 10px;
+        margin-bottom: 5px;
+      }
+      .field-items {
+        text-align: center;
+        width: 100%;
+        margin-top: 10px;
+        display: inline-block;
+        font-size: 22px;
+        color: black;
+        font-weight: 600;
+      }
+    }
+    .field-name-field-listing-enquiry-name,
+    .field-name-field-listing-enquiry-type-ref,
+    .field-name-field-listing-enquiry-dep-date,
+    .field-name-field-listing-enquiry-arr-date {
+      border-right: 0px;
+    }
+    .field-name-field-listing-enquiry-name,
+    .field-name-field-listing-enquiry-email {
+      width: 50%;
+      @media (max-width: $screen-sm) {
+        width: 100%;
+      }
+    }
+    .field-name-field-listing-enquiry-info {
+      padding-left: 25px;
+      padding-right: 25px;
+      width: 100%;
+      .field-label,
+      .field-items {
+        text-align: left;
+      }
+    }
+    .field-name-field-listing-enquiry-price {
+      width: 100%;
+      display: inline-block;
+      margin: 30px 0;
+      font-size: 22px;
+      text-align: right;
+      color: #000000;
+      .field-label {
+        margin-right: 10px;
+        display: inline-block;
+      }
+      .field-items {
+        display: inline-block;
+        text-decoration: underline;
+      }
+    }
+  }
+}

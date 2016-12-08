@@ -1,0 +1,5 @@
+name = Roomify Rights
+description = Roomify Rights
+core = 7.x
+
+package = Roomify

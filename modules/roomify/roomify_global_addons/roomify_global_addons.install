@@ -1,0 +1,23 @@
+<?php
+
+/**
+ * @file
+ *
+ * Installation for Roomify Global Addons.
+ */
+
+/**
+ * Implements hook_install().
+ */
+function roomify_global_addons_install() {
+  // Create Amenities Vocabulary.
+  roomify_addons_create_profuct_fields();
+}
+
+/**
+ *
+ */
+function roomify_addons_create_profuct_fields() {
+  module_load_include('inc', 'roomify_global_addons', 'roomify_global_addons.fields');
+  roomify_add_on_product_fields();
+}

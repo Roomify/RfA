@@ -1,0 +1,8 @@
+<?php
+
+/**
+ * @file
+ * Code for the Roomify image styles feature.
+ */
+
+include_once 'roomify_image_styles.features.inc';

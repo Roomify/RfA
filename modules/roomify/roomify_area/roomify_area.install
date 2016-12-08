@@ -1,0 +1,68 @@
+<?php
+
+/**
+ * @file
+ * Installation for roomify_area.
+ */
+
+/**
+ * Implements hook_install().
+ */
+function roomify_area_install() {
+  // Enable the page term.
+  variable_set('page_manager_term_view_disabled', FALSE);
+
+  // Create Location Vocabulary.
+  roomify_area_create_area_vocabulary();
+
+  module_load_include('inc', 'roomify_area', 'roomify_area.fields');
+  roomify_area_taxonomy_fields();
+}
+
+/**
+ * Create some new field.
+ */
+function roomify_area_update_7001() {
+  module_load_include('inc', 'roomify_area', 'roomify_area.fields');
+  roomify_area_taxonomy_fields();
+}
+
+/**
+ * Create Short Description and Featured Image fields.
+ */
+function roomify_area_update_7002() {
+  module_load_include('inc', 'roomify_area', 'roomify_area.fields');
+  roomify_area_taxonomy_fields();
+}
+
+/**
+ * Remove blogpost as paragraph and use a view of latests.
+ */
+function roomify_area_update_7004() {
+  field_delete_field('field_area_blog_posts');
+}
+
+/**
+ * Create Location field.
+ */
+function roomify_area_update_7005() {
+  module_enable(array('geofield_map'));
+  module_load_include('inc', 'roomify_area', 'roomify_area.fields');
+  roomify_area_taxonomy_fields();
+
+  $field_group = field_group_load_field_group('group_area_description', 'taxonomy_term', 'location', 'form');
+  $field_group->children[3] = 'field_area_location';
+  field_group_group_save($field_group);
+}
+
+/**
+ * Make description translatable.
+ */
+function roomify_area_update_7006() {
+  module_load_include('inc', 'roomify_area', 'roomify_area.fields');
+  roomify_area_taxonomy_fields();
+
+  $field_group = field_group_load_field_group('group_area_description', 'taxonomy_term', 'location', 'form');
+  $field_group->children[2] = 'description_field';
+  field_group_group_save($field_group);
+}

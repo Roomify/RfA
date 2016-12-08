@@ -1,0 +1,24 @@
+#sliding-popup.sliding-popup-bottom {
+  padding: 10px 0;
+  .popup-content #popup-buttons {
+    button {
+      border-radius: 0;
+      margin-right: 15px;
+      font-size: 16px;
+      margin-top: 10px;
+      background: #5CA755;
+      border: 0;
+      border-top: 0;
+      box-shadow: none;
+      color: white;
+      text-shadow: none;
+      padding: 5px 15px;
+      &:hover {
+        opacity: .86;
+      }
+      &.find-more-button {
+        background: #AF0606;
+      }
+    }
+  }
+}

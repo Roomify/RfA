@@ -1,0 +1,8 @@
+name = Roomify Casa PET
+description = Provides the required PET templates for a Casa site.
+core = 7.x
+package = Roomify Casa PET
+version = 7.x-1.0
+
+dependencies[] = pet
+dependencies[] = mimemail

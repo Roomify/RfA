@@ -1,0 +1,12 @@
+/* Dashboard Icon for the Translate link. */
+
+.manage-translations {
+  background: url("../images/translate.png") no-repeat 15px 25px;
+  -webkit-transition: 100ms all ease-in;
+  -moz-transition: 100ms all ease-in;
+  -ms-transition: 100ms all ease-in;
+  -o-transition: 100ms all ease-in;
+}
+.manage-translations:hover {
+  background: #ebebeb url("../images/original/translate.png") no-repeat 15px 25px;
+}

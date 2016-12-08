@@ -1,0 +1,99 @@
+<?php
+
+/**
+ * @file
+ */
+
+/**
+ * Implements hook_install().
+ */
+function roomify_accommodation_booking_install() {
+  // Create roomify accommodation booking type.
+  roomify_accommodation_booking_create_booking_type();
+
+  // Set up commerce.
+  commerce_product_configure_product_fields(array('roomify_accommodation_booking'));
+  commerce_line_item_configure_line_item_fields(array('roomify_accommodation_booking'));
+
+  // Prepopulate the product reference for all the existing listings.
+  roomify_accommodation_booking_add_product_reference_to_all_listing_types();
+}
+
+/**
+ * Implements hook_uninstall().
+ */
+function roomify_accommodation_booking_uninstall() {
+  roomify_accommodation_booking_delete_booking_type();
+}
+
+/**
+ * Delete "Roomify Accommodation Booking" booking type.
+ */
+function roomify_accommodation_booking_delete_booking_type() {
+  if ($booking_type = bat_booking_type_load('roomify_accommodation_booking')) {
+    bat_booking_type_delete($booking_type);
+  }
+}
+
+/**
+ * Create "Roomify Accommodation Booking" booking type.
+ */
+function roomify_accommodation_booking_create_booking_type() {
+  module_load_include('inc', 'roomify_accommodation_booking', 'roomify_accommodation_booking.fields');
+
+  $booking_type = bat_booking_type_create(array(
+    'label' => 'Roomify Accommodation Booking',
+    'type' => 'roomify_accommodation_booking',
+  ));
+
+  $booking_type->save();
+
+  roomify_accommodation_booking_add_event_reference_field();
+  roomify_accommodation_booking_add_line_item_reference();
+  roomify_accommodation_booking_add_booking_price_field();
+  roomify_accommodation_booking_add_booking_full_name();
+  roomify_accommodation_booking_add_booking_address();
+  roomify_accommodation_booking_add_booking_telephone();
+  roomify_accommodation_booking_add_group_guest();
+
+  roomify_accommodation_booking_add_listing_product_reference('home');
+  roomify_accommodation_booking_add_listing_product_reference('room');
+
+  // Add the Add-ons field to casa/locanda types.
+  roomify_accommodation_booking_add_addons_field('home');
+  roomify_accommodation_booking_add_addons_field('room');
+
+  // Add telephone field to Billing info.
+  roomify_accommodation_booking_add_booking_telephone_to_billing_info();
+}
+
+/**
+ * Add telephone field to booking.
+ */
+function roomify_accommodation_booking_update_7001() {
+  module_load_include('inc', 'roomify_accommodation_booking', 'roomify_accommodation_booking.fields');
+
+  roomify_accommodation_booking_add_booking_telephone();
+
+  $groups = field_group_read_groups(array(
+    'entity_type' => 'bat_booking',
+    'bundle'      => 'roomify_accommodation_booking',
+    'view_mode'   => 'full',
+  ));
+
+  $guest_group = $groups['bat_booking']['roomify_accommodation_booking']['form']['group_guest'];
+  $guest_group->children[0] = 'booking_full_name';
+  $guest_group->children[1] = 'booking_telephone';
+  $guest_group->children[2] = 'booking_address';
+
+  field_group_group_save($guest_group);
+}
+
+/**
+ * Add telephone field to Billing info.
+ */
+function roomify_accommodation_booking_update_7002() {
+  module_load_include('inc', 'roomify_accommodation_booking', 'roomify_accommodation_booking.fields');
+
+  roomify_accommodation_booking_add_booking_telephone_to_billing_info();
+}

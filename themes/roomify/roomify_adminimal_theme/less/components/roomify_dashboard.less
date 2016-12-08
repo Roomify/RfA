@@ -1,0 +1,1222 @@
+body.roomify-dashboard {
+  background-color: @lightest-gray;
+  #page {
+    background-color: @lightest-gray;
+    padding: 0px;
+    border: 0px;
+    border-radius: 0px;
+    .box-shadow(0px 0px 0px 0px rgba(0,0,0,1));
+  }
+  #content-wrapper {
+    @media (min-width: @screen-md) {
+      border: 8px solid @lightest-gray;
+    }
+    max-width: @screen-lg;
+    margin: 0 auto;
+  }
+  .ui-widget-content {
+    background: white;
+    padding: 0px;
+    border: 0px;
+    .ui-tabs-panel {
+      @media (min-width: @screen-sm) {
+        border: 2px solid rgba(235, 235, 235, 0.45);
+        .box-shadow(0px 24px 64px 5px rgba(179,179,179,0.45));
+      }
+    }
+  }
+  .item-list {
+    background: @lightest-gray;
+  }
+  .ui-tabs {
+    .ui-tabs-nav {
+      background: @lightest-gray;
+      padding: 0px;
+      font-size: 16px;
+      li {
+        margin-right: 5px;
+        background: #F5F5F5;
+        border-radius: 5px 5px 0 0;
+        position: relative;
+        top: 2px;
+        a {
+          color: @gray;
+          min-width: 120px;
+          text-align: center;
+        }
+        @media (max-width: @screen-sm) {
+          width: 100%;
+          text-align: center;
+          display: flex;
+          a {
+            width: 100%;
+          }
+        }
+        &.ui-state-active {
+          border-width: 0px;
+          background: white;
+          outline: none;
+          a {
+            color: @blue;
+            font-weight: 700;
+            outline: none;
+            border-radius: 5px 5px 0px 0px;
+            border: 2px solid rgba(235, 235, 235, 0.45);
+            border-bottom: 0px;
+          }
+        }
+        &:last-child {
+          float: right;
+          margin-right: 0;
+        }
+      }
+    }
+  }
+  .pane-welcome-dashboad-message {
+    display: inline-block;
+    width: 100%;
+    margin: 60px 0;
+    .roomify-welcome-image {
+      display: inline-block;
+      float: left;
+      max-width: 85px;
+      margin-right: 25px;
+      @media (max-width: @screen-sm) {
+        margin: 0 auto;
+        display: table;
+        float: none;
+      }
+      img {
+        width: 100%;
+        border-radius: 50%;
+        border: 2px solid #448EB4;
+      }
+    }
+    .welcome-dashboard-message {
+      font-style: italic;
+      color: #006699;
+      font-size: 32px;
+      margin-top: 35px;
+      display: inline-block;
+      @media (max-width: @screen-sm) {
+        font-size: 22px;
+        text-align: center;
+        line-height: 1.4em;
+        padding: 0 10px;
+        display: inline-block
+      }
+    }
+  }
+  .ui-tabs-panel.ui-widget-content {
+    padding: 50px 15px;
+    @media (min-width: @screen-sm) {
+      padding: 80px 50px;
+    }
+    .pane-panels-mini {
+      display: inline-block;
+      width: 100%;
+    }
+  }
+  // Minipanels elements.
+  .roomify-welcome-dashboard,
+  .roomify-manage-content,
+  .roomify-manage-site-configuration {
+    .panel-pane {
+      border-radius: 10px;
+      border: 1px solid #F6F6F6;
+      width: 45%;
+      margin-left: 4%;
+      float: left;
+      display: inline-block;
+      p {
+        margin-bottom: 0;
+      }
+      @media (max-width: @screen-sm) {
+        width: 100%;
+        margin-left: 0;
+        float: none;
+      }
+      padding: 0;
+      margin-bottom: 10px;
+      &:hover {
+        a {
+          color: @dark_gray;
+        }
+      }
+      .transition(100ms all ease-in);
+      p {
+        display: table;
+        width: 100%;
+        a {
+          display: table-cell;
+          vertical-align: middle;
+          height: 110px;
+          padding: 0 5px 0 90px;
+          font-size: 15px;
+          color: @gray;
+          &:hover {
+            text-decoration: none;
+          }
+          .transition(100ms color ease-in);
+        }
+      }
+    }
+  }
+  .roomify-manage-listings-dashboard {
+    @media (max-width: @screen-md) {
+      .panel-2col-stacked {
+        .panel-col-first,
+        .panel-col-last {
+          width: 100%;
+        }
+      }
+    }
+  }
+
+  // WELCOME TAB
+  .roomify-welcome-dashboard {
+    .welcome-text {
+      width: 100% !important;
+      font-size: 22px;
+      font-style: italic;
+      margin-top: 15px;
+      margin-bottom: 50px;
+      border: 0px;
+      color: @blue;
+      &:hover {
+        background-color: transparent;
+        border-color: transparent;
+      }
+    }
+    .manage-account {
+      background: url("../images/user-account.png") no-repeat 15px 25px;
+      &:hover {
+        background: @light-gray url("../images/original/user-account.png") no-repeat 15px 25px;
+      }
+      .transition(100ms all ease-in);
+    }
+    .manage-profile {
+      background: url("../images/user-profile.png") no-repeat 15px 30px;
+      &:hover {
+        background: @light-gray url("../images/original/user-profile.png") no-repeat 15px 30px;
+      }
+      .transition(100ms all ease-in);
+    }
+    .manage-content {
+      background: url("../images/content.png") no-repeat 15px 25px;
+      &:hover {
+        background: @light-gray url("../images/original/content.png") no-repeat 15px 25px;
+      }
+      .transition(100ms all ease-in);
+    }
+    .manage-bookings {
+      background: url("../images/calendar.png") no-repeat 15px 30px;
+      &:hover {
+        background: @light-gray url("../images/original/calendar.png") no-repeat 15px 30px;
+      }
+      .transition(100ms all ease-in);
+    }
+    .manage-orders {
+      background: url("../images/orders.png") no-repeat 15px 25px;
+      &:hover {
+        background: @light-gray url("../images/original/orders.png") no-repeat 15px 25px;
+      }
+      .transition(100ms all ease-in);
+    }
+    .manage-listings {
+      background: url("../images/home.png") no-repeat 15px 25px;
+      &:hover {
+        background: @light-gray url("../images/original/home.png") no-repeat 15px 25px;
+      }
+      .transition(100ms all ease-in);
+    }
+    .manage-conversations {
+      background: url("../images/conversations.png") no-repeat 15px 25px;
+      &:hover {
+        background: @light-gray url("../images/original/conversations.png") no-repeat 15px 25px;
+      }
+      .transition(100ms all ease-in);
+    }
+    .manage-stays {
+      background: url("../images/bookings.png") no-repeat 15px 25px;
+      &:hover {
+        background: @light-gray url("../images/original/bookings.png") no-repeat 15px 25px;
+      }
+      .transition(100ms all ease-in);
+    }
+    .manage-favorite-properties {
+      background: url("../images/favorite.png") no-repeat 15px 25px;
+      &:hover {
+        background: @light-gray url("../images/original/favorite.png") no-repeat 15px 25px;
+      }
+      .transition(100ms all ease-in);
+    }
+    .manage-logout {
+      background: url("../images/logout.png") no-repeat 15px 30px;
+      &:hover {
+        background: @light-gray url("../images/original/logout.png") no-repeat 15px 30px;
+      }
+      .transition(100ms all ease-in);
+    }
+  }
+
+  // MANAGE CONTENT TAB
+  .roomify-manage-content {
+    .email-templates {
+      background: url("../images/email-template.png") no-repeat 15px 25px;
+      &:hover {
+        background: @light-gray url("../images/original/email-template.png") no-repeat 15px 25px;
+      }
+      .transition(100ms all ease-in);
+    }
+    .manage-entityforms {
+      background: url("../images/contact.png") no-repeat 15px 25px;
+      &:hover {
+        background: @light-gray url("../images/original/contact.png") no-repeat 15px 25px;
+      }
+      .transition(100ms all ease-in);
+    }
+    .manage-taxonomies {
+      background: url("../images/taxonomy.png") no-repeat 15px 25px;
+      &:hover {
+        background: @light-gray url("../images/original/taxonomy.png") no-repeat 15px 25px;
+      }
+      .transition(100ms all ease-in);
+    }
+    .manage-menu {
+      background: url("../images/menu.png") no-repeat 15px 30px;
+      &:hover {
+        background: @light-gray url("../images/original/menu.png") no-repeat 15px 30px;
+      }
+      .transition(100ms all ease-in);
+    }
+    .manage-site-pages {
+      background: url("../images/site-content.png") no-repeat 15px 25px;
+      &:hover {
+        background: @light-gray url("../images/original/site-content.png") no-repeat 15px 25px;
+      }
+      .transition(100ms all ease-in);
+    }
+    .manage-new-content {
+      background: url("../images/content.png") no-repeat 20px 30px;
+      &:hover {
+        background: @light-gray url("../images/original/content.png") no-repeat 20px 30px;
+      }
+      .transition(100ms all ease-in);
+    }
+    .manage-profile {
+      background: url("../images/user-profile.png") no-repeat 15px 30px;
+      &:hover {
+        background: @light-gray url("../images/original/user-profile.png") no-repeat 15px 30px;
+      }
+      .transition(100ms all ease-in);
+    }
+    .manage-featured-areas,
+    .manage-featured-properties {
+      background: url("../images/featured_properties.png") no-repeat 20px 30px;
+      &:hover {
+        background: @light-gray url("../images/original/featured_properties.png") no-repeat 20px 30px;
+      }
+      .transition(100ms all ease-in);
+    }
+  }
+  // LISTINGS TAB
+  .pane-listings-panel-pane-1 {
+    display: inline-block;
+    width: 100%;
+  }
+  .view-my-properties,
+  .view-my-bookable-units,
+  .view-listings {
+    font-size: 14px;
+    line-height: 20px;
+    .views-exposed-widgets  {
+      display: none;
+    }
+    .views-field-bookable,
+    .views-field-status {
+      img {
+        width: 18px;
+        height: 18px;
+        float: none !important;
+        display: table;
+        margin: 0 auto;
+      }
+    }
+    .views-field-operations ul li {
+      white-space: nowrap;
+    }
+  }
+  .pane-dashboard-bookings-panel-pane-5,
+  .pane-user-conversations-owner-conversations,
+  .pane-user-conversations-guest-conversations {
+    background: #3498DB;
+    padding: 15px 20px;
+    border-radius: 10px;
+    border-bottom: 2px solid #397AA7;
+    color: white;
+    ::-webkit-scrollbar {
+      display: none;
+    }
+    &:hover {
+      background: #1ea4f7;
+    }
+    .transition(150ms background ease-in-out);
+    h2.pane-title {
+      font-size: 36px;
+      font-weight: 300;
+      line-height: 1.3em;
+      text-shadow: 1px 1px 1px #0074BD;
+    }
+    .pane-content {
+      max-height: 350px;
+      overflow: scroll;
+    }
+    .view-content {
+      margin-top: 20px;
+    }
+    .views-field-changed {
+      margin-bottom: 3px;
+      font-size: 14px;
+      font-weight: bold;
+      text-shadow: 1px 1px 1px #0074BD;
+    }
+    .views-field-nothing-1 {
+      height: 100%;
+      position: relative;
+      border: 1px dotted #005082;
+      background: #F5F5F5;
+      font-size: 18px;
+      font-weight: 300;
+      margin-top: -1px;
+      margin-bottom: 22px;
+      padding: 15px 10px;
+      &:hover {
+        background: white;
+      }
+      .transition(150ms background ease-in-out);
+      div.conversation-info {
+        display: inline-block;
+        vertical-align: top;
+        width: 92%;
+      }
+      a.conversation-info-link {
+        text-decoration: none;
+        .conversation-header {
+          padding-bottom: 8px;
+        }
+        .conversation-message-author {
+          display: inline-block;
+          width: 30%;
+          vertical-align: top;
+          font-style: italic;
+          font-weight: 800;
+          font-size: 14px;
+          padding-right: 4px;
+        }
+        .conversation-message-message {
+          font-size: 14px;
+          display: inline-block;
+          width: 50%;
+        }
+        .conversation-price {
+          font-style: italic;
+          font-weight: 800;
+          font-size: 14px;
+          width: 18%;
+          display: inline-block;
+          vertical-align: top;
+        }
+      }
+      div.conversation-reply {
+        display: inline-block;
+        float: right;
+        vertical-align: top;
+        margin-top: 20px;
+        margin-right: 10px;
+        height: 100%;
+        width: 25px;
+        position: absolute;
+        background: url("../images/reply.png") no-repeat;
+        background-size: 25px 25px, contain;
+        @media (max-width: @screen-sm) {
+          height: initial;
+        }
+        a {
+          display: block;
+          height: 35px;
+          width: 35px;
+          text-indent: -9999px;
+          overflow:hidden;
+        }
+      }
+    }
+  }
+  .pane-dashboard-bookings-panel-pane-5 {
+    margin-bottom: 40px;
+    .view-dashboard-bookings.view-display-id-panel_pane_5 {
+      table thead th {
+        background: #3498db;
+        border-bottom: 1px solid #397aa7;
+        color: #FFFFFF !important;
+        text-transform: uppercase;
+        font-size: 18px;
+        padding-top: 25px;
+        padding-bottom: 25px;
+      }
+      table tbody td {
+        font-size: 18px;
+      }
+      .views-field-booking-full-name {
+        width: 50%;
+        line-height: 1.3em;
+        position: relative;
+        padding-left: 25px;
+        .footable-toggle {
+          position: absolute;
+          left: 5px;
+        }
+      }
+      .footable-row-detail-cell {
+        padding: 0;
+        background: white;
+      }
+      .more-link a {
+        color: white;
+        margin-top: 30px;
+        display: block;
+        font-size: 14px;
+      }
+      .pager {
+        background: #3498db;
+        font-size: 16px;
+        padding: 12px 0;
+        display: inline-block;
+        width: 100%;
+      }
+    }
+  }
+  #mini-panel-dashboard_manage_listings {
+    .panel-col-bottom {
+      margin-top: 60px;
+      display: inline-block;
+      .ui-tabs-nav {
+        background: white;
+      }
+      .ui-widget-content .ui-tabs-panel {
+        box-shadow: none;
+      }
+    }
+  }
+
+  .pane-properties-dashboard-properties {
+    padding: 30px 20px;
+
+    h2.pane-title {
+      font-size: 36px;
+      font-weight: 300;
+    }
+    .view-empty {
+      margin-top: 36px;
+    }
+    table {
+      border-collapse: separate;
+      border-spacing: 0 14px;
+    }
+    .view-properties {
+      thead {
+        display: none;
+      }
+      font-size: 14px;
+      .view-header a {
+        float: right;
+        position: relative;
+        top: -35px;
+        padding-left: 32px;
+        background: #0074bd url("../images/plus_white.png") no-repeat 6px 12px;
+        background-size: 20px;
+        border-radius: 4px;
+        border-bottom: 2px solid #397AA7;
+        color: #ffffff;
+        font-size: 20px;
+        background-color: #3498db;
+        padding: 12px 10px 12px 30px;
+        text-decoration: none;
+        left: 30px;
+        @media (max-width: @screen-sm) {
+          top: 0;
+          display: inline-block;
+          margin-top: 80px;
+          margin-bottom: 40px;
+        }
+        &:hover {
+          background-color: #1ea4f7;
+          text-decoration: none;
+        }
+      }
+      .view-content {
+        margin-top: -30px;
+      }
+      tr {
+        &.status-0 {
+          background: #F9EADA;
+          a {
+            color: #989898 !important;
+          }
+        }
+        &:hover {
+          background: whitesmoke !important;
+        }
+        .transition(150ms background ease-in);
+      }
+      tr:not(.views-row-last) td {
+        border-bottom: 1px solid #D2D2D2;
+        padding-bottom: 20px;
+      }
+      tr.even {
+        background: #fff;
+      }
+      td.views-field {
+        &.views-field-name {
+          font-size: 24px;
+          font-weight: 300;
+          line-height: 1.2em;
+        }
+        &.views-field-edit-unit {
+          width: 40px;
+          a {
+            background: url("../images/edit.png") no-repeat right 50% bottom 20px;
+            background-size: 35px 35px;
+            display: inline-block;
+            padding: 55px 1em 0 1em;
+          }
+        }
+        &.views-field-nothing {
+          width: 40px;
+          a {
+            background: url("../images/availability.png") no-repeat right 50% bottom 20px;
+            background-size: 35px 35px;
+            display: inline-block;
+            padding: 55px 1em 0 1em;
+          }
+        }
+        &.views-field-nothing-1 {
+          width: 40px;
+          a {
+            background: url("../images/pricing.png") no-repeat right 50% bottom 20px;
+            background-size: 35px 35px;
+            display: inline-block;
+            padding: 55px 1em 0 1em;
+          }
+        }
+      }
+      tr.status-0 {
+        td.views-field {
+          &.views-field-edit-unit a {
+            background-image: url("../images/edit-gray.png");
+          }
+          &.views-field-nothing a {
+            background-image: url("../images/availability-gray.png")
+          }
+          &.views-field-nothing-1 a {
+            background-image: url("../images/pricing-gray.png");
+          }
+        }
+      }
+      .footable-row-detail-inner {
+        width: 100%;
+        .footable-row-detail-row {
+          width: 30%;
+          float: left;
+          margin: 0 1%;
+          @media (max-width: @screen-xs) {
+            width: 45%;
+            margin: 0;
+          }
+          .footable-row-detail-value {
+            width: 100%;
+            text-align: center;
+            img {
+              display: none;
+            }
+            a {
+              background-repeat: no-repeat;
+              background-position: center center;
+              padding: 58px 1em 0 1em;
+              background-size: 40px 40px;
+              display: block;
+            }
+            a {
+              background-image: url("../images/edit.png");
+            }
+            a.availability-link {
+              background-image: url("../images/availability.png")
+            }
+            a.pricing-link {
+              background-image: url("../images/pricing.png");
+            }
+          }
+        }
+      }
+    }
+  }
+  #mini-panel-listings {
+    .add-listing {
+      margin-bottom: 20px;
+      width: 100%;
+      display: inline-block;
+      float: right;
+      .action-links {
+        float: right;
+        a {
+          background: url("../images/plus.png") no-repeat 15px 5px;
+          line-height: 1.5em;
+          padding: 10px 35px 10px 75px;
+          &:hover {
+            background: #0074BD url("../images/plus_white.png") no-repeat 15px 5px;
+          }
+        }
+      }
+    }
+  }
+
+  //BOOKINGS TAB
+  #mini-panel-bookings {
+    .add-booking {
+      margin-bottom: 20px;
+      width: 100%;
+      display: inline-block;
+      float: right;
+      text-transform: uppercase;
+      .action-links {
+        float: right;
+        a {
+          background: url("../images/plus.png") no-repeat 15px 5px;
+          line-height: 1.5em;
+          padding: 10px 35px 10px 75px;
+          &:hover {
+            background: #0074BD url("../images/plus_white.png") no-repeat 15px 5px;
+          }
+        }
+      }
+    }
+    .view-bookings,
+    .view-my-bookings {
+      display: inline-block;
+      width: 100%;
+      .views-exposed-widgets {
+        display: table;
+        .views-exposed-widget  {
+          display: table-cell;
+          @media (min-width: @screen-md) {
+            width: 17%;
+            margin-right: 10px;
+            min-height: 120px;
+            input,
+            .form-autocomplete {
+              width: 100%;
+            }
+          }
+        }
+        button {
+          background-color: green;
+          margin-top: 2em;
+        }
+      }
+    }
+  }
+  // ORDERS TAB
+  .view-commerce-orders {
+    .view-header {
+      margin-bottom: 25px;
+      #commerce-order-ui-redirect-form .form-submit {
+        margin-top: 2.4em;
+      }
+    }
+  }
+
+  // SITE CONFIGURATION TAB
+  .roomify-manage-site-configuration {
+    .manage-rooms {
+      background: url("../images/home.png") no-repeat 15px 25px;
+      &:hover {
+        background: @light-gray url("../images/original/home.png") no-repeat 15px 25px;
+      }
+      .transition(100ms all ease-in);
+    }
+    .manage-store {
+      background: url("../images/store.png") no-repeat 15px 25px;
+      &:hover {
+        background: @light-gray url("../images/original/store.png") no-repeat 15px 25px;
+      }
+      .transition(100ms all ease-in);
+    }
+    .manage-fees {
+      background: url("../images/cashier.png") no-repeat 15px 30px;
+      &:hover {
+        background: @light-gray url("../images/original/cashier.png") no-repeat 15px 30px;
+      }
+      .transition(100ms all ease-in);
+    }
+    .manage-users {
+      background: url("../images/users.png") no-repeat 15px 25px;
+      &:hover {
+        background: @light-gray url("../images/original/users.png") no-repeat 15px 25px;
+      }
+      .transition(100ms all ease-in);
+    }
+    .manage-social-share {
+      background: url("../images/social-share.png") no-repeat 15px 25px;
+      &:hover {
+        background: @light-gray url("../images/original/social-share.png") no-repeat 15px 25px;
+      }
+      .transition(100ms all ease-in);
+    }
+    .manage-social-feeds {
+      background: url("../images/manage-feeds.png") no-repeat 15px 25px;
+      &:hover {
+        background: @light-gray url("../images/original/manage-feeds.png") no-repeat 15px 25px;
+      }
+      .transition(100ms all ease-in);
+    }
+    .manage-availability-search-form {
+      background: url("../images/search.png") no-repeat 20px 30px;
+      &:hover {
+        background: @light-gray url("../images/original/search.png") no-repeat 20px 30px;
+      }
+      .transition(100ms all ease-in);
+    }
+    .manage-footer {
+      background: url("../images/footer.png") no-repeat 20px 30px;
+      &:hover {
+        background: @light-gray url("../images/original/footer.png") no-repeat 20px 30px;
+      }
+      .transition(100ms all ease-in);
+    }
+    .manage-customer-message {
+      background: url("../images/message.png") no-repeat 20px 30px;
+      &:hover {
+        background: @light-gray url("../images/original/message.png") no-repeat 20px 30px;
+      }
+      .transition(100ms all ease-in);
+    }
+    .manage-social-pages {
+      background: url("../images/social-pages.png") no-repeat 15px 25px;
+      &:hover {
+        background: @light-gray url("../images/original/social-pages.png") no-repeat 15px 25px;
+      }
+      .transition(100ms all ease-in);
+    }
+    .manage-metatags {
+      background: url("../images/meta-tags.png") no-repeat 15px 25px;
+      &:hover {
+        background: @light-gray url("../images/original/meta-tags.png") no-repeat 15px 25px;
+      }
+      .transition(100ms all ease-in);
+    }
+    .manage-google-analytics {
+      background: url("../images/google-analytics.png") no-repeat 15px 25px;
+      &:hover {
+        background: @light-gray url("../images/original/google-analytics.png") no-repeat 15px 25px;
+      }
+      .transition(100ms all ease-in);
+    }
+    .manage-google-tag-manager {
+      background: url("../images/google-tag.png") no-repeat 15px 25px;
+      &:hover {
+        background: @light-gray url("../images/original/google-tag.png") no-repeat 15px 25px;
+      }
+      .transition(100ms all ease-in);
+    }
+    .manage-mailchimp {
+      background: url("../images/mailchimp.png") no-repeat 15px 25px;
+      &:hover {
+        background: @light-gray url("../images/original/mailchimp.png") no-repeat 15px 25px;
+      }
+      .transition(100ms all ease-in);
+    }
+    .manage-terms-conditions {
+      background: url("../images/terms.png") no-repeat 15px 25px;
+      &:hover {
+        background: @light-gray url("../images/original/terms.png") no-repeat 15px 25px;
+      }
+      .transition(100ms all ease-in);
+    }
+    .manage-booking-settings {
+      background: url("../images/booking-settings.png") no-repeat 15px 25px;
+      &:hover {
+        background: @light-gray url("../images/original/booking-settings.png") no-repeat 15px 25px;
+      }
+      .transition(100ms all ease-in);
+    }
+    .manage-commerce-settings {
+      background: url("../images/commerce.png") no-repeat 20px 25px;
+      &:hover {
+        background: @light-gray url("../images/original/commerce.png") no-repeat 20px 25px;
+      }
+      .transition(100ms all ease-in);
+    }
+    .manage-global-site-settings {
+      background: url("../images/settings.png") no-repeat 20px 25px;
+      &:hover {
+        background: @light-gray url("../images/original/settings.png") no-repeat 20px 25px;
+      }
+      .transition(100ms all ease-in);
+    }
+    .manage-channel-management-settings {
+      background: url("../images/channel-management.png") no-repeat 20px 25px;
+      &:hover {
+        background: @light-gray url("../images/original/channel-management.png") no-repeat 20px 25px;
+      }
+      .transition(100ms all ease-in);
+    }
+    .manage-booking-notifications {
+      background: url("../images/booking-notifications.png") no-repeat 20px 25px;
+      &:hover {
+        background: @light-gray url("../images/original/booking-notifications.png") no-repeat 20px 25px;
+      }
+      .transition(100ms all ease-in);
+    }
+    .quick-setup {
+      background: url("../images/quick-setup.png") no-repeat 20px 25px;
+      &:hover {
+        background: @light-gray url("../images/original/quick-setup.png") no-repeat 20px 25px;
+      }
+      .transition(100ms all ease-in);
+    }
+  }
+  #mini-panel-my_activities {
+    .add-activity {
+      margin-bottom: 20px;
+      width: 100%;
+      display: inline-block;
+      float: right;
+      text-transform: uppercase;
+      .action-links {
+        float: right;
+        a {
+          background: url("../images/plus.png") no-repeat 15px 5px;
+          line-height: 1.5em;
+          padding: 10px 35px 10px 75px;
+          &:hover {
+            background: #0074BD url("../images/plus_white.png") no-repeat 15px 5px;
+          }
+        }
+      }
+    }
+  }
+  .add-property-link {
+    display: inline-block;
+    margin-bottom: 30px;
+    font-size: 16px;
+    background: #006699;
+    color: white;
+    &:hover {
+      opacity: .86;
+      a {
+        text-decoration: none;
+      }
+    }
+    a {
+      color: white;
+      padding: 10px;
+      background: #006699;
+      border-radius: 10px;
+      font-weight: 600;
+    }
+    span {
+      color: white !important;
+    }
+  }
+
+  #roomify-accommodations-group-add-form {
+    input.form-text {
+      width: 100%;
+    }
+  }
+
+  // MANAGE GROUPS
+  .roomify-manage-groups {
+    .view-roomify-groups {
+      table th {
+        text-align: left;
+      }
+      a.add-group-button {
+        display: inline-block;
+        margin-bottom: 30px;
+        background: #0074bd url("../images/plus_white.png") no-repeat 6px 12px;
+        background-size: 20px;
+        border-radius: 4px;
+        border-bottom: 2px solid #397AA7;
+        color: #ffffff;
+        font-size: 20px;
+        background-color: #3498db;
+        padding: 12px 10px 12px 30px;
+        text-decoration: none;
+        &:hover {
+          background-color: #1ea4f7;
+          text-decoration: none;
+        }
+      }
+    }
+  }
+
+  // MANAGE TRAVEL
+  .roomify-manage-travel-dashboard {
+    @media (max-width: @screen-sm) {
+      .panel-2col-stacked {
+        .panel-col-first,
+        .panel-col-last {
+          width: 100%;
+        }
+      }
+    }
+    .pane-favorite-properties-block-1 {
+      background: #F5F5F5;
+      padding: 30px 20px;
+      border-radius: 10px;
+      border: 1px solid rgba(235, 235, 235, 0.65);
+      margin-bottom: 50px;
+      .pane-title {
+        font-size: 36px;
+        margin-bottom: 40px;
+        font-weight: 300;
+      }
+      .view-favorite-properties {
+        .views-row {
+          display: inline-block;
+          width: 95%;
+          padding: 10px;
+          border-radius: 10px;
+          .views-field-field-sp-featured-image {
+            display: inline-block;
+            float: left;
+            margin-right: 30px;
+            img {
+              border: 2px solid @light-blue;
+              width: 100px;
+              height: 100px;
+              border-radius: 50%;
+            }
+          }
+          .views-field-name {
+            display: table;
+            min-height: 100px;
+            .field-content {
+              display: table-row;
+              .property-name {
+                font-size: 20px;
+                font-weight: 400;
+                vertical-align: middle;
+                display: table-cell;
+              }
+            }
+          }
+          &:hover {
+            background: white;
+            a {
+              text-decoration: none;
+            }
+
+          }
+          .transition(200ms all ease);
+        }
+      }
+    }
+    .pane-dashboard-guest-stays-panel-pane-1 {
+      padding: 40px 0;
+      border-top: 2px solid #E0E0E0;
+      display: inline-block;
+      width: 100%;
+      .pane-title {
+        font-size: 36px;
+        font-weight: 300;
+        margin-bottom: 40px;
+      }
+      .view-dashboard-guest-stays {
+        th {
+          text-align: left;
+          font-size: 16px;
+          &.views-field-nothing {
+            text-align: center;
+          }
+        }
+        td {
+          font-size: 16px;
+          &.views-field-property-image {
+            img {
+              max-width: 220px;
+              border-radius: 5px;
+              border: 2px solid #C1C1C1;
+            }
+          }
+          &.views-field-nothing {
+            text-align: center;
+          }
+        }
+      }
+      .footable-row-detail-inner {
+        .footable-row-detail-row {
+          width: 100%;
+          display: inline-block;
+          img {
+            max-width: 220px;
+            width: 100%;
+            border-radius: 5px;
+            border: 2px solid #C1C1C1;
+          }
+        }
+      }
+    }
+  }
+
+  .pane-dashboard-bookings-panel-pane-1,
+  .pane-dashboard-bookings-panel-pane-2,
+  .pane-dashboard-bookings-panel-pane-4 {
+    .pane-title {
+      font-size: 36px;
+      font-weight: 300;
+      margin-bottom: 40px;
+    }
+    .view-dashboard-bookings {
+      th {
+        text-align: left;
+      }
+      td {
+        font-size: 15px;
+      }
+    }
+  }
+}
+.page-admin-bat-conversations-guest,
+.page-admin-bat-conversations-owner {
+  .view-user-conversations {
+    .views-field-changed {
+      margin-bottom: 3px;
+      font-size: 16px;
+      font-weight: 300;
+    }
+    .views-field-nothing-1 {
+      height: 65px;
+      border: 1px dotted #005082;
+      background: #F5F5F5;
+      font-size: 18px;
+      font-weight: 300;
+      margin-top: -1px;
+      margin-bottom: 22px;
+      padding: 8px;
+      @media (max-width: @screen-sm) {
+        height: 140px;
+      }
+      &:hover {
+        background: white;
+      }
+      .transition(150ms background ease-in-out);
+      div.conversation-info {
+        display: inline-block;
+        vertical-align: top;
+        width: 92%;
+      }
+      a.conversation-info-link {
+        text-decoration: none;
+        color: #333;
+        .conversation-header {
+          padding-bottom: 8px;
+        }
+        .conversation-message-author {
+          display: inline-block;
+          width: 30%;
+          vertical-align: top;
+          font-style: italic;
+          font-weight: 800;
+          font-size: 14px;
+          padding-right: 4px;
+        }
+        .conversation-message-message {
+          font-size: 14px;
+          display: inline-block;
+          width: 50%;
+        }
+        .conversation-price {
+          font-style: italic;
+          font-weight: 800;
+          font-size: 14px;
+          width: 18%;
+          display: inline-block;
+          vertical-align: top;
+        }
+      }
+      div.conversation-reply {
+        display: inline-block;
+        float: right;
+        vertical-align: top;
+        margin-top: 20px;
+        margin-right: 10px;
+        height: 100%;
+        width: 25px;
+        background: url("../images/reply.png") no-repeat;
+        background-size: 25px 25px, contain;
+        @media (max-width: @screen-sm) {
+          height: initial;
+        }
+        a {
+          display: block;
+          height: 35px;
+          width: 35px;
+          text-indent: -9999px;
+          overflow:hidden;
+        }
+      }
+    }
+  }
+}
+
+.pane-theme-colors {
+  #color_scheme_form {
+    #placeholder {
+      @media (max-width: 800px) {
+        position: relative;
+        margin-bottom: 40px;
+      }
+    }
+    #palette {
+      @media (max-width: @screen-sm) {
+        .form-item {
+          width: 20em;
+          label {
+            margin-bottom: 10px;
+          }
+          input {
+            margin-bottom: 30px;
+          }
+        }
+        .item-selected {
+          background: transparent;
+        }
+      }
+    }
+  }
+  #preview {
+    @media (max-width: @screen-sm) {
+      display: none !important;
+    }
+  }
+}
+
+.add-offer-button {
+  display: inline-block;
+  margin-bottom: 30px;
+  background: #0074bd url("../images/plus_white.png") no-repeat 6px 12px;
+  background-size: 20px;
+  border-radius: 4px;
+  border-bottom: 2px solid #397AA7;
+  color: #ffffff;
+  font-size: 20px;
+  background-color: #3498db;
+  padding: 12px 10px 12px 30px;
+  text-decoration: none;
+  &:hover {
+    background-color: #1ea4f7;
+    text-decoration: none;
+  }
+}

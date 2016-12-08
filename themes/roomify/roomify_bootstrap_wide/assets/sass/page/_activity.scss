@@ -1,0 +1,399 @@
+.node-type-activity {
+  .panel_sl_content {
+
+    // ACTIVITY TYPE
+    .pane-node-field-activity-type {
+      margin-bottom: 20px;
+      font-size: 20px;
+      text-decoration: underline;
+    }
+    // SLIDER
+    .pane-activity-panel-pane-2 {
+      margin-bottom: 25px;
+      img {
+        @include box-shadow(2px 2px 6px 0px rgba(82, 82, 82, 0.52));
+      }
+      .slick__arrow {
+        button:before {
+          color: #232323;
+          font-size: 4.25rem;
+        }
+      }
+      .slideshow-info {
+        display: none;
+      }
+      .unslick .slideshow-info,
+      .slick-active .slideshow-info {
+        position: relative;
+        display: inline-block;
+        z-index: 10;
+        bottom: 15px;
+        width: 90%;
+        margin-left: 5%;
+        .slideshow-info-text {
+          position: absolute;
+          bottom: 22px;
+          text-align: left;
+          background: rgba(0, 0, 0, 0.25);
+          width: 100%;
+          color: white;
+          display: inline-block;
+          font-weight: bold;
+          padding: 10px;
+        }
+        .slideshow-info-title {
+          font-size: 22px;
+          @media (max-width: $screen-xs) {
+            font-size: 16px;
+          }
+        }
+        .slideshow-info-description {
+          font-size: 14px;
+          @media (max-width: $screen-xs) {
+            font-size: 10px;
+          }
+        }
+        @media (max-width: $screen-xs) {
+          bottom: 5px;
+        }
+      }
+    }
+  }
+  .panel_sl_right {
+    padding: 0px 10px;
+    .panel-pane {
+      margin-bottom: 15px;
+      display: inline-block;
+      width: 100%;
+    }
+    @media (max-width: $screen-md) {
+      margin-top: 30px;
+    }
+    .pane-title {
+      padding: 10px;
+      background: #4A4A4A;
+      color: #F6F6F6;
+      font-weight: 400;
+    }
+    .pane-activity-panel-pane-3 {
+      display: inline-block;
+      width: 100%;
+      .views-row {
+        padding: 10px 20px;
+        display: inline-block;
+        width: 100%;
+        a {
+          font-size: 16px;
+          font-weight: 300;
+        }
+      }
+    }
+  }
+}
+
+.page-things-to-do {
+  .content-row {
+    max-width: 100%;
+    .page-header {
+      display: none;
+    }
+    #main-content {
+      padding: 0;
+      .panel-content-top {
+        .view-activity .views-row {
+          padding: 0;
+          img {
+            width: 100%;
+          }
+          .views-field-nothing {
+            position: relative;
+            width: 100%;
+            .roomify-activity-to-top-text {
+              .activity-title a {
+                font-size: 18px;
+                text-decoration: underline;
+              }
+              padding: 15px;
+              margin-bottom: 20px;
+              background: #333333;
+              color: white;
+              @media (min-width: $screen-md) {
+                position: absolute;
+                width: 70%;
+                right: 2%;
+                bottom: 70px;
+                color: initial;
+                background: rgba(255, 255, 255, 0.76);
+              }
+            }
+          }
+        }
+      }
+      .panel-content-wrapper {
+        max-width: 1120px;
+        margin: 0 auto;
+        .pane-custom.pane-1 {
+          margin: 30px 0;
+          .roomify-add-button {
+            @include add-button;
+          }
+        }
+      }
+      .pane-activity-panel-pane-5 {
+        .view-filters {
+          margin-bottom: 30px;
+          margin-top: 30px;
+        }
+        .view-display-id-panel_pane_5 {
+          .view-content {
+            margin: 0 auto;
+          }
+          .masonry-item {
+            border-radius: 5px;
+            @include box-shadow(1px 2px 5px 0px rgba(0, 0, 0, 0.45));
+            width: 320px;
+            margin: 25px 0px;
+            .views-field-field-activity-image {
+              img {
+                border-radius: 5px 5px 0 0;
+              }
+            }
+            .views-field-body {
+              background-color: white;
+              color: #565656;
+              font-weight: 300;
+              padding: 0px 10px 10px 10px;
+              border-radius: 0px 0px 5px 5px;
+              .field-content {
+                padding-top: 10px;
+                .views-more-link {
+                  display: block;
+                  margin-top: 10px;
+                }
+              }
+            }
+            .views-field-title-field { 
+              background: white;
+              padding: 10px;
+              border-bottom: 1px solid #E0E0E0;
+              a {
+                color: #565656;
+                font-size: 16px;
+                font-weight: 700;
+              }
+            }
+            &:hover {
+              opacity: .86;
+            }
+            @include transition(250ms opacity ease-out);
+          }
+        }
+      }
+      .pager-load-more {
+        width: 40%;
+        top: 20px;
+        left: 30%;
+        position: relative;
+        a {
+          background-color: transparent;
+          border: 2px solid #333333;
+          color: #333333;
+          font-size: 18px;
+          width: 100%;
+          @include border-radius(0px);
+          &:hover {
+            background-color: #333333;
+            color: white;
+            @include transition(350ms all ease-in);
+          }
+          @include transition(350ms all ease-out);
+        }
+        @media (max-width: $screen-sm) {
+          width: 80%;
+          left: 10%;
+        }
+      }
+    }
+  }
+}
+
+.pane-roomify-property-property-multi-day-tour {
+  h2.pane-title {
+    padding: 20px 30px;
+    margin: 0;
+    font-size: 16px;
+    background: #4A4A4A;
+    color: #F6F6F6;
+    @media (max-width: $screen-xs) {
+      display: inline-block;
+      .title {
+        width: 100%;
+        display: inline-block;
+      }
+    }
+    .title {
+      @media (max-width: $screen-xs) {
+        width: 100%;
+        display: inline-block;
+      }
+    }
+  }
+  .pane-content {
+    padding: 30px;
+    border: 1px solid #E2E2E2;
+    border-top: 0;
+    display: inline-block;
+    width: 100%;
+    background: #FFF;
+  }
+}
+
+.pane-roomify-property-property-multi-day-tour {
+  .row:before,
+  .row:after {
+    display: none;
+  }
+  .header {
+    font-size: 15px;
+  }
+  .row-group {
+    .cell {
+      font-size: 15px;
+      padding: 10px 0;
+      vertical-align: middle;
+      &:last-child {
+        width: 380px;
+      }
+    }
+  }
+
+  label {
+    display: inline-block;
+  }
+
+  .form-item-participants {
+    float: left;
+    width: 105px;
+    margin-right: 10px;
+  }
+
+  .tour-price {
+    float: right;
+    width: 230px;
+    font-size: 16px;
+    .field__item {
+      font-weight: 600;
+    }
+  }
+
+  button {
+    @include button-brooklin();
+    float: right;
+    width: 230px;
+    border: 1px solid #779D73;
+    font-size: 16px;
+    font-weight: 600;
+    background: $green;
+    padding: 8px 15px;
+    margin-top: 6px;
+    &:hover {
+      opacity: .86;
+      color: #FFF;
+    }
+  }
+}
+
+.pane-roomify-property-property-single-day-tour,
+.pane-roomify-property-property-multi-day-activity,
+.pane-roomify-property-property-single-day-activity {
+  h2.pane-title {
+    padding: 20px 30px;
+    margin: 0;
+    font-size: 16px;
+    background: #4A4A4A;
+    color: #F6F6F6;
+    @media (max-width: $screen-xs) {
+      display: inline-block;
+      .title {
+        width: 100%;
+        display: inline-block;
+      }
+    }
+    .title {
+      @media (max-width: $screen-xs) {
+        width: 100%;
+        display: inline-block;
+      }
+    }
+  }
+  .pane-content {
+    padding: 30px;
+    border: 1px solid #E2E2E2;
+    border-top: 0;
+    display: inline-block;
+    width: 100%;
+    background: #FFF;
+
+    #single-day-tour-container,
+    #activity-container,
+    .container-inline-date {
+      width: 50%;
+      float: left;
+    }
+
+    .container-inline-date {
+      label {
+        display: none;
+      }
+    }
+
+    .form-item-price {
+      font-size: 16px;
+      .field__item {
+        font-weight: 600;
+      }
+    }
+
+    .tours-base-price {
+      position: absolute;
+      right: 42px;
+      top: 18px;
+      font-size: 16px;
+      color: white;
+      font-family: "Open Sans", sans-serif;
+      font-weight: 600;
+    }
+
+    .ui-datepicker-inline {
+      width: 270px;
+    }
+
+    #single-day-tour-container,
+    #activity-container {
+      select {
+        width: calc(100% - 15px);
+      }
+      button {
+        @include button-brooklin();
+        width: calc(100% - 15px);
+        border: 1px solid #779D73;
+        font-size: 16px;
+        font-weight: 600;
+        background: $green;
+        margin-top: 12px;
+        &:hover {
+          opacity: .86;
+        }
+      }
+    }
+  }
+}
+
+.page-activity {
+  .page-header {
+    display: none;
+  }
+  .region-content {
+    margin-top: 80px;
+  }
+}

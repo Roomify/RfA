@@ -1,0 +1,10 @@
+name = Roomify Payment Methods
+description = UI Layer between Commerce Payment Methods and Roomify Products.
+core = 7.x
+
+package = Roomify
+
+dependencies[] = commerce_authnet
+dependencies[] = commerce_cop
+dependencies[] = commerce_paypal_wps
+dependencies[] = commerce_stripe

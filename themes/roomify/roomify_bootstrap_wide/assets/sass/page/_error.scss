@@ -1,0 +1,86 @@
+.roomify-error-page {
+  display: inline-block;
+  width: 100%;
+  margin: 80px 0px;
+  text-align: center;
+
+  .title {
+    font-size: 36px;
+    margin-bottom: 10px;
+  }
+  .text {
+    font-size: 22px
+  }
+}
+
+
+.maintenance-page {
+  background: white;
+  #header {
+    background: #333333;
+    padding: 20px 10px;
+    #logo-title {
+      img {
+        max-width: 250px;
+      }
+    }
+  }
+  #container {
+    background: white;
+    max-width: 1200px;
+    margin: 50px auto;
+    width: 100%;
+    color: #7C7C7C;
+    #content {
+      .title {
+        font-size: 36px;
+        margin-bottom: 10px;
+        color: #7C7C7C;
+      }
+      #content-content {
+        font-size: 22px;
+      }
+    }
+  }
+  #footer-wrapper {
+    min-height: 150px;
+    background: #333333;
+    display: inline-block;
+    width: 100%;
+  }
+
+   // UPDATES
+  #sidebar-first {
+    width: 30%;
+    margin-right: 3.3%;
+    margin-top: 15px;
+    float: left;
+    display: inline-block;
+    .task-list {
+      font-size: 22px;
+      padding: 20px 10px;
+      color: #7C7C7C;
+      background: #EAEAEA;
+      border-radius: 5px;
+      li {
+        margin-bottom: 10px;
+        &.active {
+          text-decoration: underline;
+        }
+      }
+    }
+  }
+  #main {
+    width: 66.6%;
+    display: inline-block;
+    float: left;
+    .form-submit {
+      margin-top: 15px;
+      background: #00AD00;
+      border: 0;
+      color: white;
+      padding: 5px 15px;
+
+    }
+  }
+}

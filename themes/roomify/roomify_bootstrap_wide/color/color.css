@@ -1,0 +1,69 @@
+/* HEADER */
+body header { background-color: #ffffff; }
+
+/* WIDE LOCANDA HOMEPAGE */
+@media screen and (max-width: 767px) {
+  body.page-locanda-listing header {
+    background-color: #ffffff;
+  }
+}
+
+body.page-locanda-listing header .header-row {
+	background-color: #ffffff;
+}
+
+/* FOOTER */
+body footer { background-color: #333333; }
+
+
+/* SITE NAME - LINKS HEADER/FOOTER */
+body .roomify-language-switcher .language-switcher-locale-url li a,
+body header .header-row .navbar nav ul.navbar-nav > li > a,
+body header .header-row a.header-name,
+body .footer a { color: #7c7c7c; }
+body header .header-row .navbar nav ul.navbar-nav li a:before,
+body header .header-row .navbar nav ul.navbar-nav li a:after {
+	background: #7c7c7c;
+}
+/* USER ICON */
+.roomify-sidebar-menu-toggle svg { fill: #7c7c7c; }
+/* HAMBURGER MENU */
+body header .header-row .navbar-toggle .icon-bar {
+  background: #7c7c7c;
+}
+
+body header .header-row .navbar nav ul.navbar-nav li .submenu-button:after,
+body header .header-row .navbar nav ul.navbar-nav li .submenu-button:before {
+  background-color: #7c7c7c;
+}
+body header .header-row .navbar nav ul.navbar-nav li .submenu-opened {
+	background: #000000;
+}
+
+/* ON HOVER LINKS HEADER/FOOTER */
+body header .header-row .navbar nav ul.navbar-nav > li > a:hover,
+body header .header-row a.header-name:hover,
+body .footer a:hover { color: #000000; }
+body header .header-row .navbar nav ul.navbar-nav li a:hover:before,
+body header .header-row .navbar nav ul.navbar-nav li a:hover:after {
+	background: #000000;
+}
+body .footer .rsp-social-icon { background: #000000; }
+
+/* USER ICON */
+.roomify-sidebar-menu-toggle svg:hover { fill: #000000; }
+/* HAMBURGER MENU */
+body header .header-row .navbar-toggle:hover .icon-bar {
+  background: #000000;
+}
+body header .header-row .navbar nav ul.navbar-nav li .dropdown-menu li,
+body header .header-row .navbar nav ul.navbar-nav li .dropdown-menu li a {
+	background: #000000;
+}
+body header .header-row .navbar nav ul.navbar-nav li .dropdown-menu li a:hover {
+	color: #7c7c7c;
+	background: #ffffff;
+}
+
+/* TEXT HEADER/FOOTER */
+body footer { color: #868686; }

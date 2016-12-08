@@ -1,0 +1,233 @@
+<?php
+
+/**
+ * @file
+ * Code for the Roomify Global Addons.
+ */
+
+/**
+ * Implements hook_commerce_product_type_info().
+ */
+function roomify_global_addons_commerce_product_type_info() {
+  $product_types = array();
+
+  $product_types['add_on'] = array(
+    'type' => 'add_on',
+    'name' => t('Add On'),
+    'description' => t('An add on product.'),
+  );
+
+  return $product_types;
+}
+
+/**
+ * Implements hook_commerce_line_item_type_info().
+ */
+function roomify_global_addons_commerce_line_item_type_info() {
+  return array(
+    'roomify_addon' => array(
+      'name' => t('Roomify Addon'),
+      'description' => t('Represents an addon.'),
+      'product' => TRUE,
+      'add_form_submit_value' => t('Add addon'),
+      'base' => 'roomify_addon_line_item',
+    ),
+  );
+}
+
+/**
+ * Implements hook_views_api().
+ */
+function roomify_global_addons_views_api($module = NULL, $api = NULL) {
+  return array(
+    "api" => "3.0",
+    "path" => drupal_get_path('module', 'roomify_global_addons') . '/views',
+  );
+}
+
+/**
+ * Ensures the addon line item type contains a product reference field.
+ *
+ * @param array $line_item_type
+ *   The line item type object.
+ */
+function roomify_addon_line_item_configuration($line_item_type) {
+  // Create the product reference field for the line item type.
+  commerce_product_line_item_configuration($line_item_type);
+}
+
+/**
+ * Implements hook_line_item_title().
+ */
+function roomify_global_addons_line_item_title($line_item) {
+  // Use the line item's label for the title.
+  return ($line_item->line_item_label);
+}
+
+/**
+ * Implements hook_commerce_checkout_page_info().
+ * Defines a new checkout page.
+ */
+function roomify_global_addons_commerce_checkout_page_info() {
+  $checkout_pages = array();
+
+  // Define an Add ons checkout page.
+  $checkout_pages['add-ons'] = array(
+    'name' => t('Add ons'),
+    'title' => t('Add ons'),
+    'weight' => -10,
+  );
+
+  return $checkout_pages;
+}
+
+/**
+ * Implements hook_commerce_checkout_pane_info().
+ */
+function roomify_global_addons_commerce_checkout_pane_info() {
+  $checkout_panes = array();
+
+  // Add-on checkout pane.
+  $checkout_panes['add_ons'] = array(
+    'title' => t('Add Ons'),
+    'base' => 'roomify_addons_contents_pane',
+    'file' => 'includes/roomify_addons.checkout_pane.inc',
+    'page' => 'add-ons',
+    'weight' => -10,
+  );
+
+  // My Cart checkout pane.
+  $checkout_panes['my_cart'] = array(
+    'title' => t('My Booking'),
+    'base' => 'roomify_mycart_contents_pane',
+    'file' => 'includes/roomify_addons.checkout_pane.inc',
+    'page' => 'add-ons',
+    'weight' => -20,
+  );
+
+  return $checkout_panes;
+}
+
+/**
+ * Implements hook_page_alter().
+ */
+function roomify_global_addons_page_alter(&$page) {
+  // We are going to extract forms inside other forms to avoid
+  // problems on submission.
+  if (isset($page['content']['commerce_checkout_progress_indication']) && $page['content']['commerce_checkout_progress_indication']['#current_page'] == 'add-ons') {
+    $add_ons = array();
+    $my_page = array();
+    if (isset($page['content']['system_main']['add_ons'])) {
+      $add_ons = $page['content']['system_main']['add_ons'];
+      unset($page['content']['system_main']['add_ons']);
+    }
+    if (isset($page['content']['system_main']['my_cart'])) {
+      $my_cart = $page['content']['system_main']['my_cart'];
+      unset($page['content']['system_main']['my_cart']);
+    }
+
+    $commerce_checkout_process = $page['content']['commerce_checkout_progress_indication'];
+    unset($page['content']['commerce_checkout_progress_indication']);
+    // Re-order the array as we want.
+    array_unshift($page['content'], $commerce_checkout_process, $my_cart, $add_ons);
+  }
+
+  // Remove Add-ons and My Cart from the Review Page
+  // we don't need it anymore.
+  if (isset($page['content']['system_main']['checkout_review']['review']['#data']['my_cart'])) {
+    unset($page['content']['system_main']['checkout_review']['review']['#data']['my_cart']);
+  }
+  if (isset($page['content']['system_main']['checkout_review']['review']['#data']['add_ons'])) {
+    unset($page['content']['system_main']['checkout_review']['review']['#data']['add_ons']);
+  }
+}
+
+/**
+ * Implements hook_form_FORM_ID_alter().
+ * FORM_ID = views_form_my_cart_default.
+ */
+function roomify_global_addons_form_views_form_my_cart_default_alter(&$form, &$form_state) {
+  // Redirect to checkout after Update cart.
+  $form['#submit'][] = 'redirect_to_checkout_page';
+
+  // Change submit name.
+  $form['actions']['submit']['#value'] = t('Update Cart');
+  if (isset($form['#action'])) {
+    unset($form['#action']);
+  }
+
+  foreach (element_children($form['edit_quantity']) as $key) {
+    $line_item = commerce_line_item_load($form['edit_quantity'][$key]['#line_item_id']);
+    if ($line_item->type == 'roomify_accommodation_booking') {
+      $form['edit_delete'][$key]['#access'] = FALSE;
+      $form['edit_quantity'][$key]['#access'] = FALSE;
+    }
+  }
+}
+
+/**
+ * Custom submit function to redirect users to checkout.
+ */
+function redirect_to_checkout_page(&$form, &$form_state) {
+  $form_state['redirect'] = 'checkout';
+}
+
+/**
+ * Implements hook_form_FORM_ID_alter().
+ * FORM_ID = views_form_my_cart_default.
+ */
+function roomify_global_addons_form_commerce_product_ui_product_form_alter(&$form, &$form_state) {
+  // Remove the cancel button, users get access denied at the redirect.
+  $form['actions']['submit']['#suffix'] = '<a href="/admin/bat/config/add-ons">Cancel</a>';
+
+  // Save and add another button does bad things.
+  // I will hide it and prevent the bad things from happening.
+  unset($form['actions']['save_continue']);
+}
+
+/**
+ * Modifying the commerce_cart_checkout_form_cancel_submit function in commerce_cart.module.
+ */
+function roomify_global_addons_form_cancel_submit($form, &$form_state) {
+  // Update the order to the cart status.
+  $order = commerce_order_load($form_state['order']->order_id);
+  $form_state['order'] = commerce_order_status_update($order, 'cart', TRUE);
+
+  // Skip saving in the status update and manually save here to force a save
+  // even when the status doesn't actually change.
+  if (variable_get('commerce_order_auto_revision', TRUE)) {
+    $form_state['order']->revision = TRUE;
+    $form_state['order']->log = t('Customer manually canceled the checkout process.');
+  }
+
+  commerce_order_save($form_state['order']);
+
+  drupal_set_message(t('Checkout of your current order has been canceled and may be resumed when you are ready.'));
+
+  // Redirect to home on cancel.
+  $form_state['redirect'] = '<front>';
+}
+
+/**
+ * Implements hook_roomify_rights().
+ */
+function roomify_global_addons_roomify_rights() {
+  $rights['roomify_global_addons'] = array(
+    'roomify manager' => array(
+      'create commerce_product entities of bundle add_on',
+      'edit any commerce_product entity of bundle add_on',
+      'view any commerce_product entity of bundle add_on',
+    ),
+  );
+
+  return $rights;
+}
+
+/**
+ * Implements hook_views_pre_render().
+ */
+function roomify_global_addons_views_pre_render(&$view) {
+  if ($view->name == 'add_ons' && $view->current_display == 'page_1') {
+    $view->header['area']->options['content'] = l(t('add add-on'), 'admin/commerce/products/add/add-on', array('query' => array('destination' => 'admin/bat/config/add-ons'), 'attributes' => array('class' => 'button add-on-button'))) . '</br></br>';
+  }
+}

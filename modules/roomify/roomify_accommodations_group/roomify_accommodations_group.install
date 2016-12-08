@@ -1,0 +1,23 @@
+<?php
+
+/**
+ * @file
+ */
+
+/**
+ * Implements hook_install().
+ */
+function roomify_accommodations_group_install() {
+  $group_type = entity_create('group_type', array('name' => 'roomify_group', 'label' => 'Roomify Group'));
+  $group_type->save();
+
+  $group_role = entity_create('group_role', array('name' => 'group_manager', 'label' => 'Group Manager'));
+  $group_role->save();
+}
+
+/**
+ * Enable Override Node Options.
+ */
+function roomify_accommodations_group_update_7001() {
+  module_enable(array('override_node_options'));
+}

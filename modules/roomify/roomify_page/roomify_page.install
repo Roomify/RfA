@@ -1,0 +1,43 @@
+<?php
+
+/**
+ * @file
+ * Installation for roomify_page.
+ */
+
+/**
+ * Re-save all page nodes to update title field.
+ */
+function roomify_page_update_7001(&$sandbox) {
+  $feature = features_get_features('roomify_page');
+  $components = array_keys($feature->info['features']);
+  features_revert(array('roomify_page' => $components));
+
+  $nids = db_query('SELECT nid FROM {node} WHERE type = :type', array(':type' => 'page'))->fetchCol();
+
+  if (!isset($sandbox['progress'])) {
+    $sandbox['progress'] = 0;
+    $sandbox['current_node'] = 0;
+    $sandbox['max'] = count($nids);
+  }
+
+  $limit = 30;
+  $result = db_select('node')
+    ->fields('node', array('nid'))
+    ->condition('nid', $sandbox['current_node'], '>')
+    ->condition('type', 'page')
+    ->orderBy('nid', 'ASC')
+    ->range(0, $limit)
+    ->execute();
+
+  foreach ($result as $row) {
+    $node = node_load($row->nid, NULL, TRUE);
+    node_save($node);
+    $sandbox['progress']++;
+    $sandbox['current_node'] = $node->nid;
+  }
+
+  $sandbox['#finished'] = empty($sandbox['max']) ? 1 : ($sandbox['progress'] / $sandbox['max']);
+
+  return t('Pages updated successfully!');
+}

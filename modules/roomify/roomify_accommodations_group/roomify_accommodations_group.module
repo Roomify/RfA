@@ -1,0 +1,808 @@
+<?php
+
+/**
+ * @file
+ */
+
+/**
+ * Implements hook_entity_info_alter().
+ */
+function roomify_accommodations_group_entity_info_alter(&$entity_info) {
+  $entity_info['bat_unit']['group entity'] = 'single';
+  $entity_info['bat_type']['group entity'] = 'single';
+  $entity_info['roomify_property']['group entity'] = 'single';
+  $entity_info['bat_booking']['group entity'] = 'single';
+  $entity_info['bat_event']['group entity'] = 'single';
+  $entity_info['roomify_conversation']['group entity'] = 'single';
+}
+
+/**
+ * Implements hook_menu().
+ */
+function roomify_accommodations_group_menu() {
+  $items['group/%group/property/add'] = array(
+    'title' => 'Add property',
+    'page callback' => 'roomify_accommodations_group_property_add',
+    'page arguments' => array(1),
+    'access callback' => 'roomify_accommodations_group_add_property_access',
+    'access arguments' => array(1),
+    'type' => MENU_CALLBACK,
+  );
+
+  $items['admin/bat/config/group/add'] = array(
+    'page callback' => 'roomify_accommodations_group_group_add',
+    'access callback' => TRUE,
+    'type' => MENU_CALLBACK,
+  );
+
+  return $items;
+}
+
+/**
+ * Implements hook_menu_local_tasks_alter().
+ *
+ * Adds property creation local tasks to group/%group.
+ */
+function roomify_accommodations_group_menu_local_tasks_alter(&$data, $router_item, $root_path) {
+  // Add action links for property creation on group/%group.
+  if ($root_path == 'group/%') {
+    $gid = $router_item['original_map'][1];
+
+    $item = menu_get_item("group/$gid/property/add");
+
+    // Add one general and one unique class for styling purposes.
+    $item['localized_options']['attributes']['class'][] = 'group-local-action';
+    $item['localized_options']['attributes']['class'][] = 'group-local-action-property';
+    $item['localized_options']['attributes']['class'][] = 'ctools-use-modal';
+    $item['localized_options']['attributes']['class'][] = 'ctools-modal-roomify-dashboard-modal-style';
+
+    roomify_dashboard_setup_modal();
+
+    // Add another class to target just Group Property local actions.
+    $item['localized_options']['attributes']['class'][] = 'gproperty-local-action';
+
+    if ($item['access']) {
+      $data['actions']['output'][] = array(
+        '#theme' => 'menu_local_action',
+        '#link' => $item,
+      );
+    }
+  }
+}
+
+/**
+ * Implements hook_group_permission().
+ */
+function roomify_accommodations_group_group_permission() {
+  $permissions = array();
+
+  foreach (roomify_property_get_types() as $property_type) {
+    $replace = array('%property_type' => $property_type->label);
+
+    $permissions["view $property_type->type property"] = array(
+      'title' => t('%property_type: View property', $replace),
+    );
+    $permissions["create $property_type->type property"] = array(
+      'title' => t('%property_type: Create new property', $replace),
+    );
+    $permissions["update own $property_type->type property"] = array(
+      'title' => t('%property_type: Edit own property', $replace),
+    );
+    $permissions["update any $property_type->type property"] = array(
+      'title' => t('%property_type: Edit any property', $replace),
+    );
+    $permissions["delete own $property_type->type property"] = array(
+      'title' => t('%property_type: Delete own property', $replace),
+    );
+    $permissions["delete any $property_type->type property"] = array(
+      'title' => t('%property_type: Delete any property', $replace),
+    );
+  }
+
+  foreach (bat_unit_get_type_bundles() as $type) {
+    $replace = array('%type' => $type->label);
+
+    $permissions["view $type->type type"] = array(
+      'title' => t('%type: View type', $replace),
+    );
+    $permissions["create $type->type type"] = array(
+      'title' => t('%type: Create new type', $replace),
+    );
+    $permissions["update own $type->type type"] = array(
+      'title' => t('%type: Edit own type', $replace),
+    );
+    $permissions["update any $type->type type"] = array(
+      'title' => t('%type: Edit any type', $replace),
+    );
+    $permissions["delete own $type->type type"] = array(
+      'title' => t('%type: Delete own type', $replace),
+    );
+    $permissions["delete any $type->type type"] = array(
+      'title' => t('%type: Delete any type', $replace),
+    );
+  }
+
+  foreach (bat_unit_get_bundles() as $type) {
+    $replace = array('%type' => $type->label);
+
+    $permissions["view $type->type unit"] = array(
+      'title' => t('%type: View unit', $replace),
+    );
+    $permissions["create $type->type unit"] = array(
+      'title' => t('%type: Create new unit', $replace),
+    );
+    $permissions["update own $type->type unit"] = array(
+      'title' => t('%type: Edit own unit', $replace),
+    );
+    $permissions["update any $type->type unit"] = array(
+      'title' => t('%type: Edit any unit', $replace),
+    );
+    $permissions["delete own $type->type unit"] = array(
+      'title' => t('%type: Delete own unit', $replace),
+    );
+    $permissions["delete any $type->type unit"] = array(
+      'title' => t('%type: Delete any unit', $replace),
+    );
+  }
+
+  foreach (bat_booking_get_types() as $type) {
+    $replace = array('%type' => $type->label);
+
+    $permissions["view any bat_booking entity of bundle $type->type"] = array(
+      'title' => t('%type: View bookings', $replace),
+    );
+    $permissions["create bat_booking entities of bundle $type->type"] = array(
+      'title' => t('%type: Create new bookings', $replace),
+    );
+    $permissions["update own bat_booking entity of bundle $type->type"] = array(
+      'title' => t('%type: Edit own bookings', $replace),
+    );
+    $permissions["update any bat_booking entity of bundle $type->type"] = array(
+      'title' => t('%type: Edit any bookings', $replace),
+    );
+    $permissions["delete own bat_booking entity of bundle $type->type"] = array(
+      'title' => t('%type: Delete own bookings', $replace),
+    );
+    $permissions["delete any bat_booking entity of bundle  $type->type"] = array(
+      'title' => t('%type: Delete any bookings', $replace),
+    );
+  }
+
+  foreach (roomify_conversation_get_types() as $type) {
+    $replace = array('%type' => $type->label);
+
+    $permissions["view $type->type conversation"] = array(
+      'title' => t('%type: View conversations', $replace),
+    );
+    $permissions["create $type->type conversation"] = array(
+      'title' => t('%type: Create new conversations', $replace),
+    );
+    $permissions["update own $type->type conversation"] = array(
+      'title' => t('%type: Edit own conversations', $replace),
+    );
+    $permissions["update any $type->type conversation"] = array(
+      'title' => t('%type: Edit any conversations', $replace),
+    );
+    $permissions["delete own $type->type conversation"] = array(
+      'title' => t('%type: Delete own conversations', $replace),
+    );
+    $permissions["delete any $type->type conversation"] = array(
+      'title' => t('%type: Delete any conversations', $replace),
+    );
+  }
+
+  return $permissions;
+}
+
+/**
+ * Implements hook_admin_paths().
+ */
+function roomify_accommodations_group_admin_paths() {
+  return array('group/*/property/add/*' => TRUE);
+}
+
+/**
+ * Access callback for group/%group/property/add.
+ */
+function roomify_accommodations_group_add_property_access($group) {
+  $property_type = 'casa_property';
+  return group_access("create $property_type property", $group);
+}
+
+/**
+ * Adds group data to the property add form.
+ *
+ * @param Group $group
+ *   The group to create the property for.
+ * @param string $property_type
+ *   The type of property to create for the group.
+ *
+ * @return array
+ *   Returns the property editing form.
+ */
+function roomify_accommodations_group_property_add(Group $group) {
+  return roomify_property_wizard('nojs');
+}
+
+/**
+ * Implements hook_form_alter().
+ *
+ * Adds a Group vertical tab to the property form.
+ *
+ * You can only select those groups that you can create propertis of this type in.
+ * It would not make sense if someone could move properties to a group where he does
+ * not have creation rights.
+ *
+ * @see roomify_accommodations_group_property_validate()
+ * @see roomify_accommodations_group_property_submit()
+ */
+function roomify_accommodations_group_form_alter(&$form, &$form_state, $form_id) {
+  if (isset($form['#entity']) && get_class($form['#entity']) == 'RoomifyProperty') {
+    $form['actions']['submit']['#validate'][] = 'roomify_accommodations_group_property_validate';
+    $form['actions']['submit']['#submit'] = array_merge(array('roomify_accommodations_group_property_submit'), $form['actions']['submit']['#submit']);
+
+    $property = $form['#entity'];
+    $gid = !empty($property->group) ? $property->group : 0;
+
+    $can_bypass_access = user_access('bypass group access');
+
+    // If the user can't bypass group access and we already have a property_id or gid, we
+    // are either on a property edit form or a Group Property add form. In such a case,
+    // we do not show anything.
+    if (!$can_bypass_access) {
+      // Fix the group if the property was already set to one.
+      if (!empty($gid)) {
+        $form['gid'] = array(
+          '#type' => 'value',
+          '#value' => $gid,
+          '#parents' => array('group_settings', 'gid'),
+        );
+
+        return;
+      }
+      // Do nothing if we are on an ungrouped property's edit form.
+      elseif (!empty($property->property_id)) {
+        return;
+      }
+    }
+
+    $global_property_create_access = roomify_accommodations_group_global_property_create_access($property->type);
+    $group_access_warning = t("<strong>By selecting a group, the property will inherit the group's access control</strong>.");
+
+    // Otherwise add a vertical tab for group selection.
+    $form['group_settings'] = array(
+      '#type' => 'fieldset',
+      '#title' => t('Group settings'),
+      '#collapsible' => TRUE,
+      '#collapsed' => FALSE,
+      '#group' => 'additional_settings',
+      '#attributes' => array(
+        'class' => array('property-form-group-information'),
+      ),
+      '#attached' => array(
+        'js' => array(drupal_get_path('module', 'gnode') . '/misc/gnode.js'),
+      ),
+      '#tree' => TRUE,
+      '#weight' => -50,
+    );
+
+    // Show a select of all the groups the author can create the property in.
+    if (!$can_bypass_access) {
+      $options = array();
+      foreach (group_load_multiple(roomify_accommodations_group_group_property_create_gids($property->type)) as $group) {
+        $options[$group->gid] = $group->label() . " (GID: $group->gid)";
+      }
+
+      $description = $global_property_create_access
+        ? t('Optionally select the group to attach this property to.')
+        : t('Because you are not allowed to create this content outside of a group, you are required to select one here.');
+
+      $form['group_settings']['gid'] = array(
+        '#type' => 'select',
+        '#title' => t('Parent group'),
+        '#description' => $description . '<br />' . $group_access_warning,
+        '#options' => $options,
+        '#required' => !$global_property_create_access,
+        '#empty_value' => '',
+      );
+    }
+
+    // Show an autocomplete field to select the group with.
+    else {
+      $group_name = '';
+
+      if ($gid) {
+        // Retrieve the default value for the autocomplete field.
+        $title = group_load($gid)->title;
+        $group_name = "$title (GID: $gid)";
+      }
+
+      $description = $global_property_create_access
+        ? t('Enter the name of the group to attach this property to. Leave blank for no group.')
+        : t('Because you are not allowed to create this content outside of a group, you are required to enter the name of one here.');
+
+      // There is a special use case where a user may edit global properties, but
+      // not create them and also may bypass group access. In such a case, he
+      // could move an ungrouped property to a group, or leave it ungrouped.
+      if (!empty($property->property_id) && empty($gid) && !$global_property_create_access) {
+        $description = t('This property is not attached to a group. In order to keep it that way, leave this field blank. Alternatively, you may enter the name of the group to attach this property to.');
+        $description .= '<br />' . t('<strong>Warning:</strong> Because you are not allowed to create this content outside of a group, you will not be able to move it back to the sitewide scope.');
+        $global_property_create_access = TRUE;
+      }
+
+      $form['group_settings']['group'] = array(
+        '#type' => 'textfield',
+        '#title' => t('Parent group'),
+        '#autocomplete_path' => 'group/autocomplete',
+        '#default_value' => $group_name,
+        '#description' => $description . '<br />' . $group_access_warning,
+        '#required' => !$global_property_create_access,
+      );
+    }
+  }
+}
+
+/**
+ * Retrieve all group ids a user can create a property of a given type in.
+ *
+ * @param string $type
+ *   The property type the user is attempting to create.
+ * @param object $account
+ *   (optional) The account of the user.
+ *
+ * @return array
+ *   An array of group ids (gids).
+ */
+function roomify_accommodations_group_group_property_create_gids($type, $account = NULL) {
+  global $user;
+
+  if (!isset($account)) {
+    $account = $user;
+  }
+
+  // Determine whether the account could be 'anonymous' or 'outsider'.
+  $account_exists = (bool) $account->uid;
+
+  // If the user can bypass group access, return all group ids.
+  if (user_access('bypass group access', $account)) {
+    return db_select('groups', 'g')->fields('g')->execute()->fetchCol();
+  }
+
+  // Otherwise, start gathering group ids.
+  $gids = array();
+
+  // Check for all group types if a non-member can create
+  // properties of the given property type in them.
+  foreach (group_types() as $group_type) {
+    // Retrieve the permissions to check for creation rights.
+    $check_permissions = $account_exists ? $group_type->outsider_permissions : $group_type->anonymous_permissions;
+
+    $has_access = in_array('administer group', $check_permissions);
+    $has_access = $has_access || in_array("create $type", $check_permissions);
+
+    // If the group type allows access to non-members, we add all of the groups
+    // the user is not a member of. This would be all groups in case we are
+    // checking for an anonymous user.
+    if ($has_access) {
+      $gids = array_merge($gids, group_non_member_gids($account->uid, $group_type->name));
+    }
+  }
+
+  // Add all of the user's groups in which he has creation rights.
+  foreach (group_load_by_member($account->uid) as $group) {
+    $has_access = group_access('administer group', $group, $account);
+    $has_access = $has_access || group_access("create $type property", $group, $account);
+
+    if ($has_access) {
+      $gids[] = $group->gid;
+    }
+  }
+
+  $gids = array_unique($gids);
+  sort($gids);
+
+  return $gids;
+}
+
+/**
+ * Determines whether a user could create a property in a site-wide context.
+ *
+ * @param string $type
+ *   The property type the user is attempting to create.
+ * @param object $account
+ *   (optional) The account of the user.
+ *
+ * @return bool
+ *   Whether the user has creation rights.
+ */
+function roomify_accommodations_group_global_property_create_access($type, $account = NULL) {
+  return roomify_property_add_access();
+}
+
+/**
+ * Validates and processes the 'parent group' field.
+ *
+ * @see roomify_accommodations_group_form_alter()
+ */
+function roomify_accommodations_group_property_validate($form, &$form_state) {
+  $values = $form_state['values']['group_settings'];
+
+  if (!empty($values['group'])) {
+    // Retrieve the group id from the name suffix.
+    if ($gid = group_autocomplete_result_gid($values['group'])) {
+      $form_state['values']['group_settings']['gid'] = $gid;
+    }
+    // Throw an error if the gid could not be retrieved.
+    else {
+      form_set_error('group_settings][group', t('Group name not found'));
+    }
+  }
+}
+
+/**
+ * @see roomify_accommodations_group_form_alter()
+ */
+function roomify_accommodations_group_property_submit($form, &$form_state) {
+  $property = $form_state['roomify_property'];
+
+  if (!empty($form_state['values']['group_settings']['gid'])) {
+    $form_state['roomify_property']->group = $form_state['values']['group_settings']['gid'];
+
+    foreach ($property->property_bat_type_reference[LANGUAGE_NONE] as $type) {
+      $bat_type = bat_type_load($type['target_id']);
+      $bat_type->group = $form_state['values']['group_settings']['gid'];
+      $bat_type->save();
+
+      foreach (bat_unit_load_multiple(FALSE, array('type_id' => $bat_type->type_id)) as $unit) {
+        $unit->group = $form_state['values']['group_settings']['gid'];
+        $unit->save();
+      }
+    }
+  }
+  elseif (isset($form_state['roomify_property']->group)) {
+    unset($form_state['roomify_property']->group);
+
+    foreach ($property->property_bat_type_reference[LANGUAGE_NONE] as $type) {
+      $bat_type = bat_type_load($type['target_id']);
+      unset($bat_type->group);
+      $bat_type->save();
+
+      foreach (bat_unit_load_multiple(FALSE, array('type_id' => $bat_type->type_id)) as $unit) {
+        unset($unit->group);
+        $unit->save();
+      }
+    }
+  }
+}
+
+/**
+ * Implements hook_bat_entity_access().
+ */
+function roomify_accommodations_group_bat_entity_access($op, $entity, $account, $entity_type) {
+  if ($entity_type == 'roomify_property') {
+    if (isset($entity->group)) {
+      $group = group_load($entity->group);
+
+      $has_access = group_access('administer group', $group, $account);
+
+      switch ($op) {
+        case "view":
+          $has_access = $has_access || group_access("view $entity->type property", $group, $account);
+          break;
+
+        case "update":
+        case "delete":
+          $has_access = $has_access || group_access("$op any $entity->type property", $group, $account);
+
+          if ($account->uid == $entity->uid) {
+            $has_access = $has_access || group_access("$op own $entity->type property", $group, $account);
+          }
+
+          break;
+      }
+
+      return $has_access;
+    }
+  }
+
+  if ($entity_type == 'bat_type') {
+    if (isset($entity->group)) {
+      $group = group_load($entity->group);
+
+      $has_access = group_access('administer group', $group, $account);
+
+      switch ($op) {
+        case "view":
+          $has_access = $has_access || group_access("view $entity->type type", $group, $account);
+          break;
+
+        case "update":
+        case "delete":
+          $has_access = $has_access || group_access("$op any $entity->type type", $group, $account);
+
+          if ($account->uid == $entity->uid) {
+            $has_access = $has_access || group_access("$op own $entity->type type", $group, $account);
+          }
+
+          break;
+      }
+
+      return $has_access;
+    }
+  }
+
+  if ($entity_type == 'bat_unit') {
+    if (isset($entity->group)) {
+      $group = group_load($entity->group);
+
+      $has_access = group_access('administer group', $group, $account);
+
+      switch ($op) {
+        case "view":
+          $has_access = $has_access || group_access("view $entity->type unit", $group, $account);
+          break;
+
+        case "update":
+        case "delete":
+          $has_access = $has_access || group_access("$op any $entity->type unit", $group, $account);
+
+          if ($account->uid == $entity->uid) {
+            $has_access = $has_access || group_access("$op own $entity->type unit", $group, $account);
+          }
+
+          break;
+      }
+
+      return $has_access;
+    }
+  }
+
+  if ($entity_type == 'bat_booking') {
+    if (isset($entity->group)) {
+      $group = group_load($entity->group);
+
+      $has_access = group_access('administer group', $group, $account);
+
+      switch ($op) {
+        case "view":
+          $has_access = $has_access || group_access("view any bat_booking entity of bundle $type->type", $group, $account);
+          break;
+
+        case "update":
+        case "delete":
+          $has_access = $has_access || group_access("$op any bat_booking entity of bundle $type->type", $group, $account);
+
+          if ($account->uid == $entity->uid) {
+            $has_access = $has_access || group_access("$op own bat_booking entity of bundle $type->type", $group, $account);
+          }
+
+          break;
+      }
+
+      return $has_access;
+    }
+  }
+}
+
+/**
+ * Implements hook_views_api().
+ */
+function roomify_accommodations_group_views_api() {
+  return array(
+    'api' => 3,
+    'path' => drupal_get_path('module', 'roomify_accommodations_group') . '/views',
+  );
+}
+
+/**
+ * Implements hook_panels_pane_content_alter().
+ *
+ * Add the Group links to the sidebar menu.
+ */
+function roomify_accommodations_group_panels_pre_render($panels_display, $renderer) {
+  if ($panels_display->css_id == 'mini-panel-sidebar') {
+    $groups = panels_new_pane('views_panes', 'my_groups-panel_pane_1', TRUE);
+    $panels_display->add_pane($groups, 'middle');
+  }
+}
+
+/**
+ * Implement hook_custom_theme().
+ *
+ * Force group pages to use the admin theme.
+ */
+function roomify_accommodations_group_custom_theme() {
+  // Match group/%group.
+  if (arg(0) == 'group') {
+    return variable_get('admin_theme');
+  }
+}
+
+/**
+ * Implements hook_entity_presave().
+ */
+function roomify_accommodations_group_entity_presave($entity, $type) {
+  if ($type == 'roomify_property') {
+    if (arg(0) == 'group' && arg(2) == 'property' && arg(3) == 'add') {
+      foreach (group_membership_load_by_user($entity->uid) as $membership) {
+        if ($membership->gid == arg(1)) {
+          $entity->group = $membership->gid;
+        }
+      }
+    }
+  }
+
+  if ($type == 'bat_booking') {
+    if ($entity->type == 'roomify_accommodation_booking') {
+      $booking_wrapper = entity_metadata_wrapper('bat_booking', $entity);
+
+      $type = bat_type_load($booking_wrapper->booking_event_reference->event_bat_unit_reference->type_id->value());
+      $property = roomify_property_load($type->field_st_property_reference[LANGUAGE_NONE][0]['target_id']);
+
+      if (isset($property->group)) {
+        $entity->group = $property->group;
+      }
+    }
+    elseif ($entity->type == 'conversation_booking') {
+      $booking_wrapper = entity_metadata_wrapper('bat_booking', $entity);
+
+      $type = $booking_wrapper->booking_conversation_ref->conversation_unit_type_ref->value();
+      $property = roomify_property_load($type->field_st_property_reference[LANGUAGE_NONE][0]['target_id']);
+
+      if (isset($property->group)) {
+        $entity->group = $property->group;
+      }
+    }
+  }
+
+  if ($type == 'bat_event') {
+    $event_wrapper = entity_metadata_wrapper('bat_event', $entity);
+
+    if ($event_wrapper->__isset('event_bat_unit_reference')) {
+      if ($event_wrapper->event_bat_unit_reference->value() !== NULL) {
+        $type = bat_type_load($event_wrapper->event_bat_unit_reference->type_id->value());
+        $property = roomify_property_load($type->field_st_property_reference[LANGUAGE_NONE][0]['target_id']);
+
+        if (isset($property->group)) {
+          $entity->group = $property->group;
+        }
+      }
+    }
+  }
+
+  if ($type == 'roomify_conversation') {
+    $conversation_wrapper = entity_metadata_wrapper('roomify_conversation', $entity);
+
+    $type = bat_type_load($conversation_wrapper->conversation_unit_type_ref->type_id->value());
+    $property = roomify_property_load($type->field_st_property_reference[LANGUAGE_NONE][0]['target_id']);
+
+    if (isset($property->group)) {
+      $entity->group = $property->group;
+    }
+  }
+
+  if ($type == 'group_membership') {
+    $role = user_role_load_by_name('group manager');
+
+    if (in_array('group_manager', $entity->roles)) {
+      user_multiple_role_edit(array($entity->uid), 'add_role', $role->rid);
+    }
+    else {
+      user_multiple_role_edit(array($entity->uid), 'remove_role', $role->rid);
+    }
+  }
+}
+
+/**
+ * Implements hook_entity_delete().
+ */
+function roomify_accommodations_group_entity_delete($entity, $type) {
+  if ($type == 'group_membership') {
+    if (in_array('group_manager', $entity->roles)) {
+      $role = user_role_load_by_name('group manager');
+      user_multiple_role_edit(array($entity->uid), 'remove_role', $role->rid);
+    }
+  }
+}
+
+/**
+ * Implements hook_roomify_rights().
+ */
+function roomify_accommodations_group_roomify_rights() {
+  $rights['roomify_accommodations_group'] = array(
+    'group manager' => array(
+      'access units calendar index service',
+      'access events calendar index service',
+      'create bat_event entities of bundle availability',
+      'create bat_event entities of bundle pricing',
+      'view past event information',
+      'view calendar data for any availability event',
+      'view calendar data for any pricing event',
+      'create bat_booking entities of bundle roomify_accommodation_booking',
+    ),
+    'roomify manager' => array(
+      'bypass group access',
+    ),
+  );
+
+  return $rights;
+}
+
+/**
+ * Implements hook_roomify_rights_group().
+ */
+function roomify_accommodations_group_roomify_rights_group() {
+  $rights['roomify_accommodations_group'] = array(
+    'group_admin' => array(
+      'administer group',
+      'view members',
+      'add member',
+    ),
+    'group_manager' => array(
+      'administer group',
+      'view members',
+      'add member',
+    ),
+  );
+
+  return $rights;
+}
+
+/**
+ * 'Add New Group' modal wizard.
+ */
+function roomify_accommodations_group_group_add() {
+  ctools_include('ajax');
+  ctools_include('modal');
+
+  $form_state = array(
+    'ajax' => TRUE,
+    'title' => t('Add New Group'),
+  );
+
+  // Use ctools to generate ajax instructions for the browser to create
+  // a form in a modal popup.
+  $output = ctools_modal_form_wrapper('roomify_accommodations_group_add_form', $form_state, $property->property_id);
+
+  // If the form has been submitted, there may be additional instructions
+  // such as dismissing the modal popup.
+  if (!empty($form_state['ajax_commands'])) {
+    $output = $form_state['ajax_commands'];
+  }
+
+  // Return the ajax instructions to the browser via ajax_render().
+  print ajax_render($output);
+  drupal_exit();
+}
+
+/**
+ * 'Add New Group' form.
+ */
+function roomify_accommodations_group_add_form($form, &$form_state) {
+  $form['name'] = array(
+    '#type' => 'textfield',
+    '#title' => t('Group name'),
+    '#required' => TRUE,
+  );
+
+  $form['submit'] = array(
+    '#type' => 'submit',
+    '#value' => t('Create'),
+  );
+
+  return $form;
+}
+
+/**
+ * Submit callback for the roomify_accommodations_group_add_form form.
+ */
+function roomify_accommodations_group_add_form_submit($form, &$form_state) {
+  $group = entity_create('group', array('type' => 'roomify_group'));
+  $group->title = $form_state['values']['name'];
+  $group->save();
+
+  // Close the modal.
+  ctools_add_js('ajax-responder');
+  $form_state['ajax_commands'][] = ctools_modal_command_dismiss();
+  $form_state['ajax_commands'][] = ctools_ajax_command_redirect('user');
+}

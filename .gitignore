@@ -1,0 +1,16 @@
+# Ignore stuff that gets downloaded with drush make
+www
+builds
+settings.local.php
+files
+.idea
+
+# testing files
+test/behat/behat.local.yml
+test/behat/bin
+test/behat/vendor
+
+# Roomify Bootstrap cache
+themes/roomify/roomify_bootstrap/assets/.sass-cache
+themes/roomify/roomify_bootstrap_wide/assets/.sass-cache
+themes/roomify/roomify_travel/assets/.sass-cache

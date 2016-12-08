@@ -1,0 +1,65 @@
+// Tabbed Content
+
+.ui-tabs {
+  padding: 0 !important;
+  border: 0;
+  background: none;
+  font-family: $open-sans !important;
+  color: #7C7C7C;
+
+  .ui-tabs-nav {
+    padding: 0;
+    background: none;
+    border: 0;
+    border-radius: 0;
+
+    li {
+      border: 1px solid #E0E0E0;
+      border-bottom: 1px solid white;
+      border-radius: 0;
+
+      a {
+        height: 50px;
+        padding: 0 30px;
+        background: #F9F9F9;
+        color: #939393;
+        font-size: 14px;
+        font-weight: 500;
+        line-height: 50px;
+
+        &:hover {
+          color:#000;
+        }
+      }
+      @media (max-width: $screen-sm) {
+        width: 100%;
+        display: inline-block;
+        text-align: center;
+        margin-bottom: 4px;
+        border-bottom-color: #E0E0E0;
+        a {
+          width: 100%;
+          display: inline-block;
+        }
+      }
+
+      &.ui-state-active {
+        @media (max-width: $screen-sm) {
+          margin-bottom: 4px;
+        }
+        a {
+          background: white;
+          color: #000;
+        }
+      }
+    }
+  }
+
+  .ui-tabs-panel {
+    background: white;
+    border: 1px solid #E0E0E0;
+    border-radius: 0;
+    padding: 40px 30px 30px 30px;
+    color: #7C7C7C;
+  }
+}

@@ -1,0 +1,13 @@
+.roomify-travel-two-columns {
+  @media (max-width: $screen-sm-max) {
+    .panel-content-top,
+    .panel_sl_main_left,
+    .panel_sl_main_right,
+    .panel_sl_right,
+    .panel_sl_left {
+      margin-bottom: 40px;
+      display: inline-block;
+      width: 100%;
+    }
+  }
+}

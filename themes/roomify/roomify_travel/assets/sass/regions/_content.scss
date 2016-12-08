@@ -1,0 +1,43 @@
+// Get rid of the whitespace below the footer.
+@media (min-width: $screen-sm) {
+  html, body {
+    height: 100%;
+  }
+
+  #wrap {
+    min-height: 100%;
+  }
+
+  .main-container {
+    overflow:auto;
+    padding-top: 32px;
+    padding-bottom: 262px; /* this needs to be bigger than footer height*/
+  }
+
+  .roomify-footer {
+    position: relative;
+    margin-top: -162px; /* negative value of footer height */
+    min-height: 162px;;
+    clear: both;
+    padding-top: 20px;
+  }
+}
+
+.breadcrumb {
+  background: white;
+  font-size: 16px;
+}
+
+.pane-roomify-social-feed-render.panel-pane {
+  margin-bottom: 15px;
+  display: inline-block;
+  width: 100%;
+  padding: 15px;
+  background: white;
+  border: 1px solid #ececec;
+  border-radius: 2px;
+  .pane-title {
+    border-bottom: 1px solid #ececec;
+    padding-bottom: 15px
+  }
+}

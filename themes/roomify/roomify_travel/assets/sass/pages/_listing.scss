@@ -1,0 +1,754 @@
+// Listing Page Styles
+.pane-roomify-manage-property {
+  position: relative;
+  width: 100%;
+  display: inline-block;
+  margin-bottom: 25px;
+  margin-top: 10px;
+  .manage-property-links {
+    float: right;
+    right: 15px;
+    bottom: 90px;
+    z-index: 1000;
+    width: 200px;
+    .inner {
+      margin: 0 auto;
+      display: table;
+    }
+    @media (max-width: $screen-sm) {
+      font-size: 10px;
+      bottom: 38px;
+      right: calc(50% - 100px);
+    }
+    .manage-icon {
+      display: inline-block;
+      float: left;
+      text-indent: -999999px;
+      margin-right: 5px;
+      margin-left: 5px;
+      &.edit-link a {
+        @include make-edit-icon("../../images/edit-link.png", #FF9800);
+      }
+      &.availbility-link a {
+        @include make-edit-icon("../../images/edit-availability.png", #FF9800);
+      }
+      &.pricing-link a {
+        @include make-edit-icon("../../images/edit-price.png", #FF9800);
+      }
+      &.rooms-link a {
+        @include make-edit-icon("../../images/edit-rooms.png", #FF9800);
+      }
+    }
+  }
+}
+
+// Property Location, essentials and nearby.
+.pane-property-location {
+  display: inline-block;
+  width: 100%;
+  .panel-content-right,
+  .panel-content-left {
+    width: 100%;
+    .pane-title {
+      @include h4();
+    }
+  }
+  .panel-content-left {
+    margin-top: 20px;
+  }
+  .pane-roomify-property-field-sp-how-to-reach,
+  .pane-roomify-property-field-sp-essentials {
+    .pane-title {
+      padding-top: 0px;
+      margin-bottom: 10px;
+    }
+    @media (min-width: $screen-md) {
+      padding-right: 10px;
+    }
+    margin-bottom: 10px;
+  }
+  #leaflet-map {
+    margin-top: 30px;
+  }
+  .pane-roomify-property-field-sp-address {
+    margin: 15px 0;
+  }
+}
+
+.pane-roomify-property-name {
+
+}
+
+.pane-roomify-property-flag-favorites-link {
+  position: relative;
+  z-index: 999;
+  top: 150px;
+  @media (max-width: $screen-sm) {
+    top: 40px;
+  }
+
+  .flag-favorites {
+    @include flag-favorite();
+    @include flag-favorite-size(52px, 25px);
+    position: absolute;
+    width: 80%;
+    margin-left: 10%;
+    margin-right: 10%;
+    a {
+      margin: 0 auto;
+    }
+  }
+}
+
+.pane-property-slideshow {
+  background: white;
+  padding: 0;
+  border: 1px solid #ececec;
+  border-right: none;
+  @media (min-width: $screen-md) {
+    height: 635px;
+  }
+  .slide__content {
+    position: relative;
+    .slide__caption {
+      min-height: 0;
+      padding: 0;
+    }
+    // Description
+    .slide__overlay {
+      position: absolute;
+      bottom:0;
+      left:0;
+      right:0;
+      background:rgba(0,0,0,.5);
+      text-align: center;
+      padding: 15px;
+      color:white;
+      
+      .title {
+        font-size: 22px;
+        font-weight: 400;
+      }
+      
+      .alt {
+        font-size: 16px;
+        color: #999;
+        font-style: italic;
+      }
+      @media (max-width: $screen-xs) {
+        display: none;
+      }
+    }
+  }
+  
+  .slick-wrapper {
+    margin-bottom: 70px;
+    @media (max-width: $screen-xs) {
+      margin-bottom: 0;
+    }
+  }
+  .slick-dots {
+    bottom: -35px;
+  }
+  #slick-asnavfor-thumbnail-slider.slick__slider.slick-slider {
+    margin-left: 25px;
+    margin-right: 25px;
+  }
+  .slick--display--thumbnail {
+    top: 22px;
+    @media (max-width: $screen-xs) {
+      display: none;
+    }
+    .slick-arrow {
+      display: none !important;
+    }
+    .slick__slide {
+      margin-right: 6px;
+      margin-left: 6px;
+      img {
+        border: 4px solid transparent;
+      }
+      &.slick-current {
+        img {
+          border-color: rgba(0, 188, 212, 0.7);
+        }
+      }
+    }
+  }
+  .slick-dotted.slick-slider {
+
+  }
+  .slick.slick--view--property {
+    position: relative;
+  }
+  .slick-next.slick-arrow {
+    background: url("../images/arrow_right.png") 0 50% no-repeat;
+    background: url("../images/arrow_right.svg") center center no-repeat, linear-gradient(transparent, transparent);
+    display: inline-block;
+    position: absolute;
+    top: calc(50% - 15px);
+    width: 30px;
+    height: 30px;
+    margin-top: 0px;
+    text-indent: -9999px;
+    border: 0;
+    background-size: contain;
+    right: 12px;
+    @media (max-width: $screen-sm) {
+      display: none !important;
+    }
+  }
+  .slick-prev.slick-arrow {
+    background: url("../images/arrow_left.png") 0 50% no-repeat;
+    background: url("../images/arrow_left.svg") center center no-repeat, linear-gradient(transparent, transparent);
+    display: inline-block;
+    position: absolute;
+    top: calc(50% - 15px);
+    width: 30px;
+    height: 30px;
+    margin-top: 0px;
+    text-indent: -9999px;
+    border: 0;
+    background-size: contain;
+    left: 12px;
+    @media (max-width: $screen-sm) {
+      display: none !important;
+    }
+  }
+}
+
+
+.page-listing {
+  .page-header {
+    display: none;
+  }
+  .panel_sl_main_left {
+    @media (min-width: $screen-md) {
+      padding: 0;
+    }
+  }
+  .panel_sl_main_right {
+    @media (min-width: $screen-md) {
+      padding: 0;
+      .inner {
+        min-height: 635px;
+      }
+    } 
+    .inner {
+      padding: 25px;
+      background: #FFFFFF;
+      border-radius: 2px;
+      border: 1px solid #ececec;
+    }
+  }
+  .pane-roomify-property-name {
+    @include h3();
+    @media (max-width: $screen-sm-max) {
+      text-align: center;
+    }
+  }
+  .pane-roomify-property-field-sp-short-description {
+    text-align: justify;
+    font-weight: 400;
+    @include h4();
+    font-style: italic;
+    line-height: 1.57em;
+    margin-bottom: 20px;
+    @media (max-width: $screen-sm-max) {
+      text-align: center;
+    }
+  }
+  .pane-roomify-property-field-sp-highlight-intro {
+    padding: 20px 0;
+    border-top: 1px solid #ececec;
+    width: 100%;
+  }
+  .pane-locanda-availability-search,
+  .pane-roomify-listing-availability-search-block-roomify-listing-search {
+    form {
+      padding-top: 60px;
+      position: relative;
+      border-top: 4px solid #158cba;
+      width: 100%;
+    }
+    label {
+      display: none;
+    }
+    .listing-base-price {
+      position: absolute;
+      top: 0;
+      right: 0;
+      padding: 0px 10px;
+      background: #127ba3;
+      font-size: 12px;
+      text-transform: uppercase;
+      color: white;
+      .starting-from {
+        margin-right: 5px;
+        position: relative;
+        &:before {
+          width: 0;
+          height: 0;
+          border-style: solid;
+          border-width: 0 50px 26px 0;
+          border-color: transparent #127ba3 transparent transparent;
+          display: inline-block;
+          content: '';
+          position: absolute;
+          left: -60px;
+          top: -5px;
+          @media (max-width: 320px) {
+            display: none;
+          }
+        }
+      }
+      .price {
+        font-weight: bold;
+      }
+    }
+    .help-block {
+      display: none;
+    }
+    .form-item-arrival,
+    .form-item-departure {
+      width: 100%;
+      #edit-arrival,
+      #edit-departure {
+        width: 100%;
+      }
+      .form-item-arrival-date,
+      .form-item-departure-date {
+        width: 100%;
+        margin-bottom: 15px;
+        input {
+          width: 100%;
+        }
+      }
+    }
+    .form-item-group-size {
+      width: 100%;
+      label {
+        display: block;
+        float: left;
+        margin-right: 20px;
+        margin-top: 7px;
+        text-transform: uppercase;
+        width: 33%;
+      }
+      margin-bottom: 35px;
+      select {
+        width: 60%;
+      }
+    }
+    .locanda-availability-search-submit,
+    .listing-availability-search-submit {
+      width: 100%;
+      button {
+        width: 100%;
+        font-size: 15px;
+        @include button-variant(#FFFFFF, #127BA3, #158CBA);
+      }
+    }
+  }
+  .listing-contact-block-top {
+    position: relative;
+    margin-top: 60px;
+    min-height: 190px;
+    padding-top: 60px;
+    padding-bottom: 24px;
+    background: #ffffff;
+    border: 1px solid #ececec;
+    border-radius: 2px 2px 0px 0px;
+    .user-image {
+      position: absolute;
+      top: -40px;
+      left: 50%;
+      margin-left: -40px;
+      height: 80px;
+      width: 80px;
+      background: #eaeaea;
+      border: 1px solid #ccc;
+      @include border-radius(100px);
+      img {
+        @include border-radius(50%);
+      }
+    }
+
+    h2.user-property-owner-name {
+      font-size: 18px;
+      text-align: center;
+      margin-bottom: 5px;
+      margin-top: 5px;
+    }
+    .user-info {
+      padding: 25px;
+      text-align: justify;
+    }
+    .user-phone {
+      font-size: 16px;
+      margin-bottom: 20px;
+      color: #9B9B9B;          
+    }
+
+    .user-email {
+      font-size: 16px;
+      color: #9B9B9B;  
+
+      a {
+        color:#9B9B9B;
+        border-bottom: 1px dotted #9B9B9B;
+
+        &:hover {
+          color:#9B9B9B;
+          border-bottom: 1px solid #9B9B9B;
+        }   
+      }
+    }
+  }
+  .pane-addtoany-addtoany-button {
+    position: relative;
+    width: 100%;
+    display: inline-block;
+    .pane-content {
+      float: right;
+      margin-bottom: 15px;
+
+      @media (max-width: $screen-sm) {
+        margin-bottom: 0;
+      }
+    }
+  }
+  .panel_sl_left .inner {
+    margin-top: 6px;
+  }
+  .panel_sl_left {
+    @media (min-width: $screen-md) {
+      .ui-tabs .ui-tabs-nav {
+        border-width: 1px;
+        li.ui-state-default {
+          border-width: 1px;
+          border-bottom: 0px;
+        }
+      }
+    }
+    #property-description-tab {
+      background: url("../images/description.png") center center no-repeat;
+      background: url("../images/description.svg") center center no-repeat, linear-gradient(transparent, transparent);
+      display: inline-block;
+      width: 18px;
+      height: 18px;
+      position: relative;
+      top: 4px;
+      right: 6px;
+    }
+    #property-amenities-tab {
+      background: url("../images/amenities.png") center center no-repeat;
+      background: url("../images/amenities.svg") center center no-repeat, linear-gradient(transparent, transparent);
+      display: inline-block;
+      width: 15px;
+      height: 15px;
+      position: relative;
+      top: 3px;
+      right: 6px;
+    }
+    #property-policies-tab {
+      background: url("../images/policies.png") center center no-repeat;
+      background: url("../images/policies.svg") center center no-repeat, linear-gradient(transparent, transparent);
+      display: inline-block;
+      width: 18px;
+      height: 18px;
+      position: relative;
+      top: 4px;
+      right: 6px;
+    }
+    #property-location-tab {
+      background: url("../images/location_tab.png") center center no-repeat;
+      background: url("../images/location_tab.svg") center center no-repeat, linear-gradient(transparent, transparent);
+      display: inline-block;
+      width: 20px;
+      height: 20px;
+      position: relative;
+      top: 4px;
+      right: 4px;
+    }
+    #property-rooms-tab {
+      background: url("../images/property_type_tab.png") center center no-repeat;
+      background: url("../images/property_type_tab.svg") center center no-repeat, linear-gradient(transparent, transparent);
+      display: inline-block;
+      width: 17px;
+      height: 17px;
+      position: relative;
+      top: 3px;
+      right: 6px;
+    }
+  }
+  .pane-roomify-owner-social-pages {
+    display: inline-block;
+    width: 100%;
+    min-height: 70px;
+    border-bottom: 0;
+    border: 1px solid #ececec;
+    border-top: 0;
+    border-radius: 0px 0px 2px 2px;
+    background: white;
+    .pane-content {
+      display: table;
+      margin: 10px auto;
+      .rsp-social-icon {
+        list-style: none;
+        width: 30px;
+        height: 30px;
+        background: black;
+        border-radius: 50%;
+        padding: 3px;
+        margin: 6px;
+        &:hover {
+          opacity: 0.86;
+        }
+        svg {
+          width: 20px;
+          position: relative;
+          top: 2px;
+          left: 2px;
+          fill: #FFFFFF;
+        }
+        &.rsp-facebook {
+          background: $social-facebook;
+        }
+        &.rsp-instagram {
+          background: $social-instagram;
+        }
+        &.rsp-twitter {
+          background: $social-twitter;
+        }
+        &.rsp-youtube {
+          background: $social-youtube;
+        }
+        &.rsp-pinterest {
+          background: $social-pinterest;
+        }
+        &.rsp-googleplus {
+          background: $social-googleplus;
+        }
+      }
+    }
+  }
+  .pane-roomify-property-field-sp-highlight-image1,
+  .pane-roomify-property-field-sp-highlight-image2,
+  .pane-roomify-property-field-sp-highlight-image3,
+  .pane-roomify-property-field-sp-highlight-image1-cap,
+  .pane-roomify-property-field-sp-highlight-image2-cap,
+  .pane-roomify-property-field-sp-highlight-image3-cap {
+    img {
+      margin: 60px auto 10px auto;
+      border: 1px solid #ececec;
+      border-radius: 2px;
+    }
+    .field-type-text {
+      margin-bottom: 50px;
+      text-align: center;
+    }
+  }
+
+
+  // Property Amenities.
+  .pane-roomify-property-field-sp-amenities {
+    .field-name-field-sp-amenities {
+      .field-item.even,
+      .field-item.odd {
+        display: inline-block;
+        margin-right: 10px;
+        margin-bottom: 10px;
+        &:not(:last-child) {
+          &::after {
+            display: inline-block;
+            content: "\25cf";
+            font-size: 0.7em;
+            margin-left: 10px;
+            opacity: 0.5;
+            bottom: 1px;
+            position: relative;
+          }
+        }
+      }
+    }
+  }
+  /* PROPERTY TYPES */
+  .pane-property-travel-panel-pane-3 {
+    display: inline-block;
+    width: 100%;
+    .views-table {
+      .footable-toggle:before {
+        color: #127ba3;
+        font-size: 15px;
+      }
+      thead {
+        display: none;
+      }
+      tbody {
+        tr {
+          border-bottom: 1px solid #ECECEC;
+          position: relative;
+          @media (max-width: $screen-xs) {
+            display: inline-block;
+            width: 100%;
+          }
+          &:last-child {
+            border-bottom: 0;
+          }
+          td {
+            vertical-align: middle;
+            padding-bottom: 30px;
+            padding-top: 30px;
+            &.views-field-field-st-gallery {
+              margin: 10px 0;
+              display: block;
+              font-size: 18px;
+              @media (max-width: $screen-xs) {
+                width: 100%;
+                display: block;
+              }
+              a {
+                color: #127ba3;
+                text-decoration: none;
+              }
+              img {
+                max-width: 140px;
+                border-radius: 2px;
+                border: 1px solid #ECECEC;
+                margin-left: 25px;
+                margin-top: 15px;
+              }
+            }
+            &.views-field-field-st-description {
+              line-height: 20px;
+              padding: 5px 20px;
+              font-style: italic;
+              .type-description {
+                @media (min-width: $screen-md) {
+                  margin-top: 45px;
+                }
+                font-style: normal;
+                p {
+                  line-height: 20px;
+                }
+                @media (max-width: $screen-sm) {
+                  width: 100%;
+                  display: inline-block;
+                }
+              }
+            }
+            &.views-field-field-st-max-capacity,
+            &.views-field-beds,
+            &.views-field-booking-cost {
+              text-align: center;
+            }
+            &.views-field-booking-cost {
+              padding: 0 5px;
+              .price-info {
+                font-style: italic;
+              }
+              .booking-cost {
+                text-decoration: line-through;
+              }
+              .offer-cost {
+                color: #FF0000;
+              }
+            }
+            &.views-field-book-this {
+              vertical-align: bottom;
+              padding-left: 20px;
+              padding-right: 20px;
+              position: relative;
+              @media (max-width: $screen-xs) {
+                width: 100%;
+                display: block;
+                text-align: left;
+              }
+              &:before {
+                background: url(../images/info.png) center center no-repeat;
+                background: url(../images/info.svg) center center no-repeat, linear-gradient(transparent, transparent);
+                top: 20px;
+                right: 0;
+                content: "";
+                position: absolute;
+                display: inline-block;
+                width: 25px;
+                height: 25px;
+              }
+              a {
+                font-size: 15px;
+                width: 120px;
+                text-align: center;
+                color: white;
+                @include button-variant(#FFFFFF, #127BA3, #158CBA);
+              }
+              .info {
+                font-size: 14px;
+                margin-top: 5px;
+                font-style: italic;
+                color: #848484;
+              }
+            }
+            .footable-row-detail-inner {
+              margin: 10px 0;
+              border-radius: 2px;
+              border: 1px solid #ececec;
+              background: #f8f8f8;
+              .footable-row-detail-row {
+                margin: 8px 2%;
+                display: inline-block;
+                width: 100%;
+                &:first-child {
+                  width: 100%;
+                  margin-top: 25px;
+                  margin-bottom: 10px;
+                  padding: 0 10px;
+                  font-weight: 400;
+                  font-size: 15px;
+                  .type-description {
+                    font-style: normal;
+                    p {
+                      line-height: 20px;
+                    }
+                  }
+                }
+              }
+            }
+            &:first-child {
+              margin-left: 15px;
+            }
+            &:last-child {
+              margin-right: 15px;
+            }
+          }
+          &:hover {
+            background: white;
+            @include transition(200ms background ease);
+          }
+        }
+      }
+    }
+  }
+  .panel-content-bottom {
+    .pane-featured-properties-panel-pane-3 {
+      margin: 40px 0;
+      background: white;
+      padding: 25px 10px;
+      border: 1px solid #ececec;
+      border-radius: 2px;
+      .pane-title {
+        border-bottom: 1px solid #ececec;
+        padding-bottom: 15px;
+      }
+      .view-featured-properties {
+        .slick-next.slick-arrow {
+          right: 15px;
+        }
+        .slick-prev.slick-arrow {
+          left: 15px;
+        }
+      }
+    }
+  }
+}

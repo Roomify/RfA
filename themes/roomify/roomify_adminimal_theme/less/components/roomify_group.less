@@ -1,0 +1,365 @@
+.page-group {
+  .pane-group-properties-panel-pane-1 {
+    padding: 30px 20px;
+
+    h2.pane-title {
+      font-size: 36px;
+      font-weight: 300;
+    }
+    .view-empty {
+      margin-top: 36px;
+    }
+    table {
+      border-collapse: separate;
+      border-spacing: 0 14px;
+    }
+    .view-group-properties {
+      thead {
+        display: none;
+      }
+      font-size: 14px;
+      .view-content {
+        margin-top: -30px;
+        a {
+          color: #333;
+        }
+      }
+      tr {
+        &.status-0 {
+          background: #F9EADA;
+          a {
+            color: #989898 !important;
+          }
+        }
+        &:hover {
+          background: whitesmoke !important;
+        }
+        .transition(150ms background ease-in);
+      }
+      tr:not(.views-row-last) td {
+        border-bottom: 1px solid #D2D2D2;
+        padding-bottom: 20px;
+      }
+      tr.even {
+        background: #fff;
+      }
+      td.views-field {
+        &.views-field-name {
+          font-size: 24px;
+          font-weight: 300;
+          line-height: 1.2em;
+        }
+        &.views-field-edit-unit {
+          width: 40px;
+          a {
+            background: url("../images/edit.png") no-repeat right 50% bottom 20px;
+            background-size: 35px 35px;
+            display: inline-block;
+            padding: 55px 1em 0 1em;
+          }
+        }
+        &.views-field-nothing {
+          width: 40px;
+          a {
+            background: url("../images/availability.png") no-repeat right 50% bottom 20px;
+            background-size: 35px 35px;
+            display: inline-block;
+            padding: 55px 1em 0 1em;
+          }
+        }
+        &.views-field-nothing-1 {
+          width: 40px;
+          a {
+            background: url("../images/pricing.png") no-repeat right 50% bottom 20px;
+            background-size: 35px 35px;
+            display: inline-block;
+            padding: 55px 1em 0 1em;
+          }
+        }
+      }
+      tr.status-0 {
+        td.views-field {
+          &.views-field-edit-unit a {
+            background-image: url("../images/edit-gray.png");
+          }
+          &.views-field-nothing a {
+            background-image: url("../images/availability-gray.png")
+          }
+          &.views-field-nothing-1 a {
+            background-image: url("../images/pricing-gray.png");
+          }
+        }
+      }
+      .footable-row-detail-inner {
+        width: 100%;
+        .footable-row-detail-row {
+          width: 30%;
+          float: left;
+          margin: 0 1%;
+          @media (max-width: @screen-xs) {
+            width: 45%;
+            margin: 0;
+          }
+          .footable-row-detail-value {
+            width: 100%;
+            text-align: center;
+            img {
+              display: none;
+            }
+            a {
+              background-repeat: no-repeat;
+              background-position: center center;
+              padding: 58px 1em 0 1em;
+              background-size: 40px 40px;
+              display: block;
+            }
+            a {
+              background-image: url("../images/edit.png");
+            }
+            a.availability-link {
+              background-image: url("../images/availability.png")
+            }
+            a.pricing-link {
+              background-image: url("../images/pricing.png");
+            }
+          }
+        }
+      }
+    }
+  }
+
+  .pane-group-conversations-panel-pane-1 {
+    background: #3498DB;
+    padding: 15px 20px;
+    border-radius: 10px;
+    border-bottom: 2px solid #397AA7;
+    color: white;
+    &:hover {
+      background: #1ea4f7;
+    }
+    .transition(150ms background ease-in-out);
+    h2.pane-title {
+      font-size: 36px;
+      font-weight: 300;
+      line-height: 1.3em;
+      text-shadow: 1px 1px 1px #0074BD;
+    }
+    .pane-content {
+      max-height: 350px;
+      overflow: scroll;
+    }
+    .view-content {
+      margin-top: 20px;
+    }
+    .views-field-changed {
+      margin-bottom: 3px;
+      font-size: 14px;
+      font-weight: bold;
+      text-shadow: 1px 1px 1px #0074BD;
+    }
+    .views-field-nothing {
+      height: 100%;
+      position: relative;
+      border: 1px dotted #005082;
+      background: #F5F5F5;
+      font-size: 18px;
+      font-weight: 300;
+      margin-top: -1px;
+      margin-bottom: 22px;
+      padding: 15px 10px;
+      &:hover {
+        background: white;
+      }
+      .transition(150ms background ease-in-out);
+      div.conversation-info {
+        display: inline-block;
+        vertical-align: top;
+        width: 92%;
+      }
+      a.conversation-info-link {
+        color: #333;
+        text-decoration: none;
+        .conversation-header {
+          padding-bottom: 8px;
+        }
+        .conversation-message-author {
+          display: inline-block;
+          width: 30%;
+          vertical-align: top;
+          font-style: italic;
+          font-weight: 800;
+          font-size: 14px;
+          padding-right: 4px;
+        }
+        .conversation-message-message {
+          font-size: 14px;
+          display: inline-block;
+          width: 50%;
+        }
+        .conversation-price {
+          font-style: italic;
+          font-weight: 800;
+          font-size: 14px;
+          width: 18%;
+          display: inline-block;
+          vertical-align: top;
+        }
+      }
+      div.conversation-reply {
+        display: inline-block;
+        float: right;
+        vertical-align: top;
+        margin-top: 20px;
+        margin-right: 10px;
+        height: 100%;
+        width: 25px;
+        position: absolute;
+        background: url("../images/reply.png") no-repeat;
+        background-size: 25px 25px, contain;
+        @media (max-width: @screen-sm) {
+          height: initial;
+        }
+        a {
+          display: block;
+          height: 35px;
+          width: 35px;
+          text-indent: -9999px;
+          overflow:hidden;
+        }
+      }
+    }
+  }
+
+  .pane-group-bookings-panel-pane-2 {
+    margin-bottom: 40px;
+    background: #3498DB;
+    padding: 15px 20px;
+    border-radius: 10px;
+    border-bottom: 2px solid #397AA7;
+    color: white;
+    h2.pane-title {
+      font-size: 36px;
+      font-weight: 300;
+      line-height: 1.3em;
+      text-shadow: 1px 1px 1px #0074BD;
+    }
+    .view-group-bookings {
+      table thead th {
+        background: #3498db;
+        border-bottom: 1px solid #397aa7;
+        color: #FFFFFF !important;
+        text-transform: uppercase;
+        font-size: 18px;
+        padding-top: 25px;
+        padding-bottom: 25px;
+      }
+      table tbody td {
+        font-size: 18px;
+      }
+      .views-field-booking-full-name {
+        width: 50%;
+        line-height: 1.3em;
+        position: relative;
+        padding-left: 25px;
+        .footable-toggle {
+          position: absolute;
+          left: 5px;
+        }
+      }
+      .footable-row-detail-cell {
+        padding: 0;
+        background: white;
+      }
+      .more-link a {
+        color: white;
+        margin-top: 30px;
+        display: block;
+        font-size: 14px;
+      }
+      .pager {
+        background: #3498db;
+        font-size: 16px;
+        padding: 12px 0;
+        display: inline-block;
+        width: 100%;
+      }
+    }
+  }
+
+  .ui-widget-content {
+    background: white;
+    padding: 0px;
+    border: 0px;
+    .ui-tabs-panel {
+      @media (min-width: @screen-sm) {
+        border: 2px solid rgba(235, 235, 235, 0.45);
+        .box-shadow(0px 24px 64px 5px rgba(179,179,179,0.45));
+      }
+    }
+  }
+  .ui-tabs-panel.ui-widget-content {
+    padding: 50px 15px;
+    @media (min-width: @screen-sm) {
+      padding: 80px 50px;
+    }
+    .pane-panels-mini {
+      display: inline-block;
+      width: 100%;
+    }
+  }
+  .ui-tabs {
+    .ui-tabs-nav {
+      background: @lightest-gray;
+      padding: 0px;
+      font-size: 16px;
+      li {
+        margin-right: 5px;
+        background: #F5F5F5;
+        border-radius: 5px 5px 0 0;
+        position: relative;
+        top: 2px;
+        a {
+          color: @gray;
+          min-width: 120px;
+          text-align: center;
+        }
+        @media (max-width: @screen-sm) {
+          width: 100%;
+          text-align: center;
+          display: flex;
+          a {
+            width: 100%;
+          }
+        }
+        &.ui-state-active {
+          border-width: 0px;
+          background: white;
+          outline: none;
+          a {
+            color: @blue;
+            font-weight: 700;
+            outline: none;
+            border-radius: 5px 5px 0px 0px;
+            border: 2px solid rgba(235, 235, 235, 0.45);
+            border-bottom: 0px;
+          }
+        }
+        &:last-child {
+          float: right;
+          margin-right: 0;
+        }
+      }
+    }
+  }
+
+  .panel-col-bottom {
+    margin-top: 60px;
+    display: inline-block;
+    .ui-tabs-nav {
+      background: white;
+    }
+    .ui-widget-content .ui-tabs-panel {
+      box-shadow: none;
+    }
+  }
+}

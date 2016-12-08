@@ -1,0 +1,43 @@
+.help-icon {
+  position: fixed;
+  bottom: 11px;
+  right: 20px;
+  background: #0074bd;
+  border-radius: 26px;
+  padding: 12px 20px;
+  color: white;
+  z-index: 20;
+}
+.help-icon:hover {
+  background: #1ea4f7;
+}
+
+.help-icon span {
+  font-family: "Open Sans", sans-serif !important;
+  font-size: 14px;
+  font-weight: 800;
+  margin-left: 6px;
+  vertical-align: middle;
+  letter-spacing: .6;
+  font-size: 1.25em;
+}
+
+.help-icon img {
+  vertical-align: middle;
+  max-width: 20px;
+  height: 20px;
+  width: 100%;
+}
+
+@media screen and (max-width: 767px) {
+  .help-icon span {
+    display: none;
+  }
+}
+
+.help-icon .image {
+  vertical-align: middle;
+  width: 20px;
+  height: 20px;
+  background: url("../images/info.png");
+}

@@ -1,0 +1,87 @@
+body.page-location {
+  .content-row {
+    max-width: 100%;
+    padding: 0;
+    .page-header {
+      display: none;
+    }
+
+    #main-content {
+      padding: 0;
+      .pane-custom.pane-1 {
+        margin: 30px 0;
+        margin-left: 35px;
+        a {
+          @include add-button;
+        }
+      }
+      .panel_sl_content {
+        padding: 0;
+        .view-empty {
+          padding: 25px 50px;
+          li {
+            list-style: none;
+          }
+        }
+      }
+      #leaflet-map {
+        @media (max-width: $screen-sm) {
+          height: 400px !important;
+        }
+        .leaflet-popup-content {
+          a {
+            font-size: 14px;
+          }
+          .activity-image {
+            display: inline-block;
+            max-width: 200px;
+            margin: 5px 0;
+            img {
+              width: 100% !important;
+              border-radius: 5px;
+            }
+          }
+        }
+        .leaflet-objects-pane {
+          img {
+            width: auto !important;
+          }
+        }
+      }
+    }
+  }
+  .view-location {
+    .view-empty {
+      margin: 34px;
+      line-height: 24px;
+    }
+  }
+}
+
+
+.node-type-location {
+  #leaflet-map {
+    @media (max-width: $screen-sm) {
+      height: 400px !important;
+    }
+    .leaflet-popup-content {
+      .activity-image {
+        display: inline-block;
+        max-width: 200px;
+        margin: 5px 0;
+        img {
+          width: 100% !important;
+          border-radius: 5px;
+        }
+      }
+    }
+    .leaflet-objects-pane {
+      img {
+        width: auto !important;
+      }
+    }
+  }
+  .field-name-field-location-description {
+    margin: 40px 0;
+  }
+}

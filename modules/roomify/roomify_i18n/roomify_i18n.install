@@ -1,0 +1,20 @@
+<?php
+
+/**
+ * @file
+ * Installation for roomify_i18n.
+ */
+
+/**
+ * Implements hook_install().
+ */
+function roomify_i18n_install() {
+  roomify_i18n_entities_translation_settings();
+}
+
+/**
+ * Settings for properties and types translation.
+ */
+function roomify_i18n_update_7001() {
+  roomify_i18n_entities_translation_settings();
+}

@@ -1,0 +1,786 @@
+.page-listing {
+  .page-header {
+    display: none;
+  }
+  .region-content {
+    margin-top: 80px;
+  }
+}
+
+// Listing Page Styles
+.pane-roomify-manage-property {
+  position: relative;
+  .manage-property-links {
+    position: absolute;
+    right: 15px;
+    bottom: 90px;
+    z-index: 1000;
+    width: 200px;
+    .inner {
+      margin: 0 auto;
+      display: table;
+    }
+    @media (max-width: $screen-sm) {
+      font-size: 10px;
+      bottom: 38px;
+      right: calc(50% - 100px);
+    }
+    .manage-icon {
+      display: inline-block;
+      float: left;
+      text-indent: -999999px;
+      margin-right: 5px;
+      margin-left: 5px;
+      &.edit-link a {
+        @include make-edit-icon("../../images/edit-link.png", #FF9800);
+      }
+      &.availbility-link a {
+        @include make-edit-icon("../../images/edit-availability.png", #FF9800);
+      }
+      &.pricing-link a {
+        @include make-edit-icon("../../images/edit-price.png", #FF9800);
+      }
+      &.rooms-link a {
+        @include make-edit-icon("../../images/edit-rooms.png", #FF9800);
+      }
+    }
+  }
+}
+.pane-roomify-property-name {
+  position: relative;
+  .pane-content {
+    position: absolute;
+    z-index: 99;
+    text-align: center;
+    width: 100%;
+    padding: 20px;
+    color: white;
+    background: rgba(0, 0, 0, 0.5);
+    @include h2();
+    @media (max-width: $screen-sm) {
+      @include h3();
+    }
+  }
+}
+
+.pane-roomify-property-flag-favorites-link {
+  position: relative;
+  z-index: 999;
+  top: 150px;
+  @media (max-width: $screen-sm) {
+    top: 80px;
+  }
+
+  .flag-favorites {
+    @include flag-favorite();
+    @include flag-favorite-size(52px, 25px);
+    position: absolute;
+    width: 100%;
+    a {
+      margin: 0 auto;
+    }
+  }
+}
+
+// Banner Slideshow
+.section-slideshow {
+  padding:0;
+  padding-bottom:50px;
+  
+  .section-row {
+    max-width:100%;
+    
+    .slide__content {
+      position: relative;
+
+      // Description
+      .views-field-field-sp-gallery-1 {
+        position: absolute;
+        bottom:0;
+        left:0;
+        right:0;
+        background:rgba(0,0,0,.5);
+        text-align: center;
+        padding: 15px;
+        color:white;
+        
+        .title {
+          font-size:22px;
+        }
+        
+        .alt {
+          font-size:16px;
+          color:#999;
+          font-style:italic;
+        }
+        @media (max-width: $screen-xs) {
+          display: none;
+        }
+      }
+    }
+    
+    .slick-dots {
+      padding-top:40px;
+      text-align: center;
+      
+      li {
+        position: relative;
+        display: inline-block;
+        width: 20px;
+        height: 20px;
+        margin:0;
+        padding: 0;
+        cursor: pointer;
+        
+        button {
+          font-size: 0;
+          line-height: 0;
+          display: block;
+          width: 20px;
+          height: 20px;
+          padding: 5px;
+          cursor: pointer;
+          color: transparent;
+          border: 0;
+          outline: none;
+          background: transparent;
+          &:before {
+            font-size:30px;
+            line-height: 20px;
+            position: absolute;
+            top: 0px;
+            left: 0px;
+            width: 20px;
+            height: 20px;
+            content: "•";
+            text-align: center;
+            opacity: 0.25;
+            color: black;
+            -webkit-font-smoothing: antialiased;
+          }
+        }
+        &.slick-active {
+          
+          button {
+            
+            &:before {
+              opacity:1;
+            }
+          }
+        }
+      } 
+    }
+    .slick.slick--view--property {
+      position: relative;
+    }
+    .slick-prev.slick-arrow {
+      background: url("../images/RecentNewsControlsSmall.png") 0 50% no-repeat;
+      display: inline-block;
+      position: absolute;
+      top: 44%;
+      width: 25px;
+      height: 60px;
+      margin-top: -60px;
+      text-indent: -9999px;
+      border: 0;
+      left: 5px;
+      @media (max-width: $screen-sm) {
+        display: none !important;
+      }
+    }
+    .slick-next.slick-arrow {
+      position: absolute;
+      top: 44%;
+      width: 25px;
+      height: 60px;
+      margin-top: -60px;
+      text-indent: -9999px;
+      border: 0;
+      right: 5px;
+      background: url("../images/RecentNewsControlsSmall.png") 92% 50% no-repeat;
+      @media (max-width: $screen-sm) {
+        display: none !important;
+      }
+    }
+  }
+}
+
+
+
+// Headline 
+
+.section-headline {
+  text-align: center;
+  padding-bottom:50px;
+  
+  .field-name-field-sp-short-description {
+    font-weight:600;
+    font-size:32px;
+    margin-bottom:30px;
+    color:#000;
+  }
+  
+  .panel-separator {
+    height:1px;
+    width:140px;
+    margin:0 auto;
+    margin-bottom:30px;
+  }
+  
+  .field-type-text-long {
+    max-width:600px;
+    margin:0 auto;
+    color:#7C7C7C;
+    font-size: 18px;
+  }
+  .pane-addtoany-addtoany-button {
+    position: relative;
+    width: 100%;
+    .pane-content {
+      position: absolute;
+      right: 0;
+      bottom: 60px;
+      @media (max-width: $screen-sm) {
+        width: 100%;
+        right: initial;
+        bottom: 0;
+      }
+    }
+  }
+}
+
+
+// Highlight Section
+
+.section-highlight {
+  padding-bottom:50px;
+  
+  .highlight {
+    @include make-xs-column(12);
+    @include make-sm-column(3, 40px);
+    
+        
+    @include breakpoint(xs) {
+      text-align: center;
+      margin-bottom:30px;
+      }
+    
+    .field-name-field-sp-highlight-title {
+      font-size:22px;
+      font-weight: 600;
+      color:#000;
+      margin-bottom:10px;
+    }
+    
+    .field-type-image {
+      margin-bottom:15px;
+      
+      @include breakpoint(xs) {
+        text-align: center;
+        display:inline-block;
+      }
+    }
+    
+    .field-type-text {
+      line-height:1.8;
+    }
+  }
+    
+}
+
+
+// Booking details
+
+.section-booking-user-details {
+  padding-top:100px;
+  padding-bottom:50px; 
+  background:#F7F7F7;
+  border-top:1px solid #EEEEEE;
+  border-bottom:1px solid #EEEEEE;
+  
+  .row-top {
+    margin-bottom: 50px;
+  }
+  
+  .panel_sl_booking {
+    @include make-xs-column(12);
+    @include make-sm-column(8);
+    
+    @include breakpoint(xs) {
+      margin-bottom:80px;
+    }
+
+    .pane-locanda-availability-search,
+    .pane-roomify-listing-availability-search-block-roomify-listing-search {
+      background:white;
+      
+      h2.pane-title {
+        padding:20px 30px;
+        margin:0;
+        font-size:16px;
+        background:#4A4A4A;
+        color:#F6F6F6;
+        @media (max-width: $screen-xs) {
+          display: inline-block;
+          .title {
+            width: 100%;
+            display: inline-block;
+          }
+        }
+        .title {
+          @media (max-width: $screen-xs) {
+            width: 100%;
+            display: inline-block;
+          }
+        }
+      }
+      .roomify-starting-price {
+        float: right;
+        @media (max-width: $screen-xs) {
+          width: 100%;
+          display: inline-block;
+          margin-top: 10px;
+        }
+      }
+      .pane-content {
+        padding:30px;
+        border:1px solid #E2E2E2;
+        border-top:0;
+        
+        .form-wrapper {
+          @include make-row();
+          margin-bottom:0;
+        
+          .container-inline-date .date-padding {
+            float:none;
+          }
+          
+          .bat-date-range,
+          .listing-date-range {
+            @include make-xs-column(12);
+            @include make-sm-column(10);
+            margin-bottom:20px;
+            
+            .container-inline-date > .form-item { // negate default styles
+              margin:0;
+            }
+            
+            .container-inline-date .form-item { // negate default styles
+              width:100%;
+            }
+            
+            .container-inline-date .form-item input {
+              width:100%;
+            }
+            
+            .control-label {
+              color:#9B9B9B;
+              display:block;
+              font-size:14px;
+              font-weight:300;
+              margin-bottom:8px;
+            }
+            
+            input {
+              width:100%;
+              height:40px;
+              border-radius:0;
+              background:#F4F4F4;
+              border:1px solid #D4D3D3;
+            }
+            
+            .start-date {
+              float:left;
+              width:50%;
+              padding:0 12px;
+              margin-top: 28px;
+              .control-label,
+              .form-type-textfield label, // Removed the word "Date"
+              .help-block {// Removed the help text "E.g.,
+                display:none;
+                }
+              }
+              
+            .end-date {
+              float:right;
+              width:50%;
+              padding:0 12px;
+              margin-top: 28px;
+              .control-label,
+              .form-type-textfield label, // Removed the word "Date"
+              .help-block {// Removed the help text "E.g., 2016-03-05"
+                display:none;
+              }
+    
+            }
+          
+          }
+          
+          .form-type-select {
+            @include make-xs-column(12);
+            @include make-sm-column(2);
+            
+            label {
+              color:#9B9B9B;
+              display:block;
+              font-size:14px;
+              font-weight:300;
+              margin-bottom:8px;
+            }
+            
+            select {
+              width:100px;
+              height:40px;
+              background:#F4F4F4;
+              border:1px solid #D4D3D3;
+              border-radius:0;
+            }
+          }
+          .locanda-availability-search-submit,
+          .listing-availability-search-submit {
+            @include make-xs-column(12);
+            @include make-sm-column(8);
+            @include make-md-column(5);
+            
+            button {
+              @include button-brooklin();
+              width:calc(100% - 15px);
+              border:1px solid #779D73;
+              font-size:16px;
+              font-weight:600;
+              background: $green;
+              &:hover {
+                opacity: .86;
+              }
+            }
+          }
+        }
+      }
+    }
+    .pane-locanda-availability-search {
+      @media (min-width: $screen-md) {
+        margin-bottom: 100px;
+      }
+    }
+  }
+
+  .panel_sl_user_details {
+    @include make-xs-column(12);
+    @include make-sm-column(4);
+    
+    .listing-contact-block {
+      min-height:260px;
+      text-align: center;
+      
+      .listing-contact-block-top {
+        position: relative;
+        min-height:190px;
+        padding-top:60px;
+        padding-bottom:24px;
+        background:#FBFBFB;
+        border:1px solid #E2E2E2;
+        .user-image {
+          position: absolute;
+          top:-40px;
+          left:50%;
+          margin-left:-40px;
+          height:80px;
+          width:80px;
+          background:#eaeaea;
+          border:1px solid #ccc;
+          @include border-radius(100px);
+          img {
+            @include border-radius(50%);
+          }
+        }
+        
+        h2.user-property-owner-name {
+          font-size:18px;
+          margin-bottom:20px;
+        }
+        .user-info {
+          font-size:16px;
+          padding: 5px 10px;
+          margin-bottom:10px;
+          color:#9B9B9B;     
+        }
+        .user-phone {
+          font-size:16px;
+          margin-bottom:20px;
+          color:#9B9B9B;          
+        }
+        
+        .user-email {
+          font-size:16px;
+          color:#9B9B9B;  
+          
+          a {
+            color:#9B9B9B;
+            border-bottom:1px dotted #9B9B9B;
+            
+            &:hover {
+              color:#9B9B9B;
+              border-bottom:1px solid #9B9B9B;
+            }   
+          }
+        }
+      }
+      .pane-roomify-owner-social-pages {
+        display: inline-block;
+        width: 100%;
+        min-height: 70px;
+        border-bottom: 0;
+        border: 1px solid #E2E2E2;
+        border-top: 0;
+        background: white;
+        .pane-content {
+          display: inline-block;
+          margin: 15px auto;
+          .rsp-social-icon {
+            list-style: none;
+            width: 30px;
+            background: black;
+            border-radius: 50%;
+            padding: 3px;
+            margin: 6px;
+            &:hover {
+              opacity: 0.86;
+            }
+            svg {
+              width: 18px;
+              position: relative;
+              top: 2px;
+              fill: #FFFFFF;
+            }
+            &.rsp-facebook {
+              background: $social-facebook;
+            }
+            &.rsp-instagram {
+              background: $social-instagram;
+            }
+            &.rsp-twitter {
+              background: $social-twitter;
+            }
+            &.rsp-youtube {
+              background: $social-youtube;
+            }
+            &.rsp-pinterest {
+              background: $social-pinterest;
+            }
+            &.rsp-googleplus {
+              background: $social-googleplus;
+            }
+          }
+        }
+      }
+      .listing-contact-block-bottom {
+        padding:20px 20px 0 20px;
+        
+        .rrssb-buttons {
+          
+          &.small-format {
+            padding:0;
+            
+            li.small a {
+              @include border-radius(100px);
+              display:inline-block;
+              height:32px;
+              width:32px;
+              line-height:28px;
+            }
+          }
+        }
+      }
+    }
+  }
+}
+
+.property-types {
+  .pane-property-panel-pane-3 {
+    @include make-xs-column(12);
+    margin-bottom:80px;
+    .views-table {
+      thead {
+        tr {
+          th {
+            padding: 15px 20px;
+            margin: 0;
+            font-size: 16px;
+            background: #4A4A4A;
+            color: #F6F6F6;
+            &.views-field-field-st-max-capacity {
+              background: #4A4A4A url('../images/small/capacity.png') 50% 50% no-repeat;
+              text-indent: -9999999px;
+            }
+            &.views-field-beds {
+              background: #4A4A4A url('../images/small/beds.png') 50% 50% no-repeat;
+              text-indent: -9999999px;
+            }
+            &.views-field-booking-cost {
+              background: #4A4A4A url('../images/small/price.png') 50% 50% no-repeat;
+              text-indent: -9999999px;
+              @media (min-width: $screen-md) {
+                width: 10%;
+              }
+            }
+          }
+        }
+      }
+      tbody {
+        tr {
+          td {
+            font-weight: 300;
+            font-size: 16px;
+            @include breakpoint(md) {
+              font-size: 16px;
+            }
+            vertical-align: middle;
+
+            &.views-field-field-st-gallery {
+              margin: 10px 0;
+              display: block;
+              font-size: 22px;
+              img {
+                margin-top: 10px;
+                max-width: 220px;
+                border: 1px solid #BDBDBD;
+              }
+            }
+            &.views-field-field-st-description {
+              line-height: 20px;
+              padding: 5px 20px;
+              font-style: italic;
+              .type-description {
+                @media (min-width: $screen-md) {
+                  margin-top: 45px;
+                }
+                font-style: normal;
+                p {
+                  line-height: 20px;
+                }
+              }
+            }
+            &.views-field-field-st-max-capacity,
+            &.views-field-beds,
+            &.views-field-booking-cost {
+              text-align: center;
+            }
+            &.views-field-booking-cost {
+              padding: 0 5px;
+              .price-info {
+                font-size: 16px;
+                font-style: italic;
+              }
+              .booking-cost {
+                text-decoration: line-through;
+              }
+              .offer-cost {
+                color: #FF0000;
+              }
+            }
+            &.views-field-book-this {
+              padding: 0px 20px;
+              a {
+                font-size: 18px;
+              }
+              .info {
+                font-size: 14px;
+                margin-top: 5px;
+                font-style: italic;
+              }
+            }
+            .footable-row-detail-inner {
+              .footable-row-detail-row {
+                margin: 8px 2%;
+                display: inline-block;
+                width: 45%;
+                &:first-child {
+                  width: 100%;
+                  margin: 8px 0;
+                  padding: 0 8px;
+                  font-style: italic;
+                  font-size: 14px;
+                  line-height: 20px;
+                  .type-description {
+                    font-style: normal;
+                    p {
+                      line-height: 20px;
+                    }
+                  }
+                }
+              }
+            }
+            &:first-child {
+              margin-left: 15px;
+            }
+            &:last-child {
+              margin-right: 15px;
+            }
+          }
+          &:hover {
+            background: white;
+            @include transition(200ms background ease);
+          }
+        }
+      }
+    }
+  }
+}
+
+// Property description
+
+.property-description {
+  @include make-xs-column(12);
+  
+  h3 {
+    padding-top:30px;
+  }
+  
+  h4 {
+    padding-top:20px;
+  }
+  // Property Amenities.
+  .pane-roomify-property-field-sp-amenities {
+    .field-name-field-sp-amenities {
+      .field-item.even,
+      .field-item.odd {
+        display: inline-block;
+        margin-right: 10px;
+        margin-bottom: 10px;
+        &:not(:last-child) {
+          &::after {
+            display: inline-block;
+            content: "\25cf";
+            font-size: 0.7em;
+            margin-left: 10px;
+            opacity: 0.5;
+            bottom: 1px;
+            position: relative;
+          }
+        }
+      }
+    }
+  }
+  // Property Location, essentials and nearby.
+  .pane-property-location {
+    display: inline-block;
+    width: 100%;
+    .pane-roomify-property-field-sp-how-to-reach,
+    .pane-roomify-property-field-sp-essentials {
+      .pane-title {
+        padding-top: 0px;
+        margin-bottom: 10px;
+      }
+      @media (min-width: $screen-md) {
+        padding-right: 10px;
+      }
+      margin-bottom: 10px;
+    }
+    #leaflet-map {
+      margin-top: 30px;
+    }
+    .pane-roomify-property-field-sp-address {
+      margin: 15px 0;
+    }
+  }
+}

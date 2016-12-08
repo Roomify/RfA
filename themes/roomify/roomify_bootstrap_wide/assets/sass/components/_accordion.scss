@@ -1,0 +1,34 @@
+// Accordion styles
+
+.panel-group {
+	
+	.panel {
+
+		
+		+ .panel {
+
+		}
+		
+		.panel-heading {
+
+			
+			h4.panel-title {
+
+				
+				a {
+					
+					&:focus,
+					&:visited,
+					&:hover,
+					&:active {
+						// text-decoration: none;
+					}
+				}
+			}
+		}
+		
+		.panel-collapse > .panel-body {
+		
+		}
+	}
+}

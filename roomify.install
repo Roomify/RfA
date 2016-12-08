@@ -1,0 +1,917 @@
+<?php
+
+/**
+ * @file
+ * Installation code for Roomify
+ */
+
+/**
+ * Implements hook_install_tasks().
+ */
+function roomify_install_tasks(&$install_state) {
+  // Increase maximum function nesting level to prevent install errors.
+  $max_nesting_level = ini_get('xdebug.max_nesting_level');
+  if ($max_nesting_level > 0 && $max_nesting_level <= '200') {
+    ini_set('xdebug.max_nesting_level', 200);
+  }
+
+  // Remove any status messages that might have been set. They are unneeded.
+  drupal_get_messages('status', TRUE);
+
+  $tasks = array();
+  $current_task = variable_get('install_task', 'done');
+
+  $tasks['roomify_install_write_composer_manager_file'] = array(
+    'display' => FALSE,
+    'display_name' => 'Writing the composer manager file.',
+    'type' => 'batch'
+  );
+  $tasks['roomify_setup_product'] = array(
+    'display_name' => st('Install Chosen Roomify Product'),
+    'type' => 'batch',
+    // Show this task only after the roomify steps have been reached.
+    'display' => strpos($current_task, 'roomify_') !== FALSE,
+  );
+
+  return $tasks;
+}
+
+/**
+ * Implements hook_install_tasks_alter().
+ */
+function roomify_install_tasks_alter(&$tasks, $install_state) {
+  $tasks['install_finished']['function'] = 'roomify_install_finished';
+  $tasks['install_select_profile']['display'] = FALSE;
+  $tasks['install_select_locale']['display'] = FALSE;
+  $tasks['install_select_locale']['run'] = INSTALL_TASK_SKIP;
+  $tasks['install_profile_modules']['display_name'] = st('Install Roomify');
+
+  // The "Welcome" screen needs to come after the first two steps
+  // (profile and language selection), despite the fact that they are disabled.
+  $new_task['roomify_install_welcome'] = array(
+    'display' => TRUE,
+    'display_name' => st('Welcome'),
+    'type' => 'form',
+    'run' => isset($install_state['parameters']['welcome']) ? INSTALL_TASK_SKIP : INSTALL_TASK_RUN_IF_REACHED,
+  );
+
+  $old_tasks = $tasks;
+  $tasks = array_slice($old_tasks, 0, 2) + $new_task + array_slice($old_tasks, 2);
+
+  // Set the installation theme.
+  _roomify_set_theme('roomify_adminimal_theme');
+}
+
+/**
+ * Force-set a theme at any point during the execution of the request.
+ *
+ * Drupal doesn't give us the option to set the theme during the installation
+ * process and forces enable the maintenance theme too early in the request
+ * for us to modify it in a clean way.
+ */
+function _roomify_set_theme($target_theme) {
+  if ($GLOBALS['theme'] != $target_theme) {
+    unset($GLOBALS['theme']);
+
+    drupal_static_reset();
+    $GLOBALS['conf']['maintenance_theme'] = $target_theme;
+    _drupal_maintenance_theme();
+  }
+}
+
+
+/**
+ * Task callback: shows the welcome screen.
+ */
+function roomify_install_welcome($form, &$form_state, &$install_state) {
+  drupal_set_title(st('Welcome to Roomify'));
+  $message = '<h2>' . st('Thank you for choosing the Roomify distribution, the best way to launch and manage a vacation rental, hotel or multi-property site.') . '</h2>';
+
+  $form = array();
+  $form['welcome_message'] = array(
+    '#markup' => $message,
+  );
+
+  $form['roomify_product'] = array(
+    '#title' => st('Please select what type of Roomify Installation you would like'),
+    '#title_display' => 'invisible',
+    '#type' => 'radios',
+    '#default_value' => 'accommodations',
+    '#options' => array(
+      'roomify' => st('Basic Roomify: A basic version of Roomify tools for development and evaluation'),
+      'accommodations' => st('Accommodations: I would like to manage a site for vacation rentals, B&Bs, and/or Hotels.'),
+    ),
+  );
+
+  $form['dev_style'] = array(
+    '#title' => st('Pick whether you would like devel modules on or off'),
+    '#type' => 'radios',
+    '#default_value' => 'off',
+    '#options' => array(
+      'on' => st('Dev modules on'),
+      'off' => st('Dev modules off'),
+    ),
+  );
+
+  $form['actions'] = array(
+    '#type' => 'actions',
+  );
+  $form['actions']['submit'] = array(
+    '#type' => 'submit',
+    '#value' => st("Let's Get Started!"),
+    '#weight' => 10,
+  );
+  return $form;
+}
+
+/**
+ * Submit function for welcome screen form
+ */
+function roomify_install_welcome_submit($form, &$form_state) {
+  global $install_state;
+
+  $install_state['parameters']['welcome'] = 'done';
+  $install_state['parameters']['locale'] = 'en';
+  $install_state['parameters']['roomify_product'] = $form_state['values']['roomify_product'];
+  $install_state['parameters']['dev_style'] = $form_state['values']['dev_style'];
+}
+
+/**
+ * Task callback: Enables Composer Manager and scan all the composer.json files.
+ */
+function roomify_install_write_composer_manager_file(&$install_state) {
+  module_enable(array('composer_manager'));
+  // Write the composer.json file.
+  composer_manager_write_file();
+}
+
+function roomify_setup_product(&$install_state) {
+  global $install_state;
+
+  $roomify_product = $install_state['parameters']['roomify_product'];
+
+  $modules = array();
+
+  // Common modules
+  $modules = array(
+    'roomify_system',
+    'roomify_landing_page',
+    'roomify_blog',
+    'roomify_mapping',
+    'roomify_things_to_do',
+    'roomify_editor',
+  );
+
+  // Modules that only get installed if a dev version of the
+  // distro was requested.
+  $devel_modules = array();
+
+  if ($install_state['parameters']['dev_style'] == 'on') {
+    $devel_modules = array(
+      'views_ui',
+      'rules_admin',
+      'slick_ui',
+      'devel',
+      'diff',
+      'module_filter',
+    );
+  }
+
+  switch ($roomify_product) {
+    case 'roomify':
+      drupal_set_title(st('We are configuring standard Roomify for you.'));
+      break;
+
+    case 'accommodations':
+      drupal_set_title(st('We are configuring accommodations management.'));
+      $accommodations_modules = array (
+        'roomify_listing',
+        'roomify_property',
+        'roomify_rate',
+        'roomify_casa',
+        'roomify_locanda',
+        'roomify_casa_event_ui',
+        'roomify_locanda_event_ui',
+        'roomify_casa_pet',
+        'roomify_area',
+        'roomify_accommodation_example_content',
+        'roomify_channel_connector',
+        'roomify_channel_ical',
+      );
+      $modules = array_merge($modules, $accommodations_modules);
+      break;
+
+  }
+
+  // Remember the selected roomify product.
+  variable_set('roomify_installed_product', $roomify_product);
+
+  // Add the dev modules to the mix
+  $modules = array_merge($modules, $devel_modules);
+
+  $modules = roomify_identify_module_dependencies($modules);
+
+
+  $operations = array();
+
+  // Enable the selected modules.
+  $files = system_rebuild_module_data();
+  foreach ($modules as $module => $weight) {
+    $operations[] = array('_roomify_enable_module', array($module, $files[$module]->info['name']));
+  }
+
+  // Enable and set as default the correct theme.
+  $theme = 'roomify_travel';
+  $operations[] = array('_roomify_enable_theme', array($theme));
+
+  $operations[] = array('_roomify_flush_caches', array(t('Flushed caches.')));
+
+  $batch = array(
+    'title' => t('Installing additional functionality'),
+    'operations' => $operations,
+    'file' => drupal_get_path('profile', 'roomify') . '/roomify_common.install_callbacks.inc',
+  );
+
+  return $batch;
+}
+
+/**
+ * Identifies module dependencies so as to install all during
+ * batch install step for efficiency.
+ * @param $modules
+ */
+function roomify_identify_module_dependencies($modules){
+  // Resolve the dependencies now, so that module_enable() doesn't need
+  // to do it later for each individual module (which kills performance).
+  $files = system_rebuild_module_data();
+  $modules_sorted = array();
+  foreach ($modules as $module) {
+    if ($files[$module]->requires) {
+      // Create a list of dependencies that haven't been installed yet.
+      $dependencies = array_keys($files[$module]->requires);
+      $dependencies = array_filter($dependencies, '_roomify_filter_dependencies');
+      // Add them to the module list.
+      $modules = array_merge($modules, $dependencies);
+    }
+  }
+  $modules = array_unique($modules);
+  foreach ($modules as $module) {
+    $modules_sorted[$module] = $files[$module]->sort;
+  }
+  arsort($modules_sorted);
+
+  return $modules_sorted;
+}
+
+/**
+ * array_filter() callback used to filter out already installed dependencies.
+ */
+function _roomify_filter_dependencies($dependency) {
+  return !module_exists($dependency);
+}
+
+
+/**
+ * Task: Install finished
+ */
+function roomify_install_finished(&$install_state) {
+  drupal_set_title(st('@drupal installation complete', array('@drupal' => drupal_install_profile_distribution_name())), PASS_THROUGH);
+  $messages = drupal_set_message();
+
+  $translatable_entities = variable_get('entity_translation_entity_types', array());
+  $translatable_entities['node'] = 'node';
+  $translatable_entities['bat_type'] = 'bat_type';
+  $translatable_entities['roomify_property'] = 'roomify_property';
+  $translatable_entities['entityform'] = 'entityform';
+
+  // Enable translation for properties and types.
+  variable_set('entity_translation_entity_types', $translatable_entities);
+
+  // Remember the profile which was used.
+  variable_set('install_profile', drupal_get_profile());
+  variable_set('install_task', 'done');
+
+  // Enable Jquery Migrate.
+  variable_set('jquery_update_jquery_migrate_enable', 1);
+  // Enable the page manager node view.
+  variable_set('page_manager_node_view_disabled', 0);
+
+  // Do not include site style sheets in emails.
+  variable_set('mimemail_sitestyle', 0);
+
+  variable_set('configurable_timezones', 0);
+
+  variable_set('bat_fullcalendar_scheduler_key', 'commercial');
+  variable_set('bat_fullcalendar_scheduler_commercial_key', '0297822786-fcs-1455697240');
+
+  variable_set('better_messages', roomify_get_better_message_configuration());
+
+  variable_set('mimemail_format', 'rich_text');
+
+  // AddToAny Variables
+  variable_set('addtoany_buttons_size', '25');
+  variable_set('addtoany_additional_html', '<a class="a2a_button_facebook"></a>
+<a class="a2a_button_twitter"></a>
+<a class="a2a_button_pinterest"></a>
+<a class="a2a_button_google_plus"></a>');
+
+  variable_set('addtoany_additional_html_placement', 'before');
+  variable_set('addtoany_image', 'a2a_svg_32');
+
+  // Alter the Checkout Complete message.
+  $message['format'] = 'filtered_text';
+  $message['value'] = 'Your reservation number is [commerce-order:order-number]. You can <a href="[commerce-order:url]">view your reservation</a> on your account page when logged in.
+  <br><br>
+  <a href="[site:url]">Return to the front page.</a>';
+
+  variable_set('commerce_checkout_completion_message', $message);
+
+  // Image Toolkit
+  variable_set('image_toolkit', 'gd');
+  variable_set('image_jpeg_quality', '100');
+
+  // Create Common Menu Links.
+  roomify_system_create_update_menu_link('Things to do', 'things-to-do', 'main-menu', -3);
+  roomify_system_create_update_menu_link('Location', 'location', 'main-menu', -1);
+  roomify_system_create_update_menu_link('Blog', 'blog', 'main-menu', -2);
+
+  // Save 'administrator' role to force creation of machine name.
+  $admin_role = user_role_load_by_name('administrator');
+  user_role_save($admin_role);
+
+  // Only for tests.
+  if (isset($install_state['forms']['roomify_install_welcome']['travis_tests']) && $install_state['forms']['roomify_install_welcome']['travis_tests']) {
+    roomify_accommodation_example_content_multi_property();
+  }
+
+  if (isset($messages['error'])) {
+    $output = '<p>' . (isset($messages['error']) ? st('Review the messages above before visiting <a href="@url">your new site</a>.', array('@url' => url(''))) : st('<a href="@url">Visit your new site</a>.', array('@url' => url('')))) . '</p>';
+    return $output;
+  }
+  else {
+    // Since any module can add a drupal_set_message, this can bug the user
+    // when we redirect him to the front page. For a better user experience,
+    // remove all the message that are only "notifications" message.
+    drupal_get_messages('status', TRUE);
+    drupal_get_messages('completed', TRUE);
+    // Migrate adds its messages under the wrong type, see #1659150.
+    drupal_get_messages('ok', TRUE);
+
+    // If we don't install drupal using Drush, redirect the user to the front
+    // page.
+    if (!drupal_is_cli()) {
+      if (module_exists('overlay')) {
+        // Special case when no clean urls.
+        $fragment = empty($GLOBALS['conf']['clean_url']) ? urlencode('?q=admin/help/getting-started') : 'admin/help/getting-started';
+        drupal_goto('', array('fragment' => 'overlay=' . $fragment));
+      }
+      else {
+        drupal_goto('admin/help/getting-started');
+      }
+    }
+  }
+}
+
+/**
+ * Implements hook_install().
+ */
+function roomify_install() {
+  _roomify_install_set_themes();
+
+  _roomify_install_set_blocks();
+
+  _roomify_install_create_text_filters_permissions();
+
+  // Update the menu router information.
+  menu_rebuild();
+}
+
+function _roomify_install_set_blocks() {
+  // Enable some agency blocks.
+  $default_theme = 'roomify_travel';
+  $admin_theme = 'roomify_adminimal_theme';
+
+  // Disable all themes.
+  db_update('system')
+    ->fields(array('status' => 0))
+    ->condition('type', 'theme')
+    ->execute();
+
+  // Enable default theme.
+  db_update('system')
+    ->fields(array('status' => 1))
+    ->condition('type', 'theme')
+    ->condition('name', $default_theme)
+    ->execute();
+
+  // Enable admin theme.
+  db_update('system')
+    ->fields(array('status' => 1))
+    ->condition('type', 'theme')
+    ->condition('name', $admin_theme)
+    ->execute();
+
+  // Enable bootstrap theme.
+  db_update('system')
+    ->fields(array('status' => 1))
+    ->condition('type', 'theme')
+    ->condition('name', 'bootstrap')
+    ->execute();
+
+  // Enable adminimal theme.
+  db_update('system')
+    ->fields(array('status' => 1))
+    ->condition('type', 'theme')
+    ->condition('name', 'adminimal')
+    ->execute();
+
+  variable_set('theme_default', $default_theme);
+  variable_set('admin_theme', $admin_theme);
+
+  // Activate admin theme when editing nodes.
+  variable_set('node_admin_theme', '1');
+
+  // Block setup.
+  $blocks = array(
+    array(
+      'module' => 'system',
+      'delta' => 'main',
+      'theme' => $default_theme,
+      'status' => 1,
+      'weight' => 0,
+      'region' => 'content',
+      'pages' => '',
+      'cache' => -1,
+    ),
+    array(
+      'module' => 'system',
+      'delta' => 'help',
+      'theme' => $default_theme,
+      'status' => 1,
+      'weight' => -10,
+      'region' => 'content',
+      'pages' => '',
+      'cache' => -1,
+    ),
+    array(
+      'module' => 'system',
+      'delta' => 'main',
+      'theme' => $admin_theme,
+      'status' => 1,
+      'weight' => 0,
+      'region' => 'content',
+      'pages' => '',
+      'cache' => -1,
+    ),
+    array(
+      'module' => 'system',
+      'delta' => 'help',
+      'theme' => $admin_theme,
+      'status' => 1,
+      'weight' => 0,
+      'region' => 'help',
+      'pages' => '',
+      'cache' => -1,
+    ),
+    array(
+      'module' => 'panels_mini',
+      'delta' => 'sidebar',
+      'theme' => $default_theme,
+      'status' => 1,
+      'weight' => 0,
+      'region' => 'sidebar_toggle_menu',
+      'pages' => '',
+      'cache' => -1,
+    ),
+    array(
+      'module' => 'panels_mini',
+      'delta' => 'footer',
+      'theme' => $default_theme,
+      'status' => 1,
+      'weight' => 0,
+      'region' => 'footer',
+      'pages' => '',
+      'cache' => -1,
+    ),
+    array(
+      'module' => 'panels_mini',
+      'delta' => 'sidebar',
+      'theme' => $admin_theme,
+      'status' => 1,
+      'weight' => 0,
+      'region' => 'sidebar_toggle_menu',
+      'pages' => '',
+      'cache' => -1,
+    )
+  );
+
+  // Drop system / user blocks to ensure correct building
+  db_delete('block')->condition('module', 'system')->execute();
+  db_delete('block')->condition('module', 'user')->execute();
+
+  // Add in our custom blocks. (defined above)
+  $query = db_insert('block')->fields(array('module', 'delta', 'theme', 'status', 'weight', 'region', 'pages', 'cache'));
+  foreach ($blocks as $block) {
+    $query->values($block);
+  }
+  $query->execute();
+
+}
+
+function _roomify_install_set_themes() {
+  $default_theme = 'roomify_travel';
+  $admin_theme = 'roomify_adminimal_theme';
+
+  // Disable all themes.
+  db_update('system')
+    ->fields(array('status' => 0))
+    ->condition('type', 'theme')
+    ->execute();
+
+  // Enable default theme.
+  db_update('system')
+    ->fields(array('status' => 1))
+    ->condition('type', 'theme')
+    ->condition('name', $default_theme)
+    ->execute();
+
+  // Enable admin theme.
+  db_update('system')
+    ->fields(array('status' => 1))
+    ->condition('type', 'theme')
+    ->condition('name', $admin_theme)
+    ->execute();
+
+  // Enable bootstrap theme.
+  db_update('system')
+    ->fields(array('status' => 1))
+    ->condition('type', 'theme')
+    ->condition('name', 'bootstrap')
+    ->execute();
+
+  // Enable adminimal theme.
+  db_update('system')
+    ->fields(array('status' => 1))
+    ->condition('type', 'theme')
+    ->condition('name', 'adminimal')
+    ->execute();
+
+  variable_set('theme_default', $default_theme);
+  variable_set('admin_theme', $admin_theme);
+
+  // Some settings for the default theme.
+  $default_theme_settings = variable_get('theme_' . $default_theme . '_settings', array());
+
+  $default_theme_settings['toggle_logo'] = 0;
+  $default_theme_settings['toggle_name'] = 1;
+  $default_theme_settings['toggle_slogan'] = 0;
+  $default_theme_settings['toggle_secondary_menu'] = 0;
+  $default_theme_settings['bootstrap_navbar_position'] = '';
+  $default_theme_settings['bootstrap_fluid_container'] = 1;
+
+  variable_set('theme_' . $default_theme . '_settings', $default_theme_settings);
+
+  // Set this configuration for the bootstrap theme.
+  variable_set('theme_roomify_bootstrap_settings', $default_theme_settings);
+
+  // Set this configuration for the bootstrap wide theme.
+  variable_set('theme_roomify_bootstrap_wide_settings', $default_theme_settings);
+
+  // Activate admin theme when editing nodes.
+  variable_set('node_admin_theme', '1');
+}
+
+function _roomify_install_create_text_filters_permissions() {
+  // Add text formats.
+  $filtered_html_format = array(
+    'format' => 'filtered_html',
+    'name' => 'Filtered HTML',
+    'weight' => 0,
+    'filters' => array(
+      // URL filter.
+      'filter_url' => array(
+        'weight' => 0,
+        'status' => 1,
+      ),
+      // HTML filter.
+      'filter_html' => array(
+        'weight' => 1,
+        'status' => 1,
+      ),
+      // Line break filter.
+      'filter_autop' => array(
+        'weight' => 2,
+        'status' => 1,
+      ),
+      // HTML corrector filter.
+      'filter_htmlcorrector' => array(
+        'weight' => 10,
+        'status' => 1,
+      ),
+    ),
+  );
+  $filtered_html_format = (object) $filtered_html_format;
+  filter_format_save($filtered_html_format);
+
+  $full_html_format = array(
+    'format' => 'full_html',
+    'name' => 'Full HTML',
+    'weight' => 1,
+    'filters' => array(
+      // URL filter.
+      'filter_url' => array(
+        'weight' => 0,
+        'status' => 1,
+      ),
+      // Line break filter.
+      'filter_autop' => array(
+        'weight' => 1,
+        'status' => 1,
+      ),
+      // HTML corrector filter.
+      'filter_htmlcorrector' => array(
+        'weight' => 10,
+        'status' => 1,
+      ),
+    ),
+  );
+  $full_html_format = (object) $full_html_format;
+  filter_format_save($full_html_format);
+
+  // Enable default permissions for system roles.
+  $filtered_html_permission = filter_permission_name($filtered_html_format);
+  user_role_grant_permissions(DRUPAL_ANONYMOUS_RID, array('access content', 'access comments', $filtered_html_permission));
+  user_role_grant_permissions(DRUPAL_AUTHENTICATED_RID, array('access content', 'access comments', 'post comments', 'skip comment approval', $filtered_html_permission));
+
+  // Create a default role for site administrators, with all available permissions assigned.
+  $admin_role = new stdClass();
+  $admin_role->name = 'administrator';
+  $admin_role->weight = 2;
+  user_role_save($admin_role);
+  user_role_grant_permissions($admin_role->rid, array_keys(module_invoke_all('permission')));
+  // Set this as the administrator role.
+  variable_set('user_admin_role', $admin_role->rid);
+
+  // Assign user 1 the "administrator" role.
+  db_insert('users_roles')
+    ->fields(array('uid' => 1, 'rid' => $admin_role->rid))
+    ->execute();
+
+}
+
+function _roomify_install_create_standard_node_types() {
+  // Insert default pre-defined node types into the database. For a complete
+  // list of available node type attributes, refer to the node type API
+  // documentation at: http://api.drupal.org/api/HEAD/function/hook_node_info.
+  $types = array(
+    array(
+      'type' => 'page',
+      'name' => st('Basic page'),
+      'base' => 'node_content',
+      'description' => st("Use <em>basic pages</em> for your static content, such as an 'About us' page."),
+      'custom' => 1,
+      'modified' => 1,
+      'locked' => 0,
+    ),
+    array(
+      'type' => 'article',
+      'name' => st('Article'),
+      'base' => 'node_content',
+      'description' => st('Use <em>articles</em> for time-sensitive content like news, press releases or blog posts.'),
+      'custom' => 1,
+      'modified' => 1,
+      'locked' => 0,
+    ),
+  );
+
+  foreach ($types as $type) {
+    $type = node_type_set_defaults($type);
+    node_type_save($type);
+    node_add_body_field($type);
+  }
+
+  // Insert default pre-defined RDF mapping into the database.
+  $rdf_mappings = array(
+    array(
+      'type' => 'node',
+      'bundle' => 'page',
+      'mapping' => array(
+        'rdftype' => array('foaf:Document'),
+      ),
+    ),
+    array(
+      'type' => 'node',
+      'bundle' => 'article',
+      'mapping' => array(
+        'field_image' => array(
+          'predicates' => array('og:image', 'rdfs:seeAlso'),
+          'type' => 'rel',
+        ),
+        'field_tags' => array(
+          'predicates' => array('dc:subject'),
+          'type' => 'rel',
+        ),
+      ),
+    ),
+  );
+  foreach ($rdf_mappings as $rdf_mapping) {
+    rdf_mapping_save($rdf_mapping);
+  }
+
+  // Default "Basic page" to not be promoted and have comments disabled.
+  variable_set('node_options_page', array('status'));
+  variable_set('comment_page', COMMENT_NODE_HIDDEN);
+
+  // Don't display date and author information for "Basic page" nodes by default.
+  variable_set('node_submitted_page', FALSE);
+
+  // Enable user picture support and set the default to a square thumbnail option.
+  variable_set('user_pictures', '1');
+  variable_set('user_picture_dimensions', '1024x1024');
+  variable_set('user_picture_file_size', '800');
+  variable_set('user_picture_style', 'thumbnail');
+
+  // Allow visitor account creation with administrative approval.
+  variable_set('user_register', USER_REGISTER_VISITORS_ADMINISTRATIVE_APPROVAL);
+
+  // Set the appropriate error display level
+  variable_set('error_level', 0);
+
+  // Create a default vocabulary named "Tags", enabled for the 'article' content type.
+  $description = st('Use tags to group articles on similar topics into categories.');
+  $vocabulary = (object) array(
+    'name' => st('Tags'),
+    'description' => $description,
+    'machine_name' => 'tags',
+  );
+  taxonomy_vocabulary_save($vocabulary);
+
+  $field = array(
+    'field_name' => 'field_' . $vocabulary->machine_name,
+    'type' => 'taxonomy_term_reference',
+    // Set cardinality to unlimited for tagging.
+    'cardinality' => FIELD_CARDINALITY_UNLIMITED,
+    'settings' => array(
+      'allowed_values' => array(
+        array(
+          'vocabulary' => $vocabulary->machine_name,
+          'parent' => 0,
+        ),
+      ),
+    ),
+  );
+  field_create_field($field);
+
+  $help = st('Enter a comma-separated list of words to describe your content.');
+  $instance = array(
+    'field_name' => 'field_' . $vocabulary->machine_name,
+    'entity_type' => 'node',
+    'label' => 'Tags',
+    'bundle' => 'article',
+    'description' => $help,
+    'widget' => array(
+      'type' => 'taxonomy_autocomplete',
+      'weight' => -4,
+    ),
+    'display' => array(
+      'default' => array(
+        'type' => 'taxonomy_term_reference_link',
+        'weight' => 10,
+      ),
+      'teaser' => array(
+        'type' => 'taxonomy_term_reference_link',
+        'weight' => 10,
+      ),
+    ),
+  );
+  field_create_instance($instance);
+
+
+  // Create an image field named "Image", enabled for the 'article' content type.
+  // Many of the following values will be defaulted, they're included here as an illustrative examples.
+  // See http://api.drupal.org/api/function/field_create_field/7
+
+  $field = array(
+    'field_name' => 'field_image',
+    'type' => 'image',
+    'cardinality' => 1,
+    'locked' => FALSE,
+    'indexes' => array('fid' => array('fid')),
+    'settings' => array(
+      'uri_scheme' => 'public',
+      'default_image' => FALSE,
+    ),
+    'storage' => array(
+      'type' => 'field_sql_storage',
+      'settings' => array(),
+    ),
+  );
+  field_create_field($field);
+
+
+  // Many of the following values will be defaulted, they're included here as an illustrative examples.
+  // See http://api.drupal.org/api/function/field_create_instance/7
+  $instance = array(
+    'field_name' => 'field_image',
+    'entity_type' => 'node',
+    'label' => 'Image',
+    'bundle' => 'article',
+    'description' => st('Upload an image to go with this article.'),
+    'required' => FALSE,
+
+    'settings' => array(
+      'file_directory' => 'field/image',
+      'file_extensions' => 'png gif jpg jpeg',
+      'max_filesize' => '',
+      'max_resolution' => '',
+      'min_resolution' => '',
+      'alt_field' => TRUE,
+      'title_field' => '',
+    ),
+
+    'widget' => array(
+      'type' => 'image_image',
+      'settings' => array(
+        'progress_indicator' => 'throbber',
+        'preview_image_style' => 'thumbnail',
+      ),
+      'weight' => -1,
+    ),
+
+    'display' => array(
+      'default' => array(
+        'label' => 'hidden',
+        'type' => 'image',
+        'settings' => array('image_style' => 'large', 'image_link' => ''),
+        'weight' => -1,
+      ),
+      'teaser' => array(
+        'label' => 'hidden',
+        'type' => 'image',
+        'settings' => array('image_style' => 'medium', 'image_link' => 'content'),
+        'weight' => -1,
+      ),
+    ),
+  );
+  field_create_instance($instance);
+}
+
+// Config array for better messages.
+function roomify_get_better_message_configuration() {
+  $better_messages_settings = array(
+    'position' => 'center',
+    'vertical' => '0',
+    'horizontal' => '10',
+    'fixed' => '1',
+    'width' => '400px',
+    'autoclose' => '0',
+    'opendelay' => '0.3',
+    'disable_autoclose' => '0',
+    'show_countdown' => '1',
+    'hover_autoclose' => '1',
+    'popin' => array(
+      'effect' => 'fadeIn',
+      'duration' => 'slow',
+    ),
+    'popout' => array(
+      'effect' => 'fadeIn',
+      'duration' => 'slow',
+    ),
+    'jquery_ui' => array(
+      'draggable' => '0',
+      'resizable' => '0',
+    ),
+    'extra' => array(
+      'pages' => 'admin/*
+devel/php
+user/reset',
+      'visibility' => '0',
+      'admin' => '0',
+    ),
+  );
+
+  return $better_messages_settings;
+}
+
+/**
+ * Set mimemail to not use the sitestyle CSS.
+ */
+function roomify_update_7001() {
+  // Do not include site style sheets in emails
+  variable_set('mimemail_sitestyle', 0);
+}
+
+/**
+ * Disable "Users may set their own time zone".
+ */
+function roomify_update_7002() {
+  variable_set('configurable_timezones', 0);
+}
+
+/**
+ * Set FullCalendar license key.
+ */
+function roomify_update_7003() {
+  variable_set('bat_fullcalendar_scheduler_key', 'commercial');
+  variable_set('bat_fullcalendar_scheduler_commercial_key', '0297822786-fcs-1455697240');
+}

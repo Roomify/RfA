@@ -1,0 +1,8 @@
+name = Roomify Listing Availability Search Block
+description = Create an availability search block to put on the listing page.
+core = 7.x
+package = Roomify
+version = 7.x-1.0
+project = roomify_listing_availability_search_block
+
+dependencies[] = roomify_listing

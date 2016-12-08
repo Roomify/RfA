@@ -1,0 +1,4 @@
+name = Roomify Sidebar
+description = Manage all the stuff realated with the Roomify Sidebar.
+core = 7.x
+package = Roomify

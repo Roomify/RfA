@@ -1,0 +1,14 @@
+name = Roomify Special Offers
+description = Roomify Special Offers
+core = 7.x
+
+package = Roomify
+
+dependencies[] = roomify_rate
+dependencies[] = roomify_dashboard
+dependencies[] = rest_server
+dependencies[] = services
+
+stylesheets[all][] = css/roomify_offers.css
+
+files[] = views/join_offer_link_field.inc

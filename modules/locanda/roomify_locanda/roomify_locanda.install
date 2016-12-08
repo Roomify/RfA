@@ -1,0 +1,96 @@
+<?php
+
+/**
+ * @file
+ * Install, update and uninstall functions for the Roomify Locanda module.
+ */
+
+/**
+ * Implements hook_install().
+ */
+function roomify_locanda_install() {
+  // Create Locanda property type.
+  roomify_locanda_create_locanda_property_type();
+
+  // Create Room type.
+  roomify_locanda_create_room_type();
+
+  // Add availability and pricing events field to the Room bundle.
+  $room_bundle = bat_type_bundle_load('room');
+  $room_bundle->default_event_value_field_ids['availability'] = 'field_st_default_availability';
+  $room_bundle->default_event_value_field_ids['pricing'] = 'field_st_default_price';
+
+  bat_type_bundle_save($room_bundle);
+}
+
+/**
+ * Implements hook_uninstall().
+ */
+function roomify_locanda_uninstall() {
+  roomify_locanda_delete_room_type();
+
+  roomify_locanda_delete_locanda_property_type();
+}
+
+/**
+ * Create the Locanda property type.
+ */
+function roomify_locanda_create_locanda_property_type() {
+  module_load_include('inc', 'roomify_listing', 'roomify_listing.fields');
+
+  $property_type = new RoomifyPropertyType(array(
+    'label' => 'Locanda',
+    'type' => 'locanda_property',
+  ));
+
+  roomify_property_type_save($property_type);
+
+  roomify_listing_create_property_fields('locanda_property');
+
+  roomify_listing_add_locanda_field_tax_description_dependency();
+  roomify_listing_add_locanda_field_tax_rate_dependency();
+}
+
+/**
+ * Create the Room type.
+ */
+function roomify_locanda_create_room_type() {
+  module_load_include('inc', 'roomify_listing', 'roomify_listing.fields');
+
+  $bat_type_bundle = new BatTypeBundle(array(
+    'label' => 'Room',
+    'type' => 'room',
+  ));
+
+  bat_type_bundle_save($bat_type_bundle);
+
+  roomify_listing_create_standard_type_fields('room');
+}
+
+/**
+ * Delete the Room type.
+ */
+function roomify_locanda_delete_room_type() {
+  if ($type = bat_type_bundle_load('room')) {
+    $type->delete();
+  }
+}
+
+/**
+ * Delete the Locanda property type.
+ */
+function roomify_locanda_delete_locanda_property_type() {
+  if ($property_type = roomify_property_type_load('locanda_property')) {
+    $property_type->delete();
+  }
+}
+
+/**
+ * Update default price field widget.
+ */
+function roomify_locanda_update_7001() {
+  // Fetch an instance info array.
+  $instance_info = field_info_instance('bat_type', 'field_st_default_price', 'room');
+  $instance_info['widget']['type'] = 'commerce_price_full';
+  field_update_instance($instance_info);
+}

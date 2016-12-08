@@ -1,0 +1,234 @@
+<?php
+
+/**
+ * @file
+ */
+
+/**
+ * Implements hook_menu().
+ */
+function roomify_rights_menu() {
+  $items['admin/config/people/roomify_rights'] = array(
+    'title' => 'Roomify Rights',
+    'description' => 'See a list of Roomify permissions.',
+    'page callback' => 'roomify_rights_admin_page',
+    'access arguments' => array('administer users'),
+    'weight' => 100,
+  );
+
+  return $items;
+}
+
+/**
+ * Implements hook_flush_caches().
+ */
+function roomify_rights_flush_caches() {
+  // Rebuild permissons on cache clear.
+  roomify_rights_rebuild_permissions();
+
+  if (module_exists('roomify_accommodations_group')) {
+    roomify_rights_rebuild_group_permissions();
+  }
+}
+
+/**
+ * Rebuilds permissions based on the roomify_rights definitions
+ * provided by modules.
+ */
+function roomify_rights_rebuild_permissions() {
+  $all_permissions = array_keys(user_permission_get_modules());
+  $all_roles = user_roles();
+
+  $permissions = module_invoke_all('roomify_rights');
+
+  $flat_permissions = array();
+  foreach ($permissions as $module => $module_permissions) {
+    $flat_permissions = array_merge_recursive($flat_permissions, $module_permissions);
+  }
+
+  $current_roles = array_keys($flat_permissions);
+
+  foreach ($current_roles as $role) {
+    if (module_exists('taxonomy')) {
+      foreach ($flat_permissions[$role] as &$permission) {
+        roomify_rights_change_term_permission($permission);
+      }
+    }
+
+    $flat_permissions[$role] = array_combine($flat_permissions[$role], $flat_permissions[$role]);
+  }
+
+  drupal_alter('roomify_rights', $flat_permissions);
+
+  // Remove old roles.
+  $to_remove_roles = array_diff($all_roles, $current_roles);
+
+  foreach ($to_remove_roles as $rid => $role_name) {
+    // Don't touch the built in roles.
+    if ($rid != DRUPAL_ANONYMOUS_RID && $rid != DRUPAL_AUTHENTICATED_RID) {
+      user_role_delete($role_name);
+    }
+  }
+
+  // Add new roles.
+  $to_add_roles = array_diff($current_roles, $all_roles);
+
+  foreach ($to_add_roles as $role_name) {
+    // Don't touch the built in roles.
+    if ($role_name != 'anonymous user' && $role_name != 'authenticated user') {
+      $role = new stdClass();
+      $role->name = $role_name;
+      user_role_save($role);
+
+      if (module_exists('role_export')) {
+        role_export_user_role_insert($role);
+        user_role_save($role);
+      }
+    }
+  }
+
+  $all_roles = user_roles();
+
+  // Revoke all permissions for all roles.
+  foreach ($all_roles as $rid => $name) {
+    user_role_revoke_permissions($rid, $all_permissions);
+  }
+
+  // Grant permissions.
+  foreach ($flat_permissions as $role => $new_permissions) {
+    // Remove invalid permissions.
+    $new_permissions = array_intersect($new_permissions, $all_permissions);
+
+    if ($role == 'anonymous user') {
+      $rid = DRUPAL_ANONYMOUS_RID;
+    }
+    elseif ($role == 'authenticated user') {
+      $rid = DRUPAL_AUTHENTICATED_RID;
+    }
+    else {
+      $rid = array_search($role, $all_roles);
+    }
+
+    user_role_grant_permissions($rid, $new_permissions);
+  }
+}
+
+/**
+ * Rebuilds Group permissions based on the roomify_rights_group definitions
+ * provided by modules.
+ */
+function roomify_rights_rebuild_group_permissions() {
+  $group_type = group_type_load('roomify_group');
+  $all_roles = array_keys($group_type->getRoles());
+
+  $all_permissions = array();
+
+  $modules = array();
+  $module_info = system_get_info('module');
+
+  foreach (module_implements('group_permission') as $module) {
+    $modules[$module] = $module_info[$module]['name'];
+  }
+
+  foreach ($modules as $module => $module_name) {
+    if ($permissions = module_invoke($module, 'group_permission')) {
+      $all_permissions = array_merge($all_permissions, array_keys($permissions));
+    }
+  }
+
+  $permissions = module_invoke_all('roomify_rights_group');
+
+  $flat_permissions = array();
+  foreach ($permissions as $module => $module_permissions) {
+    $flat_permissions = array_merge_recursive($flat_permissions, $module_permissions);
+  }
+
+  $current_roles = array_keys($flat_permissions);
+
+  foreach ($current_roles as $role) {
+    $flat_permissions[$role] = array_combine($flat_permissions[$role], $flat_permissions[$role]);
+  }
+
+  drupal_alter('roomify_rights_group', $flat_permissions);
+
+  $special_roles = array('anonymous', 'outsider', 'member');
+
+  // Remove old roles.
+  $to_remove_roles = array_diff($all_roles, $current_roles);
+
+  foreach ($to_remove_roles as $role_name) {
+    if (!in_array($role_name, $special_roles) && $role_name != 'group_admin') {
+      entity_delete('group_role', $role_name);
+    }
+  }
+
+  // Add new roles.
+  $to_add_roles = array_diff($current_roles, $all_roles);
+
+  foreach ($to_add_roles as $role_name) {
+    $group_role = entity_create('group_role', array('name' => $role_name, 'label' => $role_name));
+    $group_role->save();
+  }
+
+  $all_roles = array_keys($group_type->getRoles());
+
+  // Revoke all permissions for all roles.
+  foreach ($all_roles as $name) {
+    if (!in_array($name, $special_roles)) {
+      $group_role = entity_load_single('group_role', $name);
+      $group_role->revokePermissions();
+    }
+  }
+
+  // Grant permissions.
+  foreach ($flat_permissions as $role => $new_permissions) {
+    // Remove invalid permissions.
+    $new_permissions = array_intersect($new_permissions, $all_permissions);
+
+    $group_role = entity_load_single('group_role', $role);
+    $group_role->grantPermissions($new_permissions);
+  }
+}
+
+/**
+ * Admin page callback.
+ */
+function roomify_rights_admin_page() {
+  $output = '';
+
+  $header = array(t('Role'), t('Permission'));
+
+  $permissions = module_invoke_all('roomify_rights');
+  drupal_alter('roomify_rights', $permissions);
+
+  foreach ($permissions as $module => $module_permissions) {
+    $rows = array();
+    foreach ($module_permissions as $role => $perms) {
+      foreach ($perms as $perm) {
+        $rows[] = array($role, $perm);
+      }
+      if (empty($perms)) {
+        $rows[] = array($role, '');
+      }
+    }
+
+    $output .= '<br><h1>' . $module . '</h1>';
+    $output .= theme('table', array('header' => $header, 'rows' => $rows));
+  }
+
+  return $output;
+}
+
+/**
+ * Change vocabularies permission, from machine name to vocab id.
+ */
+function roomify_rights_change_term_permission(&$permission) {
+  if (strpos($permission, 'edit terms in ') !== FALSE || strpos($permission, 'delete terms in ') !== FALSE) {
+    preg_match("/(?<=\040)([^\s]+?)$/", trim($permission), $voc_id);
+    $vid = $voc_id[0];
+
+    if ($voc = taxonomy_vocabulary_machine_name_load($vid)) {
+      $permission = str_replace($vid, $voc->vid, $permission);
+    }
+  }
+}

@@ -1,0 +1,1180 @@
+<?php
+
+/**
+ * @file
+ * Manages events for Units and displaying dates on the jquery
+ * FullCalendar plugin.
+ */
+
+use Drupal\bat_fullcalendar\FullCalendarOpenStateEventFormatter;
+
+use Roomify\Bat\Calendar\Calendar;
+use Roomify\Bat\Store\DrupalDBStore;
+use Roomify\Bat\Unit\Unit;
+use Roomify\Bat\Valuator\IntervalValuator;
+
+/**
+ * Implements hook_menu().
+ */
+function roomify_casa_event_ui_menu() {
+  $items = array();
+
+  $items['admin/casa/calendar'] = array(
+    'title' => 'Casa Calendar',
+    'page callback' => 'roomify_casa_event_ui_calendar_page',
+    'page arguments' => array(3, 4, 5, 6),
+    'access arguments' => array('administer calendar events'),
+    'type' => MENU_CALLBACK,
+    'weight' => 20,
+  );
+
+  $items['admin/casa/rates/manage/%roomify_rate'] = array(
+    'title' => 'Manage rate',
+    'description' => 'Manage rate',
+    'access callback' => 'roomify_rate_access',
+    'access arguments' => array('update', 4),
+    'page callback' => 'roomify_casa_event_ui_manage_rate',
+    'page arguments' => array(4),
+  );
+
+  return $items;
+}
+
+/**
+ * Callback for admin/casa/rates/manage/%roomify_rate.
+ */
+function roomify_casa_event_ui_manage_rate($rate) {
+  ctools_include('modal');
+
+  $form = drupal_get_form('roomify_casa_event_ui_manage_rate_form', $rate);
+
+  ctools_modal_render(t('Manage "@name" rate', array('@name' => $rate->name)), $form);
+}
+
+/**
+ * Form "Manage rate".
+ */
+function roomify_casa_event_ui_manage_rate_form($form, &$form_state, $rate) {
+  $form['rate_id'] = array(
+    '#type' => 'hidden',
+    '#value' => $rate->rate_id,
+  );
+
+  $field_name = 'rate_default_rate';
+
+  $field = field_info_field($field_name);
+  $instance = field_info_instance('roomify_rate', $field_name, $rate->type);
+
+  $element = array('#parents' => array());
+  $items = array($rate->{$field_name}[LANGUAGE_NONE][0]);
+
+  $widget = field_default_form('roomify_rate', NULL, $field, $instance, LANGUAGE_NONE, $items, $element, $form_state);
+
+  $form[$field_name] = $widget[$field_name];
+  $form[$field_name]['#weight'] = 0;
+
+  $form['submit'] = array(
+    '#type' => 'submit',
+    '#value' => t('Update'),
+  );
+
+  return $form;
+}
+
+/**
+ * Submit function for the roomify_casa_event_ui_manage_rate_form form.
+ */
+function roomify_casa_event_ui_manage_rate_form_submit($form, &$form_state) {
+  $values = $form_state['values'];
+
+  $rate = roomify_rate_load($values['rate_id']);
+  $rate->rate_default_rate[LANGUAGE_NONE][0] = $values['rate_default_rate'][LANGUAGE_NONE][0];
+  $rate->save();
+
+  ctools_include('ajax');
+  ctools_add_js('ajax-responder');
+
+  $commands = array();
+  $commands[] = ctools_modal_command_dismiss();
+
+  print ajax_render($commands);
+  exit;
+}
+
+/**
+ * Callback for admin/casa/calendars.
+ */
+function roomify_casa_event_ui_calendar_page($property_id, $event_type) {
+  if (!isset($property_id)) {
+    return;
+  }
+
+  $property = roomify_property_load($property_id);
+
+  if (isset($event_type) && isset($property->property_bat_type_reference[LANGUAGE_NONE][0]['target_id'])) {
+    // Casa properties only have one associated type.
+    $type = bat_type_load($property->property_bat_type_reference[LANGUAGE_NONE][0]['target_id']);
+    drupal_set_title(t('Manage @listing_type @event_type', array('@listing_type' => $type->name, '@event_type' => $event_type)));
+  }
+  else {
+    drupal_set_title(t('View data events'));
+  }
+
+  // Pick what modal style to use.
+  $calendar_settings['modal_style'] = 'default';
+
+  if ($bat_event_type = bat_event_type_load($event_type)) {
+    $event_granularity = $bat_event_type->event_granularity;
+  }
+  else {
+    $event_granularity = 'both';
+  }
+
+  // Get the unit ID for this type.
+  $units = bat_unit_load_multiple(FALSE, array('type_id' => $type->type_id));
+  $unit = current($units);
+
+  $types = array();
+  foreach ($property->property_bat_type_reference[LANGUAGE_NONE] as $type_reference) {
+    $bat_type = bat_type_load($type_reference['target_id']);
+    $types[] = $bat_type->type_id;
+  }
+
+  // All Drupal JS settings inside the batCalendar object.
+  $fc_user_settings = array(
+    'batCalendar' => array(
+      array(
+        'unitType' => implode(',', $types),
+        'eventType' => $event_type,
+        'eventGranularity' => $event_granularity,
+      ),
+    ),
+  );
+
+  $calendar_settings['user_settings'] = $fc_user_settings;
+  $calendar_settings['calendar_id'] = 'fullcalendar-scheduler';
+
+  if ($event_type == 'availability') {
+    $links = array();
+
+    $css_file = drupal_get_path('module', 'roomify_casa_event_ui') . '/css/casa_availability.css';
+
+    $render_array = array(
+      'bulk_update_form' => drupal_get_form('roomify_casa_event_ui_bulk_update_form', $property_id, $event_type),
+      'calendar' => array(
+        '#theme' => 'casa_availability_calendar',
+        '#calendar_settings' => $calendar_settings,
+        '#links' => $links,
+        '#attached' => array(
+          'css' => array(
+            $css_file,
+          ),
+        ),
+
+      ),
+      'booking_view' => array('#markup' => '<br><h2>' . t('Bookings') . '</h2>' . views_embed_view('upcoming_bookings', 'block_1')),
+    );
+  }
+  else {
+    $links = array();
+
+    $css_file = drupal_get_path('module', 'roomify_casa_event_ui') . '/css/casa_pricing.css';
+    $js_file = drupal_get_path('module', 'roomify_casa_event_ui') . '/js/casa_pricing.js';
+
+    $top_form = drupal_get_form('roomify_casa_event_ui_pricing_update_form', $property_id, $event_type);
+    $bottom_form = drupal_get_form('roomify_casa_event_ui_pricing_test_form', $property_id, $event_type);
+
+    $render_array = array(
+      'calendar' => array(
+        '#theme' => 'casa_pricing_calendar',
+        '#calendar_settings' => $calendar_settings,
+        '#links' => $links,
+        '#top_form' => $top_form,
+        '#bottom_form' => $bottom_form,
+        '#attached' => array(
+          'css' => array(
+            $css_file,
+          ),
+          'js' => array(
+            $js_file => array('group' => JS_THEME),
+          ),
+        ),
+      ),
+    );
+  }
+
+  drupal_add_library('system', 'drupal.vertical-tabs');
+
+  return $render_array;
+}
+
+/**
+ * Implements hook_theme().
+ */
+function roomify_casa_event_ui_theme() {
+  return array(
+    'casa_availability_calendar' => array(
+      'template' => 'casa_availability_calendar',
+      'variables' => array(
+        'calendar_settings' => array(NULL),
+        'js_files' => array(),
+        'css_files' => array(),
+        'attributes' => array(),
+        'links' => array(),
+      ),
+    ),
+    'casa_pricing_calendar' => array(
+      'template' => 'casa_pricing_calendar',
+      'variables' => array(
+        'calendar_settings' => array(NULL),
+        'js_files' => array(),
+        'css_files' => array(),
+        'attributes' => array(),
+        'links' => array(),
+        'top_form' => NULL,
+        'bottom_form' => NULL,
+      ),
+    ),
+  );
+}
+
+/**
+ * Default implementation of hook_preprocess_casa_availability_calendar().
+ */
+function roomify_casa_event_ui_preprocess_casa_availability_calendar(&$vars) {
+  theme_bat_fullcalendar($vars);
+}
+
+/**
+ * Implements hook_preprocess_html().
+ */
+function roomify_casa_event_ui_preprocess_html(&$variables) {
+  if (arg(0) == 'admin' && arg(1) == 'casa') {
+    $variables['classes_array'][] = 'page-admin-bat';
+  }
+}
+
+/**
+ * Implements hook_bat_fullcalendar_modal_content().
+ */
+function roomify_casa_event_ui_bat_fullcalendar_modal_content($unit, $event_type, $event_id, $start_date, $end_date) {
+  if ($event_type->type == 'availability' && $event_id == '0') {
+    $unit = bat_unit_load($unit);
+    $type = bat_type_load($unit->type_id);
+
+    if ($type->type == 'home') {
+      $date_format = variable_get('bat_daily_date_format', 'Y-m-d');
+
+      $temp_end_date = clone($end_date);
+      $temp_end_date->sub(new DateInterval('P1D'));
+
+      $content = '<div class="dates">' . t('Selected Dates:') . ' ' . $start_date->format($date_format) . ' to ' . $temp_end_date->format($date_format) . '</div>';
+
+      $form = drupal_get_form('roomify_casa_event_ui_event_manager_form', $unit->unit_id, $event_type, $event_id, $start_date, $end_date);
+      $content .= drupal_render($form);
+
+      return array(
+        'roomify_casa_event_ui' => array(
+          'title' => t('Event Management'),
+          'content' => $content,
+        ),
+      );
+    }
+  }
+}
+
+/**
+ * @param $unit
+ * @param $event_type
+ * @param $event_id
+ * @param $start_date
+ * @param $end_date
+ */
+function roomify_casa_event_ui_event_manager_form($form, &$form_state, $unit, $event_type, $event_id, $start_date, $end_date) {
+  $form['entity_id'] = array(
+    '#type' => 'hidden',
+    '#value' => $unit,
+  );
+
+  $form['event_type'] = array(
+    '#type' => 'hidden',
+    '#value' => $event_type->type,
+  );
+
+  $form['event_id'] = array(
+    '#type' => 'hidden',
+    '#value' => $event_id,
+  );
+
+  $form['bat_start_date'] = array(
+    '#type' => 'hidden',
+    '#value' => $start_date,
+  );
+
+  $form['bat_end_date'] = array(
+    '#type' => 'hidden',
+    '#value' => $end_date,
+  );
+
+  $form['available'] = array(
+    '#type' => 'submit',
+    '#value' => t('Make available'),
+    '#submit' => array('roomify_casa_event_ui_event_manager_form_available_submit'),
+  );
+
+  $form['unavailable'] = array(
+    '#type' => 'submit',
+    '#value' => t('Make unavailable'),
+    '#submit' => array('roomify_casa_event_ui_event_manager_form_unavailable_submit'),
+  );
+
+  $bat_unit = bat_unit_load($unit);
+
+  $form['booking'] = array(
+    '#type' => 'submit',
+    '#value' => t('Create booking'),
+    '#submit' => array('roomify_casa_event_ui_event_manager_form_booking_submit'),
+  );
+
+  return $form;
+}
+
+/**
+ * Submit function for the 'Make available' button.
+ */
+function roomify_casa_event_ui_event_manager_form_available_submit($form, &$form_state) {
+  global $user;
+
+  $start_date = $form_state['values']['bat_start_date'];
+  $end_date = $form_state['values']['bat_end_date'];
+  $entity_id = $form_state['values']['entity_id'];
+  $event_id = $form_state['values']['event_id'];
+  $event_type = $form_state['values']['event_type'];
+
+  $state = bat_event_load_state_by_machine_name(AVAILABLE);
+  $state_id = $state['id'];
+
+  $event = bat_event_create(array('type' => $event_type));
+  $event->created = REQUEST_TIME;
+  $event->uid = $user->uid;
+
+  $event->start_date = $start_date->format('Y-m-d H:i');
+  // Always subtract one minute from the end time. FullCalendar provides
+  // start and end time with the assumption that the last minute is *excluded*
+  // while BAT deals with times assuming that the last minute is included.
+  $end_date->sub(new DateInterval('PT1M'));
+  $event->end_date = $end_date->format('Y-m-d H:i');
+
+  $event_type_entity = bat_event_type_load($event_type);
+  // Construct target entity reference field name
+  // using this event type's target entity type.
+  $target_field_name = 'event_' . $event_type_entity->target_entity_type . '_reference';
+  $event->{$target_field_name}[LANGUAGE_NONE][0]['target_id'] = $entity_id;
+
+  $event->event_state_reference[LANGUAGE_NONE][0]['state_id'] = $state_id;
+
+  $event->save();
+
+  ctools_include('ajax');
+  ctools_add_js('ajax-responder');
+
+  $commands = array();
+  $commands[] = ctools_modal_command_dismiss();
+
+  print ajax_render($commands);
+  exit;
+}
+
+/**
+ * Submit function for the 'Make unavailable' button.
+ */
+function roomify_casa_event_ui_event_manager_form_unavailable_submit($form, &$form_state) {
+  global $user;
+
+  $start_date = $form_state['values']['bat_start_date'];
+  $end_date = $form_state['values']['bat_end_date'];
+  $entity_id = $form_state['values']['entity_id'];
+  $event_id = $form_state['values']['event_id'];
+  $event_type = $form_state['values']['event_type'];
+
+  $state = bat_event_load_state_by_machine_name(NOT_AVAILABLE);
+  $state_id = $state['id'];
+
+  $event = bat_event_create(array('type' => $event_type));
+  $event->created = REQUEST_TIME;
+  $event->uid = $user->uid;
+
+  $event->start_date = $start_date->format('Y-m-d H:i');
+  // Always subtract one minute from the end time. FullCalendar provides
+  // start and end time with the assumption that the last minute is *excluded*
+  // while BAT deals with times assuming that the last minute is included.
+  $end_date->sub(new DateInterval('PT1M'));
+  $event->end_date = $end_date->format('Y-m-d H:i');
+
+  $event_type_entity = bat_event_type_load($event_type);
+  // Construct target entity reference field name
+  // using this event type's target entity type.
+  $target_field_name = 'event_' . $event_type_entity->target_entity_type . '_reference';
+  $event->{$target_field_name}[LANGUAGE_NONE][0]['target_id'] = $entity_id;
+
+  $event->event_state_reference[LANGUAGE_NONE][0]['state_id'] = $state_id;
+
+  $event->save();
+
+  ctools_include('ajax');
+  ctools_add_js('ajax-responder');
+
+  $commands = array();
+  $commands[] = ctools_modal_command_dismiss();
+
+  print ajax_render($commands);
+  exit;
+}
+
+/**
+ * Submit function for the 'Create booking' button.
+ */
+function roomify_casa_event_ui_event_manager_form_booking_submit($form, &$form_state) {
+  $start_date = $form_state['values']['bat_start_date'];
+  $end_date = $form_state['values']['bat_end_date'];
+
+  $temp_end_date = clone($end_date);
+  $temp_end_date->sub(new DateInterval('P1D'));
+
+  if ($temp_end_date == $start_date) {
+    $temp_end_date = clone($end_date);
+  }
+
+  $unit = bat_unit_load($form_state['values']['entity_id']);
+  $type = bat_type_load($unit->type_id);
+
+  $event_type = $form_state['values']['event_type'];
+
+  if ($property_id = field_get_items('bat_type', $type, 'field_st_property_reference')) {
+    $property = roomify_property_load($property_id[0]['target_id']);
+
+    ctools_include('modal');
+    ctools_include('ajax');
+    ctools_add_js('ajax-responder');
+
+    $destination = 'admin/bat/config/property/manage/' . $property->property_id . '/calendar/' . $event_type;
+
+    $commands = array();
+    $commands[] = ctools_modal_command_dismiss();
+    $commands[] = ctools_ajax_command_redirect('admin/bat/config/booking/add/roomify_accommodation_booking', 0, array(
+      'query' => array(
+        'property' => $property->property_id,
+        'start_date' => $start_date->format('Y-m-d'),
+        'end_date' => $temp_end_date->format('Y-m-d'),
+        'type' => $type->type_id,
+        'unit' => $unit->unit_id,
+        'destination' => $destination,
+      ),
+    ));
+
+    print ajax_render($commands);
+    exit;
+  }
+}
+
+/**
+ * Default implementation of hook_preprocess_casa_pricing_calendar().
+ */
+function roomify_casa_event_ui_preprocess_casa_pricing_calendar(&$vars) {
+  theme_bat_fullcalendar($vars);
+}
+
+/**
+ * Implements hook_bat_calendar_settings_alter().
+ */
+function roomify_casa_event_ui_bat_calendar_settings_alter(&$calendar_settings) {
+  if (isset($calendar_settings['batCalendar'][0]['eventType'])) {
+    if ($calendar_settings['batCalendar'][0]['eventType'] == 'pricing') {
+      $calendar_settings['batCalendar'][0]['repeatEventTitle'] = TRUE;
+      $calendar_settings['batCalendar'][0]['slotWidth'] = 75;
+    }
+
+    if ($calendar_settings['batCalendar'][0]['eventType'] == 'pricing' ||
+        $calendar_settings['batCalendar'][0]['eventType'] == 'availability') {
+      $calendar_settings['batCalendar'][0]['headerRight'] = 'timelineThirtyDay, timeline365Day';
+      $calendar_settings['batCalendar'][0]['defaultView'] = 'timeline365Day';
+      $calendar_settings['batCalendar'][0]['defaultDate'] = (new DateTime())->modify('-2 days')->format('Y-m-d');
+    }
+  }
+}
+
+/**
+ * Pricing update form.
+ */
+function roomify_casa_event_ui_pricing_update_form($form, &$form_state, $property_id, $event_type) {
+  $form['prefix'] = array(
+    '#markup' => '<div id="pricing-update-form">',
+  );
+
+  $form['property_id'] = array(
+    '#type' => 'hidden',
+    '#value' => $property_id,
+  );
+
+  $form['event_type'] = array(
+    '#type' => 'hidden',
+    '#value' => $event_type,
+  );
+
+  $form['description'] = array(
+    '#markup' => '<div>Pricing Rates can be changed from day to day to allow you to fine-tune your prices.</div><br><div>You always enter the full rate amount for the rate you are editing.<br>For example, if your weekly rate is $800 /week you will enter $800 for each night that rate applies.</div><br>',
+  );
+
+  $property = roomify_property_load($property_id);
+  $bat_event_type = bat_event_type_load($event_type);
+
+  $target_entity_type = $bat_event_type->target_entity_type;
+
+  $controller = entity_get_controller($target_entity_type);
+
+  foreach ($property->property_bat_type_reference[LANGUAGE_NONE] as $type_reference) {
+    $type_id = $type_reference['target_id'];
+
+    $rates = $controller->getReferencedIds($type_id);
+
+    $rate_options = array();
+    foreach ($rates as $rate) {
+      $rate_options[$rate['id']] = $rate['name'];
+    }
+
+    $form['type_id'] = array(
+      '#type' => 'hidden',
+      '#value' => $type_id,
+    );
+  }
+
+  $form['rate_type'] = array(
+    '#type' => 'select',
+    '#title' => t('Rate type'),
+    '#options' => $rate_options,
+    '#field_prefix' => t('Set') . '&nbsp;',
+    '#empty_option' => t('- rate type -'),
+    '#prefix' => '<div class="container-inline row1">',
+    '#required' => TRUE,
+    '#ajax' => array(
+      'callback' => 'roomify_casa_event_ui_pricing_update_form_ajax_callback',
+      'wrapper' => 'pricing-update-form',
+    ),
+  );
+
+  $form['price'] = array(
+    '#type' => 'textfield',
+    '#title' => t('Price'),
+    '#field_prefix' => t('at') . '&nbsp;',
+    '#field_suffix' => commerce_default_currency(),
+    '#size' => 10,
+    '#required' => TRUE,
+  );
+
+  $date_fields = bat_date_range_fields();
+
+  $form['start_date'] = $date_fields['bat_start_date'];
+  $form['end_date'] = $date_fields['bat_end_date'];
+
+  $form['start_date']['#field_prefix'] = t('from') . '&nbsp;';
+  $form['start_date']['#attributes'] = array('placeholder' => t('start date'));
+
+  $form['end_date']['#field_prefix'] = t('to') . '&nbsp;';
+  $form['end_date']['#attributes'] = array('placeholder' => t('end date'));
+  $form['end_date']['#suffix'] .= '</div>';
+
+  if (isset($form_state['values']['rate_type'])) {
+    $start = new DateTime();
+    $end = clone($start);
+    $end->add(new DateInterval('P4Y'));
+
+    $pricing_events = roomify_casa_event_ui_get_pricing_events($type_id, $start, $end);
+    foreach ($pricing_events as $event) {
+      if ($event['id'] == $form_state['values']['rate_type']) {
+        $period_start = new DateTime($event['start']);
+        $period_end = new DateTime($event['end']);
+        $period_end->add(new DateInterval('P1D'));
+
+        $period = new DatePeriod($period_start, new DateInterval('P1D'), $period_end);
+        foreach ($period as $date) {
+          $form['start_date']['#datepicker_options']['prices'][$date->format('Y-n-j')] = $event['value'];
+          $form['end_date']['#datepicker_options']['prices'][$date->format('Y-n-j')] = $event['value'];
+        }
+      }
+    }
+  }
+  else {
+    $form['start_date']['#disabled'] = TRUE;
+    $form['end_date']['#disabled'] = TRUE;
+  }
+
+  $day_options = array(
+    '2' => t('Mon'),
+    '3' => t('Tue'),
+    '4' => t('Wed'),
+    '5' => t('Thu'),
+    '6' => t('Fri'),
+    '7' => t('Sat'),
+    '1' => t('Sun'),
+
+  );
+  $form['day_options'] = array(
+    '#type' => 'checkboxes',
+    '#title' => t('Change only the following days:'),
+    '#options' => $day_options,
+    '#default_value' => array_keys($day_options),
+    '#prefix' => '<div class="container-inline row2">',
+  );
+
+  $form['submit'] = array(
+    '#type' => 'submit',
+    '#value' => t('Update'),
+    '#suffix' => '</div>',
+  );
+
+  $form['suffix'] = array(
+    '#markup' => '</div>',
+  );
+
+  return $form;
+}
+
+/**
+ * Ajax callback for the roomify_casa_event_ui_pricing_update_form form.
+ */
+function roomify_casa_event_ui_pricing_update_form_ajax_callback($form, &$form_state) {
+  return $form;
+}
+
+/**
+ * Submit function for the roomify_casa_event_ui_pricing_update_form form.
+ */
+function roomify_casa_event_ui_pricing_update_form_submit($form, &$form_state) {
+  global $user;
+
+  $start_date = new DateTime($form_state['values']['start_date']);
+  $end_date = new DateTime($form_state['values']['end_date']);
+  $end_date->add(new DateInterval('P1D'));
+
+  $entity_id = $form_state['values']['rate_type'];
+  $event_type = $form_state['values']['event_type'];
+  $state_id = $form_state['values']['price'];
+
+  $days = array_filter($form_state['values']['day_options']);
+
+  $temp_start_date = FALSE;
+  foreach (new DatePeriod($start_date, new DateInterval('P1D'), $end_date) as $date) {
+    if (in_array($date->format('w') + 1, $days)) {
+      if ($temp_start_date === FALSE) {
+        $temp_start_date = clone($date);
+      }
+    }
+    else {
+      if ($temp_start_date !== FALSE) {
+        $event = bat_event_create(array('type' => $event_type));
+        $event->created = REQUEST_TIME;
+        $event->uid = $user->uid;
+
+        $event->start_date = $temp_start_date->format('Y-m-d H:i');
+
+        $temp_end_date = clone($date);
+        // Always subtract one minute from the end time. FullCalendar provides
+        // start and end time with the assumption that the last minute
+        // is *excluded* while BAT deals with times assuming
+        // that the last minute is included.
+        $temp_end_date->sub(new DateInterval('PT1M'));
+        $event->end_date = $temp_end_date->format('Y-m-d H:i');
+
+        $event_type_entity = bat_event_type_load($event_type);
+
+        $field_name = $event_type_entity->default_event_value_field_ids[$event_type];
+
+        // Construct target entity reference field name
+        // using this event type's target entity type.
+        $target_field_name = 'event_' . $event_type_entity->target_entity_type . '_reference';
+        $event->{$target_field_name}[LANGUAGE_NONE][0]['target_id'] = $entity_id;
+
+        $event->event_state_reference[LANGUAGE_NONE][0]['state_id'] = $state_id;
+
+        $event->{$field_name}[LANGUAGE_NONE][0] = array(
+          'amount' => $form_state['values']['price'] * 100,
+          'currency_code' => commerce_default_currency(),
+        );
+
+        $event->save();
+      }
+
+      $temp_start_date = FALSE;
+    }
+  }
+
+  if ($temp_start_date !== FALSE) {
+    $event = bat_event_create(array('type' => $event_type));
+    $event->created = REQUEST_TIME;
+    $event->uid = $user->uid;
+
+    $event->start_date = $temp_start_date->format('Y-m-d H:i');
+
+    $temp_end_date = clone($end_date);
+    // Always subtract one minute from the end time. FullCalendar provides
+    // start and end time with the assumption that the last minute is *excluded*
+    // while BAT deals with times assuming that the last minute is included.
+    $temp_end_date->sub(new DateInterval('PT1M'));
+    $event->end_date = $temp_end_date->format('Y-m-d H:i');
+
+    $event_type_entity = bat_event_type_load($event_type);
+
+    $field_name = $event_type_entity->default_event_value_field_ids[$event_type];
+
+    // Construct target entity reference field name using this event type's target entity type.
+    $target_field_name = 'event_' . $event_type_entity->target_entity_type . '_reference';
+    $event->{$target_field_name}[LANGUAGE_NONE][0]['target_id'] = $entity_id;
+
+    $event->event_state_reference[LANGUAGE_NONE][0]['state_id'] = $state_id;
+
+    $event->{$field_name}[LANGUAGE_NONE][0] = array(
+      'amount' => $form_state['values']['price'] * 100,
+      'currency_code' => commerce_default_currency(),
+    );
+
+    $event->save();
+  }
+}
+
+/**
+ * Builds a form when user can calculate price for a given date range and unit.
+ */
+function roomify_casa_event_ui_pricing_test_form($form, &$form_state, $property_id, $event_type) {
+  $property = roomify_property_load($property_id);
+  $bat_event_type = bat_event_type_load($event_type);
+
+  $target_entity_type = $bat_event_type->target_entity_type;
+
+  $controller = entity_get_controller($target_entity_type);
+
+  foreach ($property->property_bat_type_reference[LANGUAGE_NONE] as $type_reference) {
+    $type_id = $type_reference['target_id'];
+
+    $rates = $controller->getReferencedIds($type_id);
+
+    $rate_options = array();
+    foreach ($rates as $rate) {
+      $rate = roomify_rate_load($rate['id']);
+
+      if (isset($rate->data['weekly']) && $rate->data['weekly']) {
+        $rate_options['weekly'] = $rate->rate_id;
+      }
+      elseif (isset($rate->data['monthly']) && $rate->data['monthly']) {
+        $rate_options['monthly'] = $rate->rate_id;
+      }
+      else {
+        $rate_options['nightly'] = $rate->rate_id;
+      }
+    }
+
+    $form['type_id'] = array(
+      '#type' => 'hidden',
+      '#value' => $type_id,
+    );
+
+    $form['rates'] = array(
+      '#type' => 'hidden',
+      '#value' => $rate_options,
+    );
+  }
+
+  $form['property_id'] = array(
+    '#type' => 'hidden',
+    '#value' => $property_id,
+  );
+
+  $form['price_tester'] = array(
+    '#type' => 'fieldset',
+    '#title' => t('Price tester'),
+  );
+
+  $form['price_tester'] += bat_date_range_fields();
+
+  $form['price_tester']['submit'] = array(
+    '#type' => 'submit',
+    '#value' => t('Calculate price'),
+    '#ajax' => array(
+      'callback' => 'roomify_casa_event_ui_pricing_test_form_callback',
+      'wrapper' => 'price-tester',
+    ),
+  );
+
+  $form['price_tester']['price'] = array(
+    '#prefix' => '<div id="price-tester">',
+    '#markup' => '',
+    '#suffix' => '</div>',
+  );
+
+  return $form;
+}
+
+/**
+ * Ajax callback for the roomify_casa_event_ui_pricing_test_form form.
+ */
+function roomify_casa_event_ui_pricing_test_form_callback($form, &$form_state) {
+  global $databases;
+
+  $prefix = (isset($databases['default']['default']['prefix'])) ? $databases['default']['default']['prefix'] : '';
+
+  $values = $form_state['values'];
+
+  $rates = $values['rates'];
+  $type_id = $values['type_id'];
+
+  $start_date = new DateTime($values['bat_start_date']);
+  $end_date = new DateTime($values['bat_end_date']);
+
+  // Validate dates.
+  if ($errors = bat_check_dates_validity($start_date, $end_date)) {
+    $error_msg = implode(' ', $errors);
+    form_set_error('date_range', $error_msg);
+
+    return $form['price_tester']['price'];
+  }
+
+  $temp_end_date = clone($end_date);
+  $temp_end_date->sub(new DateInterval('PT1M'));
+
+  $nights = $start_date->diff($end_date)->days;
+
+  foreach ($rates as $type => $rate_id) {
+    $amount = roomify_casa_event_ui_get_price($rates, $start_date, $temp_end_date, $type);
+
+    $currency_setting = commerce_currency_load(commerce_default_currency());
+    $currency_symbol = $currency_setting['symbol'];
+
+    $booking_cost = commerce_currency_format($amount, $currency_setting['code']);
+
+    if (isset($rate->data['standard']) && $rate->data['standard'] && $nights < 7) {
+      $form['price_tester']['price']['#markup'] .= '<div>' . t('Using @rate rate: @amount <- Applicable value given date range', array(
+        '@rate' => $rate->name,
+        '@currency_symbol' => $currency_symbol,
+        '@amount' => $booking_cost,
+      )) . '</div>';
+    }
+    elseif (isset($rate->data['weekly']) && $rate->data['weekly'] && $nights >= 7 && $nights < 28) {
+      $form['price_tester']['price']['#markup'] .= '<div>' . t('Using @rate rate: @amount <- Applicable value given date range', array(
+        '@rate' => $rate->name,
+        '@currency_symbol' => $currency_symbol,
+        '@amount' => $booking_cost,
+      )) . '</div>';
+    }
+    elseif (isset($rate->data['monthly']) && $rate->data['monthly'] && $nights >= 28) {
+      $form['price_tester']['price']['#markup'] .= '<div>' . t('Using @rate rate: @amount <- Applicable value given date range', array(
+        '@rate' => $rate->name,
+        '@currency_symbol' => $currency_symbol,
+        '@amount' => $booking_cost,
+      )) . '</div>';
+    }
+    else {
+      $form['price_tester']['price']['#markup'] .= '<div>' . t('Using @rate rate: @amount', array(
+        '@rate' => $rate->name,
+        '@currency_symbol' => $currency_symbol,
+        '@amount' => $booking_cost,
+      )) . '</div>';
+    }
+  }
+
+  return $form['price_tester']['price'];
+}
+
+/**
+ * Implements hook_roomify_rights().
+ */
+function roomify_casa_event_ui_roomify_rights() {
+  $rights['roomify_casa_event_ui'] = array(
+    'property owner' => array(
+      'update own roomify_rate entities',
+    ),
+    'roomify manager' => array(
+      'update any roomify_rate entity of bundle standard',
+    ),
+  );
+
+  return $rights;
+}
+
+/**
+ * Implements hook_form_FORM_ID_alter().
+ *
+ * FORM_ID = bat_fullcalendar_event_manager_form.
+ */
+function roomify_casa_event_ui_form_bat_fullcalendar_event_manager_form_alter(&$form, &$form_state) {
+  if (isset($form['event_type']['#value']) && $form['event_type']['#value'] == 'pricing') {
+    if (isset($form['event_details'])) {
+      $date_format = variable_get('bat_daily_date_format', 'Y-m-d');
+
+      $start_date = $form['bat_start_date']['#value'];
+      $end_date = $form['bat_end_date']['#value'];
+
+      $form['event_details']['#markup'] = t('Selected Dates:') . ' ' . $start_date->format($date_format) . ' to ' . $end_date->format($date_format);
+    }
+
+    $form['submit']['#ajax']['callback'] = 'roomify_casa_event_ui_event_manager_form_ajax_submit';
+  }
+}
+
+/**
+ * Custom ajax callback for the bat_fullcalendar_event_manager_form form.
+ */
+function roomify_casa_event_ui_event_manager_form_ajax_submit($form, &$form_state) {
+  bat_fullcalendar_event_manager_form_ajax_submit($form, $form_state);
+
+  ctools_include('modal');
+
+  $commands = array();
+  $commands[] = ctools_modal_command_dismiss();
+
+  print ajax_render($commands);
+  exit;
+}
+
+/**
+ * Bulk update form.
+ */
+function roomify_casa_event_ui_bulk_update_form($form, &$form_state, $property_id, $event_type) {
+  $property = roomify_property_load($property_id);
+
+  $types_options = array();
+  foreach ($property->property_bat_type_reference[LANGUAGE_NONE] as $type_reference) {
+    $type = bat_type_load($type_reference['target_id']);
+    $types_options[$type->type_id] = $type->name;
+  }
+
+  $form['bulk_update'] = array(
+    '#type' => 'fieldset',
+    '#title' => t('Bulk Availability Update'),
+    '#collapsible' => TRUE,
+    '#collapsed' => TRUE,
+  );
+
+  $form['bulk_update']['event_type'] = array(
+    '#type' => 'hidden',
+    '#value' => $event_type,
+  );
+
+  if (count($types_options) == 1) {
+    $types = array_keys($types_options);
+    $form['bulk_update']['type'] = array(
+      '#type' => 'hidden',
+      '#value' => reset($types),
+    );
+  }
+  else {
+    $form['bulk_update']['type'] = array(
+      '#type' => 'select',
+      '#title' => t('Type'),
+      '#options' => $types_options,
+      '#required' => TRUE,
+    );
+  }
+
+  $form['bulk_update'] += bat_date_range_fields();
+
+  $form['bulk_update']['state'] = array(
+    '#type' => 'select',
+    '#title' => t('State'),
+    '#options' => bat_unit_state_options($event_type, array('blocking' => 0)),
+    '#required' => TRUE,
+  );
+
+  $form['bulk_update']['submit'] = array(
+    '#type' => 'submit',
+    '#value' => t('Update'),
+  );
+
+  return $form;
+}
+
+/**
+ * Submit callback for roomify_casa_event_ui_bulk_update_form form.
+ */
+function roomify_casa_event_ui_bulk_update_form_submit($form, &$form_state) {
+  $values = $form_state['values'];
+
+  $start_date = new DateTime($values['bat_start_date']);
+  $end_date = new DateTime($values['bat_end_date']);
+  $end_date->sub(new DateInterval('PT1M'));
+
+  $event_type = $values['event_type'];
+  $event_state = $values['state'];
+  $type = bat_type_load($values['type']);
+
+  $units = bat_unit_load_multiple(FALSE, array('type_id' => $type->type_id));
+
+  $blocking_states = array();
+  foreach (bat_event_get_states('availability') as $state) {
+    if ($state['blocking']) {
+      $blocking_states[] = $state['machine_name'];
+    }
+  }
+
+  // Check the selected time range for blocking events.
+  if (bat_event_get_matching_units($start_date, $end_date, $blocking_states, $type->type_id, 'availability', TRUE, FALSE) !== FALSE) {
+    // Don't update availability, and display the following message to the user.
+    drupal_set_message(t('There are bookings or other blocking events within this timeframe. Please choose different dates to modify.'), 'warning');
+    return;
+  }
+
+  foreach ($units as $unit) {
+    $event = bat_event_create(array(
+      'type' => $event_type,
+      'start_date' => $start_date->format('Y-m-d H:i:s'),
+      'end_date' => $end_date->format('Y-m-d H:i:s'),
+      'uid' => $type->uid,
+      'created' => REQUEST_TIME,
+    ));
+
+    $event->event_bat_unit_reference[LANGUAGE_NONE][0]['target_id'] = $unit->unit_id;
+    $event->event_state_reference[LANGUAGE_NONE][0]['state_id'] = $event_state;
+
+    $event->save();
+  }
+}
+
+/**
+ * Implemenets hook_views_pre_view().
+ */
+function roomify_casa_event_ui_views_pre_view(&$view, &$display_id, &$args) {
+  if ($view->name == 'upcoming_bookings') {
+    if (is_numeric(arg(5))) {
+      $view->display['default']->handler->options['filters']['property_id']['value']['value'] = arg(5);
+    }
+  }
+}
+
+/**
+ * @param $unit_type
+ * @param $start_date
+ * @param $end_date
+ *
+ * @return array
+ */
+function roomify_casa_event_ui_get_pricing_events($unit_type, $start_date, $end_date) {
+  global $databases;
+
+  $controller = entity_get_controller('roomify_rate');
+
+  $prefix = (isset($databases['default']['default']['prefix'])) ? $databases['default']['default']['prefix'] : '';
+  $event_store = new DrupalDBStore('pricing', DrupalDBStore::BAT_EVENT, $prefix);
+
+  $entities = $controller->getReferencedIds($unit_type);
+
+  $childrens = array();
+
+  $units = array();
+  foreach ($entities as $entity) {
+    $units[] = new Unit($entity['id'], 0);
+  }
+
+  $event_formatter = new FullCalendarOpenStateEventFormatter(bat_event_type_load('pricing'));
+
+  $events = array();
+
+  if (!empty($units)) {
+    $event_calendar = new Calendar($units, $event_store);
+
+    $event_ids = $event_calendar->getEvents($start_date, $end_date);
+
+    foreach ($event_ids as $unit_id => $unit_events) {
+      foreach ($unit_events as $key => $event) {
+        $event_formatted = $event->toJson($event_formatter);
+
+        $events[] = array(
+          'id' => $unit_id,
+          'value' => $event_formatted['title'],
+          'start' => substr($event_formatted['start'], 0, 10),
+          'end' => substr($event_formatted['end'], 0, 10),
+        );
+      }
+    }
+  }
+
+  return $events;
+}
+
+/**
+ * @param array $rates
+ * @param $start_date
+ * @param $end_date
+ * @param string $type
+ *
+ * @return int
+ */
+function roomify_casa_event_ui_get_price($rates, $start_date, $end_date, $type = 'nightly') {
+  global $databases;
+
+  $prefix = (isset($databases['default']['default']['prefix'])) ? $databases['default']['default']['prefix'] : '';
+
+  $state_store = new DrupalDBStore('pricing', DrupalDBStore::BAT_STATE, $prefix);
+  $event_store = new DrupalDBStore('pricing', DrupalDBStore::BAT_EVENT, $prefix);
+
+  $rate = roomify_rate_load($rates[$type]);
+
+  $units = array(
+    $rate->rate_id => new Unit($rate->rate_id, 0),
+  );
+
+  $calendar = new Calendar($units, $event_store);
+  $events = $calendar->getEvents($start_date, $end_date);
+
+  $amount = 0;
+
+  $duration_unit = new \DateInterval('P1D');
+
+  foreach ($events as $unit_id => $unit_events) {
+    foreach ($unit_events as $event) {
+      $unit = new Unit($rate->rate_id, $rate->getEventDefaultValue('pricing'));
+
+      if ($event->getValue() > 0) {
+        $bat_event = bat_event_load($event->getValue());
+
+        if ($bat_event->getEventValue() > 0) {
+          $valuator = new IntervalValuator($event->getStartDate(), $event->getEndDate(), $unit, $state_store, $duration_unit);
+
+          if ($type == 'weekly') {
+            $amount += $valuator->determineValue() / 7;
+          }
+          elseif ($type == 'monthly') {
+            $amount += $valuator->determineValue() / 28;
+          }
+          else {
+            $amount += $valuator->determineValue();
+          }
+        }
+        else {
+          if ($type == 'weekly') {
+            $amount += roomify_casa_event_ui_get_price($rates, $event->getStartDate(), $event->getEndDate(), 'nightly');
+          }
+          elseif ($type == 'monthly') {
+            $amount += roomify_casa_event_ui_get_price($rates, $event->getStartDate(), $event->getEndDate(), 'weekly');
+          }
+          else {
+            $valuator = new IntervalValuator($event->getStartDate(), $event->getEndDate(), $unit, $state_store, $duration_unit);
+            $amount += $valuator->determineValue();
+          }
+        }
+      }
+      else {
+        $valuator = new IntervalValuator($event->getStartDate(), $event->getEndDate(), $unit, $state_store, $duration_unit);
+
+        if ($type == 'weekly') {
+          $amount += $valuator->determineValue() / 7;
+        }
+        elseif ($type == 'monthly') {
+          $amount += $valuator->determineValue() / 28;
+        }
+        else {
+          $amount += $valuator->determineValue();
+        }
+      }
+    }
+  }
+
+  return $amount;
+}

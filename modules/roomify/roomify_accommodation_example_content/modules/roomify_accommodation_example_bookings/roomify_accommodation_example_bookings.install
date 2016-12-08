@@ -1,0 +1,30 @@
+<?php
+
+/**
+ * @file
+ * Install, update and uninstall functions for the Roomify Accommodation Example Content module.
+ */
+
+/**
+ * Implements hook_install().
+ */
+function roomify_accommodation_example_bookings_install() {
+  /*  CREATE EXAMPLE BOOKINGS  */
+  $start_date = new DateTime();
+  $start_date->add(new DateInterval('P10D'));
+  $start_date->setTime(0, 0);
+
+  $end_date = new DateTime();
+  $end_date->add(new DateInterval('P1M'));
+  $end_date->setTime(0, 0);
+
+  $types = bat_type_load_multiple(FALSE, array('name' => array('Casa Sul Mare', 'The Doges Rooms')));
+
+  $first_type = array_shift($types);
+  $last_type = array_shift($types);
+
+  $guest1 = user_load_by_name('guest1');
+  $guest2 = user_load_by_name('guest2');
+  roomify_example_content_create_booking($start_date, $end_date, $first_type->type_id, $guest1);
+  roomify_example_content_create_booking($start_date, $end_date, $last_type->type_id, $guest2);
+}

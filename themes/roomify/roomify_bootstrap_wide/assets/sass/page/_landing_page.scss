@@ -1,0 +1,326 @@
+.node-type-landing-page {
+  .slick-active {
+    .slide__content {
+      position: relative;
+      .slideshow-info {
+        width: 100%;
+        margin-left: 0;
+        .slideshow-info-text {
+          width: 100%;
+          margin: 0;
+          position: absolute;
+          bottom:0;
+          left:0;
+          right:0;
+          background:rgba(0,0,0,.5);
+          text-align: center;
+          padding:40px;
+          color:white;
+          @media (max-width: $screen-sm) {
+            bottom: 10px;
+            padding: 20px;
+          }
+          .slideshow-info-title {
+            font-size:22px;
+            @media (max-width: $screen-xs) {
+              font-size:16px;
+            }
+          }
+          
+          .slideshow-info-description {
+            font-size:16px;
+            color:#999;
+            font-style:italic;
+            @media (max-width: $screen-xs) {
+              display: none;
+            }
+          }
+        }
+      }
+    }
+  }
+  .unslick {
+    .views-field-field-cta-gallery {
+      position: relative;
+      .slideshow-info {
+        width: 100%;
+        margin-left: 0;
+        display: block;
+        .slideshow-info-text {
+          width: 100%;
+          margin: 0;
+          position: absolute;
+          bottom:0;
+          left:0;
+          right:0;
+          background:rgba(0,0,0,.5);
+          text-align: center;
+          padding:40px;
+          color:white;
+          @media (max-width: $screen-sm) {
+            bottom: 10px;
+            padding: 20px;
+          }
+          .slideshow-info-title {
+            font-size:22px;
+            @media (max-width: $screen-xs) {
+              font-size:16px;
+            }
+          }
+          
+          .slideshow-info-description {
+            font-size:16px;
+            color:#999;
+            font-style:italic;
+            @media (max-width: $screen-xs) {
+              display: none;
+            }
+          }
+        }
+      }
+    }
+  }
+  .slick__arrow {
+    button:before {
+      color: #232323;
+      font-size: 4.25rem;
+    }
+  }
+  .paragraph-property {
+    display: block;
+    width: 100%;
+    height: 100%;
+    position: relative;
+    padding: 0;
+    .property-types {
+      display: inline-block;
+      width: 100%;
+      margin-top: 20px;
+      width: 96%;
+      table {
+        width: 100%;
+      }
+      .type-icons {
+        .icon {
+          width: 15%;
+          height: 20px;
+          padding-bottom: 15px;
+          padding-top: 5px;
+          &.name {
+            width:40%;
+            text-indent: -9999999px;
+          }
+          &.capacity {
+            background-image: url('../images/small/capacity_small.png');
+            text-indent: -9999999px;
+            background-repeat: no-repeat;
+            background-position: center center;
+          }
+          &.bedrooms {
+            background-image: url('../images/small/beds_small.png');
+            text-indent: -9999999px;
+            background-repeat: no-repeat;
+            background-position: center center;
+          }
+          &.price {
+            width: 30%;
+            background-image: url('../images/small/price_small.png');
+            text-indent: -9999999px;
+            background-repeat: no-repeat;
+            background-position: 75% center;
+          }
+        }
+      }
+      .type-row {
+        width: 100%;
+        margin-top: 10px;
+        .row-element {
+          width: 15%;
+          padding: 5px;
+          text-align: center;
+          &.name {
+            width: 38%;
+            margin-left: 2%;
+            text-align: left;
+          }
+          &.price {
+            width: 30%;
+            text-align: right;
+          }
+        }
+      }
+    }
+  }
+  article.node-landing-page {
+    footer {
+      display: none !important;
+    }
+  }
+  .roomify-area-item {
+    padding-left: 0;
+    display: block;
+    width: 100%;
+    height: 100%;
+    position: relative;
+    padding: 0;
+  }
+  .paragraphs-item-latest-blog-posts {
+    .view-display-id-landing_page_blogposts {
+      .view-content {
+        margin: 0 auto;
+      }
+      .masonry-item {
+        border-radius: 5px;
+        width: 320px;
+        margin: 25px 0px;
+        .views-field-field-featured-image {
+          img {
+            border-radius: 5px 5px 0 0;
+          }
+        }
+        .views-field-body {
+          background-color: white;
+          color: #565656;
+          font-weight: 300;
+          padding: 0px 10px 10px 10px;
+          border-radius: 0px 0px 5px 5px;
+          .field-content {
+            padding-top: 10px;
+            .views-more-link {
+              display: block;
+              margin-top: 10px;
+            }
+          }
+        }
+        .views-field-title-field { 
+          background: white;
+          padding: 10px;
+          border-bottom: 1px solid #E0E0E0;
+          a {
+            color: #565656;
+            font-size: 16px;
+            font-weight: 700;
+          }
+        }
+        &:hover {
+          opacity: .86;
+        }
+        @include transition(250ms opacity ease-out);
+      }
+    }
+    .roomify-link-to-blog-page {
+      width: 40%;
+      top: 20px;
+      left: 30%;
+      position: relative;
+      display: inline-block;
+      margin: 15px 0;
+      a {
+        background-color: transparent;
+        border: 2px solid #333333;
+        color: #333333;
+        font-size: 18px;
+        display: block;
+        text-align: center;
+        padding: 5px;
+        width: 100%;
+        @include border-radius(0px);
+        &:hover {
+          background-color: #333333;
+          color: white;
+          @include transition(350ms all ease-in);
+        }
+        @include transition(350ms all ease-out);
+      }
+      @media (max-width: $screen-sm) {
+        width: 80%;
+        left: 10%;
+      }
+    }
+  }
+  .paragraphs-item-blogpost {
+    .field-name-field-cta-blogpost {
+      border-radius: 5px;
+      padding: 5px;
+      background: #F6F6F2;
+      border: 1px solid #DDDDDD;
+      margin: 25px 0px;
+      .blogpost-image {
+        img {
+          border-radius: 5px 5px 0 0;
+        }
+      }
+      .blogpost-body {
+        background-color: white;
+        color: #565656;
+        font-weight: 300;
+        padding: 0px 10px 10px 10px;
+        border-radius: 0px 0px 5px 5px;
+      }
+      .blogpost-title { 
+        background: white;
+        padding: 10px;
+        border-bottom: 1px solid #E0E0E0;
+        a {
+          color: #565656;
+          font-size: 16px;
+          font-weight: 700;
+        }
+      }
+      &:hover {
+        opacity: .86;
+      }
+      @include transition(250ms opacity ease-out);
+    }
+  }
+  .paragraphs-item-activity {
+    .field-name-field-cta-activity {
+      border-radius: 5px;
+      padding: 5px;
+      background: #F6F6F2;
+      border: 1px solid #DDDDDD;
+      margin: 25px 0px;
+      .activity-image {
+        img {
+          border-radius: 5px 5px 0 0;
+        }
+      }
+      .activity-body {
+        background-color: white;
+        color: #565656;
+        font-weight: 300;
+        padding: 0px 10px 10px 10px;
+        border-radius: 0px 0px 5px 5px;
+      }
+      .activity-title { 
+        background: white;
+        padding: 10px;
+        border-bottom: 1px solid #E0E0E0;
+        a {
+          color: #565656;
+          font-size: 16px;
+          font-weight: 700;
+        }
+      }
+      &:hover {
+        opacity: .86;
+      }
+      @include transition(250ms opacity ease-out);
+    }
+  }
+   .field-name-field-cta-text {
+    /* MEDIA IMAGES MARGIN.*/
+    img[style*="left"] {
+      margin-right:25px !important;
+      margin-bottom: 5px !important;
+    }
+    img[style*="right"] {
+      margin-left:25px !important;
+      margin-bottom: 5px !important;
+    }
+    .media {
+      overflow: inherit;
+    }
+  }
+}
+

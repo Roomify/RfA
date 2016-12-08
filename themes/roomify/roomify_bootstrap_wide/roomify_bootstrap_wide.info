@@ -1,0 +1,57 @@
+name = Roomify Bootstrap Wide
+description = Please provide a description for your theme.
+base theme = bootstrap
+core = 7.x
+
+; ========================================
+; Regions
+; ========================================
+regions[navigation] = Navigation
+regions[header] = Top Bar
+regions[highlighted] = Highlighted
+regions[help] = Help
+regions[sidebar_toggle_menu] = Sidebar Toggle Menu
+regions[content] = Content
+regions[sidebar_first] = Primary
+regions[sidebar_second] = Secondary
+regions[postscript] = Postscript
+regions[footer] = Footer
+regions[page_top] = Page top
+regions[page_bottom] = Page bottom
+
+; ========================================
+; Stylesheets
+; ========================================
+
+stylesheets[all][] = assets/css/style.css
+stylesheets[all][] = color/color.css
+
+
+; ========================================
+; Scripts
+; ========================================
+
+scripts[] = 'assets/bootstrap/js/affix.js'
+scripts[] = 'assets/bootstrap/js/alert.js'
+scripts[] = 'assets/bootstrap/js/button.js'
+scripts[] = 'assets/bootstrap/js/carousel.js'
+scripts[] = 'assets/bootstrap/js/collapse.js'
+scripts[] = 'assets/bootstrap/js/dropdown.js'
+scripts[] = 'assets/bootstrap/js/modal.js'
+scripts[] = 'assets/bootstrap/js/tooltip.js'
+scripts[] = 'assets/bootstrap/js/popover.js'
+scripts[] = 'assets/bootstrap/js/scrollspy.js'
+scripts[] = 'assets/bootstrap/js/tab.js'
+scripts[] = 'assets/bootstrap/js/transition.js'
+scripts[] = 'assets/scripts/roomify_bootstrap_wide.js'
+scripts[] = 'assets/scripts/menu_script.js'
+
+
+; ========================================
+;Panels layouts. You can place multiple layouts under the "layouts" folder.
+; ========================================
+
+plugins[panels][layouts] = layouts
+
+; Disable BootstrapCDN so the compiled LESS source files can be used.
+settings[bootstrap_cdn] = ''

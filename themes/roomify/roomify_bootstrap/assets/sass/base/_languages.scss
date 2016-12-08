@@ -1,0 +1,29 @@
+// Language specific styles
+
+body#lang-en { // English
+	
+	.lang-fr {
+		display:none;
+	}
+	
+	#qtranslate-chooser { // Language Chooser
+		
+		.lang-fr {
+			display:block;
+		}
+	}
+}
+
+body#lang-fr { // French
+	
+	.lang-en {
+		display:none;
+	}
+	
+	#qtranslate-chooser { // Language Chooser
+		
+		.lang-en {
+			display:block;
+		}
+	}
+}

@@ -1,0 +1,47 @@
+.page-admin-locanda-calendar {
+  font: normal 81.3%/1.538em "Lucida Grande", "Lucida Sans Unicode", sans-serif;
+}
+
+/* Ensure that datepicker is visible in the modal popup. */
+#ui-datepicker-div {
+  z-index: 1005 !important;
+}
+
+.locanda-availability-calendar {
+  display: table;
+  width: 100%;
+}
+.locanda-availability-calendar .calendar-links,
+.locanda-availability-calendar .calendar-set {
+  display: table-cell;
+  vertical-align: middle;
+}
+.locanda-availability-calendar .calendar-links div {
+  margin: 15px 0;
+  font-size: 20px;
+}
+.locanda-availability-calendar .calendar-links {
+  width: 250px;
+}
+
+#roomify-locanda-event-ui-bulk-update-form .form-item-event-types,
+#roomify-locanda-event-ui-bulk-update-form #unit-type-wrapper {
+  float: left;
+  margin-right: 10px;
+}
+
+#roomify-locanda-event-ui-bulk-update-form input[type="submit"] {
+  margin-top: 1.6em;
+}
+
+#roomify-locanda-event-ui-bulk-update-form .bat-date-range,
+#roomify-locanda-event-ui-bulk-update-form .form-type-select {
+  float: left;
+  margin: 0 20px 0 0;
+  clear: none;
+  padding: 0;
+}
+
+#roomify-locanda-event-ui-bulk-update-form input[type="submit"] {
+  margin-top: 1.1em;
+}

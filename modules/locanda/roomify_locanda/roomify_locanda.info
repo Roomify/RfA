@@ -1,0 +1,11 @@
+name = Roomify Locanda
+description = Provides a Locanda Property type.
+core = 7.x
+package = Roomify Locanda
+version = 7.x-1.0
+
+dependencies[] = inline_entity_form
+dependencies[] = roomify_listing
+dependencies[] = roomify_payment_methods
+dependencies[] = roomify_property
+dependencies[] = roomify_rate

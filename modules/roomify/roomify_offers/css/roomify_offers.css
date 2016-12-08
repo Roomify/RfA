@@ -1,0 +1,30 @@
+/* Dashboard Icon for the Manage Offers link. */
+
+.manage-offers {
+  background: url("../images/offer.png") no-repeat 15px 25px;
+  -webkit-transition: 100ms all ease-in;
+  -moz-transition: 100ms all ease-in;
+  -ms-transition: 100ms all ease-in;
+  -o-transition: 100ms all ease-in;
+}
+.manage-offers:hover {
+  background: #ebebeb url("../images/original/offer.png") no-repeat 15px 25px;
+}
+
+.page-admin-bat-config-global-offers #ui-datepicker-div {
+  z-index: 1002 !important;
+}
+.page-admin-bat-config-global-offers div.ctools-modal-content .resizable-textarea {
+  margin: 0;
+}
+
+.page-admin-bat-config-global-offers div#modalContent div.ctools-modal-content {
+  overflow-y: scroll !important;
+}
+
+.field-name-offer-end-date,
+.field-name-offer-start-date {
+  display: inline-block;
+  width: 49%;
+  margin-right: 1%;
+}

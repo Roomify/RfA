@@ -1,0 +1,77 @@
+<?php
+
+/**
+ * @file
+ * Provides functionality and configuration for the Roomify Accommodation example Bookings module.
+ */
+
+use Roomify\Bat\Calendar\Calendar;
+use Roomify\Bat\Event\Event;
+use Roomify\Bat\Store\DrupalDBStore;
+use Roomify\Bat\Unit\Unit;
+use Roomify\Bat\Valuator\IntervalValuator;
+
+/**
+ * Create Example booking.
+ */
+function roomify_example_content_create_booking($start_date, $end_date, $type_id, $guest) {
+  global $databases;
+
+  $prefix = (isset($databases['default']['default']['prefix'])) ? $databases['default']['default']['prefix'] : '';
+
+  $event_type = 'availability';
+
+  $nights = $end_date->diff($start_date)->days;
+
+  $temp_end_date = clone($end_date);
+  $temp_end_date->sub(new DateInterval('PT1M'));
+
+  $valid_states = array(AVAILABLE);
+
+  if ($valid_unit_ids = bat_event_get_matching_units($start_date, $temp_end_date, $valid_states, $type_id, $event_type)) {
+    $booked_state = bat_event_load_state_by_machine_name(BOOKED);
+
+    // Create a new Event.
+    $type = bat_type_load($type_id);
+    $property = roomify_property_load($type->field_st_property_reference[LANGUAGE_NONE][0]['target_id']);
+
+    $owner = $type->uid;
+
+    $event = bat_event_create(array(
+      'type' => $event_type,
+      'start_date' => $start_date->format('Y-m-d H:i:s'),
+      'end_date' => $temp_end_date->format('Y-m-d H:i:s'),
+      'uid' => $owner,
+    ));
+
+    $event->event_bat_unit_reference[LANGUAGE_NONE][0]['target_id'] = reset($valid_unit_ids);
+    $event->event_state_reference[LANGUAGE_NONE][0]['state_id'] = $booked_state['id'];
+    $event->save();
+
+    $product_id = $type->accommodation_product_reference[LANGUAGE_NONE][0]['target_id'];
+    $product = commerce_product_load($product_id);
+    $line_item = commerce_product_line_item_new($product, 1, 0, array(), 'roomify_accommodation_booking');
+
+    $line_item->line_item_label = roomify_system_get_line_item_label($type, $property, $start_date, $end_date, $nights);
+
+    // Add line item to cart.
+    $line_item = commerce_cart_product_add($guest->uid, $line_item, FALSE);
+
+    // Refresh line items price.
+    commerce_cart_order_refresh(commerce_cart_order_load($guest->uid));
+
+    // Create a new booking.
+    $booking = bat_booking_create(array(
+      'type' => 'roomify_accommodation_booking',
+    ));
+
+    $booking->booking_start_date[LANGUAGE_NONE][0]['value'] = $event->start_date;
+    $booking->booking_end_date[LANGUAGE_NONE][0]['value'] = $event->end_date;
+    $booking->booking_event_reference[LANGUAGE_NONE][0]['target_id'] = $event->event_id;
+    $booking->booking_line_item_reference[LANGUAGE_NONE][0]['target_id'] = $line_item->line_item_id;
+    $booking->uid = $owner;
+    $booking->save();
+
+    drupal_set_message(t('Booking created'));
+  }
+}

@@ -1,0 +1,7 @@
+name = Roomify Terms & Conditions
+description = Provide a configuration form and a commerce checkout pane for Terms & Conditions.
+core = 7.x
+package = Roomify
+
+dependencies[] = ctools
+dependencies[] = commerce_checkout

@@ -1,0 +1,178 @@
+<?php
+
+/**
+ * @file
+ * Module file for Roomify Social Feeds.
+ */
+
+/**
+ * Implements hook_ctools_plugin_directory().
+ */
+function roomify_social_feeds_ctools_plugin_directory($owner, $plugin_type) {
+  if ($owner == 'ctools' && $plugin_type == 'content_types') {
+    return 'plugins/content_types';
+  }
+}
+
+/**
+ * Implements hook_menu().
+ */
+function roomify_social_feeds_menu() {
+  $items['admin/config/content/rsf'] = array(
+    'title' => 'Roomify Social Feeds',
+    'description' => 'Configure the Roomify Social Profiles Feeds',
+    'page callback' => 'drupal_get_form',
+    'page arguments' => array('rsf_form'),
+    'access callback' => 'user_access',
+    'access arguments' => array('administer roomify_social_feeds'),
+    'type' => MENU_NORMAL_ITEM,
+  );
+
+  return $items;
+}
+
+/**
+ * Implements hook_permission().
+ */
+function roomify_social_feeds_permission() {
+  return array(
+    'administer roomify_social_feeds' => array(
+      'title' => t('Administer Roomify Social Feeds'),
+      'description' => t('Permission to allow user to configure the Roomify Social Feeds.'),
+      'restrict access' => TRUE,
+    ),
+  );
+}
+
+/**
+ *
+ */
+function rsf_form() {
+  $pages = array(
+    'availability_page' => t('Availability Page'),
+    'blog_page' => t('Blog Page'),
+    'blog_node' => t('Individual Blogpost pages'),
+    'things_to_do_page' => t('Things to Do page'),
+    'things_to_do_node' => t('Individual things to do pages'),
+    'property_page' => t('Listing Page'),
+    'type_page' => t('Type Page'),
+  );
+
+  $theme = variable_get('theme_default', NULL);
+  if ($theme == 'roomify_bootstrap' || $theme == 'roomify_bootstrap_wide') {
+    unset($pages['blog_page']);
+    unset($pages['things_to_do_page']);
+  }
+
+  $form['rsf_feed_pages'] = array(
+    '#type' => 'checkboxes',
+    '#title' => t('Select where the feed should be visible'),
+    '#default_value' => variable_get('roomify_feed_pages', array()),
+    '#options' => $pages,
+  );
+
+  $form['rsf_select_feed'] = array(
+    '#type' => 'radios',
+    '#title' => t('Select the feed to show'),
+    '#default_value' => variable_get('roomify_which_feed', 'nothing'),
+    '#options' => array(
+      'nothing' => t('No Feeds'),
+      'facebook' => t('Facebook Feed'),
+      'twitter' => t('Twitter Feed'),
+    ),
+  );
+
+  // Facebook Widget settings.
+  $form['fb_likebox_display_settings'] = array(
+    '#type' => 'fieldset',
+    '#title' => t('Facebook Display options'),
+    '#collapsible' => TRUE,
+    '#collapsed' => TRUE,
+  );
+  $form['fb_likebox_display_settings']['fb_likebox_url'] = array(
+    '#type' => 'textfield',
+    '#title' => t('Facebook Page URL'),
+    '#default_value' => variable_get('fb_likebox_url', 'https://www.facebook.com/FacebookDevelopers'),
+    '#description' => t('Enter the Facebook Page URL. I.e.: https://www.facebook.com/FacebookDevelopers'),
+    '#required' => TRUE,
+  );
+  $form['fb_likebox_display_settings']['fb_likebox_hide_header'] = array(
+    '#type' => 'checkbox',
+    '#title' => t('Hide cover photo in the header'),
+    '#default_value' => variable_get('fb_likebox_hide_header', '0'),
+  );
+  $form['fb_likebox_display_settings']['fb_likebox_stream'] = array(
+    '#type' => 'checkbox',
+    '#title' => t('Show posts from the Page\'s timeline'),
+    '#default_value' => variable_get('fb_likebox_stream', '0'),
+  );
+  $form['fb_likebox_display_settings']['fb_likebox_show_faces'] = array(
+    '#type' => 'checkbox',
+    '#title' => t('Show profile photos when friends like this'),
+    '#default_value' => variable_get('fb_likebox_show_faces', '1'),
+  );
+  $form['fb_likebox_display_settings']['fb_likebox_title'] = array(
+    '#type' => 'textfield',
+    '#title' => t('iFrame title attribute'),
+    '#default_value' => variable_get('fb_likebox_title', 'Like us on Facebook'),
+    '#description' => t('The value of the title attribute.'),
+    '#required' => TRUE,
+  );
+  $form['fb_likebox_display_settings']['fb_likebox_width'] = array(
+    '#type' => 'textfield',
+    '#title' => t('Width'),
+    '#default_value' => variable_get('fb_likebox_width', '340'),
+    '#description' => t('The width of the Facebook likebox. Must be a number between 280 and 500, limits included.'),
+    '#required' => TRUE,
+  );
+  $form['fb_likebox_display_settings']['fb_likebox_height'] = array(
+    '#type' => 'textfield',
+    '#title' => t('Height'),
+    '#default_value' => variable_get('fb_likebox_height', '500'),
+    '#description' => t('The height of the plugin in pixels. Must be a number bigger than 130.'),
+    '#required' => TRUE,
+  );
+
+  $form['twitter_display_settings'] = array(
+    '#type' => 'fieldset',
+    '#title' => t('Twitter Display options'),
+    '#collapsible' => TRUE,
+    '#collapsed' => TRUE,
+  );
+
+  $form['twitter_display_settings']['twitter_feed_widget'] = array(
+    '#type' => 'textarea',
+    '#title' => t('Twitter Feed'),
+    '#default_value' => variable_get('twitter_feed_widget', ''),
+    '#description' => t('Go to https://twitter.com/settings/widgets and create a widget, then copy and paste the html code here.'),
+  );
+
+  $form['submit'] = array(
+    '#type' => 'submit',
+    '#value' => t('Save configuration'),
+  );
+  return $form;
+}
+
+/**
+ *
+ */
+function rsf_form_submit($form, &$form_state) {
+  // Set where to show the feed.
+  variable_set('roomify_feed_pages', $form_state['values']['rsf_feed_pages']);
+
+  // Set which feed to show.
+  variable_set('roomify_which_feed', $form_state['values']['rsf_select_feed']);
+
+  // Facebook Settings.
+  variable_set('fb_likebox_url', check_url($form_state['values']['fb_likebox_url']));
+  variable_set('fb_likebox_hide_header', check_plain($form_state['values']['fb_likebox_hide_header']));
+  variable_set('fb_likebox_stream', check_plain($form_state['values']['fb_likebox_stream']));
+  variable_set('fb_likebox_show_faces', check_plain($form_state['values']['fb_likebox_show_faces']));
+  variable_set('fb_likebox_width', check_plain($form_state['values']['fb_likebox_width']));
+  variable_set('fb_likebox_height', check_plain($form_state['values']['fb_likebox_height']));
+  variable_set('fb_likebox_title', check_plain($form_state['values']['fb_likebox_title']));
+
+  // Twitter Settings.
+  variable_set('twitter_feed_widget', $form_state['values']['twitter_feed_widget']);
+}
