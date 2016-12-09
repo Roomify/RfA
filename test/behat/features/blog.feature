@@ -7,7 +7,7 @@ Feature: Blog
   Scenario: Add a blogpost
     Given I am logged in as a user with the "roomify manager" role on this site
     And I visit 'blog'
-    And I click on the element with css selector ".roomify-add-blog-post-link"
+    And I click on the element with css selector ".roomify-add-blogpost"
     Then I should see "Create Blog Post"
     Then I fill in "title_field[und][0][value]" with "A new blogpost"
     And I attach the file "dog.jpg" to "edit-field-featured-image-und-0-upload"

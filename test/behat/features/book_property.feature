@@ -5,7 +5,7 @@ Feature: Book Property
     Given I am not logged in
     And I visit "listing/1"
     Then I should see "Casa Sul Mare"
-    And I should see "Starting from $20.00 per night"
+    And I should see "Starting from $20.00"
     Then I fill in "arrival[date]" with "2017-01-17"
     Then I fill in "departure[date]" with "2017-01-22"
     And I click on the text "Request to book"
@@ -25,7 +25,7 @@ Feature: Book Property
     Given I am not logged in
     And I visit "listing/1"
     Then I should see "Casa Sul Mare"
-    And I should see "Starting from $20.00 per night"
+    And I should see "Starting from $20.00"
     Then I fill in "arrival[date]" with "2017-02-17"
     Then I fill in "departure[date]" with "2017-02-22"
     And I click on the text "Request to book"
@@ -43,7 +43,7 @@ Feature: Book Property
     Given I am logged in as a user with the "guest" role
     And I visit "listing/1"
     Then I should see "Casa Sul Mare"
-    And I should see "Starting from $20.00 per night"
+    And I should see "Starting from $20.00"
     Then I fill in "arrival[date]" with "2017-03-17"
     Then I fill in "departure[date]" with "2017-03-22"
     And I click on the text "Request to book"

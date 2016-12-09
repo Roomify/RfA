@@ -7,12 +7,9 @@ Feature: Property Search
   Scenario: Order search result by Price
     Given I am not logged in
     And I visit "availability-search"
-    Then I click on the text "Grid View"
-    And I should see "Default" in the "#tabs-0-right-3 .search-api-sorts .sort-item.active-sort" element
-    And I should see "List by price" in the "#tabs-0-right-3 .search-api-sorts a.sort-item" element
     Then I click on the text "List View"
-    And I should see "Default" in the "#tabs-0-right-1 .search-api-sorts .sort-item.active-sort" element
-    And I should see "List by price" in the "#tabs-0-right-1 .search-api-sorts a.sort-item" element
+    And I should see "Default" in the ".pane-search-api-sorts-search-sorts .search-api-sorts .sort-item.active-sort" element
+    And I should see "List by price" in the ".pane-search-api-sorts-search-sorts .search-api-sorts a.sort-item" element
     Then I follow "List by price"
     And I should see "Casa Azzurra" in the ".views-row-1 .views-field-name" element
     And I should see "Casa sul Mare" in the ".views-row-2 .views-field-name" element
