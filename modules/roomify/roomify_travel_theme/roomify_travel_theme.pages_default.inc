@@ -1217,7 +1217,7 @@ function roomify_travel_theme_default_page_manager_handlers() {
     'admin_title' => 'Add Blogpost',
     'title' => '',
     'title_heading' => 'h2',
-    'body' => '<p><a class="btn btn-default btn-primary" href="/node/add/blog"><span class="glyphicon glyphicon-plus" style="color:rgb(255, 255, 255);"></span> Add Blogost</a></p>',
+    'body' => '<p><a class="btn btn-default btn-primary roomify-add-blogpost" href="/node/add/blog"><span class="glyphicon glyphicon-plus" style="color:rgb(255, 255, 255);"></span> Add Blogpost</a></p>',
     'format' => 'filtered_text',
     'substitute' => TRUE,
   );

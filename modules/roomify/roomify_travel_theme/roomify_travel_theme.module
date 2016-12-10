@@ -407,7 +407,7 @@ function roomify_travel_theme_form_alter(&$form, &$form_state, $form_id) {
 
     $form['price'] = array(
       '#markup' => '<div class="listing-base-price">
-        <span class="starting-from">' . t('Starting From!') . ' </span>
+        <span class="starting-from">' . t('Starting From') . ' </span>
         <span class="price">' . $price . '</span>
       </div>',
       '#weight' => -10,
