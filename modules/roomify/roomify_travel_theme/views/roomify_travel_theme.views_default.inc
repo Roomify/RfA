@@ -2011,5 +2011,53 @@ function roomify_travel_theme_views_default_views() {
   );
   $views['area_travel_blogposts'] = $view;
 
+  $view = new view();
+  $view->name = 'blog_categories';
+  $view->description = '';
+  $view->tag = 'default';
+  $view->base_table = 'search_api_index_blogposts_index';
+  $view->human_name = 'Blog Categories';
+  $view->core = 7;
+  $view->api_version = '3.0';
+  $view->disabled = FALSE; /* Edit this to true to make a default view disabled initially */
+
+  /* Display: Master */
+  $handler = $view->new_display('default', 'Master', 'default');
+  $handler->display->display_options['use_more_always'] = FALSE;
+  $handler->display->display_options['access']['type'] = 'none';
+  $handler->display->display_options['cache']['type'] = 'none';
+  $handler->display->display_options['query']['type'] = 'views_query';
+  $handler->display->display_options['exposed_form']['type'] = 'basic';
+  $handler->display->display_options['pager']['type'] = 'full';
+  $handler->display->display_options['style_plugin'] = 'default';
+  $handler->display->display_options['row_plugin'] = 'fields';
+  /* Field: Indexed Node: CER » Context */
+  $handler->display->display_options['fields']['cer_lineage']['id'] = 'cer_lineage';
+  $handler->display->display_options['fields']['cer_lineage']['table'] = 'search_api_index_blogposts_index';
+  $handler->display->display_options['fields']['cer_lineage']['field'] = 'cer_lineage';
+
+  /* Display: Facets block */
+  $handler = $view->new_display('search_api_views_facets_block', 'Facets block', 'search_api_views_facets_block_1');
+  $handler->display->display_options['pager']['type'] = 'some';
+  $handler->display->display_options['facet_field'] = 'field_blog_categories';
+  $translatables['blog_categories'] = array(
+    t('Master'),
+    t('more'),
+    t('Apply'),
+    t('Reset'),
+    t('Sort by'),
+    t('Asc'),
+    t('Desc'),
+    t('Items per page'),
+    t('- All -'),
+    t('Offset'),
+    t('« first'),
+    t('‹ previous'),
+    t('next ›'),
+    t('last »'),
+    t('CER » Context'),
+    t('Facets block'),
+  );
+
   return $views;
 }
