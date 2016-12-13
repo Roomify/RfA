@@ -13406,7 +13406,7 @@ body.node-type-homepage {
         margin-top: 0; }
         body.node-type-homepage .pane-roomify-listing-availability-search-block-roomify-property-search form#property-bat-facets-availability .form-wrapper .search-availability-submit button {
           text-transform: capitalize; }
-  body.node-type-homepage .pane-blog-travel-panel-pane-2,
+  body.node-type-homepage .pane-homepage-blogposts-panel-pane-1,
   body.node-type-homepage .pane-featured-properties-panel-pane-3,
   body.node-type-homepage .pane-featured-properties-panel-pane-4,
   body.node-type-homepage .pane-featured-areas-panel-pane-1,
@@ -13415,7 +13415,7 @@ body.node-type-homepage {
     width: 100%;
     padding-top: 55px;
     padding-bottom: 55px; }
-    body.node-type-homepage .pane-blog-travel-panel-pane-2 .pane-title,
+    body.node-type-homepage .pane-homepage-blogposts-panel-pane-1 .pane-title,
     body.node-type-homepage .pane-featured-properties-panel-pane-3 .pane-title,
     body.node-type-homepage .pane-featured-properties-panel-pane-4 .pane-title,
     body.node-type-homepage .pane-featured-areas-panel-pane-1 .pane-title,
@@ -13520,38 +13520,38 @@ body.node-type-homepage {
     top: 10px;
     border-radius: 0px 4px 0px 4px; }
 
-.pane-blog-travel-panel-pane-2 {
+.pane-homepage-blogposts-panel-pane-1 {
   display: inline-block;
   width: 100%;
   background: #F8F8F8; }
-  .pane-blog-travel-panel-pane-2 .blog-col {
+  .pane-homepage-blogposts-panel-pane-1 .blog-col {
     display: table;
     margin: 15px auto; }
-  .pane-blog-travel-panel-pane-2 .view-blog-travel.view-display-id-panel_pane_2 {
+  .pane-homepage-blogposts-panel-pane-1 .view-homepage-blogposts.view-display-id-panel_pane_1 {
     margin: 0 auto;
     max-width: 1200px; }
-    .pane-blog-travel-panel-pane-2 .view-blog-travel.view-display-id-panel_pane_2 .views-field-field-featured-image img {
+    .pane-homepage-blogposts-panel-pane-1 .view-homepage-blogposts.view-display-id-panel_pane_1 .views-field-field-featured-image img {
       margin: 0 auto;
       border-radius: 2px; }
-    .pane-blog-travel-panel-pane-2 .view-blog-travel.view-display-id-panel_pane_2 .views-field-title-field {
+    .pane-homepage-blogposts-panel-pane-1 .view-homepage-blogposts.view-display-id-panel_pane_1 .views-field-title-field {
       max-width: 380px;
       width: 100%;
       display: table;
       margin: 0 auto;
       margin-top: 15px; }
-      .pane-blog-travel-panel-pane-2 .view-blog-travel.view-display-id-panel_pane_2 .views-field-title-field h4, .pane-blog-travel-panel-pane-2 .view-blog-travel.view-display-id-panel_pane_2 .views-field-title-field .pane-property-location .panel-content-right .pane-title, .pane-property-location .panel-content-right .pane-blog-travel-panel-pane-2 .view-blog-travel.view-display-id-panel_pane_2 .views-field-title-field .pane-title,
-      .pane-blog-travel-panel-pane-2 .view-blog-travel.view-display-id-panel_pane_2 .views-field-title-field .pane-property-location .panel-content-left .pane-title,
-      .pane-property-location .panel-content-left .pane-blog-travel-panel-pane-2 .view-blog-travel.view-display-id-panel_pane_2 .views-field-title-field .pane-title, .pane-blog-travel-panel-pane-2 .view-blog-travel.view-display-id-panel_pane_2 .views-field-title-field .page-listing .pane-roomify-property-field-sp-short-description, .page-listing .pane-blog-travel-panel-pane-2 .view-blog-travel.view-display-id-panel_pane_2 .views-field-title-field .pane-roomify-property-field-sp-short-description, .pane-blog-travel-panel-pane-2 .view-blog-travel.view-display-id-panel_pane_2 .views-field-title-field .node-type-blog .panel-content-bottom .pane-blog-panel-pane-9 .views-field-name, .node-type-blog .panel-content-bottom .pane-blog-panel-pane-9 .pane-blog-travel-panel-pane-2 .view-blog-travel.view-display-id-panel_pane_2 .views-field-title-field .views-field-name {
+      .pane-homepage-blogposts-panel-pane-1 .view-homepage-blogposts.view-display-id-panel_pane_1 .views-field-title-field h4, .pane-homepage-blogposts-panel-pane-1 .view-homepage-blogposts.view-display-id-panel_pane_1 .views-field-title-field .pane-property-location .panel-content-right .pane-title, .pane-property-location .panel-content-right .pane-homepage-blogposts-panel-pane-1 .view-homepage-blogposts.view-display-id-panel_pane_1 .views-field-title-field .pane-title,
+      .pane-homepage-blogposts-panel-pane-1 .view-homepage-blogposts.view-display-id-panel_pane_1 .views-field-title-field .pane-property-location .panel-content-left .pane-title,
+      .pane-property-location .panel-content-left .pane-homepage-blogposts-panel-pane-1 .view-homepage-blogposts.view-display-id-panel_pane_1 .views-field-title-field .pane-title, .pane-homepage-blogposts-panel-pane-1 .view-homepage-blogposts.view-display-id-panel_pane_1 .views-field-title-field .page-listing .pane-roomify-property-field-sp-short-description, .page-listing .pane-homepage-blogposts-panel-pane-1 .view-homepage-blogposts.view-display-id-panel_pane_1 .views-field-title-field .pane-roomify-property-field-sp-short-description, .pane-homepage-blogposts-panel-pane-1 .view-homepage-blogposts.view-display-id-panel_pane_1 .views-field-title-field .node-type-blog .panel-content-bottom .pane-blog-panel-pane-9 .views-field-name, .node-type-blog .panel-content-bottom .pane-blog-panel-pane-9 .pane-homepage-blogposts-panel-pane-1 .view-homepage-blogposts.view-display-id-panel_pane_1 .views-field-title-field .views-field-name {
         font-size: 18px;
         font-weight: 400;
         line-height: 1.35em; }
-    .pane-blog-travel-panel-pane-2 .view-blog-travel.view-display-id-panel_pane_2 .views-field-body {
+    .pane-homepage-blogposts-panel-pane-1 .view-homepage-blogposts.view-display-id-panel_pane_1 .views-field-body {
       max-width: 380px;
       width: 100%;
       display: table;
       margin: 0 auto;
       margin-top: 5px; }
-    .pane-blog-travel-panel-pane-2 .view-blog-travel.view-display-id-panel_pane_2 .view-footer {
+    .pane-homepage-blogposts-panel-pane-1 .view-homepage-blogposts.view-display-id-panel_pane_1 .view-footer {
       display: inline-block;
       margin-top: 40px;
       text-align: right;

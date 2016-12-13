@@ -97,7 +97,7 @@
         padding: 40px 10px 25px 10px;
       }
       .form-wrapper {
-        @include make-row;
+        @include make-row();
         margin-bottom:0;
 
         @media (max-width: $screen-sm) {

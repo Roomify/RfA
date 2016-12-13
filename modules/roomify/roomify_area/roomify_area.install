@@ -66,3 +66,13 @@ function roomify_area_update_7006() {
   $field_group->children[2] = 'description_field';
   field_group_group_save($field_group);
 }
+
+/**
+ * Featured image should be required..
+ */
+function roomify_area_update_7007() {
+
+  $instance_info = field_read_instance('taxonomy_term', 'field_area_featured_image', 'location');
+  $instance_info['required'] = 1;
+  field_update_instance($instance_info);
+}

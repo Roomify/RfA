@@ -1061,7 +1061,7 @@ function roomify_area_taxonomy_fields() {
       'entity_type' => 'taxonomy_term',
       'field_name' => 'field_area_featured_image',
       'label' => 'Featured Image',
-      'required' => 0,
+      'required' => 1,
       'settings' => array(
         'alt_field' => 0,
         'default_image' => 0,

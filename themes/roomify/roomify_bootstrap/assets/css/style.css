@@ -12411,3 +12411,495 @@ body.page-location .view-location .view-empty {
   background: #333333;
   display: inline-block;
   width: 100%; }
+
+body.node-type-homepage .tabs--primary {
+  position: absolute;
+  top: 75px;
+  z-index: 3;
+  color: white;
+  border-bottom: 0; }
+body.node-type-homepage header {
+  margin-bottom: 0;
+  z-index: 2;
+  background: transparent !important;
+  border-radius: 0;
+  border: 0;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.15); }
+  @media (max-width: 768px) {
+    body.node-type-homepage header {
+      background: rgba(0, 0, 0, 0.1); } }
+  body.node-type-homepage header .collasping,
+  body.node-type-homepage header .collapse.in {
+    width: 100%;
+    display: inline-block;
+    margin-bottom: 65px; }
+  body.node-type-homepage header .navbar-toggle .icon-bar {
+    background: white !important; }
+  body.node-type-homepage header .navbar-toggle:hover,
+  body.node-type-homepage header .navbar-toggle:focus {
+    background: transparent; }
+  body.node-type-homepage header a.header-name,
+  body.node-type-homepage header .navbar-nav > li > a {
+    font-weight: 400; }
+    @media (min-width: 768px) {
+      body.node-type-homepage header a.header-name,
+      body.node-type-homepage header .navbar-nav > li > a {
+        color: #FFFFFF !important; }
+        body.node-type-homepage header a.header-name:hover,
+        body.node-type-homepage header .navbar-nav > li > a:hover {
+          color: black !important; } }
+  body.node-type-homepage header .roomify-sidebar-menu-toggle svg {
+    fill: #FFFFFF; }
+    @media (max-width: 768px) {
+      body.node-type-homepage header .roomify-sidebar-menu-toggle svg {
+        fill: #484848; } }
+    body.node-type-homepage header .roomify-sidebar-menu-toggle svg:hover {
+      fill: black !important; }
+body.node-type-homepage .panel-content-top {
+  position: relative; }
+body.node-type-homepage .content-row {
+  max-width: 100%; }
+body.node-type-homepage #main-content {
+  padding: 0;
+  margin: 0;
+  max-width: 100%; }
+  body.node-type-homepage #main-content .region-content {
+    margin-top: 0px;
+    display: block; }
+    body.node-type-homepage #main-content .region-content .section-booking-user-details .section-row.row-top {
+      display: none; }
+    @media (min-width: 768px) {
+      body.node-type-homepage #main-content .region-content {
+        position: relative;
+        top: -122px;
+        margin-bottom: -122px; } }
+body.node-type-homepage .main-container {
+  padding-top: 0px;
+  position: relative;
+  bottom: 75px;
+  padding-bottom: 75px; }
+body.node-type-homepage .view-homepage-travel.view-display-id-panel_pane_1 .views-field-field-homepage-slideshow img {
+  width: 100%;
+  position: relative; }
+body.node-type-homepage .view-homepage-travel.view-display-id-panel_pane_1 .views-field-field-homepage-slideshow:after, body.node-type-homepage .view-homepage-travel.view-display-id-panel_pane_1 .views-field-field-homepage-slideshow:before {
+  position: absolute;
+  opacity: 0;
+  transition: all 0.5s;
+  -webkit-transition: all 0.5s; }
+body.node-type-homepage .view-homepage-travel.view-display-id-panel_pane_1 .views-field-field-homepage-slideshow:before {
+  opacity: 1;
+  content: attr(data-content);
+  width: 100%;
+  color: #fff;
+  z-index: 1;
+  bottom: 0;
+  padding: 4px 10px;
+  text-align: center;
+  box-sizing: border-box;
+  -moz-box-sizing: border-box; }
+  @media (max-width: 900px) {
+    body.node-type-homepage .view-homepage-travel.view-display-id-panel_pane_1 .views-field-field-homepage-slideshow:before {
+      opacity: 0; } }
+body.node-type-homepage .view-homepage-travel.view-display-id-panel_pane_1 .slick.slick--view--homepage-travel {
+  position: relative; }
+body.node-type-homepage .view-homepage-travel.view-display-id-panel_pane_1 .slick-prev.slick-arrow {
+  background: url("../images/arrow_left.png") 0 50% no-repeat;
+  background: url("../images/arrow_left.svg") center center no-repeat, linear-gradient(transparent, transparent);
+  display: inline-block;
+  position: absolute;
+  top: calc(60% - 15px);
+  width: 30px;
+  height: 30px;
+  margin-top: 0px;
+  text-indent: -9999px;
+  border: 0;
+  background-size: contain;
+  left: 12px;
+  z-index: 12; }
+body.node-type-homepage .view-homepage-travel.view-display-id-panel_pane_1 .slick-next.slick-arrow {
+  background: url("../images/arrow_right.png") 0 50% no-repeat;
+  background: url("../images/arrow_right.svg") center center no-repeat, linear-gradient(transparent, transparent);
+  display: inline-block;
+  position: absolute;
+  top: calc(60% - 15px);
+  width: 30px;
+  height: 30px;
+  margin-top: 0px;
+  text-indent: -9999px;
+  border: 0;
+  background-size: contain;
+  right: 12px;
+  z-index: 12; }
+body.node-type-homepage .pane-node-field-homepage-intro-text {
+  position: absolute;
+  top: calc(40% - 35px);
+  z-index: 2;
+  left: 0;
+  right: 0;
+  color: white;
+  text-shadow: 1px 1px #151515; }
+  @media (max-width: 1200px) {
+    body.node-type-homepage .pane-node-field-homepage-intro-text {
+      top: calc(35% - 35px); } }
+  @media (max-width: 768px) {
+    body.node-type-homepage .pane-node-field-homepage-intro-text {
+      display: none; } }
+body.node-type-homepage .pane-roomify-listing-availability-search-block-roomify-property-search {
+  top: calc(60% - 60px);
+  width: 100%;
+  margin: 0 auto;
+  max-width: 1200px;
+  left: 0;
+  position: absolute;
+  right: 0;
+  border-radius: 2px;
+  background: rgba(0, 0, 0, 0.25);
+  padding: 38px 5px 22px 32px; }
+  @media (min-width: 991px) {
+    body.node-type-homepage .pane-roomify-listing-availability-search-block-roomify-property-search {
+      -webkit-animation-name: fadeIn;
+      -moz-animation-name: fadeIn;
+      -ms-animation-name: fadeIn;
+      -o-animation-name: fadeIn;
+      animation-name: fadeIn;
+      -webkit-animation-iteration-count: 1;
+      -moz-animation-iteration-count: 1;
+      -ms-animation-iteration-count: 1;
+      -o-animation-iteration-count: 1;
+      animation-iteration-count: 1;
+      -webkit-animation-duration: 2s;
+      -moz-animation-duration: 2s;
+      -ms-animation-duration: 2s;
+      -o-animation-duration: 2s;
+      animation-duration: 2s;
+      -webkit-animation-delay: 0.4s;
+      -moz-animation-delay: 0.4s;
+      -ms-animation-delay: 0.4s;
+      -o-animation-delay: 0.4s;
+      animation-delay: 0.4s;
+      -webkit-animation-timing-function: ease;
+      -moz-animation-timing-function: ease;
+      -ms-animation-timing-function: ease;
+      -o-animation-timing-function: ease;
+      animation-timing-function: ease;
+      -webkit-animation-fill-mode: both;
+      -moz-animation-fill-mode: both;
+      -ms-animation-fill-mode: both;
+      -o-animation-fill-mode: both;
+      animation-fill-mode: both;
+      -webkit-backface-visibility: hidden;
+      -moz-backface-visibility: hidden;
+      -ms-backface-visibility: hidden;
+      -o-backface-visibility: hidden;
+      backface-visibility: hidden; } }
+  @media (max-width: 1440px) {
+    body.node-type-homepage .pane-roomify-listing-availability-search-block-roomify-property-search {
+      max-width: 1000px; } }
+  @media (max-width: 1200px) {
+    body.node-type-homepage .pane-roomify-listing-availability-search-block-roomify-property-search {
+      max-width: 800px; } }
+  @media (max-width: 1100px) {
+    body.node-type-homepage .pane-roomify-listing-availability-search-block-roomify-property-search {
+      max-width: 668px; } }
+  @media (max-width: 900px) {
+    body.node-type-homepage .pane-roomify-listing-availability-search-block-roomify-property-search {
+      position: relative;
+      top: 0;
+      border-radius: 0;
+      background: #0b1418;
+      width: 100%;
+      max-width: 100%; } }
+  body.node-type-homepage .pane-roomify-listing-availability-search-block-roomify-property-search form#property-bat-facets-availability {
+    position: relative; }
+    body.node-type-homepage .pane-roomify-listing-availability-search-block-roomify-property-search form#property-bat-facets-availability .form-wrapper label {
+      display: none !important; }
+    body.node-type-homepage .pane-roomify-listing-availability-search-block-roomify-property-search form#property-bat-facets-availability .form-wrapper input, body.node-type-homepage .pane-roomify-listing-availability-search-block-roomify-property-search form#property-bat-facets-availability .form-wrapper select, body.node-type-homepage .pane-roomify-listing-availability-search-block-roomify-property-search form#property-bat-facets-availability .form-wrapper .form-control {
+      text-transform: lowercase;
+      font-weight: 400; }
+    body.node-type-homepage .pane-roomify-listing-availability-search-block-roomify-property-search form#property-bat-facets-availability .form-wrapper .search-availability-submit {
+      margin-top: 0; }
+      body.node-type-homepage .pane-roomify-listing-availability-search-block-roomify-property-search form#property-bat-facets-availability .form-wrapper .search-availability-submit button {
+        text-transform: capitalize; }
+body.node-type-homepage .pane-homepage-blogposts-panel-pane-1,
+body.node-type-homepage .pane-featured-properties-panel-pane-3,
+body.node-type-homepage .pane-featured-properties-panel-pane-4,
+body.node-type-homepage .pane-featured-areas-panel-pane-1,
+body.node-type-homepage .pane-node-field-homepage-main-text {
+  display: inline-block;
+  width: 100%;
+  padding: 55px 25px; }
+  body.node-type-homepage .pane-homepage-blogposts-panel-pane-1 .pane-title,
+  body.node-type-homepage .pane-featured-properties-panel-pane-3 .pane-title,
+  body.node-type-homepage .pane-featured-properties-panel-pane-4 .pane-title,
+  body.node-type-homepage .pane-featured-areas-panel-pane-1 .pane-title,
+  body.node-type-homepage .pane-node-field-homepage-main-text .pane-title {
+    margin-bottom: 45px;
+    text-align: center; }
+
+/* CAROUSEL */
+.pane-featured-properties-panel-pane-3 {
+  display: inline-block;
+  width: 100%;
+  background: #F8F8F8;
+  padding-bottom: 20px;
+  /* Zoom In #1 */ }
+  .pane-featured-properties-panel-pane-3 .views-row {
+    max-width: 330px; }
+  .pane-featured-properties-panel-pane-3 .view-featured-properties.view-display-id-panel_pane_3 {
+    margin: 0 auto;
+    max-width: 1200px; }
+    @media (max-width: 991px) {
+      .pane-featured-properties-panel-pane-3 .view-featured-properties.view-display-id-panel_pane_3 {
+        max-width: 330px; } }
+  .pane-featured-properties-panel-pane-3 .views-field-name {
+    text-align: center;
+    border-bottom: 1px solid rgba(70, 66, 62, 0.2);
+    width: 80%;
+    padding-bottom: 8px;
+    margin-left: 10%;
+    font-weight: 600;
+    font-size: 16px;
+    text-transform: uppercase;
+    margin-top: 8px; }
+  .pane-featured-properties-panel-pane-3 .views-field-field-sp-short-description {
+    margin: 10px 0;
+    text-align: center; }
+  .pane-featured-properties-panel-pane-3 .slide__content {
+    margin: 0 auto;
+    display: table;
+    max-width: 330px;
+    width: 100%;
+    padding: 10px;
+    background: white;
+    border: 1px solid #ECECEC;
+    border-radius: 2px;
+    position: relative; }
+  .pane-featured-properties-panel-pane-3 .slick--view--featured-properties {
+    position: relative; }
+  .pane-featured-properties-panel-pane-3 .views-field-field-sp-featured-image {
+    overflow: hidden; }
+  .pane-featured-properties-panel-pane-3 .views-field-field-sp-featured-image img {
+    -webkit-transform: scale(1);
+    transform: scale(1);
+    -webkit-transition: 1s ease-in-out;
+    transition: 1s ease-in-out;
+    margin: 0 auto;
+    border-radius: 2px; }
+  .pane-featured-properties-panel-pane-3 .views-field-field-sp-featured-image:hover img {
+    -webkit-transform: scale(1.2);
+    transform: scale(1.2); }
+  .pane-featured-properties-panel-pane-3 .slick-next.slick-arrow {
+    background: url("../images/arrow_right.png") 0 50% no-repeat;
+    background: url("../images/arrow_right.svg") center center no-repeat, linear-gradient(transparent, transparent);
+    display: inline-block;
+    position: absolute;
+    top: calc(45% - 15px);
+    width: 30px;
+    height: 30px;
+    margin-top: 0px;
+    text-indent: -9999px;
+    border: 0;
+    background-size: contain;
+    right: 16px; }
+    @media (min-width: 992px) {
+      .pane-featured-properties-panel-pane-3 .slick-next.slick-arrow {
+        right: 35px; } }
+  .pane-featured-properties-panel-pane-3 .slick-prev.slick-arrow {
+    background: url("../images/arrow_left.png") 0 50% no-repeat;
+    background: url("../images/arrow_left.svg") center center no-repeat, linear-gradient(transparent, transparent);
+    display: inline-block;
+    position: absolute;
+    top: calc(45% - 15px);
+    width: 30px;
+    height: 30px;
+    margin-top: 0px;
+    text-indent: -9999px;
+    border: 0;
+    background-size: contain;
+    left: 16px; }
+    @media (min-width: 992px) {
+      .pane-featured-properties-panel-pane-3 .slick-prev.slick-arrow {
+        left: 35px; } }
+  .pane-featured-properties-panel-pane-3 .views-field-starting-price {
+    position: absolute;
+    right: 10px;
+    padding: 2px 15px;
+    background: #2180B6;
+    text-transform: uppercase;
+    font-weight: 400;
+    font-size: 12px;
+    border-bottom: 2px solid #2180B6;
+    color: white;
+    top: 10px;
+    border-radius: 0px 4px 0px 4px; }
+
+.pane-homepage-blogposts-panel-pane-1 {
+  display: inline-block;
+  width: 100%;
+  background: #F8F8F8; }
+  .pane-homepage-blogposts-panel-pane-1 .blog-col {
+    display: table;
+    margin: 15px auto; }
+  .pane-homepage-blogposts-panel-pane-1 .view-homepage-blogposts {
+    margin: 0 auto;
+    max-width: 1200px; }
+    .pane-homepage-blogposts-panel-pane-1 .view-homepage-blogposts .views-field-field-featured-image img {
+      margin: 0 auto;
+      border-radius: 2px; }
+    .pane-homepage-blogposts-panel-pane-1 .view-homepage-blogposts .views-field-title-field {
+      max-width: 330px;
+      width: 100%;
+      display: table;
+      margin: 0 auto;
+      margin-top: 15px; }
+      .pane-homepage-blogposts-panel-pane-1 .view-homepage-blogposts .views-field-title-field h4 {
+        font-size: 18px;
+        font-weight: 400;
+        line-height: 1.35em; }
+    .pane-homepage-blogposts-panel-pane-1 .view-homepage-blogposts .views-field-body {
+      max-width: 330px;
+      width: 100%;
+      display: table;
+      margin: 0 auto;
+      margin-top: 5px; }
+    .pane-homepage-blogposts-panel-pane-1 .view-homepage-blogposts .view-footer {
+      display: inline-block;
+      margin-top: 40px;
+      text-align: right;
+      width: 100%; }
+
+/* GRID VIEW */
+.pane-featured-properties-panel-pane-4 {
+  display: inline-block;
+  width: 100%;
+  background: #F8F8F8;
+  /* Zoom In #1 */ }
+  .pane-featured-properties-panel-pane-4 .property-col {
+    display: table;
+    margin: 15px auto; }
+  .pane-featured-properties-panel-pane-4 .view-featured-properties.view-display-id-panel_pane_4 {
+    margin: 0 auto;
+    max-width: 1200px; }
+  .pane-featured-properties-panel-pane-4 .views-field-name {
+    font-size: 16px;
+    text-transform: uppercase;
+    text-align: left;
+    max-width: 330px;
+    display: table;
+    margin: 0 auto;
+    color: white;
+    background: #0b1418;
+    width: 100%;
+    border-radius: 0px 0px 2px 2px;
+    padding: 8px 10px;
+    position: relative; }
+    .pane-featured-properties-panel-pane-4 .views-field-name table {
+      width: 100%; }
+    .pane-featured-properties-panel-pane-4 .views-field-name .property-name {
+      width: 78%;
+      vertical-align: middle;
+      max-width: 200px;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis; }
+      .pane-featured-properties-panel-pane-4 .views-field-name .property-name .location {
+        font-size: 10px;
+        text-transform: capitalize;
+        margin-top: 2px; }
+        .pane-featured-properties-panel-pane-4 .views-field-name .property-name .location a {
+          color: white;
+          text-decoration: none; }
+          .pane-featured-properties-panel-pane-4 .views-field-name .property-name .location a:hover {
+            text-decoration: underline; }
+        .pane-featured-properties-panel-pane-4 .views-field-name .property-name .location:before {
+          background: url("../images/location_white.png") center center no-repeat;
+          background: url("../images/location_white.svg") center center no-repeat, linear-gradient(transparent, transparent);
+          content: "";
+          display: inline-block;
+          width: 15px;
+          height: 15px;
+          margin-right: 1px;
+          top: 3px;
+          left: -2px;
+          position: relative; }
+        .pane-featured-properties-panel-pane-4 .views-field-name .property-name .location:empty:before {
+          display: none; }
+    .pane-featured-properties-panel-pane-4 .views-field-name .starting-price {
+      width: 20%;
+      text-align: right;
+      vertical-align: middle;
+      font-weight: 400;
+      text-align: center; }
+      .pane-featured-properties-panel-pane-4 .views-field-name .starting-price .starting-from {
+        font-size: 10px;
+        display: inline-block;
+        font-style: italic;
+        text-transform: lowercase; }
+      .pane-featured-properties-panel-pane-4 .views-field-name .starting-price .price {
+        color: #0cea11; }
+  .pane-featured-properties-panel-pane-4 .views-field-field-sp-short-description {
+    text-align: center;
+    max-width: 330px;
+    display: table;
+    margin: 10px auto; }
+  .pane-featured-properties-panel-pane-4 .views-field-field-sp-featured-image {
+    overflow: hidden;
+    -webkit-mask-image: -webkit-radial-gradient(circle, white, black);
+    border-radius: 2px 2px 0 0;
+    max-width: 330px;
+    display: table;
+    margin: 0 auto; }
+  .pane-featured-properties-panel-pane-4 .views-field-field-sp-featured-image img {
+    -webkit-transform: scale(1);
+    transform: scale(1);
+    -webkit-transition: 1s ease-in-out;
+    transition: 1s ease-in-out;
+    margin: 0 auto;
+    border-radius: 2px 2px 0 0; }
+  .pane-featured-properties-panel-pane-4 .views-field-field-sp-featured-image:hover img {
+    -webkit-transform: scale(1.2);
+    transform: scale(1.2); }
+
+.pane-featured-areas-panel-pane-1 {
+  background: white;
+  width: 100%;
+  display: inline-block; }
+  .pane-featured-areas-panel-pane-1 .view-display-id-panel_pane_1 {
+    margin: 0 auto;
+    max-width: 1200px;
+    /* Zoom In #1 */ }
+    .pane-featured-areas-panel-pane-1 .view-display-id-panel_pane_1 .area-col {
+      display: table;
+      margin: 15px auto; }
+    .pane-featured-areas-panel-pane-1 .view-display-id-panel_pane_1 .views-field-name {
+      text-align: center;
+      padding-bottom: 8px;
+      font-weight: 400;
+      font-size: 16px;
+      text-transform: uppercase;
+      text-align: center;
+      max-width: 330px;
+      display: table;
+      margin: 0 auto;
+      color: white;
+      background: #0b1418;
+      width: 100%;
+      border-radius: 0px 0px 2px 2px;
+      padding: 18px 10px; }
+    .pane-featured-areas-panel-pane-1 .view-display-id-panel_pane_1 .views-field-field-area-featured-image {
+      overflow: hidden;
+      -webkit-mask-image: -webkit-radial-gradient(circle, white, black);
+      border-radius: 2px 2px 0 0;
+      max-width: 330px;
+      display: table;
+      margin: 0 auto; }
+    .pane-featured-areas-panel-pane-1 .view-display-id-panel_pane_1 .views-field-field-area-featured-image img {
+      -webkit-transform: scale(1);
+      transform: scale(1);
+      -webkit-transition: 1s ease-in-out;
+      transition: 1s ease-in-out;
+      margin: 0 auto;
+      border-radius: 2px 2px 0 0; }
+    .pane-featured-areas-panel-pane-1 .view-display-id-panel_pane_1 .views-field-field-area-featured-image:hover img {
+      -webkit-transform: scale(1.2);
+      transform: scale(1.2); }

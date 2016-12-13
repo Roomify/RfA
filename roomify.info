@@ -39,6 +39,7 @@ dependencies[] = user
 ; Entity
 dependencies[] = entity
 dependencies[] = entity_translation
+dependencies[] = entityqueue
 dependencies[] = xautoload
 
 ; CTools and Panels

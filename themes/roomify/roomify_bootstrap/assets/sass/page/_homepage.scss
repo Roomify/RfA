@@ -1,8 +1,4 @@
 body.node-type-homepage {
-  background: #F8F8F8;
-  strong {
-    font-weight: 400;
-  }
   .tabs--primary {
     position: absolute;
     top: 75px;
@@ -26,11 +22,17 @@ body.node-type-homepage {
       display: inline-block;
       margin-bottom: 65px;
     }
+    .navbar-toggle {
+      .icon-bar {
+        background: white !important;
+      }
+    }
+
     .navbar-toggle:hover,
     .navbar-toggle:focus {
       background: transparent;
     }
-    a.name,
+    a.header-name,
     .navbar-nav > li > a {
       font-weight: 400;
       @media (min-width: $screen-sm) {
@@ -52,6 +54,26 @@ body.node-type-homepage {
   }
   .panel-content-top {
     position: relative;
+  }
+  .content-row {
+    max-width: 100%;
+  }
+  #main-content {
+    padding: 0;
+    margin: 0;
+    max-width: 100%;
+    .region-content {
+      margin-top: 0px;
+      display: block;
+      .section-booking-user-details .section-row.row-top {
+        display: none;
+      }
+      @media (min-width: $screen-sm) {
+        position: relative;
+        top: -122px;
+        margin-bottom: -122px;
+      }
+    }
   }
   .main-container {
     padding-top: 0px;
@@ -96,7 +118,7 @@ body.node-type-homepage {
       background: url("../images/arrow_left.svg") center center no-repeat, linear-gradient(transparent, transparent);
       display: inline-block;
       position: absolute;
-      top: calc(50% - 15px);
+      top: calc(60% - 15px);
       width: 30px;
       height: 30px;
       margin-top: 0px;
@@ -104,13 +126,14 @@ body.node-type-homepage {
       border: 0;
       background-size: contain;
       left: 12px;
+      z-index: 12;
     }
     .slick-next.slick-arrow {
       background: url("../images/arrow_right.png") 0 50% no-repeat;
       background: url("../images/arrow_right.svg") center center no-repeat, linear-gradient(transparent, transparent);
       display: inline-block;
       position: absolute;
-      top: calc(50% - 15px);
+      top: calc(60% - 15px);
       width: 30px;
       height: 30px;
       margin-top: 0px;
@@ -118,26 +141,28 @@ body.node-type-homepage {
       border: 0;
       background-size: contain;
       right: 12px;
+      z-index: 12;
     }
+
   }
 
   .pane-node-field-homepage-intro-text {
     position: absolute;
-    top: calc(30% - 35px);
+    top: calc(40% - 35px);
     z-index: 2;
     left: 0;
     right: 0;
     color: white;
     text-shadow: 1px 1px #151515;
     @media (max-width: $screen-lg) {
-      top: calc(25% - 35px);
+      top: calc(35% - 35px);
     }
     @media (max-width: $screen-sm) {
       display: none;
     }
   }
   .pane-roomify-listing-availability-search-block-roomify-property-search {
-    top: calc(50% - 60px);
+    top: calc(60% - 60px);
     width: 100%;
     margin: 0 auto;
     max-width: 1200px;
@@ -185,13 +210,13 @@ body.node-type-homepage {
       backface-visibility: hidden;
     }
     @media (max-width: 1440px) {
-      max-width: 1100px;
+      max-width: 1000px;
     }
     @media (max-width: 1200px) {
-      max-width: 900px;
+      max-width: 800px;
     }
     @media (max-width: 1100px) {
-      max-width: 768px;
+      max-width: 668px;
     }
     @media (max-width: 900px) {
       position: relative;
@@ -227,8 +252,7 @@ body.node-type-homepage {
   .pane-node-field-homepage-main-text {
     display: inline-block;
     width: 100%;
-    padding-top: 55px;
-    padding-bottom: 55px;
+    padding: 55px 25px;
     .pane-title {
       margin-bottom: 45px;
       text-align: center;
@@ -243,13 +267,13 @@ body.node-type-homepage {
   background: #F8F8F8;
   padding-bottom: 20px;
   .views-row {
-    max-width: 380px;
+    max-width: 330px;
   }
   .view-featured-properties.view-display-id-panel_pane_3 {
     margin: 0 auto;
     max-width: 1200px;
     @media (max-width: $screen-sm-max) {
-      max-width: 380px;
+      max-width: 330px;
     }
   }
   .views-field-name {
@@ -270,7 +294,7 @@ body.node-type-homepage {
   .slide__content {
     margin: 0 auto;
     display: table;
-    max-width: 380px;
+    max-width: 330px;
     width: 100%;
     padding: 10px;
     background: white;
@@ -311,7 +335,7 @@ body.node-type-homepage {
     background-size: contain;
     right: 16px;
     @media (min-width: $screen-md) {
-      right: 25px;
+      right: 35px;
     }
   }
   .slick-prev.slick-arrow {
@@ -328,7 +352,7 @@ body.node-type-homepage {
     background-size: contain;
     left: 16px;
     @media (min-width: $screen-md) {
-      left: 25px;
+      left: 35px;
     }
   }
   .views-field-starting-price {
@@ -354,7 +378,7 @@ body.node-type-homepage {
     display: table;
     margin: 15px auto;
   }
-  .view-homepage-blogposts.view-display-id-panel_pane_1 {
+  .view-homepage-blogposts {
     margin: 0 auto;
     max-width: 1200px;
     .views-field-field-featured-image {
@@ -364,7 +388,7 @@ body.node-type-homepage {
       }
     }
    .views-field-title-field {
-      max-width: 380px;
+      max-width: 330px;
       width: 100%;
       display: table;
       margin: 0 auto;
@@ -376,7 +400,7 @@ body.node-type-homepage {
       }
     }
     .views-field-body {
-      max-width: 380px;
+      max-width: 330px;
       width: 100%;
       display: table;
       margin: 0 auto;
@@ -390,7 +414,6 @@ body.node-type-homepage {
     }
   }
 }
-
 
 /* GRID VIEW */
 .pane-featured-properties-panel-pane-4 {
@@ -409,7 +432,7 @@ body.node-type-homepage {
     font-size: 16px;
     text-transform: uppercase;
     text-align: left;
-    max-width: 380px;
+    max-width: 330px;
     display: table;
     margin: 0 auto;
     color: white;
@@ -477,7 +500,7 @@ body.node-type-homepage {
   }
   .views-field-field-sp-short-description {
     text-align: center;
-    max-width: 380px;
+    max-width: 330px;
     display: table;
     margin: 10px auto;
   }
@@ -485,7 +508,7 @@ body.node-type-homepage {
     overflow: hidden;
     -webkit-mask-image: -webkit-radial-gradient(circle, white, black);
     border-radius: 2px 2px 0 0;
-    max-width: 380px;
+    max-width: 330px;
     display: table;
     margin: 0 auto;
   }
@@ -522,7 +545,7 @@ body.node-type-homepage {
       font-size: 16px;
       text-transform: uppercase;
       text-align: center;
-      max-width: 380px;
+      max-width: 330px;
       display: table;
       margin: 0 auto;
       color: white;
@@ -536,7 +559,7 @@ body.node-type-homepage {
       overflow: hidden;
       -webkit-mask-image: -webkit-radial-gradient(circle, white, black);
       border-radius: 2px 2px 0 0;
-      max-width: 380px;
+      max-width: 330px;
       display: table;
       margin: 0 auto;
     }

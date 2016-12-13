@@ -9,7 +9,7 @@
 /**
  *
  */
-class roomify_travel_theme_handler_areas_properties extends views_handler_field {
+class roomify_system_handler_areas_properties extends views_handler_field {
 
   /**
    * {@inheritdoc}
