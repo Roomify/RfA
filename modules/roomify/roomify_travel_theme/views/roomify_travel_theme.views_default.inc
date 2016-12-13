@@ -2058,6 +2058,7 @@ function roomify_travel_theme_views_default_views() {
     t('CER » Context'),
     t('Facets block'),
   );
+  $views['blog_categories'] = $view;
 
   return $views;
 }
