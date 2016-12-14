@@ -4,6 +4,13 @@ Feature: Dashboard
   As an authenticated user
   I need to be able to view the dashboard and different links
 
+  Background:
+    Given users:
+      | name             | mail                 | roles             |
+      | _roomify_manager | manager@example.com  | roomify manager   |
+      | _property_owner  | property@example.com | property owner    |
+      | _guest           | guest@example.com    | guest             |
+
   Scenario: Viewing the Dashboard
     Given I am logged in as a user with the "authenticated user" role on this site
     And I visit "user"
@@ -110,3 +117,17 @@ Feature: Dashboard
     And I visit "user"
     And I click on the text "Manage Content"
     Then I should not see the text "Add new content"
+
+  Scenario: Featured Properties
+    Given I am logged in as "_roomify_manager"
+    And I visit "user"
+    And I click on the text "Manage Content"
+    And I click on the text "Manage Featured Properties"
+    Then I should see "Edit Featured Properties"
+
+  Scenario: Featured Areas
+    Given I am logged in as "_roomify_manager"
+    And I visit "user"
+    And I click on the text "Manage Content"
+    And I click on the text "Manage Featured Areas"
+    Then I should see "Edit Featured Areas"
