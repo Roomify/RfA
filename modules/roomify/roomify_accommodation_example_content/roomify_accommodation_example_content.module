@@ -251,7 +251,7 @@ function roomify_example_content_create_casa_sul_mare_example_property($type_id,
 
   $property_type->property_bat_type_reference[LANGUAGE_NONE][0]['target_id'] = $type_id;
 
-  $user  = user_load_by_name($owner);
+  $user = user_load_by_name($owner);
   $property_type->uid = $user->uid;
   $property_type->field_sp_owner[LANGUAGE_NONE][0]['target_id'] = $user->uid;
 
@@ -379,7 +379,7 @@ function roomify_example_content_create_casa_azzurra_example_property($type_id, 
 
   $property_type->property_bat_type_reference[LANGUAGE_NONE][0]['target_id'] = $type_id;
 
-  $user  = user_load_by_name($owner);
+  $user = user_load_by_name($owner);
   $property_type->uid = $user->uid;
   $property_type->field_sp_owner[LANGUAGE_NONE][0]['target_id'] = $user->uid;
 
@@ -648,7 +648,7 @@ function roomify_example_content_create_locanda_vivaldi_example_property($type_i
     $property_type->property_bat_type_reference[LANGUAGE_NONE][]['target_id'] = $type_id;
   }
 
-  $user  = user_load_by_name($owner);
+  $user = user_load_by_name($owner);
   $property_type->uid = $user->uid;
   $property_type->field_sp_owner[LANGUAGE_NONE][0]['target_id'] = $user->uid;
 
@@ -780,7 +780,7 @@ function roomify_example_content_create_miles_boutique_hotel_example_property($t
     $property_type->property_bat_type_reference[LANGUAGE_NONE][]['target_id'] = $type_id;
   }
 
-  $user  = user_load_by_name($owner);
+  $user = user_load_by_name($owner);
   $property_type->uid = $user->uid;
   $property_type->field_sp_owner[LANGUAGE_NONE][0]['target_id'] = $user->uid;
 
