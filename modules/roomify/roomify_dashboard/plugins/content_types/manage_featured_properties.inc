@@ -24,8 +24,11 @@ function roomify_dashboard_featured_properties_render($subtype, $conf, $args, $p
     ),
   );
 
+  $queue = entityqueue_queue_load('featured_properties');
+  $subqueue = entityqueue_subqueue_load(reset($queue));
+
   $block = new stdClass();
-  $block->content = '<p>' . l('<strong>' . t('Manage Featured Properties') . '</strong><br />' . t('Define a list of featured properties that will be shown in some places such as the Homepage or the Blog page'), 'admin/structure/entityqueue/list/featured_properties/subqueues/1/edit', $options) . '</p>';
+  $block->content = '<p>' . l('<strong>' . t('Manage Featured Properties') . '</strong><br />' . t('Define a list of featured properties that will be shown in some places such as the Homepage or the Blog page'), 'admin/structure/entityqueue/list/featured_properties/subqueues/' . $subqueue->subqueue_id . '/edit', $options) . '</p>';
 
   return $block;
 }
