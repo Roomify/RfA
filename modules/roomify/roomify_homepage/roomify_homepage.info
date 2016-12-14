@@ -1,0 +1,4 @@
+name = Roomify Homepage
+description = Roomify Homepage
+core = 7.x
+package = Roomify
