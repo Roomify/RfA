@@ -210,4 +210,38 @@ JS;
 
   }
 
+  /**
+   * @When I fill in the autocomplete :autocomplete with :text and click :popup
+   */
+  public function fillInDrupalAutocomplete($autocomplete, $text, $popup) {
+    $el = $this->getSession()->getPage()->findField($autocomplete);
+    $el->focus();
+
+    // Set the autocomplete text then put a space at the end which triggers
+    // the JS to go do the autocomplete stuff.
+    $el->setValue($text);
+    $el->keyUp(' ');
+
+    // Sadly this grace of 1 second is needed here.
+    sleep(1);
+    $this->minkContext->iWaitForAjaxToFinish();
+
+    // Drupal autocompletes have an id of autocomplete which is bad news
+    // if there are two on the page.
+    $autocomplete = $this->getSession()->getPage()->findById('autocomplete');
+
+    if (empty($autocomplete)) {
+      throw new ExpectationException(t('Could not find the autocomplete popup box'), $this->getSession());
+    }
+
+    $popup_element = $autocomplete->find('xpath', "//div[text() = '{$popup}']");
+
+    if (empty($popup_element)) {
+      throw new ExpectationException(t('Could not find autocomplete popup text @popup', array(
+        '@popup' => $popup)), $this->getSession());
+    }
+
+    $popup_element->click();
+  }
+
 }

@@ -17,18 +17,12 @@ Feature: Roomify Homepage
     And I click on the text "Manage Content"
     And I click on the text "Manage Featured Properties"
     Then I should see "Edit Featured Properties"
-    And I fill in "eq_roomify_property[und][add][entity]" with "Casa Sul Mare"
-    And I wait for AJAX to finish
-    And I wait 2 seconds
-    And I click on the text "Casa Sul Mare"
+    And I fill in the autocomplete "eq_roomify_property[und][add][entity]" with "Casa Sul Mare" and click "Casa Sul Mare"
     And I press "Add item"
-    And I wait for AJAX to finish
-    And I fill in "eq_roomify_property[und][add][entity]" with "Locanda Vivaldi"
-    And I wait for AJAX to finish
     And I wait 2 seconds
-    And I click on the text "Locanda Vivaldi"
+    And I fill in the autocomplete "eq_roomify_property[und][add][entity]" with "Locanda Vivaldi" and click "Locanda Vivaldi"
+    And I wait 2 seconds
     And I press "Add item"
-    And I wait for AJAX to finish
     And I press "Save"
     Then I am on the homepage
     And I should see "Featured Properties"
