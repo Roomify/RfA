@@ -1,1 +1,0 @@
-CKEDITOR.dtd.$removeEmpty.span = 0;
