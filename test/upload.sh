@@ -1,8 +1,8 @@
 #! /usr/bin/env bash
 
 cd /tmp
-git clone https://github.com/Roomify/roomify.git
-cd roomify
+git clone https://github.com/Roomify/RfA.git
+cd RfA
 
 git config user.email "hello@roomify.us"
 git config user.name "Travis CI"
