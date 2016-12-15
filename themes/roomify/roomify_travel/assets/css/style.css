@@ -14841,7 +14841,7 @@ body.page-single-property-listing {
         -ms-backface-visibility: hidden;
         -o-backface-visibility: hidden;
         backface-visibility: hidden; } }
-    @media (min-width: 768px) {
+    @media (min-width: 991px) {
       body.page-single-property-listing .pane-roomify-listing-availability-search-block-roomify-listing-search form,
       body.page-single-property-listing .pane-locanda-availability-search form {
         padding: 45px 20px 30px 50px;
@@ -14923,7 +14923,7 @@ body.page-single-property-listing {
           body.page-single-property-listing .pane-locanda-availability-search form .listing-date-range,
           body.page-single-property-listing .pane-locanda-availability-search form .bat-date-range {
             float: left;
-            width: 66.66667%; } }
+            width: 58.33333%; } }
         @media (max-width: 768px) {
           body.page-single-property-listing .pane-roomify-listing-availability-search-block-roomify-listing-search form .listing-date-range,
           body.page-single-property-listing .pane-roomify-listing-availability-search-block-roomify-listing-search form .bat-date-range,
@@ -14967,12 +14967,26 @@ body.page-single-property-listing {
               padding-right: 5px;
               padding-left: 5px; } }
           body.page-single-property-listing .pane-roomify-listing-availability-search-block-roomify-listing-search form .listing-date-range .start-date .form-type-textfield label,
-          body.page-single-property-listing .pane-roomify-listing-availability-search-block-roomify-listing-search form .listing-date-range .start-date .help-block,
           body.page-single-property-listing .pane-roomify-listing-availability-search-block-roomify-listing-search form .bat-date-range .start-date .form-type-textfield label,
-          body.page-single-property-listing .pane-roomify-listing-availability-search-block-roomify-listing-search form .bat-date-range .start-date .help-block,
           body.page-single-property-listing .pane-locanda-availability-search form .listing-date-range .start-date .form-type-textfield label,
+          body.page-single-property-listing .pane-locanda-availability-search form .bat-date-range .start-date .form-type-textfield label {
+            position: absolute;
+            bottom: 40px;
+            color: white; }
+            @media (max-width: 768px) {
+              body.page-single-property-listing .pane-roomify-listing-availability-search-block-roomify-listing-search form .listing-date-range .start-date .form-type-textfield label,
+              body.page-single-property-listing .pane-roomify-listing-availability-search-block-roomify-listing-search form .bat-date-range .start-date .form-type-textfield label,
+              body.page-single-property-listing .pane-locanda-availability-search form .listing-date-range .start-date .form-type-textfield label,
+              body.page-single-property-listing .pane-locanda-availability-search form .bat-date-range .start-date .form-type-textfield label {
+                display: none; } }
+          body.page-single-property-listing .pane-roomify-listing-availability-search-block-roomify-listing-search form .listing-date-range .start-date .form-item-arrival-date label,
+          body.page-single-property-listing .pane-roomify-listing-availability-search-block-roomify-listing-search form .bat-date-range .start-date .form-item-arrival-date label,
+          body.page-single-property-listing .pane-locanda-availability-search form .listing-date-range .start-date .form-item-arrival-date label,
+          body.page-single-property-listing .pane-locanda-availability-search form .bat-date-range .start-date .form-item-arrival-date label {
+            display: none; }
+          body.page-single-property-listing .pane-roomify-listing-availability-search-block-roomify-listing-search form .listing-date-range .start-date .help-block,
+          body.page-single-property-listing .pane-roomify-listing-availability-search-block-roomify-listing-search form .bat-date-range .start-date .help-block,
           body.page-single-property-listing .pane-locanda-availability-search form .listing-date-range .start-date .help-block,
-          body.page-single-property-listing .pane-locanda-availability-search form .bat-date-range .start-date .form-type-textfield label,
           body.page-single-property-listing .pane-locanda-availability-search form .bat-date-range .start-date .help-block {
             display: none; }
         body.page-single-property-listing .pane-roomify-listing-availability-search-block-roomify-listing-search form .listing-date-range .end-date,
@@ -15012,12 +15026,26 @@ body.page-single-property-listing {
               padding-right: 5px;
               padding-left: 5px; } }
           body.page-single-property-listing .pane-roomify-listing-availability-search-block-roomify-listing-search form .listing-date-range .end-date .form-type-textfield label,
-          body.page-single-property-listing .pane-roomify-listing-availability-search-block-roomify-listing-search form .listing-date-range .end-date .help-block,
           body.page-single-property-listing .pane-roomify-listing-availability-search-block-roomify-listing-search form .bat-date-range .end-date .form-type-textfield label,
-          body.page-single-property-listing .pane-roomify-listing-availability-search-block-roomify-listing-search form .bat-date-range .end-date .help-block,
           body.page-single-property-listing .pane-locanda-availability-search form .listing-date-range .end-date .form-type-textfield label,
+          body.page-single-property-listing .pane-locanda-availability-search form .bat-date-range .end-date .form-type-textfield label {
+            position: absolute;
+            bottom: 40px;
+            color: white; }
+            @media (max-width: 768px) {
+              body.page-single-property-listing .pane-roomify-listing-availability-search-block-roomify-listing-search form .listing-date-range .end-date .form-type-textfield label,
+              body.page-single-property-listing .pane-roomify-listing-availability-search-block-roomify-listing-search form .bat-date-range .end-date .form-type-textfield label,
+              body.page-single-property-listing .pane-locanda-availability-search form .listing-date-range .end-date .form-type-textfield label,
+              body.page-single-property-listing .pane-locanda-availability-search form .bat-date-range .end-date .form-type-textfield label {
+                display: none; } }
+          body.page-single-property-listing .pane-roomify-listing-availability-search-block-roomify-listing-search form .listing-date-range .end-date .form-item-departure-date label,
+          body.page-single-property-listing .pane-roomify-listing-availability-search-block-roomify-listing-search form .bat-date-range .end-date .form-item-departure-date label,
+          body.page-single-property-listing .pane-locanda-availability-search form .listing-date-range .end-date .form-item-departure-date label,
+          body.page-single-property-listing .pane-locanda-availability-search form .bat-date-range .end-date .form-item-departure-date label {
+            display: none; }
+          body.page-single-property-listing .pane-roomify-listing-availability-search-block-roomify-listing-search form .listing-date-range .end-date .help-block,
+          body.page-single-property-listing .pane-roomify-listing-availability-search-block-roomify-listing-search form .bat-date-range .end-date .help-block,
           body.page-single-property-listing .pane-locanda-availability-search form .listing-date-range .end-date .help-block,
-          body.page-single-property-listing .pane-locanda-availability-search form .bat-date-range .end-date .form-type-textfield label,
           body.page-single-property-listing .pane-locanda-availability-search form .bat-date-range .end-date .help-block {
             display: none; }
       body.page-single-property-listing .pane-roomify-listing-availability-search-block-roomify-listing-search form .listing-date-range,
@@ -15051,7 +15079,7 @@ body.page-single-property-listing {
           body.page-single-property-listing .pane-roomify-listing-availability-search-block-roomify-listing-search form .form-item-group-size,
           body.page-single-property-listing .pane-locanda-availability-search form .form-item-group-size {
             float: left;
-            width: 16.66667%; } }
+            width: 12.5%; } }
         @media (min-width: 768px) {
           body.page-single-property-listing .pane-roomify-listing-availability-search-block-roomify-listing-search form .form-item-group-size,
           body.page-single-property-listing .pane-locanda-availability-search form .form-item-group-size {
@@ -15087,7 +15115,7 @@ body.page-single-property-listing {
           body.page-single-property-listing .pane-locanda-availability-search form .search-availability-submit,
           body.page-single-property-listing .pane-locanda-availability-search form .search-submit {
             float: left;
-            width: 33.33333%; } }
+            width: 29.16667%; } }
         body.page-single-property-listing .pane-roomify-listing-availability-search-block-roomify-listing-search form .listing-availability-search-submit .form-submit,
         body.page-single-property-listing .pane-roomify-listing-availability-search-block-roomify-listing-search form .locanda-availability-search-submit .form-submit,
         body.page-single-property-listing .pane-roomify-listing-availability-search-block-roomify-listing-search form .search-availability-submit .form-submit,
@@ -15120,7 +15148,13 @@ body.page-single-property-listing {
               border-radius: 2px; } }
       body.page-single-property-listing .pane-roomify-listing-availability-search-block-roomify-listing-search form label,
       body.page-single-property-listing .pane-locanda-availability-search form label {
-        display: none; }
+        position: absolute;
+        bottom: 40px;
+        color: white; }
+        @media (max-width: 768px) {
+          body.page-single-property-listing .pane-roomify-listing-availability-search-block-roomify-listing-search form label,
+          body.page-single-property-listing .pane-locanda-availability-search form label {
+            display: none; } }
       body.page-single-property-listing .pane-roomify-listing-availability-search-block-roomify-listing-search form input, body.page-single-property-listing .pane-roomify-listing-availability-search-block-roomify-listing-search form select, body.page-single-property-listing .pane-roomify-listing-availability-search-block-roomify-listing-search form .form-control,
       body.page-single-property-listing .pane-locanda-availability-search form input,
       body.page-single-property-listing .pane-locanda-availability-search form select,
