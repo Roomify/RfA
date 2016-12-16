@@ -56,7 +56,7 @@ before_script:
   # See: https://github.com/drush-ops/drush/pull/2501
   - cd $HOME/.composer/vendor/drush/drush
   - patch -p1 < $TRAVIS_BUILD_DIR/patches/drush-generate_image_styles_with_runserver.patch
-  - cd $HOME
+  - cd $TRAVIS_BUILD_DIR
   # Install drush composer extension.
   - drush dl composer-8.x-1.x
   # Install drush registry_rebuild extension.
