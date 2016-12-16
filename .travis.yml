@@ -71,7 +71,7 @@ before_script:
   # Make the site.
   - cd $TRAVIS_BUILD_DIR
   # First make an archive of this module so that we can build the site from it.
-  - git archive HEAD | gzip > /tmp/RfA.tar.gz
+  - git archive HEAD | gzip > /tmp/roomify.tar.gz
   - drush make project.make drupal
 
   # Install the selected product.
