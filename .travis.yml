@@ -51,7 +51,7 @@ before_script:
 
   # Install drush.
   - export PATH="$HOME/.composer/vendor/bin:$PATH"
-  - composer -n global require drush/drush:8.*
+  - composer -n global require drush/drush:7.*
   # Install drush composer extension.
   - drush dl composer-8.x-1.x
   # Install drush registry_rebuild extension.
@@ -71,7 +71,7 @@ before_script:
   # Make the site.
   - cd $TRAVIS_BUILD_DIR
   # First make an archive of this module so that we can build the site from it.
-  - git archive HEAD | gzip > /tmp/roomify.tar.gz
+  - git archive HEAD | gzip > /tmp/RfA.tar.gz
   - drush make project.make drupal
 
   # Install the selected product.
