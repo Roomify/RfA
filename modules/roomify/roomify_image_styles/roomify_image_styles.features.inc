@@ -159,5 +159,20 @@ function roomify_image_styles_image_default_styles() {
     ),
   );
 
+  // Exported image style: roomify_wide_normal.
+  $styles['slideshow_thumbnail'] = array(
+    'label' => 'Slideshow Thumbnail',
+    'effects' => array(
+      1 => array(
+        'name' => 'image_scale_and_crop',
+        'data' => array(
+          'width' => 170,
+          'height' => 100,
+        ),
+        'weight' => 1,
+      ),
+    ),
+  );
+
   return $styles;
 }

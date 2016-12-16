@@ -30,7 +30,7 @@ function roomify_travel_theme_views_default_views() {
   $handler->display->display_options['pager']['type'] = 'none';
   $handler->display->display_options['pager']['options']['offset'] = '0';
   $handler->display->display_options['style_plugin'] = 'slick';
-  $handler->display->display_options['style_options']['slide_thumbnail'] = 'field_sp_gallery';
+  $handler->display->display_options['style_options']['slide_thumbnail'] = 'field_sp_gallery_2';
   $handler->display->display_options['style_options']['slide_field_wrapper'] = 1;
   $handler->display->display_options['style_options']['id'] = 'slick-asnavfor';
   $handler->display->display_options['style_options']['cache'] = '';
@@ -49,6 +49,7 @@ function roomify_travel_theme_views_default_views() {
   $handler->display->display_options['style_options']['slide_caption'] = array(
     'field_sp_gallery' => 0,
     'field_sp_gallery_1' => 0,
+    'field_sp_gallery_2' => 0,
   );
   $handler->display->display_options['style_options']['slide_image'] = 'field_sp_gallery';
   $handler->display->display_options['style_options']['slide_overlay'] = 'field_sp_gallery_1';
@@ -79,7 +80,7 @@ function roomify_travel_theme_views_default_views() {
   $handler->display->display_options['fields']['field_sp_gallery_1']['label'] = '';
   $handler->display->display_options['fields']['field_sp_gallery_1']['alter']['alter_text'] = TRUE;
   $handler->display->display_options['fields']['field_sp_gallery_1']['alter']['text'] = '<div class="title">[field_sp_gallery_1-title]</div>
-  <div class="description">[field_sp_gallery_1-alt]</div>';
+    <div class="description">[field_sp_gallery_1-alt]</div>';
   $handler->display->display_options['fields']['field_sp_gallery_1']['element_label_colon'] = FALSE;
   $handler->display->display_options['fields']['field_sp_gallery_1']['click_sort_column'] = 'fid';
   $handler->display->display_options['fields']['field_sp_gallery_1']['settings'] = array(
@@ -93,6 +94,24 @@ function roomify_travel_theme_views_default_views() {
   );
   $handler->display->display_options['fields']['field_sp_gallery_1']['group_rows'] = FALSE;
   $handler->display->display_options['fields']['field_sp_gallery_1']['delta_offset'] = '0';
+  /* Field: Roomify Property: Image Gallery */
+  $handler->display->display_options['fields']['field_sp_gallery_2']['id'] = 'field_sp_gallery_2';
+  $handler->display->display_options['fields']['field_sp_gallery_2']['table'] = 'field_data_field_sp_gallery';
+  $handler->display->display_options['fields']['field_sp_gallery_2']['field'] = 'field_sp_gallery';
+  $handler->display->display_options['fields']['field_sp_gallery_2']['label'] = '';
+  $handler->display->display_options['fields']['field_sp_gallery_2']['element_label_colon'] = FALSE;
+  $handler->display->display_options['fields']['field_sp_gallery_2']['click_sort_column'] = 'fid';
+  $handler->display->display_options['fields']['field_sp_gallery_2']['settings'] = array(
+    'image_style' => 'slideshow_thumbnail',
+    'image_link' => '',
+    'conditions' => array(
+      0 => array(
+        'condition' => '',
+      ),
+    ),
+  );
+  $handler->display->display_options['fields']['field_sp_gallery_2']['group_rows'] = FALSE;
+  $handler->display->display_options['fields']['field_sp_gallery_2']['delta_offset'] = '0';
   /* Contextual filter: Roomify Property: Roomify property ID */
   $handler->display->display_options['arguments']['property_id']['id'] = 'property_id';
   $handler->display->display_options['arguments']['property_id']['table'] = 'roomify_properties';
@@ -112,10 +131,9 @@ function roomify_travel_theme_views_default_views() {
     t('Asc'),
     t('Desc'),
     t('<div class="title">[field_sp_gallery_1-title]</div>
-  <div class="description">[field_sp_gallery_1-alt]</div>'),
+    <div class="description">[field_sp_gallery_1-alt]</div>'),
     t('All'),
   );
-
   $views['property_slideshow'] = $view;
 
   $view = new view();
