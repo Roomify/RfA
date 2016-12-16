@@ -10,5 +10,5 @@ includes[] = drupal-org-core.make
 projects[roomify][type] = profile
 projects[roomify][download][type] = file
 ; This file must exist! You can make it with the following command:
-; git archive HEAD | gzip > /tmp/roomify.tar.gz
-projects[roomify][download][url] = file:///tmp/roomify.tar.gz
+; git archive HEAD | gzip > /tmp/RfA.tar.gz
+projects[roomify][download][url] = file:///tmp/RfA.tar.gz
