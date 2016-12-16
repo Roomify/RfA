@@ -15,7 +15,7 @@ $plugin = array(
  */
 function roomify_dashboard_manage_offers_render($subtype, $conf, $args, $pane_context, $incoming_content) {
   $block = new stdClass();
-  $block->content = '<p>' . l('<strong>' . t('Manage Offers') . '</strong>', 'admin/bat/config/global/offers', array('html' => TRUE, 'attributes' => array('id' => 'dashboard-manage-offers'))) . '</p>';
+  $block->content = '<p>' . l('<strong>' . t('Offers') . '</strong></br>' . t('Manage offers'), 'admin/bat/config/global/offers', array('html' => TRUE, 'attributes' => array('id' => 'dashboard-manage-offers'))) . '</p>';
 
   return $block;
 }

@@ -87,7 +87,7 @@ Feature: Dashboard
     Given I am logged in with the "access content overview" permission
     And I visit "user"
     And I click on the text "Manage Content"
-    Then I click on the text "Manage Site Pages"
+    Then I click on the text "Site Pages"
     And the url should match "admin/content"
 
     Given I am logged in as a user with the "authenticated user" role on this site

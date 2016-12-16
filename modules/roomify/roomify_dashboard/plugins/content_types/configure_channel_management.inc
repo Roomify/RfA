@@ -15,7 +15,7 @@ $plugin = array(
  */
 function roomify_dashboard_configure_channel_management_render($subtype, $conf, $args, $pane_context, $incoming_content) {
   $block = new stdClass();
-  $block->content = '<p>' . l('<strong>' . t('Configure Channel Management') . '</strong>', 'admin/config/services/channel-management', array('html' => TRUE, 'attributes' => array('id' => 'dashboard-channel-management-settings'))) . '</p>';
+  $block->content = '<p>' . l('<strong>' . t('Configure Channel Management') . '</strong><br/>' . t('Manage Channel Manager settings'), 'admin/config/services/channel-management', array('html' => TRUE, 'attributes' => array('id' => 'dashboard-channel-management-settings'))) . '</p>';
 
   return $block;
 }
