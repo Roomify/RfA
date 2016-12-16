@@ -6,6 +6,14 @@
  */
 
 /**
+ * Implements hook_install().
+ */
+function roomify_things_to_do_install() {
+  module_load_include('inc', 'roomify_things_to_do', 'roomify_things_to_do.fields');
+  roomify_things_to_do_create_fields();
+}
+
+/**
  * Re-save all "things to do" nodes to update title field.
  */
 function roomify_things_to_do_update_7001(&$sandbox) {
@@ -41,4 +49,26 @@ function roomify_things_to_do_update_7001(&$sandbox) {
   $sandbox['#finished'] = empty($sandbox['max']) ? 1 : ($sandbox['progress'] / $sandbox['max']);
 
   return t('Activities have been updated succesfully!');
+}
+
+/**
+ * Enable fieldgroups.
+ */
+function roomify_things_to_do_update_7002() {
+
+  module_load_include('inc', 'roomify_things_to_do', 'roomify_things_to_do.fields');
+  roomify_things_to_do_create_fields();
+
+  if ($group = field_group_load_field_group('group_activity_description', 'node', 'activity', 'form')) {
+    ctools_include('export');
+    ctools_export_crud_enable('field_group', $group->identifier);
+  }
+  if ($group = field_group_load_field_group('group_activity_location', 'node', 'blog', 'form')) {
+    ctools_include('export');
+    ctools_export_crud_enable('field_group', $group->identifier);
+  }
+  if ($group = field_group_load_field_group('group_activity_slideshow', 'node', 'blog', 'form')) {
+    ctools_include('export');
+    ctools_export_crud_enable('field_group', $group->identifier);
+  }
 }

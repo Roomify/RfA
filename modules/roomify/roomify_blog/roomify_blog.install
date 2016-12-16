@@ -6,6 +6,14 @@
  */
 
 /**
+ * Implements hook_install().
+ */
+function roomify_blog_install() {
+  module_load_include('inc', 'roomify_blog', 'roomify_blog.fields');
+  roomify_blog_create_fields();
+}
+
+/**
  * Re-save all blogpost nodes to update title field.
  */
 function roomify_blog_update_7001(&$sandbox) {
@@ -40,4 +48,27 @@ function roomify_blog_update_7001(&$sandbox) {
   $sandbox['#finished'] = empty($sandbox['max']) ? 1 : ($sandbox['progress'] / $sandbox['max']);
 
   return t('Blog posts have been updated succesfully!');
+}
+
+/**
+ * Enable fieldgroups.
+ */
+function roomify_blog_update_7002() {
+
+  module_load_include('inc', 'roomify_blog', 'roomify_blog.fields');
+  roomify_blog_create_fields();
+
+  if ($group = field_group_load_field_group('group_blog_image', 'node', 'blog', 'form')) {
+    ctools_include('export');
+    ctools_export_crud_enable('field_group', $group->identifier);
+  }
+  if ($group = field_group_load_field_group('group_categories', 'node', 'blog', 'form')) {
+    ctools_include('export');
+    ctools_export_crud_enable('field_group', $group->identifier);
+  }
+  if ($group = field_group_load_field_group('group_blog_body', 'node', 'blog', 'form')) {
+    ctools_include('export');
+    ctools_export_crud_enable('field_group', $group->identifier);
+  }
+
 }
