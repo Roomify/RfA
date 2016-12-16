@@ -67,6 +67,9 @@ projects[bootstrap][version] = 3.8
 ; adminimal
 projects[adminimal_theme][type] = theme
 projects[adminimal_theme][version] = 1.24
+; Fix issue with module_filter not being detected.
+; See: https://www.drupal.org/node/2763581
+projects[adminimal_theme][patch][] = "https://www.drupal.org/files/issues/adminimal_theme_1_24-2763581-34_0.patch"
 
 ; +++++ Contrib Modules +++++
 
