@@ -51,7 +51,12 @@ before_script:
 
   # Install drush.
   - export PATH="$HOME/.composer/vendor/bin:$PATH"
-  - composer -n global require drush/drush:7.*
+  - composer -n global require drush/drush:8.*
+  # Patch drush to fix runserver.
+  # See: https://github.com/drush-ops/drush/pull/2501
+  - cd $HOME/.composer/vendor/drush/drush
+  - patch -p1 < ~/patches/drush-generate_image_styles_with_runserver.patch
+  - cd $HOME
   # Install drush composer extension.
   - drush dl composer-8.x-1.x
   # Install drush registry_rebuild extension.
