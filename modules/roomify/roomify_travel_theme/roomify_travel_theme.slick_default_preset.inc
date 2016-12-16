@@ -37,7 +37,7 @@ function roomify_travel_theme_slick_default_presets() {
       'nextArrow' => '<button type="button" data-role="none" class="slick-next" aria-label="Next" tabindex="0" role="button">Next</button>',
       'focusOnSelect' => FALSE,
       'initialSlide' => 0,
-      'lazyLoad' => 'progressive',
+      'lazyLoad' => '',
       'rtl' => FALSE,
       'rows' => 1,
       'slidesPerRow' => 1,
