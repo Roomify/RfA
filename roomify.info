@@ -106,7 +106,6 @@ dependencies[] = roomify_social_profiles
 dependencies[] = roomify_terms_conditions
 dependencies[] = roomify_translate
 dependencies[] = roomify_travel_theme
-dependencies[] = roomify_homepage
 dependencies[] = roomify_pages_manager
 dependencies[] = roomify_social_feeds
 
