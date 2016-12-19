@@ -77,6 +77,11 @@ body.page-single-property-listing {
 	    margin-right: 25px;
 	    display: none;
 	  }
+    .slick__slide {
+      img {
+        width: 100%;
+      }
+    }
 	  .slick--display--thumbnail {
 	    top: 20px;
 	    display: none;
@@ -327,6 +332,7 @@ body.page-single-property-listing {
     .field-type-text {
       margin-bottom: 50px;
       text-align: center;
+      font-weight: 400;
     }
   }
 	.pane-roomify-property-field-sp-short-description {
