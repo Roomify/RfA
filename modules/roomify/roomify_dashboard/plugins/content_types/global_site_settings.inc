@@ -25,7 +25,7 @@ function roomify_dashboard_global_site_settings_render($subtype, $conf, $args, $
   );
 
   $block = new stdClass();
-  $block->content = '<p>' . l('<strong>' . t('Global Site Settings') . '</strong>', 'admin/bat/config/global/settings', $options) . '</p>';
+  $block->content = '<p>' . l('<strong>' . t('Global Site Settings') . '</strong><br/>' . t('Manage global settings such as the site name and logo'), 'admin/bat/config/global/settings', $options) . '</p>';
 
   return $block;
 }

@@ -25,7 +25,7 @@ function roomify_dashboard_configure_terms_conditions_render($subtype, $conf, $a
   );
 
   $block = new stdClass();
-  $block->content = '<p>' . l('<strong>' . t('Configure Terms and Conditions') . '</strong>', 'admin/config/content/terms-and-conditions', $options) . '</p>';
+  $block->content = '<p>' . l('<strong>' . t('Configure Terms and Conditions') . '</strong><br/>' . t('Here you can define the terms and conditions text that is linked to during checkout'), 'admin/config/content/terms-and-conditions', $options) . '</p>';
 
   return $block;
 }

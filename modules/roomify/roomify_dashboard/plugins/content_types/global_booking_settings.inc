@@ -25,7 +25,7 @@ function roomify_dashboard_global_booking_settings_render($subtype, $conf, $args
   );
 
   $block = new stdClass();
-  $block->content = '<p>' . l('<strong>' . t('Global Booking Settings') . '</strong>', 'admin/bat/config/booking/settings', $options) . '</p>';
+  $block->content = '<p>' . l('<strong>' . t('Global Booking Settings') . '</strong><br/>' . t('Manage global booking settings, such as deposits'), 'admin/bat/config/booking/settings', $options) . '</p>';
 
   return $block;
 }

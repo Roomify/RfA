@@ -25,7 +25,7 @@ function roomify_dashboard_configure_payment_methods_render($subtype, $conf, $ar
   );
 
   $block = new stdClass();
-  $block->content = '<p>' . l('<strong>' . t('Configure Payment Methods') . '</strong>', 'admin/roomify/payment_methods', $options) . '</p>';
+  $block->content = '<p>' . l('<strong>' . t('Configure Payment Methods') . '</strong><br/>' . t('Define which of the available payment methods can be used'), 'admin/roomify/payment_methods', $options) . '</p>';
 
   return $block;
 }

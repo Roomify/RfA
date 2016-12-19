@@ -5,7 +5,7 @@ Feature: Special offers
     Given I am logged in as a user with the "roomify manager" role on this site
     And I visit "user"
     Then I click on the text "Manage Configuration"
-    And I click on the text "Manage Offers"
+    And I click on the text "Offers"
     Then I click on the text "add special offer"
     And I wait for AJAX to finish
     Then I fill in "name" with "Flat offer"
@@ -36,7 +36,7 @@ Feature: Special offers
     Given I am logged in as a user with the "roomify manager" role on this site
     And I visit "user"
     Then I click on the text "Manage Configuration"
-    And I click on the text "Manage Offers"
+    And I click on the text "Offers"
     Then I click on the text "add special offer"
     And I wait for AJAX to finish
     Then I fill in "name" with "Percentage offer"

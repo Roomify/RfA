@@ -25,7 +25,7 @@ function roomify_dashboard_manage_availability_search_form_render($subtype, $con
   );
 
   $block = new stdClass();
-  $block->content = '<p>' . l('<strong>' . t('Manage Availability Search form') . '</strong>', 'admin/bat/config/availability-search/settings', $options) . '</p>';
+  $block->content = '<p>' . l('<strong>' . t('Manage Availability Search form') . '</strong><br/>' . t('Manage certain availability search form elements'), 'admin/bat/config/availability-search/settings', $options) . '</p>';
 
   return $block;
 }

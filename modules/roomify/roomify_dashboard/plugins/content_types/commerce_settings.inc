@@ -25,7 +25,7 @@ function roomify_dashboard_commerce_settings_render($subtype, $conf, $args, $pan
   );
 
   $block = new stdClass();
-  $block->content = '<p>' . l('<strong>' . t('Commerce Settings') . '</strong>', 'admin/bat/config/commerce/settings', $options) . '</p>';
+  $block->content = '<p>' . l('<strong>' . t('Commerce Settings') . '</strong><br/>' . t('Manage Commerce settings such as the default currency or the cart expiration time-out'), 'admin/bat/config/commerce/settings', $options) . '</p>';
 
   return $block;
 }

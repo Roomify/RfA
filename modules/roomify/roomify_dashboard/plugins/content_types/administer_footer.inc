@@ -25,7 +25,7 @@ function roomify_dashboard_administer_footer_render($subtype, $conf, $args, $pan
   );
 
   $block = new stdClass();
-  $block->content = '<p>' . l('<strong>' . t('Change Footer Text') . '</strong>', 'admin/config/content/roomify-footer', $options) . '</p>';
+  $block->content = '<p>' . l('<strong>' . t('Change Footer Text') . '</strong><br/>' . t('The footer text is editable. For example, you can use the footer to display your address and telephone numbers'), 'admin/config/content/roomify-footer', $options) . '</p>';
 
   return $block;
 }

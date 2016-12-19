@@ -25,7 +25,7 @@ function roomify_dashboard_configure_social_sharing_platforms_render($subtype, $
   );
 
   $block = new stdClass();
-  $block->content = '<p>' . l('<strong>' . t('Configure Social Sharing Platforms') . '</strong>', 'admin/config/content/rsp', $options) . '</p>';
+  $block->content = '<p>' . l('<strong>' . t('Configure Social Sharing Platforms') . '</strong><br/>' . t('Manage the social page links that are shown in sections such as the footer'), 'admin/config/content/rsp', $options) . '</p>';
 
   return $block;
 }
