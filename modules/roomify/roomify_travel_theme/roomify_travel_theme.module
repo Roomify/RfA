@@ -403,6 +403,22 @@ function roomify_travel_theme_form_alter(&$form, &$form_state, $form_id) {
       </div>',
       '#weight' => -10,
     );
+
+    $content = variable_get('roomify_accommodation_example_content', '');
+    if ($content == 'b_and_b' || $content == 'vacation_rental') {
+
+      $start_date = new DateTime();
+      $end_date = new DateTime();
+      $start_date->add(new DateInterval('P1D'));
+      $end_date->add(new DateInterval('P3D'));
+
+      $form['container']['arrival']['#title'] = t('Arrival');
+      $form['container']['departure']['#title'] = t('Departure');
+
+      $form['container']['arrival']['#attributes']['placeholder'] = $start_date->format('Y-m-d');
+      $form['container']['departure']['#attributes']['placeholder'] = $end_date->format('Y-m-d');
+
+    }
   }
   if ($form_id == 'activity_node_form') {
     $form['field_activity_sticky_at_top']['#access'] = FALSE;

@@ -128,7 +128,7 @@ body.page-single-property-listing {
       -o-backface-visibility: hidden;
       backface-visibility: hidden;
     }
-    @media (min-width: $screen-sm) {
+    @media (min-width: $screen-sm-max) {
       form {
         padding: 45px 20px 30px 50px;
         background: rgba(0,0,0,0.6);
@@ -182,7 +182,7 @@ body.page-single-property-listing {
       .listing-date-range,
     	.bat-date-range {
     		@include make-xs-column(12);
-	      @include make-sm-column(8);
+	      @include make-sm-column(7);
 	      @media (max-width: $screen-sm) {
 	        padding-right: 0;
 	      }
@@ -199,7 +199,17 @@ body.page-single-property-listing {
 	          padding-left: 5px;
 	        }
 
-	        .form-type-textfield label, // Removed the word "Date"
+	        .form-type-textfield label {
+            position: absolute;
+            bottom: 40px;
+            color: white;
+            @media (max-width: $screen-sm) {
+              display: none;
+            }
+          }
+          .form-item-arrival-date label {
+            display: none;
+          }
 	        .help-block {// Removed the help text "E.g.,
 	          display:none;
 	        }
@@ -217,7 +227,17 @@ body.page-single-property-listing {
 	          padding-right: 5px;
 	          padding-left: 5px;
 	        }
-	        .form-type-textfield label, // Removed the word "Date"
+	        .form-type-textfield label {
+            position: absolute;
+            bottom: 40px;
+            color: white;
+            @media (max-width: $screen-sm) {
+              display: none;
+            }
+          }
+          .form-item-departure-date label {
+            display: none;
+          }
 	        .help-block {// Removed the help text "E.g., 2016-03-05"
 	          display: none;
 	        }
@@ -231,7 +251,7 @@ body.page-single-property-listing {
       }
       .form-item-group-size {
         @include make-xs-column(12);
-        @include make-sm-column(2);
+        @include make-sm-column(1.5);
         @media (min-width: $screen-sm) {
           padding: 0 7px;
         }
@@ -244,7 +264,7 @@ body.page-single-property-listing {
 	    .search-availability-submit,
 	    .search-submit {
 	      @include make-xs-column(12);
-	      @include make-sm-column(4);
+	      @include make-sm-column(3.5);
 	      .form-submit {
 	        @extend .btn-danger;
 	        text-transform: capitalize;
@@ -263,7 +283,12 @@ body.page-single-property-listing {
         }
       }
       label {
-        display: none;
+        position: absolute;
+        bottom: 40px;
+        color: white;
+        @media (max-width: $screen-sm) {
+          display: none;
+        }
       }
 	    input, select, .form-control {
 	      border-radius: 2px;
