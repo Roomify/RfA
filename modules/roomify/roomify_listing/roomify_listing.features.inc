@@ -42,7 +42,7 @@ function roomify_listing_default_entityform_type() {
       "draftable" : 0,
       "draft_redirect_path" : "",
       "draft_button_text" : "",
-      "draft_save_text" : { "value" : "", "format" : "filtered_text" },
+      "draft_save_text" : { "value" : "", "format" : "plain_text" },
       "submit_button_text" : "Send Request",
       "submit_confirm_msg" : "\u003Cnone\u003E",
       "your_submissions" : "",
@@ -67,11 +67,12 @@ function roomify_listing_default_entityform_type() {
         "5" : 0,
         "6" : 0,
         "7" : 0,
+        "8" : 0,
         "163670334" : 0
       },
       "resubmit_action" : "new",
       "redirect_path" : "",
-      "instruction_pre" : { "value" : "", "format" : "filtered_text" },
+      "instruction_pre" : { "value" : "", "format" : "plain_text" },
       "enable_block" : 0
     },
     "weight" : "0",
