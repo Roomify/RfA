@@ -234,11 +234,18 @@ function roomify_listing_search_block_form() {
     '#value' => $type->type_id,
   );
 
+  $instant_booking = field_get_items('roomify_property', $property, 'field_sp_allow_instant_bookings');
+
+  $button_text = t('Make an Enquiry');
+  if (isset($instant_booking) && $instant_booking[0]['value']) {
+    $button_text = t('Book Now');
+  }
+
   $form['container']['submit'] = array(
     '#prefix' => '<div class="listing-availability-search-submit">',
     '#suffix' => '</div>',
     '#type' => 'submit',
-    '#value' => t('Request to book'),
+    '#value' => $button_text,
   );
 
   return $form;
@@ -519,11 +526,18 @@ function locanda_search_availability_search_form() {
     '#default_value' => isset($params['group_size']) ? $params['group_size'] - 1 : 1,
   );
 
+  $instant_booking = field_get_items('roomify_property', $property, 'field_sp_allow_instant_bookings');
+
+  $button_text = t('Make an Enquiry');
+  if (isset($instant_booking) && $instant_booking[0]['value']) {
+    $button_text = t('Book Now');
+  }
+
   $form['container']['submit'] = array(
     '#type' => 'submit',
     '#prefix' => '<div class="locanda-availability-search-submit">',
     '#suffix' => '</div>',
-    '#value' => t('Search'),
+    '#value' => $button_text,
   );
 
   return $form;
