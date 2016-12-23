@@ -54,7 +54,7 @@ body.node-type-homepage {
     position: relative;
   }
   .main-container {
-    padding-top: 0px;
+    padding-top: 0;
     position: relative;
     bottom: 75px;
     padding-bottom: 75px;
@@ -64,25 +64,25 @@ body.node-type-homepage {
     .views-field-field-homepage-slideshow {
       img {
         width: 100%;
-        position:relative;
+        position: relative;
       }
       &:after, &:before {
-        position:absolute;
-        opacity:0;
+        position: absolute;
+        opacity: 0;
         transition: all 0.5s;
         -webkit-transition: all 0.5s;
       }
       &:before {
         opacity: 1;
         content: attr(data-content);
-        width:100%;
-        color:#fff;
-        z-index:1;
-        bottom:0;
-        padding:4px 10px;
-        text-align:center;
-        box-sizing:border-box;
-        -moz-box-sizing:border-box;
+        width: 100%;
+        color: #fff;
+        z-index: 1;
+        bottom: 0;
+        padding: 4px 10px;
+        text-align: center;
+        box-sizing: border-box;
+        -moz-box-sizing: border-box;
         @media (max-width: 900px) {
           opacity: 0;
         }
@@ -99,7 +99,7 @@ body.node-type-homepage {
       top: calc(50% - 15px);
       width: 30px;
       height: 30px;
-      margin-top: 0px;
+      margin-top: 0;
       text-indent: -9999px;
       border: 0;
       background-size: contain;
@@ -113,7 +113,7 @@ body.node-type-homepage {
       top: calc(50% - 15px);
       width: 30px;
       height: 30px;
-      margin-top: 0px;
+      margin-top: 0;
       text-indent: -9999px;
       border: 0;
       background-size: contain;
@@ -305,7 +305,7 @@ body.node-type-homepage {
     top: calc(45% - 15px);
     width: 30px;
     height: 30px;
-    margin-top: 0px;
+    margin-top: 0;
     text-indent: -9999px;
     border: 0;
     background-size: contain;
@@ -322,7 +322,7 @@ body.node-type-homepage {
     top: calc(45% - 15px);
     width: 30px;
     height: 30px;
-    margin-top: 0px;
+    margin-top: 0;
     text-indent: -9999px;
     border: 0;
     background-size: contain;
@@ -342,7 +342,7 @@ body.node-type-homepage {
     border-bottom: 2px solid $blue;
     color: white;
     top: 10px;
-    border-radius: 0px 4px 0px 4px;
+    border-radius: 0 4px 0 4px;
   }
 }
 
@@ -415,7 +415,7 @@ body.node-type-homepage {
     color: white;
     background: #0b1418;
     width: 100%;
-    border-radius: 0px 0px 2px 2px;
+    border-radius: 0 0 2px 2px;
     padding: 8px 10px;
     position: relative;
     table {
@@ -528,7 +528,7 @@ body.node-type-homepage {
       color: white;
       background: #0b1418;
       width: 100%;
-      border-radius: 0px 0px 2px 2px;
+      border-radius: 0 0 2px 2px;
       padding: 18px 10px;
     }
 

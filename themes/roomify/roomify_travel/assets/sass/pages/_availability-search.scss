@@ -62,7 +62,7 @@
     margin-top: 50px;
     @media (min-width: $screen-md) {
       padding-left: 0;
-      margin-top: 0px;
+      margin-top: 0;
       position: relative;
       bottom: 53px;
       .ui-tabs .ui-tabs-panel,
@@ -72,9 +72,9 @@
         li.ui-state-default {
           float: right;
           border-width: 1px;
-          border-bottom: 0px;
+          border-bottom: 0;
           &:first-child {
-            margin-right: 0px;
+            margin-right: 0;
           }
         }
       }
@@ -257,7 +257,7 @@
           margin-bottom: 15px;
         }
         h2 {
-          margin-top: 0px;
+          margin-top: 0;
         }
       }
       .views-field-field-sp-featured-image {
@@ -313,7 +313,7 @@
                     width: 20%;
                     height: 25px;
                     &.name {
-                      width:40%;
+                      width: 40%;
                       text-indent: -9999999px;
                     }
                     &.capacity {
@@ -382,7 +382,7 @@
             width: 20%;
             height: 25px;
             &.name {
-              width:40%;
+              width: 40%;
               text-indent: -9999999px;
             }
             &.capacity {
@@ -460,7 +460,7 @@
               width: 20%;
               height: 25px;
               &.name {
-                width:40%;
+                width: 40%;
                 text-indent: -9999999px;
               }
               &.capacity {
@@ -566,9 +566,9 @@
     input {
       width: 100%;
       height: 37px;
-      border-radius:0;
-      background:#F4F4F4;
-      border:1px solid #D4D3D3;
+      border-radius: 0;
+      background: #F4F4F4;
+      border: 1px solid #D4D3D3;
     }
     .form-item-group-size,
     .form-item-location  {
@@ -592,7 +592,7 @@
         padding-right: 0;
       }
       .start-date {
-        float:left;
+        float: left;
         @include make-xs-column(12);
         @include make-sm-column(6);
         margin-bottom: 15px;
@@ -602,12 +602,12 @@
 
         .form-type-textfield label, // Removed the word "Date"
         .help-block {// Removed the help text "E.g.,
-          display:none;
+          display: none;
         }
       }
 
       .end-date {
-        float:right;
+        float: right;
         @include make-xs-column(12);
         @include make-sm-column(6);
         margin-bottom: 15px;
@@ -725,7 +725,7 @@
               }
             }
             ul {
-              padding-left: 0px;
+              padding-left: 0;
               li {
                 margin-right: 15px;
                 color: #595959;
@@ -862,7 +862,7 @@
 
       .form-type-textfield label, // Removed the word "Date"
       .help-block {// Removed the help text "E.g.,
-        display:none;
+        display: none;
       }
     }
   }
@@ -907,7 +907,7 @@
         }
       }
       &:last-child {
-        padding: 0 0px 0 15px;
+        padding: 0 0 0 15px;
         &:before {
           width: 30px;
           height: 30px;
@@ -918,7 +918,7 @@
           background-size: 25px 25px;
           position: relative;
           top: 10px;
-          right: 0px;
+          right: 0;
         }
       }
       .sort-item {
@@ -1190,7 +1190,7 @@
 }
 
 #properties-tabs .panel_sl_content {
-  margin-bottom: 0px;
+  margin-bottom: 0;
   margin-top: 20px;
   position: relative;
   bottom: 50px;

@@ -339,9 +339,7 @@ function roomify_travel_preprocess_mimemail_message(&$variables) {
   $variables['footer_border'] = roomify_system_adjust_brightness($footer_bg, -25);
   $variables['header_color'] = $header_color;
   $variables['footer_color'] = $footer_color;
-
 }
-
 
 /**
  * Implements template_preprocess_page().

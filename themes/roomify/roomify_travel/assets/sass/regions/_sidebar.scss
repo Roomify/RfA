@@ -5,7 +5,7 @@ body {
     z-index: 1000;
     position: fixed;
     right: 280px;
-    width: 0px;
+    width: 0;
     height: 100%;
     margin-right: -280px;
     overflow-y: auto;
@@ -31,7 +31,7 @@ body {
       border-bottom: 1px solid #cbc7d4;
       padding-bottom: 25px;
       .pane-title {
-        border-bottom: 0px;
+        border-bottom: 0;
         text-align: left;
         width: 100%;
         color: white;
@@ -90,8 +90,8 @@ body {
         color: white;
         font-weight: 400;
         font-size: 22px;
-        border-bottom: 0px;
-        margin: 15px 0px;
+        border-bottom: 0;
+        margin: 15px 0;
         width: 100%;
         text-align: left;
         padding-left: 0;
@@ -107,17 +107,17 @@ body {
         }
       }
       ul {
-        padding: 0px;
+        padding: 0;
         margin-bottom: 20px;
         li {
-          text-indent: 0px;
+          text-indent: 0;
           line-height: 20px;
           list-style: none;
           cursor: pointer;
           a {
             font-size: 15px;
             display: inline-block;
-            padding: 0px;
+            padding: 0;
           }
         }
       }
@@ -147,7 +147,7 @@ body {
         right: 4px;
       }
       .table > tbody > tr > td {
-        border-width: 0px;
+        border-width: 0;
       }
       table tbody tr {
         background: rgba(255, 255, 255, 0.28);
@@ -182,7 +182,7 @@ body {
         color: white;
         font-weight: 400;
         font-size: 18px;
-        border-bottom: 0px;
+        border-bottom: 0;
         width: 100%;
         text-align: left;
         .glyphicon {
@@ -249,7 +249,7 @@ body {
         color: white;
         font-weight: 400;
         font-size: 18px;
-        border-bottom: 0px;
+        border-bottom: 0;
         width: 100%;
         text-align: left;
         .glyphicon {
@@ -305,7 +305,7 @@ body {
         padding: 5px 10px;
         font-size: 18px;
         float: left;
-        border: 0px;
+        border: 0;
         color: white;
       }
       .view-my-stays {

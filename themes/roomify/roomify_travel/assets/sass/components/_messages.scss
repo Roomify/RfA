@@ -7,8 +7,8 @@
     @include make-row();
 
     .alert {
-      border-radius:0;
-      margin-bottom:0;
+      border-radius: 0;
+      margin-bottom: 0;
     }
   }
 }
@@ -21,7 +21,7 @@
         .messages.error,
         .messages.warning {
           background: white;
-          border: 0px !important;
+          border: 0 !important;
           padding: 20px;
         }
       }

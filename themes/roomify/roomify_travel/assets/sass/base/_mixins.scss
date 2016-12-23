@@ -31,7 +31,7 @@
 
 @mixin vertical-align-none($position: relative) {
   position: $position;
-  top:0;
+  top: 0;
   -webkit-transform: translateY(0);
   -ms-transform: translateY(0);
   transform: translateY(0);

@@ -59,7 +59,7 @@
   .pane-roomify-property-field-sp-how-to-reach,
   .pane-roomify-property-field-sp-essentials {
     .pane-title {
-      padding-top: 0px;
+      padding-top: 0;
       margin-bottom: 10px;
     }
     @media (min-width: $screen-md) {
@@ -117,13 +117,13 @@
     // Description
     .slide__overlay {
       position: absolute;
-      bottom:0;
-      left:0;
-      right:0;
-      background:rgba(0,0,0,.5);
+      bottom: 0;
+      left: 0;
+      right: 0;
+      background: rgba(0,0,0,.5);
       text-align: center;
       padding: 15px;
-      color:white;
+      color: white;
       
       .title {
         font-size: 22px;
@@ -189,7 +189,7 @@
     top: calc(50% - 15px);
     width: 30px;
     height: 30px;
-    margin-top: 0px;
+    margin-top: 0;
     text-indent: -9999px;
     border: 0;
     background-size: contain;
@@ -206,7 +206,7 @@
     top: calc(50% - 15px);
     width: 30px;
     height: 30px;
-    margin-top: 0px;
+    margin-top: 0;
     text-indent: -9999px;
     border: 0;
     background-size: contain;
@@ -278,7 +278,7 @@
       position: absolute;
       top: 0;
       right: 0;
-      padding: 0px 10px;
+      padding: 0 10px;
       background: #127ba3;
       font-size: 12px;
       text-transform: uppercase;
@@ -358,7 +358,7 @@
     padding-bottom: 24px;
     background: #ffffff;
     border: 1px solid #ececec;
-    border-radius: 2px 2px 0px 0px;
+    border-radius: 2px 2px 0 0;
     .user-image {
       position: absolute;
       top: -40px;
@@ -427,7 +427,7 @@
         border-width: 1px;
         li.ui-state-default {
           border-width: 1px;
-          border-bottom: 0px;
+          border-bottom: 0;
         }
       }
     }
@@ -489,7 +489,7 @@
     border-bottom: 0;
     border: 1px solid #ececec;
     border-top: 0;
-    border-radius: 0px 0px 2px 2px;
+    border-radius: 0 0 2px 2px;
     background: white;
     .pane-content {
       display: table;
