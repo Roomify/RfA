@@ -62,7 +62,7 @@ projects[better_db_updates][subdir] = contrib
 
 ; bootstrap
 projects[bootstrap][type] = theme
-projects[bootstrap][version] = 3.8
+projects[bootstrap][version] = 3.10
 
 ; adminimal
 projects[adminimal_theme][type] = theme
@@ -141,7 +141,7 @@ projects[conditional_fields][version] = 3.0-alpha2
 
 projects[content_menu][version] = 1.0
 
-projects[ctools][version] = 1.11
+projects[ctools][version] = 1.12
 
 ; NB: the views field handlers patch is merged - shouldn't be needed as of version 2.10 of date.
 projects[date][version] = 2.9
@@ -252,7 +252,7 @@ projects[geophp][version] = 1.7
 
 projects[getdirections][version] = 3.2
 
-projects[google_analytics][version] = 2.2
+projects[google_analytics][version] = 2.3
 
 projects[google_tag][version] = 1.0
 
@@ -270,7 +270,7 @@ projects[i18nviews][patch][] = https://www.drupal.org/files/issues/i18nviews-224
 
 projects[icon][version] = 1.0-beta6
 
-projects[image_link_formatter][version] = 1.0
+projects[image_link_formatter][version] = 1.1
 
 projects[imageapi_optimize][version] = 1.2
 
@@ -307,16 +307,13 @@ projects[mailsystem][download][type] = git
 projects[mailsystem][download][url] = https://git.drupal.org/project/mailsystem.git
 projects[mailsystem][download][revision] = 966e13e7024a428e35dfc1e505ae6a774eb148a2
 
-projects[manualcrop][type] = module
-projects[manualcrop][download][type] = git
-projects[manualcrop][download][url] = https://git.drupal.org/project/manualcrop.git
-projects[manualcrop][download][revision] = c30ea7983068f945351e7b9523d8b68768c41a17
+projects[manualcrop][version] = 1.6
 
 projects[masonry][version] = 3.0-beta1
 
 projects[masonry_views][version] = 3.0
 
-projects[media][version] = 2.0-beta5
+projects[media][version] = 2.0-rc1
 
 projects[menu_admin_per_menu][version] = 1.0
 projects[menu_admin_per_menu][patch][] = https://www.drupal.org/files/issues/integrate-menu-translation-suport-2546214-1.patch
@@ -324,7 +321,7 @@ projects[menu_admin_per_menu][patch][] = https://www.drupal.org/files/issues/int
 projects[message][version] = 1.12
 projects[message][patch][] = https://www.drupal.org/files/issues/text-sanitized.patch
 
-projects[metatag][version] = 1.17
+projects[metatag][version] = 1.18
 
 projects[mimemail][version] = 1.0-beta4
 
@@ -424,7 +421,7 @@ projects[slick_views][download][type] = git
 projects[slick_views][download][url] = https://git.drupal.org/project/slick_views.git
 projects[slick_views][download][revision] = 96cf95a9a58ace07dd576f24d9183e83fd0b3032
 
-projects[smtp][version] = 1.3
+projects[smtp][version] = 1.4
 
 projects[strongarm][version] = 2.0
 
@@ -468,7 +465,7 @@ projects[views_load_more][version] = 1.5
 
 projects[views_bulk_operations][version] = 3.3
 
-projects[views_megarow][version] = 1.6
+projects[views_megarow][version] = 1.7
 
 projects[views_php][version] = 1.0-alpha3
 
@@ -479,7 +476,7 @@ projects[vvf][version] = 1.2
 projects[wysiwyg][type] = module
 projects[wysiwyg][download][type] = git
 projects[wysiwyg][download][url] = https://git.drupal.org/project/wysiwyg.git
-projects[wysiwyg][download][revision] = 18deb5ab9cc5255822a7d336891d043d35e660d2
+projects[wysiwyg][download][revision] = 128926ac9973e99d0f0f977de28ee9ca4bc310be
 
 projects[xautoload][version] = 5.7
 
