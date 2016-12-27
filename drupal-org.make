@@ -76,7 +76,7 @@ projects[adminimal_theme][patch][] = "https://www.drupal.org/files/issues/admini
 
 projects[addressfield][version] = 1.2
 
-projects[addtoany][version] = 4.12
+projects[addtoany][version] = 4.14
 
 projects[admin_menu][version] = 3.0-rc5
 
