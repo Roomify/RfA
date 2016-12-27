@@ -2405,7 +2405,7 @@ function roomify_accommodation_booking_get_price($rates, $start_date, $end_date,
 function roomify_accommodation_booking_schedule_job($booking) {
   $start_date = new DateTime($booking->booking_start_date[LANGUAGE_NONE][0]['value']);
 
-  if ($days = variable_get('roomify_owner_first_notification', 15)) {
+  if ($days = variable_get('roomify_owner_first_notification', 0)) {
     $period = $start_date->getTimestamp() - REQUEST_TIME - (86400 * $days);
 
     if ($period > 0) {
@@ -2419,7 +2419,7 @@ function roomify_accommodation_booking_schedule_job($booking) {
     }
   }
 
-  if ($days = variable_get('roomify_owner_second_notification', 10)) {
+  if ($days = variable_get('roomify_owner_second_notification', 0)) {
     $period = $start_date->getTimestamp() - REQUEST_TIME - (86400 * $days);
 
     if ($period > 0) {
@@ -2433,7 +2433,7 @@ function roomify_accommodation_booking_schedule_job($booking) {
     }
   }
 
-  if ($days = variable_get('roomify_owner_third_notification', 5)) {
+  if ($days = variable_get('roomify_owner_third_notification', 0)) {
     $period = $start_date->getTimestamp() - REQUEST_TIME - (86400 * $days);
 
     if ($period > 0) {
@@ -2447,7 +2447,7 @@ function roomify_accommodation_booking_schedule_job($booking) {
     }
   }
 
-  if ($days = variable_get('roomify_owner_fourth_notification', 2)) {
+  if ($days = variable_get('roomify_owner_fourth_notification', 0)) {
     $period = $start_date->getTimestamp() - REQUEST_TIME - (86400 * $days);
 
     if ($period > 0) {
@@ -2461,7 +2461,7 @@ function roomify_accommodation_booking_schedule_job($booking) {
     }
   }
 
-  if ($days = variable_get('roomify_guest_first_notification', 15)) {
+  if ($days = variable_get('roomify_guest_first_notification', 0)) {
     $period = $start_date->getTimestamp() - REQUEST_TIME - (86400 * $days);
 
     if ($period > 0) {
@@ -2475,7 +2475,7 @@ function roomify_accommodation_booking_schedule_job($booking) {
     }
   }
 
-  if ($days = variable_get('roomify_guest_second_notification', 10)) {
+  if ($days = variable_get('roomify_guest_second_notification', 0)) {
     $period = $start_date->getTimestamp() - REQUEST_TIME - (86400 * $days);
 
     if ($period > 0) {
@@ -2489,7 +2489,7 @@ function roomify_accommodation_booking_schedule_job($booking) {
     }
   }
 
-  if ($days = variable_get('roomify_guest_third_notification', 5)) {
+  if ($days = variable_get('roomify_guest_third_notification', 0)) {
     $period = $start_date->getTimestamp() - REQUEST_TIME - (86400 * $days);
 
     if ($period > 0) {
@@ -2503,7 +2503,7 @@ function roomify_accommodation_booking_schedule_job($booking) {
     }
   }
 
-  if ($days = variable_get('roomify_guest_fourth_notification', 2)) {
+  if ($days = variable_get('roomify_guest_fourth_notification', 0)) {
     $period = $start_date->getTimestamp() - REQUEST_TIME - (86400 * $days);
 
     if ($period > 0) {
@@ -2613,7 +2613,7 @@ function roomify_accommodation_booking_notifications_form($form, &$form_state) {
     '#title' => t('First notification'),
     '#options' => $options,
     '#field_suffix' => t('days before'),
-    '#default_value' => variable_get('roomify_guest_first_notification', 15),
+    '#default_value' => variable_get('roomify_guest_first_notification', 0),
   );
 
   $form['guest']['roomify_guest_second_notification'] = array(
@@ -2621,7 +2621,7 @@ function roomify_accommodation_booking_notifications_form($form, &$form_state) {
     '#title' => t('Second notification'),
     '#options' => $options,
     '#field_suffix' => t('days before'),
-    '#default_value' => variable_get('roomify_guest_second_notification', 10),
+    '#default_value' => variable_get('roomify_guest_second_notification', 0),
   );
 
   $form['guest']['roomify_guest_third_notification'] = array(
@@ -2629,7 +2629,7 @@ function roomify_accommodation_booking_notifications_form($form, &$form_state) {
     '#title' => t('Third notification'),
     '#options' => $options,
     '#field_suffix' => t('days before'),
-    '#default_value' => variable_get('roomify_guest_third_notification', 5),
+    '#default_value' => variable_get('roomify_guest_third_notification', 0),
   );
 
   $form['guest']['roomify_guest_fourth_notification'] = array(
@@ -2637,7 +2637,7 @@ function roomify_accommodation_booking_notifications_form($form, &$form_state) {
     '#title' => t('Fourth notification'),
     '#options' => $options,
     '#field_suffix' => t('days before'),
-    '#default_value' => variable_get('roomify_guest_fourth_notification', 2),
+    '#default_value' => variable_get('roomify_guest_fourth_notification', 0),
   );
 
   $form['guest']['edit_link'] = array(
@@ -2654,7 +2654,7 @@ function roomify_accommodation_booking_notifications_form($form, &$form_state) {
     '#title' => t('First notification'),
     '#options' => $options,
     '#field_suffix' => t('days before'),
-    '#default_value' => variable_get('roomify_owner_first_notification', 15),
+    '#default_value' => variable_get('roomify_owner_first_notification', 0),
   );
 
   $form['owner']['roomify_owner_second_notification'] = array(
@@ -2662,7 +2662,7 @@ function roomify_accommodation_booking_notifications_form($form, &$form_state) {
     '#title' => t('Second notification'),
     '#options' => $options,
     '#field_suffix' => t('days before'),
-    '#default_value' => variable_get('roomify_owner_second_notification', 10),
+    '#default_value' => variable_get('roomify_owner_second_notification', 0),
   );
 
   $form['owner']['roomify_owner_third_notification'] = array(
@@ -2670,7 +2670,7 @@ function roomify_accommodation_booking_notifications_form($form, &$form_state) {
     '#title' => t('Third notification'),
     '#options' => $options,
     '#field_suffix' => t('days before'),
-    '#default_value' => variable_get('roomify_owner_third_notification', 5),
+    '#default_value' => variable_get('roomify_owner_third_notification', 0),
   );
 
   $form['owner']['roomify_owner_fourth_notification'] = array(
@@ -2678,7 +2678,7 @@ function roomify_accommodation_booking_notifications_form($form, &$form_state) {
     '#title' => t('Fourth notification'),
     '#options' => $options,
     '#field_suffix' => t('days before'),
-    '#default_value' => variable_get('roomify_owner_fourth_notification', 2),
+    '#default_value' => variable_get('roomify_owner_fourth_notification', 0),
   );
 
   $form['owner']['edit_link'] = array(
