@@ -1021,7 +1021,7 @@ function _roomify_conversations_conversation_booking_render($booking) {
             '@amount' => number_format($booking->booking_price[LANGUAGE_NONE][0]['amount'] / 100, 2, '.', ''),
           ));
 
-          $output = '<div class="text">' . t('Offer to book @type_name for @start_date - @end_date for @price', array('@type_name' => $type_name, '@start_date' => $start_date, '@end_date' => $end_date, '@price' => $price)) . '</div>';
+          $output = '<div class="text">' . t('Offer to book @type_name for @start_date - @end_date for @price (Not including taxes or fees)', array('@type_name' => $type_name, '@start_date' => $start_date, '@end_date' => $end_date, '@price' => $price)) . '</div>';
 
           if (isset($booking->booking_accommodation_ref[LANGUAGE_NONE][0]['target_id']) &&
               $accommodation_booking = bat_booking_load($booking->booking_accommodation_ref[LANGUAGE_NONE][0]['target_id'])) {
@@ -1314,7 +1314,7 @@ function roomify_conversations_make_offer_page() {
     $conversation_id = $params['conversationid'];
 
     $form_state = array(
-      'title' => t('Edit Offer'),
+      'title' => t('Edit Offer (Not including taxes or fees)'),
       'ajax' => TRUE,
       'build_info' => array(
         'args' => array($booking_id, $conversation_id),
@@ -1334,7 +1334,7 @@ function roomify_conversations_make_offer_page() {
     $conversation_id = $params['conversationid'];
 
     $form_state = array(
-      'title' => t('Define Booking Cost'),
+      'title' => t('Define Booking Cost (Not including taxes or fees)'),
       'ajax' => TRUE,
       'build_info' => array(
         'args' => array($start_date, $end_date, $groupsize, $groupsizechildren, $unit_id, $conversation_id),
