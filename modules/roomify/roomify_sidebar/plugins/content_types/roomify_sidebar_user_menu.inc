@@ -87,7 +87,6 @@ function roomify_sidebar_user_menu_render($subtype, $conf, $args, $pane_context,
     $content = $message;
   }
 
-
   if (user_is_logged_in()) {
     $block_content = '<div class="roomify-sidebar-user-menu">' . $content . '
                   <ul class="nav nav-list tree">
