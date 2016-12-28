@@ -29,7 +29,7 @@ Feature: Conversation
     Then I visit last created property
     Then I fill in "arrival[date]" with "2017-01-16"
     Then I fill in "departure[date]" with "2017-01-21"
-    And I click on the text "Request to book"
+    And I click on the text "Book Now"
     And I click on the text "Send an Enquiry"
     Then I fill in "field_listing_enquiry_name[und][0][value]" with "Test user 1"
     And I fill in "field_listing_enquiry_info[und][0][value]" with "Test text test text"
