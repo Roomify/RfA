@@ -36,6 +36,32 @@ function roomify_accommodation_example_content_menu() {
 }
 
 /**
+ * Implements hook_permission().
+ */
+function roomify_accommodation_example_content_permission() {
+  return array(
+    'administer roomify quick setup' => array(
+      'title' => t('Administer Roomify Quick Setup'),
+      'description' => t('Configure a Roomify Site.'),
+    ),
+  );
+}
+
+/**
+ * Implements hook_roomify_rights().
+ */
+function roomify_accommodation_example_content_roomify_rights() {
+
+  $rights['roomify_system'] = array(
+    'roomify manager' => array(
+      'administer roomify quick setup',
+    ),
+  );
+
+  return $rights;
+}
+
+/**
  * Create an example location node.
  */
 function roomify_example_content_create_location_example_node() {
