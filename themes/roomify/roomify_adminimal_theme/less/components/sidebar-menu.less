@@ -1,83 +1,121 @@
 body {
   padding-right: 0;
-  .transition(300ms all ease);
+  .transition(100ms all ease);
   #sidebar-wrapper {
     z-index: 1000;
     position: fixed;
     right: 280px;
-    width: 0px;
+    width: 0;
     height: 100%;
     margin-right: -280px;
     overflow-y: auto;
     background: #000;
-    background-image: url('../images/sidebar_pattern.png');
-    .transition(300ms all ease);
+    overflow-x: hidden;
+    font-weight: 400;
+    #mini-panel-sidebar {
+      .panel-pane {
+        &:last-child {
+          border-bottom: none !important;
+        }
+      }
+    }
+    a {
+      font-weight: 400;
+    }
+    .transition(100ms all ease);
+    .close-sidebar {
+      border-bottom: 0;
+      margin-bottom: 0;
+      width: 100%;
+      padding-bottom: 10px;
+    }
+    #close-sidebar-icon {
+      background: url('../images/close.png') center center no-repeat;
+      margin-right: 20px;
+      margin-top: 15px;
+      text-indent: -999999px;
+      display: block;
+      cursor: pointer;
+      width: 20px;
+      background-size: contain;
+      float: right;
+    }
   }
   .sidebar-nav {
     position: absolute;
     top: 0;
-    width: 250px;
+    width: 100%;
     margin: 0;
     list-style: none;
-    padding: 5px;
+    padding: 10px;
     a {
       color: #fff;
     }
     .panel-pane {
       display: inline-block;
-      width: 100%;
-      margin-bottom: 20px;
-      border-bottom: 2px solid #444444;
-      padding-bottom: 20px;
-      padding-left: 5px;
-      padding-right: 5px;
-      max-width: 270px;
+      width: 94%;
+      margin-bottom: 30px;
+      border-bottom: 1px solid #03A9F4;
+      padding-bottom: 30px;
+      .pane-title {
+        border-bottom: 0;
+        text-align: left;
+        width: 100%;
+        color: white;
+        font-weight: 600;
+        padding: 5px 10px;
+        font-size: 22px;
+        text-align: center;
+      }
     }
     .pane-roomify-sidebar-user-menu {
       .pane-title {
-        margin-bottom: 15px;
-        color: white;
-        font-weight: 400;
-        font-size: 24px;
-        border-bottom: 0px;
-        width: 100%;
-        text-align: left;
-        .glyphicon {
-          float: left;
-          display: inline-block;
-          top: 14px;
-          font-size: 16px;
-          margin-right: 10px;
-          z-index: 99;
-          padding-left: 5px;
-          color: white;
-          &:hover {
-            color: black;
-          }
-        }
+        margin-bottom: 5px;
+        font-size: 22px;
       }
       .roomify-sidebar-user-menu {
-        ul {
-          margin-left: 0px;
+        .roomify-sidebar-image {
+          width: 80px;
+          height: 80px;
+          border-radius: 50%;
+          display: table;
+          margin: 10px auto;
+          margin-bottom: 0px;
+          img {
+            border-radius: 50%;
+            max-width: 80px;
+          }
+        }
+        .sidebar-profile-message {
+          font-size: 25px;
+          color: white;
+          font-weight: 600;
+          text-align: center;
+          color: white;
+          margin-top: 0px;
+          margin-bottom: 30px;
         }
         li {
           z-index: 999;
-          width: 100%;
+          width: 90%;
           display: block;
+          margin-left: 5%;
           .glyphicon {
             float: left;
             display: inline-block;
             top: 14px;
-            font-size: 16px;
+            font-size: 15px;
             margin-right: 10px;
             z-index: 99;
             padding-left: 5px;
-            color: white;
+            color:  #03A9F4;
             &:hover {
               color: black;
             }
           }
           a {
+            font-size: 16px;
+            font-weight: 400;
             font-family: "Source Sans Pro", Helvetica Neue, Helvetica, Arial, sans-serif !important;
             line-height: 1.4em;
             font-size: 16px;
@@ -86,8 +124,6 @@ body {
             padding: 10px 15px;
             &:hover {
               color: black;
-              text-decoration: none;
-              background-color: #eeeeee;
             }
           }
           &:hover {
@@ -103,30 +139,25 @@ body {
       }
     }
     .pane-commerce-cart-cart {
-      color: white !important;
+      padding-left: 15px;
+      padding-right: 15px;
+      color: white;
       .pane-title {
-        margin-bottom: 5px;
-        color: white;
-        font-weight: 400;
-        font-size: 18px;
-        border-bottom: 0px;
-        margin: 15px 0px;
-        width: 100%;
-        text-align: left;
+        padding: 0;
+
       }
       .line-item-quantity {
         display: none;
       }
       .glyphicon {
-        font-size: 16px;
+        font-size: 20px;
         margin-right: 4px;
-        color: #FFFFFF;
+        color: #03A9F4;
         position: relative;
         right: 4px;
       }
-      table > tbody > tr > td {
-        border-width: 2px;
-        color: white;
+      .table > tbody > tr > td {
+        border-width: 0;
       }
       table tbody tr {
         background: rgba(255, 255, 255, 0.28);
@@ -137,9 +168,7 @@ body {
         }
         &:hover {
           background: white;
-          td {
-            color: black;
-          }
+          color: black;
         }
       }
       .view-commerce-cart-block {
@@ -158,110 +187,25 @@ body {
         }
       }
     }
-    .pane-my-stays-panel-pane-1 {
-      .pane-title {
-        margin-bottom: 5px;
-        color: white;
-        text-align: center;
-        font-weight: 400;
-        padding: 5px 10px;
-        font-size: 18px;
-        float: left;
-        border: 0px;
-        color: white;
-        a {
-          &:hover {
-            color: @light-blue;
-          }
-        }
-      }
-      .view-my-stays {
-        .views-row {
-          display: inline-block;
-          width: 100%;
-          margin-bottom: 10px;
-          padding: 5px;
-          .views-field-name {
-            font-size: 20px;
-            font-weight: 400;
-          }
-          .views-field-field-property-image {
-            display: inline-block;
-            float: left;
-            margin-right: 10px;
-            img {
-              border: 2px solid @light-blue;
-              width: 85px;
-              height: 85px;
-              border-radius: 50%;
-            }
-          }
-          .views-field-start-date,
-          .views-field-end-date {
-            color: #999999;
-            font-size: 16px;
-          }
-          .views-field-nothing {
-            width: 100%;
-            display: inline-block;
-            margin: 15px auto;
-          }
-        }
-      }
-    }
-    .pane-menu-menu-agency-user-menu {
-      .menu {
-        margin: 0;
-      }
-      li {
-        text-indent: 20px;
-        line-height: 40px;
-        a {
-          display: block;
-          font-size: 20px;
-          text-decoration: none;
-          color: #999999;
-          font-size: 20px;
-          padding: 5px 15px;
-          &:hover {
-            text-decoration: none;
-            color: #fff;
-            background: rgba(255,255,255,0.2);
-          }
-          &:active,
-          &:focus {
-            text-decoration: none;
-          }
-        }
-      }
-    }
-    .pane-logintoboggan-logintoboggan-logged-in {
-      text-align: right;
-      font-size: 20px;
-    }
     .pane-favorite-properties-sidebar-favorites {
       .pane-title {
-        margin-bottom: 5px;
         color: white;
-        font-weight: 400;
-        font-size: 18px;
-        border-bottom: 0px;
-        margin: 15px 0px;
+        font-weight: 600;
+        border-bottom: 0;
+        font-size: 22px;
+        text-align: center;
         width: 100%;
-        text-align: left;
         .glyphicon {
-          float: left;
           display: inline-block;
-          font-size: 16px;
+          font-size: 20px;
           margin-right: 6px;
           z-index: 99;
-          color: white;
+          color: #03A9F4;
         }
         a {
           color: white;
           &:hover {
             text-decoration: underline;
-            color: @light-blue;
           }
         }
       }
@@ -270,45 +214,40 @@ body {
           display: inline-block;
           width: 100%;
           padding: 5px;
-          max-width: 230px;
           .views-field-field-sp-featured-image {
             display: inline-block;
             float: left;
             margin-right: 10px;
             img {
-              border: 2px solid @light-blue;
-              width: 40px;
-              height: 40px;
+              border: 2px solid white;
+              width: 60px;
+              height: 60px;
               border-radius: 50%;
             }
           }
           .views-field-name {
             display: table;
-            min-height: 40px;
+            min-height: 60px;
             .field-content {
               display: table-row;
               a {
                 font-size: 16px;
                 font-weight: 400;
-                max-width: 165px;
                 vertical-align: middle;
                 display: table-cell;
-                white-space: nowrap;
-                overflow: hidden;
-                text-overflow: ellipsis;
               }
             }
           }
           &:hover {
-            background: rgba(255,255,255,0.2);
+            background: rgba(255,255,255, 1);
+            color: black;
             a {
-              color: white;
+              color: black;
             }
             img {
               border-color: white;
             }
           }
-          .transition(200ms all ease);
         }
       }
     }
@@ -316,18 +255,17 @@ body {
       color: white;
       .pane-title {
         color: white;
-        font-weight: 400;
-        font-size: 18px;
-        border-bottom: 0px;
+        font-weight: 600;
+        font-size: 22px;
+        text-align: center;
+        border-bottom: 0;
         width: 100%;
-        text-align: left;
         .glyphicon {
-          float: left;
           display: inline-block;
-          font-size: 16px;
+          font-size: 20px;
           margin-right: 6px;
           z-index: 99;
-          color: white;
+          color: #03A9F4;
         }
         a {
           color: white;
@@ -335,6 +273,10 @@ body {
             text-decoration: underline;
           }
         }
+      }
+      .pane-content {
+        padding-left: 10px;
+        padding-right: 10px;
       }
       .view-dashboard-guest-stays{
         .views-row {
@@ -361,21 +303,17 @@ body {
       }
     }
     .pane-my-stays-panel-pane-1 {
+      margin-bottom: 15px;
       .pane-title {
         margin-bottom: 5px;
         color: white;
-        text-align: center;
-        font-weight: 400;
+        font-weight: 600;
         padding: 5px 10px;
-        font-size: 18px;
+        font-size: 22px;
         float: left;
-        border: 0px;
+        border: 0;
         color: white;
-        a {
-          &:hover {
-            color: @light-blue;
-          }
-        }
+        text-align: center;
       }
       .view-my-stays {
         .views-row {
@@ -391,7 +329,6 @@ body {
             float: left;
             margin-right: 10px;
             img {
-              border: 2px solid @light-blue;
               width: 60px;
               height: 60px;
               border-radius: 50%;
@@ -413,39 +350,35 @@ body {
     }
   }
 
+
   &.toggled {
-    padding-right: 280px;
-    margin-left: -280px;
+    padding-right: 350px;
+    margin-left: -350px;
     #sidebar-wrapper {
-      width: 280px;
+      width: 350px;
       border-left: 2px solid #2B2B2B;
     }
   }
   // SMALL DEVICES SIDEBAR
-  @media (max-width: @screen-xs) {
+ @media (max-width: @screen-xs) { // Mobile
     #sidebar-wrapper {
-      right: 230px;
-      margin-right: -230px;
+      right: 300px;
+      margin-right: -300px;
       .sidebar-nav {
-        width: 230px;
+        width: 300px;
       }
     }
     &.toggled {
-      padding-right: 230px;
-      margin-left: -230px;
+      padding-right: 300px;
+      margin-left: -300px;
       #sidebar-wrapper {
-        width: 230px;
+        width: 300px;
       }
     }
   }
 }
 
-.agency-sidebar-link {
-  display: inline-block;
-  padding: 12px 15px;
-  span {
-    color: @light-blue;
-  }
+.roomify-sidebar-link {
   a {
     font-size: 15px;
     font-weight: 600;
@@ -453,7 +386,7 @@ body {
   }
 }
 
-.agency-sidebar-user-icon {
+.roomify-sidebar-user-icon {
   padding: 6px 10px;
   span {
     color: white;
@@ -468,6 +401,6 @@ body.toggled {
     background: rgba(0, 0, 0, 0.35);
     height: 100%;
     cursor: pointer;
-    .transition(250ms all ease);
+    .transition(100ms all ease);
   }
 }

@@ -551,6 +551,35 @@ function roomify_system_default_panels_mini() {
   $display->content = array();
   $display->panels = array();
   $pane = new stdClass();
+  $pane->pid = 'new-2bc0e516-24ac-4378-b368-d1afc0f67c7f';
+  $pane->panel = 'middle';
+  $pane->type = 'custom';
+  $pane->subtype = 'custom';
+  $pane->shown = TRUE;
+  $pane->access = array();
+  $pane->configuration = array(
+    'admin_title' => 'Close Sidebar',
+    'title' => '',
+    'title_heading' => 'h2',
+    'body' => '<div id="close-sidebar-icon">Close</div>',
+    'format' => 'rich_text',
+    'substitute' => TRUE,
+  );
+  $pane->cache = array();
+  $pane->style = array(
+    'settings' => NULL,
+  );
+  $pane->css = array(
+    'css_id' => '',
+    'css_class' => 'close-sidebar',
+  );
+  $pane->extras = array();
+  $pane->position = 0;
+  $pane->locks = array();
+  $pane->uuid = '2bc0e516-24ac-4378-b368-d1afc0f67c7f';
+  $display->content['new-2bc0e516-24ac-4378-b368-d1afc0f67c7f'] = $pane;
+  $display->panels['middle'][0] = 'new-2bc0e516-24ac-4378-b368-d1afc0f67c7f';
+  $pane = new stdClass();
   $pane->pid = 'new-03c4e9e3-293e-4cdb-ad32-c1cbe7322676';
   $pane->panel = 'middle';
   $pane->type = 'block';
@@ -563,7 +592,7 @@ function roomify_system_default_panels_mini() {
         'settings' => array(
           'visibility_setting' => '0',
           'paths' => 'user
-    user/login',
+      user/login',
         ),
         'context' => 'empty',
         'not' => FALSE,
@@ -581,11 +610,11 @@ function roomify_system_default_panels_mini() {
   );
   $pane->css = array();
   $pane->extras = array();
-  $pane->position = 0;
+  $pane->position = 1;
   $pane->locks = array();
   $pane->uuid = '03c4e9e3-293e-4cdb-ad32-c1cbe7322676';
   $display->content['new-03c4e9e3-293e-4cdb-ad32-c1cbe7322676'] = $pane;
-  $display->panels['middle'][0] = 'new-03c4e9e3-293e-4cdb-ad32-c1cbe7322676';
+  $display->panels['middle'][1] = 'new-03c4e9e3-293e-4cdb-ad32-c1cbe7322676';
   $pane = new stdClass();
   $pane->pid = 'new-a87ba983-deec-4fb9-ac58-9a3fb7ed0524';
   $pane->panel = 'middle';
@@ -616,11 +645,11 @@ function roomify_system_default_panels_mini() {
   );
   $pane->css = array();
   $pane->extras = array();
-  $pane->position = 1;
+  $pane->position = 2;
   $pane->locks = array();
   $pane->uuid = 'a87ba983-deec-4fb9-ac58-9a3fb7ed0524';
   $display->content['new-a87ba983-deec-4fb9-ac58-9a3fb7ed0524'] = $pane;
-  $display->panels['middle'][1] = 'new-a87ba983-deec-4fb9-ac58-9a3fb7ed0524';
+  $display->panels['middle'][2] = 'new-a87ba983-deec-4fb9-ac58-9a3fb7ed0524';
   $pane = new stdClass();
   $pane->pid = 'new-dbab1d0a-a618-4ea9-90de-de3943c65f38';
   $pane->panel = 'middle';
@@ -639,11 +668,11 @@ function roomify_system_default_panels_mini() {
   );
   $pane->css = array();
   $pane->extras = array();
-  $pane->position = 2;
+  $pane->position = 3;
   $pane->locks = array();
   $pane->uuid = 'dbab1d0a-a618-4ea9-90de-de3943c65f38';
   $display->content['new-dbab1d0a-a618-4ea9-90de-de3943c65f38'] = $pane;
-  $display->panels['middle'][2] = 'new-dbab1d0a-a618-4ea9-90de-de3943c65f38';
+  $display->panels['middle'][3] = 'new-dbab1d0a-a618-4ea9-90de-de3943c65f38';
   $pane = new stdClass();
   $pane->pid = 'new-dd1c8c74-969d-49ff-b1cf-51aa53480e41';
   $pane->panel = 'middle';
@@ -658,11 +687,11 @@ function roomify_system_default_panels_mini() {
   );
   $pane->css = array();
   $pane->extras = array();
-  $pane->position = 3;
+  $pane->position = 4;
   $pane->locks = array();
   $pane->uuid = 'dd1c8c74-969d-49ff-b1cf-51aa53480e41';
   $display->content['new-dd1c8c74-969d-49ff-b1cf-51aa53480e41'] = $pane;
-  $display->panels['middle'][3] = 'new-dd1c8c74-969d-49ff-b1cf-51aa53480e41';
+  $display->panels['middle'][4] = 'new-dd1c8c74-969d-49ff-b1cf-51aa53480e41';
   $pane = new stdClass();
   $pane->pid = 'new-0f55c95c-4c45-4a6b-b870-7d1a51f2eafa';
   $pane->panel = 'middle';
@@ -677,15 +706,14 @@ function roomify_system_default_panels_mini() {
   );
   $pane->css = array();
   $pane->extras = array();
-  $pane->position = 4;
+  $pane->position = 5;
   $pane->locks = array();
   $pane->uuid = '0f55c95c-4c45-4a6b-b870-7d1a51f2eafa';
   $display->content['new-0f55c95c-4c45-4a6b-b870-7d1a51f2eafa'] = $pane;
-  $display->panels['middle'][4] = 'new-0f55c95c-4c45-4a6b-b870-7d1a51f2eafa';
+  $display->panels['middle'][5] = 'new-0f55c95c-4c45-4a6b-b870-7d1a51f2eafa';
   $display->hide_title = PANELS_TITLE_FIXED;
   $display->title_pane = 'new-03c4e9e3-293e-4cdb-ad32-c1cbe7322676';
   $mini->display = $display;
-
   $export['sidebar'] = $mini;
 
   $mini = new stdClass();
