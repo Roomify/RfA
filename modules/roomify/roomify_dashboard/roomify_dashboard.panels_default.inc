@@ -79,13 +79,10 @@ function roomify_dashboard_default_panels_mini() {
   $pane->shown = TRUE;
   $pane->access = array(
     'plugins' => array(
-      0 => array(
-        'name' => 'role',
+      1 => array(
+        'name' => 'perm',
         'settings' => array(
-          'rids' => array(
-            0 => 30037204,
-            1 => 6,
-          ),
+          'perm' => 'administer roomify quick setup',
         ),
         'context' => 'logged-in-user',
         'not' => FALSE,
@@ -227,7 +224,7 @@ function roomify_dashboard_default_panels_mini() {
         'settings' => array(
           'description' => 'Roomify Social Feeds enabled',
           'php' => 'return module_exists(\'roomify_social_feeds\');
-    ',
+      ',
         ),
         'not' => FALSE,
       ),
