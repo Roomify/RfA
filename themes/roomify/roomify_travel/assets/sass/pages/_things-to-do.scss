@@ -9,7 +9,7 @@
     }
   }
   .panel_sl_right {
-    padding: 0px 10px;
+    padding: 0 10px;
     @media (max-width: $screen-sm) {
       margin-top: 40px;
     }
@@ -116,7 +116,7 @@
       padding-bottom: 30px;
       &.views-row-last {
         border: 0;
-        padding-bottom: 0px;
+        padding-bottom: 0;
       }
       .views-field-field-sp-featured-image {
         width: 45%;
@@ -176,7 +176,7 @@
   .pane-activity-panel-pane-2 {
     margin-bottom: 25px;
     img {
-      @include box-shadow(2px 2px 6px 0px rgba(82, 82, 82, 0.52));
+      @include box-shadow(2px 2px 6px 0 rgba(82, 82, 82, 0.52));
     }
     .slick.slick--view--property {
       position: relative;
@@ -189,7 +189,7 @@
       top: calc(50% - 15px);
       width: 30px;
       height: 30px;
-      margin-top: 0px;
+      margin-top: 0;
       text-indent: -9999px;
       border: 0;
       background-size: contain;
@@ -206,7 +206,7 @@
       top: calc(50% - 15px);
       width: 30px;
       height: 30px;
-      margin-top: 0px;
+      margin-top: 0;
       text-indent: -9999px;
       border: 0;
       background-size: contain;
@@ -264,7 +264,7 @@
     margin: 20px 0;
   }
   .panel_sl_right {
-    padding: 0px 10px;
+    padding: 0 10px;
     @media (max-width: $screen-sm) {
       margin-top: 40px;
     }
@@ -352,7 +352,7 @@
         top: calc(45% - 15px);
         width: 30px;
         height: 30px;
-        margin-top: 0px;
+        margin-top: 0;
         text-indent: -9999px;
         border: 0;
         background-size: contain;
@@ -366,7 +366,7 @@
         top: calc(45% - 15px);
         width: 30px;
         height: 30px;
-        margin-top: 0px;
+        margin-top: 0;
         text-indent: -9999px;
         border: 0;
         background-size: contain;

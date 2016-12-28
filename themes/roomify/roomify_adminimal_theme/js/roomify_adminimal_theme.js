@@ -9,16 +9,16 @@ Drupal.behaviors.roomify_admin_js = {
       $("body").toggleClass("toggled");
     });
 
+    // Toggle menu sidebar
+    $('#close-sidebar-icon').once().click(function(e) {
+      e.preventDefault();
+      $('body').toggleClass('toggled');
+    });
+
     // Toggle menu sidebar.
     $(".agency-sidebar-menu-toggle").once().click(function(e) {
       e.preventDefault();
       $("body").toggleClass("toggled");
-    });
-
-    // Disable 'My Account' link.
-    $('.agency-user-menu .first.last a:first').once().click(function(e) {
-      e.preventDefault();
-      $(this).parent().children('ul').toggle('show');
     });
 
     // Add a class to the tabs to push right.

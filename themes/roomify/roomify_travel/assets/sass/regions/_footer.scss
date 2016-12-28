@@ -8,35 +8,35 @@
   color: #f8f8f8;
   .footer-social-icons {
     @extend .clearfix;
-    margin:0 auto 20px auto;
-    max-width:260px;
+    margin: 0 auto 20px auto;
+    max-width: 260px;
 
     .rrssb-buttons li {
-      float:none;
-      display:inline-block;
-      padding:0;
-      margin:0;
+      float: none;
+      display: inline-block;
+      padding: 0;
+      margin: 0;
       text-align: center;
-      line-height:1;
+      line-height: 1;
 
       a {
-        display:inline-block;
-        height:32px;
-        width:32px;
-        padding:0;
-        margin:0;
-        line-height:32px;
+        display: inline-block;
+        height: 32px;
+        width: 32px;
+        padding: 0;
+        margin: 0;
+        line-height: 32px;
         @include border-radius(100px);
-        background:white;
+        background: white;
 
         .rrssb-icon svg,
         .rrssb-icon svg path,
         .rrssb-icon svg polygon {
-          fill:#000;
+          fill: #000;
         }
 
         .rrssb-text {
-          display:none;
+          display: none;
         }
       }
     }

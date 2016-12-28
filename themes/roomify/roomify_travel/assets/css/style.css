@@ -1290,7 +1290,7 @@ h1, h2, .page-taxonomy-area .pane-term-name .pane-content, .page-taxonomy-area .
 .page-taxonomy-area .field-name-field-area-description-blog-post,
 .page-taxonomy-area .field-name-field-desc-featured-properities, .page-room-type .panel_sl_left .panel-pane.pane-type-availability-search .pane-title, .page-room-type .panel_sl_left .panel-pane.pane-bat-type-field-st-amenities .pane-title, h4, .pane-property-location .panel-content-right .pane-title,
 .pane-property-location .panel-content-left .pane-title, .page-listing .pane-roomify-property-field-sp-short-description, .node-type-blog .panel-content-bottom .pane-blog-panel-pane-9 .views-field-name, h5, h6,
-.h1, .h2, .h3, .h4, .h5, .h6 {
+.h1, .h2, .h3, body .sidebar-nav .pane-roomify-sidebar-user-menu .roomify-sidebar-user-menu .sidebar-profile-message, .h4, .h5, .h6 {
   font-family: inherit;
   font-weight: 400;
   line-height: 1.1;
@@ -1334,8 +1334,9 @@ h1, h2, .page-taxonomy-area .pane-term-name .pane-content, .page-taxonomy-area .
   h6 .small,
   .h1 small,
   .h1 .small, .h2 small,
-  .h2 .small, .h3 small,
-  .h3 .small, .h4 small,
+  .h2 .small, .h3 small, body .sidebar-nav .pane-roomify-sidebar-user-menu .roomify-sidebar-user-menu .sidebar-profile-message small,
+  .h3 .small,
+  body .sidebar-nav .pane-roomify-sidebar-user-menu .roomify-sidebar-user-menu .sidebar-profile-message .small, .h4 small,
   .h4 .small, .h5 small,
   .h5 .small, .h6 small,
   .h6 .small {
@@ -1364,7 +1365,7 @@ h3,
 .page-taxonomy-area .field-name-field-area-description-blog-post,
 .page-taxonomy-area .field-name-field-desc-featured-properities,
 .page-room-type .panel_sl_left .panel-pane.pane-type-availability-search .pane-title,
-.page-room-type .panel_sl_left .panel-pane.pane-bat-type-field-st-amenities .pane-title, .h3 {
+.page-room-type .panel_sl_left .panel-pane.pane-bat-type-field-st-amenities .pane-title, .h3, body .sidebar-nav .pane-roomify-sidebar-user-menu .roomify-sidebar-user-menu .sidebar-profile-message {
   margin-top: 21px;
   margin-bottom: 10.5px; }
   h1 small,
@@ -1412,8 +1413,9 @@ h3,
   .page-taxonomy-area .field-name-field-area-description-blog-post .small,
   .page-taxonomy-area .field-name-field-desc-featured-properities .small,
   .page-room-type .panel_sl_left .panel-pane.pane-type-availability-search .pane-title .small,
-  .page-room-type .panel_sl_left .panel-pane.pane-bat-type-field-st-amenities .pane-title .small, .h3 small,
-  .h3 .small {
+  .page-room-type .panel_sl_left .panel-pane.pane-bat-type-field-st-amenities .pane-title .small, .h3 small, body .sidebar-nav .pane-roomify-sidebar-user-menu .roomify-sidebar-user-menu .sidebar-profile-message small,
+  .h3 .small,
+  body .sidebar-nav .pane-roomify-sidebar-user-menu .roomify-sidebar-user-menu .sidebar-profile-message .small {
     font-size: 65%; }
 
 h4, .pane-property-location .panel-content-right .pane-title,
@@ -1450,7 +1452,7 @@ h3, .page-listing .pane-roomify-property-name, .page-checkout-review .checkout_r
 .page-availability-search .view-display-id-panel_pane_1 .views-row .views-field-name, .page-activities-search .view-display-id-panel_pane_3 .property-row .views-field-name,
 .page-availability-search .view-display-id-panel_pane_3 .property-row .views-field-name, .page-blog .panel_sl_right .panel-pane .pane-title, .node-type-blog .panel_sl_right .panel-pane .pane-title, .page-things-to-do .panel_sl_right .panel-pane .pane-title, .node-type-activity .panel_sl_right .panel-pane .pane-title, .page-taxonomy-area .field-name-field-area-description-subtitle,
 .page-taxonomy-area .field-name-field-area-description-blog-post,
-.page-taxonomy-area .field-name-field-desc-featured-properities, .page-room-type .panel_sl_left .panel-pane.pane-type-availability-search .pane-title, .page-room-type .panel_sl_left .panel-pane.pane-bat-type-field-st-amenities .pane-title, .h3 {
+.page-taxonomy-area .field-name-field-desc-featured-properities, .page-room-type .panel_sl_left .panel-pane.pane-type-availability-search .pane-title, .page-room-type .panel_sl_left .panel-pane.pane-bat-type-field-st-amenities .pane-title, .h3, body .sidebar-nav .pane-roomify-sidebar-user-menu .roomify-sidebar-user-menu .sidebar-profile-message {
   font-size: 25px; }
 
 h4, .pane-property-location .panel-content-right .pane-title,
@@ -8094,7 +8096,7 @@ blockquote {
 #better-messages-wrapper #better-messages-default #messages-inner .content .messages.error,
 #better-messages-wrapper #better-messages-default #messages-inner .content .messages.warning {
   background: white;
-  border: 0px !important;
+  border: 0 !important;
   padding: 20px; }
 
 .chosen-with-drop,
@@ -8308,7 +8310,7 @@ blockquote {
     #modalContent .modal-header .modal-title {
       text-align: center;
       font-size: 28px;
-      margin: 15px 0px;
+      margin: 15px 0;
       color: gray; }
 
 .hovereffect {
@@ -8675,51 +8677,82 @@ body header.roomify-header {
 
 body {
   padding-right: 0;
-  -webkit-transition: 300ms all ease;
-  -moz-transition: 300ms all ease;
-  -ms-transition: 300ms all ease;
-  -o-transition: 300ms all ease; }
+  -webkit-transition: 100ms all ease;
+  -moz-transition: 100ms all ease;
+  -ms-transition: 100ms all ease;
+  -o-transition: 100ms all ease; }
   body #sidebar-wrapper {
     z-index: 1000;
     position: fixed;
     right: 280px;
-    width: 0px;
+    width: 0;
     height: 100%;
     margin-right: -280px;
     overflow-y: auto;
     background: #000;
-    background-image: url("../images/sidebar_pattern.png");
     overflow-x: hidden;
-    -webkit-transition: 300ms all ease;
-    -moz-transition: 300ms all ease;
-    -ms-transition: 300ms all ease;
-    -o-transition: 300ms all ease; }
+    -webkit-transition: 100ms all ease;
+    -moz-transition: 100ms all ease;
+    -ms-transition: 100ms all ease;
+    -o-transition: 100ms all ease; }
+    body #sidebar-wrapper .close-sidebar {
+      border-bottom: 0;
+      margin-bottom: 0;
+      width: 100%;
+      padding-bottom: 10px; }
+    body #sidebar-wrapper #close-sidebar-icon {
+      background: url("../images/close.png") center center no-repeat;
+      margin-right: 20px;
+      margin-top: 15px;
+      text-indent: -999999px;
+      display: block;
+      cursor: pointer;
+      width: 20px;
+      background-size: contain;
+      float: right; }
   body .sidebar-nav {
     position: absolute;
     top: 0;
-    width: 260px;
+    width: 100%;
     margin: 0;
     list-style: none;
-    padding: 5px; }
+    padding: 10px; }
     body .sidebar-nav a {
       color: #fff; }
     body .sidebar-nav .panel-pane {
       display: inline-block;
       width: 100%;
-      margin-bottom: 25px;
-      border-bottom: 1px solid #cbc7d4;
-      padding-bottom: 25px; }
+      margin-bottom: 30px;
+      border-bottom: 1px solid #03A9F4;
+      padding-bottom: 30px; }
+      body .sidebar-nav .panel-pane:last-child {
+        border-bottom: none; }
       body .sidebar-nav .panel-pane .pane-title {
-        border-bottom: 0px;
+        border-bottom: 0;
         text-align: left;
         width: 100%;
         color: white;
         font-weight: 400;
         padding: 5px 10px;
-        font-size: 18px; }
+        font-size: 22px;
+        text-align: center; }
     body .sidebar-nav .pane-roomify-sidebar-user-menu .pane-title {
       margin-bottom: 5px;
       font-size: 22px; }
+    body .sidebar-nav .pane-roomify-sidebar-user-menu .roomify-sidebar-user-menu .roomify-sidebar-image {
+      width: 80px;
+      height: 80px;
+      border-radius: 50%;
+      display: table;
+      margin: 10px auto;
+      margin-bottom: 0px; }
+      body .sidebar-nav .pane-roomify-sidebar-user-menu .roomify-sidebar-user-menu .roomify-sidebar-image img {
+        border-radius: 50%; }
+    body .sidebar-nav .pane-roomify-sidebar-user-menu .roomify-sidebar-user-menu .sidebar-profile-message {
+      text-align: center;
+      color: white;
+      margin-top: 0px;
+      margin-bottom: 30px; }
     body .sidebar-nav .pane-roomify-sidebar-user-menu .roomify-sidebar-user-menu li {
       z-index: 999;
       width: 90%;
@@ -8735,7 +8768,7 @@ body {
         margin-right: 10px;
         z-index: 99;
         padding-left: 5px;
-        color: white; }
+        color: #03A9F4; }
         body .sidebar-nav .pane-roomify-sidebar-user-menu .roomify-sidebar-user-menu li .glyphicon:hover, body .sidebar-nav .pane-roomify-sidebar-user-menu .roomify-sidebar-user-menu li .pane-roomify-property-flag-favorites-link .flag-favorites a:hover::before, .pane-roomify-property-flag-favorites-link .flag-favorites body .sidebar-nav .pane-roomify-sidebar-user-menu .roomify-sidebar-user-menu li a:hover::before, body .sidebar-nav .pane-roomify-sidebar-user-menu .roomify-sidebar-user-menu li .page-conversation-booking #roomify-accommodation-booking-current-search-form .current-search-item.current-search-submit button:hover::before, .page-conversation-booking #roomify-accommodation-booking-current-search-form .current-search-item.current-search-submit body .sidebar-nav .pane-roomify-sidebar-user-menu .roomify-sidebar-user-menu li button:hover::before,
         body .sidebar-nav .pane-roomify-sidebar-user-menu .roomify-sidebar-user-menu li .page-booking #roomify-accommodation-booking-current-search-form .current-search-item.current-search-submit button:hover::before,
         .page-booking #roomify-accommodation-booking-current-search-form .current-search-item.current-search-submit body .sidebar-nav .pane-roomify-sidebar-user-menu .roomify-sidebar-user-menu li button:hover::before {
@@ -8760,10 +8793,10 @@ body {
         color: white;
         font-weight: 400;
         font-size: 22px;
-        border-bottom: 0px;
-        margin: 15px 0px;
+        border-bottom: 0;
+        margin: 15px 0;
         width: 100%;
-        text-align: left;
+        text-align: center;
         padding-left: 0; }
       body .sidebar-nav .pane-user-login .form-item-name label,
       body .sidebar-nav .pane-user-login .form-item-pass label {
@@ -8773,19 +8806,22 @@ body {
         text-indent: 5px;
         font-size: 16px; }
       body .sidebar-nav .pane-user-login ul {
-        padding: 0px;
+        padding: 0;
         margin-bottom: 20px; }
         body .sidebar-nav .pane-user-login ul li {
-          text-indent: 0px;
+          text-indent: 0;
           line-height: 20px;
           list-style: none;
           cursor: pointer; }
           body .sidebar-nav .pane-user-login ul li a {
             font-size: 15px;
             display: inline-block;
-            padding: 0px; }
+            padding: 0; }
       body .sidebar-nav .pane-user-login .form-actions button {
-        width: 100%; }
+        width: 100%;
+        font-size: 16px; }
+        body .sidebar-nav .pane-user-login .form-actions button span {
+          margin-right: 6px; }
     body .sidebar-nav .pane-commerce-cart-cart {
       padding-left: 15px;
       padding-right: 15px;
@@ -8797,13 +8833,13 @@ body {
       body .sidebar-nav .pane-commerce-cart-cart .glyphicon, body .sidebar-nav .pane-commerce-cart-cart .pane-roomify-property-flag-favorites-link .flag-favorites a::before, .pane-roomify-property-flag-favorites-link .flag-favorites body .sidebar-nav .pane-commerce-cart-cart a::before, body .sidebar-nav .pane-commerce-cart-cart .page-conversation-booking #roomify-accommodation-booking-current-search-form .current-search-item.current-search-submit button::before, .page-conversation-booking #roomify-accommodation-booking-current-search-form .current-search-item.current-search-submit body .sidebar-nav .pane-commerce-cart-cart button::before,
       body .sidebar-nav .pane-commerce-cart-cart .page-booking #roomify-accommodation-booking-current-search-form .current-search-item.current-search-submit button::before,
       .page-booking #roomify-accommodation-booking-current-search-form .current-search-item.current-search-submit body .sidebar-nav .pane-commerce-cart-cart button::before {
-        font-size: 16px;
+        font-size: 20px;
         margin-right: 4px;
-        color: #FFFFFF;
+        color: #03A9F4;
         position: relative;
         right: 4px; }
       body .sidebar-nav .pane-commerce-cart-cart .table > tbody > tr > td {
-        border-width: 0px; }
+        border-width: 0; }
       body .sidebar-nav .pane-commerce-cart-cart table tbody tr {
         background: rgba(255, 255, 255, 0.28);
         color: white; }
@@ -8813,30 +8849,34 @@ body {
         body .sidebar-nav .pane-commerce-cart-cart table tbody tr:hover {
           background: white;
           color: black; }
-      body .sidebar-nav .pane-commerce-cart-cart .view-commerce-cart-block .line-item-summary {
-        font-size: 16px;
-        color: white; }
-        body .sidebar-nav .pane-commerce-cart-cart .view-commerce-cart-block .line-item-summary a:hover {
-          text-decoration: underline; }
-        body .sidebar-nav .pane-commerce-cart-cart .view-commerce-cart-block .line-item-summary .links.list-inline {
-          margin-top: 20px;
-          padding-bottom: 10px; }
+      body .sidebar-nav .pane-commerce-cart-cart .view-commerce-cart-block {
+        -webkit-transition: 100ms all ease;
+        -moz-transition: 100ms all ease;
+        -ms-transition: 100ms all ease;
+        -o-transition: 100ms all ease; }
+        body .sidebar-nav .pane-commerce-cart-cart .view-commerce-cart-block .line-item-summary {
+          font-size: 16px;
+          color: white; }
+          body .sidebar-nav .pane-commerce-cart-cart .view-commerce-cart-block .line-item-summary a:hover {
+            text-decoration: underline; }
+          body .sidebar-nav .pane-commerce-cart-cart .view-commerce-cart-block .line-item-summary .links.list-inline {
+            margin-top: 20px;
+            padding-bottom: 10px; }
     body .sidebar-nav .pane-favorite-properties-sidebar-favorites .pane-title {
       color: white;
       font-weight: 400;
-      font-size: 18px;
-      border-bottom: 0px;
-      width: 100%;
-      text-align: left; }
+      border-bottom: 0;
+      font-size: 22px;
+      text-align: center;
+      width: 100%; }
       body .sidebar-nav .pane-favorite-properties-sidebar-favorites .pane-title .glyphicon, body .sidebar-nav .pane-favorite-properties-sidebar-favorites .pane-title .pane-roomify-property-flag-favorites-link .flag-favorites a::before, .pane-roomify-property-flag-favorites-link .flag-favorites body .sidebar-nav .pane-favorite-properties-sidebar-favorites .pane-title a::before, body .sidebar-nav .pane-favorite-properties-sidebar-favorites .pane-title .page-conversation-booking #roomify-accommodation-booking-current-search-form .current-search-item.current-search-submit button::before, .page-conversation-booking #roomify-accommodation-booking-current-search-form .current-search-item.current-search-submit body .sidebar-nav .pane-favorite-properties-sidebar-favorites .pane-title button::before,
       body .sidebar-nav .pane-favorite-properties-sidebar-favorites .pane-title .page-booking #roomify-accommodation-booking-current-search-form .current-search-item.current-search-submit button::before,
       .page-booking #roomify-accommodation-booking-current-search-form .current-search-item.current-search-submit body .sidebar-nav .pane-favorite-properties-sidebar-favorites .pane-title button::before {
-        float: left;
         display: inline-block;
-        font-size: 16px;
+        font-size: 20px;
         margin-right: 6px;
         z-index: 99;
-        color: white; }
+        color: #03A9F4; }
       body .sidebar-nav .pane-favorite-properties-sidebar-favorites .pane-title a {
         color: white; }
         body .sidebar-nav .pane-favorite-properties-sidebar-favorites .pane-title a:hover {
@@ -8844,11 +8884,7 @@ body {
     body .sidebar-nav .pane-favorite-properties-sidebar-favorites .view-favorite-properties .views-row {
       display: inline-block;
       width: 100%;
-      padding: 5px;
-      -webkit-transition: 200ms all ease;
-      -moz-transition: 200ms all ease;
-      -ms-transition: 200ms all ease;
-      -o-transition: 200ms all ease; }
+      padding: 5px; }
       body .sidebar-nav .pane-favorite-properties-sidebar-favorites .view-favorite-properties .views-row .views-field-field-sp-featured-image {
         display: inline-block;
         float: left;
@@ -8869,13 +8905,10 @@ body {
             vertical-align: middle;
             display: table-cell; }
       body .sidebar-nav .pane-favorite-properties-sidebar-favorites .view-favorite-properties .views-row:hover {
-        background: rgba(255, 255, 255, 0.2);
-        -webkit-transition: 200ms all ease;
-        -moz-transition: 200ms all ease;
-        -ms-transition: 200ms all ease;
-        -o-transition: 200ms all ease; }
+        background: white;
+        color: black; }
         body .sidebar-nav .pane-favorite-properties-sidebar-favorites .view-favorite-properties .views-row:hover a {
-          color: white; }
+          color: black; }
         body .sidebar-nav .pane-favorite-properties-sidebar-favorites .view-favorite-properties .views-row:hover img {
           border-color: white; }
     body .sidebar-nav .pane-dashboard-guest-stays-panel-pane-2 {
@@ -8883,26 +8916,25 @@ body {
       body .sidebar-nav .pane-dashboard-guest-stays-panel-pane-2 .pane-title {
         color: white;
         font-weight: 400;
-        font-size: 18px;
-        border-bottom: 0px;
-        width: 100%;
-        text-align: left; }
+        font-size: 22px;
+        text-align: center;
+        border-bottom: 0;
+        width: 100%; }
         body .sidebar-nav .pane-dashboard-guest-stays-panel-pane-2 .pane-title .glyphicon, body .sidebar-nav .pane-dashboard-guest-stays-panel-pane-2 .pane-title .pane-roomify-property-flag-favorites-link .flag-favorites a::before, .pane-roomify-property-flag-favorites-link .flag-favorites body .sidebar-nav .pane-dashboard-guest-stays-panel-pane-2 .pane-title a::before, body .sidebar-nav .pane-dashboard-guest-stays-panel-pane-2 .pane-title .page-conversation-booking #roomify-accommodation-booking-current-search-form .current-search-item.current-search-submit button::before, .page-conversation-booking #roomify-accommodation-booking-current-search-form .current-search-item.current-search-submit body .sidebar-nav .pane-dashboard-guest-stays-panel-pane-2 .pane-title button::before,
         body .sidebar-nav .pane-dashboard-guest-stays-panel-pane-2 .pane-title .page-booking #roomify-accommodation-booking-current-search-form .current-search-item.current-search-submit button::before,
         .page-booking #roomify-accommodation-booking-current-search-form .current-search-item.current-search-submit body .sidebar-nav .pane-dashboard-guest-stays-panel-pane-2 .pane-title button::before {
-          float: left;
           display: inline-block;
-          font-size: 16px;
+          font-size: 20px;
           margin-right: 6px;
           z-index: 99;
-          color: white; }
+          color: #03A9F4; }
         body .sidebar-nav .pane-dashboard-guest-stays-panel-pane-2 .pane-title a {
           color: white; }
           body .sidebar-nav .pane-dashboard-guest-stays-panel-pane-2 .pane-title a:hover {
             text-decoration: underline; }
       body .sidebar-nav .pane-dashboard-guest-stays-panel-pane-2 .pane-content {
-        padding-left: 10px;
-        padding-right: 10px; }
+        padding-left: 15px;
+        padding-right: 15px; }
       body .sidebar-nav .pane-dashboard-guest-stays-panel-pane-2 .view-dashboard-guest-stays .views-row {
         display: inline-block;
         width: 100%;
@@ -8924,13 +8956,13 @@ body {
       body .sidebar-nav .pane-my-stays-panel-pane-1 .pane-title {
         margin-bottom: 5px;
         color: white;
-        text-align: center;
         font-weight: 400;
         padding: 5px 10px;
-        font-size: 18px;
+        font-size: 22px;
         float: left;
-        border: 0px;
-        color: white; }
+        border: 0;
+        color: white;
+        text-align: center; }
       body .sidebar-nav .pane-my-stays-panel-pane-1 .view-my-stays .views-row {
         display: inline-block;
         width: 100%;
@@ -8956,22 +8988,22 @@ body {
           display: inline-block;
           margin: 15px auto; }
   body.toggled {
-    padding-right: 280px;
-    margin-left: -280px; }
+    padding-right: 350px;
+    margin-left: -350px; }
     body.toggled #sidebar-wrapper {
-      width: 280px;
+      width: 350px;
       border-left: 2px solid #2B2B2B; }
   @media (max-width: 767px) {
     body #sidebar-wrapper {
-      right: 230px;
-      margin-right: -230px; }
+      right: 300px;
+      margin-right: -300px; }
       body #sidebar-wrapper .sidebar-nav {
-        width: 230px; }
+        width: 300px; }
     body.toggled {
-      padding-right: 230px;
-      margin-left: -230px; }
+      padding-right: 300px;
+      margin-left: -300px; }
       body.toggled #sidebar-wrapper {
-        width: 230px; } }
+        width: 300px; } }
 
 .roomify-sidebar-link a {
   font-size: 15px;
@@ -8990,10 +9022,10 @@ body.toggled #close-sidebar-wrapper {
   background: rgba(0, 0, 0, 0.35);
   height: 100%;
   cursor: pointer;
-  -webkit-transition: 250ms all ease;
-  -moz-transition: 250ms all ease;
-  -ms-transition: 250ms all ease;
-  -o-transition: 250ms all ease; }
+  -webkit-transition: 100ms all ease;
+  -moz-transition: 100ms all ease;
+  -ms-transition: 100ms all ease;
+  -o-transition: 100ms all ease; }
 
 .pane-roomify-manage-property {
   position: relative;
@@ -9103,7 +9135,7 @@ body.toggled #close-sidebar-wrapper {
     margin-bottom: 10px; }
     .pane-property-location .pane-roomify-property-field-sp-how-to-reach .pane-title,
     .pane-property-location .pane-roomify-property-field-sp-essentials .pane-title {
-      padding-top: 0px;
+      padding-top: 0;
       margin-bottom: 10px; }
     @media (min-width: 992px) {
       .pane-property-location .pane-roomify-property-field-sp-how-to-reach,
@@ -9247,7 +9279,7 @@ body.toggled #close-sidebar-wrapper {
     top: calc(50% - 15px);
     width: 30px;
     height: 30px;
-    margin-top: 0px;
+    margin-top: 0;
     text-indent: -9999px;
     border: 0;
     background-size: contain;
@@ -9263,7 +9295,7 @@ body.toggled #close-sidebar-wrapper {
     top: calc(50% - 15px);
     width: 30px;
     height: 30px;
-    margin-top: 0px;
+    margin-top: 0;
     text-indent: -9999px;
     border: 0;
     background-size: contain;
@@ -9319,7 +9351,7 @@ body.toggled #close-sidebar-wrapper {
     position: absolute;
     top: 0;
     right: 0;
-    padding: 0px 10px;
+    padding: 0 10px;
     background: #127ba3;
     font-size: 12px;
     text-transform: uppercase;
@@ -9528,7 +9560,7 @@ body.toggled #close-sidebar-wrapper {
     padding-bottom: 24px;
     background: #ffffff;
     border: 1px solid #ececec;
-    border-radius: 2px 2px 0px 0px; }
+    border-radius: 2px 2px 0 0; }
     .page-listing .listing-contact-block-top .user-image {
       position: absolute;
       top: -40px;
@@ -9591,7 +9623,7 @@ body.toggled #close-sidebar-wrapper {
       border-width: 1px; }
       .page-listing .panel_sl_left .ui-tabs .ui-tabs-nav li.ui-state-default {
         border-width: 1px;
-        border-bottom: 0px; } }
+        border-bottom: 0; } }
   .page-listing .panel_sl_left #property-description-tab {
     background: url("../images/description.png") center center no-repeat;
     background: url("../images/description.svg") center center no-repeat, linear-gradient(transparent, transparent);
@@ -9644,7 +9676,7 @@ body.toggled #close-sidebar-wrapper {
     border-bottom: 0;
     border: 1px solid #ececec;
     border-top: 0;
-    border-radius: 0px 0px 2px 2px;
+    border-radius: 0 0 2px 2px;
     background: white; }
     .page-listing .pane-roomify-owner-social-pages .pane-content {
       display: table;
@@ -9894,7 +9926,7 @@ body.toggled #close-sidebar-wrapper {
   padding-right: 15px;
   padding: 10px;
   border: 1px solid #E6E6E6;
-  border-right: 0px;
+  border-right: 0;
   min-height: 120px;
   background: white; }
   @media (min-width: 768px) {
@@ -10293,7 +10325,7 @@ body.toggled #close-sidebar-wrapper {
       margin: 0; }
     .page-conversation-booking #roomify-accommodation-booking-confirmation-form #edit-options .panel-body,
     .page-booking #roomify-accommodation-booking-confirmation-form #edit-options .panel-body {
-      padding-top: 0px; }
+      padding-top: 0; }
       .page-conversation-booking #roomify-accommodation-booking-confirmation-form #edit-options .panel-body .checkbox,
       .page-booking #roomify-accommodation-booking-confirmation-form #edit-options .panel-body .checkbox {
         margin-bottom: 0;
@@ -10563,7 +10595,7 @@ body.toggled #close-sidebar-wrapper {
   .page-entityform .entity-entityform .field-name-field-listing-enquiry-type-ref,
   .page-entityform .entity-entityform .field-name-field-listing-enquiry-dep-date,
   .page-entityform .entity-entityform .field-name-field-listing-enquiry-arr-date {
-    border-right: 0px; }
+    border-right: 0; }
   .page-entityform .entity-entityform .field-name-field-listing-enquiry-name,
   .page-entityform .entity-entityform .field-name-field-listing-enquiry-email {
     width: 50%; }
@@ -10678,7 +10710,7 @@ body.toggled #close-sidebar-wrapper {
   margin-bottom: 30px; }
   .page-checkout #edit-commerce-payment-payment-method .form-item-commerce-payment-payment-method .commerce-paypal-icon {
     display: inline-block;
-    top: 0px;
+    top: 0;
     margin-right: 15px; }
   .page-checkout #edit-commerce-payment-payment-method .form-item-commerce-payment-payment-method .commerce-paypal-icons {
     margin-top: 10px; }
@@ -10869,7 +10901,7 @@ ol.inline.commerce-checkout-progress {
     .page-activities-search .panel_sl_content,
     .page-availability-search .panel_sl_content {
       padding-left: 0;
-      margin-top: 0px;
+      margin-top: 0;
       position: relative;
       bottom: 53px; }
       .page-activities-search .panel_sl_content .ui-tabs .ui-tabs-panel,
@@ -10884,12 +10916,12 @@ ol.inline.commerce-checkout-progress {
         .page-availability-search .panel_sl_content .ui-tabs .ui-tabs-nav li.ui-state-default {
           float: right;
           border-width: 1px;
-          border-bottom: 0px; }
+          border-bottom: 0; }
           .page-activities-search .panel_sl_content .ui-tabs .ui-tabs-panel li.ui-state-default:first-child,
           .page-activities-search .panel_sl_content .ui-tabs .ui-tabs-nav li.ui-state-default:first-child,
           .page-availability-search .panel_sl_content .ui-tabs .ui-tabs-panel li.ui-state-default:first-child,
           .page-availability-search .panel_sl_content .ui-tabs .ui-tabs-nav li.ui-state-default:first-child {
-            margin-right: 0px; } }
+            margin-right: 0; } }
 .page-activities-search .view-display-id-panel_pane_1 .property-row a,
 .page-availability-search .view-display-id-panel_pane_1 .property-row a {
   color: initial; }
@@ -11098,7 +11130,7 @@ ol.inline.commerce-checkout-progress {
     .page-taxonomy-area .page-availability-search .view-display-id-panel_pane_3 .property-row .views-field-name .field-name-field-area-title-blog-posts,
     .page-availability-search .view-display-id-panel_pane_3 .property-row .views-field-name .page-taxonomy-area .field-name-field-title-featured-properties,
     .page-taxonomy-area .page-availability-search .view-display-id-panel_pane_3 .property-row .views-field-name .field-name-field-title-featured-properties {
-      margin-top: 0px; }
+      margin-top: 0; }
   .page-activities-search .view-display-id-panel_pane_3 .property-row .views-field-field-sp-featured-image img,
   .page-availability-search .view-display-id-panel_pane_3 .property-row .views-field-field-sp-featured-image img {
     border: 1px solid #ececec;
@@ -11735,7 +11767,7 @@ ol.inline.commerce-checkout-progress {
       color: white; }
   .page-availability-search .panel-sl-left-content-wrapper .panel_sl_left .pane-current-search-properties.pane-current-search-properties .current-search-item ul,
   .page-availability-search .panel-sl-left-content-wrapper .panel_sl_left .panel-pane.pane-block.pane-current-search-properties .current-search-item ul {
-    padding-left: 0px; }
+    padding-left: 0; }
     .page-availability-search .panel-sl-left-content-wrapper .panel_sl_left .pane-current-search-properties.pane-current-search-properties .current-search-item ul li,
     .page-availability-search .panel-sl-left-content-wrapper .panel_sl_left .panel-pane.pane-block.pane-current-search-properties .current-search-item ul li {
       margin-right: 15px;
@@ -11978,7 +12010,7 @@ ol.inline.commerce-checkout-progress {
           top: 10px;
           right: 5px; }
       .pane-search-api-sorts-search-sorts .search-api-sorts li:last-child {
-        padding: 0 0px 0 15px; }
+        padding: 0 0 0 15px; }
         .pane-search-api-sorts-search-sorts .search-api-sorts li:last-child:before {
           width: 30px;
           height: 30px;
@@ -11989,7 +12021,7 @@ ol.inline.commerce-checkout-progress {
           background-size: 25px 25px;
           position: relative;
           top: 10px;
-          right: 0px; }
+          right: 0; }
       .pane-search-api-sorts-search-sorts .search-api-sorts li .sort-item.active-sort {
         text-decoration: underline;
         font-weight: bold;
@@ -12262,7 +12294,7 @@ ol.inline.commerce-checkout-progress {
   clear: both; }
 
 #properties-tabs .panel_sl_content {
-  margin-bottom: 0px;
+  margin-bottom: 0;
   margin-top: 20px;
   position: relative;
   bottom: 50px;
@@ -12281,7 +12313,7 @@ ol.inline.commerce-checkout-progress {
     .page-blog .panel_sl_content {
       margin-bottom: 30px; } }
 .page-blog .panel_sl_right {
-  padding: 0px 10px; }
+  padding: 0 10px; }
   @media (max-width: 768px) {
     .page-blog .panel_sl_right {
       margin-top: 40px; } }
@@ -12332,7 +12364,7 @@ ol.inline.commerce-checkout-progress {
         .page-blog .panel_sl_right .panel-pane .pane-content .views-row .pane-blog-panel-pane-3 .view-display-id-panel_pane_3 .masonry-item {
           border-radius: 5px;
           width: 320px;
-          margin: 25px 0px;
+          margin: 25px 0;
           -webkit-transition: 250ms opacity ease-out;
           -moz-transition: 250ms opacity ease-out;
           -ms-transition: 250ms opacity ease-out;
@@ -12359,8 +12391,8 @@ ol.inline.commerce-checkout-progress {
             background-color: white;
             color: #565656;
             font-weight: 300;
-            padding: 0px 10px 10px 10px;
-            border-radius: 0px 0px 5px 5px; }
+            padding: 0 10px 10px 10px;
+            border-radius: 0 0 5px 5px; }
             .page-blog .panel_sl_right .panel-pane .pane-content .views-row .pane-blog-panel-pane-8 .view-display-id-panel_pane_8 .masonry-item .views-field-body .field-content,
             .page-blog .panel_sl_right .panel-pane .pane-content .views-row .pane-blog-panel-pane-8 .view-display-id-panel_pane_7 .masonry-item .views-field-body .field-content,
             .page-blog .panel_sl_right .panel-pane .pane-content .views-row .pane-blog-panel-pane-8 .view-display-id-panel_pane_3 .masonry-item .views-field-body .field-content,
@@ -12480,7 +12512,7 @@ ol.inline.commerce-checkout-progress {
   position: relative; }
   .page-blog .view-featured-properties.view-display-id-panel_pane_2 .views-row.views-row-last {
     border: 0;
-    padding-bottom: 0px; }
+    padding-bottom: 0; }
   .page-blog .view-featured-properties.view-display-id-panel_pane_2 .views-row .views-field-field-sp-featured-image {
     width: 45%;
     float: left;
@@ -12566,7 +12598,7 @@ ol.inline.commerce-checkout-progress {
 .page-blog .pane-blog-panel-pane-7 .view-display-id-panel_pane_7 .masonry-item {
   border-radius: 5px;
   width: 320px;
-  margin: 25px 0px;
+  margin: 25px 0;
   -webkit-transition: 250ms opacity ease-out;
   -moz-transition: 250ms opacity ease-out;
   -ms-transition: 250ms opacity ease-out;
@@ -12577,8 +12609,8 @@ ol.inline.commerce-checkout-progress {
     background-color: white;
     color: #565656;
     font-weight: 300;
-    padding: 0px 10px 10px 10px;
-    border-radius: 0px 0px 5px 5px; }
+    padding: 0 10px 10px 10px;
+    border-radius: 0 0 5px 5px; }
     .page-blog .pane-blog-panel-pane-7 .view-display-id-panel_pane_7 .masonry-item .views-field-body .field-content {
       padding-top: 10px; }
       .page-blog .pane-blog-panel-pane-7 .view-display-id-panel_pane_7 .masonry-item .views-field-body .field-content .views-more-link {
@@ -12630,7 +12662,7 @@ ol.inline.commerce-checkout-progress {
     display: inline-block;
     float: left;
     width: 100%;
-    padding: 15px 0px;
+    padding: 15px 0;
     border-top: 0;
     text-transform: uppercase;
     font-weight: 300; }
@@ -12673,8 +12705,8 @@ ol.inline.commerce-checkout-progress {
   .node-type-blog .roomify-blog-icon.pane-node-field-blog-categories {
     float: left;
     width: 100%;
-    margin-top: 0px;
-    padding: 15px 0px;
+    margin-top: 0;
+    padding: 15px 0;
     border-top: 1px solid #EEEEEE;
     display: inline-block; }
 .node-type-blog .field-name-field-featured-image {
@@ -12687,7 +12719,7 @@ ol.inline.commerce-checkout-progress {
   width: 100%;
   margin: 20px 0; }
 .node-type-blog .panel_sl_right {
-  padding: 0px 10px; }
+  padding: 0 10px; }
   @media (max-width: 768px) {
     .node-type-blog .panel_sl_right {
       margin-top: 40px; } }
@@ -12767,7 +12799,7 @@ ol.inline.commerce-checkout-progress {
       top: calc(45% - 15px);
       width: 30px;
       height: 30px;
-      margin-top: 0px;
+      margin-top: 0;
       text-indent: -9999px;
       border: 0;
       background-size: contain;
@@ -12780,7 +12812,7 @@ ol.inline.commerce-checkout-progress {
       top: calc(45% - 15px);
       width: 30px;
       height: 30px;
-      margin-top: 0px;
+      margin-top: 0;
       text-indent: -9999px;
       border: 0;
       background-size: contain;
@@ -12853,7 +12885,7 @@ ol.inline.commerce-checkout-progress {
     top: calc(45% - 15px);
     width: 30px;
     height: 30px;
-    margin-top: 0px;
+    margin-top: 0;
     text-indent: -9999px;
     border: 0;
     background-size: contain;
@@ -12866,7 +12898,7 @@ ol.inline.commerce-checkout-progress {
     top: calc(45% - 15px);
     width: 30px;
     height: 30px;
-    margin-top: 0px;
+    margin-top: 0;
     text-indent: -9999px;
     border: 0;
     background-size: contain;
@@ -12881,7 +12913,7 @@ ol.inline.commerce-checkout-progress {
     .page-things-to-do .panel_sl_content {
       margin-bottom: 30px; } }
 .page-things-to-do .panel_sl_right {
-  padding: 0px 10px; }
+  padding: 0 10px; }
   @media (max-width: 768px) {
     .page-things-to-do .panel_sl_right {
       margin-top: 40px; } }
@@ -12964,7 +12996,7 @@ ol.inline.commerce-checkout-progress {
   padding-bottom: 30px; }
   .page-things-to-do .view-featured-properties.view-display-id-panel_pane_2 .views-row.views-row-last {
     border: 0;
-    padding-bottom: 0px; }
+    padding-bottom: 0; }
   .page-things-to-do .view-featured-properties.view-display-id-panel_pane_2 .views-row .views-field-field-sp-featured-image {
     width: 45%;
     float: left;
@@ -13012,11 +13044,11 @@ ol.inline.commerce-checkout-progress {
 .node-type-activity .pane-activity-panel-pane-2 {
   margin-bottom: 25px; }
   .node-type-activity .pane-activity-panel-pane-2 img {
-    box-shadow: 2px 2px 6px 0px rgba(82, 82, 82, 0.52);
-    -webkit-box-shadow: 2px 2px 6px 0px rgba(82, 82, 82, 0.52);
-    -moz-box-shadow: 2px 2px 6px 0px rgba(82, 82, 82, 0.52);
-    -ms-box-shadow: 2px 2px 6px 0px rgba(82, 82, 82, 0.52);
-    -o-box-shadow: 2px 2px 6px 0px rgba(82, 82, 82, 0.52); }
+    box-shadow: 2px 2px 6px 0 rgba(82, 82, 82, 0.52);
+    -webkit-box-shadow: 2px 2px 6px 0 rgba(82, 82, 82, 0.52);
+    -moz-box-shadow: 2px 2px 6px 0 rgba(82, 82, 82, 0.52);
+    -ms-box-shadow: 2px 2px 6px 0 rgba(82, 82, 82, 0.52);
+    -o-box-shadow: 2px 2px 6px 0 rgba(82, 82, 82, 0.52); }
   .node-type-activity .pane-activity-panel-pane-2 .slick.slick--view--property {
     position: relative; }
   .node-type-activity .pane-activity-panel-pane-2 .slick-next.slick-arrow {
@@ -13027,7 +13059,7 @@ ol.inline.commerce-checkout-progress {
     top: calc(50% - 15px);
     width: 30px;
     height: 30px;
-    margin-top: 0px;
+    margin-top: 0;
     text-indent: -9999px;
     border: 0;
     background-size: contain;
@@ -13043,7 +13075,7 @@ ol.inline.commerce-checkout-progress {
     top: calc(50% - 15px);
     width: 30px;
     height: 30px;
-    margin-top: 0px;
+    margin-top: 0;
     text-indent: -9999px;
     border: 0;
     background-size: contain;
@@ -13098,7 +13130,7 @@ ol.inline.commerce-checkout-progress {
   width: 100%;
   margin: 20px 0; }
 .node-type-activity .panel_sl_right {
-  padding: 0px 10px; }
+  padding: 0 10px; }
   @media (max-width: 768px) {
     .node-type-activity .panel_sl_right {
       margin-top: 40px; } }
@@ -13160,7 +13192,7 @@ ol.inline.commerce-checkout-progress {
       top: calc(45% - 15px);
       width: 30px;
       height: 30px;
-      margin-top: 0px;
+      margin-top: 0;
       text-indent: -9999px;
       border: 0;
       background-size: contain;
@@ -13173,7 +13205,7 @@ ol.inline.commerce-checkout-progress {
       top: calc(45% - 15px);
       width: 30px;
       height: 30px;
-      margin-top: 0px;
+      margin-top: 0;
       text-indent: -9999px;
       border: 0;
       background-size: contain;
@@ -13262,7 +13294,7 @@ body.node-type-homepage {
   body.node-type-homepage .panel-content-top {
     position: relative; }
   body.node-type-homepage .main-container {
-    padding-top: 0px;
+    padding-top: 0;
     position: relative;
     bottom: 75px;
     padding-bottom: 75px; }
@@ -13298,7 +13330,7 @@ body.node-type-homepage {
     top: calc(50% - 15px);
     width: 30px;
     height: 30px;
-    margin-top: 0px;
+    margin-top: 0;
     text-indent: -9999px;
     border: 0;
     background-size: contain;
@@ -13311,7 +13343,7 @@ body.node-type-homepage {
     top: calc(50% - 15px);
     width: 30px;
     height: 30px;
-    margin-top: 0px;
+    margin-top: 0;
     text-indent: -9999px;
     border: 0;
     background-size: contain;
@@ -13483,7 +13515,7 @@ body.node-type-homepage {
     top: calc(45% - 15px);
     width: 30px;
     height: 30px;
-    margin-top: 0px;
+    margin-top: 0;
     text-indent: -9999px;
     border: 0;
     background-size: contain;
@@ -13499,7 +13531,7 @@ body.node-type-homepage {
     top: calc(45% - 15px);
     width: 30px;
     height: 30px;
-    margin-top: 0px;
+    margin-top: 0;
     text-indent: -9999px;
     border: 0;
     background-size: contain;
@@ -13518,7 +13550,7 @@ body.node-type-homepage {
     border-bottom: 2px solid #006699;
     color: white;
     top: 10px;
-    border-radius: 0px 4px 0px 4px; }
+    border-radius: 0 4px 0 4px; }
 
 .pane-homepage-blogposts-panel-pane-1 {
   display: inline-block;
@@ -13579,7 +13611,7 @@ body.node-type-homepage {
     color: white;
     background: #0b1418;
     width: 100%;
-    border-radius: 0px 0px 2px 2px;
+    border-radius: 0 0 2px 2px;
     padding: 8px 10px;
     position: relative; }
     .pane-featured-properties-panel-pane-4 .views-field-name table {
@@ -13673,7 +13705,7 @@ body.node-type-homepage {
       color: white;
       background: #0b1418;
       width: 100%;
-      border-radius: 0px 0px 2px 2px;
+      border-radius: 0 0 2px 2px;
       padding: 18px 10px; }
     .pane-featured-areas-panel-pane-1 .view-display-id-panel_pane_1 .views-field-field-area-featured-image {
       overflow: hidden;
@@ -13698,7 +13730,7 @@ body.node-type-homepage {
   z-index: 90;
   margin-bottom: 0; }
 .page-taxonomy-area .main-container {
-  padding-top: 0px;
+  padding-top: 0;
   position: relative;
   padding-bottom: 75px; }
 .page-taxonomy-area .tabs--primary.nav {
@@ -13787,7 +13819,7 @@ body.node-type-homepage {
   margin-left: 10%;
   border-radius: 5px;
   background: rgba(0, 0, 0, 0.8);
-  padding: 25px 0px 10px 0px; }
+  padding: 25px 0 10px 0; }
   @media (max-width: 768px) {
     .page-taxonomy-area .pane-roomify-listing-availability-search-block-roomify-property-search {
       width: 100%;
@@ -13796,13 +13828,13 @@ body.node-type-homepage {
     .page-taxonomy-area .pane-roomify-listing-availability-search-block-roomify-property-search {
       top: 360px; } }
   .page-taxonomy-area .pane-roomify-listing-availability-search-block-roomify-property-search .search-availability-submit {
-    margin-top: 0px !important; }
+    margin-top: 0 !important; }
   .page-taxonomy-area .pane-roomify-listing-availability-search-block-roomify-property-search .form-wrapper .control-label {
     display: none !important; }
   @media (max-width: 768px) {
     .page-taxonomy-area .pane-roomify-listing-availability-search-block-roomify-property-search {
       position: relative;
-      top: 0px;
+      top: 0;
       margin-bottom: 40px;
       padding: 0 20px;
       background: none; } }
@@ -13922,7 +13954,7 @@ body.node-type-homepage {
 .page-taxonomy-area .pane-blog-panel-pane-11 .view-display-id-panel_pane_11 .masonry-item {
   border-radius: 5px;
   width: 320px;
-  margin: 25px 0px;
+  margin: 25px 0;
   -webkit-transition: 250ms opacity ease-out;
   -moz-transition: 250ms opacity ease-out;
   -ms-transition: 250ms opacity ease-out;
@@ -13933,8 +13965,8 @@ body.node-type-homepage {
     background-color: white;
     color: #565656;
     font-weight: 300;
-    padding: 0px 10px 10px 10px;
-    border-radius: 0px 0px 5px 5px; }
+    padding: 0 10px 10px 10px;
+    border-radius: 0 0 5px 5px; }
     .page-taxonomy-area .pane-blog-panel-pane-11 .view-display-id-panel_pane_11 .masonry-item .views-field-body .field-content {
       padding-top: 10px; }
       .page-taxonomy-area .pane-blog-panel-pane-11 .view-display-id-panel_pane_11 .masonry-item .views-field-body .field-content .views-more-link {
@@ -14112,7 +14144,7 @@ body.node-type-homepage {
       color: white;
       background: #0b1418;
       width: 100%;
-      border-radius: 0px 0px 2px 2px;
+      border-radius: 0 0 2px 2px;
       padding: 8px 10px;
       position: relative; }
     .page-areas .view-areas-travel.view-display-id-all_areas_view .views-row .views-field-area-properties table {
@@ -14218,8 +14250,8 @@ body.node-type-homepage {
         font-size: 30px;
         line-height: 20px;
         position: absolute;
-        top: 0px;
-        left: 0px;
+        top: 0;
+        left: 0;
         width: 20px;
         height: 20px;
         content: "•";
@@ -14241,7 +14273,7 @@ body.node-type-homepage {
   top: calc(50% - 15px);
   width: 30px;
   height: 30px;
-  margin-top: 0px;
+  margin-top: 0;
   text-indent: -9999px;
   border: 0;
   background-size: contain;
@@ -14257,7 +14289,7 @@ body.node-type-homepage {
   top: calc(50% - 15px);
   width: 30px;
   height: 30px;
-  margin-top: 0px;
+  margin-top: 0;
   text-indent: -9999px;
   border: 0;
   background-size: contain;
@@ -14401,7 +14433,7 @@ body.node-type-homepage {
         padding: 20px 10px;
         background: rgba(0, 0, 0, 0.5);
         color: white;
-        border-radius: 0px 0px 4px 4px span;
+        border-radius: 0 0 4px 4px span;
           border-radius-top: 2px;
           border-radius-margin-right: 10px; }
 
@@ -14414,7 +14446,7 @@ body.node-type-homepage {
 .page-taxonomy-tags .pane-blog-panel-pane-8 .view-display-id-panel_pane_8 .masonry-item {
   border-radius: 5px;
   width: 320px;
-  margin: 25px 0px;
+  margin: 25px 0;
   -webkit-transition: 250ms opacity ease-out;
   -moz-transition: 250ms opacity ease-out;
   -ms-transition: 250ms opacity ease-out;
@@ -14425,8 +14457,8 @@ body.node-type-homepage {
     background-color: white;
     color: #565656;
     font-weight: 300;
-    padding: 0px 10px 10px 10px;
-    border-radius: 0px 0px 5px 5px; }
+    padding: 0 10px 10px 10px;
+    border-radius: 0 0 5px 5px; }
     .page-taxonomy-tags .pane-blog-panel-pane-8 .view-display-id-panel_pane_8 .masonry-item .views-field-body .field-content {
       padding-top: 10px; }
       .page-taxonomy-tags .pane-blog-panel-pane-8 .view-display-id-panel_pane_8 .masonry-item .views-field-body .field-content .views-more-link {
@@ -14509,7 +14541,7 @@ body.node-type-homepage {
       position: relative;
       background: #FFF898;
       border: 2px solid #FFF34A;
-      border-radius: 8px 8px 0px 8px; }
+      border-radius: 8px 8px 0 8px; }
       .page-conversation .entity-message .message.message-right:after {
         border-left: 12px solid #FFF34A;
         border-top: 12px solid transparent;
@@ -14537,7 +14569,7 @@ body.node-type-homepage {
         right: 10px; }
     .page-conversation .entity-message .message.message-left {
       margin-right: 60%;
-      border-radius: 8px 8px 8px 0px;
+      border-radius: 8px 8px 8px 0;
       position: relative; }
       .page-conversation .entity-message .message.message-left:after {
         border-right: 12px solid #ECECEC;
@@ -14548,7 +14580,7 @@ body.node-type-homepage {
         position: absolute;
         left: -13px;
         z-index: 999;
-        margin-left: 0px;
+        margin-left: 0;
         width: 0;
         height: 0; }
       .page-conversation .entity-message .message.message-left .user-picture {
@@ -14775,7 +14807,7 @@ body.page-single-property-listing {
     position: relative; }
   @media (min-width: 768px) {
     body.page-single-property-listing .main-container {
-      padding-top: 0px;
+      padding-top: 0;
       position: relative;
       bottom: 75px;
       padding-bottom: 75px; } }
@@ -14866,7 +14898,7 @@ body.page-single-property-listing {
         background: #0b1418;
         width: 100%;
         max-width: 100%;
-        padding: 36px 0px 20px 20px; } }
+        padding: 36px 0 20px 20px; } }
     body.page-single-property-listing .pane-roomify-listing-availability-search-block-roomify-listing-search form,
     body.page-single-property-listing .pane-locanda-availability-search form {
       margin: 0 auto;
@@ -15224,10 +15256,10 @@ body.page-single-property-listing {
         border-width: 1px; }
         body.page-single-property-listing .panel-content-bottom .ui-tabs .ui-tabs-nav li.ui-state-default {
           border-width: 1px;
-          border-bottom: 0px;
+          border-bottom: 0;
           float: right; }
           body.page-single-property-listing .panel-content-bottom .ui-tabs .ui-tabs-nav li.ui-state-default:first-child {
-            margin-right: 0px; } }
+            margin-right: 0; } }
     body.page-single-property-listing .panel-content-bottom #property-description-tab {
       background: url("../images/description.png") center center no-repeat;
       background: url("../images/description.svg") center center no-repeat, linear-gradient(transparent, transparent);

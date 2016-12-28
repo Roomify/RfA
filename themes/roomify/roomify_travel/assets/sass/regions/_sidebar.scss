@@ -1,43 +1,64 @@
+
 body {
   padding-right: 0;
-  @include transition(300ms all ease);
+  @include transition(100ms all ease);
   #sidebar-wrapper {
     z-index: 1000;
     position: fixed;
     right: 280px;
-    width: 0px;
+    width: 0;
     height: 100%;
     margin-right: -280px;
     overflow-y: auto;
     background: #000;
-    background-image: url('../images/sidebar_pattern.png');
     overflow-x: hidden;
-    @include transition(300ms all ease);
+    @include transition(100ms all ease);
+    .close-sidebar {
+      border-bottom: 0;
+      margin-bottom: 0;
+      width: 100%;
+      padding-bottom: 10px;
+    }
+    #close-sidebar-icon {
+      background: url('../images/close.png') center center no-repeat;
+      margin-right: 20px;
+      margin-top: 15px;
+      text-indent: -999999px;
+      display: block;
+      cursor: pointer;
+      width: 20px;
+      background-size: contain;
+      float: right;
+    }
   }
   .sidebar-nav {
     position: absolute;
     top: 0;
-    width: 260px;
+    width: 100%;
     margin: 0;
     list-style: none;
-    padding: 5px;
+    padding: 10px;
     a {
       color: #fff;
     }
     .panel-pane {
       display: inline-block;
       width: 100%;
-      margin-bottom: 25px;
-      border-bottom: 1px solid #cbc7d4;
-      padding-bottom: 25px;
+      margin-bottom: 30px;
+      border-bottom: 1px solid #03A9F4;
+      padding-bottom: 30px;
+      &:last-child {
+        border-bottom: none;
+      }
       .pane-title {
-        border-bottom: 0px;
+        border-bottom: 0;
         text-align: left;
         width: 100%;
         color: white;
         font-weight: 400;
         padding: 5px 10px;
-        font-size: 18px;
+        font-size: 22px;
+        text-align: center;
       }
     }
     .pane-roomify-sidebar-user-menu {
@@ -46,6 +67,24 @@ body {
         font-size: 22px;
       }
       .roomify-sidebar-user-menu {
+        .roomify-sidebar-image {
+          width: 80px;
+          height: 80px;
+          border-radius: 50%;
+          display: table;
+          margin: 10px auto;
+          margin-bottom: 0px;
+          img {
+            border-radius: 50%;
+          }
+        }
+        .sidebar-profile-message {
+          @extend .h3;
+          text-align: center;
+          color: white;
+          margin-top: 0px;
+          margin-bottom: 30px;
+        }
         li {
           z-index: 999;
           width: 90%;
@@ -59,7 +98,7 @@ body {
             margin-right: 10px;
             z-index: 99;
             padding-left: 5px;
-            color: white;
+            color: #03A9F4;
             &:hover {
               color: black;
             }
@@ -90,10 +129,10 @@ body {
         color: white;
         font-weight: 400;
         font-size: 22px;
-        border-bottom: 0px;
-        margin: 15px 0px;
+        border-bottom: 0;
+        margin: 15px 0;
         width: 100%;
-        text-align: left;
+        text-align: center;
         padding-left: 0;
       }
       .form-item-name,
@@ -107,17 +146,17 @@ body {
         }
       }
       ul {
-        padding: 0px;
+        padding: 0;
         margin-bottom: 20px;
         li {
-          text-indent: 0px;
+          text-indent: 0;
           line-height: 20px;
           list-style: none;
           cursor: pointer;
           a {
             font-size: 15px;
             display: inline-block;
-            padding: 0px;
+            padding: 0;
           }
         }
       }
@@ -125,6 +164,10 @@ body {
         button {
           width: 100%;
           @extend .btn-success;
+          font-size: 16px;
+          span {
+            margin-right: 6px;
+          }
         }
       }
     }
@@ -140,14 +183,14 @@ body {
         display: none;
       }
       .glyphicon {
-        font-size: 16px;
+        font-size: 20px;
         margin-right: 4px;
-        color: #FFFFFF;
+        color: #03A9F4;
         position: relative;
         right: 4px;
       }
       .table > tbody > tr > td {
-        border-width: 0px;
+        border-width: 0;
       }
       table tbody tr {
         background: rgba(255, 255, 255, 0.28);
@@ -162,6 +205,7 @@ body {
         }
       }
       .view-commerce-cart-block {
+        @include transition(100ms all ease);
         .line-item-summary {
           font-size: 16px;
           color: white;
@@ -181,17 +225,16 @@ body {
       .pane-title {
         color: white;
         font-weight: 400;
-        font-size: 18px;
-        border-bottom: 0px;
+        border-bottom: 0;
+        font-size: 22px;
+        text-align: center;
         width: 100%;
-        text-align: left;
         .glyphicon {
-          float: left;
           display: inline-block;
-          font-size: 16px;
+          font-size: 20px;
           margin-right: 6px;
           z-index: 99;
-          color: white;
+          color: #03A9F4;
         }
         a {
           color: white;
@@ -230,16 +273,15 @@ body {
             }
           }
           &:hover {
-            background: rgba(255,255,255,0.2);
+            background: rgba(255,255,255, 1);
+            color: black;
             a {
-              color: white;
+              color: black;
             }
             img {
               border-color: white;
             }
-            @include transition(200ms all ease);
           }
-          @include transition(200ms all ease);
         }
       }
     }
@@ -248,17 +290,16 @@ body {
       .pane-title {
         color: white;
         font-weight: 400;
-        font-size: 18px;
-        border-bottom: 0px;
+        font-size: 22px;
+        text-align: center;
+        border-bottom: 0;
         width: 100%;
-        text-align: left;
         .glyphicon {
-          float: left;
           display: inline-block;
-          font-size: 16px;
+          font-size: 20px;
           margin-right: 6px;
           z-index: 99;
-          color: white;
+          color: #03A9F4;
         }
         a {
           color: white;
@@ -268,8 +309,8 @@ body {
         }
       }
       .pane-content {
-        padding-left: 10px;
-        padding-right: 10px;
+        padding-left: 15px;
+        padding-right: 15px;
       }
       .view-dashboard-guest-stays{
         .views-row {
@@ -300,13 +341,13 @@ body {
       .pane-title {
         margin-bottom: 5px;
         color: white;
-        text-align: center;
         font-weight: 400;
         padding: 5px 10px;
-        font-size: 18px;
+        font-size: 22px;
         float: left;
-        border: 0px;
+        border: 0;
         color: white;
+        text-align: center;
       }
       .view-my-stays {
         .views-row {
@@ -345,27 +386,27 @@ body {
 
 
   &.toggled {
-    padding-right: 280px;
-    margin-left: -280px;
+    padding-right: 350px;
+    margin-left: -350px;
     #sidebar-wrapper {
-      width: 280px;
+      width: 350px;
       border-left: 2px solid #2B2B2B;
     }
   }
   // SMALL DEVICES SIDEBAR
  @include breakpoint(xs) { // Mobile
     #sidebar-wrapper {
-      right: 230px;
-      margin-right: -230px;
+      right: 300px;
+      margin-right: -300px;
       .sidebar-nav {
-        width: 230px;
+        width: 300px;
       }
     }
     &.toggled {
-      padding-right: 230px;
-      margin-left: -230px;
+      padding-right: 300px;
+      margin-left: -300px;
       #sidebar-wrapper {
-        width: 230px;
+        width: 300px;
       }
     }
   }
@@ -394,6 +435,6 @@ body.toggled {
     background: rgba(0, 0, 0, 0.35);
     height: 100%;
     cursor: pointer;
-    @include transition(250ms all ease);
+    @include transition(100ms all ease);
   }
 }

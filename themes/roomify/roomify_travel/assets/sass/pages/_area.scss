@@ -5,7 +5,7 @@
     margin-bottom: 0;
   }
   .main-container {
-    padding-top: 0px;
+    padding-top: 0;
     position: relative;
     padding-bottom: 75px;
   }
@@ -68,27 +68,27 @@
         width: 100%;
         margin: 0;
         position: absolute;
-        bottom:20px;
-        left:0;
-        right:0;
-        background:rgba(0,0,0,.5);
+        bottom: 20px;
+        left: 0;
+        right: 0;
+        background: rgba(0,0,0,.5);
         text-align: center;
-        padding:40px;
-        color:white;
+        padding: 40px;
+        color: white;
         @media (max-width: $screen-sm) {
           padding: 20px;
         }
         .slideshow-info-title {
-          font-size:22px;
+          font-size: 22px;
           @media (max-width: $screen-xs) {
-            font-size:16px;
+            font-size: 16px;
           }
         }
         
         .slideshow-info-description {
-          font-size:16px;
-          color:#999;
-          font-style:italic;
+          font-size: 16px;
+          color: #999;
+          font-style: italic;
           @media (max-width: $screen-xs) {
             display: none;
           }
@@ -113,20 +113,20 @@
       margin-left: 0;
     }
     background: rgba(0, 0, 0, 0.8);
-    padding: 25px 0px 10px 0px;
+    padding: 25px 0 10px 0;
 
     @media (min-width: $screen-lg) {
       top: 360px;
     }
     .search-availability-submit {
-      margin-top: 0px !important;
+      margin-top: 0 !important;
     }
     .form-wrapper .control-label {
       display: none !important;
     }
     @media (max-width: $screen-sm) {
       position: relative;
-      top: 0px;
+      top: 0;
       margin-bottom: 40px;
       padding: 0 20px;
       background: none;
@@ -256,7 +256,7 @@
       .masonry-item {
         border-radius: 5px;
         width: 320px;
-        margin: 25px 0px;
+        margin: 25px 0;
         .views-field-field-featured-image {
           img {
             border-radius: 5px 5px 0 0;
@@ -266,8 +266,8 @@
           background-color: white;
           color: #565656;
           font-weight: 300;
-          padding: 0px 10px 10px 10px;
-          border-radius: 0px 0px 5px 5px;
+          padding: 0 10px 10px 10px;
+          border-radius: 0 0 5px 5px;
           .field-content {
             padding-top: 10px;
             .views-more-link {
@@ -394,7 +394,7 @@
           color: white;
           background: #0b1418;
           width: 100%;
-          border-radius: 0px 0px 2px 2px;
+          border-radius: 0 0 2px 2px;
           padding: 8px 10px;
           position: relative;
         }

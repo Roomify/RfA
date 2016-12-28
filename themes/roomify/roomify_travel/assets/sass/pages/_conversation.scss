@@ -72,7 +72,7 @@
         position: relative;
         background: #FFF898;
         border: 2px solid #FFF34A;
-        border-radius: 8px 8px 0px 8px;
+        border-radius: 8px 8px 0 8px;
         &:after {
           border-left: 12px solid #FFF34A;
           border-top: 12px solid transparent;
@@ -105,7 +105,7 @@
       }
       &.message-left {
         margin-right: 60%;
-        border-radius: 8px 8px 8px 0px;
+        border-radius: 8px 8px 8px 0;
         position: relative;
         &:after {
           border-right: 12px solid #ECECEC;
@@ -116,7 +116,7 @@
           position: absolute;
           left: -13px;
           z-index: 999;
-          margin-left: 0px;
+          margin-left: 0;
           width: 0;
           height: 0;
         }
@@ -253,9 +253,9 @@ div.ctools-modal-dialog .modal-header .modal-title {
 /* Add a nice drop shadow. */
 #modalContent div.ctools-modal-dialog {
   border-radius: 5px;
-  -webkit-box-shadow:0 0 10px rgba(0, 0, 0, 0.5);
-  -moz-box-shadow:0 0 10px rgba(0, 0, 0, 0.5);
-  box-shadow:0 0 10px rgba(0, 0, 0, 0.5);
+  -webkit-box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+  -moz-box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
   background: #F7F7F7;
   border: none;
   font-family: 'Lato';

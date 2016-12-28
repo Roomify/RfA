@@ -56,7 +56,7 @@ body.page-single-property-listing {
   }
   .main-container {
   	@media (min-width: $screen-sm) {
-	    padding-top: 0px;
+	    padding-top: 0;
 	    position: relative;
 	    bottom: 75px;
 	    padding-bottom: 75px;
@@ -155,7 +155,7 @@ body.page-single-property-listing {
       background: #0b1418;
       width: 100%;
       max-width: 100%;
-      padding: 36px 0px 20px 20px;
+      padding: 36px 0 20px 20px;
     }
     form {
     	margin: 0 auto;
@@ -167,7 +167,7 @@ body.page-single-property-listing {
     	}
     	.form-wrapper {
 	    	@include make-row();
-        margin-bottom:0;
+        margin-bottom: 0;
         .form-type-date-popup {
         	width: 100%;
         }
@@ -216,12 +216,12 @@ body.page-single-property-listing {
             display: none;
           }
 	        .help-block {// Removed the help text "E.g.,
-	          display:none;
+	          display: none;
 	        }
 	      }
 
 	      .end-date {
-	        float:right;
+	        float: right;
 	        @include make-xs-column(12);
 	        @include make-sm-column(6);
 	        margin-bottom: 15px;
@@ -355,10 +355,10 @@ body.page-single-property-listing {
         border-width: 1px;
         li.ui-state-default {
           border-width: 1px;
-          border-bottom: 0px;
+          border-bottom: 0;
           float: right;
           &:first-child {
-            margin-right: 0px;
+            margin-right: 0;
           }
         }
       }
