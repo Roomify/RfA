@@ -112,6 +112,8 @@ projects[commerce][version] = 1.13
 projects[commerce][patch][] = https://www.drupal.org/files/issues/commerce-delete_line_items_without_products-2261289-4.patch
 projects[commerce][patch][] = https://www.drupal.org/files/issues/commerce-georgian_lari-2256853-6.patch
 
+projects[commerce_addressbook] = 3.0-beta3
+
 projects[commerce_authnet][version] = 1.4
 
 projects[commerce_cart_expiration][version] = 1.4

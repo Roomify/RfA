@@ -3474,32 +3474,32 @@ fieldset[disabled] .page-blog a.roomify-add-button,
     color: #75CAEB;
     background-color: #fff; }
 
-.btn-warning {
+.btn-warning, .page-checkout #edit-customer-profile-billing-edit-button {
   color: #fff;
   background-color: #FF851B;
   border-color: #ff7702; }
-  .btn-warning:focus, .btn-warning.focus {
+  .btn-warning:focus, .page-checkout #edit-customer-profile-billing-edit-button:focus, .btn-warning.focus, .page-checkout .focus#edit-customer-profile-billing-edit-button {
     color: #fff;
     background-color: #e76b00;
     border-color: #813c00; }
-  .btn-warning:hover {
+  .btn-warning:hover, .page-checkout #edit-customer-profile-billing-edit-button:hover {
     color: #fff;
     background-color: #e76b00;
     border-color: #c35b00; }
-  .btn-warning:active, .btn-warning.active, .open > .btn-warning.dropdown-toggle {
+  .btn-warning:active, .page-checkout #edit-customer-profile-billing-edit-button:active, .btn-warning.active, .page-checkout .active#edit-customer-profile-billing-edit-button, .open > .btn-warning.dropdown-toggle, .page-checkout .open > .dropdown-toggle#edit-customer-profile-billing-edit-button {
     color: #fff;
     background-color: #e76b00;
     border-color: #c35b00; }
-    .btn-warning:active:hover, .btn-warning:active:focus, .btn-warning:active.focus, .btn-warning.active:hover, .btn-warning.active:focus, .btn-warning.active.focus, .open > .btn-warning.dropdown-toggle:hover, .open > .btn-warning.dropdown-toggle:focus, .open > .btn-warning.dropdown-toggle.focus {
+    .btn-warning:active:hover, .page-checkout #edit-customer-profile-billing-edit-button:active:hover, .btn-warning:active:focus, .page-checkout #edit-customer-profile-billing-edit-button:active:focus, .btn-warning:active.focus, .page-checkout #edit-customer-profile-billing-edit-button:active.focus, .btn-warning.active:hover, .page-checkout .active#edit-customer-profile-billing-edit-button:hover, .btn-warning.active:focus, .page-checkout .active#edit-customer-profile-billing-edit-button:focus, .btn-warning.active.focus, .page-checkout .active.focus#edit-customer-profile-billing-edit-button, .open > .btn-warning.dropdown-toggle:hover, .page-checkout .open > .dropdown-toggle#edit-customer-profile-billing-edit-button:hover, .open > .btn-warning.dropdown-toggle:focus, .page-checkout .open > .dropdown-toggle#edit-customer-profile-billing-edit-button:focus, .open > .btn-warning.dropdown-toggle.focus, .page-checkout .open > .dropdown-toggle.focus#edit-customer-profile-billing-edit-button {
       color: #fff;
       background-color: #c35b00;
       border-color: #813c00; }
-  .btn-warning:active, .btn-warning.active, .open > .btn-warning.dropdown-toggle {
+  .btn-warning:active, .page-checkout #edit-customer-profile-billing-edit-button:active, .btn-warning.active, .page-checkout .active#edit-customer-profile-billing-edit-button, .open > .btn-warning.dropdown-toggle, .page-checkout .open > .dropdown-toggle#edit-customer-profile-billing-edit-button {
     background-image: none; }
-  .btn-warning.disabled:hover, .btn-warning.disabled:focus, .btn-warning.disabled.focus, .btn-warning[disabled]:hover, .btn-warning[disabled]:focus, .btn-warning[disabled].focus, fieldset[disabled] .btn-warning:hover, fieldset[disabled] .btn-warning:focus, fieldset[disabled] .btn-warning.focus {
+  .btn-warning.disabled:hover, .page-checkout .disabled#edit-customer-profile-billing-edit-button:hover, .btn-warning.disabled:focus, .page-checkout .disabled#edit-customer-profile-billing-edit-button:focus, .btn-warning.disabled.focus, .page-checkout .disabled.focus#edit-customer-profile-billing-edit-button, .btn-warning[disabled]:hover, .page-checkout [disabled]#edit-customer-profile-billing-edit-button:hover, .btn-warning[disabled]:focus, .page-checkout [disabled]#edit-customer-profile-billing-edit-button:focus, .btn-warning[disabled].focus, .page-checkout [disabled].focus#edit-customer-profile-billing-edit-button, fieldset[disabled] .btn-warning:hover, fieldset[disabled] .page-checkout #edit-customer-profile-billing-edit-button:hover, .page-checkout fieldset[disabled] #edit-customer-profile-billing-edit-button:hover, fieldset[disabled] .btn-warning:focus, fieldset[disabled] .page-checkout #edit-customer-profile-billing-edit-button:focus, .page-checkout fieldset[disabled] #edit-customer-profile-billing-edit-button:focus, fieldset[disabled] .btn-warning.focus, fieldset[disabled] .page-checkout .focus#edit-customer-profile-billing-edit-button, .page-checkout fieldset[disabled] .focus#edit-customer-profile-billing-edit-button {
     background-color: #FF851B;
     border-color: #ff7702; }
-  .btn-warning .badge {
+  .btn-warning .badge, .page-checkout #edit-customer-profile-billing-edit-button .badge {
     color: #FF851B;
     background-color: #fff; }
 
@@ -7381,7 +7381,7 @@ button.close {
   .btn-info:hover, .btn-info:focus, .btn-group.open .dropdown-toggle.btn-info {
     background-color: #75CAEB;
     border-color: #5fc1e8; }
-  .btn-warning:hover, .btn-warning:focus, .btn-group.open .dropdown-toggle.btn-warning {
+  .btn-warning:hover, .page-checkout #edit-customer-profile-billing-edit-button:hover, .btn-warning:focus, .page-checkout #edit-customer-profile-billing-edit-button:focus, .btn-group.open .dropdown-toggle.btn-warning, .btn-group.open .page-checkout .dropdown-toggle#edit-customer-profile-billing-edit-button, .page-checkout .btn-group.open .dropdown-toggle#edit-customer-profile-billing-edit-button {
     background-color: #FF851B;
     border-color: #ff7702; }
   .btn-danger:hover, .page-checkout fieldset.panel-default.checkout-buttons .checkout-back:hover,
@@ -8079,6 +8079,11 @@ blockquote {
     .button.button-clear:hover {
       background: white;
       border: 1px solid white; }
+
+.btn, .page-checkout fieldset.panel-default.checkout-buttons .checkout-continue, .page-checkout fieldset.panel-default.checkout-buttons .checkout-back,
+.page-checkout fieldset.panel-default.checkout-buttons .checkout-cancel, .page-blog .pager-load-more a,
+.page-blog .roomify-add-button, .page-taxonomy-area .field-name-field-field-link-to-area-blog a, .page-room-type .panel_sl_left .panel-pane.pane-type-availability-search .bat-type-availability-search-submit button {
+  padding: 6px 10px 4px; }
 
 .messages-container .messages-row {
   margin-left: -15px;
@@ -10624,8 +10629,31 @@ body.toggled #close-sidebar-wrapper {
       display: inline-block;
       text-decoration: underline; }
 
+.page-cart .region-content {
+  margin-left: -15px;
+  margin-right: -15px; }
+  .page-cart .region-content:before, .page-cart .region-content:after {
+    content: " ";
+    display: table; }
+  .page-cart .region-content:after {
+    clear: both; }
+
+.page-checkout .region-content {
+  margin-left: -15px;
+  margin-right: -15px; }
+  .page-checkout .region-content:before, .page-checkout .region-content:after {
+    content: " ";
+    display: table; }
+  .page-checkout .region-content:after {
+    clear: both; }
 .page-checkout .view-commerce-cart-summary .roomify-accommodation-option .views-field-line-item-title {
   padding-left: 20px; }
+.page-checkout .field-name-commerce-customer-address.field-type-addressfield {
+  margin-bottom: 15px; }
+.page-checkout #edit-customer-profile-billing-edit-button {
+  position: relative;
+  top: 15px;
+  margin-bottom: 15px; }
 .page-checkout .view-my-cart table {
   font-size: 15px;
   border: 0; }
