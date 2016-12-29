@@ -82,6 +82,7 @@ dependencies[] = bat_booking
 dependencies[] = bat_event_state_constraints
 
 ; Commerce (contrib)
+dependencies[] = commerce_addressbook
 dependencies[] = commerce_cart_expiration
 
 ; Utilities

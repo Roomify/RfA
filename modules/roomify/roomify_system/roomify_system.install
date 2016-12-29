@@ -553,3 +553,15 @@ function roomify_system_update_7031() {
   }
   drupal_flush_all_caches();
 }
+
+/**
+ *  Enable Commerce Addressbook
+ */
+function roomify_system_update_7032() {
+  module_enable(array('commerce_addressbook'));
+
+  // Fix weight on the booking telephone field.
+  $instance_info = field_read_instance('commerce_customer_profile', 'booking_telephone', 'billing');
+  $instance_info['widget']['weight'] = 0;
+  field_update_instance($instance_info);
+}

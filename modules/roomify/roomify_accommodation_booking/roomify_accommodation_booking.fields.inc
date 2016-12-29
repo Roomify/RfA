@@ -173,7 +173,7 @@ function roomify_accommodation_booking_add_booking_telephone_to_billing_info() {
       'required' => TRUE,
       'widget' => array(
         'type' => 'text_textfield',
-        'weight' => 5,
+        'weight' => 0,
         'settings' => array(
           'size' => 60,
         ),

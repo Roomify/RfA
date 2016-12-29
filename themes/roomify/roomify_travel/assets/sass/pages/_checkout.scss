@@ -1,10 +1,27 @@
+.page-cart {
+  .region-content {
+    @include make-row();
+  }
+}
 .page-checkout {
+  .region-content {
+    @include make-row();
+  }
   .view-commerce-cart-summary {
     .roomify-accommodation-option {
       .views-field-line-item-title {
         padding-left: 20px;
       }
     }
+  }
+  .field-name-commerce-customer-address.field-type-addressfield {
+    margin-bottom: 15px;
+  }
+  #edit-customer-profile-billing-edit-button {
+    position: relative;
+    top: 15px;
+    margin-bottom: 15px;
+    @extend .btn-warning;
   }
   .view-my-cart {
     table {

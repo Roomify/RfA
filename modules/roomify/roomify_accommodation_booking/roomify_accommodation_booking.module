@@ -1522,6 +1522,13 @@ function roomify_accommodation_booking_form_alter(&$form, &$form_state, $form_id
       }
     }
   }
+
+  if ($form_id == 'commerce_checkout_form_checkout') {
+    if (isset($form['customer_profile_billing']['cancel_button'])) {
+      $form['customer_profile_billing']['cancel_button']['#value'] = t('Cancel and Return to address selection');
+      $form['customer_profile_billing']['cancel_button']['#attributes']['class'] = array('btn-warning');
+    }
+  }
 }
 
 /**
