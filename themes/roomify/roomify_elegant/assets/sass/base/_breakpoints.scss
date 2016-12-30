@@ -1,0 +1,51 @@
+// Breakpoint Mixin
+
+@mixin breakpoint($class) {
+
+  // Width Breakpoints
+  
+    @if $class == xs {
+      @media (max-width: 767px) { @content; }
+    }
+   
+    @else if $class == sm {
+      @media (min-width: 767px) and (max-width: 992px) { @content; }
+    }
+   
+    @else if $class == md {
+      @media (min-width: 992px) { @content; }
+    }
+   
+    @else if $class == lg {
+      @media (min-width: 1200px) { @content; }
+    }
+    
+     @else if $class == xl {
+      @media (min-width: 1400px) { @content; }
+    }
+   
+  @else {
+    @warn "Breakpoint mixin supports: xs, sm, md, lg, xl";
+  }
+}
+
+
+
+// Breakpoint Styles
+
+@include breakpoint(xs) { // Mobile
+}
+
+@include breakpoint(sm) { // iPad Portrait
+}
+
+@include breakpoint(md) { // 992px and up
+} 
+
+@include breakpoint(lg) { // 1200px and up
+}
+
+@include breakpoint(xl) { // 1400px and up
+}
+
+// End Breakpoints

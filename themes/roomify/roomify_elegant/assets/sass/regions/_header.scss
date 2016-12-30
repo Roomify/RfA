@@ -1,0 +1,161 @@
+.roomify-sidebar-link { //Sidebar Link
+  margin-left: 20px;
+  width: 30px;
+  height: 30px;
+  padding: 0;
+  a {
+    width: 30px;
+    height: 30px;
+    display: inline-block;
+    @media (min-width: $screen-sm) {
+      position: relative;
+      top: 8px;
+    }
+  }
+  @include breakpoint(xs) {
+    margin: 0 0 30px 0;
+  }
+}
+
+body header.roomify-header .navbar-collapse nav ul.navbar-nav > li > a,
+body header.roomify-header svg {
+  color: white;
+  font-weight: 400;
+  fill: white;
+  &:hover {
+    color: #dedede;
+    fill: #dedede;
+    background: transparent;
+  }
+}
+
+body header.roomify-header {
+  min-height: 100px;
+  background: $black;
+  border-radius: 0;
+  border-right: 0;
+  border-left: 0;
+  .navbar-collapse nav ul.nav li a {
+    @media (min-width: $screen-sm) and (max-width: $screen-md) {
+      font-size: 12px;
+    }
+  }
+  .navbar nav ul.navbar-nav > li > a:hover {
+    color: #333333;
+  }
+
+  a.logo {
+    margin-top: 0;
+    margin-bottom: 0;
+    margin-top: 15px;
+    @media (max-width: $screen-sm) {
+      margin-left: 15px;
+    }
+    img {
+      height: 66px;
+      margin: 2px 0;
+    }
+  }
+  a.name {
+    font-size: 22px;
+    margin-top: 10px;
+    margin-top: 15px;
+  }
+  .navbar-collapse.collapse {
+    float: right;
+    margin-top: 25px;
+    &.collasping,
+    &.in {
+      margin-top: 0;
+      float: none;
+    }
+  }
+  // Mobile Button
+  .navbar-toggle {
+    position: absolute;
+    top: 40px;
+    right: 30px;
+    float: none;
+    margin-right: 0;
+    padding: 0;
+    margin: 0;
+    background-color: transparent;
+    background-image: none;
+    border: 0;
+    border-radius: 0;
+    z-index: 9;
+    .icon-bar {
+      height: 3px;
+      color: white;background: white;
+    }
+    &:hover,
+    &:focus {
+      background: transparent;
+    }
+  }
+}
+
+.navbar-nav > li > .dropdown-menu {
+  margin-top: 0px;
+  background: white;
+  min-width: 220px;
+  border: 2px solid #e7e7e7;
+  padding: 0;
+  border-radius: 0;
+  li {
+    border-bottom: 1px solid #f8f8f8;
+    :last-child {
+      border: none;
+    }
+    a {
+      font-size: 14px;
+      padding: 10px;
+      background: white;
+      background: $black;
+      color: #333333;
+      color: white;
+      &:hover,
+      &:focus {
+        background: #F8F8F8;
+        color: #333333;
+      }
+    }
+  }
+}
+
+.roomify-language-switcher {
+  position: relative;
+  display: inline-block;
+  width: 100%;
+  background: rgba(16, 16, 16, 0.96);
+  &:empty {
+    display: none !important;
+  }
+  .language-switcher-locale-session,
+  .language-switcher-locale-url {
+    right: 15px;
+    z-index: 15;
+    display: inline-block;
+    position: relative;
+    top: 8px;
+    text-align: right;
+    width: 100%;
+    li {
+      display: inline-block;
+      float: right;
+      margin-left: 15px;
+      a {
+        color: #FFFFFF;
+        img {
+          float: left;
+          margin-right: 5px;
+          margin-top: 9px;
+        }
+      }
+      &.active {
+        text-decoration: underline;
+      }
+    }
+  }
+}
+
