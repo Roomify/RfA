@@ -86,6 +86,9 @@ body.page-single-property-listing {
 	    top: 20px;
 	    display: none;
 	  }
+    .slick__arrow button {
+      top: calc(50% - 15px);
+    }
 	}
   .pane-roomify-listing-availability-search-block-roomify-listing-search,
 	.pane-locanda-availability-search {
@@ -353,6 +356,9 @@ body.page-single-property-listing {
 		@media (min-width: $screen-md) {
       .ui-tabs .ui-tabs-nav {
         border-width: 1px;
+        li a {
+          padding: 0px 20px;
+        }
         li.ui-state-default {
           border-width: 1px;
           border-bottom: 0;
