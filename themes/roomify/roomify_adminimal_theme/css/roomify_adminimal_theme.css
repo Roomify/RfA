@@ -3519,3 +3519,62 @@ fieldset legend {
   border-radius: 50%;
   border: 2px solid #0074BD;
 }
+.page-admin-bat-config-example-content #roomify-accommodation-example-content-manage-form input {
+  width: 750px !important;
+  background: #f7f7f7;
+  float: left;
+  display: inline-block;
+  margin-right: 25px;
+  background-position: 10px center !important;
+  background-repeat: no-repeat !important;
+  background-size: 200px 300px !important;
+  height: 290px;
+  text-align: left;
+  text-indent: 250px;
+  margin-top: 15px;
+  border: 2px solid #ECECEC;
+  padding: 15px;
+  font-size: 26px;
+}
+.page-admin-bat-config-example-content #roomify-accommodation-example-content-manage-form input:hover {
+  background: white;
+  -webkit-transition: 100ms background ease;
+  -moz-transition: 100ms background ease;
+  -ms-transition: 100ms background ease;
+  -o-transition: 100ms background ease;
+}
+.page-admin-bat-config-example-content #roomify-accommodation-example-content-manage-form input#edit-multi-property {
+  background-image: url('../images/agency.png') !important;
+}
+@media (max-width: 768px) {
+  .page-admin-bat-config-example-content #roomify-accommodation-example-content-manage-form input#edit-multi-property {
+    background-image: none !important;
+  }
+}
+.page-admin-bat-config-example-content #roomify-accommodation-example-content-manage-form input#edit-b-and-b {
+  background-image: url('../images/locanda.png') !important;
+}
+@media (max-width: 768px) {
+  .page-admin-bat-config-example-content #roomify-accommodation-example-content-manage-form input#edit-b-and-b {
+    background-image: none !important;
+  }
+}
+.page-admin-bat-config-example-content #roomify-accommodation-example-content-manage-form input#edit-vacation-rental {
+  background-image: url('../images/single.png') !important;
+}
+@media (max-width: 768px) {
+  .page-admin-bat-config-example-content #roomify-accommodation-example-content-manage-form input#edit-vacation-rental {
+    background-image: none !important;
+  }
+}
+.page-admin-bat-config-example-content #roomify-accommodation-example-content-manage-form input[type="submit"]:disabled {
+  opacity: 0.3 !important;
+}
+@media (max-width: 768px) {
+  .page-admin-bat-config-example-content #roomify-accommodation-example-content-manage-form input {
+    text-indent: 15px;
+    height: auto;
+    font-size: 18px;
+    width: 80% !important;
+  }
+}
