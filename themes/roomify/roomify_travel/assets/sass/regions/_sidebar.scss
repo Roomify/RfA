@@ -1,7 +1,7 @@
 
 body {
   padding-right: 0;
-  @include transition(100ms all ease);
+  @include transition(70ms all linear);
   #sidebar-wrapper {
     z-index: 1000;
     position: fixed;
@@ -12,7 +12,8 @@ body {
     overflow-y: auto;
     background: #000;
     overflow-x: hidden;
-    @include transition(100ms all ease);
+    @include transition(70ms all linear);
+    @include transition(2ms width linear);
     .close-sidebar {
       border-bottom: 0;
       margin-bottom: 0;
@@ -435,6 +436,7 @@ body.toggled {
     background: rgba(0, 0, 0, 0.35);
     height: 100%;
     cursor: pointer;
-    @include transition(100ms all ease);
+    @include transition(70ms all linear);
+    @include transition(2ms width linear);
   }
 }

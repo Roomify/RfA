@@ -8682,10 +8682,10 @@ body header.roomify-header {
 
 body {
   padding-right: 0;
-  -webkit-transition: 100ms all ease;
-  -moz-transition: 100ms all ease;
-  -ms-transition: 100ms all ease;
-  -o-transition: 100ms all ease; }
+  -webkit-transition: 70ms all linear;
+  -moz-transition: 70ms all linear;
+  -ms-transition: 70ms all linear;
+  -o-transition: 70ms all linear; }
   body #sidebar-wrapper {
     z-index: 1000;
     position: fixed;
@@ -8696,10 +8696,14 @@ body {
     overflow-y: auto;
     background: #000;
     overflow-x: hidden;
-    -webkit-transition: 100ms all ease;
-    -moz-transition: 100ms all ease;
-    -ms-transition: 100ms all ease;
-    -o-transition: 100ms all ease; }
+    -webkit-transition: 70ms all linear;
+    -moz-transition: 70ms all linear;
+    -ms-transition: 70ms all linear;
+    -o-transition: 70ms all linear;
+    -webkit-transition: 2ms width linear;
+    -moz-transition: 2ms width linear;
+    -ms-transition: 2ms width linear;
+    -o-transition: 2ms width linear; }
     body #sidebar-wrapper .close-sidebar {
       border-bottom: 0;
       margin-bottom: 0;
@@ -9027,10 +9031,14 @@ body.toggled #close-sidebar-wrapper {
   background: rgba(0, 0, 0, 0.35);
   height: 100%;
   cursor: pointer;
-  -webkit-transition: 100ms all ease;
-  -moz-transition: 100ms all ease;
-  -ms-transition: 100ms all ease;
-  -o-transition: 100ms all ease; }
+  -webkit-transition: 70ms all linear;
+  -moz-transition: 70ms all linear;
+  -ms-transition: 70ms all linear;
+  -o-transition: 70ms all linear;
+  -webkit-transition: 2ms width linear;
+  -moz-transition: 2ms width linear;
+  -ms-transition: 2ms width linear;
+  -o-transition: 2ms width linear; }
 
 .pane-roomify-manage-property {
   position: relative;
