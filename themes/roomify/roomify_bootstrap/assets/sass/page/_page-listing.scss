@@ -434,10 +434,13 @@
             button {
               @include button-brooklin();
               width: calc(100% - 15px);
-              border: 1px solid #779D73;
+              border: 1px solid rgb(120, 158, 117);
               font-size: 16px;
               font-weight: 600;
               background: $green;
+              border-radius: 0;
+              height: 45px;
+              padding: 12px;
               &:hover {
                 opacity: .86;
               }

@@ -19,6 +19,12 @@ Drupal.behaviors.roomify_bootstrap = {
       return false;
     });
 
+    // Toggle menu sidebar
+    $('#close-sidebar-icon').once().click(function(e) {
+      e.preventDefault();
+      $('body').toggleClass('toggled');
+    });
+
     // Top level menu links should be clickable.
     $('.navbar .dropdown > a').click(function(){
       location.href = this.href;
