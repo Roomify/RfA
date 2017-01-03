@@ -410,6 +410,44 @@ function roomify_landing_page_views_default_views() {
     'location' => 'location',
   );
   $handler->display->display_options['filters']['type']['group'] = 1;
+  $translatables['roomify_location_map_paragraph'] = array(
+    t('Master'),
+    t('How to get here'),
+    t('more'),
+    t('Apply'),
+    t('Reset'),
+    t('Sort by'),
+    t('Asc'),
+    t('Desc'),
+    t('<div class="messages messages--warning">1. To view your vacation rental on the map please add longitude and latitude info in the location page for the accommodation.<br>2. To help visitors find you, <a href="/node/add/location">create departure points from key locations</a>, such as the closest airport, train station, interstate highway, etc. They will also be able to see directions from those points to your place.</div>'),
+    t('Get Directions from [title]'),
+    t('13'),
+    t('[title]
+'),
+    t('<strong>[title_1]</strong><br />
+[field_address]<br />
+[nid]'),
+    t('<strong>[title_1]</strong><br />
+[field_address]'),
+    t('[nothing]'),
+    t('Get directions to [title_2]'),
+    t('<div class="activity-image">[field_activity_image]</div>
+<div class="description-text">
+<strong><a href="/node/[nid_1]">[title_1]</a></strong><br />
+[field_address]<br />
+[title_2]
+</div>'),
+    t('[field_accommodation]'),
+    t('[nothing_1]'),
+    t('Single Location Map'),
+    t('<div class="description-text">
+<strong><a href="/node/[nid_1]">[title_1]</a></strong><br />
+[field_address]<br />
+[title_2]
+</div>'),
+    t('All'),
+    t('View panes'),
+  );
   $export['roomify_location_map_paragraph'] = $view;
 
   $view = new view();
@@ -433,14 +471,8 @@ function roomify_landing_page_views_default_views() {
   $handler->display->display_options['pager']['options']['offset'] = '0';
   $handler->display->display_options['style_plugin'] = 'slick';
   $handler->display->display_options['style_options']['slide_field_wrapper'] = 0;
-  $handler->display->display_options['style_options']['asnavfor_auto'] = 0;
+  $handler->display->display_options['style_options']['cache'] = '';
   $handler->display->display_options['style_options']['optionset'] = 'clone_of_roomify_slideshow_paragraph_1200x720';
-  $handler->display->display_options['style_options']['skin'] = 'default';
-  $handler->display->display_options['style_options']['slide_caption'] = array(
-    'field_cta_gallery' => 0,
-  );
-  $handler->display->display_options['style_options']['slide_overlay'] = '';
-  $handler->display->display_options['style_options']['preserve_keys'] = 0;
   $handler->display->display_options['style_options']['override'] = 0;
   $handler->display->display_options['style_options']['overridables'] = array(
     'arrows' => 0,
@@ -448,7 +480,12 @@ function roomify_landing_page_views_default_views() {
     'dots' => 0,
     'draggable' => 0,
   );
-  $handler->display->display_options['style_options']['cache'] = '';
+  $handler->display->display_options['style_options']['skin'] = 'default';
+  $handler->display->display_options['style_options']['slide_caption'] = array(
+    'field_cta_gallery' => 0,
+  );
+  $handler->display->display_options['style_options']['slide_overlay'] = '';
+  $handler->display->display_options['style_options']['preserve_keys'] = 0;
   $handler->display->display_options['row_plugin'] = 'fields';
   /* Field: Paragraphs item: Gallery */
   $handler->display->display_options['fields']['field_cta_gallery']['id'] = 'field_cta_gallery';
@@ -490,14 +527,8 @@ function roomify_landing_page_views_default_views() {
   $handler->display->display_options['defaults']['style_plugin'] = FALSE;
   $handler->display->display_options['style_plugin'] = 'slick';
   $handler->display->display_options['style_options']['slide_field_wrapper'] = 0;
-  $handler->display->display_options['style_options']['asnavfor_auto'] = 0;
+  $handler->display->display_options['style_options']['cache'] = '';
   $handler->display->display_options['style_options']['optionset'] = 'roomify_slideshow_paragraph';
-  $handler->display->display_options['style_options']['skin'] = 'default';
-  $handler->display->display_options['style_options']['slide_caption'] = array(
-    'field_cta_gallery' => 0,
-  );
-  $handler->display->display_options['style_options']['slide_overlay'] = '';
-  $handler->display->display_options['style_options']['preserve_keys'] = 0;
   $handler->display->display_options['style_options']['override'] = 0;
   $handler->display->display_options['style_options']['overridables'] = array(
     'arrows' => 0,
@@ -505,7 +536,12 @@ function roomify_landing_page_views_default_views() {
     'dots' => 0,
     'draggable' => 0,
   );
-  $handler->display->display_options['style_options']['cache'] = '';
+  $handler->display->display_options['style_options']['skin'] = 'default';
+  $handler->display->display_options['style_options']['slide_caption'] = array(
+    'field_cta_gallery' => 0,
+  );
+  $handler->display->display_options['style_options']['slide_overlay'] = '';
+  $handler->display->display_options['style_options']['preserve_keys'] = 0;
   $handler->display->display_options['defaults']['style_options'] = FALSE;
   $handler->display->display_options['defaults']['row_plugin'] = FALSE;
   $handler->display->display_options['row_plugin'] = 'fields';
@@ -532,6 +568,19 @@ function roomify_landing_page_views_default_views() {
   );
   $handler->display->display_options['fields']['field_cta_gallery']['group_rows'] = FALSE;
   $handler->display->display_options['fields']['field_cta_gallery']['delta_offset'] = '0';
+  $translatables['roomify_slideshow_paragraph'] = array(
+    t('Master'),
+    t('more'),
+    t('Apply'),
+    t('Reset'),
+    t('Sort by'),
+    t('Asc'),
+    t('Desc'),
+    t('All'),
+    t('1200x550'),
+    t('View panes'),
+    t('1200x720'),
+  );
   $export['roomify_slideshow_paragraph'] = $view;
 
   return $export;
