@@ -108,3 +108,18 @@ function roomify_translate_entities_translation_settings() {
   variable_set('entity_translation_settings_bat_type__home', $settings);
   variable_set('entity_translation_settings_bat_type__room', $settings);
 }
+
+/**
+ * Implements hook_language_fallback_candidates_alter().
+ */
+function roomify_translate_language_fallback_candidates_alter(array &$fallback_candidates) {
+  global $language;
+
+  $menu_item = menu_get_item();
+
+  if ($menu_item['path'] == 'listing/%' || $menu_item['path'] == 'room-type/%') {
+    if (isset($menu_item['page_arguments'][1]->data->translations->data[$language->language])) {
+      $fallback_candidates = array($language->language, LANGUAGE_NONE);
+    }
+  }
+}
