@@ -14,6 +14,12 @@ Drupal.behaviors.roomify_bootstrap = {
       $('body').toggleClass('toggled');
     });
 
+    // Toggle menu sidebar
+    $('#close-sidebar-icon').once().click(function(e) {
+      e.preventDefault();
+      $('body').toggleClass('toggled');
+    });
+
     // Remove anchor that comes from tabs.
     $('.roomify-agency-dashboard .tabs-processed .ui-tabs-anchor').once().click(function(e) {
       return false;
