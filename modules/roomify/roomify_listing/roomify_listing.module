@@ -954,6 +954,49 @@ function get_lower_default_price_property_types($property_id) {
 }
 
 /**
+ * Given a property id returns the lowest default price of all its types.
+ */
+function get_property_lower_booking_cost($property_id, $start_date, $end_date, $group_size) {
+  if ($property = entity_load_single('roomify_property', $property_id)) {
+
+    $bat_types = field_get_items('roomify_property', $property, 'property_bat_type_reference');
+    $lower_price = 0;
+
+    reset($bat_types);
+    $first = key($bat_types);
+    foreach ($bat_types as $key => $type_id) {
+      $type = bat_type_load($type_id['target_id']);
+
+      if (isset($type->field_st_rates_for_person[LANGUAGE_NONE][0]['value']) &&
+              $type->field_st_rates_for_person[LANGUAGE_NONE][0]['value']) {
+        $booking_price = roomify_accommodation_booking_calculate_price($start_date, $end_date, $type->type_id, $group_size);
+      }
+      else {
+        $booking_price = roomify_accommodation_booking_calculate_price($start_date, $end_date, $type->type_id);
+      }
+
+      if ($key === $first && isset($booking_price)) {
+        // FIRST TYPE.
+        $lower_price = $booking_price;
+      }
+      else {
+        if (isset($booking_price) && $booking_price < $lower_price) {
+          $lower_price = $booking_price;
+        }
+      }
+    }
+
+    if ($lower_price) {
+      $currency_setting = commerce_currency_load(commerce_default_currency());
+      $currency_symbol = $currency_setting['symbol'];
+      $price = commerce_currency_format($lower_price, $currency_setting['code']);
+
+      return ($price);
+    }
+  }
+}
+
+/**
  * Implements hook_form_FORM_ID_alter().
  */
 function roomify_listing_form_commerce_tax_ui_tax_rate_form_alter(&$form, $form_state) {
