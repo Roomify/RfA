@@ -14,5 +14,6 @@ $plugin = array(
     'top' => t('Top'),
     'middle' => t('Middle'),
     'bottom' => t('Bottom'),
+    'footer' => t('Footer'),
   ),
 );

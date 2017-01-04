@@ -178,18 +178,29 @@
   margin-bottom: 15px;
   display: inline-block;
   width: 100%;
-  padding: 25px;
+  padding: 40px;
   background: $black;
   .pane-title {
     text-transform: uppercase;
     padding-bottom: 6px;
-    border-bottom: 1px solid $secondary;
-    color: $secondary;
+    border-bottom: 4px solid $secondary;
+    color: white;
+    @extend .h2;
+    margin-top: 0;
+    margin-bottom: 40px;
   }
   .pane-content {
     color: white;
     a {
       color: white;
+    }
+    img {
+      border: 2px solid #ffffff;
+    }
+    .leaflet-map-pane {
+      img {
+        border: none;
+      }
     }
   }
 }

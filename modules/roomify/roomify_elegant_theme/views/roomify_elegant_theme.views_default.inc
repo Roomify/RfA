@@ -101,6 +101,104 @@ function roomify_elegant_theme_views_default_views() {
 
   /* Display: List */
   $handler = $view->new_display('panel_pane', 'List', 'panel_pane_1');
+
+  /* Display: Homepage */
+  $handler = $view->new_display('panel_pane', 'Homepage', 'panel_pane_2');
+  $handler->display->display_options['defaults']['pager'] = FALSE;
+  $handler->display->display_options['pager']['type'] = 'some';
+  $handler->display->display_options['pager']['options']['items_per_page'] = '3';
+  $handler->display->display_options['pager']['options']['offset'] = '0';
+  $handler->display->display_options['defaults']['fields'] = FALSE;
+  /* Field: Indexed Node: Date created */
+  $handler->display->display_options['fields']['created']['id'] = 'created';
+  $handler->display->display_options['fields']['created']['table'] = 'search_api_index_blogposts_index';
+  $handler->display->display_options['fields']['created']['field'] = 'created';
+  $handler->display->display_options['fields']['created']['label'] = '';
+  $handler->display->display_options['fields']['created']['exclude'] = TRUE;
+  $handler->display->display_options['fields']['created']['element_label_colon'] = FALSE;
+  $handler->display->display_options['fields']['created']['date_format'] = 'custom';
+  $handler->display->display_options['fields']['created']['custom_date_format'] = 'd';
+  $handler->display->display_options['fields']['created']['second_date_format'] = 'bat_daily';
+  $handler->display->display_options['fields']['created']['link_to_entity'] = 0;
+  /* Field: Indexed Node: Date created */
+  $handler->display->display_options['fields']['created_1']['id'] = 'created_1';
+  $handler->display->display_options['fields']['created_1']['table'] = 'search_api_index_blogposts_index';
+  $handler->display->display_options['fields']['created_1']['field'] = 'created';
+  $handler->display->display_options['fields']['created_1']['label'] = '';
+  $handler->display->display_options['fields']['created_1']['alter']['alter_text'] = TRUE;
+  $handler->display->display_options['fields']['created_1']['alter']['text'] = '<div class="day-blog">[created]</div>
+  [created_1]';
+  $handler->display->display_options['fields']['created_1']['element_label_colon'] = FALSE;
+  $handler->display->display_options['fields']['created_1']['date_format'] = 'custom';
+  $handler->display->display_options['fields']['created_1']['custom_date_format'] = 'M, Y';
+  $handler->display->display_options['fields']['created_1']['second_date_format'] = 'bat_daily';
+  $handler->display->display_options['fields']['created_1']['link_to_entity'] = 0;
+  /* Field: Indexed Node: URL */
+  $handler->display->display_options['fields']['url']['id'] = 'url';
+  $handler->display->display_options['fields']['url']['table'] = 'search_api_index_blogposts_index';
+  $handler->display->display_options['fields']['url']['field'] = 'url';
+  $handler->display->display_options['fields']['url']['label'] = '';
+  $handler->display->display_options['fields']['url']['exclude'] = TRUE;
+  $handler->display->display_options['fields']['url']['element_label_colon'] = FALSE;
+  $handler->display->display_options['fields']['url']['display_as_link'] = FALSE;
+  $handler->display->display_options['fields']['url']['link_to_entity'] = 0;
+  /* Field: Indexed Node: Title */
+  $handler->display->display_options['fields']['title_field']['id'] = 'title_field';
+  $handler->display->display_options['fields']['title_field']['table'] = 'search_api_index_blogposts_index';
+  $handler->display->display_options['fields']['title_field']['field'] = 'title_field';
+  $handler->display->display_options['fields']['title_field']['label'] = '';
+  $handler->display->display_options['fields']['title_field']['alter']['make_link'] = TRUE;
+  $handler->display->display_options['fields']['title_field']['alter']['path'] = '[url]';
+  $handler->display->display_options['fields']['title_field']['element_type'] = 'h3';
+  $handler->display->display_options['fields']['title_field']['element_label_colon'] = FALSE;
+  $handler->display->display_options['fields']['title_field']['settings'] = array(
+    'conditions' => array(
+      0 => array(
+        'condition' => '',
+      ),
+    ),
+  );
+  $handler->display->display_options['defaults']['filter_groups'] = FALSE;
+  $handler->display->display_options['defaults']['filters'] = FALSE;
+  /* Filter criterion: Indexed Node: Featured Blogpost */
+  $handler->display->display_options['filters']['field_featured_blogpost']['id'] = 'field_featured_blogpost';
+  $handler->display->display_options['filters']['field_featured_blogpost']['table'] = 'search_api_index_blogposts_index';
+  $handler->display->display_options['filters']['field_featured_blogpost']['field'] = 'field_featured_blogpost';
+  $handler->display->display_options['filters']['field_featured_blogpost']['value'] = array(
+    1 => '1',
+  );
+  $handler->display->display_options['allow']['use_pager'] = 0;
+  $handler->display->display_options['allow']['items_per_page'] = 0;
+  $handler->display->display_options['allow']['offset'] = 0;
+  $handler->display->display_options['allow']['link_to_view'] = 0;
+  $handler->display->display_options['allow']['more_link'] = 0;
+  $handler->display->display_options['allow']['path_override'] = 0;
+  $handler->display->display_options['allow']['title_override'] = 'title_override';
+  $handler->display->display_options['allow']['exposed_form'] = 0;
+  $handler->display->display_options['allow']['fields_override'] = 0;
+  $translatables['blog_elegant'] = array(
+    t('Master'),
+    t('more'),
+    t('Apply'),
+    t('Reset'),
+    t('Sort by'),
+    t('Asc'),
+    t('Desc'),
+    t('Items per page'),
+    t('- All -'),
+    t('Offset'),
+    t('« first'),
+    t('‹ previous'),
+    t('next ›'),
+    t('last »'),
+    t('Continue →'),
+    t('List'),
+    t('View panes'),
+    t('Homepage'),
+    t('<div class="day-blog">[created]</div>
+  [created_1]'),
+  );
+
   $translatables['blog_elegant'] = array(
     t('Master'),
     t('more'),
@@ -706,6 +804,117 @@ function roomify_elegant_theme_views_default_views() {
     t('View panes'),
   );
   $views['property_elegant'] = $view;
+
+  $view = new view();
+  $view->name = 'featured_areas_elegant';
+  $view->description = '';
+  $view->tag = 'default';
+  $view->base_table = 'taxonomy_term_data';
+  $view->human_name = 'Featured Areas Elegant';
+  $view->core = 7;
+  $view->api_version = '3.0';
+  $view->disabled = FALSE; /* Edit this to true to make a default view disabled initially */
+
+  /* Display: Master */
+  $handler = $view->new_display('default', 'Master', 'default');
+  $handler->display->display_options['use_more_always'] = FALSE;
+  $handler->display->display_options['access']['type'] = 'perm';
+  $handler->display->display_options['cache']['type'] = 'none';
+  $handler->display->display_options['query']['type'] = 'views_query';
+  $handler->display->display_options['exposed_form']['type'] = 'basic';
+  $handler->display->display_options['pager']['type'] = 'some';
+  $handler->display->display_options['pager']['options']['items_per_page'] = '4';
+  $handler->display->display_options['pager']['options']['offset'] = '0';
+  $handler->display->display_options['style_plugin'] = 'slick';
+  $handler->display->display_options['style_options']['slide_field_wrapper'] = 0;
+  $handler->display->display_options['style_options']['cache'] = '';
+  $handler->display->display_options['style_options']['mousewheel'] = 0;
+  $handler->display->display_options['style_options']['override'] = 0;
+  $handler->display->display_options['style_options']['overridables'] = array(
+    'arrows' => 0,
+    'autoplay' => 0,
+    'dots' => 0,
+    'draggable' => 0,
+  );
+  $handler->display->display_options['style_options']['slide_caption'] = array(
+    'field_area_featured_image' => 0,
+    'name' => 0,
+  );
+  $handler->display->display_options['style_options']['slide_overlay'] = '';
+  $handler->display->display_options['style_options']['preserve_keys'] = 0;
+  $handler->display->display_options['row_plugin'] = 'fields';
+  /* Relationship: Entityqueue: Taxonomy term Queue */
+  $handler->display->display_options['relationships']['entityqueue_relationship']['id'] = 'entityqueue_relationship';
+  $handler->display->display_options['relationships']['entityqueue_relationship']['table'] = 'taxonomy_term_data';
+  $handler->display->display_options['relationships']['entityqueue_relationship']['field'] = 'entityqueue_relationship';
+  $handler->display->display_options['relationships']['entityqueue_relationship']['required'] = TRUE;
+  $handler->display->display_options['relationships']['entityqueue_relationship']['limit'] = 0;
+  $handler->display->display_options['relationships']['entityqueue_relationship']['queues'] = array(
+    'featured_areas' => 0,
+  );
+  /* Field: Taxonomy term: Featured Image */
+  $handler->display->display_options['fields']['field_area_featured_image']['id'] = 'field_area_featured_image';
+  $handler->display->display_options['fields']['field_area_featured_image']['table'] = 'field_data_field_area_featured_image';
+  $handler->display->display_options['fields']['field_area_featured_image']['field'] = 'field_area_featured_image';
+  $handler->display->display_options['fields']['field_area_featured_image']['label'] = '';
+  $handler->display->display_options['fields']['field_area_featured_image']['element_label_colon'] = FALSE;
+  $handler->display->display_options['fields']['field_area_featured_image']['click_sort_column'] = 'fid';
+  $handler->display->display_options['fields']['field_area_featured_image']['settings'] = array(
+    'image_style' => 'roomify_1200x720',
+    'image_link' => 'content',
+    'conditions' => array(
+      0 => array(
+        'condition' => '',
+      ),
+    ),
+  );
+  /* Field: Taxonomy term: Name */
+  $handler->display->display_options['fields']['name']['id'] = 'name';
+  $handler->display->display_options['fields']['name']['table'] = 'taxonomy_term_data';
+  $handler->display->display_options['fields']['name']['field'] = 'name';
+  $handler->display->display_options['fields']['name']['label'] = '';
+  $handler->display->display_options['fields']['name']['alter']['word_boundary'] = FALSE;
+  $handler->display->display_options['fields']['name']['alter']['ellipsis'] = FALSE;
+  $handler->display->display_options['fields']['name']['element_label_colon'] = FALSE;
+  /* Filter criterion: Taxonomy vocabulary: Machine name */
+  $handler->display->display_options['filters']['machine_name']['id'] = 'machine_name';
+  $handler->display->display_options['filters']['machine_name']['table'] = 'taxonomy_vocabulary';
+  $handler->display->display_options['filters']['machine_name']['field'] = 'machine_name';
+  $handler->display->display_options['filters']['machine_name']['value'] = array(
+    'location' => 'location',
+  );
+
+  /* Display: List */
+  $handler = $view->new_display('panel_pane', 'List', 'panel_pane_1');
+  $handler->display->display_options['allow']['use_pager'] = 0;
+  $handler->display->display_options['allow']['items_per_page'] = 0;
+  $handler->display->display_options['allow']['offset'] = 0;
+  $handler->display->display_options['allow']['link_to_view'] = 0;
+  $handler->display->display_options['allow']['more_link'] = 0;
+  $handler->display->display_options['allow']['path_override'] = 0;
+  $handler->display->display_options['allow']['title_override'] = 'title_override';
+  $handler->display->display_options['allow']['exposed_form'] = 0;
+  $handler->display->display_options['allow']['fields_override'] = 0;
+
+  /* Display: Slideshow */
+  $handler = $view->new_display('panel_pane', 'Slideshow', 'panel_pane_2');
+  $handler->display->display_options['defaults']['pager'] = FALSE;
+  $handler->display->display_options['pager']['type'] = 'none';
+  $handler->display->display_options['pager']['options']['offset'] = '0';
+  $translatables['featured_areas_elegant'] = array(
+    t('Master'),
+    t('more'),
+    t('Apply'),
+    t('Reset'),
+    t('Sort by'),
+    t('Asc'),
+    t('Desc'),
+    t('Taxonomy term Queue'),
+    t('List'),
+    t('View panes'),
+    t('Slideshow'),
+  );
+  $views['featured_areas_elegant'] = $view;
 
   return $views;
 }

@@ -409,6 +409,8 @@
 }
 .page-listing {
   .panel-content-bottom {
+    display: inline-block;
+    width: 100%;
     .pane-featured-properties-panel-pane-3 {
       margin: 70px 0;
       .pane-title {
@@ -470,20 +472,7 @@
   }
   .views-field-field-sp-featured-image {
     overflow: hidden;
-  }
-  /* Zoom In #1 */
-  .views-field-field-sp-featured-image img {
-    -webkit-transform: scale(1);
-    transform: scale(1);
-    -webkit-transition: 1s ease-in-out;
-    transition: 1s ease-in-out;
-    margin: 0 auto;
-    border-radius: 2px;
-  }
-  .views-field-field-sp-featured-image:hover img {
-    -webkit-transform: scale(1.2);
-    transform: scale(1.2);
-  }
+  } 
   .slick-next.slick-arrow {
     background: url("../images/arrow_right.png") 0 50% no-repeat;
     background: url("../images/arrow_right.svg") center center no-repeat, linear-gradient(transparent, transparent);

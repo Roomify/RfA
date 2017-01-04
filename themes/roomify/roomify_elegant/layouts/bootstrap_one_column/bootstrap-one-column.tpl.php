@@ -8,4 +8,9 @@
   <div class="panel-content-bottom">
     <?php print $content['bottom']; ?>
   </div>
+  <div class="panel-content-footer col-xs-12">
+  	<div class="panel-content">
+      <?php print $content['footer']; ?>
+    </div>
+  </div>
 </div>
