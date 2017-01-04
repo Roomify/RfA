@@ -2719,5 +2719,121 @@ function roomify_elegant_theme_default_page_manager_handlers() {
   $handler->conf['display'] = $display;
   $export['node_view__things-to-do-elegant'] = $handler;
 
+  $handler = new stdClass();
+  $handler->disabled = FALSE; /* Edit this to true to make a default handler disabled initially */
+  $handler->api_version = 1;
+  $handler->name = 'page_all_areas__all-areas-elegant';
+  $handler->task = 'page';
+  $handler->subtask = 'all_areas';
+  $handler->handler = 'panel_context';
+  $handler->weight = 6;
+  $handler->conf = array(
+    'title' => 'All Areas Elegant',
+    'no_blocks' => 0,
+    'pipeline' => 'standard',
+    'body_classes_to_remove' => '',
+    'body_classes_to_add' => '',
+    'css_id' => '',
+    'css' => '',
+    'contexts' => array(),
+    'relationships' => array(),
+    'name' => 'all-areas-elegant',
+    'access' => array(
+      'plugins' => array(
+        0 => array(
+          'name' => 'theme',
+          'settings' => array(
+            'theme' => 'roomify_elegant',
+          ),
+          'not' => FALSE,
+        ),
+      ),
+      'logic' => 'and',
+    ),
+  );
+  $display = new panels_display();
+  $display->layout = 'bootstrap_one_column';
+  $display->layout_settings = array();
+  $display->panel_settings = array(
+    'style_settings' => array(
+      'default' => NULL,
+      'top' => NULL,
+      'middle' => NULL,
+      'bottom' => NULL,
+      'footer' => NULL,
+    ),
+  );
+  $display->cache = array();
+  $display->title = 'Areas';
+  $display->uuid = '54fbbbd4-2026-4268-8238-9b028f95f8a0';
+  $display->storage_type = 'page_manager';
+  $display->storage_id = 'page_all_areas__all-areas-elegant';
+  $display->content = array();
+  $display->panels = array();
+  $pane = new stdClass();
+  $pane->pid = 'new-c62d3dba-ffda-4ecf-a8f6-f531af989316';
+  $pane->panel = 'middle';
+  $pane->type = 'views_panes';
+  $pane->subtype = 'areas_elegant-all_areas_view';
+  $pane->shown = TRUE;
+  $pane->access = array();
+  $pane->configuration = array(
+    'override_title' => 1,
+    'override_title_text' => '',
+    'override_title_heading' => 'h2',
+  );
+  $pane->cache = array();
+  $pane->style = array(
+    'settings' => NULL,
+  );
+  $pane->css = array();
+  $pane->extras = array();
+  $pane->position = 0;
+  $pane->locks = array();
+  $pane->uuid = 'c62d3dba-ffda-4ecf-a8f6-f531af989316';
+  $display->content['new-c62d3dba-ffda-4ecf-a8f6-f531af989316'] = $pane;
+  $display->panels['middle'][0] = 'new-c62d3dba-ffda-4ecf-a8f6-f531af989316';
+  $pane = new stdClass();
+  $pane->pid = 'new-acec1aa5-b26c-4f58-9c0c-c83bb72d4509';
+  $pane->panel = 'top';
+  $pane->type = 'custom';
+  $pane->subtype = 'custom';
+  $pane->shown = TRUE;
+  $pane->access = array(
+    'plugins' => array(
+      0 => array(
+        'name' => 'perm',
+        'settings' => array(
+          'perm' => 'edit terms in 6',
+        ),
+        'context' => 'logged-in-user',
+        'not' => FALSE,
+      ),
+    ),
+  );
+  $pane->configuration = array(
+    'admin_title' => 'Add Area',
+    'title' => '',
+    'title_heading' => 'h2',
+    'body' => '<p><a class="btn btn-primary btn-default" href="/admin/structure/taxonomy/location/add"><span class="glyphicon glyphicon-plus" style="color:rgb(255, 255, 255);"></span>  Add Area</a></p>',
+    'format' => 'filtered_text',
+    'substitute' => TRUE,
+  );
+  $pane->cache = array();
+  $pane->style = array(
+    'settings' => NULL,
+  );
+  $pane->css = array();
+  $pane->extras = array();
+  $pane->position = 0;
+  $pane->locks = array();
+  $pane->uuid = 'acec1aa5-b26c-4f58-9c0c-c83bb72d4509';
+  $display->content['new-acec1aa5-b26c-4f58-9c0c-c83bb72d4509'] = $pane;
+  $display->panels['top'][0] = 'new-acec1aa5-b26c-4f58-9c0c-c83bb72d4509';
+  $display->hide_title = PANELS_TITLE_FIXED;
+  $display->title_pane = '0';
+  $handler->conf['display'] = $display;
+  $export['page_all_areas__all-areas-elegant'] = $handler;
+
   return $export;
 }

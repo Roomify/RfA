@@ -916,5 +916,155 @@ function roomify_elegant_theme_views_default_views() {
   );
   $views['featured_areas_elegant'] = $view;
 
+  $view = new view();
+  $view->name = 'areas_elegant';
+  $view->description = '';
+  $view->tag = 'default';
+  $view->base_table = 'taxonomy_term_data';
+  $view->human_name = 'Areas Elegant';
+  $view->core = 7;
+  $view->api_version = '3.0';
+  $view->disabled = FALSE; /* Edit this to true to make a default view disabled initially */
+
+  /* Display: Master */
+  $handler = $view->new_display('default', 'Master', 'default');
+  $handler->display->display_options['use_more_always'] = FALSE;
+  $handler->display->display_options['access']['type'] = 'perm';
+  $handler->display->display_options['cache']['type'] = 'none';
+  $handler->display->display_options['query']['type'] = 'views_query';
+  $handler->display->display_options['exposed_form']['type'] = 'basic';
+  $handler->display->display_options['pager']['type'] = 'full';
+  $handler->display->display_options['style_plugin'] = 'default';
+  $handler->display->display_options['row_plugin'] = 'fields';
+  /* Field: Taxonomy term: Name */
+  $handler->display->display_options['fields']['name']['id'] = 'name';
+  $handler->display->display_options['fields']['name']['table'] = 'taxonomy_term_data';
+  $handler->display->display_options['fields']['name']['field'] = 'name';
+  $handler->display->display_options['fields']['name']['label'] = '';
+  $handler->display->display_options['fields']['name']['alter']['word_boundary'] = FALSE;
+  $handler->display->display_options['fields']['name']['alter']['ellipsis'] = FALSE;
+  $handler->display->display_options['fields']['name']['link_to_taxonomy'] = TRUE;
+  /* Filter criterion: Taxonomy vocabulary: Machine name */
+  $handler->display->display_options['filters']['machine_name']['id'] = 'machine_name';
+  $handler->display->display_options['filters']['machine_name']['table'] = 'taxonomy_vocabulary';
+  $handler->display->display_options['filters']['machine_name']['field'] = 'machine_name';
+  $handler->display->display_options['filters']['machine_name']['value'] = array(
+    'location' => 'location',
+  );
+
+  /* Display: All Areas */
+  $handler = $view->new_display('panel_pane', 'All Areas', 'all_areas_view');
+  $handler->display->display_options['defaults']['pager'] = FALSE;
+  $handler->display->display_options['pager']['type'] = 'load_more';
+  $handler->display->display_options['pager']['options']['items_per_page'] = '12';
+  $handler->display->display_options['pager']['options']['offset'] = '0';
+  $handler->display->display_options['pager']['options']['id'] = '0';
+  $handler->display->display_options['pager']['options']['quantity'] = '9';
+  $handler->display->display_options['pager']['options']['effects']['speed'] = 'slow';
+  $handler->display->display_options['defaults']['fields'] = FALSE;
+  /* Field: Taxonomy term: Term ID */
+  $handler->display->display_options['fields']['tid']['id'] = 'tid';
+  $handler->display->display_options['fields']['tid']['table'] = 'taxonomy_term_data';
+  $handler->display->display_options['fields']['tid']['field'] = 'tid';
+  $handler->display->display_options['fields']['tid']['label'] = '';
+  $handler->display->display_options['fields']['tid']['exclude'] = TRUE;
+  $handler->display->display_options['fields']['tid']['element_label_colon'] = FALSE;
+  $handler->display->display_options['fields']['tid']['separator'] = '';
+  /* Field: Taxonomy term: Featured Image */
+  $handler->display->display_options['fields']['field_area_featured_image']['id'] = 'field_area_featured_image';
+  $handler->display->display_options['fields']['field_area_featured_image']['table'] = 'field_data_field_area_featured_image';
+  $handler->display->display_options['fields']['field_area_featured_image']['field'] = 'field_area_featured_image';
+  $handler->display->display_options['fields']['field_area_featured_image']['label'] = '';
+  $handler->display->display_options['fields']['field_area_featured_image']['element_label_colon'] = FALSE;
+  $handler->display->display_options['fields']['field_area_featured_image']['click_sort_column'] = 'fid';
+  $handler->display->display_options['fields']['field_area_featured_image']['settings'] = array(
+    'image_style' => 'roomify_4_3',
+    'image_link' => 'content',
+    'conditions' => array(
+      0 => array(
+        'condition' => '',
+      ),
+    ),
+  );
+  /* Field: Taxonomy term: Short Description */
+  $handler->display->display_options['fields']['field_area_short_description']['id'] = 'field_area_short_description';
+  $handler->display->display_options['fields']['field_area_short_description']['table'] = 'field_data_field_area_short_description';
+  $handler->display->display_options['fields']['field_area_short_description']['field'] = 'field_area_short_description';
+  $handler->display->display_options['fields']['field_area_short_description']['label'] = '';
+  $handler->display->display_options['fields']['field_area_short_description']['exclude'] = TRUE;
+  $handler->display->display_options['fields']['field_area_short_description']['element_label_colon'] = FALSE;
+  $handler->display->display_options['fields']['field_area_short_description']['settings'] = array(
+    'conditions' => array(
+      0 => array(
+        'condition' => '',
+      ),
+    ),
+  );
+  /* Field: Taxonomy term: Area blogposts */
+  $handler->display->display_options['fields']['roomify_area_blogposts']['id'] = 'roomify_area_blogposts';
+  $handler->display->display_options['fields']['roomify_area_blogposts']['table'] = 'taxonomy_term_data';
+  $handler->display->display_options['fields']['roomify_area_blogposts']['field'] = 'roomify_area_blogposts';
+  $handler->display->display_options['fields']['roomify_area_blogposts']['label'] = '';
+  $handler->display->display_options['fields']['roomify_area_blogposts']['exclude'] = TRUE;
+  $handler->display->display_options['fields']['roomify_area_blogposts']['element_label_colon'] = FALSE;
+  /* Field: Taxonomy term: Name */
+  $handler->display->display_options['fields']['name']['id'] = 'name';
+  $handler->display->display_options['fields']['name']['table'] = 'taxonomy_term_data';
+  $handler->display->display_options['fields']['name']['field'] = 'name';
+  $handler->display->display_options['fields']['name']['label'] = '';
+  $handler->display->display_options['fields']['name']['alter']['alter_text'] = TRUE;
+  $handler->display->display_options['fields']['name']['alter']['text'] = '<h2>[name]</h2>
+    <div class="area-short-description">[field_area_short_description]</div>
+    <div class="area-blog-posts">[roomify_area_blogposts]</div>';
+  $handler->display->display_options['fields']['name']['element_label_colon'] = FALSE;
+  /* Field: Taxonomy term: Area Properties */
+  $handler->display->display_options['fields']['area_properties']['id'] = 'area_properties';
+  $handler->display->display_options['fields']['area_properties']['table'] = 'taxonomy_term_data';
+  $handler->display->display_options['fields']['area_properties']['field'] = 'area_properties';
+  $handler->display->display_options['fields']['area_properties']['label'] = '';
+  $handler->display->display_options['fields']['area_properties']['element_label_colon'] = FALSE;
+  /* Field: Global: Custom text */
+  $handler->display->display_options['fields']['nothing']['id'] = 'nothing';
+  $handler->display->display_options['fields']['nothing']['table'] = 'views';
+  $handler->display->display_options['fields']['nothing']['field'] = 'nothing';
+  $handler->display->display_options['fields']['nothing']['label'] = '';
+  $handler->display->display_options['fields']['nothing']['alter']['text'] = '<a  href="/taxonomy/term/[tid]" class="btn btn-default btn-primary">View Area</a>';
+  $handler->display->display_options['fields']['nothing']['alter']['external'] = TRUE;
+  $handler->display->display_options['fields']['nothing']['element_label_colon'] = FALSE;
+  $handler->display->display_options['allow']['use_pager'] = 0;
+  $handler->display->display_options['allow']['items_per_page'] = 0;
+  $handler->display->display_options['allow']['offset'] = 0;
+  $handler->display->display_options['allow']['link_to_view'] = 0;
+  $handler->display->display_options['allow']['more_link'] = 0;
+  $handler->display->display_options['allow']['path_override'] = 0;
+  $handler->display->display_options['allow']['title_override'] = 'title_override';
+  $handler->display->display_options['allow']['exposed_form'] = 0;
+  $handler->display->display_options['allow']['fields_override'] = 0;
+  $translatables['areas_elegant'] = array(
+    t('Master'),
+    t('more'),
+    t('Apply'),
+    t('Reset'),
+    t('Sort by'),
+    t('Asc'),
+    t('Desc'),
+    t('Items per page'),
+    t('- All -'),
+    t('Offset'),
+    t('« first'),
+    t('‹ previous'),
+    t('next ›'),
+    t('last »'),
+    t('All Areas'),
+    t('Load more'),
+    t('.'),
+    t('<h2>[name]</h2>
+    <div class="area-short-description">[field_area_short_description]</div>
+    <div class="area-blog-posts">[roomify_area_blogposts]</div>'),
+    t('<a  href="/taxonomy/term/[tid]" class="btn btn-default btn-primary">View Area</a>'),
+    t('View panes'),
+  );
+  $views['areas_elegant'] = $view;
+
   return $views;
 }
