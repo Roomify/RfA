@@ -41,7 +41,7 @@ projects[roomify_property][subdir] = roomify
 projects[roomify_channel_connector][type] = module
 projects[roomify_channel_connector][download][type] = git
 projects[roomify_channel_connector][download][url] = https://github.com/Roomify/roomify_channel_connector_drupal.git
-projects[roomify_channel_connector][download][tag] = 1.10
+projects[roomify_channel_connector][download][tag] = 1.11
 projects[roomify_channel_connector][directory_name] = roomify_channel_connector
 projects[roomify_channel_connector][subdir] = roomify
 
