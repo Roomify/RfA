@@ -167,8 +167,6 @@ projects[editablefields][type] = module
 projects[editablefields][download][type] = git
 projects[editablefields][download][url] = https://git.drupal.org/project/editablefields.git
 projects[editablefields][download][revision] = 97f0c29a8ad87c72d3244bc70dbffb8b4af39388
-projects[editablefields][patch][] = https://www.drupal.org/files/editablefields.undefined-index.1233688-20.patch
-projects[editablefields][patch][] = https://www.drupal.org/files/issues/editablefields-php7-compatibility-2686329-1.patch
 
 projects[elements][version] = 1.4
 
