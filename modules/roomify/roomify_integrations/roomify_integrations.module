@@ -1,0 +1,70 @@
+<?php
+
+/**
+ * @file
+ * Code for the Roomify Integrations module.
+ */
+
+/**
+ * Implements hook_menu().
+ */
+function roomify_integrations_menu() {
+  $items = array();
+
+  $items['admin/config/roomify-integrations'] = array(
+    'title' => 'Roomify Integrations',
+    'page callback' => 'drupal_get_form',
+    'page arguments' => array('roomify_integrations_form'),
+    'access arguments' => array('administer roomify integrations'),
+  );
+
+  return $items;
+}
+
+/**
+ * Implements hook_permission().
+ */
+function roomify_integrations_permission() {
+  return array(
+    'administer roomify integrations' => array(
+      'title' => t('Administer Roomify Integrations'),
+      'description' => t('Administer Roomify Integrations'),
+    ),
+  );
+}
+
+/**
+ * Implements hook_roomify_rights().
+ */
+function roomify_integrations_roomify_rights() {
+  $rights['roomify_integrations'] = array(
+    'roomify manager' => array(
+      'administer roomify integrations',
+      'administer zopim',
+    ),
+  );
+
+  return $rights;
+}
+
+/**
+ * Form "Roomify Integrations".
+ */
+function roomify_integrations_form($form, &$form_state) {
+  $module_path = drupal_get_path('module', 'roomify_integrations');
+
+  $zopim_path = '/admin/config/system/zopim';
+  $zopim_image = theme_image(array('path' => $module_path . '/images/zopim.png', 'attributes' => ''));
+
+  $form['#attached']['css'] = array($module_path . '/css/roomify_integrations.css');
+
+  $form['message'] = array(
+    '#markup' => '<div class="message"><h2>' . t('Manage Roomify Integrations') . '</h2></div>',
+  );
+
+  $form['zopim'] = array(
+    '#markup' => '<div class="zopim-integration">' . l($zopim_image . '<h3>' . t('Zopim Chat') . '</h3>' . t('Talk to your customers in real-time using a live chat.'), $zopim_path, array('html' => TRUE)) . '</div>',
+  );
+
+  return $form;
+}

@@ -484,6 +484,7 @@ projects[xautoload][version] = 5.7
 
 projects[xmlsitemap][version] = 2.3
 
+projects[zopim][version] = 1.2
 
 ; +++++ Libraries +++++
 
