@@ -565,3 +565,10 @@ function roomify_system_update_7032() {
   $instance_info['widget']['weight'] = 0;
   field_update_instance($instance_info);
 }
+
+/**
+ * Enable module 'Roomify Integrations'.
+ */
+function roomify_system_update_7033() {
+  module_enable(array('roomify_integrations'));
+}

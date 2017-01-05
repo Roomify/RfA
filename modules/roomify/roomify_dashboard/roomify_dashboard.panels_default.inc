@@ -602,6 +602,36 @@ function roomify_dashboard_default_panels_mini() {
   $pane->uuid = 'ce695273-8dce-42bf-930d-9cfc611d1fce';
   $display->content['new-ce695273-8dce-42bf-930d-9cfc611d1fce'] = $pane;
   $display->panels['middle'][16] = 'new-ce695273-8dce-42bf-930d-9cfc611d1fce';
+  $pane = new stdClass();
+  $pane->pid = 'new-a9cebb8e-85c8-4c57-ab6f-036feeadc2e8';
+  $pane->panel = 'middle';
+  $pane->type = 'manage_roomify_integrations';
+  $pane->subtype = 'manage_roomify_integrations';
+  $pane->shown = TRUE;
+  $pane->access = array(
+    'plugins' => array(
+      0 => array(
+        'name' => 'perm',
+        'settings' => array(
+          'perm' => 'administer roomify integrations',
+        ),
+        'context' => 'logged-in-user',
+        'not' => FALSE,
+      ),
+    ),
+  );
+  $pane->configuration = array();
+  $pane->cache = array();
+  $pane->style = array(
+    'settings' => NULL,
+  );
+  $pane->css = array();
+  $pane->extras = array();
+  $pane->position = 17;
+  $pane->locks = array();
+  $pane->uuid = 'a9cebb8e-85c8-4c57-ab6f-036feeadc2e8';
+  $display->content['new-a9cebb8e-85c8-4c57-ab6f-036feeadc2e8'] = $pane;
+  $display->panels['middle'][17] = 'new-a9cebb8e-85c8-4c57-ab6f-036feeadc2e8';
   $display->hide_title = PANELS_TITLE_FIXED;
   $display->title_pane = '0';
   $mini->display = $display;
