@@ -1,0 +1,10 @@
+name = Roomify Integrations
+description = Manage Roomify Integrations
+core = 7.x
+package = Roomify
+dependencies[] = ctools
+dependencies[] = page_manager
+dependencies[] = panels_mini
+dependencies[] = views
+dependencies[] = views_content
+dependencies[] = zopim
