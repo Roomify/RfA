@@ -23,7 +23,6 @@ function roomify_i18n_form_alter(&$form, &$form_state, $form_id) {
   if (isset($form['translation']) && $form['translation']['#type'] == 'fieldset') {
     $form['translation']['#group'] = 'additional_settings';
   }
-
 }
 
 /**
@@ -46,7 +45,6 @@ function roomify_i18n_entities_translation_settings() {
  * Implements hook_roomify_rights().
  */
 function roomify_i18n_roomify_rights() {
-
   $rights['roomify_i18n'] = array(
     'roomify manager' => array(
       'translate node entities',

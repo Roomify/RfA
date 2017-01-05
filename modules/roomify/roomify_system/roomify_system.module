@@ -1839,7 +1839,7 @@ function roomify_system_menu_local_tasks_alter(&$data, $router_item, $root_path)
  * Implements hook_views_query_alter().
  */
 function roomify_system_views_query_alter(&$view, &$query) {
-  if (($view->name == 'property' && $view->current_display == 'panel_pane_1') || ($view->name == 'property_slideshow' && $view->current_display == 'default')) {
+  if ($view->name == 'property' && $view->current_display == 'panel_pane_1') {
     if ($property = roomify_property_load($view->args[0])) {
       global $language_content;
 
@@ -1852,6 +1852,23 @@ function roomify_system_views_query_alter(&$view, &$query) {
 
       $query->where[0]['conditions'][1]['value'][':field_data_field_sp_gallery_field_sp_gallery'] = array($current_language);
       $query->where[0]['conditions'][2]['value'][':field_data_field_sp_gallery_field_sp_gallery1'] = array($current_language);
+    }
+  }
+
+  if ($view->name == 'property_slideshow' && $view->current_display == 'default') {
+    if ($property = roomify_property_load($view->args[0])) {
+      global $language_content;
+
+      if (isset($property->translations->data[$language_content->language])) {
+        $current_language = $language_content->language;
+      }
+      else {
+        $current_language = $property->language;
+      }
+
+      $query->where[0]['conditions'][1]['value'][':field_data_field_sp_gallery_field_sp_gallery'] = array($current_language);
+      $query->where[0]['conditions'][2]['value'][':field_data_field_sp_gallery_field_sp_gallery1'] = array($current_language);
+      $query->where[0]['conditions'][3]['value'][':field_data_field_sp_gallery_field_sp_gallery2'] = array($current_language);
     }
   }
 
