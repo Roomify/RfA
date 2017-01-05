@@ -14326,9 +14326,9 @@ span.ui-icon.ui-icon-circle-triangle-e {
     border: 1px solid #ececec; }
 
 #sliding-popup.sliding-popup-bottom {
-  padding: 10px 0; }
+  padding: 10px 0;
+  background: #16262e; }
   #sliding-popup.sliding-popup-bottom .popup-content #popup-buttons button {
-    border-radius: 0;
     margin-right: 15px;
     font-size: 16px;
     margin-top: 10px;
@@ -15338,6 +15338,8 @@ body.toggled #close-sidebar-wrapper {
       .pane-property-slideshow-elegant .slick-prev.slick-arrow {
         display: none !important; } }
 
+.pane-roomify-property-field-sp-description[aria-expanded="false"] {
+  -webkit-mask-image: -webkit-linear-gradient(top, black 68%, transparent 100%); }
 @media (max-width: 991px) {
   .pane-roomify-property-field-sp-description {
     margin-top: 40px;

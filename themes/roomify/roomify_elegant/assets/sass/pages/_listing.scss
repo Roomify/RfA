@@ -162,6 +162,9 @@
   }
 }
 .pane-roomify-property-field-sp-description {
+  &[aria-expanded="false"] {
+    -webkit-mask-image: -webkit-linear-gradient(top, rgba(0, 0, 0, 1) 68%, rgba(0, 0, 0, 0) 100%);
+  }
   @media (max-width: $screen-sm-max) {
     margin-top: 40px;
     display: inline-block;
