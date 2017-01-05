@@ -109,6 +109,7 @@ dependencies[] = roomify_translate
 dependencies[] = roomify_travel_theme
 dependencies[] = roomify_pages_manager
 dependencies[] = roomify_social_feeds
+dependencies[] = roomify_integrations
 
 ; Other
 dependencies[] = addtoany

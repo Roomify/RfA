@@ -2305,6 +2305,16 @@ body.roomify-dashboard .roomify-manage-site-configuration .quick-setup {
 body.roomify-dashboard .roomify-manage-site-configuration .quick-setup:hover {
   background: #ebebeb url("../images/original/quick-setup.png") no-repeat 20px 25px;
 }
+body.roomify-dashboard .roomify-manage-site-configuration #dashboard-manage-integrations {
+  background: url("../images/integration.png") no-repeat 20px 25px;
+  -webkit-transition: 100ms all ease-in;
+  -moz-transition: 100ms all ease-in;
+  -ms-transition: 100ms all ease-in;
+  -o-transition: 100ms all ease-in;
+}
+body.roomify-dashboard .roomify-manage-site-configuration #dashboard-manage-integrations:hover {
+  background: #ebebeb url("../images/original/integration.png") no-repeat 20px 25px;
+}
 body.roomify-dashboard #mini-panel-my_activities .add-activity {
   margin-bottom: 20px;
   width: 100%;
@@ -3577,4 +3587,11 @@ fieldset legend {
     font-size: 18px;
     width: 80% !important;
   }
+#roomify-integrations-form .message {
+  margin-bottom: 20px;
+  display: inline-block;
+  width: 100%;
+}
+#roomify-integrations-form a {
+  text-decoration: none;
 }
