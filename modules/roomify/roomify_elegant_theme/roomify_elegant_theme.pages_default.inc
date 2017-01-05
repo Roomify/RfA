@@ -2802,5 +2802,227 @@ function roomify_elegant_theme_default_page_manager_handlers() {
   $handler->conf['display'] = $display;
   $export['page_all_areas__all-areas-elegant'] = $handler;
 
+  $handler = new stdClass();
+  $handler->disabled = FALSE; /* Edit this to true to make a default handler disabled initially */
+  $handler->api_version = 1;
+  $handler->name = 'node_view__page-elegant';
+  $handler->task = 'node_view';
+  $handler->subtask = '';
+  $handler->handler = 'panel_context';
+  $handler->weight = -2;
+  $handler->conf = array(
+    'title' => 'Page Elegant',
+    'no_blocks' => 0,
+    'pipeline' => 'standard',
+    'body_classes_to_remove' => '',
+    'body_classes_to_add' => '',
+    'css_id' => '',
+    'css' => '',
+    'contexts' => array(),
+    'relationships' => array(),
+    'name' => 'page-elegant',
+    'access' => array(
+      'plugins' => array(
+        0 => array(
+          'name' => 'node_type',
+          'settings' => array(
+            'type' => array(
+              'page' => 'page',
+            ),
+          ),
+          'context' => 'argument_entity_id:node_1',
+          'not' => FALSE,
+        ),
+        1 => array(
+          'name' => 'theme',
+          'settings' => array(
+            'theme' => 'roomify_elegant',
+          ),
+          'not' => FALSE,
+        ),
+      ),
+      'logic' => 'and',
+    ),
+  );
+  $display = new panels_display();
+  $display->layout = 'bootstrap_one_column';
+  $display->layout_settings = array();
+  $display->panel_settings = array(
+    'style_settings' => array(
+      'default' => NULL,
+      'top' => NULL,
+      'middle' => NULL,
+      'bottom' => NULL,
+      'footer' => NULL,
+    ),
+  );
+  $display->cache = array();
+  $display->title = '';
+  $display->uuid = 'c965fd25-a303-456c-8500-65a777c3a8a1';
+  $display->storage_type = 'page_manager';
+  $display->storage_id = 'node_view__page-elegant';
+  $display->content = array();
+  $display->panels = array();
+  $pane = new stdClass();
+  $pane->pid = 'new-8334e4d5-4a19-43bc-b905-f3b31e0af799';
+  $pane->panel = 'bottom';
+  $pane->type = 'block';
+  $pane->subtype = 'addtoany-addtoany_button';
+  $pane->shown = TRUE;
+  $pane->access = array();
+  $pane->configuration = array(
+    'override_title' => 1,
+    'override_title_text' => '',
+    'override_title_heading' => 'h2',
+  );
+  $pane->cache = array();
+  $pane->style = array(
+    'settings' => NULL,
+  );
+  $pane->css = array();
+  $pane->extras = array();
+  $pane->position = 0;
+  $pane->locks = array();
+  $pane->uuid = '8334e4d5-4a19-43bc-b905-f3b31e0af799';
+  $display->content['new-8334e4d5-4a19-43bc-b905-f3b31e0af799'] = $pane;
+  $display->panels['bottom'][0] = 'new-8334e4d5-4a19-43bc-b905-f3b31e0af799';
+  $pane = new stdClass();
+  $pane->pid = 'new-8c2d1d6f-406b-43e4-9159-82203a8af3eb';
+  $pane->panel = 'middle';
+  $pane->type = 'entity_field';
+  $pane->subtype = 'node:body';
+  $pane->shown = TRUE;
+  $pane->access = array();
+  $pane->configuration = array(
+    'label' => 'hidden',
+    'formatter' => 'text_default',
+    'delta_limit' => 0,
+    'delta_offset' => '0',
+    'delta_reversed' => FALSE,
+    'formatter_settings' => array(),
+    'context' => 'argument_entity_id:node_1',
+    'override_title' => 1,
+    'override_title_text' => '',
+    'override_title_heading' => 'h2',
+  );
+  $pane->cache = array();
+  $pane->style = array(
+    'settings' => NULL,
+  );
+  $pane->css = array();
+  $pane->extras = array();
+  $pane->position = 0;
+  $pane->locks = array();
+  $pane->uuid = '8c2d1d6f-406b-43e4-9159-82203a8af3eb';
+  $display->content['new-8c2d1d6f-406b-43e4-9159-82203a8af3eb'] = $pane;
+  $display->panels['middle'][0] = 'new-8c2d1d6f-406b-43e4-9159-82203a8af3eb';
+  $display->hide_title = PANELS_TITLE_FIXED;
+  $display->title_pane = 'new-8c2d1d6f-406b-43e4-9159-82203a8af3eb';
+  $handler->conf['display'] = $display;
+  $export['node_view__page-elegant'] = $handler;
+
+  $handler = new stdClass();
+  $handler->disabled = FALSE; /* Edit this to true to make a default handler disabled initially */
+  $handler->api_version = 1;
+  $handler->name = 'node_view__panel_context_407e6824-65df-4e07-80fb-e1a0323a8549';
+  $handler->task = 'node_view';
+  $handler->subtask = '';
+  $handler->handler = 'panel_context';
+  $handler->weight = 4;
+  $handler->conf = array(
+    'title' => 'Landing Page',
+    'no_blocks' => 0,
+    'pipeline' => 'standard',
+    'body_classes_to_remove' => '',
+    'body_classes_to_add' => '',
+    'css_id' => '',
+    'css' => '',
+    'contexts' => array(),
+    'relationships' => array(),
+    'name' => '',
+    'access' => array(
+      'plugins' => array(
+        0 => array(
+          'name' => 'theme',
+          'settings' => array(
+            'theme' => 'roomify_elegant',
+          ),
+          'not' => FALSE,
+        ),
+        1 => array(
+          'name' => 'node_type',
+          'settings' => array(
+            'type' => array(
+              'landing_page' => 'landing_page',
+            ),
+          ),
+          'context' => 'argument_entity_id:node_1',
+          'not' => FALSE,
+        ),
+      ),
+      'logic' => 'and',
+    ),
+  );
+  $display = new panels_display();
+  $display->layout = 'bootstrap_one_column';
+  $display->layout_settings = array();
+  $display->panel_settings = array(
+    'style_settings' => array(
+      'default' => NULL,
+      'top' => NULL,
+      'middle' => NULL,
+      'bottom' => NULL,
+      'footer' => NULL,
+    ),
+  );
+  $display->cache = array();
+  $display->title = '';
+  $display->uuid = '298f3b53-8b9c-4b0c-b07d-85869cec272a';
+  $display->storage_type = 'page_manager';
+  $display->storage_id = 'node_view__panel_context_407e6824-65df-4e07-80fb-e1a0323a8549';
+  $display->content = array();
+  $display->panels = array();
+  $pane = new stdClass();
+  $pane->pid = 'new-51de0526-f796-45ab-8f13-ddae4b76a8f7';
+  $pane->panel = 'middle';
+  $pane->type = 'entity_field';
+  $pane->subtype = 'node:field_landing_page_rows';
+  $pane->shown = TRUE;
+  $pane->access = array();
+  $pane->configuration = array(
+    'label' => 'title',
+    'formatter' => 'paragraphs_view',
+    'delta_limit' => '0',
+    'delta_offset' => '0',
+    'delta_reversed' => 0,
+    'formatter_settings' => array(
+      'conditions' => array(
+        0 => array(
+          'condition' => '',
+        ),
+      ),
+      'view_mode' => 'full',
+    ),
+    'context' => 'argument_entity_id:node_1',
+    'override_title' => 1,
+    'override_title_text' => '',
+    'override_title_heading' => 'h2',
+  );
+  $pane->cache = array();
+  $pane->style = array(
+    'settings' => NULL,
+  );
+  $pane->css = array();
+  $pane->extras = array();
+  $pane->position = 0;
+  $pane->locks = array();
+  $pane->uuid = '51de0526-f796-45ab-8f13-ddae4b76a8f7';
+  $display->content['new-51de0526-f796-45ab-8f13-ddae4b76a8f7'] = $pane;
+  $display->panels['middle'][0] = 'new-51de0526-f796-45ab-8f13-ddae4b76a8f7';
+  $display->hide_title = PANELS_TITLE_FIXED;
+  $display->title_pane = 'new-51de0526-f796-45ab-8f13-ddae4b76a8f7';
+  $handler->conf['display'] = $display;
+  $export['node_view__panel_context_407e6824-65df-4e07-80fb-e1a0323a8549'] = $handler;
+
   return $export;
 }
