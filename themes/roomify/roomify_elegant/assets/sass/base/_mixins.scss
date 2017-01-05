@@ -183,11 +183,18 @@
   .pane-title {
     text-transform: uppercase;
     padding-bottom: 6px;
-    border-bottom: 4px solid $secondary;
     color: white;
     @extend .h2;
     margin-top: 0;
-    margin-bottom: 40px;
+    margin-bottom: 15px;
+    &:after {
+      content: '';
+      width: 150px;
+      height: 5px;
+      background: $secondary;
+      display: block;
+      margin-top: 20px;
+    }
   }
   .pane-content {
     color: white;

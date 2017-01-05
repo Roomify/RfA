@@ -126,9 +126,6 @@ body.page-things-to-do {
   // SLIDER
   .pane-activity-panel-pane-2 {
     margin-bottom: 25px;
-    img {
-      @include box-shadow(2px 2px 6px 0px rgba(82, 82, 82, 0.52));
-    }
     .slick.slick--view--property {
       position: relative;
     }
@@ -174,19 +171,18 @@ body.page-things-to-do {
       position: relative;
       display: inline-block;
       z-index: 10;
-      bottom: 15px;
-      width: 90%;
-      margin-left: 5%;
+      bottom: 19px;
+      width: 100%;
       .slideshow-info-text {
         position: absolute;
-        bottom: 22px;
-        text-align: left;
-        background: rgba(0, 0, 0, 0.25);
-        width: 100%;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        background: rgba(0, 0, 0, 0.5);
+        text-align: center;
+        padding: 22px;
         color: white;
-        display: inline-block;
-        font-weight: bold;
-        padding: 10px;
+        font-size: 22px;
       }
       .slideshow-info-title {
         font-size: 22px;

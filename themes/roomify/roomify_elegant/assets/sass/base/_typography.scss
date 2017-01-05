@@ -178,11 +178,11 @@ blockquote {
 	text-transform: uppercase;
 	margin-bottom: 50px;
 	&:after {
-		width: 50%;
+		width: 150px;
 		content: '';
-		height: 1.5px;
+		height: 5px;
 		background-color: $secondary;
-		display: table;
+		display: block;
 		margin-top: 20px;
 		margin-left: auto;
 		margin-right: auto;

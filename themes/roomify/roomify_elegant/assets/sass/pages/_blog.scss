@@ -8,14 +8,35 @@ body.page-blog {
 			padding-bottom: 30px;
 			border-bottom: 1px solid #ececec;
 			.views-field-title-field {
-				h3 {
-					margin-bottom: 5px;
-				}
+        min-height: 87px;
+        table {
+          min-height: 87px;
+          td {
+            vertical-align: middle;
+            font-size: 24px;
+          }
+        }
 			}
 			.views-field-field-featured-image,
 			.views-field-created {
 				margin-bottom: 15px;
 			}
+      .views-field-field-featured-image {
+        margin-top: 15px;
+      }
+      .views-field-created-1 {
+        display: inline-block;
+        float: left;
+        margin-right: 15px;
+        background: $black;
+        padding: 15px 10px;
+        color: white;
+        .day-blog {
+          font-size: 32px;
+          margin-bottom: 5px;
+          text-align: center;
+        }
+      }
 			.continue-reading {
 				display: inline-block;
 				width: 100%;
@@ -140,7 +161,6 @@ body.page-blog {
       width: 100%;
       margin-top: 0px;
       padding: 15px 0px;
-      border-top: 1px solid #EEEEEE;
       display: inline-block;
     }
   }

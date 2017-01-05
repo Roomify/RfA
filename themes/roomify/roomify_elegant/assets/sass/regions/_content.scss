@@ -26,3 +26,13 @@
     padding-bottom: 15px
   }
 }
+
+.collapse-element-link {
+  margin-top: 10px;
+  color: $black;
+  text-decoration: underline;
+  font-weight: 600;
+  &.secondary {
+    color: $secondary;
+  }
+}

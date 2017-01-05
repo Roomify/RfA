@@ -45,6 +45,28 @@ Drupal.behaviors.roomifyElegantScripts = {
         $(this).closest('.slide__caption').hide();
       }
     });
+
+
+
+    $('.page-listing .pane-roomify-property-field-sp-description').readmore({
+      speed: 75,
+      collapsedHeight: 450,
+      moreLink: '<a class="collapse-element-link" href="#">Read More</a>',
+      lessLink: '<a class="collapse-element-link" href="#">Read Less</a>',
+    });
+    $('.page-listing .pane-roomify-property-field-sp-amenities .field-name-field-sp-amenities').readmore({
+      speed: 75,
+      collapsedHeight: 200,
+      moreLink: '<a class="collapse-element-link secondary" href="#">Read More</a>',
+      lessLink: '<a class="collapse-element-link secondary" href="#">Read Less</a>',
+    });
+    $('.page-listing .pane-roomify-property-field-sp-policies .field-name-field-sp-policies').readmore({
+      speed: 75,
+      collapsedHeight: 200,
+      moreLink: '<a class="collapse-element-link secondary" href="#">Read More</a>',
+      lessLink: '<a class="collapse-element-link secondary" href="#">Read Less</a>',
+    });
+
   }
 };
 

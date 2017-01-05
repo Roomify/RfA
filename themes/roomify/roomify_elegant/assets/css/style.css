@@ -14056,11 +14056,11 @@ blockquote {
   text-transform: uppercase;
   margin-bottom: 50px; }
   .page-header:after {
-    width: 50%;
+    width: 150px;
     content: '';
-    height: 1.5px;
+    height: 5px;
     background-color: #ffbc05;
-    display: table;
+    display: block;
     margin-top: 20px;
     margin-left: auto;
     margin-right: auto;
@@ -14672,6 +14672,14 @@ body header.roomify-header {
   .pane-roomify-social-feed-render.panel-pane .pane-title {
     border-bottom: 1px solid #ececec;
     padding-bottom: 15px; }
+
+.collapse-element-link {
+  margin-top: 10px;
+  color: #16262e;
+  text-decoration: underline;
+  font-weight: 600; }
+  .collapse-element-link.secondary {
+    color: #ffbc05; }
 
 .roomify-footer {
   background: #15262f;
@@ -15291,7 +15299,10 @@ body.toggled #close-sidebar-wrapper {
       .pane-property-slideshow-elegant .slick-wrapper {
         margin-bottom: 0; } }
   .pane-property-slideshow-elegant .slick-dots {
-    bottom: -45px; }
+    bottom: -55px; }
+    .pane-property-slideshow-elegant .slick-dots li {
+      width: 10px;
+      height: 10px; }
   .pane-property-slideshow-elegant .slick.slick--view--property {
     position: relative; }
   .pane-property-slideshow-elegant .slick-next.slick-arrow {
@@ -15575,10 +15586,16 @@ body.toggled #close-sidebar-wrapper {
   .pane-property-location .pane-title {
     text-transform: uppercase;
     padding-bottom: 6px;
-    border-bottom: 4px solid #ffbc05;
     color: white;
     margin-top: 0;
-    margin-bottom: 40px; }
+    margin-bottom: 15px; }
+    .pane-property-location .pane-title:after {
+      content: '';
+      width: 150px;
+      height: 5px;
+      background: #ffbc05;
+      display: block;
+      margin-top: 20px; }
   .pane-property-location .pane-content {
     color: white; }
     .pane-property-location .pane-content a {
@@ -15596,8 +15613,8 @@ body.toggled #close-sidebar-wrapper {
     width: 100%; }
     .pane-property-location .panel-content-right .pane-title,
     .pane-property-location .panel-content-left .pane-title {
-      color: white;
-      text-decoration: underline; }
+      color: #ffbc05;
+      font-weight: 600; }
   .pane-property-location .panel-content-left {
     margin-top: 20px; }
   .pane-property-location .pane-roomify-property-field-sp-how-to-reach,
@@ -15608,6 +15625,9 @@ body.toggled #close-sidebar-wrapper {
       text-align: left !important;
       padding-top: 0px;
       margin-bottom: 10px; }
+      .pane-property-location .pane-roomify-property-field-sp-how-to-reach .pane-title:after,
+      .pane-property-location .pane-roomify-property-field-sp-essentials .pane-title:after {
+        display: none; }
     @media (min-width: 992px) {
       .pane-property-location .pane-roomify-property-field-sp-how-to-reach,
       .pane-property-location .pane-roomify-property-field-sp-essentials {
@@ -15626,10 +15646,16 @@ body.toggled #close-sidebar-wrapper {
   .pane-roomify-property-field-sp-policies .pane-title {
     text-transform: uppercase;
     padding-bottom: 6px;
-    border-bottom: 4px solid #ffbc05;
     color: white;
     margin-top: 0;
-    margin-bottom: 40px; }
+    margin-bottom: 15px; }
+    .pane-roomify-property-field-sp-policies .pane-title:after {
+      content: '';
+      width: 150px;
+      height: 5px;
+      background: #ffbc05;
+      display: block;
+      margin-top: 20px; }
   .pane-roomify-property-field-sp-policies .pane-content {
     color: white; }
     .pane-roomify-property-field-sp-policies .pane-content a {
@@ -15649,10 +15675,16 @@ body.toggled #close-sidebar-wrapper {
   .pane-roomify-property-field-sp-amenities .pane-title {
     text-transform: uppercase;
     padding-bottom: 6px;
-    border-bottom: 4px solid #ffbc05;
     color: white;
     margin-top: 0;
-    margin-bottom: 40px; }
+    margin-bottom: 15px; }
+    .pane-roomify-property-field-sp-amenities .pane-title:after {
+      content: '';
+      width: 150px;
+      height: 5px;
+      background: #ffbc05;
+      display: block;
+      margin-top: 20px; }
   .pane-roomify-property-field-sp-amenities .pane-content {
     color: white; }
     .pane-roomify-property-field-sp-amenities .pane-content a {
@@ -15667,7 +15699,8 @@ body.toggled #close-sidebar-wrapper {
   .pane-roomify-property-field-sp-amenities .field-item.odd {
     display: inline-block;
     margin-right: 5px;
-    margin-bottom: 10px; }
+    margin-bottom: 5px;
+    font-size: 14px; }
     .pane-roomify-property-field-sp-amenities .field-item.even:not(:last-child)::after,
     .pane-roomify-property-field-sp-amenities .field-item.odd:not(:last-child)::after {
       display: inline-block;
@@ -18091,11 +18124,29 @@ body.page-blog .view-blog-elegant.view-display-id-panel_pane_1 .views-row {
   padding-top: 15px;
   padding-bottom: 30px;
   border-bottom: 1px solid #ececec; }
-  body.page-blog .view-blog-elegant.view-display-id-panel_pane_1 .views-row .views-field-title-field h3, body.page-blog .view-blog-elegant.view-display-id-panel_pane_1 .views-row .views-field-title-field .page-checkout-review .checkout_review .pane-title td, .page-checkout-review .checkout_review .pane-title body.page-blog .view-blog-elegant.view-display-id-panel_pane_1 .views-row .views-field-title-field td, body.page-blog .page-availability-search .view-blog-elegant.view-display-id-panel_pane_1 .views-row .views-field-title-field .views-field-name, .page-availability-search body.page-blog .view-blog-elegant.view-display-id-panel_pane_1 .views-row .views-field-title-field .views-field-name, body.page-blog .view-blog-elegant.view-display-id-panel_pane_1 .views-row .views-field-title-field .page-availability-search .view-display-id-panel_pane_3 .property-row .views-field-name, body.page-blog .view-blog-elegant.view-display-id-panel_pane_1 .views-row .views-field-title-field .node-type-blog .panel_sl_right .panel-pane .pane-title, .node-type-blog .panel_sl_right .panel-pane body.page-blog .view-blog-elegant.view-display-id-panel_pane_1 .views-row .views-field-title-field .pane-title, body.page-blog .view-blog-elegant.view-display-id-panel_pane_1 .views-row .views-field-title-field .node-type-activity .panel_sl_right .panel-pane .pane-title, .node-type-activity .panel_sl_right .panel-pane body.page-blog .view-blog-elegant.view-display-id-panel_pane_1 .views-row .views-field-title-field .pane-title {
-    margin-bottom: 5px; }
+  body.page-blog .view-blog-elegant.view-display-id-panel_pane_1 .views-row .views-field-title-field {
+    min-height: 87px; }
+    body.page-blog .view-blog-elegant.view-display-id-panel_pane_1 .views-row .views-field-title-field table {
+      min-height: 87px; }
+      body.page-blog .view-blog-elegant.view-display-id-panel_pane_1 .views-row .views-field-title-field table td {
+        vertical-align: middle;
+        font-size: 24px; }
   body.page-blog .view-blog-elegant.view-display-id-panel_pane_1 .views-row .views-field-field-featured-image,
   body.page-blog .view-blog-elegant.view-display-id-panel_pane_1 .views-row .views-field-created {
     margin-bottom: 15px; }
+  body.page-blog .view-blog-elegant.view-display-id-panel_pane_1 .views-row .views-field-field-featured-image {
+    margin-top: 15px; }
+  body.page-blog .view-blog-elegant.view-display-id-panel_pane_1 .views-row .views-field-created-1 {
+    display: inline-block;
+    float: left;
+    margin-right: 15px;
+    background: #16262e;
+    padding: 15px 10px;
+    color: white; }
+    body.page-blog .view-blog-elegant.view-display-id-panel_pane_1 .views-row .views-field-created-1 .day-blog {
+      font-size: 32px;
+      margin-bottom: 5px;
+      text-align: center; }
   body.page-blog .view-blog-elegant.view-display-id-panel_pane_1 .views-row .continue-reading {
     display: inline-block;
     width: 100%;
@@ -18111,10 +18162,16 @@ body.page-blog .panel_sl_right .panel-pane {
   body.page-blog .panel_sl_right .panel-pane .pane-title {
     text-transform: uppercase;
     padding-bottom: 6px;
-    border-bottom: 4px solid #ffbc05;
     color: white;
     margin-top: 0;
-    margin-bottom: 40px; }
+    margin-bottom: 15px; }
+    body.page-blog .panel_sl_right .panel-pane .pane-title:after {
+      content: '';
+      width: 150px;
+      height: 5px;
+      background: #ffbc05;
+      display: block;
+      margin-top: 20px; }
   body.page-blog .panel_sl_right .panel-pane .pane-content {
     color: white; }
     body.page-blog .panel_sl_right .panel-pane .pane-content a {
@@ -18222,7 +18279,6 @@ body.page-blog .view-featured-properties.view-display-id-panel_pane_2 .views-row
     width: 100%;
     margin-top: 0px;
     padding: 15px 0px;
-    border-top: 1px solid #EEEEEE;
     display: inline-block; }
 .node-type-blog .field-name-field-featured-image {
   margin-bottom: 25px; }
@@ -18242,10 +18298,16 @@ body.page-blog .view-featured-properties.view-display-id-panel_pane_2 .views-row
   .node-type-blog .panel_sl_right .panel-pane .pane-title {
     text-transform: uppercase;
     padding-bottom: 6px;
-    border-bottom: 4px solid #ffbc05;
     color: white;
     margin-top: 0;
-    margin-bottom: 40px; }
+    margin-bottom: 15px; }
+    .node-type-blog .panel_sl_right .panel-pane .pane-title:after {
+      content: '';
+      width: 150px;
+      height: 5px;
+      background: #ffbc05;
+      display: block;
+      margin-top: 20px; }
   .node-type-blog .panel_sl_right .panel-pane .pane-content {
     color: white; }
     .node-type-blog .panel_sl_right .panel-pane .pane-content a {
@@ -18277,10 +18339,17 @@ body.page-blog .view-featured-properties.view-display-id-panel_pane_2 .views-row
   .node-type-blog .panel_sl_right .pane-blog-panel-pane-4 .pane-title {
     text-transform: uppercase;
     padding-bottom: 6px;
-    border-bottom: 4px solid #ffbc05;
     color: white;
     margin-top: 0;
-    margin-bottom: 40px; }
+    margin-bottom: 15px; }
+    .node-type-blog .panel_sl_right .pane-blog-panel-pane-10 .pane-title:after,
+    .node-type-blog .panel_sl_right .pane-blog-panel-pane-4 .pane-title:after {
+      content: '';
+      width: 150px;
+      height: 5px;
+      background: #ffbc05;
+      display: block;
+      margin-top: 20px; }
   .node-type-blog .panel_sl_right .pane-blog-panel-pane-10 .pane-content,
   .node-type-blog .panel_sl_right .pane-blog-panel-pane-4 .pane-content {
     color: white; }
@@ -18469,10 +18538,16 @@ body.page-things-to-do .panel_sl_right .panel-pane {
   body.page-things-to-do .panel_sl_right .panel-pane .pane-title {
     text-transform: uppercase;
     padding-bottom: 6px;
-    border-bottom: 4px solid #ffbc05;
     color: white;
     margin-top: 0;
-    margin-bottom: 40px; }
+    margin-bottom: 15px; }
+    body.page-things-to-do .panel_sl_right .panel-pane .pane-title:after {
+      content: '';
+      width: 150px;
+      height: 5px;
+      background: #ffbc05;
+      display: block;
+      margin-top: 20px; }
   body.page-things-to-do .panel_sl_right .panel-pane .pane-content {
     color: white; }
     body.page-things-to-do .panel_sl_right .panel-pane .pane-content a {
@@ -18552,12 +18627,6 @@ body.page-things-to-do .view-featured-properties.view-display-id-panel_pane_2 .v
     top: 7px; }
 .node-type-activity .pane-activity-panel-pane-2 {
   margin-bottom: 25px; }
-  .node-type-activity .pane-activity-panel-pane-2 img {
-    box-shadow: 2px 2px 6px 0px rgba(82, 82, 82, 0.52);
-    -webkit-box-shadow: 2px 2px 6px 0px rgba(82, 82, 82, 0.52);
-    -moz-box-shadow: 2px 2px 6px 0px rgba(82, 82, 82, 0.52);
-    -ms-box-shadow: 2px 2px 6px 0px rgba(82, 82, 82, 0.52);
-    -o-box-shadow: 2px 2px 6px 0px rgba(82, 82, 82, 0.52); }
   .node-type-activity .pane-activity-panel-pane-2 .slick.slick--view--property {
     position: relative; }
   .node-type-activity .pane-activity-panel-pane-2 .slick-next.slick-arrow {
@@ -18599,20 +18668,19 @@ body.page-things-to-do .view-featured-properties.view-display-id-panel_pane_2 .v
     position: relative;
     display: inline-block;
     z-index: 10;
-    bottom: 15px;
-    width: 90%;
-    margin-left: 5%; }
+    bottom: 19px;
+    width: 100%; }
     .node-type-activity .pane-activity-panel-pane-2 .unslick .slideshow-info .slideshow-info-text,
     .node-type-activity .pane-activity-panel-pane-2 .slick-active .slideshow-info .slideshow-info-text {
       position: absolute;
-      bottom: 22px;
-      text-align: left;
-      background: rgba(0, 0, 0, 0.25);
-      width: 100%;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      background: rgba(0, 0, 0, 0.5);
+      text-align: center;
+      padding: 22px;
       color: white;
-      display: inline-block;
-      font-weight: bold;
-      padding: 10px; }
+      font-size: 22px; }
     .node-type-activity .pane-activity-panel-pane-2 .unslick .slideshow-info .slideshow-info-title,
     .node-type-activity .pane-activity-panel-pane-2 .slick-active .slideshow-info .slideshow-info-title {
       font-size: 22px; }
@@ -18647,10 +18715,16 @@ body.page-things-to-do .view-featured-properties.view-display-id-panel_pane_2 .v
   .node-type-activity .panel_sl_right .panel-pane .pane-title {
     text-transform: uppercase;
     padding-bottom: 6px;
-    border-bottom: 4px solid #ffbc05;
     color: white;
     margin-top: 0;
-    margin-bottom: 40px; }
+    margin-bottom: 15px; }
+    .node-type-activity .panel_sl_right .panel-pane .pane-title:after {
+      content: '';
+      width: 150px;
+      height: 5px;
+      background: #ffbc05;
+      display: block;
+      margin-top: 20px; }
   .node-type-activity .panel_sl_right .panel-pane .pane-content {
     color: white; }
     .node-type-activity .panel_sl_right .panel-pane .pane-content a {
@@ -19368,7 +19442,7 @@ body.node-type-homepage .panel-content-footer {
       @media (min-width: 992px) {
         .page-areas .view-areas-elegant.view-display-id-all_areas_view .views-row .views-field-area-properties .area-property {
           float: left;
-          width: 25%; } }
+          width: 33.33333%; } }
     .page-areas .view-areas-elegant.view-display-id-all_areas_view .views-row .views-field-area-properties .property-details {
       font-size: 16px;
       text-transform: uppercase;
@@ -19464,8 +19538,8 @@ body.node-type-homepage .panel-content-footer {
   .page-room-type .slick-dots li {
     position: relative;
     display: inline-block;
-    width: 20px;
-    height: 20px;
+    width: 10px;
+    height: 10px;
     margin: 0;
     padding: 0;
     cursor: pointer; }

@@ -96,38 +96,43 @@ function roomify_elegant_theme_default_page_manager_handlers() {
   $display->content['new-83400982-c5f4-42cb-88f2-0c8858c4c997'] = $pane;
   $display->panels['bottom'][0] = 'new-83400982-c5f4-42cb-88f2-0c8858c4c997';
   $pane = new stdClass();
-  $pane->pid = 'new-78626eed-d17a-4369-8cfb-1c35275e5880';
+  $pane->pid = 'new-616ba109-af3e-4b9d-b240-c52afc39d04f';
   $pane->panel = 'left';
   $pane->type = 'entity_field';
-  $pane->subtype = 'node:field_blog_area';
+  $pane->subtype = 'node:field_featured_image';
   $pane->shown = TRUE;
   $pane->access = array();
   $pane->configuration = array(
     'label' => 'hidden',
-    'formatter' => 'i18n_taxonomy_term_reference_link',
+    'formatter' => 'image',
     'delta_limit' => 0,
     'delta_offset' => '0',
     'delta_reversed' => FALSE,
-    'formatter_settings' => array(),
+    'formatter_settings' => array(
+      'image_style' => 'roomify_blog_image',
+      'image_link' => '',
+      'conditions' => array(
+        0 => array(
+          'condition' => '',
+        ),
+      ),
+    ),
     'context' => 'argument_entity_id:node_1',
-    'override_title' => 1,
-    'override_title_text' => '<span class="glyphicon glyphicon-map-marker"></span>',
-    'override_title_heading' => 'h4',
+    'override_title' => 0,
+    'override_title_text' => '',
+    'override_title_heading' => 'h2',
   );
   $pane->cache = array();
   $pane->style = array(
     'settings' => NULL,
   );
-  $pane->css = array(
-    'css_id' => '',
-    'css_class' => 'roomify-blog-icon',
-  );
+  $pane->css = array();
   $pane->extras = array();
   $pane->position = 0;
   $pane->locks = array();
-  $pane->uuid = '78626eed-d17a-4369-8cfb-1c35275e5880';
-  $display->content['new-78626eed-d17a-4369-8cfb-1c35275e5880'] = $pane;
-  $display->panels['left'][0] = 'new-78626eed-d17a-4369-8cfb-1c35275e5880';
+  $pane->uuid = '616ba109-af3e-4b9d-b240-c52afc39d04f';
+  $display->content['new-616ba109-af3e-4b9d-b240-c52afc39d04f'] = $pane;
+  $display->panels['left'][0] = 'new-616ba109-af3e-4b9d-b240-c52afc39d04f';
   $pane = new stdClass();
   $pane->pid = 'new-710c987b-525c-4ca8-b708-195fa836f6f8';
   $pane->panel = 'left';
@@ -162,44 +167,6 @@ function roomify_elegant_theme_default_page_manager_handlers() {
   $display->content['new-710c987b-525c-4ca8-b708-195fa836f6f8'] = $pane;
   $display->panels['left'][1] = 'new-710c987b-525c-4ca8-b708-195fa836f6f8';
   $pane = new stdClass();
-  $pane->pid = 'new-616ba109-af3e-4b9d-b240-c52afc39d04f';
-  $pane->panel = 'left';
-  $pane->type = 'entity_field';
-  $pane->subtype = 'node:field_featured_image';
-  $pane->shown = TRUE;
-  $pane->access = array();
-  $pane->configuration = array(
-    'label' => 'hidden',
-    'formatter' => 'image',
-    'delta_limit' => 0,
-    'delta_offset' => '0',
-    'delta_reversed' => FALSE,
-    'formatter_settings' => array(
-      'image_style' => 'roomify_blog_image',
-      'image_link' => '',
-      'conditions' => array(
-        0 => array(
-          'condition' => '',
-        ),
-      ),
-    ),
-    'context' => 'argument_entity_id:node_1',
-    'override_title' => 0,
-    'override_title_text' => '',
-    'override_title_heading' => 'h2',
-  );
-  $pane->cache = array();
-  $pane->style = array(
-    'settings' => NULL,
-  );
-  $pane->css = array();
-  $pane->extras = array();
-  $pane->position = 2;
-  $pane->locks = array();
-  $pane->uuid = '616ba109-af3e-4b9d-b240-c52afc39d04f';
-  $display->content['new-616ba109-af3e-4b9d-b240-c52afc39d04f'] = $pane;
-  $display->panels['left'][2] = 'new-616ba109-af3e-4b9d-b240-c52afc39d04f';
-  $pane = new stdClass();
   $pane->pid = 'new-76512c7e-4af9-4fde-a085-5210d11581dc';
   $pane->panel = 'left';
   $pane->type = 'entity_field';
@@ -224,11 +191,11 @@ function roomify_elegant_theme_default_page_manager_handlers() {
   );
   $pane->css = array();
   $pane->extras = array();
-  $pane->position = 3;
+  $pane->position = 2;
   $pane->locks = array();
   $pane->uuid = '76512c7e-4af9-4fde-a085-5210d11581dc';
   $display->content['new-76512c7e-4af9-4fde-a085-5210d11581dc'] = $pane;
-  $display->panels['left'][3] = 'new-76512c7e-4af9-4fde-a085-5210d11581dc';
+  $display->panels['left'][2] = 'new-76512c7e-4af9-4fde-a085-5210d11581dc';
   $pane = new stdClass();
   $pane->pid = 'new-c3a20eab-f7ad-4f85-b999-b9ae5e761242';
   $pane->panel = 'left';
@@ -257,11 +224,11 @@ function roomify_elegant_theme_default_page_manager_handlers() {
     'css_class' => 'roomify-blog-icon',
   );
   $pane->extras = array();
-  $pane->position = 4;
+  $pane->position = 3;
   $pane->locks = array();
   $pane->uuid = 'c3a20eab-f7ad-4f85-b999-b9ae5e761242';
   $display->content['new-c3a20eab-f7ad-4f85-b999-b9ae5e761242'] = $pane;
-  $display->panels['left'][4] = 'new-c3a20eab-f7ad-4f85-b999-b9ae5e761242';
+  $display->panels['left'][3] = 'new-c3a20eab-f7ad-4f85-b999-b9ae5e761242';
   $pane = new stdClass();
   $pane->pid = 'new-2ccd9854-9eef-4687-bd7e-a5f678cf0d98';
   $pane->panel = 'left';
@@ -280,11 +247,11 @@ function roomify_elegant_theme_default_page_manager_handlers() {
   );
   $pane->css = array();
   $pane->extras = array();
-  $pane->position = 5;
+  $pane->position = 4;
   $pane->locks = array();
   $pane->uuid = '2ccd9854-9eef-4687-bd7e-a5f678cf0d98';
   $display->content['new-2ccd9854-9eef-4687-bd7e-a5f678cf0d98'] = $pane;
-  $display->panels['left'][5] = 'new-2ccd9854-9eef-4687-bd7e-a5f678cf0d98';
+  $display->panels['left'][4] = 'new-2ccd9854-9eef-4687-bd7e-a5f678cf0d98';
   $pane = new stdClass();
   $pane->pid = 'new-6e345cbf-8108-4371-8110-c08554620999';
   $pane->panel = 'right';
@@ -298,10 +265,10 @@ function roomify_elegant_theme_default_page_manager_handlers() {
         'settings' => array(
           'description' => 'Customer Message Enabled',
           'php' => '$customer_message = variable_get(\'roomify_customer_support_page\', array());
-      if (isset($customer_message[\'blog_node\']) && $customer_message[\'blog_node\'] === \'blog_node\') {
-        return TRUE;
-      }
-      return FALSE;',
+        if (isset($customer_message[\'blog_node\']) && $customer_message[\'blog_node\'] === \'blog_node\') {
+          return TRUE;
+        }
+        return FALSE;',
         ),
         'not' => FALSE,
       ),
@@ -432,10 +399,10 @@ function roomify_elegant_theme_default_page_manager_handlers() {
         'settings' => array(
           'description' => 'Social Feeds Enabled',
           'php' => '$social_feeds_pages = variable_get(\'roomify_feed_pages\', array());
-        if (isset($social_feeds_pages[\'blog_node\']) && $social_feeds_pages[\'blog_node\'] === \'blog_node\') {
-          return TRUE;
-        }
-        return FALSE;',
+          if (isset($social_feeds_pages[\'blog_node\']) && $social_feeds_pages[\'blog_node\'] === \'blog_node\') {
+            return TRUE;
+          }
+          return FALSE;',
         ),
         'not' => FALSE,
       ),
@@ -2480,6 +2447,25 @@ function roomify_elegant_theme_default_page_manager_handlers() {
   $display->content = array();
   $display->panels = array();
   $pane = new stdClass();
+  $pane->pid = 'new-e220c90d-9446-47c3-b7b3-75a65d249772';
+  $pane->panel = 'left';
+  $pane->type = 'views_panes';
+  $pane->subtype = 'activity-panel_pane_2';
+  $pane->shown = TRUE;
+  $pane->access = array();
+  $pane->configuration = array();
+  $pane->cache = array();
+  $pane->style = array(
+    'settings' => NULL,
+  );
+  $pane->css = array();
+  $pane->extras = array();
+  $pane->position = 0;
+  $pane->locks = array();
+  $pane->uuid = 'e220c90d-9446-47c3-b7b3-75a65d249772';
+  $display->content['new-e220c90d-9446-47c3-b7b3-75a65d249772'] = $pane;
+  $display->panels['left'][0] = 'new-e220c90d-9446-47c3-b7b3-75a65d249772';
+  $pane = new stdClass();
   $pane->pid = 'new-ef4303f2-9172-4492-a61d-0ed0042803c9';
   $pane->panel = 'left';
   $pane->type = 'entity_field';
@@ -2504,30 +2490,11 @@ function roomify_elegant_theme_default_page_manager_handlers() {
   );
   $pane->css = array();
   $pane->extras = array();
-  $pane->position = 0;
+  $pane->position = 1;
   $pane->locks = array();
   $pane->uuid = 'ef4303f2-9172-4492-a61d-0ed0042803c9';
   $display->content['new-ef4303f2-9172-4492-a61d-0ed0042803c9'] = $pane;
-  $display->panels['left'][0] = 'new-ef4303f2-9172-4492-a61d-0ed0042803c9';
-  $pane = new stdClass();
-  $pane->pid = 'new-e220c90d-9446-47c3-b7b3-75a65d249772';
-  $pane->panel = 'left';
-  $pane->type = 'views_panes';
-  $pane->subtype = 'activity-panel_pane_2';
-  $pane->shown = TRUE;
-  $pane->access = array();
-  $pane->configuration = array();
-  $pane->cache = array();
-  $pane->style = array(
-    'settings' => NULL,
-  );
-  $pane->css = array();
-  $pane->extras = array();
-  $pane->position = 1;
-  $pane->locks = array();
-  $pane->uuid = 'e220c90d-9446-47c3-b7b3-75a65d249772';
-  $display->content['new-e220c90d-9446-47c3-b7b3-75a65d249772'] = $pane;
-  $display->panels['left'][1] = 'new-e220c90d-9446-47c3-b7b3-75a65d249772';
+  $display->panels['left'][1] = 'new-ef4303f2-9172-4492-a61d-0ed0042803c9';
   $pane = new stdClass();
   $pane->pid = 'new-2f4f9057-91b9-41dd-9e13-dc45a6568f8b';
   $pane->panel = 'left';
@@ -2594,10 +2561,10 @@ function roomify_elegant_theme_default_page_manager_handlers() {
         'settings' => array(
           'description' => 'Customer Message Enabled',
           'php' => '$customer_message = variable_get(\'roomify_customer_support_page\', array());
-    if (isset($customer_message[\'things_to_do_node\']) && $customer_message[\'things_to_do_node\'] === \'things_to_do_node\') {
-      return TRUE;
-    }
-    return FALSE;',
+      if (isset($customer_message[\'things_to_do_node\']) && $customer_message[\'things_to_do_node\'] === \'things_to_do_node\') {
+        return TRUE;
+      }
+      return FALSE;',
         ),
         'not' => FALSE,
       ),
@@ -2693,10 +2660,10 @@ function roomify_elegant_theme_default_page_manager_handlers() {
         'settings' => array(
           'description' => 'Social Feeds Enabled',
           'php' => '$social_feeds_pages = variable_get(\'roomify_feed_pages\', array());
-      if (isset($social_feeds_pages[\'things_to_do_node\']) && $social_feeds_pages[\'things_to_do_node\'] === \'things_to_do_node\') {
-        return TRUE;
-      }
-      return FALSE;',
+        if (isset($social_feeds_pages[\'things_to_do_node\']) && $social_feeds_pages[\'things_to_do_node\'] === \'things_to_do_node\') {
+          return TRUE;
+        }
+        return FALSE;',
         ),
         'not' => FALSE,
       ),
