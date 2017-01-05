@@ -294,13 +294,10 @@ function roomify_dashboard_default_page_manager_handlers() {
   $pane->shown = TRUE;
   $pane->access = array(
     'plugins' => array(
-      0 => array(
-        'name' => 'role',
+      2 => array(
+        'name' => 'perm',
         'settings' => array(
-          'rids' => array(
-            0 => 30037204,
-            1 => 6,
-          ),
+          'perm' => 'administer theme colors',
         ),
         'context' => 'argument_entity_id:user_1',
         'not' => FALSE,
