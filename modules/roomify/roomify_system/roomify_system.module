@@ -107,6 +107,10 @@ function roomify_system_permission() {
       'title' => t('Administer Roomify Availability Search Settings'),
       'description' => t('Administer Roomify Availability Search Settings'),
     ),
+    'administer theme colors' => array(
+      'title' => t('Administer Theme Colors'),
+      'description' => t('Administer Theme Colors'),
+    ),
   );
 }
 
@@ -1002,6 +1006,7 @@ function roomify_system_roomify_rights() {
       'create files',
       'view own private files',
       'view own files',
+      'administer theme colors',
     ),
     'administrator' => $permissions,
   );
