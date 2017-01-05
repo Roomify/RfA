@@ -23,6 +23,12 @@ function roomify_homepage_install() {
 }
 
 /**
+ * Implements hook_uninstall().
+ */
+function roomify_homepage_uninstall() {
+  variable_set('site_frontpage', 'node');
+}
+/**
  * Creates fields of the Homepage content type.
  */
 function roomify_homepage_fields() {
