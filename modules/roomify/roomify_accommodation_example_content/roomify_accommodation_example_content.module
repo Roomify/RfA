@@ -1202,7 +1202,7 @@ function roomify_accommodation_example_content_multi_property_delete($type_delet
   $query->entityCondition('entity_type', 'node')
     ->propertyCondition('type', $node_types, 'IN');
   $result = $query->execute();
-  foreach($result['node'] as $node){
+  foreach ($result['node'] as $node) {
     node_delete($node->nid);
   }
 

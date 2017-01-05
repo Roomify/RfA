@@ -28,6 +28,7 @@ function roomify_homepage_install() {
 function roomify_homepage_uninstall() {
   variable_set('site_frontpage', 'node');
 }
+
 /**
  * Creates fields of the Homepage content type.
  */
