@@ -90,39 +90,3 @@ function roomify_custom_setting(&$form, &$form_state) {
     }
   }
 }
-
-/**
- * Implements hook_mail().
- */
-function roomify_mail($key, &$message, $params) {
-  switch($key) {
-    case 'roomify_new_account_email':
-      $message['subject'] = 'Your new Roomify site!';
-      $message['body'][] = <<<EOF
-Hello!
-
-Thank you for signing up for your own Roomify Accommodations site. The gears have turned and your site is ready to make you money!
-
-Please use the following link to choose a new password. Be sure to use a secure password, or your competition might try to raise your prices!
-
-{$params['one_time_link']}
-
-This link can only be used once, and it is only valid for 24 hours. If you were unexpectedly detained for longer than this, and were unable to use the link within that period, please use the following link to request a new one. (Be sure to enter the email address you used when signing up)
-
-{$params['reset_link']}
-
-After setting your password, you will be logged into your site. For future logins, go to:
-
-{$params['login_link']}
-
-and use the following credentials:
-
-username: {$params['customer_email']}
-password: The password you chose.
-
-regards,
-the Roomify team
-EOF;
-      break;
-  }
-}
