@@ -35,8 +35,8 @@ function roomify_conversations_menu() {
 function roomify_conversations_mail($key, &$message, $params) {
   $language = $message['language'];
   $variables = array('user' => $params['account']);
-  $message['subject'] .= _roomify_conversations_mail_text($key . '_subject', $language, $variables);
-  $message['body'][] = _roomify_conversations_mail_text($key . '_body', $language, $variables);
+  $message['subject'] .= roomify_conversations_mail_text($key . '_subject', $language, $variables);
+  $message['body'][] = roomify_conversations_mail_text($key . '_body', $language, $variables);
 }
 
 /**
@@ -44,7 +44,7 @@ function roomify_conversations_mail($key, &$message, $params) {
  *
  * Used by roomify_conversations_mail() and the settings forms to retrieve strings.
  */
-function _roomify_conversations_mail_text($key, $language = NULL, $variables = array(), $replace = TRUE) {
+function roomify_conversations_mail_text($key, $language = NULL, $variables = array(), $replace = TRUE) {
   $langcode = isset($language) ? $language->language : NULL;
 
   switch ($key) {
@@ -121,14 +121,14 @@ function roomify_conversations_pet_substitutions_alter(&$substitutions, $params)
 function roomify_conversations_entity_view_alter(&$build, $type) {
   if ($type == 'bat_booking' && $build['#view_mode'] == 'conversation') {
     $build['content'] = array(
-      '#markup' => _roomify_conversations_conversation_booking_render($build['#entity']),
+      '#markup' => roomify_conversations_booking_inquiry_render($build['#entity']),
     );
   }
   elseif ($type == 'message') {
     unset($build['message__message_text__0']);
 
     $build['content'] = array(
-      '#markup' => _roomify_conversations_message_render($build['#entity']),
+      '#markup' => roomify_conversations_message_render($build['#entity']),
     );
   }
 }
@@ -784,38 +784,43 @@ function roomify_conversations_entity_insert($entity, $type) {
     if ($entity->type == 'conversation_booking') {
       global $user;
 
-      $event_type = 'availability';
-
-      // Create a new 'Availability' event.
-      $event = bat_event_create(array(
-        'type' => $event_type,
-        'start_date' => $entity->booking_start_date[LANGUAGE_NONE][0]['value'],
-        'end_date' => $entity->booking_end_date[LANGUAGE_NONE][0]['value'],
-        'uid' => $user,
-      ));
-
-      $in_conversation_state = bat_event_load_state_by_machine_name('in_conversation');
-      $event->event_state_reference[LANGUAGE_NONE][0]['state_id'] = $in_conversation_state['id'];
-
-      $start_date = new DateTime($event->start_date);
-
-      // Subtract one minute from the end date since BAT considers the last minute of an event included.
-      $end_date = new DateTime($event->end_date);
-      $end_date->sub(new DateInterval('PT1M'));
-      $event->end_date = $end_date->format('Y-m-d H:i');
-
       $wrapper = entity_metadata_wrapper('bat_booking', $entity);
-      $type_id = $wrapper->booking_conversation_ref->conversation_unit_type_ref->type_id->value();
+      $unit_type = $wrapper->booking_conversation_ref->conversation_unit_type_ref->value()->type;
 
-      $valid_unit_ids = bat_event_get_matching_units($start_date, $end_date, array(AVAILABLE), $type_id, $event_type, FALSE, FALSE);
+      if ($unit_type == 'home' || $unit_type == 'room') {
+        $event_type = 'availability';
 
-      $event->event_bat_unit_reference[LANGUAGE_NONE][0]['target_id'] = reset($valid_unit_ids);
+        // Create a new 'Availability' event.
+        $event = bat_event_create(array(
+          'type' => $event_type,
+          'start_date' => $entity->booking_start_date[LANGUAGE_NONE][0]['value'],
+          'end_date' => $entity->booking_end_date[LANGUAGE_NONE][0]['value'],
+          'uid' => $user,
+        ));
 
-      $event->save();
+        $in_conversation_state = bat_event_load_state_by_machine_name('in_conversation');
+        $event->event_state_reference[LANGUAGE_NONE][0]['state_id'] = $in_conversation_state['id'];
 
-      // Save reference to created event in the booking entity.
-      $entity->booking_event_reference[LANGUAGE_NONE][0]['target_id'] = $event->event_id;
-      field_attach_update($type, $entity);
+        $start_date = new DateTime($event->start_date);
+
+        // Subtract one minute from the end date since BAT considers the last minute of an event included.
+        $end_date = new DateTime($event->end_date);
+        $end_date->sub(new DateInterval('PT1M'));
+        $event->end_date = $end_date->format('Y-m-d H:i');
+
+        $wrapper = entity_metadata_wrapper('bat_booking', $entity);
+        $type_id = $wrapper->booking_conversation_ref->conversation_unit_type_ref->type_id->value();
+
+        $valid_unit_ids = bat_event_get_matching_units($start_date, $end_date, array(AVAILABLE), $type_id, $event_type, FALSE, FALSE);
+
+        $event->event_bat_unit_reference[LANGUAGE_NONE][0]['target_id'] = reset($valid_unit_ids);
+
+        $event->save();
+
+        // Save reference to created event in the booking entity.
+        $entity->booking_event_reference[LANGUAGE_NONE][0]['target_id'] = $event->event_id;
+        field_attach_update($type, $entity);
+      }
     }
   }
 
@@ -910,7 +915,7 @@ function roomify_conversations_book_this_form_submit($form, &$form_state) {
 /**
  * Render function for booking entities.
  */
-function _roomify_conversations_conversation_booking_render($booking) {
+function roomify_conversations_conversation_booking_render($booking) {
   global $user;
 
   $output = '';
@@ -927,7 +932,12 @@ function _roomify_conversations_conversation_booking_render($booking) {
         $start_date_object = new DateTime($booking->booking_start_date[LANGUAGE_NONE][0]['value']);
         $end_date_object = new DateTime($booking->booking_end_date[LANGUAGE_NONE][0]['value']);
 
-        $date_format = variable_get('bat_daily_date_format', 'Y-m-d');
+        if ($type->type == 'single_day_tour' || $type->type == 'single_day_activity') {
+          $date_format = variable_get('bat_date_format', 'Y-m-d H:i');
+        }
+        else {
+          $date_format = variable_get('bat_daily_date_format', 'Y-m-d');
+        }
 
         $start_date = $start_date_object->format($date_format);
         $end_date = $end_date_object->format($date_format);
@@ -1003,7 +1013,7 @@ function _roomify_conversations_conversation_booking_render($booking) {
 /**
  * Render function for message entities.
  */
-function _roomify_conversations_message_render($message) {
+function roomify_conversations_message_render($message) {
   global $user;
 
   $account = user_load($message->uid);
@@ -1223,6 +1233,8 @@ function roomify_conversations_make_offer_form($form, &$form_state, $start_date,
 
   $conversation = roomify_conversation_load($conversation_id);
 
+  $type = bat_type_load($conversation->conversation_unit_type_ref[LANGUAGE_NONE][0]['target_id']);
+
   $price = $conversation->conversation_book_price[LANGUAGE_NONE][0]['amount'];
   $currency_code = $conversation->conversation_book_price[LANGUAGE_NONE][0]['currency_code'];
 
@@ -1240,6 +1252,11 @@ function roomify_conversations_make_offer_form($form, &$form_state, $start_date,
 
   $form['bat_start_date']['#default_value'] = $start_date;
   $form['bat_end_date']['#default_value'] = $end_date;
+
+  if ($type->type == 'single_day_tour' || $type->type == 'single_day_activity') {
+    $form['bat_start_date']['#date_format'] = variable_get('bat_date_format', 'Y-m-d H:i');
+    $form['bat_end_date']['#date_format'] = variable_get('bat_date_format', 'Y-m-d H:i');
+  }
 
   $form['price'] = array(
     '#type' => 'textfield',
@@ -1328,7 +1345,8 @@ function roomify_conversations_edit_offer_form($form, &$form_state, $booking_id,
   );
 
   $conversation = roomify_conversation_load($conversation_id);
-  $conversation_wrapper = entity_metadata_wrapper('roomify_conversation', $conversation);
+
+  $type = bat_type_load($conversation->conversation_unit_type_ref[LANGUAGE_NONE][0]['target_id']);
 
   $form['std_cost'] = array(
     '#markup' => '<div><label>' . t('Standard Cost:') . '</label> <span>' . $std_cost . '</span></div>',
@@ -1342,6 +1360,11 @@ function roomify_conversations_edit_offer_form($form, &$form_state, $booking_id,
 
   $form['bat_start_date']['#default_value'] = $booking->booking_start_date[LANGUAGE_NONE][0]['value'];
   $form['bat_end_date']['#default_value'] = $booking->booking_end_date[LANGUAGE_NONE][0]['value'];
+
+  if ($type->type == 'single_day_tour' || $type->type == 'single_day_activity') {
+    $form['bat_start_date']['#date_format'] = variable_get('bat_date_format', 'Y-m-d H:i');
+    $form['bat_end_date']['#date_format'] = variable_get('bat_date_format', 'Y-m-d H:i');
+  }
 
   $form['price'] = array(
     '#type' => 'textfield',
@@ -1424,24 +1447,6 @@ function roomify_conversations_offer_delete_form_submit($form, &$form_state) {
 
   print ajax_render($commands);
   exit;
-}
-
-/**
- * Implements hook_commerce_cart_line_item_refresh().
- */
-function roomify_conversations_commerce_cart_line_item_refresh($line_item, $order_wrapper) {
-  if ($line_item->type == 'roomify_accommodation_booking') {
-    $line_item_wrapper = entity_metadata_wrapper('commerce_line_item', $line_item);
-
-    if ($line_item_wrapper->__isset('commerce_booking_reference')) {
-      if ($booking = $line_item_wrapper->commerce_booking_reference->value()) {
-        if ($booking->type == 'conversation_booking') {
-          $line_item->commerce_unit_price[LANGUAGE_NONE]['0']['amount'] = $booking->booking_price[LANGUAGE_NONE]['0']['amount'];
-          $line_item->commerce_unit_price[LANGUAGE_NONE]['0']['data']['components']['0']['price']['amount'] = $booking->booking_price[LANGUAGE_NONE]['0']['amount'];
-        }
-      }
-    }
-  }
 }
 
 /**
@@ -1692,10 +1697,15 @@ function roomify_conversations_inquiry_render($conversation) {
 
   $output = '<div class="enquiry-item">';
 
-  $date_format = variable_get('bat_daily_date_format', 'Y-m-d');
-
   $type = bat_type_load($conversation->conversation_unit_type_ref[LANGUAGE_NONE][0]['target_id']);
   $type_name = $type->name;
+
+  if ($type->type == 'single_day_tour' || $type->type == 'single_day_activity') {
+    $date_format = variable_get('bat_date_format', 'Y-m-d H:i');
+  }
+  else {
+    $date_format = variable_get('bat_daily_date_format', 'Y-m-d');
+  }
 
   $guests = 0;
   if (isset($conversation->conversation_guests[LANGUAGE_NONE][0]['value'])) {
