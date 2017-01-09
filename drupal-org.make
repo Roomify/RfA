@@ -150,6 +150,7 @@ projects[ctools][version] = 1.12
 projects[date][version] = 2.9
 projects[date][patch][] = https://www.drupal.org/files/issues/date-allow_entering_of_custom_date_format_in_views_field_handlers-1504202-14.patch
 projects[date][patch][] = https://www.drupal.org/files/issues/date-fix_undefine_in_date_text_element_process-2339119-14.patch
+projects[date][patch][] = https://www.drupal.org/files/issues/date-input_disabled-1190830-14.patch
 
 projects[date_restrictions][version] = 1.x-dev
 
