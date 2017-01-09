@@ -61,8 +61,11 @@ class roomify_listing_handler_type_booking_cost_field extends views_handler_fiel
           if (isset($_GET['group_size']) && !empty($_GET['group_size'])) {
             $group_size = check_plain($_GET['group_size']);
           }
+          $price = roomify_accommodation_booking_calculate_price($start_date, $end_date, $type->type_id, $group_size);
         }
-        $price = roomify_accommodation_booking_calculate_price($start_date, $end_date, $type->type_id, $group_size);
+        else {
+          $price = roomify_accommodation_booking_calculate_price($start_date, $end_date, $type->type_id);
+        }
 
         $currency_setting = commerce_currency_load(commerce_default_currency());
         $booking_cost = commerce_currency_format($price, $currency_setting['code']);
