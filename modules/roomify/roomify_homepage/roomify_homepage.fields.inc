@@ -4,9 +4,12 @@
  * @file
  */
 
+/**
+ *
+ */
 function roomify_homepage_create_fields() {
-
   $field_bases = array();
+
   if (field_read_field('field_homepage_slideshow') === FALSE) {
     $field_bases['field_homepage_slideshow'] = array(
       'active' => 1,

@@ -13,6 +13,9 @@ $plugin = array(
   'required context' => new ctools_context_required(t('Conversation'), 'roomify_conversation'),
 );
 
+/**
+ *
+ */
 function roomify_conversations_send_message_content_type_render($subtype, $conf, $panel_args, $context) {
   if (empty($context->data)) {
     return;
