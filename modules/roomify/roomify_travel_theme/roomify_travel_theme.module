@@ -369,7 +369,9 @@ function roomify_travel_theme_form_alter(&$form, &$form_state, $form_id) {
 
     $property = $menu_item['page_arguments'][1]->data;
     $price = get_lower_default_price_property_types($property->property_id);
+    $group_size = isset($_GET['group_size']) ? $_GET['group_size'] : 0;
 
+    $book_text = t('Starting From');
     if (isset($_GET['bat_start_date']) && isset($_GET['bat_end_date'])) {
       // Show the real cost of the booking.
       $start_date = new DateTime($_GET['bat_start_date']);
@@ -379,13 +381,23 @@ function roomify_travel_theme_form_alter(&$form, &$form_state, $form_id) {
       $currency_symbol = $currency_setting['symbol'];
       $types_reference = field_get_items('roomify_property', $property, 'property_bat_type_reference');
       $price = 0;
+
+      // We made a search, so we know the price we're going to pay.
+      $book_text = t('Book For');
       foreach ($types_reference as $reference) {
         $type = bat_type_load($reference['target_id']);
 
         $valid_unit_ids = bat_event_get_matching_units($start_date, $end_date, array(AVAILABLE), $type->type_id, 'availability', FALSE, FALSE);
         // If there are available units, mark this type as available.
         if ($valid_unit_ids !== FALSE) {
-          $room_price = roomify_accommodation_booking_calculate_price($start_date, $end_date, $type->type_id);
+          // Check if the rates for person is enabled.
+          if (isset($type->field_st_rates_for_person[LANGUAGE_NONE][0]['value']) &&
+              $type->field_st_rates_for_person[LANGUAGE_NONE][0]['value']) {
+            $room_price = roomify_accommodation_booking_calculate_price($start_date, $end_date, $type->type_id, $group_size);
+          }
+          else {
+            $room_price = roomify_accommodation_booking_calculate_price($start_date, $end_date, $type->type_id);
+          }
           if ($room_price < $price || $price == 0) {
             $price = $room_price;
           }
@@ -398,7 +410,7 @@ function roomify_travel_theme_form_alter(&$form, &$form_state, $form_id) {
 
     $form['price'] = array(
       '#markup' => '<div class="listing-base-price">
-        <span class="starting-from">' . t('Starting From') . ' </span>
+        <span class="starting-from">' . $book_text . ' </span>
         <span class="price">' . $price . '</span>
       </div>',
       '#weight' => -10,
