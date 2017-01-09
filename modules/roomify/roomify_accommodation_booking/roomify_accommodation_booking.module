@@ -480,14 +480,24 @@ function roomify_accommodation_booking_confirmation_page($start_date, $end_date,
  * Change Search form.
  */
 function roomify_accommodation_booking_current_search_form($form, &$form_state, $type_id, $start_date, $end_date, $nights, $group_size, $booking_cost, $offer_amount = '') {
-  $date_format = variable_get('bat_daily_date_format', 'Y-m-d');
+
+  $type = bat_type_load($type_id);
+
+  $temp_end_date = clone($end_date);
+  if ($type->type == 'single_day_activity' || $type->type == 'single_day_tour') {
+    $date_format = variable_get('bat_date_format', 'Y-m-d H:i');
+    $temp_end_date->add(new DateInterval('PT1M'));
+  }
+  else {
+    $date_format = variable_get('bat_daily_date_format', 'Y-m-d');
+  }
 
   $form['current_search']['start_date'] = array(
     '#markup' => '<div class="current-search-item current-search-arrival"><label>' . t('Arriving On') . '</label>' . '<span>' . $start_date->format($date_format) . '</span></div>',
   );
 
   $form['current_search']['end_date'] = array(
-    '#markup' => '<div class="current-search-item current-search-departure"><label>' . t('Departing On') . '</label>' . '<span>' . $end_date->format($date_format) . '</span></div>',
+    '#markup' => '<div class="current-search-item current-search-departure"><label>' . t('Departing On') . '</label>' . '<span>' . $temp_end_date->format($date_format) . '</span></div>',
   );
 
   $form['current_search']['nights'] = array(
@@ -2042,6 +2052,10 @@ function roomify_accommodation_booking_conversation_confirmation_page($conversat
   $type = bat_type_load($unit->type_id);
   if ($property_id = field_get_items('bat_type', $type, 'field_st_property_reference')) {
     $property = roomify_property_load($property_id[0]['target_id']);
+  }
+
+  if ($type->type == 'single_day_activity' || $type->type == 'single_day_tour') {
+    $end_date->sub(new DateInterval('PT1M'));
   }
 
   if (isset($type->name)) {
