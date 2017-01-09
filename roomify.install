@@ -339,11 +339,6 @@ function roomify_install_finished(&$install_state) {
   $admin_role = user_role_load_by_name('administrator');
   user_role_save($admin_role);
 
-  // Only for tests.
-  if (isset($install_state['forms']['roomify_install_welcome']['travis_tests']) && $install_state['forms']['roomify_install_welcome']['travis_tests']) {
-    roomify_accommodation_example_content_multi_property();
-  }
-
   if (isset($messages['error'])) {
     $output = '<p>' . (isset($messages['error']) ? st('Review the messages above before visiting <a href="@url">your new site</a>.', array('@url' => url(''))) : st('<a href="@url">Visit your new site</a>.', array('@url' => url('')))) . '</p>';
     return $output;
