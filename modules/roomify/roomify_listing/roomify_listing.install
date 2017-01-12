@@ -31,6 +31,15 @@ function roomify_listing_install() {
   roomify_listing_create_pricing_event_type();
 
   variable_set('dragdropfile_default_enabled', 0);
+
+  // Enable metatags on Type and Property.
+  variable_set('metatag_enable_bat_type', 1);
+  variable_set('metatag_enable_bat_type__home', 1);
+  variable_set('metatag_enable_bat_type__room', 1);
+
+  variable_set('metatag_enable_roomify_property', 1);
+  variable_set('metatag_enable_roomify_property__casa_property', 1);
+  variable_set('metatag_enable_roomify_property__locanda_property', 1);
 }
 
 /**
@@ -1119,4 +1128,17 @@ function roomify_listing_update_7023() {
     $field_group->children[4] = 'field_rates_ranges';
     field_group_group_save($field_group);
   }
+}
+
+/**
+ * Enable metatags on Type and Property.
+ */
+function roomify_listing_update_7024() {
+  variable_set('metatag_enable_bat_type', 1);
+  variable_set('metatag_enable_bat_type__home', 1);
+  variable_set('metatag_enable_bat_type__room', 1);
+
+  variable_set('metatag_enable_roomify_property', 1);
+  variable_set('metatag_enable_roomify_property__casa_property', 1);
+  variable_set('metatag_enable_roomify_property__locanda_property', 1);
 }
