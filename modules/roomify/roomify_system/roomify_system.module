@@ -874,6 +874,7 @@ function roomify_system_roomify_rights() {
       'delete own bat_unit entities',
       'unpublish own property',
       'unpublish own type',
+      'edit meta tags',
     ),
     'roomify manager' => array(
       'administer fields',
@@ -982,6 +983,7 @@ function roomify_system_roomify_rights() {
       'view files',
       'administer roomify availability form settings',
       'administer roomify_customer_support',
+      'edit meta tags',
     ),
     'content editor' => array(
       'access content overview',
@@ -1007,6 +1009,7 @@ function roomify_system_roomify_rights() {
       'view own private files',
       'view own files',
       'administer theme colors',
+      'edit meta tags',
     ),
     'administrator' => $permissions,
   );

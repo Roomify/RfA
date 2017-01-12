@@ -13,3 +13,37 @@ function roomify_pages_manager_ctools_plugin_api($module = NULL, $api = NULL) {
     return array("version" => "1");
   }
 }
+
+/**
+ * Implements hook_ctools_render_alter().
+ *
+ * Temporary solution to load meta tags on entity pages that are driven by
+ * CTools display handlers.
+ */
+function roomify_pages_manager_ctools_render_alter(&$info, $page, $context) {
+  if ($page && isset($context['subtask']['admin path'])) {
+    if ($context['subtask']['admin path'] == 'listing/%type_id' || $context['subtask']['admin path'] == 'room-type/%type_id') {
+      // Loop over each context.
+      foreach ($context['contexts'] as $context_argument) {
+        if (is_array($context_argument->type) && !empty($context_argument->data)) {
+          if (in_array('entity', $context_argument->type)) {
+            $entity = $context_argument->data;
+            $entity_type = str_replace('entity:', '', $context_argument->plugin);
+
+            // Verify this is an appropriate entity.
+            $entity_info = entity_get_info($entity_type);
+            if (!empty($entity_info) && _metatag_entity_is_page($entity_type, $entity)) {
+              // Load the meta tags for this entity.
+              global $language;
+              metatag_entity_view($entity, $entity_type, 'full', $language->language, TRUE);
+
+              // Don't bother looping over any more contexts, an entity has been
+              // found.
+              break;
+            }
+          }
+        }
+      }
+    }
+  }
+}

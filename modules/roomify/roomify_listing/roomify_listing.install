@@ -31,6 +31,15 @@ function roomify_listing_install() {
   roomify_listing_create_pricing_event_type();
 
   variable_set('dragdropfile_default_enabled', 0);
+
+  // Enable metatags on Type and Property.
+  variable_set('metatag_enable_bat_type', 1);
+  variable_set('metatag_enable_bat_type__home', 1);
+  variable_set('metatag_enable_bat_type__room', 1);
+
+  variable_set('metatag_enable_roomify_property', 1);
+  variable_set('metatag_enable_roomify_property__casa_property', 1);
+  variable_set('metatag_enable_roomify_property__locanda_property', 1);
 }
 
 /**
@@ -1122,9 +1131,22 @@ function roomify_listing_update_7023() {
 }
 
 /**
- * Remove instant booking field for Home types.
+ * Enable metatags on Type and Property.
  */
 function roomify_listing_update_7024() {
+  variable_set('metatag_enable_bat_type', 1);
+  variable_set('metatag_enable_bat_type__home', 1);
+  variable_set('metatag_enable_bat_type__room', 1);
+
+  variable_set('metatag_enable_roomify_property', 1);
+  variable_set('metatag_enable_roomify_property__casa_property', 1);
+  variable_set('metatag_enable_roomify_property__locanda_property', 1);
+}
+
+/**
+ * Remove instant booking field for Home types.
+ */
+function roomify_listing_update_7025() {
   $instance_info = field_read_instance('bat_type', 'field_st_allow_instant_bookings', 'home');
   field_delete_instance($instance_info);
 
