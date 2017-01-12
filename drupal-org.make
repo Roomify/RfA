@@ -9,7 +9,7 @@ defaults[projects][subdir] = contrib
 projects[bat][type] = module
 projects[bat][download][type] = git
 projects[bat][download][url] = https://github.com/Roomify/bat_drupal.git
-projects[bat][download][tag] = 7.x-1.16
+projects[bat][download][tag] = 7.x-1.17
 projects[bat][subdir] = bat
 
 projects[bat_api][type] = module
@@ -34,7 +34,7 @@ projects[roomify_rate][subdir] = roomify
 projects[roomify_property][type] = module
 projects[roomify_property][download][type] = git
 projects[roomify_property][download][url] = https://github.com/Roomify/roomify_property.git
-projects[roomify_property][download][tag] = 1.19
+projects[roomify_property][download][tag] = 1.20
 projects[roomify_property][directory_name] = roomify_property
 projects[roomify_property][subdir] = roomify
 
