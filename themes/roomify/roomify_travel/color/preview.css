@@ -5,7 +5,10 @@
   display: inline-block;
   padding: 8px 16px;
 }
-
+#preview #header {
+  border-bottom: 4px solid #e7e7e7;
+  border-color: #e7e7e7;
+}
 #preview .logo {
   height: 100%;
   width: 25%;
