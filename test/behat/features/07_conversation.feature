@@ -27,8 +27,8 @@ Feature: Conversation
 
     Given I am logged in as "_guest"
     Then I visit last created property
-    Then I fill in "arrival[date]" with "2017-01-16"
-    Then I fill in "departure[date]" with "2017-01-21"
+    Then I fill in "arrival[date]" with "2017-04-16"
+    Then I fill in "departure[date]" with "2017-04-21"
     And I click on the text "Book Now"
     And I click on the text "Send an Enquiry"
     Then I fill in "field_listing_enquiry_name[und][0][value]" with "Test user 1"

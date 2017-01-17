@@ -6,14 +6,14 @@ Feature: Book Property
     And I visit "listing/1"
     Then I should see "Casa Sul Mare"
     And I should see "Starting from $20.00"
-    Then I fill in "arrival[date]" with "2017-01-17"
-    Then I fill in "departure[date]" with "2017-01-22"
+    Then I fill in "arrival[date]" with "2017-04-17"
+    Then I fill in "departure[date]" with "2017-04-22"
     And I click on the text "Book Now"
     Then I should see "Booking for Casa Sul Mare"
     And I should see "$100.00" in the "TOTAL COST" row
     Then I click on the text "Change Search"
-    Then I fill in "arrival[date]" with "2017-01-17"
-    Then I fill in "departure[date]" with "2017-01-23"
+    Then I fill in "arrival[date]" with "2017-04-17"
+    Then I fill in "departure[date]" with "2017-04-23"
     And I click on the text "Book Now"
     Then I should see "Booking for Casa Sul Mare"
     And I should see "$120.00" in the "TOTAL COST" row
