@@ -160,19 +160,14 @@ projects[date_datepicker_inline][download][revision] = c6aa61c6c8247fca72dece2b4
 
 projects[devel][version] = 1.5
 
-projects[diff][type] = module
-projects[diff][download][type] = git
-projects[diff][download][url] = https://git.drupal.org/project/diff.git
-projects[diff][download][revision] = e0124a16c40a2fbd6eb6fe7d540c53cbb6fd5a94
+projects[diff][version] = 3.3
 
 projects[dragdropfile][version] = 1.7
 
 projects[editablefields][type] = module
 projects[editablefields][download][type] = git
 projects[editablefields][download][url] = https://git.drupal.org/project/editablefields.git
-projects[editablefields][download][revision] = 9c618d43974476db8a94ba7dcc4bf59df0b28363
-projects[editablefields][patch][] = https://www.drupal.org/files/editablefields.undefined-index.1233688-20.patch
-projects[editablefields][patch][] = https://www.drupal.org/files/issues/editablefields-php7-compatibility-2686329-1.patch
+projects[editablefields][download][revision] = 97f0c29a8ad87c72d3244bc70dbffb8b4af39388
 
 projects[elements][version] = 1.4
 
@@ -192,10 +187,7 @@ projects[entity_translation][version] = 1.0-beta5
 
 projects[entity2text][version] = 1.0-alpha3
 
-projects[entityform][type] = module
-projects[entityform][download][type] = git
-projects[entityform][download][url] = https://git.drupal.org/project/entityform.git
-projects[entityform][download][revision] = ab5057c2080416fc8099bd8c33e063caafe27d57
+projects[entityform][version] = 2.0-rc3
 
 projects[entityform_block][version] = 1.3
 projects[entityform_block][patch][] = https://www.drupal.org/files/issues/entityform_block-hook_entity_type_delete-exception-2487898-13.patch
@@ -222,7 +214,7 @@ projects[features][version] = 2.10
 
 projects[ffc][version] = 1.0-beta2
 
-projects[field_collection][version] = 1.0-beta11
+projects[field_collection][version] = 1.0-beta12
 
 projects[field_group][type] = module
 projects[field_group][download][type] = git
@@ -316,7 +308,7 @@ projects[masonry][version] = 3.0-beta1
 
 projects[masonry_views][version] = 3.0
 
-projects[media][version] = 2.0-rc1
+projects[media][version] = 2.0-rc2
 
 projects[menu_admin_per_menu][version] = 1.0
 projects[menu_admin_per_menu][patch][] = https://www.drupal.org/files/issues/integrate-menu-translation-suport-2546214-1.patch
@@ -324,7 +316,7 @@ projects[menu_admin_per_menu][patch][] = https://www.drupal.org/files/issues/int
 projects[message][version] = 1.12
 projects[message][patch][] = https://www.drupal.org/files/issues/text-sanitized.patch
 
-projects[metatag][version] = 1.18
+projects[metatag][version] = 1.19
 
 projects[mimemail][version] = 1.0-beta4
 
@@ -408,7 +400,7 @@ projects[search_api_ranges][download][revision] = abbfa9bd6698d6fe5dca2f77bac94a
 
 projects[search_api_sorts][version] = 1.6
 
-projects[services][version] = 3.17
+projects[services][version] = 3.18
 
 projects[services_api_key_auth][version] = 1.2
 
@@ -476,10 +468,7 @@ projects[votingapi][version] = 2.12
 
 projects[vvf][version] = 1.2
 
-projects[wysiwyg][type] = module
-projects[wysiwyg][download][type] = git
-projects[wysiwyg][download][url] = https://git.drupal.org/project/wysiwyg.git
-projects[wysiwyg][download][revision] = 128926ac9973e99d0f0f977de28ee9ca4bc310be
+projects[wysiwyg][version] = 2.3
 
 projects[xautoload][version] = 5.7
 
