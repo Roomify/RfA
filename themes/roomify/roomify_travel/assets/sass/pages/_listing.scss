@@ -9,7 +9,7 @@
     float: right;
     right: 15px;
     bottom: 90px;
-    z-index: 1000;
+    z-index: 99;
     width: 200px;
     .inner {
       margin: 0 auto;
@@ -81,7 +81,7 @@
 
 .pane-roomify-property-flag-favorites-link {
   position: relative;
-  z-index: 999;
+  z-index: 98;
   top: 150px;
   @media (max-width: $screen-sm) {
     top: 40px;

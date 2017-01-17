@@ -9111,7 +9111,7 @@ body.toggled #close-sidebar-wrapper {
     float: right;
     right: 15px;
     bottom: 90px;
-    z-index: 1000;
+    z-index: 99;
     width: 200px; }
     .pane-roomify-manage-property .manage-property-links .inner {
       margin: 0 auto;
@@ -9222,7 +9222,7 @@ body.toggled #close-sidebar-wrapper {
 
 .pane-roomify-property-flag-favorites-link {
   position: relative;
-  z-index: 999;
+  z-index: 98;
   top: 150px; }
   @media (max-width: 768px) {
     .pane-roomify-property-flag-favorites-link {

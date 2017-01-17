@@ -3281,6 +3281,9 @@ html,
 body {
   background-color: #fdfdfd !important;
 }
+body {
+  font: 15px/1.6em 'Lato', sans-serif !important;
+}
 body #console.roomify-admin-messages,
 body #page {
   margin-bottom: 40px;
