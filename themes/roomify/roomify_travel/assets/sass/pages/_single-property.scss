@@ -345,6 +345,9 @@ body.page-single-property-listing {
     font-size: 26px;
     text-align: center;
     margin: 50px 0;
+    @media (max-width: $screen-xs) {
+      margin-bottom: 0;
+    }
 	}
 	.panel-content-wrapper,
 	.panel-content-bottom {
@@ -362,9 +365,9 @@ body.page-single-property-listing {
         li.ui-state-default {
           border-width: 1px;
           border-bottom: 0;
-          float: right;
+          float: left;
           &:first-child {
-            margin-right: 0;
+            //margin-right: 0;
           }
         }
       }
@@ -442,26 +445,16 @@ body.page-single-property-listing {
       }
     }
   }
-  .casa-property-description {
-    display: inline-block;
-    width: 100%;
-    padding: 30px;
-    background: white;
-    border-radius: 2px;
-    border: 1px solid #ececec;
-    margin-top: 52px;
-    margin-bottom: 50px;
-  }
   /* PROPERTY TYPES */
   .view-property-travel {
     display: inline-block;
     width: 100%;
-    padding: 30px;
-    background: white;
-    border-radius: 2px;
-    border: 1px solid #ececec;
-    margin-top: 52px;
-    margin-bottom: 50px;
+    padding: 18px;
+    margin-top: 40px;
+    margin-bottom: 40px;
+    @media (max-width: $screen-xs) {
+      padding: 0;
+    }
     .views-row {
       display: inline-block;
       width: 100%;
@@ -477,14 +470,23 @@ body.page-single-property-listing {
           font-size: 20px;
           margin-bottom: 20px;
           display: inline-block;
-          font-weight: 400;
+          color: initial;
+          @media (min-width: $screen-md) {
+            font-size: 24px;
+          }
         }
       }
+       .views-field-field-st-description {
+        font-size: 16px;
+       }
       .views-field-field-st-gallery {
         display: inline-block;
         float: left;
         margin-right: 20px;
-        max-width: 250px;
+        max-width: 360px;
+        @media (max-width: $screen-xs) {
+          margin-bottom: 15px;
+        }
         img {
           border-radius: 2px;
         }
@@ -496,6 +498,7 @@ body.page-single-property-listing {
         a.btn {
           @include make-xs-column(4);
           float: right;
+          max-width: 200px;
         }
         .info {
           @include make-xs-column(8);
