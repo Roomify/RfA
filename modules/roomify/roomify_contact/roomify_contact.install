@@ -16,37 +16,10 @@ function roomify_contact_enable() {
   $entityform_block_types[] = 'contact';
   variable_set('entityform_block_types', $entityform_block_types);
 
-  _roomify_contact_menu_link();
+  roomify_system_create_update_menu_link('Contact us', 'contact-us', 'main-menu', 1, 1, array('alter' => TRUE));
 
   // Add dependencies to date fields on contact form.
   roomify_contact_add_date_fields_booking_request_dependency();
-}
-
-/**
- *
- */
-function _roomify_contact_menu_link() {
-  $menu_link = array(
-    'menu_name' => 'main-menu',
-    'link_path' => 'contact-us',
-    'router_path' => 'contact-us',
-    'link_title' => t('Contact Us'),
-    'options' => array(
-      'attributes' => array(
-        'title' => '',
-      ),
-      'identifier' => 'main-menu_contact:contact-us',
-    ),
-    'module' => 'menu',
-    'hidden' => 0,
-    'external' => 0,
-    'has_children' => 0,
-    'expanded' => 0,
-    'weight' => 1,
-    'customized' => 1,
-  );
-
-  menu_link_save($menu_link);
 }
 
 /**

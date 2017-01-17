@@ -9,9 +9,6 @@
  */
 function roomify_travel_theme_install() {
 
-  roomify_system_create_update_menu_link('Areas', 'areas', 'main-menu', -5);
-  roomify_system_create_update_menu_link('Properties', 'availability-search', 'main-menu', -10);
-
   // Enable Properties Current Search.
   $current_search = variable_get('current_search_searchers', array());
   $current_search['properties'] = 'search_api@properties_index';

@@ -6,6 +6,7 @@ package = Roomify
 dependencies[] = roomify_rights
 dependencies[] = entityform_i18n
 dependencies[] = entity_translation
+dependencies[] = i18n_menu
 dependencies[] = i18n_string
 dependencies[] = i18n_taxonomy
 dependencies[] = i18n_translation
