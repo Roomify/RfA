@@ -11401,26 +11401,29 @@ ol.inline.commerce-checkout-progress {
           margin-left: 2%;
           text-align: left;
           padding-left: 0; }
-.page-activities-search .view-display-id-panel_pane_2 #leaflet-map .leaflet-popup .leaflet-popup-content,
-.page-availability-search .view-display-id-panel_pane_2 #leaflet-map .leaflet-popup .leaflet-popup-content {
-  max-width: 250px; }
-.page-activities-search .view-display-id-panel_pane_2 #leaflet-map .leaflet-popup a,
-.page-availability-search .view-display-id-panel_pane_2 #leaflet-map .leaflet-popup a {
-  font-size: 18px; }
-.page-activities-search .view-display-id-panel_pane_2 #leaflet-map .leaflet-popup .roomify-property-short-description,
-.page-availability-search .view-display-id-panel_pane_2 #leaflet-map .leaflet-popup .roomify-property-short-description {
-  margin: 5px 0;
-  font-size: 15px; }
-.page-activities-search .view-display-id-panel_pane_2 #leaflet-map .leaflet-popup .roomify-property-image,
-.page-availability-search .view-display-id-panel_pane_2 #leaflet-map .leaflet-popup .roomify-property-image {
-  display: inline-block;
-  max-width: 250px;
-  margin: 5px 0; }
-  .page-activities-search .view-display-id-panel_pane_2 #leaflet-map .leaflet-popup .roomify-property-image img,
-  .page-availability-search .view-display-id-panel_pane_2 #leaflet-map .leaflet-popup .roomify-property-image img {
-    width: 100% !important;
-    border-radius: 5px;
-    min-width: 120px; }
+.page-activities-search .view-display-id-panel_pane_2 #leaflet-map .leaflet-popup,
+.page-availability-search .view-display-id-panel_pane_2 #leaflet-map .leaflet-popup {
+  height: 250px; }
+  .page-activities-search .view-display-id-panel_pane_2 #leaflet-map .leaflet-popup .leaflet-popup-content,
+  .page-availability-search .view-display-id-panel_pane_2 #leaflet-map .leaflet-popup .leaflet-popup-content {
+    max-width: 170px; }
+  .page-activities-search .view-display-id-panel_pane_2 #leaflet-map .leaflet-popup a,
+  .page-availability-search .view-display-id-panel_pane_2 #leaflet-map .leaflet-popup a {
+    font-size: 18px; }
+  .page-activities-search .view-display-id-panel_pane_2 #leaflet-map .leaflet-popup .roomify-property-short-description,
+  .page-availability-search .view-display-id-panel_pane_2 #leaflet-map .leaflet-popup .roomify-property-short-description {
+    margin: 5px 0;
+    font-size: 15px; }
+  .page-activities-search .view-display-id-panel_pane_2 #leaflet-map .leaflet-popup .roomify-property-image,
+  .page-availability-search .view-display-id-panel_pane_2 #leaflet-map .leaflet-popup .roomify-property-image {
+    display: inline-block;
+    max-width: 250px;
+    margin: 5px 0; }
+    .page-activities-search .view-display-id-panel_pane_2 #leaflet-map .leaflet-popup .roomify-property-image img,
+    .page-availability-search .view-display-id-panel_pane_2 #leaflet-map .leaflet-popup .roomify-property-image img {
+      width: 100% !important;
+      border-radius: 2px;
+      min-width: 120px; }
 
 #property-bat-activity-facets-availability .form-wrapper,
 #roomify-property-search-block-form .form-wrapper,

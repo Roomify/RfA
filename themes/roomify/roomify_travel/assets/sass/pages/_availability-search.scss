@@ -506,8 +506,9 @@
   .view-display-id-panel_pane_2 {
     #leaflet-map {
       .leaflet-popup {
+        height: 250px;
         .leaflet-popup-content {
-          max-width: 250px;
+          max-width: 170px;
         }
         a {
           font-size: 18px;
@@ -522,7 +523,7 @@
           margin: 5px 0;
           img {
             width: 100% !important;
-            border-radius: 5px;
+            border-radius: 2px;
             min-width: 120px;
           }
         }
