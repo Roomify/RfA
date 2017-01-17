@@ -330,7 +330,15 @@ function roomify_install_finished(&$install_state) {
   variable_set('image_toolkit', 'gd');
   variable_set('image_jpeg_quality', '100');
 
+  $menu = menu_load('main-menu');
+  module_load_include('module', 'i18n');
+  $menu['language'] = 'en';
+  $menu['i18n_mode'] = I18N_MODE_MULTIPLE;
+  menu_save($menu);
+
   // Create Common Menu Links.
+  roomify_system_create_update_menu_link('Areas', 'areas', 'main-menu', -5);
+  roomify_system_create_update_menu_link('Properties', 'availability-search', 'main-menu', -10);
   roomify_system_create_update_menu_link('Things to do', 'things-to-do', 'main-menu', -3);
   roomify_system_create_update_menu_link('Location', 'location', 'main-menu', -1);
   roomify_system_create_update_menu_link('Blog', 'blog', 'main-menu', -2);
