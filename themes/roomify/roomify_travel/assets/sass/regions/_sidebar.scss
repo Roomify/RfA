@@ -161,8 +161,10 @@ body {
           }
         }
       }
-      .form-actions  {
+      .form-actions {
         button {
+          background-color: $btn-success-bg;
+          border-color: $btn-success-border;
           width: 100%;
           font-size: 16px;
           span {

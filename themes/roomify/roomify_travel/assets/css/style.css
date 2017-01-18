@@ -7301,6 +7301,8 @@ body {
             display: inline-block;
             padding: 0; }
       body .sidebar-nav .pane-user-login .form-actions button {
+        background-color: #28B62C;
+        border-color: #23a127;
         width: 100%;
         font-size: 16px; }
         body .sidebar-nav .pane-user-login .form-actions button span {

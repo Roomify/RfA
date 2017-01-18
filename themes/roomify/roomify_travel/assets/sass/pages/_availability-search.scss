@@ -572,7 +572,7 @@
       border: 1px solid #D4D3D3;
     }
     .form-item-group-size,
-    .form-item-location  {
+    .form-item-location {
       @include make-xs-column(12);
       @include make-sm-column(12);
       @include make-md-column(3);
