@@ -21,7 +21,6 @@
     position: relative;
     top: 15px;
     margin-bottom: 15px;
-    @extend .btn-warning;
   }
   .view-my-cart {
     table {
@@ -122,9 +121,6 @@
       padding-bottom: 15px;
       .checkout-continue {
         margin-right: 10px;
-        @extend .btn;
-        @extend .btn-default;
-        @extend .btn-success;
       }
       .button-operator {
         margin-right: 10px;
@@ -132,9 +128,6 @@
       .checkout-back,
       .checkout-cancel {
         margin-right: 10px;
-        @extend .btn;
-        @extend .btn-default;
-        @extend .btn-danger;
       }
     }
   }

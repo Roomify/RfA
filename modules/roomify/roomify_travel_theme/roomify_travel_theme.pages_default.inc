@@ -3177,7 +3177,7 @@ function roomify_travel_theme_default_page_manager_handlers() {
   $pane->configuration = array(
     'admin_title' => 'Add Blogposts',
     'title' => '',
-    'body' => '<p><a class="roomify-add-blog-post-link roomify-add-button" href="/node/add/blog">Add Blogpost</a></p>',
+    'body' => '<p><a class="roomify-add-blog-post-link roomify-add-button btn btn-default" href="/node/add/blog">Add Blogpost</a></p>',
     'format' => 'filtered_text',
     'substitute' => 1,
   );

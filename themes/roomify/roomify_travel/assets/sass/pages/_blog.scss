@@ -27,62 +27,62 @@
       }
       .pane-content {
         .views-row {/* Masonry blog posts */
-        .pane-blog-panel-pane-8,
-        .pane-blog-panel-pane-7,
-        .pane-blog-panel-pane-3 {
-          display: inline-block;
-          width: 100%;
-          .pane-term-name,
-          .pane-title {
-            text-align: center;
-            margin-top: 50px;
-          }
-          .view-display-id-panel_pane_8,
-          .view-display-id-panel_pane_7,
-          .view-display-id-panel_pane_3 {
-            .view-content {
-              margin: 0 auto;
+          .pane-blog-panel-pane-8,
+          .pane-blog-panel-pane-7,
+          .pane-blog-panel-pane-3 {
+            display: inline-block;
+            width: 100%;
+            .pane-term-name,
+            .pane-title {
+              text-align: center;
+              margin-top: 50px;
             }
-            .masonry-item {
-              border-radius: 5px;
-              width: 320px;
-              margin: 25px 0;
-              .views-field-field-featured-image {
-                img {
-                  border-radius: 5px 5px 0 0;
-                }
+            .view-display-id-panel_pane_8,
+            .view-display-id-panel_pane_7,
+            .view-display-id-panel_pane_3 {
+              .view-content {
+                margin: 0 auto;
               }
-              .views-field-body {
-                background-color: white;
-                color: #565656;
-                font-weight: 300;
-                padding: 0 10px 10px 10px;
-                border-radius: 0 0 5px 5px;
-                .field-content {
-                  padding-top: 10px;
-                  .views-more-link {
-                    display: block;
-                    margin-top: 10px;
+              .masonry-item {
+                border-radius: 5px;
+                width: 320px;
+                margin: 25px 0;
+                .views-field-field-featured-image {
+                  img {
+                    border-radius: 5px 5px 0 0;
                   }
                 }
-              }
-              .views-field-title-field { 
-                background: white;
-                padding: 10px;
-                border-bottom: 1px solid #E0E0E0;
-                a {
+                .views-field-body {
+                  background-color: white;
                   color: #565656;
-                  font-size: 16px;
-                  font-weight: 700;
+                  font-weight: 300;
+                  padding: 0 10px 10px 10px;
+                  border-radius: 0 0 5px 5px;
+                  .field-content {
+                    padding-top: 10px;
+                    .views-more-link {
+                      display: block;
+                      margin-top: 10px;
+                    }
+                  }
                 }
+                .views-field-title-field { 
+                  background: white;
+                  padding: 10px;
+                  border-bottom: 1px solid #E0E0E0;
+                  a {
+                    color: #565656;
+                    font-size: 16px;
+                    font-weight: 700;
+                  }
+                }
+                &:hover {
+                  opacity: .86;
+                }
+                @include transition(250ms opacity ease-out);
               }
-              &:hover {
-                opacity: .86;
-              }
-              @include transition(250ms opacity ease-out);
             }
           }
-        }
           .views-field-title-field {
             &:before {
               content: "•";
@@ -196,8 +196,6 @@
   }
   .pager-load-more a,
   .roomify-add-button {
-    @extend .btn;
-    @extend .btn-default;
     @include button-variant(#FFFFFF, #127BA3, #158CBA);
     border-left: 0;
     border-right: 0;
@@ -255,7 +253,6 @@
     }
   }
 }
-
 
 .node-type-blog {
   .panel_sl_content {

@@ -708,6 +708,7 @@ function bat_type_search_availability_form() {
     '#prefix' => '<div class="bat-type-availability-search-submit">',
     '#suffix' => '</div>',
     '#value' => t('Search'),
+    '#attributes' => array('class' => array('btn-default btn-danger')),
   );
 
   return $form;
