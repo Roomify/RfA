@@ -1,0 +1,38 @@
+// Site container
+.site-container {
+  @extend .container;
+  padding:0;
+  background:white;
+  -webkit-box-shadow: 0px 0px 15px 0px rgba(0,0,0,0.3);
+  -moz-box-shadow: 0px 0px 15px 0px rgba(0,0,0,0.3);
+  box-shadow: 0px 0px 15px 0px rgba(0,0,0,0.3);
+}
+
+.breadcrumb {
+  background: white;
+  font-size: 16px;
+}
+
+.pane-roomify-social-feed-render.panel-pane {
+  margin-bottom: 15px;
+  display: inline-block;
+  width: 100%;
+  padding: 15px;
+  background: white;
+  border: 1px solid #ececec;
+  border-radius: 2px;
+  .pane-title {
+    border-bottom: 1px solid #ececec;
+    padding-bottom: 15px
+  }
+}
+
+.collapse-element-link {
+  margin-top: 10px;
+  color: $black;
+  text-decoration: underline;
+  font-weight: 600;
+  &.secondary {
+    color: $secondary;
+  }
+}

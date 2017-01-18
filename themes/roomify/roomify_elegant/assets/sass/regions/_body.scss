@@ -1,0 +1,11 @@
+body.html {
+	background: url("../images/pattern.png");
+}
+
+section#main-section-container {
+	@media (min-width: $screen-sm) {
+		padding-left: 30px;
+		padding-right: 30px;
+	}
+	padding-bottom: 60px;
+}

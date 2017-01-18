@@ -1,0 +1,534 @@
+.page-listing {
+  .field-name-field-sp-short-description  {
+    display: inline-block;
+    width: 100%;
+    text-align: center;
+    margin-top: 20px;
+    margin-bottom: 70px;
+    font-size: 24px;
+    font-weight: 400;
+  }
+}
+// Listing Page Styles
+.pane-roomify-manage-property {
+  position: relative;
+  width: 100%;
+  display: inline-block;
+  margin-bottom: 25px;
+  margin-top: 10px;
+  .manage-property-links {
+    float: left;
+    right: 15px;
+    bottom: 90px;
+    z-index: 1000;
+    width: 200px;
+    .inner {
+      margin: 0 auto;
+      display: table;
+    }
+    @media (max-width: $screen-sm) {
+      font-size: 10px;
+      bottom: 38px;
+      right: calc(50% - 100px);
+    }
+    .manage-icon {
+      display: inline-block;
+      float: left;
+      text-indent: -999999px;
+      margin-right: 5px;
+      margin-left: 5px;
+      &.edit-link a {
+        @include make-edit-icon("../../images/edit-link.png", #FF9800);
+      }
+      &.availbility-link a {
+        @include make-edit-icon("../../images/edit-availability.png", #FF9800);
+      }
+      &.pricing-link a {
+        @include make-edit-icon("../../images/edit-price.png", #FF9800);
+      }
+      &.rooms-link a {
+        @include make-edit-icon("../../images/edit-rooms.png", #FF9800);
+      }
+    }
+  }
+}
+.pane-roomify-property-flag-favorites-link {
+  position: relative;
+  z-index: 999;
+  top: 150px;
+  @media (max-width: $screen-sm) {
+    top: 40px;
+  }
+
+  .flag-favorites {
+    @include flag-favorite();
+    @include flag-favorite-size(52px, 25px);
+    position: absolute;
+    width: 80%;
+    margin-left: 10%;
+    margin-right: 10%;
+    a {
+      margin: 0 auto;
+    }
+  }
+}
+
+.pane-property-slideshow-elegant {
+  background: white;
+  padding: 0;
+  border-right: none;
+  .slide__content {
+    position: relative;
+    .slide__caption {
+      min-height: 0;
+      padding: 0;
+    }
+    // Description
+    .slide__overlay {
+      position: absolute;
+      bottom:0;
+      left:0;
+      right:0;
+      background:rgba(0,0,0,.5);
+      text-align: center;
+      padding: 15px;
+      color:white;
+      
+      .title {
+        font-size: 22px;
+        font-weight: 400;
+      }
+      
+      .alt {
+        font-size: 16px;
+        color: #999;
+        font-style: italic;
+      }
+      @media (max-width: $screen-xs) {
+        display: none;
+      }
+    }
+  }
+  
+  .slick-wrapper {
+    margin-bottom: 70px;
+    @media (max-width: $screen-xs) {
+      margin-bottom: 0;
+    }
+  }
+  .slick-dots {
+    bottom: -55px;
+    li {
+      width: 10px;
+      height: 10px;
+    }
+  }
+  .slick.slick--view--property {
+    position: relative;
+  }
+  .slick-next.slick-arrow {
+    background: url("../images/arrow_right.png") 0 50% no-repeat;
+    background: url("../images/arrow_right.svg") center center no-repeat, linear-gradient(transparent, transparent);
+    display: inline-block;
+    position: absolute;
+    top: calc(50% - 15px);
+    width: 30px;
+    height: 30px;
+    margin-top: 0px;
+    text-indent: -9999px;
+    border: 0;
+    background-size: contain;
+    right: 12px;
+    @media (max-width: $screen-sm) {
+      display: none !important;
+    }
+  }
+  .slick-prev.slick-arrow {
+    background: url("../images/arrow_left.png") 0 50% no-repeat;
+    background: url("../images/arrow_left.svg") center center no-repeat, linear-gradient(transparent, transparent);
+    display: inline-block;
+    position: absolute;
+    top: calc(50% - 15px);
+    width: 30px;
+    height: 30px;
+    margin-top: 0px;
+    text-indent: -9999px;
+    border: 0;
+    background-size: contain;
+    left: 12px;
+    @media (max-width: $screen-sm) {
+      display: none !important;
+    }
+  }
+}
+.pane-roomify-property-field-sp-description {
+  &[aria-expanded="false"] {
+    -webkit-mask-image: -webkit-linear-gradient(top, rgba(0, 0, 0, 1) 68%, rgba(0, 0, 0, 0) 100%);
+  }
+  @media (max-width: $screen-sm-max) {
+    margin-top: 40px;
+    display: inline-block;
+    width: 100%;
+    .pane-title {
+      text-align: center;
+    }
+  }
+}
+
+.page-listing .first-section {
+  margin-bottom: 50px;
+  display: inline-block;
+  width: 100%;
+}
+.pane-roomify-listing-availability-search-block-roomify-property-search,
+.pane-locanda-availability-search,
+.pane-roomify-listing-availability-search-block-roomify-listing-search {
+  display: inline-block;
+  width: 100%;
+  margin: 40px 0;
+  margin-bottom: 70px;
+  padding: 22px 40px 40px 40px;
+  @media (max-width: $screen-lg) {
+    padding: 30px 40px 30px 40px;
+  }
+  background: $black;
+  color: white;
+  .listing-base-price {
+    margin-top: 8px;
+  }
+  .listing-base-price,
+  .start-date,
+  .end-date,
+  .form-item-group-size,
+  .listing-availability-search-submit,
+  .locanda-availability-search-submit {
+    @include make-xs-column(12);
+    @include make-sm-column(6);
+    @include make-lg-column(2.4, 50);
+    @media (max-width: $screen-lg) {
+      margin-bottom: 30px;
+    }
+  }
+  .listing-base-price,
+  .locanda-availability-search-submit,
+  .listing-availability-search-submit {
+    @media (max-width: $screen-md) {
+      width: 100%;
+    }
+    button {
+      @extend .btn;
+      @extend .btn-default;
+      @extend .btn-warning;
+      color: $black;
+      @media (max-width: $screen-sm) {
+        width: 100%;
+      }
+      padding: 10px 25px;
+      border-radius: 0
+    }
+  }
+  .start-date,
+  .end-date {
+    label {
+      display: none;
+    }
+    input {
+      background: $black;
+      text-indent: 10px;
+      color: white;
+    }
+  }
+  .form-item-location,
+  .form-item-group-size {
+    select {
+      background: $black;
+      text-indent: 10px;
+      width: 50px;
+      margin-left: 5px;
+      color: white;
+    }
+  }
+  .check-availability {
+    text-transform: uppercase;
+    color: $secondary;
+    font-weight: 700;
+  }
+  .price {
+    color: $secondary;
+  }
+}
+
+.pane-roomify-elegant-highlights {
+  @include make-row();
+  margin-bottom: 70px;
+  .pane-title {
+    text-align: center;
+  }
+}
+.pane-roomify-property-field-sp-highlight-image1,
+.pane-roomify-property-field-sp-highlight-image2,
+.pane-roomify-property-field-sp-highlight-image3,
+.pane-roomify-property-field-sp-highlight-image1-cap,
+.pane-roomify-property-field-sp-highlight-image2-cap,
+.pane-roomify-property-field-sp-highlight-image3-cap {
+  img {
+    margin: 0px auto 10px auto;
+    @media (max-width: $screen-sm-max) {
+      margin: 40px auto 10px auto;
+    }
+  }
+  .field-type-text {
+    max-width: 360px;
+    display: table;
+    margin: 0 auto;
+    text-align: center;
+  }
+}
+
+// Property Location, essentials and nearby.
+.pane-property-location {
+  @include panel-pane-theme();
+  display: inline-block;
+  color: white;
+  width: 100%;
+  .leaflet-popup-content {
+    color: initial;
+  }
+  .pane-title {
+    text-align: left;
+  }
+  .panel-content-right,
+  .panel-content-left {
+    width: 100%;
+    .pane-title {
+      @include h4();
+      color: $secondary;
+      font-weight: 600;
+    }
+  }
+  .panel-content-left {
+    margin-top: 20px;
+  }
+  .pane-roomify-property-field-sp-how-to-reach,
+  .pane-roomify-property-field-sp-essentials {
+    .pane-title {
+      text-align: left !important;
+      padding-top: 0px;
+      margin-bottom: 10px;
+      &:after {
+        display: none;
+      }
+    }
+    @media (min-width: $screen-md) {
+      padding-right: 10px;
+    }
+    margin-bottom: 10px;
+  }
+  #leaflet-map {
+    margin-top: 30px;
+  }
+  .pane-roomify-property-field-sp-address {
+    margin: 15px 0;
+  }
+}
+
+.pane-roomify-property-field-sp-policies {
+  @include panel-pane-theme();
+}
+.pane-roomify-property-field-sp-amenities {
+  @include panel-pane-theme();
+  margin-bottom: 25px;
+  .pane-title {
+    text-align: left;
+  }
+  .field-item.even,
+  .field-item.odd {
+    display: inline-block;
+    margin-right: 5px;
+    margin-bottom: 5px;
+    font-size: 14px;
+    &:not(:last-child) {
+      &::after {
+        display: inline-block;
+        content: "\25cf";
+        font-size: 0.7em;
+        margin-left: 5px;
+        opacity: 0.8;
+        bottom: 1px;
+        position: relative;
+      }
+    }
+  }
+}
+.pane-views-panes.pane-property-elegant-panel-pane-3 {
+  display: inline-block;
+  width: 100%;
+  margin-bottom: 70px;
+  .pane-title {
+    text-align: center;
+  }
+  .view-property-elegant {
+    .views-row {
+      display: inline-block;
+      width: 100%;
+      margin-bottom: 30px;
+      border-bottom: 1px solid rgb(242, 242, 242);
+      padding-bottom: 40px;
+      .views-field-name {
+        margin-bottom: 8px;
+        display: inline-block;
+        width: 100%;
+        a {
+          color: $black;
+          font-size: 18px;
+          text-decoration: underline;
+        }
+      }
+      .views-field-field-st-gallery {
+        display: inline-block;
+        float: left;
+        margin-right: 25px;
+      }
+      .views-field-field-st-amenities {
+        margin-bottom: 15px;
+      }
+      .views-field-field-st-max-capacity,
+      .views-field-beds,
+      .views-field-booking-cost {
+        .views-label {
+          display: inline-block;
+          float: left;
+          font-weight: bold;
+          margin-right: 8px;
+        }
+      }
+      .views-field-book-this {
+        margin-top: 20px;
+        text-align: right;
+        a {
+          display: inline-block;
+          margin-left: 20px;
+          float: right;
+        }
+        .info {
+          margin-top: 5px;
+          display: inline-block;
+        }
+      }
+    }
+  }
+}
+.page-listing {
+  .panel-content-bottom {
+    display: inline-block;
+    width: 100%;
+    .pane-featured-properties-panel-pane-3 {
+      margin: 70px 0;
+      .pane-title {
+        text-align: center;
+      }
+      .view-featured-properties {
+        .slick-next.slick-arrow {
+          right: 15px;
+        }
+        .slick-prev.slick-arrow {
+          left: 15px;
+        }
+      }
+    }
+  }
+}
+.pane-featured-properties-panel-pane-3 {
+  display: inline-block;
+  width: 100%;
+  padding-bottom: 20px;
+  .views-row {
+    max-width: 360px;
+  }
+  .view-featured-properties.view-display-id-panel_pane_3 {
+    margin: 0 auto;
+    max-width: 1200px;
+    @media (max-width: $screen-sm-max) {
+      max-width: 360px;
+    }
+  }
+  .views-field-name {
+    text-align: center;
+    border-bottom: 1px solid rgba(70, 66, 62, 0.20);
+    width: 80%;
+    padding-bottom: 8px;
+    margin-left: 10%;
+    font-weight: 600;
+    font-size: 16px;
+    text-transform: uppercase;
+    margin-top: 8px;
+  }
+  .views-field-field-sp-short-description {
+    margin: 10px 0;
+    text-align: center;
+  }
+  .slide__content {
+    margin: 0 auto;
+    display: table;
+    max-width: 360px;
+    width: 100%;
+    padding: 10px;
+    background: white;
+    border: 1px solid #ECECEC;
+    border-radius: 2px;
+    position: relative;
+  }
+  .slick--view--featured-properties {
+    position: relative;
+  }
+  .views-field-field-sp-featured-image {
+    overflow: hidden;
+  } 
+  .slick-next.slick-arrow {
+    background: url("../images/arrow_right.png") 0 50% no-repeat;
+    background: url("../images/arrow_right.svg") center center no-repeat, linear-gradient(transparent, transparent);
+    display: inline-block;
+    position: absolute;
+    top: calc(45% - 15px);
+    width: 30px;
+    height: 30px;
+    margin-top: 0px;
+    text-indent: -9999px;
+    border: 0;
+    background-size: contain;
+    right: 16px;
+    @media (min-width: $screen-md) {
+      right: 25px;
+    }
+  }
+  .slick-prev.slick-arrow {
+    background: url("../images/arrow_left.png") 0 50% no-repeat;
+    background: url("../images/arrow_left.svg") center center no-repeat, linear-gradient(transparent, transparent);
+    display: inline-block;
+    position: absolute;
+    top: calc(45% - 15px);
+    width: 30px;
+    height: 30px;
+    margin-top: 0px;
+    text-indent: -9999px;
+    border: 0;
+    background-size: contain;
+    left: 16px;
+    @media (min-width: $screen-md) {
+      left: 25px;
+    }
+  }
+  .views-field-starting-price {
+    position: absolute;
+    right: 10px;
+    padding: 2px 15px;
+    background: $black;
+    text-transform: uppercase;
+    font-weight: 400;
+    font-size: 12px;
+    border-bottom: 2px solid $secondary;
+    color: white;
+    top: 10px;
+    border-radius: 0px 4px 0px 4px;
+  }
+}

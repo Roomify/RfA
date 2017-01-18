@@ -1,0 +1,145 @@
+// Datepicker styles
+
+.ui-datepicker {
+  border-radius: 0;
+  border: none !important;
+  background: #4A4A4A !important;
+  padding: 0;
+  z-index: 9999 !important;
+  table {
+    margin: 0;
+  }
+  tbody {
+    border: 1px solid #ccc;
+    border-top: 0;
+  }
+  th {
+    padding: 1em 0;
+    color: #ccc;
+    font-size: 13px;
+    font-weight: 300;
+    border: none !important;
+  }
+  td {
+    background: white !important;
+    border: none;
+    padding: 0;
+    opacity: 1 !important;
+    .ui-state-default {
+      background: transparent;
+      border: none;
+      text-align: center;
+      margin: 0;
+      font-weight: 300;
+      font-size: 16px;
+      padding: 5px 0 !important;
+      color: #8FB98B !important;
+      &:hover {
+        background: #8FB98B;
+        color: #FFF !important;
+      }
+    }
+    .ui-state-active {
+      background: #2e3641;
+      color: #FFF !important;
+    }
+  }
+  td.ui-datepicker-unselectable .ui-state-default {
+    padding: 5px 0;
+    color: #C50000 !important;
+    &:hover {
+      background: white;
+    }
+  }
+  .ui-datepicker-title {
+    margin-top: .4em;
+    margin-bottom: .3em;
+    color: #e9f0f4;
+  }
+  .ui-datepicker-header {
+    background: none;
+    border: none;
+    .ui-state-hover {
+      background: transparent;
+      border-color: transparent;
+      cursor: pointer;
+      border-radius: 0;
+      -webkit-border-radius: 0;
+      -moz-border-radius: 0;
+    }
+  }
+  .ui-datepicker-prev-hover,
+  .ui-datepicker-next-hover,
+  .ui-datepicker-next,
+  .ui-datepicker-prev {
+    top: .7em;
+    border:none;
+  }
+  .ui-datepicker-prev-hover {
+    left: 2px;
+  }
+  .ui-datepicker-next-hover {
+    right: 2px;
+  }
+  .ui-datepicker-next span,
+  .ui-datepicker-prev span {
+    background-image: url("../images/ui-icons_ffffff_256x240.png");
+    background-position: -32px 0;
+    margin-top: 0;
+    top: 0;
+    font-weight: 300;
+  }
+  .ui-datepicker-prev span {
+    background-position: -96px 0;
+  }
+}
+
+// Override datepicker theme.
+.ui-datepicker tbody {
+  border: 2px solid #f8f8f8;
+}
+
+div.ui-widget {
+  background: #f8f8f8;
+  .ui-datepicker-header {
+    border-bottom: 1px solid rgb(237, 237, 237) !important;
+    border-radius: 0 !important;
+    font-weight: 400 !important;
+    a,
+    .ui-datepicker-title {
+      color: $black !important;
+      select {
+        color: $black;
+      }
+    }
+    .ui-datepicker-next span,
+    .ui-datepicker-prev span {
+    }
+  }
+}
+#ui-datepicker-div td .ui-state-active,
+#ui-datepicker-div td .ui-state-hover {
+  background: rgba(134, 157, 189, 0.08) !important;
+  color: $black !important;
+}
+#ui-datepicker-div.ui-datepicker th {
+  color: $black !important;
+}
+.ui-datepicker-multi.ui-datepicker .ui-datepicker-next span,
+.ui-datepicker-multi.ui-datepicker .ui-datepicker-prev span {
+  background-color: rgba(0, 0, 0, 0.13);
+  border-radius: 50%;
+  left: 40%;
+}
+#ui-datepicker-div.ui-widget {
+  background: #f8f8f8 !important;
+}
+a.ui-datepicker-next.ui-corner-all {
+  background-color: #f8f8f8 !important;
+  border-radius: 50%;
+}
+span.ui-icon.ui-icon-circle-triangle-w,
+span.ui-icon.ui-icon-circle-triangle-e {
+  background-color: rgba(0, 0, 0, 0.34) !important;
+  border-radius: 50% !important;
+}

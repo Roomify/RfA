@@ -1,0 +1,213 @@
+// Vendor prefixing for shorthand properties
+@mixin vendor-prefixes($property, $value) {
+    -webkit-#{$property}: $value;
+    -moz-#{$property}: $value;
+    -ms-#{$property}: $value;
+    -o-#{$property}: $value;
+}
+
+
+// Border radius mixin
+@mixin border-radius($radius) {
+  border-radius: $radius;
+  @include vendor-prefixes(border-radius, $radius);
+}
+
+// Box shadow mixin
+@mixin box-shadow($radius) {
+  box-shadow: $radius;
+  @include vendor-prefixes(box-shadow, $radius);
+}
+
+// Vertical Align Elements
+
+@mixin vertical-align($position: relative) {
+  position: $position;
+  top: 50%;
+  -webkit-transform: translateY(-50%);
+  -ms-transform: translateY(-50%);
+  transform: translateY(-50%);
+}
+
+@mixin vertical-align-none($position: relative) {
+  position: $position;
+  top:0;
+  -webkit-transform: translateY(0);
+  -ms-transform: translateY(0);
+  transform: translateY(0);
+}
+
+@mixin transition ($transition) {
+  -webkit-transition: $transition;  
+  -moz-transition:    $transition;
+  -ms-transition:     $transition; 
+  -o-transition:      $transition;  
+}
+
+// generic transform
+@mixin transform($transforms) {
+     -moz-transform: $transforms;
+       -o-transform: $transforms;
+      -ms-transform: $transforms;
+  -webkit-transform: $transforms;
+          transform: $transforms;
+}
+// rotate
+@mixin rotate ($deg) {
+  @include transform(rotate(#{$deg}deg));
+}
+ 
+// scale
+@mixin scale($scale) {
+   @include transform(scale($scale));
+} 
+// translate
+@mixin translate ($x, $y) {
+   @include transform(translate($x, $y));
+}
+// skew
+@mixin skew ($x, $y) {
+   @include transform(skew(#{$x}deg, #{$y}deg));
+}
+//transform origin
+@mixin transform-origin ($origin) {
+    moz-transform-origin: $origin;
+       -o-transform-origin: $origin;
+      -ms-transform-origin: $origin;
+  -webkit-transform-origin: $origin;
+          transform-origin: $origin;
+}
+
+@mixin h1() {
+  @extend h1;
+}
+@mixin h2() {
+  @extend h2;
+}
+@mixin h3() {
+  @extend h3;
+}
+@mixin h4() {
+  @extend h4;
+}
+@mixin h5() {
+  @extend h5;
+}
+@mixin h6() {
+  @extend h6;
+}
+
+@mixin make-edit-icon($path, $background) {
+  background-image: url($path);
+  background-position: center center;
+  background-repeat: no-repeat;
+  width: 37px;
+  height: 37px;
+  background-size: 22px 22px;
+  background-color: $background;
+  border-radius: 50%;
+  display: block;
+  &:hover {
+    opacity: .9;
+  }
+  @media (max-width: $screen-sm) {
+    width: 30px;
+    height: 30px;
+    background-size: 16px 16px;
+  }
+}
+
+@mixin flag-favorite() {
+  &.flag-wrapper {
+    display: block;
+    overflow: hidden;
+  }
+  a {
+    display: block;
+    overflow: hidden;
+    border: 1px solid white;
+    border-radius: 50%;
+    color: white;
+    font-size: 14px;
+    font-weight: 400;
+    text-align: center;
+    text-transform: uppercase;
+    @include transition(.2s border-color ease-in-out);
+    @include transition(.2s background-color ease-in-out);
+
+    &::before {
+      @extend .glyphicon;
+      top: auto;
+      content: "\e005";
+      color: white;
+      background-color: transparent;
+      display: inline-block;
+      font-size: 25px;
+      text-align: center;
+      vertical-align: middle;
+    }
+    &.unflag-action,
+    &:hover {
+      text-decoration: none;
+      background-color: red;
+      border: 1px solid red;
+      @include transition(.2s border-color ease-in-out);
+      @include transition(.2s background-color ease-in-out);
+    }
+  }
+  .flag-message {
+    top: 5em;
+  }
+}
+
+@mixin flag-favorite-size($s,$fs) {
+  &.flag-wrapper {
+    height: $s;
+  }
+  a {
+    height: $s;
+    width: $s;
+    &::before {
+      font-size: $fs;
+      line-height: $s;
+    }
+  }
+}
+
+@mixin panel-pane-theme() {
+  margin-bottom: 15px;
+  display: inline-block;
+  width: 100%;
+  padding: 40px;
+  background: $black;
+  .pane-title {
+    text-transform: uppercase;
+    padding-bottom: 6px;
+    color: white;
+    @extend .h2;
+    margin-top: 0;
+    margin-bottom: 15px;
+    &:after {
+      content: '';
+      width: 150px;
+      height: 5px;
+      background: $secondary;
+      display: block;
+      margin-top: 20px;
+    }
+  }
+  .pane-content {
+    color: white;
+    a {
+      color: white;
+    }
+    img {
+      border: 2px solid #ffffff;
+    }
+    .leaflet-map-pane {
+      img {
+        border: none;
+      }
+    }
+  }
+}

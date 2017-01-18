@@ -1,0 +1,132 @@
+.page-areas {
+  .bootstrap-one-column .panel-content-top {
+    @include make-xs-column(12);
+  }
+  .view-areas-elegant.view-display-id-all_areas_view {
+    .views-row {
+      display: inline-block;
+      width: 100%;
+      margin-bottom: 25px;
+      padding: 25px 0;
+      border-bottom: 2px solid #e7e7e7;
+      &.views-row-first {
+        padding-top: 0;
+      }
+      .views-field-name {
+        @include make-xs-column(12);
+        @include make-md-column(5, 5);
+      }
+      .area-short-description {
+        font-size: 16px;
+      }
+      .views-field-field-area-featured-image {
+        display: inline-block;
+        float: left;
+        margin-bottom: 15px;
+        @include make-xs-column(12);
+        @include make-md-column(7, 5);
+        img {
+          border-radius: 2px;
+          width: 100%;
+        }
+      }
+      .views-field-area-properties {
+        display: inline-block;
+        margin-top: 35px;
+        margin-bottom: 20px;
+        width: 100%;
+        span:empty {
+          display: none;
+        }
+        &:empty {
+          display: none;
+        }
+        .property-featured-image {
+          display: table;
+          margin: 0 auto;
+        }
+        .area-property {
+          @include make-sm-column(12);
+          @include make-sm-column(6);
+          @include make-md-column(4);
+          display: table;
+          margin: 0 auto;
+          margin-bottom: 25px;
+        }
+        .property-details {
+          font-size: 16px;
+          text-transform: uppercase;
+          text-align: left;
+          max-width: 380px;
+          display: table;
+          margin: 0 auto;
+          color: white;
+          background: #0b1418;
+          width: 100%;
+          border-radius: 0 0 2px 2px;
+          padding: 8px 10px;
+          position: relative;
+        }
+        table {
+          width: 100%;
+        }
+        .property-name {
+          vertical-align: middle;
+          max-width: 150px;
+          white-space: nowrap;
+          overflow: hidden;
+          text-overflow: ellipsis;
+        }
+        .listing-base-price {
+          text-align: right;
+        }
+        .starting-price {
+          text-align: right;
+          vertical-align: middle;
+          font-weight: 400;
+          text-align: center;
+          text-transform: lowercase;
+          .starting-from {
+            font-size: 10px;
+            display: inline-block;
+            font-style: italic;
+          }
+          .price {
+            color: #0cea11;
+          }
+        }
+      }
+      .views-field-nothing {
+        display: inline-block;
+        width: 100%;
+        margin-top: 25px;
+        text-align: right;
+      }
+      .area-blog-posts {
+
+        .views-row {
+          display: inline-block;
+          width: 100%;
+          padding: 0;
+          margin-bottom: 8px;
+          border-bottom: none;
+          .views-field-title-field {
+            display: inline-block;
+            width: 100%;
+            &:before {
+              content: "•";
+              margin-right: 5px;
+              color: #4A4A4A;
+              float: left;
+            }
+          }
+          a {
+            &:hover {
+              text-decoration: underline;
+            }
+          }
+        }
+      }
+    }
+  }
+}

@@ -1,0 +1,284 @@
+.page-room-type {
+  .pane-roomify-manage-type {
+    @include make-xs-column(12);
+    display: inline-block;
+    margin-bottom: 20px;
+  }
+  .view.view-types.view-id-types.view-display-id-panel_pane_1 {
+    display: inline-block;
+    width: 100%;
+  }
+  .slide__content {
+    position: relative;
+    // Description
+    .views-field-field-st-gallery-1 {
+      position: absolute;
+      bottom:0;
+      left:0;
+      right:0;
+      background:rgba(0,0,0,.5);
+      text-align: center;
+      padding:40px;
+      color:white;
+      .title {
+        font-size:22px;
+      }
+      
+      .alt {
+        font-size:16px;
+        color:#999;
+        font-style:italic;
+      }
+      @media (max-width: $screen-xs) {
+        display: none;
+      }
+    }
+  }
+
+  .slick-dots {
+    padding-top:20px;
+    text-align: center;
+    
+    li {
+      position: relative;
+      display: inline-block;
+      width: 10px;
+      height: 10px;
+      margin:0;
+      padding: 0;
+      cursor: pointer;
+      
+      button {
+        font-size: 0;
+        line-height: 0;
+        display: block;
+        width: 20px;
+        height: 20px;
+        padding: 5px;
+        cursor: pointer;
+        color: transparent;
+        border: 0;
+        outline: none;
+        background: transparent;
+        &:before {
+          font-size:30px;
+          line-height: 20px;
+          position: absolute;
+          top: 0px;
+          left: 0px;
+          width: 20px;
+          height: 20px;
+          content: "•";
+          text-align: center;
+          opacity: 0.25;
+          color: black;
+          -webkit-font-smoothing: antialiased;
+        }
+      }
+      &.slick-active {
+        
+        button {
+          
+          &:before {
+            opacity:1;
+          }
+        }
+      }
+    } 
+  }
+  .slick.slick--view--types {
+    position: relative;
+    img {
+      width: 100%;
+    }
+  }
+  .slick-next.slick-arrow {
+    background: url("../images/arrow_right.png") 0 50% no-repeat;
+    background: url("../images/arrow_right.svg") center center no-repeat, linear-gradient(transparent, transparent);
+    display: inline-block;
+    position: absolute;
+    top: calc(50% - 15px);
+    width: 30px;
+    height: 30px;
+    margin-top: 0px;
+    text-indent: -9999px;
+    border: 0;
+    background-size: contain;
+    right: 12px;
+    @media (max-width: $screen-sm) {
+      display: none !important;
+    }
+  }
+  .slick-prev.slick-arrow {
+    background: url("../images/arrow_left.png") 0 50% no-repeat;
+    background: url("../images/arrow_left.svg") center center no-repeat, linear-gradient(transparent, transparent);
+    display: inline-block;
+    position: absolute;
+    top: calc(50% - 15px);
+    width: 30px;
+    height: 30px;
+    margin-top: 0px;
+    text-indent: -9999px;
+    border: 0;
+    background-size: contain;
+    left: 12px;
+    @media (max-width: $screen-sm) {
+      display: none !important;
+    }
+  }
+  .pane-bat-type-field-st-description {
+    margin-bottom: 25px;
+    @media (max-width: $screen-sm-max) {
+      margin-top: 25px;
+    }
+  }
+  .pane-bat-type-field-st-amenities {
+    .field-item.even,
+    .field-item.odd {
+      display: inline-block;
+      margin-right: 5px;
+      margin-bottom: 10px;
+      &:not(:last-child) {
+        &::after {
+          display: inline-block;
+          content: "\25cf";
+          font-size: 0.7em;
+          margin-left: 5px;
+          opacity: 0.3;
+          bottom: 1px;
+          position: relative;
+        }
+      }
+    }
+  }
+  #bat-type-search-availability-form {
+    display: inline-block;
+    width: 100%;
+    margin: 40px 0;
+    margin-bottom: 70px;
+    padding: 30px 40px 40px 40px;
+    @media (max-width: $screen-lg) {
+      padding: 30px 40px 30px 40px;
+    }
+    background: $black;
+    color: white;
+    .type-base-price,
+    .start-date,
+    .end-date,
+    .form-item-group-size,
+    .bat-type-availability-search-submit {
+      @include make-xs-column(12);
+      @include make-sm-column(6);
+      @include make-lg-column(2.4, 50);
+      @media (max-width: $screen-lg) {
+        margin-bottom: 30px;
+      }
+    }
+    .type-base-price,
+    .bat-type-availability-search-submit {
+      @media (max-width: $screen-md) {
+        width: 100%;
+      }
+      button {
+        @extend .btn;
+        @extend .btn-default;
+        @extend .btn-warning;
+        @media (max-width: $screen-sm) {
+          width: 100%;
+        }
+        padding: 10px 25px;
+        border-radius: 0
+      }
+    }
+    .start-date,
+    .end-date {
+      label {
+        display: none;
+      }
+      input {
+        background: $black;
+        text-indent: 10px;
+        color: white;
+      }
+    }
+    .form-item-group-size {
+      select {
+        background: $black;
+        text-indent: 10px;
+        width: 150px;
+        margin-left: 5px;
+        color: white;
+      }
+    }
+    .check-availability {
+      text-transform: uppercase;
+      color: $secondary;
+      font-weight: 700;
+    }
+    .price {
+      color: $secondary;
+    }
+  }
+
+  .panel_sl_left {
+    //@include panel-pane-theme();
+  }
+  .pane-bat-type-field-st-default-price,
+  .pane-bat-type-field-st-max-capacity,
+  .pane-bat-type-field-st-bedrooms,
+  .pane-bat-type-field-st-single-bed,
+  .pane-bat-type-field-st-double-bed,
+  .pane-bat-type-field-st-bathrooms {
+    @media (min-width: $screen-md) {
+      width: 50%;
+    }
+    display: inline-block;
+    width: 100%;
+    background: #ffffff;
+    padding: 5px 10px;
+    font-weight: 600;
+    font-size: 16px;
+    margin-bottom: 15px;
+    border-bottom: 1px solid #e0e0e0;
+    .pane-title {
+      float: left;
+      display: inline-block;
+      text-align: left;
+      font-weight: 400;
+      text-transform: uppercase;
+    }
+    .pane-content {
+      text-align: right;
+    }
+  }
+
+  .pane-roomify-back-to-property-link {
+    margin-bottom: 20px;
+    display: inline-block;
+    width: 100%;
+    a.roomify-back-to-property {
+      position: relative;
+      display: inline-block;
+      width: 100%;
+      &:hover {
+        opacity: .9;
+      }
+      .property-title {
+        position: absolute;
+        width: 100%;
+        max-width: 380px;
+        display: inline-block;
+        bottom: 0;
+        font-size: 18px;
+        padding: 20px 10px;
+        background: rgba(0, 0, 0, 0.5);
+        color: white;
+        border-radius: 0px 0px 4px 4px;
+        span {
+          top: 2px;
+          margin-right: 10px;
+        }
+      }
+    }
+  }
+}
