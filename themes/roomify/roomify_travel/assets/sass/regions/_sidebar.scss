@@ -80,7 +80,7 @@ body {
           }
         }
         .sidebar-profile-message {
-          @extend .h3;
+          @include h3();
           text-align: center;
           color: white;
           margin-top: 0px;

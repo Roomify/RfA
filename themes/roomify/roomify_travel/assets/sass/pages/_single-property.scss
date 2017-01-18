@@ -347,7 +347,17 @@ body.page-single-property-listing {
 	}
 	.panel-content-wrapper,
 	.panel-content-bottom {
-		@extend .container;
+		@include container-fixed;
+
+    @media (min-width: $screen-sm-min) {
+      width: $container-sm;
+    }
+    @media (min-width: $screen-md-min) {
+      width: $container-md;
+    }
+    @media (min-width: $screen-lg-min) {
+      width: $container-lg;
+    }
 	}
 	.panel-content-bottom {
 		margin-bottom: 70px;
