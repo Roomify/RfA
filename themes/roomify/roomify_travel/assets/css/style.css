@@ -7831,7 +7831,7 @@ body.toggled #close-sidebar-wrapper {
   .page-listing .pane-roomify-listing-availability-search-block-roomify-listing-search form {
     padding-top: 60px;
     position: relative;
-    border-top: 4px solid #158cba;
+    border-top: 3px solid #158cba;
     width: 100%; }
   .page-listing .pane-locanda-availability-search label,
   .page-listing .pane-roomify-listing-availability-search-block-roomify-listing-search label {
@@ -7839,7 +7839,7 @@ body.toggled #close-sidebar-wrapper {
   .page-listing .pane-locanda-availability-search .listing-base-price,
   .page-listing .pane-roomify-listing-availability-search-block-roomify-listing-search .listing-base-price {
     position: absolute;
-    top: 0;
+    top: -1px;
     right: 0;
     padding: 0 10px;
     background: #127ba3;
@@ -10169,7 +10169,174 @@ ol.inline.commerce-checkout-progress {
       text-transform: capitalize;
       padding: 6px;
       font-size: 15px;
-      width: 100%; }
+      width: 100%;
+      color: #fff;
+      background-color: #FF4136;
+      border-color: #ff291d; }
+      #property-bat-activity-facets-availability .form-wrapper .search-availability-submit .form-submit:focus, #property-bat-activity-facets-availability .form-wrapper .search-availability-submit .form-submit.focus,
+      #property-bat-activity-facets-availability .form-wrapper .search-submit .form-submit:focus,
+      #property-bat-activity-facets-availability .form-wrapper .search-submit .form-submit.focus,
+      #roomify-property-search-block-form .form-wrapper .search-availability-submit .form-submit:focus,
+      #roomify-property-search-block-form .form-wrapper .search-availability-submit .form-submit.focus,
+      #roomify-property-search-block-form .form-wrapper .search-submit .form-submit:focus,
+      #roomify-property-search-block-form .form-wrapper .search-submit .form-submit.focus,
+      #property-bat-facets-availability .form-wrapper .search-availability-submit .form-submit:focus,
+      #property-bat-facets-availability .form-wrapper .search-availability-submit .form-submit.focus,
+      #property-bat-facets-availability .form-wrapper .search-submit .form-submit:focus,
+      #property-bat-facets-availability .form-wrapper .search-submit .form-submit.focus {
+        color: #fff;
+        background-color: #ff1103;
+        border-color: #9c0900; }
+      #property-bat-activity-facets-availability .form-wrapper .search-availability-submit .form-submit:hover,
+      #property-bat-activity-facets-availability .form-wrapper .search-submit .form-submit:hover,
+      #roomify-property-search-block-form .form-wrapper .search-availability-submit .form-submit:hover,
+      #roomify-property-search-block-form .form-wrapper .search-submit .form-submit:hover,
+      #property-bat-facets-availability .form-wrapper .search-availability-submit .form-submit:hover,
+      #property-bat-facets-availability .form-wrapper .search-submit .form-submit:hover {
+        color: #fff;
+        background-color: #ff1103;
+        border-color: #de0c00; }
+      #property-bat-activity-facets-availability .form-wrapper .search-availability-submit .form-submit:active, #property-bat-activity-facets-availability .form-wrapper .search-availability-submit .form-submit.active, .open > #property-bat-activity-facets-availability .form-wrapper .search-availability-submit .form-submit.dropdown-toggle,
+      #property-bat-activity-facets-availability .form-wrapper .search-submit .form-submit:active,
+      #property-bat-activity-facets-availability .form-wrapper .search-submit .form-submit.active, .open >
+      #property-bat-activity-facets-availability .form-wrapper .search-submit .form-submit.dropdown-toggle,
+      #roomify-property-search-block-form .form-wrapper .search-availability-submit .form-submit:active,
+      #roomify-property-search-block-form .form-wrapper .search-availability-submit .form-submit.active, .open >
+      #roomify-property-search-block-form .form-wrapper .search-availability-submit .form-submit.dropdown-toggle,
+      #roomify-property-search-block-form .form-wrapper .search-submit .form-submit:active,
+      #roomify-property-search-block-form .form-wrapper .search-submit .form-submit.active, .open >
+      #roomify-property-search-block-form .form-wrapper .search-submit .form-submit.dropdown-toggle,
+      #property-bat-facets-availability .form-wrapper .search-availability-submit .form-submit:active,
+      #property-bat-facets-availability .form-wrapper .search-availability-submit .form-submit.active, .open >
+      #property-bat-facets-availability .form-wrapper .search-availability-submit .form-submit.dropdown-toggle,
+      #property-bat-facets-availability .form-wrapper .search-submit .form-submit:active,
+      #property-bat-facets-availability .form-wrapper .search-submit .form-submit.active, .open >
+      #property-bat-facets-availability .form-wrapper .search-submit .form-submit.dropdown-toggle {
+        color: #fff;
+        background-color: #ff1103;
+        border-color: #de0c00; }
+        #property-bat-activity-facets-availability .form-wrapper .search-availability-submit .form-submit:active:hover, #property-bat-activity-facets-availability .form-wrapper .search-availability-submit .form-submit:active:focus, #property-bat-activity-facets-availability .form-wrapper .search-availability-submit .form-submit:active.focus, #property-bat-activity-facets-availability .form-wrapper .search-availability-submit .form-submit.active:hover, #property-bat-activity-facets-availability .form-wrapper .search-availability-submit .form-submit.active:focus, #property-bat-activity-facets-availability .form-wrapper .search-availability-submit .form-submit.active.focus, .open > #property-bat-activity-facets-availability .form-wrapper .search-availability-submit .form-submit.dropdown-toggle:hover, .open > #property-bat-activity-facets-availability .form-wrapper .search-availability-submit .form-submit.dropdown-toggle:focus, .open > #property-bat-activity-facets-availability .form-wrapper .search-availability-submit .form-submit.dropdown-toggle.focus,
+        #property-bat-activity-facets-availability .form-wrapper .search-submit .form-submit:active:hover,
+        #property-bat-activity-facets-availability .form-wrapper .search-submit .form-submit:active:focus,
+        #property-bat-activity-facets-availability .form-wrapper .search-submit .form-submit:active.focus,
+        #property-bat-activity-facets-availability .form-wrapper .search-submit .form-submit.active:hover,
+        #property-bat-activity-facets-availability .form-wrapper .search-submit .form-submit.active:focus,
+        #property-bat-activity-facets-availability .form-wrapper .search-submit .form-submit.active.focus, .open >
+        #property-bat-activity-facets-availability .form-wrapper .search-submit .form-submit.dropdown-toggle:hover, .open >
+        #property-bat-activity-facets-availability .form-wrapper .search-submit .form-submit.dropdown-toggle:focus, .open >
+        #property-bat-activity-facets-availability .form-wrapper .search-submit .form-submit.dropdown-toggle.focus,
+        #roomify-property-search-block-form .form-wrapper .search-availability-submit .form-submit:active:hover,
+        #roomify-property-search-block-form .form-wrapper .search-availability-submit .form-submit:active:focus,
+        #roomify-property-search-block-form .form-wrapper .search-availability-submit .form-submit:active.focus,
+        #roomify-property-search-block-form .form-wrapper .search-availability-submit .form-submit.active:hover,
+        #roomify-property-search-block-form .form-wrapper .search-availability-submit .form-submit.active:focus,
+        #roomify-property-search-block-form .form-wrapper .search-availability-submit .form-submit.active.focus, .open >
+        #roomify-property-search-block-form .form-wrapper .search-availability-submit .form-submit.dropdown-toggle:hover, .open >
+        #roomify-property-search-block-form .form-wrapper .search-availability-submit .form-submit.dropdown-toggle:focus, .open >
+        #roomify-property-search-block-form .form-wrapper .search-availability-submit .form-submit.dropdown-toggle.focus,
+        #roomify-property-search-block-form .form-wrapper .search-submit .form-submit:active:hover,
+        #roomify-property-search-block-form .form-wrapper .search-submit .form-submit:active:focus,
+        #roomify-property-search-block-form .form-wrapper .search-submit .form-submit:active.focus,
+        #roomify-property-search-block-form .form-wrapper .search-submit .form-submit.active:hover,
+        #roomify-property-search-block-form .form-wrapper .search-submit .form-submit.active:focus,
+        #roomify-property-search-block-form .form-wrapper .search-submit .form-submit.active.focus, .open >
+        #roomify-property-search-block-form .form-wrapper .search-submit .form-submit.dropdown-toggle:hover, .open >
+        #roomify-property-search-block-form .form-wrapper .search-submit .form-submit.dropdown-toggle:focus, .open >
+        #roomify-property-search-block-form .form-wrapper .search-submit .form-submit.dropdown-toggle.focus,
+        #property-bat-facets-availability .form-wrapper .search-availability-submit .form-submit:active:hover,
+        #property-bat-facets-availability .form-wrapper .search-availability-submit .form-submit:active:focus,
+        #property-bat-facets-availability .form-wrapper .search-availability-submit .form-submit:active.focus,
+        #property-bat-facets-availability .form-wrapper .search-availability-submit .form-submit.active:hover,
+        #property-bat-facets-availability .form-wrapper .search-availability-submit .form-submit.active:focus,
+        #property-bat-facets-availability .form-wrapper .search-availability-submit .form-submit.active.focus, .open >
+        #property-bat-facets-availability .form-wrapper .search-availability-submit .form-submit.dropdown-toggle:hover, .open >
+        #property-bat-facets-availability .form-wrapper .search-availability-submit .form-submit.dropdown-toggle:focus, .open >
+        #property-bat-facets-availability .form-wrapper .search-availability-submit .form-submit.dropdown-toggle.focus,
+        #property-bat-facets-availability .form-wrapper .search-submit .form-submit:active:hover,
+        #property-bat-facets-availability .form-wrapper .search-submit .form-submit:active:focus,
+        #property-bat-facets-availability .form-wrapper .search-submit .form-submit:active.focus,
+        #property-bat-facets-availability .form-wrapper .search-submit .form-submit.active:hover,
+        #property-bat-facets-availability .form-wrapper .search-submit .form-submit.active:focus,
+        #property-bat-facets-availability .form-wrapper .search-submit .form-submit.active.focus, .open >
+        #property-bat-facets-availability .form-wrapper .search-submit .form-submit.dropdown-toggle:hover, .open >
+        #property-bat-facets-availability .form-wrapper .search-submit .form-submit.dropdown-toggle:focus, .open >
+        #property-bat-facets-availability .form-wrapper .search-submit .form-submit.dropdown-toggle.focus {
+          color: #fff;
+          background-color: #de0c00;
+          border-color: #9c0900; }
+      #property-bat-activity-facets-availability .form-wrapper .search-availability-submit .form-submit:active, #property-bat-activity-facets-availability .form-wrapper .search-availability-submit .form-submit.active, .open > #property-bat-activity-facets-availability .form-wrapper .search-availability-submit .form-submit.dropdown-toggle,
+      #property-bat-activity-facets-availability .form-wrapper .search-submit .form-submit:active,
+      #property-bat-activity-facets-availability .form-wrapper .search-submit .form-submit.active, .open >
+      #property-bat-activity-facets-availability .form-wrapper .search-submit .form-submit.dropdown-toggle,
+      #roomify-property-search-block-form .form-wrapper .search-availability-submit .form-submit:active,
+      #roomify-property-search-block-form .form-wrapper .search-availability-submit .form-submit.active, .open >
+      #roomify-property-search-block-form .form-wrapper .search-availability-submit .form-submit.dropdown-toggle,
+      #roomify-property-search-block-form .form-wrapper .search-submit .form-submit:active,
+      #roomify-property-search-block-form .form-wrapper .search-submit .form-submit.active, .open >
+      #roomify-property-search-block-form .form-wrapper .search-submit .form-submit.dropdown-toggle,
+      #property-bat-facets-availability .form-wrapper .search-availability-submit .form-submit:active,
+      #property-bat-facets-availability .form-wrapper .search-availability-submit .form-submit.active, .open >
+      #property-bat-facets-availability .form-wrapper .search-availability-submit .form-submit.dropdown-toggle,
+      #property-bat-facets-availability .form-wrapper .search-submit .form-submit:active,
+      #property-bat-facets-availability .form-wrapper .search-submit .form-submit.active, .open >
+      #property-bat-facets-availability .form-wrapper .search-submit .form-submit.dropdown-toggle {
+        background-image: none; }
+      #property-bat-activity-facets-availability .form-wrapper .search-availability-submit .form-submit.disabled:hover, #property-bat-activity-facets-availability .form-wrapper .search-availability-submit .form-submit.disabled:focus, #property-bat-activity-facets-availability .form-wrapper .search-availability-submit .form-submit.disabled.focus, #property-bat-activity-facets-availability .form-wrapper .search-availability-submit .form-submit[disabled]:hover, #property-bat-activity-facets-availability .form-wrapper .search-availability-submit .form-submit[disabled]:focus, #property-bat-activity-facets-availability .form-wrapper .search-availability-submit .form-submit[disabled].focus, fieldset[disabled] #property-bat-activity-facets-availability .form-wrapper .search-availability-submit .form-submit:hover, fieldset[disabled] #property-bat-activity-facets-availability .form-wrapper .search-availability-submit .form-submit:focus, fieldset[disabled] #property-bat-activity-facets-availability .form-wrapper .search-availability-submit .form-submit.focus,
+      #property-bat-activity-facets-availability .form-wrapper .search-submit .form-submit.disabled:hover,
+      #property-bat-activity-facets-availability .form-wrapper .search-submit .form-submit.disabled:focus,
+      #property-bat-activity-facets-availability .form-wrapper .search-submit .form-submit.disabled.focus,
+      #property-bat-activity-facets-availability .form-wrapper .search-submit .form-submit[disabled]:hover,
+      #property-bat-activity-facets-availability .form-wrapper .search-submit .form-submit[disabled]:focus,
+      #property-bat-activity-facets-availability .form-wrapper .search-submit .form-submit[disabled].focus, fieldset[disabled]
+      #property-bat-activity-facets-availability .form-wrapper .search-submit .form-submit:hover, fieldset[disabled]
+      #property-bat-activity-facets-availability .form-wrapper .search-submit .form-submit:focus, fieldset[disabled]
+      #property-bat-activity-facets-availability .form-wrapper .search-submit .form-submit.focus,
+      #roomify-property-search-block-form .form-wrapper .search-availability-submit .form-submit.disabled:hover,
+      #roomify-property-search-block-form .form-wrapper .search-availability-submit .form-submit.disabled:focus,
+      #roomify-property-search-block-form .form-wrapper .search-availability-submit .form-submit.disabled.focus,
+      #roomify-property-search-block-form .form-wrapper .search-availability-submit .form-submit[disabled]:hover,
+      #roomify-property-search-block-form .form-wrapper .search-availability-submit .form-submit[disabled]:focus,
+      #roomify-property-search-block-form .form-wrapper .search-availability-submit .form-submit[disabled].focus, fieldset[disabled]
+      #roomify-property-search-block-form .form-wrapper .search-availability-submit .form-submit:hover, fieldset[disabled]
+      #roomify-property-search-block-form .form-wrapper .search-availability-submit .form-submit:focus, fieldset[disabled]
+      #roomify-property-search-block-form .form-wrapper .search-availability-submit .form-submit.focus,
+      #roomify-property-search-block-form .form-wrapper .search-submit .form-submit.disabled:hover,
+      #roomify-property-search-block-form .form-wrapper .search-submit .form-submit.disabled:focus,
+      #roomify-property-search-block-form .form-wrapper .search-submit .form-submit.disabled.focus,
+      #roomify-property-search-block-form .form-wrapper .search-submit .form-submit[disabled]:hover,
+      #roomify-property-search-block-form .form-wrapper .search-submit .form-submit[disabled]:focus,
+      #roomify-property-search-block-form .form-wrapper .search-submit .form-submit[disabled].focus, fieldset[disabled]
+      #roomify-property-search-block-form .form-wrapper .search-submit .form-submit:hover, fieldset[disabled]
+      #roomify-property-search-block-form .form-wrapper .search-submit .form-submit:focus, fieldset[disabled]
+      #roomify-property-search-block-form .form-wrapper .search-submit .form-submit.focus,
+      #property-bat-facets-availability .form-wrapper .search-availability-submit .form-submit.disabled:hover,
+      #property-bat-facets-availability .form-wrapper .search-availability-submit .form-submit.disabled:focus,
+      #property-bat-facets-availability .form-wrapper .search-availability-submit .form-submit.disabled.focus,
+      #property-bat-facets-availability .form-wrapper .search-availability-submit .form-submit[disabled]:hover,
+      #property-bat-facets-availability .form-wrapper .search-availability-submit .form-submit[disabled]:focus,
+      #property-bat-facets-availability .form-wrapper .search-availability-submit .form-submit[disabled].focus, fieldset[disabled]
+      #property-bat-facets-availability .form-wrapper .search-availability-submit .form-submit:hover, fieldset[disabled]
+      #property-bat-facets-availability .form-wrapper .search-availability-submit .form-submit:focus, fieldset[disabled]
+      #property-bat-facets-availability .form-wrapper .search-availability-submit .form-submit.focus,
+      #property-bat-facets-availability .form-wrapper .search-submit .form-submit.disabled:hover,
+      #property-bat-facets-availability .form-wrapper .search-submit .form-submit.disabled:focus,
+      #property-bat-facets-availability .form-wrapper .search-submit .form-submit.disabled.focus,
+      #property-bat-facets-availability .form-wrapper .search-submit .form-submit[disabled]:hover,
+      #property-bat-facets-availability .form-wrapper .search-submit .form-submit[disabled]:focus,
+      #property-bat-facets-availability .form-wrapper .search-submit .form-submit[disabled].focus, fieldset[disabled]
+      #property-bat-facets-availability .form-wrapper .search-submit .form-submit:hover, fieldset[disabled]
+      #property-bat-facets-availability .form-wrapper .search-submit .form-submit:focus, fieldset[disabled]
+      #property-bat-facets-availability .form-wrapper .search-submit .form-submit.focus {
+        background-color: #FF4136;
+        border-color: #ff291d; }
+      #property-bat-activity-facets-availability .form-wrapper .search-availability-submit .form-submit .badge,
+      #property-bat-activity-facets-availability .form-wrapper .search-submit .form-submit .badge,
+      #roomify-property-search-block-form .form-wrapper .search-availability-submit .form-submit .badge,
+      #roomify-property-search-block-form .form-wrapper .search-submit .form-submit .badge,
+      #property-bat-facets-availability .form-wrapper .search-availability-submit .form-submit .badge,
+      #property-bat-facets-availability .form-wrapper .search-submit .form-submit .badge {
+        color: #FF4136;
+        background-color: #fff; }
   #property-bat-activity-facets-availability .form-wrapper input, #property-bat-activity-facets-availability .form-wrapper select, #property-bat-activity-facets-availability .form-wrapper .form-control,
   #roomify-property-search-block-form .form-wrapper input,
   #roomify-property-search-block-form .form-wrapper select,
@@ -11926,13 +12093,13 @@ body.node-type-homepage {
   padding-bottom: 20px;
   /* Zoom In #1 */ }
   .pane-featured-properties-panel-pane-3 .views-row {
-    max-width: 380px; }
+    max-width: 340px; }
   .pane-featured-properties-panel-pane-3 .view-featured-properties.view-display-id-panel_pane_3 {
     margin: 0 auto;
     max-width: 1200px; }
     @media (max-width: 991px) {
       .pane-featured-properties-panel-pane-3 .view-featured-properties.view-display-id-panel_pane_3 {
-        max-width: 380px; } }
+        max-width: 340px; } }
   .pane-featured-properties-panel-pane-3 .views-field-name {
     text-align: center;
     border-bottom: 1px solid rgba(70, 66, 62, 0.2);
@@ -11949,7 +12116,7 @@ body.node-type-homepage {
   .pane-featured-properties-panel-pane-3 .slide__content {
     margin: 0 auto;
     display: table;
-    max-width: 380px;
+    max-width: 340px;
     width: 100%;
     padding: 10px;
     background: white;
@@ -11985,7 +12152,7 @@ body.node-type-homepage {
     right: 16px; }
     @media (min-width: 992px) {
       .pane-featured-properties-panel-pane-3 .slick-next.slick-arrow {
-        right: 25px; } }
+        right: 45px !important; } }
   .pane-featured-properties-panel-pane-3 .slick-prev.slick-arrow {
     background: url("../images/arrow_left.png") 0 50% no-repeat;
     background: url("../images/arrow_left.svg") center center no-repeat, linear-gradient(transparent, transparent);
@@ -12001,7 +12168,7 @@ body.node-type-homepage {
     left: 16px; }
     @media (min-width: 992px) {
       .pane-featured-properties-panel-pane-3 .slick-prev.slick-arrow {
-        left: 25px; } }
+        left: 45px !important; } }
   .pane-featured-properties-panel-pane-3 .views-field-starting-price {
     position: absolute;
     right: 10px;

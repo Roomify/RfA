@@ -268,7 +268,7 @@
     form {
       padding-top: 60px;
       position: relative;
-      border-top: 4px solid #158cba;
+      border-top: 3px solid #158cba;
       width: 100%;
     }
     label {
@@ -276,7 +276,7 @@
     }
     .listing-base-price {
       position: absolute;
-      top: 0;
+      top: -1px;
       right: 0;
       padding: 0 10px;
       background: #127ba3;

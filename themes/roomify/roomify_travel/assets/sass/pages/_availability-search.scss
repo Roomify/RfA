@@ -635,6 +635,7 @@
         padding: 6px;
         font-size: 15px;
         width: 100%;
+        @include button-variant($btn-danger-color, $btn-danger-bg, $btn-danger-border);
       }
     }
     input, select, .form-control {
