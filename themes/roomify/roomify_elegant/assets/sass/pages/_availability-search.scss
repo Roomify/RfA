@@ -486,24 +486,33 @@
   // MAP VIEW
   .view-display-id-panel_pane_2 {
     #leaflet-map {
+      .leaflet-popup-content-wrapper {
+        border-radius: 4px;
+      }
       .leaflet-popup {
+        min-height: 250px;
         .leaflet-popup-content {
-          max-width: 200px !important;
+          max-width: 170px;
+          margin: 14px;
         }
         a {
-          font-size: 18px;
+          font-size: 16px;
+          color: #000000;
+          text-decoration: underline;
         }
         .roomify-property-short-description {
           margin: 5px 0;
-          font-size: 15px;
+          font-size: 13px;
         }
         .roomify-property-image {
           display: inline-block;
-          max-width: 200px;
+          max-width: 250px;
           margin: 5px 0;
           img {
-            width: 200px !important;
-            border-radius: 0px;
+            width: 100% !important;
+            border-radius: 2px;
+            min-width: 120px;
+            min-height: 120px;
           }
         }
       }

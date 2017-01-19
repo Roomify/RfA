@@ -28,8 +28,8 @@ body.node-type-homepage {
       &:after, &:before {
         position: absolute;
         opacity: 0;
-        transition: all 0.5s;
-        -webkit-transition: all 0.5s;
+        //transition: all 0.5s;
+       // -webkit-transition: all 0.5s;
       }
       &:before {
         opacity: 1;
@@ -435,7 +435,7 @@ body.node-type-homepage {
 .pane-homepage-blogposts-panel-pane-1 {
   display: inline-block;
   width: 100%;
-  background: #F8F8F8;
+  background: #FFFFFF;
   .blog-col {
     display: table;
     margin: 15px auto;
@@ -489,7 +489,7 @@ body.node-type-homepage {
 .pane-featured-properties-panel-pane-4 {
   display: inline-block;
   width: 100%;
-  background: #F8F8F8;
+  background: #FFFFFF;
   .property-col {
     display: table;
     margin: 15px auto;
