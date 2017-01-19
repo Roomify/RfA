@@ -1,0 +1,35 @@
+<?php
+
+/**
+ * @file
+ * Installation for roomify_integrations.
+ */
+
+/**
+ * Implements hook_install().
+ */
+function roomify_integrations_install() {
+
+}
+
+/**
+ * Implements hook_uninstall().
+ */
+function roomify_integrations_uninstall() {
+  variable_del('roomify_integration_zopim');
+}
+
+/**
+ * Improve Integrations.
+ */
+function roomify_integrations_update_7001() {
+  if (module_exists('zopim')) {
+    // Is set a zopim account, leave the module enabled.
+    if (variable_get('zopim_account', '') != '') {
+      variable_set('roomify_integration_zopim', 1);
+    }
+    else {
+      module_disable(array('zopim'));
+    }
+  }
+}
