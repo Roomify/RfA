@@ -398,3 +398,60 @@ fieldset {
     text-decoration: none;
   }
 }
+
+.page-admin-bat-config-example-content {
+  #roomify-accommodation-example-content-manage-form {
+    input {
+      width: 24% !important;
+      background: #f7f7f7;
+      float: left;
+      display: inline-block;
+      margin-right: 3%;
+      background-repeat: no-repeat !important;
+      background-size: 200px 300px !important;
+      text-align: left;
+      margin-top: 15px;
+      border: 2px solid #ECECEC;
+      padding: 15px;
+      font-size: 20px;
+      padding-top: 345px;
+      text-align: center;
+      background-position-x: 50% !important;
+      background-position-y: 20px !important;
+      &:hover {
+        background: white;
+        background-position-x: 50%;
+        background-position-y: 20px;
+        .transition(100ms background ease);
+      }
+      &#edit-multi-property {
+        background-image: url('../images/agency.png') !important;
+        @media (max-width: @screen-md) {
+          background-image: none !important;
+        }
+      }
+      &#edit-b-and-b {
+        background-image: url('../images/locanda.png') !important;
+        @media (max-width: @screen-md) {
+          background-image: none !important;
+        }
+      }
+      &#edit-vacation-rental {
+        background-image: url('../images/single.png') !important;
+        @media (max-width: @screen-md) {
+          background-image: none !important;
+        }
+      }
+      &[type="submit"]:disabled {
+        opacity: 0.3 !important;
+      }
+       @media (max-width: @screen-md) {
+        text-indent: 15px;
+        height: auto;
+        font-size: 18px;
+        padding-top: 15px;
+        width: 80% !important;
+      }
+    }
+  }
+}
