@@ -9910,10 +9910,11 @@ body.error404 .page-content-center {
   .view-user-conversations .views-row img {
     border: 2px solid #03a9f4; }
 
-.page-conversation-booking #roomify-accommodation-booking-current-search-form .current-search-item.current-search-arrival, .page-conversation-booking #roomify-accommodation-booking-current-search-form .current-search-item.current-search-departure, .page-conversation-booking #roomify-accommodation-booking-current-search-form .current-search-item.current-search-nights, .page-conversation-booking #roomify-accommodation-booking-current-search-form .current-search-item.current-search-price,
+.page-conversation-booking #roomify-accommodation-booking-current-search-form .current-search-item.current-search-arrival, .page-conversation-booking #roomify-accommodation-booking-current-search-form .current-search-item.current-search-departure, .page-conversation-booking #roomify-accommodation-booking-current-search-form .current-search-item.current-search-nights, .page-conversation-booking #roomify-accommodation-booking-current-search-form .current-search-item.current-search-group-size, .page-conversation-booking #roomify-accommodation-booking-current-search-form .current-search-item.current-search-price,
 .page-booking #roomify-accommodation-booking-current-search-form .current-search-item.current-search-arrival,
 .page-booking #roomify-accommodation-booking-current-search-form .current-search-item.current-search-departure,
 .page-booking #roomify-accommodation-booking-current-search-form .current-search-item.current-search-nights,
+.page-booking #roomify-accommodation-booking-current-search-form .current-search-item.current-search-group-size,
 .page-booking #roomify-accommodation-booking-current-search-form .current-search-item.current-search-price {
   position: relative;
   float: left;
@@ -9935,42 +9936,47 @@ body.error404 .page-content-center {
   min-height: 120px;
   background: white; }
   @media (min-width: 768px) {
-    .page-conversation-booking #roomify-accommodation-booking-current-search-form .current-search-item.current-search-arrival, .page-conversation-booking #roomify-accommodation-booking-current-search-form .current-search-item.current-search-departure, .page-conversation-booking #roomify-accommodation-booking-current-search-form .current-search-item.current-search-nights, .page-conversation-booking #roomify-accommodation-booking-current-search-form .current-search-item.current-search-price,
+    .page-conversation-booking #roomify-accommodation-booking-current-search-form .current-search-item.current-search-arrival, .page-conversation-booking #roomify-accommodation-booking-current-search-form .current-search-item.current-search-departure, .page-conversation-booking #roomify-accommodation-booking-current-search-form .current-search-item.current-search-nights, .page-conversation-booking #roomify-accommodation-booking-current-search-form .current-search-item.current-search-group-size, .page-conversation-booking #roomify-accommodation-booking-current-search-form .current-search-item.current-search-price,
     .page-booking #roomify-accommodation-booking-current-search-form .current-search-item.current-search-arrival,
     .page-booking #roomify-accommodation-booking-current-search-form .current-search-item.current-search-departure,
     .page-booking #roomify-accommodation-booking-current-search-form .current-search-item.current-search-nights,
+    .page-booking #roomify-accommodation-booking-current-search-form .current-search-item.current-search-group-size,
     .page-booking #roomify-accommodation-booking-current-search-form .current-search-item.current-search-price {
       float: left;
       width: 50%; } }
   @media (min-width: 992px) {
-    .page-conversation-booking #roomify-accommodation-booking-current-search-form .current-search-item.current-search-arrival, .page-conversation-booking #roomify-accommodation-booking-current-search-form .current-search-item.current-search-departure, .page-conversation-booking #roomify-accommodation-booking-current-search-form .current-search-item.current-search-nights, .page-conversation-booking #roomify-accommodation-booking-current-search-form .current-search-item.current-search-price,
+    .page-conversation-booking #roomify-accommodation-booking-current-search-form .current-search-item.current-search-arrival, .page-conversation-booking #roomify-accommodation-booking-current-search-form .current-search-item.current-search-departure, .page-conversation-booking #roomify-accommodation-booking-current-search-form .current-search-item.current-search-nights, .page-conversation-booking #roomify-accommodation-booking-current-search-form .current-search-item.current-search-group-size, .page-conversation-booking #roomify-accommodation-booking-current-search-form .current-search-item.current-search-price,
     .page-booking #roomify-accommodation-booking-current-search-form .current-search-item.current-search-arrival,
     .page-booking #roomify-accommodation-booking-current-search-form .current-search-item.current-search-departure,
     .page-booking #roomify-accommodation-booking-current-search-form .current-search-item.current-search-nights,
+    .page-booking #roomify-accommodation-booking-current-search-form .current-search-item.current-search-group-size,
     .page-booking #roomify-accommodation-booking-current-search-form .current-search-item.current-search-price {
       float: left;
-      width: 25%; } }
+      width: 20%; } }
   @media (max-width: 992px) {
-    .page-conversation-booking #roomify-accommodation-booking-current-search-form .current-search-item.current-search-arrival, .page-conversation-booking #roomify-accommodation-booking-current-search-form .current-search-item.current-search-departure, .page-conversation-booking #roomify-accommodation-booking-current-search-form .current-search-item.current-search-nights, .page-conversation-booking #roomify-accommodation-booking-current-search-form .current-search-item.current-search-price,
+    .page-conversation-booking #roomify-accommodation-booking-current-search-form .current-search-item.current-search-arrival, .page-conversation-booking #roomify-accommodation-booking-current-search-form .current-search-item.current-search-departure, .page-conversation-booking #roomify-accommodation-booking-current-search-form .current-search-item.current-search-nights, .page-conversation-booking #roomify-accommodation-booking-current-search-form .current-search-item.current-search-group-size, .page-conversation-booking #roomify-accommodation-booking-current-search-form .current-search-item.current-search-price,
     .page-booking #roomify-accommodation-booking-current-search-form .current-search-item.current-search-arrival,
     .page-booking #roomify-accommodation-booking-current-search-form .current-search-item.current-search-departure,
     .page-booking #roomify-accommodation-booking-current-search-form .current-search-item.current-search-nights,
+    .page-booking #roomify-accommodation-booking-current-search-form .current-search-item.current-search-group-size,
     .page-booking #roomify-accommodation-booking-current-search-form .current-search-item.current-search-price {
       border-right: 1px solid #E6E6E6; } }
-  .page-conversation-booking #roomify-accommodation-booking-current-search-form .current-search-item.current-search-arrival label, .page-conversation-booking #roomify-accommodation-booking-current-search-form .current-search-item.current-search-departure label, .page-conversation-booking #roomify-accommodation-booking-current-search-form .current-search-item.current-search-nights label, .page-conversation-booking #roomify-accommodation-booking-current-search-form .current-search-item.current-search-price label,
+  .page-conversation-booking #roomify-accommodation-booking-current-search-form .current-search-item.current-search-arrival label, .page-conversation-booking #roomify-accommodation-booking-current-search-form .current-search-item.current-search-departure label, .page-conversation-booking #roomify-accommodation-booking-current-search-form .current-search-item.current-search-nights label, .page-conversation-booking #roomify-accommodation-booking-current-search-form .current-search-item.current-search-group-size label, .page-conversation-booking #roomify-accommodation-booking-current-search-form .current-search-item.current-search-price label,
   .page-booking #roomify-accommodation-booking-current-search-form .current-search-item.current-search-arrival label,
   .page-booking #roomify-accommodation-booking-current-search-form .current-search-item.current-search-departure label,
   .page-booking #roomify-accommodation-booking-current-search-form .current-search-item.current-search-nights label,
+  .page-booking #roomify-accommodation-booking-current-search-form .current-search-item.current-search-group-size label,
   .page-booking #roomify-accommodation-booking-current-search-form .current-search-item.current-search-price label {
     width: 100%;
     text-transform: uppercase;
     text-align: center;
     font-size: 16px;
     margin-top: 10px; }
-  .page-conversation-booking #roomify-accommodation-booking-current-search-form .current-search-item.current-search-arrival span, .page-conversation-booking #roomify-accommodation-booking-current-search-form .current-search-item.current-search-departure span, .page-conversation-booking #roomify-accommodation-booking-current-search-form .current-search-item.current-search-nights span, .page-conversation-booking #roomify-accommodation-booking-current-search-form .current-search-item.current-search-price span,
+  .page-conversation-booking #roomify-accommodation-booking-current-search-form .current-search-item.current-search-arrival span, .page-conversation-booking #roomify-accommodation-booking-current-search-form .current-search-item.current-search-departure span, .page-conversation-booking #roomify-accommodation-booking-current-search-form .current-search-item.current-search-nights span, .page-conversation-booking #roomify-accommodation-booking-current-search-form .current-search-item.current-search-group-size span, .page-conversation-booking #roomify-accommodation-booking-current-search-form .current-search-item.current-search-price span,
   .page-booking #roomify-accommodation-booking-current-search-form .current-search-item.current-search-arrival span,
   .page-booking #roomify-accommodation-booking-current-search-form .current-search-item.current-search-departure span,
   .page-booking #roomify-accommodation-booking-current-search-form .current-search-item.current-search-nights span,
+  .page-booking #roomify-accommodation-booking-current-search-form .current-search-item.current-search-group-size span,
   .page-booking #roomify-accommodation-booking-current-search-form .current-search-item.current-search-price span {
     text-align: center;
     width: 100%;
@@ -9982,6 +9988,16 @@ body.error404 .page-content-center {
 .page-conversation-booking #roomify-accommodation-booking-current-search-form .current-search-item.current-search-price,
 .page-booking #roomify-accommodation-booking-current-search-form .current-search-item.current-search-price {
   border-right: 1px solid #E6E6E6; }
+  .page-conversation-booking #roomify-accommodation-booking-current-search-form .current-search-item.current-search-price .booking-cost,
+  .page-booking #roomify-accommodation-booking-current-search-form .current-search-item.current-search-price .booking-cost {
+    text-decoration: line-through;
+    margin-top: 0;
+    line-height: 1.4em; }
+  .page-conversation-booking #roomify-accommodation-booking-current-search-form .current-search-item.current-search-price .offer-cost,
+  .page-booking #roomify-accommodation-booking-current-search-form .current-search-item.current-search-price .offer-cost {
+    color: #FF0000;
+    margin-top: 0;
+    line-height: 1.4em; }
 .page-conversation-booking #roomify-accommodation-booking-current-search-form .current-search-item.current-search-submit,
 .page-booking #roomify-accommodation-booking-current-search-form .current-search-item.current-search-submit {
   position: relative;
@@ -10140,7 +10156,18 @@ body.error404 .page-content-center {
       padding-left: 25px; }
     .page-conversation-booking #roomify-accommodation-booking-confirmation-form table .price,
     .page-booking #roomify-accommodation-booking-confirmation-form table .price {
-      text-align: center; }
+      text-align: right; }
+      .page-conversation-booking #roomify-accommodation-booking-confirmation-form table .price .tax,
+      .page-conversation-booking #roomify-accommodation-booking-confirmation-form table .price .booking-cost,
+      .page-booking #roomify-accommodation-booking-confirmation-form table .price .tax,
+      .page-booking #roomify-accommodation-booking-confirmation-form table .price .booking-cost {
+        text-decoration: line-through;
+        margin-right: 10px; }
+      .page-conversation-booking #roomify-accommodation-booking-confirmation-form table .price .offer-tax,
+      .page-conversation-booking #roomify-accommodation-booking-confirmation-form table .price .offer-cost,
+      .page-booking #roomify-accommodation-booking-confirmation-form table .price .offer-tax,
+      .page-booking #roomify-accommodation-booking-confirmation-form table .price .offer-cost {
+        color: #FF0000; }
     .page-conversation-booking #roomify-accommodation-booking-confirmation-form table .bold,
     .page-booking #roomify-accommodation-booking-confirmation-form table .bold {
       font-weight: bold;
