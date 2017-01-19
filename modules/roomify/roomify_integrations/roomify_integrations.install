@@ -6,13 +6,6 @@
  */
 
 /**
- * Implements hook_install().
- */
-function roomify_integrations_install() {
-
-}
-
-/**
  * Implements hook_uninstall().
  */
 function roomify_integrations_uninstall() {
