@@ -26,7 +26,6 @@ Drupal.behaviors.roomifyTravelScripts = {
       $('body').toggleClass('toggled');
     });
 
-
     // Top level menu links should be clickable.
     $('.navbar .dropdown > a').click(function(){
       location.href = this.href;
@@ -50,6 +49,20 @@ Drupal.behaviors.roomifyTravelScripts = {
         $(this).closest('.slide__caption').hide();
       }
     });
+
+    // Add an animation based on opacity.
+    $('#roomify-main-menu-overlay .closebtn').once().click(function(e) {
+      $('#roomify-main-menu-overlay').css('opacity', '0');
+    });
+    $('.roomify-site-menu .navbar-toggle').once().click(function(e) {
+      $('#roomify-main-menu-overlay').css('opacity', '1');
+    });
+
+    // Place hamburger and user icons in the center of the header.
+    var headerHeight = $('.roomify-header').outerHeight();
+    var hamburgerHeight = $('.roomify-header .roomify-site-menu .inner').outerHeight();
+    $('.roomify-header .roomify-site-menu').css('top', (headerHeight - hamburgerHeight)/2 );
+    $('.roomify-header .roomify-user-menu').css('top', (headerHeight - 28)/2);
   }
 };
 

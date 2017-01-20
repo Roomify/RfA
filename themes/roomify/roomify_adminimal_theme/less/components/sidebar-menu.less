@@ -28,6 +28,9 @@ body {
       margin-bottom: 0;
       width: 100%;
       padding-bottom: 10px;
+      &:after {
+        display: none;
+      }
     }
     #close-sidebar-icon {
       background: url('../images/close.png') center center no-repeat;
@@ -53,22 +56,38 @@ body {
     }
     .panel-pane {
       display: inline-block;
+      margin-bottom: 10px;
       width: 94%;
-      margin-bottom: 30px;
-      border-bottom: 1px solid #03A9F4;
       padding-bottom: 30px;
+      width: 300px;
+      &:after {
+        content: "";
+        width: 100px;
+        text-align: center;
+        height: 3px;
+        border-radius: 50px;
+        display: table;
+        margin: 0 auto;
+        background: #696969;
+        margin-top: 35px;
+      }
+      &:last-child {
+        &:after {
+          display: none;
+        }
+      }
       .pane-title {
         border-bottom: 0;
         text-align: left;
         width: 100%;
         color: white;
         font-weight: 600;
-        padding: 5px 10px;
+        padding: 5px 15px;
         font-size: 22px;
-        text-align: center;
       }
     }
     .pane-roomify-sidebar-user-menu {
+
       .pane-title {
         margin-bottom: 5px;
         font-size: 22px;
@@ -150,7 +169,7 @@ body {
         display: none;
       }
       .glyphicon {
-        font-size: 20px;
+        font-size: 18px;
         margin-right: 4px;
         color: #03A9F4;
         position: relative;
@@ -193,14 +212,15 @@ body {
         font-weight: 600;
         border-bottom: 0;
         font-size: 22px;
-        text-align: center;
         width: 100%;
         .glyphicon {
           display: inline-block;
-          font-size: 20px;
+          font-size: 18px;
           margin-right: 6px;
           z-index: 99;
           color: #03A9F4;
+          top: 2px;
+          right: 4px;
         }
         a {
           color: white;
@@ -257,12 +277,13 @@ body {
         color: white;
         font-weight: 600;
         font-size: 22px;
-        text-align: center;
+        padding: 5px 15px;
+        text-align: left;
         border-bottom: 0;
         width: 100%;
         .glyphicon {
           display: inline-block;
-          font-size: 20px;
+          font-size: 18px;
           margin-right: 6px;
           z-index: 99;
           color: #03A9F4;
@@ -308,12 +329,12 @@ body {
         margin-bottom: 5px;
         color: white;
         font-weight: 600;
-        padding: 5px 10px;
+        padding: 5px 15px;
+        text-align: left;
         font-size: 22px;
         float: left;
         border: 0;
         color: white;
-        text-align: center;
       }
       .view-my-stays {
         .views-row {
@@ -349,8 +370,6 @@ body {
       }
     }
   }
-
-
   &.toggled {
     padding-right: 350px;
     margin-left: -350px;

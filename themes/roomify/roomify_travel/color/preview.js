@@ -15,13 +15,14 @@
       // header
       $('#preview header', form).css('background-color', $('#palette input[name="palette[header]"]', form).val());
     
+      $('#preview header', form).css('border-color', $('#palette input[name="palette[header-border]"]', form).val());
       // Menu Links
-      $('#preview header li a', form).css('color', $('#palette input[name="palette[links]"]', form).val());
+      $('#preview header .main-menu svg', form).css('fill', $('#palette input[name="palette[links]"]', form).val());
 
-      $("#preview header li a").hover(function() {
-        $(this, form).css("color", $('#palette input[name="palette[hoverlinks]"]', form).val());
+      $("#preview header .main-menu svg").hover(function() {
+        $(this, form).css("fill", $('#palette input[name="palette[hoverlinks]"]', form).val());
       },function(){
-        $(this, form).css("color", $('#palette input[name="palette[links]"]', form).val());
+        $(this, form).css("fill", $('#palette input[name="palette[links]"]', form).val());
       });
 
       // User Icon

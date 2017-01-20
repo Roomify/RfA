@@ -10,6 +10,7 @@ $info = array();
 // Define the possible replaceable items and their labels.
 $info['fields'] = array(
   'header' => t('Header'),
+  'header-border' => t('Header Border'),
   'footer' => t('Footer'),
   'links' => t('Header/Footer Links'),
   'hoverlinks' => t('Header/Footer Hover Menu Links'),
@@ -21,6 +22,7 @@ $info['schemes']['default'] = array(
   'title' => t('Default'),
   'colors' => array(
     'header' => '#ffffff',
+    'header-border' => '#e7e7e7',
     'footer' => '#15262f',
     'links' => '#484848',
     'hoverlinks' => '#000000',
