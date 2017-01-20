@@ -50,7 +50,7 @@ Drupal.behaviors.roomifyTravelScripts = {
       }
     });
 
-    // Let's add an animation based on opacity.
+    // Add an animation based on opacity.
     $('#roomify-main-menu-overlay .closebtn').once().click(function(e) {
       $('#roomify-main-menu-overlay').css('opacity', '0');
     });
@@ -58,7 +58,7 @@ Drupal.behaviors.roomifyTravelScripts = {
       $('#roomify-main-menu-overlay').css('opacity', '1');
     });
 
-    // This plases hamburger an user icons in the center of the header.
+    // Place hamburger and user icons in the center of the header.
     var headerHeight = $('.roomify-header').outerHeight();
     var hamburgerHeight = $('.roomify-header .roomify-site-menu .inner').outerHeight();
     $('.roomify-header .roomify-site-menu').css('top', (headerHeight - hamburgerHeight)/2 );
