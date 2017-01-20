@@ -164,11 +164,6 @@ projects[diff][version] = 3.3
 
 projects[dragdropfile][version] = 1.7
 
-projects[editablefields][type] = module
-projects[editablefields][download][type] = git
-projects[editablefields][download][url] = https://git.drupal.org/project/editablefields.git
-projects[editablefields][download][revision] = 97f0c29a8ad87c72d3244bc70dbffb8b4af39388
-
 projects[elements][version] = 1.4
 
 projects[email][version] = 1.3
