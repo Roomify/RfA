@@ -5,7 +5,6 @@ package = Roomify
 version = 7.x-1.0
 dependencies[] = classy_paragraphs
 dependencies[] = ctools
-dependencies[] = editablefields
 dependencies[] = entity
 dependencies[] = entity_background_color
 dependencies[] = entity_background_image
