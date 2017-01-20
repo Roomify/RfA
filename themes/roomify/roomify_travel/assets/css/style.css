@@ -15275,6 +15275,9 @@ body.page-single-property-listing {
     font-size: 26px;
     text-align: center;
     margin: 50px 0; }
+    @media (max-width: 480px) {
+      body.page-single-property-listing .pane-roomify-property-field-sp-short-description {
+        margin-bottom: 0; } }
   body.page-single-property-listing .panel-content-bottom {
     margin-bottom: 70px;
     margin-top: 35px; }
@@ -15286,9 +15289,7 @@ body.page-single-property-listing {
         body.page-single-property-listing .panel-content-bottom .ui-tabs .ui-tabs-nav li.ui-state-default {
           border-width: 1px;
           border-bottom: 0;
-          float: right; }
-          body.page-single-property-listing .panel-content-bottom .ui-tabs .ui-tabs-nav li.ui-state-default:first-child {
-            margin-right: 0; } }
+          float: left; } }
     body.page-single-property-listing .panel-content-bottom #property-description-tab {
       background: url("../images/description.png") center center no-repeat;
       background: url("../images/description.svg") center center no-repeat, linear-gradient(transparent, transparent);
@@ -15348,24 +15349,15 @@ body.page-single-property-listing {
       opacity: 0.5;
       bottom: 1px;
       position: relative; }
-  body.page-single-property-listing .casa-property-description {
-    display: inline-block;
-    width: 100%;
-    padding: 30px;
-    background: white;
-    border-radius: 2px;
-    border: 1px solid #ececec;
-    margin-top: 52px;
-    margin-bottom: 50px; }
   body.page-single-property-listing .view-property-travel {
     display: inline-block;
     width: 100%;
-    padding: 30px;
-    background: white;
-    border-radius: 2px;
-    border: 1px solid #ececec;
-    margin-top: 52px;
-    margin-bottom: 50px; }
+    padding: 18px;
+    margin-top: 40px;
+    margin-bottom: 40px; }
+    @media (max-width: 480px) {
+      body.page-single-property-listing .view-property-travel {
+        padding: 0; } }
     body.page-single-property-listing .view-property-travel .views-row {
       display: inline-block;
       width: 100%;
@@ -15379,12 +15371,20 @@ body.page-single-property-listing {
         font-size: 20px;
         margin-bottom: 20px;
         display: inline-block;
-        font-weight: 400; }
+        color: initial; }
+        @media (min-width: 992px) {
+          body.page-single-property-listing .view-property-travel .views-row .views-field-name a {
+            font-size: 24px; } }
+      body.page-single-property-listing .view-property-travel .views-row .views-field-field-st-description {
+        font-size: 16px; }
       body.page-single-property-listing .view-property-travel .views-row .views-field-field-st-gallery {
         display: inline-block;
         float: left;
         margin-right: 20px;
-        max-width: 250px; }
+        max-width: 360px; }
+        @media (max-width: 480px) {
+          body.page-single-property-listing .view-property-travel .views-row .views-field-field-st-gallery {
+            margin-bottom: 15px; } }
         body.page-single-property-listing .view-property-travel .views-row .views-field-field-st-gallery img {
           border-radius: 2px; }
       body.page-single-property-listing .view-property-travel .views-row .views-field-book-this {
@@ -15402,7 +15402,8 @@ body.page-single-property-listing {
           min-height: 1px;
           padding-left: 15px;
           padding-right: 15px;
-          float: right; }
+          float: right;
+          max-width: 200px; }
         body.page-single-property-listing .view-property-travel .views-row .views-field-book-this .info {
           position: relative;
           float: left;
