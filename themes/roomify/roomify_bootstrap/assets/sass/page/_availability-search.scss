@@ -117,9 +117,9 @@
         .types {
           display: inline-block;
           width: 100%;
-          overflow-y: scroll;
+          overflow-y: auto;
           margin-top: 10px;
-          max-height: 60%;
+          max-height: 136px;
           table {
             width: 100%;
           }
@@ -237,9 +237,9 @@
               .types {
                 display: inline-block;
                 width: 100%;
-                overflow-y: scroll;
+                overflow-y: auto;
                 margin-top: 10px;
-                max-height: 60%;
+                max-height: 136px;
                 table {
                   width: 100%;
                 }
@@ -303,9 +303,9 @@
       .types {
         display: inline-block;
         width: 100%;
-        overflow-y: scroll;
+        overflow-y: auto;
         margin-top: 10px;
-        max-height: 60%;
+        max-height: 136px;
         table {
           width: 100%;
         }
@@ -378,9 +378,9 @@
         .types {
           display: inline-block;
           width: 100%;
-          overflow-y: scroll;
+          overflow-y: auto;
           margin-top: 10px;
-          max-height: 60%;
+          max-height: 136px;
           table {
             width: 100%;
           }
@@ -434,16 +434,23 @@
   // MAP VIEW
   .view-display-id-panel_pane_2 {
     #leaflet-map {
+      .leaflet-popup-content-wrapper {
+        border-radius: 4px;
+      }
       .leaflet-popup {
+        min-height: 250px;
         .leaflet-popup-content {
-          max-width: 250px;
+          max-width: 170px;
+          margin: 14px;
         }
         a {
-          font-size: 18px;
+          font-size: 16px;
+          color: #000000;
+          text-decoration: underline;
         }
         .roomify-property-short-description {
           margin: 5px 0;
-          font-size: 14px;
+          font-size: 13px;
         }
         .roomify-property-image {
           display: inline-block;
@@ -451,8 +458,9 @@
           margin: 5px 0;
           img {
             width: 100% !important;
-            border-radius: 5px;
+            border-radius: 2px;
             min-width: 120px;
+            min-height: 120px;
           }
         }
       }
