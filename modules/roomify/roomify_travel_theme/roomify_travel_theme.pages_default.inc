@@ -1293,7 +1293,7 @@ function roomify_travel_theme_default_page_manager_handlers() {
     ),
   );
   $display->cache = array();
-  $display->title = '';
+  $display->title = '%node:title_field';
   $display->uuid = 'bdfbe48f-f065-4ea6-9330-0aca5c08a60f';
   $display->storage_type = 'page_manager';
   $display->storage_id = 'node_view__blogpost-travel';
@@ -1740,7 +1740,7 @@ function roomify_travel_theme_default_page_manager_handlers() {
     ),
   );
   $display->cache = array();
-  $display->title = '';
+  $display->title = '%node:title_field';
   $display->uuid = 'af415ea7-94db-4ad7-8a09-f539e31d845e';
   $display->storage_type = 'page_manager';
   $display->storage_id = 'node_view__panel_context_7ddeeb25-0c6c-4a38-8df4-e4a2eb636bcd';
@@ -2039,10 +2039,10 @@ function roomify_travel_theme_default_page_manager_handlers() {
     ),
   );
   $display->cache = array();
-  $display->title = '';
+  $display->title = '%node:title_field';
   $display->uuid = '9ef84618-1857-465c-a31a-7230c09fde85';
   $display->storage_type = 'page_manager';
-  $display->storage_id = 'node_view__location';
+  $display->storage_id = 'node_view__location-travel';
   $display->content = array();
   $display->panels = array();
   $pane = new stdClass();
