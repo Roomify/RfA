@@ -850,6 +850,9 @@ body #sidebar-wrapper .close-sidebar {
   width: 100%;
   padding-bottom: 10px;
 }
+body #sidebar-wrapper .close-sidebar:after {
+  display: none;
+}
 body #sidebar-wrapper #close-sidebar-icon {
   background: url('../images/close.png') center center no-repeat;
   margin-right: 20px;
@@ -874,10 +877,24 @@ body .sidebar-nav a {
 }
 body .sidebar-nav .panel-pane {
   display: inline-block;
+  margin-bottom: 10px;
   width: 94%;
-  margin-bottom: 30px;
-  border-bottom: 1px solid #03A9F4;
   padding-bottom: 30px;
+  width: 300px;
+}
+body .sidebar-nav .panel-pane:after {
+  content: "";
+  width: 100px;
+  text-align: center;
+  height: 3px;
+  border-radius: 50px;
+  display: table;
+  margin: 0 auto;
+  background: #696969;
+  margin-top: 35px;
+}
+body .sidebar-nav .panel-pane:last-child:after {
+  display: none;
 }
 body .sidebar-nav .panel-pane .pane-title {
   border-bottom: 0;
@@ -885,9 +902,8 @@ body .sidebar-nav .panel-pane .pane-title {
   width: 100%;
   color: white;
   font-weight: 600;
-  padding: 5px 10px;
+  padding: 5px 15px;
   font-size: 22px;
-  text-align: center;
 }
 body .sidebar-nav .pane-roomify-sidebar-user-menu .pane-title {
   margin-bottom: 5px;
@@ -965,7 +981,7 @@ body .sidebar-nav .pane-commerce-cart-cart .line-item-quantity {
   display: none;
 }
 body .sidebar-nav .pane-commerce-cart-cart .glyphicon {
-  font-size: 20px;
+  font-size: 18px;
   margin-right: 4px;
   color: #03A9F4;
   position: relative;
@@ -1002,15 +1018,16 @@ body .sidebar-nav .pane-favorite-properties-sidebar-favorites .pane-title {
   font-weight: 600;
   border-bottom: 0;
   font-size: 22px;
-  text-align: center;
   width: 100%;
 }
 body .sidebar-nav .pane-favorite-properties-sidebar-favorites .pane-title .glyphicon {
   display: inline-block;
-  font-size: 20px;
+  font-size: 18px;
   margin-right: 6px;
   z-index: 99;
   color: #03A9F4;
+  top: 2px;
+  right: 4px;
 }
 body .sidebar-nav .pane-favorite-properties-sidebar-favorites .pane-title a {
   color: white;
@@ -1064,13 +1081,14 @@ body .sidebar-nav .pane-dashboard-guest-stays-panel-pane-2 .pane-title {
   color: white;
   font-weight: 600;
   font-size: 22px;
-  text-align: center;
+  padding: 5px 15px;
+  text-align: left;
   border-bottom: 0;
   width: 100%;
 }
 body .sidebar-nav .pane-dashboard-guest-stays-panel-pane-2 .pane-title .glyphicon {
   display: inline-block;
-  font-size: 20px;
+  font-size: 18px;
   margin-right: 6px;
   z-index: 99;
   color: #03A9F4;
@@ -1110,12 +1128,12 @@ body .sidebar-nav .pane-my-stays-panel-pane-1 {
 body .sidebar-nav .pane-my-stays-panel-pane-1 .pane-title {
   margin-bottom: 5px;
   font-weight: 600;
-  padding: 5px 10px;
+  padding: 5px 15px;
+  text-align: left;
   font-size: 22px;
   float: left;
   border: 0;
   color: white;
-  text-align: center;
 }
 body .sidebar-nav .pane-my-stays-panel-pane-1 .view-my-stays .views-row {
   display: inline-block;
@@ -3262,6 +3280,9 @@ body .ui-widget table thead th a {
 html,
 body {
   background-color: #fdfdfd !important;
+}
+body {
+  font: 15px/1.6em 'Lato', sans-serif !important;
 }
 body #console.roomify-admin-messages,
 body #page {
