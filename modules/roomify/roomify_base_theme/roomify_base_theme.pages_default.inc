@@ -60,7 +60,7 @@ function roomify_base_theme_default_page_manager_handlers() {
     ),
   );
   $display->cache = array();
-  $display->title = '';
+  $display->title = '%node:title_field';
   $display->uuid = 'bdfbe48f-f065-4ea6-9330-0aca5c08a60f';
   $display->storage_type = 'page_manager';
   $display->storage_id = 'node_view__blog_post';
@@ -512,7 +512,7 @@ function roomify_base_theme_default_page_manager_handlers() {
     ),
   );
   $display->cache = array();
-  $display->title = '';
+  $display->title = '%node:title_field';
   $display->uuid = 'b4a8fd8a-aced-42ab-b4a8-2f0f0f6e43b3';
   $display->storage_type = 'page_manager';
   $display->storage_id = 'node_view__activity';
@@ -741,7 +741,7 @@ function roomify_base_theme_default_page_manager_handlers() {
     ),
   );
   $display->cache = array();
-  $display->title = '';
+  $display->title = '%node:title_field';
   $display->uuid = '9ef84618-1857-465c-a31a-7230c09fde85';
   $display->storage_type = 'page_manager';
   $display->storage_id = 'node_view__location';
