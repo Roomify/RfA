@@ -50,18 +50,17 @@ Drupal.behaviors.roomifyTravelScripts = {
       }
     });
 
+    // Let's add an animation based on opacity.
     $('#roomify-main-menu-overlay .closebtn').once().click(function(e) {
-      //e.preventDefault();
       $('#roomify-main-menu-overlay').css('opacity', '0');
     });
     $('.roomify-site-menu .navbar-toggle').once().click(function(e) {
-      //e.preventDefault();
       $('#roomify-main-menu-overlay').css('opacity', '1');
     });
 
+    // This plases hamburger an user icons in the center of the header.
     var headerHeight = $('.roomify-header').outerHeight();
     var hamburgerHeight = $('.roomify-header .roomify-site-menu .inner').outerHeight();
-
     $('.roomify-header .roomify-site-menu').css('top', (headerHeight - hamburgerHeight)/2 );
     $('.roomify-header .roomify-user-menu').css('top', (headerHeight - 28)/2);
   }
