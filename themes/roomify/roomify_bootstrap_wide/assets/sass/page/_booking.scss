@@ -6,10 +6,11 @@
       &.current-search-arrival,
       &.current-search-departure,
       &.current-search-nights,
+      &.current-search-group-size,
       &.current-search-price {
         @include make-xs-column(12);
         @include make-sm-column(6);
-        @include make-md-column(3);
+        @include make-md-column(2.4);
         padding: 10px;
         border: 1px solid #E6E6E6;
         border-right: 0px;
@@ -37,6 +38,16 @@
       }
       &.current-search-price {
         border-right: 1px solid #E6E6E6;
+        .booking-cost {
+          text-decoration: line-through;
+          margin-top: 0;
+          line-height: 1.4em;
+        }
+        .offer-cost {
+          color: #FF0000;
+          margin-top: 0;
+          line-height: 1.4em;
+        }
       }
       &.current-search-submit {
         @include make-xs-column(12);
@@ -126,7 +137,16 @@
         padding-left: 25px;
       }
       .price {
-        text-align: center;
+        text-align: right;
+        .tax,
+        .booking-cost {
+          text-decoration: line-through;
+          margin-right: 10px;
+        }
+        .offer-tax,
+        .offer-cost {
+          color: #FF0000;
+        }
       }
       .bold {
         font-weight: bold;

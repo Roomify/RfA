@@ -294,20 +294,27 @@ body.roomify-notification {
   position: relative;
   .language-switcher-locale-session,
   .language-switcher-locale-url {
-    position: absolute;
     right: 15px;
     z-index: 15;
-    margin-top: 5px;
+    display: inline-block;
+    position: relative;
+    top: 8px;
+    text-align: right;
+    width: 100%;
     li {
       display: inline-block;
-      float: left;
-      margin-left: 10px;
+      float: right;
+      margin-left: 15px;
       a {
-        color: #4A4A4A;
+        color: #FFFFFF;
+        img {
+          float: left;
+          margin-right: 5px;
+          margin-top: 4px;
+        }
       }
       &.active {
         text-decoration: underline;
-        font-weight: bold;
       }
     }
   }
