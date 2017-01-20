@@ -27,6 +27,7 @@ regions[page_bottom]    			= 'Page bottom'
 ;;;;;;;;;;;;;;;;;;;;;
 
 stylesheets[all][] = assets/css/style.css
+stylesheets[all][] = color/color.css
 
 ;;;;;;;;;;;;;;;;;;;;;
 ;; Scripts

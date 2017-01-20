@@ -46,7 +46,19 @@ Drupal.behaviors.roomifyElegantScripts = {
       }
     });
 
+    $('#roomify-main-menu-overlay .closebtn').once().click(function(e) {
+      //e.preventDefault();
+      $('#roomify-main-menu-overlay').css('opacity', '0');
+    });
+    $('.roomify-site-menu .navbar-toggle').once().click(function(e) {
+      //e.preventDefault();
+      $('#roomify-main-menu-overlay').css('opacity', '1');
+    });
+    var headerHeight = $('.roomify-header').outerHeight();
+    var hamburgerHeight = $('.roomify-header .roomify-site-menu .inner').outerHeight();
 
+    $('.roomify-header .roomify-site-menu').css('top', (headerHeight - hamburgerHeight)/2 );
+    $('.roomify-header .roomify-user-menu').css('top', (headerHeight - 28)/2);
 
     $('.page-listing .pane-roomify-property-field-sp-description').readmore({
       speed: 75,

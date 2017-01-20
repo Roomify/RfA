@@ -44,7 +44,7 @@ function roomify_dashboard_theme_colors_render($subtype, $conf, $args, $pane_con
   module_load_include('module', 'color', 'color.module');
 
   $theme = variable_get('theme_default', NULL);
-  if ($theme == 'roomify_bootstrap' || $theme == 'roomify_bootstrap_wide' || $theme == 'roomify_travel') {
+  if ($theme == 'roomify_bootstrap' || $theme == 'roomify_bootstrap_wide' || $theme == 'roomify_travel' || $theme == 'roomify_elegant') {
     $content = drupal_get_form('roomify_dashboard_theme_colors_form');
   }
   else {

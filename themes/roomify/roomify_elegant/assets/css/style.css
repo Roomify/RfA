@@ -14515,115 +14515,84 @@ section#main-section-container {
       padding-left: 30px;
       padding-right: 30px; } }
 
-.roomify-sidebar-link {
-  margin-left: 20px;
-  width: 30px;
-  height: 30px;
-  padding: 0; }
-  .roomify-sidebar-link a {
-    width: 30px;
-    height: 30px;
-    display: inline-block; }
-    @media (min-width: 768px) {
-      .roomify-sidebar-link a {
-        position: relative;
-        top: 8px; } }
-  @media (max-width: 767px) {
-    .roomify-sidebar-link {
-      margin: 0 0 30px 0; } }
-
-body header.roomify-header .navbar-collapse nav ul.navbar-nav > li > a,
-body header.roomify-header svg {
-  color: white;
-  font-weight: 400;
-  fill: white; }
-  body header.roomify-header .navbar-collapse nav ul.navbar-nav > li > a:hover,
-  body header.roomify-header svg:hover {
-    color: #dedede;
-    fill: #dedede;
-    background: transparent; }
-
-body header.roomify-header {
-  min-height: 100px;
-  background: #16262e;
+header.roomify-header {
+  margin-bottom: 0;
   border-radius: 0;
+  border-left: 0;
   border-right: 0;
-  border-left: 0; }
-  @media (min-width: 768px) and (max-width: 992px) {
-    body header.roomify-header .navbar-collapse nav ul.nav li a {
-      font-size: 12px; } }
-  body header.roomify-header .navbar nav ul.navbar-nav > li > a:hover {
-    color: #333333; }
-  body header.roomify-header a.logo {
-    margin-top: 0;
-    margin-bottom: 0;
-    margin-top: 15px; }
-    @media (max-width: 768px) {
-      body header.roomify-header a.logo {
-        margin-left: 15px; } }
-    body header.roomify-header a.logo img {
-      height: 66px;
-      margin: 2px 0; }
-  body header.roomify-header a.name {
-    font-size: 22px;
-    margin-top: 10px;
-    margin-top: 15px;
-    color: white; }
-  body header.roomify-header .navbar-collapse.collapse {
-    float: right;
-    margin-top: 25px; }
-    body header.roomify-header .navbar-collapse.collapse.collasping, body header.roomify-header .navbar-collapse.collapse.in {
-      margin-top: 0;
-      float: none; }
-  body header.roomify-header .navbar-toggle {
-    position: absolute;
-    top: 40px;
-    right: 30px;
-    float: none;
-    margin-right: 0;
-    padding: 0;
-    margin: 0;
-    background-color: transparent;
-    background-image: none;
-    border: 0;
-    border-radius: 0;
-    z-index: 9; }
-    body header.roomify-header .navbar-toggle .icon-bar {
-      height: 3px;
-      color: white;
-      background: white; }
-    body header.roomify-header .navbar-toggle:hover, body header.roomify-header .navbar-toggle:focus {
-      background: transparent; }
-
-.navbar-nav > li > .dropdown-menu {
-  margin-top: 0px;
-  background: white;
-  min-width: 220px;
-  border: 2px solid #e7e7e7;
-  padding: 0;
-  border-radius: 0; }
-  .navbar-nav > li > .dropdown-menu li {
-    border-bottom: 1px solid #f8f8f8; }
-    .navbar-nav > li > .dropdown-menu li :last-child {
-      border: none; }
-    .navbar-nav > li > .dropdown-menu li a {
-      font-size: 14px;
-      padding: 10px;
-      background: white;
-      background: #16262e;
-      color: #333333;
-      color: white; }
-      .navbar-nav > li > .dropdown-menu li a:hover, .navbar-nav > li > .dropdown-menu li a:focus {
-        background: #F8F8F8;
-        color: #333333; }
+  border-bottom: 2px solid #060A0C; }
+  @media (min-width: 768px) {
+    header.roomify-header .container:first-child, header.roomify-header .messages-container:first-child, header.roomify-header .site-container:first-child, header.roomify-header body.node-type-homepage .pane-homepage-blogposts-panel-pane-1:first-child, body.node-type-homepage header.roomify-header .pane-homepage-blogposts-panel-pane-1:first-child,
+    header.roomify-header body.node-type-homepage .pane-featured-properties-panel-pane-3:first-child,
+    body.node-type-homepage header.roomify-header .pane-featured-properties-panel-pane-3:first-child,
+    header.roomify-header body.node-type-homepage .pane-featured-properties-panel-pane-4:first-child,
+    body.node-type-homepage header.roomify-header .pane-featured-properties-panel-pane-4:first-child,
+    header.roomify-header body.node-type-homepage .pane-featured-areas-panel-pane-1:first-child,
+    body.node-type-homepage header.roomify-header .pane-featured-areas-panel-pane-1:first-child,
+    header.roomify-header body.node-type-homepage .pane-node-field-homepage-main-text:first-child,
+    body.node-type-homepage header.roomify-header .pane-node-field-homepage-main-text:first-child, header.roomify-header .node-type-homepage .pane-featured-properties-panel-pane-3 .view-featured-properties.view-display-id-panel_pane_3:first-child, .node-type-homepage .pane-featured-properties-panel-pane-3 header.roomify-header .view-featured-properties.view-display-id-panel_pane_3:first-child, header.roomify-header .pane-homepage-blogposts-panel-pane-1 .view-homepage-blogposts.view-display-id-panel_pane_1:first-child, .pane-homepage-blogposts-panel-pane-1 header.roomify-header .view-homepage-blogposts.view-display-id-panel_pane_1:first-child, header.roomify-header .pane-featured-properties-panel-pane-4 .view-featured-properties.view-display-id-panel_pane_4:first-child, .pane-featured-properties-panel-pane-4 header.roomify-header .view-featured-properties.view-display-id-panel_pane_4:first-child {
+      padding-left: 0;
+      padding-right: 0; } }
+  header.roomify-header .navbar-header {
+    width: 100%;
+    display: table;
+    margin: 0 auto;
+    min-height: 60px; }
+  header.roomify-header .roomify-site-menu {
+    position: relative; }
+    header.roomify-header .roomify-site-menu .inner {
+      padding-left: 0; }
+    header.roomify-header .roomify-site-menu .navbar-toggle {
+      display: block;
+      border: 0;
+      background: transparent;
+      top: 3px;
+      position: relative;
+      float: left; }
+      @media (max-width: 767px) {
+        header.roomify-header .roomify-site-menu .navbar-toggle {
+          top: 0; } }
+  header.roomify-header .roomify-site-name {
+    margin-top: 2px; }
+    header.roomify-header .roomify-site-name a.name {
+      text-align: center;
+      display: inline-block;
+      font-size: 22px;
+      margin-top: 5px;
+      width: 100%; }
+    header.roomify-header .roomify-site-name a.logo {
+      display: table;
+      margin: 8px auto;
+      max-height: 60px; }
+  header.roomify-header .roomify-user-menu {
+    position: relative; }
+    header.roomify-header .roomify-user-menu .roomify-sidebar-link {
+      padding: 0; }
+      header.roomify-header .roomify-user-menu .roomify-sidebar-link a {
+        width: 30px;
+        height: 30px;
+        display: inline-block;
+        width: 100%;
+        position: relative; }
+        @media (min-width: 768px) {
+          header.roomify-header .roomify-user-menu .roomify-sidebar-link a {
+            position: relative; } }
+        header.roomify-header .roomify-user-menu .roomify-sidebar-link a svg {
+          height: 28px;
+          width: 28px;
+          right: 0;
+          position: absolute; }
+      @media (max-width: 767px) {
+        header.roomify-header .roomify-user-menu .roomify-sidebar-link {
+          margin: 0 0 30px 0; } }
+    header.roomify-header .roomify-user-menu .inner {
+      padding-right: 0; }
 
 .roomify-language-switcher {
   position: relative;
   display: inline-block;
   width: 100%;
   background: rgba(16, 16, 16, 0.96); }
-  .roomify-language-switcher:empty {
-    display: none !important; }
   .roomify-language-switcher .language-switcher-locale-session,
   .roomify-language-switcher .language-switcher-locale-url {
     right: 15px;
@@ -15108,6 +15077,83 @@ body.toggled #close-sidebar-wrapper {
   -moz-transition: 60ms all linear;
   -ms-transition: 60ms all linear;
   -o-transition: 60ms all linear; }
+
+/* The Overlay (background) */
+.roomify-overlay {
+  /* Height & width depends on how you want to reveal the overlay (see JS below) */
+  height: 100%;
+  width: 100%;
+  position: fixed;
+  /* Stay in place */
+  z-index: 100;
+  /* Sit on top */
+  left: 0;
+  top: 0;
+  display: none;
+  background-color: black;
+  /* Black fallback color */
+  background-color: rgba(0, 0, 0, 0.92);
+  /* Black w/opacity */
+  overflow-x: hidden;
+  /* Disable horizontal scroll */
+  opacity: 0;
+  -webkit-transition: 200ms opacity ease-in-out;
+  -moz-transition: 200ms opacity ease-in-out;
+  -ms-transition: 200ms opacity ease-in-out;
+  -o-transition: 200ms opacity ease-in-out; }
+  .roomify-overlay .overlay-content {
+    position: relative;
+    top: 20%;
+    /* 25% from the top */
+    width: 100%;
+    /* 100% width */
+    text-align: center;
+    /* Centered text/links */
+    margin-top: 30px;
+    /* 30px top margin to avoid conflict with the close button on smaller screens */ }
+    .roomify-overlay .overlay-content a {
+      padding: 15px 8px;
+      text-decoration: none;
+      font-size: 36px;
+      color: #818181;
+      display: block;
+      /* Display block instead of inline */
+      transition: 0.3s;
+      /* Transition effects on hover (color) */ }
+      .roomify-overlay .overlay-content a:hover, .roomify-overlay .overlay-content a:focus {
+        color: #f1f1f1; }
+    .roomify-overlay .overlay-content .menu li:hover, .roomify-overlay .overlay-content .menu li:focus {
+      background: transparent; }
+    .roomify-overlay .overlay-content .menu li .dropdown-menu {
+      max-width: 360px;
+      margin: 0 auto;
+      left: 0;
+      right: 0;
+      border-radius: 0;
+      background: rgba(0, 0, 0, 0.9);
+      border: 0; }
+      .roomify-overlay .overlay-content .menu li .dropdown-menu li a {
+        font-size: 22px;
+        text-align: center;
+        padding: 8px; }
+    .roomify-overlay .overlay-content .menu li .active > a,
+    .roomify-overlay .overlay-content .menu li .active > a:hover,
+    .roomify-overlay .overlay-content .menu li .active > a:focus {
+      background-color: transparent; }
+    .roomify-overlay .overlay-content .menu li a:hover, .roomify-overlay .overlay-content .menu li a:focus {
+      background: transparent; }
+  .roomify-overlay .closebtn {
+    position: absolute;
+    top: 20px;
+    right: 45px;
+    font-size: 60px; }
+  @media screen and (max-height: 450px) {
+    .roomify-overlay a {
+      font-size: 20px; }
+    .roomify-overlay .closebtn {
+      font-size: 40px;
+      top: 15px;
+      right: 35px; } }
 
 .page-listing .field-name-field-sp-short-description {
   display: inline-block;
