@@ -572,3 +572,12 @@ function roomify_system_update_7032() {
 function roomify_system_update_7033() {
   module_enable(array('roomify_integrations'));
 }
+
+/**
+ * Remove Editablefields.
+ */
+function roomify_system_update_7034() {
+  db_delete('system')
+    ->condition('name', 'editablefields')
+    ->execute();
+}
