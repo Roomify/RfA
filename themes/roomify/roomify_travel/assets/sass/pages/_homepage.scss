@@ -10,54 +10,12 @@ body.node-type-homepage {
     color: white;
     border-bottom: 0;
   }
-  header {
-    margin-bottom: 0;
-    z-index: 2;
-    background: transparent !important;
-    border-radius: 0;
-    border: 0;
-    border-bottom: 1px solid rgba(255, 255, 255, 0.15);
-    @media (max-width: $screen-sm) {
-      background: rgba(0, 0, 0, 0.10);
-    }
-    .collasping,
-    .collapse.in {
-      width: 100%;
-      display: inline-block;
-      margin-bottom: 65px;
-    }
-    .navbar-toggle:hover,
-    .navbar-toggle:focus {
-      background: transparent;
-    }
-    a.name,
-    .navbar-nav > li > a {
-      font-weight: 400;
-      @media (min-width: $screen-sm) {
-        color: #FFFFFF !important;
-        &:hover {
-          color: black !important;
-        }
-      }
-    }
-    .roomify-sidebar-menu-toggle svg {
-      fill: #FFFFFF;
-      @media (max-width: $screen-sm) {
-        fill: #484848;
-      }
-      &:hover {
-        fill: black !important;
-      }
-    }
-  }
   .panel-content-top {
     position: relative;
   }
   .main-container {
     padding-top: 0;
     position: relative;
-    bottom: 75px;
-    padding-bottom: 75px;
   }
   // Slider
   .view-homepage-travel.view-display-id-panel_pane_1 {
@@ -185,7 +143,7 @@ body.node-type-homepage {
       backface-visibility: hidden;
     }
     @media (max-width: 1440px) {
-      max-width: 1100px;
+      max-width: 1128px;
     }
     @media (max-width: 1200px) {
       max-width: 900px;

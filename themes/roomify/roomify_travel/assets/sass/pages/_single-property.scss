@@ -11,58 +11,13 @@ body.page-single-property-listing {
     color: white;
     border-bottom: 0;
   }
-  header {
-    margin-bottom: 0;
-    z-index: 2;
-    background: transparent !important;
-    border-radius: 0;
-    border: 0;
-    border-bottom: 1px solid rgba(255, 255, 255, 0.15);
-    @media (max-width: $screen-sm) {
-      background: rgba(0, 0, 0, 0.10);
-    }
-    .collasping,
-    .collapse.in {
-      width: 100%;
-      display: inline-block;
-      margin-bottom: 65px;
-    }
-    .navbar-toggle:hover,
-    .navbar-toggle:focus {
-      background: transparent;
-    }
-    a.name,
-    .navbar-nav > li > a {
-      font-weight: 400;
-      @media (min-width: $screen-sm) {
-        color: #FFFFFF !important;
-        &:hover {
-          color: black !important;
-        }
-      }
-    }
-    .roomify-sidebar-menu-toggle svg {
-      fill: #FFFFFF;
-      @media (max-width: $screen-sm) {
-        fill: #484848;
-      }
-      &:hover {
-        fill: black !important;
-      }
-    }
-  }
   .panel-content-top {
     position: relative;
   }
   .main-container {
-  	@media (min-width: $screen-sm) {
-	    padding-top: 0;
-	    position: relative;
-	    bottom: 75px;
-	    padding-bottom: 75px;
-	  }
+    padding-top: 0;
+    position: relative;
   }
-
   .pane-property-slideshow {
 	  border: none;
 	  min-height: inherit;

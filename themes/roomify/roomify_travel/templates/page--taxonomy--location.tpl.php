@@ -74,7 +74,21 @@
  */
 ?>
 
-<?php $directory = drupal_get_path('theme', 'roomify_travel');;?>
+<?php $directory = drupal_get_path('theme', 'roomify_travel'); ?>
+<!-- The overlay Menu -->
+<div id="roomify-main-menu-overlay" class="roomify-overlay">
+  <!-- Button to close the overlay navigation -->
+  <a href="javascript:void(0)" class="closebtn" onclick="document.getElementById('roomify-main-menu-overlay').style.display = 'none';">&times;</a>
+
+  <!-- Overlay content -->
+  <div class="overlay-content">
+    <?php 
+      $main_menu = menu_tree_output(menu_tree_all_data('main-menu', NULL, 2));
+      print drupal_render($main_menu);
+    ?>
+  </div>
+</div>
+
 <!-- Sidebar Content-->
 <div id="sidebar-wrapper">
   <div class="sidebar-nav">
@@ -93,60 +107,48 @@
   </div>
 <?php endif; ?>
 
-
 <div id="wrap">
   <header id="navbar" role="banner" class="roomify-header <?php print $navbar_classes; ?>">
     <div class="container">
       <div class="navbar-header">
-        <?php if ($logo): ?>
-          <a class="logo navbar-btn pull-left" href="<?php print $front_page; ?>" title="<?php print t('Home'); ?>">
-            <img src="<?php print $logo; ?>" alt="<?php print t('Home'); ?>" />
-          </a>
-        <?php endif; ?>
+        <div class="roomify-site-menu">
+          <div class="inner col-xs-1">
+            <button type="button" class="navbar-toggle" onclick='document.getElementById("roomify-main-menu-overlay").style.display = "block";'>
+              <span class="sr-only"><?php print t('Toggle navigation'); ?></span>
+              <span class="icon-bar"></span>
+              <span class="icon-bar"></span>
+              <span class="icon-bar"></span>
+            </button>
+          </div>
+        </div>
 
-        <?php if (!empty($site_name)): ?>
-          <a class="name navbar-brand" href="<?php print $front_page; ?>" title="<?php print t('Home'); ?>"><?php print $site_name; ?></a>
-        <?php endif; ?>
-
-        <?php if (!empty($primary_nav) || !empty($secondary_nav) || !empty($page['navigation'])): ?>
-          <!-- Sidebar menu button -->
-          <button type="button" class="roomify-sidebar-user-icon navbar-toggle sidebar-menu-toggle roomify-sidebar-menu-toggle" data-target=".navbar-collapse">
-            <span class="sr-only"><?php print t('Toggle navigation'); ?></span>
-          </button>
-
-          <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
-            <span class="sr-only"><?php print t('Toggle navigation'); ?></span>
-            <span class="icon-bar"></span>
-            <span class="icon-bar"></span>
-            <span class="icon-bar"></span>
-          </button>
-        <?php endif; ?>
-      </div>
-
-      <?php if (!empty($primary_nav) || !empty($secondary_nav) || !empty($page['navigation'])): ?>
-        <div class="navbar-collapse collapse">
-          <nav role="navigation">
-            <?php if (!empty($primary_nav)): ?>
-              <?php print render($primary_nav); ?>
-            <?php endif; ?>
-            <?php if (!empty($secondary_nav)): ?>
-              <?php print render($secondary_nav); ?>
+        <div class="roomify-site-name">
+          <div class="inner col-xs-10">
+            <?php if ($logo): ?>
+              <a class="logo" href="<?php print $front_page; ?>" title="<?php print t('Home'); ?>">
+                <img src="<?php print $logo; ?>" alt="<?php print t('Home'); ?>" />
+              </a>
             <?php endif; ?>
 
-            <!-- Link to open sidebar menu -->
+            <?php if (!empty($site_name)): ?>
+              <a class="name navbar-brand" href="<?php print $front_page; ?>" title="<?php print t('Home'); ?>"><?php print $site_name; ?></a>
+            <?php endif; ?>
+          </div>
+        </div>
+
+        <div class="roomify-user-menu">
+          <div class="inner col-xs-1">
+          <!-- Link to open sidebar menu -->
             <span class="roomify-sidebar-link">
               <a class="roomify-sidebar-menu-toggle" href="#menu-toggle">
                 <!-- PRINT SVG USER ICON -->
                 <?php print(file_get_contents($directory . '/assets/images/user.svg')); ?>
               </a>
             </span>
-
-            <?php if (!empty($page['navigation'])): ?>
-              <?php print render($page['navigation']); ?>
-            <?php endif; ?>
-          </nav>
+          </div>
         </div>
-      <?php endif; ?>
+
+      </div>
     </div>
   </header>
 
