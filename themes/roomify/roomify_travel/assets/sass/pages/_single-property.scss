@@ -277,6 +277,7 @@ body.page-single-property-listing {
 	        padding: 6px;
 	        font-size: 14px;
 	        width: 100%;
+          @include button-variant($btn-danger-color, $btn-danger-bg, $btn-danger-border);
 	      }
 	    }
       .listing-availability-search-submit {
@@ -305,13 +306,13 @@ body.page-single-property-listing {
 	      height: 35px;
 	      font-size: 15px;
 	      &.form-text::-webkit-input-placeholder {
-	        color: #353535;
+	        color: #c9c9c9;
 	      }
 	      &.form-text::-moz-placeholder {
-	        color: #353535;
+	        color: #c9c9c9;
 	      }
 	      &.form-text:-moz-placeholder {
-	        color: #353535;
+	        color: #c9c9c9;
 	      }
     	}
     }
