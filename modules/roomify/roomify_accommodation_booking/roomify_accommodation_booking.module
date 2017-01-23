@@ -1941,8 +1941,8 @@ function roomify_accommodation_booking_add_booking_form_submit($form, &$form_sta
     $customer_profile = commerce_customer_profile_new('billing');
     // @@TODO fill this with the right informations.
     $customer_profile->commerce_customer_address[LANGUAGE_NONE][0] = array(
-      'name_line' =>  $form_state['values']['booking_full_name'][LANGUAGE_NONE][0]['value'],
-      'first_name' =>  $form_state['values']['booking_full_name'][LANGUAGE_NONE][0]['value'],
+      'name_line' => $form_state['values']['booking_full_name'][LANGUAGE_NONE][0]['value'],
+      'first_name' => $form_state['values']['booking_full_name'][LANGUAGE_NONE][0]['value'],
     );
     commerce_customer_profile_save($customer_profile);
     $order_wrapper = entity_metadata_wrapper('commerce_order', $order);
