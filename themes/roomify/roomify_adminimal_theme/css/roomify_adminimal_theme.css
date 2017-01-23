@@ -818,6 +818,11 @@ body.adminimal-theme .cke_reset_all label {
 #bat-booking-edit-booking-com-form fieldset#edit-profile .field {
   margin-bottom: 15px;
 }
+#bat-booking-edit-roomify-accommodation-booking-form fieldset#edit-order .view-order,
+#bat-booking-edit-ical-form fieldset#edit-order .view-order,
+#bat-booking-edit-booking-com-form fieldset#edit-order .view-order {
+  font-size: 120%;
+}
 @media (max-width: 768px) {
   .page-admin-bat-config-property #calendar.field-name-booking-full-name {
     margin-top: 40px;

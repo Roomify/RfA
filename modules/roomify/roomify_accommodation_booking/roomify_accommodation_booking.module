@@ -1621,7 +1621,22 @@ function roomify_accommodation_booking_form_alter(&$form, &$form_state, $form_id
         );
 
         $form['profile']['edit'] = array(
-          '#markup' => '<div>' . l(t('Edit customer profile'), 'admin/commerce/customer-profiles/' . $profile->profile_id . '/edit', array('query' => drupal_get_destination())) . '</div>',
+          '#markup' => '<div class="edit-profile">' . l(t('Edit customer profile'), 'admin/commerce/customer-profiles/' . $profile->profile_id . '/edit', array('query' => drupal_get_destination())) . '</div>',
+        );
+
+        $form['order'] = array(
+          '#type' => 'fieldset',
+          '#title' => t('Order'),
+          '#group' => 'additional_settings',
+          '#weight' => -99,
+        );
+
+        $form['order']['info'] = array(
+          '#markup' => commerce_embed_view('commerce_line_item_table', 'default', array($order->order_id)),
+        );
+
+        $form['order']['view'] = array(
+          '#markup' => '<div class="view-order">' . l(t('View order'), 'admin/commerce/orders/' . $order->order_id . '/view') . '</div>',
         );
       }
 
@@ -1719,6 +1734,21 @@ function roomify_accommodation_booking_form_alter(&$form, &$form_state, $form_id
         $form['profile']['edit'] = array(
           '#markup' => '<div>' . l(t('Edit customer profile'), 'admin/commerce/customer-profiles/' . $profile->profile_id . '/edit', array('query' => drupal_get_destination())) . '</div>',
         );
+
+         $form['order'] = array(
+          '#type' => 'fieldset',
+          '#title' => t('Order'),
+          '#group' => 'additional_settings',
+          '#weight' => -99,
+        );
+
+        $form['order']['info'] = array(
+          '#markup' => commerce_embed_view('commerce_line_item_table', 'default', array($order->order_id)),
+        );
+
+        $form['order']['view'] = array(
+          '#markup' => '<div class="view-order">' . l(t('View order'), 'admin/commerce/orders/' . $order->order_id . '/view') . '</div>',
+        );
       }
     }
 
@@ -1791,6 +1821,20 @@ function roomify_accommodation_booking_form_alter(&$form, &$form_state, $form_id
 
         $form['profile']['edit'] = array(
           '#markup' => '<div>' . l(t('Edit customer profile'), 'admin/commerce/customer-profiles/' . $profile->profile_id . '/edit', array('query' => drupal_get_destination())) . '</div>',
+        );
+        $form['order'] = array(
+          '#type' => 'fieldset',
+          '#title' => t('Order'),
+          '#group' => 'additional_settings',
+          '#weight' => -99,
+        );
+
+        $form['order']['info'] = array(
+          '#markup' => commerce_embed_view('commerce_line_item_table', 'default', array($order->order_id)),
+        );
+
+        $form['order']['view'] = array(
+          '#markup' => '<div class="view-order">' . l(t('View order'), 'admin/commerce/orders/' . $order->order_id . '/view') . '</div>',
         );
       }
     }
@@ -1890,9 +1934,21 @@ function roomify_accommodation_booking_add_booking_form_submit($form, &$form_sta
     $event->save();
 
     $form_state['values']['booking_event_reference'][LANGUAGE_NONE][0]['target_id'] = $event->event_id;
-
     // Create a new order.
     $order = commerce_order_new($type->uid, 'pending');
+
+    // Create customer profile.
+    $customer_profile = commerce_customer_profile_new('billing');
+    // @@TODO fill this with the right informations.
+    $customer_profile->commerce_customer_address[LANGUAGE_NONE][0] = array(
+      'name_line' =>  $form_state['values']['booking_full_name'][LANGUAGE_NONE][0]['value'],
+      'first_name' =>  $form_state['values']['booking_full_name'][LANGUAGE_NONE][0]['value'],
+    );
+    commerce_customer_profile_save($customer_profile);
+    $order_wrapper = entity_metadata_wrapper('commerce_order', $order);
+
+    $order_wrapper->commerce_customer_billing = $customer_profile;
+
     commerce_order_save($order);
 
     // Create a new line item.
