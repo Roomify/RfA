@@ -45,7 +45,7 @@ function roomify_accommodation_booking_add_event_reference_field() {
 /**
  * Create booking 'Line item' reference.
  */
-function roomify_accommodation_booking_add_line_item_reference() {
+function roomify_accommodation_booking_add_line_item_reference($type_bundle) {
   field_info_cache_clear();
 
   // "booking_line_item_reference" field.
@@ -65,12 +65,12 @@ function roomify_accommodation_booking_add_line_item_reference() {
   field_cache_clear();
 
   // "booking_line_item_reference" field instance.
-  if (field_read_instance('bat_booking', 'booking_line_item_reference', 'roomify_accommodation_booking') === FALSE) {
+  if (field_read_instance('bat_booking', 'booking_line_item_reference', $type_bundle) === FALSE) {
     $instance = array(
       'field_name' => 'booking_line_item_reference',
       'entity_type' => 'bat_booking',
       'label' => 'Line item',
-      'bundle' => 'roomify_accommodation_booking',
+      'bundle' => $type_bundle,
       'required' => FALSE,
       'widget' => array(
         'type' => 'entityreference_autocomplete',

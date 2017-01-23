@@ -49,7 +49,6 @@ function roomify_accommodation_booking_create_booking_type() {
   $booking_type->save();
 
   roomify_accommodation_booking_add_event_reference_field();
-  roomify_accommodation_booking_add_line_item_reference();
   roomify_accommodation_booking_add_booking_price_field();
   roomify_accommodation_booking_add_booking_full_name();
   roomify_accommodation_booking_add_booking_address();
@@ -96,4 +95,16 @@ function roomify_accommodation_booking_update_7002() {
   module_load_include('inc', 'roomify_accommodation_booking', 'roomify_accommodation_booking.fields');
 
   roomify_accommodation_booking_add_booking_telephone_to_billing_info();
+}
+
+/**
+ * Add field 'booking_line_item_reference' to all booking types.
+ */
+function roomify_accommodation_booking_update_7003() {
+  module_load_include('inc', 'roomify_accommodation_booking', 'roomify_accommodation_booking.fields');
+
+  $bundles = bat_booking_get_types();
+  foreach ($bundles as $bundle) {
+    roomify_accommodation_booking_add_line_item_reference($bundle->type);
+  }
 }

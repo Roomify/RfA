@@ -802,16 +802,32 @@ body.adminimal-theme .cke_reset_all label {
   display: inline-block;
   width: 100%;
 }
+#bat-booking-edit-roomify-accommodation-booking-form fieldset#edit-profile,
+#bat-booking-edit-ical-form fieldset#edit-profile,
+#bat-booking-edit-booking-com-form fieldset#edit-profile {
+  font-size: 120%;
+}
+#bat-booking-edit-roomify-accommodation-booking-form fieldset#edit-profile .field-label,
+#bat-booking-edit-ical-form fieldset#edit-profile .field-label,
+#bat-booking-edit-booking-com-form fieldset#edit-profile .field-label {
+  font-weight: bold;
+  margin-bottom: 3px;
+}
+#bat-booking-edit-roomify-accommodation-booking-form fieldset#edit-profile .field,
+#bat-booking-edit-ical-form fieldset#edit-profile .field,
+#bat-booking-edit-booking-com-form fieldset#edit-profile .field {
+  margin-bottom: 15px;
+}
 @media (max-width: 768px) {
-  .page-admin-bat-config-property #calendar {
+  .page-admin-bat-config-property #calendar.field-name-booking-full-name {
     margin-top: 40px;
   }
-  .page-admin-bat-config-property #calendar .fc-toolbar {
+  .page-admin-bat-config-property #calendar.field-name-booking-full-name .fc-toolbar {
     margin-bottom: 40px;
   }
-  .page-admin-bat-config-property #calendar .fc-left,
-  .page-admin-bat-config-property #calendar .fc-center,
-  .page-admin-bat-config-property #calendar .fc-right {
+  .page-admin-bat-config-property #calendar.field-name-booking-full-name .fc-left,
+  .page-admin-bat-config-property #calendar.field-name-booking-full-name .fc-center,
+  .page-admin-bat-config-property #calendar.field-name-booking-full-name .fc-right {
     margin-bottom: 20px;
   }
 }

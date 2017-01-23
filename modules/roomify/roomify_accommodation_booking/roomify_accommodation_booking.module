@@ -1367,6 +1367,11 @@ function roomify_accommodation_booking_entity_update($entity, $type) {
       }
     }
   }
+  if ($type == 'bat_booking_type') {
+    module_load_include('inc', 'roomify_accommodation_booking', 'roomify_accommodation_booking.fields');
+
+    roomify_accommodation_booking_add_line_item_reference($entity->type);
+  }
 }
 
 /**
@@ -1593,6 +1598,31 @@ function roomify_accommodation_booking_form_alter(&$form, &$form_state, $form_id
       }
       else {
         $form['actions']['submit']['#submit'] = array_merge(array('roomify_accommodation_booking_edit_booking_form_submit'), $form['actions']['submit']['#submit']);
+        $form['booking_full_name']['#access'] = FALSE;
+        $form['booking_address']['#access'] = FALSE;
+        $form['booking_telephone']['#access'] = FALSE;
+
+        $line_item = commerce_line_item_load($form['#entity']->booking_line_item_reference[LANGUAGE_NONE][0]['target_id']);
+        $order = commerce_order_load($line_item->order_id);
+
+        $profile = commerce_customer_profile_load($order->commerce_customer_billing[LANGUAGE_NONE][0]['profile_id']);
+
+        $form['profile'] = array(
+         '#type' => 'fieldset',
+           '#title' => t('Guest'),
+          '#group' => 'additional_settings',
+          '#weight' => -100,
+        );
+
+        $profile_array = entity_view('commerce_customer_profile', array($profile->profile_id => $profile), 'customer');
+
+        $form['profile']['info'] = array(
+          '#markup' => '<div class="field-label">' . t('Address:') . '</div>' . drupal_render($profile_array),
+        );
+
+        $form['profile']['edit'] = array(
+          '#markup' => '<div>' . l(t('Edit customer profile'), 'admin/commerce/customer-profiles/' . $profile->profile_id . '/edit', array('query' => drupal_get_destination())) . '</div>',
+        );
       }
 
       if (count($form['availability_search']['bat_type']['#options']) == 1) {
@@ -1667,6 +1697,29 @@ function roomify_accommodation_booking_form_alter(&$form, &$form_state, $form_id
         $form['availability_search']['bat_type']['#options'] = array($type->type_id => $option_label) + $form['availability_search']['bat_type']['#options'];
         $form['availability_search']['bat_type']['#default_value'] = $type->type_id;
       }
+      if (!(isset($booking->is_new) && $booking->is_new)) {
+        $line_item = commerce_line_item_load($booking->booking_line_item_reference[LANGUAGE_NONE][0]['target_id']);
+        $order = commerce_order_load($line_item->order_id);
+
+        $profile = commerce_customer_profile_load($order->commerce_customer_billing[LANGUAGE_NONE][0]['profile_id']);
+
+        $form['profile'] = array(
+          '#type' => 'fieldset',
+          '#title' => t('Guest'),
+          '#group' => 'additional_settings',
+          '#weight' => -100,
+        );
+
+        $profile_array = entity_view('commerce_customer_profile', array($profile->profile_id => $profile), 'customer');
+
+        $form['profile']['info'] = array(
+          '#markup' => '<div class="field-label">' . t('Address:') . '</div>' . drupal_render($profile_array),
+        );
+
+        $form['profile']['edit'] = array(
+          '#markup' => '<div>' . l(t('Edit customer profile'), 'admin/commerce/customer-profiles/' . $profile->profile_id . '/edit', array('query' => drupal_get_destination())) . '</div>',
+        );
+      }
     }
 
     if ($form['#entity_type'] == 'bat_booking' && $form['#bundle'] == 'ical' &&
@@ -1715,6 +1768,30 @@ function roomify_accommodation_booking_form_alter(&$form, &$form_state, $form_id
 
         $form['availability_search']['bat_type']['#options'] = array($type->type_id => $option_label) + $form['availability_search']['bat_type']['#options'];
         $form['availability_search']['bat_type']['#default_value'] = $type->type_id;
+      }
+      if (!(isset($booking->is_new) && $booking->is_new)) {
+
+        $line_item = commerce_line_item_load($booking->booking_line_item_reference[LANGUAGE_NONE][0]['target_id']);
+        $order = commerce_order_load($line_item->order_id);
+
+        $profile = commerce_customer_profile_load($order->commerce_customer_billing[LANGUAGE_NONE][0]['profile_id']);
+
+        $form['profile'] = array(
+          '#type' => 'fieldset',
+          '#title' => t('Guest'),
+          '#group' => 'additional_settings',
+          '#weight' => -100,
+        );
+
+        $profile_array = entity_view('commerce_customer_profile', array($profile->profile_id => $profile), 'customer');
+
+        $form['profile']['info'] = array(
+          '#markup' => '<div class="field-label">' . t('Address:') . '</div>' . drupal_render($profile_array),
+        );
+
+        $form['profile']['edit'] = array(
+          '#markup' => '<div>' . l(t('Edit customer profile'), 'admin/commerce/customer-profiles/' . $profile->profile_id . '/edit', array('query' => drupal_get_destination())) . '</div>',
+        );
       }
     }
   }
