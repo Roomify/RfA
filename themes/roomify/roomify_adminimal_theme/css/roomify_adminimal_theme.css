@@ -815,6 +815,45 @@ body.adminimal-theme .cke_reset_all label {
     margin-bottom: 20px;
   }
 }
+.page-admin-bat-config-booking-add-ical #bat-booking-edit-form .field-name-booking-end-date,
+.page-admin-bat-config-booking-add-booking-com #bat-booking-edit-form .field-name-booking-end-date,
+#bat-booking-edit-ical-form .field-name-booking-end-date,
+#bat-booking-edit-booking-com-form .field-name-booking-end-date,
+.page-admin-bat-config-booking-add-ical #bat-booking-edit-form .field-name-booking-start-date,
+.page-admin-bat-config-booking-add-booking-com #bat-booking-edit-form .field-name-booking-start-date,
+#bat-booking-edit-ical-form .field-name-booking-start-date,
+#bat-booking-edit-booking-com-form .field-name-booking-start-date {
+  width: 30%;
+  float: left;
+  margin-right: 1%;
+}
+.page-admin-bat-config-booking-add-ical #bat-booking-edit-form .field-name-booking-end-date label,
+.page-admin-bat-config-booking-add-booking-com #bat-booking-edit-form .field-name-booking-end-date label,
+#bat-booking-edit-ical-form .field-name-booking-end-date label,
+#bat-booking-edit-booking-com-form .field-name-booking-end-date label,
+.page-admin-bat-config-booking-add-ical #bat-booking-edit-form .field-name-booking-start-date label,
+.page-admin-bat-config-booking-add-booking-com #bat-booking-edit-form .field-name-booking-start-date label,
+#bat-booking-edit-ical-form .field-name-booking-start-date label,
+#bat-booking-edit-booking-com-form .field-name-booking-start-date label {
+  display: none;
+}
+.page-admin-bat-config-booking-add-ical #bat-booking-edit-form #availability-search,
+.page-admin-bat-config-booking-add-booking-com #bat-booking-edit-form #availability-search,
+#bat-booking-edit-ical-form #availability-search,
+#bat-booking-edit-booking-com-form #availability-search {
+  width: 38%;
+  float: left;
+}
+.page-admin-bat-config-booking-add-ical #bat-booking-edit-form .field-name-booking-event-reference,
+.page-admin-bat-config-booking-add-booking-com #bat-booking-edit-form .field-name-booking-event-reference,
+#bat-booking-edit-ical-form .field-name-booking-event-reference,
+#bat-booking-edit-booking-com-form .field-name-booking-event-reference,
+.page-admin-bat-config-booking-add-ical #bat-booking-edit-form .vertical-tabs,
+.page-admin-bat-config-booking-add-booking-com #bat-booking-edit-form .vertical-tabs,
+#bat-booking-edit-ical-form .vertical-tabs,
+#bat-booking-edit-booking-com-form .vertical-tabs {
+  clear: both;
+}
 body {
   padding-right: 0;
   -webkit-transition: 100ms all ease;

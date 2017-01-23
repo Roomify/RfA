@@ -1622,6 +1622,101 @@ function roomify_accommodation_booking_form_alter(&$form, &$form_state, $form_id
         }
       }
     }
+    if ($form['#entity_type'] == 'bat_booking' && $form['#bundle'] == 'booking_com' &&
+        ($form_id == 'bat_booking_form' || $form_id == 'bat_booking_edit_form' || $form_id == 'bat_booking_edit_booking_com_form')) {
+      if (!user_access('administer bat_booking_type entities')) {
+        $form['booking_event_reference']['#access'] = FALSE;
+        $form['booking_line_item_reference']['#access'] = FALSE;
+      }
+
+      $booking = $form['#entity'];
+
+      $currency_setting = commerce_currency_load(commerce_default_currency());
+      $currency_symbol = $currency_setting['symbol'];
+
+      $form['availability_search'] = array(
+        '#type' => 'fieldset',
+        '#title' => t('Room type'),
+        '#weight' => 2,
+        '#prefix' => '<div id="availability-search">',
+        '#suffix' => '</div>',
+      );
+      $form['availability_search']['bat_type'] = array(
+        '#type' => 'radios',
+        '#options' => array(),
+        '#ajax' => array(
+          'callback' => 'roomify_accommodation_booking_type_changed_callback',
+          'wrapper' => 'booking-price',
+        ),
+      );
+
+      if (isset($booking->booking_event_reference[LANGUAGE_NONE][0]['target_id'])) {
+        $start_date = new DateTime($booking->booking_start_date[LANGUAGE_NONE][0]['value']);
+        $end_date = new DateTime($booking->booking_end_date[LANGUAGE_NONE][0]['value']);
+
+        $event = bat_event_load($form['#entity']->booking_event_reference[LANGUAGE_NONE][0]['target_id']);
+        $event_wrapper = entity_metadata_wrapper('bat_event', $event);
+
+        $type = bat_type_load($event_wrapper->event_bat_unit_reference->type_id->value());
+
+        $price = $booking->field_bcom_total_price[LANGUAGE_NONE][0]['value'] * 100;
+        $booking_cost = commerce_currency_format($price, $currency_setting['code']);
+
+        $option_label = t('@name - Cost: @price', array('@name' => $type->name, '@price' => $booking_cost));
+
+        $form['availability_search']['bat_type']['#options'] = array($type->type_id => $option_label) + $form['availability_search']['bat_type']['#options'];
+        $form['availability_search']['bat_type']['#default_value'] = $type->type_id;
+      }
+    }
+
+    if ($form['#entity_type'] == 'bat_booking' && $form['#bundle'] == 'ical' &&
+        ($form_id == 'bat_booking_form' || $form_id == 'bat_booking_edit_form' || $form_id == 'bat_booking_edit_ical_form')) {
+      if (!user_access('administer bat_booking_type entities')) {
+        $form['booking_event_reference']['#access'] = FALSE;
+        $form['booking_line_item_reference']['#access'] = FALSE;
+        $form['field_reservation_id']['#access'] = FALSE;
+        $form['field_event_id']['#access'] = FALSE;
+      }
+
+      $booking = $form['#entity'];
+
+      $currency_setting = commerce_currency_load(commerce_default_currency());
+      $currency_symbol = $currency_setting['symbol'];
+
+      $form['availability_search'] = array(
+        '#type' => 'fieldset',
+        '#title' => t('Room type'),
+        '#weight' => 2,
+        '#prefix' => '<div id="availability-search">',
+        '#suffix' => '</div>',
+      );
+      $form['availability_search']['bat_type'] = array(
+        '#type' => 'radios',
+        '#options' => array(),
+        '#ajax' => array(
+          'callback' => 'roomify_accommodation_booking_type_changed_callback',
+          'wrapper' => 'booking-price',
+        ),
+      );
+
+      if (isset($booking->booking_event_reference[LANGUAGE_NONE][0]['target_id'])) {
+        $start_date = new DateTime($booking->booking_start_date[LANGUAGE_NONE][0]['value']);
+        $end_date = new DateTime($booking->booking_end_date[LANGUAGE_NONE][0]['value']);
+
+        $event = bat_event_load($form['#entity']->booking_event_reference[LANGUAGE_NONE][0]['target_id']);
+        $event_wrapper = entity_metadata_wrapper('bat_event', $event);
+
+        $type = bat_type_load($event_wrapper->event_bat_unit_reference->type_id->value());
+
+        $price = $booking->booking_price[LANGUAGE_NONE][0]['amount'];
+        $booking_cost = commerce_currency_format($price, $currency_setting['code']);
+
+        $option_label = t('@name - Cost: @price', array('@name' => $type->name, '@price' => $booking_cost));
+
+        $form['availability_search']['bat_type']['#options'] = array($type->type_id => $option_label) + $form['availability_search']['bat_type']['#options'];
+        $form['availability_search']['bat_type']['#default_value'] = $type->type_id;
+      }
+    }
   }
 
   if (isset($form['#entity_type']) && $form['#entity_type'] == 'bat_type') {
@@ -2037,10 +2132,12 @@ function roomify_accommodation_booking_get_rates($type_id, $group_size = 0) {
  */
 function roomify_accommodation_booking_date_combo_process_alter(&$element, &$form_state, $context) {
   if ($element['#field_name'] == 'booking_start_date' || $element['#field_name'] == 'booking_end_date') {
-    if ($element['#entity_type'] == 'bat_booking' && $element['#bundle'] == 'roomify_accommodation_booking') {
-      $date_format = variable_get('bat_daily_date_format', 'Y-m-d');
-      $element['value']['#date_format'] = $date_format;
-      $element['value']['#date_label_position'] = 'invisible';
+    if ($element['#entity_type'] == 'bat_booking') {
+      if (in_array($element['#bundle'], array('roomify_accommodation_booking', 'booking_com', 'ical'))) {
+        $date_format = variable_get('bat_daily_date_format', 'Y-m-d');
+        $element['value']['#date_format'] = $date_format;
+        $element['value']['#date_label_position'] = 'invisible';
+      }
     }
   }
 }
