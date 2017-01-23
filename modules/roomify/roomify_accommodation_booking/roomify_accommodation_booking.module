@@ -1223,6 +1223,74 @@ function roomify_accommodation_booking_entity_insert($entity, $type) {
     if (in_array($entity->type, array('roomify_accommodation_booking', 'booking_com', 'ical'))) {
       roomify_accommodation_booking_schedule_job($entity);
     }
+    if ($entity->type == 'booking_com') {
+      $event = bat_event_load($entity->booking_event_reference[LANGUAGE_NONE][0]['target_id']);
+      $event_wrapper = entity_metadata_wrapper('bat_event', $event);
+
+      $bat_type = bat_type_load($event_wrapper->event_bat_unit_reference->type_id->value());
+
+      // Create a new order.
+      $order = commerce_order_new($bat_type->uid, 'pending');
+      commerce_order_save($order);
+
+      // Create a new line item.
+      $product_id = $bat_type->accommodation_product_reference[LANGUAGE_NONE][0]['target_id'];
+      $product = commerce_product_load($product_id);
+      $line_item = commerce_product_line_item_new($product, 1, 0, array(), 'roomify_accommodation_booking');
+
+      $amount = $entity->field_bcom_total_price[LANGUAGE_NONE][0]['value'] * 100;
+      $line_item->commerce_unit_price[LANGUAGE_NONE]['0']['amount'] = $amount;
+      $line_item->commerce_unit_price[LANGUAGE_NONE]['0']['data']['components']['0']['price']['amount'] = $amount;
+
+      $line_item->order_id = $order->order_id;
+
+      commerce_line_item_save($line_item);
+
+      // Add the line item to the order.
+      $order_wrapper = entity_metadata_wrapper('commerce_order', $order);
+      $order_wrapper->commerce_line_items[] = $line_item;
+
+      // Save the order again to update its line item reference field.
+      commerce_order_save($order);
+
+      $entity->booking_line_item_reference[LANGUAGE_NONE][0]['target_id'] = $line_item->line_item_id;
+
+      field_attach_update($type, $entity);
+    }
+    elseif ($entity->type == 'ical') {
+      $event = bat_event_load($entity->booking_event_reference[LANGUAGE_NONE][0]['target_id']);
+      $event_wrapper = entity_metadata_wrapper('bat_event', $event);
+
+      $bat_type = bat_type_load($event_wrapper->event_bat_unit_reference->type_id->value());
+
+      // Create a new order.
+      $order = commerce_order_new($bat_type->uid, 'pending');
+      commerce_order_save($order);
+
+      // Create a new line item.
+      $product_id = $bat_type->accommodation_product_reference[LANGUAGE_NONE][0]['target_id'];
+      $product = commerce_product_load($product_id);
+      $line_item = commerce_product_line_item_new($product, 1, 0, array(), 'roomify_accommodation_booking');
+
+      $amount = 0;
+      $line_item->commerce_unit_price[LANGUAGE_NONE]['0']['amount'] = $amount;
+      $line_item->commerce_unit_price[LANGUAGE_NONE]['0']['data']['components']['0']['price']['amount'] = $amount;
+
+      $line_item->order_id = $order->order_id;
+
+      commerce_line_item_save($line_item);
+
+      // Add the line item to the order.
+      $order_wrapper = entity_metadata_wrapper('commerce_order', $order);
+      $order_wrapper->commerce_line_items[] = $line_item;
+
+      // Save the order again to update its line item reference field.
+      commerce_order_save($order);
+
+      $entity->booking_line_item_reference[LANGUAGE_NONE][0]['target_id'] = $line_item->line_item_id;
+
+      field_attach_update($type, $entity);
+    }
   }
 }
 
@@ -1255,6 +1323,25 @@ function roomify_accommodation_booking_entity_update($entity, $type) {
     if (in_array($entity->type, array('roomify_accommodation_booking', 'booking_com', 'ical'))) {
       if ($entity->booking_start_date[LANGUAGE_NONE][0]['value'] != $entity->original->booking_start_date[LANGUAGE_NONE][0]['value']) {
         roomify_accommodation_booking_schedule_job($entity);
+      }
+    }
+    if ($entity->type == 'ical') {
+      if (!isset($entity->original->booking_price[LANGUAGE_NONE][0]['amount']) ||
+          $entity->original->booking_price[LANGUAGE_NONE][0]['amount'] != $entity->booking_price[LANGUAGE_NONE][0]['amount']) {
+        $line_item = commerce_line_item_load($entity->booking_line_item_reference[LANGUAGE_NONE][0]['target_id']);
+
+        $amount = $entity->booking_price[LANGUAGE_NONE][0]['amount'];
+        $line_item->commerce_unit_price[LANGUAGE_NONE]['0']['amount'] = $amount;
+        $line_item->commerce_unit_price[LANGUAGE_NONE]['0']['data']['components']['0']['price']['amount'] = $amount;
+
+        commerce_line_item_save($line_item);
+
+        $order = commerce_order_load($line_item->order_id);
+
+        $line_item->commerce_order_total[LANGUAGE_NONE]['0']['amount'] = $amount;
+        $line_item->commerce_order_total[LANGUAGE_NONE]['0']['data']['components']['0']['price']['amount'] = $amount;
+
+        commerce_order_save($order);
       }
     }
   }
@@ -1365,6 +1452,7 @@ function roomify_accommodation_booking_form_alter(&$form, &$form_state, $form_id
       if (!user_access('administer bat_booking_type entities')) {
         $form['booking_event_reference']['#access'] = FALSE;
         $form['booking_line_item_reference']['#access'] = FALSE;
+        $form['booking_booking_conversation_ref']['#access'] = FALSE;
       }
 
       if (!((isset($form['#entity']->is_new) && $form['#entity']->is_new) || in_array('administrator', $user->roles))) {
