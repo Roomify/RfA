@@ -1142,3 +1142,19 @@ function roomify_listing_update_7024() {
   variable_set('metatag_enable_roomify_property__casa_property', 1);
   variable_set('metatag_enable_roomify_property__locanda_property', 1);
 }
+
+/**
+ * Remove instant booking field for Home types.
+ */
+function roomify_listing_update_7025() {
+  $instance_info = field_read_instance('bat_type', 'field_st_allow_instant_bookings', 'home');
+  field_delete_instance($instance_info);
+
+  // Remove the field from the fieldgroup.
+  $field_group = field_group_load_field_group('group_pricing_availability', 'bat_type', 'home', 'form');
+  foreach ($field_group->children as $key => $value) {
+    if ($value == 'field_st_allow_instant_bookings') {
+      unset($field_group->children[$key]);
+    }
+  }
+}
