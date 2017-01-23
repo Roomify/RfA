@@ -1246,9 +1246,26 @@ function roomify_accommodation_booking_entity_insert($entity, $type) {
 
       commerce_line_item_save($line_item);
 
+      $customer_profile = commerce_customer_profile_new('billing');
+      $customer_profile->commerce_customer_address[LANGUAGE_NONE][0] = array(
+        'country' => strtoupper($entity->field_bcom_countrycode[LANGUAGE_NONE][0]['value']),
+        'administrative_area' => '',
+        'locality' => $entity->field_bcom_city[LANGUAGE_NONE][0]['value'],
+        'postal_code' => $entity->field_bcom_zip[LANGUAGE_NONE][0]['value'],
+        'thoroughfare' => '',
+        'name_line' => $entity->field_bcom_first_name[LANGUAGE_NONE][0]['value'] . ' ' . $entity->field_bcom_last_name[LANGUAGE_NONE][0]['value'],
+        'first_name' => $entity->field_bcom_first_name[LANGUAGE_NONE][0]['value'],
+        'last_name' => $entity->field_bcom_last_name[LANGUAGE_NONE][0]['value'],
+      );
+      $customer_profile->booking_telephone = $entity->field_bcom_telephone[LANGUAGE_NONE][0]['value'];
+
+      commerce_customer_profile_save($customer_profile);
+
       // Add the line item to the order.
       $order_wrapper = entity_metadata_wrapper('commerce_order', $order);
       $order_wrapper->commerce_line_items[] = $line_item;
+
+      $order_wrapper->commerce_customer_billing = $customer_profile;
 
       // Save the order again to update its line item reference field.
       commerce_order_save($order);
@@ -1280,9 +1297,14 @@ function roomify_accommodation_booking_entity_insert($entity, $type) {
 
       commerce_line_item_save($line_item);
 
+      $customer_profile = commerce_customer_profile_new('billing');
+      commerce_customer_profile_save($customer_profile);
+
       // Add the line item to the order.
       $order_wrapper = entity_metadata_wrapper('commerce_order', $order);
       $order_wrapper->commerce_line_items[] = $line_item;
+
+      $order_wrapper->commerce_customer_billing = $customer_profile;
 
       // Save the order again to update its line item reference field.
       commerce_order_save($order);
