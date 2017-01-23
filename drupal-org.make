@@ -423,6 +423,9 @@ projects[timefield][version] = 1.0-alpha2
 projects[title][version] = 1.0-alpha8
 
 projects[token][version] = 1.6
+; Patch the module because descriptions of boolean fields are not translatable.
+; Make sure to test that translations work properly before removing this patch.
+projects[token][patch][] = https://www.drupal.org/files/issues/token-token-prevents-display-of-i18n-field-description-2367721-3.patch
 
 projects[userone][version] = 1.0-beta1
 
