@@ -1712,6 +1712,7 @@ function roomify_accommodation_booking_form_alter(&$form, &$form_state, $form_id
         $form['availability_search']['bat_type']['#options'] = array($type->type_id => $option_label) + $form['availability_search']['bat_type']['#options'];
         $form['availability_search']['bat_type']['#default_value'] = $type->type_id;
       }
+
       if (!(isset($booking->is_new) && $booking->is_new)) {
         $line_item = commerce_line_item_load($booking->booking_line_item_reference[LANGUAGE_NONE][0]['target_id']);
         $order = commerce_order_load($line_item->order_id);
@@ -1735,7 +1736,7 @@ function roomify_accommodation_booking_form_alter(&$form, &$form_state, $form_id
           '#markup' => '<div>' . l(t('Edit customer profile'), 'admin/commerce/customer-profiles/' . $profile->profile_id . '/edit', array('query' => drupal_get_destination())) . '</div>',
         );
 
-         $form['order'] = array(
+        $form['order'] = array(
           '#type' => 'fieldset',
           '#title' => t('Order'),
           '#group' => 'additional_settings',
@@ -1799,8 +1800,8 @@ function roomify_accommodation_booking_form_alter(&$form, &$form_state, $form_id
         $form['availability_search']['bat_type']['#options'] = array($type->type_id => $option_label) + $form['availability_search']['bat_type']['#options'];
         $form['availability_search']['bat_type']['#default_value'] = $type->type_id;
       }
-      if (!(isset($booking->is_new) && $booking->is_new)) {
 
+      if (!(isset($booking->is_new) && $booking->is_new)) {
         $line_item = commerce_line_item_load($booking->booking_line_item_reference[LANGUAGE_NONE][0]['target_id']);
         $order = commerce_order_load($line_item->order_id);
 
