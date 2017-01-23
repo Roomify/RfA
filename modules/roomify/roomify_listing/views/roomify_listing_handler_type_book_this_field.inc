@@ -25,7 +25,11 @@ class roomify_listing_handler_type_book_this_field extends bat_type_handler_link
   public function render($values) {
     $type = bat_type_load($values->{$this->aliases['type_id']});
 
-    $text = !empty($this->options['text']) ? $this->options['text'] : t('Book');
+    // Check if the room may be booked.
+    $instant_booking = field_get_items('bat_type', $type, 'field_st_allow_instant_bookings');
+    $button_text = $instant_booking[0]['value'] ? t('Book Now') : t('Make Enquiry');
+
+    $text = !empty($this->options['text']) ? $this->options['text'] : $button_text;
     $date_format = variable_get('bat_daily_date_format', 'Y-m-d');
 
     $property = roomify_property_load($type->field_st_property_reference[LANGUAGE_NONE][0]['target_id']);

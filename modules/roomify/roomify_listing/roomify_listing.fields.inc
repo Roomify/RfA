@@ -2645,43 +2645,46 @@ function roomify_listing_create_standard_type_fields($type_bundle) {
   }
 
   if (field_read_instance('bat_type', 'field_st_allow_instant_bookings', $type_bundle) === FALSE) {
-    $field_instances['bat_type-standard_type-field_st_allow_instant_bookings'] = array(
-      'bundle' => $type_bundle,
-      'default_value' => array(
-        0 => array(
-          'value' => 1,
-        ),
-      ),
-      'description' => 'Enabling instant bookings means that users will be able to book and pay immediately. Make sure to setup a suitable payment method.',
-      'display' => array(
-        'default' => array(
-          'label' => 'above',
-          'module' => 'list',
-          'settings' => array(
-            'conditions' => array(),
+    if ($type_bundle == 'room') {
+      // Add the instant bookings only for rooms.
+      $field_instances['bat_type-standard_type-field_st_allow_instant_bookings'] = array(
+        'bundle' => $type_bundle,
+        'default_value' => array(
+          0 => array(
+            'value' => 1,
           ),
-          'type' => 'list_default',
-          'weight' => 49,
         ),
-      ),
-      'entity_type' => 'bat_type',
-      'field_name' => 'field_st_allow_instant_bookings',
-      'label' => 'Allow instant bookings',
-      'required' => 0,
-      'settings' => array(
-        'entity_translation_sync' => FALSE,
-        'user_register_form' => FALSE,
-      ),
-      'widget' => array(
-        'active' => 1,
-        'module' => 'options',
+        'description' => 'Enabling instant bookings means that users will be able to book and pay immediately. Make sure to setup a suitable payment method.',
+        'display' => array(
+          'default' => array(
+            'label' => 'above',
+            'module' => 'list',
+            'settings' => array(
+              'conditions' => array(),
+            ),
+            'type' => 'list_default',
+            'weight' => 49,
+          ),
+        ),
+        'entity_type' => 'bat_type',
+        'field_name' => 'field_st_allow_instant_bookings',
+        'label' => 'Allow instant bookings',
+        'required' => 0,
         'settings' => array(
-          'display_label' => 1,
+          'entity_translation_sync' => FALSE,
+          'user_register_form' => FALSE,
         ),
-        'type' => 'options_onoff',
-        'weight' => 22,
-      ),
-    );
+        'widget' => array(
+          'active' => 1,
+          'module' => 'options',
+          'settings' => array(
+            'display_label' => 1,
+          ),
+          'type' => 'options_onoff',
+          'weight' => 22,
+        ),
+      );
+    }
   }
 
   if (field_read_instance('bat_type', 'field_st_gallery', $type_bundle) === FALSE) {
@@ -2978,7 +2981,6 @@ function roomify_listing_create_standard_type_fields($type_bundle) {
     $field_group->children = array(
       0 => 'field_st_default_price',
       1 => 'field_st_default_availability',
-      2 => 'field_st_allow_instant_bookings',
       3 => 'field_st_rates_for_person',
       4 => 'field_rates_ranges',
     );
@@ -2991,6 +2993,11 @@ function roomify_listing_create_standard_type_fields($type_bundle) {
         'required_fields' => 1,
       ),
     );
+
+    // Add the instant bookings field if the type is a room.
+    if ($type_bundle == 'room') {
+      $field_group->children[2] = 'field_st_allow_instant_bookings';
+    }
     $field_groups['group_pricing_availability|bat_type|standard_type|form'] = $field_group;
   }
 

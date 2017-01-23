@@ -249,6 +249,17 @@
             }
           }
         }
+        .form-item-group-size {
+          width: 100%;
+          margin-bottom: 25px;
+          select {
+            width: 100%;
+            border-radius: 2px;
+            -webkit-border-radius: 2px;
+            color: #353535;
+            font-size: 15px;
+          }
+        }
         .bat-type-availability-search-submit {
           button {
             @extend .btn;

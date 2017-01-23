@@ -929,8 +929,7 @@ function roomify_accommodation_booking_confirmation_form($form, &$form_state, $s
     if (variable_get('roomify_accommodation_booking_allow_instant_bookings', 1)) {
       if (isset($property->field_sp_allow_instant_bookings[LANGUAGE_NONE][0]['value']) &&
           $property->field_sp_allow_instant_bookings[LANGUAGE_NONE][0]['value']) {
-        if (isset($type->field_st_allow_instant_bookings[LANGUAGE_NONE][0]['value']) &&
-            $type->field_st_allow_instant_bookings[LANGUAGE_NONE][0]['value']) {
+        if ($type->type == 'home' || (!empty($type->field_st_allow_instant_bookings[LANGUAGE_NONE][0]['value']))) {
           $form['submit'] = array(
             '#type' => 'submit',
             '#value' => t('Confirm booking'),
