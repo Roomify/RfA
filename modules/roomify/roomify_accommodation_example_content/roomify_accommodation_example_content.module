@@ -1191,7 +1191,7 @@ function roomify_accommodation_example_content_multi_property_delete($type_delet
       user_delete($property2->uid);
     }
   }
-  if ($type_delete['roomify_homepage']) {
+  if ($type_delete['homepage']) {
     // Delete all Homepage nodes.
     $node_types = array('homepage');
     $query = new EntityFieldQuery();
@@ -1384,11 +1384,13 @@ function roomify_accommodation_example_content_delete_form($form, &$form_state) 
         '#default_value' => 1,
       );
     }
-    $form['type_delete']['roomify_homepage'] = array(
-      '#type' => 'checkbox',
-      '#title' => t('Remove Roomify Homepage'),
-      '#default_value' => 1,
-    );
+    if (module_exists('roomify_homepage')) {
+      $form['type_delete']['homepage'] = array(
+        '#type' => 'checkbox',
+        '#title' => t('Remove Roomify Homepage'),
+        '#default_value' => 1,
+      );
+    }
   }
 
   return confirm_form(
