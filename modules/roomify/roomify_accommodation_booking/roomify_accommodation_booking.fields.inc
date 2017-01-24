@@ -457,5 +457,51 @@ function roomify_accommodation_booking_add_addons_field($type_bundle) {
 
     field_group_group_save($field_group);
   }
+}
 
+/**
+ *
+ */
+function roomify_accommodation_booking_add_booking_guest_field($bundle) {
+  field_info_cache_clear();
+
+  if (field_read_field('booking_guest') === FALSE) {
+    $field = array(
+      'field_name' => 'booking_guest',
+      'type' => 'entityreference',
+      'cardinality' => 1,
+      'locked' => 1,
+      'settings' => array(
+        'target_type' => 'commerce_customer_profile',
+        'handler_settings' => array(
+          'target_bundles' => array(
+            'billing' => 'billing',
+          ),
+        ),
+      ),
+    );
+    field_create_field($field);
+  }
+
+  field_cache_clear();
+
+  if (field_read_instance('bat_booking', 'booking_guest', $bundle) === FALSE) {
+    $instance = array(
+      'field_name' => 'booking_guest',
+      'entity_type' => 'bat_booking',
+      'label' => 'Guest',
+      'bundle' => $bundle,
+      'required' => FALSE,
+      'widget' => array(
+        'type' => 'entityreference_autocomplete',
+        'settings' => array(
+          'references_dialog_edit' => 1,
+          'references_dialog_add' => 1,
+          'references_dialog_search' => 1,
+        ),
+      ),
+      'settings' => array(),
+    );
+    field_create_instance($instance);
+  }
 }

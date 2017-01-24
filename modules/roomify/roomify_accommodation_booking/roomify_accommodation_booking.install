@@ -218,3 +218,17 @@ function roomify_accommodation_booking_update_7004() {
     }
   }
 }
+
+/**
+ * Add field 'booking_guest' to all booking types.
+ */
+function roomify_accommodation_booking_update_7005() {
+  module_enable(array('commerce_customer_ui'));
+
+  module_load_include('inc', 'roomify_accommodation_booking', 'roomify_accommodation_booking.fields');
+
+  $bundles = bat_booking_get_types();
+  foreach ($bundles as $bundle) {
+    roomify_accommodation_booking_add_booking_guest_field($bundle->type);
+  }
+}

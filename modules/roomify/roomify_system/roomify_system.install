@@ -581,3 +581,10 @@ function roomify_system_update_7034() {
     ->condition('name', 'editablefields')
     ->execute();
 }
+
+/**
+ * Enable module 'References dialog'.
+ */
+function roomify_system_update_7035() {
+  module_enable(array('references_dialog'));
+}

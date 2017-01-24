@@ -1319,6 +1319,7 @@ function roomify_accommodation_booking_entity_insert($entity, $type) {
     module_load_include('inc', 'roomify_accommodation_booking', 'roomify_accommodation_booking.fields');
 
     roomify_accommodation_booking_add_line_item_reference($entity->type);
+    roomify_accommodation_booking_add_booking_guest_field($entity->type);
   }
 }
 
@@ -3048,9 +3049,15 @@ function roomify_accommodation_booking_notifications_form_submit($form, &$form_s
   }
 }
 
+/**
+ * @param $order
+ *
+ * @return BatType|false
+ */
 function roomify_accommodation_booking_get_bat_types_from_order($order = FALSE) {
   if ($order !== FALSE) {
     $wrapper = entity_metadata_wrapper('commerce_order', $order);
+
     // See if there are any product line items.
     if (commerce_line_items_quantity($wrapper->commerce_line_items, commerce_product_line_item_types()) > 0) {
       // Get the unit IDs already in the cart.
@@ -3067,7 +3074,25 @@ function roomify_accommodation_booking_get_bat_types_from_order($order = FALSE) 
         }
       }
     }
+
     return $type;
   }
+
   return FALSE;
+}
+
+/**
+ * Implements hook_references_dialog_entity_admin_paths().
+ */
+function roomify_accommodation_booking_references_dialog_entity_admin_paths() {
+  return array(
+    'commerce_customer_profile' => array(
+      'add' => 'admin/commerce/customer-profiles/add/billing',
+      'edit' => 'admin/commerce/customer-profiles/[entity_id]/edit',
+      'search' => array(
+        'function' => 'references_dialog_get_field_search_links',
+        'title' => t('Search Dialog'),
+      ),
+    ),
+  );
 }
