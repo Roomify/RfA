@@ -230,9 +230,42 @@ function roomify_accommodation_booking_update_7005() {
 }
 
 /**
- * Remove Address fields from booking types.
+ * Migrate all existing guest data to a new customer profile.
  */
 function roomify_accommodation_booking_update_7006() {
+  $query = new EntityFieldQuery();
+
+  $query->entityCondition('entity_type', 'bat_booking')
+    ->entityCondition('bundle', array('roomify_accommodation_booking', 'conversation_booking'), 'IN');
+
+  $result = $query->execute();
+
+  if (isset($result['bat_booking'])) {
+    foreach ($result['bat_booking'] as $booking) {
+      $booking = bat_booking_load($booking->booking_id);
+
+      $customer_profile = commerce_customer_profile_new('billing');
+      if (isset($booking->booking_address[LANGUAGE_NONE][0])) {
+        $customer_profile->commerce_customer_address[LANGUAGE_NONE][0] = $booking->booking_address[LANGUAGE_NONE][0];
+      }
+      if (isset($booking->booking_full_name[LANGUAGE_NONE][0]['value'])) {
+        $customer_profile->commerce_customer_address[LANGUAGE_NONE][0]['name_line'] = $booking->booking_full_name[LANGUAGE_NONE][0]['value'];
+      }
+      $customer_profile->booking_telephone = $booking->booking_telephone;
+
+      commerce_customer_profile_save($customer_profile);
+
+      $booking->booking_guest[LANGUAGE_NONE][0]['target_id'] = $customer_profile->profile_id;
+
+      $booking->save();
+    }
+  }
+}
+
+/**
+ * Remove Address fields from booking types.
+ */
+function roomify_accommodation_booking_update_7007() {
   $field_names = array(
     'booking_full_name',
     'booking_address',
