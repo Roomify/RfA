@@ -70,14 +70,25 @@ function roomify_integrations_form($form, &$form_state) {
     '#markup' => '<h2>' . t("Here you can find a list of Integration to enable.") . '</h2>',
   );
 
-  $form['roomify_integration_zopim'] = array(
-    '#type' => 'checkbox',
-    '#title' => t('Enable Zopim Integration'),
-    '#default_value' => variable_get('roomify_integration_zopim', 0),
+  $integrations = db_select('roomify_integrations', 'i')
+    ->fields('i')
+    ->execute()
+    ->fetchAll();
+
+  foreach ($integrations as $integration) {
+    $form['roomify_integration'][$integration->name] = array(
+      '#type' => 'checkbox',
+      '#title' => t('Enable @integration Integration', array('@integration' => $integration->label)),
+      '#default_value' => $integration->status,
+    );
+  }
+
+  $form['submit'] = array(
+    '#type' => 'submit',
+    '#value' => t('Save Configuration'),
   );
 
-  $form['#submit'][] = 'roomify_integrations_form_submit';
-  return system_settings_form($form);
+  return $form;
 }
 
 /**
@@ -85,18 +96,26 @@ function roomify_integrations_form($form, &$form_state) {
  */
 function roomify_integrations_form_submit(&$form, &$form_state) {
   $values = $form_state['values'];
-
-  if (isset($values['roomify_integration_zopim'])) {
-    if ($values['roomify_integration_zopim'] == 1) {
+  if (isset($values['zopim'])) {
+    if ($values['zopim'] == 1) {
+      $zopim_status = 1;
       if (!module_exists('zopim')) {
         module_enable(array('zopim'));
       }
     }
     else {
+      $zopim_status = 0;
       if (module_exists('zopim')) {
         module_disable(array('zopim'));
       }
     }
+    $record = array(
+      'name' => 'zopim',
+      'label' => 'Zopim',
+      'status' => $zopim_status,
+    );
+
+    drupal_write_record('roomify_integrations', $record, array('name'));
     menu_rebuild();
   }
 }
@@ -112,13 +131,21 @@ function roomify_manage_integrations_form($form, &$form_state) {
   );
   $form['#attached']['css'] = array($module_path . '/css/roomify_integrations.css');
 
-  if (variable_get('roomify_integration_zopim', 0) == 1) {
-    $zopim_path = '/admin/config/system/zopim';
-    $zopim_image = theme_image(array('path' => $module_path . '/images/zopim.png', 'attributes' => ''));
+  $integrations = db_select('roomify_integrations', 'i')
+    ->fields('i')
+    ->condition('status', 1, '=')
+    ->execute()
+    ->fetchAll();
 
-    $form['zopim'] = array(
-      '#markup' => '<div class="zopim-integration">' . l($zopim_image . '<h3>' . t('Zopim Chat') . '</h3>' . t('Talk to your customers in real-time using a live chat.'), $zopim_path, array('html' => TRUE)) . '</div>'
-    );
+  foreach ($integrations as $integration) {
+    if ($integration->name == 'zopim') {
+      $zopim_path = '/admin/config/system/zopim';
+      $zopim_image = theme_image(array('path' => $module_path . '/images/zopim.png', 'attributes' => ''));
+
+      $form['zopim'] = array(
+        '#markup' => '<div class="zopim-integration">' . l($zopim_image . '<h3>' . t('Zopim Chat') . '</h3>' . t('Talk to your customers in real-time using a live chat.'), $zopim_path, array('html' => TRUE)) . '</div>'
+      );
+    }
   }
 
   return $form;

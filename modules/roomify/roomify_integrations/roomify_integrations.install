@@ -6,6 +6,49 @@
  */
 
 /**
+ * Implements hook_schema().
+ */
+function roomify_integrations_schema() {
+  $schema = array();
+
+  $schema['roomify_integrations'] = array(
+    'description' => 'The base table for Roomify Integrations.',
+    'fields' => array(
+      'name' => array(
+        'description' => 'The name of the Integration - a machine-name identifier.',
+        'type' => 'varchar',
+        'length' => 255,
+        'not null' => TRUE,
+        'default' => '',
+      ),
+      'label' => array(
+        'description' => 'The Label of the Integration - a human-readable identifier.',
+        'type' => 'varchar',
+        'length' => 255,
+        'not null' => TRUE,
+        'default' => '',
+      ),
+      'status' => array(
+        'description' => 'Boolean indicating whether the integration is enabled',
+        'type' => 'int',
+        'not null' => TRUE,
+        'default' => 0,
+      ),
+    ),
+    'primary key' => array('name'),
+  );
+
+  return $schema;
+}
+
+/**
+ * Implements hook_install().
+ */
+function roomify_integrations_install() {
+  _roomify_integrations_check_zopim();
+}
+
+/**
  * Implements hook_uninstall().
  */
 function roomify_integrations_uninstall() {
@@ -13,16 +56,31 @@ function roomify_integrations_uninstall() {
 }
 
 /**
- * Improve Integrations.
+ * Check if Zopim is enabled or not.
  */
-function roomify_integrations_update_7001() {
+function _roomify_integrations_check_zopim() {
+  $zopim_status = 0;
   if (module_exists('zopim')) {
     // Is set a zopim account, leave the module enabled.
     if (variable_get('zopim_account', '') != '') {
-      variable_set('roomify_integration_zopim', 1);
+      $zopim_status = 1;
     }
     else {
       module_disable(array('zopim'));
     }
   }
+  $record = array(
+    'name' => 'zopim',
+    'label' => 'Zopim',
+    'status' => $zopim_status,
+  );
+  drupal_write_record('roomify_integrations', $record);
+}
+
+/**
+ * Add the Roomfiy Integrations table and update zopim status.
+ */
+function roomify_integrations_update_7001() {
+  db_create_table('roomify_integrations', drupal_get_schema_unprocessed('roomify_integrations', 'roomify_integrations'));
+  _roomify_integrations_check_zopim();
 }
