@@ -1314,6 +1314,12 @@ function roomify_accommodation_booking_entity_insert($entity, $type) {
       field_attach_update($type, $entity);
     }
   }
+
+  if ($type == 'bat_booking_type') {
+    module_load_include('inc', 'roomify_accommodation_booking', 'roomify_accommodation_booking.fields');
+
+    roomify_accommodation_booking_add_line_item_reference($entity->type);
+  }
 }
 
 /**
@@ -1366,11 +1372,6 @@ function roomify_accommodation_booking_entity_update($entity, $type) {
         commerce_order_save($order);
       }
     }
-  }
-  if ($type == 'bat_booking_type') {
-    module_load_include('inc', 'roomify_accommodation_booking', 'roomify_accommodation_booking.fields');
-
-    roomify_accommodation_booking_add_line_item_reference($entity->type);
   }
 }
 
