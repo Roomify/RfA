@@ -7500,7 +7500,7 @@ body.toggled #close-sidebar-wrapper {
   width: 100%;
   position: fixed;
   /* Stay in place */
-  z-index: 100;
+  z-index: 1001;
   /* Sit on top */
   left: 0;
   top: 0;
@@ -12143,6 +12143,7 @@ body.node-type-homepage {
   .pane-featured-properties-panel-pane-3 .views-field-field-sp-short-description {
     margin: 10px 0;
     text-align: center; }
+  .pane-featured-properties-panel-pane-3 .unslick,
   .pane-featured-properties-panel-pane-3 .slide__content {
     margin: 0 auto;
     display: table;
