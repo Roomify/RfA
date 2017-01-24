@@ -289,6 +289,8 @@ body.roomify-notification {
 }
 
 .roomify-language-switcher {
+  position: relative;
+  background: #000000;
   .language-switcher-locale-session,
   .language-switcher-locale-url {
     right: 15px;
@@ -303,7 +305,7 @@ body.roomify-notification {
       float: right;
       margin-left: 15px;
       a {
-        color: #FFFFFF;
+        color: #FFFFFF !important;
         img {
           float: left;
           margin-right: 5px;
@@ -316,4 +318,3 @@ body.roomify-notification {
     }
   }
 }
-    
