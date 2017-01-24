@@ -2028,17 +2028,7 @@ function roomify_accommodation_booking_commerce_checkout_complete($order) {
       $line_item = commerce_line_item_load($item_id['line_item_id']);
 
       if ($line_item->type == 'roomify_accommodation_booking') {
-        // Store user 'Full name' and 'Address' in booking.
         $booking = bat_booking_load($line_item->commerce_booking_reference[LANGUAGE_NONE][0]['target_id']);
-
-        $address = $order_wrapper->commerce_customer_billing->commerce_customer_address->value();
-        $telephone = $order_wrapper->commerce_customer_billing->booking_telephone->value();
-
-        $booking->booking_full_name[LANGUAGE_NONE][0]['value'] = $address['name_line'];
-        $booking->booking_address[LANGUAGE_NONE][0] = $address;
-        $booking->booking_telephone[LANGUAGE_NONE][0]['value'] = $telephone;
-
-        $booking->save();
 
         // Set event state to 'Booked'.
         $event = bat_event_load($booking->booking_event_reference[LANGUAGE_NONE][0]['target_id']);

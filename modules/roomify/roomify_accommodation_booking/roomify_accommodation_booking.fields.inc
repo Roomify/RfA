@@ -81,10 +81,23 @@ function roomify_accommodation_booking_add_line_item_reference($type_bundle) {
 }
 
 /**
- *
+ * Create 'booking_telephone' field for customer profile.
  */
 function roomify_accommodation_booking_add_booking_telephone_to_billing_info() {
-  // "booking_full_name" field instance.
+  if (field_read_field('booking_telephone') === FALSE) {
+    $field = array(
+      'field_name' => 'booking_telephone',
+      'type' => 'text',
+      'cardinality' => 1,
+      'locked' => 1,
+      'settings' => array(
+        'max_length' => 255,
+        'profile2_private' => FALSE,
+      ),
+    );
+    field_create_field($field);
+  }
+
   if (field_read_instance('commerce_customer_profile', 'booking_telephone', 'billing') === FALSE) {
     $instance = array(
       'field_name' => 'booking_telephone',
