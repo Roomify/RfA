@@ -111,6 +111,7 @@ projects[classy_paragraphs][version] = 1.0
 projects[commerce][version] = 1.13
 projects[commerce][patch][] = https://www.drupal.org/files/issues/commerce-delete_line_items_without_products-2261289-4.patch
 projects[commerce][patch][] = https://www.drupal.org/files/issues/commerce-georgian_lari-2256853-6.patch
+projects[commerce][patch][] = https://www.drupal.org/files/issues/commerce-cart_product_add_php7-2762907-5.patch
 
 projects[commerce_addressbook] = 3.0-beta3
 
