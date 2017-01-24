@@ -50,10 +50,6 @@ function roomify_accommodation_booking_create_booking_type() {
 
   roomify_accommodation_booking_add_event_reference_field();
   roomify_accommodation_booking_add_booking_price_field();
-  roomify_accommodation_booking_add_booking_full_name();
-  roomify_accommodation_booking_add_booking_address();
-  roomify_accommodation_booking_add_booking_telephone();
-  roomify_accommodation_booking_add_group_guest();
 
   roomify_accommodation_booking_add_listing_product_reference('home');
   roomify_accommodation_booking_add_listing_product_reference('room');
@@ -230,5 +226,24 @@ function roomify_accommodation_booking_update_7005() {
   $bundles = bat_booking_get_types();
   foreach ($bundles as $bundle) {
     roomify_accommodation_booking_add_booking_guest_field($bundle->type);
+  }
+}
+
+/**
+ * Remove Address fields from booking types.
+ */
+function roomify_accommodation_booking_update_7006() {
+  $field_names = array(
+    'booking_full_name',
+    'booking_address',
+    'booking_telephone',
+  );
+
+  foreach ($field_names as $field_name) {
+    foreach (array('roomify_accommodation_booking', 'conversation_booking') as $bundle) {
+      if ($instance = field_info_instance('bat_booking', $field_name, $bundle)) {
+        field_delete_instance($instance);
+      }
+    }
   }
 }

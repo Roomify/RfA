@@ -81,85 +81,6 @@ function roomify_accommodation_booking_add_line_item_reference($type_bundle) {
 }
 
 /**
- * Create booking 'Full Name' field.
- */
-function roomify_accommodation_booking_add_booking_full_name() {
-  field_info_cache_clear();
-
-  // "booking_full_name" field.
-  if (field_read_field('booking_full_name') === FALSE) {
-    $field = array(
-      'field_name' => 'booking_full_name',
-      'type' => 'text',
-      'cardinality' => 1,
-      'locked' => 1,
-      'settings' => array(
-        'max_length' => 255,
-        'profile2_private' => FALSE,
-      ),
-    );
-    field_create_field($field);
-  }
-
-  field_cache_clear();
-
-  // "booking_full_name" field instance.
-  if (field_read_instance('bat_booking', 'booking_full_name', 'roomify_accommodation_booking') === FALSE) {
-    $instance = array(
-      'field_name' => 'booking_full_name',
-      'entity_type' => 'bat_booking',
-      'label' => 'Full Name',
-      'bundle' => 'roomify_accommodation_booking',
-      'required' => FALSE,
-      'widget' => array(
-        'type' => 'text_textfield',
-      ),
-    );
-    field_create_instance($instance);
-  }
-}
-
-/**
- * Create booking 'Telephone' field.
- */
-function roomify_accommodation_booking_add_booking_telephone() {
-  field_info_cache_clear();
-
-  // "booking_full_name" field.
-  if (field_read_field('booking_telephone') === FALSE) {
-    $field = array(
-      'field_name' => 'booking_telephone',
-      'type' => 'text',
-      'cardinality' => 1,
-      'locked' => 1,
-      'settings' => array(
-        'max_length' => 255,
-        'profile2_private' => FALSE,
-      ),
-    );
-    field_create_field($field);
-  }
-
-  field_cache_clear();
-
-  // "booking_full_name" field instance.
-  if (field_read_instance('bat_booking', 'booking_telephone', 'roomify_accommodation_booking') === FALSE) {
-    $instance = array(
-      'field_name' => 'booking_telephone',
-      'entity_type' => 'bat_booking',
-      'label' => 'Telephone',
-      'bundle' => 'roomify_accommodation_booking',
-      'required' => FALSE,
-      'widget' => array(
-        'type' => 'text_textfield',
-        'weight' => 5,
-      ),
-    );
-    field_create_instance($instance);
-  }
-}
-
-/**
  *
  */
 function roomify_accommodation_booking_add_booking_telephone_to_billing_info() {
@@ -176,45 +97,6 @@ function roomify_accommodation_booking_add_booking_telephone_to_billing_info() {
         'weight' => 0,
         'settings' => array(
           'size' => 60,
-        ),
-      ),
-    );
-    field_create_instance($instance);
-  }
-}
-
-/**
- * Create booking 'Address' field.
- */
-function roomify_accommodation_booking_add_booking_address() {
-  field_info_cache_clear();
-
-  // "booking_address" field.
-  if (field_read_field('booking_address') === FALSE) {
-    $field = array(
-      'field_name' => 'booking_address',
-      'type' => 'addressfield',
-      'cardinality' => 1,
-      'locked' => 1,
-      'settings' => array(),
-    );
-    field_create_field($field);
-  }
-
-  field_cache_clear();
-
-  // "booking_address" field instance.
-  if (field_read_instance('bat_booking', 'booking_address', 'roomify_accommodation_booking') === FALSE) {
-    $instance = array(
-      'field_name' => 'booking_address',
-      'entity_type' => 'bat_booking',
-      'label' => 'Address',
-      'bundle' => 'roomify_accommodation_booking',
-      'required' => FALSE,
-      'widget' => array(
-        'type' => 'addressfield_standard',
-        'settings' => array(
-          'default_country' => '',
         ),
       ),
     );
@@ -332,43 +214,6 @@ function roomify_accommodation_booking_add_listing_product_reference($type_bundl
       ),
     );
     field_create_instance($instance);
-  }
-}
-
-/**
- * Add "Guest" group.
- */
-function roomify_accommodation_booking_add_group_guest() {
-  if (field_group_load_field_group('group_guest', 'bat_booking', 'roomify_accommodation_booking', 'form') === NULL) {
-    $field_group = new stdClass();
-    $field_group->disabled = FALSE;
-    $field_group->api_version = 1;
-    $field_group->identifier = 'group_guest|bat_booking|roomify_accommodation_booking|form';
-    $field_group->group_name = 'group_guest';
-    $field_group->entity_type = 'bat_booking';
-    $field_group->bundle = 'roomify_accommodation_booking';
-    $field_group->mode = 'form';
-    $field_group->parent_name = '';
-    $field_group->label = 'Guest';
-    $field_group->weight = '1';
-    $field_group->children = array(
-      0 => 'booking_full_name',
-      1 => 'booking_telephone',
-      2 => 'booking_address',
-
-    );
-    $field_group->format_type = 'tab';
-    $field_group->format_settings = array(
-      'label' => 'Description',
-      'instance_settings' => array(
-        'required_fields' => 1,
-        'classes' => '',
-        'description' => '',
-      ),
-      'formatter' => 'closed',
-    );
-
-    field_group_group_save($field_group);
   }
 }
 

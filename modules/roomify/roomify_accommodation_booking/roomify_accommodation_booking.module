@@ -1600,9 +1600,6 @@ function roomify_accommodation_booking_form_alter(&$form, &$form_state, $form_id
       }
       else {
         $form['actions']['submit']['#submit'] = array_merge(array('roomify_accommodation_booking_edit_booking_form_submit'), $form['actions']['submit']['#submit']);
-        $form['booking_full_name']['#access'] = FALSE;
-        $form['booking_address']['#access'] = FALSE;
-        $form['booking_telephone']['#access'] = FALSE;
 
         $line_item = commerce_line_item_load($form['#entity']->booking_line_item_reference[LANGUAGE_NONE][0]['target_id']);
         $order = commerce_order_load($line_item->order_id);
