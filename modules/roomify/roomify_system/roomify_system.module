@@ -273,10 +273,15 @@ function roomify_system_global_site_settings_form($form, &$form_state) {
     );
   }
 
+  $uploaded_logo = file_load(variable_get('roomify_logo_uploaded', 0));
+
   $form['logo']['settings']['logo_upload'] = array(
-    '#type' => 'file',
+    '#type' => 'managed_file',
     '#title' => t('Upload logo image'),
-    '#maxlength' => 40,
+    '#upload_location' => roomify_system_file_dir(),
+    '#default_value' => isset($uploaded_logo->fid) ? $uploaded_logo->fid : '',
+    '#upload_validators' => array('file_validate_extensions' => array('ico png gif jpg jpeg apng svg')),
+    '#theme' => 'roomify_image_thumb_upload',
   );
 
   $form['favicon'] = array(
@@ -336,20 +341,11 @@ function roomify_system_global_site_settings_form_validate($form, &$form_state) 
   $validators = array('file_validate_is_image' => array());
 
   // Check for a new uploaded logo.
-  $file = file_save_upload('logo_upload', $validators);
-  if (isset($file)) {
-    // File upload was attempted.
-    if ($file) {
-      // Put the temporary file in form_values so we can save it on submit.
-      $form_state['values']['logo_upload'] = $file;
-    }
-    else {
-      // File upload failed.
-      form_set_error('logo_upload', t('The logo could not be uploaded.'));
-    }
-  }
-
   $validators = array('file_validate_extensions' => array('ico png gif jpg jpeg apng svg'));
+
+  if (!empty($form_state['values']['logo_upload'])) {
+    variable_set('roomify_logo_uploaded', $form_state['values']['logo_upload']);
+  }
 
   // Check for a new uploaded favicon.
   $file = file_save_upload('favicon_upload', $validators);
@@ -437,7 +433,7 @@ function roomify_system_global_site_settings_form_submit($form, &$form_state) {
   // If the user uploaded a new logo or favicon, save it to a permanent location
   // and use it in place of the default theme-provided file.
   if (!empty($values['logo_upload'])) {
-    $file = $values['logo_upload'];
+    $file = file_load($values['logo_upload']);
     $filename = file_unmanaged_copy($file->uri, roomify_system_file_dir());
     $settings['default_logo'] = 0;
     $settings['logo_path'] = $filename;
@@ -2050,4 +2046,16 @@ function roomify_system_tokens($type, $tokens, array $data = array(), array $opt
   }
 
   return $replacements;
+}
+
+/**
+ * Implements hook_theme().
+ */
+function roomify_system_theme() {
+  return array(
+    'roomify_image_thumb_upload' => array(
+      'render element' => 'element',
+      'file' => 'roomify_system.module',
+    )
+  );
 }
