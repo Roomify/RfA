@@ -97,22 +97,6 @@ function roomify_conversations_pet_substitutions_alter(&$substitutions, $params)
     $substitutions['message'] = $message;
     $substitutions['conversation'] = roomify_conversation_load($message->message_conversation_reference[LANGUAGE_NONE][0]['target_id']);
   }
-  elseif (isset($params['rules_state']->variables['entityform'])) {
-    $entityform = $params['rules_state']->variables['entityform']->value();
-    $substitutions['entityform'] = $entityform;
-
-    $query = new EntityFieldQuery();
-    $query->entityCondition('entity_type', 'roomify_conversation');
-    $query->fieldCondition('conversation_inquiry_ref', 'target_id', $entityform->entityform_id);
-    $results = $query->execute();
-
-    if (isset($results['roomify_conversation'])) {
-      $conversation = array_keys($results['roomify_conversation']);
-      $substitutions['conversation'] = roomify_conversation_load(reset($conversation));
-    }
-
-    $substitutions['bat_type'] = bat_type_load($entityform->field_listing_enquiry_type_ref[LANGUAGE_NONE][0]['target_id']);
-  }
   elseif (isset($params['rules_state']->variables['bat_booking'])) {
     $bat_booking = $params['rules_state']->variables['bat_booking']->value();
 
@@ -135,14 +119,7 @@ function roomify_conversations_pet_substitutions_alter(&$substitutions, $params)
  * Implements hook_entity_view_alter().
  */
 function roomify_conversations_entity_view_alter(&$build, $type) {
-  if ($type == 'entityform' && $build['#view_mode'] == 'conversation') {
-    unset($build['info']);
-
-    $build['content'] = array(
-      '#markup' => _roomify_conversations_booking_inquiry_render($build['#entity']),
-    );
-  }
-  elseif ($type == 'bat_booking' && $build['#view_mode'] == 'conversation') {
+  if ($type == 'bat_booking' && $build['#view_mode'] == 'conversation') {
     $build['content'] = array(
       '#markup' => _roomify_conversations_conversation_booking_render($build['#entity']),
     );
@@ -371,11 +348,6 @@ function roomify_conversations_entity_info_alter(&$entity_info) {
       ),
     );
   }
-
-  $entity_info['entityform']['view modes']['conversation'] = array(
-    'label' => t('Conversation View Mode'),
-    'custom settings' => TRUE,
-  );
 
   $entity_info['bat_booking']['view modes']['conversation'] = array(
     'label' => t('Conversation View Mode'),
@@ -847,61 +819,6 @@ function roomify_conversations_entity_insert($entity, $type) {
     }
   }
 
-  if ($type == 'entityform') {
-    if ($entity->type == 'listing_enquiry') {
-      $email_address = $entity->field_listing_enquiry_email[LANGUAGE_NONE][0]['email'];
-      $user_name = commerce_order_unique_username($entity->field_listing_enquiry_name[LANGUAGE_NONE][0]['value']);
-
-      $account = user_load_by_mail($email_address);
-
-      if ($account === FALSE) {
-        // Create a new user and send a link to confirm the email address.
-        $password = user_password(8);
-
-        $fields = array(
-          'name' => $user_name,
-          'mail' => $email_address,
-          'pass' => $password,
-          'status' => 1,
-          'init' => 'email address',
-          'roles' => array(
-            DRUPAL_AUTHENTICATED_RID => 'authenticated user',
-          ),
-        );
-
-        $account = user_save('', $fields);
-
-        drupal_mail('roomify_conversations', 'register_no_approval_required', $email_address, NULL, array('account' => $account), variable_get('site_mail', ini_get('sendmail_from')));
-      }
-
-      // Assign 'guest' role.
-      $guest_role = user_role_load_by_name('guest');
-      user_multiple_role_edit(array($account->uid), 'add_role', $guest_role->rid);
-
-      $conv_fields = array(
-        'name' => $user_name,
-        'type' => 'standard',
-        'created' => time(),
-        'changed' => time(),
-        'uid' => $account->uid,
-        'language' => LANGUAGE_NONE,
-      );
-      $conversation = roomify_conversation_create($conv_fields);
-
-      $conversation->conversation_inquiry_ref[LANGUAGE_NONE][0]['target_id'] = $entity->entityform_id;
-
-      $wrapper = entity_metadata_wrapper('entityform', $entity);
-      $conversation->conversation_owner_user_ref[LANGUAGE_NONE][0]['target_id'] = $wrapper->field_listing_enquiry_type_ref->uid->value();
-      $conversation->conversation_guest_user_ref[LANGUAGE_NONE][0]['target_id'] = $account->uid;
-
-      $conversation->conversation_unit_type_ref[LANGUAGE_NONE][0]['target_id'] = $wrapper->field_listing_enquiry_type_ref->type_id->value();
-      $conversation->conversation_book_start_date[LANGUAGE_NONE][0]['value'] = $entity->field_listing_enquiry_arr_date[LANGUAGE_NONE][0]['value'];
-      $conversation->conversation_book_end_date[LANGUAGE_NONE][0]['value'] = $entity->field_listing_enquiry_dep_date[LANGUAGE_NONE][0]['value'];
-
-      roomify_conversation_save($conversation);
-    }
-  }
-
   if ($type == 'message') {
     if (isset($entity->message_conversation_reference[LANGUAGE_NONE][0]['target_id'])) {
       // Update conversation changed date.
@@ -1079,73 +996,6 @@ function _roomify_conversations_conversation_booking_render($booking) {
       }
     }
   }
-
-  return $output;
-}
-
-/**
- * Render function for entityform entities.
- */
-function _roomify_conversations_booking_inquiry_render($entity) {
-  global $user;
-
-  $output = '<div class="enquiry-item">';
-
-  $date_format = variable_get('bat_daily_date_format', 'Y-m-d');
-
-  if ($entity->type == 'listing_enquiry') {
-    $unit = bat_type_load($entity->field_listing_enquiry_type_ref[LANGUAGE_NONE][0]['target_id']);
-    $unit_name = $unit->name;
-
-    $guests = 0;
-    if (isset($entity->field_listing_enquiry_guests[LANGUAGE_NONE][0]['value'])) {
-      $guests = $entity->field_listing_enquiry_guests[LANGUAGE_NONE][0]['value'];
-    }
-
-    $children = 0;
-    if (isset($entity->field_enquiry_children[LANGUAGE_NONE][0]['value'])) {
-      $children = $entity->field_enquiry_children[LANGUAGE_NONE][0]['value'];
-    }
-
-    $start_date_object = new DateTime($entity->field_listing_enquiry_arr_date[LANGUAGE_NONE][0]['value']);
-    $end_date_object = new DateTime($entity->field_listing_enquiry_dep_date[LANGUAGE_NONE][0]['value']);
-
-    $start_date = $start_date_object->format($date_format);
-    $end_date = $end_date_object->format($date_format);
-
-    $output .= '<div class="left">';
-
-    $output .= '<div class="text">' . t('Enquiry about @unit_name from @start_date - @end_date (@guests guests)', array('@unit_name' => $unit_name, '@start_date' => $start_date, '@end_date' => $end_date, '@guests' => $guests)) . '</div>';
-
-    if (isset($entity->field_enquiry_further_info[LANGUAGE_NONE][0]['value'])) {
-      if (!empty($entity->field_enquiry_further_info[LANGUAGE_NONE][0]['value'])) {
-        $output .= '<div class="further-info">"' . $entity->field_enquiry_further_info[LANGUAGE_NONE][0]['value'] . '"</div>';
-      }
-    }
-
-    $output .= '</div><div class="right">';
-
-    if (entityform_access('view', $entity)) {
-      $output .= '<div class="button">' . l(t('View Enquiry'), 'entityform/' . $entity->entityform_id, array('query' => array('destination' => 'conversation/' . arg(1)), 'attributes' => array('class' => array('btn', 'btn-primary')))) . '</div>';
-    }
-
-    $wrapper = entity_metadata_wrapper('entityform', $entity);
-    $owner_uid = $wrapper->field_listing_enquiry_type_ref->uid->value();
-    if ($user->uid == $owner_uid) {
-      $conversation = roomify_conversation_load(arg(1));
-
-      if (!isset($conversation->conversation_booking_ref[LANGUAGE_NONE][0]['target_id'])) {
-        ctools_include('modal');
-        ctools_modal_add_js();
-
-        $output .= '<div class="button make-offer">' . l(t('Make Offer'), 'admin/bat/make-offer', array('attributes' => array('class' => array('ctools-use-modal', 'btn', 'btn-success')), 'query' => array('startdate' => $start_date_object->format('Y-m-d'), 'enddate' => $end_date_object->format('Y-m-d'), 'groupsize' => $guests, 'groupsizechildren' => $children, 'unitid' => $entity->field_listing_enquiry_type_ref[LANGUAGE_NONE][0]['target_id'], 'conversationid' => $conversation->conversation_id))) . '</div>';
-      }
-    }
-
-    $output .= '</div>';
-  }
-
-  $output .= '</div>';
 
   return $output;
 }
@@ -1372,11 +1222,11 @@ function roomify_conversations_make_offer_form($form, &$form_state, $start_date,
   );
 
   $conversation = roomify_conversation_load($conversation_id);
-  $conversation_wrapper = entity_metadata_wrapper('roomify_conversation', $conversation);
 
-  $price = $conversation_wrapper->conversation_inquiry_ref[0]->field_listing_enquiry_price->value();
+  $price = $conversation->conversation_book_price[LANGUAGE_NONE][0]['value'] * 100;
 
-  $std_cost = commerce_currency_format($price['amount'], $price['currency_code']);
+  $currency_setting = commerce_currency_load(commerce_default_currency());
+  $std_cost = commerce_currency_format($price, $currency_setting['code']);
 
   $form['std_cost'] = array(
     '#markup' => '<div><label>' . t('Standard Cost:') . '</label> <span>' . $std_cost . '</span></div>',
@@ -1479,10 +1329,6 @@ function roomify_conversations_edit_offer_form($form, &$form_state, $booking_id,
 
   $conversation = roomify_conversation_load($conversation_id);
   $conversation_wrapper = entity_metadata_wrapper('roomify_conversation', $conversation);
-
-  $price = $conversation_wrapper->conversation_inquiry_ref[0]->field_listing_enquiry_price->value();
-
-  $std_cost = commerce_currency_format($price['amount'], $price['currency_code']);
 
   $form['std_cost'] = array(
     '#markup' => '<div><label>' . t('Standard Cost:') . '</label> <span>' . $std_cost . '</span></div>',
@@ -1775,24 +1621,6 @@ function roomify_conversations_get_most_recent_message($conversation_id) {
 }
 
 /**
- * Implements hook_entityform_access_alter().
- */
-function roomify_conversations_entityform_access_alter(&$access, $op, $context) {
-  $account = $context['account'];
-  $entityform = $context['entityform'];
-
-  if ($op == 'view' && $entityform->type == 'listing_enquiry') {
-    if (isset($entityform->field_listing_enquiry_type_ref[LANGUAGE_NONE][0]['target_id'])) {
-      $type = bat_type_load($entityform->field_listing_enquiry_type_ref[LANGUAGE_NONE][0]['target_id']);
-
-      if ($type->uid == $account->uid) {
-        $access = TRUE;
-      }
-    }
-  }
-}
-
-/**
  * Implements hook_default_cer().
  */
 function roomify_conversations_default_cer() {
@@ -1852,4 +1680,59 @@ function roomify_conversations_withdraw_offer_form_submit($form, &$form_state) {
   $rules_state->variables['roomify_conversation'] = $conversation_wrapper;
 
   pet_action_send_pet('withdraw_offer', NULL, $to_account, NULL, NULL, array(), $rules_state);
+}
+
+/**
+ *
+ */
+function roomify_conversations_inquiry_render($conversation) {
+  global $user;
+
+  $output = '<div class="enquiry-item">';
+
+  $date_format = variable_get('bat_daily_date_format', 'Y-m-d');
+
+  $type = bat_type_load($conversation->conversation_unit_type_ref[LANGUAGE_NONE][0]['target_id']);
+  $type_name = $type->name;
+
+  $guests = 0;
+  if (isset($conversation->conversation_guests[LANGUAGE_NONE][0]['value'])) {
+    $guests = $conversation->conversation_guests[LANGUAGE_NONE][0]['value'];
+  }
+
+  $children = 0;
+  if (isset($conversation->conversation_children[LANGUAGE_NONE][0]['value'])) {
+    $children = $conversation->conversation_children[LANGUAGE_NONE][0]['value'];
+  }
+
+  $start_date_object = new DateTime($conversation->conversation_book_start_date[LANGUAGE_NONE][0]['value']);
+  $end_date_object = new DateTime($conversation->conversation_book_end_date[LANGUAGE_NONE][0]['value']);
+
+  $start_date = $start_date_object->format($date_format);
+  $end_date = $end_date_object->format($date_format);
+
+  $output .= '<div class="left">';
+
+  $output .= '<div class="text">' . t('Enquiry about @type_name from @start_date - @end_date (@guests guests)', array('@type_name' => $type_name, '@start_date' => $start_date, '@end_date' => $end_date, '@guests' => $guests)) . '</div>';
+
+  if (isset($conversation->field_enquiry_further_info[LANGUAGE_NONE][0]['value'])) {
+    if (!empty($conversation->field_enquiry_further_info[LANGUAGE_NONE][0]['value'])) {
+      $output .= '<div class="further-info">"' . $conversation->field_enquiry_further_info[LANGUAGE_NONE][0]['value'] . '"</div>';
+    }
+  }
+
+  $output .= '</div><div class="right">';
+
+  if (!isset($conversation->conversation_booking_ref[LANGUAGE_NONE][0]['target_id'])) {
+    ctools_include('modal');
+    ctools_modal_add_js();
+
+    $output .= '<div class="button make-offer">' . l(t('Make Offer'), 'admin/bat/make-offer', array('attributes' => array('class' => array('ctools-use-modal', 'btn', 'btn-success')), 'query' => array('startdate' => $start_date_object->format('Y-m-d'), 'enddate' => $end_date_object->format('Y-m-d'), 'groupsize' => $guests, 'groupsizechildren' => $children, 'unitid' => $conversation->conversation_unit_type_ref[LANGUAGE_NONE][0]['target_id'], 'conversationid' => $conversation->conversation_id))) . '</div>';
+  }
+
+  $output .= '</div>';
+
+  $output .= '</div>';
+
+  return $output;
 }

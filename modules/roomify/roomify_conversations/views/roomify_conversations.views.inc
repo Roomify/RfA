@@ -78,10 +78,6 @@ function roomify_conversations_views_default_views() {
   $handler->display->display_options['relationships']['conversation_owner_user_ref_target_id']['table'] = 'field_data_conversation_owner_user_ref';
   $handler->display->display_options['relationships']['conversation_owner_user_ref_target_id']['field'] = 'conversation_owner_user_ref_target_id';
   /* Relationship: Entity Reference: Referenced Entity */
-  $handler->display->display_options['relationships']['conversation_inquiry_ref_target_id']['id'] = 'conversation_inquiry_ref_target_id';
-  $handler->display->display_options['relationships']['conversation_inquiry_ref_target_id']['table'] = 'field_data_conversation_inquiry_ref';
-  $handler->display->display_options['relationships']['conversation_inquiry_ref_target_id']['field'] = 'conversation_inquiry_ref_target_id';
-  /* Relationship: Entity Reference: Referenced Entity */
   $handler->display->display_options['relationships']['conversation_booking_ref_target_id']['id'] = 'conversation_booking_ref_target_id';
   $handler->display->display_options['relationships']['conversation_booking_ref_target_id']['table'] = 'field_data_conversation_booking_ref';
   $handler->display->display_options['relationships']['conversation_booking_ref_target_id']['field'] = 'conversation_booking_ref_target_id';
@@ -225,35 +221,6 @@ function roomify_conversations_views_default_views() {
   $handler->display->display_options['fields']['type']['exclude'] = TRUE;
   $handler->display->display_options['fields']['type']['element_label_colon'] = FALSE;
   $handler->display->display_options['fields']['type']['machine_name'] = TRUE;
-  /* Field: Form submission - not trimmed */
-  $handler->display->display_options['fields']['field_listing_enquiry_info_1']['id'] = 'field_listing_enquiry_info_1';
-  $handler->display->display_options['fields']['field_listing_enquiry_info_1']['table'] = 'field_data_field_listing_enquiry_info';
-  $handler->display->display_options['fields']['field_listing_enquiry_info_1']['field'] = 'field_listing_enquiry_info';
-  $handler->display->display_options['fields']['field_listing_enquiry_info_1']['relationship'] = 'conversation_inquiry_ref_target_id';
-  $handler->display->display_options['fields']['field_listing_enquiry_info_1']['ui_name'] = 'Form submission - not trimmed';
-  $handler->display->display_options['fields']['field_listing_enquiry_info_1']['exclude'] = TRUE;
-  $handler->display->display_options['fields']['field_listing_enquiry_info_1']['settings'] = array(
-    'conditions' => array(
-      0 => array(
-        'condition' => '',
-      ),
-    ),
-  );
-  /* Field: Entityform Submission: Further info */
-  $handler->display->display_options['fields']['field_listing_enquiry_info']['id'] = 'field_listing_enquiry_info';
-  $handler->display->display_options['fields']['field_listing_enquiry_info']['table'] = 'field_data_field_listing_enquiry_info';
-  $handler->display->display_options['fields']['field_listing_enquiry_info']['field'] = 'field_listing_enquiry_info';
-  $handler->display->display_options['fields']['field_listing_enquiry_info']['relationship'] = 'conversation_inquiry_ref_target_id';
-  $handler->display->display_options['fields']['field_listing_enquiry_info']['exclude'] = TRUE;
-  $handler->display->display_options['fields']['field_listing_enquiry_info']['alter']['max_length'] = '50';
-  $handler->display->display_options['fields']['field_listing_enquiry_info']['alter']['trim'] = TRUE;
-  $handler->display->display_options['fields']['field_listing_enquiry_info']['settings'] = array(
-    'conditions' => array(
-      0 => array(
-        'condition' => '',
-      ),
-    ),
-  );
   /* Field: Roomify Conversation: Most recent message */
   $handler->display->display_options['fields']['most_recent_message']['id'] = 'most_recent_message';
   $handler->display->display_options['fields']['most_recent_message']['table'] = 'roomify_conversations';
@@ -270,21 +237,6 @@ function roomify_conversations_views_default_views() {
   $handler->display->display_options['fields']['most_recent_message_user']['field'] = 'most_recent_message_user';
   $handler->display->display_options['fields']['most_recent_message_user']['exclude'] = TRUE;
   $handler->display->display_options['fields']['most_recent_message_user']['empty'] = '[conversation_guest_user_ref]';
-  /* Field: Entityform Submission: Price */
-  $handler->display->display_options['fields']['field_listing_enquiry_price']['id'] = 'field_listing_enquiry_price';
-  $handler->display->display_options['fields']['field_listing_enquiry_price']['table'] = 'field_data_field_listing_enquiry_price';
-  $handler->display->display_options['fields']['field_listing_enquiry_price']['field'] = 'field_listing_enquiry_price';
-  $handler->display->display_options['fields']['field_listing_enquiry_price']['relationship'] = 'conversation_inquiry_ref_target_id';
-  $handler->display->display_options['fields']['field_listing_enquiry_price']['exclude'] = TRUE;
-  $handler->display->display_options['fields']['field_listing_enquiry_price']['click_sort_column'] = 'amount';
-  $handler->display->display_options['fields']['field_listing_enquiry_price']['settings'] = array(
-    'calculation' => FALSE,
-    'conditions' => array(
-      0 => array(
-        'condition' => '',
-      ),
-    ),
-  );
   /* Field: BAT Booking: Price */
   $handler->display->display_options['fields']['booking_price']['id'] = 'booking_price';
   $handler->display->display_options['fields']['booking_price']['table'] = 'field_data_booking_price';

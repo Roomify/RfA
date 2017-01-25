@@ -1158,3 +1158,54 @@ function roomify_listing_update_7025() {
     }
   }
 }
+
+/**
+ * Migrate existing entityform submission data.
+ */
+function roomify_listing_update_7026() {
+  $query = new EntityFieldQuery();
+
+  $query->entityCondition('entity_type', 'roomify_conversation');
+
+  $result = $query->execute();
+
+  if (isset($result['roomify_conversation'])) {
+    foreach ($result['roomify_conversation'] as $conversation) {
+      $conversation = roomify_conversation_load($conversation->conversation_id);
+
+      if (isset($conversation->conversation_inquiry_ref[LANGUAGE_NONE][0]['target_id'])) {
+        if ($entityform = entityform_load($conversation->conversation_inquiry_ref[LANGUAGE_NONE][0]['target_id'])) {
+          if (isset($entityform->field_listing_enquiry_email[LANGUAGE_NONE][0]['email'])) {
+            $conversation->conversation_user_email[LANGUAGE_NONE][0]['value'] = $entityform->field_listing_enquiry_email[LANGUAGE_NONE][0]['email'];
+          }
+
+          if (isset($entityform->field_listing_enquiry_info[LANGUAGE_NONE][0]['value'])) {
+            $conversation->conversation_further_info[LANGUAGE_NONE][0]['value'] = $entityform->field_listing_enquiry_info[LANGUAGE_NONE][0]['value'];
+          }
+
+          if (isset($entityform->field_listing_enquiry_guests[LANGUAGE_NONE][0]['value'])) {
+            $conversation->conversation_guests[LANGUAGE_NONE][0]['value'] = $entityform->field_listing_enquiry_guests[LANGUAGE_NONE][0]['value'];
+          }
+
+          if (isset($entityform->field_listing_enquiry_name[LANGUAGE_NONE][0]['value'])) {
+            $conversation->conversation_user_name[LANGUAGE_NONE][0]['value'] = $entityform->field_listing_enquiry_name[LANGUAGE_NONE][0]['value'];
+          }
+
+          if (isset($entityform->field_listing_enquiry_price[LANGUAGE_NONE][0]['amount'])) {
+            $conversation->conversation_book_price[LANGUAGE_NONE][0]['value'] = $entityform->field_listing_enquiry_price[LANGUAGE_NONE][0]['amount'] / 100;
+          }
+
+          field_attach_update('roomify_conversation', $conversation);
+        }
+      }
+    }
+  }
+}
+
+/**
+ * Migrate existing translations of the field names
+ * on the entityform and the submission confirmation text.
+ */
+function roomify_listing_update_7027() {
+
+}
