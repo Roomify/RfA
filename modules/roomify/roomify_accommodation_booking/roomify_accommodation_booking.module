@@ -964,8 +964,8 @@ function roomify_accommodation_booking_options_change_callback(&$form, $form_sta
 function roomify_accommodation_booking_confirmation_form_enquiry_submit($form, &$form_state) {
   $values = $form_state['values'];
 
-  $start_date = $values['start_date'];
-  $end_date = $values['end_date'];
+  $start_date = clone($values['start_date']);
+  $end_date = clone($values['end_date']);
   $end_date->sub(new DateInterval('PT1M'));
 
   $type_id = $form_state['values']['type_id'];
