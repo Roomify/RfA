@@ -248,19 +248,6 @@ function roomify_dashboard_views_default_views() {
   $handler->display->display_options['fields']['label']['label'] = '';
   $handler->display->display_options['fields']['label']['exclude'] = TRUE;
   $handler->display->display_options['fields']['label']['element_label_colon'] = FALSE;
-  /* Field: BAT Booking: Full Name */
-  $handler->display->display_options['fields']['booking_full_name']['id'] = 'booking_full_name';
-  $handler->display->display_options['fields']['booking_full_name']['table'] = 'field_data_booking_full_name';
-  $handler->display->display_options['fields']['booking_full_name']['field'] = 'booking_full_name';
-  $handler->display->display_options['fields']['booking_full_name']['label'] = 'Guest Name';
-  $handler->display->display_options['fields']['booking_full_name']['empty'] = '[label]';
-  $handler->display->display_options['fields']['booking_full_name']['settings'] = array(
-    'conditions' => array(
-      0 => array(
-        'condition' => '',
-      ),
-    ),
-  );
   /* Field: BAT Booking: Bat booking ID */
   $handler->display->display_options['fields']['booking_id']['id'] = 'booking_id';
   $handler->display->display_options['fields']['booking_id']['table'] = 'bat_bookings';
@@ -277,7 +264,7 @@ function roomify_dashboard_views_default_views() {
   $handler->display->display_options['fields']['property_id']['exclude'] = TRUE;
   $handler->display->display_options['fields']['property_id']['element_label_colon'] = FALSE;
   $handler->display->display_options['fields']['property_id']['separator'] = '';
-  /* Field: Type: Name */
+  /* Field: Type: Label */
   $handler->display->display_options['fields']['name_1']['id'] = 'name_1';
   $handler->display->display_options['fields']['name_1']['table'] = 'bat_types';
   $handler->display->display_options['fields']['name_1']['field'] = 'name';
@@ -385,11 +372,11 @@ function roomify_dashboard_views_default_views() {
   $handler->display->display_options['arguments']['uid']['specify_validation'] = TRUE;
   $handler->display->display_options['arguments']['uid']['validate']['type'] = 'php';
   $handler->display->display_options['arguments']['uid']['validate_options']['code'] = 'if (user_access(\'update any bat_booking entity\')) {
-  return FALSE;
-  }
-  else {
-  return TRUE;
-  }';
+    return FALSE;
+    }
+    else {
+    return TRUE;
+    }';
   $handler->display->display_options['arguments']['uid']['validate']['fail'] = 'ignore';
   /* Filter criterion: Events: State (event_state_reference) */
   $handler->display->display_options['filters']['event_state_reference_state_id']['id'] = 'event_state_reference_state_id';
@@ -617,6 +604,10 @@ function roomify_dashboard_views_default_views() {
   $handler->display->display_options['relationships']['uid']['table'] = 'commerce_order';
   $handler->display->display_options['relationships']['uid']['field'] = 'uid';
   $handler->display->display_options['relationships']['uid']['relationship'] = 'order_id';
+  /* Relationship: Entity Reference: Referenced Entity */
+  $handler->display->display_options['relationships']['booking_guest_target_id']['id'] = 'booking_guest_target_id';
+  $handler->display->display_options['relationships']['booking_guest_target_id']['table'] = 'field_data_booking_guest';
+  $handler->display->display_options['relationships']['booking_guest_target_id']['field'] = 'booking_guest_target_id';
   $handler->display->display_options['defaults']['fields'] = FALSE;
   /* Field: BAT Booking: Label */
   $handler->display->display_options['fields']['label']['id'] = 'label';
@@ -625,56 +616,20 @@ function roomify_dashboard_views_default_views() {
   $handler->display->display_options['fields']['label']['label'] = '';
   $handler->display->display_options['fields']['label']['exclude'] = TRUE;
   $handler->display->display_options['fields']['label']['element_label_colon'] = FALSE;
-  /* Field: BAT Booking: First Name */
-  $handler->display->display_options['fields']['field_bcom_first_name']['id'] = 'field_bcom_first_name';
-  $handler->display->display_options['fields']['field_bcom_first_name']['table'] = 'field_data_field_bcom_first_name';
-  $handler->display->display_options['fields']['field_bcom_first_name']['field'] = 'field_bcom_first_name';
-  $handler->display->display_options['fields']['field_bcom_first_name']['label'] = '';
-  $handler->display->display_options['fields']['field_bcom_first_name']['exclude'] = TRUE;
-  $handler->display->display_options['fields']['field_bcom_first_name']['element_label_colon'] = FALSE;
-  $handler->display->display_options['fields']['field_bcom_first_name']['settings'] = array(
-    'conditions' => array(
-      0 => array(
-        'condition' => '',
-      ),
-    ),
-  );
-  /* Field: BAT Booking: Last Name */
-  $handler->display->display_options['fields']['field_bcom_last_name']['id'] = 'field_bcom_last_name';
-  $handler->display->display_options['fields']['field_bcom_last_name']['table'] = 'field_data_field_bcom_last_name';
-  $handler->display->display_options['fields']['field_bcom_last_name']['field'] = 'field_bcom_last_name';
-  $handler->display->display_options['fields']['field_bcom_last_name']['label'] = '';
-  $handler->display->display_options['fields']['field_bcom_last_name']['exclude'] = TRUE;
-  $handler->display->display_options['fields']['field_bcom_last_name']['element_label_colon'] = FALSE;
-  $handler->display->display_options['fields']['field_bcom_last_name']['settings'] = array(
-    'conditions' => array(
-      0 => array(
-        'condition' => '',
-      ),
-    ),
-  );
-  /* Field: BAT Booking: Full Name */
-  $handler->display->display_options['fields']['booking_full_name']['id'] = 'booking_full_name';
-  $handler->display->display_options['fields']['booking_full_name']['table'] = 'field_data_booking_full_name';
-  $handler->display->display_options['fields']['booking_full_name']['field'] = 'booking_full_name';
-  $handler->display->display_options['fields']['booking_full_name']['label'] = '';
-  $handler->display->display_options['fields']['booking_full_name']['exclude'] = TRUE;
-  $handler->display->display_options['fields']['booking_full_name']['element_label_colon'] = FALSE;
-  $handler->display->display_options['fields']['booking_full_name']['empty'] = '[label]';
-  $handler->display->display_options['fields']['booking_full_name']['settings'] = array(
-    'conditions' => array(
-      0 => array(
-        'condition' => '',
-      ),
-    ),
-  );
+  /* Field: Commerce Customer profile: Address - Full name */
+  $handler->display->display_options['fields']['commerce_customer_address_name_line']['id'] = 'commerce_customer_address_name_line';
+  $handler->display->display_options['fields']['commerce_customer_address_name_line']['table'] = 'field_data_commerce_customer_address';
+  $handler->display->display_options['fields']['commerce_customer_address_name_line']['field'] = 'commerce_customer_address_name_line';
+  $handler->display->display_options['fields']['commerce_customer_address_name_line']['relationship'] = 'booking_guest_target_id';
+  $handler->display->display_options['fields']['commerce_customer_address_name_line']['label'] = '';
+  $handler->display->display_options['fields']['commerce_customer_address_name_line']['exclude'] = TRUE;
+  $handler->display->display_options['fields']['commerce_customer_address_name_line']['element_label_colon'] = FALSE;
   /* Field: Global: Custom text */
   $handler->display->display_options['fields']['nothing_1']['id'] = 'nothing_1';
   $handler->display->display_options['fields']['nothing_1']['table'] = 'views';
   $handler->display->display_options['fields']['nothing_1']['field'] = 'nothing';
   $handler->display->display_options['fields']['nothing_1']['label'] = 'Guest Name';
-  $handler->display->display_options['fields']['nothing_1']['alter']['text'] = '[field_bcom_first_name] [field_bcom_last_name]
-    [booking_full_name]';
+  $handler->display->display_options['fields']['nothing_1']['alter']['text'] = '[commerce_customer_address_name_line]';
   /* Field: BAT Booking: Bat booking ID */
   $handler->display->display_options['fields']['booking_id']['id'] = 'booking_id';
   $handler->display->display_options['fields']['booking_id']['table'] = 'bat_bookings';
@@ -691,7 +646,7 @@ function roomify_dashboard_views_default_views() {
   $handler->display->display_options['fields']['property_id']['exclude'] = TRUE;
   $handler->display->display_options['fields']['property_id']['element_label_colon'] = FALSE;
   $handler->display->display_options['fields']['property_id']['separator'] = '';
-  /* Field: Type: Name */
+  /* Field: Type: Label */
   $handler->display->display_options['fields']['name_1']['id'] = 'name_1';
   $handler->display->display_options['fields']['name_1']['table'] = 'bat_types';
   $handler->display->display_options['fields']['name_1']['field'] = 'name';
@@ -792,27 +747,13 @@ function roomify_dashboard_views_default_views() {
       ),
     ),
   );
-  /* Field: Field: Telephone */
-  $handler->display->display_options['fields']['booking_telephone']['id'] = 'booking_telephone';
-  $handler->display->display_options['fields']['booking_telephone']['table'] = 'field_data_booking_telephone';
-  $handler->display->display_options['fields']['booking_telephone']['field'] = 'booking_telephone';
-  $handler->display->display_options['fields']['booking_telephone']['label'] = '';
-  $handler->display->display_options['fields']['booking_telephone']['exclude'] = TRUE;
-  $handler->display->display_options['fields']['booking_telephone']['element_label_colon'] = FALSE;
-  $handler->display->display_options['fields']['booking_telephone']['settings'] = array(
-    'conditions' => array(
-      0 => array(
-        'condition' => '',
-      ),
-    ),
-  );
   /* Field: Global: Custom text */
   $handler->display->display_options['fields']['nothing']['id'] = 'nothing';
   $handler->display->display_options['fields']['nothing']['table'] = 'views';
   $handler->display->display_options['fields']['nothing']['field'] = 'nothing';
   $handler->display->display_options['fields']['nothing']['label'] = 'Telephone';
   $handler->display->display_options['fields']['nothing']['alter']['text'] = '[booking_telephone]
-    [field_bcom_telephone]';
+      [field_bcom_telephone]';
   /* Field: Commerce Order: E-mail */
   $handler->display->display_options['fields']['mail']['id'] = 'mail';
   $handler->display->display_options['fields']['mail']['table'] = 'commerce_order';
@@ -850,14 +791,6 @@ function roomify_dashboard_views_default_views() {
       ),
     ),
   );
-  /* Field: BAT Booking: Address - Thoroughfare (i.e. Street address) */
-  $handler->display->display_options['fields']['booking_address_thoroughfare']['id'] = 'booking_address_thoroughfare';
-  $handler->display->display_options['fields']['booking_address_thoroughfare']['table'] = 'field_data_booking_address';
-  $handler->display->display_options['fields']['booking_address_thoroughfare']['field'] = 'booking_address_thoroughfare';
-  $handler->display->display_options['fields']['booking_address_thoroughfare']['label'] = '';
-  $handler->display->display_options['fields']['booking_address_thoroughfare']['exclude'] = TRUE;
-  $handler->display->display_options['fields']['booking_address_thoroughfare']['element_label_colon'] = FALSE;
-  $handler->display->display_options['fields']['booking_address_thoroughfare']['hide_empty'] = TRUE;
   /* Field: Global: Custom text */
   $handler->display->display_options['fields']['nothing_2']['id'] = 'nothing_2';
   $handler->display->display_options['fields']['nothing_2']['table'] = 'views';
@@ -881,14 +814,6 @@ function roomify_dashboard_views_default_views() {
       ),
     ),
   );
-  /* Field: BAT Booking: Address - Locality (i.e. City) */
-  $handler->display->display_options['fields']['booking_address_locality']['id'] = 'booking_address_locality';
-  $handler->display->display_options['fields']['booking_address_locality']['table'] = 'field_data_booking_address';
-  $handler->display->display_options['fields']['booking_address_locality']['field'] = 'booking_address_locality';
-  $handler->display->display_options['fields']['booking_address_locality']['label'] = '';
-  $handler->display->display_options['fields']['booking_address_locality']['exclude'] = TRUE;
-  $handler->display->display_options['fields']['booking_address_locality']['element_label_colon'] = FALSE;
-  $handler->display->display_options['fields']['booking_address_locality']['hide_empty'] = TRUE;
   /* Field: Global: Custom text */
   $handler->display->display_options['fields']['nothing_3']['id'] = 'nothing_3';
   $handler->display->display_options['fields']['nothing_3']['table'] = 'views';
@@ -896,14 +821,6 @@ function roomify_dashboard_views_default_views() {
   $handler->display->display_options['fields']['nothing_3']['label'] = 'City';
   $handler->display->display_options['fields']['nothing_3']['alter']['text'] = '[booking_address_locality][field_bcom_city]';
   $handler->display->display_options['fields']['nothing_3']['element_label_colon'] = FALSE;
-  /* Field: BAT Booking: Address - Country */
-  $handler->display->display_options['fields']['booking_address_country']['id'] = 'booking_address_country';
-  $handler->display->display_options['fields']['booking_address_country']['table'] = 'field_data_booking_address';
-  $handler->display->display_options['fields']['booking_address_country']['field'] = 'booking_address_country';
-  $handler->display->display_options['fields']['booking_address_country']['label'] = 'Country';
-  $handler->display->display_options['fields']['booking_address_country']['element_label_colon'] = FALSE;
-  $handler->display->display_options['fields']['booking_address_country']['hide_empty'] = TRUE;
-  $handler->display->display_options['fields']['booking_address_country']['display_name'] = 1;
   /* Field: BAT Booking: ZIP */
   $handler->display->display_options['fields']['field_bcom_zip']['id'] = 'field_bcom_zip';
   $handler->display->display_options['fields']['field_bcom_zip']['table'] = 'field_data_field_bcom_zip';
@@ -919,14 +836,6 @@ function roomify_dashboard_views_default_views() {
       ),
     ),
   );
-  /* Field: BAT Booking: Address - Postal code */
-  $handler->display->display_options['fields']['booking_address_postal_code']['id'] = 'booking_address_postal_code';
-  $handler->display->display_options['fields']['booking_address_postal_code']['table'] = 'field_data_booking_address';
-  $handler->display->display_options['fields']['booking_address_postal_code']['field'] = 'booking_address_postal_code';
-  $handler->display->display_options['fields']['booking_address_postal_code']['label'] = '';
-  $handler->display->display_options['fields']['booking_address_postal_code']['exclude'] = TRUE;
-  $handler->display->display_options['fields']['booking_address_postal_code']['element_label_colon'] = FALSE;
-  $handler->display->display_options['fields']['booking_address_postal_code']['hide_empty'] = TRUE;
   /* Field: Global: Custom text */
   $handler->display->display_options['fields']['nothing_4']['id'] = 'nothing_4';
   $handler->display->display_options['fields']['nothing_4']['table'] = 'views';
@@ -1361,6 +1270,157 @@ function roomify_dashboard_views_default_views() {
   $handler->display->display_options['empty']['area']['empty'] = TRUE;
   $handler->display->display_options['empty']['area']['content'] = '<h2>There are no bookings starting in the next 30 days</h2>';
   $handler->display->display_options['empty']['area']['format'] = 'rich_text';
+  $handler->display->display_options['defaults']['relationships'] = FALSE;
+  /* Relationship: Entity Reference: Referenced Entity */
+  $handler->display->display_options['relationships']['booking_event_reference_target_id']['id'] = 'booking_event_reference_target_id';
+  $handler->display->display_options['relationships']['booking_event_reference_target_id']['table'] = 'field_data_booking_event_reference';
+  $handler->display->display_options['relationships']['booking_event_reference_target_id']['field'] = 'booking_event_reference_target_id';
+  /* Relationship: Entity Reference: Referenced Entity */
+  $handler->display->display_options['relationships']['event_bat_unit_reference_target_id']['id'] = 'event_bat_unit_reference_target_id';
+  $handler->display->display_options['relationships']['event_bat_unit_reference_target_id']['table'] = 'field_data_event_bat_unit_reference';
+  $handler->display->display_options['relationships']['event_bat_unit_reference_target_id']['field'] = 'event_bat_unit_reference_target_id';
+  $handler->display->display_options['relationships']['event_bat_unit_reference_target_id']['relationship'] = 'booking_event_reference_target_id';
+  /* Relationship: Unit: Type */
+  $handler->display->display_options['relationships']['type_id']['id'] = 'type_id';
+  $handler->display->display_options['relationships']['type_id']['table'] = 'bat_units';
+  $handler->display->display_options['relationships']['type_id']['field'] = 'type_id';
+  $handler->display->display_options['relationships']['type_id']['relationship'] = 'event_bat_unit_reference_target_id';
+  /* Relationship: Entity Reference: Referencing entity */
+  $handler->display->display_options['relationships']['reverse_property_bat_type_reference_roomify_property']['id'] = 'reverse_property_bat_type_reference_roomify_property';
+  $handler->display->display_options['relationships']['reverse_property_bat_type_reference_roomify_property']['table'] = 'bat_types';
+  $handler->display->display_options['relationships']['reverse_property_bat_type_reference_roomify_property']['field'] = 'reverse_property_bat_type_reference_roomify_property';
+  $handler->display->display_options['relationships']['reverse_property_bat_type_reference_roomify_property']['relationship'] = 'type_id';
+  /* Relationship: Entity Reference: Referenced Entity */
+  $handler->display->display_options['relationships']['booking_guest_target_id']['id'] = 'booking_guest_target_id';
+  $handler->display->display_options['relationships']['booking_guest_target_id']['table'] = 'field_data_booking_guest';
+  $handler->display->display_options['relationships']['booking_guest_target_id']['field'] = 'booking_guest_target_id';
+  $handler->display->display_options['defaults']['fields'] = FALSE;
+  /* Field: Commerce Customer profile: Address - Full name */
+  $handler->display->display_options['fields']['commerce_customer_address_name_line']['id'] = 'commerce_customer_address_name_line';
+  $handler->display->display_options['fields']['commerce_customer_address_name_line']['table'] = 'field_data_commerce_customer_address';
+  $handler->display->display_options['fields']['commerce_customer_address_name_line']['field'] = 'commerce_customer_address_name_line';
+  $handler->display->display_options['fields']['commerce_customer_address_name_line']['relationship'] = 'booking_guest_target_id';
+  $handler->display->display_options['fields']['commerce_customer_address_name_line']['label'] = 'Guest Name';
+  $handler->display->display_options['fields']['commerce_customer_address_name_line']['element_label_colon'] = FALSE;
+  /* Field: BAT Booking: Label */
+  $handler->display->display_options['fields']['label']['id'] = 'label';
+  $handler->display->display_options['fields']['label']['table'] = 'bat_bookings';
+  $handler->display->display_options['fields']['label']['field'] = 'label';
+  $handler->display->display_options['fields']['label']['label'] = '';
+  $handler->display->display_options['fields']['label']['exclude'] = TRUE;
+  $handler->display->display_options['fields']['label']['element_label_colon'] = FALSE;
+  /* Field: BAT Booking: Bat booking ID */
+  $handler->display->display_options['fields']['booking_id']['id'] = 'booking_id';
+  $handler->display->display_options['fields']['booking_id']['table'] = 'bat_bookings';
+  $handler->display->display_options['fields']['booking_id']['field'] = 'booking_id';
+  $handler->display->display_options['fields']['booking_id']['label'] = '';
+  $handler->display->display_options['fields']['booking_id']['exclude'] = TRUE;
+  $handler->display->display_options['fields']['booking_id']['element_label_colon'] = FALSE;
+  /* Field: Roomify Property: Roomify property ID */
+  $handler->display->display_options['fields']['property_id']['id'] = 'property_id';
+  $handler->display->display_options['fields']['property_id']['table'] = 'roomify_properties';
+  $handler->display->display_options['fields']['property_id']['field'] = 'property_id';
+  $handler->display->display_options['fields']['property_id']['relationship'] = 'reverse_property_bat_type_reference_roomify_property';
+  $handler->display->display_options['fields']['property_id']['label'] = '';
+  $handler->display->display_options['fields']['property_id']['exclude'] = TRUE;
+  $handler->display->display_options['fields']['property_id']['element_label_colon'] = FALSE;
+  $handler->display->display_options['fields']['property_id']['separator'] = '';
+  /* Field: Type: Label */
+  $handler->display->display_options['fields']['name_1']['id'] = 'name_1';
+  $handler->display->display_options['fields']['name_1']['table'] = 'bat_types';
+  $handler->display->display_options['fields']['name_1']['field'] = 'name';
+  $handler->display->display_options['fields']['name_1']['relationship'] = 'type_id';
+  $handler->display->display_options['fields']['name_1']['label'] = '';
+  $handler->display->display_options['fields']['name_1']['exclude'] = TRUE;
+  $handler->display->display_options['fields']['name_1']['alter']['alter_text'] = TRUE;
+  $handler->display->display_options['fields']['name_1']['alter']['text'] = ' - [name_1]';
+  $handler->display->display_options['fields']['name_1']['element_label_colon'] = FALSE;
+  /* Field: Roomify Property: Label */
+  $handler->display->display_options['fields']['name']['id'] = 'name';
+  $handler->display->display_options['fields']['name']['table'] = 'roomify_properties';
+  $handler->display->display_options['fields']['name']['field'] = 'name';
+  $handler->display->display_options['fields']['name']['relationship'] = 'reverse_property_bat_type_reference_roomify_property';
+  $handler->display->display_options['fields']['name']['label'] = 'Property';
+  $handler->display->display_options['fields']['name']['alter']['alter_text'] = TRUE;
+  $handler->display->display_options['fields']['name']['alter']['text'] = '[name] [name_1]';
+  $handler->display->display_options['fields']['name']['alter']['make_link'] = TRUE;
+  $handler->display->display_options['fields']['name']['alter']['path'] = 'listing/[property_id]';
+  /* Field: BAT Booking: Start Date */
+  $handler->display->display_options['fields']['booking_start_date']['id'] = 'booking_start_date';
+  $handler->display->display_options['fields']['booking_start_date']['table'] = 'field_data_booking_start_date';
+  $handler->display->display_options['fields']['booking_start_date']['field'] = 'booking_start_date';
+  $handler->display->display_options['fields']['booking_start_date']['label'] = 'Check-In';
+  $handler->display->display_options['fields']['booking_start_date']['settings'] = array(
+    'format_type' => 'bat_daily',
+    'fromto' => 'both',
+    'multiple_number' => '',
+    'multiple_from' => '',
+    'multiple_to' => '',
+    'show_remaining_days' => 0,
+    'conditions' => array(
+      0 => array(
+        'condition' => '',
+      ),
+    ),
+  );
+  /* Field: BAT Booking: End Date */
+  $handler->display->display_options['fields']['booking_end_date']['id'] = 'booking_end_date';
+  $handler->display->display_options['fields']['booking_end_date']['table'] = 'field_data_booking_end_date';
+  $handler->display->display_options['fields']['booking_end_date']['field'] = 'booking_end_date';
+  $handler->display->display_options['fields']['booking_end_date']['label'] = 'Check-Out';
+  $handler->display->display_options['fields']['booking_end_date']['settings'] = array(
+    'format_type' => 'bat_daily',
+    'fromto' => 'both',
+    'multiple_number' => '',
+    'multiple_from' => '',
+    'multiple_to' => '',
+    'show_remaining_days' => 0,
+    'conditions' => array(
+      0 => array(
+        'condition' => '',
+      ),
+    ),
+  );
+  /* Field: BAT Booking: Nights */
+  $handler->display->display_options['fields']['nights']['id'] = 'nights';
+  $handler->display->display_options['fields']['nights']['table'] = 'bat_bookings';
+  $handler->display->display_options['fields']['nights']['field'] = 'nights';
+  /* Field: BAT Booking: Price */
+  $handler->display->display_options['fields']['booking_price']['id'] = 'booking_price';
+  $handler->display->display_options['fields']['booking_price']['table'] = 'field_data_booking_price';
+  $handler->display->display_options['fields']['booking_price']['field'] = 'booking_price';
+  $handler->display->display_options['fields']['booking_price']['click_sort_column'] = 'amount';
+  $handler->display->display_options['fields']['booking_price']['settings'] = array(
+    'calculation' => FALSE,
+    'conditions' => array(
+      0 => array(
+        'condition' => '',
+      ),
+    ),
+  );
+  /* Field: BAT Booking: Edit Link */
+  $handler->display->display_options['fields']['edit_unit']['id'] = 'edit_unit';
+  $handler->display->display_options['fields']['edit_unit']['table'] = 'bat_bookings';
+  $handler->display->display_options['fields']['edit_unit']['field'] = 'edit_unit';
+  $handler->display->display_options['fields']['edit_unit']['label'] = '';
+  $handler->display->display_options['fields']['edit_unit']['element_label_colon'] = FALSE;
+  $handler->display->display_options['fields']['edit_unit']['text'] = 'Edit';
+  /* Field: BAT Booking: Delete Link */
+  $handler->display->display_options['fields']['delete_unit']['id'] = 'delete_unit';
+  $handler->display->display_options['fields']['delete_unit']['table'] = 'bat_bookings';
+  $handler->display->display_options['fields']['delete_unit']['field'] = 'delete_unit';
+  $handler->display->display_options['fields']['delete_unit']['label'] = '';
+  $handler->display->display_options['fields']['delete_unit']['element_label_colon'] = FALSE;
+  $handler->display->display_options['fields']['delete_unit']['text'] = 'Cancel';
+  /* Field: Type: Type */
+  $handler->display->display_options['fields']['type']['id'] = 'type';
+  $handler->display->display_options['fields']['type']['table'] = 'bat_types';
+  $handler->display->display_options['fields']['type']['field'] = 'type';
+  $handler->display->display_options['fields']['type']['relationship'] = 'type_id';
+  $handler->display->display_options['fields']['type']['label'] = '';
+  $handler->display->display_options['fields']['type']['exclude'] = TRUE;
+  $handler->display->display_options['fields']['type']['element_label_colon'] = FALSE;
+  $handler->display->display_options['fields']['type']['machine_name'] = TRUE;
   $handler->display->display_options['defaults']['sorts'] = FALSE;
   /* Sort criterion: BAT Booking: Start Date (booking_start_date) */
   $handler->display->display_options['sorts']['booking_start_date_value']['id'] = 'booking_start_date_value';
@@ -1441,8 +1501,6 @@ function roomify_dashboard_views_default_views() {
     t('Unit entity referenced from event_bat_unit_reference'),
     t('Type'),
     t('Roomify Property referencing Type from property_bat_type_reference'),
-    t('Guest Name'),
-    t('[label]'),
     t('.'),
     t(','),
     t(' - [name_1]'),
@@ -1467,18 +1525,18 @@ function roomify_dashboard_views_default_views() {
     t('Commerce Line item entity referenced from booking_line_item_reference'),
     t('Order'),
     t('Order owner'),
-    t('[field_bcom_first_name] [field_bcom_last_name]
-    [booking_full_name]'),
+    t('Commerce Customer profile entity referenced from booking_guest'),
+    t('Guest Name'),
+    t('[commerce_customer_address_name_line]'),
     t('Telephone'),
     t('[booking_telephone]
-    [field_bcom_telephone]'),
+      [field_bcom_telephone]'),
     t('Email'),
     t('[mail]'),
     t('Address'),
     t('[booking_address_thoroughfare][field_bcom_address]'),
     t('City'),
     t('[booking_address_locality][field_bcom_city]'),
-    t('Country'),
     t('ZIP / Postal Code'),
     t('[booking_address_postal_code][field_bcom_zip]'),
     t('Label'),
@@ -1492,6 +1550,7 @@ function roomify_dashboard_views_default_views() {
     t('Upcoming Arrivals'),
     t('<h2>There are no bookings starting in the next 30 days</h2>'),
   );
+
   $export['dashboard_bookings'] = $view;
 
   $view = new view();
