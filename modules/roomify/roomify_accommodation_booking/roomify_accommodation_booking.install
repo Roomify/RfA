@@ -106,9 +106,23 @@ function roomify_accommodation_booking_update_7003() {
 }
 
 /**
- * Add new order for all existing booking_com or ical bookings.
+ * Add field 'booking_guest' to all booking types.
  */
 function roomify_accommodation_booking_update_7004() {
+  module_enable(array('commerce_customer_ui'));
+
+  module_load_include('inc', 'roomify_accommodation_booking', 'roomify_accommodation_booking.fields');
+
+  $bundles = bat_booking_get_types();
+  foreach ($bundles as $bundle) {
+    roomify_accommodation_booking_add_booking_guest_field($bundle->type);
+  }
+}
+
+/**
+ * Add new order for all existing booking_com or ical bookings.
+ */
+function roomify_accommodation_booking_update_7005() {
   $query = new EntityFieldQuery();
 
   $query->entityCondition('entity_type', 'bat_booking')
@@ -168,6 +182,7 @@ function roomify_accommodation_booking_update_7004() {
           commerce_order_save($order);
 
           $booking->booking_line_item_reference[LANGUAGE_NONE][0]['target_id'] = $line_item->line_item_id;
+          $booking->booking_guest[LANGUAGE_NONE][0]['target_id'] = $customer_profile->profile_id;
 
           field_attach_update('bat_booking', $booking);
         }
@@ -207,25 +222,12 @@ function roomify_accommodation_booking_update_7004() {
           commerce_order_save($order);
 
           $booking->booking_line_item_reference[LANGUAGE_NONE][0]['target_id'] = $line_item->line_item_id;
+          $booking->booking_guest[LANGUAGE_NONE][0]['target_id'] = $customer_profile->profile_id;
 
           field_attach_update('bat_booking', $booking);
         }
       }
     }
-  }
-}
-
-/**
- * Add field 'booking_guest' to all booking types.
- */
-function roomify_accommodation_booking_update_7005() {
-  module_enable(array('commerce_customer_ui'));
-
-  module_load_include('inc', 'roomify_accommodation_booking', 'roomify_accommodation_booking.fields');
-
-  $bundles = bat_booking_get_types();
-  foreach ($bundles as $bundle) {
-    roomify_accommodation_booking_add_booking_guest_field($bundle->type);
   }
 }
 
@@ -257,7 +259,7 @@ function roomify_accommodation_booking_update_7006() {
 
       $booking->booking_guest[LANGUAGE_NONE][0]['target_id'] = $customer_profile->profile_id;
 
-      $booking->save();
+      field_attach_update('bat_booking', $booking);
     }
   }
 }
