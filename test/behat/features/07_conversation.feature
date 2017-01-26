@@ -31,7 +31,7 @@ Feature: Conversation
     Then I fill in "departure[date]" with "2017-04-21"
     And I click on the text "Book Now"
     And I click on the text "Send an Enquiry"
-    Then I fill in "name" with "Test user 1"
+    Then I fill in "guest_name" with "Test user 1"
     And I fill in "further_info" with "Test text test text"
     Then I press "Send Request"
     And I should see "Thank You."

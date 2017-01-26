@@ -1197,7 +1197,7 @@ function roomify_listing_enquiry_form($form, &$form_state) {
     '#markup' => variable_get_value('roomify_form_instructions_text'),
   );
 
-  $form['name'] = array(
+  $form['guest_name'] = array(
     '#type' => 'textfield',
     '#title' => t('Name'),
     '#required' => TRUE,
@@ -1275,7 +1275,7 @@ function roomify_listing_enquiry_form($form, &$form_state) {
 
   $form['submit'] = array(
     '#type' => 'submit',
-    '#value' => t('Send request'),
+    '#value' => t('Send Request'),
     '#attributes' => array(
       'class' => array('btn-primary'),
     ),
@@ -1338,7 +1338,7 @@ function roomify_listing_enquiry_form_submit($form, &$form_state) {
   $values = $form_state['values'];
 
   $email_address = $values['email'];
-  $user_name = commerce_order_unique_username($values['name']);
+  $user_name = commerce_order_unique_username($values['guest_name']);
 
   $account = user_load_by_mail($email_address);
 
@@ -1385,7 +1385,7 @@ function roomify_listing_enquiry_form_submit($form, &$form_state) {
   $conversation->conversation_book_start_date[LANGUAGE_NONE][0]['value'] = $values['arrival_date'];
   $conversation->conversation_book_end_date[LANGUAGE_NONE][0]['value'] = $values['departure_date'];
 
-  $conversation->conversation_user_name[LANGUAGE_NONE][0]['value'] = $values['name'];
+  $conversation->conversation_user_name[LANGUAGE_NONE][0]['value'] = $values['guest_name'];
   $conversation->conversation_book_price[LANGUAGE_NONE][0]['value'] = $values['price'];
   $conversation->conversation_guests[LANGUAGE_NONE][0]['value'] = $values['guests'];
   $conversation->conversation_user_email[LANGUAGE_NONE][0]['value'] = $values['email'];
