@@ -2815,7 +2815,7 @@ function roomify_listing_create_standard_type_fields($type_bundle) {
   }
 
   if (field_read_instance('bat_type', 'field_st_property_reference', $type_bundle) === FALSE) {
-    $field_instances['bat_type-home-field_st_property_reference'] = array(
+    $field_instances['bat_type-standard_type-field_st_property_reference'] = array(
       'bundle' => $type_bundle,
       'default_value' => NULL,
       'default_value_function' => '',
@@ -2854,49 +2854,8 @@ function roomify_listing_create_standard_type_fields($type_bundle) {
     );
   }
 
-  if (field_read_instance('bat_type', 'field_st_property_reference', $type_bundle) === FALSE) {
-    $field_instances['bat_type-room-field_st_property_reference'] = array(
-      'bundle' => 'room',
-      'default_value' => NULL,
-      'default_value_function' => '',
-      'deleted' => 0,
-      'description' => '',
-      'display' => array(
-        'default' => array(
-          'label' => 'above',
-          'module' => 'entityreference',
-          'settings' => array(
-            'conditions' => array(),
-            'link' => FALSE,
-          ),
-          'type' => 'entityreference_label',
-          'weight' => 11,
-        ),
-      ),
-      'entity_type' => 'bat_type',
-      'field_name' => 'field_st_property_reference',
-      'label' => 'Property',
-      'required' => 0,
-      'settings' => array(
-        'behaviors' => array(
-          'prepopulate' => array(
-            'status' => 0,
-          ),
-        ),
-        'user_register_form' => FALSE,
-      ),
-      'widget' => array(
-        'active' => 1,
-        'module' => 'options',
-        'settings' => array(),
-        'type' => 'options_select',
-        'weight' => 12,
-      ),
-    );
-  }
-
   if (field_read_instance('bat_type', 'field_st_details', $type_bundle) === FALSE) {
-    $field_instances['bat_type-home-field_st_details'] = array(
+    $field_instances['bat_type-standard_type-field_st_details'] = array(
       'bundle' => $type_bundle,
       'default_value' => NULL,
       'deleted' => 0,
