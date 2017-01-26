@@ -555,7 +555,7 @@ function roomify_system_update_7031() {
 }
 
 /**
- *  Enable Commerce Addressbook
+ *  Enable Commerce Addressbook.
  */
 function roomify_system_update_7032() {
   module_enable(array('commerce_addressbook'));

@@ -1685,10 +1685,16 @@ function roomify_system_menu_alter(&$items) {
 
 }
 
+/**
+ *
+ */
 function roomify_system_order_title($order) {
   return t('Booking');
 }
 
+/**
+ *
+ */
 function _menu_edit_role_check() {
   global $user;
 
@@ -1912,9 +1918,9 @@ function roomify_system_form_menu_edit_item_alter(&$form, &$form_state) {
  *
  * @param $type
  * @param $property
- * @param $start_date
- * @param $end_date
- * @param $nights
+ * @param DateTime $start_date
+ * @param DateTime $end_date
+ * @param int $nights
  *
  * @return string
  */
