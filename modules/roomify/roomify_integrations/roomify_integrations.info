@@ -7,4 +7,3 @@ dependencies[] = page_manager
 dependencies[] = panels_mini
 dependencies[] = views
 dependencies[] = views_content
-dependencies[] = zopim
