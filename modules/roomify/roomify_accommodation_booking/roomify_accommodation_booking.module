@@ -411,6 +411,7 @@ function roomify_accommodation_booking_confirmation_page($start_date, $end_date,
   $offer_descriptions = array();
 
   $offer_amount = 0;
+  $offer_always_override_price = FALSE;
   if (module_exists('roomify_offers')) {
     $offers = roomify_offers_get_offers($property, $start_date, $temp_end_date);
 
@@ -418,6 +419,10 @@ function roomify_accommodation_booking_confirmation_page($start_date, $end_date,
       foreach ($offers as $offer) {
         if (isset($offer->offer_description[LANGUAGE_NONE][0]['value'])) {
           $offer_descriptions[] = $offer->offer_description[LANGUAGE_NONE][0]['value'];
+        }
+        if (isset($offer->offer_always_override_price[LANGUAGE_NONE][0]['value']) &&
+            $offer->offer_always_override_price[LANGUAGE_NONE][0]['value']) {
+          $offer_always_override_price = TRUE;
         }
       }
 
@@ -440,7 +445,7 @@ function roomify_accommodation_booking_confirmation_page($start_date, $end_date,
   }
 
   // Don't show offer price when greater then amount.
-  if ($offer_amount >= $amount) {
+  if ($offer_amount >= $amount && !$offer_always_override_price) {
     $offer_amount = 0;
     $offer_descriptions = array();
   }
@@ -455,9 +460,9 @@ function roomify_accommodation_booking_confirmation_page($start_date, $end_date,
     $offer_cost = commerce_currency_format($offer_amount, $currency_setting['code']);
   }
 
-  $current_search = drupal_get_form('roomify_accommodation_booking_current_search_form', $type->type_id, $start_date, $end_date, $nights, $group_size, $booking_cost, $offer_cost);
+  $current_search = drupal_get_form('roomify_accommodation_booking_current_search_form', $type->type_id, $start_date, $end_date, $nights, $group_size, $booking_cost, $offer_cost, !$offer_always_override_price);
 
-  $form = drupal_get_form('roomify_accommodation_booking_confirmation_form', $start_date, $end_date, $nights, $type->type_id, $amount, $offer_amount);
+  $form = drupal_get_form('roomify_accommodation_booking_confirmation_form', $start_date, $end_date, $nights, $type->type_id, $amount, $offer_amount, FALSE, NULL, !$offer_always_override_price);
 
   $image = FALSE;
   if ($featured_image = field_get_items('roomify_property', $property, 'field_sp_featured_image')) {
@@ -479,7 +484,7 @@ function roomify_accommodation_booking_confirmation_page($start_date, $end_date,
 /**
  * Change Search form.
  */
-function roomify_accommodation_booking_current_search_form($form, &$form_state, $type_id, $start_date, $end_date, $nights, $group_size, $booking_cost, $offer_amount = '') {
+function roomify_accommodation_booking_current_search_form($form, &$form_state, $type_id, $start_date, $end_date, $nights, $group_size, $booking_cost, $offer_amount = '', $show_original_price = TRUE) {
   $date_format = variable_get('bat_daily_date_format', 'Y-m-d');
 
   $form['current_search']['start_date'] = array(
@@ -499,9 +504,16 @@ function roomify_accommodation_booking_current_search_form($form, &$form_state, 
   );
 
   if ($offer_amount != '') {
-    $form['current_search']['price'] = array(
-      '#markup' => '<div class="current-search-item current-search-price"><label>' . t('Booking Cost') . '</label>' . '<span class="booking-cost">' . $booking_cost . '</span><span class="offer-cost">' . $offer_amount . '</span></div>',
-    );
+    if ($show_original_price) {
+      $form['current_search']['price'] = array(
+        '#markup' => '<div class="current-search-item current-search-price"><label>' . t('Booking Cost') . '</label>' . '<span class="booking-cost">' . $booking_cost . '</span><span class="offer-cost">' . $offer_amount . '</span></div>',
+      );
+    }
+    else {
+      $form['current_search']['price'] = array(
+        '#markup' => '<div class="current-search-item current-search-price"><label>' . t('Booking Cost') . '</label>' . '<span class="offer-cost">' . $offer_amount . '</span></div>',
+      );
+    }
   }
   else {
     $form['current_search']['price'] = array(
@@ -539,7 +551,7 @@ function roomify_accommodation_booking_current_search_form_submit($form, &$form_
 /**
  * Booking confirmation form.
  */
-function roomify_accommodation_booking_confirmation_form($form, &$form_state, $start_date, $end_date, $nights, $type_id, $amount, $offer_amount = 0, $unit_id = FALSE, $conversation = NULL) {
+function roomify_accommodation_booking_confirmation_form($form, &$form_state, $start_date, $end_date, $nights, $type_id, $amount, $offer_amount = 0, $unit_id = FALSE, $conversation = NULL, $show_original_price = TRUE) {
   $type = bat_type_load($type_id);
   $property = roomify_property_load($type->field_st_property_reference[LANGUAGE_NONE][0]['target_id']);
 
@@ -765,16 +777,30 @@ function roomify_accommodation_booking_confirmation_form($form, &$form_state, $s
         if ($offer_amount > 0) {
           $offer_deposit = $total_offer * $multiply_amount;
 
-          $rows[] = array(
-            array(
-              'data' => t(variable_get('roomify_accommodation_booking_deposit_label', 'Deposit (%deposit% down)'), array('%deposit' => $multiply_amount * 100)),
-              'class' => 'name',
-            ),
-            array(
-              'data' => '<span class="booking-cost">' . commerce_currency_format($deposit, $currency_setting['code']) . '</span><span class="offer-cost">' . commerce_currency_format($offer_deposit, $currency_setting['code']) . '</span>',
-              'class' => 'price',
-            ),
-          );
+          if ($show_original_price) {
+            $rows[] = array(
+              array(
+                'data' => t(variable_get('roomify_accommodation_booking_deposit_label', 'Deposit (%deposit% down)'), array('%deposit' => $multiply_amount * 100)),
+                'class' => 'name',
+              ),
+              array(
+                'data' => '<span class="booking-cost">' . commerce_currency_format($deposit, $currency_setting['code']) . '</span><span class="offer-cost">' . commerce_currency_format($offer_deposit, $currency_setting['code']) . '</span>',
+                'class' => 'price',
+              ),
+            );
+          }
+          else {
+            $rows[] = array(
+              array(
+                'data' => t(variable_get('roomify_accommodation_booking_deposit_label', 'Deposit (%deposit% down)'), array('%deposit' => $multiply_amount * 100)),
+                'class' => 'name',
+              ),
+              array(
+                'data' => '<span class="offer-cost">' . commerce_currency_format($offer_deposit, $currency_setting['code']) . '</span>',
+                'class' => 'price',
+              ),
+            );
+          }
         }
         else {
           $rows[] = array(
@@ -827,29 +853,56 @@ function roomify_accommodation_booking_confirmation_form($form, &$form_state, $s
 
   if ($reminder = $total - $deposit) {
     if ($offer_amount > 0) {
-      $rows[] = array(
-        array(
-          'data' => t(variable_get('roomify_accommodation_booking_payable_now_label', 'Payable now')),
-          'class' => 'name bold',
-        ),
-        array(
-          'data' => '<span class="booking-cost">' . commerce_currency_format($deposit + $tax, $currency_setting['code']) . '</span><span class="offer-cost">' . commerce_currency_format($offer_deposit + $tax, $currency_setting['code']) . '</span>',
-          'class' => 'price bold',
-        ),
-      );
+      if ($show_original_price) {
+        $rows[] = array(
+          array(
+            'data' => t(variable_get('roomify_accommodation_booking_payable_now_label', 'Payable now')),
+            'class' => 'name bold',
+          ),
+          array(
+            'data' => '<span class="booking-cost">' . commerce_currency_format($deposit + $tax, $currency_setting['code']) . '</span><span class="offer-cost">' . commerce_currency_format($offer_deposit + $tax, $currency_setting['code']) . '</span>',
+            'class' => 'price bold',
+          ),
+        );
 
-      $offer_reminder = $total_offer - $offer_deposit;
+        $offer_reminder = $total_offer - $offer_deposit;
 
-      $rows[] = array(
-        array(
-          'data' => t(variable_get('roomify_accommodation_booking_reminder_label', 'Reminder (due 60 days before arrival)')),
-          'class' => 'name',
-        ),
-        array(
-          'data' => '<span class="booking-cost">' . commerce_currency_format($reminder, $currency_setting['code']) . '</span><span class="offer-cost">' . commerce_currency_format($offer_reminder, $currency_setting['code']) . '</span>',
-          'class' => 'price',
-        ),
-      );
+        $rows[] = array(
+          array(
+            'data' => t(variable_get('roomify_accommodation_booking_reminder_label', 'Reminder (due 60 days before arrival)')),
+            'class' => 'name',
+          ),
+          array(
+            'data' => '<span class="booking-cost">' . commerce_currency_format($reminder, $currency_setting['code']) . '</span><span class="offer-cost">' . commerce_currency_format($offer_reminder, $currency_setting['code']) . '</span>',
+            'class' => 'price',
+          ),
+        );
+      }
+      else {
+        $rows[] = array(
+          array(
+            'data' => t(variable_get('roomify_accommodation_booking_payable_now_label', 'Payable now')),
+            'class' => 'name bold',
+          ),
+          array(
+            'data' => '<span class="offer-cost">' . commerce_currency_format($offer_deposit + $tax, $currency_setting['code']) . '</span>',
+            'class' => 'price bold',
+          ),
+        );
+
+        $offer_reminder = $total_offer - $offer_deposit;
+
+        $rows[] = array(
+          array(
+            'data' => t(variable_get('roomify_accommodation_booking_reminder_label', 'Reminder (due 60 days before arrival)')),
+            'class' => 'name',
+          ),
+          array(
+            'data' => '<span class="offer-cost">' . commerce_currency_format($offer_reminder, $currency_setting['code']) . '</span>',
+            'class' => 'price',
+          ),
+        );
+      }
     }
     else {
       $rows[] = array(
@@ -877,16 +930,30 @@ function roomify_accommodation_booking_confirmation_form($form, &$form_state, $s
   }
   else {
     if ($offer_amount > 0) {
-      $rows[] = array(
-        array(
-          'data' => t(variable_get('roomify_accommodation_booking_total_cost_label', 'Total cost')),
-          'class' => 'name bold',
-        ),
-        array(
-          'data' => '<span class="booking-cost">' . commerce_currency_format($total + $tax, $currency_setting['code']) . '</span><span class="offer-cost">' . commerce_currency_format($total_offer + $offer_tax, $currency_setting['code']) . '</span>',
-          'class' => 'price bold',
-        ),
-      );
+      if ($show_original_price) {
+        $rows[] = array(
+          array(
+            'data' => t(variable_get('roomify_accommodation_booking_total_cost_label', 'Total cost')),
+            'class' => 'name bold',
+          ),
+          array(
+            'data' => '<span class="booking-cost">' . commerce_currency_format($total + $tax, $currency_setting['code']) . '</span><span class="offer-cost">' . commerce_currency_format($total_offer + $offer_tax, $currency_setting['code']) . '</span>',
+            'class' => 'price bold',
+          ),
+        );
+      }
+      else {
+        $rows[] = array(
+          array(
+            'data' => t(variable_get('roomify_accommodation_booking_total_cost_label', 'Total cost')),
+            'class' => 'name bold',
+          ),
+          array(
+            'data' => '<span class="offer-cost">' . commerce_currency_format($total_offer + $offer_tax, $currency_setting['code']) . '</span>',
+            'class' => 'price bold',
+          ),
+        );
+      }
     }
     else {
       $rows[] = array(
