@@ -1,18 +1,23 @@
-#roomify-integrations-form .zopim-integration a {
+#roomify-manage-integrations-form .zopim-integration a {
   display: inline-block;
   width: 100%;
   float: left;
   color: black;
 }
-
-#roomify-integrations-form .zopim-integration a img {
+#roomify-manage-integrations-form  .zopim-integration a img {
   float: left;
   margin-right: 15px;
   width: 70px;
   height: auto;
 }
-
-#roomify-integrations-form .zopim-integration a h3 {
+#roomify-manage-integrations-form  .zopim-integration a h3 {
   margin-bottom: 13px;
   margin-top: 15px;
+}
+#roomify-integrations-form input.form-submit {
+  margin-top: 20px;
+}
+#roomify-manage-integrations-form,
+#roomify-integrations-form h2 {
+  margin-bottom: 20px;
 }
