@@ -1193,7 +1193,7 @@ function roomify_listing_permission() {
 }
 
 /**
- * Roomify Customer support form
+ * Roomify Customer support form.
  */
 function roomify_customer_support_form() {
   $pages = array(
