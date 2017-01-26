@@ -1441,3 +1441,22 @@ function roomify_listing_enquiry_settings_form_submit($form, &$form_state) {
 function roomify_listing_enquiry_done() {
   return variable_get_value('roomify_submission_reply_text');
 }
+
+/**
+ * Implements hook_variable_info().
+ */
+function roomify_listing_variable_info($options) {
+  $variable['roomify_submission_reply_text'] = array(
+    'title' => 'Submission reply',
+    'type' => 'string',
+    'default' => 'Thank You.',
+  );
+
+  $variable['roomify_form_instructions_text'] = array(
+    'title' => 'Form instructions',
+    'type' => 'string',
+    'default' => '',
+  );
+
+  return $variable;
+}
