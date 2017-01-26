@@ -67,7 +67,15 @@
           width: 100%;
           @include button-variant(#FFFFFF, #127BA3, #158CBA);
           &::before {
-            @extend .glyphicon;
+            position: relative;
+            top: 1px;
+            display: inline-block;
+            font-family: 'Glyphicons Halflings';
+            font-style: normal;
+            font-weight: normal;
+            line-height: 1;
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
             content: "\e003";
             margin-right: 10px;
           }

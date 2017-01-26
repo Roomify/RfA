@@ -297,8 +297,26 @@
     text-align: right;
     margin: 25px 0;
     a {
-      @extend .btn;
-      @extend .btn-default;
+      display: inline-block;
+      margin-bottom: 0;
+      text-align: center;
+      vertical-align: middle;
+      touch-action: manipulation;
+      cursor: pointer;
+      background-image: none;
+      border: 1px solid transparent;
+      white-space: nowrap;
+      line-height: 1.42857;
+      border-radius: 4px;
+      -webkit-user-select: none;
+      -moz-user-select: none;
+      -ms-user-select: none;
+      user-select: none;
+      border-width: 0 1px 4px 1px;
+      font-size: 12px;
+      font-weight: 400;
+      text-transform: uppercase;
+      padding: 6px 10px 4px;
       @include button-variant(#FFFFFF, #127BA3, #158CBA);
     }
   }
@@ -306,9 +324,19 @@
     padding: 0 20px;
     margin-bottom: 35px;
   }
-  .panel_sl_content  {
-    @extend .container;
+  .panel_sl_content {
     float: none;
+    @include container-fixed;
+
+    @media (min-width: $screen-sm-min) {
+      width: $container-sm;
+    }
+    @media (min-width: $screen-md-min) {
+      width: $container-md;
+    }
+    @media (min-width: $screen-lg-min) {
+      width: $container-lg;
+    }
   }
   #property-bat-facets-availability {
     @media (max-width: $screen-md)  and (min-width: $screen-sm) {

@@ -6699,31 +6699,34 @@ body.roomify-notification .roomify-sidebar-link {
     color: red;
     font-size: 30px; } }
 
-.roomify-language-switcher .language-switcher-locale-session,
-.roomify-language-switcher .language-switcher-locale-url {
-  right: 15px;
-  z-index: 15;
-  display: inline-block;
+.roomify-language-switcher {
   position: relative;
-  top: 8px;
-  text-align: right;
-  width: 100%; }
-  .roomify-language-switcher .language-switcher-locale-session li,
-  .roomify-language-switcher .language-switcher-locale-url li {
+  background: #000000; }
+  .roomify-language-switcher .language-switcher-locale-session,
+  .roomify-language-switcher .language-switcher-locale-url {
+    right: 15px;
+    z-index: 15;
     display: inline-block;
-    float: right;
-    margin-left: 15px; }
-    .roomify-language-switcher .language-switcher-locale-session li a,
-    .roomify-language-switcher .language-switcher-locale-url li a {
-      color: #FFFFFF; }
-      .roomify-language-switcher .language-switcher-locale-session li a img,
-      .roomify-language-switcher .language-switcher-locale-url li a img {
-        float: left;
-        margin-right: 5px;
-        margin-top: 4px; }
-    .roomify-language-switcher .language-switcher-locale-session li.active,
-    .roomify-language-switcher .language-switcher-locale-url li.active {
-      text-decoration: underline; }
+    position: relative;
+    top: 8px;
+    text-align: right;
+    width: 100%; }
+    .roomify-language-switcher .language-switcher-locale-session li,
+    .roomify-language-switcher .language-switcher-locale-url li {
+      display: inline-block;
+      float: right;
+      margin-left: 15px; }
+      .roomify-language-switcher .language-switcher-locale-session li a,
+      .roomify-language-switcher .language-switcher-locale-url li a {
+        color: #FFFFFF !important; }
+        .roomify-language-switcher .language-switcher-locale-session li a img,
+        .roomify-language-switcher .language-switcher-locale-url li a img {
+          float: left;
+          margin-right: 5px;
+          margin-top: 4px; }
+      .roomify-language-switcher .language-switcher-locale-session li.active,
+      .roomify-language-switcher .language-switcher-locale-url li.active {
+        text-decoration: underline; }
 
 body.home #content {
   padding: 0; }
