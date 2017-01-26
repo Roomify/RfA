@@ -67,7 +67,7 @@ function roomify_integrations_form($form, &$form_state) {
   $module_path = drupal_get_path('module', 'roomify_integrations');
   $form['#attached']['css'] = array($module_path . '/css/roomify_integrations.css');
   $form['roomify_integration_intro'] = array(
-    '#markup' => '<h2>' . t("Here you can find a list of Integration to enable.") . '</h2>',
+    '#markup' => '<h2>' . t("Here you can find a list of integrations to enable.") . '</h2>',
   );
 
   $integrations = db_select('roomify_integrations', 'i')
