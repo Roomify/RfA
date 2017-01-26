@@ -565,11 +565,10 @@ function locanda_search_availability_search_form_submit($form, $form_state) {
     'query' => array(
       'bat_start_date' => $arrival,
       'bat_end_date' => $departure,
-      'group_size' => $form_state['values']['group_size'] + 1
+      'group_size' => $form_state['values']['group_size'] + 1,
     ),
     'fragment' => 'property-types',
-    )
-  );
+  ));
 }
 
 /**
