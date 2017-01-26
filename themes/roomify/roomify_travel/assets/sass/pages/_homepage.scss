@@ -201,13 +201,13 @@ body.node-type-homepage {
   background: #F8F8F8;
   padding-bottom: 20px;
   .views-row {
-    max-width: 380px;
+    max-width: 340px;
   }
   .view-featured-properties.view-display-id-panel_pane_3 {
     margin: 0 auto;
     max-width: 1200px;
     @media (max-width: $screen-sm-max) {
-      max-width: 380px;
+      max-width: 340px;
     }
   }
   .views-field-name {
@@ -225,10 +225,11 @@ body.node-type-homepage {
     margin: 10px 0;
     text-align: center;
   }
+  .unslick,
   .slide__content {
     margin: 0 auto;
     display: table;
-    max-width: 380px;
+    max-width: 340px;
     width: 100%;
     padding: 10px;
     background: white;
@@ -269,7 +270,7 @@ body.node-type-homepage {
     background-size: contain;
     right: 16px;
     @media (min-width: $screen-md) {
-      right: 25px;
+      right: 45px !important;
     }
   }
   .slick-prev.slick-arrow {
@@ -286,7 +287,7 @@ body.node-type-homepage {
     background-size: contain;
     left: 16px;
     @media (min-width: $screen-md) {
-      left: 25px;
+      left: 45px !important;
     }
   }
   .views-field-starting-price {

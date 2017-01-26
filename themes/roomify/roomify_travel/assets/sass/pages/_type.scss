@@ -262,9 +262,6 @@
         }
         .bat-type-availability-search-submit {
           button {
-            @extend .btn;
-            @extend .btn-default;
-            @extend .btn-danger;
             width: 100%;
           }
         }
