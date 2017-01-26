@@ -1756,6 +1756,17 @@ function roomify_dashboard_views_default_views() {
   $handler->display->display_options['defaults']['row_plugin'] = FALSE;
   $handler->display->display_options['row_plugin'] = 'fields';
   $handler->display->display_options['defaults']['row_options'] = FALSE;
+  $handler->display->display_options['defaults']['relationships'] = FALSE;
+  /* Relationship: Commerce Order: Referenced line items */
+  $handler->display->display_options['relationships']['commerce_line_items_line_item_id']['id'] = 'commerce_line_items_line_item_id';
+  $handler->display->display_options['relationships']['commerce_line_items_line_item_id']['table'] = 'field_data_commerce_line_items';
+  $handler->display->display_options['relationships']['commerce_line_items_line_item_id']['field'] = 'commerce_line_items_line_item_id';
+  /* Relationship: Entity Reference: Referencing entity */
+  $handler->display->display_options['relationships']['reverse_booking_line_item_reference_bat_booking']['id'] = 'reverse_booking_line_item_reference_bat_booking';
+  $handler->display->display_options['relationships']['reverse_booking_line_item_reference_bat_booking']['table'] = 'commerce_line_item';
+  $handler->display->display_options['relationships']['reverse_booking_line_item_reference_bat_booking']['field'] = 'reverse_booking_line_item_reference_bat_booking';
+  $handler->display->display_options['relationships']['reverse_booking_line_item_reference_bat_booking']['relationship'] = 'commerce_line_items_line_item_id';
+  $handler->display->display_options['relationships']['reverse_booking_line_item_reference_bat_booking']['required'] = TRUE;
   $handler->display->display_options['defaults']['fields'] = FALSE;
   /* Field: Commerce Line Item: Order ID */
   $handler->display->display_options['fields']['order_id']['id'] = 'order_id';
@@ -1782,6 +1793,53 @@ function roomify_dashboard_views_default_views() {
   $handler->display->display_options['fields']['nothing']['alter']['make_link'] = TRUE;
   $handler->display->display_options['fields']['nothing']['alter']['path'] = '/user/!1/orders/[order_id]';
   $handler->display->display_options['fields']['nothing']['element_label_colon'] = FALSE;
+  /* Field: BAT Booking: Start Date */
+  $handler->display->display_options['fields']['booking_start_date']['id'] = 'booking_start_date';
+  $handler->display->display_options['fields']['booking_start_date']['table'] = 'field_data_booking_start_date';
+  $handler->display->display_options['fields']['booking_start_date']['field'] = 'booking_start_date';
+  $handler->display->display_options['fields']['booking_start_date']['relationship'] = 'reverse_booking_line_item_reference_bat_booking';
+  $handler->display->display_options['fields']['booking_start_date']['label'] = '';
+  $handler->display->display_options['fields']['booking_start_date']['exclude'] = TRUE;
+  $handler->display->display_options['fields']['booking_start_date']['element_label_colon'] = FALSE;
+  $handler->display->display_options['fields']['booking_start_date']['settings'] = array(
+    'format_type' => 'bat_daily',
+    'custom_date_format' => '',
+    'fromto' => 'both',
+    'multiple_number' => '',
+    'multiple_from' => '',
+    'multiple_to' => '',
+    'show_remaining_days' => 0,
+    'conditions' => array(
+      0 => array(
+        'condition' => '',
+      ),
+    ),
+  );
+  $handler->display->display_options['defaults']['filter_groups'] = FALSE;
+  $handler->display->display_options['defaults']['filters'] = FALSE;
+  /* Filter criterion: Commerce Order: Order state */
+  $handler->display->display_options['filters']['state']['id'] = 'state';
+  $handler->display->display_options['filters']['state']['table'] = 'commerce_order';
+  $handler->display->display_options['filters']['state']['field'] = 'state';
+  $handler->display->display_options['filters']['state']['operator'] = 'not in';
+  $handler->display->display_options['filters']['state']['value'] = array(
+    'cart' => 'cart',
+    'checkout' => 'checkout',
+  );
+  /* Filter criterion: Commerce Line Item: Line item is of a product line item type */
+  $handler->display->display_options['filters']['product_line_item_type']['id'] = 'product_line_item_type';
+  $handler->display->display_options['filters']['product_line_item_type']['table'] = 'commerce_line_item';
+  $handler->display->display_options['filters']['product_line_item_type']['field'] = 'product_line_item_type';
+  $handler->display->display_options['filters']['product_line_item_type']['relationship'] = 'commerce_line_items_line_item_id';
+  $handler->display->display_options['filters']['product_line_item_type']['value'] = '1';
+  /* Filter criterion: BAT Booking: Start Date (booking_start_date) */
+  $handler->display->display_options['filters']['booking_start_date_value']['id'] = 'booking_start_date_value';
+  $handler->display->display_options['filters']['booking_start_date_value']['table'] = 'field_data_booking_start_date';
+  $handler->display->display_options['filters']['booking_start_date_value']['field'] = 'booking_start_date_value';
+  $handler->display->display_options['filters']['booking_start_date_value']['relationship'] = 'reverse_booking_line_item_reference_bat_booking';
+  $handler->display->display_options['filters']['booking_start_date_value']['operator'] = '>=';
+  $handler->display->display_options['filters']['booking_start_date_value']['default_date'] = 'now';
+  $handler->display->display_options['filters']['booking_start_date_value']['year_range'] = '-3:+0';
   $translatables['dashboard_guest_stays'] = array(
     t('Defaults'),
     t('My Stays'),
@@ -1803,6 +1861,7 @@ function roomify_dashboard_views_default_views() {
     t('View panes'),
     t('My Stays sidebar'),
     t('<span class="glyphicon glyphicon-calendar"></span>Upcoming Bookings'),
+    t('BAT Booking referencing Commerce Line item from booking_line_item_reference'),
   );
 
   $export['dashboard_guest_stays'] = $view;
