@@ -6705,7 +6705,8 @@ body.roomify-notification .roomify-sidebar-link {
     font-size: 30px; } }
 
 .roomify-language-switcher {
-  position: relative; }
+  position: relative;
+  background: #000000; }
   .roomify-language-switcher .language-switcher-locale-session,
   .roomify-language-switcher .language-switcher-locale-url {
     right: 15px;
@@ -6722,7 +6723,7 @@ body.roomify-notification .roomify-sidebar-link {
       margin-left: 15px; }
       .roomify-language-switcher .language-switcher-locale-session li a,
       .roomify-language-switcher .language-switcher-locale-url li a {
-        color: #FFFFFF; }
+        color: #FFFFFF !important; }
         .roomify-language-switcher .language-switcher-locale-session li a img,
         .roomify-language-switcher .language-switcher-locale-url li a img {
           float: left;

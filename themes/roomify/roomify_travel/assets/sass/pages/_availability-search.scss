@@ -579,7 +579,7 @@
       border: 1px solid #D4D3D3;
     }
     .form-item-group-size,
-    .form-item-location  {
+    .form-item-location {
       @include make-xs-column(12);
       @include make-sm-column(12);
       @include make-md-column(3);
@@ -638,11 +638,11 @@
         margin-top: 32px;
       }
       .form-submit {
-        @extend .btn-danger;
         text-transform: capitalize;
         padding: 6px;
         font-size: 15px;
         width: 100%;
+        @include button-variant($btn-danger-color, $btn-danger-bg, $btn-danger-border);
       }
     }
     input, select, .form-control {
