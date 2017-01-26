@@ -9072,94 +9072,6 @@ body.toggled #close-sidebar-wrapper {
   .page-contact-us .entitytype-contact-form .form-actions {
     padding-left: 15px; }
 
-.page-entityform .tabs--primary {
-  display: none; }
-.page-entityform .back-link {
-  float: right;
-  margin-top: -55px; }
-.page-entityform .entity-entityform {
-  font-size: 15px; }
-  .page-entityform .entity-entityform .field-name-field-listing-enquiry-info,
-  .page-entityform .entity-entityform .field-name-field-listing-enquiry-name,
-  .page-entityform .entity-entityform .field-name-field-listing-enquiry-email,
-  .page-entityform .entity-entityform .field-name-field-listing-enquiry-guests,
-  .page-entityform .entity-entityform .field-name-field-listing-enquiry-type-ref,
-  .page-entityform .entity-entityform .field-name-field-listing-enquiry-dep-date,
-  .page-entityform .entity-entityform .field-name-field-listing-enquiry-arr-date {
-    padding: 10px;
-    border: 1px solid #E6E6E6;
-    min-height: 120px;
-    width: 25%;
-    display: inline-block; }
-    @media (max-width: 768px) {
-      .page-entityform .entity-entityform .field-name-field-listing-enquiry-info,
-      .page-entityform .entity-entityform .field-name-field-listing-enquiry-name,
-      .page-entityform .entity-entityform .field-name-field-listing-enquiry-email,
-      .page-entityform .entity-entityform .field-name-field-listing-enquiry-guests,
-      .page-entityform .entity-entityform .field-name-field-listing-enquiry-type-ref,
-      .page-entityform .entity-entityform .field-name-field-listing-enquiry-dep-date,
-      .page-entityform .entity-entityform .field-name-field-listing-enquiry-arr-date {
-        width: 50%; } }
-    .page-entityform .entity-entityform .field-name-field-listing-enquiry-info .field-label,
-    .page-entityform .entity-entityform .field-name-field-listing-enquiry-name .field-label,
-    .page-entityform .entity-entityform .field-name-field-listing-enquiry-email .field-label,
-    .page-entityform .entity-entityform .field-name-field-listing-enquiry-guests .field-label,
-    .page-entityform .entity-entityform .field-name-field-listing-enquiry-type-ref .field-label,
-    .page-entityform .entity-entityform .field-name-field-listing-enquiry-dep-date .field-label,
-    .page-entityform .entity-entityform .field-name-field-listing-enquiry-arr-date .field-label {
-      width: 100%;
-      text-transform: uppercase;
-      text-align: center;
-      font-size: 16px;
-      margin-top: 10px;
-      margin-bottom: 5px; }
-    .page-entityform .entity-entityform .field-name-field-listing-enquiry-info .field-items,
-    .page-entityform .entity-entityform .field-name-field-listing-enquiry-name .field-items,
-    .page-entityform .entity-entityform .field-name-field-listing-enquiry-email .field-items,
-    .page-entityform .entity-entityform .field-name-field-listing-enquiry-guests .field-items,
-    .page-entityform .entity-entityform .field-name-field-listing-enquiry-type-ref .field-items,
-    .page-entityform .entity-entityform .field-name-field-listing-enquiry-dep-date .field-items,
-    .page-entityform .entity-entityform .field-name-field-listing-enquiry-arr-date .field-items {
-      text-align: center;
-      width: 100%;
-      margin-top: 10px;
-      display: inline-block;
-      font-size: 22px;
-      color: black;
-      font-weight: 600; }
-  .page-entityform .entity-entityform .field-name-field-listing-enquiry-name,
-  .page-entityform .entity-entityform .field-name-field-listing-enquiry-type-ref,
-  .page-entityform .entity-entityform .field-name-field-listing-enquiry-dep-date,
-  .page-entityform .entity-entityform .field-name-field-listing-enquiry-arr-date {
-    border-right: 0; }
-  .page-entityform .entity-entityform .field-name-field-listing-enquiry-name,
-  .page-entityform .entity-entityform .field-name-field-listing-enquiry-email {
-    width: 50%; }
-    @media (max-width: 768px) {
-      .page-entityform .entity-entityform .field-name-field-listing-enquiry-name,
-      .page-entityform .entity-entityform .field-name-field-listing-enquiry-email {
-        width: 100%; } }
-  .page-entityform .entity-entityform .field-name-field-listing-enquiry-info {
-    padding-left: 25px;
-    padding-right: 25px;
-    width: 100%; }
-    .page-entityform .entity-entityform .field-name-field-listing-enquiry-info .field-label,
-    .page-entityform .entity-entityform .field-name-field-listing-enquiry-info .field-items {
-      text-align: left; }
-  .page-entityform .entity-entityform .field-name-field-listing-enquiry-price {
-    width: 100%;
-    display: inline-block;
-    margin: 30px 0;
-    font-size: 22px;
-    text-align: right;
-    color: black; }
-    .page-entityform .entity-entityform .field-name-field-listing-enquiry-price .field-label {
-      margin-right: 10px;
-      display: inline-block; }
-    .page-entityform .entity-entityform .field-name-field-listing-enquiry-price .field-items {
-      display: inline-block;
-      text-decoration: underline; }
-
 .page-cart .region-content {
   margin-left: -15px;
   margin-right: -15px; }
@@ -13271,13 +13183,6 @@ body.node-type-homepage {
   .page-conversation .entity-message .date {
     margin-left: 55px;
     font-size: 12px; }
-.page-conversation .entity-entityform {
-  margin-bottom: 15px; }
-  .page-conversation .entity-entityform .left {
-    float: left; }
-  .page-conversation .entity-entityform .right {
-    float: right;
-    clear: right; }
 .page-conversation .entity-bat-booking {
   background: white;
   padding: 15px;
@@ -13323,6 +13228,93 @@ body.node-type-homepage {
         border-radius: 5px; }
       .page-conversation .enquiry-item .right .button.make-offer {
         margin-left: 10px; }
+.page-conversation .enquiry {
+  font-size: 15px; }
+  .page-conversation .enquiry .enquiry-info,
+  .page-conversation .enquiry .enquiry-name,
+  .page-conversation .enquiry .enquiry-email,
+  .page-conversation .enquiry .enquiry-guests,
+  .page-conversation .enquiry .enquiry-type-ref,
+  .page-conversation .enquiry .enquiry-dep-date,
+  .page-conversation .enquiry .enquiry-arr-date {
+    padding: 10px;
+    border: 1px solid #E6E6E6;
+    min-height: 120px;
+    width: 25%;
+    display: inline-block; }
+    @media (max-width: 768px) {
+      .page-conversation .enquiry .enquiry-info,
+      .page-conversation .enquiry .enquiry-name,
+      .page-conversation .enquiry .enquiry-email,
+      .page-conversation .enquiry .enquiry-guests,
+      .page-conversation .enquiry .enquiry-type-ref,
+      .page-conversation .enquiry .enquiry-dep-date,
+      .page-conversation .enquiry .enquiry-arr-date {
+        width: 50%; } }
+    .page-conversation .enquiry .enquiry-info .label,
+    .page-conversation .enquiry .enquiry-name .label,
+    .page-conversation .enquiry .enquiry-email .label,
+    .page-conversation .enquiry .enquiry-guests .label,
+    .page-conversation .enquiry .enquiry-type-ref .label,
+    .page-conversation .enquiry .enquiry-dep-date .label,
+    .page-conversation .enquiry .enquiry-arr-date .label {
+      color: #7C7C7C;
+      width: 100%;
+      text-transform: uppercase;
+      text-align: center;
+      font-size: 16px;
+      margin-top: 10px;
+      margin-bottom: 5px;
+      display: inline-block;
+      padding: 0; }
+    .page-conversation .enquiry .enquiry-info .item,
+    .page-conversation .enquiry .enquiry-name .item,
+    .page-conversation .enquiry .enquiry-email .item,
+    .page-conversation .enquiry .enquiry-guests .item,
+    .page-conversation .enquiry .enquiry-type-ref .item,
+    .page-conversation .enquiry .enquiry-dep-date .item,
+    .page-conversation .enquiry .enquiry-arr-date .item {
+      text-align: center;
+      width: 100%;
+      margin-top: 10px;
+      display: inline-block;
+      font-size: 22px;
+      color: black;
+      font-weight: 600; }
+  .page-conversation .enquiry .enquiry-name,
+  .page-conversation .enquiry .enquiry-type-ref,
+  .page-conversation .enquiry .enquiry-dep-date,
+  .page-conversation .enquiry .enquiry-arr-date {
+    border-right: 0; }
+  .page-conversation .enquiry .enquiry-name,
+  .page-conversation .enquiry .enquiry-email {
+    width: 50%; }
+    @media (max-width: 768px) {
+      .page-conversation .enquiry .enquiry-name,
+      .page-conversation .enquiry .enquiry-email {
+        width: 100%; } }
+  .page-conversation .enquiry .enquiry-info {
+    padding-left: 25px;
+    padding-right: 25px;
+    width: 100%; }
+    .page-conversation .enquiry .enquiry-info .label,
+    .page-conversation .enquiry .enquiry-info .item {
+      text-align: left; }
+  .page-conversation .enquiry .enquiry-price {
+    width: 100%;
+    display: inline-block;
+    margin: 30px 0;
+    font-size: 22px;
+    text-align: right;
+    color: black; }
+    .page-conversation .enquiry .enquiry-price .label {
+      color: black;
+      margin-right: 10px;
+      display: inline-block;
+      font-weight: bold; }
+    .page-conversation .enquiry .enquiry-price .item {
+      display: inline-block;
+      text-decoration: underline; }
 
 .view-user-conversations .views-row {
   display: inline-block;

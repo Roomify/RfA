@@ -1705,6 +1705,26 @@ function roomify_conversations_inquiry_render($conversation) {
     $children = $conversation->conversation_children[LANGUAGE_NONE][0]['value'];
   }
 
+  $name = '';
+  if (isset($conversation->conversation_user_name[LANGUAGE_NONE][0]['value'])) {
+    $name = $conversation->conversation_user_name[LANGUAGE_NONE][0]['value'];
+  }
+
+  $price = 0;
+  if (isset($conversation->conversation_book_price[LANGUAGE_NONE][0]['value'])) {
+    $price = $conversation->conversation_book_price[LANGUAGE_NONE][0]['value'];
+  }
+
+  $user_email = '';
+  if (isset($conversation->conversation_user_email[LANGUAGE_NONE][0]['value'])) {
+    $user_email = $conversation->conversation_user_email[LANGUAGE_NONE][0]['value'];
+  }
+
+  $further_info = '';
+  if (isset($conversation->conversation_further_info[LANGUAGE_NONE][0]['value'])) {
+    $further_info = $conversation->conversation_further_info[LANGUAGE_NONE][0]['value'];
+  }
+
   $start_date_object = new DateTime($conversation->conversation_book_start_date[LANGUAGE_NONE][0]['value']);
   $end_date_object = new DateTime($conversation->conversation_book_end_date[LANGUAGE_NONE][0]['value']);
 
@@ -1723,6 +1743,8 @@ function roomify_conversations_inquiry_render($conversation) {
 
   $output .= '</div><div class="right">';
 
+  $output .= '<div class="button">' . l(t('View Enquiry'), '', array('attributes' => array('class' => array('btn', 'btn-primary')))) . '</div>';
+
   if (!isset($conversation->conversation_booking_ref[LANGUAGE_NONE][0]['target_id'])) {
     ctools_include('modal');
     ctools_modal_add_js();
@@ -1731,6 +1753,28 @@ function roomify_conversations_inquiry_render($conversation) {
   }
 
   $output .= '</div>';
+
+  $output .= '</div>';
+
+  $output .= '<div class="enquiry">';
+
+  $output .= '<div class="enquiry-name"><div class="label">' . t('Name') . '</div><div class="item">' . $name . '</div></div>';
+
+  $output .= '<div class="enquiry-email"><div class="label">' . t('Email address') . '</div><div class="item"><a href="mailto:' . $user_email . '">' . $user_email . '</a></div></div>';
+
+  $output .= '<div class="enquiry-arr-date"><div class="label">' . t('Arrival date') . '</div><div class="item"><span class="date-display-single">' . $start_date . '</span></div></div>';
+
+  $output .= '<div class="enquiry-dep-date"><div class="label">' . t('Departure date') . '</div><div class="item"><span class="date-display-single">' . $end_date . '</span></div></div>';
+
+  $output .= '<div class="enquiry-type-ref"><div class="label">' . t('Listing Type') . '</div><div class="item">' . $type_name . '</div></div>';
+
+  $output .= '<div class="enquiry-guests"><div class="label">' . t('Guests') . '</div><div class="item">' . $guests . '</div></div>';
+
+  if ($further_info != '') {
+    $output .= '<div class="enquiry-info"><div class="label">' . t('Further info') . '</div><div class="item">' . $further_info . '</div></div>';
+  }
+
+  $output .= '<div class="enquiry-price"><div class="label">' . t('Price') . ':&nbsp;</div><div class="item">60,00 €</div></div>';
 
   $output .= '</div>';
 
