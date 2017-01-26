@@ -223,3 +223,18 @@ function roomify_adminimal_theme_preprocess_mimemail_message(&$variables) {
   $variables['footer_color'] = $footer_color;
 
 }
+
+/*
+ * Render an image thumb after upload.
+ */
+function roomify_adminimal_theme_roomify_image_thumb_upload($variables) {
+  $element = $variables['element'];
+  if (isset($element['#file']->uri)) {
+    $output = '<div id="edit-logo-ajax-wrapper"><div class="form-item form-type-managed-file form-item-logo"><span class="file">';
+    $output .= '<img style="margin-right:15px;float:left" height="80px" src="' . file_create_url($element['#file']->uri) . '" />';
+    $output .= '</span><input type="submit" id="edit-' . $element['#name'] . '-remove-button" name="' . $element['#name'] . '_remove_button" value="Remove" class="form-submit ajax-processed">';
+    $output .= '<input type="hidden" name="' . $element['#name'] . '[fid]" value="' . $element['#file']->fid . '">';
+
+    return $output;
+  }
+}
