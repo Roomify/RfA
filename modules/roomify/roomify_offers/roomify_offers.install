@@ -27,6 +27,7 @@ function roomify_offers_create_special_offer_rate_type() {
   roomify_offers_add_start_date_field('special_offer');
   roomify_offers_add_end_date_field('special_offer');
   roomify_offers_add_property_reference_field('special_offer');
+  roomify_offers_add_always_override_price_field('special_offer');
 }
 
 /**
@@ -123,4 +124,13 @@ function roomify_offers_update_7004() {
     $instance_info['description'] = 'This offer will no longer be available when making a booking after this date/time';
     field_update_instance($instance_info);
   }
+}
+
+/**
+ * Add "Always override price" field.
+ */
+function roomify_offers_update_7005() {
+  module_load_include('inc', 'roomify_offers', 'roomify_offers.fields');
+
+  roomify_offers_add_always_override_price_field('special_offer');
 }
