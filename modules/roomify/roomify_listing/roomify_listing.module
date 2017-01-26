@@ -1234,12 +1234,14 @@ function roomify_listing_enquiry_form($form, &$form_state) {
   $form['guests'] = array(
     '#type' => 'textfield',
     '#title' => t('Guests'),
+    '#size' => 12,
     '#required' => TRUE,
   );
 
   $form['children'] = array(
     '#type' => 'textfield',
     '#title' => t('Children'),
+    '#size' => 12,
   );
 
   $form['further_info'] = array(

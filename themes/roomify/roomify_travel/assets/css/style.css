@@ -7298,7 +7298,6 @@ body {
         padding: 0; }
       body .sidebar-nav .pane-commerce-cart-cart .line-item-quantity {
         display: none; }
-
       body .sidebar-nav .pane-commerce-cart-cart .glyphicon {
         font-size: 18px;
         margin-right: 4px;
@@ -8915,78 +8914,46 @@ body.toggled #close-sidebar-wrapper {
   display: inline-block;
   margin-bottom: 40px; }
 
-.page-eform-submit-listing-enquiry .region-content,
-.page-eform-submit-listing-enquiry .bootstrap-sidebar-left {
+.page-contact .region-content,
+.page-contact .bootstrap-sidebar-left {
   margin-left: -15px;
   margin-right: -15px; }
-  .page-eform-submit-listing-enquiry .region-content:before, .page-eform-submit-listing-enquiry .region-content:after,
-  .page-eform-submit-listing-enquiry .bootstrap-sidebar-left:before,
-  .page-eform-submit-listing-enquiry .bootstrap-sidebar-left:after {
+  .page-contact .region-content:before, .page-contact .region-content:after,
+  .page-contact .bootstrap-sidebar-left:before,
+  .page-contact .bootstrap-sidebar-left:after {
     content: " ";
     display: table; }
-  .page-eform-submit-listing-enquiry .region-content:after,
-  .page-eform-submit-listing-enquiry .bootstrap-sidebar-left:after {
+  .page-contact .region-content:after,
+  .page-contact .bootstrap-sidebar-left:after {
     clear: both; }
-.page-eform-submit-listing-enquiry .panel {
+.page-contact .panel {
   background: transparent; }
-.page-eform-submit-listing-enquiry .entitytype-listing_enquiry-form {
+.page-contact #roomify-listing-enquiry-form {
   font-size: 16px;
   width: 100%;
   margin: 0 auto; }
-  .page-eform-submit-listing-enquiry .entitytype-listing_enquiry-form .date-combo {
-    border: none;
-    -webkit-box-shadow: none;
-    box-shadow: none;
-    margin-bottom: 0; }
-    .page-eform-submit-listing-enquiry .entitytype-listing_enquiry-form .date-combo legend {
-      background: none;
-      border: none;
-      width: auto;
-      float: left;
-      margin: 0;
-      padding-left: 0;
-      min-width: 140px;
-      padding: 0; }
-    .page-eform-submit-listing-enquiry .entitytype-listing_enquiry-form .date-combo .panel-title {
-      font-size: 16px; }
-    .page-eform-submit-listing-enquiry .entitytype-listing_enquiry-form .date-combo .panel-body {
-      display: inline-block;
-      padding: 0; }
-      .page-eform-submit-listing-enquiry .entitytype-listing_enquiry-form .date-combo .panel-body .date-padding {
-        padding-top: 0;
-        padding-bottom: 0; }
-    .page-eform-submit-listing-enquiry .entitytype-listing_enquiry-form .date-combo .container-inline-date label,
-    .page-eform-submit-listing-enquiry .entitytype-listing_enquiry-form .date-combo .container-inline-date .help-block {
-      display: none; }
-    .page-eform-submit-listing-enquiry .entitytype-listing_enquiry-form .date-combo .container-inline-date .form-item {
-      margin-bottom: 0; }
-  .page-eform-submit-listing-enquiry .entitytype-listing_enquiry-form .form-actions {
+  .page-contact #roomify-listing-enquiry-form .container-inline-date .date-padding label,
+  .page-contact #roomify-listing-enquiry-form .container-inline-date .date-padding .help-block {
+    display: none; }
+  .page-contact #roomify-listing-enquiry-form .container-inline-date .date-padding .form-type-textfield {
+    margin: 0; }
+  .page-contact #roomify-listing-enquiry-form .container-inline-date label {
+    float: left;
+    min-width: 140px;
+    margin-right: 10px; }
+  .page-contact #roomify-listing-enquiry-form .form-submit {
     float: right; }
-  .page-eform-submit-listing-enquiry .entitytype-listing_enquiry-form .field-type-email label, .page-eform-submit-listing-enquiry .entitytype-listing_enquiry-form .field-type-email input,
-  .page-eform-submit-listing-enquiry .entitytype-listing_enquiry-form .field-type-number-integer label,
-  .page-eform-submit-listing-enquiry .entitytype-listing_enquiry-form .field-type-number-integer input,
-  .page-eform-submit-listing-enquiry .entitytype-listing_enquiry-form .field-type-text label,
-  .page-eform-submit-listing-enquiry .entitytype-listing_enquiry-form .field-type-text input {
+  .page-contact #roomify-listing-enquiry-form .form-type-textfield label, .page-contact #roomify-listing-enquiry-form .form-type-textfield input {
     display: inline-block;
     width: auto; }
-  .page-eform-submit-listing-enquiry .entitytype-listing_enquiry-form .field-type-email label,
-  .page-eform-submit-listing-enquiry .entitytype-listing_enquiry-form .field-type-number-integer label,
-  .page-eform-submit-listing-enquiry .entitytype-listing_enquiry-form .field-type-text label {
+  .page-contact #roomify-listing-enquiry-form .form-type-textfield label {
     margin-right: 6px;
     min-width: 140px; }
-  .page-eform-submit-listing-enquiry .entitytype-listing_enquiry-form .field-type-datetime {
+  .page-contact #roomify-listing-enquiry-form .container-inline-date {
     display: inline-block;
     width: 50%; }
-  .page-eform-submit-listing-enquiry .entitytype-listing_enquiry-form .field-type-number-integer {
-    clear: both; }
-  .page-eform-submit-listing-enquiry .entitytype-listing_enquiry-form .field-type-email,
-  .page-eform-submit-listing-enquiry .entitytype-listing_enquiry-form .field-type-datetime,
-  .page-eform-submit-listing-enquiry .entitytype-listing_enquiry-form .field-type-number-integer,
-  .page-eform-submit-listing-enquiry .entitytype-listing_enquiry-form .field-type-text {
-    margin: 15px 0; }
-  .page-eform-submit-listing-enquiry .entitytype-listing_enquiry-form .field-type-email {
-    margin-top: 30px; }
-  .page-eform-submit-listing-enquiry .entitytype-listing_enquiry-form .field-type-text-long {
+  .page-contact #roomify-listing-enquiry-form .form-type-textarea,
+  .page-contact #roomify-listing-enquiry-form .form-type-textfield {
     margin: 30px 0; }
 
 .page-contact-us .region-content,

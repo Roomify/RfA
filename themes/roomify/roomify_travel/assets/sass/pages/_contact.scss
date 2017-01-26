@@ -1,6 +1,6 @@
 // Contact Page Styles
 
-.page-eform-submit-listing-enquiry {
+.page-contact {
   .region-content,
   .bootstrap-sidebar-left {
     @include make-row();
@@ -8,52 +8,30 @@
   .panel {
     background: transparent;
   }
-  .entitytype-listing_enquiry-form {
+  #roomify-listing-enquiry-form {
     font-size: 16px;
     width: 100%;
     margin: 0 auto;
-    .date-combo {
-      border: none;
-      -webkit-box-shadow: none;
-      box-shadow: none;
-      margin-bottom: 0;
-      legend {
-        background: none;
-        border: none;
-        width: auto;
-        float: left;
-        margin: 0;
-        padding-left: 0;
-        min-width: 140px;
-        padding: 0
-      }
-      .panel-title {
-        font-size: 16px;
-      }
-      .panel-body {
-        display: inline-block;
-        padding: 0;
-        .date-padding {
-          padding-top: 0;
-          padding-bottom: 0;
-        }
-      }
-      .container-inline-date {
+    .container-inline-date {
+      .date-padding {
         label,
         .help-block {
           display: none;
         }
-        .form-item {
-          margin-bottom: 0;
+        .form-type-textfield {
+          margin: 0;
         }
       }
+      label {
+        float: left;
+        min-width: 140px;
+        margin-right: 10px;
+      }
     }
-    .form-actions {
+    .form-submit {
       float: right;
     }
-    .field-type-email,
-    .field-type-number-integer,
-    .field-type-text {
+    .form-type-textfield {
       label, input {
         display: inline-block;
         width: auto;
@@ -63,23 +41,12 @@
         min-width: 140px;
       }
     }
-    .field-type-datetime {
+    .container-inline-date {
       display: inline-block;
       width: 50%;
     }
-    .field-type-number-integer {
-      clear: both;
-    }
-    .field-type-email,
-    .field-type-datetime,
-    .field-type-number-integer,
-    .field-type-text {
-      margin: 15px 0;
-    }
-    .field-type-email {
-      margin-top: 30px;
-    }
-    .field-type-text-long {
+    .form-type-textarea,
+    .form-type-textfield {
       margin: 30px 0;
     }
   }
