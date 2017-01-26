@@ -94,7 +94,7 @@ body {
           }
         }
         .sidebar-profile-message {
-          @extend .h3;
+          @include h3();
           text-align: center;
           color: white;
           margin-top: 0px;
@@ -175,10 +175,11 @@ body {
           }
         }
       }
-      .form-actions  {
+      .form-actions {
         button {
+          background-color: $btn-success-bg;
+          border-color: $btn-success-border;
           width: 100%;
-          @extend .btn-success;
           font-size: 16px;
           span {
             margin-right: 6px;

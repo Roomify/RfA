@@ -246,6 +246,7 @@ function roomify_listing_search_block_form() {
     '#suffix' => '</div>',
     '#type' => 'submit',
     '#value' => $button_text,
+    '#attributes' => array('class' => array('btn-danger')),
   );
 
   return $form;
@@ -708,6 +709,7 @@ function bat_type_search_availability_form() {
     '#prefix' => '<div class="bat-type-availability-search-submit">',
     '#suffix' => '</div>',
     '#value' => t('Search'),
+    '#attributes' => array('class' => array('btn-default btn-danger')),
   );
 
   return $form;

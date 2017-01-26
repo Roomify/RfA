@@ -136,7 +136,13 @@
     @include transition(.2s background-color ease-in-out);
 
     &::before {
-      @extend .glyphicon;
+      position: relative;
+      font-family: 'Glyphicons Halflings';
+      font-style: normal;
+      font-weight: normal;
+      line-height: 1;
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
       top: auto;
       content: "\e005";
       color: white;
