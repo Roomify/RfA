@@ -1688,6 +1688,8 @@ function roomify_conversations_withdraw_offer_form_submit($form, &$form_state) {
 function roomify_conversations_inquiry_render($conversation) {
   global $user;
 
+  drupal_add_js(drupal_get_path('module', 'roomify_conversations') . '/js/roomify_conversations.js');
+
   $output = '<div class="enquiry-item">';
 
   $date_format = variable_get('bat_daily_date_format', 'Y-m-d');
@@ -1743,7 +1745,7 @@ function roomify_conversations_inquiry_render($conversation) {
 
   $output .= '</div><div class="right">';
 
-  $output .= '<div class="button">' . l(t('View Enquiry'), '', array('attributes' => array('class' => array('btn', 'btn-primary')))) . '</div>';
+  $output .= '<div class="button">' . l(t('View Enquiry'), '', array('attributes' => array('class' => array('expand-enquiry', 'btn', 'btn-primary')))) . '</div>';
 
   if (!isset($conversation->conversation_booking_ref[LANGUAGE_NONE][0]['target_id'])) {
     ctools_include('modal');
@@ -1756,11 +1758,11 @@ function roomify_conversations_inquiry_render($conversation) {
 
   $output .= '</div>';
 
-  $output .= '<div class="enquiry">';
+  $output .= '<div class="enquiry" style="display: none;">';
 
   $output .= '<div class="enquiry-name"><div class="label">' . t('Name') . '</div><div class="item">' . $name . '</div></div>';
 
-  $output .= '<div class="enquiry-email"><div class="label">' . t('Email address') . '</div><div class="item"><a href="mailto:' . $user_email . '">' . $user_email . '</a></div></div>';
+  $output .= '<div class="enquiry-email"><div class="label">' . t('Email address') . '</div><div class="item">' . $user_email . '</div></div>';
 
   $output .= '<div class="enquiry-arr-date"><div class="label">' . t('Arrival date') . '</div><div class="item"><span class="date-display-single">' . $start_date . '</span></div></div>';
 
