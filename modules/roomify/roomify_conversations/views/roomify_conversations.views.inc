@@ -97,7 +97,7 @@ function roomify_conversations_views_default_views() {
   $handler->display->display_options['fields']['conversation_id']['exclude'] = TRUE;
   $handler->display->display_options['fields']['conversation_id']['element_label_colon'] = FALSE;
   $handler->display->display_options['fields']['conversation_id']['separator'] = '';
-  /* Field: Type: Name */
+  /* Field: Type: Label */
   $handler->display->display_options['fields']['name_1']['id'] = 'name_1';
   $handler->display->display_options['fields']['name_1']['table'] = 'bat_types';
   $handler->display->display_options['fields']['name_1']['field'] = 'name';
@@ -221,6 +221,20 @@ function roomify_conversations_views_default_views() {
   $handler->display->display_options['fields']['type']['exclude'] = TRUE;
   $handler->display->display_options['fields']['type']['element_label_colon'] = FALSE;
   $handler->display->display_options['fields']['type']['machine_name'] = TRUE;
+  /* Field: Roomify Conversation: Further info */
+  $handler->display->display_options['fields']['conversation_further_info']['id'] = 'conversation_further_info';
+  $handler->display->display_options['fields']['conversation_further_info']['table'] = 'field_data_conversation_further_info';
+  $handler->display->display_options['fields']['conversation_further_info']['field'] = 'conversation_further_info';
+  $handler->display->display_options['fields']['conversation_further_info']['exclude'] = TRUE;
+  $handler->display->display_options['fields']['conversation_further_info']['alter']['max_length'] = '50';
+  $handler->display->display_options['fields']['conversation_further_info']['alter']['trim'] = TRUE;
+  $handler->display->display_options['fields']['conversation_further_info']['settings'] = array(
+    'conditions' => array(
+      0 => array(
+        'condition' => '',
+      ),
+    ),
+  );
   /* Field: Roomify Conversation: Most recent message */
   $handler->display->display_options['fields']['most_recent_message']['id'] = 'most_recent_message';
   $handler->display->display_options['fields']['most_recent_message']['table'] = 'roomify_conversations';
@@ -230,13 +244,25 @@ function roomify_conversations_views_default_views() {
   $handler->display->display_options['fields']['most_recent_message']['alter']['text'] = '[most_recent_message]';
   $handler->display->display_options['fields']['most_recent_message']['alter']['max_length'] = '50';
   $handler->display->display_options['fields']['most_recent_message']['alter']['trim'] = TRUE;
-  $handler->display->display_options['fields']['most_recent_message']['empty'] = '[field_listing_enquiry_info]';
+  $handler->display->display_options['fields']['most_recent_message']['empty'] = '[conversation_further_info]';
   /* Field: Roomify Conversation: Most recent message author */
   $handler->display->display_options['fields']['most_recent_message_user']['id'] = 'most_recent_message_user';
   $handler->display->display_options['fields']['most_recent_message_user']['table'] = 'roomify_conversations';
   $handler->display->display_options['fields']['most_recent_message_user']['field'] = 'most_recent_message_user';
   $handler->display->display_options['fields']['most_recent_message_user']['exclude'] = TRUE;
   $handler->display->display_options['fields']['most_recent_message_user']['empty'] = '[conversation_guest_user_ref]';
+  /* Field: Roomify Conversation: Price */
+  $handler->display->display_options['fields']['conversation_book_price']['id'] = 'conversation_book_price';
+  $handler->display->display_options['fields']['conversation_book_price']['table'] = 'field_data_conversation_book_price';
+  $handler->display->display_options['fields']['conversation_book_price']['field'] = 'conversation_book_price';
+  $handler->display->display_options['fields']['conversation_book_price']['exclude'] = TRUE;
+  $handler->display->display_options['fields']['conversation_book_price']['settings'] = array(
+    'conditions' => array(
+      0 => array(
+        'condition' => '',
+      ),
+    ),
+  );
   /* Field: BAT Booking: Price */
   $handler->display->display_options['fields']['booking_price']['id'] = 'booking_price';
   $handler->display->display_options['fields']['booking_price']['table'] = 'field_data_booking_price';
@@ -245,7 +271,7 @@ function roomify_conversations_views_default_views() {
   $handler->display->display_options['fields']['booking_price']['label'] = '';
   $handler->display->display_options['fields']['booking_price']['exclude'] = TRUE;
   $handler->display->display_options['fields']['booking_price']['element_label_colon'] = FALSE;
-  $handler->display->display_options['fields']['booking_price']['empty'] = '[field_listing_enquiry_price]';
+  $handler->display->display_options['fields']['booking_price']['empty'] = '[conversation_book_price]';
   $handler->display->display_options['fields']['booking_price']['click_sort_column'] = 'amount';
   $handler->display->display_options['fields']['booking_price']['settings'] = array(
     'calculation' => FALSE,
@@ -261,7 +287,7 @@ function roomify_conversations_views_default_views() {
   $handler->display->display_options['fields']['most_recent_message_1']['field'] = 'most_recent_message';
   $handler->display->display_options['fields']['most_recent_message_1']['label'] = 'Most recent message - not trimmed';
   $handler->display->display_options['fields']['most_recent_message_1']['exclude'] = TRUE;
-  $handler->display->display_options['fields']['most_recent_message_1']['empty'] = '[field_listing_enquiry_info_1]';
+  $handler->display->display_options['fields']['most_recent_message_1']['empty'] = '[conversation_further_info]';
   /* Field: Roomify Conversation: URL */
   $handler->display->display_options['fields']['url']['id'] = 'url';
   $handler->display->display_options['fields']['url']['table'] = 'views_entity_roomify_conversation';
