@@ -182,7 +182,7 @@ JS;
       $property->delete();
     }
 
-    roomify_accommodation_example_content_multi_property_delete(array('users' => 1, 'conversations' => 1, 'bookings' => 1));
+    roomify_accommodation_example_content_multi_property_delete(array('users' => 1, 'conversations' => 1, 'bookings' => 1, 'homepage' => 1));
     roomify_accommodation_example_content_multi_property();
 
     $index = search_api_index_load('properties_index');
