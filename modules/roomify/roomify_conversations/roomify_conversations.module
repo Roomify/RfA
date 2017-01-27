@@ -1747,11 +1747,13 @@ function roomify_conversations_inquiry_render($conversation) {
 
   $output .= '<div class="button">' . l(t('View Enquiry'), '', array('attributes' => array('class' => array('expand-enquiry', 'btn', 'btn-primary')))) . '</div>';
 
-  if (!isset($conversation->conversation_booking_ref[LANGUAGE_NONE][0]['target_id'])) {
-    ctools_include('modal');
-    ctools_modal_add_js();
+  if ($user->uid == $type->uid) {
+    if (!isset($conversation->conversation_booking_ref[LANGUAGE_NONE][0]['target_id'])) {
+      ctools_include('modal');
+      ctools_modal_add_js();
 
-    $output .= '<div class="button make-offer">' . l(t('Make Offer'), 'admin/bat/make-offer', array('attributes' => array('class' => array('ctools-use-modal', 'btn', 'btn-success')), 'query' => array('startdate' => $start_date_object->format('Y-m-d'), 'enddate' => $end_date_object->format('Y-m-d'), 'groupsize' => $guests, 'groupsizechildren' => $children, 'unitid' => $conversation->conversation_unit_type_ref[LANGUAGE_NONE][0]['target_id'], 'conversationid' => $conversation->conversation_id))) . '</div>';
+      $output .= '<div class="button make-offer">' . l(t('Make Offer'), 'admin/bat/make-offer', array('attributes' => array('class' => array('ctools-use-modal', 'btn', 'btn-success')), 'query' => array('startdate' => $start_date_object->format('Y-m-d'), 'enddate' => $end_date_object->format('Y-m-d'), 'groupsize' => $guests, 'groupsizechildren' => $children, 'unitid' => $conversation->conversation_unit_type_ref[LANGUAGE_NONE][0]['target_id'], 'conversationid' => $conversation->conversation_id))) . '</div>';
+    }
   }
 
   $output .= '</div>';
