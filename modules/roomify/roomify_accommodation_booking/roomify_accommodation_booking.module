@@ -2128,10 +2128,9 @@ function roomify_accommodation_booking_conversation_confirmation_page($conversat
 
   $nights = $start_date->diff($end_date)->days;
 
-  $inquiry = $conversation_wrapper->conversation_inquiry_ref->value()[0];
   $group_size = 0;
-  if (isset($inquiry->field_listing_enquiry_guests[LANGUAGE_NONE][0]['value'])) {
-    $group_size = $inquiry->field_listing_enquiry_guests[LANGUAGE_NONE][0]['value'];
+  if (isset($conversation->conversation_guests[LANGUAGE_NONE][0]['value'])) {
+    $group_size = $conversation->conversation_guests[LANGUAGE_NONE][0]['value'];
   }
 
   $current_search = drupal_get_form('roomify_accommodation_booking_current_search_form', $type->type_id, $start_date, $end_date, $nights, $group_size, $booking_cost);
