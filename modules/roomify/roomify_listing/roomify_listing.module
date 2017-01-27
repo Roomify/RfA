@@ -1449,7 +1449,7 @@ function roomify_listing_variable_info($options) {
   $variable['roomify_submission_reply_text'] = array(
     'title' => 'Submission reply',
     'type' => 'string',
-    'default' => 'Thank You.',
+    'default' => 'Thank You. Your Enquiry has been received and a Conversation has started with the property owner. They will be able to reply and provide a customized offer for you.',
   );
 
   $variable['roomify_form_instructions_text'] = array(
