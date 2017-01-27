@@ -35,7 +35,7 @@ function roomify_terms_conditions_variable_group_info() {
   $groups['roomify'] = array(
     'title' => t('Roomify'),
     'description' => t('Roomify variables.'),
-    'access' => 'administer site configuration',
+    'access' => 'administer roomify terminology',
   );
 
   return $groups;

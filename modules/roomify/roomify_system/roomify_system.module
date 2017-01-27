@@ -168,6 +168,22 @@ function roomify_footer_form($form, &$form_state) {
 }
 
 /**
+ * Helper to switch the language of the variables to the proper one.
+ *
+ * @see https://www.drupal.org/node/2268415
+ */
+function _roomify_system_prepare_variables_realm() {
+  if (empty($_GET['variable_realm_key_language'])) {
+    return;
+  }
+
+  $language = $_GET['variable_realm_key_language'];
+
+  variable_realm_switch('language', $language, FALSE);
+  variable_realm_rebuild();
+}
+
+/**
  * Form "Global Site Settings".
  */
 function roomify_system_global_site_settings_form($form, &$form_state) {
@@ -183,6 +199,7 @@ function roomify_system_global_site_settings_form($form, &$form_state) {
     }
   }
   form_load_include($form_state, 'inc', 'variable_realm', 'variable_realm.variable');
+  _roomify_system_prepare_variables_realm();
 
   $form['site_information'] = array(
     '#type' => 'fieldset',
