@@ -1271,6 +1271,7 @@ function roomify_listing_enquiry_form($form, &$form_state) {
   $form['price'] = array(
     '#type' => 'textfield',
     '#title' => t('Price'),
+    '#size' => 12,
   );
 
   $form['submit'] = array(
@@ -1401,24 +1402,34 @@ function roomify_listing_enquiry_form_submit($form, &$form_state) {
  * "Enquiry Form settings" form.
  */
 function roomify_listing_enquiry_settings_form($form, &$form_state) {
-  $form['submission_reply'] = array(
-    '#type' => 'textfield',
+  form_load_include($form_state, 'inc', 'variable_realm', 'variable_realm.variable');
+
+  $submission_reply_text = variable_get_value('roomify_submission_reply_text');
+  $form_instructions_text = variable_get_value('roomify_form_instructions_text');
+
+  $form['roomify_submission_reply_text'] = array(
+    '#type' => 'text_format',
     '#title' => t('Submission reply'),
     '#description' => t('This text is shown on your site after a guest submits a booking enquiry.'),
-    '#default_value' => variable_get_value('roomify_submission_reply_text'),
+    '#default_value' => (isset($submission_reply_text['value'])) ? $submission_reply_text['value'] : '',
+    '#format' => (isset($submission_reply_text['format'])) ? $submission_reply_text['format'] : 'filtered_text',
   );
 
-  $form['form_instructions'] = array(
-    '#type' => 'textfield',
+  $form['roomify_form_instructions_text'] = array(
+    '#type' => 'text_format',
     '#title' => t('Form instructions'),
     '#description' => t('This text is show to guests on the booking enquiry form.'),
-    '#default_value' => variable_get_value('roomify_form_instructions_text'),
+    '#default_value' => (isset($form_instructions_text['value'])) ? $form_instructions_text['value'] : '',
+    '#format' => (isset($form_instructions_text['format'])) ? $form_instructions_text['format'] : 'filtered_text',
   );
 
   $form['submit'] = array(
     '#type' => 'submit',
     '#value' => t('Save configuration'),
   );
+
+  $form['#submit'] = array('roomify_listing_enquiry_settings_form_submit');
+  variable_realm_variable_settings_form_alter($form, $form_state, 'roomify_listing_enquiry_settings_form');
 
   return $form;
 }
@@ -1427,11 +1438,6 @@ function roomify_listing_enquiry_settings_form($form, &$form_state) {
  * Submit function for the roomify_listing_enquiry_settings_form form.
  */
 function roomify_listing_enquiry_settings_form_submit($form, &$form_state) {
-  $values = $form_state['values'];
-
-  variable_set_value('roomify_submission_reply_text', $values['submission_reply']);
-  variable_set_value('roomify_form_instructions_text', $values['form_instructions']);
-
   drupal_set_message(t('The configuration options have been saved.'));
 }
 
@@ -1448,14 +1454,18 @@ function roomify_listing_enquiry_done() {
 function roomify_listing_variable_info($options) {
   $variable['roomify_submission_reply_text'] = array(
     'title' => 'Submission reply',
-    'type' => 'string',
+    'type' => 'text_format',
     'default' => 'Thank You. Your Enquiry has been received and a Conversation has started with the property owner. They will be able to reply and provide a customized offer for you.',
+    'localize' => TRUE,
+    'group' => 'roomify',
   );
 
   $variable['roomify_form_instructions_text'] = array(
     'title' => 'Form instructions',
-    'type' => 'string',
+    'type' => 'text_format',
     'default' => '',
+    'localize' => TRUE,
+    'group' => 'roomify',
   );
 
   return $variable;
