@@ -84,9 +84,19 @@ function roomify_example_content_create_location_example_node() {
 /**
  * Enable the Roomify Homepage module.
  */
-function roomify_example_content_create_homepage_node() {
+function roomify_example_content_create_homepage_node($pid1, $pid2, $pid3) {
   module_enable(array('roomify_homepage'));
   drupal_flush_all_caches();
+
+  // Add some featured properties.
+  $queue = entityqueue_queue_load('featured_properties');
+  $subqueue = entityqueue_subqueue_load(reset($queue));
+  $subqueue->eq_roomify_property[LANGUAGE_NONE] = array(
+    0 => array('target_id' => $pid1),
+    1 => array('target_id' => $pid2),
+    2 => array('target_id' => $pid3),
+  );
+  $subqueue->save();
 }
 
 /**
@@ -1026,7 +1036,7 @@ function roomify_accommodation_example_content_multi_property() {
 
   // Create Homepage.
   variable_set('roomify_accommodation_example_content', 'multi_property');
-  roomify_example_content_create_homepage_node();
+  roomify_example_content_create_homepage_node($property_id_1, $property_id_2, $property_id_3);
 
   $property_ids = array(
     $property_id_1 => 'Casa Sul Mare',
@@ -1180,6 +1190,20 @@ function roomify_accommodation_example_content_multi_property_delete($type_delet
     if ($property2 = user_load_by_name('property2')) {
       user_delete($property2->uid);
     }
+  }
+  if ($type_delete['homepage']) {
+    // Delete all Homepage nodes.
+    $node_types = array('homepage');
+    $query = new EntityFieldQuery();
+    $query->entityCondition('entity_type', 'node')
+      ->propertyCondition('type', $node_types, 'IN');
+    $result = $query->execute();
+    foreach ($result['node'] as $node) {
+      node_delete($node->nid);
+    }
+
+    module_disable(array('roomify_homepage'));
+    drupal_uninstall_modules(array('roomify_homepage'));
   }
 
   variable_del('roomify_accommodation_example_content');
@@ -1357,6 +1381,13 @@ function roomify_accommodation_example_content_delete_form($form, &$form_state) 
       $form['type_delete']['bookings'] = array(
         '#type' => 'checkbox',
         '#title' => t('Remove example Bookings'),
+        '#default_value' => 1,
+      );
+    }
+    if (module_exists('roomify_homepage')) {
+      $form['type_delete']['homepage'] = array(
+        '#type' => 'checkbox',
+        '#title' => t('Remove Roomify Homepage'),
         '#default_value' => 1,
       );
     }
