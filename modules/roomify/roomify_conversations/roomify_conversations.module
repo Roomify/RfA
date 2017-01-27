@@ -1745,7 +1745,8 @@ function roomify_conversations_inquiry_render($conversation) {
 
   $output .= '</div><div class="right">';
 
-  $output .= '<div class="button">' . l(t('View Enquiry'), '', array('attributes' => array('class' => array('expand-enquiry', 'btn', 'btn-primary')))) . '</div>';
+  $output .= '<div class="button">' . l(t('View Enquiry Details'), '', array('attributes' => array('class' => array('expand-enquiry', 'btn', 'btn-primary')))) . '</div>';
+  $output .= '<div class="button" style="display: none;">' . l(t('Hide Enquiry Details'), '', array('attributes' => array('class' => array('hide-enquiry', 'btn', 'btn-primary')))) . '</div>';
 
   if ($user->uid == $type->uid) {
     if (!isset($conversation->conversation_booking_ref[LANGUAGE_NONE][0]['target_id'])) {
