@@ -274,7 +274,7 @@ function roomify_blog_create_fields() {
       'bundle' => 'blog',
       'default_value' => NULL,
       'deleted' => 0,
-      'description' => '',
+      'description' => 'You may add new Areas, check out the Manage Taxonomies link on the dashboard or follow <a href="/admin/structure/taxonomy/location" target="_blank">this link</a>',
       'display' => array(
         'default' => array(
           'label' => 'above',
@@ -321,7 +321,7 @@ function roomify_blog_create_fields() {
       'bundle' => 'blog',
       'default_value' => NULL,
       'deleted' => 0,
-      'description' => '',
+      'description' => 'You may add new Categories, check out the Manage Taxonomies link on the dashboard or follow <a href="/admin/structure/taxonomy/category" target="_blank">this link</a>',
       'display' => array(
         'default' => array(
           'label' => 'above',
@@ -422,7 +422,7 @@ function roomify_blog_create_fields() {
         ),
       ),
       'deleted' => 0,
-      'description' => 'The last blogpost with this checked will be placed as top blogpost on /blog page.',
+      'description' => 'Check this post as featured blogpost.',
       'display' => array(
         'default' => array(
           'label' => 'above',

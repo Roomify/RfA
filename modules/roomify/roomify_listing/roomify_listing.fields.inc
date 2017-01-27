@@ -776,7 +776,7 @@ function roomify_listing_create_property_fields($property_bundle) {
     $field_instances['roomify_property-standard_property-field_sp_property_type'] = array(
       'bundle' => $property_bundle,
       'default_value' => NULL,
-      'description' => '',
+      'description' => 'You may add new Property Types, check out the Manage Taxonomies link on the dashboard or follow <a href="/admin/structure/taxonomy/property_type" target="_blank">this link</a>',
       'display' => array(
         'default' => array(
           'label' => 'above',
@@ -937,7 +937,7 @@ function roomify_listing_create_property_fields($property_bundle) {
     $field_instances['roomify_property-standard_property-field_sp_amenities'] = array(
       'bundle' => $property_bundle,
       'default_value' => NULL,
-      'description' => '',
+      'description' => 'You may add new Amenities, check out the Manage Taxonomies link on the dashboard or follow <a href="/admin/structure/taxonomy/amenities" target="_blank">this link</a>',
       'display' => array(
         'default' => array(
           'label' => 'above',
@@ -975,7 +975,7 @@ function roomify_listing_create_property_fields($property_bundle) {
     $field_instances['roomify_property-standard_property-field_sp_area'] = array(
       'bundle' => $property_bundle,
       'default_value' => NULL,
-      'description' => '',
+      'description' => 'You may add new Areas, check out the Manage Taxonomies link on the dashboard or follow <a href="/admin/structure/taxonomy/location" target="_blank">this link</a>',
       'display' => array(
         'default' => array(
           'label' => 'above',
@@ -1015,7 +1015,7 @@ function roomify_listing_create_property_fields($property_bundle) {
     $field_instances['roomify_property-standard_property-field_sp_area_type'] = array(
       'bundle' => $property_bundle,
       'default_value' => NULL,
-      'description' => '',
+      'description' => 'You may add new Area Types, check out the Manage Taxonomies link on the dashboard or follow <a href="/admin/structure/taxonomy/area_type" target="_blank">this link</a>',
       'display' => array(
         'default' => array(
           'label' => 'above',
