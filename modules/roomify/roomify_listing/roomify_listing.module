@@ -1403,25 +1403,11 @@ function roomify_listing_enquiry_form_submit($form, &$form_state) {
  */
 function roomify_listing_enquiry_settings_form($form, &$form_state) {
   form_load_include($form_state, 'inc', 'variable_realm', 'variable_realm.variable');
+  module_load_include('form.inc', 'variable');
 
-  $submission_reply_text = variable_get_value('roomify_submission_reply_text');
-  $form_instructions_text = variable_get_value('roomify_form_instructions_text');
+  $form['roomify_submission_reply_text'] = variable_form_element(variable_get_info('roomify_submission_reply_text'));
 
-  $form['roomify_submission_reply_text'] = array(
-    '#type' => 'text_format',
-    '#title' => t('Submission reply'),
-    '#description' => t('This text is shown on your site after a guest submits a booking enquiry.'),
-    '#default_value' => (isset($submission_reply_text['value'])) ? $submission_reply_text['value'] : '',
-    '#format' => (isset($submission_reply_text['format'])) ? $submission_reply_text['format'] : 'filtered_text',
-  );
-
-  $form['roomify_form_instructions_text'] = array(
-    '#type' => 'text_format',
-    '#title' => t('Form instructions'),
-    '#description' => t('This text is show to guests on the booking enquiry form.'),
-    '#default_value' => (isset($form_instructions_text['value'])) ? $form_instructions_text['value'] : '',
-    '#format' => (isset($form_instructions_text['format'])) ? $form_instructions_text['format'] : 'filtered_text',
-  );
+  $form['roomify_form_instructions_text'] = variable_form_element(variable_get_info('roomify_form_instructions_text'));
 
   $form['submit'] = array(
     '#type' => 'submit',
@@ -1453,17 +1439,23 @@ function roomify_listing_enquiry_done() {
  */
 function roomify_listing_variable_info($options) {
   $variable['roomify_submission_reply_text'] = array(
-    'title' => 'Submission reply',
+    'title' => t('Submission reply'),
     'type' => 'text_format',
-    'default' => 'Thank You. Your Enquiry has been received and a Conversation has started with the property owner. They will be able to reply and provide a customized offer for you.',
+    'default' => array(
+      'value' => 'Thank You. Your Enquiry has been received and a Conversation has started with the property owner. They will be able to reply and provide a customized offer for you.',
+      'format' => 'filtered_text',
+    ),
     'localize' => TRUE,
     'group' => 'roomify',
   );
 
   $variable['roomify_form_instructions_text'] = array(
-    'title' => 'Form instructions',
+    'title' => t('Form instructions'),
     'type' => 'text_format',
-    'default' => '',
+    'default' => array(
+      'value' => '',
+      'format' => 'filtered_text',
+    ),
     'localize' => TRUE,
     'group' => 'roomify',
   );
