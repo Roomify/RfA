@@ -398,6 +398,11 @@ function roomify_payment_methods_settings_submit($form, &$form_state) {
 
   commerce_cop_payment_save($commerce_payment_custom);
 
+  db_update('rules_config')
+    ->fields(array('active' => $commerce_payment_custom['status']))
+    ->condition('name', 'commerce_payment_custom')
+    ->execute();
+
   drupal_set_message(t('The configuration options have been saved.'));
 }
 
