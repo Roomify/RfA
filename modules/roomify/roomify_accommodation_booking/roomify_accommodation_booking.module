@@ -265,6 +265,7 @@ function roomify_accommodation_booking_form_views_form_my_cart_default_alter(&$f
     if ($line_item->type == 'roomify_accommodation_booking') {
       $line_item_wrapper = entity_metadata_wrapper('commerce_line_item', $line_item);
 
+      $booking_id = $line_item->commerce_booking_reference[LANGUAGE_NONE][0]['target_id'];
       $type = bat_type_load($line_item_wrapper->commerce_booking_reference->booking_event_reference->event_bat_unit_reference->type_id->value());
 
       $options = roomify_accommodation_options_get_type_options($type);
@@ -309,6 +310,7 @@ function roomify_accommodation_booking_form_views_form_commerce_cart_form_defaul
     if ($line_item->type == 'roomify_accommodation_booking') {
       $line_item_wrapper = entity_metadata_wrapper('commerce_line_item', $line_item);
 
+      $booking_id = $line_item->commerce_booking_reference[LANGUAGE_NONE][0]['target_id'];
       $type = bat_type_load($line_item_wrapper->commerce_booking_reference->booking_event_reference->event_bat_unit_reference->type_id->value());
 
       $options = roomify_accommodation_options_get_type_options($type);
