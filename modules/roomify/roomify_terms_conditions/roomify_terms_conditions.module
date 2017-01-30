@@ -63,6 +63,7 @@ function roomify_terms_conditions_page() {
  */
 function roomify_terms_conditions_configuration_form($form, &$form_state) {
   form_load_include($form_state, 'inc', 'variable_realm', 'variable_realm.variable');
+  module_load_include('form.inc', 'variable');
   _roomify_system_prepare_variables_realm();
 
   $form['terms_conditions'] = array(
@@ -81,24 +82,9 @@ function roomify_terms_conditions_configuration_form($form, &$form_state) {
     ),
   );
 
-  $form['terms_conditions']['roomify_terms_conditions_message'] = array(
-    '#type' => 'textfield',
-    '#title' => t('T&C Message'),
-    '#size' => 100,
-    '#required' => TRUE,
-    '#default_value' => variable_get_value('roomify_terms_conditions_message'),
-  );
+  $form['terms_conditions']['roomify_terms_conditions_message'] = variable_form_element(variable_get_info('roomify_terms_conditions_message'));
 
-  $terms_conditions_body = variable_get_value('roomify_terms_conditions_body');
-
-  $form['terms_conditions']['roomify_terms_conditions_body'] = array(
-    '#type' => 'text_format',
-    '#title' => t('Terms & Conditions'),
-    '#rows' => 15,
-    '#required' => TRUE,
-    '#default_value' => (isset($terms_conditions_body['value'])) ? $terms_conditions_body['value'] : '',
-    '#format' => (isset($terms_conditions_body['format'])) ? $terms_conditions_body['format'] : 'rich_text',
-  );
+  $form['terms_conditions']['roomify_terms_conditions_body'] = variable_form_element(variable_get_info('roomify_terms_conditions_body'));
 
   $form['terms_conditions']['terms_conditions_attachment'] = array(
     '#type' => 'managed_file',
