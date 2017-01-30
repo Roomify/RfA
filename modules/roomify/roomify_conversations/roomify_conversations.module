@@ -1223,10 +1223,10 @@ function roomify_conversations_make_offer_form($form, &$form_state, $start_date,
 
   $conversation = roomify_conversation_load($conversation_id);
 
-  $price = $conversation->conversation_book_price[LANGUAGE_NONE][0]['value'] * 100;
+  $price = $conversation->conversation_book_price[LANGUAGE_NONE][0]['amount'];
+  $currency_code = $conversation->conversation_book_price[LANGUAGE_NONE][0]['currency_code'];
 
-  $currency_setting = commerce_currency_load(commerce_default_currency());
-  $std_cost = commerce_currency_format($price, $currency_setting['code']);
+  $std_cost = commerce_currency_format($price, $currency_code);
 
   $form['std_cost'] = array(
     '#markup' => '<div><label>' . t('Standard Cost:') . '</label> <span>' . $std_cost . '</span></div>',
@@ -1712,11 +1712,6 @@ function roomify_conversations_inquiry_render($conversation) {
     $name = $conversation->conversation_user_name[LANGUAGE_NONE][0]['value'];
   }
 
-  $price = 0;
-  if (isset($conversation->conversation_book_price[LANGUAGE_NONE][0]['value'])) {
-    $price = $conversation->conversation_book_price[LANGUAGE_NONE][0]['value'];
-  }
-
   $user_email = '';
   if (isset($conversation->conversation_user_email[LANGUAGE_NONE][0]['value'])) {
     $user_email = $conversation->conversation_user_email[LANGUAGE_NONE][0]['value'];
@@ -1779,7 +1774,14 @@ function roomify_conversations_inquiry_render($conversation) {
     $output .= '<div class="enquiry-info"><div class="label">' . t('Further info') . '</div><div class="item">' . $further_info . '</div></div>';
   }
 
-  $output .= '<div class="enquiry-price"><div class="label">' . t('Price') . ':&nbsp;</div><div class="item">60,00 €</div></div>';
+  if (isset($conversation->conversation_book_price[LANGUAGE_NONE][0]['amount'])) {
+    $price = $conversation->conversation_book_price[LANGUAGE_NONE][0]['amount'];
+    $currency_code = $conversation->conversation_book_price[LANGUAGE_NONE][0]['currency_code'];
+
+    $std_cost = commerce_currency_format($price, $currency_code);
+
+    $output .= '<div class="enquiry-price"><div class="label">' . t('Price') . ':&nbsp;</div><div class="item">' . $std_cost . '</div></div>';
+  }
 
   $output .= '</div>';
 

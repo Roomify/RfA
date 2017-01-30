@@ -909,7 +909,13 @@ function roomify_example_content_create_conversation($start_date, $end_date, $pr
   $conversation->conversation_book_start_date[LANGUAGE_NONE][0]['value'] = $start_date->format('Y-m-d');
   $conversation->conversation_book_end_date[LANGUAGE_NONE][0]['value'] = $end_date->format('Y-m-d');
   $conversation->conversation_user_name[LANGUAGE_NONE][0]['value'] = $user->name;
-  $conversation->conversation_book_price[LANGUAGE_NONE][0]['value'] = 100;
+  $conversation->conversation_book_price[LANGUAGE_NONE][0] = array(
+    'amount' => '10000',
+    'currency_code' => 'USD',
+    'data' => array(
+      'components' => array(),
+    ),
+  );
   $conversation->conversation_guests[LANGUAGE_NONE][0]['value'] = 2;
   $conversation->conversation_user_email[LANGUAGE_NONE][0]['value'] = $user->mail;
   $conversation->conversation_further_info[LANGUAGE_NONE][0]['value'] = 'test test';

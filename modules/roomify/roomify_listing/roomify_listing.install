@@ -1197,7 +1197,7 @@ function roomify_listing_update_7026() {
           }
 
           if (isset($entityform->field_listing_enquiry_price[LANGUAGE_NONE][0]['amount'])) {
-            $conversation->conversation_book_price[LANGUAGE_NONE][0]['value'] = $entityform->field_listing_enquiry_price[LANGUAGE_NONE][0]['amount'] / 100;
+            $conversation->conversation_book_price[LANGUAGE_NONE][0] = $entityform->field_listing_enquiry_price[LANGUAGE_NONE][0];
           }
 
           field_attach_update('roomify_conversation', $conversation);

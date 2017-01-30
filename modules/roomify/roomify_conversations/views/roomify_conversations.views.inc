@@ -256,13 +256,16 @@ function roomify_conversations_views_default_views() {
   $handler->display->display_options['fields']['conversation_book_price']['table'] = 'field_data_conversation_book_price';
   $handler->display->display_options['fields']['conversation_book_price']['field'] = 'conversation_book_price';
   $handler->display->display_options['fields']['conversation_book_price']['exclude'] = TRUE;
+  $handler->display->display_options['fields']['conversation_book_price']['click_sort_column'] = 'amount';
   $handler->display->display_options['fields']['conversation_book_price']['settings'] = array(
+    'calculation' => FALSE,
     'conditions' => array(
       0 => array(
         'condition' => '',
       ),
     ),
   );
+  $handler->display->display_options['fields']['conversation_book_price']['group_column'] = 'value';
   /* Field: BAT Booking: Price */
   $handler->display->display_options['fields']['booking_price']['id'] = 'booking_price';
   $handler->display->display_options['fields']['booking_price']['table'] = 'field_data_booking_price';

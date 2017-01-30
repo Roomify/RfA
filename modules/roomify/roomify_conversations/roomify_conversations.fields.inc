@@ -635,13 +635,10 @@ function roomify_conversations_add_price_field() {
   if (field_read_field('conversation_book_price') === FALSE) {
     $field = array(
       'field_name' => 'conversation_book_price',
-      'type' => 'text',
+      'type' => 'commerce_price',
       'cardinality' => 1,
       'locked' => 1,
-      'settings' => array(
-        'max_length' => 255,
-        'profile2_private' => FALSE,
-      ),
+      'settings' => array(),
     );
     field_create_field($field);
   }
@@ -656,9 +653,9 @@ function roomify_conversations_add_price_field() {
       'bundle' => 'standard',
       'required' => FALSE,
       'widget' => array(
-        'type' => 'text_textfield',
-        'weight' => 6,
+        'type' => 'commerce_price_simple',
       ),
+      'settings' => array(),
     );
     field_create_instance($instance);
   }
