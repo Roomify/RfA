@@ -1431,7 +1431,9 @@ function roomify_listing_enquiry_settings_form_submit($form, &$form_state) {
  * Submission_reply page.
  */
 function roomify_listing_enquiry_done() {
-  return variable_get_value('roomify_submission_reply_text');
+  $submission_reply_text = variable_get_value('roomify_submission_reply_text');
+
+  return check_markup($submission_reply_text['value'], $submission_reply_text['format']);
 }
 
 /**
