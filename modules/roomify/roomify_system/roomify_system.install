@@ -13,6 +13,10 @@ function roomify_system_install() {
   variable_set('bat_event_state_minimum_stay', 'Minimum Booking Length is');
   variable_set('bat_event_state_maximum_stay', 'Maximum Booking Length is');
   variable_set('bat_event_state_booking_if_start', 'Only if booking starts on a specific day');
+
+  $metatag_config = variable_get('default_metatag_config', array());
+  $metatag_config['global:frontpage'] = TRUE;
+  variable_set('default_metatag_config', $metatag_config);
 }
 
 /**
@@ -624,4 +628,13 @@ function roomify_system_update_7035() {
     field_update_instance($instance_info);
   }
 
+}
+
+/**
+ * Disable front page meta tags.
+ */
+function roomify_system_update_7036() {
+  $metatag_config = variable_get('default_metatag_config', array());
+  $metatag_config['global:frontpage'] = TRUE;
+  variable_set('default_metatag_config', $metatag_config);
 }

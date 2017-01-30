@@ -311,7 +311,7 @@ projects[menu_admin_per_menu][patch][] = https://www.drupal.org/files/issues/int
 projects[message][version] = 1.12
 projects[message][patch][] = https://www.drupal.org/files/issues/text-sanitized.patch
 
-projects[metatag][version] = 1.19
+projects[metatag][version] = 1.20
 
 projects[mimemail][version] = 1.0-beta4
 
