@@ -34,7 +34,7 @@ class roomify_conversations_views_handler_conversation_url_popup extends views_h
 
     $cid = $values->conversation_id;
 
-    $content = '/' . $language->language . '/admin/conversations/' . $cid . '/quick-reply/nojs'; 
+    $content = '/' . $language->language . '/admin/conversations/' . $cid . '/quick-reply/nojs';
 
     return $content;
   }
