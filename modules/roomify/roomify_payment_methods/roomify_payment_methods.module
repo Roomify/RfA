@@ -242,6 +242,12 @@ function roomify_payment_methods_settings($form, &$form_state) {
   $information_description = t('Information you would like to be shown to users when they select this payment method, such as delivery payment details.');
   $information_description .= '<br />';
   $information_description .= t('This could be used as default information for the new payment method rules of this payment.');
+
+  // Change the format with the one usable by Managers.
+  if ($commerce_payment_custom['format'] == 'full_html') {
+    $commerce_payment_custom['format'] = 'filtered_text';
+  }
+
   $form['customofflinepayment_settings']['information'] = array(
     '#type' => 'text_format',
     '#title' => t('Information'),
