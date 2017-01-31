@@ -2079,6 +2079,10 @@ function roomify_system_theme() {
     'roomify_image_thumb_upload' => array(
       'render element' => 'element',
       'file' => 'roomify_system.module',
-    )
+    ),
+    'better_messages' => array(
+      'template'  => 'roomify_better_messages',
+      'variables' => array('content' => NULL),
+    ),
   );
 }
