@@ -970,6 +970,8 @@ function roomify_system_roomify_rights() {
       // Profiles2.
       'administer profile types',
       'administer profiles',
+      // Access Redirects.
+      'administer redirects',
       'use media wysiwyg',
       'access media browser',
       'create files',
@@ -1683,6 +1685,20 @@ function roomify_system_menu_alter(&$items) {
 
   $items['user/%user/orders/%commerce_order']['title callback'] = 'roomify_system_order_title';
 
+  // This is required until issue https://www.drupal.org/node/2078423.
+  // in Redirect module will be fixed.
+  $items['admin/config/search/redirect/settings']['access callback'] = '_roomify_system_administrators_only_access_callback';
+
+}
+
+/**
+ * Restrict access to administrators.
+ */
+function _roomify_system_administrators_only_access_callback() {
+  global $user;
+
+  // Forbid access for roles different than administrator.
+  return (in_array('administrator', array_values($user->roles))) ? TRUE : FALSE;
 }
 
 /**

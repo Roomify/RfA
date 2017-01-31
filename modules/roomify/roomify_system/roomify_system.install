@@ -625,3 +625,10 @@ function roomify_system_update_7035() {
   }
 
 }
+
+/**
+ * Enable module 'Redirect'.
+ */
+function roomify_system_update_7036() {
+  module_enable(array('redirect'));
+}
