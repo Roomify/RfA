@@ -2,8 +2,7 @@
 Feature: Property Search
 
   Background:
-    Given I am logged in as a user with the "roomify manager" role on this site
-    Then I remove all properties and install the example content
+    Given I remove all properties and install the example content
 
   Scenario: Order search result by Price
     Given I am not logged in
