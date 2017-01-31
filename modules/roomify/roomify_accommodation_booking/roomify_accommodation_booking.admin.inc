@@ -259,18 +259,11 @@ function roomify_accommodation_booking_global_settings_form($form, &$form_state)
     '#title' => t('Checkout page settings'),
   );
 
-  $form['roomify_booking_settings']['roomify_accommodation_booking_checkout_settings_fieldset'] = array(
-      '#type' => 'fieldset',
-      '#title' => t('Checkout page settings'),
-  );
-
   $form['roomify_booking_settings']['roomify_accommodation_booking_checkout_settings_fieldset']['commerce_checkout_completion_message'] = variable_form_element(variable_get_info('commerce_checkout_completion_message'));
 
   $form['#validate'][] = 'roomify_accommodation_booking_global_settings_form_validate';
 
   $form['#attached']['css'][] = drupal_get_path('module', 'roomify_accommodation_booking') . '/css/booking_global_settings.css';
-
-  variable_realm_variable_settings_form_alter($form, $form_state, 'roomify_accommodation_booking_global_settings_form');
 
   return system_settings_form($form);
 }

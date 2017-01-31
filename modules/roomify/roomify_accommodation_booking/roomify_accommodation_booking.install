@@ -17,6 +17,11 @@ function roomify_accommodation_booking_install() {
 
   // Prepopulate the product reference for all the existing listings.
   roomify_accommodation_booking_add_product_reference_to_all_listing_types();
+
+  $variable_realm_list = variable_get('variable_realm_list_language', array());
+  $variable_realm_list[] = 'commerce_checkout_completion_message';
+
+  variable_set('variable_realm_list_language', $variable_realm_list);
 }
 
 /**
@@ -96,4 +101,14 @@ function roomify_accommodation_booking_update_7002() {
   module_load_include('inc', 'roomify_accommodation_booking', 'roomify_accommodation_booking.fields');
 
   roomify_accommodation_booking_add_booking_telephone_to_billing_info();
+}
+
+/**
+ * Add 'Checkout Completion Messsage' variable as translatable.
+ */
+function roomify_accommodation_booking_update_7003() {
+  $variable_realm_list = variable_get('variable_realm_list_language', array());
+  $variable_realm_list[] = 'commerce_checkout_completion_message';
+
+  variable_set('variable_realm_list_language', $variable_realm_list);
 }
