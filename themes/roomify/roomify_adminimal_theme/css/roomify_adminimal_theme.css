@@ -2184,14 +2184,14 @@ body.roomify-dashboard .roomify-manage-site-configuration .manage-availability-s
   background: #EBEBEB url("../images/original/search.png") no-repeat 20px 30px;
 }
 body.roomify-dashboard .roomify-manage-site-configuration .manage-enquiry-form-settings {
-  background: url("../images/search.png") no-repeat 20px 30px;
+  background: url("../images/enquiry.png") no-repeat 20px 30px;
   -webkit-transition: 100ms all ease-in;
   -moz-transition: 100ms all ease-in;
   -ms-transition: 100ms all ease-in;
   -o-transition: 100ms all ease-in;
 }
 body.roomify-dashboard .roomify-manage-site-configuration .manage-enquiry-form-settings:hover {
-  background: #EBEBEB url("../images/original/search.png") no-repeat 20px 30px;
+  background: #EBEBEB url("../images/original/enquiry.png") no-repeat 20px 30px;
 }
 body.roomify-dashboard .roomify-manage-site-configuration .manage-footer {
   background: url("../images/footer.png") no-repeat 20px 30px;
