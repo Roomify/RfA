@@ -34,7 +34,7 @@ projects[roomify_rate][subdir] = roomify
 projects[roomify_property][type] = module
 projects[roomify_property][download][type] = git
 projects[roomify_property][download][url] = https://github.com/Roomify/roomify_property.git
-projects[roomify_property][download][tag] = 1.20
+projects[roomify_property][download][tag] = 1.22
 projects[roomify_property][directory_name] = roomify_property
 projects[roomify_property][subdir] = roomify
 
@@ -111,6 +111,7 @@ projects[classy_paragraphs][version] = 1.0
 projects[commerce][version] = 1.13
 projects[commerce][patch][] = https://www.drupal.org/files/issues/commerce-delete_line_items_without_products-2261289-4.patch
 projects[commerce][patch][] = https://www.drupal.org/files/issues/commerce-georgian_lari-2256853-6.patch
+projects[commerce][patch][] = https://www.drupal.org/files/issues/commerce-cart_product_add_php7-2762907-5.patch
 
 projects[commerce_addressbook] = 3.0-beta3
 
@@ -423,10 +424,7 @@ projects[timefield][version] = 1.0-alpha2
 
 projects[title][version] = 1.0-alpha8
 
-projects[token][version] = 1.6
-; Patch the module because descriptions of boolean fields are not translatable.
-; Make sure to test that translations work properly before removing this patch.
-projects[token][patch][] = https://www.drupal.org/files/issues/token-token-prevents-display-of-i18n-field-description-2367721-3.patch
+projects[token][version] = 1.7
 
 projects[userone][version] = 1.0-beta1
 
