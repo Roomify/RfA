@@ -113,7 +113,7 @@ before_script:
 script:
   # Do a very basic test that the correct product was installed.
   - RESPONSE=$(curl -s http://127.0.0.1:8888)
-  - echo $RESPONSE | grep "<title>${PRODUCT} |"
+  - echo $RESPONSE | grep "| ${PRODUCT}</title>"
 
   # Check coding standards.
   - phpcs --standard=Drupal --exclude=Drupal.Array.Array,Drupal.Commenting.FunctionComment,Drupal.Commenting.DocComment,Drupal.Commenting.FileComment,Drupal.NamingConventions.ValidClassName,Drupal.NamingConventions.ValidFunctionName,Drupal.NamingConventions.ValidVariableName,Drupal.InfoFiles.AutoAddedKeys,Drupal.InfoFiles.ClassFiles --report-width=74 --extensions=php,module,inc,install,test,profile,theme,info,txt,md,yml $TRAVIS_BUILD_DIR/drupal/profiles/roomify/modules/{casa,locanda,roomify}
