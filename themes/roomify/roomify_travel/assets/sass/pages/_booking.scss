@@ -190,6 +190,41 @@
       }
     }
   }
+
+  #modalBackdrop {
+    background: none !important
+  }
+  #modalContent {
+    top: 0 !important;
+    left: 0 !important;
+    width: 100% !important;
+    height: 100% !important;
+    .ctools-modal-dialog.modal-dialog {
+      width: 100% !important;
+      height: 100% !important;
+      max-width: none !important;
+      background-color: black;
+      background-color: rgba(0, 0, 0, 0.75);
+      .modal-header {
+        display: none;
+      }
+      #modal-content {
+        margin: 40px auto 0 auto;
+        max-height: 100% !important;
+        form {
+          background: rgba(0, 0, 0, 0.4);
+          padding: 40px;
+          label {
+            color: white;
+          }
+        }
+      }
+    }
+    div.modal-content {
+      background: none;
+      @include box-shadow(none);
+    }
+  }
 }
 
 .page-conversation-booking {

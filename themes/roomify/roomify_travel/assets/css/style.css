@@ -8908,53 +8908,49 @@ body.toggled #close-sidebar-wrapper {
   .page-conversation-booking #edit-options .input-group .input-group-addon,
   .page-booking #edit-options .input-group .input-group-addon {
     display: none; }
+.page-conversation-booking #modalBackdrop,
+.page-booking #modalBackdrop {
+  background: none !important; }
+.page-conversation-booking #modalContent,
+.page-booking #modalContent {
+  top: 0 !important;
+  left: 0 !important;
+  width: 100% !important;
+  height: 100% !important; }
+  .page-conversation-booking #modalContent .ctools-modal-dialog.modal-dialog,
+  .page-booking #modalContent .ctools-modal-dialog.modal-dialog {
+    width: 100% !important;
+    height: 100% !important;
+    max-width: none !important;
+    background-color: black;
+    background-color: rgba(0, 0, 0, 0.75); }
+    .page-conversation-booking #modalContent .ctools-modal-dialog.modal-dialog .modal-header,
+    .page-booking #modalContent .ctools-modal-dialog.modal-dialog .modal-header {
+      display: none; }
+    .page-conversation-booking #modalContent .ctools-modal-dialog.modal-dialog #modal-content,
+    .page-booking #modalContent .ctools-modal-dialog.modal-dialog #modal-content {
+      margin: 40px auto 0 auto;
+      max-height: 100% !important; }
+      .page-conversation-booking #modalContent .ctools-modal-dialog.modal-dialog #modal-content form,
+      .page-booking #modalContent .ctools-modal-dialog.modal-dialog #modal-content form {
+        background: rgba(0, 0, 0, 0.4);
+        padding: 40px; }
+        .page-conversation-booking #modalContent .ctools-modal-dialog.modal-dialog #modal-content form label,
+        .page-booking #modalContent .ctools-modal-dialog.modal-dialog #modal-content form label {
+          color: white; }
+  .page-conversation-booking #modalContent div.modal-content,
+  .page-booking #modalContent div.modal-content {
+    background: none;
+    box-shadow: none;
+    -webkit-box-shadow: none;
+    -moz-box-shadow: none;
+    -ms-box-shadow: none;
+    -o-box-shadow: none; }
 
 .page-conversation-booking #roomify-accommodation-booking-current-search-form {
   width: 100%;
   display: inline-block;
   margin-bottom: 40px; }
-
-.page-contact .region-content,
-.page-contact .bootstrap-sidebar-left {
-  margin-left: -15px;
-  margin-right: -15px; }
-  .page-contact .region-content:before, .page-contact .region-content:after,
-  .page-contact .bootstrap-sidebar-left:before,
-  .page-contact .bootstrap-sidebar-left:after {
-    content: " ";
-    display: table; }
-  .page-contact .region-content:after,
-  .page-contact .bootstrap-sidebar-left:after {
-    clear: both; }
-.page-contact .panel {
-  background: transparent; }
-.page-contact #roomify-listing-enquiry-form {
-  font-size: 16px;
-  width: 100%;
-  margin: 0 auto; }
-  .page-contact #roomify-listing-enquiry-form .container-inline-date .date-padding label,
-  .page-contact #roomify-listing-enquiry-form .container-inline-date .date-padding .help-block {
-    display: none; }
-  .page-contact #roomify-listing-enquiry-form .container-inline-date .date-padding .form-type-textfield {
-    margin: 0; }
-  .page-contact #roomify-listing-enquiry-form .container-inline-date label {
-    float: left;
-    min-width: 140px;
-    margin-right: 10px; }
-  .page-contact #roomify-listing-enquiry-form .form-submit {
-    float: right; }
-  .page-contact #roomify-listing-enquiry-form .form-type-textfield label, .page-contact #roomify-listing-enquiry-form .form-type-textfield input {
-    display: inline-block;
-    width: auto; }
-  .page-contact #roomify-listing-enquiry-form .form-type-textfield label {
-    margin-right: 6px;
-    min-width: 140px; }
-  .page-contact #roomify-listing-enquiry-form .container-inline-date {
-    display: inline-block;
-    width: 50%; }
-  .page-contact #roomify-listing-enquiry-form .form-type-textarea,
-  .page-contact #roomify-listing-enquiry-form .form-type-textfield {
-    margin: 30px 0; }
 
 .page-contact-us .region-content,
 .page-contact-us .bootstrap-one-column {

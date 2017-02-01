@@ -993,7 +993,11 @@ function roomify_accommodation_booking_confirmation_form($form, &$form_state, $s
       '#type' => 'submit',
       '#value' => t('Send an Enquiry'),
       '#attributes' => array('class' => array('btn-success')),
-      '#submit' => array('roomify_accommodation_booking_confirmation_form_enquiry_submit'),
+      '#ajax' => array(
+        'wrapper' => 'pop-up',
+        'callback' => 'roomify_accommodation_booking_confirmation_form_enquiry_submit',
+      ),
+      '#executes_submit_callback' => FALSE,
     );
 
     if (variable_get('roomify_accommodation_booking_allow_instant_bookings', 1)) {
@@ -1063,21 +1067,40 @@ function roomify_accommodation_booking_confirmation_form_enquiry_submit($form, &
       drupal_set_message(t('These dates are no longer available for "@property_name - @type_name", please try different dates.', array('@property_name' => $property->name, '@type_name' => $type->name)), 'error');
     }
 
-    drupal_goto('listing/' . $property->property_id, array('fragment' => 'search-availability'));
+    ctools_include('ajax');
+    ctools_add_js('ajax-responder');
+
+    $commands = array();
+    $commands[] = ctools_ajax_command_redirect('listing/' . $property->property_id);
+
+    print ajax_render($commands);
+    exit;
   }
   else {
-    $_SESSION['enquiry'] = array(
-      'amount' => $values['amount'] / 100,
-      'start_date' => $values['start_date'],
-      'end_date' => $values['end_date'],
-      'type_id' => $values['type_id'],
+    ctools_include('modal');
+    ctools_modal_add_js();
+
+    $new_form_state = array(
+      'ajax' => TRUE,
+      'title' => t('Listing Enquiry'),
+      'build_info' => array(
+        'args' => array(
+          $values['start_date'],
+          $values['end_date'],
+          $values['type_id'],
+          $values['amount'] / 100,
+          $values['group_size'],
+        ),
+      ),
     );
 
-    if (isset($values['group_size'])) {
-      $_SESSION['enquiry']['group_size'] = $values['group_size'];
-    }
+    // Use ctools to generate ajax instructions for the browser to create
+    // a form in a modal popup.
+    $output = ctools_modal_form_wrapper('roomify_listing_enquiry_form', $new_form_state);
 
-    drupal_goto('contact', array('query' => array('field_listing_enquiry_type_ref' => $values['type_id'])));
+    // Return the ajax instructions to the browser via ajax_render().
+    print ajax_render($output);
+    exit();
   }
 }
 
@@ -1117,7 +1140,7 @@ function roomify_accommodation_booking_confirmation_form_submit($form, &$form_st
       drupal_set_message(t('These dates are no longer available for "@property_name - @type_name", please try different dates.', array('@property_name' => $property->name, '@type_name' => $type->name)), 'error');
     }
 
-    drupal_goto('listing/' . $property->property_id, array('fragment' => 'search-availability'));
+    drupal_goto('listing/' . $property->property_id);
   }
   else {
     $amount = $values['amount'];

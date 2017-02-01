@@ -1188,13 +1188,13 @@ function roomify_customer_support_form() {
 /**
  * "Enquiry" form.
  */
-function roomify_listing_enquiry_form($form, &$form_state) {
+function roomify_listing_enquiry_form($form, &$form_state, $arrival_date, $departure_date, $type_id, $amount, $group_size) {
   global $user;
 
-  $date_format = variable_get('bat_daily_date_format', 'Y-m-d');
+  $form_instructions_text = variable_get_value('roomify_form_instructions_text');
 
   $form['instructions'] = array(
-    '#markup' => variable_get_value('roomify_form_instructions_text'),
+    '#markup' => check_markup($form_instructions_text['value'], $form_instructions_text['format']),
   );
 
   $form['guest_name'] = array(
@@ -1217,25 +1217,24 @@ function roomify_listing_enquiry_form($form, &$form_state) {
     );
   }
 
+  $form['telephone'] = array(
+    '#type' => 'textfield',
+    '#title' => t('Telephone'),
+  );
+
   $form['arrival_date'] = array(
-    '#type' => 'date_popup',
-    '#title' => t('Arrival date'),
-    '#date_format' => $date_format,
-    '#required' => TRUE,
+    '#type' => 'hidden',
+    '#value' => $arrival_date,
   );
 
   $form['departure_date'] = array(
-    '#type' => 'date_popup',
-    '#title' => t('Departure date'),
-    '#date_format' => $date_format,
-    '#required' => TRUE,
+    '#type' => 'hidden',
+    '#value' => $departure_date,
   );
 
   $form['guests'] = array(
-    '#type' => 'textfield',
-    '#title' => t('Guests'),
-    '#size' => 12,
-    '#required' => TRUE,
+    '#type' => 'hidden',
+    '#value' => $group_size,
   );
 
   $form['children'] = array(
@@ -1249,29 +1248,14 @@ function roomify_listing_enquiry_form($form, &$form_state) {
     '#title' => t('Further info'),
   );
 
-  $types = bat_unit_get_types();
-
-  $listing_types = array();
-  foreach ($types as $type) {
-    if ($type->type == 'home') {
-      $listing_types['Home'][] = $type->name;
-    }
-    else {
-      $listing_types['Room'][] = $type->name;
-    }
-  }
-
   $form['listing_type'] = array(
-    '#type' => 'select',
-    '#title' => t('Listing Type'),
-    '#options' => $listing_types,
-    '#required' => TRUE,
+    '#type' => 'hidden',
+    '#value' => $type_id,
   );
 
   $form['price'] = array(
-    '#type' => 'textfield',
-    '#title' => t('Price'),
-    '#size' => 12,
+    '#type' => 'hidden',
+    '#value' => $amount,
   );
 
   $form['submit'] = array(
@@ -1279,53 +1263,6 @@ function roomify_listing_enquiry_form($form, &$form_state) {
     '#value' => t('Send Request'),
     '#attributes' => array(
       'class' => array('btn-primary'),
-    ),
-  );
-
-  if (isset($_GET['field_listing_enquiry_type_ref'])) {
-    $form['listing_type']['#access'] = FALSE;
-    $form['listing_type']['#default_value'] = $_GET['field_listing_enquiry_type_ref'];
-
-    $type = bat_type_load($_GET['field_listing_enquiry_type_ref']);
-    $property = roomify_property_load($type->field_st_property_reference[LANGUAGE_NONE][0]['target_id']);
-
-    if ($property->type == 'locanda_property') {
-      drupal_set_title(t('Booking Request for @property_name - @type_name', array('@property_name' => $property->name, '@type_name' => $type->name)));
-    }
-    else {
-      drupal_set_title(t('Booking Request for @property_name', array('@property_name' => $property->name)));
-    }
-
-    if (isset($_SESSION['enquiry'])) {
-      $enquiry = $_SESSION['enquiry'];
-
-      if ($_GET['field_listing_enquiry_type_ref'] == $enquiry['type_id']) {
-        $form['price']['#access'] = FALSE;
-        $form['price']['#default_value'] = $enquiry['amount'];
-
-        $form['arrival_date']['#disabled'] = TRUE;
-        $form['arrival_date']['#default_value'] = $enquiry['start_date']->format('Y-m-d');
-
-        $form['departure_date']['#disabled'] = TRUE;
-        $form['departure_date']['#default_value'] = $enquiry['end_date']->format('Y-m-d');
-
-        if (isset($enquiry['group_size'])) {
-          $form['guests']['#disabled'] = TRUE;
-          $form['guests']['#default_value'] = $enquiry['group_size'];
-        }
-      }
-    }
-  }
-
-  $form['#attached']['js'] = array(
-    drupal_get_path('module', 'bat') . '/js/bat_date_popup.js',
-    array(
-      'data' => array(
-        'bat' => array(
-          'batDateGranularity' => 'bat_daily',
-        ),
-      ),
-      'type' => 'setting',
     ),
   );
 
