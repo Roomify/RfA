@@ -79,7 +79,7 @@ function roomify_offers_default_page_manager_handlers() {
   $pane->pid = 'new-5797f152-7425-4f83-aa11-d8f208589224';
   $pane->panel = 'bottom';
   $pane->type = 'entity_field';
-  $pane->subtype = 'node:body';
+  $pane->subtype = 'node:field_offer_description';
   $pane->shown = TRUE;
   $pane->access = array();
   $pane->configuration = array(

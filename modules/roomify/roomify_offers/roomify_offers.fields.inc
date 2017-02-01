@@ -614,25 +614,49 @@ function roomify_offers_add_offer_reference_field() {
 }
 
 /**
- * Add "Body" field.
+ * Add "Description" field.
  */
-function roomify_offers_add_body_field() {
+function roomify_offers_add_description_node_field() {
+  if (field_read_field('field_offer_description') === FALSE) {
+    $field = array(
+      'active' => 1,
+      'cardinality' => 1,
+      'deleted' => 0,
+      'entity_types' => array(),
+      'field_name' => 'field_offer_description',
+      'indexes' => array(
+        'format' => array(
+          0 => 'format',
+        ),
+      ),
+      'locked' => 0,
+      'module' => 'text',
+      'settings' => array(
+        'entity_translation_sync' => FALSE,
+        'profile2_private' => FALSE,
+      ),
+      'translatable' => 1,
+      'type' => 'text_long',
+    );
+    field_create_field($field);
+  }
+
   field_cache_clear();
-  if (field_read_instance('node', 'body', 'offer') === FALSE) {
+  if (field_read_instance('node', 'field_offer_description', 'offer') === FALSE) {
     $instance = array(
-      'bundle' => 'offer',
+       'bundle' => 'offer',
       'default_value' => NULL,
       'deleted' => 0,
       'description' => '',
       'display' => array(
         'default' => array(
-          'label' => 'hidden',
+          'label' => 'above',
           'module' => 'text',
           'settings' => array(
             'conditions' => array(),
           ),
           'type' => 'text_default',
-          'weight' => 0,
+          'weight' => 4,
         ),
         'landing_page_teaser' => array(
           'label' => 'above',
@@ -641,33 +665,62 @@ function roomify_offers_add_body_field() {
           'weight' => 0,
         ),
         'teaser' => array(
-          'label' => 'hidden',
-          'module' => 'text',
-          'settings' => array(
-            'conditions' => array(),
-            'trim_length' => 600,
-          ),
-          'type' => 'text_summary_or_trimmed',
+          'label' => 'above',
+          'settings' => array(),
+          'type' => 'hidden',
           'weight' => 0,
         ),
       ),
       'entity_type' => 'node',
-      'field_name' => 'body',
-      'label' => 'Body',
-      'required' => FALSE,
+      'field_name' => 'field_offer_description',
+      'label' => 'Description',
+      'required' => 0,
       'settings' => array(
-        'display_summary' => TRUE,
+        'better_formats' => array(
+          'allowed_formats' => array(
+            'filtered_html' => 'filtered_html',
+            'filtered_text' => 'filtered_text',
+            'full_html' => 'full_html',
+            'landing_page_text' => 'landing_page_text',
+            'plain_text' => 'plain_text',
+            'rich_text' => 'rich_text',
+          ),
+          'allowed_formats_toggle' => 0,
+          'default_order_toggle' => 0,
+          'default_order_wrapper' => array(
+            'formats' => array(
+              'filtered_html' => array(
+                'weight' => 0,
+              ),
+              'filtered_text' => array(
+                'weight' => -10,
+              ),
+              'full_html' => array(
+                'weight' => 1,
+              ),
+              'landing_page_text' => array(
+                'weight' => 0,
+              ),
+              'plain_text' => array(
+                'weight' => 10,
+              ),
+              'rich_text' => array(
+                'weight' => -9,
+              ),
+            ),
+          ),
+        ),
         'entity_translation_sync' => FALSE,
         'text_processing' => 1,
         'user_register_form' => FALSE,
       ),
       'widget' => array(
+        'active' => 1,
         'module' => 'text',
         'settings' => array(
-          'rows' => 20,
-          'summary_rows' => 5,
+          'rows' => 5,
         ),
-        'type' => 'text_textarea_with_summary',
+        'type' => 'text_textarea',
         'weight' => 9,
       ),
     );
@@ -694,8 +747,8 @@ function roomify_offers_add_descriptions_group() {
     $field_group->label = 'Description';
     $field_group->weight = '1';
     $field_group->children = array(
-      0 => 'body',
-      1 => 'field_offer_image',
+      0 => 'field_offer_image',
+      1 => 'field_offer_description',
     );
     $field_group->format_type = 'tab';
     $field_group->format_settings = array(

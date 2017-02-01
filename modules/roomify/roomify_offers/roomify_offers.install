@@ -22,7 +22,7 @@ function roomify_offers_content_type_create_fields() {
   module_load_include('inc', 'roomify_offers', 'roomify_offers.fields');
 
   roomify_offers_add_image_field();
-  roomify_offers_add_body_field();
+  roomify_offers_add_description_node_field();
   roomify_offers_add_offer_reference_field();
   roomify_offers_add_descriptions_group();
 }
