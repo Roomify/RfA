@@ -12,6 +12,19 @@ function roomify_offers_install() {
   roomify_offers_create_special_offer_percentage_rate_type();
 
   roomify_offers_create_percentage_discount_event_type();
+  roomify_offers_content_type_create_fields();
+}
+
+/**
+ * Create fields for the "Offer" content type.
+ */
+function roomify_offers_content_type_create_fields() {
+  module_load_include('inc', 'roomify_offers', 'roomify_offers.fields');
+
+  roomify_offers_add_image_field();
+  roomify_offers_add_body_field();
+  roomify_offers_add_offer_reference_field();
+  roomify_offers_add_descriptions_group();
 }
 
 /**
@@ -137,4 +150,18 @@ function roomify_offers_update_7005() {
   module_load_include('inc', 'roomify_offers', 'roomify_offers.fields');
 
   roomify_offers_add_always_override_price_field('special_offer');
+}
+
+/**
+ * Add description to Offer promo text.
+ */
+function roomify_offers_update_7006() {
+  roomify_offers_content_type_create_fields();
+
+  foreach (array('special_offer', 'special_offer_percentage') as $bundle) {
+    $instance_info = field_read_instance('roomify_rate', 'offer_description', $bundle);
+    $instance_info['description'] = 'This text will be shown to the user during checkout.';
+    field_update_instance($instance_info);
+
+  }
 }

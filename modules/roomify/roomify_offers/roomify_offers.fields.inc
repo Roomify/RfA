@@ -176,7 +176,7 @@ function roomify_offers_add_description_field($bundle) {
     $instance = array(
       'bundle' => $bundle,
       'default_value' => NULL,
-      'description' => '',
+      'description' => 'This text will be shown to the user during checkout.',
       'display' => array(
         'default' => array(
           'label' => 'above',
@@ -401,5 +401,312 @@ function roomify_offers_add_always_override_price_field($bundle) {
       ),
     );
     field_create_instance($instance);
+  }
+}
+
+/**
+ * Add "Offer Image" field.
+ */
+function roomify_offers_add_image_field() {
+  field_info_cache_clear();
+  if (field_read_field('field_offer_image') === FALSE) {
+    $field = array(
+      'cardinality' => 1,
+      'entity_types' => array(),
+      'field_name' => 'field_offer_image',
+      'indexes' => array(
+        'fid' => array(
+          0 => 'fid',
+        ),
+      ),
+      'locked' => 0,
+      'module' => 'image',
+      'settings' => array(
+        'default_image' => 0,
+        'entity_translation_sync' => array(
+          0 => 'fid',
+        ),
+        'profile2_private' => FALSE,
+        'uri_scheme' => 'public',
+      ),
+      'translatable' => 0,
+      'type' => 'image',
+    );
+    field_create_field($field);
+  }
+  field_cache_clear();
+  if (field_read_instance('node', 'field_offer_image', 'offer') === FALSE) {
+    $instance = array(
+      'bundle' => 'offer',
+      'description' => '',
+      'display' => array(
+        'default' => array(
+          'label' => 'above',
+          'module' => 'image',
+          'settings' => array(
+            'conditions' => array(),
+            'image_link' => '',
+            'image_style' => '',
+          ),
+          'type' => 'image',
+          'weight' => 1,
+        ),
+        'landing_page_teaser' => array(
+          'label' => 'above',
+          'settings' => array(),
+          'type' => 'hidden',
+          'weight' => 0,
+        ),
+        'teaser' => array(
+          'label' => 'above',
+          'settings' => array(),
+          'type' => 'hidden',
+          'weight' => 0,
+        ),
+      ),
+      'entity_type' => 'node',
+      'field_name' => 'field_offer_image',
+      'label' => 'Image',
+      'required' => 0,
+      'settings' => array(
+        'alt_field' => 0,
+        'default_image' => 0,
+        'entity_translation_sync' => FALSE,
+        'file_directory' => '',
+        'file_extensions' => 'png gif jpg jpeg',
+        'max_filesize' => '',
+        'max_resolution' => '',
+        'min_resolution' => '',
+        'title_field' => 0,
+        'user_register_form' => FALSE,
+      ),
+      'widget' => array(
+        'active' => 1,
+        'module' => 'image',
+        'settings' => array(
+          'dragdropfile_enabled' => 0,
+          'dragdropfile_title' => '',
+          'manualcrop_crop_info' => 1,
+          'manualcrop_default_crop_area' => 1,
+          'manualcrop_enable' => 1,
+          'manualcrop_inline_crop' => 0,
+          'manualcrop_instant_crop' => 0,
+          'manualcrop_instant_preview' => 1,
+          'manualcrop_keyboard' => 1,
+          'manualcrop_maximize_default_crop_area' => 1,
+          'manualcrop_require_cropping' => array(),
+          'manualcrop_styles_list' => array(
+            'roomify_1200x720' => 'roomify_1200x720',
+          ),
+          'manualcrop_styles_mode' => 'include',
+          'manualcrop_thumblist' => 0,
+          'preview_image_style' => 'thumbnail',
+          'progress_indicator' => 'throbber',
+        ),
+        'type' => 'image_image',
+        'weight' => 8,
+      ),
+    );
+    field_create_instance($instance);
+  }
+}
+
+/**
+ * Add "Offer Reference" field.
+ */
+function roomify_offers_add_offer_reference_field() {
+  field_info_cache_clear();
+  if (field_read_field('field_offer_reference') === FALSE) {
+    $field = array(
+      'cardinality' => 1,
+      'entity_types' => array(),
+      'field_name' => 'field_offer_reference',
+      'indexes' => array(
+        'target_id' => array(
+          0 => 'target_id',
+        ),
+      ),
+      'locked' => 0,
+      'module' => 'entityreference',
+      'settings' => array(
+        'behaviors' => array(),
+        'entity_translation_sync' => FALSE,
+        'handler' => 'base',
+        'handler_settings' => array(
+          'behaviors' => array(
+            'entityqueue' => array(
+              'status' => 0,
+            ),
+            'views-select-list' => array(
+              'status' => 0,
+            ),
+          ),
+          'sort' => array(
+            'type' => 'none',
+          ),
+          'target_bundles' => array(
+            'special_offer' => 'special_offer',
+            'special_offer_percentage' => 'special_offer_percentage',
+          ),
+        ),
+        'profile2_private' => FALSE,
+        'target_type' => 'roomify_rate',
+      ),
+      'translatable' => 0,
+    'type' => 'entityreference',
+    );
+    field_create_field($field);
+  }
+  field_cache_clear();
+  if (field_read_instance('node', 'field_offer_reference', 'offer') === FALSE) {
+    $instance = array(
+      'bundle' => 'offer',
+      'default_value' => NULL,
+      'default_value_function' => '',
+      'description' => '',
+      'display' => array(
+        'default' => array(
+          'label' => 'above',
+          'module' => 'entityreference',
+          'settings' => array(
+            'conditions' => array(),
+            'link' => FALSE,
+          ),
+          'type' => 'entityreference_label',
+          'weight' => 3,
+        ),
+        'landing_page_teaser' => array(
+          'label' => 'above',
+          'settings' => array(),
+          'type' => 'hidden',
+          'weight' => 0,
+        ),
+        'teaser' => array(
+          'label' => 'above',
+          'settings' => array(),
+          'type' => 'hidden',
+          'weight' => 0,
+        ),
+      ),
+      'entity_type' => 'node',
+      'field_name' => 'field_offer_reference',
+      'label' => 'Offer Reference',
+      'required' => 0,
+      'settings' => array(
+        'behaviors' => array(
+          'prepopulate' => array(
+            'status' => 0,
+          ),
+        ),
+        'entity_translation_sync' => FALSE,
+        'user_register_form' => FALSE,
+      ),
+      'widget' => array(
+        'active' => 1,
+        'module' => 'options',
+        'settings' => array(),
+        'type' => 'options_select',
+        'weight' => 10,
+      ),
+    );
+    field_create_instance($instance);
+  }
+}
+
+/**
+ * Add "Body" field.
+ */
+function roomify_offers_add_body_field() {
+  field_cache_clear();
+  if (field_read_instance('node', 'body', 'offer') === FALSE) {
+    $instance = array(
+      'bundle' => 'offer',
+      'default_value' => NULL,
+      'deleted' => 0,
+      'description' => '',
+      'display' => array(
+        'default' => array(
+          'label' => 'hidden',
+          'module' => 'text',
+          'settings' => array(
+            'conditions' => array(),
+          ),
+          'type' => 'text_default',
+          'weight' => 0,
+        ),
+        'landing_page_teaser' => array(
+          'label' => 'above',
+          'settings' => array(),
+          'type' => 'hidden',
+          'weight' => 0,
+        ),
+        'teaser' => array(
+          'label' => 'hidden',
+          'module' => 'text',
+          'settings' => array(
+            'conditions' => array(),
+            'trim_length' => 600,
+          ),
+          'type' => 'text_summary_or_trimmed',
+          'weight' => 0,
+        ),
+      ),
+      'entity_type' => 'node',
+      'field_name' => 'body',
+      'label' => 'Body',
+      'required' => FALSE,
+      'settings' => array(
+        'display_summary' => TRUE,
+        'entity_translation_sync' => FALSE,
+        'text_processing' => 1,
+        'user_register_form' => FALSE,
+      ),
+      'widget' => array(
+        'module' => 'text',
+        'settings' => array(
+          'rows' => 20,
+          'summary_rows' => 5,
+        ),
+        'type' => 'text_textarea_with_summary',
+        'weight' => 9,
+      ),
+    );
+    field_create_instance($instance);
+  }
+}
+
+/**
+ * Add "Description" group.
+ */
+function roomify_offers_add_descriptions_group() {
+  $field_groups = array();
+
+  if (field_group_load_field_group('group_offer_description', 'node', 'offer', 'form') === NULL) {
+    $field_group = new stdClass();
+    $field_group->disabled = FALSE;
+    $field_group->api_version = 1;
+    $field_group->identifier = 'group_offer_description|node|offer|form';
+    $field_group->group_name = 'group_offer_description';
+    $field_group->entity_type = 'node';
+    $field_group->bundle = 'offer';
+    $field_group->mode = 'form';
+    $field_group->parent_name = '';
+    $field_group->label = 'Description';
+    $field_group->weight = '1';
+    $field_group->children = array(
+      0 => 'body',
+      1 => 'field_offer_image',
+    );
+    $field_group->format_type = 'tab';
+    $field_group->format_settings = array(
+      'formatter' => 'closed',
+      'instance_settings' => array(
+        'description' => '',
+        'classes' => '',
+        'required_fields' => 1,
+      ),
+    );
+
+    field_group_group_save($field_group);
   }
 }

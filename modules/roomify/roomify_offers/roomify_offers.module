@@ -102,6 +102,9 @@ function roomify_offers_ctools_plugin_api($module = NULL, $api = NULL) {
   if ($module == "services" && $api == "services") {
     return array("version" => "3");
   }
+  if ($module == "page_manager" && $api == "pages_default") {
+    return array("version" => "1");
+  }
 }
 
 /**
@@ -111,6 +114,24 @@ function roomify_offers_ctools_plugin_directory($owner, $plugin_type) {
   if ($owner == 'ctools' && $plugin_type == 'content_types') {
     return 'plugins/content_types';
   }
+}
+
+/**
+ * Implements hook_node_info().
+ */
+function roomify_offers_node_info() {
+  $items = array(
+    'offer' => array(
+      'name' => t('Offer'),
+      'base' => 'node_content',
+      'description' => t('This content is used to show people your offer and all the properties participating.'),
+      'has_title' => '1',
+      'title_label' => t('Title'),
+      'help' => '',
+    ),
+  );
+  drupal_alter('node_info', $items);
+  return $items;
 }
 
 /**
