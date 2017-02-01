@@ -269,7 +269,7 @@ function roomify_accommodation_booking_global_settings_form($form, &$form_state)
 }
 
 /**
- * Validate function for the roomify_accommodation_booking_global_settings_form form.
+ * Validation function for the roomify_accommodation_booking_global_settings_form form.
  */
 function roomify_accommodation_booking_global_settings_form_validate($form, &$form_state) {
   foreach ($form_state['values']['deposit_options'] as $id => $option) {

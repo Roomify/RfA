@@ -265,7 +265,7 @@ function roomify_payment_methods_settings($form, &$form_state) {
 }
 
 /**
- * Validate function for the roomify_payment_methods_settings form.
+ * Validation function for the roomify_payment_methods_settings form.
  */
 function roomify_payment_methods_settings_validate($form, &$form_state) {
   $values = $form_state['values'];

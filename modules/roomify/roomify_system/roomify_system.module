@@ -349,7 +349,7 @@ function roomify_system_global_site_settings_form($form, &$form_state) {
 }
 
 /**
- * Validate function for the roomify_system_global_site_settings_form form.
+ * Validation function for the roomify_system_global_site_settings_form form.
  */
 function roomify_system_global_site_settings_form_validate($form, &$form_state) {
   module_load_include('inc', 'system', 'system.admin');

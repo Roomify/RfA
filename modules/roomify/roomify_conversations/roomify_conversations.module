@@ -1675,7 +1675,7 @@ function roomify_conversations_quick_reply_form($form, &$form_state) {
   );
 
   $form['property_title'] = array(
-    '#markup' => t('<h2>Conversation with @guest</h2>', array('@guest' => $guest->name)),
+    '#markup' => '<h2>' . t('Conversation with @guest', array('@guest' => $guest->name)) . '</h2>',
   );
 
   $form['most_recent_message'] = array(
