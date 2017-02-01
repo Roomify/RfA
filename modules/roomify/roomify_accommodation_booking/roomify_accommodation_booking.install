@@ -49,12 +49,7 @@ function roomify_accommodation_booking_create_booking_type() {
   $booking_type->save();
 
   roomify_accommodation_booking_add_event_reference_field();
-  roomify_accommodation_booking_add_line_item_reference();
   roomify_accommodation_booking_add_booking_price_field();
-  roomify_accommodation_booking_add_booking_full_name();
-  roomify_accommodation_booking_add_booking_address();
-  roomify_accommodation_booking_add_booking_telephone();
-  roomify_accommodation_booking_add_group_guest();
 
   roomify_accommodation_booking_add_listing_product_reference('home');
   roomify_accommodation_booking_add_listing_product_reference('room');
@@ -96,4 +91,194 @@ function roomify_accommodation_booking_update_7002() {
   module_load_include('inc', 'roomify_accommodation_booking', 'roomify_accommodation_booking.fields');
 
   roomify_accommodation_booking_add_booking_telephone_to_billing_info();
+}
+
+/**
+ * Add field 'booking_line_item_reference' to all booking types.
+ */
+function roomify_accommodation_booking_update_7003() {
+  module_load_include('inc', 'roomify_accommodation_booking', 'roomify_accommodation_booking.fields');
+
+  $bundles = bat_booking_get_types();
+  foreach ($bundles as $bundle) {
+    roomify_accommodation_booking_add_line_item_reference($bundle->type);
+  }
+}
+
+/**
+ * Add field 'booking_guest' to all booking types.
+ */
+function roomify_accommodation_booking_update_7004() {
+  module_enable(array('commerce_customer_ui'));
+
+  module_load_include('inc', 'roomify_accommodation_booking', 'roomify_accommodation_booking.fields');
+
+  $bundles = bat_booking_get_types();
+  foreach ($bundles as $bundle) {
+    roomify_accommodation_booking_add_booking_guest_field($bundle->type);
+  }
+}
+
+/**
+ * Add new order for all existing booking_com or ical bookings.
+ */
+function roomify_accommodation_booking_update_7005() {
+  $query = new EntityFieldQuery();
+
+  $query->entityCondition('entity_type', 'bat_booking')
+    ->entityCondition('bundle', array('booking_com', 'ical'), 'IN');
+
+  $result = $query->execute();
+
+  if (isset($result['bat_booking'])) {
+    foreach ($result['bat_booking'] as $booking) {
+      $booking = bat_booking_load($booking->booking_id);
+      if (!isset($booking->booking_line_item_reference[LANGUAGE_NONE][0]['target_id'])) {
+        if ($booking->type == 'booking_com') {
+          $event = bat_event_load($booking->booking_event_reference[LANGUAGE_NONE][0]['target_id']);
+          $event_wrapper = entity_metadata_wrapper('bat_event', $event);
+
+          $bat_type = bat_type_load($event_wrapper->event_bat_unit_reference->type_id->value());
+
+          // Create a new order.
+          $order = commerce_order_new($bat_type->uid, 'pending');
+          commerce_order_save($order);
+
+          // Create a new line item.
+          $product_id = $bat_type->accommodation_product_reference[LANGUAGE_NONE][0]['target_id'];
+          $product = commerce_product_load($product_id);
+          $line_item = commerce_product_line_item_new($product, 1, 0, array(), 'roomify_accommodation_booking');
+
+          $amount = $booking->field_bcom_total_price[LANGUAGE_NONE][0]['value'] * 100;
+          $line_item->commerce_unit_price[LANGUAGE_NONE]['0']['amount'] = $amount;
+          $line_item->commerce_unit_price[LANGUAGE_NONE]['0']['data']['components']['0']['price']['amount'] = $amount;
+
+          $line_item->order_id = $order->order_id;
+
+          commerce_line_item_save($line_item);
+
+          $customer_profile = commerce_customer_profile_new('billing');
+          $customer_profile->commerce_customer_address[LANGUAGE_NONE][0] = array(
+            'country' => strtoupper($booking->field_bcom_countrycode[LANGUAGE_NONE][0]['value']),
+            'administrative_area' => '',
+            'locality' => $booking->field_bcom_city[LANGUAGE_NONE][0]['value'],
+            'postal_code' => $booking->field_bcom_zip[LANGUAGE_NONE][0]['value'],
+            'thoroughfare' => '',
+            'name_line' => $booking->field_bcom_first_name[LANGUAGE_NONE][0]['value'] . ' ' . $booking->field_bcom_last_name[LANGUAGE_NONE][0]['value'],
+            'first_name' => $booking->field_bcom_first_name[LANGUAGE_NONE][0]['value'],
+            'last_name' => $booking->field_bcom_last_name[LANGUAGE_NONE][0]['value'],
+          );
+          $customer_profile->booking_telephone = $booking->field_bcom_telephone[LANGUAGE_NONE][0]['value'];
+
+          commerce_customer_profile_save($customer_profile);
+
+          // Add the line item to the order.
+          $order_wrapper = entity_metadata_wrapper('commerce_order', $order);
+          $order_wrapper->commerce_line_items[] = $line_item;
+
+          $order_wrapper->commerce_customer_billing = $customer_profile;
+
+          // Save the order again to update its line item reference field.
+          commerce_order_save($order);
+
+          $booking->booking_line_item_reference[LANGUAGE_NONE][0]['target_id'] = $line_item->line_item_id;
+          $booking->booking_guest[LANGUAGE_NONE][0]['target_id'] = $customer_profile->profile_id;
+
+          field_attach_update('bat_booking', $booking);
+        }
+        elseif ($booking->type == 'ical') {
+          $event = bat_event_load($booking->booking_event_reference[LANGUAGE_NONE][0]['target_id']);
+          $event_wrapper = entity_metadata_wrapper('bat_event', $event);
+
+          $bat_type = bat_type_load($event_wrapper->event_bat_unit_reference->type_id->value());
+
+          // Create a new order.
+          $order = commerce_order_new($bat_type->uid, 'pending');
+          commerce_order_save($order);
+
+          // Create a new line item.
+          $product_id = $bat_type->accommodation_product_reference[LANGUAGE_NONE][0]['target_id'];
+          $product = commerce_product_load($product_id);
+          $line_item = commerce_product_line_item_new($product, 1, 0, array(), 'roomify_accommodation_booking');
+
+          $amount = 0;
+          $line_item->commerce_unit_price[LANGUAGE_NONE]['0']['amount'] = $amount;
+          $line_item->commerce_unit_price[LANGUAGE_NONE]['0']['data']['components']['0']['price']['amount'] = $amount;
+
+          $line_item->order_id = $order->order_id;
+
+          commerce_line_item_save($line_item);
+
+          $customer_profile = commerce_customer_profile_new('billing');
+          commerce_customer_profile_save($customer_profile);
+
+          // Add the line item to the order.
+          $order_wrapper = entity_metadata_wrapper('commerce_order', $order);
+          $order_wrapper->commerce_line_items[] = $line_item;
+
+          $order_wrapper->commerce_customer_billing = $customer_profile;
+
+          // Save the order again to update its line item reference field.
+          commerce_order_save($order);
+
+          $booking->booking_line_item_reference[LANGUAGE_NONE][0]['target_id'] = $line_item->line_item_id;
+          $booking->booking_guest[LANGUAGE_NONE][0]['target_id'] = $customer_profile->profile_id;
+
+          field_attach_update('bat_booking', $booking);
+        }
+      }
+    }
+  }
+}
+
+/**
+ * Migrate all existing guest data to a new customer profile.
+ */
+function roomify_accommodation_booking_update_7006() {
+  $query = new EntityFieldQuery();
+
+  $query->entityCondition('entity_type', 'bat_booking')
+    ->entityCondition('bundle', array('roomify_accommodation_booking', 'conversation_booking'), 'IN');
+
+  $result = $query->execute();
+
+  if (isset($result['bat_booking'])) {
+    foreach ($result['bat_booking'] as $booking) {
+      $booking = bat_booking_load($booking->booking_id);
+
+      $customer_profile = commerce_customer_profile_new('billing');
+      if (isset($booking->booking_address[LANGUAGE_NONE][0])) {
+        $customer_profile->commerce_customer_address[LANGUAGE_NONE][0] = $booking->booking_address[LANGUAGE_NONE][0];
+      }
+      if (isset($booking->booking_full_name[LANGUAGE_NONE][0]['value'])) {
+        $customer_profile->commerce_customer_address[LANGUAGE_NONE][0]['name_line'] = $booking->booking_full_name[LANGUAGE_NONE][0]['value'];
+      }
+      $customer_profile->booking_telephone = $booking->booking_telephone;
+
+      commerce_customer_profile_save($customer_profile);
+
+      $booking->booking_guest[LANGUAGE_NONE][0]['target_id'] = $customer_profile->profile_id;
+
+      field_attach_update('bat_booking', $booking);
+    }
+  }
+}
+
+/**
+ * Remove Address fields from booking types.
+ */
+function roomify_accommodation_booking_update_7007() {
+  $field_names = array(
+    'booking_full_name',
+    'booking_address',
+    'booking_telephone',
+  );
+
+  foreach ($field_names as $field_name) {
+    foreach (array('roomify_accommodation_booking', 'conversation_booking') as $bundle) {
+      if ($instance = field_info_instance('bat_booking', $field_name, $bundle)) {
+        field_delete_instance($instance);
+      }
+    }
+  }
 }
