@@ -26,7 +26,7 @@ Feature: Booking
     Then I close the better messages dialog
     Then I click "Availability" in the "My casa for bookings" row
     And I wait 10 seconds
-    Then I select dates between "2017-01-07" and "2017-01-10" for the last unit
+    Then I select dates between "2017-04-07" and "2017-04-10" for the last unit
     And I wait 10 seconds
     Then I press "Create booking"
     And I wait for AJAX to finish
@@ -49,7 +49,7 @@ Feature: Booking
     Then I close the better messages dialog
     Then I click "Availability" in the "My casa2 for bookings" row
     And I wait 10 seconds
-    Then I select dates between "2017-02-07" and "2017-02-10" for the last unit
+    Then I select dates between "2017-05-07" and "2017-05-10" for the last unit
     And I wait 10 seconds
     Then I press "Create booking"
     And I wait for AJAX to finish
@@ -57,19 +57,19 @@ Feature: Booking
 
     # Test the dashboard bookings view filters.
     Then I visit "admin/bat/bookings"
-    And I fill in "booking_start_date_value[value][date]" with "01/01/2017"
-    And I fill in "booking_end_date_value[value][date]" with "01/21/2017"
+    And I fill in "booking_start_date_value[value][date]" with "04/01/2017"
+    And I fill in "booking_end_date_value[value][date]" with "04/21/2017"
     And I fill in "name" with "My casa for bookings"
     Then I press "Apply"
-    Then I should see "2017-01-07" in the "My casa for bookings" row
-    And I should see "2017-01-09" in the "My casa for bookings" row
+    Then I should see "2017-04-07" in the "My casa for bookings" row
+    And I should see "2017-04-09" in the "My casa for bookings" row
 
     Then I visit "admin/bat/bookings"
-    And I fill in "booking_start_date_value[value][date]" with "02/01/2017"
-    And I fill in "booking_end_date_value[value][date]" with "02/21/2017"
+    And I fill in "booking_start_date_value[value][date]" with "05/01/2017"
+    And I fill in "booking_end_date_value[value][date]" with "05/21/2017"
     Then I press "Apply"
-    Then I should see "2017-02-07" in the "My casa2 for bookings" row
-    And I should see "2017-02-09" in the "My casa2 for bookings" row
+    Then I should see "2017-05-07" in the "My casa2 for bookings" row
+    And I should see "2017-05-09" in the "My casa2 for bookings" row
 
     # Delete test bookings.
     Then I visit "admin/bat/bookings"

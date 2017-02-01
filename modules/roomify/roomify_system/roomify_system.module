@@ -998,6 +998,9 @@ function roomify_system_roomify_rights() {
       'administer roomify_customer_support',
       'edit meta tags',
       'administer theme colors',
+      'edit any commerce_customer_profile entity',
+      'view any commerce_customer_profile entity',
+      'create commerce_customer_profile entities',
     ),
     'content editor' => array(
       'access content overview',

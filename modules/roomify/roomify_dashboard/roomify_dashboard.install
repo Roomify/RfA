@@ -20,3 +20,10 @@ function roomify_dashboard_install() {
 function roomify_dashboard_update_7001() {
   features_revert(array('roomify_dashboard' => array('views_view')));
 }
+
+/**
+ * Revert views on roomify dashboard feature.
+ */
+function roomify_dashboard_update_7002() {
+  features_revert(array('roomify_dashboard' => array('views_view')));
+}

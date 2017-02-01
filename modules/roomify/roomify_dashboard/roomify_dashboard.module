@@ -203,6 +203,10 @@ function roomify_dashboard_user_login(&$edit, $account) {
 function roomify_dashboard_page_alter(&$page) {
   global $user;
 
+  if (isset($page['#theme']) && $page['#theme'] == 'references_dialog_page') {
+    return;
+  }
+
   if (!variable_get('roomify_testing_environment', FALSE)) {
     // Add 'Documentation' link.
     $valid_role = array_intersect($user->roles, array(
