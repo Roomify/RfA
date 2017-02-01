@@ -1184,6 +1184,24 @@ function roomify_listing_enquiry_form($form, &$form_state, $arrival_date, $depar
 
   $form_instructions_text = variable_get_value('roomify_form_instructions_text');
 
+  $form['close'] = array(
+    '#markup' => '<button type="button" class="close ctools-close-modal"></button>',
+  );
+
+  $type = bat_type_load($type_id);
+  $property = roomify_property_load($type->field_st_property_reference[LANGUAGE_NONE][0]['target_id']);
+
+  if ($property->type == 'locanda_property') {
+    $title = t('Booking Request for @property_name - @type_name', array('@property_name' => $property->name, '@type_name' => $type->name));
+  }
+  else {
+    $title = t('Booking Request for @property_name', array('@property_name' => $property->name));
+  }
+
+  $form['title'] = array(
+    '#markup' => '<div class="title">' . $title . '</div>',
+  );
+
   $form['instructions'] = array(
     '#markup' => check_markup($form_instructions_text['value'], $form_instructions_text['format']),
   );
