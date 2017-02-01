@@ -1119,15 +1119,6 @@ function roomify_listing_menu() {
     'type' => MENU_NORMAL_ITEM,
   );
 
-  $items['contact'] = array(
-    'title' => 'Listing Enquiry',
-    'description' => '',
-    'page callback' => 'drupal_get_form',
-    'page arguments' => array('roomify_listing_enquiry_form'),
-    'access arguments' => array('access content'),
-    'type' => MENU_NORMAL_ITEM,
-  );
-
   $items['contact/done'] = array(
     'title' => 'Enquiry done',
     'description' => '',
@@ -1224,12 +1215,12 @@ function roomify_listing_enquiry_form($form, &$form_state, $arrival_date, $depar
 
   $form['arrival_date'] = array(
     '#type' => 'hidden',
-    '#value' => $arrival_date,
+    '#value' => $arrival_date->format('Y-m-d H:i:s'),
   );
 
   $form['departure_date'] = array(
     '#type' => 'hidden',
-    '#value' => $departure_date,
+    '#value' => $departure_date->format('Y-m-d H:i:s'),
   );
 
   $form['guests'] = array(
@@ -1246,6 +1237,7 @@ function roomify_listing_enquiry_form($form, &$form_state, $arrival_date, $depar
   $form['further_info'] = array(
     '#type' => 'textarea',
     '#title' => t('Further info'),
+    '#resizable' => FALSE,
   );
 
   $form['listing_type'] = array(
@@ -1263,6 +1255,9 @@ function roomify_listing_enquiry_form($form, &$form_state, $arrival_date, $depar
     '#value' => t('Send Request'),
     '#attributes' => array(
       'class' => array('btn-primary'),
+    ),
+    '#ajax' => array(
+      'callback' => 'roomify_listing_enquiry_form_submit'
     ),
   );
 
@@ -1338,7 +1333,16 @@ function roomify_listing_enquiry_form_submit($form, &$form_state) {
 
   roomify_conversation_save($conversation);
 
-  drupal_goto('contact/done');
+  ctools_include('ajax');
+  ctools_include('modal');
+  ctools_add_js('ajax-responder');
+
+  $commands = array();
+  $commands[] = ctools_modal_command_dismiss();
+  $commands[] = ctools_ajax_command_redirect('contact/done');
+
+  print ajax_render($commands);
+  exit;
 }
 
 /**

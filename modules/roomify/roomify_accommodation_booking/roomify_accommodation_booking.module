@@ -1098,6 +1098,12 @@ function roomify_accommodation_booking_confirmation_form_enquiry_submit($form, &
     // a form in a modal popup.
     $output = ctools_modal_form_wrapper('roomify_listing_enquiry_form', $new_form_state);
 
+    // If the form has been submitted, there may be additional instructions
+    // such as dismissing the modal popup.
+    if (!empty($form_state['ajax_commands'])) {
+      $output = $form_state['ajax_commands'];
+    }
+
     // Return the ajax instructions to the browser via ajax_render().
     print ajax_render($output);
     exit();
