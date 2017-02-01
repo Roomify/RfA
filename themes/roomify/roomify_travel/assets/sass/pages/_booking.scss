@@ -214,14 +214,32 @@
         overflow: hidden;
       }
       #modal-content {
-        margin: 40px auto 0 auto;
+        margin: 20px auto 0 auto;
         max-height: 100% !important;
         form {
           background: #F8F8F8;
           border-radius: 5px;
           padding: 40px;
+          position: relative;
+          label {
+            font-weight: 300;
+          }
           .form-text-area {
             resize: vertical;
+          }
+          .title {
+            font-size: 22px;
+            font-weight: 400;
+            display: inline-block;
+            width: 100%;
+            margin-bottom: 30px;
+            margin-top: 10px;
+          }
+          .close {
+            position: absolute;
+            top: 12px;
+            right: 12px;
+            background: url(../images/x.png) center center no-repeat;
           }
         }
       }
