@@ -121,7 +121,7 @@ function roomify_conversations_pet_substitutions_alter(&$substitutions, $params)
 function roomify_conversations_entity_view_alter(&$build, $type) {
   if ($type == 'bat_booking' && $build['#view_mode'] == 'conversation') {
     $build['content'] = array(
-      '#markup' => roomify_conversations_booking_inquiry_render($build['#entity']),
+      '#markup' => roomify_conversations_conversation_booking_render($build['#entity']),
     );
   }
   elseif ($type == 'message') {
