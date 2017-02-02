@@ -699,10 +699,7 @@ function roomify_accommodation_booking_confirmation_form($form, &$form_state, $s
   }
 
   if (isset($_GET['group_size']) && !empty($_GET['group_size'])) {
-    $form['group_size'] = array(
-      '#type' => 'hidden',
-      '#value' => check_plain($_GET['group_size']),
-    );
+    $form_state['storage']['group_size'] = check_plain($_GET['group_size']);
   }
 
   $total = $amount;
@@ -994,7 +991,6 @@ function roomify_accommodation_booking_confirmation_form($form, &$form_state, $s
       '#value' => t('Send an Enquiry'),
       '#attributes' => array('class' => array('btn-success')),
       '#ajax' => array(
-        'wrapper' => 'pop-up',
         'callback' => 'roomify_accommodation_booking_confirmation_form_enquiry_submit',
       ),
       '#executes_submit_callback' => FALSE,
@@ -1089,7 +1085,7 @@ function roomify_accommodation_booking_confirmation_form_enquiry_submit($form, &
           $values['end_date'],
           $values['type_id'],
           $values['amount'] / 100,
-          $values['group_size'],
+          isset($form_state['storage']['group_size']) ? $form_state['storage']['group_size'] : 0,
         ),
       ),
     );
