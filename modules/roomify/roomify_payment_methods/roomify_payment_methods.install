@@ -15,7 +15,7 @@ function roomify_payment_methods_install() {
     'title' => 'Custom',
     'description' => '',
     'information' => '',
-    'format' => 'full_html',
+    'format' => 'filtered_text',
   );
 
   commerce_cop_payment_save($record);

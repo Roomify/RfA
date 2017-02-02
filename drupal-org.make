@@ -121,7 +121,8 @@ projects[commerce_cart_expiration][version] = 1.4
 
 projects[commerce_checkout_progress][version] = 1.4
 
-projects[commerce_cop][version] = "1.0-beta2"
+projects[commerce_cop][version] = 1.x-dev
+projects[commerce_cop][patch][] = https://www.drupal.org/files/issues/commerce_cop-i18n-integration-2344307-24.patch
 
 projects[commerce_features][version] = 1.1
 
