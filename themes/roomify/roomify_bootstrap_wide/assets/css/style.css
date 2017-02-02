@@ -10146,7 +10146,11 @@ body.error404 .page-content-center {
   @media (min-width: 992px) {
     .page-conversation-booking #roomify-accommodation-booking-confirmation-form,
     .page-booking #roomify-accommodation-booking-confirmation-form {
-      margin-left: 16.66667%; } }
+      margin-left: 16.666666667%; } }
+  @media (max-width: 768px) {
+    .page-conversation-booking #roomify-accommodation-booking-confirmation-form,
+    .page-booking #roomify-accommodation-booking-confirmation-form {
+      margin-bottom: 40px; } }
   .page-conversation-booking #roomify-accommodation-booking-confirmation-form button,
   .page-booking #roomify-accommodation-booking-confirmation-form button {
     display: inline-block;
@@ -10440,6 +10444,97 @@ body.error404 .page-content-center {
       .page-activity-booking #roomify-activity-booking-confirmation-form #edit-options .panel-body .checkbox {
         margin-bottom: 0;
         margin-top: 5px; }
+
+.page-conversation-booking #modalBackdrop,
+.page-booking #modalBackdrop,
+.page-activity-booking #modalBackdrop {
+  background: none !important; }
+.page-conversation-booking #modalContent,
+.page-booking #modalContent,
+.page-activity-booking #modalContent {
+  top: 0 !important;
+  left: 0 !important;
+  width: 100% !important;
+  height: 100% !important; }
+  .page-conversation-booking #modalContent .ctools-modal-dialog.modal-dialog,
+  .page-booking #modalContent .ctools-modal-dialog.modal-dialog,
+  .page-activity-booking #modalContent .ctools-modal-dialog.modal-dialog {
+    width: 100% !important;
+    height: 100% !important;
+    border-radius: 0px;
+    max-width: none !important;
+    margin: 0;
+    background-color: rgba(0, 0, 0, 0.75); }
+    .page-conversation-booking #modalContent .ctools-modal-dialog.modal-dialog .modal-header,
+    .page-booking #modalContent .ctools-modal-dialog.modal-dialog .modal-header,
+    .page-activity-booking #modalContent .ctools-modal-dialog.modal-dialog .modal-header {
+      display: none; }
+    .page-conversation-booking #modalContent .ctools-modal-dialog.modal-dialog .modal-content,
+    .page-booking #modalContent .ctools-modal-dialog.modal-dialog .modal-content,
+    .page-activity-booking #modalContent .ctools-modal-dialog.modal-dialog .modal-content {
+      height: 100%;
+      overflow: hidden; }
+      @media (max-width: 767px) {
+        .page-conversation-booking #modalContent .ctools-modal-dialog.modal-dialog .modal-content,
+        .page-booking #modalContent .ctools-modal-dialog.modal-dialog .modal-content,
+        .page-activity-booking #modalContent .ctools-modal-dialog.modal-dialog .modal-content {
+          overflow: scroll; } }
+    .page-conversation-booking #modalContent .ctools-modal-dialog.modal-dialog #modal-content,
+    .page-booking #modalContent .ctools-modal-dialog.modal-dialog #modal-content,
+    .page-activity-booking #modalContent .ctools-modal-dialog.modal-dialog #modal-content {
+      margin: 20px auto 0 auto;
+      max-height: 100% !important; }
+      @media (max-width: 480px) {
+        .page-conversation-booking #modalContent .ctools-modal-dialog.modal-dialog #modal-content,
+        .page-booking #modalContent .ctools-modal-dialog.modal-dialog #modal-content,
+        .page-activity-booking #modalContent .ctools-modal-dialog.modal-dialog #modal-content {
+          width: 100% !important;
+          padding: 10px; } }
+      .page-conversation-booking #modalContent .ctools-modal-dialog.modal-dialog #modal-content form,
+      .page-booking #modalContent .ctools-modal-dialog.modal-dialog #modal-content form,
+      .page-activity-booking #modalContent .ctools-modal-dialog.modal-dialog #modal-content form {
+        background: #F8F8F8;
+        border-radius: 5px;
+        padding: 40px;
+        position: relative; }
+        @media (max-width: 480px) {
+          .page-conversation-booking #modalContent .ctools-modal-dialog.modal-dialog #modal-content form,
+          .page-booking #modalContent .ctools-modal-dialog.modal-dialog #modal-content form,
+          .page-activity-booking #modalContent .ctools-modal-dialog.modal-dialog #modal-content form {
+            padding: 10px 30px; } }
+        .page-conversation-booking #modalContent .ctools-modal-dialog.modal-dialog #modal-content form label,
+        .page-booking #modalContent .ctools-modal-dialog.modal-dialog #modal-content form label,
+        .page-activity-booking #modalContent .ctools-modal-dialog.modal-dialog #modal-content form label {
+          font-weight: 300; }
+        .page-conversation-booking #modalContent .ctools-modal-dialog.modal-dialog #modal-content form .form-textarea,
+        .page-booking #modalContent .ctools-modal-dialog.modal-dialog #modal-content form .form-textarea,
+        .page-activity-booking #modalContent .ctools-modal-dialog.modal-dialog #modal-content form .form-textarea {
+          resize: vertical; }
+        .page-conversation-booking #modalContent .ctools-modal-dialog.modal-dialog #modal-content form .title,
+        .page-booking #modalContent .ctools-modal-dialog.modal-dialog #modal-content form .title,
+        .page-activity-booking #modalContent .ctools-modal-dialog.modal-dialog #modal-content form .title {
+          font-size: 22px;
+          font-weight: 400;
+          display: inline-block;
+          width: 100%;
+          margin-bottom: 30px;
+          margin-top: 10px; }
+        .page-conversation-booking #modalContent .ctools-modal-dialog.modal-dialog #modal-content form .close,
+        .page-booking #modalContent .ctools-modal-dialog.modal-dialog #modal-content form .close,
+        .page-activity-booking #modalContent .ctools-modal-dialog.modal-dialog #modal-content form .close {
+          position: absolute;
+          top: 12px;
+          right: 12px;
+          background: url(../images/x.png) center center no-repeat; }
+  .page-conversation-booking #modalContent div.modal-content,
+  .page-booking #modalContent div.modal-content,
+  .page-activity-booking #modalContent div.modal-content {
+    background: none;
+    box-shadow: none;
+    -webkit-box-shadow: none;
+    -moz-box-shadow: none;
+    -ms-box-shadow: none;
+    -o-box-shadow: none; }
 
 .page-checkout .view-commerce-cart-summary .roomify-accommodation-option .views-field-line-item-title {
   padding-left: 20px; }

@@ -189,12 +189,17 @@ function roomify_conversations_create_conversation_type() {
   $conversation_type->save();
 
   roomify_conversations_add_booking_reference_field();
-  roomify_conversations_add_inquiry_reference_field();
   roomify_conversations_add_unit_type_reference_field();
   roomify_conversations_add_guest_user_reference_field();
   roomify_conversations_add_owner_user_reference_field();
   roomify_conversations_add_start_date_field();
   roomify_conversations_add_end_date_field();
+  roomify_conversations_add_name_field();
+  roomify_conversations_add_email_field();
+  roomify_conversations_add_guests_field();
+  roomify_conversations_add_children_field();
+  roomify_conversations_add_further_info_field();
+  roomify_conversations_add_price_field();
 }
 
 /**
@@ -252,4 +257,18 @@ function roomify_conversations_update_7002() {
 
   roomify_conversations_add_conversation_booking_reference_field();
   roomify_conversations_add_accommodation_booking_reference_field();
+}
+
+/**
+ * Add Enquiry info fields to conversation.
+ */
+function roomify_conversations_update_7003() {
+  module_load_include('inc', 'roomify_conversations', 'roomify_conversations.fields');
+
+  roomify_conversations_add_name_field();
+  roomify_conversations_add_email_field();
+  roomify_conversations_add_guests_field();
+  roomify_conversations_add_children_field();
+  roomify_conversations_add_further_info_field();
+  roomify_conversations_add_price_field();
 }
