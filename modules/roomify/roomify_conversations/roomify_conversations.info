@@ -26,3 +26,4 @@ files[] = views/roomify_conversations_views_handler_name.inc
 files[] = views/roomify_conversations_views_handler_date.inc
 files[] = views/roomify_conversations_views_handler_most_recent_message.inc
 files[] = views/roomify_conversations_views_handler_most_recent_message_user.inc
+files[] = views/roomify_conversations_views_handler_conversation_url_popup.inc
