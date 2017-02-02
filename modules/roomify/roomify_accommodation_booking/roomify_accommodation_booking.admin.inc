@@ -10,6 +10,9 @@
  */
 function roomify_accommodation_booking_global_settings_form($form, &$form_state) {
   form_load_include($form_state, 'inc', 'rules', 'ui/ui.forms');
+  form_load_include($form_state, 'inc', 'variable_realm', 'variable_realm.variable');
+  module_load_include('form.inc', 'variable');
+  _roomify_system_prepare_variables_realm();
 
   $form['roomify_booking_settings'] = array(
     '#type' => 'fieldset',
@@ -251,6 +254,13 @@ function roomify_accommodation_booking_global_settings_form($form, &$form_state)
     $form['#submit'][] = 'roomify_accommodation_booking_deposit_config_form_submit';
   }
 
+  $form['roomify_booking_settings']['roomify_accommodation_booking_checkout_settings_fieldset'] = array(
+    '#type' => 'fieldset',
+    '#title' => t('Checkout page settings'),
+  );
+
+  $form['roomify_booking_settings']['roomify_accommodation_booking_checkout_settings_fieldset']['commerce_checkout_completion_message'] = variable_form_element(variable_get_info('commerce_checkout_completion_message'));
+
   $form['#validate'][] = 'roomify_accommodation_booking_global_settings_form_validate';
 
   $form['#attached']['css'][] = drupal_get_path('module', 'roomify_accommodation_booking') . '/css/booking_global_settings.css';
@@ -259,7 +269,7 @@ function roomify_accommodation_booking_global_settings_form($form, &$form_state)
 }
 
 /**
- * Validate function for the roomify_accommodation_booking_global_settings_form form.
+ * Validation function for the roomify_accommodation_booking_global_settings_form form.
  */
 function roomify_accommodation_booking_global_settings_form_validate($form, &$form_state) {
   foreach ($form_state['values']['deposit_options'] as $id => $option) {

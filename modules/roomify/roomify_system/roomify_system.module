@@ -168,6 +168,22 @@ function roomify_footer_form($form, &$form_state) {
 }
 
 /**
+ * Helper to switch the language of the variables to the proper one.
+ *
+ * @see https://www.drupal.org/node/2268415
+ */
+function _roomify_system_prepare_variables_realm() {
+  if (empty($_GET['variable_realm_key_language'])) {
+    return;
+  }
+
+  $language = $_GET['variable_realm_key_language'];
+
+  variable_realm_switch('language', $language, FALSE);
+  variable_realm_rebuild();
+}
+
+/**
  * Form "Global Site Settings".
  */
 function roomify_system_global_site_settings_form($form, &$form_state) {
@@ -183,6 +199,7 @@ function roomify_system_global_site_settings_form($form, &$form_state) {
     }
   }
   form_load_include($form_state, 'inc', 'variable_realm', 'variable_realm.variable');
+  _roomify_system_prepare_variables_realm();
 
   $form['site_information'] = array(
     '#type' => 'fieldset',
@@ -332,7 +349,7 @@ function roomify_system_global_site_settings_form($form, &$form_state) {
 }
 
 /**
- * Validate function for the roomify_system_global_site_settings_form form.
+ * Validation function for the roomify_system_global_site_settings_form form.
  */
 function roomify_system_global_site_settings_form_validate($form, &$form_state) {
   module_load_include('inc', 'system', 'system.admin');
@@ -983,6 +1000,9 @@ function roomify_system_roomify_rights() {
       'administer roomify_customer_support',
       'edit meta tags',
       'administer theme colors',
+      'edit any commerce_customer_profile entity',
+      'view any commerce_customer_profile entity',
+      'create commerce_customer_profile entities',
     ),
     'content editor' => array(
       'access content overview',
@@ -2078,6 +2098,10 @@ function roomify_system_theme() {
     'roomify_image_thumb_upload' => array(
       'render element' => 'element',
       'file' => 'roomify_system.module',
-    )
+    ),
+    'better_messages' => array(
+      'template'  => 'roomify_better_messages',
+      'variables' => array('content' => NULL),
+    ),
   );
 }

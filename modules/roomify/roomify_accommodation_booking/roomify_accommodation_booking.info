@@ -11,6 +11,7 @@ dependencies[] = bat_booking
 dependencies[] = bat_facets
 dependencies[] = cer (>=3.x)
 dependencies[] = commerce_cart
+dependencies[] = commerce_customer_ui
 dependencies[] = commerce_order_ui
 dependencies[] = rules
 dependencies[] = job_scheduler
