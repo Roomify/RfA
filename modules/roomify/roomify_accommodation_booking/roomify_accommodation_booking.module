@@ -489,12 +489,23 @@ function roomify_accommodation_booking_confirmation_page($start_date, $end_date,
 function roomify_accommodation_booking_current_search_form($form, &$form_state, $type_id, $start_date, $end_date, $nights, $group_size, $booking_cost, $offer_amount = '', $show_original_price = TRUE) {
   $date_format = variable_get('bat_daily_date_format', 'Y-m-d');
 
+  $type = bat_type_load($type_id);
+
+  $temp_end_date = clone($end_date);
+  if ($type->type == 'single_day_activity' || $type->type == 'single_day_tour') {
+    $date_format = variable_get('bat_date_format', 'Y-m-d H:i');
+    $temp_end_date->add(new DateInterval('PT1M'));
+  }
+  else {
+    $date_format = variable_get('bat_daily_date_format', 'Y-m-d');
+  }
+
   $form['current_search']['start_date'] = array(
     '#markup' => '<div class="current-search-item current-search-arrival"><label>' . t('Arriving On') . '</label>' . '<span>' . $start_date->format($date_format) . '</span></div>',
   );
 
   $form['current_search']['end_date'] = array(
-    '#markup' => '<div class="current-search-item current-search-departure"><label>' . t('Departing On') . '</label>' . '<span>' . $end_date->format($date_format) . '</span></div>',
+    '#markup' => '<div class="current-search-item current-search-departure"><label>' . t('Departing On') . '</label>' . '<span>' . $temp_end_date->format($date_format) . '</span></div>',
   );
 
   $form['current_search']['nights'] = array(
@@ -688,10 +699,7 @@ function roomify_accommodation_booking_confirmation_form($form, &$form_state, $s
   }
 
   if (isset($_GET['group_size']) && !empty($_GET['group_size'])) {
-    $form['group_size'] = array(
-      '#type' => 'hidden',
-      '#value' => check_plain($_GET['group_size']),
-    );
+    $form_state['storage']['group_size'] = check_plain($_GET['group_size']);
   }
 
   $total = $amount;
@@ -982,7 +990,10 @@ function roomify_accommodation_booking_confirmation_form($form, &$form_state, $s
       '#type' => 'submit',
       '#value' => t('Send an Enquiry'),
       '#attributes' => array('class' => array('btn-success')),
-      '#submit' => array('roomify_accommodation_booking_confirmation_form_enquiry_submit'),
+      '#ajax' => array(
+        'callback' => 'roomify_accommodation_booking_confirmation_form_enquiry_submit',
+      ),
+      '#executes_submit_callback' => FALSE,
     );
 
     if (variable_get('roomify_accommodation_booking_allow_instant_bookings', 1)) {
@@ -1052,21 +1063,46 @@ function roomify_accommodation_booking_confirmation_form_enquiry_submit($form, &
       drupal_set_message(t('These dates are no longer available for "@property_name - @type_name", please try different dates.', array('@property_name' => $property->name, '@type_name' => $type->name)), 'error');
     }
 
-    drupal_goto('listing/' . $property->property_id, array('fragment' => 'search-availability'));
+    ctools_include('ajax');
+    ctools_add_js('ajax-responder');
+
+    $commands = array();
+    $commands[] = ctools_ajax_command_redirect('listing/' . $property->property_id);
+
+    print ajax_render($commands);
+    exit;
   }
   else {
-    $_SESSION['enquiry'] = array(
-      'amount' => $values['amount'] / 100,
-      'start_date' => $values['start_date'],
-      'end_date' => $values['end_date'],
-      'type_id' => $values['type_id'],
+    ctools_include('modal');
+    ctools_modal_add_js();
+
+    $new_form_state = array(
+      'ajax' => TRUE,
+      'title' => t('Listing Enquiry'),
+      'build_info' => array(
+        'args' => array(
+          $values['start_date'],
+          $values['end_date'],
+          $values['type_id'],
+          $values['amount'] / 100,
+          isset($form_state['storage']['group_size']) ? $form_state['storage']['group_size'] : 0,
+        ),
+      ),
     );
 
-    if (isset($values['group_size'])) {
-      $_SESSION['enquiry']['group_size'] = $values['group_size'];
+    // Use ctools to generate ajax instructions for the browser to create
+    // a form in a modal popup.
+    $output = ctools_modal_form_wrapper('roomify_listing_enquiry_form', $new_form_state);
+
+    // If the form has been submitted, there may be additional instructions
+    // such as dismissing the modal popup.
+    if (!empty($form_state['ajax_commands'])) {
+      $output = $form_state['ajax_commands'];
     }
 
-    drupal_goto('contact', array('query' => array('field_listing_enquiry_type_ref' => $values['type_id'])));
+    // Return the ajax instructions to the browser via ajax_render().
+    print ajax_render($output);
+    exit();
   }
 }
 
@@ -1106,7 +1142,7 @@ function roomify_accommodation_booking_confirmation_form_submit($form, &$form_st
       drupal_set_message(t('These dates are no longer available for "@property_name - @type_name", please try different dates.', array('@property_name' => $property->name, '@type_name' => $type->name)), 'error');
     }
 
-    drupal_goto('listing/' . $property->property_id, array('fragment' => 'search-availability'));
+    drupal_goto('listing/' . $property->property_id);
   }
   else {
     $amount = $values['amount'];
@@ -2438,6 +2474,10 @@ function roomify_accommodation_booking_conversation_confirmation_page($conversat
     $property = roomify_property_load($property_id[0]['target_id']);
   }
 
+  if ($type->type == 'single_day_activity' || $type->type == 'single_day_tour') {
+    $end_date->sub(new DateInterval('PT1M'));
+  }
+
   if (isset($type->name)) {
     drupal_set_title(t('Booking for @type', array('@type' => $type->name)));
 
@@ -2454,10 +2494,9 @@ function roomify_accommodation_booking_conversation_confirmation_page($conversat
 
   $nights = $start_date->diff($end_date)->days;
 
-  $inquiry = $conversation_wrapper->conversation_inquiry_ref->value()[0];
   $group_size = 0;
-  if (isset($inquiry->field_listing_enquiry_guests[LANGUAGE_NONE][0]['value'])) {
-    $group_size = $inquiry->field_listing_enquiry_guests[LANGUAGE_NONE][0]['value'];
+  if (isset($conversation->conversation_guests[LANGUAGE_NONE][0]['value'])) {
+    $group_size = $conversation->conversation_guests[LANGUAGE_NONE][0]['value'];
   }
 
   $current_search = drupal_get_form('roomify_accommodation_booking_current_search_form', $type->type_id, $start_date, $end_date, $nights, $group_size, $booking_cost);

@@ -757,6 +757,6 @@ function bat_type_search_availability_form_submit($form, $form_state) {
       drupal_set_message($message, 'error');
     }
 
-    drupal_goto('room-type/' . $type->type_id, array('fragment' => 'search-availability'));
+    drupal_goto('room-type/' . $type->type_id);
   }
 }

@@ -31,10 +31,12 @@ Feature: Book Property
     And I click on the text "Book Now"
     Then I should see "Booking for Casa Sul Mare"
     And I click on the text "Send an Enquiry"
-    Then I fill in "field_listing_enquiry_name[und][0][value]" with "Test user 1"
-    And I fill in "field_listing_enquiry_email[und][0][email]" with "user1@roomify.us"
-    And I fill in "field_listing_enquiry_info[und][0][value]" with "Test text test text"
+    And I wait for AJAX to finish
+    Then I fill in "guest_name" with "Test user 1"
+    And I fill in "email" with "user1@roomify.us"
+    And I fill in "further_info" with "Test text test text"
     Then I press "Send Request"
+    And I wait for AJAX to finish
     And I should see "Thank You."
     And I should see "Your Enquiry has been received and a Conversation has started with the property owner."
     And I should see "They will be able to reply and provide a customized offer for you."
@@ -49,9 +51,11 @@ Feature: Book Property
     And I click on the text "Book Now"
     Then I should see "Booking for Casa Sul Mare"
     And I click on the text "Send an Enquiry"
-    Then I fill in "field_listing_enquiry_name[und][0][value]" with "Test user 1"
-    And I fill in "field_listing_enquiry_info[und][0][value]" with "Test text test text"
+    And I wait for AJAX to finish
+    Then I fill in "guest_name" with "Test user 1"
+    And I fill in "further_info" with "Test text test text"
     Then I press "Send Request"
+    And I wait for AJAX to finish
     And I should see "Thank You."
     And I should see "Your Enquiry has been received and a Conversation has started with the property owner."
     And I should see "They will be able to reply and provide a customized offer for you."
