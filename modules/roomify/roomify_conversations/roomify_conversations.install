@@ -163,10 +163,6 @@ function roomify_conversations_create_booking_type() {
   roomify_conversations_add_booking_event_reference_field();
   roomify_conversations_add_booking_price_field();
   roomify_conversations_add_booking_conversation_reference_field();
-  roomify_conversations_add_booking_full_name();
-  roomify_conversations_add_booking_address();
-  roomify_conversations_add_booking_telephone();
-  roomify_conversations_add_group_guest();
   roomify_conversations_add_accommodation_booking_reference_field();
 }
 

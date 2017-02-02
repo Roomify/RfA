@@ -422,7 +422,6 @@ function roomify_system_update_7015() {
   <a href="[site:url]">Return to the front page.</a>';
 
   variable_set('commerce_checkout_completion_message', $message);
-
 }
 
 /**
@@ -623,5 +622,11 @@ function roomify_system_update_7035() {
     $instance_info['description'] = 'You may add new Area Types, check out the Manage Taxonomies link on the dashboard or follow <a href="/admin/structure/taxonomy/area_type" target="_blank">this link</a>';
     field_update_instance($instance_info);
   }
+}
 
+/**
+ * Enable module 'References dialog'.
+ */
+function roomify_system_update_7036() {
+  module_enable(array('references_dialog'));
 }

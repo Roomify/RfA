@@ -45,6 +45,7 @@ function roomify_listing_install() {
   $variable_realm_list[] = 'roomify_submission_reply_text';
   $variable_realm_list[] = 'roomify_form_instructions_text';
   $variable_realm_list[] = 'roomify_submission_reply_page_title';
+  $variable_realm_list[] = 'roomify_customer_support_message';
   variable_set('variable_realm_list_language', $variable_realm_list);
 }
 
@@ -1166,9 +1167,24 @@ function roomify_listing_update_7025() {
 }
 
 /**
- * Migrate existing entityform submission data.
+ * Localize Customer message text.
  */
 function roomify_listing_update_7026() {
+  $message = variable_get('roomify_customer_support_message', array('value' => '', 'format' => NULL));
+  if ($message['value'] != '') {
+    variable_set_value('roomify_customer_support_message', $message);
+  }
+  // Set the custom message as translatable.
+  $variable_realm_list = variable_get('variable_realm_list_language', array());
+  $variable_realm_list[] = 'roomify_customer_support_message';
+
+  variable_set('variable_realm_list_language', $variable_realm_list);
+}
+
+/**
+ * Migrate existing entityform submission data.
+ */
+function roomify_listing_update_7027() {
   $query = new EntityFieldQuery();
 
   $query->entityCondition('entity_type', 'roomify_conversation');
@@ -1212,7 +1228,7 @@ function roomify_listing_update_7026() {
  * Migrate existing translations of the field names
  * on the entityform and the submission confirmation text.
  */
-function roomify_listing_update_7027() {
+function roomify_listing_update_7028() {
   $variable_realm_list = variable_get('variable_realm_list_language', array());
   $variable_realm_list[] = 'roomify_submission_reply_text';
   $variable_realm_list[] = 'roomify_form_instructions_text';

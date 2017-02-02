@@ -121,7 +121,8 @@ projects[commerce_cart_expiration][version] = 1.4
 
 projects[commerce_checkout_progress][version] = 1.4
 
-projects[commerce_cop][version] = "1.0-beta2"
+projects[commerce_cop][version] = 1.x-dev
+projects[commerce_cop][patch][] = https://www.drupal.org/files/issues/commerce_cop-i18n-integration-2344307-24.patch
 
 projects[commerce_features][version] = 1.1
 
@@ -364,6 +365,9 @@ projects[profile2][download][revision] = 9a05fc78b5c3c3deb9d41fb8202b523602c80a7
 projects[publishcontent][version] = 1.3
 
 projects[redirect][version] = 1.0-rc3
+
+projects[references_dialog][version] = 1.0-beta2
+projects[references_dialog][patch][] = https://www.drupal.org/files/issues/references_dialog-zindex-2833782-1.patch
 
 projects[robotstxt][version] = 1.3
 

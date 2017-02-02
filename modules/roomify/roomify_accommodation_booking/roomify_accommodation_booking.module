@@ -1327,6 +1327,103 @@ function roomify_accommodation_booking_entity_insert($entity, $type) {
     if (in_array($entity->type, array('roomify_accommodation_booking', 'booking_com', 'ical'))) {
       roomify_accommodation_booking_schedule_job($entity);
     }
+    if ($entity->type == 'booking_com') {
+      $event = bat_event_load($entity->booking_event_reference[LANGUAGE_NONE][0]['target_id']);
+      $event_wrapper = entity_metadata_wrapper('bat_event', $event);
+
+      $bat_type = bat_type_load($event_wrapper->event_bat_unit_reference->type_id->value());
+
+      // Create a new order.
+      $order = commerce_order_new($bat_type->uid, 'pending');
+      commerce_order_save($order);
+
+      // Create a new line item.
+      $product_id = $bat_type->accommodation_product_reference[LANGUAGE_NONE][0]['target_id'];
+      $product = commerce_product_load($product_id);
+      $line_item = commerce_product_line_item_new($product, 1, 0, array(), 'roomify_accommodation_booking');
+
+      $amount = $entity->field_bcom_total_price[LANGUAGE_NONE][0]['value'] * 100;
+      $line_item->commerce_unit_price[LANGUAGE_NONE]['0']['amount'] = $amount;
+      $line_item->commerce_unit_price[LANGUAGE_NONE]['0']['data']['components']['0']['price']['amount'] = $amount;
+
+      $line_item->order_id = $order->order_id;
+
+      commerce_line_item_save($line_item);
+
+      $customer_profile = commerce_customer_profile_new('billing');
+      $customer_profile->commerce_customer_address[LANGUAGE_NONE][0] = array(
+        'country' => strtoupper($entity->field_bcom_countrycode[LANGUAGE_NONE][0]['value']),
+        'administrative_area' => '',
+        'locality' => $entity->field_bcom_city[LANGUAGE_NONE][0]['value'],
+        'postal_code' => $entity->field_bcom_zip[LANGUAGE_NONE][0]['value'],
+        'thoroughfare' => '',
+        'name_line' => $entity->field_bcom_first_name[LANGUAGE_NONE][0]['value'] . ' ' . $entity->field_bcom_last_name[LANGUAGE_NONE][0]['value'],
+        'first_name' => $entity->field_bcom_first_name[LANGUAGE_NONE][0]['value'],
+        'last_name' => $entity->field_bcom_last_name[LANGUAGE_NONE][0]['value'],
+      );
+      $customer_profile->booking_telephone = $entity->field_bcom_telephone[LANGUAGE_NONE][0]['value'];
+
+      commerce_customer_profile_save($customer_profile);
+
+      // Add the line item to the order.
+      $order_wrapper = entity_metadata_wrapper('commerce_order', $order);
+      $order_wrapper->commerce_line_items[] = $line_item;
+
+      $order_wrapper->commerce_customer_billing = $customer_profile;
+
+      // Save the order again to update its line item reference field.
+      commerce_order_save($order);
+
+      $entity->booking_line_item_reference[LANGUAGE_NONE][0]['target_id'] = $line_item->line_item_id;
+
+      field_attach_update($type, $entity);
+    }
+    elseif ($entity->type == 'ical') {
+      $event = bat_event_load($entity->booking_event_reference[LANGUAGE_NONE][0]['target_id']);
+      $event_wrapper = entity_metadata_wrapper('bat_event', $event);
+
+      $bat_type = bat_type_load($event_wrapper->event_bat_unit_reference->type_id->value());
+
+      // Create a new order.
+      $order = commerce_order_new($bat_type->uid, 'pending');
+      commerce_order_save($order);
+
+      // Create a new line item.
+      $product_id = $bat_type->accommodation_product_reference[LANGUAGE_NONE][0]['target_id'];
+      $product = commerce_product_load($product_id);
+      $line_item = commerce_product_line_item_new($product, 1, 0, array(), 'roomify_accommodation_booking');
+
+      $amount = 0;
+      $line_item->commerce_unit_price[LANGUAGE_NONE]['0']['amount'] = $amount;
+      $line_item->commerce_unit_price[LANGUAGE_NONE]['0']['data']['components']['0']['price']['amount'] = $amount;
+
+      $line_item->order_id = $order->order_id;
+
+      commerce_line_item_save($line_item);
+
+      $customer_profile = commerce_customer_profile_new('billing');
+      commerce_customer_profile_save($customer_profile);
+
+      // Add the line item to the order.
+      $order_wrapper = entity_metadata_wrapper('commerce_order', $order);
+      $order_wrapper->commerce_line_items[] = $line_item;
+
+      $order_wrapper->commerce_customer_billing = $customer_profile;
+
+      // Save the order again to update its line item reference field.
+      commerce_order_save($order);
+
+      $entity->booking_line_item_reference[LANGUAGE_NONE][0]['target_id'] = $line_item->line_item_id;
+
+      field_attach_update($type, $entity);
+    }
+  }
+
+  if ($type == 'bat_booking_type') {
+    module_load_include('inc', 'roomify_accommodation_booking', 'roomify_accommodation_booking.fields');
+
+    roomify_accommodation_booking_add_line_item_reference($entity->type);
+    roomify_accommodation_booking_add_booking_guest_field($entity->type);
   }
 }
 
@@ -1359,6 +1456,25 @@ function roomify_accommodation_booking_entity_update($entity, $type) {
     if (in_array($entity->type, array('roomify_accommodation_booking', 'booking_com', 'ical'))) {
       if ($entity->booking_start_date[LANGUAGE_NONE][0]['value'] != $entity->original->booking_start_date[LANGUAGE_NONE][0]['value']) {
         roomify_accommodation_booking_schedule_job($entity);
+      }
+    }
+    if ($entity->type == 'ical') {
+      if (!isset($entity->original->booking_price[LANGUAGE_NONE][0]['amount']) ||
+          $entity->original->booking_price[LANGUAGE_NONE][0]['amount'] != $entity->booking_price[LANGUAGE_NONE][0]['amount']) {
+        $line_item = commerce_line_item_load($entity->booking_line_item_reference[LANGUAGE_NONE][0]['target_id']);
+
+        $amount = $entity->booking_price[LANGUAGE_NONE][0]['amount'];
+        $line_item->commerce_unit_price[LANGUAGE_NONE]['0']['amount'] = $amount;
+        $line_item->commerce_unit_price[LANGUAGE_NONE]['0']['data']['components']['0']['price']['amount'] = $amount;
+
+        commerce_line_item_save($line_item);
+
+        $order = commerce_order_load($line_item->order_id);
+
+        $line_item->commerce_order_total[LANGUAGE_NONE]['0']['amount'] = $amount;
+        $line_item->commerce_order_total[LANGUAGE_NONE]['0']['data']['components']['0']['price']['amount'] = $amount;
+
+        commerce_order_save($order);
       }
     }
   }
@@ -1469,6 +1585,7 @@ function roomify_accommodation_booking_form_alter(&$form, &$form_state, $form_id
       if (!user_access('administer bat_booking_type entities')) {
         $form['booking_event_reference']['#access'] = FALSE;
         $form['booking_line_item_reference']['#access'] = FALSE;
+        $form['booking_booking_conversation_ref']['#access'] = FALSE;
       }
 
       if (!((isset($form['#entity']->is_new) && $form['#entity']->is_new) || in_array('administrator', $user->roles))) {
@@ -1587,6 +1704,45 @@ function roomify_accommodation_booking_form_alter(&$form, &$form_state, $form_id
       }
       else {
         $form['actions']['submit']['#submit'] = array_merge(array('roomify_accommodation_booking_edit_booking_form_submit'), $form['actions']['submit']['#submit']);
+
+        $line_item = commerce_line_item_load($form['#entity']->booking_line_item_reference[LANGUAGE_NONE][0]['target_id']);
+        $order = commerce_order_load($line_item->order_id);
+
+        if (isset($order->commerce_customer_billing[LANGUAGE_NONE][0]['profile_id'])) {
+          $profile = commerce_customer_profile_load($order->commerce_customer_billing[LANGUAGE_NONE][0]['profile_id']);
+
+          $form['profile'] = array(
+           '#type' => 'fieldset',
+             '#title' => t('Guest'),
+            '#group' => 'additional_settings',
+            '#weight' => -100,
+          );
+
+          $profile_array = entity_view('commerce_customer_profile', array($profile->profile_id => $profile), 'customer');
+
+          $form['profile']['info'] = array(
+            '#markup' => '<div class="field-label">' . t('Address:') . '</div>' . drupal_render($profile_array),
+          );
+
+          $form['profile']['edit'] = array(
+            '#markup' => '<div class="edit-profile">' . l(t('Edit customer profile'), 'admin/commerce/customer-profiles/' . $profile->profile_id . '/edit', array('query' => drupal_get_destination())) . '</div>',
+          );
+        }
+
+        $form['order'] = array(
+          '#type' => 'fieldset',
+          '#title' => t('Order'),
+          '#group' => 'additional_settings',
+          '#weight' => -99,
+        );
+
+        $form['order']['info'] = array(
+          '#markup' => commerce_embed_view('commerce_line_item_table', 'default', array($order->order_id)),
+        );
+
+        $form['order']['view'] = array(
+          '#markup' => '<div class="view-order">' . l(t('View order'), 'admin/commerce/orders/' . $order->order_id . '/view') . '</div>',
+        );
       }
 
       if (count($form['availability_search']['bat_type']['#options']) == 1) {
@@ -1614,6 +1770,178 @@ function roomify_accommodation_booking_form_alter(&$form, &$form_state, $form_id
           $price = roomify_accommodation_booking_calculate_price($start_date, $end_date, $type_id);
           $form_state['input']['booking_price'][LANGUAGE_NONE][0]['amount'] = round($price / 100, 2);
         }
+      }
+    }
+    if ($form['#entity_type'] == 'bat_booking' && $form['#bundle'] == 'booking_com' &&
+        ($form_id == 'bat_booking_form' || $form_id == 'bat_booking_edit_form' || $form_id == 'bat_booking_edit_booking_com_form')) {
+      if (!user_access('administer bat_booking_type entities')) {
+        $form['booking_event_reference']['#access'] = FALSE;
+        $form['booking_line_item_reference']['#access'] = FALSE;
+      }
+
+      $booking = $form['#entity'];
+
+      $currency_setting = commerce_currency_load(commerce_default_currency());
+      $currency_symbol = $currency_setting['symbol'];
+
+      $form['availability_search'] = array(
+        '#type' => 'fieldset',
+        '#title' => t('Room type'),
+        '#weight' => 2,
+        '#prefix' => '<div id="availability-search">',
+        '#suffix' => '</div>',
+      );
+      $form['availability_search']['bat_type'] = array(
+        '#type' => 'radios',
+        '#options' => array(),
+        '#ajax' => array(
+          'callback' => 'roomify_accommodation_booking_type_changed_callback',
+          'wrapper' => 'booking-price',
+        ),
+      );
+
+      if (isset($booking->booking_event_reference[LANGUAGE_NONE][0]['target_id'])) {
+        $start_date = new DateTime($booking->booking_start_date[LANGUAGE_NONE][0]['value']);
+        $end_date = new DateTime($booking->booking_end_date[LANGUAGE_NONE][0]['value']);
+
+        $event = bat_event_load($form['#entity']->booking_event_reference[LANGUAGE_NONE][0]['target_id']);
+        $event_wrapper = entity_metadata_wrapper('bat_event', $event);
+
+        $type = bat_type_load($event_wrapper->event_bat_unit_reference->type_id->value());
+
+        $price = $booking->field_bcom_total_price[LANGUAGE_NONE][0]['value'] * 100;
+        $booking_cost = commerce_currency_format($price, $currency_setting['code']);
+
+        $option_label = t('@name - Cost: @price', array('@name' => $type->name, '@price' => $booking_cost));
+
+        $form['availability_search']['bat_type']['#options'] = array($type->type_id => $option_label) + $form['availability_search']['bat_type']['#options'];
+        $form['availability_search']['bat_type']['#default_value'] = $type->type_id;
+      }
+
+      if (!(isset($booking->is_new) && $booking->is_new)) {
+        $line_item = commerce_line_item_load($booking->booking_line_item_reference[LANGUAGE_NONE][0]['target_id']);
+        $order = commerce_order_load($line_item->order_id);
+
+        $profile = commerce_customer_profile_load($order->commerce_customer_billing[LANGUAGE_NONE][0]['profile_id']);
+
+        $form['profile'] = array(
+          '#type' => 'fieldset',
+          '#title' => t('Guest'),
+          '#group' => 'additional_settings',
+          '#weight' => -100,
+        );
+
+        $profile_array = entity_view('commerce_customer_profile', array($profile->profile_id => $profile), 'customer');
+
+        $form['profile']['info'] = array(
+          '#markup' => '<div class="field-label">' . t('Address:') . '</div>' . drupal_render($profile_array),
+        );
+
+        $form['profile']['edit'] = array(
+          '#markup' => '<div>' . l(t('Edit customer profile'), 'admin/commerce/customer-profiles/' . $profile->profile_id . '/edit', array('query' => drupal_get_destination())) . '</div>',
+        );
+
+        $form['order'] = array(
+          '#type' => 'fieldset',
+          '#title' => t('Order'),
+          '#group' => 'additional_settings',
+          '#weight' => -99,
+        );
+
+        $form['order']['info'] = array(
+          '#markup' => commerce_embed_view('commerce_line_item_table', 'default', array($order->order_id)),
+        );
+
+        $form['order']['view'] = array(
+          '#markup' => '<div class="view-order">' . l(t('View order'), 'admin/commerce/orders/' . $order->order_id . '/view') . '</div>',
+        );
+      }
+    }
+
+    if ($form['#entity_type'] == 'bat_booking' && $form['#bundle'] == 'ical' &&
+        ($form_id == 'bat_booking_form' || $form_id == 'bat_booking_edit_form' || $form_id == 'bat_booking_edit_ical_form')) {
+      if (!user_access('administer bat_booking_type entities')) {
+        $form['booking_event_reference']['#access'] = FALSE;
+        $form['booking_line_item_reference']['#access'] = FALSE;
+        $form['field_reservation_id']['#access'] = FALSE;
+        $form['field_event_id']['#access'] = FALSE;
+      }
+
+      $booking = $form['#entity'];
+
+      $currency_setting = commerce_currency_load(commerce_default_currency());
+      $currency_symbol = $currency_setting['symbol'];
+
+      $form['availability_search'] = array(
+        '#type' => 'fieldset',
+        '#title' => t('Room type'),
+        '#weight' => 2,
+        '#prefix' => '<div id="availability-search">',
+        '#suffix' => '</div>',
+      );
+      $form['availability_search']['bat_type'] = array(
+        '#type' => 'radios',
+        '#options' => array(),
+        '#ajax' => array(
+          'callback' => 'roomify_accommodation_booking_type_changed_callback',
+          'wrapper' => 'booking-price',
+        ),
+      );
+
+      if (isset($booking->booking_event_reference[LANGUAGE_NONE][0]['target_id'])) {
+        $start_date = new DateTime($booking->booking_start_date[LANGUAGE_NONE][0]['value']);
+        $end_date = new DateTime($booking->booking_end_date[LANGUAGE_NONE][0]['value']);
+
+        $event = bat_event_load($form['#entity']->booking_event_reference[LANGUAGE_NONE][0]['target_id']);
+        $event_wrapper = entity_metadata_wrapper('bat_event', $event);
+
+        $type = bat_type_load($event_wrapper->event_bat_unit_reference->type_id->value());
+
+        $price = $booking->booking_price[LANGUAGE_NONE][0]['amount'];
+        $booking_cost = commerce_currency_format($price, $currency_setting['code']);
+
+        $option_label = t('@name - Cost: @price', array('@name' => $type->name, '@price' => $booking_cost));
+
+        $form['availability_search']['bat_type']['#options'] = array($type->type_id => $option_label) + $form['availability_search']['bat_type']['#options'];
+        $form['availability_search']['bat_type']['#default_value'] = $type->type_id;
+      }
+
+      if (!(isset($booking->is_new) && $booking->is_new)) {
+        $line_item = commerce_line_item_load($booking->booking_line_item_reference[LANGUAGE_NONE][0]['target_id']);
+        $order = commerce_order_load($line_item->order_id);
+
+        $profile = commerce_customer_profile_load($order->commerce_customer_billing[LANGUAGE_NONE][0]['profile_id']);
+
+        $form['profile'] = array(
+          '#type' => 'fieldset',
+          '#title' => t('Guest'),
+          '#group' => 'additional_settings',
+          '#weight' => -100,
+        );
+
+        $profile_array = entity_view('commerce_customer_profile', array($profile->profile_id => $profile), 'customer');
+
+        $form['profile']['info'] = array(
+          '#markup' => '<div class="field-label">' . t('Address:') . '</div>' . drupal_render($profile_array),
+        );
+
+        $form['profile']['edit'] = array(
+          '#markup' => '<div>' . l(t('Edit customer profile'), 'admin/commerce/customer-profiles/' . $profile->profile_id . '/edit', array('query' => drupal_get_destination())) . '</div>',
+        );
+        $form['order'] = array(
+          '#type' => 'fieldset',
+          '#title' => t('Order'),
+          '#group' => 'additional_settings',
+          '#weight' => -99,
+        );
+
+        $form['order']['info'] = array(
+          '#markup' => commerce_embed_view('commerce_line_item_table', 'default', array($order->order_id)),
+        );
+
+        $form['order']['view'] = array(
+          '#markup' => '<div class="view-order">' . l(t('View order'), 'admin/commerce/orders/' . $order->order_id . '/view') . '</div>',
+        );
       }
     }
   }
@@ -1715,6 +2043,12 @@ function roomify_accommodation_booking_add_booking_form_submit($form, &$form_sta
 
     // Create a new order.
     $order = commerce_order_new($type->uid, 'pending');
+
+    if (isset($form_state['values']['booking_guest'][LANGUAGE_NONE][0]['target_id']) &&
+        !empty($form_state['values']['booking_guest'][LANGUAGE_NONE][0]['target_id'])) {
+      $order->commerce_customer_billing[LANGUAGE_NONE][0]['profile_id'] = $form_state['values']['booking_guest'][LANGUAGE_NONE][0]['target_id'];
+    }
+
     commerce_order_save($order);
 
     // Create a new line item.
@@ -1794,17 +2128,7 @@ function roomify_accommodation_booking_commerce_checkout_complete($order) {
       $line_item = commerce_line_item_load($item_id['line_item_id']);
 
       if ($line_item->type == 'roomify_accommodation_booking') {
-        // Store user 'Full name' and 'Address' in booking.
         $booking = bat_booking_load($line_item->commerce_booking_reference[LANGUAGE_NONE][0]['target_id']);
-
-        $address = $order_wrapper->commerce_customer_billing->commerce_customer_address->value();
-        $telephone = $order_wrapper->commerce_customer_billing->booking_telephone->value();
-
-        $booking->booking_full_name[LANGUAGE_NONE][0]['value'] = $address['name_line'];
-        $booking->booking_address[LANGUAGE_NONE][0] = $address;
-        $booking->booking_telephone[LANGUAGE_NONE][0]['value'] = $telephone;
-
-        $booking->save();
 
         // Set event state to 'Booked'.
         $event = bat_event_load($booking->booking_event_reference[LANGUAGE_NONE][0]['target_id']);
@@ -2031,10 +2355,12 @@ function roomify_accommodation_booking_get_rates($type_id, $group_size = 0) {
  */
 function roomify_accommodation_booking_date_combo_process_alter(&$element, &$form_state, $context) {
   if ($element['#field_name'] == 'booking_start_date' || $element['#field_name'] == 'booking_end_date') {
-    if ($element['#entity_type'] == 'bat_booking' && $element['#bundle'] == 'roomify_accommodation_booking') {
-      $date_format = variable_get('bat_daily_date_format', 'Y-m-d');
-      $element['value']['#date_format'] = $date_format;
-      $element['value']['#date_label_position'] = 'invisible';
+    if ($element['#entity_type'] == 'bat_booking') {
+      if (in_array($element['#bundle'], array('roomify_accommodation_booking', 'booking_com', 'ical'))) {
+        $date_format = variable_get('bat_daily_date_format', 'Y-m-d');
+        $element['value']['#date_format'] = $date_format;
+        $element['value']['#date_label_position'] = 'invisible';
+      }
     }
   }
 }
@@ -2813,9 +3139,15 @@ function roomify_accommodation_booking_notifications_form_submit($form, &$form_s
   }
 }
 
+/**
+ * @param $order
+ *
+ * @return BatType|false
+ */
 function roomify_accommodation_booking_get_bat_types_from_order($order = FALSE) {
   if ($order !== FALSE) {
     $wrapper = entity_metadata_wrapper('commerce_order', $order);
+
     // See if there are any product line items.
     if (commerce_line_items_quantity($wrapper->commerce_line_items, commerce_product_line_item_types()) > 0) {
       // Get the unit IDs already in the cart.
@@ -2832,7 +3164,25 @@ function roomify_accommodation_booking_get_bat_types_from_order($order = FALSE) 
         }
       }
     }
+
     return $type;
   }
+
   return FALSE;
+}
+
+/**
+ * Implements hook_references_dialog_entity_admin_paths().
+ */
+function roomify_accommodation_booking_references_dialog_entity_admin_paths() {
+  return array(
+    'commerce_customer_profile' => array(
+      'add' => 'admin/commerce/customer-profiles/add/billing',
+      'edit' => 'admin/commerce/customer-profiles/[entity_id]/edit',
+      'search' => array(
+        'function' => 'references_dialog_get_field_search_links',
+        'title' => t('Search Dialog'),
+      ),
+    ),
+  );
 }

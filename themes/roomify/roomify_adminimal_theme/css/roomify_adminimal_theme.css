@@ -802,18 +802,78 @@ body.adminimal-theme .cke_reset_all label {
   display: inline-block;
   width: 100%;
 }
+#bat-booking-edit-roomify-accommodation-booking-form fieldset#edit-profile,
+#bat-booking-edit-ical-form fieldset#edit-profile,
+#bat-booking-edit-booking-com-form fieldset#edit-profile {
+  font-size: 120%;
+}
+#bat-booking-edit-roomify-accommodation-booking-form fieldset#edit-profile .field-label,
+#bat-booking-edit-ical-form fieldset#edit-profile .field-label,
+#bat-booking-edit-booking-com-form fieldset#edit-profile .field-label {
+  font-weight: bold;
+  margin-bottom: 3px;
+}
+#bat-booking-edit-roomify-accommodation-booking-form fieldset#edit-profile .field,
+#bat-booking-edit-ical-form fieldset#edit-profile .field,
+#bat-booking-edit-booking-com-form fieldset#edit-profile .field {
+  margin-bottom: 15px;
+}
+#bat-booking-edit-roomify-accommodation-booking-form fieldset#edit-order .view-order,
+#bat-booking-edit-ical-form fieldset#edit-order .view-order,
+#bat-booking-edit-booking-com-form fieldset#edit-order .view-order {
+  font-size: 120%;
+}
 @media (max-width: 768px) {
-  .page-admin-bat-config-property #calendar {
+  .page-admin-bat-config-property #calendar.field-name-booking-full-name {
     margin-top: 40px;
   }
-  .page-admin-bat-config-property #calendar .fc-toolbar {
+  .page-admin-bat-config-property #calendar.field-name-booking-full-name .fc-toolbar {
     margin-bottom: 40px;
   }
-  .page-admin-bat-config-property #calendar .fc-left,
-  .page-admin-bat-config-property #calendar .fc-center,
-  .page-admin-bat-config-property #calendar .fc-right {
+  .page-admin-bat-config-property #calendar.field-name-booking-full-name .fc-left,
+  .page-admin-bat-config-property #calendar.field-name-booking-full-name .fc-center,
+  .page-admin-bat-config-property #calendar.field-name-booking-full-name .fc-right {
     margin-bottom: 20px;
   }
+}
+.page-admin-bat-config-booking-add-ical #bat-booking-edit-form .field-name-booking-end-date,
+.page-admin-bat-config-booking-add-booking-com #bat-booking-edit-form .field-name-booking-end-date,
+#bat-booking-edit-ical-form .field-name-booking-end-date,
+#bat-booking-edit-booking-com-form .field-name-booking-end-date,
+.page-admin-bat-config-booking-add-ical #bat-booking-edit-form .field-name-booking-start-date,
+.page-admin-bat-config-booking-add-booking-com #bat-booking-edit-form .field-name-booking-start-date,
+#bat-booking-edit-ical-form .field-name-booking-start-date,
+#bat-booking-edit-booking-com-form .field-name-booking-start-date {
+  width: 30%;
+  float: left;
+  margin-right: 1%;
+}
+.page-admin-bat-config-booking-add-ical #bat-booking-edit-form .field-name-booking-end-date label,
+.page-admin-bat-config-booking-add-booking-com #bat-booking-edit-form .field-name-booking-end-date label,
+#bat-booking-edit-ical-form .field-name-booking-end-date label,
+#bat-booking-edit-booking-com-form .field-name-booking-end-date label,
+.page-admin-bat-config-booking-add-ical #bat-booking-edit-form .field-name-booking-start-date label,
+.page-admin-bat-config-booking-add-booking-com #bat-booking-edit-form .field-name-booking-start-date label,
+#bat-booking-edit-ical-form .field-name-booking-start-date label,
+#bat-booking-edit-booking-com-form .field-name-booking-start-date label {
+  display: none;
+}
+.page-admin-bat-config-booking-add-ical #bat-booking-edit-form #availability-search,
+.page-admin-bat-config-booking-add-booking-com #bat-booking-edit-form #availability-search,
+#bat-booking-edit-ical-form #availability-search,
+#bat-booking-edit-booking-com-form #availability-search {
+  width: 38%;
+  float: left;
+}
+.page-admin-bat-config-booking-add-ical #bat-booking-edit-form .field-name-booking-event-reference,
+.page-admin-bat-config-booking-add-booking-com #bat-booking-edit-form .field-name-booking-event-reference,
+#bat-booking-edit-ical-form .field-name-booking-event-reference,
+#bat-booking-edit-booking-com-form .field-name-booking-event-reference,
+.page-admin-bat-config-booking-add-ical #bat-booking-edit-form .vertical-tabs,
+.page-admin-bat-config-booking-add-booking-com #bat-booking-edit-form .vertical-tabs,
+#bat-booking-edit-ical-form .vertical-tabs,
+#bat-booking-edit-booking-com-form .vertical-tabs {
+  clear: both;
 }
 body {
   padding-right: 0;
