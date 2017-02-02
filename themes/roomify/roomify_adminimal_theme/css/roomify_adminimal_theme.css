@@ -65,7 +65,7 @@
   display: none;
 }
 .page-user-stays .view-my-stays .views-exposed-form .form-item.radio-checked {
-  background: #4caf50;
+  background: #4CAF50;
 }
 .page-user-stays .view-my-stays .view-content .views-field-name {
   font-size: 18px;
@@ -1326,10 +1326,10 @@ body.maintenance-page.in-maintenance .progress {
   max-width: 700px;
 }
 body.roomify-dashboard {
-  background-color: #fdfdfd;
+  background-color: #FDFDFD;
 }
 body.roomify-dashboard #page {
-  background-color: #fdfdfd;
+  background-color: #FDFDFD;
   padding: 0px;
   border: 0px;
   border-radius: 0px;
@@ -1343,7 +1343,7 @@ body.roomify-dashboard #content-wrapper {
 }
 @media (min-width: 992px) {
   body.roomify-dashboard #content-wrapper {
-    border: 8px solid #fdfdfd;
+    border: 8px solid #FDFDFD;
   }
 }
 body.roomify-dashboard .ui-widget-content {
@@ -1360,10 +1360,10 @@ body.roomify-dashboard .ui-widget-content {
   }
 }
 body.roomify-dashboard .item-list {
-  background: #fdfdfd;
+  background: #FDFDFD;
 }
 body.roomify-dashboard .ui-tabs .ui-tabs-nav {
-  background: #fdfdfd;
+  background: #FDFDFD;
   padding: 0px;
   font-size: 16px;
 }
@@ -1544,7 +1544,7 @@ body.roomify-dashboard .roomify-welcome-dashboard .manage-account {
   -o-transition: 100ms all ease-in;
 }
 body.roomify-dashboard .roomify-welcome-dashboard .manage-account:hover {
-  background: #ebebeb url("../images/original/user-account.png") no-repeat 15px 25px;
+  background: #EBEBEB url("../images/original/user-account.png") no-repeat 15px 25px;
 }
 body.roomify-dashboard .roomify-welcome-dashboard .manage-profile {
   background: url("../images/user-profile.png") no-repeat 15px 30px;
@@ -1554,7 +1554,7 @@ body.roomify-dashboard .roomify-welcome-dashboard .manage-profile {
   -o-transition: 100ms all ease-in;
 }
 body.roomify-dashboard .roomify-welcome-dashboard .manage-profile:hover {
-  background: #ebebeb url("../images/original/user-profile.png") no-repeat 15px 30px;
+  background: #EBEBEB url("../images/original/user-profile.png") no-repeat 15px 30px;
 }
 body.roomify-dashboard .roomify-welcome-dashboard .manage-content {
   background: url("../images/content.png") no-repeat 15px 25px;
@@ -1564,7 +1564,7 @@ body.roomify-dashboard .roomify-welcome-dashboard .manage-content {
   -o-transition: 100ms all ease-in;
 }
 body.roomify-dashboard .roomify-welcome-dashboard .manage-content:hover {
-  background: #ebebeb url("../images/original/content.png") no-repeat 15px 25px;
+  background: #EBEBEB url("../images/original/content.png") no-repeat 15px 25px;
 }
 body.roomify-dashboard .roomify-welcome-dashboard .manage-bookings {
   background: url("../images/calendar.png") no-repeat 15px 30px;
@@ -1574,7 +1574,7 @@ body.roomify-dashboard .roomify-welcome-dashboard .manage-bookings {
   -o-transition: 100ms all ease-in;
 }
 body.roomify-dashboard .roomify-welcome-dashboard .manage-bookings:hover {
-  background: #ebebeb url("../images/original/calendar.png") no-repeat 15px 30px;
+  background: #EBEBEB url("../images/original/calendar.png") no-repeat 15px 30px;
 }
 body.roomify-dashboard .roomify-welcome-dashboard .manage-orders {
   background: url("../images/orders.png") no-repeat 15px 25px;
@@ -1584,7 +1584,7 @@ body.roomify-dashboard .roomify-welcome-dashboard .manage-orders {
   -o-transition: 100ms all ease-in;
 }
 body.roomify-dashboard .roomify-welcome-dashboard .manage-orders:hover {
-  background: #ebebeb url("../images/original/orders.png") no-repeat 15px 25px;
+  background: #EBEBEB url("../images/original/orders.png") no-repeat 15px 25px;
 }
 body.roomify-dashboard .roomify-welcome-dashboard .manage-listings {
   background: url("../images/home.png") no-repeat 15px 25px;
@@ -1594,7 +1594,7 @@ body.roomify-dashboard .roomify-welcome-dashboard .manage-listings {
   -o-transition: 100ms all ease-in;
 }
 body.roomify-dashboard .roomify-welcome-dashboard .manage-listings:hover {
-  background: #ebebeb url("../images/original/home.png") no-repeat 15px 25px;
+  background: #EBEBEB url("../images/original/home.png") no-repeat 15px 25px;
 }
 body.roomify-dashboard .roomify-welcome-dashboard .manage-conversations {
   background: url("../images/conversations.png") no-repeat 15px 25px;
@@ -1604,7 +1604,7 @@ body.roomify-dashboard .roomify-welcome-dashboard .manage-conversations {
   -o-transition: 100ms all ease-in;
 }
 body.roomify-dashboard .roomify-welcome-dashboard .manage-conversations:hover {
-  background: #ebebeb url("../images/original/conversations.png") no-repeat 15px 25px;
+  background: #EBEBEB url("../images/original/conversations.png") no-repeat 15px 25px;
 }
 body.roomify-dashboard .roomify-welcome-dashboard .manage-stays {
   background: url("../images/bookings.png") no-repeat 15px 25px;
@@ -1614,7 +1614,7 @@ body.roomify-dashboard .roomify-welcome-dashboard .manage-stays {
   -o-transition: 100ms all ease-in;
 }
 body.roomify-dashboard .roomify-welcome-dashboard .manage-stays:hover {
-  background: #ebebeb url("../images/original/bookings.png") no-repeat 15px 25px;
+  background: #EBEBEB url("../images/original/bookings.png") no-repeat 15px 25px;
 }
 body.roomify-dashboard .roomify-welcome-dashboard .manage-favorite-properties {
   background: url("../images/favorite.png") no-repeat 15px 25px;
@@ -1624,7 +1624,7 @@ body.roomify-dashboard .roomify-welcome-dashboard .manage-favorite-properties {
   -o-transition: 100ms all ease-in;
 }
 body.roomify-dashboard .roomify-welcome-dashboard .manage-favorite-properties:hover {
-  background: #ebebeb url("../images/original/favorite.png") no-repeat 15px 25px;
+  background: #EBEBEB url("../images/original/favorite.png") no-repeat 15px 25px;
 }
 body.roomify-dashboard .roomify-welcome-dashboard .manage-logout {
   background: url("../images/logout.png") no-repeat 15px 30px;
@@ -1634,7 +1634,7 @@ body.roomify-dashboard .roomify-welcome-dashboard .manage-logout {
   -o-transition: 100ms all ease-in;
 }
 body.roomify-dashboard .roomify-welcome-dashboard .manage-logout:hover {
-  background: #ebebeb url("../images/original/logout.png") no-repeat 15px 30px;
+  background: #EBEBEB url("../images/original/logout.png") no-repeat 15px 30px;
 }
 body.roomify-dashboard .roomify-manage-content .email-templates {
   background: url("../images/email-template.png") no-repeat 15px 25px;
@@ -1644,7 +1644,7 @@ body.roomify-dashboard .roomify-manage-content .email-templates {
   -o-transition: 100ms all ease-in;
 }
 body.roomify-dashboard .roomify-manage-content .email-templates:hover {
-  background: #ebebeb url("../images/original/email-template.png") no-repeat 15px 25px;
+  background: #EBEBEB url("../images/original/email-template.png") no-repeat 15px 25px;
 }
 body.roomify-dashboard .roomify-manage-content .manage-entityforms {
   background: url("../images/contact.png") no-repeat 15px 25px;
@@ -1654,7 +1654,7 @@ body.roomify-dashboard .roomify-manage-content .manage-entityforms {
   -o-transition: 100ms all ease-in;
 }
 body.roomify-dashboard .roomify-manage-content .manage-entityforms:hover {
-  background: #ebebeb url("../images/original/contact.png") no-repeat 15px 25px;
+  background: #EBEBEB url("../images/original/contact.png") no-repeat 15px 25px;
 }
 body.roomify-dashboard .roomify-manage-content .manage-taxonomies {
   background: url("../images/taxonomy.png") no-repeat 15px 25px;
@@ -1664,7 +1664,7 @@ body.roomify-dashboard .roomify-manage-content .manage-taxonomies {
   -o-transition: 100ms all ease-in;
 }
 body.roomify-dashboard .roomify-manage-content .manage-taxonomies:hover {
-  background: #ebebeb url("../images/original/taxonomy.png") no-repeat 15px 25px;
+  background: #EBEBEB url("../images/original/taxonomy.png") no-repeat 15px 25px;
 }
 body.roomify-dashboard .roomify-manage-content .manage-menu {
   background: url("../images/menu.png") no-repeat 15px 30px;
@@ -1674,7 +1674,7 @@ body.roomify-dashboard .roomify-manage-content .manage-menu {
   -o-transition: 100ms all ease-in;
 }
 body.roomify-dashboard .roomify-manage-content .manage-menu:hover {
-  background: #ebebeb url("../images/original/menu.png") no-repeat 15px 30px;
+  background: #EBEBEB url("../images/original/menu.png") no-repeat 15px 30px;
 }
 body.roomify-dashboard .roomify-manage-content .manage-site-pages {
   background: url("../images/site-content.png") no-repeat 15px 25px;
@@ -1684,7 +1684,7 @@ body.roomify-dashboard .roomify-manage-content .manage-site-pages {
   -o-transition: 100ms all ease-in;
 }
 body.roomify-dashboard .roomify-manage-content .manage-site-pages:hover {
-  background: #ebebeb url("../images/original/site-content.png") no-repeat 15px 25px;
+  background: #EBEBEB url("../images/original/site-content.png") no-repeat 15px 25px;
 }
 body.roomify-dashboard .roomify-manage-content .manage-new-content {
   background: url("../images/content.png") no-repeat 20px 30px;
@@ -1694,7 +1694,7 @@ body.roomify-dashboard .roomify-manage-content .manage-new-content {
   -o-transition: 100ms all ease-in;
 }
 body.roomify-dashboard .roomify-manage-content .manage-new-content:hover {
-  background: #ebebeb url("../images/original/content.png") no-repeat 20px 30px;
+  background: #EBEBEB url("../images/original/content.png") no-repeat 20px 30px;
 }
 body.roomify-dashboard .roomify-manage-content .manage-profile {
   background: url("../images/user-profile.png") no-repeat 15px 30px;
@@ -1704,7 +1704,7 @@ body.roomify-dashboard .roomify-manage-content .manage-profile {
   -o-transition: 100ms all ease-in;
 }
 body.roomify-dashboard .roomify-manage-content .manage-profile:hover {
-  background: #ebebeb url("../images/original/user-profile.png") no-repeat 15px 30px;
+  background: #EBEBEB url("../images/original/user-profile.png") no-repeat 15px 30px;
 }
 body.roomify-dashboard .roomify-manage-content .manage-featured-areas,
 body.roomify-dashboard .roomify-manage-content .manage-featured-properties {
@@ -1716,7 +1716,7 @@ body.roomify-dashboard .roomify-manage-content .manage-featured-properties {
 }
 body.roomify-dashboard .roomify-manage-content .manage-featured-areas:hover,
 body.roomify-dashboard .roomify-manage-content .manage-featured-properties:hover {
-  background: #ebebeb url("../images/original/featured_properties.png") no-repeat 20px 30px;
+  background: #EBEBEB url("../images/original/featured_properties.png") no-repeat 20px 30px;
 }
 body.roomify-dashboard .pane-listings-panel-pane-1 {
   display: inline-block;
@@ -2115,7 +2115,7 @@ body.roomify-dashboard #mini-panel-listings .add-listing .action-links a {
   padding: 10px 35px 10px 75px;
 }
 body.roomify-dashboard #mini-panel-listings .add-listing .action-links a:hover {
-  background: #0074bd url("../images/plus_white.png") no-repeat 15px 5px;
+  background: #0074BD url("../images/plus_white.png") no-repeat 15px 5px;
 }
 body.roomify-dashboard #mini-panel-bookings .add-booking {
   margin-bottom: 20px;
@@ -2133,7 +2133,7 @@ body.roomify-dashboard #mini-panel-bookings .add-booking .action-links a {
   padding: 10px 35px 10px 75px;
 }
 body.roomify-dashboard #mini-panel-bookings .add-booking .action-links a:hover {
-  background: #0074bd url("../images/plus_white.png") no-repeat 15px 5px;
+  background: #0074BD url("../images/plus_white.png") no-repeat 15px 5px;
 }
 body.roomify-dashboard #mini-panel-bookings .view-bookings,
 body.roomify-dashboard #mini-panel-bookings .view-my-bookings {
@@ -2181,7 +2181,7 @@ body.roomify-dashboard .roomify-manage-site-configuration .manage-rooms {
   -o-transition: 100ms all ease-in;
 }
 body.roomify-dashboard .roomify-manage-site-configuration .manage-rooms:hover {
-  background: #ebebeb url("../images/original/home.png") no-repeat 15px 25px;
+  background: #EBEBEB url("../images/original/home.png") no-repeat 15px 25px;
 }
 body.roomify-dashboard .roomify-manage-site-configuration .manage-store {
   background: url("../images/store.png") no-repeat 15px 25px;
@@ -2191,7 +2191,7 @@ body.roomify-dashboard .roomify-manage-site-configuration .manage-store {
   -o-transition: 100ms all ease-in;
 }
 body.roomify-dashboard .roomify-manage-site-configuration .manage-store:hover {
-  background: #ebebeb url("../images/original/store.png") no-repeat 15px 25px;
+  background: #EBEBEB url("../images/original/store.png") no-repeat 15px 25px;
 }
 body.roomify-dashboard .roomify-manage-site-configuration .manage-fees {
   background: url("../images/cashier.png") no-repeat 15px 30px;
@@ -2201,7 +2201,7 @@ body.roomify-dashboard .roomify-manage-site-configuration .manage-fees {
   -o-transition: 100ms all ease-in;
 }
 body.roomify-dashboard .roomify-manage-site-configuration .manage-fees:hover {
-  background: #ebebeb url("../images/original/cashier.png") no-repeat 15px 30px;
+  background: #EBEBEB url("../images/original/cashier.png") no-repeat 15px 30px;
 }
 body.roomify-dashboard .roomify-manage-site-configuration .manage-users {
   background: url("../images/users.png") no-repeat 15px 25px;
@@ -2211,7 +2211,7 @@ body.roomify-dashboard .roomify-manage-site-configuration .manage-users {
   -o-transition: 100ms all ease-in;
 }
 body.roomify-dashboard .roomify-manage-site-configuration .manage-users:hover {
-  background: #ebebeb url("../images/original/users.png") no-repeat 15px 25px;
+  background: #EBEBEB url("../images/original/users.png") no-repeat 15px 25px;
 }
 body.roomify-dashboard .roomify-manage-site-configuration .manage-social-share {
   background: url("../images/social-share.png") no-repeat 15px 25px;
@@ -2221,7 +2221,7 @@ body.roomify-dashboard .roomify-manage-site-configuration .manage-social-share {
   -o-transition: 100ms all ease-in;
 }
 body.roomify-dashboard .roomify-manage-site-configuration .manage-social-share:hover {
-  background: #ebebeb url("../images/original/social-share.png") no-repeat 15px 25px;
+  background: #EBEBEB url("../images/original/social-share.png") no-repeat 15px 25px;
 }
 body.roomify-dashboard .roomify-manage-site-configuration .manage-social-feeds {
   background: url("../images/manage-feeds.png") no-repeat 15px 25px;
@@ -2231,7 +2231,7 @@ body.roomify-dashboard .roomify-manage-site-configuration .manage-social-feeds {
   -o-transition: 100ms all ease-in;
 }
 body.roomify-dashboard .roomify-manage-site-configuration .manage-social-feeds:hover {
-  background: #ebebeb url("../images/original/manage-feeds.png") no-repeat 15px 25px;
+  background: #EBEBEB url("../images/original/manage-feeds.png") no-repeat 15px 25px;
 }
 body.roomify-dashboard .roomify-manage-site-configuration .manage-availability-search-form {
   background: url("../images/search.png") no-repeat 20px 30px;
@@ -2241,7 +2241,7 @@ body.roomify-dashboard .roomify-manage-site-configuration .manage-availability-s
   -o-transition: 100ms all ease-in;
 }
 body.roomify-dashboard .roomify-manage-site-configuration .manage-availability-search-form:hover {
-  background: #ebebeb url("../images/original/search.png") no-repeat 20px 30px;
+  background: #EBEBEB url("../images/original/search.png") no-repeat 20px 30px;
 }
 body.roomify-dashboard .roomify-manage-site-configuration .manage-footer {
   background: url("../images/footer.png") no-repeat 20px 30px;
@@ -2251,7 +2251,7 @@ body.roomify-dashboard .roomify-manage-site-configuration .manage-footer {
   -o-transition: 100ms all ease-in;
 }
 body.roomify-dashboard .roomify-manage-site-configuration .manage-footer:hover {
-  background: #ebebeb url("../images/original/footer.png") no-repeat 20px 30px;
+  background: #EBEBEB url("../images/original/footer.png") no-repeat 20px 30px;
 }
 body.roomify-dashboard .roomify-manage-site-configuration .manage-customer-message {
   background: url("../images/message.png") no-repeat 20px 30px;
@@ -2261,7 +2261,7 @@ body.roomify-dashboard .roomify-manage-site-configuration .manage-customer-messa
   -o-transition: 100ms all ease-in;
 }
 body.roomify-dashboard .roomify-manage-site-configuration .manage-customer-message:hover {
-  background: #ebebeb url("../images/original/message.png") no-repeat 20px 30px;
+  background: #EBEBEB url("../images/original/message.png") no-repeat 20px 30px;
 }
 body.roomify-dashboard .roomify-manage-site-configuration .manage-social-pages {
   background: url("../images/social-pages.png") no-repeat 15px 25px;
@@ -2271,7 +2271,7 @@ body.roomify-dashboard .roomify-manage-site-configuration .manage-social-pages {
   -o-transition: 100ms all ease-in;
 }
 body.roomify-dashboard .roomify-manage-site-configuration .manage-social-pages:hover {
-  background: #ebebeb url("../images/original/social-pages.png") no-repeat 15px 25px;
+  background: #EBEBEB url("../images/original/social-pages.png") no-repeat 15px 25px;
 }
 body.roomify-dashboard .roomify-manage-site-configuration .manage-metatags {
   background: url("../images/meta-tags.png") no-repeat 15px 25px;
@@ -2281,7 +2281,7 @@ body.roomify-dashboard .roomify-manage-site-configuration .manage-metatags {
   -o-transition: 100ms all ease-in;
 }
 body.roomify-dashboard .roomify-manage-site-configuration .manage-metatags:hover {
-  background: #ebebeb url("../images/original/meta-tags.png") no-repeat 15px 25px;
+  background: #EBEBEB url("../images/original/meta-tags.png") no-repeat 15px 25px;
 }
 body.roomify-dashboard .roomify-manage-site-configuration .manage-google-analytics {
   background: url("../images/google-analytics.png") no-repeat 15px 25px;
@@ -2291,7 +2291,7 @@ body.roomify-dashboard .roomify-manage-site-configuration .manage-google-analyti
   -o-transition: 100ms all ease-in;
 }
 body.roomify-dashboard .roomify-manage-site-configuration .manage-google-analytics:hover {
-  background: #ebebeb url("../images/original/google-analytics.png") no-repeat 15px 25px;
+  background: #EBEBEB url("../images/original/google-analytics.png") no-repeat 15px 25px;
 }
 body.roomify-dashboard .roomify-manage-site-configuration .manage-google-tag-manager {
   background: url("../images/google-tag.png") no-repeat 15px 25px;
@@ -2301,7 +2301,7 @@ body.roomify-dashboard .roomify-manage-site-configuration .manage-google-tag-man
   -o-transition: 100ms all ease-in;
 }
 body.roomify-dashboard .roomify-manage-site-configuration .manage-google-tag-manager:hover {
-  background: #ebebeb url("../images/original/google-tag.png") no-repeat 15px 25px;
+  background: #EBEBEB url("../images/original/google-tag.png") no-repeat 15px 25px;
 }
 body.roomify-dashboard .roomify-manage-site-configuration .manage-mailchimp {
   background: url("../images/mailchimp.png") no-repeat 15px 25px;
@@ -2311,7 +2311,7 @@ body.roomify-dashboard .roomify-manage-site-configuration .manage-mailchimp {
   -o-transition: 100ms all ease-in;
 }
 body.roomify-dashboard .roomify-manage-site-configuration .manage-mailchimp:hover {
-  background: #ebebeb url("../images/original/mailchimp.png") no-repeat 15px 25px;
+  background: #EBEBEB url("../images/original/mailchimp.png") no-repeat 15px 25px;
 }
 body.roomify-dashboard .roomify-manage-site-configuration .manage-terms-conditions {
   background: url("../images/terms.png") no-repeat 15px 25px;
@@ -2321,7 +2321,7 @@ body.roomify-dashboard .roomify-manage-site-configuration .manage-terms-conditio
   -o-transition: 100ms all ease-in;
 }
 body.roomify-dashboard .roomify-manage-site-configuration .manage-terms-conditions:hover {
-  background: #ebebeb url("../images/original/terms.png") no-repeat 15px 25px;
+  background: #EBEBEB url("../images/original/terms.png") no-repeat 15px 25px;
 }
 body.roomify-dashboard .roomify-manage-site-configuration .manage-booking-settings {
   background: url("../images/booking-settings.png") no-repeat 15px 25px;
@@ -2331,7 +2331,7 @@ body.roomify-dashboard .roomify-manage-site-configuration .manage-booking-settin
   -o-transition: 100ms all ease-in;
 }
 body.roomify-dashboard .roomify-manage-site-configuration .manage-booking-settings:hover {
-  background: #ebebeb url("../images/original/booking-settings.png") no-repeat 15px 25px;
+  background: #EBEBEB url("../images/original/booking-settings.png") no-repeat 15px 25px;
 }
 body.roomify-dashboard .roomify-manage-site-configuration .manage-commerce-settings {
   background: url("../images/commerce.png") no-repeat 20px 25px;
@@ -2341,7 +2341,7 @@ body.roomify-dashboard .roomify-manage-site-configuration .manage-commerce-setti
   -o-transition: 100ms all ease-in;
 }
 body.roomify-dashboard .roomify-manage-site-configuration .manage-commerce-settings:hover {
-  background: #ebebeb url("../images/original/commerce.png") no-repeat 20px 25px;
+  background: #EBEBEB url("../images/original/commerce.png") no-repeat 20px 25px;
 }
 body.roomify-dashboard .roomify-manage-site-configuration .manage-global-site-settings {
   background: url("../images/settings.png") no-repeat 20px 25px;
@@ -2351,7 +2351,7 @@ body.roomify-dashboard .roomify-manage-site-configuration .manage-global-site-se
   -o-transition: 100ms all ease-in;
 }
 body.roomify-dashboard .roomify-manage-site-configuration .manage-global-site-settings:hover {
-  background: #ebebeb url("../images/original/settings.png") no-repeat 20px 25px;
+  background: #EBEBEB url("../images/original/settings.png") no-repeat 20px 25px;
 }
 body.roomify-dashboard .roomify-manage-site-configuration .manage-channel-management-settings {
   background: url("../images/channel-management.png") no-repeat 20px 25px;
@@ -2361,7 +2361,7 @@ body.roomify-dashboard .roomify-manage-site-configuration .manage-channel-manage
   -o-transition: 100ms all ease-in;
 }
 body.roomify-dashboard .roomify-manage-site-configuration .manage-channel-management-settings:hover {
-  background: #ebebeb url("../images/original/channel-management.png") no-repeat 20px 25px;
+  background: #EBEBEB url("../images/original/channel-management.png") no-repeat 20px 25px;
 }
 body.roomify-dashboard .roomify-manage-site-configuration .manage-booking-notifications {
   background: url("../images/booking-notifications.png") no-repeat 20px 25px;
@@ -2371,7 +2371,7 @@ body.roomify-dashboard .roomify-manage-site-configuration .manage-booking-notifi
   -o-transition: 100ms all ease-in;
 }
 body.roomify-dashboard .roomify-manage-site-configuration .manage-booking-notifications:hover {
-  background: #ebebeb url("../images/original/booking-notifications.png") no-repeat 20px 25px;
+  background: #EBEBEB url("../images/original/booking-notifications.png") no-repeat 20px 25px;
 }
 body.roomify-dashboard .roomify-manage-site-configuration .quick-setup {
   background: url("../images/quick-setup.png") no-repeat 20px 25px;
@@ -2381,7 +2381,7 @@ body.roomify-dashboard .roomify-manage-site-configuration .quick-setup {
   -o-transition: 100ms all ease-in;
 }
 body.roomify-dashboard .roomify-manage-site-configuration .quick-setup:hover {
-  background: #ebebeb url("../images/original/quick-setup.png") no-repeat 20px 25px;
+  background: #EBEBEB url("../images/original/quick-setup.png") no-repeat 20px 25px;
 }
 body.roomify-dashboard .roomify-manage-site-configuration #dashboard-manage-integrations {
   background: url("../images/integration.png") no-repeat 20px 25px;
@@ -2391,7 +2391,7 @@ body.roomify-dashboard .roomify-manage-site-configuration #dashboard-manage-inte
   -o-transition: 100ms all ease-in;
 }
 body.roomify-dashboard .roomify-manage-site-configuration #dashboard-manage-integrations:hover {
-  background: #ebebeb url("../images/original/integration.png") no-repeat 20px 25px;
+  background: #EBEBEB url("../images/original/integration.png") no-repeat 20px 25px;
 }
 body.roomify-dashboard #mini-panel-my_activities .add-activity {
   margin-bottom: 20px;
@@ -2409,7 +2409,7 @@ body.roomify-dashboard #mini-panel-my_activities .add-activity .action-links a {
   padding: 10px 35px 10px 75px;
 }
 body.roomify-dashboard #mini-panel-my_activities .add-activity .action-links a:hover {
-  background: #0074bd url("../images/plus_white.png") no-repeat 15px 5px;
+  background: #0074BD url("../images/plus_white.png") no-repeat 15px 5px;
 }
 body.roomify-dashboard .add-property-link {
   display: inline-block;
@@ -2491,7 +2491,7 @@ body.roomify-dashboard .roomify-manage-travel-dashboard .pane-favorite-propertie
   margin-right: 30px;
 }
 body.roomify-dashboard .roomify-manage-travel-dashboard .pane-favorite-properties-block-1 .view-favorite-properties .views-row .views-field-field-sp-featured-image img {
-  border: 2px solid #03a9f4;
+  border: 2px solid #03A9F4;
   width: 100px;
   height: 100px;
   border-radius: 50%;
@@ -3024,7 +3024,7 @@ body.roomify-dashboard .pane-dashboard-bookings-panel-pane-4 .view-dashboard-boo
   width: 100%;
 }
 .page-group .ui-tabs .ui-tabs-nav {
-  background: #fdfdfd;
+  background: #FDFDFD;
   padding: 0px;
   font-size: 16px;
 }
@@ -3245,7 +3245,7 @@ body.roomify-dashboard .pane-dashboard-bookings-panel-pane-4 .view-dashboard-boo
   margin-bottom: 40px;
 }
 .view-add-ons .view-header .add-on-button {
-  background: #4caf50;
+  background: #4CAF50;
   color: white;
   font-size: 18px;
 }
@@ -3281,6 +3281,44 @@ body.roomify-dashboard .pane-dashboard-bookings-panel-pane-4 .view-dashboard-boo
   font-size: 16px;
   font-weight: 300;
   line-height: 1.5em;
+}
+#better-messages-wrapper #better-messages-default {
+  border: 5px solid rgba(29, 29, 29, 0.5);
+  border-radius: 6px;
+}
+#better-messages-wrapper #better-messages-default .messages-label {
+  color: #FFFFFF;
+  font-size: 15px;
+  font-weight: 400;
+  line-height: 20px;
+  margin-bottom: 2px;
+  padding: 10px 10px;
+  text-transform: uppercase;
+}
+#better-messages-wrapper #better-messages-default .body {
+  padding: 0;
+}
+#better-messages-wrapper #better-messages-default #messages-inner .content .messages.status,
+#better-messages-wrapper #better-messages-default #messages-inner .content .messages.error,
+#better-messages-wrapper #better-messages-default #messages-inner .content .messages.warning {
+  background: white;
+  border: 0 !important;
+  padding: 20px;
+}
+#better-messages-wrapper #better-messages-default a.message-close {
+  background: transparent url('../images/x.png') no-repeat;
+  display: inline-block;
+  width: 100%;
+  text-align: right;
+  height: 28px;
+  padding-right: 20px;
+  background-position: right 7px;
+  color: #696969;
+  text-decoration: none;
+  font-weight: 400;
+  font-size: 13px;
+  background-size: 11px 11px;
+  margin-right: 10px;
 }
 /* Custom font */
 body h1,
@@ -3339,7 +3377,7 @@ body .ui-widget table thead th a {
 }
 html,
 body {
-  background-color: #fdfdfd !important;
+  background-color: #FDFDFD !important;
 }
 body {
   font: 15px/1.6em 'Lato', sans-serif !important;
@@ -3376,7 +3414,7 @@ body .roomify-primary-local-tasks {
   margin-top: 40px;
 }
 body .roomify-primary-local-tasks ul.tabs {
-  background: #fdfdfd;
+  background: #FDFDFD;
   padding: 0px;
   font-size: 16px;
 }
