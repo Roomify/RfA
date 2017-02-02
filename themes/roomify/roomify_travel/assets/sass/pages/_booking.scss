@@ -205,7 +205,7 @@
       border-radius: 0px;
       max-width: none !important;
       margin: 0;
-      background-color: rgba(0, 0, 0, 0.92);
+      background-color: rgba(0, 0, 0, 0.75);
       .modal-header {
         display: none;
       }
@@ -224,7 +224,7 @@
           label {
             font-weight: 300;
           }
-          .form-text-area {
+          .form-textarea {
             resize: vertical;
           }
           .title {

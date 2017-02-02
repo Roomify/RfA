@@ -10498,7 +10498,7 @@ div.ctools-modal-dialog .modal-header .modal-title {
     border-radius: 0px;
     max-width: none !important;
     margin: 0;
-    background-color: rgba(0, 0, 0, 0.92); }
+    background-color: rgba(0, 0, 0, 0.75); }
     .page-conversation-booking #modalContent .ctools-modal-dialog.modal-dialog .modal-header,
     .page-booking #modalContent .ctools-modal-dialog.modal-dialog .modal-header,
     .page-activity-booking #modalContent .ctools-modal-dialog.modal-dialog .modal-header {
@@ -10524,9 +10524,9 @@ div.ctools-modal-dialog .modal-header .modal-title {
         .page-booking #modalContent .ctools-modal-dialog.modal-dialog #modal-content form label,
         .page-activity-booking #modalContent .ctools-modal-dialog.modal-dialog #modal-content form label {
           font-weight: 300; }
-        .page-conversation-booking #modalContent .ctools-modal-dialog.modal-dialog #modal-content form .form-text-area,
-        .page-booking #modalContent .ctools-modal-dialog.modal-dialog #modal-content form .form-text-area,
-        .page-activity-booking #modalContent .ctools-modal-dialog.modal-dialog #modal-content form .form-text-area {
+        .page-conversation-booking #modalContent .ctools-modal-dialog.modal-dialog #modal-content form .form-textarea,
+        .page-booking #modalContent .ctools-modal-dialog.modal-dialog #modal-content form .form-textarea,
+        .page-activity-booking #modalContent .ctools-modal-dialog.modal-dialog #modal-content form .form-textarea {
           resize: vertical; }
         .page-conversation-booking #modalContent .ctools-modal-dialog.modal-dialog #modal-content form .title,
         .page-booking #modalContent .ctools-modal-dialog.modal-dialog #modal-content form .title,
