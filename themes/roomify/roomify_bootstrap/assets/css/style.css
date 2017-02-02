@@ -10184,7 +10184,11 @@ div.ctools-modal-dialog .modal-header .modal-title {
   @media (min-width: 992px) {
     .page-conversation-booking #roomify-accommodation-booking-confirmation-form,
     .page-booking #roomify-accommodation-booking-confirmation-form {
-      margin-left: 16.66667%; } }
+      margin-left: 16.666666667%; } }
+  @media (max-width: 768px) {
+    .page-conversation-booking #roomify-accommodation-booking-confirmation-form,
+    .page-booking #roomify-accommodation-booking-confirmation-form {
+      margin-bottom: 40px; } }
   .page-conversation-booking #roomify-accommodation-booking-confirmation-form button,
   .page-booking #roomify-accommodation-booking-confirmation-form button {
     display: inline-block;
@@ -10508,11 +10512,22 @@ div.ctools-modal-dialog .modal-header .modal-title {
     .page-activity-booking #modalContent .ctools-modal-dialog.modal-dialog .modal-content {
       height: 100%;
       overflow: hidden; }
+      @media (max-width: 767px) {
+        .page-conversation-booking #modalContent .ctools-modal-dialog.modal-dialog .modal-content,
+        .page-booking #modalContent .ctools-modal-dialog.modal-dialog .modal-content,
+        .page-activity-booking #modalContent .ctools-modal-dialog.modal-dialog .modal-content {
+          overflow: scroll; } }
     .page-conversation-booking #modalContent .ctools-modal-dialog.modal-dialog #modal-content,
     .page-booking #modalContent .ctools-modal-dialog.modal-dialog #modal-content,
     .page-activity-booking #modalContent .ctools-modal-dialog.modal-dialog #modal-content {
       margin: 20px auto 0 auto;
       max-height: 100% !important; }
+      @media (max-width: 480px) {
+        .page-conversation-booking #modalContent .ctools-modal-dialog.modal-dialog #modal-content,
+        .page-booking #modalContent .ctools-modal-dialog.modal-dialog #modal-content,
+        .page-activity-booking #modalContent .ctools-modal-dialog.modal-dialog #modal-content {
+          width: 100% !important;
+          padding: 10px; } }
       .page-conversation-booking #modalContent .ctools-modal-dialog.modal-dialog #modal-content form,
       .page-booking #modalContent .ctools-modal-dialog.modal-dialog #modal-content form,
       .page-activity-booking #modalContent .ctools-modal-dialog.modal-dialog #modal-content form {
@@ -10520,6 +10535,11 @@ div.ctools-modal-dialog .modal-header .modal-title {
         border-radius: 5px;
         padding: 40px;
         position: relative; }
+        @media (max-width: 480px) {
+          .page-conversation-booking #modalContent .ctools-modal-dialog.modal-dialog #modal-content form,
+          .page-booking #modalContent .ctools-modal-dialog.modal-dialog #modal-content form,
+          .page-activity-booking #modalContent .ctools-modal-dialog.modal-dialog #modal-content form {
+            padding: 10px 30px; } }
         .page-conversation-booking #modalContent .ctools-modal-dialog.modal-dialog #modal-content form label,
         .page-booking #modalContent .ctools-modal-dialog.modal-dialog #modal-content form label,
         .page-activity-booking #modalContent .ctools-modal-dialog.modal-dialog #modal-content form label {

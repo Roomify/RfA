@@ -98,8 +98,11 @@
     @include make-sm-column(12);
     @include make-md-column(6);
     text-align: right;
+    @media (max-width: $screen-sm) {
+      margin-bottom: 40px;
+    }
     @media (min-width: $screen-md) {
-      margin-left: 16.666666667%
+      margin-left: 16.666666667%;
     }
     button {
       &#edit-enquiry {
@@ -212,15 +215,25 @@
       .modal-content {
         height: 100%;
         overflow: hidden;
+        @media (max-width: $screen-xs-max) {
+          overflow: scroll;
+        }
       }
       #modal-content {
         margin: 20px auto 0 auto;
         max-height: 100% !important;
+        @media (max-width: $screen-xs) {
+          width: 100% !important;
+          padding: 10px;
+        }
         form {
           background: #F8F8F8;
           border-radius: 5px;
           padding: 40px;
           position: relative;
+          @media (max-width: $screen-xs) {
+            padding: 10px 30px;
+          }
           label {
             font-weight: 300;
           }
