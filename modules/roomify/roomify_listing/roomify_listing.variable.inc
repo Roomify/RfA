@@ -16,7 +16,7 @@ function roomify_listing_variable_info($options = array()) {
     'localize' => TRUE,
     'group' => 'roomify',
   );
-  $variable['roomify_submission_reply_page_title'] = array(
+  $variables['roomify_submission_reply_page_title'] = array(
     'title' => t('Submission page title'),
     'type' => 'string',
     'default' => 'Enquiry sent successfully!',
@@ -24,7 +24,7 @@ function roomify_listing_variable_info($options = array()) {
     'group' => 'roomify',
   );
 
-  $variable['roomify_submission_reply_text'] = array(
+  $variables['roomify_submission_reply_text'] = array(
     'title' => t('Submission reply'),
     'type' => 'text_format',
     'default' => array(
@@ -35,7 +35,7 @@ function roomify_listing_variable_info($options = array()) {
     'group' => 'roomify',
   );
 
-  $variable['roomify_form_instructions_text'] = array(
+  $variables['roomify_form_instructions_text'] = array(
     'title' => t('Form instructions'),
     'type' => 'text_format',
     'default' => array(
