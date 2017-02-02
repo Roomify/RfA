@@ -44,6 +44,7 @@ function roomify_listing_install() {
   $variable_realm_list = variable_get('variable_realm_list_language', array());
   $variable_realm_list[] = 'roomify_submission_reply_text';
   $variable_realm_list[] = 'roomify_form_instructions_text';
+  $variable_realm_list[] = 'roomify_submission_reply_page_title';
   variable_set('variable_realm_list_language', $variable_realm_list);
 }
 
@@ -1215,5 +1216,6 @@ function roomify_listing_update_7027() {
   $variable_realm_list = variable_get('variable_realm_list_language', array());
   $variable_realm_list[] = 'roomify_submission_reply_text';
   $variable_realm_list[] = 'roomify_form_instructions_text';
+  $variable_realm_list[] = 'roomify_submission_reply_page_title';
   variable_set('variable_realm_list_language', $variable_realm_list);
 }

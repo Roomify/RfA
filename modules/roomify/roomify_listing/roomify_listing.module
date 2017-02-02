@@ -1120,7 +1120,7 @@ function roomify_listing_menu() {
   );
 
   $items['contact/done'] = array(
-    'title' => 'Enquiry done',
+    'title callback' => 'roomify_listing_contact_done_title_callback',
     'description' => '',
     'page callback' => 'roomify_listing_enquiry_done',
     'access arguments' => array('access content'),
@@ -1128,6 +1128,14 @@ function roomify_listing_menu() {
   );
 
   return $items;
+}
+
+/**
+ * 'Contact Enquiry Sent' title callback.
+ */
+function roomify_listing_contact_done_title_callback() {
+
+  return variable_get_value('roomify_submission_reply_page_title');
 }
 
 /**
@@ -1370,6 +1378,8 @@ function roomify_listing_enquiry_settings_form($form, &$form_state) {
   form_load_include($form_state, 'inc', 'variable_realm', 'variable_realm.variable');
   module_load_include('form.inc', 'variable');
 
+  $form['roomify_submission_reply_page_title'] = variable_form_element(variable_get_info('roomify_submission_reply_page_title'));
+
   $form['roomify_submission_reply_text'] = variable_form_element(variable_get_info('roomify_submission_reply_text'));
 
   $form['roomify_form_instructions_text'] = variable_form_element(variable_get_info('roomify_form_instructions_text'));
@@ -1405,6 +1415,15 @@ function roomify_listing_enquiry_done() {
  * Implements hook_variable_info().
  */
 function roomify_listing_variable_info($options) {
+
+  $variable['roomify_submission_reply_page_title'] = array(
+    'title' => t('Submission page title'),
+    'type' => 'string',
+    'default' => 'Enquiry sent successfully!',
+    'localize' => TRUE,
+    'group' => 'roomify',
+  );
+
   $variable['roomify_submission_reply_text'] = array(
     'title' => t('Submission reply'),
     'type' => 'text_format',
