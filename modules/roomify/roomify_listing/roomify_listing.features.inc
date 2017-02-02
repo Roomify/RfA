@@ -79,7 +79,7 @@ function roomify_listing_default_entityform_type() {
     "rdf_mapping" : [],
     "paths" : { "submit" : {
         "source" : "eform\/submit\/listing-enquiry",
-        "alias" : "contact",
+        "alias" : "contact2",
         "language" : "und"
       }
     }

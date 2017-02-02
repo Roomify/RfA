@@ -144,16 +144,6 @@
       font-size: 12px;
     }
   }
-  .entity-entityform {
-    margin-bottom: 15px;
-    .left {
-      float: left;
-    }
-    .right {
-      float: right;
-      clear: right;
-    }
-  }
   .entity-bat-booking {
     background: white;
     padding: 15px;
@@ -205,6 +195,85 @@
         &.make-offer {
           margin-left: 10px;
         }
+      }
+    }
+  }
+  .enquiry {
+    font-size: 15px;
+    .enquiry-info,
+    .enquiry-name,
+    .enquiry-email,
+    .enquiry-guests,
+    .enquiry-type-ref,
+    .enquiry-dep-date,
+    .enquiry-arr-date {
+      padding: 10px;
+      border: 1px solid #E6E6E6;
+      min-height: 120px;
+      width: 25%;
+      display: inline-block;
+      @media (max-width: $screen-sm) {
+        width: 50%;
+      }
+      .label {
+        color: #7C7C7C;
+        width: 100%;
+        text-transform: uppercase;
+        text-align: center;
+        font-size: 16px;
+        margin-top: 10px;
+        margin-bottom: 5px;
+        display: inline-block;
+        padding: 0;
+      }
+      .item {
+        text-align: center;
+        width: 100%;
+        margin-top: 10px;
+        display: inline-block;
+        font-size: 22px;
+        color: black;
+        font-weight: 600;
+      }
+    }
+    .enquiry-name,
+    .enquiry-type-ref,
+    .enquiry-dep-date,
+    .enquiry-arr-date {
+      border-right: 0;
+    }
+    .enquiry-name,
+    .enquiry-email {
+      width: 50%;
+      @media (max-width: $screen-sm) {
+        width: 100%;
+      }
+    }
+    .enquiry-info {
+      padding-left: 25px;
+      padding-right: 25px;
+      width: 100%;
+      .label,
+      .item {
+        text-align: left;
+      }
+    }
+    .enquiry-price {
+      width: 100%;
+      display: inline-block;
+      margin: 30px 0;
+      font-size: 22px;
+      text-align: right;
+      color: black;
+      .label {
+        color: black;
+        margin-right: 10px;
+        display: inline-block;
+        font-weight: bold;
+      }
+      .item {
+        display: inline-block;
+        text-decoration: underline;
       }
     }
   }
