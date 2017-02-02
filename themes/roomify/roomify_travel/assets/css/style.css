@@ -8737,10 +8737,14 @@ body.toggled #close-sidebar-wrapper {
     .page-booking #roomify-accommodation-booking-confirmation-form {
       float: left;
       width: 50%; } }
+  @media (max-width: 768px) {
+    .page-conversation-booking #roomify-accommodation-booking-confirmation-form,
+    .page-booking #roomify-accommodation-booking-confirmation-form {
+      margin-bottom: 40px; } }
   @media (min-width: 992px) {
     .page-conversation-booking #roomify-accommodation-booking-confirmation-form,
     .page-booking #roomify-accommodation-booking-confirmation-form {
-      margin-left: 16.66667%; } }
+      margin-left: 16.666666667%; } }
   .page-conversation-booking #roomify-accommodation-booking-confirmation-form button#edit-enquiry,
   .page-booking #roomify-accommodation-booking-confirmation-form button#edit-enquiry {
     color: #FFFFFF;
@@ -8935,85 +8939,86 @@ body.toggled #close-sidebar-wrapper {
   .page-conversation-booking #edit-options .input-group .input-group-addon,
   .page-booking #edit-options .input-group .input-group-addon {
     display: none; }
+.page-conversation-booking #modalBackdrop,
+.page-booking #modalBackdrop {
+  background: none !important; }
+.page-conversation-booking #modalContent,
+.page-booking #modalContent {
+  top: 0 !important;
+  left: 0 !important;
+  width: 100% !important;
+  height: 100% !important; }
+  .page-conversation-booking #modalContent .ctools-modal-dialog.modal-dialog,
+  .page-booking #modalContent .ctools-modal-dialog.modal-dialog {
+    width: 100% !important;
+    height: 100% !important;
+    border-radius: 0px;
+    max-width: none !important;
+    margin: 0;
+    background-color: rgba(0, 0, 0, 0.75); }
+    .page-conversation-booking #modalContent .ctools-modal-dialog.modal-dialog .modal-header,
+    .page-booking #modalContent .ctools-modal-dialog.modal-dialog .modal-header {
+      display: none; }
+    .page-conversation-booking #modalContent .ctools-modal-dialog.modal-dialog .modal-content,
+    .page-booking #modalContent .ctools-modal-dialog.modal-dialog .modal-content {
+      height: 100%;
+      overflow: hidden; }
+      @media (max-width: 767px) {
+        .page-conversation-booking #modalContent .ctools-modal-dialog.modal-dialog .modal-content,
+        .page-booking #modalContent .ctools-modal-dialog.modal-dialog .modal-content {
+          overflow: scroll; } }
+    .page-conversation-booking #modalContent .ctools-modal-dialog.modal-dialog #modal-content,
+    .page-booking #modalContent .ctools-modal-dialog.modal-dialog #modal-content {
+      margin: 20px auto 0 auto;
+      max-height: 100% !important; }
+      @media (max-width: 480px) {
+        .page-conversation-booking #modalContent .ctools-modal-dialog.modal-dialog #modal-content,
+        .page-booking #modalContent .ctools-modal-dialog.modal-dialog #modal-content {
+          width: 100% !important;
+          padding: 10px; } }
+      .page-conversation-booking #modalContent .ctools-modal-dialog.modal-dialog #modal-content form,
+      .page-booking #modalContent .ctools-modal-dialog.modal-dialog #modal-content form {
+        background: #F8F8F8;
+        border-radius: 5px;
+        padding: 40px;
+        position: relative; }
+        @media (max-width: 480px) {
+          .page-conversation-booking #modalContent .ctools-modal-dialog.modal-dialog #modal-content form,
+          .page-booking #modalContent .ctools-modal-dialog.modal-dialog #modal-content form {
+            padding: 10px 30px; } }
+        .page-conversation-booking #modalContent .ctools-modal-dialog.modal-dialog #modal-content form label,
+        .page-booking #modalContent .ctools-modal-dialog.modal-dialog #modal-content form label {
+          font-weight: 300; }
+        .page-conversation-booking #modalContent .ctools-modal-dialog.modal-dialog #modal-content form .form-textarea,
+        .page-booking #modalContent .ctools-modal-dialog.modal-dialog #modal-content form .form-textarea {
+          resize: vertical; }
+        .page-conversation-booking #modalContent .ctools-modal-dialog.modal-dialog #modal-content form .title,
+        .page-booking #modalContent .ctools-modal-dialog.modal-dialog #modal-content form .title {
+          font-size: 22px;
+          font-weight: 400;
+          display: inline-block;
+          width: 100%;
+          margin-bottom: 30px;
+          margin-top: 10px; }
+        .page-conversation-booking #modalContent .ctools-modal-dialog.modal-dialog #modal-content form .close,
+        .page-booking #modalContent .ctools-modal-dialog.modal-dialog #modal-content form .close {
+          position: absolute;
+          top: 12px;
+          right: 12px;
+          background: url(../images/x.png) center center no-repeat; }
+  .page-conversation-booking #modalContent div.modal-content,
+  .page-booking #modalContent div.modal-content {
+    background: none;
+    box-shadow: none;
+    -webkit-box-shadow: none;
+    -moz-box-shadow: none;
+    -ms-box-shadow: none;
+    -o-box-shadow: none; }
 
 .page-conversation-booking #roomify-accommodation-booking-current-search-form {
   width: 100%;
   display: inline-block;
   margin-bottom: 40px; }
-
-.page-eform-submit-listing-enquiry .region-content,
-.page-eform-submit-listing-enquiry .bootstrap-sidebar-left {
-  margin-left: -15px;
-  margin-right: -15px; }
-  .page-eform-submit-listing-enquiry .region-content:before, .page-eform-submit-listing-enquiry .region-content:after,
-  .page-eform-submit-listing-enquiry .bootstrap-sidebar-left:before,
-  .page-eform-submit-listing-enquiry .bootstrap-sidebar-left:after {
-    content: " ";
-    display: table; }
-  .page-eform-submit-listing-enquiry .region-content:after,
-  .page-eform-submit-listing-enquiry .bootstrap-sidebar-left:after {
-    clear: both; }
-.page-eform-submit-listing-enquiry .panel {
-  background: transparent; }
-.page-eform-submit-listing-enquiry .entitytype-listing_enquiry-form {
-  font-size: 16px;
-  width: 100%;
-  margin: 0 auto; }
-  .page-eform-submit-listing-enquiry .entitytype-listing_enquiry-form .date-combo {
-    border: none;
-    -webkit-box-shadow: none;
-    box-shadow: none;
-    margin-bottom: 0; }
-    .page-eform-submit-listing-enquiry .entitytype-listing_enquiry-form .date-combo legend {
-      background: none;
-      border: none;
-      width: auto;
-      float: left;
-      margin: 0;
-      padding-left: 0;
-      min-width: 140px;
-      padding: 0; }
-    .page-eform-submit-listing-enquiry .entitytype-listing_enquiry-form .date-combo .panel-title {
-      font-size: 16px; }
-    .page-eform-submit-listing-enquiry .entitytype-listing_enquiry-form .date-combo .panel-body {
-      display: inline-block;
-      padding: 0; }
-      .page-eform-submit-listing-enquiry .entitytype-listing_enquiry-form .date-combo .panel-body .date-padding {
-        padding-top: 0;
-        padding-bottom: 0; }
-    .page-eform-submit-listing-enquiry .entitytype-listing_enquiry-form .date-combo .container-inline-date label,
-    .page-eform-submit-listing-enquiry .entitytype-listing_enquiry-form .date-combo .container-inline-date .help-block {
-      display: none; }
-    .page-eform-submit-listing-enquiry .entitytype-listing_enquiry-form .date-combo .container-inline-date .form-item {
-      margin-bottom: 0; }
-  .page-eform-submit-listing-enquiry .entitytype-listing_enquiry-form .form-actions {
-    float: right; }
-  .page-eform-submit-listing-enquiry .entitytype-listing_enquiry-form .field-type-email label, .page-eform-submit-listing-enquiry .entitytype-listing_enquiry-form .field-type-email input,
-  .page-eform-submit-listing-enquiry .entitytype-listing_enquiry-form .field-type-number-integer label,
-  .page-eform-submit-listing-enquiry .entitytype-listing_enquiry-form .field-type-number-integer input,
-  .page-eform-submit-listing-enquiry .entitytype-listing_enquiry-form .field-type-text label,
-  .page-eform-submit-listing-enquiry .entitytype-listing_enquiry-form .field-type-text input {
-    display: inline-block;
-    width: auto; }
-  .page-eform-submit-listing-enquiry .entitytype-listing_enquiry-form .field-type-email label,
-  .page-eform-submit-listing-enquiry .entitytype-listing_enquiry-form .field-type-number-integer label,
-  .page-eform-submit-listing-enquiry .entitytype-listing_enquiry-form .field-type-text label {
-    margin-right: 6px;
-    min-width: 140px; }
-  .page-eform-submit-listing-enquiry .entitytype-listing_enquiry-form .field-type-datetime {
-    display: inline-block;
-    width: 50%; }
-  .page-eform-submit-listing-enquiry .entitytype-listing_enquiry-form .field-type-number-integer {
-    clear: both; }
-  .page-eform-submit-listing-enquiry .entitytype-listing_enquiry-form .field-type-email,
-  .page-eform-submit-listing-enquiry .entitytype-listing_enquiry-form .field-type-datetime,
-  .page-eform-submit-listing-enquiry .entitytype-listing_enquiry-form .field-type-number-integer,
-  .page-eform-submit-listing-enquiry .entitytype-listing_enquiry-form .field-type-text {
-    margin: 15px 0; }
-  .page-eform-submit-listing-enquiry .entitytype-listing_enquiry-form .field-type-email {
-    margin-top: 30px; }
-  .page-eform-submit-listing-enquiry .entitytype-listing_enquiry-form .field-type-text-long {
-    margin: 30px 0; }
 
 .page-contact-us .region-content,
 .page-contact-us .bootstrap-one-column {
@@ -9130,94 +9135,6 @@ body.toggled #close-sidebar-wrapper {
       width: 100%; }
   .page-contact-us .entitytype-contact-form .form-actions {
     padding-left: 15px; }
-
-.page-entityform .tabs--primary {
-  display: none; }
-.page-entityform .back-link {
-  float: right;
-  margin-top: -55px; }
-.page-entityform .entity-entityform {
-  font-size: 15px; }
-  .page-entityform .entity-entityform .field-name-field-listing-enquiry-info,
-  .page-entityform .entity-entityform .field-name-field-listing-enquiry-name,
-  .page-entityform .entity-entityform .field-name-field-listing-enquiry-email,
-  .page-entityform .entity-entityform .field-name-field-listing-enquiry-guests,
-  .page-entityform .entity-entityform .field-name-field-listing-enquiry-type-ref,
-  .page-entityform .entity-entityform .field-name-field-listing-enquiry-dep-date,
-  .page-entityform .entity-entityform .field-name-field-listing-enquiry-arr-date {
-    padding: 10px;
-    border: 1px solid #E6E6E6;
-    min-height: 120px;
-    width: 25%;
-    display: inline-block; }
-    @media (max-width: 768px) {
-      .page-entityform .entity-entityform .field-name-field-listing-enquiry-info,
-      .page-entityform .entity-entityform .field-name-field-listing-enquiry-name,
-      .page-entityform .entity-entityform .field-name-field-listing-enquiry-email,
-      .page-entityform .entity-entityform .field-name-field-listing-enquiry-guests,
-      .page-entityform .entity-entityform .field-name-field-listing-enquiry-type-ref,
-      .page-entityform .entity-entityform .field-name-field-listing-enquiry-dep-date,
-      .page-entityform .entity-entityform .field-name-field-listing-enquiry-arr-date {
-        width: 50%; } }
-    .page-entityform .entity-entityform .field-name-field-listing-enquiry-info .field-label,
-    .page-entityform .entity-entityform .field-name-field-listing-enquiry-name .field-label,
-    .page-entityform .entity-entityform .field-name-field-listing-enquiry-email .field-label,
-    .page-entityform .entity-entityform .field-name-field-listing-enquiry-guests .field-label,
-    .page-entityform .entity-entityform .field-name-field-listing-enquiry-type-ref .field-label,
-    .page-entityform .entity-entityform .field-name-field-listing-enquiry-dep-date .field-label,
-    .page-entityform .entity-entityform .field-name-field-listing-enquiry-arr-date .field-label {
-      width: 100%;
-      text-transform: uppercase;
-      text-align: center;
-      font-size: 16px;
-      margin-top: 10px;
-      margin-bottom: 5px; }
-    .page-entityform .entity-entityform .field-name-field-listing-enquiry-info .field-items,
-    .page-entityform .entity-entityform .field-name-field-listing-enquiry-name .field-items,
-    .page-entityform .entity-entityform .field-name-field-listing-enquiry-email .field-items,
-    .page-entityform .entity-entityform .field-name-field-listing-enquiry-guests .field-items,
-    .page-entityform .entity-entityform .field-name-field-listing-enquiry-type-ref .field-items,
-    .page-entityform .entity-entityform .field-name-field-listing-enquiry-dep-date .field-items,
-    .page-entityform .entity-entityform .field-name-field-listing-enquiry-arr-date .field-items {
-      text-align: center;
-      width: 100%;
-      margin-top: 10px;
-      display: inline-block;
-      font-size: 22px;
-      color: black;
-      font-weight: 600; }
-  .page-entityform .entity-entityform .field-name-field-listing-enquiry-name,
-  .page-entityform .entity-entityform .field-name-field-listing-enquiry-type-ref,
-  .page-entityform .entity-entityform .field-name-field-listing-enquiry-dep-date,
-  .page-entityform .entity-entityform .field-name-field-listing-enquiry-arr-date {
-    border-right: 0; }
-  .page-entityform .entity-entityform .field-name-field-listing-enquiry-name,
-  .page-entityform .entity-entityform .field-name-field-listing-enquiry-email {
-    width: 50%; }
-    @media (max-width: 768px) {
-      .page-entityform .entity-entityform .field-name-field-listing-enquiry-name,
-      .page-entityform .entity-entityform .field-name-field-listing-enquiry-email {
-        width: 100%; } }
-  .page-entityform .entity-entityform .field-name-field-listing-enquiry-info {
-    padding-left: 25px;
-    padding-right: 25px;
-    width: 100%; }
-    .page-entityform .entity-entityform .field-name-field-listing-enquiry-info .field-label,
-    .page-entityform .entity-entityform .field-name-field-listing-enquiry-info .field-items {
-      text-align: left; }
-  .page-entityform .entity-entityform .field-name-field-listing-enquiry-price {
-    width: 100%;
-    display: inline-block;
-    margin: 30px 0;
-    font-size: 22px;
-    text-align: right;
-    color: black; }
-    .page-entityform .entity-entityform .field-name-field-listing-enquiry-price .field-label {
-      margin-right: 10px;
-      display: inline-block; }
-    .page-entityform .entity-entityform .field-name-field-listing-enquiry-price .field-items {
-      display: inline-block;
-      text-decoration: underline; }
 
 .page-cart .region-content {
   margin-left: -15px;
@@ -13330,13 +13247,6 @@ body.node-type-homepage {
   .page-conversation .entity-message .date {
     margin-left: 55px;
     font-size: 12px; }
-.page-conversation .entity-entityform {
-  margin-bottom: 15px; }
-  .page-conversation .entity-entityform .left {
-    float: left; }
-  .page-conversation .entity-entityform .right {
-    float: right;
-    clear: right; }
 .page-conversation .entity-bat-booking {
   background: white;
   padding: 15px;
@@ -13382,6 +13292,93 @@ body.node-type-homepage {
         border-radius: 5px; }
       .page-conversation .enquiry-item .right .button.make-offer {
         margin-left: 10px; }
+.page-conversation .enquiry {
+  font-size: 15px; }
+  .page-conversation .enquiry .enquiry-info,
+  .page-conversation .enquiry .enquiry-name,
+  .page-conversation .enquiry .enquiry-email,
+  .page-conversation .enquiry .enquiry-guests,
+  .page-conversation .enquiry .enquiry-type-ref,
+  .page-conversation .enquiry .enquiry-dep-date,
+  .page-conversation .enquiry .enquiry-arr-date {
+    padding: 10px;
+    border: 1px solid #E6E6E6;
+    min-height: 120px;
+    width: 25%;
+    display: inline-block; }
+    @media (max-width: 768px) {
+      .page-conversation .enquiry .enquiry-info,
+      .page-conversation .enquiry .enquiry-name,
+      .page-conversation .enquiry .enquiry-email,
+      .page-conversation .enquiry .enquiry-guests,
+      .page-conversation .enquiry .enquiry-type-ref,
+      .page-conversation .enquiry .enquiry-dep-date,
+      .page-conversation .enquiry .enquiry-arr-date {
+        width: 50%; } }
+    .page-conversation .enquiry .enquiry-info .label,
+    .page-conversation .enquiry .enquiry-name .label,
+    .page-conversation .enquiry .enquiry-email .label,
+    .page-conversation .enquiry .enquiry-guests .label,
+    .page-conversation .enquiry .enquiry-type-ref .label,
+    .page-conversation .enquiry .enquiry-dep-date .label,
+    .page-conversation .enquiry .enquiry-arr-date .label {
+      color: #7C7C7C;
+      width: 100%;
+      text-transform: uppercase;
+      text-align: center;
+      font-size: 16px;
+      margin-top: 10px;
+      margin-bottom: 5px;
+      display: inline-block;
+      padding: 0; }
+    .page-conversation .enquiry .enquiry-info .item,
+    .page-conversation .enquiry .enquiry-name .item,
+    .page-conversation .enquiry .enquiry-email .item,
+    .page-conversation .enquiry .enquiry-guests .item,
+    .page-conversation .enquiry .enquiry-type-ref .item,
+    .page-conversation .enquiry .enquiry-dep-date .item,
+    .page-conversation .enquiry .enquiry-arr-date .item {
+      text-align: center;
+      width: 100%;
+      margin-top: 10px;
+      display: inline-block;
+      font-size: 22px;
+      color: black;
+      font-weight: 600; }
+  .page-conversation .enquiry .enquiry-name,
+  .page-conversation .enquiry .enquiry-type-ref,
+  .page-conversation .enquiry .enquiry-dep-date,
+  .page-conversation .enquiry .enquiry-arr-date {
+    border-right: 0; }
+  .page-conversation .enquiry .enquiry-name,
+  .page-conversation .enquiry .enquiry-email {
+    width: 50%; }
+    @media (max-width: 768px) {
+      .page-conversation .enquiry .enquiry-name,
+      .page-conversation .enquiry .enquiry-email {
+        width: 100%; } }
+  .page-conversation .enquiry .enquiry-info {
+    padding-left: 25px;
+    padding-right: 25px;
+    width: 100%; }
+    .page-conversation .enquiry .enquiry-info .label,
+    .page-conversation .enquiry .enquiry-info .item {
+      text-align: left; }
+  .page-conversation .enquiry .enquiry-price {
+    width: 100%;
+    display: inline-block;
+    margin: 30px 0;
+    font-size: 22px;
+    text-align: right;
+    color: black; }
+    .page-conversation .enquiry .enquiry-price .label {
+      color: black;
+      margin-right: 10px;
+      display: inline-block;
+      font-weight: bold; }
+    .page-conversation .enquiry .enquiry-price .item {
+      display: inline-block;
+      text-decoration: underline; }
 
 .view-user-conversations .views-row {
   display: inline-block;

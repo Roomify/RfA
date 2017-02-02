@@ -632,6 +632,28 @@ function roomify_dashboard_default_panels_mini() {
   $pane->uuid = 'a9cebb8e-85c8-4c57-ab6f-036feeadc2e8';
   $display->content['new-a9cebb8e-85c8-4c57-ab6f-036feeadc2e8'] = $pane;
   $display->panels['middle'][17] = 'new-a9cebb8e-85c8-4c57-ab6f-036feeadc2e8';
+  $pane = new stdClass();
+  $pane->pid = 'new-4d1d9f67-cdf3-4d9d-b553-612c0e470382';
+  $pane->panel = 'middle';
+  $pane->type = 'enquiry_form_settings';
+  $pane->subtype = 'enquiry_form_settings';
+  $pane->shown = TRUE;
+  $pane->access = array();
+  $pane->configuration = array();
+  $pane->cache = array();
+  $pane->style = array(
+    'settings' => NULL,
+  );
+  $pane->css = array(
+    'css_id' => '',
+    'css_class' => 'manage-enquiry-form-settings',
+  );
+  $pane->extras = array();
+  $pane->position = 18;
+  $pane->locks = array();
+  $pane->uuid = '4d1d9f67-cdf3-4d9d-b553-612c0e470382';
+  $display->content['new-4d1d9f67-cdf3-4d9d-b553-612c0e470382'] = $pane;
+  $display->panels['middle'][18] = 'new-4d1d9f67-cdf3-4d9d-b553-612c0e470382';
   $display->hide_title = PANELS_TITLE_FIXED;
   $display->title_pane = '0';
   $mini->display = $display;

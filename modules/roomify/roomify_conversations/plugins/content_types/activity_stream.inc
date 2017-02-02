@@ -38,13 +38,7 @@ function roomify_conversations_activity_stream_content_type_render($subtype, $co
     }
   }
 
-  if (isset($conversation->conversation_inquiry_ref[LANGUAGE_NONE][0]['target_id'])) {
-    $entityform_id = $conversation->conversation_inquiry_ref[LANGUAGE_NONE][0]['target_id'];
-    $entityform = entityform_load($entityform_id);
-
-    $entityform_array = entity_view('entityform', array($entityform), 'conversation');
-    $output_array[$entityform->created] = drupal_render($entityform_array);
-  }
+  $output_array[$conversation->created] = roomify_conversations_inquiry_render($conversation);
 
   if (isset($conversation->conversation_booking_ref[LANGUAGE_NONE][0]['target_id'])) {
     if ($booking = bat_booking_load($conversation->conversation_booking_ref[LANGUAGE_NONE][0]['target_id'])) {
