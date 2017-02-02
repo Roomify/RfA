@@ -19,13 +19,7 @@ $plugin = array(
  */
 function roomify_customer_message_render($subtype, $conf, $args, $pane_context, $incoming_content) {
 
-  $message = variable_get('roomify_customer_support_message',
-    array(
-      'value' => '',
-      'format' => NULL,
-    )
-  );
-
+  $message = variable_get_value('roomify_customer_support_message');
   $block = new stdClass();
   $block->content = $message['value'];
 
