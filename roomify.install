@@ -318,12 +318,6 @@ function roomify_install_finished(&$install_state) {
   variable_set('addtoany_additional_html_placement', 'before');
   variable_set('addtoany_image', 'a2a_svg_32');
 
-  // Alter the Checkout Complete message.
-  $message['format'] = 'filtered_text';
-  $message['value'] = 'Your reservation number is [commerce-order:order-number]. You can <a href="[commerce-order:url]">view your reservation</a> on your account page when logged in.
-  <br><br>
-  <a href="[site:url]">Return to the front page.</a>';
-
   variable_set('commerce_checkout_completion_message', $message);
 
   // Image Toolkit

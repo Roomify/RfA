@@ -1195,7 +1195,10 @@ function roomify_listing_permission() {
 /**
  * Roomify Customer support form.
  */
-function roomify_customer_support_form() {
+function roomify_customer_support_form($form, &$form_state) {
+  form_load_include($form_state, 'inc', 'variable_realm', 'variable_realm.variable');
+  _roomify_system_prepare_variables_realm();
+
   $pages = array(
     'availability_page' => t('Availability Page'),
     'blog_page' => t('Blog Page'),
@@ -1213,13 +1216,30 @@ function roomify_customer_support_form() {
     '#options' => $pages,
   );
 
-  $message = variable_get('roomify_customer_support_message', array('value' => '', 'format' => NULL));
+  $message = variable_get_value('roomify_customer_support_message');
 
   $form['roomify_customer_support_message'] = array(
     '#type' => 'text_format',
     '#title' => t('Message'),
-    '#format' => $message['format'],
+    '#format' => 'filtered_text',
     '#default_value' => $message['value'],
   );
-  return system_settings_form($form);
+
+  $form['submit'] = array(
+    '#type' => 'submit',
+    '#value' => t('Save Configuration'),
+  );
+
+  $form['#submit'] = array('roomify_customer_support_form_submit');
+
+  variable_realm_variable_settings_form_alter($form, $form_state, 'roomify_customer_support_form');
+
+  return $form;
+}
+
+/**
+ * Submit function to save values.
+ */
+function roomify_customer_support_form_submit($form, &$form_state) {
+  variable_set('roomify_customer_support_page', $form_state['values']['roomify_customer_support_page']);
 }

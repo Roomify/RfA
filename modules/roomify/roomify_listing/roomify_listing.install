@@ -40,6 +40,12 @@ function roomify_listing_install() {
   variable_set('metatag_enable_roomify_property', 1);
   variable_set('metatag_enable_roomify_property__casa_property', 1);
   variable_set('metatag_enable_roomify_property__locanda_property', 1);
+
+  // Set the custom message as translatable.
+  $variable_realm_list = variable_get('variable_realm_list_language', array());
+  $variable_realm_list[] = 'roomify_customer_support_message';
+
+  variable_set('variable_realm_list_language', $variable_realm_list);
 }
 
 /**
@@ -1157,4 +1163,19 @@ function roomify_listing_update_7025() {
       unset($field_group->children[$key]);
     }
   }
+}
+
+/**
+ * Localize Customer message text.
+ */
+function roomify_listing_update_7026() {
+  $message = variable_get('roomify_customer_support_message', array('value' => '', 'format' => NULL));
+  if ($message['value'] != '') {
+    variable_set_value('roomify_customer_support_message', $message);
+  }
+  // Set the custom message as translatable.
+  $variable_realm_list = variable_get('variable_realm_list_language', array());
+  $variable_realm_list[] = 'roomify_customer_support_message';
+
+  variable_set('variable_realm_list_language', $variable_realm_list);
 }

@@ -219,11 +219,7 @@ function roomify_payment_methods_settings($form, &$form_state) {
   );
 
   // Custom Offline Payments.
-  $commerce_payment_custom = commerce_payment_method_instance_load('custom|commerce_payment_custom');
-
-  $rules_commerce_payment_custom = rules_config_load('commerce_payment_custom');
-
-  $settings = $commerce_payment_custom['settings'];
+  $commerce_payment_custom = custom_offline_payment_load('custom');
 
   $form['customofflinepayment_settings'] = array(
     '#type' => 'fieldset',
@@ -234,7 +230,7 @@ function roomify_payment_methods_settings($form, &$form_state) {
   $form['customofflinepayment_settings']['enable'] = array(
     '#type' => 'checkbox',
     '#title' => t('Enabled'),
-    '#default_value' => $rules_commerce_payment_custom->active,
+    '#default_value' => $commerce_payment_custom['status'],
   );
 
   $form['customofflinepayment_settings']['title'] = array(
@@ -246,12 +242,18 @@ function roomify_payment_methods_settings($form, &$form_state) {
   $information_description = t('Information you would like to be shown to users when they select this payment method, such as delivery payment details.');
   $information_description .= '<br />';
   $information_description .= t('This could be used as default information for the new payment method rules of this payment.');
+
+  // Change the format with the one usable by Managers.
+  if ($commerce_payment_custom['format'] == 'full_html') {
+    $commerce_payment_custom['format'] = 'filtered_text';
+  }
+
   $form['customofflinepayment_settings']['information'] = array(
     '#type' => 'text_format',
     '#title' => t('Information'),
     '#description' => $information_description,
-    '#default_value' => isset($settings['information']['value']) ? $settings['information']['value'] : '',
-    '#format' => isset($settings['information']['format']) ? $settings['information']['format'] : 'plain_text',
+    '#default_value' => $commerce_payment_custom['information'],
+    '#format' => isset($commerce_payment_custom['format']) ? $commerce_payment_custom['format'] : 'plain_text',
   );
 
   $form['submit'] = array(
@@ -263,51 +265,55 @@ function roomify_payment_methods_settings($form, &$form_state) {
 }
 
 /**
- *
+ * Validation function for the roomify_payment_methods_settings form.
  */
 function roomify_payment_methods_settings_validate($form, &$form_state) {
+  $values = $form_state['values'];
+
   // Stripe.
-  if ($form_state['values']['stripe_settings']['enable']) {
-    if (empty($form_state['values']['stripe_settings']['secret_key'])) {
+  if ($values['stripe_settings']['enable']) {
+    if (empty($values['stripe_settings']['secret_key'])) {
       form_set_error('stripe_settings][secret_key', t('Stripe: !name field is required.', array('!name' => $form['stripe_settings']['secret_key']['#title'])));
     }
-    if (empty($form_state['values']['stripe_settings']['public_key'])) {
+    if (empty($values['stripe_settings']['public_key'])) {
       form_set_error('stripe_settings][public_key', t('Stripe: !name field is required.', array('!name' => $form['stripe_settings']['public_key']['#title'])));
     }
   }
 
   // Paypal WPS.
-  if ($form_state['values']['paypal_settings']['enable']) {
-    if (empty($form_state['values']['paypal_settings']['business'])) {
+  if ($values['paypal_settings']['enable']) {
+    if (empty($values['paypal_settings']['business'])) {
       form_set_error('paypal_settings][business', t('Paypal: !name field is required.', array('!name' => $form['paypal_settings']['business']['#title'])));
     }
   }
 
   // Authorize.net.
-  if ($form_state['values']['authorizenet_settings']['enable']) {
-    if (empty($form_state['values']['authorizenet_settings']['login'])) {
+  if ($values['authorizenet_settings']['enable']) {
+    if (empty($values['authorizenet_settings']['login'])) {
       form_set_error('authorizenet_settings][login', t('Authorize.net: !name field is required.', array('!name' => $form['authorizenet_settings']['login']['#title'])));
     }
-    if (empty($form_state['values']['authorizenet_settings']['tran_key'])) {
+    if (empty($values['authorizenet_settings']['tran_key'])) {
       form_set_error('authorizenet_settings][tran_key', t('Authorize.net: !name field is required.', array('!name' => $form['authorizenet_settings']['tran_key']['#title'])));
     }
   }
 
   // Custom Offline Payments.
-  if ($form_state['values']['customofflinepayment_settings']['enable']) {
-    if (empty($form_state['values']['customofflinepayment_settings']['title'])) {
+  if ($values['customofflinepayment_settings']['enable']) {
+    if (empty($values['customofflinepayment_settings']['title'])) {
       form_set_error('customofflinepayment_settings][title', t('Custom Offline Payment: !name field is required.', array('!name' => $form['customofflinepayment_settings']['title']['#title'])));
     }
   }
 }
 
 /**
- *
+ * Submit callback for the roomify_payment_methods_settings form.
  */
 function roomify_payment_methods_settings_submit($form, &$form_state) {
+  $values = $form_state['values'];
+
   // Stripe.
   $rules_commerce_payment_commerce_stripe = rules_config_load('commerce_payment_commerce_stripe');
-  $rules_commerce_payment_commerce_stripe->active = ($form_state['values']['stripe_settings']['enable']) ? TRUE : FALSE;
+  $rules_commerce_payment_commerce_stripe->active = ($values['stripe_settings']['enable']) ? TRUE : FALSE;
   $rules_commerce_payment_commerce_stripe->save();
 
   foreach ($rules_commerce_payment_commerce_stripe->actions() as $action) {
@@ -319,9 +325,9 @@ function roomify_payment_methods_settings_submit($form, &$form_state) {
     }
 
     if ($action->settings['payment_method']['method_id'] == 'commerce_stripe') {
-      $action->settings['payment_method']['settings']['stripe_currency'] = $form_state['values']['stripe_settings']['stripe_currency'];
-      $action->settings['payment_method']['settings']['secret_key'] = $form_state['values']['stripe_settings']['secret_key'];
-      $action->settings['payment_method']['settings']['public_key'] = $form_state['values']['stripe_settings']['public_key'];
+      $action->settings['payment_method']['settings']['stripe_currency'] = $values['stripe_settings']['stripe_currency'];
+      $action->settings['payment_method']['settings']['secret_key'] = $values['stripe_settings']['secret_key'];
+      $action->settings['payment_method']['settings']['public_key'] = $values['stripe_settings']['public_key'];
       $action->settings['payment_method']['settings']['display_title'] = 'Stripe';
 
       $action->save();
@@ -330,7 +336,7 @@ function roomify_payment_methods_settings_submit($form, &$form_state) {
 
   // Paypal WPS.
   $rules_commerce_payment_paypal_wps = rules_config_load('commerce_payment_paypal_wps');
-  $rules_commerce_payment_paypal_wps->active = ($form_state['values']['paypal_settings']['enable']) ? TRUE : FALSE;
+  $rules_commerce_payment_paypal_wps->active = ($values['paypal_settings']['enable']) ? TRUE : FALSE;
   $rules_commerce_payment_paypal_wps->save();
 
   foreach ($rules_commerce_payment_paypal_wps->actions() as $action) {
@@ -342,14 +348,14 @@ function roomify_payment_methods_settings_submit($form, &$form_state) {
     }
 
     if ($action->settings['payment_method']['method_id'] == 'paypal_wps') {
-      $action->settings['payment_method']['settings']['business'] = $form_state['values']['paypal_settings']['business'];
-      $action->settings['payment_method']['settings']['currency_code'] = $form_state['values']['paypal_settings']['currency_code'];
-      $action->settings['payment_method']['settings']['allow_supported_currencies'] = $form_state['values']['paypal_settings']['allow_supported_currencies'];
-      $action->settings['payment_method']['settings']['language'] = $form_state['values']['paypal_settings']['language'];
+      $action->settings['payment_method']['settings']['business'] = $values['paypal_settings']['business'];
+      $action->settings['payment_method']['settings']['currency_code'] = $values['paypal_settings']['currency_code'];
+      $action->settings['payment_method']['settings']['allow_supported_currencies'] = $values['paypal_settings']['allow_supported_currencies'];
+      $action->settings['payment_method']['settings']['language'] = $values['paypal_settings']['language'];
       $action->settings['payment_method']['settings']['server'] = 'live';
       $action->settings['payment_method']['settings']['payment_action'] = 'sale';
       $action->settings['payment_method']['settings']['ipn_logging'] = 'notification';
-      $action->settings['payment_method']['settings']['receiver_emails'] = $form_state['values']['paypal_settings']['receiver_emails'];
+      $action->settings['payment_method']['settings']['receiver_emails'] = $values['paypal_settings']['receiver_emails'];
       $action->settings['payment_method']['settings']['ipn_create_billing_profile'] = 1;
       $action->settings['payment_method']['settings']['show_payment_instructions'] = 1;
 
@@ -359,7 +365,7 @@ function roomify_payment_methods_settings_submit($form, &$form_state) {
 
   // Authorize.net.
   $rules_commerce_payment_authnet_aim = rules_config_load('commerce_payment_authnet_aim');
-  $rules_commerce_payment_authnet_aim->active = ($form_state['values']['authorizenet_settings']['enable']) ? TRUE : FALSE;
+  $rules_commerce_payment_authnet_aim->active = ($values['authorizenet_settings']['enable']) ? TRUE : FALSE;
   $rules_commerce_payment_authnet_aim->save();
 
   foreach ($rules_commerce_payment_authnet_aim->actions() as $action) {
@@ -371,12 +377,12 @@ function roomify_payment_methods_settings_submit($form, &$form_state) {
     }
 
     if ($action->settings['payment_method']['method_id'] == 'authnet_aim') {
-      $action->settings['payment_method']['settings']['login'] = $form_state['values']['authorizenet_settings']['login'];
-      $action->settings['payment_method']['settings']['tran_key'] = $form_state['values']['authorizenet_settings']['tran_key'];
-      $action->settings['payment_method']['settings']['txn_mode'] = $form_state['values']['authorizenet_settings']['txn_mode'];
-      $action->settings['payment_method']['settings']['txn_type'] = $form_state['values']['authorizenet_settings']['txn_type'];
-      $action->settings['payment_method']['settings']['card_types'] = $form_state['values']['authorizenet_settings']['card_types'];
-      $action->settings['payment_method']['settings']['email_customer'] = $form_state['values']['authorizenet_settings']['email_customer'];
+      $action->settings['payment_method']['settings']['login'] = $values['authorizenet_settings']['login'];
+      $action->settings['payment_method']['settings']['tran_key'] = $values['authorizenet_settings']['tran_key'];
+      $action->settings['payment_method']['settings']['txn_mode'] = $values['authorizenet_settings']['txn_mode'];
+      $action->settings['payment_method']['settings']['txn_type'] = $values['authorizenet_settings']['txn_type'];
+      $action->settings['payment_method']['settings']['card_types'] = $values['authorizenet_settings']['card_types'];
+      $action->settings['payment_method']['settings']['email_customer'] = $values['authorizenet_settings']['email_customer'];
       $action->settings['payment_method']['settings']['log']['request'] = 'request';
       $action->settings['payment_method']['settings']['log']['response'] = 'response';
 
@@ -385,33 +391,23 @@ function roomify_payment_methods_settings_submit($form, &$form_state) {
   }
 
   // Custom Offline Payments.
-  $rules_commerce_payment_custom = rules_config_load('commerce_payment_custom');
-  $rules_commerce_payment_custom->active = ($form_state['values']['customofflinepayment_settings']['enable']) ? TRUE : FALSE;
-  $rules_commerce_payment_custom->save();
+  $commerce_payment_custom = custom_offline_payment_load('custom');
 
-  if (!empty($form_state['values']['customofflinepayment_settings']['title'])) {
-    $record = array(
-      'id' => 'custom',
-      'title' => $form_state['values']['customofflinepayment_settings']['title'],
-    );
-    commerce_cop_payment_save($record);
+  $commerce_payment_custom['status'] = $values['customofflinepayment_settings']['enable'];
+
+  if (!empty($values['customofflinepayment_settings']['title'])) {
+    $commerce_payment_custom['title'] = filter_xss_admin($values['customofflinepayment_settings']['title']);
   }
 
-  foreach ($rules_commerce_payment_custom->actions() as $action) {
-    if ($action->settings['payment_method'] == 'custom') {
-      $action->settings['payment_method'] = array(
-        'method_id' => 'custom',
-        'settings' => array(),
-      );
-    }
+  $commerce_payment_custom['information'] = filter_xss_admin($values['customofflinepayment_settings']['information']['value']);
+  $commerce_payment_custom['format'] = $values['customofflinepayment_settings']['information']['format'];
 
-    if ($action->settings['payment_method']['method_id'] == 'custom') {
-      $action->settings['payment_method']['settings']['information']['value'] = filter_xss_admin($form_state['values']['customofflinepayment_settings']['information']['value']);
-      $action->settings['payment_method']['settings']['information']['format'] = $form_state['values']['customofflinepayment_settings']['information']['format'];
+  commerce_cop_payment_save($commerce_payment_custom);
 
-      $action->save();
-    }
-  }
+  db_update('rules_config')
+    ->fields(array('active' => $commerce_payment_custom['status']))
+    ->condition('name', 'commerce_payment_custom')
+    ->execute();
 
   drupal_set_message(t('The configuration options have been saved.'));
 }

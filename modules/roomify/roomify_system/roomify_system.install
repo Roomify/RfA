@@ -426,7 +426,6 @@ function roomify_system_update_7015() {
   <a href="[site:url]">Return to the front page.</a>';
 
   variable_set('commerce_checkout_completion_message', $message);
-
 }
 
 /**
