@@ -1225,6 +1225,10 @@ function roomify_listing_enquiry_form($form, &$form_state, $arrival_date, $depar
     $title = t('Booking Request for @property_name', array('@property_name' => $property->name));
   }
 
+  $form['status_messages'] = array(
+    '#markup' => '<div id="status-messages"></div>',
+  );
+
   $form['title'] = array(
     '#markup' => '<div class="title">' . $title . '</div>',
   );
@@ -1313,6 +1317,25 @@ function roomify_listing_enquiry_form($form, &$form_state, $arrival_date, $depar
  * Submit function for the roomify_customer_enquiry_form form.
  */
 function roomify_listing_enquiry_form_submit($form, &$form_state) {
+  ctools_include('ajax');
+  ctools_include('modal');
+  ctools_add_js('ajax-responder');
+
+  drupal_validate_form('roomify_customer_enquiry_form', $form, $form_state);
+
+  if (form_get_errors()) {
+    $form_state['rebuild'] = TRUE;
+
+    $messages = '<div id="status-messages">' . theme('status_messages') . '</div>';
+    if ($messages) {
+      $commands = array();
+      $commands[] = ajax_command_replace('#status-messages', $messages);
+
+      print ajax_render($commands);
+      exit;
+    }
+  }
+
   $values = $form_state['values'];
 
   $email_address = $values['email'];
@@ -1377,10 +1400,6 @@ function roomify_listing_enquiry_form_submit($form, &$form_state) {
   $conversation->conversation_children[LANGUAGE_NONE][0]['value'] = $values['children'];
 
   roomify_conversation_save($conversation);
-
-  ctools_include('ajax');
-  ctools_include('modal');
-  ctools_add_js('ajax-responder');
 
   $commands = array();
   $commands[] = ctools_modal_command_dismiss();
