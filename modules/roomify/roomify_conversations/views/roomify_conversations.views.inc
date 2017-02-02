@@ -315,13 +315,13 @@ function roomify_conversations_views_default_views() {
   $handler->display->display_options['fields']['nothing_1']['ui_name'] = 'Conversation Info (linked)';
   $handler->display->display_options['fields']['nothing_1']['label'] = '';
   $handler->display->display_options['fields']['nothing_1']['alter']['text'] = '<div class="conversation-info">
-          <div><a class="conversation-info-link" href="[url]">
-            <div class="conversation-header">[name_2] [nothing]</div>
-            <div class="conversation-message"><span class="conversation-message-author">[most_recent_message_user]</span><span title="[most_recent_message_1]" class="conversation-message-message">[most_recent_message]</span><span class="conversation-price">[booking_price]</span></div>
-          </a></div>
-        </div>
-        <div class="conversation-reply"><a title="Quick Reply" class="quick-reply-button ctools-use-modal ctools-modal-roomify-dashboard-modal-style" href="/admin/conversations/[conversation_id]/quick-reply/nojs">Reply</a></div>
-        ';
+            <div><a class="conversation-info-link" href="[url]">
+              <div class="conversation-header">[name_2] [nothing]</div>
+              <div class="conversation-message"><span class="conversation-message-author">[most_recent_message_user]</span><span title="[most_recent_message_1]" class="conversation-message-message">[most_recent_message]</span><span class="conversation-price">[booking_price]</span></div>
+            </a></div>
+          </div>
+          <div class="conversation-reply"><a title="Quick Reply" class="quick-reply-button ctools-use-modal ctools-modal-roomify-dashboard-modal-style" href="/admin/conversations/[conversation_id]/quick-reply/nojs">Reply</a></div>
+          ';
   $handler->display->display_options['fields']['nothing_1']['element_label_colon'] = FALSE;
   /* Field: User: Language */
   $handler->display->display_options['fields']['language']['id'] = 'language';
@@ -345,6 +345,248 @@ function roomify_conversations_views_default_views() {
 
   /* Display: Owner Conversations */
   $handler = $view->new_display('panel_pane', 'Owner Conversations', 'owner_conversations');
+  $handler->display->display_options['defaults']['fields'] = FALSE;
+  /* Field: Roomify Property: Roomify property ID */
+  $handler->display->display_options['fields']['property_id']['id'] = 'property_id';
+  $handler->display->display_options['fields']['property_id']['table'] = 'roomify_properties';
+  $handler->display->display_options['fields']['property_id']['field'] = 'property_id';
+  $handler->display->display_options['fields']['property_id']['relationship'] = 'reverse_property_bat_type_reference_roomify_property';
+  $handler->display->display_options['fields']['property_id']['label'] = '';
+  $handler->display->display_options['fields']['property_id']['exclude'] = TRUE;
+  $handler->display->display_options['fields']['property_id']['element_label_colon'] = FALSE;
+  /* Field: Roomify Conversation: Roomify conversation ID */
+  $handler->display->display_options['fields']['conversation_id']['id'] = 'conversation_id';
+  $handler->display->display_options['fields']['conversation_id']['table'] = 'roomify_conversations';
+  $handler->display->display_options['fields']['conversation_id']['field'] = 'conversation_id';
+  $handler->display->display_options['fields']['conversation_id']['label'] = '';
+  $handler->display->display_options['fields']['conversation_id']['exclude'] = TRUE;
+  $handler->display->display_options['fields']['conversation_id']['element_label_colon'] = FALSE;
+  $handler->display->display_options['fields']['conversation_id']['separator'] = '';
+  /* Field: Type: Label */
+  $handler->display->display_options['fields']['name_1']['id'] = 'name_1';
+  $handler->display->display_options['fields']['name_1']['table'] = 'bat_types';
+  $handler->display->display_options['fields']['name_1']['field'] = 'name';
+  $handler->display->display_options['fields']['name_1']['relationship'] = 'conversation_unit_type_ref_target_id';
+  $handler->display->display_options['fields']['name_1']['label'] = '';
+  $handler->display->display_options['fields']['name_1']['exclude'] = TRUE;
+  $handler->display->display_options['fields']['name_1']['alter']['alter_text'] = TRUE;
+  $handler->display->display_options['fields']['name_1']['alter']['text'] = ' - [name_1]';
+  $handler->display->display_options['fields']['name_1']['element_label_colon'] = FALSE;
+  /* Field: Roomify Conversation: Label */
+  $handler->display->display_options['fields']['name']['id'] = 'name';
+  $handler->display->display_options['fields']['name']['table'] = 'roomify_conversations';
+  $handler->display->display_options['fields']['name']['field'] = 'name';
+  $handler->display->display_options['fields']['name']['label'] = '';
+  $handler->display->display_options['fields']['name']['exclude'] = TRUE;
+  $handler->display->display_options['fields']['name']['alter']['alter_text'] = TRUE;
+  $handler->display->display_options['fields']['name']['alter']['text'] = '[name] - view conversation';
+  $handler->display->display_options['fields']['name']['alter']['make_link'] = TRUE;
+  $handler->display->display_options['fields']['name']['alter']['path'] = 'conversation/[conversation_id]';
+  $handler->display->display_options['fields']['name']['element_label_colon'] = FALSE;
+  /* Field: Roomify Conversation: Owner */
+  $handler->display->display_options['fields']['conversation_owner_user_ref']['id'] = 'conversation_owner_user_ref';
+  $handler->display->display_options['fields']['conversation_owner_user_ref']['table'] = 'field_data_conversation_owner_user_ref';
+  $handler->display->display_options['fields']['conversation_owner_user_ref']['field'] = 'conversation_owner_user_ref';
+  $handler->display->display_options['fields']['conversation_owner_user_ref']['exclude'] = TRUE;
+  $handler->display->display_options['fields']['conversation_owner_user_ref']['settings'] = array(
+    'link' => 0,
+    'conditions' => array(
+      0 => array(
+        'condition' => '',
+      ),
+    ),
+  );
+  /* Field: Roomify Conversation: Guest */
+  $handler->display->display_options['fields']['conversation_guest_user_ref']['id'] = 'conversation_guest_user_ref';
+  $handler->display->display_options['fields']['conversation_guest_user_ref']['table'] = 'field_data_conversation_guest_user_ref';
+  $handler->display->display_options['fields']['conversation_guest_user_ref']['field'] = 'conversation_guest_user_ref';
+  $handler->display->display_options['fields']['conversation_guest_user_ref']['exclude'] = TRUE;
+  $handler->display->display_options['fields']['conversation_guest_user_ref']['settings'] = array(
+    'link' => 0,
+    'conditions' => array(
+      0 => array(
+        'condition' => '',
+      ),
+    ),
+  );
+  /* Field: Roomify Conversation: Start Date */
+  $handler->display->display_options['fields']['conversation_book_start_date']['id'] = 'conversation_book_start_date';
+  $handler->display->display_options['fields']['conversation_book_start_date']['table'] = 'field_data_conversation_book_start_date';
+  $handler->display->display_options['fields']['conversation_book_start_date']['field'] = 'conversation_book_start_date';
+  $handler->display->display_options['fields']['conversation_book_start_date']['exclude'] = TRUE;
+  $handler->display->display_options['fields']['conversation_book_start_date']['settings'] = array(
+    'format_type' => 'custom',
+    'custom_date_format' => 'M j',
+    'fromto' => 'both',
+    'multiple_number' => '',
+    'multiple_from' => '',
+    'multiple_to' => '',
+    'show_remaining_days' => 0,
+    'conditions' => array(
+      0 => array(
+        'condition' => '',
+      ),
+    ),
+  );
+  /* Field: Roomify Conversation: End Date */
+  $handler->display->display_options['fields']['conversation_book_end_date']['id'] = 'conversation_book_end_date';
+  $handler->display->display_options['fields']['conversation_book_end_date']['table'] = 'field_data_conversation_book_end_date';
+  $handler->display->display_options['fields']['conversation_book_end_date']['field'] = 'conversation_book_end_date';
+  $handler->display->display_options['fields']['conversation_book_end_date']['exclude'] = TRUE;
+  $handler->display->display_options['fields']['conversation_book_end_date']['settings'] = array(
+    'format_type' => 'custom',
+    'custom_date_format' => 'M j, Y',
+    'fromto' => 'both',
+    'multiple_number' => '',
+    'multiple_from' => '',
+    'multiple_to' => '',
+    'show_remaining_days' => 0,
+    'conditions' => array(
+      0 => array(
+        'condition' => '',
+      ),
+    ),
+  );
+  /* Field: Roomify Conversation: Changed */
+  $handler->display->display_options['fields']['changed']['id'] = 'changed';
+  $handler->display->display_options['fields']['changed']['table'] = 'roomify_conversations';
+  $handler->display->display_options['fields']['changed']['field'] = 'changed';
+  $handler->display->display_options['fields']['changed']['label'] = '';
+  $handler->display->display_options['fields']['changed']['alter']['alter_text'] = TRUE;
+  $handler->display->display_options['fields']['changed']['alter']['text'] = '[changed] ago with [conversation_guest_user_ref]';
+  $handler->display->display_options['fields']['changed']['element_label_colon'] = FALSE;
+  $handler->display->display_options['fields']['changed']['date_format'] = 'raw time ago';
+  $handler->display->display_options['fields']['changed']['custom_date_format'] = '1';
+  $handler->display->display_options['fields']['changed']['second_date_format'] = 'long';
+  /* Field: Roomify Property: Label */
+  $handler->display->display_options['fields']['name_2']['id'] = 'name_2';
+  $handler->display->display_options['fields']['name_2']['table'] = 'roomify_properties';
+  $handler->display->display_options['fields']['name_2']['field'] = 'name';
+  $handler->display->display_options['fields']['name_2']['relationship'] = 'reverse_property_bat_type_reference_roomify_property';
+  $handler->display->display_options['fields']['name_2']['label'] = 'Property';
+  $handler->display->display_options['fields']['name_2']['exclude'] = TRUE;
+  $handler->display->display_options['fields']['name_2']['alter']['alter_text'] = TRUE;
+  $handler->display->display_options['fields']['name_2']['alter']['text'] = '[name_2]';
+  $handler->display->display_options['fields']['name_2']['alter']['path'] = 'listing/[property_id]';
+  /* Field: Requested Dates */
+  $handler->display->display_options['fields']['nothing']['id'] = 'nothing';
+  $handler->display->display_options['fields']['nothing']['table'] = 'views';
+  $handler->display->display_options['fields']['nothing']['field'] = 'nothing';
+  $handler->display->display_options['fields']['nothing']['ui_name'] = 'Requested Dates';
+  $handler->display->display_options['fields']['nothing']['label'] = 'Requested Dates';
+  $handler->display->display_options['fields']['nothing']['exclude'] = TRUE;
+  $handler->display->display_options['fields']['nothing']['alter']['text'] = '([conversation_book_start_date] - [conversation_book_end_date])
+        ';
+  /* Field: Type: Type */
+  $handler->display->display_options['fields']['type']['id'] = 'type';
+  $handler->display->display_options['fields']['type']['table'] = 'bat_types';
+  $handler->display->display_options['fields']['type']['field'] = 'type';
+  $handler->display->display_options['fields']['type']['relationship'] = 'conversation_unit_type_ref_target_id';
+  $handler->display->display_options['fields']['type']['label'] = '';
+  $handler->display->display_options['fields']['type']['exclude'] = TRUE;
+  $handler->display->display_options['fields']['type']['element_label_colon'] = FALSE;
+  $handler->display->display_options['fields']['type']['machine_name'] = TRUE;
+  /* Field: Roomify Conversation: Further info */
+  $handler->display->display_options['fields']['conversation_further_info']['id'] = 'conversation_further_info';
+  $handler->display->display_options['fields']['conversation_further_info']['table'] = 'field_data_conversation_further_info';
+  $handler->display->display_options['fields']['conversation_further_info']['field'] = 'conversation_further_info';
+  $handler->display->display_options['fields']['conversation_further_info']['exclude'] = TRUE;
+  $handler->display->display_options['fields']['conversation_further_info']['alter']['max_length'] = '50';
+  $handler->display->display_options['fields']['conversation_further_info']['alter']['trim'] = TRUE;
+  $handler->display->display_options['fields']['conversation_further_info']['settings'] = array(
+    'conditions' => array(
+      0 => array(
+        'condition' => '',
+      ),
+    ),
+  );
+  /* Field: Roomify Conversation: Most recent message */
+  $handler->display->display_options['fields']['most_recent_message']['id'] = 'most_recent_message';
+  $handler->display->display_options['fields']['most_recent_message']['table'] = 'roomify_conversations';
+  $handler->display->display_options['fields']['most_recent_message']['field'] = 'most_recent_message';
+  $handler->display->display_options['fields']['most_recent_message']['exclude'] = TRUE;
+  $handler->display->display_options['fields']['most_recent_message']['alter']['alter_text'] = TRUE;
+  $handler->display->display_options['fields']['most_recent_message']['alter']['text'] = '[most_recent_message]';
+  $handler->display->display_options['fields']['most_recent_message']['alter']['max_length'] = '50';
+  $handler->display->display_options['fields']['most_recent_message']['alter']['trim'] = TRUE;
+  $handler->display->display_options['fields']['most_recent_message']['empty'] = '[conversation_further_info]';
+  /* Field: Roomify Conversation: Most recent message author */
+  $handler->display->display_options['fields']['most_recent_message_user']['id'] = 'most_recent_message_user';
+  $handler->display->display_options['fields']['most_recent_message_user']['table'] = 'roomify_conversations';
+  $handler->display->display_options['fields']['most_recent_message_user']['field'] = 'most_recent_message_user';
+  $handler->display->display_options['fields']['most_recent_message_user']['exclude'] = TRUE;
+  $handler->display->display_options['fields']['most_recent_message_user']['empty'] = '[conversation_guest_user_ref]';
+  /* Field: Roomify Conversation: Price */
+  $handler->display->display_options['fields']['conversation_book_price']['id'] = 'conversation_book_price';
+  $handler->display->display_options['fields']['conversation_book_price']['table'] = 'field_data_conversation_book_price';
+  $handler->display->display_options['fields']['conversation_book_price']['field'] = 'conversation_book_price';
+  $handler->display->display_options['fields']['conversation_book_price']['exclude'] = TRUE;
+  $handler->display->display_options['fields']['conversation_book_price']['click_sort_column'] = 'amount';
+  $handler->display->display_options['fields']['conversation_book_price']['settings'] = array(
+    'calculation' => FALSE,
+    'conditions' => array(
+      0 => array(
+        'condition' => '',
+      ),
+    ),
+  );
+  $handler->display->display_options['fields']['conversation_book_price']['group_column'] = 'value';
+  /* Field: BAT Booking: Price */
+  $handler->display->display_options['fields']['booking_price']['id'] = 'booking_price';
+  $handler->display->display_options['fields']['booking_price']['table'] = 'field_data_booking_price';
+  $handler->display->display_options['fields']['booking_price']['field'] = 'booking_price';
+  $handler->display->display_options['fields']['booking_price']['relationship'] = 'conversation_booking_ref_target_id';
+  $handler->display->display_options['fields']['booking_price']['label'] = '';
+  $handler->display->display_options['fields']['booking_price']['exclude'] = TRUE;
+  $handler->display->display_options['fields']['booking_price']['element_label_colon'] = FALSE;
+  $handler->display->display_options['fields']['booking_price']['empty'] = '[conversation_book_price]';
+  $handler->display->display_options['fields']['booking_price']['click_sort_column'] = 'amount';
+  $handler->display->display_options['fields']['booking_price']['settings'] = array(
+    'calculation' => FALSE,
+    'conditions' => array(
+      0 => array(
+        'condition' => '',
+      ),
+    ),
+  );
+  /* Field: Roomify Conversation: Most recent message */
+  $handler->display->display_options['fields']['most_recent_message_1']['id'] = 'most_recent_message_1';
+  $handler->display->display_options['fields']['most_recent_message_1']['table'] = 'roomify_conversations';
+  $handler->display->display_options['fields']['most_recent_message_1']['field'] = 'most_recent_message';
+  $handler->display->display_options['fields']['most_recent_message_1']['label'] = 'Most recent message - not trimmed';
+  $handler->display->display_options['fields']['most_recent_message_1']['exclude'] = TRUE;
+  $handler->display->display_options['fields']['most_recent_message_1']['empty'] = '[conversation_further_info]';
+  /* Field: Roomify Conversation: Conversation Info URL */
+  $handler->display->display_options['fields']['conversation_info']['id'] = 'conversation_info';
+  $handler->display->display_options['fields']['conversation_info']['table'] = 'roomify_conversations';
+  $handler->display->display_options['fields']['conversation_info']['field'] = 'conversation_info';
+  $handler->display->display_options['fields']['conversation_info']['label'] = '';
+  $handler->display->display_options['fields']['conversation_info']['exclude'] = TRUE;
+  $handler->display->display_options['fields']['conversation_info']['element_label_colon'] = FALSE;
+  /* Field: Roomify Conversation: URL */
+  $handler->display->display_options['fields']['url']['id'] = 'url';
+  $handler->display->display_options['fields']['url']['table'] = 'views_entity_roomify_conversation';
+  $handler->display->display_options['fields']['url']['field'] = 'url';
+  $handler->display->display_options['fields']['url']['label'] = '';
+  $handler->display->display_options['fields']['url']['exclude'] = TRUE;
+  $handler->display->display_options['fields']['url']['element_label_colon'] = FALSE;
+  $handler->display->display_options['fields']['url']['display_as_link'] = FALSE;
+  $handler->display->display_options['fields']['url']['link_to_entity'] = 0;
+  /* Field: Conversation Info (linked) */
+  $handler->display->display_options['fields']['nothing_1']['id'] = 'nothing_1';
+  $handler->display->display_options['fields']['nothing_1']['table'] = 'views';
+  $handler->display->display_options['fields']['nothing_1']['field'] = 'nothing';
+  $handler->display->display_options['fields']['nothing_1']['ui_name'] = 'Conversation Info (linked)';
+  $handler->display->display_options['fields']['nothing_1']['label'] = '';
+  $handler->display->display_options['fields']['nothing_1']['alter']['text'] = '<div class="conversation-info">
+            <div><a class="conversation-info-link" href="[url]">
+              <div class="conversation-header">[name_2] [nothing]</div>
+              <div class="conversation-message"><span class="conversation-message-author">[most_recent_message_user]</span><span title="[most_recent_message_1]" class="conversation-message-message">[most_recent_message]</span><span class="conversation-price">[booking_price]</span></div>
+            </a></div>
+          </div>
+          <div class="conversation-reply"><a title="Quick Reply" class="quick-reply-button ctools-use-modal ctools-modal-roomify-dashboard-modal-style" href="[conversation_info]">Reply</a></div>
+          ';
+  $handler->display->display_options['fields']['nothing_1']['element_label_colon'] = FALSE;
   $handler->display->display_options['defaults']['arguments'] = FALSE;
   /* Contextual filter: User: Uid */
   $handler->display->display_options['arguments']['uid']['id'] = 'uid';
@@ -359,11 +601,11 @@ function roomify_conversations_views_default_views() {
   $handler->display->display_options['arguments']['uid']['specify_validation'] = TRUE;
   $handler->display->display_options['arguments']['uid']['validate']['type'] = 'php';
   $handler->display->display_options['arguments']['uid']['validate_options']['code'] = 'if (user_access(\'update any roomify_conversation entity\')) {
-              return FALSE;
-              }
-              else {
-              return TRUE;
-              }';
+                return FALSE;
+                }
+                else {
+                return TRUE;
+                }';
   $handler->display->display_options['arguments']['uid']['validate']['fail'] = 'ignore';
   $handler->display->display_options['argument_input'] = array(
     'uid' => array(
@@ -390,12 +632,482 @@ function roomify_conversations_views_default_views() {
   $handler->display->display_options['pager']['options']['offset'] = '0';
   $handler->display->display_options['pager']['options']['id'] = '0';
   $handler->display->display_options['pager']['options']['quantity'] = '9';
+  $handler->display->display_options['defaults']['fields'] = FALSE;
+  /* Field: Roomify Property: Roomify property ID */
+  $handler->display->display_options['fields']['property_id']['id'] = 'property_id';
+  $handler->display->display_options['fields']['property_id']['table'] = 'roomify_properties';
+  $handler->display->display_options['fields']['property_id']['field'] = 'property_id';
+  $handler->display->display_options['fields']['property_id']['relationship'] = 'reverse_property_bat_type_reference_roomify_property';
+  $handler->display->display_options['fields']['property_id']['label'] = '';
+  $handler->display->display_options['fields']['property_id']['exclude'] = TRUE;
+  $handler->display->display_options['fields']['property_id']['element_label_colon'] = FALSE;
+  /* Field: Roomify Conversation: Roomify conversation ID */
+  $handler->display->display_options['fields']['conversation_id']['id'] = 'conversation_id';
+  $handler->display->display_options['fields']['conversation_id']['table'] = 'roomify_conversations';
+  $handler->display->display_options['fields']['conversation_id']['field'] = 'conversation_id';
+  $handler->display->display_options['fields']['conversation_id']['label'] = '';
+  $handler->display->display_options['fields']['conversation_id']['exclude'] = TRUE;
+  $handler->display->display_options['fields']['conversation_id']['element_label_colon'] = FALSE;
+  $handler->display->display_options['fields']['conversation_id']['separator'] = '';
+  /* Field: Type: Label */
+  $handler->display->display_options['fields']['name_1']['id'] = 'name_1';
+  $handler->display->display_options['fields']['name_1']['table'] = 'bat_types';
+  $handler->display->display_options['fields']['name_1']['field'] = 'name';
+  $handler->display->display_options['fields']['name_1']['relationship'] = 'conversation_unit_type_ref_target_id';
+  $handler->display->display_options['fields']['name_1']['label'] = '';
+  $handler->display->display_options['fields']['name_1']['exclude'] = TRUE;
+  $handler->display->display_options['fields']['name_1']['alter']['alter_text'] = TRUE;
+  $handler->display->display_options['fields']['name_1']['alter']['text'] = ' - [name_1]';
+  $handler->display->display_options['fields']['name_1']['element_label_colon'] = FALSE;
+  /* Field: Roomify Conversation: Label */
+  $handler->display->display_options['fields']['name']['id'] = 'name';
+  $handler->display->display_options['fields']['name']['table'] = 'roomify_conversations';
+  $handler->display->display_options['fields']['name']['field'] = 'name';
+  $handler->display->display_options['fields']['name']['label'] = '';
+  $handler->display->display_options['fields']['name']['exclude'] = TRUE;
+  $handler->display->display_options['fields']['name']['alter']['alter_text'] = TRUE;
+  $handler->display->display_options['fields']['name']['alter']['text'] = '[name] - view conversation';
+  $handler->display->display_options['fields']['name']['alter']['make_link'] = TRUE;
+  $handler->display->display_options['fields']['name']['alter']['path'] = 'conversation/[conversation_id]';
+  $handler->display->display_options['fields']['name']['element_label_colon'] = FALSE;
+  /* Field: Roomify Conversation: Owner */
+  $handler->display->display_options['fields']['conversation_owner_user_ref']['id'] = 'conversation_owner_user_ref';
+  $handler->display->display_options['fields']['conversation_owner_user_ref']['table'] = 'field_data_conversation_owner_user_ref';
+  $handler->display->display_options['fields']['conversation_owner_user_ref']['field'] = 'conversation_owner_user_ref';
+  $handler->display->display_options['fields']['conversation_owner_user_ref']['exclude'] = TRUE;
+  $handler->display->display_options['fields']['conversation_owner_user_ref']['settings'] = array(
+    'link' => 0,
+    'conditions' => array(
+      0 => array(
+        'condition' => '',
+      ),
+    ),
+  );
+  /* Field: Roomify Conversation: Guest */
+  $handler->display->display_options['fields']['conversation_guest_user_ref']['id'] = 'conversation_guest_user_ref';
+  $handler->display->display_options['fields']['conversation_guest_user_ref']['table'] = 'field_data_conversation_guest_user_ref';
+  $handler->display->display_options['fields']['conversation_guest_user_ref']['field'] = 'conversation_guest_user_ref';
+  $handler->display->display_options['fields']['conversation_guest_user_ref']['exclude'] = TRUE;
+  $handler->display->display_options['fields']['conversation_guest_user_ref']['settings'] = array(
+    'link' => 0,
+    'conditions' => array(
+      0 => array(
+        'condition' => '',
+      ),
+    ),
+  );
+  /* Field: Roomify Conversation: Start Date */
+  $handler->display->display_options['fields']['conversation_book_start_date']['id'] = 'conversation_book_start_date';
+  $handler->display->display_options['fields']['conversation_book_start_date']['table'] = 'field_data_conversation_book_start_date';
+  $handler->display->display_options['fields']['conversation_book_start_date']['field'] = 'conversation_book_start_date';
+  $handler->display->display_options['fields']['conversation_book_start_date']['exclude'] = TRUE;
+  $handler->display->display_options['fields']['conversation_book_start_date']['settings'] = array(
+    'format_type' => 'custom',
+    'custom_date_format' => 'M j',
+    'fromto' => 'both',
+    'multiple_number' => '',
+    'multiple_from' => '',
+    'multiple_to' => '',
+    'show_remaining_days' => 0,
+    'conditions' => array(
+      0 => array(
+        'condition' => '',
+      ),
+    ),
+  );
+  /* Field: Roomify Conversation: End Date */
+  $handler->display->display_options['fields']['conversation_book_end_date']['id'] = 'conversation_book_end_date';
+  $handler->display->display_options['fields']['conversation_book_end_date']['table'] = 'field_data_conversation_book_end_date';
+  $handler->display->display_options['fields']['conversation_book_end_date']['field'] = 'conversation_book_end_date';
+  $handler->display->display_options['fields']['conversation_book_end_date']['exclude'] = TRUE;
+  $handler->display->display_options['fields']['conversation_book_end_date']['settings'] = array(
+    'format_type' => 'custom',
+    'custom_date_format' => 'M j, Y',
+    'fromto' => 'both',
+    'multiple_number' => '',
+    'multiple_from' => '',
+    'multiple_to' => '',
+    'show_remaining_days' => 0,
+    'conditions' => array(
+      0 => array(
+        'condition' => '',
+      ),
+    ),
+  );
+  /* Field: Roomify Conversation: Changed */
+  $handler->display->display_options['fields']['changed']['id'] = 'changed';
+  $handler->display->display_options['fields']['changed']['table'] = 'roomify_conversations';
+  $handler->display->display_options['fields']['changed']['field'] = 'changed';
+  $handler->display->display_options['fields']['changed']['label'] = '';
+  $handler->display->display_options['fields']['changed']['alter']['alter_text'] = TRUE;
+  $handler->display->display_options['fields']['changed']['alter']['text'] = '[changed] ago with [conversation_guest_user_ref]';
+  $handler->display->display_options['fields']['changed']['element_label_colon'] = FALSE;
+  $handler->display->display_options['fields']['changed']['date_format'] = 'raw time ago';
+  $handler->display->display_options['fields']['changed']['custom_date_format'] = '1';
+  $handler->display->display_options['fields']['changed']['second_date_format'] = 'long';
+  /* Field: Roomify Property: Label */
+  $handler->display->display_options['fields']['name_2']['id'] = 'name_2';
+  $handler->display->display_options['fields']['name_2']['table'] = 'roomify_properties';
+  $handler->display->display_options['fields']['name_2']['field'] = 'name';
+  $handler->display->display_options['fields']['name_2']['relationship'] = 'reverse_property_bat_type_reference_roomify_property';
+  $handler->display->display_options['fields']['name_2']['label'] = 'Property';
+  $handler->display->display_options['fields']['name_2']['exclude'] = TRUE;
+  $handler->display->display_options['fields']['name_2']['alter']['alter_text'] = TRUE;
+  $handler->display->display_options['fields']['name_2']['alter']['text'] = '[name_2]';
+  $handler->display->display_options['fields']['name_2']['alter']['path'] = 'listing/[property_id]';
+  /* Field: Requested Dates */
+  $handler->display->display_options['fields']['nothing']['id'] = 'nothing';
+  $handler->display->display_options['fields']['nothing']['table'] = 'views';
+  $handler->display->display_options['fields']['nothing']['field'] = 'nothing';
+  $handler->display->display_options['fields']['nothing']['ui_name'] = 'Requested Dates';
+  $handler->display->display_options['fields']['nothing']['label'] = 'Requested Dates';
+  $handler->display->display_options['fields']['nothing']['exclude'] = TRUE;
+  $handler->display->display_options['fields']['nothing']['alter']['text'] = '([conversation_book_start_date] - [conversation_book_end_date])
+        ';
+  /* Field: Type: Type */
+  $handler->display->display_options['fields']['type']['id'] = 'type';
+  $handler->display->display_options['fields']['type']['table'] = 'bat_types';
+  $handler->display->display_options['fields']['type']['field'] = 'type';
+  $handler->display->display_options['fields']['type']['relationship'] = 'conversation_unit_type_ref_target_id';
+  $handler->display->display_options['fields']['type']['label'] = '';
+  $handler->display->display_options['fields']['type']['exclude'] = TRUE;
+  $handler->display->display_options['fields']['type']['element_label_colon'] = FALSE;
+  $handler->display->display_options['fields']['type']['machine_name'] = TRUE;
+  /* Field: Roomify Conversation: Further info */
+  $handler->display->display_options['fields']['conversation_further_info']['id'] = 'conversation_further_info';
+  $handler->display->display_options['fields']['conversation_further_info']['table'] = 'field_data_conversation_further_info';
+  $handler->display->display_options['fields']['conversation_further_info']['field'] = 'conversation_further_info';
+  $handler->display->display_options['fields']['conversation_further_info']['exclude'] = TRUE;
+  $handler->display->display_options['fields']['conversation_further_info']['alter']['max_length'] = '50';
+  $handler->display->display_options['fields']['conversation_further_info']['alter']['trim'] = TRUE;
+  $handler->display->display_options['fields']['conversation_further_info']['settings'] = array(
+    'conditions' => array(
+      0 => array(
+        'condition' => '',
+      ),
+    ),
+  );
+  /* Field: Roomify Conversation: Most recent message */
+  $handler->display->display_options['fields']['most_recent_message']['id'] = 'most_recent_message';
+  $handler->display->display_options['fields']['most_recent_message']['table'] = 'roomify_conversations';
+  $handler->display->display_options['fields']['most_recent_message']['field'] = 'most_recent_message';
+  $handler->display->display_options['fields']['most_recent_message']['exclude'] = TRUE;
+  $handler->display->display_options['fields']['most_recent_message']['alter']['alter_text'] = TRUE;
+  $handler->display->display_options['fields']['most_recent_message']['alter']['text'] = '[most_recent_message]';
+  $handler->display->display_options['fields']['most_recent_message']['alter']['max_length'] = '50';
+  $handler->display->display_options['fields']['most_recent_message']['alter']['trim'] = TRUE;
+  $handler->display->display_options['fields']['most_recent_message']['empty'] = '[conversation_further_info]';
+  /* Field: Roomify Conversation: Most recent message author */
+  $handler->display->display_options['fields']['most_recent_message_user']['id'] = 'most_recent_message_user';
+  $handler->display->display_options['fields']['most_recent_message_user']['table'] = 'roomify_conversations';
+  $handler->display->display_options['fields']['most_recent_message_user']['field'] = 'most_recent_message_user';
+  $handler->display->display_options['fields']['most_recent_message_user']['exclude'] = TRUE;
+  $handler->display->display_options['fields']['most_recent_message_user']['empty'] = '[conversation_guest_user_ref]';
+  /* Field: Roomify Conversation: Price */
+  $handler->display->display_options['fields']['conversation_book_price']['id'] = 'conversation_book_price';
+  $handler->display->display_options['fields']['conversation_book_price']['table'] = 'field_data_conversation_book_price';
+  $handler->display->display_options['fields']['conversation_book_price']['field'] = 'conversation_book_price';
+  $handler->display->display_options['fields']['conversation_book_price']['exclude'] = TRUE;
+  $handler->display->display_options['fields']['conversation_book_price']['click_sort_column'] = 'amount';
+  $handler->display->display_options['fields']['conversation_book_price']['settings'] = array(
+    'calculation' => FALSE,
+    'conditions' => array(
+      0 => array(
+        'condition' => '',
+      ),
+    ),
+  );
+  $handler->display->display_options['fields']['conversation_book_price']['group_column'] = 'value';
+  /* Field: BAT Booking: Price */
+  $handler->display->display_options['fields']['booking_price']['id'] = 'booking_price';
+  $handler->display->display_options['fields']['booking_price']['table'] = 'field_data_booking_price';
+  $handler->display->display_options['fields']['booking_price']['field'] = 'booking_price';
+  $handler->display->display_options['fields']['booking_price']['relationship'] = 'conversation_booking_ref_target_id';
+  $handler->display->display_options['fields']['booking_price']['label'] = '';
+  $handler->display->display_options['fields']['booking_price']['exclude'] = TRUE;
+  $handler->display->display_options['fields']['booking_price']['element_label_colon'] = FALSE;
+  $handler->display->display_options['fields']['booking_price']['empty'] = '[conversation_book_price]';
+  $handler->display->display_options['fields']['booking_price']['click_sort_column'] = 'amount';
+  $handler->display->display_options['fields']['booking_price']['settings'] = array(
+    'calculation' => FALSE,
+    'conditions' => array(
+      0 => array(
+        'condition' => '',
+      ),
+    ),
+  );
+  /* Field: Roomify Conversation: Most recent message */
+  $handler->display->display_options['fields']['most_recent_message_1']['id'] = 'most_recent_message_1';
+  $handler->display->display_options['fields']['most_recent_message_1']['table'] = 'roomify_conversations';
+  $handler->display->display_options['fields']['most_recent_message_1']['field'] = 'most_recent_message';
+  $handler->display->display_options['fields']['most_recent_message_1']['label'] = 'Most recent message - not trimmed';
+  $handler->display->display_options['fields']['most_recent_message_1']['exclude'] = TRUE;
+  $handler->display->display_options['fields']['most_recent_message_1']['empty'] = '[conversation_further_info]';
+  /* Field: Roomify Conversation: URL */
+  $handler->display->display_options['fields']['url']['id'] = 'url';
+  $handler->display->display_options['fields']['url']['table'] = 'views_entity_roomify_conversation';
+  $handler->display->display_options['fields']['url']['field'] = 'url';
+  $handler->display->display_options['fields']['url']['label'] = '';
+  $handler->display->display_options['fields']['url']['exclude'] = TRUE;
+  $handler->display->display_options['fields']['url']['element_label_colon'] = FALSE;
+  $handler->display->display_options['fields']['url']['display_as_link'] = FALSE;
+  $handler->display->display_options['fields']['url']['link_to_entity'] = 0;
+  /* Field: Conversation Info (linked) */
+  $handler->display->display_options['fields']['nothing_1']['id'] = 'nothing_1';
+  $handler->display->display_options['fields']['nothing_1']['table'] = 'views';
+  $handler->display->display_options['fields']['nothing_1']['field'] = 'nothing';
+  $handler->display->display_options['fields']['nothing_1']['ui_name'] = 'Conversation Info (linked)';
+  $handler->display->display_options['fields']['nothing_1']['label'] = '';
+  $handler->display->display_options['fields']['nothing_1']['alter']['text'] = '<div class="conversation-info">
+            <div><a class="conversation-info-link" href="[url]">
+              <div class="conversation-header">[name_2] [nothing]</div>
+              <div class="conversation-message"><span class="conversation-message-author">[most_recent_message_user]</span><span title="[most_recent_message_1]" class="conversation-message-message">[most_recent_message]</span><span class="conversation-price">[booking_price]</span></div>
+            </a></div>
+          </div>
+          <div class="conversation-reply"><a title="Quick Reply" class="quick-reply-button ctools-use-modal ctools-modal-roomify-dashboard-modal-style" href="/admin/conversations/[conversation_id]/quick-reply/nojs">Reply</a></div>
+          ';
+  $handler->display->display_options['fields']['nothing_1']['element_label_colon'] = FALSE;
   $handler->display->display_options['path'] = 'admin/bat/conversations/guest';
 
   /* Display: Guest Conversations */
   $handler = $view->new_display('panel_pane', 'Guest Conversations', 'guest_conversations');
   $handler->display->display_options['defaults']['link_display'] = FALSE;
   $handler->display->display_options['link_display'] = 'guest_all_conversations';
+  $handler->display->display_options['defaults']['fields'] = FALSE;
+  /* Field: Roomify Property: Roomify property ID */
+  $handler->display->display_options['fields']['property_id']['id'] = 'property_id';
+  $handler->display->display_options['fields']['property_id']['table'] = 'roomify_properties';
+  $handler->display->display_options['fields']['property_id']['field'] = 'property_id';
+  $handler->display->display_options['fields']['property_id']['relationship'] = 'reverse_property_bat_type_reference_roomify_property';
+  $handler->display->display_options['fields']['property_id']['label'] = '';
+  $handler->display->display_options['fields']['property_id']['exclude'] = TRUE;
+  $handler->display->display_options['fields']['property_id']['element_label_colon'] = FALSE;
+  /* Field: Roomify Conversation: Roomify conversation ID */
+  $handler->display->display_options['fields']['conversation_id']['id'] = 'conversation_id';
+  $handler->display->display_options['fields']['conversation_id']['table'] = 'roomify_conversations';
+  $handler->display->display_options['fields']['conversation_id']['field'] = 'conversation_id';
+  $handler->display->display_options['fields']['conversation_id']['label'] = '';
+  $handler->display->display_options['fields']['conversation_id']['exclude'] = TRUE;
+  $handler->display->display_options['fields']['conversation_id']['element_label_colon'] = FALSE;
+  $handler->display->display_options['fields']['conversation_id']['separator'] = '';
+  /* Field: Type: Label */
+  $handler->display->display_options['fields']['name_1']['id'] = 'name_1';
+  $handler->display->display_options['fields']['name_1']['table'] = 'bat_types';
+  $handler->display->display_options['fields']['name_1']['field'] = 'name';
+  $handler->display->display_options['fields']['name_1']['relationship'] = 'conversation_unit_type_ref_target_id';
+  $handler->display->display_options['fields']['name_1']['label'] = '';
+  $handler->display->display_options['fields']['name_1']['exclude'] = TRUE;
+  $handler->display->display_options['fields']['name_1']['alter']['alter_text'] = TRUE;
+  $handler->display->display_options['fields']['name_1']['alter']['text'] = ' - [name_1]';
+  $handler->display->display_options['fields']['name_1']['element_label_colon'] = FALSE;
+  /* Field: Roomify Conversation: Label */
+  $handler->display->display_options['fields']['name']['id'] = 'name';
+  $handler->display->display_options['fields']['name']['table'] = 'roomify_conversations';
+  $handler->display->display_options['fields']['name']['field'] = 'name';
+  $handler->display->display_options['fields']['name']['label'] = '';
+  $handler->display->display_options['fields']['name']['exclude'] = TRUE;
+  $handler->display->display_options['fields']['name']['alter']['alter_text'] = TRUE;
+  $handler->display->display_options['fields']['name']['alter']['text'] = '[name] - view conversation';
+  $handler->display->display_options['fields']['name']['alter']['make_link'] = TRUE;
+  $handler->display->display_options['fields']['name']['alter']['path'] = 'conversation/[conversation_id]';
+  $handler->display->display_options['fields']['name']['element_label_colon'] = FALSE;
+  /* Field: Roomify Conversation: Owner */
+  $handler->display->display_options['fields']['conversation_owner_user_ref']['id'] = 'conversation_owner_user_ref';
+  $handler->display->display_options['fields']['conversation_owner_user_ref']['table'] = 'field_data_conversation_owner_user_ref';
+  $handler->display->display_options['fields']['conversation_owner_user_ref']['field'] = 'conversation_owner_user_ref';
+  $handler->display->display_options['fields']['conversation_owner_user_ref']['exclude'] = TRUE;
+  $handler->display->display_options['fields']['conversation_owner_user_ref']['settings'] = array(
+    'link' => 0,
+    'conditions' => array(
+      0 => array(
+        'condition' => '',
+      ),
+    ),
+  );
+  /* Field: Roomify Conversation: Guest */
+  $handler->display->display_options['fields']['conversation_guest_user_ref']['id'] = 'conversation_guest_user_ref';
+  $handler->display->display_options['fields']['conversation_guest_user_ref']['table'] = 'field_data_conversation_guest_user_ref';
+  $handler->display->display_options['fields']['conversation_guest_user_ref']['field'] = 'conversation_guest_user_ref';
+  $handler->display->display_options['fields']['conversation_guest_user_ref']['exclude'] = TRUE;
+  $handler->display->display_options['fields']['conversation_guest_user_ref']['settings'] = array(
+    'link' => 0,
+    'conditions' => array(
+      0 => array(
+        'condition' => '',
+      ),
+    ),
+  );
+  /* Field: Roomify Conversation: Start Date */
+  $handler->display->display_options['fields']['conversation_book_start_date']['id'] = 'conversation_book_start_date';
+  $handler->display->display_options['fields']['conversation_book_start_date']['table'] = 'field_data_conversation_book_start_date';
+  $handler->display->display_options['fields']['conversation_book_start_date']['field'] = 'conversation_book_start_date';
+  $handler->display->display_options['fields']['conversation_book_start_date']['exclude'] = TRUE;
+  $handler->display->display_options['fields']['conversation_book_start_date']['settings'] = array(
+    'format_type' => 'custom',
+    'custom_date_format' => 'M j',
+    'fromto' => 'both',
+    'multiple_number' => '',
+    'multiple_from' => '',
+    'multiple_to' => '',
+    'show_remaining_days' => 0,
+    'conditions' => array(
+      0 => array(
+        'condition' => '',
+      ),
+    ),
+  );
+  /* Field: Roomify Conversation: End Date */
+  $handler->display->display_options['fields']['conversation_book_end_date']['id'] = 'conversation_book_end_date';
+  $handler->display->display_options['fields']['conversation_book_end_date']['table'] = 'field_data_conversation_book_end_date';
+  $handler->display->display_options['fields']['conversation_book_end_date']['field'] = 'conversation_book_end_date';
+  $handler->display->display_options['fields']['conversation_book_end_date']['exclude'] = TRUE;
+  $handler->display->display_options['fields']['conversation_book_end_date']['settings'] = array(
+    'format_type' => 'custom',
+    'custom_date_format' => 'M j, Y',
+    'fromto' => 'both',
+    'multiple_number' => '',
+    'multiple_from' => '',
+    'multiple_to' => '',
+    'show_remaining_days' => 0,
+    'conditions' => array(
+      0 => array(
+        'condition' => '',
+      ),
+    ),
+  );
+  /* Field: Roomify Conversation: Changed */
+  $handler->display->display_options['fields']['changed']['id'] = 'changed';
+  $handler->display->display_options['fields']['changed']['table'] = 'roomify_conversations';
+  $handler->display->display_options['fields']['changed']['field'] = 'changed';
+  $handler->display->display_options['fields']['changed']['label'] = '';
+  $handler->display->display_options['fields']['changed']['alter']['alter_text'] = TRUE;
+  $handler->display->display_options['fields']['changed']['alter']['text'] = '[changed] ago with [conversation_guest_user_ref]';
+  $handler->display->display_options['fields']['changed']['element_label_colon'] = FALSE;
+  $handler->display->display_options['fields']['changed']['date_format'] = 'raw time ago';
+  $handler->display->display_options['fields']['changed']['custom_date_format'] = '1';
+  $handler->display->display_options['fields']['changed']['second_date_format'] = 'long';
+  /* Field: Roomify Property: Label */
+  $handler->display->display_options['fields']['name_2']['id'] = 'name_2';
+  $handler->display->display_options['fields']['name_2']['table'] = 'roomify_properties';
+  $handler->display->display_options['fields']['name_2']['field'] = 'name';
+  $handler->display->display_options['fields']['name_2']['relationship'] = 'reverse_property_bat_type_reference_roomify_property';
+  $handler->display->display_options['fields']['name_2']['label'] = 'Property';
+  $handler->display->display_options['fields']['name_2']['exclude'] = TRUE;
+  $handler->display->display_options['fields']['name_2']['alter']['alter_text'] = TRUE;
+  $handler->display->display_options['fields']['name_2']['alter']['text'] = '[name_2]';
+  $handler->display->display_options['fields']['name_2']['alter']['path'] = 'listing/[property_id]';
+  /* Field: Requested Dates */
+  $handler->display->display_options['fields']['nothing']['id'] = 'nothing';
+  $handler->display->display_options['fields']['nothing']['table'] = 'views';
+  $handler->display->display_options['fields']['nothing']['field'] = 'nothing';
+  $handler->display->display_options['fields']['nothing']['ui_name'] = 'Requested Dates';
+  $handler->display->display_options['fields']['nothing']['label'] = 'Requested Dates';
+  $handler->display->display_options['fields']['nothing']['exclude'] = TRUE;
+  $handler->display->display_options['fields']['nothing']['alter']['text'] = '([conversation_book_start_date] - [conversation_book_end_date])
+        ';
+  /* Field: Type: Type */
+  $handler->display->display_options['fields']['type']['id'] = 'type';
+  $handler->display->display_options['fields']['type']['table'] = 'bat_types';
+  $handler->display->display_options['fields']['type']['field'] = 'type';
+  $handler->display->display_options['fields']['type']['relationship'] = 'conversation_unit_type_ref_target_id';
+  $handler->display->display_options['fields']['type']['label'] = '';
+  $handler->display->display_options['fields']['type']['exclude'] = TRUE;
+  $handler->display->display_options['fields']['type']['element_label_colon'] = FALSE;
+  $handler->display->display_options['fields']['type']['machine_name'] = TRUE;
+  /* Field: Roomify Conversation: Further info */
+  $handler->display->display_options['fields']['conversation_further_info']['id'] = 'conversation_further_info';
+  $handler->display->display_options['fields']['conversation_further_info']['table'] = 'field_data_conversation_further_info';
+  $handler->display->display_options['fields']['conversation_further_info']['field'] = 'conversation_further_info';
+  $handler->display->display_options['fields']['conversation_further_info']['exclude'] = TRUE;
+  $handler->display->display_options['fields']['conversation_further_info']['alter']['max_length'] = '50';
+  $handler->display->display_options['fields']['conversation_further_info']['alter']['trim'] = TRUE;
+  $handler->display->display_options['fields']['conversation_further_info']['settings'] = array(
+    'conditions' => array(
+      0 => array(
+        'condition' => '',
+      ),
+    ),
+  );
+  /* Field: Roomify Conversation: Most recent message */
+  $handler->display->display_options['fields']['most_recent_message']['id'] = 'most_recent_message';
+  $handler->display->display_options['fields']['most_recent_message']['table'] = 'roomify_conversations';
+  $handler->display->display_options['fields']['most_recent_message']['field'] = 'most_recent_message';
+  $handler->display->display_options['fields']['most_recent_message']['exclude'] = TRUE;
+  $handler->display->display_options['fields']['most_recent_message']['alter']['alter_text'] = TRUE;
+  $handler->display->display_options['fields']['most_recent_message']['alter']['text'] = '[most_recent_message]';
+  $handler->display->display_options['fields']['most_recent_message']['alter']['max_length'] = '50';
+  $handler->display->display_options['fields']['most_recent_message']['alter']['trim'] = TRUE;
+  $handler->display->display_options['fields']['most_recent_message']['empty'] = '[conversation_further_info]';
+  /* Field: Roomify Conversation: Most recent message author */
+  $handler->display->display_options['fields']['most_recent_message_user']['id'] = 'most_recent_message_user';
+  $handler->display->display_options['fields']['most_recent_message_user']['table'] = 'roomify_conversations';
+  $handler->display->display_options['fields']['most_recent_message_user']['field'] = 'most_recent_message_user';
+  $handler->display->display_options['fields']['most_recent_message_user']['exclude'] = TRUE;
+  $handler->display->display_options['fields']['most_recent_message_user']['empty'] = '[conversation_guest_user_ref]';
+  /* Field: Roomify Conversation: Price */
+  $handler->display->display_options['fields']['conversation_book_price']['id'] = 'conversation_book_price';
+  $handler->display->display_options['fields']['conversation_book_price']['table'] = 'field_data_conversation_book_price';
+  $handler->display->display_options['fields']['conversation_book_price']['field'] = 'conversation_book_price';
+  $handler->display->display_options['fields']['conversation_book_price']['exclude'] = TRUE;
+  $handler->display->display_options['fields']['conversation_book_price']['click_sort_column'] = 'amount';
+  $handler->display->display_options['fields']['conversation_book_price']['settings'] = array(
+    'calculation' => FALSE,
+    'conditions' => array(
+      0 => array(
+        'condition' => '',
+      ),
+    ),
+  );
+  $handler->display->display_options['fields']['conversation_book_price']['group_column'] = 'value';
+  /* Field: BAT Booking: Price */
+  $handler->display->display_options['fields']['booking_price']['id'] = 'booking_price';
+  $handler->display->display_options['fields']['booking_price']['table'] = 'field_data_booking_price';
+  $handler->display->display_options['fields']['booking_price']['field'] = 'booking_price';
+  $handler->display->display_options['fields']['booking_price']['relationship'] = 'conversation_booking_ref_target_id';
+  $handler->display->display_options['fields']['booking_price']['label'] = '';
+  $handler->display->display_options['fields']['booking_price']['exclude'] = TRUE;
+  $handler->display->display_options['fields']['booking_price']['element_label_colon'] = FALSE;
+  $handler->display->display_options['fields']['booking_price']['empty'] = '[conversation_book_price]';
+  $handler->display->display_options['fields']['booking_price']['click_sort_column'] = 'amount';
+  $handler->display->display_options['fields']['booking_price']['settings'] = array(
+    'calculation' => FALSE,
+    'conditions' => array(
+      0 => array(
+        'condition' => '',
+      ),
+    ),
+  );
+  /* Field: Roomify Conversation: Most recent message */
+  $handler->display->display_options['fields']['most_recent_message_1']['id'] = 'most_recent_message_1';
+  $handler->display->display_options['fields']['most_recent_message_1']['table'] = 'roomify_conversations';
+  $handler->display->display_options['fields']['most_recent_message_1']['field'] = 'most_recent_message';
+  $handler->display->display_options['fields']['most_recent_message_1']['label'] = 'Most recent message - not trimmed';
+  $handler->display->display_options['fields']['most_recent_message_1']['exclude'] = TRUE;
+  $handler->display->display_options['fields']['most_recent_message_1']['empty'] = '[conversation_further_info]';
+  /* Field: Roomify Conversation: URL */
+  $handler->display->display_options['fields']['url']['id'] = 'url';
+  $handler->display->display_options['fields']['url']['table'] = 'views_entity_roomify_conversation';
+  $handler->display->display_options['fields']['url']['field'] = 'url';
+  $handler->display->display_options['fields']['url']['label'] = '';
+  $handler->display->display_options['fields']['url']['exclude'] = TRUE;
+  $handler->display->display_options['fields']['url']['element_label_colon'] = FALSE;
+  $handler->display->display_options['fields']['url']['display_as_link'] = FALSE;
+  $handler->display->display_options['fields']['url']['link_to_entity'] = 0;
+  /* Field: Conversation Info (linked) */
+  $handler->display->display_options['fields']['nothing_1']['id'] = 'nothing_1';
+  $handler->display->display_options['fields']['nothing_1']['table'] = 'views';
+  $handler->display->display_options['fields']['nothing_1']['field'] = 'nothing';
+  $handler->display->display_options['fields']['nothing_1']['ui_name'] = 'Conversation Info (linked)';
+  $handler->display->display_options['fields']['nothing_1']['label'] = '';
+  $handler->display->display_options['fields']['nothing_1']['alter']['text'] = '<div class="conversation-info">
+            <div><a class="conversation-info-link" href="[url]">
+              <div class="conversation-header">[name_2] [nothing]</div>
+              <div class="conversation-message"><span class="conversation-message-author">[most_recent_message_user]</span><span title="[most_recent_message_1]" class="conversation-message-message">[most_recent_message]</span><span class="conversation-price">[booking_price]</span></div>
+            </a></div>
+          </div>
+          <div class="conversation-reply"><a title="Quick Reply" class="quick-reply-button ctools-use-modal ctools-modal-roomify-dashboard-modal-style" href="/admin/conversations/[conversation_id]/quick-reply/nojs">Reply</a></div>
+          ';
+  $handler->display->display_options['fields']['nothing_1']['element_label_colon'] = FALSE;
   $handler->display->display_options['argument_input'] = array(
     'conversation_guest_user_ref_target_id' => array(
       'type' => 'user',
@@ -421,6 +1133,241 @@ function roomify_conversations_views_default_views() {
   $handler->display->display_options['pager']['options']['offset'] = '0';
   $handler->display->display_options['pager']['options']['id'] = '0';
   $handler->display->display_options['pager']['options']['quantity'] = '9';
+  $handler->display->display_options['defaults']['fields'] = FALSE;
+  /* Field: Roomify Property: Roomify property ID */
+  $handler->display->display_options['fields']['property_id']['id'] = 'property_id';
+  $handler->display->display_options['fields']['property_id']['table'] = 'roomify_properties';
+  $handler->display->display_options['fields']['property_id']['field'] = 'property_id';
+  $handler->display->display_options['fields']['property_id']['relationship'] = 'reverse_property_bat_type_reference_roomify_property';
+  $handler->display->display_options['fields']['property_id']['label'] = '';
+  $handler->display->display_options['fields']['property_id']['exclude'] = TRUE;
+  $handler->display->display_options['fields']['property_id']['element_label_colon'] = FALSE;
+  /* Field: Roomify Conversation: Roomify conversation ID */
+  $handler->display->display_options['fields']['conversation_id']['id'] = 'conversation_id';
+  $handler->display->display_options['fields']['conversation_id']['table'] = 'roomify_conversations';
+  $handler->display->display_options['fields']['conversation_id']['field'] = 'conversation_id';
+  $handler->display->display_options['fields']['conversation_id']['label'] = '';
+  $handler->display->display_options['fields']['conversation_id']['exclude'] = TRUE;
+  $handler->display->display_options['fields']['conversation_id']['element_label_colon'] = FALSE;
+  $handler->display->display_options['fields']['conversation_id']['separator'] = '';
+  /* Field: Type: Label */
+  $handler->display->display_options['fields']['name_1']['id'] = 'name_1';
+  $handler->display->display_options['fields']['name_1']['table'] = 'bat_types';
+  $handler->display->display_options['fields']['name_1']['field'] = 'name';
+  $handler->display->display_options['fields']['name_1']['relationship'] = 'conversation_unit_type_ref_target_id';
+  $handler->display->display_options['fields']['name_1']['label'] = '';
+  $handler->display->display_options['fields']['name_1']['exclude'] = TRUE;
+  $handler->display->display_options['fields']['name_1']['alter']['alter_text'] = TRUE;
+  $handler->display->display_options['fields']['name_1']['alter']['text'] = ' - [name_1]';
+  $handler->display->display_options['fields']['name_1']['element_label_colon'] = FALSE;
+  /* Field: Roomify Conversation: Label */
+  $handler->display->display_options['fields']['name']['id'] = 'name';
+  $handler->display->display_options['fields']['name']['table'] = 'roomify_conversations';
+  $handler->display->display_options['fields']['name']['field'] = 'name';
+  $handler->display->display_options['fields']['name']['label'] = '';
+  $handler->display->display_options['fields']['name']['exclude'] = TRUE;
+  $handler->display->display_options['fields']['name']['alter']['alter_text'] = TRUE;
+  $handler->display->display_options['fields']['name']['alter']['text'] = '[name] - view conversation';
+  $handler->display->display_options['fields']['name']['alter']['make_link'] = TRUE;
+  $handler->display->display_options['fields']['name']['alter']['path'] = 'conversation/[conversation_id]';
+  $handler->display->display_options['fields']['name']['element_label_colon'] = FALSE;
+  /* Field: Roomify Conversation: Owner */
+  $handler->display->display_options['fields']['conversation_owner_user_ref']['id'] = 'conversation_owner_user_ref';
+  $handler->display->display_options['fields']['conversation_owner_user_ref']['table'] = 'field_data_conversation_owner_user_ref';
+  $handler->display->display_options['fields']['conversation_owner_user_ref']['field'] = 'conversation_owner_user_ref';
+  $handler->display->display_options['fields']['conversation_owner_user_ref']['exclude'] = TRUE;
+  $handler->display->display_options['fields']['conversation_owner_user_ref']['settings'] = array(
+    'link' => 0,
+    'conditions' => array(
+      0 => array(
+        'condition' => '',
+      ),
+    ),
+  );
+  /* Field: Roomify Conversation: Guest */
+  $handler->display->display_options['fields']['conversation_guest_user_ref']['id'] = 'conversation_guest_user_ref';
+  $handler->display->display_options['fields']['conversation_guest_user_ref']['table'] = 'field_data_conversation_guest_user_ref';
+  $handler->display->display_options['fields']['conversation_guest_user_ref']['field'] = 'conversation_guest_user_ref';
+  $handler->display->display_options['fields']['conversation_guest_user_ref']['exclude'] = TRUE;
+  $handler->display->display_options['fields']['conversation_guest_user_ref']['settings'] = array(
+    'link' => 0,
+    'conditions' => array(
+      0 => array(
+        'condition' => '',
+      ),
+    ),
+  );
+  /* Field: Roomify Conversation: Start Date */
+  $handler->display->display_options['fields']['conversation_book_start_date']['id'] = 'conversation_book_start_date';
+  $handler->display->display_options['fields']['conversation_book_start_date']['table'] = 'field_data_conversation_book_start_date';
+  $handler->display->display_options['fields']['conversation_book_start_date']['field'] = 'conversation_book_start_date';
+  $handler->display->display_options['fields']['conversation_book_start_date']['exclude'] = TRUE;
+  $handler->display->display_options['fields']['conversation_book_start_date']['settings'] = array(
+    'format_type' => 'custom',
+    'custom_date_format' => 'M j',
+    'fromto' => 'both',
+    'multiple_number' => '',
+    'multiple_from' => '',
+    'multiple_to' => '',
+    'show_remaining_days' => 0,
+    'conditions' => array(
+      0 => array(
+        'condition' => '',
+      ),
+    ),
+  );
+  /* Field: Roomify Conversation: End Date */
+  $handler->display->display_options['fields']['conversation_book_end_date']['id'] = 'conversation_book_end_date';
+  $handler->display->display_options['fields']['conversation_book_end_date']['table'] = 'field_data_conversation_book_end_date';
+  $handler->display->display_options['fields']['conversation_book_end_date']['field'] = 'conversation_book_end_date';
+  $handler->display->display_options['fields']['conversation_book_end_date']['exclude'] = TRUE;
+  $handler->display->display_options['fields']['conversation_book_end_date']['settings'] = array(
+    'format_type' => 'custom',
+    'custom_date_format' => 'M j, Y',
+    'fromto' => 'both',
+    'multiple_number' => '',
+    'multiple_from' => '',
+    'multiple_to' => '',
+    'show_remaining_days' => 0,
+    'conditions' => array(
+      0 => array(
+        'condition' => '',
+      ),
+    ),
+  );
+  /* Field: Roomify Conversation: Changed */
+  $handler->display->display_options['fields']['changed']['id'] = 'changed';
+  $handler->display->display_options['fields']['changed']['table'] = 'roomify_conversations';
+  $handler->display->display_options['fields']['changed']['field'] = 'changed';
+  $handler->display->display_options['fields']['changed']['label'] = '';
+  $handler->display->display_options['fields']['changed']['alter']['alter_text'] = TRUE;
+  $handler->display->display_options['fields']['changed']['alter']['text'] = '[changed] ago with [conversation_guest_user_ref]';
+  $handler->display->display_options['fields']['changed']['element_label_colon'] = FALSE;
+  $handler->display->display_options['fields']['changed']['date_format'] = 'raw time ago';
+  $handler->display->display_options['fields']['changed']['custom_date_format'] = '1';
+  $handler->display->display_options['fields']['changed']['second_date_format'] = 'long';
+  /* Field: Roomify Property: Label */
+  $handler->display->display_options['fields']['name_2']['id'] = 'name_2';
+  $handler->display->display_options['fields']['name_2']['table'] = 'roomify_properties';
+  $handler->display->display_options['fields']['name_2']['field'] = 'name';
+  $handler->display->display_options['fields']['name_2']['relationship'] = 'reverse_property_bat_type_reference_roomify_property';
+  $handler->display->display_options['fields']['name_2']['label'] = 'Property';
+  $handler->display->display_options['fields']['name_2']['exclude'] = TRUE;
+  $handler->display->display_options['fields']['name_2']['alter']['alter_text'] = TRUE;
+  $handler->display->display_options['fields']['name_2']['alter']['text'] = '[name_2]';
+  $handler->display->display_options['fields']['name_2']['alter']['path'] = 'listing/[property_id]';
+  /* Field: Requested Dates */
+  $handler->display->display_options['fields']['nothing']['id'] = 'nothing';
+  $handler->display->display_options['fields']['nothing']['table'] = 'views';
+  $handler->display->display_options['fields']['nothing']['field'] = 'nothing';
+  $handler->display->display_options['fields']['nothing']['ui_name'] = 'Requested Dates';
+  $handler->display->display_options['fields']['nothing']['label'] = 'Requested Dates';
+  $handler->display->display_options['fields']['nothing']['exclude'] = TRUE;
+  $handler->display->display_options['fields']['nothing']['alter']['text'] = '([conversation_book_start_date] - [conversation_book_end_date])
+        ';
+  /* Field: Type: Type */
+  $handler->display->display_options['fields']['type']['id'] = 'type';
+  $handler->display->display_options['fields']['type']['table'] = 'bat_types';
+  $handler->display->display_options['fields']['type']['field'] = 'type';
+  $handler->display->display_options['fields']['type']['relationship'] = 'conversation_unit_type_ref_target_id';
+  $handler->display->display_options['fields']['type']['label'] = '';
+  $handler->display->display_options['fields']['type']['exclude'] = TRUE;
+  $handler->display->display_options['fields']['type']['element_label_colon'] = FALSE;
+  $handler->display->display_options['fields']['type']['machine_name'] = TRUE;
+  /* Field: Roomify Conversation: Further info */
+  $handler->display->display_options['fields']['conversation_further_info']['id'] = 'conversation_further_info';
+  $handler->display->display_options['fields']['conversation_further_info']['table'] = 'field_data_conversation_further_info';
+  $handler->display->display_options['fields']['conversation_further_info']['field'] = 'conversation_further_info';
+  $handler->display->display_options['fields']['conversation_further_info']['exclude'] = TRUE;
+  $handler->display->display_options['fields']['conversation_further_info']['alter']['max_length'] = '50';
+  $handler->display->display_options['fields']['conversation_further_info']['alter']['trim'] = TRUE;
+  $handler->display->display_options['fields']['conversation_further_info']['settings'] = array(
+    'conditions' => array(
+      0 => array(
+        'condition' => '',
+      ),
+    ),
+  );
+  /* Field: Roomify Conversation: Most recent message */
+  $handler->display->display_options['fields']['most_recent_message']['id'] = 'most_recent_message';
+  $handler->display->display_options['fields']['most_recent_message']['table'] = 'roomify_conversations';
+  $handler->display->display_options['fields']['most_recent_message']['field'] = 'most_recent_message';
+  $handler->display->display_options['fields']['most_recent_message']['exclude'] = TRUE;
+  $handler->display->display_options['fields']['most_recent_message']['alter']['alter_text'] = TRUE;
+  $handler->display->display_options['fields']['most_recent_message']['alter']['text'] = '[most_recent_message]';
+  $handler->display->display_options['fields']['most_recent_message']['alter']['max_length'] = '50';
+  $handler->display->display_options['fields']['most_recent_message']['alter']['trim'] = TRUE;
+  $handler->display->display_options['fields']['most_recent_message']['empty'] = '[conversation_further_info]';
+  /* Field: Roomify Conversation: Most recent message author */
+  $handler->display->display_options['fields']['most_recent_message_user']['id'] = 'most_recent_message_user';
+  $handler->display->display_options['fields']['most_recent_message_user']['table'] = 'roomify_conversations';
+  $handler->display->display_options['fields']['most_recent_message_user']['field'] = 'most_recent_message_user';
+  $handler->display->display_options['fields']['most_recent_message_user']['exclude'] = TRUE;
+  $handler->display->display_options['fields']['most_recent_message_user']['empty'] = '[conversation_guest_user_ref]';
+  /* Field: Roomify Conversation: Price */
+  $handler->display->display_options['fields']['conversation_book_price']['id'] = 'conversation_book_price';
+  $handler->display->display_options['fields']['conversation_book_price']['table'] = 'field_data_conversation_book_price';
+  $handler->display->display_options['fields']['conversation_book_price']['field'] = 'conversation_book_price';
+  $handler->display->display_options['fields']['conversation_book_price']['exclude'] = TRUE;
+  $handler->display->display_options['fields']['conversation_book_price']['click_sort_column'] = 'amount';
+  $handler->display->display_options['fields']['conversation_book_price']['settings'] = array(
+    'calculation' => FALSE,
+    'conditions' => array(
+      0 => array(
+        'condition' => '',
+      ),
+    ),
+  );
+  $handler->display->display_options['fields']['conversation_book_price']['group_column'] = 'value';
+  /* Field: BAT Booking: Price */
+  $handler->display->display_options['fields']['booking_price']['id'] = 'booking_price';
+  $handler->display->display_options['fields']['booking_price']['table'] = 'field_data_booking_price';
+  $handler->display->display_options['fields']['booking_price']['field'] = 'booking_price';
+  $handler->display->display_options['fields']['booking_price']['relationship'] = 'conversation_booking_ref_target_id';
+  $handler->display->display_options['fields']['booking_price']['label'] = '';
+  $handler->display->display_options['fields']['booking_price']['exclude'] = TRUE;
+  $handler->display->display_options['fields']['booking_price']['element_label_colon'] = FALSE;
+  $handler->display->display_options['fields']['booking_price']['empty'] = '[conversation_book_price]';
+  $handler->display->display_options['fields']['booking_price']['click_sort_column'] = 'amount';
+  $handler->display->display_options['fields']['booking_price']['settings'] = array(
+    'calculation' => FALSE,
+    'conditions' => array(
+      0 => array(
+        'condition' => '',
+      ),
+    ),
+  );
+  /* Field: Roomify Conversation: Most recent message */
+  $handler->display->display_options['fields']['most_recent_message_1']['id'] = 'most_recent_message_1';
+  $handler->display->display_options['fields']['most_recent_message_1']['table'] = 'roomify_conversations';
+  $handler->display->display_options['fields']['most_recent_message_1']['field'] = 'most_recent_message';
+  $handler->display->display_options['fields']['most_recent_message_1']['label'] = 'Most recent message - not trimmed';
+  $handler->display->display_options['fields']['most_recent_message_1']['exclude'] = TRUE;
+  $handler->display->display_options['fields']['most_recent_message_1']['empty'] = '[conversation_further_info]';
+  /* Field: Roomify Conversation: URL */
+  $handler->display->display_options['fields']['url']['id'] = 'url';
+  $handler->display->display_options['fields']['url']['table'] = 'views_entity_roomify_conversation';
+  $handler->display->display_options['fields']['url']['field'] = 'url';
+  $handler->display->display_options['fields']['url']['label'] = '';
+  $handler->display->display_options['fields']['url']['exclude'] = TRUE;
+  $handler->display->display_options['fields']['url']['element_label_colon'] = FALSE;
+  $handler->display->display_options['fields']['url']['display_as_link'] = FALSE;
+  $handler->display->display_options['fields']['url']['link_to_entity'] = 0;
+  /* Field: Conversation Info (linked) */
+  $handler->display->display_options['fields']['nothing_1']['id'] = 'nothing_1';
+  $handler->display->display_options['fields']['nothing_1']['table'] = 'views';
+  $handler->display->display_options['fields']['nothing_1']['field'] = 'nothing';
+  $handler->display->display_options['fields']['nothing_1']['ui_name'] = 'Conversation Info (linked)';
+  $handler->display->display_options['fields']['nothing_1']['label'] = '';
+  $handler->display->display_options['fields']['nothing_1']['alter']['text'] = '<div class="conversation-info">
+            <div><a class="conversation-info-link" href="[url]">
+              <div class="conversation-header">[name_2] [nothing]</div>
+              <div class="conversation-message"><span class="conversation-message-author">[most_recent_message_user]</span><span title="[most_recent_message_1]" class="conversation-message-message">[most_recent_message]</span><span class="conversation-price">[booking_price]</span></div>
+            </a></div>
+          </div>
+          <div class="conversation-reply"><a title="Quick Reply" class="quick-reply-button ctools-use-modal ctools-modal-roomify-dashboard-modal-style" href="/admin/conversations/[conversation_id]/quick-reply/nojs">Reply</a></div>
+          ';
+  $handler->display->display_options['fields']['nothing_1']['element_label_colon'] = FALSE;
   $handler->display->display_options['defaults']['arguments'] = FALSE;
   /* Contextual filter: User: Uid */
   $handler->display->display_options['arguments']['uid']['id'] = 'uid';
@@ -435,11 +1382,11 @@ function roomify_conversations_views_default_views() {
   $handler->display->display_options['arguments']['uid']['specify_validation'] = TRUE;
   $handler->display->display_options['arguments']['uid']['validate']['type'] = 'php';
   $handler->display->display_options['arguments']['uid']['validate_options']['code'] = 'if (user_access(\'update any roomify_conversation entity\')) {
-              return FALSE;
-              }
-              else {
-              return TRUE;
-              }';
+                return FALSE;
+                }
+                else {
+                return TRUE;
+                }';
   $handler->display->display_options['arguments']['uid']['validate']['fail'] = 'ignore';
   $handler->display->display_options['path'] = 'admin/bat/conversations/owner';
   $translatables['user_conversations'] = array(
@@ -454,7 +1401,6 @@ function roomify_conversations_views_default_views() {
     t('Type entity referenced from conversation_unit_type_ref'),
     t('Roomify Property referencing Type from property_bat_type_reference'),
     t('User entity referenced from conversation_owner_user_ref'),
-    t('Entityform Submission entity referenced from conversation_inquiry_ref'),
     t('BAT Booking entity referenced from conversation_booking_ref'),
     t('.'),
     t(','),
@@ -473,32 +1419,32 @@ function roomify_conversations_views_default_views() {
     t('Further info'),
     t('Most recent message'),
     t('[most_recent_message]'),
-    t('[field_listing_enquiry_info]'),
+    t('[conversation_further_info]'),
     t('Most recent message author'),
     t('[conversation_guest_user_ref]'),
     t('Price'),
-    t('[field_listing_enquiry_price]'),
+    t('[conversation_book_price]'),
     t('Most recent message - not trimmed'),
-    t('[field_listing_enquiry_info_1]'),
     t('<div class="conversation-info">
-          <div><a class="conversation-info-link" href="[url]">
-            <div class="conversation-header">[name_2] [nothing]</div>
-            <div class="conversation-message"><span class="conversation-message-author">[most_recent_message_user]</span><span title="[most_recent_message_1]" class="conversation-message-message">[most_recent_message]</span><span class="conversation-price">[booking_price]</span></div>
-          </a></div>
-        </div>
-        <div class="conversation-reply"><a title="Quick Reply" class="quick-reply-button ctools-use-modal ctools-modal-roomify-dashboard-modal-style" href="/admin/conversations/[conversation_id]/quick-reply/nojs">Reply</a></div>
-        '),
+            <div><a class="conversation-info-link" href="[url]">
+              <div class="conversation-header">[name_2] [nothing]</div>
+              <div class="conversation-message"><span class="conversation-message-author">[most_recent_message_user]</span><span title="[most_recent_message_1]" class="conversation-message-message">[most_recent_message]</span><span class="conversation-price">[booking_price]</span></div>
+            </a></div>
+          </div>
+          <div class="conversation-reply"><a title="Quick Reply" class="quick-reply-button ctools-use-modal ctools-modal-roomify-dashboard-modal-style" href="/admin/conversations/[conversation_id]/quick-reply/nojs">Reply</a></div>
+          '),
     t('Language'),
+    t('All'),
     t('Owner Conversations'),
     t('more'),
     t('<div class="conversation-info">
-          <div><a class="conversation-info-link" href="[url]">
-            <div class="conversation-header">[name_2] [nothing]</div>
-            <div class="conversation-message"><span class="conversation-message-author">[most_recent_message_user]</span><span title="[most_recent_message_1]" class="conversation-message-message">[most_recent_message]</span><span class="conversation-price">[booking_price]</span></div>
-          </a></div>
-        </div>
-        <div class="conversation-reply"><a title="Quick Reply" class="quick-reply-button ctools-use-modal ctools-modal-roomify-dashboard-modal-style" href="[conversation_info_1]">Reply</a></div>
-        '),
+            <div><a class="conversation-info-link" href="[url]">
+              <div class="conversation-header">[name_2] [nothing]</div>
+              <div class="conversation-message"><span class="conversation-message-author">[most_recent_message_user]</span><span title="[most_recent_message_1]" class="conversation-message-message">[most_recent_message]</span><span class="conversation-price">[booking_price]</span></div>
+            </a></div>
+          </div>
+          <div class="conversation-reply"><a title="Quick Reply" class="quick-reply-button ctools-use-modal ctools-modal-roomify-dashboard-modal-style" href="[conversation_info]">Reply</a></div>
+          '),
     t('View panes'),
     t('Guest View All Conversations'),
     t('Items per page'),

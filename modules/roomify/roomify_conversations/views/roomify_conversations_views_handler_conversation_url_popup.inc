@@ -31,12 +31,15 @@ class roomify_conversations_views_handler_conversation_url_popup extends views_h
    */
   public function render($values) {
     global $language;
-
     $cid = $values->conversation_id;
 
-    $content = '/' . $language->language . '/admin/conversations/' . $cid . '/quick-reply/nojs';
+    if ($language->provider == 'language-default') {
+      return '/admin/conversations/' . $cid . '/quick-reply/nojs';
+    }
+    else {
+      return '/' . $language->language . '/admin/conversations/' . $cid . '/quick-reply/nojs';
+    }
 
-    return $content;
   }
 
 }
