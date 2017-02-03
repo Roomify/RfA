@@ -277,7 +277,7 @@ function roomify_conversations_update_7003() {
 /**
  * Add 'Telephone' field to conversation.
  */
-function roomify_conversations_update_7004 {
+function roomify_conversations_update_7004() {
   module_load_include('inc', 'roomify_conversations', 'roomify_conversations.fields');
 
   roomify_conversations_add_telephone_field();
