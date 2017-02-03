@@ -1398,6 +1398,7 @@ function roomify_listing_enquiry_form_submit($form, &$form_state) {
   $conversation->conversation_user_email[LANGUAGE_NONE][0]['value'] = $values['email'];
   $conversation->conversation_further_info[LANGUAGE_NONE][0]['value'] = $values['further_info'];
   $conversation->conversation_children[LANGUAGE_NONE][0]['value'] = $values['children'];
+  $conversation->conversation_telephone[LANGUAGE_NONE][0]['value'] = $values['telephone'];
 
   roomify_conversation_save($conversation);
 
