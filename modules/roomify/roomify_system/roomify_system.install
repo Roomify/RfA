@@ -634,6 +634,6 @@ function roomify_system_update_7036() {
 /**
  * Enable module 'Redirect'.
  */
-function roomify_system_update_7036() {
+function roomify_system_update_7037() {
   module_enable(array('redirect'));
 }
