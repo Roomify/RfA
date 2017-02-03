@@ -888,7 +888,6 @@ function roomify_system_roomify_rights() {
       'unpublish own property',
       'unpublish own type',
       'edit meta tags',
-      'edit any commerce_customer_profile entity',
       'view any commerce_customer_profile entity',
       'create commerce_customer_profile entities',
     ),
