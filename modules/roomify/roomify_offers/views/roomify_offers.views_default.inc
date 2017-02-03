@@ -154,6 +154,86 @@ function roomify_offers_views_default_views() {
 
   /* Display: Admin */
   $handler = $view->new_display('block', 'Admin', 'block_1');
+  $handler->display->display_options['defaults']['relationships'] = FALSE;
+  $handler->display->display_options['defaults']['fields'] = FALSE;
+  /* Field: Roomify Rate: Label */
+  $handler->display->display_options['fields']['name']['id'] = 'name';
+  $handler->display->display_options['fields']['name']['table'] = 'roomify_rates';
+  $handler->display->display_options['fields']['name']['field'] = 'name';
+  $handler->display->display_options['fields']['name']['label'] = 'Offer';
+  /* Field: Roomify Rate: Offer Start Date */
+  $handler->display->display_options['fields']['offer_start_date']['id'] = 'offer_start_date';
+  $handler->display->display_options['fields']['offer_start_date']['table'] = 'field_data_offer_start_date';
+  $handler->display->display_options['fields']['offer_start_date']['field'] = 'offer_start_date';
+  $handler->display->display_options['fields']['offer_start_date']['settings'] = array(
+    'format_type' => 'bat_daily',
+    'custom_date_format' => '',
+    'fromto' => 'both',
+    'multiple_number' => '',
+    'multiple_from' => '',
+    'multiple_to' => '',
+    'show_remaining_days' => 0,
+    'conditions' => array(
+      0 => array(
+        'condition' => '',
+      ),
+    ),
+  );
+  /* Field: Roomify Rate: Offer End Date */
+  $handler->display->display_options['fields']['offer_end_date']['id'] = 'offer_end_date';
+  $handler->display->display_options['fields']['offer_end_date']['table'] = 'field_data_offer_end_date';
+  $handler->display->display_options['fields']['offer_end_date']['field'] = 'offer_end_date';
+  $handler->display->display_options['fields']['offer_end_date']['settings'] = array(
+    'format_type' => 'bat_daily',
+    'custom_date_format' => '',
+    'fromto' => 'both',
+    'multiple_number' => '',
+    'multiple_from' => '',
+    'multiple_to' => '',
+    'show_remaining_days' => 0,
+    'conditions' => array(
+      0 => array(
+        'condition' => '',
+      ),
+    ),
+  );
+  /* Field: COUNT(DISTINCT Roomify Rate: Property) */
+  $handler->display->display_options['fields']['offer_property_reference']['id'] = 'offer_property_reference';
+  $handler->display->display_options['fields']['offer_property_reference']['table'] = 'field_data_offer_property_reference';
+  $handler->display->display_options['fields']['offer_property_reference']['field'] = 'offer_property_reference';
+  $handler->display->display_options['fields']['offer_property_reference']['group_type'] = 'count_distinct';
+  $handler->display->display_options['fields']['offer_property_reference']['label'] = 'Property number';
+  $handler->display->display_options['fields']['offer_property_reference']['separator'] = '';
+  /* Field: Roomify Rate: Edit Link */
+  $handler->display->display_options['fields']['edit_unit']['id'] = 'edit_unit';
+  $handler->display->display_options['fields']['edit_unit']['table'] = 'roomify_rates';
+  $handler->display->display_options['fields']['edit_unit']['field'] = 'edit_unit';
+  $handler->display->display_options['fields']['edit_unit']['label'] = '';
+  $handler->display->display_options['fields']['edit_unit']['element_label_colon'] = FALSE;
+  /* Field: Roomify Rate: Delete Link */
+  $handler->display->display_options['fields']['delete_unit']['id'] = 'delete_unit';
+  $handler->display->display_options['fields']['delete_unit']['table'] = 'roomify_rates';
+  $handler->display->display_options['fields']['delete_unit']['field'] = 'delete_unit';
+  $handler->display->display_options['fields']['delete_unit']['label'] = '';
+  $handler->display->display_options['fields']['delete_unit']['element_label_colon'] = FALSE;
+  /* Field: Roomify Rate: Offer Page */
+  $handler->display->display_options['fields']['offer_node_reference']['id'] = 'offer_node_reference';
+  $handler->display->display_options['fields']['offer_node_reference']['table'] = 'field_data_offer_node_reference';
+  $handler->display->display_options['fields']['offer_node_reference']['field'] = 'offer_node_reference';
+  $handler->display->display_options['fields']['offer_node_reference']['label'] = '';
+  $handler->display->display_options['fields']['offer_node_reference']['alter']['alter_text'] = TRUE;
+  $handler->display->display_options['fields']['offer_node_reference']['alter']['text'] = 'view page';
+  $handler->display->display_options['fields']['offer_node_reference']['alter']['make_link'] = TRUE;
+  $handler->display->display_options['fields']['offer_node_reference']['alter']['path'] = 'node/[offer_node_reference-target_id]';
+  $handler->display->display_options['fields']['offer_node_reference']['element_label_colon'] = FALSE;
+  $handler->display->display_options['fields']['offer_node_reference']['type'] = 'entityreference_entity_id';
+  $handler->display->display_options['fields']['offer_node_reference']['settings'] = array(
+    'conditions' => array(
+      0 => array(
+        'condition' => '',
+      ),
+    ),
+  );
 
   /* Display: User */
   $handler = $view->new_display('block', 'User', 'block_2');
@@ -178,6 +258,30 @@ function roomify_offers_views_default_views() {
   $handler->display->display_options['fields']['join_link']['field'] = 'join_link';
   $handler->display->display_options['fields']['join_link']['label'] = '';
   $handler->display->display_options['fields']['join_link']['element_label_colon'] = FALSE;
+  $translatables['special_offers'] = array(
+    t('Master'),
+    t('more'),
+    t('Apply'),
+    t('Reset'),
+    t('Sort by'),
+    t('Asc'),
+    t('Desc'),
+    t('Items per page'),
+    t('- All -'),
+    t('Offset'),
+    t('« first'),
+    t('‹ previous'),
+    t('next ›'),
+    t('last »'),
+    t('Offer'),
+    t('Offer Start Date'),
+    t('Offer End Date'),
+    t('Property number'),
+    t('Admin'),
+    t('view page'),
+    t('User'),
+    t('There are no offers available to participate in at this time.'),
+  );
 
   $views['special_offers'] = $view;
 
@@ -247,6 +351,15 @@ function roomify_offers_views_default_views() {
   $handler = $view->new_display('panel_pane', 'Participating properties', 'panel_pane_2');
   $handler->display->display_options['defaults']['use_ajax'] = FALSE;
   $handler->display->display_options['use_ajax'] = TRUE;
+  $handler->display->display_options['defaults']['pager'] = FALSE;
+  $handler->display->display_options['pager']['type'] = 'load_more';
+  $handler->display->display_options['pager']['options']['items_per_page'] = '15';
+  $handler->display->display_options['pager']['options']['offset'] = '0';
+  $handler->display->display_options['pager']['options']['id'] = '0';
+  $handler->display->display_options['pager']['options']['quantity'] = '9';
+  $handler->display->display_options['pager']['options']['more_button_text'] = 'Load more properties';
+  $handler->display->display_options['pager']['options']['effects']['type'] = 'fade';
+  $handler->display->display_options['pager']['options']['effects']['speed'] = 'slow';
   $handler->display->display_options['defaults']['style_plugin'] = FALSE;
   $handler->display->display_options['style_plugin'] = 'views_bootstrap_grid_plugin_style';
   $handler->display->display_options['style_options']['columns_horizontal'] = '-1';
@@ -315,13 +428,18 @@ function roomify_offers_views_default_views() {
   $handler->display->display_options['fields']['name']['label'] = '';
   $handler->display->display_options['fields']['name']['alter']['alter_text'] = TRUE;
   $handler->display->display_options['fields']['name']['alter']['text'] = '<table>
-         <tbody>
-          <tr>
-            <td class="property-name">[name]<div class="location">[field_sp_area]</div></td>
-          </tr>
-        </tbody>
-        </table>';
+           <tbody>
+            <tr>
+              <td class="property-name">[name]<div class="location">[field_sp_area]</div></td>
+            </tr>
+          </tbody>
+          </table>';
   $handler->display->display_options['fields']['name']['element_label_colon'] = FALSE;
+  $handler->display->display_options['defaults']['sorts'] = FALSE;
+  /* Sort criterion: Global: Random */
+  $handler->display->display_options['sorts']['random']['id'] = 'random';
+  $handler->display->display_options['sorts']['random']['table'] = 'views';
+  $handler->display->display_options['sorts']['random']['field'] = 'random';
   $handler->display->display_options['defaults']['filter_groups'] = FALSE;
   $handler->display->display_options['defaults']['filters'] = FALSE;
   /* Filter criterion: Content: Published */
@@ -454,15 +572,16 @@ function roomify_offers_views_default_views() {
     t('last »'),
     t('All'),
     t('Participating properties'),
+    t('Load more properties'),
     t('Roomify Rate entity referenced from field_offer_reference'),
     t('Roomify Property entity referenced from offer_property_reference'),
     t('<table>
-         <tbody>
-          <tr>
-            <td class="property-name">[name]<div class="location">[field_sp_area]</div></td>
-          </tr>
-        </tbody>
-        </table>'),
+           <tbody>
+            <tr>
+              <td class="property-name">[name]<div class="location">[field_sp_area]</div></td>
+            </tr>
+          </tbody>
+          </table>'),
     t('Area'),
     t('Area (field_sp_area)'),
     t('Area Type'),

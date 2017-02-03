@@ -14366,14 +14366,18 @@ body.node-type-offer .pane-offer-panel-pane-2 .view-offer form {
     height: 37px; }
 body.node-type-offer .pane-offer-panel-pane-2 .property-col {
   display: table;
-  margin: 15px auto; }
+  margin: 15px auto;
+  max-width: 390px; }
 body.node-type-offer .pane-offer-panel-pane-2 .views-field-field-sp-featured-image {
   overflow: hidden;
   -webkit-mask-image: -webkit-radial-gradient(circle, white, black);
   border-radius: 2px 2px 0 0;
-  max-width: 380px;
+  max-width: 390px;
   display: table;
+  width: 100%;
   margin: 0 auto; }
+  body.node-type-offer .pane-offer-panel-pane-2 .views-field-field-sp-featured-image img {
+    width: 100%; }
 body.node-type-offer .pane-offer-panel-pane-2 .views-field-name {
   font-size: 16px;
   text-transform: uppercase;
@@ -14422,3 +14426,37 @@ body.node-type-offer .pane-offer-panel-pane-2 .views-field-name {
       position: relative; }
     body.node-type-offer .pane-offer-panel-pane-2 .views-field-name .location:empty:before {
       display: none; }
+body.node-type-offer .pane-offer-panel-pane-2 .pager-load-more {
+  margin-top: 20px; }
+  body.node-type-offer .pane-offer-panel-pane-2 .pager-load-more a {
+    margin: 0;
+    border-radius: 5px;
+    color: #fff;
+    background-color: #158CBA;
+    border-color: #127ba3; }
+    body.node-type-offer .pane-offer-panel-pane-2 .pager-load-more a:focus, body.node-type-offer .pane-offer-panel-pane-2 .pager-load-more a.focus {
+      color: #fff;
+      background-color: #106a8c;
+      border-color: #052531; }
+    body.node-type-offer .pane-offer-panel-pane-2 .pager-load-more a:hover {
+      color: #fff;
+      background-color: #106a8c;
+      border-color: #0c516c; }
+    body.node-type-offer .pane-offer-panel-pane-2 .pager-load-more a:active, body.node-type-offer .pane-offer-panel-pane-2 .pager-load-more a.active, .open > body.node-type-offer .pane-offer-panel-pane-2 .pager-load-more a.dropdown-toggle {
+      color: #fff;
+      background-color: #106a8c;
+      border-color: #0c516c; }
+      body.node-type-offer .pane-offer-panel-pane-2 .pager-load-more a:active:hover, body.node-type-offer .pane-offer-panel-pane-2 .pager-load-more a:active:focus, body.node-type-offer .pane-offer-panel-pane-2 .pager-load-more a:active.focus, body.node-type-offer .pane-offer-panel-pane-2 .pager-load-more a.active:hover, body.node-type-offer .pane-offer-panel-pane-2 .pager-load-more a.active:focus, body.node-type-offer .pane-offer-panel-pane-2 .pager-load-more a.active.focus, .open > body.node-type-offer .pane-offer-panel-pane-2 .pager-load-more a.dropdown-toggle:hover, .open > body.node-type-offer .pane-offer-panel-pane-2 .pager-load-more a.dropdown-toggle:focus, .open > body.node-type-offer .pane-offer-panel-pane-2 .pager-load-more a.dropdown-toggle.focus {
+        color: #fff;
+        background-color: #0c516c;
+        border-color: #052531; }
+    body.node-type-offer .pane-offer-panel-pane-2 .pager-load-more a:active, body.node-type-offer .pane-offer-panel-pane-2 .pager-load-more a.active, .open > body.node-type-offer .pane-offer-panel-pane-2 .pager-load-more a.dropdown-toggle {
+      background-image: none; }
+    body.node-type-offer .pane-offer-panel-pane-2 .pager-load-more a.disabled:hover, body.node-type-offer .pane-offer-panel-pane-2 .pager-load-more a.disabled:focus, body.node-type-offer .pane-offer-panel-pane-2 .pager-load-more a.disabled.focus, body.node-type-offer .pane-offer-panel-pane-2 .pager-load-more a[disabled]:hover, body.node-type-offer .pane-offer-panel-pane-2 .pager-load-more a[disabled]:focus, body.node-type-offer .pane-offer-panel-pane-2 .pager-load-more a[disabled].focus, fieldset[disabled] body.node-type-offer .pane-offer-panel-pane-2 .pager-load-more a:hover, fieldset[disabled] body.node-type-offer .pane-offer-panel-pane-2 .pager-load-more a:focus, fieldset[disabled] body.node-type-offer .pane-offer-panel-pane-2 .pager-load-more a.focus {
+      background-color: #158CBA;
+      border-color: #127ba3; }
+    body.node-type-offer .pane-offer-panel-pane-2 .pager-load-more a .badge {
+      color: #158CBA;
+      background-color: #fff; }
+    body.node-type-offer .pane-offer-panel-pane-2 .pager-load-more a:hover {
+      border-bottom-width: 3px; }

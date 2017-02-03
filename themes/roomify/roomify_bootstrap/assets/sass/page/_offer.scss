@@ -7,9 +7,6 @@ body.node-type-offer {
 		margin-bottom: 15px;
     display: inline-block;
     padding: 15px;
-    background: white;
-    border: 1px solid #ececec;
-    border-radius: 2px;
 	}
 	.pane-roomify-rate-offer-start-date,
 	.pane-roomify-rate-offer-end-date {
@@ -17,6 +14,7 @@ body.node-type-offer {
 		h4 {
 			margin-bottom: 10px;
 			font-weight: 400;
+			font-size: 25px;
 		}
 		@media (min-width: $screen-md) {
 			margin: 0;
@@ -51,21 +49,20 @@ body.node-type-offer {
 					}
 				}
 				.form-submit {
-					margin-top: 32px;
-    			height: 37px;
+    			margin-top: 24px;
 				}
 			}
 		}
 		.property-col {
 	    display: table;
 	    margin: 15px auto;
-	    max-width: 390px;
+	    max-width: 380px;
 	  }
 		.views-field-field-sp-featured-image {
     	overflow: hidden;
 	    -webkit-mask-image: -webkit-radial-gradient(circle, white, black);
 	    border-radius: 2px 2px 0 0;
-	    max-width: 390px;
+	    max-width: 380px;
 	    display: table;
 	    width: 100%;
 	    margin: 0 auto;
@@ -113,36 +110,7 @@ body.node-type-offer {
             text-decoration: underline;
           }
         }
-        &:before {
-          background: url("../images/location_white.png") center center no-repeat;
-          background: url("../images/location_white.svg") center center no-repeat, linear-gradient(transparent, transparent);
-          content: "";
-          display: inline-block;
-          width: 15px;
-          height: 15px;
-          margin-right: 1px;
-          top: 3px;
-          left: -2px;
-          position: relative;
-        }
-        &:empty {
-          &:before {
-            display: none;
-          }
-        }
       }
-	  }
-	 	.pager-load-more {
-	 		margin-top: 20px;
-	  	a {
-	  		margin: 0;
-	  		//border-style: solid;
-	  		border-radius: 5px;
-	  		@include button-variant($btn-primary-color, $btn-primary-bg, $btn-primary-border);
-	  		&:hover {
-	  			border-bottom-width: 3px;
-	  		}
-	  	}
 	  }
 	}
 }
