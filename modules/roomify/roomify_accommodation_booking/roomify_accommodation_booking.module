@@ -1549,6 +1549,11 @@ function roomify_accommodation_booking_form_alter(&$form, &$form_state, $form_id
         ($form_id == 'bat_booking_form' || $form_id == 'bat_booking_edit_form' || $form_id == 'bat_booking_edit_roomify_accommodation_booking_form')) {
       global $user;
 
+      // Update the profile reference field.
+      $form['booking_guest'][LANGUAGE_NONE][0]['target_id']['#attributes']['readonly'] = 'readonly';
+      $form['booking_guest'][LANGUAGE_NONE][0]['target_id']['#attributes']['style'] = 'background-color: #e4e4e4;';
+      $form['booking_guest'][LANGUAGE_NONE][0]['target_id']['#description'] = t('Use the "Create Billing information" link to add a new guest, or click "Search" to use a repeat guest\'s details.');
+
       // Remove the cancel button, users get access denied at the redirect.
       unset($form['actions']['delete']['#suffix']);
 
