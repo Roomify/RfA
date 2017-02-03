@@ -181,7 +181,7 @@ function roomify_offers_default_page_manager_handlers() {
     'delta_offset' => '0',
     'delta_reversed' => FALSE,
     'formatter_settings' => array(
-      'format_type' => 'long',
+      'format_type' => 'search_api_facetapi_DAY',
       'multiple_number' => '',
       'multiple_from' => '',
       'multiple_to' => '',
@@ -196,7 +196,7 @@ function roomify_offers_default_page_manager_handlers() {
     'context' => 'relationship_entity_from_field:field_offer_reference-node-roomify_rate_1',
     'override_title' => 1,
     'override_title_text' => 'Offer available from',
-    'override_title_heading' => 'h3',
+    'override_title_heading' => 'h4',
   );
   $pane->cache = array();
   $pane->style = array(
@@ -223,7 +223,7 @@ function roomify_offers_default_page_manager_handlers() {
     'delta_offset' => '0',
     'delta_reversed' => FALSE,
     'formatter_settings' => array(
-      'format_type' => 'long',
+      'format_type' => 'search_api_facetapi_DAY',
       'multiple_number' => '',
       'multiple_from' => '',
       'multiple_to' => '',
@@ -238,7 +238,7 @@ function roomify_offers_default_page_manager_handlers() {
     'context' => 'relationship_entity_from_field:field_offer_reference-node-roomify_rate_1',
     'override_title' => 1,
     'override_title_text' => 'to',
-    'override_title_heading' => 'h3',
+    'override_title_heading' => 'h4',
   );
   $pane->cache = array();
   $pane->style = array(

@@ -7298,7 +7298,6 @@ body {
         padding: 0; }
       body .sidebar-nav .pane-commerce-cart-cart .line-item-quantity {
         display: none; }
-
       body .sidebar-nav .pane-commerce-cart-cart .glyphicon {
         font-size: 18px;
         margin-right: 4px;
@@ -14281,3 +14280,96 @@ body.page-single-property-listing {
           margin-top: 5px;
           font-weight: 400;
           font-style: italic; }
+
+body.node-type-offer .panel-content-bottom,
+body.node-type-offer .page-header {
+  position: relative;
+  float: left;
+  width: 100%;
+  min-height: 1px;
+  padding-left: 15px;
+  padding-right: 15px; }
+body.node-type-offer .pane-roomify-rate-offer-start-date,
+body.node-type-offer .pane-roomify-rate-offer-end-date {
+  margin: 10px 0; }
+  @media (min-width: 992px) {
+    body.node-type-offer .pane-roomify-rate-offer-start-date,
+    body.node-type-offer .pane-roomify-rate-offer-end-date {
+      text-align: right;
+      margin: 0; } }
+body.node-type-offer .pane-node-field-offer-description {
+  margin: 50px 0; }
+body.node-type-offer .pane-offer-panel-pane-2 .pane-title {
+  text-align: center; }
+body.node-type-offer .pane-offer-panel-pane-2 .view-offer .view-filters {
+  display: inline-block;
+  width: 100%;
+  margin-bottom: 15px; }
+body.node-type-offer .pane-offer-panel-pane-2 .view-offer form {
+  display: block;
+  float: right; }
+  body.node-type-offer .pane-offer-panel-pane-2 .view-offer form .form-item select {
+    min-width: 100px; }
+  body.node-type-offer .pane-offer-panel-pane-2 .view-offer form .form-submit {
+    margin-top: 32px;
+    height: 37px; }
+body.node-type-offer .pane-offer-panel-pane-2 .property-col {
+  display: table;
+  margin: 15px auto; }
+body.node-type-offer .pane-offer-panel-pane-2 .views-row {
+  margin-bottom: 10px; }
+body.node-type-offer .pane-offer-panel-pane-2 .views-field-field-sp-featured-image {
+  overflow: hidden;
+  -webkit-mask-image: -webkit-radial-gradient(circle, white, black);
+  border-radius: 2px 2px 0 0;
+  max-width: 380px;
+  display: table;
+  margin: 0 auto; }
+body.node-type-offer .pane-offer-panel-pane-2 .views-field-name {
+  font-size: 16px;
+  text-transform: uppercase;
+  text-align: left;
+  max-width: 380px;
+  display: table;
+  margin: 0 auto;
+  color: white;
+  background: #0b1418;
+  width: 100%;
+  border-radius: 0 0 2px 2px;
+  padding: 8px 10px;
+  position: relative;
+  min-height: 70px; }
+  body.node-type-offer .pane-offer-panel-pane-2 .views-field-name table {
+    width: 100%;
+    min-height: 70px; }
+  body.node-type-offer .pane-offer-panel-pane-2 .views-field-name .property-name {
+    vertical-align: middle;
+    width: 100%;
+    max-width: 200px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis; }
+  body.node-type-offer .pane-offer-panel-pane-2 .views-field-name .location {
+    width: 100%;
+    vertical-align: middle;
+    font-size: 10px;
+    text-transform: capitalize;
+    margin-top: 2px; }
+    body.node-type-offer .pane-offer-panel-pane-2 .views-field-name .location a {
+      color: white;
+      text-decoration: none; }
+      body.node-type-offer .pane-offer-panel-pane-2 .views-field-name .location a:hover {
+        text-decoration: underline; }
+    body.node-type-offer .pane-offer-panel-pane-2 .views-field-name .location:before {
+      background: url("../images/location_white.png") center center no-repeat;
+      background: url("../images/location_white.svg") center center no-repeat, linear-gradient(transparent, transparent);
+      content: "";
+      display: inline-block;
+      width: 15px;
+      height: 15px;
+      margin-right: 1px;
+      top: 3px;
+      left: -2px;
+      position: relative; }
+    body.node-type-offer .pane-offer-panel-pane-2 .views-field-name .location:empty:before {
+      display: none; }
