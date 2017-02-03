@@ -45,7 +45,7 @@ function roomify_offers_create_special_offer_rate_type() {
   roomify_offers_add_end_date_field('special_offer');
   roomify_offers_add_property_reference_field('special_offer');
   roomify_offers_add_always_override_price_field('special_offer');
-  roomify_offer_add_node_reference_field('special_offer');
+  roomify_offers_add_node_reference_field('special_offer');
 }
 
 /**
