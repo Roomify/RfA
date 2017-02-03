@@ -14313,14 +14313,41 @@ body.node-type-offer .page-header {
   min-height: 1px;
   padding-left: 15px;
   padding-right: 15px; }
+body.node-type-offer .panel_sl_right {
+  margin-bottom: 15px;
+  display: inline-block;
+  padding: 15px;
+  background: white;
+  border: 1px solid #ececec;
+  border-radius: 2px; }
 body.node-type-offer .pane-roomify-rate-offer-start-date,
 body.node-type-offer .pane-roomify-rate-offer-end-date {
   margin: 10px 0; }
+  body.node-type-offer .pane-roomify-rate-offer-start-date h4, body.node-type-offer .pane-roomify-rate-offer-start-date .pane-property-location .panel-content-right .pane-title, .pane-property-location .panel-content-right body.node-type-offer .pane-roomify-rate-offer-start-date .pane-title,
+  body.node-type-offer .pane-roomify-rate-offer-start-date .pane-property-location .panel-content-left .pane-title,
+  .pane-property-location .panel-content-left body.node-type-offer .pane-roomify-rate-offer-start-date .pane-title, body.node-type-offer .pane-roomify-rate-offer-start-date .page-listing .pane-roomify-property-field-sp-short-description, .page-listing body.node-type-offer .pane-roomify-rate-offer-start-date .pane-roomify-property-field-sp-short-description, body.node-type-offer .pane-roomify-rate-offer-start-date .node-type-blog .panel-content-bottom .pane-blog-panel-pane-9 .views-field-name, .node-type-blog .panel-content-bottom .pane-blog-panel-pane-9 body.node-type-offer .pane-roomify-rate-offer-start-date .views-field-name,
+  body.node-type-offer .pane-roomify-rate-offer-end-date h4,
+  body.node-type-offer .pane-roomify-rate-offer-end-date .pane-property-location .panel-content-right .pane-title,
+  .pane-property-location .panel-content-right body.node-type-offer .pane-roomify-rate-offer-end-date .pane-title,
+  body.node-type-offer .pane-roomify-rate-offer-end-date .pane-property-location .panel-content-left .pane-title,
+  .pane-property-location .panel-content-left body.node-type-offer .pane-roomify-rate-offer-end-date .pane-title,
+  body.node-type-offer .pane-roomify-rate-offer-end-date .page-listing .pane-roomify-property-field-sp-short-description,
+  .page-listing body.node-type-offer .pane-roomify-rate-offer-end-date .pane-roomify-property-field-sp-short-description,
+  body.node-type-offer .pane-roomify-rate-offer-end-date .node-type-blog .panel-content-bottom .pane-blog-panel-pane-9 .views-field-name,
+  .node-type-blog .panel-content-bottom .pane-blog-panel-pane-9 body.node-type-offer .pane-roomify-rate-offer-end-date .views-field-name {
+    margin-bottom: 10px;
+    font-weight: 400; }
   @media (min-width: 992px) {
     body.node-type-offer .pane-roomify-rate-offer-start-date,
     body.node-type-offer .pane-roomify-rate-offer-end-date {
-      text-align: right;
-      margin: 0; } }
+      margin: 0;
+      margin-bottom: 20px; } }
+  body.node-type-offer .pane-roomify-rate-offer-start-date .field-name-offer-end-date,
+  body.node-type-offer .pane-roomify-rate-offer-start-date .field-name-offer-start-date,
+  body.node-type-offer .pane-roomify-rate-offer-end-date .field-name-offer-end-date,
+  body.node-type-offer .pane-roomify-rate-offer-end-date .field-name-offer-start-date {
+    width: 100%;
+    font-size: 25px; }
 body.node-type-offer .pane-node-field-offer-description {
   margin: 50px 0; }
 body.node-type-offer .pane-offer-panel-pane-2 .pane-title {
@@ -14340,8 +14367,6 @@ body.node-type-offer .pane-offer-panel-pane-2 .view-offer form {
 body.node-type-offer .pane-offer-panel-pane-2 .property-col {
   display: table;
   margin: 15px auto; }
-body.node-type-offer .pane-offer-panel-pane-2 .views-row {
-  margin-bottom: 10px; }
 body.node-type-offer .pane-offer-panel-pane-2 .views-field-field-sp-featured-image {
   overflow: hidden;
   -webkit-mask-image: -webkit-radial-gradient(circle, white, black);

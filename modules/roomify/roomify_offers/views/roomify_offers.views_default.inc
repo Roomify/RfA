@@ -255,6 +255,7 @@ function roomify_offers_views_default_views() {
   $handler->display->display_options['style_options']['columns_sm'] = '6';
   $handler->display->display_options['style_options']['columns_md'] = '6';
   $handler->display->display_options['style_options']['columns_lg'] = '4';
+  $handler->display->display_options['style_options']['column_class'] = 'property-col';
   $handler->display->display_options['defaults']['style_options'] = FALSE;
   $handler->display->display_options['defaults']['row_plugin'] = FALSE;
   $handler->display->display_options['row_plugin'] = 'fields';
@@ -314,13 +315,12 @@ function roomify_offers_views_default_views() {
   $handler->display->display_options['fields']['name']['label'] = '';
   $handler->display->display_options['fields']['name']['alter']['alter_text'] = TRUE;
   $handler->display->display_options['fields']['name']['alter']['text'] = '<table>
-       <tbody>
-        <tr>
-          <td class="property-name">[name]</td>
-          <td class="location">[field_sp_area]</td>
-        </tr>
-      </tbody>
-      </table>';
+         <tbody>
+          <tr>
+            <td class="property-name">[name]<div class="location">[field_sp_area]</div></td>
+          </tr>
+        </tbody>
+        </table>';
   $handler->display->display_options['fields']['name']['element_label_colon'] = FALSE;
   $handler->display->display_options['defaults']['filter_groups'] = FALSE;
   $handler->display->display_options['defaults']['filters'] = FALSE;
@@ -457,13 +457,12 @@ function roomify_offers_views_default_views() {
     t('Roomify Rate entity referenced from field_offer_reference'),
     t('Roomify Property entity referenced from offer_property_reference'),
     t('<table>
-       <tbody>
-        <tr>
-          <td class="property-name">[name]</td>
-          <td class="location">[field_sp_area]</td>
-        </tr>
-      </tbody>
-      </table>'),
+         <tbody>
+          <tr>
+            <td class="property-name">[name]<div class="location">[field_sp_area]</div></td>
+          </tr>
+        </tbody>
+        </table>'),
     t('Area'),
     t('Area (field_sp_area)'),
     t('Area Type'),

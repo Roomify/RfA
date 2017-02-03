@@ -114,7 +114,7 @@ function roomify_offers_default_page_manager_handlers() {
   $pane->access = array();
   $pane->configuration = array(
     'override_title' => 1,
-    'override_title_text' => 'Choose a property',
+    'override_title_text' => 'Participating Properties',
     'override_title_heading' => 'h2',
   );
   $pane->cache = array();
@@ -254,6 +254,7 @@ function roomify_offers_default_page_manager_handlers() {
   $display->hide_title = PANELS_TITLE_FIXED;
   $display->title_pane = 'new-d311fe52-8cbf-4fa2-9277-52cafbaf3c2e';
   $handler->conf['display'] = $display;
+
   $export['node_view__panel_context_b6081843-c3ff-4f6e-b39a-7e52e55ea907'] = $handler;
 
   return $export;

@@ -3,12 +3,29 @@ body.node-type-offer {
 	.page-header {
 		@include make-xs-column(12);
 	}
+	.panel_sl_right {
+		margin-bottom: 15px;
+    display: inline-block;
+    padding: 15px;
+    background: white;
+    border: 1px solid #ececec;
+    border-radius: 2px;
+	}
 	.pane-roomify-rate-offer-start-date,
 	.pane-roomify-rate-offer-end-date {
 		margin: 10px 0;
+		h4 {
+			margin-bottom: 10px;
+			font-weight: 400;
+		}
 		@media (min-width: $screen-md) {
-			text-align: right;
 			margin: 0;
+			margin-bottom: 20px;
+		}
+		.field-name-offer-end-date,
+		.field-name-offer-start-date {
+			width: 100%;
+	    font-size: 25px;
 		}
 	}
 	.pane-node-field-offer-description {

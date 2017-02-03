@@ -373,7 +373,7 @@ function roomify_offers_add_always_override_price_field($bundle) {
     $instance = array(
       'bundle' => $bundle,
       'default_value' => NULL,
-      'description' => '',
+      'description' => 'Check this option if you want to always override the price even if a property has a minor price in the offer dates.',
       'display' => array(
         'default' => array(
           'label' => 'above',
@@ -761,5 +761,52 @@ function roomify_offers_add_descriptions_group() {
     );
 
     field_group_group_save($field_group);
+  }
+}
+
+/**
+ * Add "Node Reference" field.
+ */
+function roomify_offers_add_node_reference_field($bundle) {
+  field_info_cache_clear();
+  if (field_read_field('offer_node_reference') === FALSE) {
+    $field = array(
+      'field_name' => 'offer_node_reference',
+      'type' => 'entityreference',
+      'cardinality' => 1,
+      'locked' => 1,
+      'settings' => array(
+        'target_type' => 'node',
+        'handler_settings' => array(
+          'target_bundles' => array(
+            'offer' => 'offer',
+          ),
+        ),
+      ),
+    );
+    field_create_field($field);
+  }
+
+  field_cache_clear();
+
+  if (field_read_instance('roomify_rate', 'offer_node_reference', $bundle) === FALSE) {
+    $instance = array(
+      'field_name' => 'offer_node_reference',
+      'entity_type' => 'roomify_rate',
+      'label' => 'Offer Page',
+      'bundle' => $bundle,
+      'required' => FALSE,
+      'description' => 'This allows you to create a page and show the offer to users.',
+      'widget' => array(
+        'type' => 'entityreference_autocomplete',
+        'settings' => array(
+          'references_dialog_edit' => 1,
+          'references_dialog_add' => 1,
+          'references_dialog_search' => 1,
+        ),
+      ),
+      'settings' => array(),
+    );
+    field_create_instance($instance);
   }
 }

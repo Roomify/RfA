@@ -553,9 +553,24 @@ function roomify_offers_services_rates_index_calendar($offset, $limit) {
 }
 
 /**
+ * Implements hook_menu_link_alter().
+ * Hide Offer from node/add page.
+ */
+function roomify_offers_menu_link_alter(&$item) {
+  if (isset($item['menu_name']) && isset($item['link_path'])) {
+    if ($item['menu_name'] == 'navigation' && $item['link_path'] == 'node/add/offer') {
+      $item['hidden'] = 1;
+    }
+  }
+}
+
+/**
  * Implements hook_form_alter().
  */
 function roomify_offers_form_alter(&$form, &$form_state, $form_id) {
+  if ($form_id == 'offer_node_form') {
+    $form['field_offer_reference']['#access'] = FALSE;
+  }
   if ($form_id == 'roomify_rate_edit_special_offer_form' || $form_id == 'roomify_rate_edit_special_offer_percentage_form') {
     global $user;
 
@@ -568,10 +583,22 @@ function roomify_offers_form_alter(&$form, &$form_state, $form_id) {
     $form['author']['#access'] = FALSE;
 
     $form['actions']['submit']['#value'] = t('Save Offer');
+    $form['actions']['submit']['#submit'][] = 'roomify_offer_inform_about_offer_page';
   }
 
   if ($form_id == 'roomify_rate_edit_special_offer_percentage_form') {
     $form['rate_discount']['#access'] = FALSE;
+  }
+}
+
+/**
+ * Submission function.
+ */
+function roomify_offer_inform_about_offer_page(&$form, &$form_state) {
+  $values = $form_state['values'];
+  if (isset($values['offer_node_reference'][LANGUAGE_NONE][0]['target_id']) && !empty($values['offer_node_reference'][LANGUAGE_NONE][0]['target_id'])) {
+    $node = drupal_get_path_alias('/node/' . $values['offer_node_reference'][LANGUAGE_NONE][0]['target_id']);
+    drupal_set_message(t('You can view the offer page <a href="@node" target="_blank">here</a>', array('@node' => $node)), 'status');
   }
 }
 
@@ -738,4 +765,32 @@ function roomify_offers_event_manager_form_ajax_submit($form, &$form_state) {
 
   print ajax_render($commands);
   exit;
+}
+
+/**
+ * Implements hook_default_cer().
+ */
+function roomify_offers_default_cer() {
+  $items = array();
+
+  $items['roomify_rate:special_offer:offer_node_reference*node:node:field_offer_reference'] = entity_import('cer', '{
+    "cer_bidirectional" : { "und" : [ { "value" : "1" } ] },
+    "cer_enabled" : { "und" : [ { "value" : "1" } ] },
+    "cer_left" : { "und" : [ { "path" : "roomify_rate:special_offer:offer_node_reference" } ] },
+    "cer_right" : { "und" : [ { "path" : "node:offer:field_offer_reference" } ] },
+    "cer_weight" : { "und" : [ { "value" : "0" } ] },
+    "identifier" : "roomify_rate:special_offer:offer_node_reference*node:offer:field_offer_reference",
+    "rdf_mapping" : []
+  }');
+  $items['roomify_rate:special_offer_percentage:offer_node_reference*node:node:field_offer_reference'] = entity_import('cer', '{
+    "cer_bidirectional" : { "und" : [ { "value" : "1" } ] },
+    "cer_enabled" : { "und" : [ { "value" : "1" } ] },
+    "cer_left" : { "und" : [ { "path" : "roomify_rate:special_offer_percentage:offer_node_reference" } ] },
+    "cer_right" : { "und" : [ { "path" : "node:offer:field_offer_reference" } ] },
+    "cer_weight" : { "und" : [ { "value" : "0" } ] },
+    "identifier" : "roomify_rate:special_offer_percentage:offer_node_reference*node:offer:field_offer_reference",
+    "rdf_mapping" : []
+  }');
+
+  return $items;
 }
