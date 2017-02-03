@@ -151,7 +151,6 @@ body.node-type-offer {
 	 		margin-top: 20px;
 	  	a {
 	  		margin: 0;
-	  		//border-style: solid;
 	  		border-radius: 5px;
 	  		@include button-variant($btn-primary-color, $btn-primary-bg, $btn-primary-border);
 	  		&:hover {
