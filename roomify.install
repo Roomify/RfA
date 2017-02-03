@@ -318,8 +318,6 @@ function roomify_install_finished(&$install_state) {
   variable_set('addtoany_additional_html_placement', 'before');
   variable_set('addtoany_image', 'a2a_svg_32');
 
-  variable_set('commerce_checkout_completion_message', $message);
-
   // Image Toolkit
   variable_set('image_toolkit', 'gd');
   variable_set('image_jpeg_quality', '100');
