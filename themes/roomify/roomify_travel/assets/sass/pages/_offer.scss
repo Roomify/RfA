@@ -1,7 +1,16 @@
 body.node-type-offer {
 	.panel-content-bottom,
+	.panel-content-top,
 	.page-header {
 		@include make-xs-column(12);
+	}
+	.pane-manage-offer-link {
+		display: inline-block;
+    width: 100%;
+    text-align: right;
+    margin: 15px 0;
+    a {
+    }
 	}
 	.panel_sl_right {
 		margin-bottom: 15px;
@@ -10,6 +19,12 @@ body.node-type-offer {
     background: white;
     border: 1px solid #ececec;
     border-radius: 2px;
+    @media (max-width: $screen-sm-max) {
+    	margin-top: 50px;
+    	width: 100%;
+    	max-width: calc(100% - 30px);
+    	margin-left: 15px;
+    }
 	}
 	.pane-roomify-rate-offer-start-date,
 	.pane-roomify-rate-offer-end-date {

@@ -13133,6 +13133,7 @@ body.node-type-homepage .pane-node-field-homepage-main-text {
       transform: scale(1.2); }
 
 body.node-type-offer .panel-content-bottom,
+body.node-type-offer .panel-content-top,
 body.node-type-offer .page-header {
   position: relative;
   float: left;
@@ -13140,10 +13141,24 @@ body.node-type-offer .page-header {
   min-height: 1px;
   padding-left: 12px;
   padding-right: 12px; }
+body.node-type-offer .pane-manage-offer-link {
+  display: inline-block;
+  width: 100%;
+  text-align: right;
+  margin: 15px 0; }
 body.node-type-offer .panel_sl_right {
   margin-bottom: 15px;
   display: inline-block;
-  padding: 15px; }
+  padding: 15px;
+  background: white;
+  border: 1px solid #ececec;
+  border-radius: 2px; }
+  @media (max-width: 991px) {
+    body.node-type-offer .panel_sl_right {
+      margin-top: 50px;
+      width: 100%;
+      max-width: calc(100% - 30px);
+      margin-left: 15px; } }
 body.node-type-offer .pane-roomify-rate-offer-start-date,
 body.node-type-offer .pane-roomify-rate-offer-end-date {
   margin: 10px 0; }

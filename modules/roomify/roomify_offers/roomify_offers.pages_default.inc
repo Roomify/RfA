@@ -251,6 +251,25 @@ function roomify_offers_default_page_manager_handlers() {
   $pane->uuid = '84792e7b-5f77-4bec-a9b2-c52d4e258ed7';
   $display->content['new-84792e7b-5f77-4bec-a9b2-c52d4e258ed7'] = $pane;
   $display->panels['right'][1] = 'new-84792e7b-5f77-4bec-a9b2-c52d4e258ed7';
+  $pane = new stdClass();
+  $pane->pid = 'new-61b079e7-7e72-49e1-b876-7902b0eadc48';
+  $pane->panel = 'top';
+  $pane->type = 'manage_offer_link';
+  $pane->subtype = 'manage_offer_link';
+  $pane->shown = TRUE;
+  $pane->access = array();
+  $pane->configuration = array();
+  $pane->cache = array();
+  $pane->style = array(
+    'settings' => NULL,
+  );
+  $pane->css = array();
+  $pane->extras = array();
+  $pane->position = 0;
+  $pane->locks = array();
+  $pane->uuid = '61b079e7-7e72-49e1-b876-7902b0eadc48';
+  $display->content['new-61b079e7-7e72-49e1-b876-7902b0eadc48'] = $pane;
+  $display->panels['top'][0] = 'new-61b079e7-7e72-49e1-b876-7902b0eadc48';
   $display->hide_title = PANELS_TITLE_FIXED;
   $display->title_pane = 'new-d311fe52-8cbf-4fa2-9277-52cafbaf3c2e';
   $handler->conf['display'] = $display;
