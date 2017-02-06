@@ -2124,6 +2124,10 @@ function roomify_accommodation_booking_commerce_checkout_complete($order) {
       if ($line_item->type == 'roomify_accommodation_booking') {
         $booking = bat_booking_load($line_item->commerce_booking_reference[LANGUAGE_NONE][0]['target_id']);
 
+        $booking->booking_guest[LANGUAGE_NONE][0]['target_id'] = $order->commerce_customer_billing[LANGUAGE_NONE][0]['profile_id'];
+
+        $booking->save();
+
         // Set event state to 'Booked'.
         $event = bat_event_load($booking->booking_event_reference[LANGUAGE_NONE][0]['target_id']);
 
