@@ -1727,6 +1727,16 @@ function roomify_conversations_inquiry_render($conversation) {
     $user_email = $conversation->conversation_user_email[LANGUAGE_NONE][0]['value'];
   }
 
+  $telephone = '';
+  if (isset($conversation->conversation_telephone[LANGUAGE_NONE][0]['value'])) {
+    if (empty($conversation->conversation_telephone[LANGUAGE_NONE][0]['value'])) {
+      $telephone = '-';
+    }
+    else {
+      $telephone = $conversation->conversation_telephone[LANGUAGE_NONE][0]['value'];
+    }
+  }
+
   $further_info = '';
   if (isset($conversation->conversation_further_info[LANGUAGE_NONE][0]['value'])) {
     $further_info = $conversation->conversation_further_info[LANGUAGE_NONE][0]['value'];
@@ -1772,6 +1782,8 @@ function roomify_conversations_inquiry_render($conversation) {
 
   $output .= '<div class="enquiry-email"><div class="label">' . t('Email address') . '</div><div class="item">' . $user_email . '</div></div>';
 
+  $output .= '<div class="enquiry-telephone"><div class="label">' . t('Telephone') . '</div><div class="item">' . $telephone . '</div></div>';
+
   $output .= '<div class="enquiry-arr-date"><div class="label">' . t('Arrival date') . '</div><div class="item"><span class="date-display-single">' . $start_date . '</span></div></div>';
 
   $output .= '<div class="enquiry-dep-date"><div class="label">' . t('Departure date') . '</div><div class="item"><span class="date-display-single">' . $end_date . '</span></div></div>';
@@ -1779,6 +1791,8 @@ function roomify_conversations_inquiry_render($conversation) {
   $output .= '<div class="enquiry-type-ref"><div class="label">' . t('Listing Type') . '</div><div class="item">' . $type_name . '</div></div>';
 
   $output .= '<div class="enquiry-guests"><div class="label">' . t('Guests') . '</div><div class="item">' . $guests . '</div></div>';
+
+   $output .= '<div class="enquiry-children"><div class="label">' . t('Children') . '</div><div class="item">' . $children . '</div></div>';
 
   if ($further_info != '') {
     $output .= '<div class="enquiry-info"><div class="label">' . t('Further info') . '</div><div class="item">' . $further_info . '</div></div>';

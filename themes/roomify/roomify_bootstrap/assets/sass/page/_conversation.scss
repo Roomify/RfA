@@ -72,7 +72,7 @@
         position: relative;
         background: #FFF898;
         border: 2px solid #FFF34A;
-        border-radius: 8px 8px 0px 8px;
+        border-radius: 8px 8px 0 8px;
         &:after {
           border-left: 12px solid #FFF34A;
           border-top: 12px solid transparent;
@@ -105,7 +105,7 @@
       }
       &.message-left {
         margin-right: 60%;
-        border-radius: 8px 8px 8px 0px;
+        border-radius: 8px 8px 8px 0;
         position: relative;
         &:after {
           border-right: 12px solid #ECECEC;
@@ -116,7 +116,7 @@
           position: absolute;
           left: -13px;
           z-index: 999;
-          margin-left: 0px;
+          margin-left: 0;
           width: 0;
           height: 0;
         }
@@ -142,16 +142,6 @@
     .date {
       margin-left: 55px;
       font-size: 12px;
-    }
-  }
-  .entity-entityform {
-    margin-bottom: 15px;
-    .left {
-      float: left;
-    }
-    .right {
-      float: right;
-      clear: right;
     }
   }
   .entity-bat-booking {
@@ -208,6 +198,89 @@
       }
     }
   }
+  .enquiry {
+    font-size: 15px;
+    .enquiry-telephone,
+    .enquiry-info,
+    .enquiry-name,
+    .enquiry-email,
+    .enquiry-guests,
+    .enquiry-children,
+    .enquiry-type-ref,
+    .enquiry-dep-date,
+    .enquiry-arr-date {
+      padding: 10px;
+      border: 1px solid #E6E6E6;
+      min-height: 120px;
+      width: 33%;
+      display: inline-block;
+      @media (max-width: $screen-md) {
+        width: 50%;
+      }
+      @media (max-width: $screen-sm) {
+        width: 100%;
+      }
+      .label {
+        color: #7C7C7C;
+        width: 100%;
+        text-transform: uppercase;
+        text-align: center;
+        font-size: 16px;
+        margin-top: 10px;
+        margin-bottom: 5px;
+        display: inline-block;
+        padding: 0;
+      }
+      .item {
+        text-align: center;
+        width: 100%;
+        margin-top: 10px;
+        display: inline-block;
+        font-size: 20px;
+        color: black;
+        font-weight: 600;
+      }
+    }
+    @media (min-width: $screen-md) {
+      .enquiry-name,
+      .enquiry-email,
+      .enquiry-dep-date,
+      .enquiry-arr-date,
+       {
+        border-right: 0;
+      }
+    }
+    .enquiry-info {
+      padding-left: 25px;
+      padding-right: 25px;
+      width: 100%;
+      .label,
+      .item {
+        text-align: left;
+      }
+    }
+    .enquiry-price {
+      width: 100%;
+      padding: 10px;
+      background: $btn-primary-bg;
+      display: inline-block;
+      margin: 30px 0;
+      font-size: 22px;
+      border-radius: 5px;
+      border-bottom: 3px solid $btn-primary-border;
+      text-align: right;
+      color: white;
+      .label {
+        color: white;
+        margin-right: 10px;
+        display: inline-block;
+        text-transform: uppercase;
+      }
+      .item {
+        display: inline-block;
+      }
+    }
+  }
 }
 
 .view-user-conversations {
@@ -253,9 +326,9 @@ div.ctools-modal-dialog .modal-header .modal-title {
 /* Add a nice drop shadow. */
 #modalContent div.ctools-modal-dialog {
   border-radius: 5px;
-  -webkit-box-shadow:0 0 10px rgba(0, 0, 0, 0.5);
-  -moz-box-shadow:0 0 10px rgba(0, 0, 0, 0.5);
-  box-shadow:0 0 10px rgba(0, 0, 0, 0.5);
+  -webkit-box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+  -moz-box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
   background: #F7F7F7;
   border: none;
   font-family: 'Lato';

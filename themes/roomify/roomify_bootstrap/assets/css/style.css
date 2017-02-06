@@ -5934,7 +5934,7 @@ body#lang-fr #qtranslate-chooser .lang-en {
     text-align: right;
     height: 28px;
     padding-right: 20px;
-    background-position: right 7px;
+    background-position: right 3px;
     color: #696969;
     text-decoration: none;
     font-weight: 400;
@@ -9814,7 +9814,7 @@ body.error404 .page-content-center {
       position: relative;
       background: #FFF898;
       border: 2px solid #FFF34A;
-      border-radius: 8px 8px 0px 8px; }
+      border-radius: 8px 8px 0 8px; }
       .page-conversation .entity-message .message.message-right:after {
         border-left: 12px solid #FFF34A;
         border-top: 12px solid transparent;
@@ -9842,7 +9842,7 @@ body.error404 .page-content-center {
         right: 10px; }
     .page-conversation .entity-message .message.message-left {
       margin-right: 60%;
-      border-radius: 8px 8px 8px 0px;
+      border-radius: 8px 8px 8px 0;
       position: relative; }
       .page-conversation .entity-message .message.message-left:after {
         border-right: 12px solid #ECECEC;
@@ -9853,7 +9853,7 @@ body.error404 .page-content-center {
         position: absolute;
         left: -13px;
         z-index: 999;
-        margin-left: 0px;
+        margin-left: 0;
         width: 0;
         height: 0; }
       .page-conversation .entity-message .message.message-left .user-picture {
@@ -9871,13 +9871,6 @@ body.error404 .page-content-center {
   .page-conversation .entity-message .date {
     margin-left: 55px;
     font-size: 12px; }
-.page-conversation .entity-entityform {
-  margin-bottom: 15px; }
-  .page-conversation .entity-entityform .left {
-    float: left; }
-  .page-conversation .entity-entityform .right {
-    float: right;
-    clear: right; }
 .page-conversation .entity-bat-booking {
   background: white;
   padding: 15px;
@@ -9931,6 +9924,109 @@ body.error404 .page-content-center {
         border-radius: 5px; }
       .page-conversation .enquiry-item .right .button.make-offer, .page-conversation .enquiry-item .right body.error404 .page-content-center a.make-offer.button-404, body.error404 .page-content-center .page-conversation .enquiry-item .right a.make-offer.button-404 {
         margin-left: 10px; }
+.page-conversation .enquiry {
+  font-size: 15px; }
+  .page-conversation .enquiry .enquiry-telephone,
+  .page-conversation .enquiry .enquiry-info,
+  .page-conversation .enquiry .enquiry-name,
+  .page-conversation .enquiry .enquiry-email,
+  .page-conversation .enquiry .enquiry-guests,
+  .page-conversation .enquiry .enquiry-children,
+  .page-conversation .enquiry .enquiry-type-ref,
+  .page-conversation .enquiry .enquiry-dep-date,
+  .page-conversation .enquiry .enquiry-arr-date {
+    padding: 10px;
+    border: 1px solid #E6E6E6;
+    min-height: 120px;
+    width: 33%;
+    display: inline-block; }
+    @media (max-width: 992px) {
+      .page-conversation .enquiry .enquiry-telephone,
+      .page-conversation .enquiry .enquiry-info,
+      .page-conversation .enquiry .enquiry-name,
+      .page-conversation .enquiry .enquiry-email,
+      .page-conversation .enquiry .enquiry-guests,
+      .page-conversation .enquiry .enquiry-children,
+      .page-conversation .enquiry .enquiry-type-ref,
+      .page-conversation .enquiry .enquiry-dep-date,
+      .page-conversation .enquiry .enquiry-arr-date {
+        width: 50%; } }
+    @media (max-width: 768px) {
+      .page-conversation .enquiry .enquiry-telephone,
+      .page-conversation .enquiry .enquiry-info,
+      .page-conversation .enquiry .enquiry-name,
+      .page-conversation .enquiry .enquiry-email,
+      .page-conversation .enquiry .enquiry-guests,
+      .page-conversation .enquiry .enquiry-children,
+      .page-conversation .enquiry .enquiry-type-ref,
+      .page-conversation .enquiry .enquiry-dep-date,
+      .page-conversation .enquiry .enquiry-arr-date {
+        width: 100%; } }
+    .page-conversation .enquiry .enquiry-telephone .label,
+    .page-conversation .enquiry .enquiry-info .label,
+    .page-conversation .enquiry .enquiry-name .label,
+    .page-conversation .enquiry .enquiry-email .label,
+    .page-conversation .enquiry .enquiry-guests .label,
+    .page-conversation .enquiry .enquiry-children .label,
+    .page-conversation .enquiry .enquiry-type-ref .label,
+    .page-conversation .enquiry .enquiry-dep-date .label,
+    .page-conversation .enquiry .enquiry-arr-date .label {
+      color: #7C7C7C;
+      width: 100%;
+      text-transform: uppercase;
+      text-align: center;
+      font-size: 16px;
+      margin-top: 10px;
+      margin-bottom: 5px;
+      display: inline-block;
+      padding: 0; }
+    .page-conversation .enquiry .enquiry-telephone .item,
+    .page-conversation .enquiry .enquiry-info .item,
+    .page-conversation .enquiry .enquiry-name .item,
+    .page-conversation .enquiry .enquiry-email .item,
+    .page-conversation .enquiry .enquiry-guests .item,
+    .page-conversation .enquiry .enquiry-children .item,
+    .page-conversation .enquiry .enquiry-type-ref .item,
+    .page-conversation .enquiry .enquiry-dep-date .item,
+    .page-conversation .enquiry .enquiry-arr-date .item {
+      text-align: center;
+      width: 100%;
+      margin-top: 10px;
+      display: inline-block;
+      font-size: 20px;
+      color: black;
+      font-weight: 600; }
+  @media (min-width: 992px) {
+    .page-conversation .enquiry .enquiry-name,
+    .page-conversation .enquiry .enquiry-email,
+    .page-conversation .enquiry .enquiry-dep-date,
+    .page-conversation .enquiry .enquiry-arr-date {
+      border-right: 0; } }
+  .page-conversation .enquiry .enquiry-info {
+    padding-left: 25px;
+    padding-right: 25px;
+    width: 100%; }
+    .page-conversation .enquiry .enquiry-info .label,
+    .page-conversation .enquiry .enquiry-info .item {
+      text-align: left; }
+  .page-conversation .enquiry .enquiry-price {
+    width: 100%;
+    padding: 10px;
+    background: #337ab7;
+    display: inline-block;
+    margin: 30px 0;
+    font-size: 22px;
+    border-radius: 5px;
+    border-bottom: 3px solid #2e6da4;
+    text-align: right;
+    color: white; }
+    .page-conversation .enquiry .enquiry-price .label {
+      color: white;
+      margin-right: 10px;
+      display: inline-block;
+      text-transform: uppercase; }
+    .page-conversation .enquiry .enquiry-price .item {
+      display: inline-block; }
 
 .view-user-conversations .views-row {
   display: inline-block;
