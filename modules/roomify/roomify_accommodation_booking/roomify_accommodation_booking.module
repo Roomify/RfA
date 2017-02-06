@@ -1710,24 +1710,42 @@ function roomify_accommodation_booking_form_alter(&$form, &$form_state, $form_id
       else {
         $form['actions']['submit']['#submit'] = array_merge(array('roomify_accommodation_booking_edit_booking_form_submit'), $form['actions']['submit']['#submit']);
 
-        $line_item = commerce_line_item_load($form['#entity']->booking_line_item_reference[LANGUAGE_NONE][0]['target_id']);
+        $booking = $form['#entity'];
+
+        $line_item = commerce_line_item_load($booking->booking_line_item_reference[LANGUAGE_NONE][0]['target_id']);
         $order = commerce_order_load($line_item->order_id);
 
-        if (isset($order->commerce_customer_billing[LANGUAGE_NONE][0]['profile_id'])) {
-          $profile = commerce_customer_profile_load($order->commerce_customer_billing[LANGUAGE_NONE][0]['profile_id']);
+        if (isset($booking->booking_guest[LANGUAGE_NONE][0]['target_id'])) {
+          if ($profile = commerce_customer_profile_load($booking->booking_guest[LANGUAGE_NONE][0]['target_id'])) {
+            $form['profile'] = array(
+             '#type' => 'fieldset',
+               '#title' => t('Guest Details'),
+              '#group' => 'additional_settings',
+              '#weight' => -100,
+            );
 
-          $form['profile'] = array(
-           '#type' => 'fieldset',
-             '#title' => t('Guest Details'),
-            '#group' => 'additional_settings',
-            '#weight' => -100,
-          );
+            $profile_array = entity_view('commerce_customer_profile', array($profile->profile_id => $profile), 'customer');
 
-          $profile_array = entity_view('commerce_customer_profile', array($profile->profile_id => $profile), 'customer');
+            $form['profile']['info'] = array(
+              '#markup' => '<div class="field-label">' . t('Address:') . '</div>' . drupal_render($profile_array),
+            );
+          }
+        }
+        elseif (isset($order->commerce_customer_billing[LANGUAGE_NONE][0]['profile_id'])) {
+          if ($profile = commerce_customer_profile_load($order->commerce_customer_billing[LANGUAGE_NONE][0]['profile_id'])) {
+            $form['profile'] = array(
+             '#type' => 'fieldset',
+              '#title' => t('Guest Details'),
+              '#group' => 'additional_settings',
+              '#weight' => -100,
+            );
 
-          $form['profile']['info'] = array(
-            '#markup' => '<div class="field-label">' . t('Address:') . '</div>' . drupal_render($profile_array),
-          );
+            $profile_array = entity_view('commerce_customer_profile', array($profile->profile_id => $profile), 'customer');
+
+            $form['profile']['info'] = array(
+              '#markup' => '<div class="field-label">' . t('Address:') . '</div>' . drupal_render($profile_array),
+            );
+          }
         }
 
         $form['order'] = array(
@@ -1805,7 +1823,7 @@ function roomify_accommodation_booking_form_alter(&$form, &$form_state, $form_id
         $start_date = new DateTime($booking->booking_start_date[LANGUAGE_NONE][0]['value']);
         $end_date = new DateTime($booking->booking_end_date[LANGUAGE_NONE][0]['value']);
 
-        $event = bat_event_load($form['#entity']->booking_event_reference[LANGUAGE_NONE][0]['target_id']);
+        $event = bat_event_load($booking->booking_event_reference[LANGUAGE_NONE][0]['target_id']);
         $event_wrapper = entity_metadata_wrapper('bat_event', $event);
 
         $type = bat_type_load($event_wrapper->event_bat_unit_reference->type_id->value());
@@ -1889,7 +1907,7 @@ function roomify_accommodation_booking_form_alter(&$form, &$form_state, $form_id
         $start_date = new DateTime($booking->booking_start_date[LANGUAGE_NONE][0]['value']);
         $end_date = new DateTime($booking->booking_end_date[LANGUAGE_NONE][0]['value']);
 
-        $event = bat_event_load($form['#entity']->booking_event_reference[LANGUAGE_NONE][0]['target_id']);
+        $event = bat_event_load($booking->booking_event_reference[LANGUAGE_NONE][0]['target_id']);
         $event_wrapper = entity_metadata_wrapper('bat_event', $event);
 
         $type = bat_type_load($event_wrapper->event_bat_unit_reference->type_id->value());
