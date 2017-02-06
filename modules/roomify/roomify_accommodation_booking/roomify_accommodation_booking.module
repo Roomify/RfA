@@ -1718,7 +1718,7 @@ function roomify_accommodation_booking_form_alter(&$form, &$form_state, $form_id
 
           $form['profile'] = array(
            '#type' => 'fieldset',
-             '#title' => t('Guest'),
+             '#title' => t('Guest Details'),
             '#group' => 'additional_settings',
             '#weight' => -100,
           );
@@ -1727,10 +1727,6 @@ function roomify_accommodation_booking_form_alter(&$form, &$form_state, $form_id
 
           $form['profile']['info'] = array(
             '#markup' => '<div class="field-label">' . t('Address:') . '</div>' . drupal_render($profile_array),
-          );
-
-          $form['profile']['edit'] = array(
-            '#markup' => '<div class="edit-profile">' . l(t('Edit customer profile'), 'admin/commerce/customer-profiles/' . $profile->profile_id . '/edit', array('query' => drupal_get_destination())) . '</div>',
           );
         }
 
@@ -1831,7 +1827,7 @@ function roomify_accommodation_booking_form_alter(&$form, &$form_state, $form_id
 
         $form['profile'] = array(
           '#type' => 'fieldset',
-          '#title' => t('Guest'),
+          '#title' => t('Guest Details'),
           '#group' => 'additional_settings',
           '#weight' => -100,
         );
@@ -1840,10 +1836,6 @@ function roomify_accommodation_booking_form_alter(&$form, &$form_state, $form_id
 
         $form['profile']['info'] = array(
           '#markup' => '<div class="field-label">' . t('Address:') . '</div>' . drupal_render($profile_array),
-        );
-
-        $form['profile']['edit'] = array(
-          '#markup' => '<div>' . l(t('Edit customer profile'), 'admin/commerce/customer-profiles/' . $profile->profile_id . '/edit', array('query' => drupal_get_destination())) . '</div>',
         );
 
         $form['order'] = array(
@@ -1919,7 +1911,7 @@ function roomify_accommodation_booking_form_alter(&$form, &$form_state, $form_id
 
         $form['profile'] = array(
           '#type' => 'fieldset',
-          '#title' => t('Guest'),
+          '#title' => t('Guest Details'),
           '#group' => 'additional_settings',
           '#weight' => -100,
         );
@@ -1930,9 +1922,6 @@ function roomify_accommodation_booking_form_alter(&$form, &$form_state, $form_id
           '#markup' => '<div class="field-label">' . t('Address:') . '</div>' . drupal_render($profile_array),
         );
 
-        $form['profile']['edit'] = array(
-          '#markup' => '<div>' . l(t('Edit customer profile'), 'admin/commerce/customer-profiles/' . $profile->profile_id . '/edit', array('query' => drupal_get_destination())) . '</div>',
-        );
         $form['order'] = array(
           '#type' => 'fieldset',
           '#title' => t('Order'),
