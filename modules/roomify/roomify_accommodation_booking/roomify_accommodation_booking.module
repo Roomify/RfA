@@ -3180,3 +3180,25 @@ function roomify_accommodation_booking_references_dialog_entity_admin_paths() {
     ),
   );
 }
+
+/**
+ * Implements hook_references_dialog_widgets_alter().
+ */
+function roomify_accommodation_booking_references_dialog_widgets_alter(&$widgets) {
+  $widgets['entityreference_autocomplete']['operations']['add']['function'] = 'roomify_accommodation_booking_references_dialog_entityreference_add_link';
+}
+
+/**
+ * Custom - Add link callback for entity references.
+ */
+function roomify_accommodation_booking_references_dialog_entityreference_add_link($element, $widget_settings, $field, $instance) {
+  $add_links = references_dialog_entityreference_add_link($element, $widget_settings, $field, $instance);
+
+  if (isset($add_links[0]['title'])) {
+    if ($add_links[0]['title'] == t('Create Billing information')) {
+      $add_links[0]['title'] = t('Add new Guest');
+    }
+  }
+
+  return $add_links;
+}
