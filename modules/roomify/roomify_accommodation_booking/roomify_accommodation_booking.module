@@ -2224,6 +2224,33 @@ function roomify_accommodation_booking_bat_fullcalendar_modal_content($entity_id
 }
 
 /**
+ * Implements hook_bat_fullcalendar_formatted_event_alter().
+ */
+function roomify_accommodation_booking_bat_fullcalendar_formatted_event_alter(&$formatted_event, $context) {
+  if ($formatted_event['type'] == 'availability' && isset($context['bat_event'])) {
+    $event = $context['bat_event'];
+
+    $query = new EntityFieldQuery();
+    $result = $query->entityCondition('entity_type', 'bat_booking')
+      ->fieldCondition('booking_event_reference', 'target_id', $event->event_id)
+      ->execute();
+
+    if (isset($result['bat_booking'])) {
+      $booking = reset($result['bat_booking']);
+      $booking = bat_booking_load($booking->booking_id);
+
+      if (isset($booking->booking_guest[LANGUAGE_NONE][0]['target_id'])) {
+        $customer_profile = commerce_customer_profile_load($booking->booking_guest[LANGUAGE_NONE][0]['target_id']);
+
+        if (isset($customer_profile->commerce_customer_address[LANGUAGE_NONE][0]['name_line'])) {
+          $formatted_event['title'] = $customer_profile->commerce_customer_address[LANGUAGE_NONE][0]['name_line'];
+        }
+      }
+    }
+  }
+}
+
+/**
  * Implements hook_entity_presave().
  */
 function roomify_accommodation_booking_entity_presave($entity, $type) {
