@@ -1790,7 +1790,29 @@ function roomify_conversations_inquiry_render($conversation) {
 
     $std_cost = commerce_currency_format($price, $currency_code);
 
-    $output .= '<div class="enquiry-price"><div class="label">' . t('Price') . ':&nbsp;</div><div class="item">' . $std_cost . '</div></div>';
+    $offer_text = '';
+    // Let's look if there's an offer.
+    if (module_exists('roomify_offers')) {
+      $temp_end_date = clone($end_date_object);
+      $temp_end_date->sub(new DateInterval('PT1M'));
+      $property = roomify_property_load($type->field_st_property_reference[LANGUAGE_NONE][0]['target_id']);
+      $offers = roomify_offers_get_offers($property, $start_date_object, $temp_end_date);
+      $offer_names = array();
+      if (!empty($offers)) {
+        foreach ($offers as $offer) {
+          if (isset($offer->name)) {
+            $offer_names[] = $offer->name;
+          }
+        }
+        $offer_text = '<div class="offers">';
+        foreach ($offer_names as $name) {
+          $offer_text .= '<div class="offer">' . t('Offer triggered: @name', array('@name' => $name)) . '</div>';
+        }
+        $offer_text .= '</br></div>';
+      }
+    }
+
+    $output .= '<div class="enquiry-price">' . $offer_text . '<div class="label">' . t('Price') . ':&nbsp;</div><div class="item">' . $std_cost . '</div></div>';
   }
 
   $output .= '</div>';
