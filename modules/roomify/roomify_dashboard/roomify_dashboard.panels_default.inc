@@ -654,6 +654,44 @@ function roomify_dashboard_default_panels_mini() {
   $pane->uuid = '4d1d9f67-cdf3-4d9d-b553-612c0e470382';
   $display->content['new-4d1d9f67-cdf3-4d9d-b553-612c0e470382'] = $pane;
   $display->panels['middle'][18] = 'new-4d1d9f67-cdf3-4d9d-b553-612c0e470382';
+  $pane = new stdClass();
+  $pane->pid = 'new-19328825-2276-4898-b8f3-59e3084e6392';
+  $pane->panel = 'middle';
+  $pane->type = 'manage_redirects';
+  $pane->subtype = 'manage_redirects';
+  $pane->shown = TRUE;
+  $pane->access = array(
+    'plugins' => array(
+      0 => array(
+        'name' => 'php',
+        'settings' => array(
+          'description' => 'Module Exists',
+          'php' => 'return module_exists(\'redirect\');',
+        ),
+        'not' => FALSE,
+      ),
+      1 => array(
+        'name' => 'perm',
+        'settings' => array(
+          'perm' => 'administer redirects',
+        ),
+        'context' => 'logged-in-user',
+        'not' => FALSE,
+      ),
+    ),
+  );
+  $pane->configuration = array();
+  $pane->cache = array();
+  $pane->style = array(
+    'settings' => NULL,
+  );
+  $pane->css = array();
+  $pane->extras = array();
+  $pane->position = 19;
+  $pane->locks = array();
+  $pane->uuid = '19328825-2276-4898-b8f3-59e3084e6392';
+  $display->content['new-19328825-2276-4898-b8f3-59e3084e6392'] = $pane;
+  $display->panels['middle'][19] = 'new-19328825-2276-4898-b8f3-59e3084e6392';
   $display->hide_title = PANELS_TITLE_FIXED;
   $display->title_pane = '0';
   $mini->display = $display;
