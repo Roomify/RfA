@@ -437,6 +437,7 @@ function roomify_accommodation_booking_views_default_views() {
 
   /* Display: Master */
   $handler = $view->new_display('default', 'Master', 'default');
+  $handler->display->display_options['title'] = 'Search for existing guest';
   $handler->display->display_options['use_ajax'] = TRUE;
   $handler->display->display_options['use_more_always'] = FALSE;
   $handler->display->display_options['access']['type'] = 'none';
@@ -450,7 +451,7 @@ function roomify_accommodation_booking_views_default_views() {
   $handler->display->display_options['fields']['commerce_customer_address_name_line']['table'] = 'field_data_commerce_customer_address';
   $handler->display->display_options['fields']['commerce_customer_address_name_line']['field'] = 'commerce_customer_address_name_line';
   $handler->display->display_options['fields']['commerce_customer_address_name_line']['label'] = 'Full name';
-  /* Field: Field: Telephone */
+  /* Field: Commerce Customer profile: Telephone */
   $handler->display->display_options['fields']['booking_telephone']['id'] = 'booking_telephone';
   $handler->display->display_options['fields']['booking_telephone']['table'] = 'field_data_booking_telephone';
   $handler->display->display_options['fields']['booking_telephone']['field'] = 'booking_telephone';
@@ -490,6 +491,8 @@ function roomify_accommodation_booking_views_default_views() {
 
   /* Display: Reference dialog Search */
   $handler = $view->new_display('references_dialog', 'Reference dialog Search', 'references_dialog_1');
+  $handler->display->display_options['defaults']['title'] = FALSE;
+  $handler->display->display_options['title'] = 'Search for existing guest';
   $handler->display->display_options['defaults']['style_options'] = FALSE;
   $handler->display->display_options['defaults']['row_plugin'] = FALSE;
   $handler->display->display_options['defaults']['row_options'] = FALSE;
