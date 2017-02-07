@@ -2402,6 +2402,27 @@ body.roomify-dashboard .roomify-manage-site-configuration #dashboard-manage-inte
 }
 body.roomify-dashboard .roomify-manage-site-configuration #dashboard-manage-integrations:hover {
   background: #EBEBEB url("../images/original/integration.png") no-repeat 20px 25px;
+
+}
+body.roomify-dashboard .roomify-manage-site-configuration #dashboard-manage-redirects {
+  background: url("../images/redirect.png") no-repeat 20px 30px;
+  -webkit-transition: 100ms all ease-in;
+  -moz-transition: 100ms all ease-in;
+  -ms-transition: 100ms all ease-in;
+  -o-transition: 100ms all ease-in;
+}
+body.roomify-dashboard .roomify-manage-site-configuration #dashboard-manage-redirects:hover {
+  background: #EBEBEB url("../images/original/redirect.png") no-repeat 20px 30px;
+}
+body.roomify-dashboard .roomify-manage-site-configuration #dashboard-manage-redirects {
+  background: url("../images/redirect.png") no-repeat 20px 30px;
+  -webkit-transition: 100ms all ease-in;
+  -moz-transition: 100ms all ease-in;
+  -ms-transition: 100ms all ease-in;
+  -o-transition: 100ms all ease-in;
+}
+body.roomify-dashboard .roomify-manage-site-configuration #dashboard-manage-redirects:hover {
+  background: #EBEBEB url("../images/original/redirect.png") no-repeat 20px 30px;
 }
 body.roomify-dashboard #mini-panel-my_activities .add-activity {
   margin-bottom: 20px;
