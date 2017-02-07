@@ -3235,6 +3235,7 @@ function roomify_accommodation_booking_references_dialog_entity_admin_paths() {
  */
 function roomify_accommodation_booking_references_dialog_widgets_alter(&$widgets) {
   $widgets['entityreference_autocomplete']['operations']['add']['function'] = 'roomify_accommodation_booking_references_dialog_entityreference_add_link';
+  $widgets['entityreference_autocomplete']['operations']['search']['function'] = 'roomify_accommodation_booking_references_dialog_entityreference_search_link';
 }
 
 /**
@@ -3250,4 +3251,17 @@ function roomify_accommodation_booking_references_dialog_entityreference_add_lin
   }
 
   return $add_links;
+}
+
+/**
+ * Custom - Search link callback for entity references.
+ */
+function roomify_accommodation_booking_references_dialog_entityreference_search_link($element, $widget_settings, $field, $instance) {
+  $search_link = references_dialog_get_field_search_links($element, $widget_settings, $field, $instance);
+
+  if ($element['#entity_type'] == 'bat_booking' && $element['#field_name'] == 'booking_guest') {
+    $search_link[0]['title'] = t('Search for existing Guest');
+  }
+
+  return $search_link;
 }

@@ -3729,3 +3729,6 @@ fieldset legend {
     width: 80% !important;
   }
 }
+#references-dialog-page .view-customer-profiles td {
+  cursor: pointer;
+}
