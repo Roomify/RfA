@@ -127,6 +127,7 @@ dependencies[] = entityform_block
 dependencies[] = entityform_notifications
 dependencies[] = references_dialog
 dependencies[] = role_delegation
+dependencies[] = redirect
 dependencies[] = taxonomy_access_fix
 dependencies[] = userone
 

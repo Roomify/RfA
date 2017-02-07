@@ -630,3 +630,10 @@ function roomify_system_update_7035() {
 function roomify_system_update_7036() {
   module_enable(array('references_dialog'));
 }
+
+/**
+ * Enable module 'Redirect'.
+ */
+function roomify_system_update_7037() {
+  module_enable(array('redirect'));
+}
