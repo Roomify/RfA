@@ -636,9 +636,16 @@ function roomify_system_update_7036() {
 }
 
 /**
+ * Enable module 'Redirect'.
+ */
+function roomify_system_update_7037() {
+  module_enable(array('redirect'));
+}
+
+/**
  * Disable front page meta tags.
  */
-function roomify_system_update_7036() {
+function roomify_system_update_7038() {
   $metatag_config = variable_get('default_metatag_config', array());
   $metatag_config['global:frontpage'] = TRUE;
   variable_set('default_metatag_config', $metatag_config);
