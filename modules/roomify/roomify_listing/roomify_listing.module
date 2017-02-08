@@ -1418,7 +1418,7 @@ function roomify_listing_enquiry_form_submit($form, &$form_state) {
         $offer_amount = roomify_accommodation_booking_calculate_price($start_date, $temp_end_date, $type->type_id, $values['guests'], $offers);
       }
       else {
-        $offer_amount = roomify_accommodation_booking_calculate_price($values['arrival_date'], $temp_end_date, $type->type_id, 0, $offers);
+        $offer_amount = roomify_accommodation_booking_calculate_price($start_date, $temp_end_date, $type->type_id, 0, $offers);
       }
     }
   }
