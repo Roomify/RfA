@@ -121,7 +121,10 @@ projects[commerce_cart_expiration][version] = 1.4
 
 projects[commerce_checkout_progress][version] = 1.4
 
-projects[commerce_cop][version] = 1.x-dev
+projects[commerce_cop][type] = module
+projects[commerce_cop][download][type] = git
+projects[commerce_cop][download][url] = https://git.drupal.org/project/commerce_cop.git
+projects[commerce_cop][download][revision] = 6b8a9ae5c395f6e0d7cc2bcb5616835a2d5a2898
 projects[commerce_cop][patch][] = https://www.drupal.org/files/issues/commerce_cop-i18n-integration-2344307-24.patch
 
 projects[commerce_features][version] = 1.1
