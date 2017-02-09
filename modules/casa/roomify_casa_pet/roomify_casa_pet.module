@@ -47,15 +47,15 @@ function roomify_casa_pet_form_pet_form_alter(&$form, &$form_state) {
       break;
 
     case 'new_booking_enquiry':
-      $form['mail_body']['#description'] = $body_default . t('</br></br>Tokens specific to this template: <em>Link to Enquiry</em> : [entityform:url] <em>Room Name</em> : [bat_type:name] <em>Name of Property Owner</em> : [bat_type:name:field-owner:name] <em>Name of Guest</em> : [entityform:field-listing-enquiry-name]/[entityform:field-last-name] <em>Arrival/Departure Dates</em> : [entityform:field-listing-enquiry-arr-date]/[[entityform:field-listing-enquiry-dep-date] <em>Guest Email</em> : [entityform:field-listing-enquiry-email] <em>No. of Guests</em> : [entityform:field-listing-enquiry-guests] <em>Additional Information Provided</em> : [entityform:field-listing-enquiry-info]');
+      $form['mail_body']['#description'] = $body_default . t('</br></br>Tokens specific to this template: <em>Room Name</em> : [bat_type:name] <em>Name of Property Owner</em> : [bat_type:name:field-owner:name] <em>Name of Guest</em> : [roomify_conversation:conversation-user-name] <em>Arrival/Departure Dates</em> : [roomify_conversation:conversation-book-start-date]/[roomify_conversation:conversation-book-end-date] <em>Guest Email</em> : [roomify_conversation:conversation-user-email] <em>No. of Guests</em> : [roomify_conversation:conversation-guests] <em>Additional Information Provided</em> : [roomify_conversation:conversation-further-info]');
       break;
 
     case 'new_conversation_message':
-      $form['mail_body']['#description'] = $body_default . t('</br></br>Tokens specific to this template: <em>Name of message author</em> :  [message:user:name] <em>Content of Message</em> : [conversation:message] <em>Link to Conversation</em> : [conversation:url]');
+      $form['mail_body']['#description'] = $body_default . t('</br></br>Tokens specific to this template: <em>Name of message author</em> :  [message:user:name] <em>Content of Message</em> : [roomify_conversation:message] <em>Link to Conversation</em> : [roomify_conversation:url]');
       break;
 
     case 'new_booking_offer':
-      $form['mail_body']['#description'] = $body_default . t('</br></br>Tokens specific to this template: <em>Property Name</em> :  [conversation:field-conversation-unit:name] <em>Name of Property Owner</em> : [conversation:field-conversation-user-owner:name] <em>Link to Conversation</em> : [conversation:url]');
+      $form['mail_body']['#description'] = $body_default . t('</br></br>Tokens specific to this template: <em>Property Name</em> :  [roomify_conversation:field-conversation-unit:name] <em>Name of Property Owner</em> : [roomify_conversation:field-conversation-user-owner:name] <em>Link to Conversation</em> : [roomify_conversation:url]');
       break;
 
     case 'new_order':
@@ -72,7 +72,7 @@ function roomify_casa_pet_form_pet_form_alter(&$form, &$form_state) {
       break;
 
     case 'withdraw_offer':
-      $form['mail_body']['#description'] = $body_default . t('</br></br>Tokens specific to this template: <em>Property Name</em> : [roomify_property:name] <em>Conversation Url</em> : [conversation:url] </br>');
+      $form['mail_body']['#description'] = $body_default . t('</br></br>Tokens specific to this template: <em>Property Name</em> : [roomify_property:name] <em>Conversation Url</em> : [roomify_conversation:url] </br>');
   }
 }
 

@@ -1402,6 +1402,17 @@ function roomify_listing_enquiry_form_submit($form, &$form_state) {
 
   roomify_conversation_save($conversation);
 
+  module_load_include('inc', 'pet', 'pet.rules');
+
+  $conversation_wrapper = entity_metadata_wrapper('roomify_conversation', $conversation);
+
+  $rules_state = new RulesState();
+  $rules_state->currentArguments['roomify_conversation'] = $conversation_wrapper;
+  $rules_state->variables['roomify_conversation'] = $conversation_wrapper;
+
+  $to_account = user_load($type->uid);
+  pet_action_send_pet('new_booking_enquiry', NULL, $to_account, NULL, NULL, array(), $rules_state);
+
   $commands = array();
   $commands[] = ctools_modal_command_dismiss();
   $commands[] = ctools_ajax_command_redirect('contact/done');
