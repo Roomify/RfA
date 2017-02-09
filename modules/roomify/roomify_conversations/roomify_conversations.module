@@ -95,7 +95,7 @@ function roomify_conversations_pet_substitutions_alter(&$substitutions, $params)
   if (isset($params['rules_state']->variables['message'])) {
     $message = $params['rules_state']->variables['message']->value();
     $substitutions['message'] = $message;
-    $substitutions['conversation'] = roomify_conversation_load($message->message_conversation_reference[LANGUAGE_NONE][0]['target_id']);
+    $substitutions['roomify_conversation'] = roomify_conversation_load($message->message_conversation_reference[LANGUAGE_NONE][0]['target_id']);
   }
   elseif (isset($params['rules_state']->variables['bat_booking'])) {
     $bat_booking = $params['rules_state']->variables['bat_booking']->value();
@@ -103,12 +103,12 @@ function roomify_conversations_pet_substitutions_alter(&$substitutions, $params)
     $substitutions['bat_booking'] = $bat_booking;
 
     if (isset($bat_booking->booking_conversation_ref)) {
-      $substitutions['conversation'] = roomify_conversation_load($bat_booking->booking_conversation_ref[LANGUAGE_NONE][0]['target_id']);
+      $substitutions['roomify_conversation'] = roomify_conversation_load($bat_booking->booking_conversation_ref[LANGUAGE_NONE][0]['target_id']);
     }
   }
   elseif (isset($params['rules_state']->variables['roomify_conversation'])) {
     $conversation = $params['rules_state']->variables['roomify_conversation']->value();
-    $substitutions['conversation'] = $conversation;
+    $substitutions['roomify_conversation'] = $conversation;
 
     $property = $params['rules_state']->variables['roomify_conversation']->conversation_unit_type_ref->field_st_property_reference->value();
     $substitutions['roomify_property'] = $property;
