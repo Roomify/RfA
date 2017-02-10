@@ -322,7 +322,7 @@ projects[module_filter][version] = 2.0
 
 projects[override_node_options][version] = 1.13
 
-projects[panels][version] = 3.8
+projects[panels][version] = 3.9
 
 projects[panels_everywhere][version] = 1.0-rc2
 
