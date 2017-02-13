@@ -1398,8 +1398,20 @@ function roomify_listing_enquiry_form_submit($form, &$form_state) {
   $conversation->conversation_user_email[LANGUAGE_NONE][0]['value'] = $values['email'];
   $conversation->conversation_further_info[LANGUAGE_NONE][0]['value'] = $values['further_info'];
   $conversation->conversation_children[LANGUAGE_NONE][0]['value'] = $values['children'];
+  $conversation->conversation_telephone[LANGUAGE_NONE][0]['value'] = $values['telephone'];
 
   roomify_conversation_save($conversation);
+
+  module_load_include('inc', 'pet', 'pet.rules');
+
+  $conversation_wrapper = entity_metadata_wrapper('roomify_conversation', $conversation);
+
+  $rules_state = new RulesState();
+  $rules_state->currentArguments['roomify_conversation'] = $conversation_wrapper;
+  $rules_state->variables['roomify_conversation'] = $conversation_wrapper;
+
+  $to_account = user_load($type->uid);
+  pet_action_send_pet('new_booking_enquiry', NULL, $to_account, NULL, NULL, array(), $rules_state);
 
   $commands = array();
   $commands[] = ctools_modal_command_dismiss();

@@ -180,6 +180,17 @@ function roomify_listing_create_standard_event_states() {
 }
 
 /**
+ * Implements hook_update_dependencies().
+ */
+function roomify_listing_update_dependencies() {
+  $dependencies['roomify_listing'][7027] = array(
+    'roomify_conversations' => 7003,
+  );
+
+  return $dependencies;
+}
+
+/**
  * Add field 'Allow instant bookings' to property.
  */
 function roomify_listing_update_7001() {
@@ -1234,4 +1245,11 @@ function roomify_listing_update_7028() {
   $variable_realm_list[] = 'roomify_form_instructions_text';
   $variable_realm_list[] = 'roomify_submission_reply_page_title';
   variable_set('variable_realm_list_language', $variable_realm_list);
+}
+
+/**
+ * Re-Migrate existing entityform submission data.
+ */
+function roomify_listing_update_7029() {
+  roomify_listing_update_7027();
 }

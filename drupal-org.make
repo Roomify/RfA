@@ -41,14 +41,14 @@ projects[roomify_property][subdir] = roomify
 projects[roomify_channel_connector][type] = module
 projects[roomify_channel_connector][download][type] = git
 projects[roomify_channel_connector][download][url] = https://github.com/Roomify/roomify_channel_connector_drupal.git
-projects[roomify_channel_connector][download][tag] = 1.11
+projects[roomify_channel_connector][download][tag] = 1.12
 projects[roomify_channel_connector][directory_name] = roomify_channel_connector
 projects[roomify_channel_connector][subdir] = roomify
 
 projects[roomify_channel_ical][type] = module
 projects[roomify_channel_ical][download][type] = git
 projects[roomify_channel_ical][download][url] = https://github.com/Roomify/roomify_channel_ical.git
-projects[roomify_channel_ical][download][tag] = 1.3
+projects[roomify_channel_ical][download][tag] = 1.5
 projects[roomify_channel_ical][directory_name] = roomify_channel_ical
 projects[roomify_channel_ical][subdir] = roomify
 
@@ -121,7 +121,10 @@ projects[commerce_cart_expiration][version] = 1.4
 
 projects[commerce_checkout_progress][version] = 1.4
 
-projects[commerce_cop][version] = 1.x-dev
+projects[commerce_cop][type] = module
+projects[commerce_cop][download][type] = git
+projects[commerce_cop][download][url] = https://git.drupal.org/project/commerce_cop.git
+projects[commerce_cop][download][revision] = 6b8a9ae5c395f6e0d7cc2bcb5616835a2d5a2898
 projects[commerce_cop][patch][] = https://www.drupal.org/files/issues/commerce_cop-i18n-integration-2344307-24.patch
 
 projects[commerce_features][version] = 1.1
@@ -236,6 +239,7 @@ projects[file_entity][version] = 2.0-beta3
 projects[geofield][version] = 2.3
 
 projects[geofield_gmap][version] = 2.x-dev
+projects[geofield_gmap][patch][] = https://www.drupal.org/files/issues/fix-api-key-not-being-used-2746209-16.patch
 projects[geofield_gmap][patch][] = https://www.drupal.org/files/issues/geofield_gmap-zoom_after_selecting_address-2562835-1.patch
 projects[geofield_gmap][patch][] = https://www.drupal.org/files/issues/geofield_gmap-allow_html_tags_description-2847341-1.patch
 

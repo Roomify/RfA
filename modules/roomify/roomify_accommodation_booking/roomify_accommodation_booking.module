@@ -1549,6 +1549,11 @@ function roomify_accommodation_booking_form_alter(&$form, &$form_state, $form_id
         ($form_id == 'bat_booking_form' || $form_id == 'bat_booking_edit_form' || $form_id == 'bat_booking_edit_roomify_accommodation_booking_form')) {
       global $user;
 
+      // Update the profile reference field.
+      $form['booking_guest'][LANGUAGE_NONE][0]['target_id']['#attributes']['readonly'] = 'readonly';
+      $form['booking_guest'][LANGUAGE_NONE][0]['target_id']['#attributes']['style'] = 'background-color: #e4e4e4;';
+      $form['booking_guest'][LANGUAGE_NONE][0]['target_id']['#description'] = t('Use the "Create Billing information" link to add a new guest, or click "Search" to use a repeat guest\'s details.');
+
       // Remove the cancel button, users get access denied at the redirect.
       unset($form['actions']['delete']['#suffix']);
 
@@ -1705,28 +1710,42 @@ function roomify_accommodation_booking_form_alter(&$form, &$form_state, $form_id
       else {
         $form['actions']['submit']['#submit'] = array_merge(array('roomify_accommodation_booking_edit_booking_form_submit'), $form['actions']['submit']['#submit']);
 
-        $line_item = commerce_line_item_load($form['#entity']->booking_line_item_reference[LANGUAGE_NONE][0]['target_id']);
+        $booking = $form['#entity'];
+
+        $line_item = commerce_line_item_load($booking->booking_line_item_reference[LANGUAGE_NONE][0]['target_id']);
         $order = commerce_order_load($line_item->order_id);
 
-        if (isset($order->commerce_customer_billing[LANGUAGE_NONE][0]['profile_id'])) {
-          $profile = commerce_customer_profile_load($order->commerce_customer_billing[LANGUAGE_NONE][0]['profile_id']);
+        if (isset($booking->booking_guest[LANGUAGE_NONE][0]['target_id'])) {
+          if ($profile = commerce_customer_profile_load($booking->booking_guest[LANGUAGE_NONE][0]['target_id'])) {
+            $form['profile'] = array(
+             '#type' => 'fieldset',
+               '#title' => t('Guest Details'),
+              '#group' => 'additional_settings',
+              '#weight' => -100,
+            );
 
-          $form['profile'] = array(
-           '#type' => 'fieldset',
-             '#title' => t('Guest'),
-            '#group' => 'additional_settings',
-            '#weight' => -100,
-          );
+            $profile_array = entity_view('commerce_customer_profile', array($profile->profile_id => $profile), 'customer');
 
-          $profile_array = entity_view('commerce_customer_profile', array($profile->profile_id => $profile), 'customer');
+            $form['profile']['info'] = array(
+              '#markup' => '<div class="field-label">' . t('Address:') . '</div>' . drupal_render($profile_array),
+            );
+          }
+        }
+        elseif (isset($order->commerce_customer_billing[LANGUAGE_NONE][0]['profile_id'])) {
+          if ($profile = commerce_customer_profile_load($order->commerce_customer_billing[LANGUAGE_NONE][0]['profile_id'])) {
+            $form['profile'] = array(
+             '#type' => 'fieldset',
+              '#title' => t('Guest Details'),
+              '#group' => 'additional_settings',
+              '#weight' => -100,
+            );
 
-          $form['profile']['info'] = array(
-            '#markup' => '<div class="field-label">' . t('Address:') . '</div>' . drupal_render($profile_array),
-          );
+            $profile_array = entity_view('commerce_customer_profile', array($profile->profile_id => $profile), 'customer');
 
-          $form['profile']['edit'] = array(
-            '#markup' => '<div class="edit-profile">' . l(t('Edit customer profile'), 'admin/commerce/customer-profiles/' . $profile->profile_id . '/edit', array('query' => drupal_get_destination())) . '</div>',
-          );
+            $form['profile']['info'] = array(
+              '#markup' => '<div class="field-label">' . t('Address:') . '</div>' . drupal_render($profile_array),
+            );
+          }
         }
 
         $form['order'] = array(
@@ -1804,7 +1823,7 @@ function roomify_accommodation_booking_form_alter(&$form, &$form_state, $form_id
         $start_date = new DateTime($booking->booking_start_date[LANGUAGE_NONE][0]['value']);
         $end_date = new DateTime($booking->booking_end_date[LANGUAGE_NONE][0]['value']);
 
-        $event = bat_event_load($form['#entity']->booking_event_reference[LANGUAGE_NONE][0]['target_id']);
+        $event = bat_event_load($booking->booking_event_reference[LANGUAGE_NONE][0]['target_id']);
         $event_wrapper = entity_metadata_wrapper('bat_event', $event);
 
         $type = bat_type_load($event_wrapper->event_bat_unit_reference->type_id->value());
@@ -1826,7 +1845,7 @@ function roomify_accommodation_booking_form_alter(&$form, &$form_state, $form_id
 
         $form['profile'] = array(
           '#type' => 'fieldset',
-          '#title' => t('Guest'),
+          '#title' => t('Guest Details'),
           '#group' => 'additional_settings',
           '#weight' => -100,
         );
@@ -1835,10 +1854,6 @@ function roomify_accommodation_booking_form_alter(&$form, &$form_state, $form_id
 
         $form['profile']['info'] = array(
           '#markup' => '<div class="field-label">' . t('Address:') . '</div>' . drupal_render($profile_array),
-        );
-
-        $form['profile']['edit'] = array(
-          '#markup' => '<div>' . l(t('Edit customer profile'), 'admin/commerce/customer-profiles/' . $profile->profile_id . '/edit', array('query' => drupal_get_destination())) . '</div>',
         );
 
         $form['order'] = array(
@@ -1892,7 +1907,7 @@ function roomify_accommodation_booking_form_alter(&$form, &$form_state, $form_id
         $start_date = new DateTime($booking->booking_start_date[LANGUAGE_NONE][0]['value']);
         $end_date = new DateTime($booking->booking_end_date[LANGUAGE_NONE][0]['value']);
 
-        $event = bat_event_load($form['#entity']->booking_event_reference[LANGUAGE_NONE][0]['target_id']);
+        $event = bat_event_load($booking->booking_event_reference[LANGUAGE_NONE][0]['target_id']);
         $event_wrapper = entity_metadata_wrapper('bat_event', $event);
 
         $type = bat_type_load($event_wrapper->event_bat_unit_reference->type_id->value());
@@ -1914,7 +1929,7 @@ function roomify_accommodation_booking_form_alter(&$form, &$form_state, $form_id
 
         $form['profile'] = array(
           '#type' => 'fieldset',
-          '#title' => t('Guest'),
+          '#title' => t('Guest Details'),
           '#group' => 'additional_settings',
           '#weight' => -100,
         );
@@ -1925,9 +1940,6 @@ function roomify_accommodation_booking_form_alter(&$form, &$form_state, $form_id
           '#markup' => '<div class="field-label">' . t('Address:') . '</div>' . drupal_render($profile_array),
         );
 
-        $form['profile']['edit'] = array(
-          '#markup' => '<div>' . l(t('Edit customer profile'), 'admin/commerce/customer-profiles/' . $profile->profile_id . '/edit', array('query' => drupal_get_destination())) . '</div>',
-        );
         $form['order'] = array(
           '#type' => 'fieldset',
           '#title' => t('Order'),
@@ -2130,6 +2142,10 @@ function roomify_accommodation_booking_commerce_checkout_complete($order) {
       if ($line_item->type == 'roomify_accommodation_booking') {
         $booking = bat_booking_load($line_item->commerce_booking_reference[LANGUAGE_NONE][0]['target_id']);
 
+        $booking->booking_guest[LANGUAGE_NONE][0]['target_id'] = $order->commerce_customer_billing[LANGUAGE_NONE][0]['profile_id'];
+
+        $booking->save();
+
         // Set event state to 'Booked'.
         $event = bat_event_load($booking->booking_event_reference[LANGUAGE_NONE][0]['target_id']);
 
@@ -2225,6 +2241,33 @@ function roomify_accommodation_booking_bat_fullcalendar_modal_content($entity_id
           'commands' => $output,
         ),
       );
+    }
+  }
+}
+
+/**
+ * Implements hook_bat_fullcalendar_formatted_event_alter().
+ */
+function roomify_accommodation_booking_bat_fullcalendar_formatted_event_alter(&$formatted_event, $context) {
+  if ($formatted_event['type'] == 'availability' && isset($context['bat_event'])) {
+    $event = $context['bat_event'];
+
+    $query = new EntityFieldQuery();
+    $result = $query->entityCondition('entity_type', 'bat_booking')
+      ->fieldCondition('booking_event_reference', 'target_id', $event->event_id)
+      ->execute();
+
+    if (isset($result['bat_booking'])) {
+      $booking = reset($result['bat_booking']);
+      $booking = bat_booking_load($booking->booking_id);
+
+      if (isset($booking->booking_guest[LANGUAGE_NONE][0]['target_id'])) {
+        $customer_profile = commerce_customer_profile_load($booking->booking_guest[LANGUAGE_NONE][0]['target_id']);
+
+        if (isset($customer_profile->commerce_customer_address[LANGUAGE_NONE][0]['name_line'])) {
+          $formatted_event['title'] = $customer_profile->commerce_customer_address[LANGUAGE_NONE][0]['name_line'];
+        }
+      }
     }
   }
 }
@@ -3185,4 +3228,40 @@ function roomify_accommodation_booking_references_dialog_entity_admin_paths() {
       ),
     ),
   );
+}
+
+/**
+ * Implements hook_references_dialog_widgets_alter().
+ */
+function roomify_accommodation_booking_references_dialog_widgets_alter(&$widgets) {
+  $widgets['entityreference_autocomplete']['operations']['add']['function'] = 'roomify_accommodation_booking_references_dialog_entityreference_add_link';
+  $widgets['entityreference_autocomplete']['operations']['search']['function'] = 'roomify_accommodation_booking_references_dialog_entityreference_search_link';
+}
+
+/**
+ * Custom - Add link callback for entity references.
+ */
+function roomify_accommodation_booking_references_dialog_entityreference_add_link($element, $widget_settings, $field, $instance) {
+  $add_links = references_dialog_entityreference_add_link($element, $widget_settings, $field, $instance);
+
+  if (isset($add_links[0]['title'])) {
+    if ($add_links[0]['title'] == t('Create Billing information')) {
+      $add_links[0]['title'] = t('Add new Guest');
+    }
+  }
+
+  return $add_links;
+}
+
+/**
+ * Custom - Search link callback for entity references.
+ */
+function roomify_accommodation_booking_references_dialog_entityreference_search_link($element, $widget_settings, $field, $instance) {
+  $search_link = references_dialog_get_field_search_links($element, $widget_settings, $field, $instance);
+
+  if ($element['#entity_type'] == 'bat_booking' && $element['#field_name'] == 'booking_guest') {
+    $search_link[0]['title'] = t('Search for existing Guest');
+  }
+
+  return $search_link;
 }
