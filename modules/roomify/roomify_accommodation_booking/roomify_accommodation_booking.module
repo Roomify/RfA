@@ -1383,6 +1383,11 @@ function roomify_accommodation_booking_entity_insert($entity, $type) {
       $event_wrapper = entity_metadata_wrapper('bat_event', $event);
 
       $bat_type = bat_type_load($event_wrapper->event_bat_unit_reference->type_id->value());
+      $property = roomify_property_load($bat_type->field_st_property_reference[LANGUAGE_NONE][0]['target_id']);
+
+      $start_date_object = new DateTime($entity->booking_start_date[LANGUAGE_NONE][0]['value']);
+      $end_date_object = new DateTime($entity->booking_end_date[LANGUAGE_NONE][0]['value']);
+      $nights = $start_date_object->diff($end_date_object)->days;
 
       // Create a new order.
       $order = commerce_order_new($bat_type->uid, 'pending');
@@ -1392,6 +1397,8 @@ function roomify_accommodation_booking_entity_insert($entity, $type) {
       $product_id = $bat_type->accommodation_product_reference[LANGUAGE_NONE][0]['target_id'];
       $product = commerce_product_load($product_id);
       $line_item = commerce_product_line_item_new($product, 1, 0, array(), 'roomify_accommodation_booking');
+
+      $line_item->line_item_label = roomify_system_get_line_item_label($bat_type, $property, $start_date_object, $end_date_object, $nights);
 
       $amount = 0;
       $line_item->commerce_unit_price[LANGUAGE_NONE]['0']['amount'] = $amount;
