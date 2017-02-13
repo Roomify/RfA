@@ -316,19 +316,17 @@ function roomify_accommodation_booking_update_7009() {
 
     $line_item->commerce_booking_reference[LANGUAGE_NONE][0]['target_id'] = $booking->booking_id;
 
-    if ($booking->type == 'ical') {
-      $event = bat_event_load($booking->booking_event_reference[LANGUAGE_NONE][0]['target_id']);
-      $event_wrapper = entity_metadata_wrapper('bat_event', $event);
+    $event = bat_event_load($booking->booking_event_reference[LANGUAGE_NONE][0]['target_id']);
+    $event_wrapper = entity_metadata_wrapper('bat_event', $event);
 
-      $type = bat_type_load($event_wrapper->event_bat_unit_reference->type_id->value());
-      $property = roomify_property_load($type->field_st_property_reference[LANGUAGE_NONE][0]['target_id']);
+    $type = bat_type_load($event_wrapper->event_bat_unit_reference->type_id->value());
+    $property = roomify_property_load($type->field_st_property_reference[LANGUAGE_NONE][0]['target_id']);
 
-      $start_date = new DateTime($booking->booking_start_date[LANGUAGE_NONE][0]['value']);
-      $end_date = new DateTime($booking->booking_end_date[LANGUAGE_NONE][0]['value']);
-      $nights = $start_date->diff($end_date)->days;
+    $start_date = new DateTime($booking->booking_start_date[LANGUAGE_NONE][0]['value']);
+    $end_date = new DateTime($booking->booking_end_date[LANGUAGE_NONE][0]['value']);
+    $nights = $start_date->diff($end_date)->days;
 
-      $line_item->line_item_label = roomify_system_get_line_item_label($type, $property, $start_date, $end_date, $nights);
-    }
+    $line_item->line_item_label = roomify_system_get_line_item_label($type, $property, $start_date, $end_date, $nights);
 
     commerce_line_item_save($line_item);
   }
