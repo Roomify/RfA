@@ -30,7 +30,7 @@ function roomify_conversations_token_info() {
   );
 
   return array(
-    'tokens' => array('conversation' => $tokens),
+    'tokens' => array('roomify_conversation' => $tokens),
   );
 }
 
@@ -40,8 +40,8 @@ function roomify_conversations_token_info() {
 function roomify_conversations_tokens($type, $tokens, array $data = array(), array $options = array()) {
   $return = array();
 
-  if ($type == 'conversation' && !empty($data['conversation'])) {
-    $conversation = $data['conversation'];
+  if ($type == 'roomify_conversation' && !empty($data['roomify_conversation'])) {
+    $conversation = $data['roomify_conversation'];
 
     $type = bat_type_load($conversation->conversation_unit_type_ref[LANGUAGE_NONE][0]['target_id']);
     $property = roomify_property_load($type->field_st_property_reference[LANGUAGE_NONE][0]['target_id']);
