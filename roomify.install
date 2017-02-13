@@ -287,6 +287,9 @@ function roomify_install_finished(&$install_state) {
   // Enable translation for properties and types.
   variable_set('entity_translation_entity_types', $translatable_entities);
 
+  // Clear the entity info cache for the new entity translation settings.
+  entity_info_cache_clear();
+
   // Remember the profile which was used.
   variable_set('install_profile', drupal_get_profile());
   variable_set('install_task', 'done');
