@@ -2414,30 +2414,30 @@ function roomify_dashboard_views_default_views() {
   /* Display: Master */
   $handler = $view->new_display('default', 'Master', 'default');
   $handler->display->display_options['title'] = 'Email Templates';
+  $handler->display->display_options['use_ajax'] = TRUE;
   $handler->display->display_options['use_more_always'] = FALSE;
   $handler->display->display_options['access']['type'] = 'none';
   $handler->display->display_options['cache']['type'] = 'none';
   $handler->display->display_options['query']['type'] = 'views_query';
   $handler->display->display_options['exposed_form']['type'] = 'basic';
+  $handler->display->display_options['exposed_form']['options']['autosubmit'] = TRUE;
   $handler->display->display_options['pager']['type'] = 'full';
-  $handler->display->display_options['pager']['options']['items_per_page'] = '10';
-  $handler->display->display_options['style_plugin'] = 'table';
+  $handler->display->display_options['pager']['options']['items_per_page'] = '25';
+  $handler->display->display_options['pager']['options']['offset'] = '0';
+  $handler->display->display_options['pager']['options']['id'] = '0';
+  $handler->display->display_options['pager']['options']['quantity'] = '9';
+  $handler->display->display_options['style_plugin'] = 'views_bootstrap_table_plugin_style';
   $handler->display->display_options['style_options']['columns'] = array(
     'pid' => 'pid',
-    'views_bulk_operations' => 'views_bulk_operations',
     'title' => 'title',
-    'url' => 'url',
+    'language_1' => 'language_1',
+    'name' => 'name',
   );
   $handler->display->display_options['style_options']['default'] = '-1';
   $handler->display->display_options['style_options']['info'] = array(
     'pid' => array(
       'sortable' => 0,
       'default_sort_order' => 'asc',
-      'align' => '',
-      'separator' => '',
-      'empty_column' => 0,
-    ),
-    'views_bulk_operations' => array(
       'align' => '',
       'separator' => '',
       'empty_column' => 0,
@@ -2449,12 +2449,28 @@ function roomify_dashboard_views_default_views() {
       'separator' => '',
       'empty_column' => 0,
     ),
-    'url' => array(
-      'align' => '',
+    'language_1' => array(
+      'sortable' => 0,
+      'default_sort_order' => 'asc',
+      'align' => 'views-align-center',
+      'separator' => '',
+      'empty_column' => 0,
+    ),
+    'name' => array(
+      'sortable' => 0,
+      'default_sort_order' => 'asc',
+      'align' => 'views-align-center',
       'separator' => '',
       'empty_column' => 0,
     ),
   );
+  $handler->display->display_options['style_options']['bootstrap_styles'] = array(
+    'striped' => 'striped',
+    'bordered' => 'bordered',
+    'hover' => 'hover',
+    'condensed' => 'condensed',
+  );
+  $handler->display->display_options['style_options']['responsive'] = 0;
   /* Field: Previewable Email Template: Internal, numeric previewable email template ID */
   $handler->display->display_options['fields']['pid']['id'] = 'pid';
   $handler->display->display_options['fields']['pid']['table'] = 'pets';
@@ -2475,9 +2491,44 @@ function roomify_dashboard_views_default_views() {
   $handler->display->display_options['fields']['name']['alter']['text'] = 'Edit';
   $handler->display->display_options['fields']['name']['alter']['make_link'] = TRUE;
   $handler->display->display_options['fields']['name']['alter']['path'] = '/admin/structure/pets/manage/[name]';
+  /* Filter criterion: Previewable Email Template: Language select list */
+  $handler->display->display_options['filters']['language_select']['id'] = 'language_select';
+  $handler->display->display_options['filters']['language_select']['table'] = 'pets';
+  $handler->display->display_options['filters']['language_select']['field'] = 'language_select';
+  $handler->display->display_options['filters']['language_select']['group'] = 1;
+  $handler->display->display_options['filters']['language_select']['exposed'] = TRUE;
+  $handler->display->display_options['filters']['language_select']['expose']['operator_id'] = 'language_select_op';
+  $handler->display->display_options['filters']['language_select']['expose']['label'] = 'Language select list';
+  $handler->display->display_options['filters']['language_select']['expose']['operator'] = 'language_select_op';
+  $handler->display->display_options['filters']['language_select']['expose']['identifier'] = 'language_select';
 
   /* Display: Page */
   $handler = $view->new_display('page', 'Page', 'page');
+  $handler->display->display_options['defaults']['fields'] = FALSE;
+  /* Field: Previewable Email Template: Internal, numeric previewable email template ID */
+  $handler->display->display_options['fields']['pid']['id'] = 'pid';
+  $handler->display->display_options['fields']['pid']['table'] = 'pets';
+  $handler->display->display_options['fields']['pid']['field'] = 'pid';
+  $handler->display->display_options['fields']['pid']['exclude'] = TRUE;
+  /* Field: Previewable Email Template: Label */
+  $handler->display->display_options['fields']['title']['id'] = 'title';
+  $handler->display->display_options['fields']['title']['table'] = 'pets';
+  $handler->display->display_options['fields']['title']['field'] = 'title';
+  $handler->display->display_options['fields']['title']['label'] = 'Template Name';
+  $handler->display->display_options['fields']['title']['element_label_colon'] = FALSE;
+  /* Field: Previewable Email Template: Language */
+  $handler->display->display_options['fields']['language_1']['id'] = 'language_1';
+  $handler->display->display_options['fields']['language_1']['table'] = 'pets';
+  $handler->display->display_options['fields']['language_1']['field'] = 'language';
+  /* Field: Previewable Email Template: Machine-readable name */
+  $handler->display->display_options['fields']['name']['id'] = 'name';
+  $handler->display->display_options['fields']['name']['table'] = 'pets';
+  $handler->display->display_options['fields']['name']['field'] = 'name';
+  $handler->display->display_options['fields']['name']['label'] = 'Edit Template';
+  $handler->display->display_options['fields']['name']['alter']['alter_text'] = TRUE;
+  $handler->display->display_options['fields']['name']['alter']['text'] = 'Edit';
+  $handler->display->display_options['fields']['name']['alter']['make_link'] = TRUE;
+  $handler->display->display_options['fields']['name']['alter']['path'] = '/admin/structure/pets/manage/[name]';
   $handler->display->display_options['path'] = 'email-templates';
   $translatables['email_templates'] = array(
     t('Master'),
@@ -2501,7 +2552,9 @@ function roomify_dashboard_views_default_views() {
     t('Template Name'),
     t('Edit Template'),
     t('Edit'),
+    t('Language select list'),
     t('Page'),
+    t('Language'),
   );
   $export['email_templates'] = $view;
 
