@@ -171,7 +171,7 @@ function roomify_dashboard_form_alter(&$form, &$form_state, $form_id) {
  * FORM_ID = pet_form.
  */
 function roomify_dashboard_form_pet_form_alter(&$form, &$form_state) {
-  $form['actions']['cancel']['#href'] = '/email-templates';
+  $form['actions']['cancel']['#href'] = '/admin/bat/config/email-templates';
 
   $form['#submit'][] = 'redirect_to_email_templates_view';
 }
@@ -180,7 +180,7 @@ function roomify_dashboard_form_pet_form_alter(&$form, &$form_state) {
  * Custom submit function to redirect users.
  */
 function redirect_to_email_templates_view(&$form, &$form_state) {
-  $form_state['redirect'] = 'email-templates';
+  $form_state['redirect'] = 'admin/bat/config/email-templates';
 }
 
 /**

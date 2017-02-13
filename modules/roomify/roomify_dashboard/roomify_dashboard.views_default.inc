@@ -2529,7 +2529,7 @@ function roomify_dashboard_views_default_views() {
   $handler->display->display_options['fields']['name']['alter']['text'] = 'Edit';
   $handler->display->display_options['fields']['name']['alter']['make_link'] = TRUE;
   $handler->display->display_options['fields']['name']['alter']['path'] = '/admin/structure/pets/manage/[name]';
-  $handler->display->display_options['path'] = 'email-templates';
+  $handler->display->display_options['path'] = 'admin/bat/config/email-templates';
   $translatables['email_templates'] = array(
     t('Master'),
     t('Email Templates'),

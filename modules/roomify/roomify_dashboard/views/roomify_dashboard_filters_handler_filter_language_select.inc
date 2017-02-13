@@ -13,17 +13,9 @@ class roomify_dashboard_filters_handler_filter_language_select extends views_han
   /**
    * {@inheritdoc}
    */
-
   public function get_value_options() {
-    $languages_list = array();
-
-    $results = db_select('languages', 'l')
-      ->fields('l')
-      ->execute()
-      ->fetchAll();
-
-    foreach ($results as $result) {
-      $languages_list[$result->language] = $result->name;
+    foreach (locale_language_list() as $language => $name) {
+      $languages_list[$language] = $name;
     }
 
     $this->value_options = $languages_list;
