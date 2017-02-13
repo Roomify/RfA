@@ -263,6 +263,6 @@ function roomify_dashboard_views_data_alter(&$data) {
     'group' => t('Previewable Email Template'),
     'help' => t('Filter by language, choosing from dropdown list.'),
     'filter' => array('handler' => 'roomify_dashboard_filters_handler_filter_language_select'),
-    'real field' => 'language',  
+    'real field' => 'language',
   );
 }
