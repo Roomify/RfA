@@ -370,8 +370,7 @@ th {
   font-family: 'Glyphicons Halflings';
   src: url("../fonts/bootstrap/glyphicons-halflings-regular.eot");
   src: url("../fonts/bootstrap/glyphicons-halflings-regular.eot?#iefix") format("embedded-opentype"), url("../fonts/bootstrap/glyphicons-halflings-regular.woff2") format("woff2"), url("../fonts/bootstrap/glyphicons-halflings-regular.woff") format("woff"), url("../fonts/bootstrap/glyphicons-halflings-regular.ttf") format("truetype"), url("../fonts/bootstrap/glyphicons-halflings-regular.svg#glyphicons_halflingsregular") format("svg"); }
-.glyphicon, .pane-roomify-property-flag-favorites-link .flag-favorites a::before, .page-conversation-booking #roomify-accommodation-booking-current-search-form .current-search-item.current-search-submit button::before,
-.page-booking #roomify-accommodation-booking-current-search-form .current-search-item.current-search-submit button::before {
+.glyphicon, .pane-roomify-property-flag-favorites-link .flag-favorites a::before {
   position: relative;
   top: 1px;
   display: inline-block;
@@ -14805,9 +14804,7 @@ body {
       width: 90%;
       display: block;
       margin-left: 5%; }
-      body .sidebar-nav .pane-roomify-sidebar-user-menu .roomify-sidebar-user-menu li .glyphicon, body .sidebar-nav .pane-roomify-sidebar-user-menu .roomify-sidebar-user-menu li .pane-roomify-property-flag-favorites-link .flag-favorites a::before, .pane-roomify-property-flag-favorites-link .flag-favorites body .sidebar-nav .pane-roomify-sidebar-user-menu .roomify-sidebar-user-menu li a::before, body .sidebar-nav .pane-roomify-sidebar-user-menu .roomify-sidebar-user-menu li .page-conversation-booking #roomify-accommodation-booking-current-search-form .current-search-item.current-search-submit button::before, .page-conversation-booking #roomify-accommodation-booking-current-search-form .current-search-item.current-search-submit body .sidebar-nav .pane-roomify-sidebar-user-menu .roomify-sidebar-user-menu li button::before,
-      body .sidebar-nav .pane-roomify-sidebar-user-menu .roomify-sidebar-user-menu li .page-booking #roomify-accommodation-booking-current-search-form .current-search-item.current-search-submit button::before,
-      .page-booking #roomify-accommodation-booking-current-search-form .current-search-item.current-search-submit body .sidebar-nav .pane-roomify-sidebar-user-menu .roomify-sidebar-user-menu li button::before {
+      body .sidebar-nav .pane-roomify-sidebar-user-menu .roomify-sidebar-user-menu li .glyphicon, body .sidebar-nav .pane-roomify-sidebar-user-menu .roomify-sidebar-user-menu li .pane-roomify-property-flag-favorites-link .flag-favorites a::before, .pane-roomify-property-flag-favorites-link .flag-favorites body .sidebar-nav .pane-roomify-sidebar-user-menu .roomify-sidebar-user-menu li a::before {
         float: left;
         display: inline-block;
         top: 14px;
@@ -14816,9 +14813,7 @@ body {
         z-index: 99;
         padding-left: 5px;
         color: #03A9F4; }
-        body .sidebar-nav .pane-roomify-sidebar-user-menu .roomify-sidebar-user-menu li .glyphicon:hover, body .sidebar-nav .pane-roomify-sidebar-user-menu .roomify-sidebar-user-menu li .pane-roomify-property-flag-favorites-link .flag-favorites a:hover::before, .pane-roomify-property-flag-favorites-link .flag-favorites body .sidebar-nav .pane-roomify-sidebar-user-menu .roomify-sidebar-user-menu li a:hover::before, body .sidebar-nav .pane-roomify-sidebar-user-menu .roomify-sidebar-user-menu li .page-conversation-booking #roomify-accommodation-booking-current-search-form .current-search-item.current-search-submit button:hover::before, .page-conversation-booking #roomify-accommodation-booking-current-search-form .current-search-item.current-search-submit body .sidebar-nav .pane-roomify-sidebar-user-menu .roomify-sidebar-user-menu li button:hover::before,
-        body .sidebar-nav .pane-roomify-sidebar-user-menu .roomify-sidebar-user-menu li .page-booking #roomify-accommodation-booking-current-search-form .current-search-item.current-search-submit button:hover::before,
-        .page-booking #roomify-accommodation-booking-current-search-form .current-search-item.current-search-submit body .sidebar-nav .pane-roomify-sidebar-user-menu .roomify-sidebar-user-menu li button:hover::before {
+        body .sidebar-nav .pane-roomify-sidebar-user-menu .roomify-sidebar-user-menu li .glyphicon:hover, body .sidebar-nav .pane-roomify-sidebar-user-menu .roomify-sidebar-user-menu li .pane-roomify-property-flag-favorites-link .flag-favorites a:hover::before, .pane-roomify-property-flag-favorites-link .flag-favorites body .sidebar-nav .pane-roomify-sidebar-user-menu .roomify-sidebar-user-menu li a:hover::before {
           color: black; }
       body .sidebar-nav .pane-roomify-sidebar-user-menu .roomify-sidebar-user-menu li a {
         font-size: 16px;
@@ -14827,9 +14822,7 @@ body {
           color: black; }
       body .sidebar-nav .pane-roomify-sidebar-user-menu .roomify-sidebar-user-menu li:hover {
         background: #eeeeee; }
-        body .sidebar-nav .pane-roomify-sidebar-user-menu .roomify-sidebar-user-menu li:hover .glyphicon, body .sidebar-nav .pane-roomify-sidebar-user-menu .roomify-sidebar-user-menu li:hover .pane-roomify-property-flag-favorites-link .flag-favorites a::before, .pane-roomify-property-flag-favorites-link .flag-favorites body .sidebar-nav .pane-roomify-sidebar-user-menu .roomify-sidebar-user-menu li:hover a::before, body .sidebar-nav .pane-roomify-sidebar-user-menu .roomify-sidebar-user-menu li:hover .page-conversation-booking #roomify-accommodation-booking-current-search-form .current-search-item.current-search-submit button::before, .page-conversation-booking #roomify-accommodation-booking-current-search-form .current-search-item.current-search-submit body .sidebar-nav .pane-roomify-sidebar-user-menu .roomify-sidebar-user-menu li:hover button::before,
-        body .sidebar-nav .pane-roomify-sidebar-user-menu .roomify-sidebar-user-menu li:hover .page-booking #roomify-accommodation-booking-current-search-form .current-search-item.current-search-submit button::before,
-        .page-booking #roomify-accommodation-booking-current-search-form .current-search-item.current-search-submit body .sidebar-nav .pane-roomify-sidebar-user-menu .roomify-sidebar-user-menu li:hover button::before {
+        body .sidebar-nav .pane-roomify-sidebar-user-menu .roomify-sidebar-user-menu li:hover .glyphicon, body .sidebar-nav .pane-roomify-sidebar-user-menu .roomify-sidebar-user-menu li:hover .pane-roomify-property-flag-favorites-link .flag-favorites a::before, .pane-roomify-property-flag-favorites-link .flag-favorites body .sidebar-nav .pane-roomify-sidebar-user-menu .roomify-sidebar-user-menu li:hover a::before {
           color: black; }
         body .sidebar-nav .pane-roomify-sidebar-user-menu .roomify-sidebar-user-menu li:hover a {
           color: black; }
@@ -14877,9 +14870,7 @@ body {
         padding: 0; }
       body .sidebar-nav .pane-commerce-cart-cart .line-item-quantity {
         display: none; }
-      body .sidebar-nav .pane-commerce-cart-cart .glyphicon, body .sidebar-nav .pane-commerce-cart-cart .pane-roomify-property-flag-favorites-link .flag-favorites a::before, .pane-roomify-property-flag-favorites-link .flag-favorites body .sidebar-nav .pane-commerce-cart-cart a::before, body .sidebar-nav .pane-commerce-cart-cart .page-conversation-booking #roomify-accommodation-booking-current-search-form .current-search-item.current-search-submit button::before, .page-conversation-booking #roomify-accommodation-booking-current-search-form .current-search-item.current-search-submit body .sidebar-nav .pane-commerce-cart-cart button::before,
-      body .sidebar-nav .pane-commerce-cart-cart .page-booking #roomify-accommodation-booking-current-search-form .current-search-item.current-search-submit button::before,
-      .page-booking #roomify-accommodation-booking-current-search-form .current-search-item.current-search-submit body .sidebar-nav .pane-commerce-cart-cart button::before {
+      body .sidebar-nav .pane-commerce-cart-cart .glyphicon, body .sidebar-nav .pane-commerce-cart-cart .pane-roomify-property-flag-favorites-link .flag-favorites a::before, .pane-roomify-property-flag-favorites-link .flag-favorites body .sidebar-nav .pane-commerce-cart-cart a::before {
         font-size: 18px;
         margin-right: 4px;
         color: #03A9F4;
@@ -14915,9 +14906,7 @@ body {
       border-bottom: 0;
       font-size: 22px;
       width: 100%; }
-      body .sidebar-nav .pane-favorite-properties-sidebar-favorites .pane-title .glyphicon, body .sidebar-nav .pane-favorite-properties-sidebar-favorites .pane-title .pane-roomify-property-flag-favorites-link .flag-favorites a::before, .pane-roomify-property-flag-favorites-link .flag-favorites body .sidebar-nav .pane-favorite-properties-sidebar-favorites .pane-title a::before, body .sidebar-nav .pane-favorite-properties-sidebar-favorites .pane-title .page-conversation-booking #roomify-accommodation-booking-current-search-form .current-search-item.current-search-submit button::before, .page-conversation-booking #roomify-accommodation-booking-current-search-form .current-search-item.current-search-submit body .sidebar-nav .pane-favorite-properties-sidebar-favorites .pane-title button::before,
-      body .sidebar-nav .pane-favorite-properties-sidebar-favorites .pane-title .page-booking #roomify-accommodation-booking-current-search-form .current-search-item.current-search-submit button::before,
-      .page-booking #roomify-accommodation-booking-current-search-form .current-search-item.current-search-submit body .sidebar-nav .pane-favorite-properties-sidebar-favorites .pane-title button::before {
+      body .sidebar-nav .pane-favorite-properties-sidebar-favorites .pane-title .glyphicon, body .sidebar-nav .pane-favorite-properties-sidebar-favorites .pane-title .pane-roomify-property-flag-favorites-link .flag-favorites a::before, .pane-roomify-property-flag-favorites-link .flag-favorites body .sidebar-nav .pane-favorite-properties-sidebar-favorites .pane-title a::before {
         display: inline-block;
         font-size: 18px;
         margin-right: 6px;
@@ -14969,9 +14958,7 @@ body {
         text-align: left;
         border-bottom: 0;
         width: 100%; }
-        body .sidebar-nav .pane-dashboard-guest-stays-panel-pane-2 .pane-title .glyphicon, body .sidebar-nav .pane-dashboard-guest-stays-panel-pane-2 .pane-title .pane-roomify-property-flag-favorites-link .flag-favorites a::before, .pane-roomify-property-flag-favorites-link .flag-favorites body .sidebar-nav .pane-dashboard-guest-stays-panel-pane-2 .pane-title a::before, body .sidebar-nav .pane-dashboard-guest-stays-panel-pane-2 .pane-title .page-conversation-booking #roomify-accommodation-booking-current-search-form .current-search-item.current-search-submit button::before, .page-conversation-booking #roomify-accommodation-booking-current-search-form .current-search-item.current-search-submit body .sidebar-nav .pane-dashboard-guest-stays-panel-pane-2 .pane-title button::before,
-        body .sidebar-nav .pane-dashboard-guest-stays-panel-pane-2 .pane-title .page-booking #roomify-accommodation-booking-current-search-form .current-search-item.current-search-submit button::before,
-        .page-booking #roomify-accommodation-booking-current-search-form .current-search-item.current-search-submit body .sidebar-nav .pane-dashboard-guest-stays-panel-pane-2 .pane-title button::before {
+        body .sidebar-nav .pane-dashboard-guest-stays-panel-pane-2 .pane-title .glyphicon, body .sidebar-nav .pane-dashboard-guest-stays-panel-pane-2 .pane-title .pane-roomify-property-flag-favorites-link .flag-favorites a::before, .pane-roomify-property-flag-favorites-link .flag-favorites body .sidebar-nav .pane-dashboard-guest-stays-panel-pane-2 .pane-title a::before {
           display: inline-block;
           font-size: 18px;
           margin-right: 6px;
@@ -15936,7 +15923,7 @@ body.toggled #close-sidebar-wrapper {
   padding-right: 15px;
   padding: 10px;
   border: 1px solid #E6E6E6;
-  border-right: 0px;
+  border-right: 0;
   min-height: 120px;
   background: white; }
   @media (min-width: 768px) {
@@ -16102,6 +16089,15 @@ body.toggled #close-sidebar-wrapper {
       background-color: #FFFFFF; }
     .page-conversation-booking #roomify-accommodation-booking-current-search-form .current-search-item.current-search-submit button::before,
     .page-booking #roomify-accommodation-booking-current-search-form .current-search-item.current-search-submit button::before {
+      position: relative;
+      top: 1px;
+      display: inline-block;
+      font-family: 'Glyphicons Halflings';
+      font-style: normal;
+      font-weight: normal;
+      line-height: 1;
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
       content: "\e003";
       margin-right: 10px; }
 .page-conversation-booking .featured-image,
@@ -16152,10 +16148,14 @@ body.toggled #close-sidebar-wrapper {
     .page-booking #roomify-accommodation-booking-confirmation-form {
       float: left;
       width: 50%; } }
+  @media (max-width: 768px) {
+    .page-conversation-booking #roomify-accommodation-booking-confirmation-form,
+    .page-booking #roomify-accommodation-booking-confirmation-form {
+      margin-bottom: 40px; } }
   @media (min-width: 992px) {
     .page-conversation-booking #roomify-accommodation-booking-confirmation-form,
     .page-booking #roomify-accommodation-booking-confirmation-form {
-      margin-left: 16.66667%; } }
+      margin-left: 16.666666667%; } }
   .page-conversation-booking #roomify-accommodation-booking-confirmation-form button#edit-enquiry,
   .page-booking #roomify-accommodation-booking-confirmation-form button#edit-enquiry {
     color: #FFFFFF;
@@ -16335,7 +16335,7 @@ body.toggled #close-sidebar-wrapper {
       margin: 0; }
     .page-conversation-booking #roomify-accommodation-booking-confirmation-form #edit-options .panel-body,
     .page-booking #roomify-accommodation-booking-confirmation-form #edit-options .panel-body {
-      padding-top: 0px; }
+      padding-top: 0; }
       .page-conversation-booking #roomify-accommodation-booking-confirmation-form #edit-options .panel-body .checkbox,
       .page-booking #roomify-accommodation-booking-confirmation-form #edit-options .panel-body .checkbox {
         margin-bottom: 0;
@@ -16350,6 +16350,81 @@ body.toggled #close-sidebar-wrapper {
   .page-conversation-booking #edit-options .input-group .input-group-addon,
   .page-booking #edit-options .input-group .input-group-addon {
     display: none; }
+.page-conversation-booking #modalBackdrop,
+.page-booking #modalBackdrop {
+  background: none !important; }
+.page-conversation-booking #modalContent,
+.page-booking #modalContent {
+  top: 0 !important;
+  left: 0 !important;
+  width: 100% !important;
+  height: 100% !important; }
+  .page-conversation-booking #modalContent .ctools-modal-dialog.modal-dialog,
+  .page-booking #modalContent .ctools-modal-dialog.modal-dialog {
+    width: 100% !important;
+    height: 100% !important;
+    border-radius: 0px;
+    max-width: none !important;
+    margin: 0;
+    background-color: rgba(0, 0, 0, 0.75); }
+    .page-conversation-booking #modalContent .ctools-modal-dialog.modal-dialog .modal-header,
+    .page-booking #modalContent .ctools-modal-dialog.modal-dialog .modal-header {
+      display: none; }
+    .page-conversation-booking #modalContent .ctools-modal-dialog.modal-dialog .modal-content,
+    .page-booking #modalContent .ctools-modal-dialog.modal-dialog .modal-content {
+      height: 100%;
+      overflow: hidden; }
+      @media (max-width: 767px) {
+        .page-conversation-booking #modalContent .ctools-modal-dialog.modal-dialog .modal-content,
+        .page-booking #modalContent .ctools-modal-dialog.modal-dialog .modal-content {
+          overflow: scroll; } }
+    .page-conversation-booking #modalContent .ctools-modal-dialog.modal-dialog #modal-content,
+    .page-booking #modalContent .ctools-modal-dialog.modal-dialog #modal-content {
+      margin: 20px auto 0 auto;
+      max-height: 100% !important; }
+      @media (max-width: 480px) {
+        .page-conversation-booking #modalContent .ctools-modal-dialog.modal-dialog #modal-content,
+        .page-booking #modalContent .ctools-modal-dialog.modal-dialog #modal-content {
+          width: 100% !important;
+          padding: 10px; } }
+      .page-conversation-booking #modalContent .ctools-modal-dialog.modal-dialog #modal-content form,
+      .page-booking #modalContent .ctools-modal-dialog.modal-dialog #modal-content form {
+        background: #F8F8F8;
+        border-radius: 5px;
+        padding: 40px;
+        position: relative; }
+        @media (max-width: 480px) {
+          .page-conversation-booking #modalContent .ctools-modal-dialog.modal-dialog #modal-content form,
+          .page-booking #modalContent .ctools-modal-dialog.modal-dialog #modal-content form {
+            padding: 10px 30px; } }
+        .page-conversation-booking #modalContent .ctools-modal-dialog.modal-dialog #modal-content form label,
+        .page-booking #modalContent .ctools-modal-dialog.modal-dialog #modal-content form label {
+          font-weight: 300; }
+        .page-conversation-booking #modalContent .ctools-modal-dialog.modal-dialog #modal-content form .form-textarea,
+        .page-booking #modalContent .ctools-modal-dialog.modal-dialog #modal-content form .form-textarea {
+          resize: vertical; }
+        .page-conversation-booking #modalContent .ctools-modal-dialog.modal-dialog #modal-content form .title,
+        .page-booking #modalContent .ctools-modal-dialog.modal-dialog #modal-content form .title {
+          font-size: 22px;
+          font-weight: 400;
+          display: inline-block;
+          width: 100%;
+          margin-bottom: 30px;
+          margin-top: 10px; }
+        .page-conversation-booking #modalContent .ctools-modal-dialog.modal-dialog #modal-content form .close,
+        .page-booking #modalContent .ctools-modal-dialog.modal-dialog #modal-content form .close {
+          position: absolute;
+          top: 12px;
+          right: 12px;
+          background: url(../images/x.png) center center no-repeat; }
+  .page-conversation-booking #modalContent div.modal-content,
+  .page-booking #modalContent div.modal-content {
+    background: none;
+    box-shadow: none;
+    -webkit-box-shadow: none;
+    -moz-box-shadow: none;
+    -ms-box-shadow: none;
+    -o-box-shadow: none; }
 
 .page-conversation-booking #roomify-accommodation-booking-current-search-form {
   width: 100%;
@@ -16949,9 +17024,7 @@ ol.inline.commerce-checkout-progress {
     font-weight: 400;
     display: inline-block;
     width: 45%; }
-    .page-availability-search .view-display-id-panel_pane_1 .views-row .views-field-field-sp-area .glyphicon, .page-availability-search .view-display-id-panel_pane_1 .views-row .views-field-field-sp-area .pane-roomify-property-flag-favorites-link .flag-favorites a::before, .pane-roomify-property-flag-favorites-link .flag-favorites .page-availability-search .view-display-id-panel_pane_1 .views-row .views-field-field-sp-area a::before, .page-availability-search .view-display-id-panel_pane_1 .views-row .views-field-field-sp-area .page-conversation-booking #roomify-accommodation-booking-current-search-form .current-search-item.current-search-submit button::before, .page-conversation-booking #roomify-accommodation-booking-current-search-form .current-search-item.current-search-submit .page-availability-search .view-display-id-panel_pane_1 .views-row .views-field-field-sp-area button::before,
-    .page-availability-search .view-display-id-panel_pane_1 .views-row .views-field-field-sp-area .page-booking #roomify-accommodation-booking-current-search-form .current-search-item.current-search-submit button::before,
-    .page-booking #roomify-accommodation-booking-current-search-form .current-search-item.current-search-submit .page-availability-search .view-display-id-panel_pane_1 .views-row .views-field-field-sp-area button::before {
+    .page-availability-search .view-display-id-panel_pane_1 .views-row .views-field-field-sp-area .glyphicon, .page-availability-search .view-display-id-panel_pane_1 .views-row .views-field-field-sp-area .pane-roomify-property-flag-favorites-link .flag-favorites a::before, .pane-roomify-property-flag-favorites-link .flag-favorites .page-availability-search .view-display-id-panel_pane_1 .views-row .views-field-field-sp-area a::before {
       margin-right: 6px;
       color: #16262e; }
     @media (max-width: 768px) {
@@ -16964,9 +17037,7 @@ ol.inline.commerce-checkout-progress {
     display: inline-block;
     width: 45%;
     font-style: italic; }
-    .page-availability-search .view-display-id-panel_pane_1 .views-row .views-field-field-sp-short-description .glyphicon, .page-availability-search .view-display-id-panel_pane_1 .views-row .views-field-field-sp-short-description .pane-roomify-property-flag-favorites-link .flag-favorites a::before, .pane-roomify-property-flag-favorites-link .flag-favorites .page-availability-search .view-display-id-panel_pane_1 .views-row .views-field-field-sp-short-description a::before, .page-availability-search .view-display-id-panel_pane_1 .views-row .views-field-field-sp-short-description .page-conversation-booking #roomify-accommodation-booking-current-search-form .current-search-item.current-search-submit button::before, .page-conversation-booking #roomify-accommodation-booking-current-search-form .current-search-item.current-search-submit .page-availability-search .view-display-id-panel_pane_1 .views-row .views-field-field-sp-short-description button::before,
-    .page-availability-search .view-display-id-panel_pane_1 .views-row .views-field-field-sp-short-description .page-booking #roomify-accommodation-booking-current-search-form .current-search-item.current-search-submit button::before,
-    .page-booking #roomify-accommodation-booking-current-search-form .current-search-item.current-search-submit .page-availability-search .view-display-id-panel_pane_1 .views-row .views-field-field-sp-short-description button::before {
+    .page-availability-search .view-display-id-panel_pane_1 .views-row .views-field-field-sp-short-description .glyphicon, .page-availability-search .view-display-id-panel_pane_1 .views-row .views-field-field-sp-short-description .pane-roomify-property-flag-favorites-link .flag-favorites a::before, .pane-roomify-property-flag-favorites-link .flag-favorites .page-availability-search .view-display-id-panel_pane_1 .views-row .views-field-field-sp-short-description a::before {
       display: none; }
     @media (max-width: 768px) {
       .page-availability-search .view-display-id-panel_pane_1 .views-row .views-field-field-sp-short-description {
@@ -17580,16 +17651,10 @@ ol.inline.commerce-checkout-progress {
     color: #16262e;
     border-bottom: 1px solid #ececec;
     border-top: 1px solid #ececec; }
-    .page-availability-search .panel-sl-left-content-wrapper .panel_sl_left .pane-current-search-properties .pane-title .glyphicon, .page-availability-search .panel-sl-left-content-wrapper .panel_sl_left .pane-current-search-properties .pane-title .pane-roomify-property-flag-favorites-link .flag-favorites a::before, .pane-roomify-property-flag-favorites-link .flag-favorites .page-availability-search .panel-sl-left-content-wrapper .panel_sl_left .pane-current-search-properties .pane-title a::before, .page-availability-search .panel-sl-left-content-wrapper .panel_sl_left .pane-current-search-properties .pane-title .page-conversation-booking #roomify-accommodation-booking-current-search-form .current-search-item.current-search-submit button::before, .page-conversation-booking #roomify-accommodation-booking-current-search-form .current-search-item.current-search-submit .page-availability-search .panel-sl-left-content-wrapper .panel_sl_left .pane-current-search-properties .pane-title button::before,
-    .page-availability-search .panel-sl-left-content-wrapper .panel_sl_left .pane-current-search-properties .pane-title .page-booking #roomify-accommodation-booking-current-search-form .current-search-item.current-search-submit button::before,
-    .page-booking #roomify-accommodation-booking-current-search-form .current-search-item.current-search-submit .page-availability-search .panel-sl-left-content-wrapper .panel_sl_left .pane-current-search-properties .pane-title button::before,
+    .page-availability-search .panel-sl-left-content-wrapper .panel_sl_left .pane-current-search-properties .pane-title .glyphicon, .page-availability-search .panel-sl-left-content-wrapper .panel_sl_left .pane-current-search-properties .pane-title .pane-roomify-property-flag-favorites-link .flag-favorites a::before, .pane-roomify-property-flag-favorites-link .flag-favorites .page-availability-search .panel-sl-left-content-wrapper .panel_sl_left .pane-current-search-properties .pane-title a::before,
     .page-availability-search .panel-sl-left-content-wrapper .panel_sl_left .panel-pane.pane-block .pane-title .glyphicon,
     .page-availability-search .panel-sl-left-content-wrapper .panel_sl_left .panel-pane.pane-block .pane-title .pane-roomify-property-flag-favorites-link .flag-favorites a::before,
-    .pane-roomify-property-flag-favorites-link .flag-favorites .page-availability-search .panel-sl-left-content-wrapper .panel_sl_left .panel-pane.pane-block .pane-title a::before,
-    .page-availability-search .panel-sl-left-content-wrapper .panel_sl_left .panel-pane.pane-block .pane-title .page-conversation-booking #roomify-accommodation-booking-current-search-form .current-search-item.current-search-submit button::before,
-    .page-conversation-booking #roomify-accommodation-booking-current-search-form .current-search-item.current-search-submit .page-availability-search .panel-sl-left-content-wrapper .panel_sl_left .panel-pane.pane-block .pane-title button::before,
-    .page-availability-search .panel-sl-left-content-wrapper .panel_sl_left .panel-pane.pane-block .pane-title .page-booking #roomify-accommodation-booking-current-search-form .current-search-item.current-search-submit button::before,
-    .page-booking #roomify-accommodation-booking-current-search-form .current-search-item.current-search-submit .page-availability-search .panel-sl-left-content-wrapper .panel_sl_left .panel-pane.pane-block .pane-title button::before {
+    .pane-roomify-property-flag-favorites-link .flag-favorites .page-availability-search .panel-sl-left-content-wrapper .panel_sl_left .panel-pane.pane-block .pane-title a::before {
       display: none; }
   .page-availability-search .panel-sl-left-content-wrapper .panel_sl_left .pane-current-search-properties .pane-content,
   .page-availability-search .panel-sl-left-content-wrapper .panel_sl_left .panel-pane.pane-block .pane-content {
@@ -18288,19 +18353,13 @@ body.page-blog .view-featured-properties.view-display-id-panel_pane_2 .views-row
     display: inline-block;
     float: left;
     color: #5D5D5D; }
-    .node-type-blog .roomify-blog-icon .pane-title .glyphicon, .node-type-blog .roomify-blog-icon .pane-title .pane-roomify-property-flag-favorites-link .flag-favorites a::before, .pane-roomify-property-flag-favorites-link .flag-favorites .node-type-blog .roomify-blog-icon .pane-title a::before, .node-type-blog .roomify-blog-icon .pane-title .page-conversation-booking #roomify-accommodation-booking-current-search-form .current-search-item.current-search-submit button::before, .page-conversation-booking #roomify-accommodation-booking-current-search-form .current-search-item.current-search-submit .node-type-blog .roomify-blog-icon .pane-title button::before,
-    .node-type-blog .roomify-blog-icon .pane-title .page-booking #roomify-accommodation-booking-current-search-form .current-search-item.current-search-submit button::before,
-    .page-booking #roomify-accommodation-booking-current-search-form .current-search-item.current-search-submit .node-type-blog .roomify-blog-icon .pane-title button::before {
+    .node-type-blog .roomify-blog-icon .pane-title .glyphicon, .node-type-blog .roomify-blog-icon .pane-title .pane-roomify-property-flag-favorites-link .flag-favorites a::before, .pane-roomify-property-flag-favorites-link .flag-favorites .node-type-blog .roomify-blog-icon .pane-title a::before {
       margin-right: 8px;
       font-size: 16px;
       top: 3px; }
   .node-type-blog .roomify-blog-icon .pane-content {
     display: inline-block; }
-  .node-type-blog .roomify-blog-icon.pane-node-field-blog-categories .glyphicon, .node-type-blog .roomify-blog-icon.pane-node-field-blog-categories .pane-roomify-property-flag-favorites-link .flag-favorites a::before, .pane-roomify-property-flag-favorites-link .flag-favorites .node-type-blog .roomify-blog-icon.pane-node-field-blog-categories a::before, .node-type-blog .roomify-blog-icon.pane-node-field-blog-categories .page-conversation-booking #roomify-accommodation-booking-current-search-form .current-search-item.current-search-submit button::before, .page-conversation-booking #roomify-accommodation-booking-current-search-form .current-search-item.current-search-submit .node-type-blog .roomify-blog-icon.pane-node-field-blog-categories button::before,
-  .node-type-blog .roomify-blog-icon.pane-node-field-blog-categories .page-booking #roomify-accommodation-booking-current-search-form .current-search-item.current-search-submit button::before,
-  .page-booking #roomify-accommodation-booking-current-search-form .current-search-item.current-search-submit .node-type-blog .roomify-blog-icon.pane-node-field-blog-categories button::before, .node-type-blog .roomify-blog-icon.pane-node-field-tags .glyphicon, .node-type-blog .roomify-blog-icon.pane-node-field-tags .pane-roomify-property-flag-favorites-link .flag-favorites a::before, .pane-roomify-property-flag-favorites-link .flag-favorites .node-type-blog .roomify-blog-icon.pane-node-field-tags a::before, .node-type-blog .roomify-blog-icon.pane-node-field-tags .page-conversation-booking #roomify-accommodation-booking-current-search-form .current-search-item.current-search-submit button::before, .page-conversation-booking #roomify-accommodation-booking-current-search-form .current-search-item.current-search-submit .node-type-blog .roomify-blog-icon.pane-node-field-tags button::before,
-  .node-type-blog .roomify-blog-icon.pane-node-field-tags .page-booking #roomify-accommodation-booking-current-search-form .current-search-item.current-search-submit button::before,
-  .page-booking #roomify-accommodation-booking-current-search-form .current-search-item.current-search-submit .node-type-blog .roomify-blog-icon.pane-node-field-tags button::before {
+  .node-type-blog .roomify-blog-icon.pane-node-field-blog-categories .glyphicon, .node-type-blog .roomify-blog-icon.pane-node-field-blog-categories .pane-roomify-property-flag-favorites-link .flag-favorites a::before, .pane-roomify-property-flag-favorites-link .flag-favorites .node-type-blog .roomify-blog-icon.pane-node-field-blog-categories a::before, .node-type-blog .roomify-blog-icon.pane-node-field-tags .glyphicon, .node-type-blog .roomify-blog-icon.pane-node-field-tags .pane-roomify-property-flag-favorites-link .flag-favorites a::before, .pane-roomify-property-flag-favorites-link .flag-favorites .node-type-blog .roomify-blog-icon.pane-node-field-tags a::before {
     margin-right: 13px; }
   .node-type-blog .roomify-blog-icon.pane-node-field-blog-area {
     display: inline-block;
@@ -18315,9 +18374,7 @@ body.page-blog .view-featured-properties.view-display-id-panel_pane_2 .views-row
     @media (max-width: 480px) {
       .node-type-blog .roomify-blog-icon.pane-node-field-blog-area {
         width: 100%; } }
-    .node-type-blog .roomify-blog-icon.pane-node-field-blog-area .glyphicon, .node-type-blog .roomify-blog-icon.pane-node-field-blog-area .pane-roomify-property-flag-favorites-link .flag-favorites a::before, .pane-roomify-property-flag-favorites-link .flag-favorites .node-type-blog .roomify-blog-icon.pane-node-field-blog-area a::before, .node-type-blog .roomify-blog-icon.pane-node-field-blog-area .page-conversation-booking #roomify-accommodation-booking-current-search-form .current-search-item.current-search-submit button::before, .page-conversation-booking #roomify-accommodation-booking-current-search-form .current-search-item.current-search-submit .node-type-blog .roomify-blog-icon.pane-node-field-blog-area button::before,
-    .node-type-blog .roomify-blog-icon.pane-node-field-blog-area .page-booking #roomify-accommodation-booking-current-search-form .current-search-item.current-search-submit button::before,
-    .page-booking #roomify-accommodation-booking-current-search-form .current-search-item.current-search-submit .node-type-blog .roomify-blog-icon.pane-node-field-blog-area button::before {
+    .node-type-blog .roomify-blog-icon.pane-node-field-blog-area .glyphicon, .node-type-blog .roomify-blog-icon.pane-node-field-blog-area .pane-roomify-property-flag-favorites-link .flag-favorites a::before, .pane-roomify-property-flag-favorites-link .flag-favorites .node-type-blog .roomify-blog-icon.pane-node-field-blog-area a::before {
       color: #0C628F;
       margin-right: 10px;
       top: 5px; }
@@ -18339,11 +18396,7 @@ body.page-blog .view-featured-properties.view-display-id-panel_pane_2 .views-row
         margin-left: 5px; }
     .node-type-blog .roomify-blog-icon.pane-node-field-blog-categories .field-item:last-child:after, .node-type-blog .roomify-blog-icon.pane-node-field-tags .field-item:last-child:after {
       content: ""; }
-    .node-type-blog .roomify-blog-icon.pane-node-field-blog-categories .glyphicon, .node-type-blog .roomify-blog-icon.pane-node-field-blog-categories .pane-roomify-property-flag-favorites-link .flag-favorites a::before, .pane-roomify-property-flag-favorites-link .flag-favorites .node-type-blog .roomify-blog-icon.pane-node-field-blog-categories a::before, .node-type-blog .roomify-blog-icon.pane-node-field-blog-categories .page-conversation-booking #roomify-accommodation-booking-current-search-form .current-search-item.current-search-submit button::before, .page-conversation-booking #roomify-accommodation-booking-current-search-form .current-search-item.current-search-submit .node-type-blog .roomify-blog-icon.pane-node-field-blog-categories button::before,
-    .node-type-blog .roomify-blog-icon.pane-node-field-blog-categories .page-booking #roomify-accommodation-booking-current-search-form .current-search-item.current-search-submit button::before,
-    .page-booking #roomify-accommodation-booking-current-search-form .current-search-item.current-search-submit .node-type-blog .roomify-blog-icon.pane-node-field-blog-categories button::before, .node-type-blog .roomify-blog-icon.pane-node-field-tags .glyphicon, .node-type-blog .roomify-blog-icon.pane-node-field-tags .pane-roomify-property-flag-favorites-link .flag-favorites a::before, .pane-roomify-property-flag-favorites-link .flag-favorites .node-type-blog .roomify-blog-icon.pane-node-field-tags a::before, .node-type-blog .roomify-blog-icon.pane-node-field-tags .page-conversation-booking #roomify-accommodation-booking-current-search-form .current-search-item.current-search-submit button::before, .page-conversation-booking #roomify-accommodation-booking-current-search-form .current-search-item.current-search-submit .node-type-blog .roomify-blog-icon.pane-node-field-tags button::before,
-    .node-type-blog .roomify-blog-icon.pane-node-field-tags .page-booking #roomify-accommodation-booking-current-search-form .current-search-item.current-search-submit button::before,
-    .page-booking #roomify-accommodation-booking-current-search-form .current-search-item.current-search-submit .node-type-blog .roomify-blog-icon.pane-node-field-tags button::before {
+    .node-type-blog .roomify-blog-icon.pane-node-field-blog-categories .glyphicon, .node-type-blog .roomify-blog-icon.pane-node-field-blog-categories .pane-roomify-property-flag-favorites-link .flag-favorites a::before, .pane-roomify-property-flag-favorites-link .flag-favorites .node-type-blog .roomify-blog-icon.pane-node-field-blog-categories a::before, .node-type-blog .roomify-blog-icon.pane-node-field-tags .glyphicon, .node-type-blog .roomify-blog-icon.pane-node-field-tags .pane-roomify-property-flag-favorites-link .flag-favorites a::before, .pane-roomify-property-flag-favorites-link .flag-favorites .node-type-blog .roomify-blog-icon.pane-node-field-tags a::before {
       margin-right: 10px;
       top: 7px; }
   .node-type-blog .roomify-blog-icon.pane-node-field-blog-categories {
@@ -18395,9 +18448,7 @@ body.page-blog .view-featured-properties.view-display-id-panel_pane_2 .views-row
   float: left; }
 .node-type-blog .panel_sl_right .panel-pane .pane-content .views-row a:hover {
   text-decoration: underline; }
-.node-type-blog .panel_sl_right .panel-pane .pane-title .glyphicon, .node-type-blog .panel_sl_right .panel-pane .pane-title .pane-roomify-property-flag-favorites-link .flag-favorites a::before, .pane-roomify-property-flag-favorites-link .flag-favorites .node-type-blog .panel_sl_right .panel-pane .pane-title a::before, .node-type-blog .panel_sl_right .panel-pane .pane-title .page-conversation-booking #roomify-accommodation-booking-current-search-form .current-search-item.current-search-submit button::before, .page-conversation-booking #roomify-accommodation-booking-current-search-form .current-search-item.current-search-submit .node-type-blog .panel_sl_right .panel-pane .pane-title button::before,
-.node-type-blog .panel_sl_right .panel-pane .pane-title .page-booking #roomify-accommodation-booking-current-search-form .current-search-item.current-search-submit button::before,
-.page-booking #roomify-accommodation-booking-current-search-form .current-search-item.current-search-submit .node-type-blog .panel_sl_right .panel-pane .pane-title button::before {
+.node-type-blog .panel_sl_right .panel-pane .pane-title .glyphicon, .node-type-blog .panel_sl_right .panel-pane .pane-title .pane-roomify-property-flag-favorites-link .flag-favorites a::before, .pane-roomify-property-flag-favorites-link .flag-favorites .node-type-blog .panel_sl_right .panel-pane .pane-title a::before {
   display: none; }
 .node-type-blog .panel_sl_right .pane-blog-panel-pane-10,
 .node-type-blog .panel_sl_right .pane-blog-panel-pane-4 {
@@ -18511,9 +18562,7 @@ body.page-blog .view-featured-properties.view-display-id-panel_pane_2 .views-row
     border-bottom: 1px solid #ececec;
     padding-bottom: 15px;
     margin-bottom: 25px; }
-    .node-type-blog .panel-content-bottom .pane-blog-panel-pane-9 .pane-title .glyphicon, .node-type-blog .panel-content-bottom .pane-blog-panel-pane-9 .pane-title .pane-roomify-property-flag-favorites-link .flag-favorites a::before, .pane-roomify-property-flag-favorites-link .flag-favorites .node-type-blog .panel-content-bottom .pane-blog-panel-pane-9 .pane-title a::before, .node-type-blog .panel-content-bottom .pane-blog-panel-pane-9 .pane-title .page-conversation-booking #roomify-accommodation-booking-current-search-form .current-search-item.current-search-submit button::before, .page-conversation-booking #roomify-accommodation-booking-current-search-form .current-search-item.current-search-submit .node-type-blog .panel-content-bottom .pane-blog-panel-pane-9 .pane-title button::before,
-    .node-type-blog .panel-content-bottom .pane-blog-panel-pane-9 .pane-title .page-booking #roomify-accommodation-booking-current-search-form .current-search-item.current-search-submit button::before,
-    .page-booking #roomify-accommodation-booking-current-search-form .current-search-item.current-search-submit .node-type-blog .panel-content-bottom .pane-blog-panel-pane-9 .pane-title button::before {
+    .node-type-blog .panel-content-bottom .pane-blog-panel-pane-9 .pane-title .glyphicon, .node-type-blog .panel-content-bottom .pane-blog-panel-pane-9 .pane-title .pane-roomify-property-flag-favorites-link .flag-favorites a::before, .pane-roomify-property-flag-favorites-link .flag-favorites .node-type-blog .panel-content-bottom .pane-blog-panel-pane-9 .pane-title a::before {
       display: none; }
   .node-type-blog .panel-content-bottom .pane-blog-panel-pane-9 .pane-content {
     margin-bottom: 25px; }
@@ -18692,9 +18741,7 @@ body.page-things-to-do .view-featured-properties.view-display-id-panel_pane_2 .v
     display: inline-block;
     font-weight: 300;
     font-size: 15px; }
-  .node-type-activity .pane-node-field-activity-type .glyphicon, .node-type-activity .pane-node-field-activity-type .pane-roomify-property-flag-favorites-link .flag-favorites a::before, .pane-roomify-property-flag-favorites-link .flag-favorites .node-type-activity .pane-node-field-activity-type a::before, .node-type-activity .pane-node-field-activity-type .page-conversation-booking #roomify-accommodation-booking-current-search-form .current-search-item.current-search-submit button::before, .page-conversation-booking #roomify-accommodation-booking-current-search-form .current-search-item.current-search-submit .node-type-activity .pane-node-field-activity-type button::before,
-  .node-type-activity .pane-node-field-activity-type .page-booking #roomify-accommodation-booking-current-search-form .current-search-item.current-search-submit button::before,
-  .page-booking #roomify-accommodation-booking-current-search-form .current-search-item.current-search-submit .node-type-activity .pane-node-field-activity-type button::before {
+  .node-type-activity .pane-node-field-activity-type .glyphicon, .node-type-activity .pane-node-field-activity-type .pane-roomify-property-flag-favorites-link .flag-favorites a::before, .pane-roomify-property-flag-favorites-link .flag-favorites .node-type-activity .pane-node-field-activity-type a::before {
     margin-right: 10px;
     top: 7px; }
 .node-type-activity .pane-activity-panel-pane-2 {
@@ -18812,9 +18859,7 @@ body.page-things-to-do .view-featured-properties.view-display-id-panel_pane_2 .v
     float: left; }
   .node-type-activity .panel_sl_right .panel-pane .pane-content .views-row a:hover {
     text-decoration: underline; }
-  .node-type-activity .panel_sl_right .panel-pane .pane-title .glyphicon, .node-type-activity .panel_sl_right .panel-pane .pane-title .pane-roomify-property-flag-favorites-link .flag-favorites a::before, .pane-roomify-property-flag-favorites-link .flag-favorites .node-type-activity .panel_sl_right .panel-pane .pane-title a::before, .node-type-activity .panel_sl_right .panel-pane .pane-title .page-conversation-booking #roomify-accommodation-booking-current-search-form .current-search-item.current-search-submit button::before, .page-conversation-booking #roomify-accommodation-booking-current-search-form .current-search-item.current-search-submit .node-type-activity .panel_sl_right .panel-pane .pane-title button::before,
-  .node-type-activity .panel_sl_right .panel-pane .pane-title .page-booking #roomify-accommodation-booking-current-search-form .current-search-item.current-search-submit button::before,
-  .page-booking #roomify-accommodation-booking-current-search-form .current-search-item.current-search-submit .node-type-activity .panel_sl_right .panel-pane .pane-title button::before {
+  .node-type-activity .panel_sl_right .panel-pane .pane-title .glyphicon, .node-type-activity .panel_sl_right .panel-pane .pane-title .pane-roomify-property-flag-favorites-link .flag-favorites a::before, .pane-roomify-property-flag-favorites-link .flag-favorites .node-type-activity .panel_sl_right .panel-pane .pane-title a::before {
     display: none; }
 .node-type-activity .panel_sl_right .pane-location-panel-pane-2 {
   padding: 0;
@@ -20245,7 +20290,7 @@ body.node-type-homepage .panel-content-footer {
   margin-bottom: 15px; }
   .page-conversation .entity-message .message {
     width: 40%;
-    padding: 15px 10px;
+    padding: 40px 10px 20px 10px;
     background: white;
     border-radius: 8px;
     border: 2px solid #F3F1F1; }
@@ -20258,7 +20303,7 @@ body.node-type-homepage .panel-content-footer {
       position: relative;
       background: #FFF898;
       border: 2px solid #FFF34A;
-      border-radius: 8px 8px 0px 8px; }
+      border-radius: 8px 8px 0 8px; }
       .page-conversation .entity-message .message.message-right:after {
         border-left: 12px solid #FFF34A;
         border-top: 12px solid transparent;
@@ -20280,13 +20325,15 @@ body.node-type-homepage .panel-content-footer {
       .page-conversation .entity-message .message.message-right .text {
         margin-right: 55px;
         margin-left: 0; }
+      .page-conversation .entity-message .message.message-right .user-name {
+        background: #FFF34A; }
       .page-conversation .entity-message .message.message-right .user-picture {
         position: absolute;
-        top: 25px;
+        top: 55px;
         right: 10px; }
     .page-conversation .entity-message .message.message-left {
       margin-right: 60%;
-      border-radius: 8px 8px 8px 0px;
+      border-radius: 8px 8px 8px 0;
       position: relative; }
       .page-conversation .entity-message .message.message-left:after {
         border-right: 12px solid #ECECEC;
@@ -20297,13 +20344,26 @@ body.node-type-homepage .panel-content-footer {
         position: absolute;
         left: -13px;
         z-index: 999;
-        margin-left: 0px;
+        margin-left: 0;
         width: 0;
         height: 0; }
       .page-conversation .entity-message .message.message-left .user-picture {
         position: absolute;
         left: 10px;
-        top: 25px; }
+        top: 55px; }
+  .page-conversation .entity-message .user-name {
+    position: absolute;
+    top: 0;
+    left: 0px;
+    border-radius: 6px 6px 0px 0px;
+    display: inline-block;
+    width: 100%;
+    padding-top: 2px;
+    padding-left: 10px;
+    padding-right: 10px;
+    background: #ececec;
+    font-weight: 600;
+    font-size: 12px; }
   .page-conversation .entity-message .user-picture {
     float: left; }
     .page-conversation .entity-message .user-picture img {
@@ -20315,13 +20375,6 @@ body.node-type-homepage .panel-content-footer {
   .page-conversation .entity-message .date {
     margin-left: 55px;
     font-size: 12px; }
-.page-conversation .entity-entityform {
-  margin-bottom: 15px; }
-  .page-conversation .entity-entityform .left {
-    float: left; }
-  .page-conversation .entity-entityform .right {
-    float: right;
-    clear: right; }
 .page-conversation .entity-bat-booking {
   background: white;
   padding: 15px;
@@ -20408,9 +20461,25 @@ body.node-type-homepage .panel-content-footer {
   width: 100%; }
   .page-conversation .enquiry-item .left {
     float: left;
-    line-height: 34px; }
+    line-height: 34px;
+    width: 100%;
+    line-height: 1.5em;
+    margin-bottom: 10px; }
+    @media (min-width: 768px) {
+      .page-conversation .enquiry-item .left {
+        margin-bottom: 0;
+        width: 50%;
+        margin-top: 10px;
+        text-align: left; } }
   .page-conversation .enquiry-item .right {
-    float: right; }
+    float: right;
+    width: 100%;
+    margin-bottom: 10px; }
+    @media (min-width: 768px) {
+      .page-conversation .enquiry-item .right {
+        margin-bottom: 0;
+        width: 50%;
+        text-align: right; } }
     .page-conversation .enquiry-item .right .button {
       display: inline-block; }
       .page-conversation .enquiry-item .right .button .btn, .page-conversation .enquiry-item .right .button .pane-roomify-listing-availability-search-block-roomify-property-search .listing-base-price button, .pane-roomify-listing-availability-search-block-roomify-property-search .listing-base-price .page-conversation .enquiry-item .right .button button,
@@ -20437,6 +20506,106 @@ body.node-type-homepage .panel-content-footer {
         border-radius: 5px; }
       .page-conversation .enquiry-item .right .button.make-offer {
         margin-left: 10px; }
+.page-conversation .enquiry {
+  font-size: 15px; }
+  .page-conversation .enquiry .enquiry-telephone,
+  .page-conversation .enquiry .enquiry-info,
+  .page-conversation .enquiry .enquiry-name,
+  .page-conversation .enquiry .enquiry-email,
+  .page-conversation .enquiry .enquiry-guests,
+  .page-conversation .enquiry .enquiry-children,
+  .page-conversation .enquiry .enquiry-type-ref,
+  .page-conversation .enquiry .enquiry-dep-date,
+  .page-conversation .enquiry .enquiry-arr-date {
+    min-height: 120px;
+    width: 32%;
+    margin-right: 10px;
+    margin-bottom: 10px;
+    display: inline-block;
+    background: white; }
+    @media (max-width: 992px) {
+      .page-conversation .enquiry .enquiry-telephone,
+      .page-conversation .enquiry .enquiry-info,
+      .page-conversation .enquiry .enquiry-name,
+      .page-conversation .enquiry .enquiry-email,
+      .page-conversation .enquiry .enquiry-guests,
+      .page-conversation .enquiry .enquiry-children,
+      .page-conversation .enquiry .enquiry-type-ref,
+      .page-conversation .enquiry .enquiry-dep-date,
+      .page-conversation .enquiry .enquiry-arr-date {
+        width: 48%;
+        margin-left: 1%;
+        margin-right: 1%; } }
+    @media (max-width: 768px) {
+      .page-conversation .enquiry .enquiry-telephone,
+      .page-conversation .enquiry .enquiry-info,
+      .page-conversation .enquiry .enquiry-name,
+      .page-conversation .enquiry .enquiry-email,
+      .page-conversation .enquiry .enquiry-guests,
+      .page-conversation .enquiry .enquiry-children,
+      .page-conversation .enquiry .enquiry-type-ref,
+      .page-conversation .enquiry .enquiry-dep-date,
+      .page-conversation .enquiry .enquiry-arr-date {
+        width: 100%; } }
+    .page-conversation .enquiry .enquiry-telephone .label,
+    .page-conversation .enquiry .enquiry-info .label,
+    .page-conversation .enquiry .enquiry-name .label,
+    .page-conversation .enquiry .enquiry-email .label,
+    .page-conversation .enquiry .enquiry-guests .label,
+    .page-conversation .enquiry .enquiry-children .label,
+    .page-conversation .enquiry .enquiry-type-ref .label,
+    .page-conversation .enquiry .enquiry-dep-date .label,
+    .page-conversation .enquiry .enquiry-arr-date .label {
+      color: #7C7C7C;
+      width: 100%;
+      text-transform: uppercase;
+      text-align: center;
+      font-size: 16px;
+      margin-top: 10px;
+      margin-bottom: 5px;
+      display: inline-block;
+      padding: 0; }
+    .page-conversation .enquiry .enquiry-telephone .item,
+    .page-conversation .enquiry .enquiry-info .item,
+    .page-conversation .enquiry .enquiry-name .item,
+    .page-conversation .enquiry .enquiry-email .item,
+    .page-conversation .enquiry .enquiry-guests .item,
+    .page-conversation .enquiry .enquiry-children .item,
+    .page-conversation .enquiry .enquiry-type-ref .item,
+    .page-conversation .enquiry .enquiry-dep-date .item,
+    .page-conversation .enquiry .enquiry-arr-date .item {
+      text-align: center;
+      width: 100%;
+      margin-top: 10px;
+      display: inline-block;
+      font-size: 20px;
+      color: black;
+      font-weight: 600; }
+  .page-conversation .enquiry .enquiry-info {
+    padding-left: 25px;
+    padding-right: 25px;
+    width: 100%; }
+    .page-conversation .enquiry .enquiry-info .label,
+    .page-conversation .enquiry .enquiry-info .item {
+      text-align: left; }
+  .page-conversation .enquiry .enquiry-price {
+    width: 100%;
+    padding: 10px;
+    background: #158CBA;
+    display: inline-block;
+    margin: 30px 0;
+    font-size: 22px;
+    border-radius: 5px;
+    border-bottom: 3px solid #127ba3;
+    text-align: right;
+    color: white; }
+    .page-conversation .enquiry .enquiry-price .label {
+      color: white;
+      margin-right: 10px;
+      display: inline-block;
+      text-transform: uppercase; }
+    .page-conversation .enquiry .enquiry-price .item {
+      display: inline-block; }
 
 .view-user-conversations .views-row {
   display: inline-block;
@@ -20467,7 +20636,7 @@ div.ctools-modal-dialog .modal-header {
 
 div.ctools-modal-dialog .modal-header .modal-title {
   color: #000;
-  font-family: 'Playfair Display', serif;
+  font-family: Lato;
   font-weight: 400; }
 
 /* Add a nice drop shadow. */
@@ -20478,7 +20647,7 @@ div.ctools-modal-dialog .modal-header .modal-title {
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
   background: #F7F7F7;
   border: none;
-  font-family: 'Playfair Display', serif;
+  font-family: 'Lato';
   width: auto !important;
   max-width: 500px !important;
   height: auto !important;
