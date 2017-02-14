@@ -2525,11 +2525,15 @@ function roomify_dashboard_views_default_views() {
   $handler->display->display_options['fields']['name']['id'] = 'name';
   $handler->display->display_options['fields']['name']['table'] = 'pets';
   $handler->display->display_options['fields']['name']['field'] = 'name';
-  $handler->display->display_options['fields']['name']['label'] = 'Edit Template';
-  $handler->display->display_options['fields']['name']['alter']['alter_text'] = TRUE;
-  $handler->display->display_options['fields']['name']['alter']['text'] = 'Edit';
-  $handler->display->display_options['fields']['name']['alter']['make_link'] = TRUE;
-  $handler->display->display_options['fields']['name']['alter']['path'] = '/admin/structure/pets/manage/[name]';
+  $handler->display->display_options['fields']['name']['label'] = '';
+  $handler->display->display_options['fields']['name']['exclude'] = TRUE;
+  $handler->display->display_options['fields']['name']['element_label_colon'] = FALSE;
+  /* Field: Previewable Email Template: Localized Edit link */
+  $handler->display->display_options['fields']['localize_edit_link']['id'] = 'localize_edit_link';
+  $handler->display->display_options['fields']['localize_edit_link']['table'] = 'pets';
+  $handler->display->display_options['fields']['localize_edit_link']['field'] = 'localize_edit_link';
+  $handler->display->display_options['fields']['localize_edit_link']['label'] = 'Edit Template';
+  $handler->display->display_options['fields']['localize_edit_link']['element_label_colon'] = FALSE;
   $handler->display->display_options['path'] = 'admin/bat/config/email-templates';
   $translatables['email_templates'] = array(
     t('Master'),
