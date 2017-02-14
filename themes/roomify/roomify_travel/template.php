@@ -357,9 +357,7 @@ function roomify_travel_preprocess_page(&$variables) {
   // Areas custom template.
   if(arg(0) == 'taxonomy' && arg(1) == 'term') {
     $tid = (int)arg(2);
-    //dpm($tid);
     $term = taxonomy_term_load($tid);
-    //dpm($term);
 
     if($term->vocabulary_machine_name == 'location') {
       $variables['theme_hook_suggestions'][] = 'page__taxonomy__location';

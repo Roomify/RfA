@@ -1,4 +1,3 @@
-
 body.page-single-property-listing {
   background: #F8F8F8;
   strong {
@@ -11,58 +10,13 @@ body.page-single-property-listing {
     color: white;
     border-bottom: 0;
   }
-  header {
-    margin-bottom: 0;
-    z-index: 2;
-    background: transparent !important;
-    border-radius: 0;
-    border: 0;
-    border-bottom: 1px solid rgba(255, 255, 255, 0.15);
-    @media (max-width: $screen-sm) {
-      background: rgba(0, 0, 0, 0.10);
-    }
-    .collasping,
-    .collapse.in {
-      width: 100%;
-      display: inline-block;
-      margin-bottom: 65px;
-    }
-    .navbar-toggle:hover,
-    .navbar-toggle:focus {
-      background: transparent;
-    }
-    a.name,
-    .navbar-nav > li > a {
-      font-weight: 400;
-      @media (min-width: $screen-sm) {
-        color: #FFFFFF !important;
-        &:hover {
-          color: black !important;
-        }
-      }
-    }
-    .roomify-sidebar-menu-toggle svg {
-      fill: #FFFFFF;
-      @media (max-width: $screen-sm) {
-        fill: #484848;
-      }
-      &:hover {
-        fill: black !important;
-      }
-    }
-  }
   .panel-content-top {
     position: relative;
   }
   .main-container {
-  	@media (min-width: $screen-sm) {
-	    padding-top: 0;
-	    position: relative;
-	    bottom: 75px;
-	    padding-bottom: 75px;
-	  }
+    padding-top: 0;
+    position: relative;
   }
-
   .pane-property-slideshow {
 	  border: none;
 	  min-height: inherit;
@@ -274,11 +228,11 @@ body.page-single-property-listing {
 	      @include make-xs-column(12);
 	      @include make-sm-column(3.5);
 	      .form-submit {
-	        @extend .btn-danger;
 	        text-transform: capitalize;
 	        padding: 6px;
 	        font-size: 14px;
 	        width: 100%;
+          @include button-variant($btn-danger-color, $btn-danger-bg, $btn-danger-border);
 	      }
 	    }
       .listing-availability-search-submit {
@@ -307,13 +261,13 @@ body.page-single-property-listing {
 	      height: 35px;
 	      font-size: 15px;
 	      &.form-text::-webkit-input-placeholder {
-	        color: #353535;
+	        color: #c9c9c9;
 	      }
 	      &.form-text::-moz-placeholder {
-	        color: #353535;
+	        color: #c9c9c9;
 	      }
 	      &.form-text:-moz-placeholder {
-	        color: #353535;
+	        color: #c9c9c9;
 	      }
     	}
     }
@@ -345,10 +299,23 @@ body.page-single-property-listing {
     font-size: 26px;
     text-align: center;
     margin: 50px 0;
+    @media (max-width: $screen-xs) {
+      margin-bottom: 0;
+    }
 	}
 	.panel-content-wrapper,
 	.panel-content-bottom {
-		@extend .container;
+		@include container-fixed;
+
+    @media (min-width: $screen-sm-min) {
+      width: $container-sm;
+    }
+    @media (min-width: $screen-md-min) {
+      width: $container-md;
+    }
+    @media (min-width: $screen-lg-min) {
+      width: $container-lg;
+    }
 	}
 	.panel-content-bottom {
 		margin-bottom: 70px;
@@ -362,9 +329,9 @@ body.page-single-property-listing {
         li.ui-state-default {
           border-width: 1px;
           border-bottom: 0;
-          float: right;
+          float: left;
           &:first-child {
-            margin-right: 0;
+            //margin-right: 0;
           }
         }
       }
@@ -442,26 +409,16 @@ body.page-single-property-listing {
       }
     }
   }
-  .casa-property-description {
-    display: inline-block;
-    width: 100%;
-    padding: 30px;
-    background: white;
-    border-radius: 2px;
-    border: 1px solid #ececec;
-    margin-top: 52px;
-    margin-bottom: 50px;
-  }
   /* PROPERTY TYPES */
   .view-property-travel {
     display: inline-block;
     width: 100%;
-    padding: 30px;
-    background: white;
-    border-radius: 2px;
-    border: 1px solid #ececec;
-    margin-top: 52px;
-    margin-bottom: 50px;
+    padding: 18px;
+    margin-top: 40px;
+    margin-bottom: 40px;
+    @media (max-width: $screen-xs) {
+      padding: 0;
+    }
     .views-row {
       display: inline-block;
       width: 100%;
@@ -477,14 +434,23 @@ body.page-single-property-listing {
           font-size: 20px;
           margin-bottom: 20px;
           display: inline-block;
-          font-weight: 400;
+          color: initial;
+          @media (min-width: $screen-md) {
+            font-size: 24px;
+          }
         }
       }
+       .views-field-field-st-description {
+        font-size: 16px;
+       }
       .views-field-field-st-gallery {
         display: inline-block;
         float: left;
         margin-right: 20px;
-        max-width: 250px;
+        max-width: 360px;
+        @media (max-width: $screen-xs) {
+          margin-bottom: 15px;
+        }
         img {
           border-radius: 2px;
         }
@@ -496,6 +462,7 @@ body.page-single-property-listing {
         a.btn {
           @include make-xs-column(4);
           float: right;
+          max-width: 200px;
         }
         .info {
           @include make-xs-column(8);

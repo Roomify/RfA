@@ -342,3 +342,64 @@ function roomify_offers_add_event_discount_field($bundle) {
     field_create_instance($instance);
   }
 }
+
+/**
+ * Add "Always override price" field.
+ */
+function roomify_offers_add_always_override_price_field($bundle) {
+  field_info_cache_clear();
+  // "offer_always_override_price" field.
+  if (field_read_field('offer_always_override_price') === FALSE) {
+    $field = array(
+      'cardinality' => 1,
+      'field_name' => 'offer_always_override_price',
+      'locked' => 1,
+      'settings' => array(
+        'allowed_values' => array(
+          0 => '',
+          1 => '',
+        ),
+        'allowed_values_function' => '',
+        'entity_translation_sync' => FALSE,
+        'profile2_private' => FALSE,
+      ),
+      'type' => 'list_boolean',
+    );
+    field_create_field($field);
+  }
+  field_cache_clear();
+  // "offer_always_override_price" field instance.
+  if (field_read_instance('roomify_rate', 'offer_always_override_price', $bundle) === FALSE) {
+    $instance = array(
+      'bundle' => $bundle,
+      'default_value' => NULL,
+      'description' => '',
+      'display' => array(
+        'default' => array(
+          'label' => 'above',
+          'module' => 'text',
+          'settings' => array(
+            'conditions' => array(),
+          ),
+          'type' => 'list_default',
+        ),
+      ),
+      'entity_type' => 'roomify_rate',
+      'field_name' => 'offer_always_override_price',
+      'label' => 'Always override price',
+      'required' => 0,
+      'settings' => array(
+        'user_register_form' => FALSE,
+      ),
+      'widget' => array(
+        'active' => 1,
+        'module' => 'options',
+        'settings' => array(
+          'display_label' => 1,
+        ),
+        'type' => 'options_onoff',
+      ),
+    );
+    field_create_instance($instance);
+  }
+}

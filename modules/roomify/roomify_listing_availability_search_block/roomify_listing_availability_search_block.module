@@ -246,6 +246,7 @@ function roomify_listing_search_block_form() {
     '#suffix' => '</div>',
     '#type' => 'submit',
     '#value' => $button_text,
+    '#attributes' => array('class' => array('btn-danger')),
   );
 
   return $form;
@@ -564,11 +565,10 @@ function locanda_search_availability_search_form_submit($form, $form_state) {
     'query' => array(
       'bat_start_date' => $arrival,
       'bat_end_date' => $departure,
-      'group_size' => $form_state['values']['group_size'] + 1
+      'group_size' => $form_state['values']['group_size'] + 1,
     ),
     'fragment' => 'property-types',
-    )
-  );
+  ));
 }
 
 /**
@@ -708,6 +708,7 @@ function bat_type_search_availability_form() {
     '#prefix' => '<div class="bat-type-availability-search-submit">',
     '#suffix' => '</div>',
     '#value' => t('Search'),
+    '#attributes' => array('class' => array('btn-default btn-danger')),
   );
 
   return $form;
@@ -756,6 +757,6 @@ function bat_type_search_availability_form_submit($form, $form_state) {
       drupal_set_message($message, 'error');
     }
 
-    drupal_goto('room-type/' . $type->type_id, array('fragment' => 'search-availability'));
+    drupal_goto('room-type/' . $type->type_id);
   }
 }

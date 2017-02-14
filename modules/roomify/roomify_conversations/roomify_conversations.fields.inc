@@ -175,42 +175,6 @@ function roomify_conversations_add_booking_reference_field() {
 }
 
 /**
- * Add "Inquiry" reference field.
- */
-function roomify_conversations_add_inquiry_reference_field() {
-  field_info_cache_clear();
-
-  // "conversation_inquiry_ref" field.
-  if (field_read_field('conversation_inquiry_ref') === FALSE) {
-    $field = array(
-      'field_name' => 'conversation_inquiry_ref',
-      'type' => 'entityreference',
-      'cardinality' => -1,
-      'locked' => 1,
-      'settings' => array(
-        'target_type' => 'entityform',
-      ),
-    );
-    field_create_field($field);
-  }
-
-  // "conversation_inquiry_ref" field instance.
-  if (field_read_instance('roomify_conversation', 'conversation_inquiry_ref', 'standard') === FALSE) {
-    $instance = array(
-      'field_name' => 'conversation_inquiry_ref',
-      'entity_type' => 'roomify_conversation',
-      'label' => 'Inquiry',
-      'bundle' => 'standard',
-      'required' => FALSE,
-      'widget' => array(
-        'type' => 'entityreference_autocomplete',
-      ),
-    );
-    field_create_instance($instance);
-  }
-}
-
-/**
  * Add "Unit type" reference field.
  */
 function roomify_conversations_add_unit_type_reference_field() {
@@ -473,12 +437,274 @@ function roomify_conversations_add_end_date_field() {
 }
 
 /**
+ * Add 'Name' field.
+ */
+function roomify_conversations_add_name_field() {
+  field_info_cache_clear();
+
+  if (field_read_field('conversation_user_name') === FALSE) {
+    $field = array(
+      'field_name' => 'conversation_user_name',
+      'type' => 'text',
+      'cardinality' => 1,
+      'locked' => 1,
+      'settings' => array(
+        'max_length' => 255,
+        'profile2_private' => FALSE,
+      ),
+    );
+    field_create_field($field);
+  }
+
+  field_cache_clear();
+
+  if (field_read_instance('roomify_conversation', 'conversation_user_name', 'standard') === FALSE) {
+    $instance = array(
+      'field_name' => 'conversation_user_name',
+      'entity_type' => 'roomify_conversation',
+      'label' => 'Name',
+      'bundle' => 'standard',
+      'required' => FALSE,
+      'widget' => array(
+        'type' => 'text_textfield',
+        'weight' => 6,
+      ),
+    );
+    field_create_instance($instance);
+  }
+}
+
+/**
+ * Add 'Email' field.
+ */
+function roomify_conversations_add_email_field() {
+  field_info_cache_clear();
+
+  if (field_read_field('conversation_user_email') === FALSE) {
+    $field = array(
+      'field_name' => 'conversation_user_email',
+      'type' => 'text',
+      'cardinality' => 1,
+      'locked' => 1,
+      'settings' => array(
+        'max_length' => 255,
+        'profile2_private' => FALSE,
+      ),
+    );
+    field_create_field($field);
+  }
+
+  field_cache_clear();
+
+  if (field_read_instance('roomify_conversation', 'conversation_user_email', 'standard') === FALSE) {
+    $instance = array(
+      'field_name' => 'conversation_user_email',
+      'entity_type' => 'roomify_conversation',
+      'label' => 'Email',
+      'bundle' => 'standard',
+      'required' => FALSE,
+      'widget' => array(
+        'type' => 'text_textfield',
+        'weight' => 6,
+      ),
+    );
+    field_create_instance($instance);
+  }
+}
+
+/**
+ * Add 'Guests' field.
+ */
+function roomify_conversations_add_guests_field() {
+  field_info_cache_clear();
+
+  if (field_read_field('conversation_guests') === FALSE) {
+    $field = array(
+      'field_name' => 'conversation_guests',
+      'type' => 'text',
+      'cardinality' => 1,
+      'locked' => 1,
+      'settings' => array(
+        'max_length' => 255,
+        'profile2_private' => FALSE,
+      ),
+    );
+    field_create_field($field);
+  }
+
+  field_cache_clear();
+
+  if (field_read_instance('roomify_conversation', 'conversation_guests', 'standard') === FALSE) {
+    $instance = array(
+      'field_name' => 'conversation_guests',
+      'entity_type' => 'roomify_conversation',
+      'label' => 'Guests',
+      'bundle' => 'standard',
+      'required' => FALSE,
+      'widget' => array(
+        'type' => 'text_textfield',
+        'weight' => 6,
+      ),
+    );
+    field_create_instance($instance);
+  }
+}
+
+/**
+ * Add 'Children' field.
+ */
+function roomify_conversations_add_children_field() {
+  field_info_cache_clear();
+
+  if (field_read_field('conversation_children') === FALSE) {
+    $field = array(
+      'field_name' => 'conversation_children',
+      'type' => 'text',
+      'cardinality' => 1,
+      'locked' => 1,
+      'settings' => array(
+        'max_length' => 255,
+        'profile2_private' => FALSE,
+      ),
+    );
+    field_create_field($field);
+  }
+
+  field_cache_clear();
+
+  if (field_read_instance('roomify_conversation', 'conversation_children', 'standard') === FALSE) {
+    $instance = array(
+      'field_name' => 'conversation_children',
+      'entity_type' => 'roomify_conversation',
+      'label' => 'Children',
+      'bundle' => 'standard',
+      'required' => FALSE,
+      'widget' => array(
+        'type' => 'text_textfield',
+        'weight' => 6,
+      ),
+    );
+    field_create_instance($instance);
+  }
+}
+
+/**
+ * Add 'Telephone' field.
+ */
+function roomify_conversations_add_telephone_field() {
+  field_info_cache_clear();
+
+  if (field_read_field('conversation_telephone') === FALSE) {
+    $field = array(
+      'field_name' => 'conversation_telephone',
+      'type' => 'text',
+      'cardinality' => 1,
+      'locked' => 1,
+      'settings' => array(
+        'max_length' => 255,
+        'profile2_private' => FALSE,
+      ),
+    );
+    field_create_field($field);
+  }
+
+  field_cache_clear();
+
+  if (field_read_instance('roomify_conversation', 'conversation_telephone', 'standard') === FALSE) {
+    $instance = array(
+      'field_name' => 'conversation_telephone',
+      'entity_type' => 'roomify_conversation',
+      'label' => 'Telephone',
+      'bundle' => 'standard',
+      'required' => FALSE,
+      'widget' => array(
+        'type' => 'text_textfield',
+        'weight' => 6,
+      ),
+    );
+    field_create_instance($instance);
+  }
+}
+
+/**
+ * Add 'Further info' field.
+ */
+function roomify_conversations_add_further_info_field() {
+  field_info_cache_clear();
+
+  if (field_read_field('conversation_further_info') === FALSE) {
+    $field = array(
+      'field_name' => 'conversation_further_info',
+      'type' => 'text_long',
+      'cardinality' => 1,
+      'locked' => 1,
+      'settings' => array(
+        'max_length' => 255,
+        'profile2_private' => FALSE,
+      ),
+    );
+    field_create_field($field);
+  }
+
+  field_cache_clear();
+
+  if (field_read_instance('roomify_conversation', 'conversation_further_info', 'standard') === FALSE) {
+    $instance = array(
+      'field_name' => 'conversation_further_info',
+      'entity_type' => 'roomify_conversation',
+      'label' => 'Further info',
+      'bundle' => 'standard',
+      'required' => FALSE,
+      'widget' => array(
+        'type' => 'text_textarea',
+        'weight' => 6,
+      ),
+    );
+    field_create_instance($instance);
+  }
+}
+
+/**
+ * Add 'Price' field.
+ */
+function roomify_conversations_add_price_field() {
+  field_info_cache_clear();
+
+  if (field_read_field('conversation_book_price') === FALSE) {
+    $field = array(
+      'field_name' => 'conversation_book_price',
+      'type' => 'commerce_price',
+      'cardinality' => 1,
+      'locked' => 1,
+      'settings' => array(),
+    );
+    field_create_field($field);
+  }
+
+  field_cache_clear();
+
+  if (field_read_instance('roomify_conversation', 'conversation_book_price', 'standard') === FALSE) {
+    $instance = array(
+      'field_name' => 'conversation_book_price',
+      'entity_type' => 'roomify_conversation',
+      'label' => 'Price',
+      'bundle' => 'standard',
+      'required' => FALSE,
+      'widget' => array(
+        'type' => 'commerce_price_simple',
+      ),
+      'settings' => array(),
+    );
+    field_create_instance($instance);
+  }
+}
+
+/**
  * Create booking 'Full Name' field.
  */
 function roomify_conversations_add_booking_full_name() {
   field_info_cache_clear();
 
-  // "booking_full_name" field.
   if (field_read_field('booking_full_name') === FALSE) {
     $field = array(
       'field_name' => 'booking_full_name',
@@ -495,7 +721,6 @@ function roomify_conversations_add_booking_full_name() {
 
   field_cache_clear();
 
-  // "booking_full_name" field instance.
   if (field_read_instance('bat_booking', 'booking_full_name', 'conversation_booking') === FALSE) {
     $instance = array(
       'field_name' => 'booking_full_name',
@@ -517,7 +742,6 @@ function roomify_conversations_add_booking_full_name() {
 function roomify_conversations_add_booking_telephone() {
   field_info_cache_clear();
 
-  // "booking_full_name" field.
   if (field_read_field('booking_telephone') === FALSE) {
     $field = array(
       'field_name' => 'booking_telephone',
@@ -534,7 +758,6 @@ function roomify_conversations_add_booking_telephone() {
 
   field_cache_clear();
 
-  // "booking_full_name" field instance.
   if (field_read_instance('bat_booking', 'booking_telephone', 'conversation_booking') === FALSE) {
     $instance = array(
       'field_name' => 'booking_telephone',

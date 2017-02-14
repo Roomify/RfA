@@ -168,6 +168,22 @@ function roomify_footer_form($form, &$form_state) {
 }
 
 /**
+ * Helper to switch the language of the variables to the proper one.
+ *
+ * @see https://www.drupal.org/node/2268415
+ */
+function _roomify_system_prepare_variables_realm() {
+  if (empty($_GET['variable_realm_key_language'])) {
+    return;
+  }
+
+  $language = $_GET['variable_realm_key_language'];
+
+  variable_realm_switch('language', $language, FALSE);
+  variable_realm_rebuild();
+}
+
+/**
  * Form "Global Site Settings".
  */
 function roomify_system_global_site_settings_form($form, &$form_state) {
@@ -183,6 +199,7 @@ function roomify_system_global_site_settings_form($form, &$form_state) {
     }
   }
   form_load_include($form_state, 'inc', 'variable_realm', 'variable_realm.variable');
+  _roomify_system_prepare_variables_realm();
 
   $form['site_information'] = array(
     '#type' => 'fieldset',
@@ -273,10 +290,15 @@ function roomify_system_global_site_settings_form($form, &$form_state) {
     );
   }
 
+  $uploaded_logo = file_load(variable_get('roomify_logo_uploaded', 0));
+
   $form['logo']['settings']['logo_upload'] = array(
-    '#type' => 'file',
+    '#type' => 'managed_file',
     '#title' => t('Upload logo image'),
-    '#maxlength' => 40,
+    '#upload_location' => roomify_system_file_dir(),
+    '#default_value' => isset($uploaded_logo->fid) ? $uploaded_logo->fid : '',
+    '#upload_validators' => array('file_validate_extensions' => array('ico png gif jpg jpeg apng svg')),
+    '#theme' => 'roomify_image_thumb_upload',
   );
 
   $form['favicon'] = array(
@@ -327,7 +349,7 @@ function roomify_system_global_site_settings_form($form, &$form_state) {
 }
 
 /**
- * Validate function for the roomify_system_global_site_settings_form form.
+ * Validation function for the roomify_system_global_site_settings_form form.
  */
 function roomify_system_global_site_settings_form_validate($form, &$form_state) {
   module_load_include('inc', 'system', 'system.admin');
@@ -336,20 +358,11 @@ function roomify_system_global_site_settings_form_validate($form, &$form_state) 
   $validators = array('file_validate_is_image' => array());
 
   // Check for a new uploaded logo.
-  $file = file_save_upload('logo_upload', $validators);
-  if (isset($file)) {
-    // File upload was attempted.
-    if ($file) {
-      // Put the temporary file in form_values so we can save it on submit.
-      $form_state['values']['logo_upload'] = $file;
-    }
-    else {
-      // File upload failed.
-      form_set_error('logo_upload', t('The logo could not be uploaded.'));
-    }
-  }
-
   $validators = array('file_validate_extensions' => array('ico png gif jpg jpeg apng svg'));
+
+  if (!empty($form_state['values']['logo_upload'])) {
+    variable_set('roomify_logo_uploaded', $form_state['values']['logo_upload']);
+  }
 
   // Check for a new uploaded favicon.
   $file = file_save_upload('favicon_upload', $validators);
@@ -437,7 +450,7 @@ function roomify_system_global_site_settings_form_submit($form, &$form_state) {
   // If the user uploaded a new logo or favicon, save it to a permanent location
   // and use it in place of the default theme-provided file.
   if (!empty($values['logo_upload'])) {
-    $file = $values['logo_upload'];
+    $file = file_load($values['logo_upload']);
     $filename = file_unmanaged_copy($file->uri, roomify_system_file_dir());
     $settings['default_logo'] = 0;
     $settings['logo_path'] = $filename;
@@ -875,6 +888,8 @@ function roomify_system_roomify_rights() {
       'unpublish own property',
       'unpublish own type',
       'edit meta tags',
+      'view any commerce_customer_profile entity',
+      'create commerce_customer_profile entities',
     ),
     'roomify manager' => array(
       'administer fields',
@@ -974,6 +989,8 @@ function roomify_system_roomify_rights() {
       // Profiles2.
       'administer profile types',
       'administer profiles',
+      // Access Redirects.
+      'administer redirects',
       'use media wysiwyg',
       'access media browser',
       'create files',
@@ -985,6 +1002,9 @@ function roomify_system_roomify_rights() {
       'administer roomify_customer_support',
       'edit meta tags',
       'administer theme colors',
+      'edit any commerce_customer_profile entity',
+      'view any commerce_customer_profile entity',
+      'create commerce_customer_profile entities',
     ),
     'content editor' => array(
       'access content overview',
@@ -1687,12 +1707,32 @@ function roomify_system_menu_alter(&$items) {
 
   $items['user/%user/orders/%commerce_order']['title callback'] = 'roomify_system_order_title';
 
+  // This is required until issue https://www.drupal.org/node/2078423.
+  // in Redirect module will be fixed.
+  $items['admin/config/search/redirect/settings']['access callback'] = '_roomify_system_administrators_only_access_callback';
+
 }
 
+/**
+ * Restrict access to administrators.
+ */
+function _roomify_system_administrators_only_access_callback() {
+  global $user;
+
+  // Forbid access for roles different than administrator.
+  return (in_array('administrator', array_values($user->roles))) ? TRUE : FALSE;
+}
+
+/**
+ *
+ */
 function roomify_system_order_title($order) {
   return t('Booking');
 }
 
+/**
+ *
+ */
 function _menu_edit_role_check() {
   global $user;
 
@@ -1916,9 +1956,9 @@ function roomify_system_form_menu_edit_item_alter(&$form, &$form_state) {
  *
  * @param $type
  * @param $property
- * @param $start_date
- * @param $end_date
- * @param $nights
+ * @param DateTime $start_date
+ * @param DateTime $end_date
+ * @param int $nights
  *
  * @return string
  */
@@ -2050,4 +2090,20 @@ function roomify_system_tokens($type, $tokens, array $data = array(), array $opt
   }
 
   return $replacements;
+}
+
+/**
+ * Implements hook_theme().
+ */
+function roomify_system_theme() {
+  return array(
+    'roomify_image_thumb_upload' => array(
+      'render element' => 'element',
+      'file' => 'roomify_system.module',
+    ),
+    'better_messages' => array(
+      'template'  => 'roomify_better_messages',
+      'variables' => array('content' => NULL),
+    ),
+  );
 }

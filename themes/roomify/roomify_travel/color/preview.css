@@ -5,13 +5,17 @@
   display: inline-block;
   padding: 8px 16px;
 }
-
+#preview #header {
+  border-bottom: 4px solid #e7e7e7;
+  border-color: #e7e7e7;
+}
 #preview .logo {
   height: 100%;
-  width: 25%;
+  width: 60%;
   display: inline-block;
   float: left;
   text-align: center;
+  position: relative;
 }
 #preview .logo img {
   max-height: 100%;
@@ -19,37 +23,29 @@
 
 #preview .main-menu {
   float: left;
-  width: 70%;
-  text-align: right;
+  width: 20%;
+  margin-top: 10px;
 }
 
-#preview .main-menu .menu {
-  float: right;
-}
-#preview .menu li {
-  display: inline-block;
-  float: left;
-  list-style: none;
-  padding: 15px;
-}
-#preview .menu li a {
-  color: #7C7C7C;
-  font-weight: 600;
-}
 
+#preview .main-menu svg {
+  fill: #484848;
+}
 
 #preview .roomify-sidebar-link {
-  margin-left: 20px;
-  width: 30px;
   height: 30px;
-  padding: 0;
+  display: inline-block;
+  width: 20%;
+  position: relative;
+  margin-top: 10px;
 }
 #preview .roomify-sidebar-link a {
   width: 30px;
   height: 30px;
   display: inline-block;
-  position: relative;
-  top: 8px;
+  position: absolute;
+  top: 0px;
+  right: 0;
 }
 
 

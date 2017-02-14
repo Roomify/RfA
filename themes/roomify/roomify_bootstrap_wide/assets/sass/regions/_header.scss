@@ -289,25 +289,32 @@ body.roomify-notification {
 }
 
 .roomify-language-switcher {
+  position: relative;
+  background: #000000;
   .language-switcher-locale-session,
   .language-switcher-locale-url {
-    position: absolute;
     right: 15px;
     z-index: 15;
-    margin-top: 5px;
+    display: inline-block;
+    position: relative;
+    top: 8px;
+    text-align: right;
+    width: 100%;
     li {
       display: inline-block;
-      float: left;
-      margin-left: 10px;
+      float: right;
+      margin-left: 15px;
       a {
-        color: #CCCCCC;
-        font-weight:600;
+        color: #FFFFFF !important;
+        img {
+          float: left;
+          margin-right: 5px;
+          margin-top: 4px;
+        }
       }
       &.active {
         text-decoration: underline;
-        font-weight: bold;
       }
     }
   }
 }
-    

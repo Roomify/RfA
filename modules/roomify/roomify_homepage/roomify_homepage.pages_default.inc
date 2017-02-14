@@ -1,6 +1,10 @@
 <?php
 
 /**
+ * @file
+ */
+
+/**
  * Implements hook_default_page_manager_handlers().
  */
 function roomify_homepage_default_page_manager_handlers() {

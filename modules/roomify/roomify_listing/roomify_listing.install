@@ -40,6 +40,13 @@ function roomify_listing_install() {
   variable_set('metatag_enable_roomify_property', 1);
   variable_set('metatag_enable_roomify_property__casa_property', 1);
   variable_set('metatag_enable_roomify_property__locanda_property', 1);
+
+  $variable_realm_list = variable_get('variable_realm_list_language', array());
+  $variable_realm_list[] = 'roomify_submission_reply_text';
+  $variable_realm_list[] = 'roomify_form_instructions_text';
+  $variable_realm_list[] = 'roomify_submission_reply_page_title';
+  $variable_realm_list[] = 'roomify_customer_support_message';
+  variable_set('variable_realm_list_language', $variable_realm_list);
 }
 
 /**
@@ -170,6 +177,17 @@ function roomify_listing_create_standard_event_states() {
   );
 
   bat_event_save_state($event_state, 'availability');
+}
+
+/**
+ * Implements hook_update_dependencies().
+ */
+function roomify_listing_update_dependencies() {
+  $dependencies['roomify_listing'][7027] = array(
+    'roomify_conversations' => 7003,
+  );
+
+  return $dependencies;
 }
 
 /**
@@ -1141,4 +1159,97 @@ function roomify_listing_update_7024() {
   variable_set('metatag_enable_roomify_property', 1);
   variable_set('metatag_enable_roomify_property__casa_property', 1);
   variable_set('metatag_enable_roomify_property__locanda_property', 1);
+}
+
+/**
+ * Remove instant booking field for Home types.
+ */
+function roomify_listing_update_7025() {
+  $instance_info = field_read_instance('bat_type', 'field_st_allow_instant_bookings', 'home');
+  field_delete_instance($instance_info);
+
+  // Remove the field from the fieldgroup.
+  $field_group = field_group_load_field_group('group_pricing_availability', 'bat_type', 'home', 'form');
+  foreach ($field_group->children as $key => $value) {
+    if ($value == 'field_st_allow_instant_bookings') {
+      unset($field_group->children[$key]);
+    }
+  }
+}
+
+/**
+ * Localize Customer message text.
+ */
+function roomify_listing_update_7026() {
+  $message = variable_get('roomify_customer_support_message', array('value' => '', 'format' => NULL));
+  if ($message['value'] != '') {
+    variable_set_value('roomify_customer_support_message', $message);
+  }
+  // Set the custom message as translatable.
+  $variable_realm_list = variable_get('variable_realm_list_language', array());
+  $variable_realm_list[] = 'roomify_customer_support_message';
+
+  variable_set('variable_realm_list_language', $variable_realm_list);
+}
+
+/**
+ * Migrate existing entityform submission data.
+ */
+function roomify_listing_update_7027() {
+  $query = new EntityFieldQuery();
+
+  $query->entityCondition('entity_type', 'roomify_conversation');
+
+  $result = $query->execute();
+
+  if (isset($result['roomify_conversation'])) {
+    foreach ($result['roomify_conversation'] as $conversation) {
+      $conversation = roomify_conversation_load($conversation->conversation_id);
+
+      if (isset($conversation->conversation_inquiry_ref[LANGUAGE_NONE][0]['target_id'])) {
+        if ($entityform = entityform_load($conversation->conversation_inquiry_ref[LANGUAGE_NONE][0]['target_id'])) {
+          if (isset($entityform->field_listing_enquiry_email[LANGUAGE_NONE][0]['email'])) {
+            $conversation->conversation_user_email[LANGUAGE_NONE][0]['value'] = $entityform->field_listing_enquiry_email[LANGUAGE_NONE][0]['email'];
+          }
+
+          if (isset($entityform->field_listing_enquiry_info[LANGUAGE_NONE][0]['value'])) {
+            $conversation->conversation_further_info[LANGUAGE_NONE][0]['value'] = $entityform->field_listing_enquiry_info[LANGUAGE_NONE][0]['value'];
+          }
+
+          if (isset($entityform->field_listing_enquiry_guests[LANGUAGE_NONE][0]['value'])) {
+            $conversation->conversation_guests[LANGUAGE_NONE][0]['value'] = $entityform->field_listing_enquiry_guests[LANGUAGE_NONE][0]['value'];
+          }
+
+          if (isset($entityform->field_listing_enquiry_name[LANGUAGE_NONE][0]['value'])) {
+            $conversation->conversation_user_name[LANGUAGE_NONE][0]['value'] = $entityform->field_listing_enquiry_name[LANGUAGE_NONE][0]['value'];
+          }
+
+          if (isset($entityform->field_listing_enquiry_price[LANGUAGE_NONE][0]['amount'])) {
+            $conversation->conversation_book_price[LANGUAGE_NONE][0] = $entityform->field_listing_enquiry_price[LANGUAGE_NONE][0];
+          }
+
+          field_attach_update('roomify_conversation', $conversation);
+        }
+      }
+    }
+  }
+}
+
+/**
+ * Migrate existing translations of the field names
+ * on the entityform and the submission confirmation text.
+ */
+function roomify_listing_update_7028() {
+  $variable_realm_list = variable_get('variable_realm_list_language', array());
+  $variable_realm_list[] = 'roomify_submission_reply_text';
+  $variable_realm_list[] = 'roomify_form_instructions_text';
+  $variable_realm_list[] = 'roomify_submission_reply_page_title';
+  variable_set('variable_realm_list_language', $variable_realm_list);
+}
+
+/**
+ * Re-Migrate existing entityform submission data.
+ */
+function roomify_listing_update_7029() {
+  roomify_listing_update_7027();
 }

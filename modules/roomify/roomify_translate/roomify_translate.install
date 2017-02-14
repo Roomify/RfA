@@ -83,6 +83,8 @@ function _roomify_translate_update_locations() {
   $location_settings['shared_fields_original_only'] = '0';
   variable_set('entity_translation_settings_taxonomy_term__location', $location_settings);
 
+  // Clear the entity info cache for the new entity translation settings.
+  entity_info_cache_clear();
 }
 
 /**

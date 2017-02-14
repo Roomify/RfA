@@ -9,7 +9,7 @@
     float: right;
     right: 15px;
     bottom: 90px;
-    z-index: 1000;
+    z-index: 99;
     width: 200px;
     .inner {
       margin: 0 auto;
@@ -81,7 +81,7 @@
 
 .pane-roomify-property-flag-favorites-link {
   position: relative;
-  z-index: 999;
+  z-index: 98;
   top: 150px;
   @media (max-width: $screen-sm) {
     top: 40px;
@@ -268,7 +268,7 @@
     form {
       padding-top: 60px;
       position: relative;
-      border-top: 4px solid #158cba;
+      border-top: 3px solid #158cba;
       width: 100%;
     }
     label {
@@ -276,7 +276,7 @@
     }
     .listing-base-price {
       position: absolute;
-      top: 0;
+      top: -1px;
       right: 0;
       padding: 0 10px;
       background: $black;
@@ -540,6 +540,7 @@
   .pane-roomify-property-field-sp-highlight-image1-cap,
   .pane-roomify-property-field-sp-highlight-image2-cap,
   .pane-roomify-property-field-sp-highlight-image3-cap {
+    font-weight: 500;
     img {
       margin: 60px auto 10px auto;
       border: 1px solid #ececec;
@@ -611,12 +612,12 @@
               }
               a {
                 color: #127ba3;
+                font-size: 22px;
                 text-decoration: none;
               }
               img {
                 max-width: 140px;
                 border-radius: 2px;
-                border: 1px solid #ECECEC;
                 margin-left: 25px;
                 margin-top: 15px;
               }
@@ -627,7 +628,7 @@
               font-style: italic;
               .type-description {
                 @media (min-width: $screen-md) {
-                  margin-top: 45px;
+                  margin-top: 65px;
                 }
                 font-style: normal;
                 p {
@@ -678,10 +679,9 @@
                 height: 25px;
               }
               a {
-                font-size: 15px;
-                width: 120px;
+                font-size: 12px;
+                width: 125px;
                 text-align: center;
-                color: white;
                 @include button-variant(#FFFFFF, #127BA3, #158CBA);
               }
               .info {
@@ -693,20 +693,25 @@
             }
             .footable-row-detail-inner {
               margin: 10px 0;
+              padding: 30px;
+              display: block;
               border-radius: 2px;
               border: 1px solid #ececec;
-              background: #f8f8f8;
+              background: rgb(250, 250, 250);
+              .footable-row-detail-value {
+                line-height: 2em;
+              }
               .footable-row-detail-row {
                 margin: 8px 2%;
                 display: inline-block;
                 width: 100%;
                 &:first-child {
-                  width: 100%;
-                  margin-top: 25px;
                   margin-bottom: 10px;
-                  padding: 0 10px;
                   font-weight: 400;
                   font-size: 15px;
+                  .footable-row-detail-name {
+                    padding-right: 0;
+                  }
                   .type-description {
                     font-style: normal;
                     p {

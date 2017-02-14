@@ -683,71 +683,6 @@ function roomify_listing_roomify_conversations_user_picture($account) {
 }
 
 /**
- * Implements hook_form_FORM_ID_alter().
- *
- * FORM_ID = listing_enquiry_entityform_edit_form.
- */
-function roomify_listing_form_listing_enquiry_entityform_edit_form_alter(&$form, &$form_state) {
-  $type = bat_type_load($_GET['field_listing_enquiry_type_ref']);
-  $property = roomify_property_load($type->field_st_property_reference[LANGUAGE_NONE][0]['target_id']);
-
-  if ($property->type == 'locanda_property') {
-    drupal_set_title(t('Booking Request for @property_name - @type_name', array('@property_name' => $property->name, '@type_name' => $type->name)));
-  }
-  else {
-    drupal_set_title(t('Booking Request for @property_name', array('@property_name' => $property->name)));
-  }
-
-  // For logged in users prefill and hide the email field.
-  if (user_is_logged_in()) {
-    global $user;
-
-    if (isset($form['#entity']->is_new) && $form['#entity']->is_new) {
-      $form['field_listing_enquiry_email'][LANGUAGE_NONE][0]['email']['#default_value'] = $user->mail;
-      $form['field_listing_enquiry_email'][LANGUAGE_NONE][0]['#access'] = FALSE;
-    }
-  }
-
-  $form['field_listing_enquiry_price'][LANGUAGE_NONE][0]['#access'] = FALSE;
-
-  // Prefill Enquiry with information from search.
-  if (isset($_SESSION['enquiry'])) {
-    $enquiry = $_SESSION['enquiry'];
-
-    if ($_GET['field_listing_enquiry_type_ref'] == $enquiry['type_id']) {
-      $form['field_listing_enquiry_price'][LANGUAGE_NONE][0]['amount']['#default_value'] = $enquiry['amount'];
-
-      $form['field_listing_enquiry_arr_date'][LANGUAGE_NONE][0]['#disabled'] = TRUE;
-      $form['field_listing_enquiry_arr_date'][LANGUAGE_NONE][0]['#default_value']['value'] = $enquiry['start_date']->format('Y-m-d');
-      $form['field_listing_enquiry_arr_date'][LANGUAGE_NONE][0]['#date_items']['value'] = $enquiry['start_date']->format('Y-m-d');
-
-      $form['field_listing_enquiry_dep_date'][LANGUAGE_NONE][0]['#disabled'] = TRUE;
-      $form['field_listing_enquiry_dep_date'][LANGUAGE_NONE][0]['#default_value']['value'] = $enquiry['end_date']->format('Y-m-d');
-      $form['field_listing_enquiry_dep_date'][LANGUAGE_NONE][0]['#date_items']['value'] = $enquiry['end_date']->format('Y-m-d');
-
-      if (isset($enquiry['group_size'])) {
-        $form['field_listing_enquiry_guests'][LANGUAGE_NONE][0]['#disabled'] = TRUE;
-        $form['field_listing_enquiry_guests'][LANGUAGE_NONE][0]['value']['#default_value'] = $enquiry['group_size'];
-      }
-    }
-  }
-
-  $form['#attached']['js'] = array(
-    drupal_get_path('module', 'bat') . '/js/bat_date_popup.js',
-    array(
-      'data' => array(
-        'bat' => array(
-          'batDateGranularity' => 'bat_daily',
-        ),
-      ),
-      'type' => 'setting',
-    ),
-  );
-
-  $form['actions']['submit']['#attributes']['class'][] = 'btn-primary';
-}
-
-/**
  * Implements hook_date_combo_process_alter().
  */
 function roomify_listing_date_combo_process_alter(&$element, &$form_state, $context) {
@@ -1171,12 +1106,36 @@ function roomify_listing_menu() {
     'description' => 'Add a message to show to the user in some pages',
     'page callback' => 'drupal_get_form',
     'page arguments' => array('roomify_customer_support_form'),
-    'access callback' => 'user_access',
     'access arguments' => array('administer roomify_customer_support'),
     'type' => MENU_NORMAL_ITEM,
   );
 
+  $items['admin/bat/config/enquiry/settings'] = array(
+    'title' => 'Enquiry Form settings',
+    'description' => '',
+    'page callback' => 'drupal_get_form',
+    'page arguments' => array('roomify_listing_enquiry_settings_form'),
+    'access arguments' => array('administer roomify_customer_support'),
+    'type' => MENU_NORMAL_ITEM,
+  );
+
+  $items['contact/done'] = array(
+    'title callback' => 'roomify_listing_contact_done_title_callback',
+    'description' => '',
+    'page callback' => 'roomify_listing_enquiry_done',
+    'access arguments' => array('access content'),
+    'type' => MENU_NORMAL_ITEM,
+  );
+
   return $items;
+}
+
+/**
+ * 'Contact Enquiry Sent' title callback.
+ */
+function roomify_listing_contact_done_title_callback() {
+
+  return variable_get_value('roomify_submission_reply_page_title');
 }
 
 /**
@@ -1193,9 +1152,12 @@ function roomify_listing_permission() {
 }
 
 /**
- * Roomify Customer support form
+ * Roomify Customer support form.
  */
-function roomify_customer_support_form() {
+function roomify_customer_support_form($form, &$form_state) {
+  form_load_include($form_state, 'inc', 'variable_realm', 'variable_realm.variable');
+  _roomify_system_prepare_variables_realm();
+
   $pages = array(
     'availability_page' => t('Availability Page'),
     'blog_page' => t('Blog Page'),
@@ -1213,13 +1175,324 @@ function roomify_customer_support_form() {
     '#options' => $pages,
   );
 
-  $message = variable_get('roomify_customer_support_message', array('value' => '', 'format' => NULL));
+  $message = variable_get_value('roomify_customer_support_message');
 
   $form['roomify_customer_support_message'] = array(
     '#type' => 'text_format',
     '#title' => t('Message'),
-    '#format' => $message['format'],
+    '#format' => 'filtered_text',
     '#default_value' => $message['value'],
   );
-  return system_settings_form($form);
+
+  $form['submit'] = array(
+    '#type' => 'submit',
+    '#value' => t('Save Configuration'),
+  );
+
+  $form['#submit'] = array('roomify_customer_support_form_submit');
+
+  variable_realm_variable_settings_form_alter($form, $form_state, 'roomify_customer_support_form');
+
+  return $form;
+}
+
+/**
+ * Submit function to save values.
+ */
+function roomify_customer_support_form_submit($form, &$form_state) {
+  variable_set('roomify_customer_support_page', $form_state['values']['roomify_customer_support_page']);
+}
+
+/**
+ * "Enquiry" form.
+ */
+function roomify_listing_enquiry_form($form, &$form_state, $arrival_date, $departure_date, $type_id, $amount, $group_size) {
+  global $user;
+
+  $form_instructions_text = variable_get_value('roomify_form_instructions_text');
+
+  $form['close'] = array(
+    '#markup' => '<button type="button" class="close ctools-close-modal"></button>',
+  );
+
+  $type = bat_type_load($type_id);
+  $property = roomify_property_load($type->field_st_property_reference[LANGUAGE_NONE][0]['target_id']);
+
+  if ($property->type == 'locanda_property') {
+    $title = t('Booking Request for @property_name - @type_name', array('@property_name' => $property->name, '@type_name' => $type->name));
+  }
+  else {
+    $title = t('Booking Request for @property_name', array('@property_name' => $property->name));
+  }
+
+  $form['status_messages'] = array(
+    '#markup' => '<div id="status-messages"></div>',
+  );
+
+  $form['title'] = array(
+    '#markup' => '<div class="title">' . $title . '</div>',
+  );
+
+  $form['instructions'] = array(
+    '#markup' => check_markup($form_instructions_text['value'], $form_instructions_text['format']),
+  );
+
+  $form['guest_name'] = array(
+    '#type' => 'textfield',
+    '#title' => t('Name'),
+    '#required' => TRUE,
+  );
+
+  if ($user->uid > 0) {
+    $form['email'] = array(
+      '#type' => 'hidden',
+      '#value' => $user->mail,
+    );
+  }
+  else {
+    $form['email'] = array(
+      '#type' => 'textfield',
+      '#title' => t('Email'),
+      '#required' => TRUE,
+    );
+  }
+
+  $form['telephone'] = array(
+    '#type' => 'textfield',
+    '#title' => t('Telephone'),
+  );
+
+  $form['arrival_date'] = array(
+    '#type' => 'hidden',
+    '#value' => $arrival_date->format('Y-m-d H:i:s'),
+  );
+
+  $form['departure_date'] = array(
+    '#type' => 'hidden',
+    '#value' => $departure_date->format('Y-m-d H:i:s'),
+  );
+
+  $form['guests'] = array(
+    '#type' => 'hidden',
+    '#value' => $group_size,
+  );
+
+  $form['children'] = array(
+    '#type' => 'textfield',
+    '#title' => t('Children'),
+    '#size' => 12,
+  );
+
+  $form['further_info'] = array(
+    '#type' => 'textarea',
+    '#title' => t('Further info'),
+    '#resizable' => FALSE,
+  );
+
+  $form['listing_type'] = array(
+    '#type' => 'hidden',
+    '#value' => $type_id,
+  );
+
+  $form['price'] = array(
+    '#type' => 'hidden',
+    '#value' => $amount,
+  );
+
+  $form['submit'] = array(
+    '#type' => 'submit',
+    '#value' => t('Send Request'),
+    '#attributes' => array(
+      'class' => array('btn-primary'),
+    ),
+    '#ajax' => array(
+      'callback' => 'roomify_listing_enquiry_form_submit'
+    ),
+  );
+
+  return $form;
+}
+
+/**
+ * Submit function for the roomify_customer_enquiry_form form.
+ */
+function roomify_listing_enquiry_form_submit($form, &$form_state) {
+  ctools_include('ajax');
+  ctools_include('modal');
+  ctools_add_js('ajax-responder');
+
+  drupal_validate_form('roomify_customer_enquiry_form', $form, $form_state);
+
+  if (form_get_errors()) {
+    $form_state['rebuild'] = TRUE;
+
+    $messages = '<div id="status-messages">' . theme('status_messages') . '</div>';
+    if ($messages) {
+      $commands = array();
+      $commands[] = ajax_command_replace('#status-messages', $messages);
+
+      print ajax_render($commands);
+      exit;
+    }
+  }
+
+  $values = $form_state['values'];
+
+  $email_address = $values['email'];
+  $user_name = commerce_order_unique_username($values['guest_name']);
+
+  $account = user_load_by_mail($email_address);
+
+  if ($account === FALSE) {
+    // Create a new user and send a link to confirm the email address.
+    $password = user_password(8);
+
+    $fields = array(
+      'name' => $user_name,
+      'mail' => $email_address,
+      'pass' => $password,
+      'status' => 1,
+      'init' => 'email address',
+      'roles' => array(
+        DRUPAL_AUTHENTICATED_RID => 'authenticated user',
+      ),
+    );
+
+    $account = user_save('', $fields);
+
+    drupal_mail('roomify_conversations', 'register_no_approval_required', $email_address, NULL, array('account' => $account), variable_get('site_mail', ini_get('sendmail_from')));
+  }
+
+  // Assign 'guest' role.
+  $guest_role = user_role_load_by_name('guest');
+  user_multiple_role_edit(array($account->uid), 'add_role', $guest_role->rid);
+
+  $conv_fields = array(
+    'name' => $user_name,
+    'type' => 'standard',
+    'created' => time(),
+    'changed' => time(),
+    'uid' => $account->uid,
+    'language' => LANGUAGE_NONE,
+  );
+  $conversation = roomify_conversation_create($conv_fields);
+
+  $type = bat_type_load($values['listing_type']);
+
+  $conversation->conversation_owner_user_ref[LANGUAGE_NONE][0]['target_id'] = $type->uid;
+  $conversation->conversation_guest_user_ref[LANGUAGE_NONE][0]['target_id'] = $account->uid;
+
+  $conversation->conversation_unit_type_ref[LANGUAGE_NONE][0]['target_id'] = $values['listing_type'];
+  $conversation->conversation_book_start_date[LANGUAGE_NONE][0]['value'] = $values['arrival_date'];
+  $conversation->conversation_book_end_date[LANGUAGE_NONE][0]['value'] = $values['departure_date'];
+
+  $conversation->conversation_user_name[LANGUAGE_NONE][0]['value'] = $values['guest_name'];
+
+  // Check for Offers.
+  $offer_amount = 0;
+  $offer_always_override_price = FALSE;
+  if (module_exists('roomify_offers')) {
+    $type = bat_type_load($values['listing_type']);
+    $start_date = new DateTime($values['arrival_date']);
+    $end_date = new DateTime($values['departure_date']);
+    $temp_end_date = clone($end_date);
+    $temp_end_date->sub(new DateInterval('PT1M'));
+
+    $property = roomify_property_load($type->field_st_property_reference[LANGUAGE_NONE][0]['target_id']);
+
+    $offers = roomify_offers_get_offers($property, $start_date, $temp_end_date);
+
+    if (!empty($offers)) {
+      foreach ($offers as $offer) {
+        if (isset($offer->offer_description[LANGUAGE_NONE][0]['value'])) {
+          $offer_descriptions[] = $offer->offer_description[LANGUAGE_NONE][0]['value'];
+        }
+        if (isset($offer->offer_always_override_price[LANGUAGE_NONE][0]['value']) &&
+            $offer->offer_always_override_price[LANGUAGE_NONE][0]['value']) {
+          $offer_always_override_price = TRUE;
+        }
+      }
+
+      if (isset($type->field_st_rates_for_person[LANGUAGE_NONE][0]['value']) &&
+          $type->field_st_rates_for_person[LANGUAGE_NONE][0]['value']) {
+        $offer_amount = roomify_accommodation_booking_calculate_price($start_date, $temp_end_date, $type->type_id, $values['guests'], $offers);
+      }
+      else {
+        $offer_amount = roomify_accommodation_booking_calculate_price($start_date, $temp_end_date, $type->type_id, 0, $offers);
+      }
+    }
+  }
+
+  $conversation->conversation_book_price[LANGUAGE_NONE][0] = array(
+    'amount' => ($offer_amount == 0) ? $values['price'] * 100 : $offer_amount,
+    'currency_code' => 'USD',
+    'data' => array(
+      'components' => array(),
+    ),
+  );
+  $conversation->conversation_guests[LANGUAGE_NONE][0]['value'] = $values['guests'];
+  $conversation->conversation_user_email[LANGUAGE_NONE][0]['value'] = $values['email'];
+  $conversation->conversation_further_info[LANGUAGE_NONE][0]['value'] = $values['further_info'];
+  $conversation->conversation_children[LANGUAGE_NONE][0]['value'] = $values['children'];
+  $conversation->conversation_telephone[LANGUAGE_NONE][0]['value'] = $values['telephone'];
+
+  roomify_conversation_save($conversation);
+
+  module_load_include('inc', 'pet', 'pet.rules');
+
+  $conversation_wrapper = entity_metadata_wrapper('roomify_conversation', $conversation);
+
+  $rules_state = new RulesState();
+  $rules_state->currentArguments['roomify_conversation'] = $conversation_wrapper;
+  $rules_state->variables['roomify_conversation'] = $conversation_wrapper;
+
+  $to_account = user_load($type->uid);
+  pet_action_send_pet('new_booking_enquiry', NULL, $to_account, NULL, NULL, array(), $rules_state);
+
+  $commands = array();
+  $commands[] = ctools_modal_command_dismiss();
+  $commands[] = ctools_ajax_command_redirect('contact/done');
+
+  print ajax_render($commands);
+  exit;
+}
+
+/**
+ * "Enquiry Form settings" form.
+ */
+function roomify_listing_enquiry_settings_form($form, &$form_state) {
+  form_load_include($form_state, 'inc', 'variable_realm', 'variable_realm.variable');
+  module_load_include('form.inc', 'variable');
+
+  $form['roomify_submission_reply_page_title'] = variable_form_element(variable_get_info('roomify_submission_reply_page_title'));
+
+  $form['roomify_submission_reply_text'] = variable_form_element(variable_get_info('roomify_submission_reply_text'));
+
+  $form['roomify_form_instructions_text'] = variable_form_element(variable_get_info('roomify_form_instructions_text'));
+
+  $form['submit'] = array(
+    '#type' => 'submit',
+    '#value' => t('Save configuration'),
+  );
+
+  $form['#submit'] = array('roomify_listing_enquiry_settings_form_submit');
+  variable_realm_variable_settings_form_alter($form, $form_state, 'roomify_listing_enquiry_settings_form');
+
+  return $form;
+}
+
+/**
+ * Submit function for the roomify_listing_enquiry_settings_form form.
+ */
+function roomify_listing_enquiry_settings_form_submit($form, &$form_state) {
+  drupal_set_message(t('The configuration options have been saved.'));
+}
+
+/**
+ * Submission_reply page.
+ */
+function roomify_listing_enquiry_done() {
+  $submission_reply_text = variable_get_value('roomify_submission_reply_text');
+
+  return check_markup($submission_reply_text['value'], $submission_reply_text['format']);
 }

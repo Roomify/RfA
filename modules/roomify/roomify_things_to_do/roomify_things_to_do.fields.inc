@@ -296,7 +296,7 @@ function roomify_things_to_do_create_fields() {
       'bundle' => 'activity',
       'default_value' => array(),
       'deleted' => 0,
-      'description' => '',
+      'description' => 'You may add new Activities, check out the Manage Taxonomies link on the dashboard or follow <a href="/admin/structure/taxonomy/activity" target="_blank">this link</a>',
       'display' => array(
         'default' => array(
           'label' => 'above',
@@ -413,7 +413,7 @@ function roomify_things_to_do_create_fields() {
       'bundle' => 'activity',
       'default_value' => NULL,
       'deleted' => 0,
-      'description' => '',
+      'description' => 'This will add a marker in a map on the content page and on the <a href="/things-to-do" target="_blank">Activities page</a>',
       'display' => array(
         'default' => array(
           'label' => 'above',

@@ -19,13 +19,20 @@ function roomify_terms_conditions_menu() {
   );
 
   $items['terms-and-conditions'] = array(
-    'title' => 'Terms & Conditions',
+    'title callback' => 'roomify_terms_and_conditions_page_title',
     'page callback' => 'roomify_terms_conditions_page',
     'access arguments' => array('access content'),
     'type' => MENU_CALLBACK,
   );
 
   return $items;
+}
+
+/**
+ * Menu title callback.
+ */
+function roomify_terms_and_conditions_page_title() {
+  return t('Terms & Conditions');
 }
 
 /**
@@ -55,6 +62,10 @@ function roomify_terms_conditions_page() {
  * Terms & Conditions configuration form.
  */
 function roomify_terms_conditions_configuration_form($form, &$form_state) {
+  form_load_include($form_state, 'inc', 'variable_realm', 'variable_realm.variable');
+  module_load_include('form.inc', 'variable');
+  _roomify_system_prepare_variables_realm();
+
   $form['terms_conditions'] = array(
     '#type' => 'container',
     '#prefix' => '<div id="terms-conditions">',
@@ -71,24 +82,9 @@ function roomify_terms_conditions_configuration_form($form, &$form_state) {
     ),
   );
 
-  $form['terms_conditions']['terms_conditions_message'] = array(
-    '#type' => 'textfield',
-    '#title' => t('T&C Message'),
-    '#size' => 100,
-    '#required' => TRUE,
-    '#default_value' => variable_get_value('roomify_terms_conditions_message'),
-  );
+  $form['terms_conditions']['roomify_terms_conditions_message'] = variable_form_element(variable_get_info('roomify_terms_conditions_message'));
 
-  $terms_conditions_body = variable_get_value('roomify_terms_conditions_body');
-
-  $form['terms_conditions']['terms_conditions_body'] = array(
-    '#type' => 'text_format',
-    '#title' => t('Terms & Conditions'),
-    '#rows' => 15,
-    '#required' => TRUE,
-    '#default_value' => (isset($terms_conditions_body['value'])) ? $terms_conditions_body['value'] : '',
-    '#format' => (isset($terms_conditions_body['format'])) ? $terms_conditions_body['format'] : 'rich_text',
-  );
+  $form['terms_conditions']['roomify_terms_conditions_body'] = variable_form_element(variable_get_info('roomify_terms_conditions_body'));
 
   $form['terms_conditions']['terms_conditions_attachment'] = array(
     '#type' => 'managed_file',
@@ -100,14 +96,17 @@ function roomify_terms_conditions_configuration_form($form, &$form_state) {
   );
 
   if (($form_state['rebuild'] && isset($form_state['values']['terms_conditions']) && !$form_state['values']['terms_conditions']) || (!variable_get('roomify_terms_conditions', 1) && !$form_state['rebuild'])) {
-    $form['terms_conditions']['terms_conditions_message']['#access'] = FALSE;
-    $form['terms_conditions']['terms_conditions_body']['#access'] = FALSE;
+    $form['terms_conditions']['roomify_terms_conditions_message']['#access'] = FALSE;
+    $form['terms_conditions']['roomify_terms_conditions_body']['#access'] = FALSE;
   }
 
   $form['submit'] = array(
     '#type' => 'submit',
     '#value' => t('Save configuration'),
   );
+
+  $form['#submit'] = array('roomify_terms_conditions_configuration_form_submit');
+  variable_realm_variable_settings_form_alter($form, $form_state, 'roomify_terms_conditions_configuration_form');
 
   return $form;
 }
@@ -124,8 +123,6 @@ function roomify_terms_conditions_configuration_form_ajax_callback($form, &$form
  */
 function roomify_terms_conditions_configuration_form_submit($form, &$form_state) {
   variable_set('roomify_terms_conditions', $form_state['values']['terms_conditions']);
-  variable_set_value('roomify_terms_conditions_message', $form_state['values']['terms_conditions_message']);
-  variable_set_value('roomify_terms_conditions_body', $form_state['values']['terms_conditions_body']);
   variable_set('terms_conditions_attachment', $form_state['values']['terms_conditions_attachment']);
 
   drupal_set_message(t('The configuration options have been saved'));
