@@ -194,7 +194,7 @@ projects[entityform_block][patch][] = https://www.drupal.org/files/issues/entity
 
 projects[entityreference][version] = 1.2
 
-projects[entityreference_prepopulate][version] = 1.6
+projects[entityreference_prepopulate][version] = 1.7
 
 projects[environment_indicator][version] = 2.8
 
@@ -208,7 +208,7 @@ projects[facetapi_pretty_paths][version] = 1.4
 
 projects[fast_404][version] = 1.5
 
-projects[fb_likebox][version] = 2.2
+projects[fb_likebox][version] = 2.3
 
 projects[features][version] = 2.10
 
@@ -260,7 +260,7 @@ projects[jquery_update][version] = 3.0-alpha3
 
 projects[job_scheduler][version] = 2.x-dev
 
-projects[i18n][version] = 1.14
+projects[i18n][version] = 1.15
 
 projects[i18nviews][version] = 3.0-alpha1
 projects[i18nviews][patch][] = https://www.drupal.org/files/issues/i18nviews-2245917-1-export-translatables-v1.patch
@@ -277,13 +277,13 @@ projects[interval][version] = 1.0
 
 projects[ip2country][version] = 1.4
 
-projects[jquery_colorpicker][version] = 1.2
+projects[jquery_colorpicker][version] = 1.3
 
 projects[languageicons][version] = 1.1
 
-projects[leaflet][version] = 1.3
+projects[leaflet][version] = 1.4
 
-projects[leaflet_more_maps][version] = 1.16
+projects[leaflet_more_maps][version] = 1.17
 
 projects[less][version] = 4.0
 
@@ -310,7 +310,7 @@ projects[masonry][version] = 3.0-beta1
 
 projects[masonry_views][version] = 3.0
 
-projects[media][version] = 2.0-rc2
+projects[media][version] = 2.0-rc4
 
 projects[menu_admin_per_menu][version] = 1.0
 projects[menu_admin_per_menu][patch][] = https://www.drupal.org/files/issues/integrate-menu-translation-suport-2546214-1.patch
@@ -318,7 +318,7 @@ projects[menu_admin_per_menu][patch][] = https://www.drupal.org/files/issues/int
 projects[message][version] = 1.12
 projects[message][patch][] = https://www.drupal.org/files/issues/text-sanitized.patch
 
-projects[metatag][version] = 1.19
+projects[metatag][version] = 1.20
 
 projects[mimemail][version] = 1.0-beta4
 
@@ -326,7 +326,7 @@ projects[module_filter][version] = 2.0
 
 projects[override_node_options][version] = 1.13
 
-projects[panels][version] = 3.8
+projects[panels][version] = 3.9
 
 projects[panels_everywhere][version] = 1.0-rc2
 
@@ -395,13 +395,13 @@ projects[search_api][version] = 1.20
 projects[search_api_db][type] = module
 projects[search_api_db][download][type] = git
 projects[search_api_db][download][url] = https://git.drupal.org/project/search_api_db.git
-projects[search_api_db][download][revision] = 4e30fb20b8c99634ba5b26b0d87f48e997d482a8
+projects[search_api_db][download][revision] = ceb10d8d2e8934cd89019a222ce8c0c33fa1f094
 projects[search_api_db][patch][] = https://www.drupal.org/files/issues/2219897-25--facets_for_empty_results.patch
 
 projects[search_api_ranges][type] = module
 projects[search_api_ranges][download][type] = git
 projects[search_api_ranges][download][url] = https://git.drupal.org/project/search_api_ranges.git
-projects[search_api_ranges][download][revision] = abbfa9bd6698d6fe5dca2f77bac94aedeed4da5f
+projects[search_api_ranges][download][revision] = c769589f3aa90a7413401169ce520f891bee7e20
 
 projects[search_api_sorts][version] = 1.6
 
@@ -414,7 +414,7 @@ projects[session_api][version] = 1.0-rc1
 projects[slick][type] = module
 projects[slick][download][type] = git
 projects[slick][download][url] = https://git.drupal.org/project/slick.git
-projects[slick][download][revision] = 6189680926f15e66146dcb2457de5d709cb47ef5
+projects[slick][download][revision] = eba6411910e1adf2d027607f4dbeb294be9ccd4b
 
 projects[slick_views][type] = module
 projects[slick_views][download][type] = git
@@ -431,7 +431,7 @@ projects[taxonomy_access_fix][version] = 2.3
 
 projects[timefield][version] = 1.0-alpha2
 
-projects[title][version] = 1.0-alpha8
+projects[title][version] = 1.0-alpha9
 
 projects[token][version] = 1.7
 
@@ -544,7 +544,7 @@ libraries[leaflet][directory_name] = leaflet
 libraries[leaflet][type] = library
 libraries[leaflet][destination] = libraries
 libraries[leaflet][download][type] = get
-libraries[leaflet][download][url] = http://cdn.leafletjs.com/leaflet/v0.7.7/leaflet.zip
+libraries[leaflet][download][url] = http://cdn.leafletjs.com/leaflet/v1.0.3/leaflet.zip
 
 ; less.php
 libraries[less.php][directory_name] = less.php
