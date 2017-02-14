@@ -2,6 +2,7 @@
 
 /**
  * @file
+ * Contains a Views field handler to take care of a localize link to edit pets.
  */
 
 /**
