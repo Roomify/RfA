@@ -2350,6 +2350,17 @@ function roomify_dashboard_views_default_views() {
       ),
     ),
   );
+  $handler->display->display_options['defaults']['sorts'] = FALSE;
+  /* Sort criterion: BAT Booking: Start Date (booking_start_date) */
+  $handler->display->display_options['sorts']['booking_start_date_value']['id'] = 'booking_start_date_value';
+  $handler->display->display_options['sorts']['booking_start_date_value']['table'] = 'field_data_booking_start_date';
+  $handler->display->display_options['sorts']['booking_start_date_value']['field'] = 'booking_start_date_value';
+  $handler->display->display_options['sorts']['booking_start_date_value']['relationship'] = 'reverse_booking_line_item_reference_bat_booking';
+  /* Sort criterion: BAT Booking: Start Date (booking_start_date) */
+  $handler->display->display_options['sorts']['booking_start_date_value_1']['id'] = 'booking_start_date_value_1';
+  $handler->display->display_options['sorts']['booking_start_date_value_1']['table'] = 'field_data_booking_start_date';
+  $handler->display->display_options['sorts']['booking_start_date_value_1']['field'] = 'booking_start_date_value';
+  $handler->display->display_options['sorts']['booking_start_date_value_1']['relationship'] = 'reverse_booking_line_item_reference_bat_booking';
   $handler->display->display_options['defaults']['filter_groups'] = FALSE;
   $handler->display->display_options['defaults']['filters'] = FALSE;
   /* Filter criterion: Commerce Order: Order state */
