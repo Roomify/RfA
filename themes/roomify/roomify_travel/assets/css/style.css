@@ -13177,7 +13177,7 @@ body.node-type-homepage {
   margin-bottom: 15px; }
   .page-conversation .entity-message .message {
     width: 40%;
-    padding: 15px 10px;
+    padding: 40px 10px 20px 10px;
     background: white;
     border-radius: 8px;
     border: 2px solid #F3F1F1; }
@@ -13212,9 +13212,11 @@ body.node-type-homepage {
       .page-conversation .entity-message .message.message-right .text {
         margin-right: 55px;
         margin-left: 0; }
+      .page-conversation .entity-message .message.message-right .user-name {
+        background: #FFF34A; }
       .page-conversation .entity-message .message.message-right .user-picture {
         position: absolute;
-        top: 25px;
+        top: 55px;
         right: 10px; }
     .page-conversation .entity-message .message.message-left {
       margin-right: 60%;
@@ -13235,7 +13237,20 @@ body.node-type-homepage {
       .page-conversation .entity-message .message.message-left .user-picture {
         position: absolute;
         left: 10px;
-        top: 25px; }
+        top: 55px; }
+  .page-conversation .entity-message .user-name {
+    position: absolute;
+    top: 0;
+    left: 0px;
+    border-radius: 6px 6px 0px 0px;
+    display: inline-block;
+    width: 100%;
+    padding-top: 2px;
+    padding-left: 10px;
+    padding-right: 10px;
+    background: #ececec;
+    font-weight: 600;
+    font-size: 12px; }
   .page-conversation .entity-message .user-picture {
     float: left; }
     .page-conversation .entity-message .user-picture img {
@@ -13283,9 +13298,25 @@ body.node-type-homepage {
   width: 100%; }
   .page-conversation .enquiry-item .left {
     float: left;
-    line-height: 34px; }
+    line-height: 34px;
+    width: 100%;
+    line-height: 1.5em;
+    margin-bottom: 10px; }
+    @media (min-width: 768px) {
+      .page-conversation .enquiry-item .left {
+        margin-bottom: 0;
+        width: 50%;
+        margin-top: 10px;
+        text-align: left; } }
   .page-conversation .enquiry-item .right {
-    float: right; }
+    float: right;
+    width: 100%;
+    margin-bottom: 10px; }
+    @media (min-width: 768px) {
+      .page-conversation .enquiry-item .right {
+        margin-bottom: 0;
+        width: 50%;
+        text-align: right; } }
     .page-conversation .enquiry-item .right .button {
       display: inline-block; }
       .page-conversation .enquiry-item .right .button .btn {
@@ -13303,11 +13334,12 @@ body.node-type-homepage {
   .page-conversation .enquiry .enquiry-type-ref,
   .page-conversation .enquiry .enquiry-dep-date,
   .page-conversation .enquiry .enquiry-arr-date {
-    padding: 10px;
-    border: 1px solid #E6E6E6;
     min-height: 120px;
-    width: 33%;
-    display: inline-block; }
+    width: 32%;
+    margin-right: 10px;
+    margin-bottom: 10px;
+    display: inline-block;
+    background: white; }
     @media (max-width: 992px) {
       .page-conversation .enquiry .enquiry-telephone,
       .page-conversation .enquiry .enquiry-info,
@@ -13318,7 +13350,9 @@ body.node-type-homepage {
       .page-conversation .enquiry .enquiry-type-ref,
       .page-conversation .enquiry .enquiry-dep-date,
       .page-conversation .enquiry .enquiry-arr-date {
-        width: 50%; } }
+        width: 48%;
+        margin-left: 1%;
+        margin-right: 1%; } }
     @media (max-width: 768px) {
       .page-conversation .enquiry .enquiry-telephone,
       .page-conversation .enquiry .enquiry-info,
@@ -13364,12 +13398,6 @@ body.node-type-homepage {
       font-size: 20px;
       color: black;
       font-weight: 600; }
-  @media (min-width: 992px) {
-    .page-conversation .enquiry .enquiry-name,
-    .page-conversation .enquiry .enquiry-email,
-    .page-conversation .enquiry .enquiry-dep-date,
-    .page-conversation .enquiry .enquiry-arr-date {
-      border-right: 0; } }
   .page-conversation .enquiry .enquiry-info {
     padding-left: 25px;
     padding-right: 25px;

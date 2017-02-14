@@ -1031,7 +1031,7 @@ function roomify_conversations_message_render($message) {
   $output = '';
   if ($message->uid == $user->uid) {
     $output .= '<div class="message message-right">';
-
+    $output .= '<div class="user-name">' . $account->name . '</div>';
     $output .= '<div class="user-picture"><img height="40px" width="40px" src="' . $user_picture . '" /></div>';
     $output .= '<div class="text">' . $message->arguments['@string'] . '</div>';
 
@@ -1041,7 +1041,7 @@ function roomify_conversations_message_render($message) {
   }
   else {
     $output .= '<div class="message message-left">';
-
+    $output .= '<div class="user-name">' . $account->name . '</div>';
     $output .= '<div class="text">' . $message->arguments['@string'] . '</div>';
     $output .= '<div class="user-picture"><img height="40px" width="40px" src="' . $user_picture . '" /></div>';
 
@@ -1711,10 +1711,11 @@ function roomify_conversations_inquiry_render($conversation) {
   if (isset($conversation->conversation_guests[LANGUAGE_NONE][0]['value'])) {
     $guests = $conversation->conversation_guests[LANGUAGE_NONE][0]['value'];
   }
-
   $children = 0;
   if (isset($conversation->conversation_children[LANGUAGE_NONE][0]['value'])) {
-    $children = $conversation->conversation_children[LANGUAGE_NONE][0]['value'];
+    if (!empty($conversation->conversation_children[LANGUAGE_NONE][0]['value'])) {
+      $children = $conversation->conversation_children[LANGUAGE_NONE][0]['value'];
+    }
   }
 
   $name = '';
@@ -1778,24 +1779,24 @@ function roomify_conversations_inquiry_render($conversation) {
 
   $output .= '<div class="enquiry" style="display: none;">';
 
-  $output .= '<div class="enquiry-name"><div class="label">' . t('Name') . '</div><div class="item">' . $name . '</div></div>';
+  $output .= '<div class="enquiry-name well"><div class="label">' . t('Name') . '</div><div class="item">' . $name . '</div></div>';
 
-  $output .= '<div class="enquiry-email"><div class="label">' . t('Email address') . '</div><div class="item">' . $user_email . '</div></div>';
+  $output .= '<div class="enquiry-email well"><div class="label">' . t('Email address') . '</div><div class="item">' . $user_email . '</div></div>';
 
-  $output .= '<div class="enquiry-telephone"><div class="label">' . t('Telephone') . '</div><div class="item">' . $telephone . '</div></div>';
+  $output .= '<div class="enquiry-telephone well"><div class="label">' . t('Telephone') . '</div><div class="item">' . $telephone . '</div></div>';
 
-  $output .= '<div class="enquiry-arr-date"><div class="label">' . t('Arrival date') . '</div><div class="item"><span class="date-display-single">' . $start_date . '</span></div></div>';
+  $output .= '<div class="enquiry-arr-date well"><div class="label">' . t('Arrival date') . '</div><div class="item"><span class="date-display-single">' . $start_date . '</span></div></div>';
 
-  $output .= '<div class="enquiry-dep-date"><div class="label">' . t('Departure date') . '</div><div class="item"><span class="date-display-single">' . $end_date . '</span></div></div>';
+  $output .= '<div class="enquiry-dep-date well"><div class="label">' . t('Departure date') . '</div><div class="item"><span class="date-display-single">' . $end_date . '</span></div></div>';
 
-  $output .= '<div class="enquiry-type-ref"><div class="label">' . t('Listing Type') . '</div><div class="item">' . $type_name . '</div></div>';
+  $output .= '<div class="enquiry-type-ref well"><div class="label">' . t('Listing Type') . '</div><div class="item">' . $type_name . '</div></div>';
 
-  $output .= '<div class="enquiry-guests"><div class="label">' . t('Guests') . '</div><div class="item">' . $guests . '</div></div>';
+  $output .= '<div class="enquiry-guests well"><div class="label">' . t('Guests') . '</div><div class="item">' . $guests . '</div></div>';
 
-  $output .= '<div class="enquiry-children"><div class="label">' . t('Children') . '</div><div class="item">' . $children . '</div></div>';
+  $output .= '<div class="enquiry-children well"><div class="label">' . t('Children') . '</div><div class="item">' . $children . '</div></div>';
 
   if ($further_info != '') {
-    $output .= '<div class="enquiry-info"><div class="label">' . t('Further info') . '</div><div class="item">' . $further_info . '</div></div>';
+    $output .= '<div class="enquiry-info well"><div class="label">' . t('Further info') . '</div><div class="item">' . $further_info . '</div></div>';
   }
 
   if (isset($conversation->conversation_book_price[LANGUAGE_NONE][0]['amount'])) {
