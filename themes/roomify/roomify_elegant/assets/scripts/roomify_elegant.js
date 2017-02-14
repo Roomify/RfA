@@ -9,6 +9,12 @@ Drupal.behaviors.roomifyElegantScripts = {
       $(this).find('.dropdown-menu').stop(true, true).delay(50).fadeOut(200);
     });
 
+    // Toggle menu sidebar
+    $('#close-sidebar-icon').once().click(function(e) {
+      e.preventDefault();
+      $('body').toggleClass('toggled');
+    });
+
   	// Toggle menu sidebar
     $('#close-sidebar-wrapper').once().click(function(e) {
       e.preventDefault();
