@@ -1463,6 +1463,7 @@ function roomify_listing_enquiry_form_submit($form, &$form_state) {
 function roomify_listing_enquiry_settings_form($form, &$form_state) {
   form_load_include($form_state, 'inc', 'variable_realm', 'variable_realm.variable');
   module_load_include('form.inc', 'variable');
+  _roomify_system_prepare_variables_realm();
 
   $form['roomify_submission_reply_page_title'] = variable_form_element(variable_get_info('roomify_submission_reply_page_title'));
 

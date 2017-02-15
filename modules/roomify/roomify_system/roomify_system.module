@@ -187,6 +187,9 @@ function _roomify_system_prepare_variables_realm() {
  * Form "Global Site Settings".
  */
 function roomify_system_global_site_settings_form($form, &$form_state) {
+  form_load_include($form_state, 'inc', 'variable_realm', 'variable_realm.variable');
+  _roomify_system_prepare_variables_realm();
+
   global $user;
 
   $allowed = FALSE;
@@ -198,8 +201,6 @@ function roomify_system_global_site_settings_form($form, &$form_state) {
       break;
     }
   }
-  form_load_include($form_state, 'inc', 'variable_realm', 'variable_realm.variable');
-  _roomify_system_prepare_variables_realm();
 
   $form['site_information'] = array(
     '#type' => 'fieldset',
