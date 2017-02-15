@@ -184,7 +184,3 @@ function roomify_area_taxonomy_term_presave($term) {
     }
   }
 }
-
-
-
-
