@@ -44,7 +44,10 @@ function roomify_area_create_area_vocabulary() {
 function roomify_area_form_property_bat_facets_availability_alter(&$form, &$form_state, $form_id) {
   $term = menu_get_object('taxonomy_term', 2);
   if (isset($term->tid)) {
-    $form['container']['location']['#default_value'] = $term->tid;
+    $location = variable_get('roomify_availability_search_form_location', '');
+    if ($location == 'area') {
+      $form['container']['location']['#default_value'] = $term->tid;
+    }
     $form['container']['location']['#access'] = FALSE;
   }
 }
@@ -57,6 +60,10 @@ function roomify_area_form_property_bat_facets_availability_alter(&$form, &$form
  */
 function roomify_area_form_taxonomy_form_term_alter(&$form, &$form_state, $form_id) {
   $form['#submit'][] = 'custom_roomify_area_submit';
+
+  if (variable_get('theme_default', '') == 'roomify_travel') {
+    $form['field_area_featured_property']['#access'] = FALSE;
+  }
 }
 
 /**
@@ -156,3 +163,28 @@ function roomify_areas_block() {
 
   return $block_content;
 }
+
+/**
+ * Hook on term insertion.
+ */
+function roomify_area_taxonomy_term_presave($term) {
+  if ($term->vocabulary_machine_name == 'location') {
+    if (!field_get_items('taxonomy_term', $term, 'field_area_featured_image')) {
+      $image_file = file_get_contents(drupal_get_path('module', 'roomify_area') . '/images/800x600.png');
+      $image_file = file_save_data($image_file, roomify_system_file_dir() . 'area-test.png', FILE_EXISTS_RENAME);
+
+      $term->field_area_featured_image[LANGUAGE_NONE][0] = array(
+        'fid' => $image_file->fid,
+        'filename' => $image_file->filename,
+        'filemime' => $image_file->filemime,
+        'uri' => $image_file->uri,
+        'status' => 1,
+        'display' => 1,
+      );
+    }
+  }
+}
+
+
+
+
