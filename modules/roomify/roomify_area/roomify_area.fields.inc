@@ -99,25 +99,6 @@ function roomify_area_taxonomy_fields() {
     );
   }
 
-  if (field_read_field('field_area_featured_property') === FALSE) {
-    $field_bases['field_area_featured_property'] = array(
-      'active' => 1,
-      'cardinality' => -1,
-      'deleted' => 0,
-      'entity_types' => array(),
-      'field_name' => 'field_area_featured_property',
-      'indexes' => array(),
-      'locked' => 0,
-      'module' => 'paragraphs',
-      'settings' => array(
-        'entity_translation_sync' => FALSE,
-        'profile2_private' => FALSE,
-      ),
-      'translatable' => 0,
-      'type' => 'paragraphs',
-    );
-  }
-
   if (field_read_field('field_area_title_blog_posts') === FALSE) {
     $field_bases['field_area_title_blog_posts'] = array(
       'active' => 1,
@@ -604,80 +585,6 @@ function roomify_area_taxonomy_fields() {
       ),
     );
 
-  }
-
-  if (field_read_instance('taxonomy_term', 'field_area_featured_property', 'location') === FALSE) {
-    $field_instances['taxonomy_term-location-field_area_featured_property'] = array(
-      'bundle' => 'location',
-      'default_value' => NULL,
-      'deleted' => 0,
-      'description' => '',
-      'display' => array(
-        'default' => array(
-          'label' => 'above',
-          'module' => 'paragraphs',
-          'settings' => array(
-            'conditions' => array(),
-            'view_mode' => 'full',
-          ),
-          'type' => 'paragraphs_view',
-          'weight' => 1,
-        ),
-      ),
-      'entity_type' => 'taxonomy_term',
-      'field_name' => 'field_area_featured_property',
-      'label' => 'Featured Property',
-      'required' => 0,
-      'settings' => array(
-        'add_mode' => 'select',
-        'allowed_bundles' => array(
-          '1_column_row' => -1,
-          '2_columns_row' => -1,
-          '3_columns_row' => -1,
-          '4_columns_row' => -1,
-          'activity' => -1,
-          'block' => -1,
-          'blogpost' => -1,
-          'image' => -1,
-          'image_and_text' => -1,
-          'linked_image' => -1,
-          'linked_image_and_text' => -1,
-          'location_map' => -1,
-          'property' => 'property',
-          'slideshow' => -1,
-          'text' => -1,
-        ),
-        'bundle_weights' => array(
-          '1_column_row' => 2,
-          '2_columns_row' => 3,
-          '3_columns_row' => 4,
-          '4_columns_row' => 5,
-          'activity' => 6,
-          'block' => 7,
-          'blogpost' => 8,
-          'image' => 9,
-          'image_and_text' => 10,
-          'linked_image' => 11,
-          'linked_image_and_text' => 12,
-          'location_map' => 13,
-          'property' => 14,
-          'slideshow' => 15,
-          'text' => 16,
-        ),
-        'default_edit_mode' => 'open',
-        'entity_translation_sync' => FALSE,
-        'title' => 'Property',
-        'title_multiple' => 'Properties',
-        'user_register_form' => FALSE,
-      ),
-      'widget' => array(
-        'active' => 0,
-        'module' => 'paragraphs',
-        'settings' => array(),
-        'type' => 'paragraphs_embed',
-        'weight' => 9,
-      ),
-    );
   }
 
   if (field_read_instance('taxonomy_term', 'field_area_title_blog_posts', 'location') === FALSE) {
@@ -1322,9 +1229,8 @@ function roomify_area_taxonomy_fields() {
     $field_group->label = 'Featured Properties';
     $field_group->weight = '3';
     $field_group->children = array(
-      0 => 'field_area_featured_property',
-      1 => 'field_title_featured_properties',
-      2 => 'field_desc_featured_properities',
+      0 => 'field_title_featured_properties',
+      1 => 'field_desc_featured_properities',
     );
     $field_group->format_type = 'tab';
     $field_group->format_settings = array(

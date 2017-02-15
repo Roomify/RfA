@@ -12165,6 +12165,85 @@ body.page-location .view-location .view-empty {
           .page-taxonomy-area .pane-taxonomy-term-field-area-featured-property .paragraph-property .property-types .type-row .row-element.price {
             width: 30%;
             text-align: right; }
+.page-taxonomy-area .pane-areas-panel-pane-1 {
+  display: inline-block;
+  margin-top: 35px;
+  margin-bottom: 20px;
+  width: 100%; }
+  .page-taxonomy-area .pane-areas-panel-pane-1 span:empty {
+    display: none; }
+  .page-taxonomy-area .pane-areas-panel-pane-1:empty {
+    display: none; }
+  .page-taxonomy-area .pane-areas-panel-pane-1 .property-featured-image {
+    display: table;
+    margin: 0 auto;
+    width: 100%;
+    max-width: 380px; }
+    .page-taxonomy-area .pane-areas-panel-pane-1 .property-featured-image img {
+      width: 100%; }
+  .page-taxonomy-area .pane-areas-panel-pane-1 .area-property {
+    position: relative;
+    min-height: 1px;
+    padding-left: 12px;
+    padding-right: 12px;
+    position: relative;
+    min-height: 1px;
+    padding-left: 12px;
+    padding-right: 12px;
+    position: relative;
+    min-height: 1px;
+    padding-left: 12px;
+    padding-right: 12px;
+    display: table;
+    margin: 0 auto;
+    margin-bottom: 25px; }
+    @media (min-width: 768px) {
+      .page-taxonomy-area .pane-areas-panel-pane-1 .area-property {
+        float: left;
+        width: 100%; } }
+    @media (min-width: 768px) {
+      .page-taxonomy-area .pane-areas-panel-pane-1 .area-property {
+        float: left;
+        width: 50%; } }
+    @media (min-width: 992px) {
+      .page-taxonomy-area .pane-areas-panel-pane-1 .area-property {
+        float: left;
+        width: 33.33333%; } }
+  .page-taxonomy-area .pane-areas-panel-pane-1 .property-details {
+    font-size: 16px;
+    text-transform: uppercase;
+    text-align: left;
+    max-width: 380px;
+    display: table;
+    margin: 0 auto;
+    color: white;
+    background: #0b1418;
+    width: 100%;
+    border-radius: 0 0 2px 2px;
+    padding: 8px 10px;
+    position: relative; }
+  .page-taxonomy-area .pane-areas-panel-pane-1 table {
+    width: 100%; }
+  .page-taxonomy-area .pane-areas-panel-pane-1 .property-name {
+    vertical-align: middle;
+    max-width: 150px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis; }
+  .page-taxonomy-area .pane-areas-panel-pane-1 .listing-base-price {
+    text-align: right; }
+  .page-taxonomy-area .pane-areas-panel-pane-1 .starting-price {
+    text-align: right;
+    vertical-align: middle;
+    font-weight: 400;
+    text-align: center;
+    text-transform: lowercase; }
+    .page-taxonomy-area .pane-areas-panel-pane-1 .starting-price .starting-from {
+      font-size: 10px;
+      display: inline-block;
+      font-style: italic; }
+    .page-taxonomy-area .pane-areas-panel-pane-1 .starting-price .price {
+      color: #0cea11; }
 .page-taxonomy-area .field-name-field-area-title-description,
 .page-taxonomy-area .field-name-field-area-title-blog-posts,
 .page-taxonomy-area .field-name-field-title-featured-properties {

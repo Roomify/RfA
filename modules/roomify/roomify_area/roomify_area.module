@@ -61,7 +61,7 @@ function roomify_area_form_property_bat_facets_availability_alter(&$form, &$form
 function roomify_area_form_taxonomy_form_term_alter(&$form, &$form_state, $form_id) {
   $form['#submit'][] = 'custom_roomify_area_submit';
 
-  if (variable_get('theme_default', '') == 'roomify_travel') {
+  if (isset($form['field_area_featured_property'])) {
     $form['field_area_featured_property']['#access'] = FALSE;
   }
 }

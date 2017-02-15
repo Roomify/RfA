@@ -64,7 +64,6 @@ features[variable][] = publishcontent_blog
 features[views_view][] = blog
 features_exclude[dependencies][i18n_taxonomy] = i18n_taxonomy
 features_exclude[field_base][field_area_slideshow] = field_area_slideshow
-features_exclude[field_base][field_area_featured_property] = field_area_featured_property
 features_exclude[field_base][field_title_featured_properties] = field_title_featured_properties
 features_exclude[field_base][field_desc_featured_properities] = field_desc_featured_properities
 features_exclude[field_base][field_area_title_blog_posts] = field_area_title_blog_posts
@@ -84,7 +83,6 @@ features_exclude[field_group][group_area_general_info|taxonomy_term|location|for
 features_exclude[field_instance][taxonomy_term-location-field_area_blog_posts] = taxonomy_term-location-field_area_blog_posts
 features_exclude[field_instance][taxonomy_term-location-field_area_description_blog_post] = taxonomy_term-location-field_area_description_blog_post
 features_exclude[field_instance][taxonomy_term-location-field_area_description_subtitle] = taxonomy_term-location-field_area_description_subtitle
-features_exclude[field_instance][taxonomy_term-location-field_area_featured_property] = taxonomy_term-location-field_area_featured_property
 features_exclude[field_instance][taxonomy_term-location-field_area_slideshow] = taxonomy_term-location-field_area_slideshow
 features_exclude[field_instance][taxonomy_term-location-field_area_title_blog_posts] = taxonomy_term-location-field_area_title_blog_posts
 features_exclude[field_instance][taxonomy_term-location-field_area_title_description] = taxonomy_term-location-field_area_title_description
