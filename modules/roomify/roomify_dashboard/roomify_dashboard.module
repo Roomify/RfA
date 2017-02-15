@@ -171,7 +171,7 @@ function roomify_dashboard_form_alter(&$form, &$form_state, $form_id) {
  * FORM_ID = pet_form.
  */
 function roomify_dashboard_form_pet_form_alter(&$form, &$form_state) {
-  $form['actions']['cancel']['#href'] = '/email-templates';
+  $form['actions']['cancel']['#href'] = '/admin/bat/config/email-templates';
 
   $form['#submit'][] = 'redirect_to_email_templates_view';
 }
@@ -180,7 +180,7 @@ function roomify_dashboard_form_pet_form_alter(&$form, &$form_state) {
  * Custom submit function to redirect users.
  */
 function redirect_to_email_templates_view(&$form, &$form_state) {
-  $form_state['redirect'] = 'email-templates';
+  $form_state['redirect'] = 'admin/bat/config/email-templates';
 }
 
 /**
@@ -256,5 +256,20 @@ function roomify_dashboard_views_data_alter(&$data) {
       'help' => t('Display the property image.'),
       'handler' => 'roomify_dashboard_handler_commerce_order_property_image',
     ),
+  );
+  $data['pets']['localize_edit_link'] = array(
+    'field' => array(
+      'title' => t('Localized Edit link'),
+      'help' => t('An edit link with the selected language.'),
+      'handler' => 'roomify_dashboard_handler_localized_edit_link',
+    ),
+  );
+
+  $data['pets']['language_select'] = array(
+    'title' => t('Language select list'),
+    'group' => t('Previewable Email Template'),
+    'help' => t('Filter by language, choosing from dropdown list.'),
+    'filter' => array('handler' => 'roomify_dashboard_filters_handler_filter_language_select'),
+    'real field' => 'language',
   );
 }
