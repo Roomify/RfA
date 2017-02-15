@@ -4,7 +4,7 @@
 @import url("https://fonts.googleapis.com/css?family=Open+Sans:400,300,300italic,400italic,600,600italic,700,700italic,800,800italic)");
 @import url("https://fonts.googleapis.com/css?family=Playfair+Display:400,400i,700,700i,900,900i");
 html, body, div, span, applet, object, iframe,
-h1, h2, h3, .page-checkout-review .checkout_review .pane-title td, .page-availability-search .view-display-id-panel_pane_1 .views-row .views-field-name, .page-availability-search .view-display-id-panel_pane_3 .property-row .views-field-name, .node-type-blog .panel_sl_right .panel-pane .pane-title, .node-type-activity .panel_sl_right .panel-pane .pane-title, h4, .pane-property-location .panel-content-right .pane-title,
+h1, h2, h3, body .sidebar-nav .pane-roomify-sidebar-user-menu .roomify-sidebar-user-menu .sidebar-profile-message, .page-checkout-review .checkout_review .pane-title td, .page-availability-search .view-display-id-panel_pane_1 .views-row .views-field-name, .page-availability-search .view-display-id-panel_pane_3 .property-row .views-field-name, .node-type-blog .panel_sl_right .panel-pane .pane-title, .node-type-activity .panel_sl_right .panel-pane .pane-title, h4, .pane-property-location .panel-content-right .pane-title,
 .pane-property-location .panel-content-left .pane-title, .node-type-blog .panel-content-bottom .pane-blog-panel-pane-9 .views-field-name, h5, h6, p, blockquote, pre,
 a, abbr, acronym, address, big, cite, code,
 del, dfn, em, font, ins, kbd, q, s, samp,
@@ -305,6 +305,7 @@ th {
   p,
   h2,
   h3,
+  body .sidebar-nav .pane-roomify-sidebar-user-menu .roomify-sidebar-user-menu .sidebar-profile-message,
   .page-checkout-review .checkout_review .pane-title td,
   .page-availability-search .view-display-id-panel_pane_1 .views-row .views-field-name,
   .page-availability-search .view-display-id-panel_pane_3 .property-row .views-field-name,
@@ -315,6 +316,7 @@ th {
 
   h2,
   h3,
+  body .sidebar-nav .pane-roomify-sidebar-user-menu .roomify-sidebar-user-menu .sidebar-profile-message,
   .page-checkout-review .checkout_review .pane-title td,
   .page-availability-search .view-display-id-panel_pane_1 .views-row .views-field-name,
   .page-availability-search .view-display-id-panel_pane_3 .property-row .views-field-name,
@@ -1265,18 +1267,19 @@ hr {
 [role="button"] {
   cursor: pointer; }
 
-h1, h2, h3, .page-checkout-review .checkout_review .pane-title td, .page-availability-search .view-display-id-panel_pane_1 .views-row .views-field-name, .page-availability-search .view-display-id-panel_pane_3 .property-row .views-field-name, .node-type-blog .panel_sl_right .panel-pane .pane-title, .node-type-activity .panel_sl_right .panel-pane .pane-title, h4, .pane-property-location .panel-content-right .pane-title,
+h1, h2, h3, body .sidebar-nav .pane-roomify-sidebar-user-menu .roomify-sidebar-user-menu .sidebar-profile-message, .page-checkout-review .checkout_review .pane-title td, .page-availability-search .view-display-id-panel_pane_1 .views-row .views-field-name, .page-availability-search .view-display-id-panel_pane_3 .property-row .views-field-name, .node-type-blog .panel_sl_right .panel-pane .pane-title, .node-type-activity .panel_sl_right .panel-pane .pane-title, h4, .pane-property-location .panel-content-right .pane-title,
 .pane-property-location .panel-content-left .pane-title, .node-type-blog .panel-content-bottom .pane-blog-panel-pane-9 .views-field-name, h5, h6,
 .h1, .h2, .pane-property-location .pane-title, .pane-roomify-property-field-sp-policies .pane-title, .pane-roomify-property-field-sp-amenities .pane-title, body.page-blog .panel_sl_right .panel-pane .pane-title, .node-type-blog .panel_sl_right .panel-pane .pane-title, .node-type-blog .panel_sl_right .pane-blog-panel-pane-10 .pane-title,
-.node-type-blog .panel_sl_right .pane-blog-panel-pane-4 .pane-title, body.page-things-to-do .panel_sl_right .panel-pane .pane-title, .node-type-activity .panel_sl_right .panel-pane .pane-title, .h3, body .sidebar-nav .pane-roomify-sidebar-user-menu .roomify-sidebar-user-menu .sidebar-profile-message, .h4, .h5, .h6 {
+.node-type-blog .panel_sl_right .pane-blog-panel-pane-4 .pane-title, body.page-things-to-do .panel_sl_right .panel-pane .pane-title, .node-type-activity .panel_sl_right .panel-pane .pane-title, .h3, .h4, .h5, .h6 {
   font-family: inherit;
   font-weight: 400;
   line-height: 1.1;
   color: #333333; }
   h1 small,
   h1 .small, h2 small,
-  h2 .small, h3 small, .page-checkout-review .checkout_review .pane-title td small, .page-availability-search .view-display-id-panel_pane_1 .views-row .views-field-name small, .page-availability-search .view-display-id-panel_pane_3 .property-row .views-field-name small, .node-type-blog .panel_sl_right .panel-pane .pane-title small, .node-type-activity .panel_sl_right .panel-pane .pane-title small,
+  h2 .small, h3 small, body .sidebar-nav .pane-roomify-sidebar-user-menu .roomify-sidebar-user-menu .sidebar-profile-message small, .page-checkout-review .checkout_review .pane-title td small, .page-availability-search .view-display-id-panel_pane_1 .views-row .views-field-name small, .page-availability-search .view-display-id-panel_pane_3 .property-row .views-field-name small, .node-type-blog .panel_sl_right .panel-pane .pane-title small, .node-type-activity .panel_sl_right .panel-pane .pane-title small,
   h3 .small,
+  body .sidebar-nav .pane-roomify-sidebar-user-menu .roomify-sidebar-user-menu .sidebar-profile-message .small,
   .page-checkout-review .checkout_review .pane-title td .small,
   .page-availability-search .view-display-id-panel_pane_1 .views-row .views-field-name .small,
   .page-availability-search .view-display-id-panel_pane_3 .property-row .views-field-name .small,
@@ -1301,9 +1304,8 @@ h1, h2, h3, .page-checkout-review .checkout_review .pane-title td, .page-availab
   .node-type-blog .panel_sl_right .pane-blog-panel-pane-10 .pane-title .small,
   .node-type-blog .panel_sl_right .pane-blog-panel-pane-4 .pane-title .small,
   body.page-things-to-do .panel_sl_right .panel-pane .pane-title .small,
-  .node-type-activity .panel_sl_right .panel-pane .pane-title .small, .h3 small, body .sidebar-nav .pane-roomify-sidebar-user-menu .roomify-sidebar-user-menu .sidebar-profile-message small,
-  .h3 .small,
-  body .sidebar-nav .pane-roomify-sidebar-user-menu .roomify-sidebar-user-menu .sidebar-profile-message .small, .h4 small,
+  .node-type-activity .panel_sl_right .panel-pane .pane-title .small, .h3 small,
+  .h3 .small, .h4 small,
   .h4 .small, .h5 small,
   .h5 .small, .h6 small,
   .h6 .small {
@@ -1315,11 +1317,12 @@ h1, .h1,
 h2, .h2, .pane-property-location .pane-title, .pane-roomify-property-field-sp-policies .pane-title, .pane-roomify-property-field-sp-amenities .pane-title, body.page-blog .panel_sl_right .panel-pane .pane-title, .node-type-blog .panel_sl_right .panel-pane .pane-title, .node-type-blog .panel_sl_right .pane-blog-panel-pane-10 .pane-title,
 .node-type-blog .panel_sl_right .pane-blog-panel-pane-4 .pane-title, body.page-things-to-do .panel_sl_right .panel-pane .pane-title, .node-type-activity .panel_sl_right .panel-pane .pane-title,
 h3,
+body .sidebar-nav .pane-roomify-sidebar-user-menu .roomify-sidebar-user-menu .sidebar-profile-message,
 .page-checkout-review .checkout_review .pane-title td,
 .page-availability-search .view-display-id-panel_pane_1 .views-row .views-field-name,
 .page-availability-search .view-display-id-panel_pane_3 .property-row .views-field-name,
 .node-type-blog .panel_sl_right .panel-pane .pane-title,
-.node-type-activity .panel_sl_right .panel-pane .pane-title, .h3, body .sidebar-nav .pane-roomify-sidebar-user-menu .roomify-sidebar-user-menu .sidebar-profile-message {
+.node-type-activity .panel_sl_right .panel-pane .pane-title, .h3 {
   margin-top: 21px;
   margin-bottom: 10.5px; }
   h1 small,
@@ -1339,19 +1342,20 @@ h3,
   body.page-things-to-do .panel_sl_right .panel-pane .pane-title .small,
   .node-type-activity .panel_sl_right .panel-pane .pane-title .small,
   h3 small,
+  body .sidebar-nav .pane-roomify-sidebar-user-menu .roomify-sidebar-user-menu .sidebar-profile-message small,
   .page-checkout-review .checkout_review .pane-title td small,
   .page-availability-search .view-display-id-panel_pane_1 .views-row .views-field-name small,
   .page-availability-search .view-display-id-panel_pane_3 .property-row .views-field-name small,
   .node-type-blog .panel_sl_right .panel-pane .pane-title small,
   .node-type-activity .panel_sl_right .panel-pane .pane-title small,
   h3 .small,
+  body .sidebar-nav .pane-roomify-sidebar-user-menu .roomify-sidebar-user-menu .sidebar-profile-message .small,
   .page-checkout-review .checkout_review .pane-title td .small,
   .page-availability-search .view-display-id-panel_pane_1 .views-row .views-field-name .small,
   .page-availability-search .view-display-id-panel_pane_3 .property-row .views-field-name .small,
   .node-type-blog .panel_sl_right .panel-pane .pane-title .small,
-  .node-type-activity .panel_sl_right .panel-pane .pane-title .small, .h3 small, body .sidebar-nav .pane-roomify-sidebar-user-menu .roomify-sidebar-user-menu .sidebar-profile-message small,
-  .h3 .small,
-  body .sidebar-nav .pane-roomify-sidebar-user-menu .roomify-sidebar-user-menu .sidebar-profile-message .small {
+  .node-type-activity .panel_sl_right .panel-pane .pane-title .small, .h3 small,
+  .h3 .small {
     font-size: 65%; }
 
 h4, .pane-property-location .panel-content-right .pane-title,
@@ -1382,7 +1386,7 @@ h2, .h2, .pane-property-location .pane-title, .pane-roomify-property-field-sp-po
 .node-type-blog .panel_sl_right .pane-blog-panel-pane-4 .pane-title, body.page-things-to-do .panel_sl_right .panel-pane .pane-title, .node-type-activity .panel_sl_right .panel-pane .pane-title {
   font-size: 32px; }
 
-h3, .page-checkout-review .checkout_review .pane-title td, .page-availability-search .view-display-id-panel_pane_1 .views-row .views-field-name, .page-availability-search .view-display-id-panel_pane_3 .property-row .views-field-name, .node-type-blog .panel_sl_right .panel-pane .pane-title, .node-type-activity .panel_sl_right .panel-pane .pane-title, .h3, body .sidebar-nav .pane-roomify-sidebar-user-menu .roomify-sidebar-user-menu .sidebar-profile-message {
+h3, body .sidebar-nav .pane-roomify-sidebar-user-menu .roomify-sidebar-user-menu .sidebar-profile-message, .page-checkout-review .checkout_review .pane-title td, .page-availability-search .view-display-id-panel_pane_1 .views-row .views-field-name, .page-availability-search .view-display-id-panel_pane_3 .property-row .views-field-name, .node-type-blog .panel_sl_right .panel-pane .pane-title, .node-type-activity .panel_sl_right .panel-pane .pane-title, .h3 {
   font-size: 25px; }
 
 h4, .pane-property-location .panel-content-right .pane-title,
@@ -3942,32 +3946,32 @@ fieldset[disabled] .page-checkout fieldset.panel-default.checkout-buttons a.chec
     color: #158CBA;
     background-color: #fff; }
 
-.btn-success, body .sidebar-nav .pane-user-login .form-actions button, .page-checkout fieldset.panel-default.checkout-buttons .checkout-continue {
+.btn-success, .page-checkout fieldset.panel-default.checkout-buttons .checkout-continue {
   color: #fff;
   background-color: #28B62C;
   border-color: #23a127; }
-  .btn-success:focus, body .sidebar-nav .pane-user-login .form-actions button:focus, .page-checkout fieldset.panel-default.checkout-buttons .checkout-continue:focus, .btn-success.focus, body .sidebar-nav .pane-user-login .form-actions button.focus, .page-checkout fieldset.panel-default.checkout-buttons .focus.checkout-continue {
+  .btn-success:focus, .page-checkout fieldset.panel-default.checkout-buttons .checkout-continue:focus, .btn-success.focus, .page-checkout fieldset.panel-default.checkout-buttons .focus.checkout-continue {
     color: #fff;
     background-color: #1f8c22;
     border-color: #0c390e; }
-  .btn-success:hover, body .sidebar-nav .pane-user-login .form-actions button:hover, .page-checkout fieldset.panel-default.checkout-buttons .checkout-continue:hover {
+  .btn-success:hover, .page-checkout fieldset.panel-default.checkout-buttons .checkout-continue:hover {
     color: #fff;
     background-color: #1f8c22;
     border-color: #186f1b; }
-  .btn-success:active, body .sidebar-nav .pane-user-login .form-actions button:active, .page-checkout fieldset.panel-default.checkout-buttons .checkout-continue:active, .btn-success.active, body .sidebar-nav .pane-user-login .form-actions button.active, .page-checkout fieldset.panel-default.checkout-buttons .active.checkout-continue, .open > .btn-success.dropdown-toggle, body .sidebar-nav .pane-user-login .form-actions .open > button.dropdown-toggle, .page-checkout fieldset.panel-default.checkout-buttons .open > .dropdown-toggle.checkout-continue {
+  .btn-success:active, .page-checkout fieldset.panel-default.checkout-buttons .checkout-continue:active, .btn-success.active, .page-checkout fieldset.panel-default.checkout-buttons .active.checkout-continue, .open > .btn-success.dropdown-toggle, .page-checkout fieldset.panel-default.checkout-buttons .open > .dropdown-toggle.checkout-continue {
     color: #fff;
     background-color: #1f8c22;
     border-color: #186f1b; }
-    .btn-success:active:hover, body .sidebar-nav .pane-user-login .form-actions button:active:hover, .page-checkout fieldset.panel-default.checkout-buttons .checkout-continue:active:hover, .btn-success:active:focus, body .sidebar-nav .pane-user-login .form-actions button:active:focus, .page-checkout fieldset.panel-default.checkout-buttons .checkout-continue:active:focus, .btn-success:active.focus, body .sidebar-nav .pane-user-login .form-actions button:active.focus, .page-checkout fieldset.panel-default.checkout-buttons .checkout-continue:active.focus, .btn-success.active:hover, body .sidebar-nav .pane-user-login .form-actions button.active:hover, .page-checkout fieldset.panel-default.checkout-buttons .active.checkout-continue:hover, .btn-success.active:focus, body .sidebar-nav .pane-user-login .form-actions button.active:focus, .page-checkout fieldset.panel-default.checkout-buttons .active.checkout-continue:focus, .btn-success.active.focus, body .sidebar-nav .pane-user-login .form-actions button.active.focus, .page-checkout fieldset.panel-default.checkout-buttons .active.focus.checkout-continue, .open > .btn-success.dropdown-toggle:hover, body .sidebar-nav .pane-user-login .form-actions .open > button.dropdown-toggle:hover, .page-checkout fieldset.panel-default.checkout-buttons .open > .dropdown-toggle.checkout-continue:hover, .open > .btn-success.dropdown-toggle:focus, body .sidebar-nav .pane-user-login .form-actions .open > button.dropdown-toggle:focus, .page-checkout fieldset.panel-default.checkout-buttons .open > .dropdown-toggle.checkout-continue:focus, .open > .btn-success.dropdown-toggle.focus, body .sidebar-nav .pane-user-login .form-actions .open > button.dropdown-toggle.focus, .page-checkout fieldset.panel-default.checkout-buttons .open > .dropdown-toggle.focus.checkout-continue {
+    .btn-success:active:hover, .page-checkout fieldset.panel-default.checkout-buttons .checkout-continue:active:hover, .btn-success:active:focus, .page-checkout fieldset.panel-default.checkout-buttons .checkout-continue:active:focus, .btn-success:active.focus, .page-checkout fieldset.panel-default.checkout-buttons .checkout-continue:active.focus, .btn-success.active:hover, .page-checkout fieldset.panel-default.checkout-buttons .active.checkout-continue:hover, .btn-success.active:focus, .page-checkout fieldset.panel-default.checkout-buttons .active.checkout-continue:focus, .btn-success.active.focus, .page-checkout fieldset.panel-default.checkout-buttons .active.focus.checkout-continue, .open > .btn-success.dropdown-toggle:hover, .page-checkout fieldset.panel-default.checkout-buttons .open > .dropdown-toggle.checkout-continue:hover, .open > .btn-success.dropdown-toggle:focus, .page-checkout fieldset.panel-default.checkout-buttons .open > .dropdown-toggle.checkout-continue:focus, .open > .btn-success.dropdown-toggle.focus, .page-checkout fieldset.panel-default.checkout-buttons .open > .dropdown-toggle.focus.checkout-continue {
       color: #fff;
       background-color: #186f1b;
       border-color: #0c390e; }
-  .btn-success:active, body .sidebar-nav .pane-user-login .form-actions button:active, .page-checkout fieldset.panel-default.checkout-buttons .checkout-continue:active, .btn-success.active, body .sidebar-nav .pane-user-login .form-actions button.active, .page-checkout fieldset.panel-default.checkout-buttons .active.checkout-continue, .open > .btn-success.dropdown-toggle, body .sidebar-nav .pane-user-login .form-actions .open > button.dropdown-toggle, .page-checkout fieldset.panel-default.checkout-buttons .open > .dropdown-toggle.checkout-continue {
+  .btn-success:active, .page-checkout fieldset.panel-default.checkout-buttons .checkout-continue:active, .btn-success.active, .page-checkout fieldset.panel-default.checkout-buttons .active.checkout-continue, .open > .btn-success.dropdown-toggle, .page-checkout fieldset.panel-default.checkout-buttons .open > .dropdown-toggle.checkout-continue {
     background-image: none; }
-  .btn-success.disabled:hover, body .sidebar-nav .pane-user-login .form-actions button.disabled:hover, .page-checkout fieldset.panel-default.checkout-buttons .disabled.checkout-continue:hover, .btn-success.disabled:focus, body .sidebar-nav .pane-user-login .form-actions button.disabled:focus, .page-checkout fieldset.panel-default.checkout-buttons .disabled.checkout-continue:focus, .btn-success.disabled.focus, body .sidebar-nav .pane-user-login .form-actions button.disabled.focus, .page-checkout fieldset.panel-default.checkout-buttons .disabled.focus.checkout-continue, .btn-success[disabled]:hover, body .sidebar-nav .pane-user-login .form-actions button[disabled]:hover, .page-checkout fieldset.panel-default.checkout-buttons [disabled].checkout-continue:hover, .btn-success[disabled]:focus, body .sidebar-nav .pane-user-login .form-actions button[disabled]:focus, .page-checkout fieldset.panel-default.checkout-buttons [disabled].checkout-continue:focus, .btn-success[disabled].focus, body .sidebar-nav .pane-user-login .form-actions button[disabled].focus, .page-checkout fieldset.panel-default.checkout-buttons [disabled].focus.checkout-continue, fieldset[disabled] .btn-success:hover, fieldset[disabled] body .sidebar-nav .pane-user-login .form-actions button:hover, body .sidebar-nav .pane-user-login .form-actions fieldset[disabled] button:hover, fieldset[disabled] .page-checkout fieldset.panel-default.checkout-buttons .checkout-continue:hover, .page-checkout fieldset.panel-default.checkout-buttons fieldset[disabled] .checkout-continue:hover, fieldset[disabled] .btn-success:focus, fieldset[disabled] body .sidebar-nav .pane-user-login .form-actions button:focus, body .sidebar-nav .pane-user-login .form-actions fieldset[disabled] button:focus, fieldset[disabled] .page-checkout fieldset.panel-default.checkout-buttons .checkout-continue:focus, .page-checkout fieldset.panel-default.checkout-buttons fieldset[disabled] .checkout-continue:focus, fieldset[disabled] .btn-success.focus, fieldset[disabled] body .sidebar-nav .pane-user-login .form-actions button.focus, body .sidebar-nav .pane-user-login .form-actions fieldset[disabled] button.focus, fieldset[disabled] .page-checkout fieldset.panel-default.checkout-buttons .focus.checkout-continue, .page-checkout fieldset.panel-default.checkout-buttons fieldset[disabled] .focus.checkout-continue {
+  .btn-success.disabled:hover, .page-checkout fieldset.panel-default.checkout-buttons .disabled.checkout-continue:hover, .btn-success.disabled:focus, .page-checkout fieldset.panel-default.checkout-buttons .disabled.checkout-continue:focus, .btn-success.disabled.focus, .page-checkout fieldset.panel-default.checkout-buttons .disabled.focus.checkout-continue, .btn-success[disabled]:hover, .page-checkout fieldset.panel-default.checkout-buttons [disabled].checkout-continue:hover, .btn-success[disabled]:focus, .page-checkout fieldset.panel-default.checkout-buttons [disabled].checkout-continue:focus, .btn-success[disabled].focus, .page-checkout fieldset.panel-default.checkout-buttons [disabled].focus.checkout-continue, fieldset[disabled] .btn-success:hover, fieldset[disabled] .page-checkout fieldset.panel-default.checkout-buttons .checkout-continue:hover, .page-checkout fieldset.panel-default.checkout-buttons fieldset[disabled] .checkout-continue:hover, fieldset[disabled] .btn-success:focus, fieldset[disabled] .page-checkout fieldset.panel-default.checkout-buttons .checkout-continue:focus, .page-checkout fieldset.panel-default.checkout-buttons fieldset[disabled] .checkout-continue:focus, fieldset[disabled] .btn-success.focus, fieldset[disabled] .page-checkout fieldset.panel-default.checkout-buttons .focus.checkout-continue, .page-checkout fieldset.panel-default.checkout-buttons fieldset[disabled] .focus.checkout-continue {
     background-color: #28B62C;
     border-color: #23a127; }
-  .btn-success .badge, body .sidebar-nav .pane-user-login .form-actions button .badge, .page-checkout fieldset.panel-default.checkout-buttons .checkout-continue .badge {
+  .btn-success .badge, .page-checkout fieldset.panel-default.checkout-buttons .checkout-continue .badge {
     color: #28B62C;
     background-color: #fff; }
 
@@ -11478,16 +11482,16 @@ button.close {
     opacity: .2;
     transition: 0s; }
 
-.btn-success, body .sidebar-nav .pane-user-login .form-actions button, .page-checkout fieldset.panel-default.checkout-buttons .checkout-continue {
+.btn-success, .page-checkout fieldset.panel-default.checkout-buttons .checkout-continue {
   position: relative; }
-  .btn-success:focus, body .sidebar-nav .pane-user-login .form-actions button:focus, .page-checkout fieldset.panel-default.checkout-buttons .checkout-continue:focus {
+  .btn-success:focus, .page-checkout fieldset.panel-default.checkout-buttons .checkout-continue:focus {
     background-color: #28B62C; }
-  .btn-success:hover, body .sidebar-nav .pane-user-login .form-actions button:hover, .page-checkout fieldset.panel-default.checkout-buttons .checkout-continue:hover, .btn-success:active:hover, body .sidebar-nav .pane-user-login .form-actions button:active:hover, .page-checkout fieldset.panel-default.checkout-buttons .checkout-continue:active:hover {
+  .btn-success:hover, .page-checkout fieldset.panel-default.checkout-buttons .checkout-continue:hover, .btn-success:active:hover, .page-checkout fieldset.panel-default.checkout-buttons .checkout-continue:active:hover {
     background-color: #229d26; }
-  .btn-success:active, body .sidebar-nav .pane-user-login .form-actions button:active, .page-checkout fieldset.panel-default.checkout-buttons .checkout-continue:active {
+  .btn-success:active, .page-checkout fieldset.panel-default.checkout-buttons .checkout-continue:active {
     -webkit-box-shadow: 2px 2px 4px rgba(0, 0, 0, 0.4);
     box-shadow: 2px 2px 4px rgba(0, 0, 0, 0.4); }
-  .btn-success:after, body .sidebar-nav .pane-user-login .form-actions button:after, .page-checkout fieldset.panel-default.checkout-buttons .checkout-continue:after {
+  .btn-success:after, .page-checkout fieldset.panel-default.checkout-buttons .checkout-continue:after {
     content: "";
     display: block;
     position: absolute;
@@ -11503,7 +11507,7 @@ button.close {
     opacity: 0;
     pointer-events: none;
     transition: background .5s, opacity 1s; }
-  .btn-success:active:after, body .sidebar-nav .pane-user-login .form-actions button:active:after, .page-checkout fieldset.panel-default.checkout-buttons .checkout-continue:active:after {
+  .btn-success:active:after, .page-checkout fieldset.panel-default.checkout-buttons .checkout-continue:active:after {
     background-size: 0% 0%;
     opacity: .2;
     transition: 0s; }
@@ -13910,7 +13914,7 @@ input[type="checkbox"],
   -webkit-box-shadow: 0 1px 4px rgba(0, 0, 0, 0.3);
   box-shadow: 0 1px 4px rgba(0, 0, 0, 0.3); }
 
-.carousel-caption h1, .carousel-caption h2, .carousel-caption h3, .carousel-caption .page-checkout-review .checkout_review .pane-title td, .page-checkout-review .checkout_review .pane-title .carousel-caption td, .carousel-caption .page-availability-search .view-display-id-panel_pane_1 .views-row .views-field-name, .page-availability-search .view-display-id-panel_pane_1 .views-row .carousel-caption .views-field-name, .carousel-caption .page-availability-search .view-display-id-panel_pane_3 .property-row .views-field-name, .page-availability-search .view-display-id-panel_pane_3 .property-row .carousel-caption .views-field-name, .carousel-caption .node-type-blog .panel_sl_right .panel-pane .pane-title, .node-type-blog .panel_sl_right .panel-pane .carousel-caption .pane-title, .carousel-caption .node-type-activity .panel_sl_right .panel-pane .pane-title, .node-type-activity .panel_sl_right .panel-pane .carousel-caption .pane-title, .carousel-caption h4, .carousel-caption .pane-property-location .panel-content-right .pane-title, .pane-property-location .panel-content-right .carousel-caption .pane-title,
+.carousel-caption h1, .carousel-caption h2, .carousel-caption h3, .carousel-caption body .sidebar-nav .pane-roomify-sidebar-user-menu .roomify-sidebar-user-menu .sidebar-profile-message, body .sidebar-nav .pane-roomify-sidebar-user-menu .roomify-sidebar-user-menu .carousel-caption .sidebar-profile-message, .carousel-caption .page-checkout-review .checkout_review .pane-title td, .page-checkout-review .checkout_review .pane-title .carousel-caption td, .carousel-caption .page-availability-search .view-display-id-panel_pane_1 .views-row .views-field-name, .page-availability-search .view-display-id-panel_pane_1 .views-row .carousel-caption .views-field-name, .carousel-caption .page-availability-search .view-display-id-panel_pane_3 .property-row .views-field-name, .page-availability-search .view-display-id-panel_pane_3 .property-row .carousel-caption .views-field-name, .carousel-caption .node-type-blog .panel_sl_right .panel-pane .pane-title, .node-type-blog .panel_sl_right .panel-pane .carousel-caption .pane-title, .carousel-caption .node-type-activity .panel_sl_right .panel-pane .pane-title, .node-type-activity .panel_sl_right .panel-pane .carousel-caption .pane-title, .carousel-caption h4, .carousel-caption .pane-property-location .panel-content-right .pane-title, .pane-property-location .panel-content-right .carousel-caption .pane-title,
 .carousel-caption .pane-property-location .panel-content-left .pane-title,
 .pane-property-location .panel-content-left .carousel-caption .pane-title, .carousel-caption .node-type-blog .panel-content-bottom .pane-blog-panel-pane-9 .views-field-name, .node-type-blog .panel-content-bottom .pane-blog-panel-pane-9 .carousel-caption .views-field-name, .carousel-caption h5, .carousel-caption h6 {
   color: inherit; }
@@ -13974,7 +13978,7 @@ strong {
   font-family: "Playfair Display", serif;
   font-weight: bold; }
 
-h1, h2, h3, .page-checkout-review .checkout_review .pane-title td, .page-availability-search .view-display-id-panel_pane_1 .views-row .views-field-name, .page-availability-search .view-display-id-panel_pane_3 .property-row .views-field-name, .node-type-blog .panel_sl_right .panel-pane .pane-title, .node-type-activity .panel_sl_right .panel-pane .pane-title, h4, .pane-property-location .panel-content-right .pane-title,
+h1, h2, h3, body .sidebar-nav .pane-roomify-sidebar-user-menu .roomify-sidebar-user-menu .sidebar-profile-message, .page-checkout-review .checkout_review .pane-title td, .page-availability-search .view-display-id-panel_pane_1 .views-row .views-field-name, .page-availability-search .view-display-id-panel_pane_3 .property-row .views-field-name, .node-type-blog .panel_sl_right .panel-pane .pane-title, .node-type-activity .panel_sl_right .panel-pane .pane-title, h4, .pane-property-location .panel-content-right .pane-title,
 .pane-property-location .panel-content-left .pane-title, .node-type-blog .panel-content-bottom .pane-blog-panel-pane-9 .views-field-name, h5, h6 {
   margin: 0 0 10px 0;
   padding: 0;
@@ -13992,7 +13996,7 @@ h2 {
   margin-bottom: 20px;
   line-height: 0.93; }
 
-h3, .page-checkout-review .checkout_review .pane-title td, .page-availability-search .view-display-id-panel_pane_1 .views-row .views-field-name, .page-availability-search .view-display-id-panel_pane_3 .property-row .views-field-name, .node-type-blog .panel_sl_right .panel-pane .pane-title, .node-type-activity .panel_sl_right .panel-pane .pane-title {
+h3, body .sidebar-nav .pane-roomify-sidebar-user-menu .roomify-sidebar-user-menu .sidebar-profile-message, .page-checkout-review .checkout_review .pane-title td, .page-availability-search .view-display-id-panel_pane_1 .views-row .views-field-name, .page-availability-search .view-display-id-panel_pane_3 .property-row .views-field-name, .node-type-blog .panel_sl_right .panel-pane .pane-title, .node-type-activity .panel_sl_right .panel-pane .pane-title {
   margin-bottom: 20px; }
 
 p {
@@ -14104,12 +14108,39 @@ blockquote {
     border-radius: 0;
     margin-bottom: 0; }
 
-#better-messages-wrapper #better-messages-default #messages-inner .content .messages.status,
-#better-messages-wrapper #better-messages-default #messages-inner .content .messages.error,
-#better-messages-wrapper #better-messages-default #messages-inner .content .messages.warning {
-  background: white;
-  border: 0px !important;
-  padding: 20px; }
+#better-messages-wrapper #better-messages-default {
+  border: 15px solid rgba(29, 29, 29, 0.7);
+  border-radius: 6px; }
+  #better-messages-wrapper #better-messages-default .messages-label {
+    color: #FFFFFF;
+    font-size: 15px;
+    font-weight: 400;
+    line-height: 20px;
+    margin-bottom: 2px;
+    padding: 10px 10px;
+    text-transform: uppercase; }
+  #better-messages-wrapper #better-messages-default .body {
+    padding: 0; }
+  #better-messages-wrapper #better-messages-default #messages-inner .content .messages.status,
+  #better-messages-wrapper #better-messages-default #messages-inner .content .messages.error,
+  #better-messages-wrapper #better-messages-default #messages-inner .content .messages.warning {
+    background: white;
+    border: 0 !important;
+    padding: 20px; }
+  #better-messages-wrapper #better-messages-default a.message-close {
+    background: transparent url("../images/x.png") no-repeat;
+    display: inline-block;
+    width: 100%;
+    text-align: right;
+    height: 28px;
+    padding-right: 20px;
+    background-position: right 7px;
+    color: #696969;
+    text-decoration: none;
+    font-weight: 400;
+    font-size: 13px;
+    background-size: 11px 11px;
+    margin-right: 10px; }
 
 .chosen-with-drop,
 .chosen-container-single {
@@ -14858,6 +14889,8 @@ body {
             display: inline-block;
             padding: 0; }
       body .sidebar-nav .pane-user-login .form-actions button {
+        background-color: #28B62C;
+        border-color: #23a127;
         width: 100%;
         font-size: 16px; }
         body .sidebar-nav .pane-user-login .form-actions button span {
@@ -18062,7 +18095,8 @@ ol.inline.commerce-checkout-progress {
           top: 0; } }
     .pane-properties-index-panel-pane-4 .view-properties-index .views-row .property-details .short-description {
       color: #666;
-      margin-bottom: 20px; }
+      margin-bottom: 20px;
+      font-size: 14px; }
     .pane-properties-index-panel-pane-4 .view-properties-index .views-row .property-details .table-responsive {
       border: none; }
     .pane-properties-index-panel-pane-4 .view-properties-index .views-row .property-details table {
@@ -18193,8 +18227,8 @@ ol.inline.commerce-checkout-progress {
           display: none; }
     .pane-properties-index-panel-pane-4 .view-properties-index .views-row .property-details .book-now {
       position: absolute;
-      right: 8px;
-      bottom: 8px;
+      right: 12px;
+      bottom: 12px;
       color: white;
       font-size: 10px;
       color: #000000;
@@ -18687,7 +18721,7 @@ body.page-things-to-do .view-activities-elegant.view-display-id-panel_pane_1 .vi
   padding-top: 15px;
   padding-bottom: 30px;
   border-bottom: 1px solid #ececec; }
-  body.page-things-to-do .view-activities-elegant.view-display-id-panel_pane_1 .views-row .views-field-title-field h3, body.page-things-to-do .view-activities-elegant.view-display-id-panel_pane_1 .views-row .views-field-title-field .page-checkout-review .checkout_review .pane-title td, .page-checkout-review .checkout_review .pane-title body.page-things-to-do .view-activities-elegant.view-display-id-panel_pane_1 .views-row .views-field-title-field td, body.page-things-to-do .page-availability-search .view-activities-elegant.view-display-id-panel_pane_1 .views-row .views-field-title-field .views-field-name, .page-availability-search body.page-things-to-do .view-activities-elegant.view-display-id-panel_pane_1 .views-row .views-field-title-field .views-field-name, body.page-things-to-do .view-activities-elegant.view-display-id-panel_pane_1 .views-row .views-field-title-field .page-availability-search .view-display-id-panel_pane_3 .property-row .views-field-name, body.page-things-to-do .view-activities-elegant.view-display-id-panel_pane_1 .views-row .views-field-title-field .node-type-blog .panel_sl_right .panel-pane .pane-title, .node-type-blog .panel_sl_right .panel-pane body.page-things-to-do .view-activities-elegant.view-display-id-panel_pane_1 .views-row .views-field-title-field .pane-title, body.page-things-to-do .view-activities-elegant.view-display-id-panel_pane_1 .views-row .views-field-title-field .node-type-activity .panel_sl_right .panel-pane .pane-title, .node-type-activity .panel_sl_right .panel-pane body.page-things-to-do .view-activities-elegant.view-display-id-panel_pane_1 .views-row .views-field-title-field .pane-title {
+  body.page-things-to-do .view-activities-elegant.view-display-id-panel_pane_1 .views-row .views-field-title-field h3, body.page-things-to-do .view-activities-elegant.view-display-id-panel_pane_1 .views-row .views-field-title-field .sidebar-nav .pane-roomify-sidebar-user-menu .roomify-sidebar-user-menu .sidebar-profile-message, body.page-things-to-do .sidebar-nav .pane-roomify-sidebar-user-menu .roomify-sidebar-user-menu .view-activities-elegant.view-display-id-panel_pane_1 .views-row .views-field-title-field .sidebar-profile-message, body.page-things-to-do .view-activities-elegant.view-display-id-panel_pane_1 .views-row .views-field-title-field .page-checkout-review .checkout_review .pane-title td, .page-checkout-review .checkout_review .pane-title body.page-things-to-do .view-activities-elegant.view-display-id-panel_pane_1 .views-row .views-field-title-field td, body.page-things-to-do .page-availability-search .view-activities-elegant.view-display-id-panel_pane_1 .views-row .views-field-title-field .views-field-name, .page-availability-search body.page-things-to-do .view-activities-elegant.view-display-id-panel_pane_1 .views-row .views-field-title-field .views-field-name, body.page-things-to-do .view-activities-elegant.view-display-id-panel_pane_1 .views-row .views-field-title-field .page-availability-search .view-display-id-panel_pane_3 .property-row .views-field-name, body.page-things-to-do .view-activities-elegant.view-display-id-panel_pane_1 .views-row .views-field-title-field .node-type-blog .panel_sl_right .panel-pane .pane-title, .node-type-blog .panel_sl_right .panel-pane body.page-things-to-do .view-activities-elegant.view-display-id-panel_pane_1 .views-row .views-field-title-field .pane-title, body.page-things-to-do .view-activities-elegant.view-display-id-panel_pane_1 .views-row .views-field-title-field .node-type-activity .panel_sl_right .panel-pane .pane-title, .node-type-activity .panel_sl_right .panel-pane body.page-things-to-do .view-activities-elegant.view-display-id-panel_pane_1 .views-row .views-field-title-field .pane-title {
     margin-bottom: 15px; }
   body.page-things-to-do .view-activities-elegant.view-display-id-panel_pane_1 .views-row .views-field-field-activity-image {
     margin-bottom: 15px; }
@@ -19968,50 +20002,7 @@ body.node-type-homepage .panel-content-footer {
   position: relative;
   padding: 0; }
   .node-type-landing-page .paragraph-property .property-types {
-    display: inline-block;
-    width: 100%;
-    margin-top: 20px;
-    width: 96%; }
-    .node-type-landing-page .paragraph-property .property-types table {
-      width: 100%; }
-    .node-type-landing-page .paragraph-property .property-types .type-icons .icon {
-      width: 15%;
-      height: 20px;
-      padding-bottom: 15px;
-      padding-top: 5px; }
-      .node-type-landing-page .paragraph-property .property-types .type-icons .icon.name {
-        width: 40%;
-        text-indent: -9999999px; }
-      .node-type-landing-page .paragraph-property .property-types .type-icons .icon.capacity {
-        background-image: url("../images/small/capacity_small.png");
-        text-indent: -9999999px;
-        background-repeat: no-repeat;
-        background-position: center center; }
-      .node-type-landing-page .paragraph-property .property-types .type-icons .icon.bedrooms {
-        background-image: url("../images/small/beds_small.png");
-        text-indent: -9999999px;
-        background-repeat: no-repeat;
-        background-position: center center; }
-      .node-type-landing-page .paragraph-property .property-types .type-icons .icon.price {
-        width: 30%;
-        background-image: url("../images/small/price_small.png");
-        text-indent: -9999999px;
-        background-repeat: no-repeat;
-        background-position: 75% center; }
-    .node-type-landing-page .paragraph-property .property-types .type-row {
-      width: 100%;
-      margin-top: 10px; }
-      .node-type-landing-page .paragraph-property .property-types .type-row .row-element {
-        width: 15%;
-        padding: 5px;
-        text-align: center; }
-        .node-type-landing-page .paragraph-property .property-types .type-row .row-element.name {
-          width: 38%;
-          margin-left: 2%;
-          text-align: left; }
-        .node-type-landing-page .paragraph-property .property-types .type-row .row-element.price {
-          width: 30%;
-          text-align: right; }
+    display: none; }
 .node-type-landing-page article.node-landing-page footer {
   display: none !important; }
 .node-type-landing-page .roomify-area-item {

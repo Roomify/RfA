@@ -286,6 +286,7 @@ function roomify_elegant_theme_default_panels_mini() {
       'bottom-left' => NULL,
       'bottom-right' => NULL,
       'middle' => NULL,
+      'footer' => NULL,
     ),
     'middle' => array(
       'style' => '-1',
@@ -301,29 +302,6 @@ function roomify_elegant_theme_default_panels_mini() {
   $display->storage_id = 'properties_tabs_elegant';
   $display->content = array();
   $display->panels = array();
-  $pane = new stdClass();
-  $pane->pid = 'new-bfd068c8-399b-4b3c-846d-edf4320ef76e';
-  $pane->panel = 'bottom';
-  $pane->type = 'views_panes';
-  $pane->subtype = 'properties_index-panel_pane_2';
-  $pane->shown = TRUE;
-  $pane->access = array();
-  $pane->configuration = array(
-    'override_title' => 1,
-    'override_title_text' => 'Map View',
-    'override_title_heading' => 'h3',
-  );
-  $pane->cache = array();
-  $pane->style = array(
-    'settings' => NULL,
-  );
-  $pane->css = array();
-  $pane->extras = array();
-  $pane->position = 0;
-  $pane->locks = array();
-  $pane->uuid = 'bfd068c8-399b-4b3c-846d-edf4320ef76e';
-  $display->content['new-bfd068c8-399b-4b3c-846d-edf4320ef76e'] = $pane;
-  $display->panels['bottom'][0] = 'new-bfd068c8-399b-4b3c-846d-edf4320ef76e';
   $pane = new stdClass();
   $pane->pid = 'new-646985dd-044d-4b72-af7c-17ed47fe34a7';
   $pane->panel = 'bottom';
@@ -342,11 +320,34 @@ function roomify_elegant_theme_default_panels_mini() {
   );
   $pane->css = array();
   $pane->extras = array();
-  $pane->position = 1;
+  $pane->position = 0;
   $pane->locks = array();
   $pane->uuid = '646985dd-044d-4b72-af7c-17ed47fe34a7';
   $display->content['new-646985dd-044d-4b72-af7c-17ed47fe34a7'] = $pane;
-  $display->panels['bottom'][1] = 'new-646985dd-044d-4b72-af7c-17ed47fe34a7';
+  $display->panels['bottom'][0] = 'new-646985dd-044d-4b72-af7c-17ed47fe34a7';
+  $pane = new stdClass();
+  $pane->pid = 'new-bfd068c8-399b-4b3c-846d-edf4320ef76e';
+  $pane->panel = 'bottom';
+  $pane->type = 'views_panes';
+  $pane->subtype = 'properties_index-panel_pane_2';
+  $pane->shown = TRUE;
+  $pane->access = array();
+  $pane->configuration = array(
+    'override_title' => 1,
+    'override_title_text' => 'Map View',
+    'override_title_heading' => 'h3',
+  );
+  $pane->cache = array();
+  $pane->style = array(
+    'settings' => NULL,
+  );
+  $pane->css = array();
+  $pane->extras = array();
+  $pane->position = 1;
+  $pane->locks = array();
+  $pane->uuid = 'bfd068c8-399b-4b3c-846d-edf4320ef76e';
+  $display->content['new-bfd068c8-399b-4b3c-846d-edf4320ef76e'] = $pane;
+  $display->panels['bottom'][1] = 'new-bfd068c8-399b-4b3c-846d-edf4320ef76e';
   $pane = new stdClass();
   $pane->pid = 'new-025b9eb3-25a5-42dc-93e1-3ba259103c7e';
   $pane->panel = 'middle';

@@ -994,6 +994,7 @@
         .short-description {
           color: #666;
           margin-bottom: 20px;
+          font-size: 14px;
         }
         .table-responsive {
           border: none;
@@ -1164,8 +1165,8 @@
         }
         .book-now {
           position: absolute;
-          right: 8px;
-          bottom: 8px;
+          right: 12px;
+          bottom: 12px;
           color: white;
           font-size: 10px;
           @include button-variant(#000000, rgb(237, 237, 237), #e0d9d7);

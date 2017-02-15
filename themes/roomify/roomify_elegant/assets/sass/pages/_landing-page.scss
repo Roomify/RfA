@@ -97,62 +97,7 @@
     position: relative;
     padding: 0;
     .property-types {
-      display: inline-block;
-      width: 100%;
-      margin-top: 20px;
-      width: 96%;
-      table {
-        width: 100%;
-      }
-      .type-icons {
-        .icon {
-          width: 15%;
-          height: 20px;
-          padding-bottom: 15px;
-          padding-top: 5px;
-          &.name {
-            width:40%;
-            text-indent: -9999999px;
-          }
-          &.capacity {
-            background-image: url('../images/small/capacity_small.png');
-            text-indent: -9999999px;
-            background-repeat: no-repeat;
-            background-position: center center;
-          }
-          &.bedrooms {
-            background-image: url('../images/small/beds_small.png');
-            text-indent: -9999999px;
-            background-repeat: no-repeat;
-            background-position: center center;
-          }
-          &.price {
-            width: 30%;
-            background-image: url('../images/small/price_small.png');
-            text-indent: -9999999px;
-            background-repeat: no-repeat;
-            background-position: 75% center;
-          }
-        }
-      }
-      .type-row {
-        width: 100%;
-        margin-top: 10px;
-        .row-element {
-          width: 15%;
-          padding: 5px;
-          text-align: center;
-          &.name {
-            width: 38%;
-            margin-left: 2%;
-            text-align: left;
-          }
-          &.price {
-            width: 30%;
-            text-align: right;
-          }
-        }
-      }
+      display: none;
     }
   }
   article.node-landing-page {
