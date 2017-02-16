@@ -1,0 +1,134 @@
+body.node-type-offer {
+	.panel-content-bottom,
+	.panel-content-top,
+	.page-header {
+		@include make-xs-column(12);
+	}
+	.pane-manage-offer-link {
+		display: inline-block;
+    width: 100%;
+    text-align: right;
+    margin: 15px 0;
+    a {
+    }
+	}
+	.panel_sl_right {
+		margin-bottom: 15px;
+    display: inline-block;
+    padding: 15px;
+    background: white;
+    border: 1px solid #ececec;
+    border-radius: 2px;
+    @media (max-width: $screen-sm-max) {
+    	margin-top: 50px;
+    	width: 100%;
+    	max-width: calc(100% - 30px);
+    	margin-left: 15px;
+    }
+	}
+	.pane-roomify-rate-offer-start-date,
+	.pane-roomify-rate-offer-end-date {
+		margin: 10px 0;
+		h4 {
+			margin-bottom: 10px;
+			font-weight: 400;
+			font-size: 25px;
+		}
+		@media (min-width: $screen-md) {
+			margin: 0;
+			margin-bottom: 20px;
+		}
+		.field-name-offer-end-date,
+		.field-name-offer-start-date {
+			width: 100%;
+	    font-size: 25px;
+		}
+	}
+	.pane-node-field-offer-description {
+		margin: 50px 0;
+	}
+	// Participating properties
+	.pane-offer-panel-pane-2 {
+		.pane-title {
+			text-align: center;
+		}
+		.view-offer {
+			.view-filters {
+				display: inline-block;
+				width: 100%;
+				margin-bottom: 15px;
+			}
+			form {
+				display: block;
+				float: right;
+				.form-item {
+					select {
+						min-width: 100px;
+					}
+				}
+				.form-submit {
+    			margin-top: 24px;
+				}
+			}
+		}
+		.property-col {
+	    display: table;
+	    margin: 15px auto;
+	    max-width: 380px;
+	  }
+		.views-field-field-sp-featured-image {
+    	overflow: hidden;
+	    -webkit-mask-image: -webkit-radial-gradient(circle, white, black);
+	    border-radius: 2px 2px 0 0;
+	    max-width: 380px;
+	    display: table;
+	    width: 100%;
+	    margin: 0 auto;
+	    img {
+	    	width: 100%;
+	    }
+	  }
+		.views-field-name {
+	    font-size: 16px;
+	    text-transform: uppercase;
+	    text-align: left;
+	    max-width: 380px;
+	    display: table;
+	    margin: 0 auto;
+	    color: white;
+	    background: #0b1418;
+	    width: 100%;
+	    border-radius: 0 0 2px 2px;
+	    padding: 8px 10px;
+	    position: relative;
+	    min-height: 70px;
+	    table {
+	      width: 100%;
+	      min-height: 70px;
+	    }
+	    .property-name {
+	      vertical-align: middle;
+	      width: 100%;
+	      max-width: 200px;
+	      white-space: nowrap;
+	      overflow: hidden;
+	      text-overflow: ellipsis;
+
+	     }
+      .location {
+      	width: 100%;
+      	vertical-align: middle;
+        font-size: 10px;
+        text-transform: capitalize;
+        margin-top: 2px;
+        a {
+          color: white;
+          text-decoration: none;
+          &:hover {
+            text-decoration: underline;
+          }
+        }
+      }
+	  }
+	}
+}
