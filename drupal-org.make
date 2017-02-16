@@ -48,7 +48,7 @@ projects[roomify_channel_connector][subdir] = roomify
 projects[roomify_channel_ical][type] = module
 projects[roomify_channel_ical][download][type] = git
 projects[roomify_channel_ical][download][url] = https://github.com/Roomify/roomify_channel_ical.git
-projects[roomify_channel_ical][download][tag] = 1.5
+projects[roomify_channel_ical][download][tag] = 1.6
 projects[roomify_channel_ical][directory_name] = roomify_channel_ical
 projects[roomify_channel_ical][subdir] = roomify
 
