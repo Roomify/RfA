@@ -30,7 +30,7 @@ function roomify_conversations_token_info() {
   );
 
   return array(
-    'tokens' => array('conversation' => $tokens),
+    'tokens' => array('roomify_conversation' => $tokens),
   );
 }
 
@@ -40,11 +40,18 @@ function roomify_conversations_token_info() {
 function roomify_conversations_tokens($type, $tokens, array $data = array(), array $options = array()) {
   $return = array();
 
-  if ($type == 'conversation' && !empty($data['conversation'])) {
-    $conversation = $data['conversation'];
+  if ($type == 'roomify_conversation' && !empty($data['roomify_conversation'])) {
+    $conversation = $data['roomify_conversation'];
 
     $type = bat_type_load($conversation->conversation_unit_type_ref[LANGUAGE_NONE][0]['target_id']);
     $property = roomify_property_load($type->field_st_property_reference[LANGUAGE_NONE][0]['target_id']);
+
+    if ($property->type == 'locanda_property') {
+      $property_name = $property->name . ' - ' . $type->name;
+    }
+    else {
+      $property_name = $property->name;
+    }
 
     foreach ($tokens as $name => $original) {
       switch ($name) {
@@ -61,7 +68,7 @@ function roomify_conversations_tokens($type, $tokens, array $data = array(), arr
           break;
 
         case 'property_name':
-          $return[$original] = $property->name;
+          $return[$original] = $property_name;
           break;
 
         case 'property_owner':
