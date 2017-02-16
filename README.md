@@ -4,6 +4,9 @@ This is the Roomify distribution for vacation rentals, hotels and multi-property
 ## Managed Hosting
 If you don't wish to make your own customizations to RfA or handle your own hosting, [managed hosting services are available here](https://roomify.us/roomify-for-accommodations-pricing).
 
+## Easy Install on platform.sh
+To evaluate RfA for free on [platform.sh](https://platform.sh/), just [go here](https://accounts.platform.sh/platform/trial/roomify/setup) and sign up/in. The initial installation will take around 10 minutes - once it's finished, just go to your demo site and login with admin/admin - be sure to update your password and email address.
+
 ## Quickstart
 * Just go to the [latest release page](https://github.com/Roomify/RfA/releases/latest) and download the roomify-accommodations-default.{version}.zip file. You will find a completely built codebase and database dump to use on any hosting provider that supports PHP.
 * Alternatively, you may use our [docker container](https://github.com/Roomify/rfa-docker) to quickly create a local demo environment.
