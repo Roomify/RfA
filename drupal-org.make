@@ -238,7 +238,10 @@ projects[file_entity][version] = 2.0-beta3
 
 projects[geofield][version] = 2.3
 
-projects[geofield_gmap][version] = 2.x-dev
+projects[geofield_gmap][type] = module
+projects[geofield_gmap][download][type] = git
+projects[geofield_gmap][download][url] = https://git.drupal.org/project/geofield_gmap.git
+projects[geofield_gmap][download][revision] = b09bbfa9ff2020b7ccd64b69a563b858618a92f1
 projects[geofield_gmap][patch][] = https://www.drupal.org/files/issues/fix-api-key-not-being-used-2746209-16.patch
 projects[geofield_gmap][patch][] = https://www.drupal.org/files/issues/geofield_gmap-zoom_after_selecting_address-2562835-1.patch
 projects[geofield_gmap][patch][] = https://www.drupal.org/files/issues/geofield_gmap-allow_html_tags_description-2847341-1.patch
