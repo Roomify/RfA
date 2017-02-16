@@ -47,7 +47,7 @@ function roomify_casa_pet_form_pet_form_alter(&$form, &$form_state) {
       break;
 
     case 'new_booking_enquiry':
-      $form['mail_body']['#description'] = $body_default . t('</br></br>Tokens specific to this template: <em>Room Name</em> : [bat_type:name] <em>Name of Property Owner</em> : [bat_type:name:field-owner:name] <em>Name of Guest</em> : [roomify_conversation:conversation-user-name] <em>Arrival/Departure Dates</em> : [roomify_conversation:conversation-book-start-date]/[roomify_conversation:conversation-book-end-date] <em>Guest Email</em> : [roomify_conversation:conversation-user-email] <em>No. of Guests</em> : [roomify_conversation:conversation-guests] <em>Additional Information Provided</em> : [roomify_conversation:conversation-further-info]');
+      $form['mail_body']['#description'] = $body_default . t('</br></br>Tokens specific to this template: <em>Room Name</em> : [roomify_conversation:property_name] <em>Name of Property Owner</em> : [bat_type:name:field-owner:name] <em>Name of Guest</em> : [roomify_conversation:conversation-user-name] <em>Arrival/Departure Dates</em> : [roomify_conversation:conversation-book-start-date]/[roomify_conversation:conversation-book-end-date] <em>Guest Email</em> : [roomify_conversation:conversation-user-email] <em>No. of Guests</em> : [roomify_conversation:conversation-guests] <em>Additional Information Provided</em> : [roomify_conversation:conversation-further-info]');
       break;
 
     case 'new_conversation_message':
