@@ -14348,3 +14348,171 @@ body.page-single-property-listing {
           margin-top: 5px;
           font-weight: 400;
           font-style: italic; }
+
+body.node-type-offer .panel-content-bottom,
+body.node-type-offer .panel-content-top,
+body.node-type-offer .page-header {
+  position: relative;
+  float: left;
+  width: 100%;
+  min-height: 1px;
+  padding-left: 15px;
+  padding-right: 15px; }
+body.node-type-offer .pane-manage-offer-link {
+  display: inline-block;
+  width: 100%;
+  text-align: right;
+  margin: 15px 0; }
+body.node-type-offer .panel_sl_right {
+  margin-bottom: 15px;
+  display: inline-block;
+  padding: 15px;
+  background: white;
+  border: 1px solid #ececec;
+  border-radius: 2px; }
+  @media (max-width: 991px) {
+    body.node-type-offer .panel_sl_right {
+      margin-top: 50px;
+      width: 100%;
+      max-width: calc(100% - 30px);
+      margin-left: 15px; } }
+body.node-type-offer .pane-roomify-rate-offer-start-date,
+body.node-type-offer .pane-roomify-rate-offer-end-date {
+  margin: 10px 0; }
+  body.node-type-offer .pane-roomify-rate-offer-start-date h4, body.node-type-offer .pane-roomify-rate-offer-start-date .pane-property-location .panel-content-right .pane-title, .pane-property-location .panel-content-right body.node-type-offer .pane-roomify-rate-offer-start-date .pane-title,
+  body.node-type-offer .pane-roomify-rate-offer-start-date .pane-property-location .panel-content-left .pane-title,
+  .pane-property-location .panel-content-left body.node-type-offer .pane-roomify-rate-offer-start-date .pane-title, body.node-type-offer .pane-roomify-rate-offer-start-date .page-listing .pane-roomify-property-field-sp-short-description, .page-listing body.node-type-offer .pane-roomify-rate-offer-start-date .pane-roomify-property-field-sp-short-description, body.node-type-offer .pane-roomify-rate-offer-start-date .node-type-blog .panel-content-bottom .pane-blog-panel-pane-9 .views-field-name, .node-type-blog .panel-content-bottom .pane-blog-panel-pane-9 body.node-type-offer .pane-roomify-rate-offer-start-date .views-field-name,
+  body.node-type-offer .pane-roomify-rate-offer-end-date h4,
+  body.node-type-offer .pane-roomify-rate-offer-end-date .pane-property-location .panel-content-right .pane-title,
+  .pane-property-location .panel-content-right body.node-type-offer .pane-roomify-rate-offer-end-date .pane-title,
+  body.node-type-offer .pane-roomify-rate-offer-end-date .pane-property-location .panel-content-left .pane-title,
+  .pane-property-location .panel-content-left body.node-type-offer .pane-roomify-rate-offer-end-date .pane-title,
+  body.node-type-offer .pane-roomify-rate-offer-end-date .page-listing .pane-roomify-property-field-sp-short-description,
+  .page-listing body.node-type-offer .pane-roomify-rate-offer-end-date .pane-roomify-property-field-sp-short-description,
+  body.node-type-offer .pane-roomify-rate-offer-end-date .node-type-blog .panel-content-bottom .pane-blog-panel-pane-9 .views-field-name,
+  .node-type-blog .panel-content-bottom .pane-blog-panel-pane-9 body.node-type-offer .pane-roomify-rate-offer-end-date .views-field-name {
+    margin-bottom: 10px;
+    font-weight: 400; }
+  @media (min-width: 992px) {
+    body.node-type-offer .pane-roomify-rate-offer-start-date,
+    body.node-type-offer .pane-roomify-rate-offer-end-date {
+      margin: 0;
+      margin-bottom: 20px; } }
+  body.node-type-offer .pane-roomify-rate-offer-start-date .field-name-offer-end-date,
+  body.node-type-offer .pane-roomify-rate-offer-start-date .field-name-offer-start-date,
+  body.node-type-offer .pane-roomify-rate-offer-end-date .field-name-offer-end-date,
+  body.node-type-offer .pane-roomify-rate-offer-end-date .field-name-offer-start-date {
+    width: 100%;
+    font-size: 25px; }
+body.node-type-offer .pane-node-field-offer-description {
+  margin: 50px 0; }
+body.node-type-offer .pane-offer-panel-pane-2 .pane-title {
+  text-align: center; }
+body.node-type-offer .pane-offer-panel-pane-2 .view-offer .view-filters {
+  display: inline-block;
+  width: 100%;
+  margin-bottom: 15px; }
+body.node-type-offer .pane-offer-panel-pane-2 .view-offer form {
+  display: block;
+  float: right; }
+  body.node-type-offer .pane-offer-panel-pane-2 .view-offer form .form-item select {
+    min-width: 100px; }
+  body.node-type-offer .pane-offer-panel-pane-2 .view-offer form .form-submit {
+    margin-top: 32px;
+    height: 37px; }
+body.node-type-offer .pane-offer-panel-pane-2 .property-col {
+  display: table;
+  margin: 15px auto;
+  max-width: 390px; }
+body.node-type-offer .pane-offer-panel-pane-2 .views-field-field-sp-featured-image {
+  overflow: hidden;
+  -webkit-mask-image: -webkit-radial-gradient(circle, white, black);
+  border-radius: 2px 2px 0 0;
+  max-width: 390px;
+  display: table;
+  width: 100%;
+  margin: 0 auto; }
+  body.node-type-offer .pane-offer-panel-pane-2 .views-field-field-sp-featured-image img {
+    width: 100%; }
+body.node-type-offer .pane-offer-panel-pane-2 .views-field-name {
+  font-size: 16px;
+  text-transform: uppercase;
+  text-align: left;
+  max-width: 380px;
+  display: table;
+  margin: 0 auto;
+  color: white;
+  background: #0b1418;
+  width: 100%;
+  border-radius: 0 0 2px 2px;
+  padding: 8px 10px;
+  position: relative;
+  min-height: 70px; }
+  body.node-type-offer .pane-offer-panel-pane-2 .views-field-name table {
+    width: 100%;
+    min-height: 70px; }
+  body.node-type-offer .pane-offer-panel-pane-2 .views-field-name .property-name {
+    vertical-align: middle;
+    width: 100%;
+    max-width: 200px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis; }
+  body.node-type-offer .pane-offer-panel-pane-2 .views-field-name .location {
+    width: 100%;
+    vertical-align: middle;
+    font-size: 10px;
+    text-transform: capitalize;
+    margin-top: 2px; }
+    body.node-type-offer .pane-offer-panel-pane-2 .views-field-name .location a {
+      color: white;
+      text-decoration: none; }
+      body.node-type-offer .pane-offer-panel-pane-2 .views-field-name .location a:hover {
+        text-decoration: underline; }
+    body.node-type-offer .pane-offer-panel-pane-2 .views-field-name .location:before {
+      background: url("../images/location_white.png") center center no-repeat;
+      background: url("../images/location_white.svg") center center no-repeat, linear-gradient(transparent, transparent);
+      content: "";
+      display: inline-block;
+      width: 15px;
+      height: 15px;
+      margin-right: 1px;
+      top: 3px;
+      left: -2px;
+      position: relative; }
+    body.node-type-offer .pane-offer-panel-pane-2 .views-field-name .location:empty:before {
+      display: none; }
+body.node-type-offer .pane-offer-panel-pane-2 .pager-load-more {
+  margin-top: 20px; }
+  body.node-type-offer .pane-offer-panel-pane-2 .pager-load-more a {
+    margin: 0;
+    border-radius: 5px;
+    color: #fff;
+    background-color: #158CBA;
+    border-color: #127ba3; }
+    body.node-type-offer .pane-offer-panel-pane-2 .pager-load-more a:focus, body.node-type-offer .pane-offer-panel-pane-2 .pager-load-more a.focus {
+      color: #fff;
+      background-color: #106a8c;
+      border-color: #052531; }
+    body.node-type-offer .pane-offer-panel-pane-2 .pager-load-more a:hover {
+      color: #fff;
+      background-color: #106a8c;
+      border-color: #0c516c; }
+    body.node-type-offer .pane-offer-panel-pane-2 .pager-load-more a:active, body.node-type-offer .pane-offer-panel-pane-2 .pager-load-more a.active, .open > body.node-type-offer .pane-offer-panel-pane-2 .pager-load-more a.dropdown-toggle {
+      color: #fff;
+      background-color: #106a8c;
+      border-color: #0c516c; }
+      body.node-type-offer .pane-offer-panel-pane-2 .pager-load-more a:active:hover, body.node-type-offer .pane-offer-panel-pane-2 .pager-load-more a:active:focus, body.node-type-offer .pane-offer-panel-pane-2 .pager-load-more a:active.focus, body.node-type-offer .pane-offer-panel-pane-2 .pager-load-more a.active:hover, body.node-type-offer .pane-offer-panel-pane-2 .pager-load-more a.active:focus, body.node-type-offer .pane-offer-panel-pane-2 .pager-load-more a.active.focus, .open > body.node-type-offer .pane-offer-panel-pane-2 .pager-load-more a.dropdown-toggle:hover, .open > body.node-type-offer .pane-offer-panel-pane-2 .pager-load-more a.dropdown-toggle:focus, .open > body.node-type-offer .pane-offer-panel-pane-2 .pager-load-more a.dropdown-toggle.focus {
+        color: #fff;
+        background-color: #0c516c;
+        border-color: #052531; }
+    body.node-type-offer .pane-offer-panel-pane-2 .pager-load-more a:active, body.node-type-offer .pane-offer-panel-pane-2 .pager-load-more a.active, .open > body.node-type-offer .pane-offer-panel-pane-2 .pager-load-more a.dropdown-toggle {
+      background-image: none; }
+    body.node-type-offer .pane-offer-panel-pane-2 .pager-load-more a.disabled:hover, body.node-type-offer .pane-offer-panel-pane-2 .pager-load-more a.disabled:focus, body.node-type-offer .pane-offer-panel-pane-2 .pager-load-more a.disabled.focus, body.node-type-offer .pane-offer-panel-pane-2 .pager-load-more a[disabled]:hover, body.node-type-offer .pane-offer-panel-pane-2 .pager-load-more a[disabled]:focus, body.node-type-offer .pane-offer-panel-pane-2 .pager-load-more a[disabled].focus, fieldset[disabled] body.node-type-offer .pane-offer-panel-pane-2 .pager-load-more a:hover, fieldset[disabled] body.node-type-offer .pane-offer-panel-pane-2 .pager-load-more a:focus, fieldset[disabled] body.node-type-offer .pane-offer-panel-pane-2 .pager-load-more a.focus {
+      background-color: #158CBA;
+      border-color: #127ba3; }
+    body.node-type-offer .pane-offer-panel-pane-2 .pager-load-more a .badge {
+      color: #158CBA;
+      background-color: #fff; }
+    body.node-type-offer .pane-offer-panel-pane-2 .pager-load-more a:hover {
+      border-bottom-width: 3px; }
