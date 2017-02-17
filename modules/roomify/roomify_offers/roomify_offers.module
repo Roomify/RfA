@@ -773,7 +773,7 @@ function roomify_offers_event_manager_form_ajax_submit($form, &$form_state) {
 function roomify_offers_default_cer() {
   $items = array();
 
-  $items['roomify_rate:special_offer:offer_node_reference*node:node:field_offer_reference'] = entity_import('cer', '{
+  $items['roomify_rate:special_offer:offer_node_reference*node:offer:field_offer_reference'] = entity_import('cer', '{
     "cer_bidirectional" : { "und" : [ { "value" : "1" } ] },
     "cer_enabled" : { "und" : [ { "value" : "1" } ] },
     "cer_left" : { "und" : [ { "path" : "roomify_rate:special_offer:offer_node_reference" } ] },
@@ -782,7 +782,8 @@ function roomify_offers_default_cer() {
     "identifier" : "roomify_rate:special_offer:offer_node_reference*node:offer:field_offer_reference",
     "rdf_mapping" : []
   }');
-  $items['roomify_rate:special_offer_percentage:offer_node_reference*node:node:field_offer_reference'] = entity_import('cer', '{
+
+  $items['roomify_rate:special_offer_percentage:offer_node_reference*node:offer:field_offer_reference'] = entity_import('cer', '{
     "cer_bidirectional" : { "und" : [ { "value" : "1" } ] },
     "cer_enabled" : { "und" : [ { "value" : "1" } ] },
     "cer_left" : { "und" : [ { "path" : "roomify_rate:special_offer_percentage:offer_node_reference" } ] },
