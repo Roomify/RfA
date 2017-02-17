@@ -4,7 +4,7 @@
 @import url("https://fonts.googleapis.com/css?family=Open+Sans:400,300,300italic,400italic,600,600italic,700,700italic,800,800italic)");
 @import url("https://fonts.googleapis.com/css?family=Playfair+Display:400,400i,700,700i,900,900i");
 html, body, div, span, applet, object, iframe,
-h1, h2, h3, body .sidebar-nav .pane-roomify-sidebar-user-menu .roomify-sidebar-user-menu .sidebar-profile-message, .page-checkout-review .checkout_review .pane-title td, .page-availability-search .view-display-id-panel_pane_1 .views-row .views-field-name, .page-availability-search .view-display-id-panel_pane_3 .property-row .views-field-name, .node-type-blog .panel_sl_right .panel-pane .pane-title, .node-type-activity .panel_sl_right .panel-pane .pane-title, h4, .pane-property-location .panel-content-right .pane-title,
+h1, h2, h3, body .sidebar-nav .pane-roomify-sidebar-user-menu .roomify-sidebar-user-menu .sidebar-profile-message, .page-checkout-review .checkout_review .pane-title td, .page-availability-search .view-display-id-panel_pane_1 .views-row .views-field-name, .node-type-blog .panel_sl_right .panel-pane .pane-title, .node-type-activity .panel_sl_right .panel-pane .pane-title, h4, .pane-property-location .panel-content-right .pane-title,
 .pane-property-location .panel-content-left .pane-title, .node-type-blog .panel-content-bottom .pane-blog-panel-pane-9 .views-field-name, h5, h6, p, blockquote, pre,
 a, abbr, acronym, address, big, cite, code,
 del, dfn, em, font, ins, kbd, q, s, samp,
@@ -308,7 +308,6 @@ th {
   body .sidebar-nav .pane-roomify-sidebar-user-menu .roomify-sidebar-user-menu .sidebar-profile-message,
   .page-checkout-review .checkout_review .pane-title td,
   .page-availability-search .view-display-id-panel_pane_1 .views-row .views-field-name,
-  .page-availability-search .view-display-id-panel_pane_3 .property-row .views-field-name,
   .node-type-blog .panel_sl_right .panel-pane .pane-title,
   .node-type-activity .panel_sl_right .panel-pane .pane-title {
     orphans: 3;
@@ -319,7 +318,6 @@ th {
   body .sidebar-nav .pane-roomify-sidebar-user-menu .roomify-sidebar-user-menu .sidebar-profile-message,
   .page-checkout-review .checkout_review .pane-title td,
   .page-availability-search .view-display-id-panel_pane_1 .views-row .views-field-name,
-  .page-availability-search .view-display-id-panel_pane_3 .property-row .views-field-name,
   .node-type-blog .panel_sl_right .panel-pane .pane-title,
   .node-type-activity .panel_sl_right .panel-pane .pane-title {
     page-break-after: avoid; }
@@ -1267,7 +1265,7 @@ hr {
 [role="button"] {
   cursor: pointer; }
 
-h1, h2, h3, body .sidebar-nav .pane-roomify-sidebar-user-menu .roomify-sidebar-user-menu .sidebar-profile-message, .page-checkout-review .checkout_review .pane-title td, .page-availability-search .view-display-id-panel_pane_1 .views-row .views-field-name, .page-availability-search .view-display-id-panel_pane_3 .property-row .views-field-name, .node-type-blog .panel_sl_right .panel-pane .pane-title, .node-type-activity .panel_sl_right .panel-pane .pane-title, h4, .pane-property-location .panel-content-right .pane-title,
+h1, h2, h3, body .sidebar-nav .pane-roomify-sidebar-user-menu .roomify-sidebar-user-menu .sidebar-profile-message, .page-checkout-review .checkout_review .pane-title td, .page-availability-search .view-display-id-panel_pane_1 .views-row .views-field-name, .node-type-blog .panel_sl_right .panel-pane .pane-title, .node-type-activity .panel_sl_right .panel-pane .pane-title, h4, .pane-property-location .panel-content-right .pane-title,
 .pane-property-location .panel-content-left .pane-title, .node-type-blog .panel-content-bottom .pane-blog-panel-pane-9 .views-field-name, h5, h6,
 .h1, .h2, .pane-property-location .pane-title, .pane-roomify-property-field-sp-policies .pane-title, .pane-roomify-property-field-sp-amenities .pane-title, body.page-blog .panel_sl_right .panel-pane .pane-title, .node-type-blog .panel_sl_right .panel-pane .pane-title, .node-type-blog .panel_sl_right .pane-blog-panel-pane-10 .pane-title,
 .node-type-blog .panel_sl_right .pane-blog-panel-pane-4 .pane-title, body.page-things-to-do .panel_sl_right .panel-pane .pane-title, .node-type-activity .panel_sl_right .panel-pane .pane-title, .h3, .h4, .h5, .h6 {
@@ -1277,12 +1275,11 @@ h1, h2, h3, body .sidebar-nav .pane-roomify-sidebar-user-menu .roomify-sidebar-u
   color: #333333; }
   h1 small,
   h1 .small, h2 small,
-  h2 .small, h3 small, body .sidebar-nav .pane-roomify-sidebar-user-menu .roomify-sidebar-user-menu .sidebar-profile-message small, .page-checkout-review .checkout_review .pane-title td small, .page-availability-search .view-display-id-panel_pane_1 .views-row .views-field-name small, .page-availability-search .view-display-id-panel_pane_3 .property-row .views-field-name small, .node-type-blog .panel_sl_right .panel-pane .pane-title small, .node-type-activity .panel_sl_right .panel-pane .pane-title small,
+  h2 .small, h3 small, body .sidebar-nav .pane-roomify-sidebar-user-menu .roomify-sidebar-user-menu .sidebar-profile-message small, .page-checkout-review .checkout_review .pane-title td small, .page-availability-search .view-display-id-panel_pane_1 .views-row .views-field-name small, .node-type-blog .panel_sl_right .panel-pane .pane-title small, .node-type-activity .panel_sl_right .panel-pane .pane-title small,
   h3 .small,
   body .sidebar-nav .pane-roomify-sidebar-user-menu .roomify-sidebar-user-menu .sidebar-profile-message .small,
   .page-checkout-review .checkout_review .pane-title td .small,
   .page-availability-search .view-display-id-panel_pane_1 .views-row .views-field-name .small,
-  .page-availability-search .view-display-id-panel_pane_3 .property-row .views-field-name .small,
   .node-type-blog .panel_sl_right .panel-pane .pane-title .small,
   .node-type-activity .panel_sl_right .panel-pane .pane-title .small, h4 small, .pane-property-location .panel-content-right .pane-title small,
   .pane-property-location .panel-content-left .pane-title small, .node-type-blog .panel-content-bottom .pane-blog-panel-pane-9 .views-field-name small,
@@ -1320,7 +1317,6 @@ h3,
 body .sidebar-nav .pane-roomify-sidebar-user-menu .roomify-sidebar-user-menu .sidebar-profile-message,
 .page-checkout-review .checkout_review .pane-title td,
 .page-availability-search .view-display-id-panel_pane_1 .views-row .views-field-name,
-.page-availability-search .view-display-id-panel_pane_3 .property-row .views-field-name,
 .node-type-blog .panel_sl_right .panel-pane .pane-title,
 .node-type-activity .panel_sl_right .panel-pane .pane-title, .h3 {
   margin-top: 21px;
@@ -1345,14 +1341,12 @@ body .sidebar-nav .pane-roomify-sidebar-user-menu .roomify-sidebar-user-menu .si
   body .sidebar-nav .pane-roomify-sidebar-user-menu .roomify-sidebar-user-menu .sidebar-profile-message small,
   .page-checkout-review .checkout_review .pane-title td small,
   .page-availability-search .view-display-id-panel_pane_1 .views-row .views-field-name small,
-  .page-availability-search .view-display-id-panel_pane_3 .property-row .views-field-name small,
   .node-type-blog .panel_sl_right .panel-pane .pane-title small,
   .node-type-activity .panel_sl_right .panel-pane .pane-title small,
   h3 .small,
   body .sidebar-nav .pane-roomify-sidebar-user-menu .roomify-sidebar-user-menu .sidebar-profile-message .small,
   .page-checkout-review .checkout_review .pane-title td .small,
   .page-availability-search .view-display-id-panel_pane_1 .views-row .views-field-name .small,
-  .page-availability-search .view-display-id-panel_pane_3 .property-row .views-field-name .small,
   .node-type-blog .panel_sl_right .panel-pane .pane-title .small,
   .node-type-activity .panel_sl_right .panel-pane .pane-title .small, .h3 small,
   .h3 .small {
@@ -1386,7 +1380,7 @@ h2, .h2, .pane-property-location .pane-title, .pane-roomify-property-field-sp-po
 .node-type-blog .panel_sl_right .pane-blog-panel-pane-4 .pane-title, body.page-things-to-do .panel_sl_right .panel-pane .pane-title, .node-type-activity .panel_sl_right .panel-pane .pane-title {
   font-size: 32px; }
 
-h3, body .sidebar-nav .pane-roomify-sidebar-user-menu .roomify-sidebar-user-menu .sidebar-profile-message, .page-checkout-review .checkout_review .pane-title td, .page-availability-search .view-display-id-panel_pane_1 .views-row .views-field-name, .page-availability-search .view-display-id-panel_pane_3 .property-row .views-field-name, .node-type-blog .panel_sl_right .panel-pane .pane-title, .node-type-activity .panel_sl_right .panel-pane .pane-title, .h3 {
+h3, body .sidebar-nav .pane-roomify-sidebar-user-menu .roomify-sidebar-user-menu .sidebar-profile-message, .page-checkout-review .checkout_review .pane-title td, .page-availability-search .view-display-id-panel_pane_1 .views-row .views-field-name, .node-type-blog .panel_sl_right .panel-pane .pane-title, .node-type-activity .panel_sl_right .panel-pane .pane-title, .h3 {
   font-size: 25px; }
 
 h4, .pane-property-location .panel-content-right .pane-title,
@@ -13914,7 +13908,7 @@ input[type="checkbox"],
   -webkit-box-shadow: 0 1px 4px rgba(0, 0, 0, 0.3);
   box-shadow: 0 1px 4px rgba(0, 0, 0, 0.3); }
 
-.carousel-caption h1, .carousel-caption h2, .carousel-caption h3, .carousel-caption body .sidebar-nav .pane-roomify-sidebar-user-menu .roomify-sidebar-user-menu .sidebar-profile-message, body .sidebar-nav .pane-roomify-sidebar-user-menu .roomify-sidebar-user-menu .carousel-caption .sidebar-profile-message, .carousel-caption .page-checkout-review .checkout_review .pane-title td, .page-checkout-review .checkout_review .pane-title .carousel-caption td, .carousel-caption .page-availability-search .view-display-id-panel_pane_1 .views-row .views-field-name, .page-availability-search .view-display-id-panel_pane_1 .views-row .carousel-caption .views-field-name, .carousel-caption .page-availability-search .view-display-id-panel_pane_3 .property-row .views-field-name, .page-availability-search .view-display-id-panel_pane_3 .property-row .carousel-caption .views-field-name, .carousel-caption .node-type-blog .panel_sl_right .panel-pane .pane-title, .node-type-blog .panel_sl_right .panel-pane .carousel-caption .pane-title, .carousel-caption .node-type-activity .panel_sl_right .panel-pane .pane-title, .node-type-activity .panel_sl_right .panel-pane .carousel-caption .pane-title, .carousel-caption h4, .carousel-caption .pane-property-location .panel-content-right .pane-title, .pane-property-location .panel-content-right .carousel-caption .pane-title,
+.carousel-caption h1, .carousel-caption h2, .carousel-caption h3, .carousel-caption body .sidebar-nav .pane-roomify-sidebar-user-menu .roomify-sidebar-user-menu .sidebar-profile-message, body .sidebar-nav .pane-roomify-sidebar-user-menu .roomify-sidebar-user-menu .carousel-caption .sidebar-profile-message, .carousel-caption .page-checkout-review .checkout_review .pane-title td, .page-checkout-review .checkout_review .pane-title .carousel-caption td, .carousel-caption .page-availability-search .view-display-id-panel_pane_1 .views-row .views-field-name, .page-availability-search .view-display-id-panel_pane_1 .views-row .carousel-caption .views-field-name, .carousel-caption .node-type-blog .panel_sl_right .panel-pane .pane-title, .node-type-blog .panel_sl_right .panel-pane .carousel-caption .pane-title, .carousel-caption .node-type-activity .panel_sl_right .panel-pane .pane-title, .node-type-activity .panel_sl_right .panel-pane .carousel-caption .pane-title, .carousel-caption h4, .carousel-caption .pane-property-location .panel-content-right .pane-title, .pane-property-location .panel-content-right .carousel-caption .pane-title,
 .carousel-caption .pane-property-location .panel-content-left .pane-title,
 .pane-property-location .panel-content-left .carousel-caption .pane-title, .carousel-caption .node-type-blog .panel-content-bottom .pane-blog-panel-pane-9 .views-field-name, .node-type-blog .panel-content-bottom .pane-blog-panel-pane-9 .carousel-caption .views-field-name, .carousel-caption h5, .carousel-caption h6 {
   color: inherit; }
@@ -13978,7 +13972,7 @@ strong {
   font-family: "Playfair Display", serif;
   font-weight: bold; }
 
-h1, h2, h3, body .sidebar-nav .pane-roomify-sidebar-user-menu .roomify-sidebar-user-menu .sidebar-profile-message, .page-checkout-review .checkout_review .pane-title td, .page-availability-search .view-display-id-panel_pane_1 .views-row .views-field-name, .page-availability-search .view-display-id-panel_pane_3 .property-row .views-field-name, .node-type-blog .panel_sl_right .panel-pane .pane-title, .node-type-activity .panel_sl_right .panel-pane .pane-title, h4, .pane-property-location .panel-content-right .pane-title,
+h1, h2, h3, body .sidebar-nav .pane-roomify-sidebar-user-menu .roomify-sidebar-user-menu .sidebar-profile-message, .page-checkout-review .checkout_review .pane-title td, .page-availability-search .view-display-id-panel_pane_1 .views-row .views-field-name, .node-type-blog .panel_sl_right .panel-pane .pane-title, .node-type-activity .panel_sl_right .panel-pane .pane-title, h4, .pane-property-location .panel-content-right .pane-title,
 .pane-property-location .panel-content-left .pane-title, .node-type-blog .panel-content-bottom .pane-blog-panel-pane-9 .views-field-name, h5, h6 {
   margin: 0 0 10px 0;
   padding: 0;
@@ -13996,7 +13990,7 @@ h2 {
   margin-bottom: 20px;
   line-height: 0.93; }
 
-h3, body .sidebar-nav .pane-roomify-sidebar-user-menu .roomify-sidebar-user-menu .sidebar-profile-message, .page-checkout-review .checkout_review .pane-title td, .page-availability-search .view-display-id-panel_pane_1 .views-row .views-field-name, .page-availability-search .view-display-id-panel_pane_3 .property-row .views-field-name, .node-type-blog .panel_sl_right .panel-pane .pane-title, .node-type-activity .panel_sl_right .panel-pane .pane-title {
+h3, body .sidebar-nav .pane-roomify-sidebar-user-menu .roomify-sidebar-user-menu .sidebar-profile-message, .page-checkout-review .checkout_review .pane-title td, .page-availability-search .view-display-id-panel_pane_1 .views-row .views-field-name, .node-type-blog .panel_sl_right .panel-pane .pane-title, .node-type-activity .panel_sl_right .panel-pane .pane-title {
   margin-bottom: 20px; }
 
 p {
@@ -17132,228 +17126,25 @@ ol.inline.commerce-checkout-progress {
           .page-availability-search .view-display-id-panel_pane_1 .views-row .views-field-property-types .types .type-row .row-element.price {
             width: 30%;
             text-align: right; }
-.page-availability-search .view-display-id-panel_pane_3 .property-row {
-  margin-bottom: 35px;
-  position: relative; }
-  .page-availability-search .view-display-id-panel_pane_3 .property-row a {
-    color: initial;
-    display: block; }
-  .page-availability-search .view-display-id-panel_pane_3 .property-row .views-field-name {
-    margin-bottom: 15px;
-    font-weight: 400; }
-    @media (max-width: 768px) {
-      .page-availability-search .view-display-id-panel_pane_3 .property-row .views-field-name {
-        width: 100%;
-        margin-bottom: 15px; } }
-    .page-availability-search .view-display-id-panel_pane_3 .property-row .views-field-name h2 {
-      margin-top: 0px; }
-  .page-availability-search .view-display-id-panel_pane_3 .property-row .views-field-field-sp-featured-image img {
-    border: 1px solid #ececec;
-    border-radius: 2px; }
-  .page-availability-search .view-display-id-panel_pane_3 .property-row .property-info {
-    display: none;
-    overflow-y: scroll; }
-    .page-availability-search .view-display-id-panel_pane_3 .property-row .property-info::-webkit-scrollbar {
-      display: none; }
-  .page-availability-search .view-display-id-panel_pane_3 .property-row:hover .featured-image-with-description {
-    position: relative; }
-    .page-availability-search .view-display-id-panel_pane_3 .property-row:hover .featured-image-with-description .property-info {
-      display: block;
-      position: absolute;
-      visibility: visible;
-      top: 0;
-      width: 100%;
-      height: 100%;
-      background: rgba(0, 0, 0, 0.35);
-      -webkit-transition: 150ms display ease-in;
-      -moz-transition: 150ms display ease-in;
-      -ms-transition: 150ms display ease-in;
-      -o-transition: 150ms display ease-in; }
-      .page-availability-search .view-display-id-panel_pane_3 .property-row:hover .featured-image-with-description .property-info .description {
-        text-align: center;
-        color: white;
-        margin: 20px 0;
-        padding: 0 5px;
-        font-style: italic; }
-      .page-availability-search .view-display-id-panel_pane_3 .property-row:hover .featured-image-with-description .property-info .property-types-table {
-        width: 100%;
-        display: inline-block;
-        padding: 0 5px; }
-        @media (max-width: 768px) {
-          .page-availability-search .view-display-id-panel_pane_3 .property-row:hover .featured-image-with-description .property-info .property-types-table {
-            margin-bottom: 15px;
-            width: 100%; } }
-        .page-availability-search .view-display-id-panel_pane_3 .property-row:hover .featured-image-with-description .property-info .property-types-table .types {
-          display: inline-block;
-          width: 100%;
-          margin-top: 10px;
-          max-height: 60%; }
-          .page-availability-search .view-display-id-panel_pane_3 .property-row:hover .featured-image-with-description .property-info .property-types-table .types table {
-            width: 100%; }
-          .page-availability-search .view-display-id-panel_pane_3 .property-row:hover .featured-image-with-description .property-info .property-types-table .types .type-icons .icon {
-            width: 20%;
-            height: 25px; }
-            .page-availability-search .view-display-id-panel_pane_3 .property-row:hover .featured-image-with-description .property-info .property-types-table .types .type-icons .icon.name {
-              width: 40%;
-              text-indent: -9999999px; }
-            .page-availability-search .view-display-id-panel_pane_3 .property-row:hover .featured-image-with-description .property-info .property-types-table .types .type-icons .icon.capacity {
-              background-image: url("../images/small/capacity_small.png");
-              text-indent: -9999999px;
-              background-repeat: no-repeat;
-              background-position: center center; }
-            .page-availability-search .view-display-id-panel_pane_3 .property-row:hover .featured-image-with-description .property-info .property-types-table .types .type-icons .icon.bedrooms {
-              background-image: url("../images/small/beds_small.png");
-              text-indent: -9999999px;
-              background-repeat: no-repeat;
-              background-position: center center; }
-            .page-availability-search .view-display-id-panel_pane_3 .property-row:hover .featured-image-with-description .property-info .property-types-table .types .type-icons .icon.price {
-              background-image: url("../images/small/price_small.png");
-              text-indent: -9999999px;
-              background-repeat: no-repeat;
-              background-position: center center; }
-          .page-availability-search .view-display-id-panel_pane_3 .property-row:hover .featured-image-with-description .property-info .property-types-table .types .type-row {
-            width: 100%;
-            margin-top: 10px; }
-            .page-availability-search .view-display-id-panel_pane_3 .property-row:hover .featured-image-with-description .property-info .property-types-table .types .type-row .row-element {
-              width: 20%;
-              padding: 10px;
-              text-align: center;
-              color: white; }
-              .page-availability-search .view-display-id-panel_pane_3 .property-row:hover .featured-image-with-description .property-info .property-types-table .types .type-row .row-element.name {
-                width: 38%;
-                margin-left: 2%;
-                text-align: left;
-                padding-left: 5px; }
-.page-availability-search .view-display-id-panel_pane_3 .views-field-property-types {
-  width: 45%;
-  display: inline-block; }
-  @media (max-width: 768px) {
-    .page-availability-search .view-display-id-panel_pane_3 .views-field-property-types {
-      margin-bottom: 15px;
-      width: 100%; } }
-  .page-availability-search .view-display-id-panel_pane_3 .views-field-property-types .types {
-    display: inline-block;
-    width: 100%;
-    overflow-y: scroll;
-    margin-top: 10px;
-    max-height: 60%; }
-    .page-availability-search .view-display-id-panel_pane_3 .views-field-property-types .types::-webkit-scrollbar {
-      display: none; }
-    .page-availability-search .view-display-id-panel_pane_3 .views-field-property-types .types table {
-      width: 100%; }
-    .page-availability-search .view-display-id-panel_pane_3 .views-field-property-types .types .type-icons .icon {
-      width: 20%;
-      height: 25px; }
-      .page-availability-search .view-display-id-panel_pane_3 .views-field-property-types .types .type-icons .icon.name {
-        width: 40%;
-        text-indent: -9999999px; }
-      .page-availability-search .view-display-id-panel_pane_3 .views-field-property-types .types .type-icons .icon.capacity {
-        background-image: url("../images/small/capacity_gray.png");
-        text-indent: -9999999px;
-        background-repeat: no-repeat;
-        background-position: center center; }
-      .page-availability-search .view-display-id-panel_pane_3 .views-field-property-types .types .type-icons .icon.bedrooms {
-        background-image: url("../images/small/beds_gray.png");
-        text-indent: -9999999px;
-        background-repeat: no-repeat;
-        background-position: center center; }
-      .page-availability-search .view-display-id-panel_pane_3 .views-field-property-types .types .type-icons .icon.price {
-        background-image: url("../images/small/price_gray.png");
-        text-indent: -9999999px;
-        background-repeat: no-repeat;
-        background-position: center center; }
-    .page-availability-search .view-display-id-panel_pane_3 .views-field-property-types .types .type-row {
-      width: 100%;
-      margin-top: 10px; }
-      .page-availability-search .view-display-id-panel_pane_3 .views-field-property-types .types .type-row .row-element {
-        width: 20%;
-        padding: 10px;
-        text-align: center; }
-        .page-availability-search .view-display-id-panel_pane_3 .views-field-property-types .types .type-row .row-element.name {
-          width: 38%;
-          margin-left: 2%;
-          text-align: left;
-          padding-left: 0;
-          font-weight: 400; }
-.page-availability-search .view-display-id-panel_pane_3 .views-row .views-field-field-sp-short-description {
-  margin-bottom: 15px;
-  font-weight: 400;
-  display: inline-block;
-  width: 45%;
-  font-style: italic; }
-  @media (max-width: 768px) {
-    .page-availability-search .view-display-id-panel_pane_3 .views-row .views-field-field-sp-short-description {
-      width: 100%;
-      margin-bottom: 15px; } }
-.page-availability-search .view-display-id-panel_pane_3 .views-row .views-field-property-types {
-  width: 45%;
-  display: inline-block; }
-  @media (max-width: 768px) {
-    .page-availability-search .view-display-id-panel_pane_3 .views-row .views-field-property-types {
-      margin-bottom: 15px;
-      width: 100%; } }
-  .page-availability-search .view-display-id-panel_pane_3 .views-row .views-field-property-types .types {
-    display: inline-block;
-    width: 100%;
-    overflow-y: scroll;
-    margin-top: 10px;
-    max-height: 60%; }
-    .page-availability-search .view-display-id-panel_pane_3 .views-row .views-field-property-types .types::-webkit-scrollbar {
-      display: none; }
-    .page-availability-search .view-display-id-panel_pane_3 .views-row .views-field-property-types .types table {
-      width: 100%; }
-    .page-availability-search .view-display-id-panel_pane_3 .views-row .views-field-property-types .types .type-icons .icon {
-      width: 20%;
-      height: 25px; }
-      .page-availability-search .view-display-id-panel_pane_3 .views-row .views-field-property-types .types .type-icons .icon.name {
-        width: 40%;
-        text-indent: -9999999px; }
-      .page-availability-search .view-display-id-panel_pane_3 .views-row .views-field-property-types .types .type-icons .icon.capacity {
-        background-image: url("../images/small/capacity_gray.png");
-        text-indent: -9999999px;
-        background-repeat: no-repeat;
-        background-position: center center; }
-      .page-availability-search .view-display-id-panel_pane_3 .views-row .views-field-property-types .types .type-icons .icon.bedrooms {
-        background-image: url("../images/small/beds_gray.png");
-        text-indent: -9999999px;
-        background-repeat: no-repeat;
-        background-position: center center; }
-      .page-availability-search .view-display-id-panel_pane_3 .views-row .views-field-property-types .types .type-icons .icon.price {
-        background-image: url("../images/small/price_gray.png");
-        text-indent: -9999999px;
-        background-repeat: no-repeat;
-        background-position: center center; }
-    .page-availability-search .view-display-id-panel_pane_3 .views-row .views-field-property-types .types .type-row {
-      width: 100%;
-      margin-top: 10px; }
-      .page-availability-search .view-display-id-panel_pane_3 .views-row .views-field-property-types .types .type-row .row-element {
-        width: 20%;
-        padding: 10px;
-        text-align: center; }
-        .page-availability-search .view-display-id-panel_pane_3 .views-row .views-field-property-types .types .type-row .row-element.name {
-          width: 38%;
-          margin-left: 2%;
-          text-align: left;
-          padding-left: 0; }
-.page-availability-search .view-display-id-panel_pane_2 #leaflet-map .leaflet-popup-content-wrapper {
+.page-availability-search .view-properties-index.view-display-id-panel_pane_2 .leaflet-container .leaflet-popup-content-wrapper {
   border-radius: 4px; }
-.page-availability-search .view-display-id-panel_pane_2 #leaflet-map .leaflet-popup {
+.page-availability-search .view-properties-index.view-display-id-panel_pane_2 .leaflet-container .leaflet-popup {
   min-height: 250px; }
-  .page-availability-search .view-display-id-panel_pane_2 #leaflet-map .leaflet-popup .leaflet-popup-content {
+  .page-availability-search .view-properties-index.view-display-id-panel_pane_2 .leaflet-container .leaflet-popup .leaflet-popup-content {
     max-width: 170px;
     margin: 14px; }
-  .page-availability-search .view-display-id-panel_pane_2 #leaflet-map .leaflet-popup a {
+  .page-availability-search .view-properties-index.view-display-id-panel_pane_2 .leaflet-container .leaflet-popup a {
     font-size: 16px;
     color: #000000;
     text-decoration: underline; }
-  .page-availability-search .view-display-id-panel_pane_2 #leaflet-map .leaflet-popup .roomify-property-short-description {
+  .page-availability-search .view-properties-index.view-display-id-panel_pane_2 .leaflet-container .leaflet-popup .roomify-property-short-description {
     margin: 5px 0;
     font-size: 13px; }
-  .page-availability-search .view-display-id-panel_pane_2 #leaflet-map .leaflet-popup .roomify-property-image {
+  .page-availability-search .view-properties-index.view-display-id-panel_pane_2 .leaflet-container .leaflet-popup .roomify-property-image {
     display: inline-block;
     max-width: 250px;
     margin: 5px 0; }
-    .page-availability-search .view-display-id-panel_pane_2 #leaflet-map .leaflet-popup .roomify-property-image img {
+    .page-availability-search .view-properties-index.view-display-id-panel_pane_2 .leaflet-container .leaflet-popup .roomify-property-image img {
       width: 100% !important;
       border-radius: 2px;
       min-width: 120px;
@@ -18721,7 +18512,7 @@ body.page-things-to-do .view-activities-elegant.view-display-id-panel_pane_1 .vi
   padding-top: 15px;
   padding-bottom: 30px;
   border-bottom: 1px solid #ececec; }
-  body.page-things-to-do .view-activities-elegant.view-display-id-panel_pane_1 .views-row .views-field-title-field h3, body.page-things-to-do .view-activities-elegant.view-display-id-panel_pane_1 .views-row .views-field-title-field .sidebar-nav .pane-roomify-sidebar-user-menu .roomify-sidebar-user-menu .sidebar-profile-message, body.page-things-to-do .sidebar-nav .pane-roomify-sidebar-user-menu .roomify-sidebar-user-menu .view-activities-elegant.view-display-id-panel_pane_1 .views-row .views-field-title-field .sidebar-profile-message, body.page-things-to-do .view-activities-elegant.view-display-id-panel_pane_1 .views-row .views-field-title-field .page-checkout-review .checkout_review .pane-title td, .page-checkout-review .checkout_review .pane-title body.page-things-to-do .view-activities-elegant.view-display-id-panel_pane_1 .views-row .views-field-title-field td, body.page-things-to-do .page-availability-search .view-activities-elegant.view-display-id-panel_pane_1 .views-row .views-field-title-field .views-field-name, .page-availability-search body.page-things-to-do .view-activities-elegant.view-display-id-panel_pane_1 .views-row .views-field-title-field .views-field-name, body.page-things-to-do .view-activities-elegant.view-display-id-panel_pane_1 .views-row .views-field-title-field .page-availability-search .view-display-id-panel_pane_3 .property-row .views-field-name, body.page-things-to-do .view-activities-elegant.view-display-id-panel_pane_1 .views-row .views-field-title-field .node-type-blog .panel_sl_right .panel-pane .pane-title, .node-type-blog .panel_sl_right .panel-pane body.page-things-to-do .view-activities-elegant.view-display-id-panel_pane_1 .views-row .views-field-title-field .pane-title, body.page-things-to-do .view-activities-elegant.view-display-id-panel_pane_1 .views-row .views-field-title-field .node-type-activity .panel_sl_right .panel-pane .pane-title, .node-type-activity .panel_sl_right .panel-pane body.page-things-to-do .view-activities-elegant.view-display-id-panel_pane_1 .views-row .views-field-title-field .pane-title {
+  body.page-things-to-do .view-activities-elegant.view-display-id-panel_pane_1 .views-row .views-field-title-field h3, body.page-things-to-do .view-activities-elegant.view-display-id-panel_pane_1 .views-row .views-field-title-field .sidebar-nav .pane-roomify-sidebar-user-menu .roomify-sidebar-user-menu .sidebar-profile-message, body.page-things-to-do .sidebar-nav .pane-roomify-sidebar-user-menu .roomify-sidebar-user-menu .view-activities-elegant.view-display-id-panel_pane_1 .views-row .views-field-title-field .sidebar-profile-message, body.page-things-to-do .view-activities-elegant.view-display-id-panel_pane_1 .views-row .views-field-title-field .page-checkout-review .checkout_review .pane-title td, .page-checkout-review .checkout_review .pane-title body.page-things-to-do .view-activities-elegant.view-display-id-panel_pane_1 .views-row .views-field-title-field td, body.page-things-to-do .page-availability-search .view-activities-elegant.view-display-id-panel_pane_1 .views-row .views-field-title-field .views-field-name, .page-availability-search body.page-things-to-do .view-activities-elegant.view-display-id-panel_pane_1 .views-row .views-field-title-field .views-field-name, body.page-things-to-do .view-activities-elegant.view-display-id-panel_pane_1 .views-row .views-field-title-field .node-type-blog .panel_sl_right .panel-pane .pane-title, .node-type-blog .panel_sl_right .panel-pane body.page-things-to-do .view-activities-elegant.view-display-id-panel_pane_1 .views-row .views-field-title-field .pane-title, body.page-things-to-do .view-activities-elegant.view-display-id-panel_pane_1 .views-row .views-field-title-field .node-type-activity .panel_sl_right .panel-pane .pane-title, .node-type-activity .panel_sl_right .panel-pane body.page-things-to-do .view-activities-elegant.view-display-id-panel_pane_1 .views-row .views-field-title-field .pane-title {
     margin-bottom: 15px; }
   body.page-things-to-do .view-activities-elegant.view-display-id-panel_pane_1 .views-row .views-field-field-activity-image {
     margin-bottom: 15px; }

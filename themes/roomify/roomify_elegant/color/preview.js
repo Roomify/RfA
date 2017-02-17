@@ -13,7 +13,7 @@
         form = '#roomify-dashboard-theme-colors-form .color-form';
       }
       // header
-      $('#preview header', form).css('background-color', $('#palette input[name="palette[header]"]', form).val());
+      $('#preview header', form).css('background-color', $('#palette input[name="palette[primary]"]', form).val());
     
       $('#preview header', form).css('border-color', $('#palette input[name="palette[header-border]"]', form).val());
       // Menu Links
