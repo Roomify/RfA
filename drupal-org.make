@@ -156,7 +156,10 @@ projects[date][patch][] = https://www.drupal.org/files/issues/date-allow_enterin
 projects[date][patch][] = https://www.drupal.org/files/issues/date-fix_undefine_in_date_text_element_process-2339119-14.patch
 projects[date][patch][] = https://www.drupal.org/files/issues/date-input_disabled-1190830-14.patch
 
-projects[date_restrictions][version] = 1.x-dev
+projects[date_restrictions][type] = module
+projects[date_restrictions][download][type] = git
+projects[date_restrictions][download][url] = https://git.drupal.org/project/date_restrictions.git
+projects[date_restrictions][download][revision] = e2de47a66ea160aedca3d22fd1ab0ab4a4363af8
 
 projects[date_datepicker_inline][type] = module
 projects[date_datepicker_inline][download][type] = git
@@ -238,7 +241,10 @@ projects[file_entity][version] = 2.0-beta3
 
 projects[geofield][version] = 2.3
 
-projects[geofield_gmap][version] = 2.x-dev
+projects[geofield_gmap][type] = module
+projects[geofield_gmap][download][type] = git
+projects[geofield_gmap][download][url] = https://git.drupal.org/project/geofield_gmap.git
+projects[geofield_gmap][download][revision] = b09bbfa9ff2020b7ccd64b69a563b858618a92f1
 projects[geofield_gmap][patch][] = https://www.drupal.org/files/issues/fix-api-key-not-being-used-2746209-16.patch
 projects[geofield_gmap][patch][] = https://www.drupal.org/files/issues/geofield_gmap-zoom_after_selecting_address-2562835-1.patch
 projects[geofield_gmap][patch][] = https://www.drupal.org/files/issues/geofield_gmap-allow_html_tags_description-2847341-1.patch
@@ -258,7 +264,10 @@ projects[group][patch][] = https://www.drupal.org/files/issues/group-profile2_in
 
 projects[jquery_update][version] = 3.0-alpha3
 
-projects[job_scheduler][version] = 2.x-dev
+projects[job_scheduler][type] = module
+projects[job_scheduler][download][type] = git
+projects[job_scheduler][download][url] = https://git.drupal.org/project/job_scheduler.git
+projects[job_scheduler][download][revision] = 9baaba6bebd34ad6842b1a5292d4d8b32dc9c65c
 
 projects[i18n][version] = 1.15
 
@@ -377,7 +386,10 @@ projects[robotstxt][version] = 1.3
 
 projects[role_delegation][version] = 1.1
 
-projects[role_export][version] = 1.x-dev
+projects[role_export][type] = module
+projects[role_export][download][type] = git
+projects[role_export][download][url] = https://git.drupal.org/project/role_export.git
+projects[role_export][download][revision] = 0aef061b79a1dd0a949d504a238bf8b3f9f41b1b
 
 projects[rules][version] = 2.9
 
@@ -445,7 +457,10 @@ projects[view_unpublished][version] = 1.2
 
 projects[views][version] = 3.14
 
-projects[views_autocomplete_filters][version] = 1.x-dev
+projects[views_autocomplete_filters][type] = module
+projects[views_autocomplete_filters][download][type] = git
+projects[views_autocomplete_filters][download][url] = https://git.drupal.org/project/views_autocomplete_filters.git
+projects[views_autocomplete_filters][download][revision] = 39443b0b95dbc50151ec0684ff91143a3fcbe6d2
 
 projects[views_bootstrap][type] = module
 projects[views_bootstrap][download][type] = git
