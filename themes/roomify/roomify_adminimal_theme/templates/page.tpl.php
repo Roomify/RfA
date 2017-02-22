@@ -16,46 +16,48 @@
 <!-- End Sidebar-->
 <div id="close-sidebar-wrapper"></div>
 
-
 <div id="branding" class="clearfix">
 
   <?php print render($title_prefix); ?>
   <div class="roomify-administration-title">
     <?php $back_home = '<span class="glyphicon glyphicon-home"></span>' . l(t('Home'), '/') ?>
     <?php $back_dashboard = '<span class="glyphicon glyphicon-dashboard"></span>' . l(t('Dashboard'), 'user') ?>
-    
-    <?php if ($title): ?>
-      <h1 class="page-title"><?php print $back_home . ' - ' . $back_dashboard . ' - ' . $title; ?></h1>
-    <?php else: ?>
-      <h1 class="page-title"><?php print $back_home . ' - ' . $back_dashboard?></h1>
-    <?php endif; ?>
+    <h1 class="page-title"><?php print $back_home . ' - ' . $back_dashboard?></h1>
   </div>
   <?php print render($title_suffix); ?>
 
   <!-- AGENCY SIDEBAR MENU -->
-  <div class="agency-user-menu">
+  <div class="roomify-user-menu">
     <?php
-      print l(t('My Account'), '#menu-toggle', array('attributes' => array('class' => 'agency-sidebar-menu-toggle')));
+      print l(t('My Account'), '#menu-toggle', array('attributes' => array('class' => 'roomify-sidebar-menu-toggle')));
     ?>
   </div>
 
 </div>
 
+<div id="navigation">
 
-<?php if ($messages): ?>
-  <div id="console" class="clearfix roomify-admin-messages"><?php print $messages; ?></div>
-<?php endif; ?>
-
-<?php if ($primary_local_tasks): ?>
-  <div class="roomify-primary-local-tasks">
+  <?php if ($primary_local_tasks): ?>
     <?php print render($primary_local_tasks); ?>
-  </div>
-<?php endif; ?>
+  <?php endif; ?>
+
+  <?php if ($secondary_local_tasks): ?>
+    <div class="tabs-secondary clearfix"><ul class="tabs secondary"><?php //print render($secondary_local_tasks); ?></ul></div>
+  <?php endif; ?>
+
+</div>
+
+
 
 <div id="page">
+  <?php if ($title): ?>
+    <h1 class="page-title"><?php print $title; ?></h1>
+  <?php endif; ?>
   <div id="content" class="clearfix">
     <div class="element-invisible"><a id="main-content"></a></div>
-
+    <?php if ($messages): ?>
+    <div id="console" class="clearfix roomify-admin-messages"><?php print $messages; ?></div>
+  <?php endif; ?>
   <?php if ($page['help']): ?>
     <div id="help">
       <?php print render($page['help']); ?>

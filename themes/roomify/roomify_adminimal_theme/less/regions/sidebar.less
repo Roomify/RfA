@@ -50,7 +50,7 @@ body {
     width: 100%;
     margin: 0;
     list-style: none;
-    padding: 10px;
+    padding: 10px 0;
     a {
       color: #fff;
     }
@@ -421,5 +421,104 @@ body.toggled {
     height: 100%;
     cursor: pointer;
     .transition(100ms all ease);
+  }
+}
+
+
+.region-sidebar-toggle-menu {
+  #accordian {
+    ul {
+      .label {
+        font-size: 22px;
+        font-weight: 400;
+      }
+      &:first-child {
+        margin-left: 0;
+      }
+    }
+    .properties {
+      position: relative;
+      &:before {
+        content: '';
+        width: 25px;
+        height: 25px;
+        display: inline-block;
+        position: absolute;
+        left: -35px;
+        top: 8px;
+        background: url("../images/sidebar/properties.png") center center no-repeat;
+        background: url("../images/sidebar/properties.svg") center center no-repeat, linear-gradient(transparent, transparent);
+      }
+    }
+    .dashboard {
+      position: relative;
+      &:before {
+        content: '';
+        width: 30px;
+        height: 30px;
+        display: inline-block;
+        position: absolute;
+        left: -39px;
+        top: 6px;
+        background: url("../images/sidebar/dashboard.png") center center no-repeat;
+        background: url("../images/sidebar/dashboard.svg") center center no-repeat, linear-gradient(transparent, transparent);
+      }
+    }
+    .bookings {
+      position: relative;
+      &:before {
+        content: '';
+        width: 19px;
+        height: 19px;
+        display: inline-block;
+        position: absolute;
+        left: -32px;
+        top: 10px;
+        background: url("../images/sidebar/bookings.png") center center no-repeat;
+        background: url("../images/sidebar/bookings.svg") center center no-repeat, linear-gradient(transparent, transparent);
+      }
+    }
+    .conversations {
+      position: relative;
+      &:before {
+        content: '';
+        width: 25px;
+        height: 25px;
+        display: inline-block;
+        position: absolute;
+        left: -33px;
+        top: 8px;
+        background: url("../images/sidebar/conversations.png") center center no-repeat;
+        background: url("../images/sidebar/conversations.svg") center center no-repeat, linear-gradient(transparent, transparent);
+      }
+    }
+    .content {
+      position: relative;
+      &:before {
+        content: '';
+        width: 20px;
+        height: 20px;
+        display: inline-block;
+        position: absolute;
+        left: -30px;
+        top: 10px;
+        background: url("../images/sidebar/content.png") center center no-repeat;
+        background: url("../images/sidebar/content.svg") center center no-repeat, linear-gradient(transparent, transparent);
+      }
+    }
+    .settings {
+      position: relative;
+      &:before {
+        content: '';
+        width: 25px;
+        height: 25px;
+        display: inline-block;
+        position: absolute;
+        left: -33px;
+        top: 8px;
+        background: url("../images/sidebar/setting.png") center center no-repeat;
+        background: url("../images/sidebar/setting.svg") center center no-repeat, linear-gradient(transparent, transparent);
+      }
+    }
   }
 }

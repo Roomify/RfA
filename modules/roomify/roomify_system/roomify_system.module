@@ -511,10 +511,9 @@ function roomify_system_ctools_plugin_api($module = NULL, $api = NULL) {
  * hook_enable() functions of the various Roomify feature modules during site
  * installation.
  */
-function roomify_system_create_update_menu_link($title, $path, $menu = 'main-menu', $weight = 0, $enabled = 1, array $options = array()) {
+function roomify_system_create_update_menu_link($title, $path, $menu = 'main-menu', $weight = 0, $enabled = 1, $plid = 0, array $options = array()) {
   // If there is a preexisting menu item, load it, and update that.
-  $existing_item = db_select('menu_links', 'ml')->condition('link_path', $path)->condition('menu_name', $menu)->fields('ml')->range(0, 1)->execute()->fetchAssoc();
-
+  $existing_item = db_select('menu_links', 'ml')->condition('link_path', $path)->condition('link_title', $title)->condition('menu_name', $menu)->fields('ml')->range(0, 1)->execute()->fetchAssoc();
   // Otherwise prepare a new menu item.
   $item = empty($existing_item) ? array() : $existing_item;
 
@@ -528,10 +527,23 @@ function roomify_system_create_update_menu_link($title, $path, $menu = 'main-men
   $item['i18n_menu'] = TRUE;
   $item['customized'] = 1;
   $item['expanded'] = 1;
+  $item['plid'] = $plid;
 
   menu_link_save($item, $existing_item);
 
   menu_rebuild();
+}
+
+/**
+ * Helper function to get the mlid of updates menu links.
+ */
+function roomify_system_get_menu_link_id($title, $path, $menu = 'main-menu', $weight = 0, $enabled = 1, array $options = array()) {
+  // If there is a preexisting menu item, load it, and update that.
+  $existing_item = db_select('menu_links', 'ml')->condition('link_path', $path)->condition('link_title', $title)->condition('menu_name', $menu)->fields('ml')->range(0, 1)->execute()->fetchAssoc();
+
+  $mlid = empty($existing_item) ? 0 : $existing_item['mlid'];
+
+  return $mlid;
 }
 
 /**

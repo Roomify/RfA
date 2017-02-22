@@ -1,50 +1,40 @@
 @import 'variables';
 @import 'custom-mixins';
 
+@import 'regions/header';
+@import 'regions/sidebar';
+
 /* COMPONENTS */
+@import 'components/accordion';
 @import 'components/agency';
-@import 'components/bat_booking';
-@import 'components/sidebar-menu';
-@import 'components/installation';
-@import 'components/bat_type';
-@import 'components/roomify_dashboard';
-@import 'components/roomify_group';
-@import 'components/roomify_properties';
-@import 'components/add_ons';
 @import 'components/messages';
+//@import 'components/bat_booking';
+//@import 'components/installation';
+//@import 'components/bat_type';
+//@import 'components/roomify_dashboard';
+//@import 'components/roomify_group';
+//@import 'components/roomify_properties';
+//@import 'components/add_ons';
 
 /* Custom font */
 @import url(https://fonts.googleapis.com/css?family=Lato:400,300,700);
 @import url(https://fonts.googleapis.com/css?family=Open+Sans:400,800,700);
 
-
-body {
+body,
+body.adminimal-theme,
+body.page-user,
+body.page-admin {
+  font: normal 16px/1.538em Open Sans, "Segoe UI", "Helvetica", sans-serif !important;
+  font-family: 'Lato', sans-serif !important;
   h1,h2,h3,h4,h5,h6,p,a,span,strong {
     font-family: 'Lato', sans-serif !important;
+  }
+  .glyphicon {
+    font-family: 'Glyphicons Halflings' !important;
   }
   table {
     td, th {
       font-family: 'Lato', sans-serif !important;
-      padding: 15px 10px;
-    }
-    thead {
-      tr {
-        th {
-          background: #545454;
-          font-weight: bold;
-          color: #fff !important;
-          a {
-            color: white !important;
-          }
-        }
-      }
-    }
-    tbody {
-      tr {
-        td {
-          font-size: 15px;
-        }
-      }
     }
   }
   .ui-widget table thead th {
@@ -54,43 +44,54 @@ body {
     }
   }
 }
-.adminimal-theme #branding div.breadcrumb {
-  display: none;
+body.adminimal-skin-material .form-actions input {
+  height: auto !important;
 }
-.adminimal-theme #branding {
-  overflow: visible;
+input[type="submit"], input.form-submit, a.button, div.exposed-filters input#edit-submit {
+  margin: 2px;
 }
-
-.adminimal-theme .node-form tr {
-  &.even {
-    &:hover {
-      background-color: #F9F9F9;
-    }
-  }
-  &.odd {
-    &:hover {
-      background-color: #F9F9F9;
-    }
-  }
+a.cke_button {
+  height: auto !important;
 }
-
-#branding h1.page-title {
-  @media (max-width: @screen-sm) {
-    font-size: 20px !important;
-    span {
-      font-size: 14px;
-    }
-  }
+.ui-widget,
+.ui-widget .ui-widget,
+.ui-widget input,
+.ui-widget select,
+.ui-widget textarea,
+.ui-widget button {
+  font: normal 16px/1.538em Open Sans, "Segoe UI", "Helvetica", sans-serif;
+  font-family: 'Lato', sans-serif !important;
+}
+.ui-datepicker table {
+  font-size: .8em;
+}
+body.adminimal-theme.adminimal-skin-material.style-checkboxes input[type=checkbox],
+body.adminimal-theme.adminimal-skin-material.style-checkboxes input[type=radio] {
+  width: 17px !important;
+  height: 17px !important;
 }
 // Center all administration content and close it in a box.
-html, 
-body {
-  background-color: @lightest-gray !important;
-  //@media (max-width: 1140px) {
-    // RD-507 Disable narrowest screen width for admin them.
-    //width: 1140px !important;
-  //}
+body.adminimal-theme,
+body.page-user,
+body.page-admin {
+  background-color: #263238 !important;
+  #page {
+    background: #263238 !important;
+    padding: 40px;
+    h1.page-title {
+      color: white;
+      font-weight: 400;
+      font-size: 32px;
+    }
+    #content {
+      padding: 40px;
+      border-radius: 4px;
+      background: #f9f9f9 !important;
+    }
+  }
 }
+
+/*
 body {
   font: 15px/1.6em 'Lato', sans-serif !important;
   #console.roomify-admin-messages,
@@ -183,81 +184,7 @@ body {
     width: auto !important;
   }
 }
-
-.agency-user-menu {
-  display: inline-block;
-  float: right;
-  margin-right: 50px;
-  @media (max-width: @screen-sm) {
-    margin-right: 0px;
-  }
-  a {
-    font-size: 29px;
-    color: #FFFFFF;
-    float: left;
-    font-family: "Open Sans", "Segoe UI", "Helvetica", sans-serif;
-    font-size: 32px;
-    font-weight: 300;
-    line-height: 38px;
-    @media (max-width: @screen-sm) {
-      margin: 20px;
-      font-size: 20px;
-    }
-  }
-  li ul {
-    display: none;
-    position: absolute;
-    background: #FDFDFD;
-    top: 75%;
-    right: 10px;
-    z-index: 999;
-    min-width: 150px;
-    padding: 10px;
-    border: 1px solid #333333;
-    border-radius: 8px;
-    @media (max-width: @screen-xs) {
-      top: 100%;
-    }
-    li {
-      list-style: none;
-      a {
-        color: #333333;
-      }
-    }
-  }
-}
-
-body .back-to-site-link  {
-  a {
-    background: url("../images/homepage.png") no-repeat center center;
-    width: 40px;
-    height: 40px;
-    display: inline-block;
-    float: left;
-    text-indent: -999999px;
-    margin-right: 10px;
-  }
-}
-#branding .pane-title {
-  margin: 0px;
-}
-
-// Better Messages
-#better-messages-wrapper {
-  #better-messages-default {
-    #messages-inner {
-      .content {
-        .messages.status,
-        .messages.error,
-        .messages.warning {
-          background: white;
-          border: 0px !important;
-          padding: 20px;
-        }
-      }
-    }
-  }
-}
+*/
 
 fieldset {
   border-top: 3px solid #0074BD !important;
@@ -325,10 +252,12 @@ fieldset {
 .property-gallery-show-text {
   max-width: 200px;
   padding: 6px 0px;
-  border-radius: 0;
+  border-radius: 3px;
+  margin-top: 4px;
   border: none;
   margin-bottom: 1em;
   margin-right: 1em;
+  text-transform: uppercase;
   color: #fff;
   text-align: center;
   font-weight: normal;

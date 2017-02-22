@@ -557,6 +557,11 @@ function _roomify_install_set_themes() {
   variable_set('theme_default', $default_theme);
   variable_set('admin_theme', $admin_theme);
 
+  // Some settings for the administration theme.
+  $admin_theme_settings = variable_get('theme_' . $admin_theme . '_settings', array());
+  $admin_theme_settings['adminimal_theme_skin'] = 'material';
+  variable_set('theme_' . $admin_theme . '_settings', $admin_theme_settings);
+
   // Some settings for the default theme.
   $default_theme_settings = variable_get('theme_' . $default_theme . '_settings', array());
 

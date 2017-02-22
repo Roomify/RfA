@@ -273,3 +273,19 @@ function roomify_dashboard_views_data_alter(&$data) {
     'real field' => 'language',
   );
 }
+
+/**
+ * Implements hook_menu_link_alter().
+ */
+function roomify_dashboard_menu_link_alter(&$item) {
+  // Translating a menu link of the dashboard menu.
+  if (isset($item['menu_name']) && $item['menu_name'] == 'roomify_dashboard_menu') {
+    if (isset($item['language']) && $item['language'] != 'en') {
+      // Check if the original link has a class.
+      if ($translations = $item['translation_set']->get_translations()) {
+        $class = isset($translations['en']['options']['attributes']['class']) ? $translations['en']['options']['attributes']['class'] : '';
+        $item['options']['attributes']['class'] = $class;
+      }
+    }
+  }
+}
