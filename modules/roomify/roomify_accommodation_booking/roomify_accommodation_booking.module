@@ -1260,6 +1260,19 @@ function roomify_accommodation_booking_confirmation_form_submit($form, &$form_st
 function roomify_accommodation_booking_default_cer() {
   $items = array();
 
+  $items['bat_booking:roomify_accommodation_booking:booking_event_reference*bat_event:availability:event_booking_reference'] = entity_import('cer', '{
+    "cer_bidirectional" : { "und" : [ { "value" : "1" } ] },
+    "cer_enabled" : { "und" : [ { "value" : "1" } ] },
+    "cer_left" : { "und" : [
+        { "path" : "bat_booking:roomify_accommodation_booking:booking_event_reference" }
+      ]
+    },
+    "cer_right" : { "und" : [ { "path" : "bat_event:availability:event_booking_reference" } ] },
+    "cer_weight" : { "und" : [ { "value" : "0" } ] },
+    "identifier" : "bat_booking:roomify_accommodation_booking:booking_event_reference*bat_event:availability:event_booking_reference",
+    "rdf_mapping" : []
+  }');
+
   $items['bat_booking:roomify_accommodation_booking:booking_line_item_reference*commerce_line_item:roomify_accommodation_booking:commerce_booking_reference'] = entity_import('cer', '{
     "identifier" : "bat_booking:roomify_accommodation_booking:booking_line_item_reference*commerce_line_item:roomify_accommodation_booking:commerce_booking_reference",
     "cer_bidirectional" : { "und" : [ { "value" : "1" } ] },
@@ -1273,31 +1286,35 @@ function roomify_accommodation_booking_default_cer() {
     "rdf_mapping" : []
   }');
 
-  $items['bat_booking:booking_com:booking_line_item_reference*commerce_line_item:roomify_accommodation_booking:commerce_booking_reference'] = entity_import('cer', '{
-    "identifier" : "bat_booking:booking_com:booking_line_item_reference*commerce_line_item:roomify_accommodation_booking:commerce_booking_reference",
-    "cer_bidirectional" : { "und" : [ { "value" : "1" } ] },
-    "cer_enabled" : { "und" : [ { "value" : "1" } ] },
-    "cer_weight" : { "und" : [ { "value" : "0" } ] },
-    "cer_left" : { "und" : [ { "path" : "bat_booking:booking_com:booking_line_item_reference" } ] },
-    "cer_right" : { "und" : [
-        { "path" : "commerce_line_item:roomify_accommodation_booking:commerce_booking_reference" }
-      ]
-    },
-    "rdf_mapping" : []
-  }');
+  if (module_exists('roomify_channel_connector')) {
+    $items['bat_booking:booking_com:booking_line_item_reference*commerce_line_item:roomify_accommodation_booking:commerce_booking_reference'] = entity_import('cer', '{
+      "identifier" : "bat_booking:booking_com:booking_line_item_reference*commerce_line_item:roomify_accommodation_booking:commerce_booking_reference",
+      "cer_bidirectional" : { "und" : [ { "value" : "1" } ] },
+      "cer_enabled" : { "und" : [ { "value" : "1" } ] },
+      "cer_weight" : { "und" : [ { "value" : "0" } ] },
+      "cer_left" : { "und" : [ { "path" : "bat_booking:booking_com:booking_line_item_reference" } ] },
+      "cer_right" : { "und" : [
+          { "path" : "commerce_line_item:roomify_accommodation_booking:commerce_booking_reference" }
+        ]
+      },
+      "rdf_mapping" : []
+    }');
+  }
 
-  $items['bat_booking:ical:booking_line_item_reference*commerce_line_item:roomify_accommodation_booking:commerce_booking_reference'] = entity_import('cer', '{
-    "identifier" : "bat_booking:ical:booking_line_item_reference*commerce_line_item:roomify_accommodation_booking:commerce_booking_reference",
-    "cer_bidirectional" : { "und" : [ { "value" : "1" } ] },
-    "cer_enabled" : { "und" : [ { "value" : "1" } ] },
-    "cer_weight" : { "und" : [ { "value" : "0" } ] },
-    "cer_left" : { "und" : [ { "path" : "bat_booking:ical:booking_line_item_reference" } ] },
-    "cer_right" : { "und" : [
-        { "path" : "commerce_line_item:roomify_accommodation_booking:commerce_booking_reference" }
-      ]
-    },
-    "rdf_mapping" : []
-  }');
+  if (module_exists('roomify_channel_ical')) {
+    $items['bat_booking:ical:booking_line_item_reference*commerce_line_item:roomify_accommodation_booking:commerce_booking_reference'] = entity_import('cer', '{
+      "identifier" : "bat_booking:ical:booking_line_item_reference*commerce_line_item:roomify_accommodation_booking:commerce_booking_reference",
+      "cer_bidirectional" : { "und" : [ { "value" : "1" } ] },
+      "cer_enabled" : { "und" : [ { "value" : "1" } ] },
+      "cer_weight" : { "und" : [ { "value" : "0" } ] },
+      "cer_left" : { "und" : [ { "path" : "bat_booking:ical:booking_line_item_reference" } ] },
+      "cer_right" : { "und" : [
+          { "path" : "commerce_line_item:roomify_accommodation_booking:commerce_booking_reference" }
+        ]
+      },
+      "rdf_mapping" : []
+    }');
+  }
 
   return $items;
 }
