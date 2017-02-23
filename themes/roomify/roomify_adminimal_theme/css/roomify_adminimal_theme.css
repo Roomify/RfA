@@ -630,6 +630,44 @@ body.toggled #close-sidebar-wrapper {
   background: url("../images/sidebar/accounts.svg") center center no-repeat, linear-gradient(transparent, transparent);
 }
 /* COMPONENTS */
+#better-messages-wrapper #better-messages-default {
+  border: 5px solid rgba(29, 29, 29, 0.5);
+  border-radius: 6px;
+}
+#better-messages-wrapper #better-messages-default .messages-label {
+  color: #FFFFFF;
+  font-size: 15px;
+  font-weight: 400;
+  line-height: 20px;
+  margin-bottom: 2px;
+  padding: 10px 10px;
+  text-transform: uppercase;
+}
+#better-messages-wrapper #better-messages-default .body {
+  padding: 0;
+}
+#better-messages-wrapper #better-messages-default #messages-inner .content .messages.status,
+#better-messages-wrapper #better-messages-default #messages-inner .content .messages.error,
+#better-messages-wrapper #better-messages-default #messages-inner .content .messages.warning {
+  background: white;
+  border: 0 !important;
+  padding: 20px;
+}
+#better-messages-wrapper #better-messages-default a.message-close {
+  background: transparent url('../images/x.png') no-repeat;
+  display: inline-block;
+  width: 100%;
+  text-align: right;
+  height: 28px;
+  padding-right: 20px;
+  background-position: right 7px;
+  color: #696969;
+  text-decoration: none;
+  font-weight: 400;
+  font-size: 13px;
+  background-size: 11px 11px;
+  margin-right: 10px;
+}
 #accordian {
   width: 100%;
   color: white;
@@ -716,6 +754,12 @@ body.toggled #close-sidebar-wrapper {
 }
 #accordian ul ul li a {
   transition: all 0.15s;
+}
+.fc-time-area .fc-event-container {
+  height: 100% !important;
+}
+.fc-ltr .fc-timeline-event {
+  height: 100%;
 }
 .roomify-custom-page-title .site-name {
   color: white;
@@ -1445,44 +1489,6 @@ body.toggled #close-sidebar-wrapper {
 body.adminimal-theme .cke_reset_all label {
   margin-top: 0 !important;
   padding-bottom: 0 !important;
-}
-#better-messages-wrapper #better-messages-default {
-  border: 5px solid rgba(29, 29, 29, 0.5);
-  border-radius: 6px;
-}
-#better-messages-wrapper #better-messages-default .messages-label {
-  color: #FFFFFF;
-  font-size: 15px;
-  font-weight: 400;
-  line-height: 20px;
-  margin-bottom: 2px;
-  padding: 10px 10px;
-  text-transform: uppercase;
-}
-#better-messages-wrapper #better-messages-default .body {
-  padding: 0;
-}
-#better-messages-wrapper #better-messages-default #messages-inner .content .messages.status,
-#better-messages-wrapper #better-messages-default #messages-inner .content .messages.error,
-#better-messages-wrapper #better-messages-default #messages-inner .content .messages.warning {
-  background: white;
-  border: 0 !important;
-  padding: 20px;
-}
-#better-messages-wrapper #better-messages-default a.message-close {
-  background: transparent url('../images/x.png') no-repeat;
-  display: inline-block;
-  width: 100%;
-  text-align: right;
-  height: 28px;
-  padding-right: 20px;
-  background-position: right 7px;
-  color: #696969;
-  text-decoration: none;
-  font-weight: 400;
-  font-size: 13px;
-  background-size: 11px 11px;
-  margin-right: 10px;
 }
 /* Custom font */
 body,
