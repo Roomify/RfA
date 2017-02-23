@@ -96,23 +96,19 @@ body {
         .roomify-sidebar-image {
           width: 80px;
           height: 80px;
-          border-radius: 50%;
-          display: table;
-          margin: 10px auto;
-          margin-bottom: 0px;
+          margin-left: 25px;
+          display: inline-block;
+          float: left;
           img {
             border-radius: 50%;
             max-width: 80px;
           }
         }
         .sidebar-profile-message {
-          font-size: 25px;
           color: white;
-          font-weight: 600;
-          text-align: center;
-          color: white;
-          margin-top: 0px;
-          margin-bottom: 30px;
+          display: inline-block;
+          float: left;
+
         }
         li {
           z-index: 999;
@@ -518,6 +514,20 @@ body.toggled {
         top: 8px;
         background: url("../images/sidebar/setting.png") center center no-repeat;
         background: url("../images/sidebar/setting.svg") center center no-repeat, linear-gradient(transparent, transparent);
+      }
+    }
+    .accounts {
+      position: relative;
+      &:before {
+        content: '';
+        width: 23px;
+        height: 23px;
+        display: inline-block;
+        position: absolute;
+        left: -32px;
+        top: 8px;
+        background: url("../images/sidebar/accounts.png") center center no-repeat;
+        background: url("../images/sidebar/accounts.svg") center center no-repeat, linear-gradient(transparent, transparent);
       }
     }
   }

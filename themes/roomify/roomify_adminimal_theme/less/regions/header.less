@@ -81,14 +81,26 @@ body .back-to-site-link  {
 .adminimal-theme #branding {
   overflow: visible;
   background: #202020 !important;
+  box-shadow: none !important;
 }
 
 
 .adminimal-theme #navigation {
+  @media (min-width: @screen-sm) {
+    padding-left: 40px;
+    padding-right: 40px;
+  }
 	.tabs.primary {
+    background: white;
+    border-radius: 0px 0px 4px 4px;
 		li {
 			&:first-child {
 				margin-left: 0 !important;
+        a {
+          @media (min-width: @screen-sm) {
+            border-radius: 0px 0px 0px 4px;
+          }
+        }
 			}
 			a {
 		    border-radius: 0;

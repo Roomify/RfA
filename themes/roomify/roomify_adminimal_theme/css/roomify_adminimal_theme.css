@@ -95,9 +95,25 @@ body .back-to-site-link a {
 .adminimal-theme #branding {
   overflow: visible;
   background: #202020 !important;
+  box-shadow: none !important;
+}
+@media (min-width: 768px) {
+  .adminimal-theme #navigation {
+    padding-left: 40px;
+    padding-right: 40px;
+  }
+}
+.adminimal-theme #navigation .tabs.primary {
+  background: white;
+  border-radius: 0px 0px 4px 4px;
 }
 .adminimal-theme #navigation .tabs.primary li:first-child {
   margin-left: 0 !important;
+}
+@media (min-width: 768px) {
+  .adminimal-theme #navigation .tabs.primary li:first-child a {
+    border-radius: 0px 0px 0px 4px;
+  }
 }
 .adminimal-theme #navigation .tabs.primary li a {
   border-radius: 0;
@@ -212,22 +228,18 @@ body .sidebar-nav .pane-roomify-sidebar-user-menu .pane-title {
 body .sidebar-nav .pane-roomify-sidebar-user-menu .roomify-sidebar-user-menu .roomify-sidebar-image {
   width: 80px;
   height: 80px;
-  border-radius: 50%;
-  display: table;
-  margin: 10px auto;
-  margin-bottom: 0px;
+  margin-left: 25px;
+  display: inline-block;
+  float: left;
 }
 body .sidebar-nav .pane-roomify-sidebar-user-menu .roomify-sidebar-user-menu .roomify-sidebar-image img {
   border-radius: 50%;
   max-width: 80px;
 }
 body .sidebar-nav .pane-roomify-sidebar-user-menu .roomify-sidebar-user-menu .sidebar-profile-message {
-  font-size: 25px;
-  font-weight: 600;
-  text-align: center;
   color: white;
-  margin-top: 0px;
-  margin-bottom: 30px;
+  display: inline-block;
+  float: left;
 }
 body .sidebar-nav .pane-roomify-sidebar-user-menu .roomify-sidebar-user-menu li {
   z-index: 999;
@@ -602,6 +614,20 @@ body.toggled #close-sidebar-wrapper {
   top: 8px;
   background: url("../images/sidebar/setting.png") center center no-repeat;
   background: url("../images/sidebar/setting.svg") center center no-repeat, linear-gradient(transparent, transparent);
+}
+.region-sidebar-toggle-menu #accordian .accounts {
+  position: relative;
+}
+.region-sidebar-toggle-menu #accordian .accounts:before {
+  content: '';
+  width: 23px;
+  height: 23px;
+  display: inline-block;
+  position: absolute;
+  left: -32px;
+  top: 8px;
+  background: url("../images/sidebar/accounts.png") center center no-repeat;
+  background: url("../images/sidebar/accounts.svg") center center no-repeat, linear-gradient(transparent, transparent);
 }
 /* COMPONENTS */
 #accordian {

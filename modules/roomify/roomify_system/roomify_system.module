@@ -534,6 +534,53 @@ function roomify_system_create_update_menu_link($title, $path, $menu = 'main-men
   menu_rebuild();
 }
 
+
+/**
+ * Helper function creates or updates menu links. This is mainly used in the
+ * hook_enable() functions of the various Roomify feature modules during site
+ * installation.
+ */
+function roomify_system_create_update_menu_link_with_token($title, $path, $menu = 'main-menu', $weight = 0, $enabled = 1, $plid = 0, array $options = array()) {
+  $existing_item = db_select('menu_links', 'ml')->condition('link_path', $path)->condition('link_title', $title)->condition('menu_name', $menu)->fields('ml')->range(0, 1)->execute()->fetchAssoc();
+  // Otherwise prepare a new menu item.
+  $item = empty($existing_item) ? array() : $existing_item;
+  $item = array(
+    'link_path' => 'menutoken/' . uniqid(),
+    'link_title' => $title,
+    'menu_name' => 'user-menu',
+    'weight' => $weight,
+    'language' => 'en',
+    'options' => array(
+      'menu_token_link_path' => $path,
+      'menu_token_data' => array(
+        'user' => array(
+          'type' => 'user',
+          'plugin' => 'user_context',
+          'options' => array(),
+        ),
+      ),
+    ),
+    'menu_token_options' => array(
+      'clear' => 0,
+    ),
+    'attributes' => array(
+      'title' => '',
+    ),
+    'plid' => $plid,
+    'enabled' => $enabled,
+    'alter' => true,
+    'menu_token_enabled' => 1,
+    'menu_token_type_node' => '_none',
+    'menu_token_type_user' => 'user_context',
+    'menu_token_clear' => 0,
+  );
+
+  menu_link_save($item, $existing_item);
+
+  menu_rebuild();
+
+}
+
 /**
  * Helper function to get the mlid of updates menu links.
  */
