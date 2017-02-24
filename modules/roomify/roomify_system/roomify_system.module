@@ -41,7 +41,7 @@ function roomify_system_menu() {
     'type' => MENU_NORMAL_ITEM,
   );
 
-  $items['user/%user/orders/%commerce_order/dashboard'] = array(
+  $items['admin/bat/orders/%commerce_order/view/dashboard'] = array(
     'title' => 'Back to Dashboard',
     'page callback' => 'roomify_system_redirect_to_dashboard',
     'access callback' => 'commerce_order_customer_order_view_access',
@@ -59,6 +59,41 @@ function roomify_system_menu() {
   );
 
   return $items;
+}
+
+/**
+ * Menu item access callback to view orders.
+ */
+function _roomify_system_commerce_order_view_access() {
+  $explode = explode('/', $_GET['q']);
+  $order = commerce_order_load($explode[3]);
+  if (user_access('view any commerce order') || commerce_order_access('view', $order)) {
+    return TRUE;
+  }
+
+  global $user;
+  $access = FALSE;
+  if ($line_items = field_get_items('commerce_order', $order, 'commerce_line_items')) {
+    foreach ($line_items as $li) {
+      $line_item = commerce_line_item_load($li['line_item_id']);
+      if ($line_item->type == 'roomify_accommodation_booking') {
+        $line_item_wrapper = entity_metadata_wrapper('commerce_line_item', $line_item);
+
+        $unit = $line_item_wrapper->commerce_booking_reference->booking_event_reference->event_bat_unit_reference->value();
+        $type = bat_type_load($unit->type_id);
+        $property = roomify_property_load($type->field_st_property_reference[LANGUAGE_NONE][0]['target_id']);
+        $owner = field_get_items('roomify_property', $property, 'field_sp_owner');
+
+        // The property owner is viewing the order.
+        if ($user->uid == $owner[0]['target_id']) {
+          dpm($user);
+          $access = TRUE;
+        }
+      }
+    }
+  }
+
+  return ($access);
 }
 
 /**
@@ -110,6 +145,10 @@ function roomify_system_permission() {
     'administer theme colors' => array(
       'title' => t('Administer Theme Colors'),
       'description' => t('Administer Theme Colors'),
+    ),
+    'view any commerce order' => array(
+      'title' => t('View any commerce order'),
+      'description' => t('Access to orders'),
     ),
   );
 }
@@ -1006,6 +1045,11 @@ function roomify_system_roomify_rights() {
       'edit any commerce_customer_profile entity',
       'view any commerce_customer_profile entity',
       'create commerce_customer_profile entities',
+      'view any commerce_order entity',
+      'view any commerce_order entity of bundle commerce_order',
+      'view own commerce_order entities',
+      'view any commerce order',
+      'edit any commerce_order entity',
     ),
     'content editor' => array(
       'access content overview',
@@ -1708,10 +1752,23 @@ function roomify_system_menu_alter(&$items) {
 
   $items['user/%user/orders/%commerce_order']['title callback'] = 'roomify_system_order_title';
 
+  $items['user/%user/orders/%commerce_order']['page callback'] = 'roomify_system_order_view';
   // This is required until issue https://www.drupal.org/node/2078423.
   // in Redirect module will be fixed.
   $items['admin/config/search/redirect/settings']['access callback'] = '_roomify_system_administrators_only_access_callback';
 
+  $items['admin/bat/orders/%pm_arg/view']['access callback'] = '_roomify_system_commerce_order_view_access';
+  // Custom page for Commerce Orders.
+  $items['admin/commerce/orders/%commerce_order']['page callback'] = 'roomify_system_order_view';
+  $items['admin/commerce/orders/%commerce_order']['access callback'] = '_roomify_system_commerce_order_view_access';
+
+}
+
+/**
+ * A link to our custom page.
+ */
+function roomify_system_order_view($order, $view_mode = 'administrator') {
+  drupal_goto('/admin/bat/orders/' . $order->order_id . '/view');
 }
 
 /**
@@ -1875,6 +1932,22 @@ function roomify_system_menu_local_tasks_alter(&$data, $router_item, $root_path)
           $data['tabs'][0]['output'][$id]['#link']['title'] = t('Dashboard');
         }
       }
+    }
+  }
+  // Add an action link to the order edit page from the user order page.
+  if ($root_path == 'admin/bat/orders/%/view') {
+    // Extract the order ID from the current router item and fetch the admin
+    // update menu item.
+    $order_id = $router_item['original_map'][3];
+    $item = menu_get_item('admin/commerce/orders/' . $order_id . '/edit');
+
+    if ($item['access']) {
+      // Override the title.
+      $item['title'] = t('Edit this order');
+      $data['actions']['output'][] = array(
+        '#theme' => 'menu_local_action',
+        '#link' => $item,
+      );
     }
   }
 }

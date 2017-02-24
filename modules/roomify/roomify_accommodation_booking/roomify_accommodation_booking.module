@@ -1826,7 +1826,7 @@ function roomify_accommodation_booking_form_alter(&$form, &$form_state, $form_id
         );
 
         $form['order']['info'] = array(
-          '#markup' => commerce_embed_view('commerce_line_item_table', 'default', array($order->order_id)),
+          '#markup' => views_embed_view('roomify_order', 'panel_pane_4', $order->order_id),
         );
 
         $form['order']['view'] = array(
@@ -1934,7 +1934,7 @@ function roomify_accommodation_booking_form_alter(&$form, &$form_state, $form_id
         );
 
         $form['order']['info'] = array(
-          '#markup' => commerce_embed_view('commerce_line_item_table', 'default', array($order->order_id)),
+          '#markup' => views_embed_view('roomify_order', 'panel_pane_4', $order->order_id),
         );
 
         $form['order']['view'] = array(
@@ -2018,7 +2018,7 @@ function roomify_accommodation_booking_form_alter(&$form, &$form_state, $form_id
         );
 
         $form['order']['info'] = array(
-          '#markup' => commerce_embed_view('commerce_line_item_table', 'default', array($order->order_id)),
+          '#markup' => views_embed_view('roomify_order', 'panel_pane_4', $order->order_id),
         );
 
         $form['order']['view'] = array(
