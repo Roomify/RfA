@@ -74,7 +74,7 @@ function _roomify_system_commerce_order_view_access() {
   global $user;
   $access = FALSE;
   if ($line_items = field_get_items('commerce_order', $order, 'commerce_line_items')) {
-    foreach($line_items as $li) {
+    foreach ($line_items as $li) {
       $line_item = commerce_line_item_load($li['line_item_id']);
       if ($line_item->type == 'roomify_accommodation_booking') {
         $line_item_wrapper = entity_metadata_wrapper('commerce_line_item', $line_item);
