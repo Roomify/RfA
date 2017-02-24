@@ -1563,5 +1563,73 @@ function roomify_dashboard_default_panels_mini() {
   $mini->display = $display;
   $export['dashboard_welcome'] = $mini;
 
+  $mini = new stdClass();
+  $mini->disabled = FALSE; /* Edit this to true to make a default mini disabled initially */
+  $mini->api_version = 1;
+  $mini->name = 'dashboard';
+  $mini->category = '';
+  $mini->admin_title = 'Dashboard';
+  $mini->admin_description = '';
+  $mini->requiredcontexts = array(
+    0 => array(
+      'identifier' => 'User',
+      'keyword' => 'user',
+      'name' => 'user',
+      'type' => 'select',
+      'uid' => '',
+      'optional' => 0,
+      'id' => 1,
+    ),
+  );
+  $mini->contexts = array();
+  $mini->relationships = array();
+  $display = new panels_display();
+  $display->layout = 'bootstrap_one_column';
+  $display->layout_settings = array();
+  $display->panel_settings = array(
+    'style_settings' => array(
+      'default' => NULL,
+      'top' => NULL,
+      'middle' => NULL,
+      'bottom' => NULL,
+    ),
+  );
+  $display->cache = array();
+  $display->title = '';
+  $display->uuid = '20fe9837-d709-4737-af0b-1e80f706e764';
+  $display->storage_type = 'panels_mini';
+  $display->storage_id = 'dashboard';
+  $display->content = array();
+  $display->panels = array();
+  $pane = new stdClass();
+  $pane->pid = 'new-4de5afe7-0216-42e7-8bf2-0ddf9c41be77';
+  $pane->panel = 'top';
+  $pane->type = 'views_panes';
+  $pane->subtype = 'dashboard_bookings-panel_pane_1';
+  $pane->shown = TRUE;
+  $pane->access = array();
+  $pane->configuration = array(
+    'arguments' => array(
+      'uid' => '%user:uid',
+    ),
+  );
+  $pane->cache = array();
+  $pane->style = array(
+    'settings' => NULL,
+  );
+  $pane->css = array(
+    'css_id' => '',
+    'css_class' => 'col-xs-12',
+  );
+  $pane->extras = array();
+  $pane->position = 0;
+  $pane->locks = array();
+  $pane->uuid = '4de5afe7-0216-42e7-8bf2-0ddf9c41be77';
+  $display->content['new-4de5afe7-0216-42e7-8bf2-0ddf9c41be77'] = $pane;
+  $display->panels['top'][0] = 'new-4de5afe7-0216-42e7-8bf2-0ddf9c41be77';
+  $display->hide_title = PANELS_TITLE_FIXED;
+  $display->title_pane = '0';
+  $mini->display = $display;
+  $export['dashboard'] = $mini;
   return $export;
 }

@@ -10,6 +10,8 @@
 @import 'components/calendars';
 @import 'components/agency';
 @import 'components/messages';
+@import 'components/properties';
+@import 'components/table';
 //@import 'components/bat_booking';
 //@import 'components/installation';
 //@import 'components/bat_type';
@@ -92,101 +94,15 @@ body.page-admin {
     }
   }
 }
-
-/*
-body {
-  font: 15px/1.6em 'Lato', sans-serif !important;
-  #console.roomify-admin-messages,
-  #page {
-    margin-bottom: 40px;
-    background-color: white;
-    padding: 25px;
-    border-radius: 5px;
-    max-width: 1200px;
-    margin-left: auto;
-    margin-right: auto;
-    border: 2px solid rgba(235, 235, 235, 0.45);
-  }
-  #console.roomify-admin-messages {
-    margin-top: 40px;
-    padding: 0px;
-    border: 0;
-  }
-  #page {
-    .box-shadow(0px 24px 64px 5px rgba(179,179,179,0.45));
-  }
-  .roomify-primary-local-tasks {
-    padding: 0;
-    max-width: 1250px;
-    display: table;
-    margin-left: auto;
-    width: 100%;
-    margin-right: auto;
-    text-align: left;
-    margin-top: 40px;
-
-    ul.tabs {
-      background: @lightest-gray;
-      padding: 0px;
-      font-size: 16px;
-      li {
-        margin-right: 5px;
-        background: #F5F5F5;
-        border-radius: 5px 5px 0 0;
-        position: relative;
-        top: 2px;
-        &.pushed-right-tab {
-          float: right;
-          margin-right: 0 !important;
-        }
-        a {
-          color: @gray;
-          min-width: 120px;
-          text-align: center;
-        }
-        @media (max-width: @screen-sm) {
-          width: 100%;
-          text-align: center;
-          display: flex;
-          a {
-            width: 100%;
-          }
-        }
-        &:first-child {
-          &.active {
-            a {
-              left: -2px;
-              position: relative;
-            }
-          }
-        }
-        &.active {
-          border-width: 0px !important;
-          background: white;
-          outline: none;
-          a {
-            color: @blue;
-            font-weight: 700;
-            outline: none;
-            border-radius: 5px 5px 0px 0px;
-            border: 2px solid rgba(235, 235, 235, 0.45);
-            border-bottom: 0px;
-            z-index: 10;
-            .box-shadow(0px 0px 0px rgb(0,0,0))
-          }
-        }
-      }
-    }
-  }
-  #content-wrapper {
-    max-width: @screen-lg;
-    margin: 0 auto;
-  }
-  &.in-maintenance #content {
-    width: auto !important;
-  }
+a.ctools-use-modal.button,
+a.ctools-use-modal,
+.button {
+  .btn;
 }
-*/
+.ctools-use-modal.add-offer-button {
+  margin-bottom: 30px;
+  display: inline-block;
+}
 
 fieldset {
   border-top: 3px solid #0074BD !important;

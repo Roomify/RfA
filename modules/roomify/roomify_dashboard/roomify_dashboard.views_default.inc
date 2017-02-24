@@ -41,11 +41,11 @@ function roomify_dashboard_views_default_views() {
   $handler->display->display_options['style_plugin'] = 'footable';
   $handler->display->display_options['style_options']['columns'] = array(
     'label' => 'label',
-    'booking_full_name' => 'booking_full_name',
     'booking_id' => 'booking_id',
     'property_id' => 'property_id',
     'name_1' => 'name_1',
     'name' => 'name',
+    'commerce_customer_address_name_line' => 'commerce_customer_address_name_line',
     'booking_start_date' => 'booking_start_date',
     'booking_end_date' => 'booking_end_date',
     'nights' => 'nights',
@@ -57,13 +57,6 @@ function roomify_dashboard_views_default_views() {
   $handler->display->display_options['style_options']['default'] = '-1';
   $handler->display->display_options['style_options']['info'] = array(
     'label' => array(
-      'sortable' => 0,
-      'default_sort_order' => 'asc',
-      'align' => 'views-align-left',
-      'separator' => '',
-      'empty_column' => 0,
-    ),
-    'booking_full_name' => array(
       'sortable' => 0,
       'default_sort_order' => 'asc',
       'align' => 'views-align-left',
@@ -95,6 +88,13 @@ function roomify_dashboard_views_default_views() {
       'sortable' => 0,
       'default_sort_order' => 'asc',
       'align' => 'views-align-left',
+      'separator' => '',
+      'empty_column' => 0,
+    ),
+    'commerce_customer_address_name_line' => array(
+      'sortable' => 0,
+      'default_sort_order' => 'asc',
+      'align' => '',
       'separator' => '',
       'empty_column' => 0,
     ),
@@ -153,11 +153,6 @@ function roomify_dashboard_views_default_views() {
         'phone' => 0,
         'tablet' => 0,
       ),
-      'booking_full_name' => array(
-        'phone' => 'phone',
-        'tablet' => 'tablet',
-        'all' => 0,
-      ),
       'booking_id' => array(
         'all' => 0,
         'phone' => 0,
@@ -174,6 +169,11 @@ function roomify_dashboard_views_default_views() {
         'tablet' => 0,
       ),
       'name' => array(
+        'all' => 0,
+        'phone' => 0,
+        'tablet' => 0,
+      ),
+      'commerce_customer_address_name_line' => array(
         'all' => 0,
         'phone' => 0,
         'tablet' => 0,
@@ -200,13 +200,13 @@ function roomify_dashboard_views_default_views() {
       ),
       'edit_unit' => array(
         'phone' => 'phone',
+        'tablet' => 'tablet',
         'all' => 0,
-        'tablet' => 0,
       ),
       'delete_unit' => array(
         'phone' => 'phone',
+        'tablet' => 'tablet',
         'all' => 0,
-        'tablet' => 0,
       ),
       'type' => array(
         'phone' => 'phone',
@@ -372,11 +372,11 @@ function roomify_dashboard_views_default_views() {
   $handler->display->display_options['arguments']['uid']['specify_validation'] = TRUE;
   $handler->display->display_options['arguments']['uid']['validate']['type'] = 'php';
   $handler->display->display_options['arguments']['uid']['validate_options']['code'] = 'if (user_access(\'update any bat_booking entity\')) {
-      return FALSE;
-      }
-      else {
-      return TRUE;
-      }';
+        return FALSE;
+        }
+        else {
+        return TRUE;
+        }';
   $handler->display->display_options['arguments']['uid']['validate']['fail'] = 'ignore';
   /* Filter criterion: Events: State (event_state_reference) */
   $handler->display->display_options['filters']['event_state_reference_state_id']['id'] = 'event_state_reference_state_id';
@@ -552,6 +552,17 @@ function roomify_dashboard_views_default_views() {
   $handler->display->display_options['fields']['type']['exclude'] = TRUE;
   $handler->display->display_options['fields']['type']['element_label_colon'] = FALSE;
   $handler->display->display_options['fields']['type']['machine_name'] = TRUE;
+  $handler->display->display_options['defaults']['sorts'] = FALSE;
+  /* Sort criterion: BAT Booking: Created */
+  $handler->display->display_options['sorts']['created']['id'] = 'created';
+  $handler->display->display_options['sorts']['created']['table'] = 'bat_bookings';
+  $handler->display->display_options['sorts']['created']['field'] = 'created';
+  $handler->display->display_options['sorts']['created']['order'] = 'DESC';
+  /* Sort criterion: BAT Booking: Created */
+  $handler->display->display_options['sorts']['created_1']['id'] = 'created_1';
+  $handler->display->display_options['sorts']['created_1']['table'] = 'bat_bookings';
+  $handler->display->display_options['sorts']['created_1']['field'] = 'created';
+  $handler->display->display_options['sorts']['created_1']['order'] = 'DESC';
   $handler->display->display_options['defaults']['filter_groups'] = FALSE;
   $handler->display->display_options['defaults']['filters'] = FALSE;
   /* Filter criterion: Events: State (event_state_reference) */
@@ -663,6 +674,10 @@ function roomify_dashboard_views_default_views() {
   $handler->display->display_options['use_more_always'] = TRUE;
   $handler->display->display_options['defaults']['use_more_text'] = FALSE;
   $handler->display->display_options['use_more_text'] = 'View all bookings';
+  $handler->display->display_options['defaults']['pager'] = FALSE;
+  $handler->display->display_options['pager']['type'] = 'some';
+  $handler->display->display_options['pager']['options']['items_per_page'] = '8';
+  $handler->display->display_options['pager']['options']['offset'] = '0';
   $handler->display->display_options['defaults']['relationships'] = FALSE;
   /* Relationship: Entity Reference: Referenced Entity */
   $handler->display->display_options['relationships']['booking_event_reference_target_id']['id'] = 'booking_event_reference_target_id';
@@ -2085,7 +2100,6 @@ function roomify_dashboard_views_default_views() {
     t('Upcoming Arrivals'),
     t('<h2>There are no bookings starting in the next 30 days</h2>'),
   );
-
   $export['dashboard_bookings'] = $view;
 
   $view = new view();
