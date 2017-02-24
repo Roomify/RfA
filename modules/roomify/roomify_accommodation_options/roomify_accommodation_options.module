@@ -450,7 +450,7 @@ function roomify_accommodation_option_line_item_configuration($line_item_type) {
 /**
  * Implements hook_line_item_title().
  */
-function roomify_accommodation_options_line_item_title($line_item) {
+function roomify_accommodation_option_line_item_title($line_item) {
   // Use the line item's label for the title.
   return ($line_item->line_item_label);
 }
