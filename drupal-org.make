@@ -415,7 +415,7 @@ projects[search_api_ranges][download][type] = git
 projects[search_api_ranges][download][url] = https://git.drupal.org/project/search_api_ranges.git
 projects[search_api_ranges][download][revision] = c769589f3aa90a7413401169ce520f891bee7e20
 
-projects[search_api_sorts][version] = 1.6
+projects[search_api_sorts][version] = 1.7
 
 projects[services][version] = 3.18
 
