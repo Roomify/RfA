@@ -1539,6 +1539,18 @@ function roomify_accommodation_booking_entity_update($entity, $type) {
 }
 
 /**
+ * Implements hook_entity_delete().
+ */
+function roomify_accommodation_booking_entity_delete($entity, $type) {
+  if ($type == 'bat_booking') {
+    db_delete('job_schedule')
+      ->condition('name', array('roomify_accommodation_booking_owner_notification', 'roomify_accommodation_booking_guest_notification'), 'IN')
+      ->condition('id', $entity->booking_id)
+      ->execute();
+  }
+}
+
+/**
  * Add a new Commerce product for all existing listing types.
  */
 function roomify_accommodation_booking_add_product_reference_to_all_listing_types() {
