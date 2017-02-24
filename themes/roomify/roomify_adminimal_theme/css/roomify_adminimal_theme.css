@@ -3351,6 +3351,57 @@ body.roomify-dashboard .pane-dashboard-bookings-panel-pane-4 .view-dashboard-boo
   background-size: 11px 11px;
   margin-right: 10px;
 }
+.page-admin-bat-orders h2 {
+  font-weight: 500;
+}
+.page-admin-bat-orders .panel_sl_content {
+  display: inline-block;
+  width: 100%;
+  margin-bottom: 30px;
+}
+@media (min-width: 768px) {
+  .page-admin-bat-orders .panel_sl_content {
+    width: 70%;
+    float: left;
+    margin: 0;
+    padding: 15px;
+    border-right: 2px solid #e6e6e6;
+  }
+}
+.page-admin-bat-orders .panel_sl_right {
+  display: inline-block;
+  width: 100%;
+}
+@media (min-width: 768px) {
+  .page-admin-bat-orders .panel_sl_right {
+    width: 24%;
+    float: left;
+    margin: 0;
+    padding: 15px;
+  }
+}
+.page-admin-bat-orders .order-status {
+  display: inline-block;
+  width: 100%;
+  margin-bottom: 10px;
+  border-bottom: 2px solid #e6e6e6;
+  margin-bottom: 20px;
+}
+.page-admin-bat-orders .order-status .pane-title {
+  float: left;
+  display: inline-block;
+  margin-right: 8px;
+}
+.page-admin-bat-orders .view-roomify-order {
+  width: 100%;
+  display: inline-block;
+  margin-bottom: 35px;
+}
+.page-admin-bat-orders .view-roomify-order .views-field-field-sp-featured-image {
+  display: inline-block;
+  float: left;
+  margin-right: 20px;
+}
 /* Custom font */
 body h1,
 body h2,
