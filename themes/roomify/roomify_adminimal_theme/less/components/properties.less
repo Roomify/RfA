@@ -23,3 +23,79 @@
     }
   }
 }
+
+.pane-properties-dashboard-properties {
+  .view-display-id-dashboard_properties {
+    a {
+      color: #405467;
+    }
+    td.views-field-name {
+      height: 70px;
+      .property-image {
+        display: inline-block;
+        float: left;
+        max-width: 70px;
+        margin-right: 10px;
+        position: relative;
+        left: -5px;
+        img {
+          width: 100%;
+          height: auto;
+          border-radius: 50%;
+        }
+      }
+      .property-name {
+        display: inline-block;
+        margin-top: 25px;
+        font-size: 18px;
+      }
+    }
+    td.views-field {
+      &.views-field-edit-unit {
+        width: 40px;
+        a {
+          background: url("../images/edit.png") no-repeat right 50% bottom 20px;
+          background-size: 35px 35px;
+          display: inline-block;
+          padding: 35px 1em 0 1em;
+        }
+      }
+      &.views-field-nothing {
+        width: 40px;
+        a {
+          background: url("../images/availability.png") no-repeat right 50% bottom 20px;
+          background-size: 35px 35px;
+          display: inline-block;
+          padding: 35px 1em 0 1em;
+        }
+      }
+      &.views-field-nothing-1 {
+        width: 40px;
+        a {
+          background: url("../images/pricing.png") no-repeat right 50% bottom 20px;
+          background-size: 35px 35px;
+          display: inline-block;
+          padding: 35px 1em 0 1em;
+        }
+      }
+    }
+    tr.status-0 {
+      td.views-field {
+        &.views-field-edit-unit a {
+          background-image: url("../images/edit-gray.png");
+        }
+        &.views-field-nothing a {
+          background-image: url("../images/availability-gray.png")
+        }
+        &.views-field-nothing-1 a {
+          background-image: url("../images/pricing-gray.png");
+        }
+      }
+    }
+  }
+}
+.dragdropfile-processed .dragdropfile-table-wrapper {
+  height: auto;
+  box-shadow: none;
+  background-color: transparent;
+}

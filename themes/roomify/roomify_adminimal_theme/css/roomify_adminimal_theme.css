@@ -629,6 +629,124 @@ body.toggled #close-sidebar-wrapper {
   background: url("../images/sidebar/accounts.png") center center no-repeat;
   background: url("../images/sidebar/accounts.svg") center center no-repeat, linear-gradient(transparent, transparent);
 }
+body,
+body.adminimal-theme,
+body.page-user,
+body.page-admin {
+  font: normal 16px/1.538em Open Sans, "Segoe UI", "Helvetica", sans-serif !important;
+  font-family: 'Lato', sans-serif !important;
+}
+body h1,
+body.adminimal-theme h1,
+body.page-user h1,
+body.page-admin h1,
+body h2,
+body.adminimal-theme h2,
+body.page-user h2,
+body.page-admin h2,
+body h3,
+body.adminimal-theme h3,
+body.page-user h3,
+body.page-admin h3,
+body h4,
+body.adminimal-theme h4,
+body.page-user h4,
+body.page-admin h4,
+body h5,
+body.adminimal-theme h5,
+body.page-user h5,
+body.page-admin h5,
+body h6,
+body.adminimal-theme h6,
+body.page-user h6,
+body.page-admin h6,
+body p,
+body.adminimal-theme p,
+body.page-user p,
+body.page-admin p,
+body a,
+body.adminimal-theme a,
+body.page-user a,
+body.page-admin a,
+body span,
+body.adminimal-theme span,
+body.page-user span,
+body.page-admin span,
+body strong,
+body.adminimal-theme strong,
+body.page-user strong,
+body.page-admin strong {
+  font-family: 'Lato', sans-serif !important;
+}
+body .glyphicon,
+body.adminimal-theme .glyphicon,
+body.page-user .glyphicon,
+body.page-admin .glyphicon {
+  font-family: 'Glyphicons Halflings' !important;
+}
+body table td,
+body.adminimal-theme table td,
+body.page-user table td,
+body.page-admin table td,
+body table th,
+body.adminimal-theme table th,
+body.page-user table th,
+body.page-admin table th {
+  font-family: 'Lato', sans-serif !important;
+}
+body .ui-widget table thead th,
+body.adminimal-theme .ui-widget table thead th,
+body.page-user .ui-widget table thead th,
+body.page-admin .ui-widget table thead th {
+  color: white;
+}
+body .ui-widget table thead th a,
+body.adminimal-theme .ui-widget table thead th a,
+body.page-user .ui-widget table thead th a,
+body.page-admin .ui-widget table thead th a {
+  color: white;
+}
+body.adminimal-skin-material .form-actions input {
+  height: auto !important;
+}
+body.adminimal-theme,
+body.page-user,
+body.page-admin {
+  background-color: #263238 !important;
+}
+body.adminimal-theme #page,
+body.page-user #page,
+body.page-admin #page {
+  background: #263238 !important;
+  padding: 40px;
+}
+@media (max-width: 768px) {
+  body.adminimal-theme #page,
+  body.page-user #page,
+  body.page-admin #page {
+    padding: 40px 0;
+  }
+}
+body.adminimal-theme #page h1.page-title,
+body.page-user #page h1.page-title,
+body.page-admin #page h1.page-title {
+  color: white;
+  font-weight: 400;
+  font-size: 32px;
+}
+body.adminimal-theme #page #content,
+body.page-user #page #content,
+body.page-admin #page #content {
+  padding: 40px;
+  border-radius: 4px;
+  background: #f9f9f9 !important;
+}
+@media (max-width: 768px) {
+  #page #content #content-wrapper {
+    display: inline-block;
+    width: 100%;
+  }
+}
 /* COMPONENTS */
 #better-messages-wrapper #better-messages-default {
   border: 5px solid rgba(29, 29, 29, 0.5);
@@ -1526,6 +1644,71 @@ body.adminimal-theme .cke_reset_all label {
 .page-admin-bat-properties .view-properties .views-exposed-form .form-item-name input {
   height: 32px;
 }
+.pane-properties-dashboard-properties .view-display-id-dashboard_properties a {
+  color: #405467;
+}
+.pane-properties-dashboard-properties .view-display-id-dashboard_properties td.views-field-name {
+  height: 70px;
+}
+.pane-properties-dashboard-properties .view-display-id-dashboard_properties td.views-field-name .property-image {
+  display: inline-block;
+  float: left;
+  max-width: 70px;
+  margin-right: 10px;
+  position: relative;
+  left: -5px;
+}
+.pane-properties-dashboard-properties .view-display-id-dashboard_properties td.views-field-name .property-image img {
+  width: 100%;
+  height: auto;
+  border-radius: 50%;
+}
+.pane-properties-dashboard-properties .view-display-id-dashboard_properties td.views-field-name .property-name {
+  display: inline-block;
+  margin-top: 25px;
+  font-size: 18px;
+}
+.pane-properties-dashboard-properties .view-display-id-dashboard_properties td.views-field.views-field-edit-unit {
+  width: 40px;
+}
+.pane-properties-dashboard-properties .view-display-id-dashboard_properties td.views-field.views-field-edit-unit a {
+  background: url("../images/edit.png") no-repeat right 50% bottom 20px;
+  background-size: 35px 35px;
+  display: inline-block;
+  padding: 35px 1em 0 1em;
+}
+.pane-properties-dashboard-properties .view-display-id-dashboard_properties td.views-field.views-field-nothing {
+  width: 40px;
+}
+.pane-properties-dashboard-properties .view-display-id-dashboard_properties td.views-field.views-field-nothing a {
+  background: url("../images/availability.png") no-repeat right 50% bottom 20px;
+  background-size: 35px 35px;
+  display: inline-block;
+  padding: 35px 1em 0 1em;
+}
+.pane-properties-dashboard-properties .view-display-id-dashboard_properties td.views-field.views-field-nothing-1 {
+  width: 40px;
+}
+.pane-properties-dashboard-properties .view-display-id-dashboard_properties td.views-field.views-field-nothing-1 a {
+  background: url("../images/pricing.png") no-repeat right 50% bottom 20px;
+  background-size: 35px 35px;
+  display: inline-block;
+  padding: 35px 1em 0 1em;
+}
+.pane-properties-dashboard-properties .view-display-id-dashboard_properties tr.status-0 td.views-field.views-field-edit-unit a {
+  background-image: url("../images/edit-gray.png");
+}
+.pane-properties-dashboard-properties .view-display-id-dashboard_properties tr.status-0 td.views-field.views-field-nothing a {
+  background-image: url("../images/availability-gray.png");
+}
+.pane-properties-dashboard-properties .view-display-id-dashboard_properties tr.status-0 td.views-field.views-field-nothing-1 a {
+  background-image: url("../images/pricing-gray.png");
+}
+.dragdropfile-processed .dragdropfile-table-wrapper {
+  height: auto;
+  box-shadow: none;
+  background-color: transparent;
+}
 body.adminimal-skin-material table {
   border: 1px solid rgba(221, 221, 221, 0.78) !important;
 }
@@ -1557,86 +1740,6 @@ body.adminimal-skin-material table tbody tr td {
   display: none;
 }
 /* Custom font */
-body,
-body.adminimal-theme,
-body.page-user,
-body.page-admin {
-  font: normal 16px/1.538em Open Sans, "Segoe UI", "Helvetica", sans-serif !important;
-  font-family: 'Lato', sans-serif !important;
-}
-body h1,
-body.adminimal-theme h1,
-body.page-user h1,
-body.page-admin h1,
-body h2,
-body.adminimal-theme h2,
-body.page-user h2,
-body.page-admin h2,
-body h3,
-body.adminimal-theme h3,
-body.page-user h3,
-body.page-admin h3,
-body h4,
-body.adminimal-theme h4,
-body.page-user h4,
-body.page-admin h4,
-body h5,
-body.adminimal-theme h5,
-body.page-user h5,
-body.page-admin h5,
-body h6,
-body.adminimal-theme h6,
-body.page-user h6,
-body.page-admin h6,
-body p,
-body.adminimal-theme p,
-body.page-user p,
-body.page-admin p,
-body a,
-body.adminimal-theme a,
-body.page-user a,
-body.page-admin a,
-body span,
-body.adminimal-theme span,
-body.page-user span,
-body.page-admin span,
-body strong,
-body.adminimal-theme strong,
-body.page-user strong,
-body.page-admin strong {
-  font-family: 'Lato', sans-serif !important;
-}
-body .glyphicon,
-body.adminimal-theme .glyphicon,
-body.page-user .glyphicon,
-body.page-admin .glyphicon {
-  font-family: 'Glyphicons Halflings' !important;
-}
-body table td,
-body.adminimal-theme table td,
-body.page-user table td,
-body.page-admin table td,
-body table th,
-body.adminimal-theme table th,
-body.page-user table th,
-body.page-admin table th {
-  font-family: 'Lato', sans-serif !important;
-}
-body .ui-widget table thead th,
-body.adminimal-theme .ui-widget table thead th,
-body.page-user .ui-widget table thead th,
-body.page-admin .ui-widget table thead th {
-  color: white;
-}
-body .ui-widget table thead th a,
-body.adminimal-theme .ui-widget table thead th a,
-body.page-user .ui-widget table thead th a,
-body.page-admin .ui-widget table thead th a {
-  color: white;
-}
-body.adminimal-skin-material .form-actions input {
-  height: auto !important;
-}
 input[type="submit"],
 input.form-submit,
 a.button,
@@ -1662,31 +1765,6 @@ body.adminimal-theme.adminimal-skin-material.style-checkboxes input[type=checkbo
 body.adminimal-theme.adminimal-skin-material.style-checkboxes input[type=radio] {
   width: 17px !important;
   height: 17px !important;
-}
-body.adminimal-theme,
-body.page-user,
-body.page-admin {
-  background-color: #263238 !important;
-}
-body.adminimal-theme #page,
-body.page-user #page,
-body.page-admin #page {
-  background: #263238 !important;
-  padding: 40px;
-}
-body.adminimal-theme #page h1.page-title,
-body.page-user #page h1.page-title,
-body.page-admin #page h1.page-title {
-  color: white;
-  font-weight: 400;
-  font-size: 32px;
-}
-body.adminimal-theme #page #content,
-body.page-user #page #content,
-body.page-admin #page #content {
-  padding: 40px;
-  border-radius: 4px;
-  background: #f9f9f9 !important;
 }
 a.ctools-use-modal.button,
 a.ctools-use-modal,

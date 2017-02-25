@@ -3,6 +3,7 @@
 
 @import 'regions/header';
 @import 'regions/sidebar';
+@import 'regions/content';
 
 /* COMPONENTS */
 @import 'components/messages';
@@ -24,33 +25,7 @@
 @import url(https://fonts.googleapis.com/css?family=Lato:400,300,700);
 @import url(https://fonts.googleapis.com/css?family=Open+Sans:400,800,700);
 
-body,
-body.adminimal-theme,
-body.page-user,
-body.page-admin {
-  font: normal 16px/1.538em Open Sans, "Segoe UI", "Helvetica", sans-serif !important;
-  font-family: 'Lato', sans-serif !important;
-  h1,h2,h3,h4,h5,h6,p,a,span,strong {
-    font-family: 'Lato', sans-serif !important;
-  }
-  .glyphicon {
-    font-family: 'Glyphicons Halflings' !important;
-  }
-  table {
-    td, th {
-      font-family: 'Lato', sans-serif !important;
-    }
-  }
-  .ui-widget table thead th {
-    color: white;
-    a {
-      color: white;
-    }
-  }
-}
-body.adminimal-skin-material .form-actions input {
-  height: auto !important;
-}
+
 input[type="submit"], input.form-submit, a.button, div.exposed-filters input#edit-submit {
   margin: 2px;
 }
@@ -74,26 +49,7 @@ body.adminimal-theme.adminimal-skin-material.style-checkboxes input[type=radio] 
   width: 17px !important;
   height: 17px !important;
 }
-// Center all administration content and close it in a box.
-body.adminimal-theme,
-body.page-user,
-body.page-admin {
-  background-color: #263238 !important;
-  #page {
-    background: #263238 !important;
-    padding: 40px;
-    h1.page-title {
-      color: white;
-      font-weight: 400;
-      font-size: 32px;
-    }
-    #content {
-      padding: 40px;
-      border-radius: 4px;
-      background: #f9f9f9 !important;
-    }
-  }
-}
+
 a.ctools-use-modal.button,
 a.ctools-use-modal,
 .button {
