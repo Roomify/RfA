@@ -344,8 +344,9 @@ function roomify_accommodation_booking_update_7010() {
     ->condition('booking_id', NULL)
     ->execute()
     ->fetchAllKeyed(0, 0);
-
-  db_delete('job_schedule')
-    ->condition('item_id', $item_ids, 'IN')
-    ->execute();
+  if (!empty($item_ids)) {
+    db_delete('job_schedule')
+      ->condition('item_id', $item_ids, 'IN')
+      ->execute();
+  }
 }
