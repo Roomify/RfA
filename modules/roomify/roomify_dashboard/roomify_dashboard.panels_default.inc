@@ -1602,6 +1602,84 @@ function roomify_dashboard_default_panels_mini() {
   $display->content = array();
   $display->panels = array();
   $pane = new stdClass();
+  $pane->pid = 'new-5e8c5646-e41f-4572-98fa-80eca55aa284';
+  $pane->panel = 'top';
+  $pane->type = 'views_panes';
+  $pane->subtype = 'properties-dashboard_properties';
+  $pane->shown = TRUE;
+  $pane->access = array();
+  $pane->configuration = array(
+    'override_title' => 1,
+    'override_title_text' => 'Your Properties',
+    'override_title_heading' => 'h2',
+  );
+  $pane->cache = array();
+  $pane->style = array(
+    'settings' => NULL,
+  );
+  $pane->css = array(
+    'css_id' => '',
+    'css_class' => 'col-xs-12 col-sm-6',
+  );
+  $pane->extras = array();
+  $pane->position = 0;
+  $pane->locks = array();
+  $pane->uuid = '5e8c5646-e41f-4572-98fa-80eca55aa284';
+  $display->content['new-5e8c5646-e41f-4572-98fa-80eca55aa284'] = $pane;
+  $display->panels['top'][0] = 'new-5e8c5646-e41f-4572-98fa-80eca55aa284';
+  $pane = new stdClass();
+  $pane->pid = 'new-24d08e41-5717-4310-8c1b-0b0006d6fb69';
+  $pane->panel = 'top';
+  $pane->type = 'views_panes';
+  $pane->subtype = 'user_conversations-owner_conversations';
+  $pane->shown = TRUE;
+  $pane->access = array();
+  $pane->configuration = array(
+    'arguments' => array(
+      'uid' => '%user:uid',
+    ),
+  );
+  $pane->cache = array();
+  $pane->style = array(
+    'settings' => NULL,
+  );
+  $pane->css = array(
+    'css_id' => '',
+    'css_class' => 'col-xs-12 col-sm-6',
+  );
+  $pane->extras = array();
+  $pane->position = 1;
+  $pane->locks = array();
+  $pane->uuid = '24d08e41-5717-4310-8c1b-0b0006d6fb69';
+  $display->content['new-24d08e41-5717-4310-8c1b-0b0006d6fb69'] = $pane;
+  $display->panels['top'][1] = 'new-24d08e41-5717-4310-8c1b-0b0006d6fb69';
+  $pane = new stdClass();
+  $pane->pid = 'new-2e403f60-9549-427b-bf5a-97d6cbab5ad4';
+  $pane->panel = 'top';
+  $pane->type = 'views_panes';
+  $pane->subtype = 'user_conversations-guest_conversations';
+  $pane->shown = TRUE;
+  $pane->access = array();
+  $pane->configuration = array(
+    'arguments' => array(
+      'conversation_guest_user_ref_target_id' => '%user:uid',
+    ),
+  );
+  $pane->cache = array();
+  $pane->style = array(
+    'settings' => NULL,
+  );
+  $pane->css = array(
+    'css_id' => '',
+    'css_class' => 'col-xs-12 col-sm-6',
+  );
+  $pane->extras = array();
+  $pane->position = 2;
+  $pane->locks = array();
+  $pane->uuid = '2e403f60-9549-427b-bf5a-97d6cbab5ad4';
+  $display->content['new-2e403f60-9549-427b-bf5a-97d6cbab5ad4'] = $pane;
+  $display->panels['top'][2] = 'new-2e403f60-9549-427b-bf5a-97d6cbab5ad4';
+  $pane = new stdClass();
   $pane->pid = 'new-4de5afe7-0216-42e7-8bf2-0ddf9c41be77';
   $pane->panel = 'top';
   $pane->type = 'views_panes';
@@ -1622,11 +1700,11 @@ function roomify_dashboard_default_panels_mini() {
     'css_class' => 'col-xs-12',
   );
   $pane->extras = array();
-  $pane->position = 0;
+  $pane->position = 3;
   $pane->locks = array();
   $pane->uuid = '4de5afe7-0216-42e7-8bf2-0ddf9c41be77';
   $display->content['new-4de5afe7-0216-42e7-8bf2-0ddf9c41be77'] = $pane;
-  $display->panels['top'][0] = 'new-4de5afe7-0216-42e7-8bf2-0ddf9c41be77';
+  $display->panels['top'][3] = 'new-4de5afe7-0216-42e7-8bf2-0ddf9c41be77';
   $display->hide_title = PANELS_TITLE_FIXED;
   $display->title_pane = '0';
   $mini->display = $display;
