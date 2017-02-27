@@ -86,7 +86,6 @@ function _roomify_system_commerce_order_view_access() {
 
         // The property owner is viewing the order.
         if ($user->uid == $owner[0]['target_id']) {
-          dpm($user);
           $access = TRUE;
         }
       }
