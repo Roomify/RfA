@@ -372,11 +372,11 @@ function roomify_dashboard_views_default_views() {
   $handler->display->display_options['arguments']['uid']['specify_validation'] = TRUE;
   $handler->display->display_options['arguments']['uid']['validate']['type'] = 'php';
   $handler->display->display_options['arguments']['uid']['validate_options']['code'] = 'if (user_access(\'update any bat_booking entity\')) {
-        return FALSE;
-        }
-        else {
-        return TRUE;
-        }';
+          return FALSE;
+          }
+          else {
+          return TRUE;
+          }';
   $handler->display->display_options['arguments']['uid']['validate']['fail'] = 'ignore';
   /* Filter criterion: Events: State (event_state_reference) */
   $handler->display->display_options['filters']['event_state_reference_state_id']['id'] = 'event_state_reference_state_id';
@@ -3219,11 +3219,11 @@ function roomify_dashboard_views_default_views() {
   $handler->display->display_options['arguments']['uid']['specify_validation'] = TRUE;
   $handler->display->display_options['arguments']['uid']['validate']['type'] = 'php';
   $handler->display->display_options['arguments']['uid']['validate_options']['code'] = 'if (user_access(\'update any roomify_property entity\')) {
-  return FALSE;
-  }
-  else {
-  return TRUE;
-  }';
+    return FALSE;
+    }
+    else {
+    return TRUE;
+    }';
   $handler->display->display_options['arguments']['uid']['validate']['fail'] = 'ignore';
 
   /* Display: Dashboard Properties */
@@ -3394,7 +3394,7 @@ function roomify_dashboard_views_default_views() {
   $handler->display->display_options['fields']['name']['label'] = 'Properties';
   $handler->display->display_options['fields']['name']['alter']['alter_text'] = TRUE;
   $handler->display->display_options['fields']['name']['alter']['text'] = '<div class="property-image">[field_sp_featured_image]</div>
-  <div class="property-name">[name]</div>';
+    <div class="property-name">[name]</div>';
   $handler->display->display_options['fields']['name']['alter']['make_link'] = TRUE;
   $handler->display->display_options['fields']['name']['alter']['path'] = 'listing/[property_id]';
   $handler->display->display_options['fields']['name']['element_label_colon'] = FALSE;
@@ -3488,7 +3488,7 @@ function roomify_dashboard_views_default_views() {
   $handler->display->display_options['fields']['field_sp_featured_image']['element_label_colon'] = FALSE;
   $handler->display->display_options['fields']['field_sp_featured_image']['click_sort_column'] = 'fid';
   $handler->display->display_options['fields']['field_sp_featured_image']['settings'] = array(
-    'image_style' => 'roomify_thumbnail_rectangled',
+    'image_style' => 'square',
     'image_link' => '',
     'conditions' => array(
       0 => array(
@@ -3590,7 +3590,7 @@ function roomify_dashboard_views_default_views() {
     t('Dashboard Properties'),
     t('View All'),
     t('<div class="property-image">[field_sp_featured_image]</div>
-  <div class="property-name">[name]</div>'),
+    <div class="property-name">[name]</div>'),
     t('View panes'),
     t('Properties View All'),
     t('Roomify property ID'),

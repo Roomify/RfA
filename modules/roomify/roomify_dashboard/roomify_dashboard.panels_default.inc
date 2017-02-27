@@ -1619,7 +1619,7 @@ function roomify_dashboard_default_panels_mini() {
   );
   $pane->css = array(
     'css_id' => '',
-    'css_class' => 'col-xs-12 col-sm-6',
+    'css_class' => 'col-xs-12 col-lg-6',
   );
   $pane->extras = array();
   $pane->position = 0;
@@ -1628,16 +1628,19 @@ function roomify_dashboard_default_panels_mini() {
   $display->content['new-5e8c5646-e41f-4572-98fa-80eca55aa284'] = $pane;
   $display->panels['top'][0] = 'new-5e8c5646-e41f-4572-98fa-80eca55aa284';
   $pane = new stdClass();
-  $pane->pid = 'new-24d08e41-5717-4310-8c1b-0b0006d6fb69';
+  $pane->pid = 'new-c5c041b4-926d-44c9-89a8-209c83dde263';
   $pane->panel = 'top';
-  $pane->type = 'views_panes';
-  $pane->subtype = 'user_conversations-owner_conversations';
+  $pane->type = 'panels_mini';
+  $pane->subtype = 'conversations';
   $pane->shown = TRUE;
   $pane->access = array();
   $pane->configuration = array(
-    'arguments' => array(
-      'uid' => '%user:uid',
+    'context' => array(
+      0 => 'requiredcontext_user_1',
     ),
+    'override_title' => 1,
+    'override_title_text' => '',
+    'override_title_heading' => 'h2',
   );
   $pane->cache = array();
   $pane->style = array(
@@ -1645,40 +1648,14 @@ function roomify_dashboard_default_panels_mini() {
   );
   $pane->css = array(
     'css_id' => '',
-    'css_class' => 'col-xs-12 col-sm-6',
+    'css_class' => 'col-xs-12 col-lg-6',
   );
   $pane->extras = array();
   $pane->position = 1;
   $pane->locks = array();
-  $pane->uuid = '24d08e41-5717-4310-8c1b-0b0006d6fb69';
-  $display->content['new-24d08e41-5717-4310-8c1b-0b0006d6fb69'] = $pane;
-  $display->panels['top'][1] = 'new-24d08e41-5717-4310-8c1b-0b0006d6fb69';
-  $pane = new stdClass();
-  $pane->pid = 'new-2e403f60-9549-427b-bf5a-97d6cbab5ad4';
-  $pane->panel = 'top';
-  $pane->type = 'views_panes';
-  $pane->subtype = 'user_conversations-guest_conversations';
-  $pane->shown = TRUE;
-  $pane->access = array();
-  $pane->configuration = array(
-    'arguments' => array(
-      'conversation_guest_user_ref_target_id' => '%user:uid',
-    ),
-  );
-  $pane->cache = array();
-  $pane->style = array(
-    'settings' => NULL,
-  );
-  $pane->css = array(
-    'css_id' => '',
-    'css_class' => 'col-xs-12 col-sm-6',
-  );
-  $pane->extras = array();
-  $pane->position = 2;
-  $pane->locks = array();
-  $pane->uuid = '2e403f60-9549-427b-bf5a-97d6cbab5ad4';
-  $display->content['new-2e403f60-9549-427b-bf5a-97d6cbab5ad4'] = $pane;
-  $display->panels['top'][2] = 'new-2e403f60-9549-427b-bf5a-97d6cbab5ad4';
+  $pane->uuid = 'c5c041b4-926d-44c9-89a8-209c83dde263';
+  $display->content['new-c5c041b4-926d-44c9-89a8-209c83dde263'] = $pane;
+  $display->panels['top'][1] = 'new-c5c041b4-926d-44c9-89a8-209c83dde263';
   $pane = new stdClass();
   $pane->pid = 'new-4de5afe7-0216-42e7-8bf2-0ddf9c41be77';
   $pane->panel = 'top';
@@ -1690,6 +1667,9 @@ function roomify_dashboard_default_panels_mini() {
     'arguments' => array(
       'uid' => '%user:uid',
     ),
+    'override_title' => 1,
+    'override_title_text' => 'Bookings',
+    'override_title_heading' => 'h2',
   );
   $pane->cache = array();
   $pane->style = array(
@@ -1700,14 +1680,118 @@ function roomify_dashboard_default_panels_mini() {
     'css_class' => 'col-xs-12',
   );
   $pane->extras = array();
-  $pane->position = 3;
+  $pane->position = 2;
   $pane->locks = array();
   $pane->uuid = '4de5afe7-0216-42e7-8bf2-0ddf9c41be77';
   $display->content['new-4de5afe7-0216-42e7-8bf2-0ddf9c41be77'] = $pane;
-  $display->panels['top'][3] = 'new-4de5afe7-0216-42e7-8bf2-0ddf9c41be77';
+  $display->panels['top'][2] = 'new-4de5afe7-0216-42e7-8bf2-0ddf9c41be77';
   $display->hide_title = PANELS_TITLE_FIXED;
   $display->title_pane = '0';
   $mini->display = $display;
   $export['dashboard'] = $mini;
+
+  $mini = new stdClass();
+  $mini->disabled = FALSE; /* Edit this to true to make a default mini disabled initially */
+  $mini->api_version = 1;
+  $mini->name = 'conversations';
+  $mini->category = '';
+  $mini->admin_title = 'Conversations';
+  $mini->admin_description = '';
+  $mini->requiredcontexts = array(
+    0 => array(
+      'identifier' => 'User',
+      'keyword' => 'user',
+      'name' => 'user',
+      'type' => 'select',
+      'uid' => '',
+      'optional' => 0,
+      'id' => 1,
+    ),
+  );
+  $mini->contexts = array();
+  $mini->relationships = array();
+  $display = new panels_display();
+  $display->layout = 'bootstrap_one_column';
+  $display->layout_settings = array();
+  $display->panel_settings = array(
+    'style_settings' => array(
+      'top' => array(
+        'region_title' => '',
+        'region_title_tag' => 'none',
+        'region_class' => '',
+        'panel_tab_id_pattern' => 'region',
+      ),
+      'default' => NULL,
+      'middle' => NULL,
+      'bottom' => NULL,
+    ),
+    'top' => array(
+      'style' => 'tabs',
+    ),
+  );
+  $display->cache = array();
+  $display->title = '';
+  $display->uuid = '84e9b88a-aa00-4cf6-9d0e-8dac99338e70';
+  $display->storage_type = 'panels_mini';
+  $display->storage_id = 'conversations';
+  $display->content = array();
+  $display->panels = array();
+  $pane = new stdClass();
+  $pane->pid = 'new-ea2e6343-f037-4670-9cc4-85a3f1f68190';
+  $pane->panel = 'top';
+  $pane->type = 'views_panes';
+  $pane->subtype = 'user_conversations-owner_conversations';
+  $pane->shown = TRUE;
+  $pane->access = array();
+  $pane->configuration = array(
+    'arguments' => array(
+      'uid' => '%user:uid',
+    ),
+    'override_title' => 1,
+    'override_title_text' => 'Conversations as Owner',
+    'override_title_heading' => 'h2',
+  );
+  $pane->cache = array();
+  $pane->style = array(
+    'settings' => NULL,
+  );
+  $pane->css = array();
+  $pane->extras = array();
+  $pane->position = 0;
+  $pane->locks = array();
+  $pane->uuid = 'ea2e6343-f037-4670-9cc4-85a3f1f68190';
+  $display->content['new-ea2e6343-f037-4670-9cc4-85a3f1f68190'] = $pane;
+  $display->panels['top'][0] = 'new-ea2e6343-f037-4670-9cc4-85a3f1f68190';
+  $pane = new stdClass();
+  $pane->pid = 'new-0d10d361-a026-431c-89a7-c41a5a370d89';
+  $pane->panel = 'top';
+  $pane->type = 'views_panes';
+  $pane->subtype = 'user_conversations-guest_conversations';
+  $pane->shown = TRUE;
+  $pane->access = array();
+  $pane->configuration = array(
+    'arguments' => array(
+      'conversation_guest_user_ref_target_id' => '%user:uid',
+    ),
+    'override_title' => 1,
+    'override_title_text' => 'Conversations as Guest',
+    'override_title_heading' => 'h2',
+  );
+  $pane->cache = array();
+  $pane->style = array(
+    'settings' => NULL,
+  );
+  $pane->css = array();
+  $pane->extras = array();
+  $pane->position = 1;
+  $pane->locks = array();
+  $pane->uuid = '0d10d361-a026-431c-89a7-c41a5a370d89';
+  $display->content['new-0d10d361-a026-431c-89a7-c41a5a370d89'] = $pane;
+  $display->panels['top'][1] = 'new-0d10d361-a026-431c-89a7-c41a5a370d89';
+  $display->hide_title = PANELS_TITLE_FIXED;
+  $display->title_pane = 'new-ea2e6343-f037-4670-9cc4-85a3f1f68190';
+  $mini->display = $display;
+  $export['conversations'] = $mini;
+
   return $export;
 }

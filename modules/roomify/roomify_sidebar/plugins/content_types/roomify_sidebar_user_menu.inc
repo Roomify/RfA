@@ -58,7 +58,7 @@ function roomify_sidebar_user_menu_render($subtype, $conf, $args, $pane_context,
   if (user_access('edit own guest profile', $user)) {
     $message .= '<div class="guest-profile"><a class="btn"href="user/' . $user->uid . '/edit/property_owner?destination="/user">' . t('Edit Guest Profile') . '</a></div>';
   }
-  $message .= '<div class="logut"><a href="/user/logout?destination=/">Logout</a></div>';
+  $message .= '<div class="logout"><a href="/user/logout?destination=/">Logout<span class="glyphicon glyphicon-log-out"></span></a></div>';
   $message .= '</div>';
   // Guest Profile Set.
   if ($profile = profile2_load_by_user($user, 'guest')) {
