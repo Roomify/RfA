@@ -43,6 +43,11 @@ Drupal.behaviors.roomifyTravelScripts = {
       $( '#ui-id-' + $id ).click();
     }
 
+    // Open Description tab if user clicks on 'See More'.
+    $('.user-info #see-more-property-description').click(function(){
+      $( '#ui-id-1' ).click();
+    });
+
     // Hide overlay of slides without a title or a description.
     $('.page-listing .slide__overlay').each(function(i, obj) {
       if ($(this).children('.title:empty').length && $(this).children('.description:empty').length) {
