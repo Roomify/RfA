@@ -1639,7 +1639,7 @@ function roomify_dashboard_default_panels_mini() {
       0 => 'requiredcontext_user_1',
     ),
     'override_title' => 1,
-    'override_title_text' => '',
+    'override_title_text' => 'Conversations',
     'override_title_heading' => 'h2',
   );
   $pane->cache = array();
@@ -1730,7 +1730,7 @@ function roomify_dashboard_default_panels_mini() {
     ),
   );
   $display->cache = array();
-  $display->title = '';
+  $display->title = 'Conversations';
   $display->uuid = '84e9b88a-aa00-4cf6-9d0e-8dac99338e70';
   $display->storage_type = 'panels_mini';
   $display->storage_id = 'conversations';

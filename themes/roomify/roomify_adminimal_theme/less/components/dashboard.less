@@ -103,6 +103,11 @@
   	}
   }
   .pane-panels-mini.pane-conversations {
+  	background-clip: padding-box;
+    border: 10px solid #efefef;
+    padding: 15px;
+    background: white;
+    border-radius: 15px;
   	.pane-title {
     	position: absolute;
 	    top: 0;
@@ -127,7 +132,7 @@
   		}
     }
     .pane-content {
-    	padding-top: 50px;
+    	padding-top: 35px;
     	.view-display-id-dashboard_properties {
     		thead {
     			display: none;
@@ -137,7 +142,7 @@
   }
   #mini-panel-conversations {
   	margin-top: 8px;
-  	margin-bottom: 30px;
+  	margin-bottom: 8px;
   	@media (max-width: @screen-lg) {
   		margin-top: 60px;
   		margin-bottom: 60px;
@@ -166,7 +171,9 @@
     background: white;
     border-radius: 4px;
     position: relative;
-    margin: 30px 8px;
+    border: 10px solid transparent;
+    background-clip: padding-box;
+    margin: 30px 0;
     .views-table thead tr th {
 	    background: rgb(239, 239, 239) !important;
 	    color: #405467;
