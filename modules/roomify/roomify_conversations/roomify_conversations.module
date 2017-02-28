@@ -1631,6 +1631,19 @@ function roomify_conversations_get_most_recent_message($conversation_id) {
 function roomify_conversations_default_cer() {
   $items = array();
 
+  $items['bat_booking:conversation_booking:booking_event_reference*bat_event:availability:event_booking_reference'] = entity_import('cer', '{
+    "cer_bidirectional" : { "und" : [ { "value" : "1" } ] },
+    "cer_enabled" : { "und" : [ { "value" : "1" } ] },
+    "cer_left" : { "und" : [
+        { "path" : "bat_booking:conversation_booking:booking_event_reference" }
+      ]
+    },
+    "cer_right" : { "und" : [ { "path" : "bat_event:availability:event_booking_reference" } ] },
+    "cer_weight" : { "und" : [ { "value" : "0" } ] },
+    "identifier" : "bat_booking:conversation_booking:booking_event_reference*bat_event:availability:event_booking_reference",
+    "rdf_mapping" : []
+  }');
+
   $items['bat_booking:conversation_booking:booking_accommodation_ref*bat_booking:roomify_accommodation_booking:booking_booking_conversation_ref'] = entity_import('cer', '{
     "identifier" : "bat_booking:conversation_booking:booking_accommodation_ref*bat_booking:roomify_accommodation_booking:booking_booking_conversation_ref",
     "cer_bidirectional" : { "und" : [ { "value" : "1" } ] },

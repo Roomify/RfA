@@ -505,5 +505,788 @@ function roomify_accommodation_booking_views_default_views() {
 
   $views['customer_profiles'] = $view;
 
+  $view = new view();
+  $view->name = 'roomify_order';
+  $view->description = '';
+  $view->tag = 'default';
+  $view->base_table = 'commerce_order';
+  $view->human_name = 'Roomify Order';
+  $view->core = 7;
+  $view->api_version = '3.0';
+  $view->disabled = FALSE; /* Edit this to true to make a default view disabled initially */
+
+  /* Display: Master */
+  $handler = $view->new_display('default', 'Master', 'default');
+  $handler->display->display_options['use_more_always'] = FALSE;
+  $handler->display->display_options['access']['type'] = 'none';
+  $handler->display->display_options['cache']['type'] = 'none';
+  $handler->display->display_options['query']['type'] = 'views_query';
+  $handler->display->display_options['query']['options']['disable_sql_rewrite'] = TRUE;
+  $handler->display->display_options['exposed_form']['type'] = 'basic';
+  $handler->display->display_options['pager']['type'] = 'full';
+  $handler->display->display_options['style_plugin'] = 'table';
+  $handler->display->display_options['style_options']['columns'] = array(
+    'line_item_label' => 'line_item_label',
+    'quantity' => 'quantity',
+    'commerce_unit_price' => 'commerce_unit_price',
+  );
+  $handler->display->display_options['style_options']['default'] = '-1';
+  $handler->display->display_options['style_options']['info'] = array(
+    'line_item_label' => array(
+      'sortable' => 0,
+      'default_sort_order' => 'asc',
+      'align' => '',
+      'separator' => '',
+      'empty_column' => 0,
+    ),
+    'quantity' => array(
+      'sortable' => 0,
+      'default_sort_order' => 'asc',
+      'align' => 'views-align-center',
+      'separator' => '',
+      'empty_column' => 0,
+    ),
+    'commerce_unit_price' => array(
+      'sortable' => 0,
+      'default_sort_order' => 'asc',
+      'align' => 'views-align-center',
+      'separator' => '',
+      'empty_column' => 0,
+    ),
+  );
+  /* Relationship: Commerce Order: Referenced line items */
+  $handler->display->display_options['relationships']['commerce_line_items_line_item_id']['id'] = 'commerce_line_items_line_item_id';
+  $handler->display->display_options['relationships']['commerce_line_items_line_item_id']['table'] = 'field_data_commerce_line_items';
+  $handler->display->display_options['relationships']['commerce_line_items_line_item_id']['field'] = 'commerce_line_items_line_item_id';
+  $handler->display->display_options['relationships']['commerce_line_items_line_item_id']['required'] = TRUE;
+  /* Field: Commerce Order: Order ID */
+  $handler->display->display_options['fields']['order_id']['id'] = 'order_id';
+  $handler->display->display_options['fields']['order_id']['table'] = 'commerce_order';
+  $handler->display->display_options['fields']['order_id']['field'] = 'order_id';
+  $handler->display->display_options['fields']['order_id']['label'] = '';
+  $handler->display->display_options['fields']['order_id']['element_label_colon'] = FALSE;
+  /* Field: Commerce Line Item: Label */
+  $handler->display->display_options['fields']['line_item_label']['id'] = 'line_item_label';
+  $handler->display->display_options['fields']['line_item_label']['table'] = 'commerce_line_item';
+  $handler->display->display_options['fields']['line_item_label']['field'] = 'line_item_label';
+  $handler->display->display_options['fields']['line_item_label']['relationship'] = 'commerce_line_items_line_item_id';
+  $handler->display->display_options['fields']['line_item_label']['label'] = '';
+  $handler->display->display_options['fields']['line_item_label']['element_label_colon'] = FALSE;
+  /* Field: Commerce Line Item: Type */
+  $handler->display->display_options['fields']['type']['id'] = 'type';
+  $handler->display->display_options['fields']['type']['table'] = 'commerce_line_item';
+  $handler->display->display_options['fields']['type']['field'] = 'type';
+  $handler->display->display_options['fields']['type']['relationship'] = 'commerce_line_items_line_item_id';
+  /* Field: Roomify Property: Search/Featured Image */
+  $handler->display->display_options['fields']['field_sp_featured_image']['id'] = 'field_sp_featured_image';
+  $handler->display->display_options['fields']['field_sp_featured_image']['table'] = 'field_data_field_sp_featured_image';
+  $handler->display->display_options['fields']['field_sp_featured_image']['field'] = 'field_sp_featured_image';
+  $handler->display->display_options['fields']['field_sp_featured_image']['relationship'] = 'field_st_property_reference_target_id';
+  $handler->display->display_options['fields']['field_sp_featured_image']['label'] = '';
+  $handler->display->display_options['fields']['field_sp_featured_image']['element_label_colon'] = FALSE;
+  $handler->display->display_options['fields']['field_sp_featured_image']['click_sort_column'] = 'fid';
+  $handler->display->display_options['fields']['field_sp_featured_image']['settings'] = array(
+    'image_style' => 'homepage_features',
+    'image_link' => 'content',
+    'conditions' => array(
+      0 => array(
+        'condition' => '',
+      ),
+    ),
+  );
+  /* Field: BAT Booking: Start Date */
+  $handler->display->display_options['fields']['booking_start_date']['id'] = 'booking_start_date';
+  $handler->display->display_options['fields']['booking_start_date']['table'] = 'field_data_booking_start_date';
+  $handler->display->display_options['fields']['booking_start_date']['field'] = 'booking_start_date';
+  $handler->display->display_options['fields']['booking_start_date']['relationship'] = 'commerce_booking_reference_target_id';
+  $handler->display->display_options['fields']['booking_start_date']['settings'] = array(
+    'format_type' => 'bat_daily',
+    'custom_date_format' => '',
+    'fromto' => 'both',
+    'multiple_number' => '',
+    'multiple_from' => '',
+    'multiple_to' => '',
+    'show_remaining_days' => 0,
+    'conditions' => array(
+      0 => array(
+        'condition' => '',
+      ),
+    ),
+  );
+  /* Field: BAT Booking: End Date */
+  $handler->display->display_options['fields']['booking_end_date']['id'] = 'booking_end_date';
+  $handler->display->display_options['fields']['booking_end_date']['table'] = 'field_data_booking_end_date';
+  $handler->display->display_options['fields']['booking_end_date']['field'] = 'booking_end_date';
+  $handler->display->display_options['fields']['booking_end_date']['relationship'] = 'commerce_booking_reference_target_id';
+  $handler->display->display_options['fields']['booking_end_date']['settings'] = array(
+    'format_type' => 'bat_daily',
+    'custom_date_format' => '',
+    'fromto' => 'both',
+    'multiple_number' => '',
+    'multiple_from' => '',
+    'multiple_to' => '',
+    'show_remaining_days' => 0,
+    'conditions' => array(
+      0 => array(
+        'condition' => '',
+      ),
+    ),
+  );
+  /* Field: BAT Booking: Nights */
+  $handler->display->display_options['fields']['nights']['id'] = 'nights';
+  $handler->display->display_options['fields']['nights']['table'] = 'bat_bookings';
+  $handler->display->display_options['fields']['nights']['field'] = 'nights';
+  $handler->display->display_options['fields']['nights']['relationship'] = 'commerce_booking_reference_target_id';
+  /* Field: Commerce Line item: Unit price */
+  $handler->display->display_options['fields']['commerce_unit_price']['id'] = 'commerce_unit_price';
+  $handler->display->display_options['fields']['commerce_unit_price']['table'] = 'field_data_commerce_unit_price';
+  $handler->display->display_options['fields']['commerce_unit_price']['field'] = 'commerce_unit_price';
+  $handler->display->display_options['fields']['commerce_unit_price']['relationship'] = 'commerce_line_items_line_item_id';
+  $handler->display->display_options['fields']['commerce_unit_price']['label'] = 'Price';
+  $handler->display->display_options['fields']['commerce_unit_price']['click_sort_column'] = 'amount';
+  $handler->display->display_options['fields']['commerce_unit_price']['settings'] = array(
+    'calculation' => FALSE,
+    'conditions' => array(
+      0 => array(
+        'condition' => '',
+      ),
+    ),
+  );
+  /* Contextual filter: Commerce Order: Order ID */
+  $handler->display->display_options['arguments']['order_id']['id'] = 'order_id';
+  $handler->display->display_options['arguments']['order_id']['table'] = 'commerce_order';
+  $handler->display->display_options['arguments']['order_id']['field'] = 'order_id';
+  $handler->display->display_options['arguments']['order_id']['default_action'] = 'default';
+  $handler->display->display_options['arguments']['order_id']['default_argument_type'] = 'node';
+  $handler->display->display_options['arguments']['order_id']['summary']['number_of_records'] = '0';
+  $handler->display->display_options['arguments']['order_id']['summary']['format'] = 'default_summary';
+  $handler->display->display_options['arguments']['order_id']['summary_options']['items_per_page'] = '25';
+  /* Filter criterion: Commerce Order: Order type */
+  $handler->display->display_options['filters']['type']['id'] = 'type';
+  $handler->display->display_options['filters']['type']['table'] = 'commerce_order';
+  $handler->display->display_options['filters']['type']['field'] = 'type';
+  $handler->display->display_options['filters']['type']['value'] = array(
+    'commerce_order' => 'commerce_order',
+  );
+  /* Filter criterion: Commerce Line Item: Type */
+  $handler->display->display_options['filters']['type_1']['id'] = 'type_1';
+  $handler->display->display_options['filters']['type_1']['table'] = 'commerce_line_item';
+  $handler->display->display_options['filters']['type_1']['field'] = 'type';
+  $handler->display->display_options['filters']['type_1']['relationship'] = 'commerce_line_items_line_item_id';
+  $handler->display->display_options['filters']['type_1']['value'] = array(
+    'roomify_accommodation_option' => 'roomify_accommodation_option',
+  );
+
+  /* Display: Line Items (Booking) */
+  $handler = $view->new_display('panel_pane', 'Line Items (Booking)', 'panel_pane_1');
+  $handler->display->display_options['defaults']['relationships'] = FALSE;
+  /* Relationship: Commerce Order: Referenced line items */
+  $handler->display->display_options['relationships']['commerce_line_items_line_item_id']['id'] = 'commerce_line_items_line_item_id';
+  $handler->display->display_options['relationships']['commerce_line_items_line_item_id']['table'] = 'field_data_commerce_line_items';
+  $handler->display->display_options['relationships']['commerce_line_items_line_item_id']['field'] = 'commerce_line_items_line_item_id';
+  $handler->display->display_options['relationships']['commerce_line_items_line_item_id']['required'] = TRUE;
+  /* Relationship: Entity Reference: Referenced Entity */
+  $handler->display->display_options['relationships']['commerce_booking_reference_target_id']['id'] = 'commerce_booking_reference_target_id';
+  $handler->display->display_options['relationships']['commerce_booking_reference_target_id']['table'] = 'field_data_commerce_booking_reference';
+  $handler->display->display_options['relationships']['commerce_booking_reference_target_id']['field'] = 'commerce_booking_reference_target_id';
+  $handler->display->display_options['relationships']['commerce_booking_reference_target_id']['relationship'] = 'commerce_line_items_line_item_id';
+  /* Relationship: Entity Reference: Referenced Entity */
+  $handler->display->display_options['relationships']['booking_event_reference_target_id']['id'] = 'booking_event_reference_target_id';
+  $handler->display->display_options['relationships']['booking_event_reference_target_id']['table'] = 'field_data_booking_event_reference';
+  $handler->display->display_options['relationships']['booking_event_reference_target_id']['field'] = 'booking_event_reference_target_id';
+  $handler->display->display_options['relationships']['booking_event_reference_target_id']['relationship'] = 'commerce_booking_reference_target_id';
+  /* Relationship: Entity Reference: Referenced Entity */
+  $handler->display->display_options['relationships']['event_bat_unit_reference_target_id']['id'] = 'event_bat_unit_reference_target_id';
+  $handler->display->display_options['relationships']['event_bat_unit_reference_target_id']['table'] = 'field_data_event_bat_unit_reference';
+  $handler->display->display_options['relationships']['event_bat_unit_reference_target_id']['field'] = 'event_bat_unit_reference_target_id';
+  $handler->display->display_options['relationships']['event_bat_unit_reference_target_id']['relationship'] = 'booking_event_reference_target_id';
+  /* Relationship: Unit: Type */
+  $handler->display->display_options['relationships']['type_id']['id'] = 'type_id';
+  $handler->display->display_options['relationships']['type_id']['table'] = 'bat_units';
+  $handler->display->display_options['relationships']['type_id']['field'] = 'type_id';
+  $handler->display->display_options['relationships']['type_id']['relationship'] = 'event_bat_unit_reference_target_id';
+  /* Relationship: Entity Reference: Referenced Entity */
+  $handler->display->display_options['relationships']['field_st_property_reference_target_id']['id'] = 'field_st_property_reference_target_id';
+  $handler->display->display_options['relationships']['field_st_property_reference_target_id']['table'] = 'field_data_field_st_property_reference';
+  $handler->display->display_options['relationships']['field_st_property_reference_target_id']['field'] = 'field_st_property_reference_target_id';
+  $handler->display->display_options['relationships']['field_st_property_reference_target_id']['relationship'] = 'type_id';
+  $handler->display->display_options['defaults']['fields'] = FALSE;
+  /* Field: BAT Booking: Bat booking ID */
+  $handler->display->display_options['fields']['booking_id']['id'] = 'booking_id';
+  $handler->display->display_options['fields']['booking_id']['table'] = 'bat_bookings';
+  $handler->display->display_options['fields']['booking_id']['field'] = 'booking_id';
+  $handler->display->display_options['fields']['booking_id']['relationship'] = 'commerce_booking_reference_target_id';
+  $handler->display->display_options['fields']['booking_id']['label'] = 'Booking ID';
+  /* Field: Commerce Order: Order ID */
+  $handler->display->display_options['fields']['order_id']['id'] = 'order_id';
+  $handler->display->display_options['fields']['order_id']['table'] = 'commerce_order';
+  $handler->display->display_options['fields']['order_id']['field'] = 'order_id';
+  $handler->display->display_options['fields']['order_id']['label'] = '';
+  $handler->display->display_options['fields']['order_id']['exclude'] = TRUE;
+  $handler->display->display_options['fields']['order_id']['element_label_colon'] = FALSE;
+  /* Field: BAT Booking: Start Date */
+  $handler->display->display_options['fields']['booking_start_date']['id'] = 'booking_start_date';
+  $handler->display->display_options['fields']['booking_start_date']['table'] = 'field_data_booking_start_date';
+  $handler->display->display_options['fields']['booking_start_date']['field'] = 'booking_start_date';
+  $handler->display->display_options['fields']['booking_start_date']['relationship'] = 'commerce_booking_reference_target_id';
+  $handler->display->display_options['fields']['booking_start_date']['settings'] = array(
+    'format_type' => 'bat_daily',
+    'custom_date_format' => '',
+    'fromto' => 'both',
+    'multiple_number' => '',
+    'multiple_from' => '',
+    'multiple_to' => '',
+    'show_remaining_days' => 0,
+    'conditions' => array(
+      0 => array(
+        'condition' => '',
+      ),
+    ),
+  );
+  /* Field: BAT Booking: End Date */
+  $handler->display->display_options['fields']['booking_end_date']['id'] = 'booking_end_date';
+  $handler->display->display_options['fields']['booking_end_date']['table'] = 'field_data_booking_end_date';
+  $handler->display->display_options['fields']['booking_end_date']['field'] = 'booking_end_date';
+  $handler->display->display_options['fields']['booking_end_date']['relationship'] = 'commerce_booking_reference_target_id';
+  $handler->display->display_options['fields']['booking_end_date']['settings'] = array(
+    'format_type' => 'bat_daily',
+    'custom_date_format' => '',
+    'fromto' => 'both',
+    'multiple_number' => '',
+    'multiple_from' => '',
+    'multiple_to' => '',
+    'show_remaining_days' => 0,
+    'conditions' => array(
+      0 => array(
+        'condition' => '',
+      ),
+    ),
+  );
+  /* Field: BAT Booking: Nights */
+  $handler->display->display_options['fields']['nights']['id'] = 'nights';
+  $handler->display->display_options['fields']['nights']['table'] = 'bat_bookings';
+  $handler->display->display_options['fields']['nights']['field'] = 'nights';
+  $handler->display->display_options['fields']['nights']['relationship'] = 'commerce_booking_reference_target_id';
+  /* Field: Commerce Line item: Unit price */
+  $handler->display->display_options['fields']['commerce_unit_price']['id'] = 'commerce_unit_price';
+  $handler->display->display_options['fields']['commerce_unit_price']['table'] = 'field_data_commerce_unit_price';
+  $handler->display->display_options['fields']['commerce_unit_price']['field'] = 'commerce_unit_price';
+  $handler->display->display_options['fields']['commerce_unit_price']['relationship'] = 'commerce_line_items_line_item_id';
+  $handler->display->display_options['fields']['commerce_unit_price']['label'] = 'Booking Price';
+  $handler->display->display_options['fields']['commerce_unit_price']['click_sort_column'] = 'amount';
+  $handler->display->display_options['fields']['commerce_unit_price']['settings'] = array(
+    'calculation' => FALSE,
+    'conditions' => array(
+      0 => array(
+        'condition' => '',
+      ),
+    ),
+  );
+  $handler->display->display_options['defaults']['arguments'] = FALSE;
+  /* Contextual filter: Commerce Line Item: Order ID */
+  $handler->display->display_options['arguments']['order_id']['id'] = 'order_id';
+  $handler->display->display_options['arguments']['order_id']['table'] = 'commerce_line_item';
+  $handler->display->display_options['arguments']['order_id']['field'] = 'order_id';
+  $handler->display->display_options['arguments']['order_id']['relationship'] = 'commerce_line_items_line_item_id';
+  $handler->display->display_options['arguments']['order_id']['default_action'] = 'default';
+  $handler->display->display_options['arguments']['order_id']['default_argument_type'] = 'raw';
+  $handler->display->display_options['arguments']['order_id']['default_argument_options']['index'] = '3';
+  $handler->display->display_options['arguments']['order_id']['summary']['number_of_records'] = '0';
+  $handler->display->display_options['arguments']['order_id']['summary']['format'] = 'default_summary';
+  $handler->display->display_options['arguments']['order_id']['summary_options']['items_per_page'] = '25';
+  $handler->display->display_options['defaults']['filter_groups'] = FALSE;
+  $handler->display->display_options['defaults']['filters'] = FALSE;
+  /* Filter criterion: Commerce Order: Order type */
+  $handler->display->display_options['filters']['type']['id'] = 'type';
+  $handler->display->display_options['filters']['type']['table'] = 'commerce_order';
+  $handler->display->display_options['filters']['type']['field'] = 'type';
+  $handler->display->display_options['filters']['type']['value'] = array(
+    'commerce_order' => 'commerce_order',
+  );
+  /* Filter criterion: Commerce Line Item: Type */
+  $handler->display->display_options['filters']['type_1']['id'] = 'type_1';
+  $handler->display->display_options['filters']['type_1']['table'] = 'commerce_line_item';
+  $handler->display->display_options['filters']['type_1']['field'] = 'type';
+  $handler->display->display_options['filters']['type_1']['relationship'] = 'commerce_line_items_line_item_id';
+  $handler->display->display_options['filters']['type_1']['value'] = array(
+    'roomify_accommodation_booking' => 'roomify_accommodation_booking',
+  );
+  $handler->display->display_options['allow']['use_pager'] = 0;
+  $handler->display->display_options['allow']['items_per_page'] = 0;
+  $handler->display->display_options['allow']['offset'] = 0;
+  $handler->display->display_options['allow']['link_to_view'] = 0;
+  $handler->display->display_options['allow']['more_link'] = 0;
+  $handler->display->display_options['allow']['path_override'] = 0;
+  $handler->display->display_options['allow']['title_override'] = 'title_override';
+  $handler->display->display_options['allow']['exposed_form'] = 0;
+  $handler->display->display_options['allow']['fields_override'] = 0;
+  $handler->display->display_options['argument_input'] = array(
+    'order_id' => array(
+      'type' => 'user',
+      'context' => 'entity:bat_booking.booking-accommodation-ref',
+      'context_optional' => 0,
+      'panel' => '4',
+      'fixed' => '',
+      'label' => 'Commerce Order: Order ID',
+    ),
+  );
+  $handler->display->display_options['inherit_panels_path'] = '1';
+
+  /* Display: Line Items (Options) */
+  $handler = $view->new_display('panel_pane', 'Line Items (Options)', 'panel_pane_2');
+  $handler->display->display_options['defaults']['header'] = FALSE;
+  $handler->display->display_options['defaults']['relationships'] = FALSE;
+  /* Relationship: Commerce Order: Referenced line items */
+  $handler->display->display_options['relationships']['commerce_line_items_line_item_id']['id'] = 'commerce_line_items_line_item_id';
+  $handler->display->display_options['relationships']['commerce_line_items_line_item_id']['table'] = 'field_data_commerce_line_items';
+  $handler->display->display_options['relationships']['commerce_line_items_line_item_id']['field'] = 'commerce_line_items_line_item_id';
+  $handler->display->display_options['relationships']['commerce_line_items_line_item_id']['required'] = TRUE;
+  $handler->display->display_options['defaults']['fields'] = FALSE;
+  /* Field: Commerce Line Item: Label */
+  $handler->display->display_options['fields']['line_item_label']['id'] = 'line_item_label';
+  $handler->display->display_options['fields']['line_item_label']['table'] = 'commerce_line_item';
+  $handler->display->display_options['fields']['line_item_label']['field'] = 'line_item_label';
+  $handler->display->display_options['fields']['line_item_label']['relationship'] = 'commerce_line_items_line_item_id';
+  $handler->display->display_options['fields']['line_item_label']['label'] = 'Option';
+  /* Field: Commerce Line Item: Quantity */
+  $handler->display->display_options['fields']['quantity']['id'] = 'quantity';
+  $handler->display->display_options['fields']['quantity']['table'] = 'commerce_line_item';
+  $handler->display->display_options['fields']['quantity']['field'] = 'quantity';
+  $handler->display->display_options['fields']['quantity']['relationship'] = 'commerce_line_items_line_item_id';
+  $handler->display->display_options['fields']['quantity']['precision'] = '0';
+  /* Field: Commerce Line item: Unit price */
+  $handler->display->display_options['fields']['commerce_unit_price']['id'] = 'commerce_unit_price';
+  $handler->display->display_options['fields']['commerce_unit_price']['table'] = 'field_data_commerce_unit_price';
+  $handler->display->display_options['fields']['commerce_unit_price']['field'] = 'commerce_unit_price';
+  $handler->display->display_options['fields']['commerce_unit_price']['relationship'] = 'commerce_line_items_line_item_id';
+  $handler->display->display_options['fields']['commerce_unit_price']['label'] = 'Option Price';
+  $handler->display->display_options['fields']['commerce_unit_price']['click_sort_column'] = 'amount';
+  $handler->display->display_options['fields']['commerce_unit_price']['settings'] = array(
+    'calculation' => FALSE,
+    'conditions' => array(
+      0 => array(
+        'condition' => '',
+      ),
+    ),
+  );
+  $handler->display->display_options['defaults']['arguments'] = FALSE;
+  /* Contextual filter: Commerce Line Item: Order ID */
+  $handler->display->display_options['arguments']['order_id']['id'] = 'order_id';
+  $handler->display->display_options['arguments']['order_id']['table'] = 'commerce_line_item';
+  $handler->display->display_options['arguments']['order_id']['field'] = 'order_id';
+  $handler->display->display_options['arguments']['order_id']['relationship'] = 'commerce_line_items_line_item_id';
+  $handler->display->display_options['arguments']['order_id']['default_action'] = 'default';
+  $handler->display->display_options['arguments']['order_id']['default_argument_type'] = 'raw';
+  $handler->display->display_options['arguments']['order_id']['default_argument_options']['index'] = '3';
+  $handler->display->display_options['arguments']['order_id']['summary']['number_of_records'] = '0';
+  $handler->display->display_options['arguments']['order_id']['summary']['format'] = 'default_summary';
+  $handler->display->display_options['arguments']['order_id']['summary_options']['items_per_page'] = '25';
+  $handler->display->display_options['defaults']['filter_groups'] = FALSE;
+  $handler->display->display_options['defaults']['filters'] = FALSE;
+  /* Filter criterion: Commerce Order: Order type */
+  $handler->display->display_options['filters']['type']['id'] = 'type';
+  $handler->display->display_options['filters']['type']['table'] = 'commerce_order';
+  $handler->display->display_options['filters']['type']['field'] = 'type';
+  $handler->display->display_options['filters']['type']['value'] = array(
+    'commerce_order' => 'commerce_order',
+  );
+  /* Filter criterion: Commerce Line Item: Type */
+  $handler->display->display_options['filters']['type_1']['id'] = 'type_1';
+  $handler->display->display_options['filters']['type_1']['table'] = 'commerce_line_item';
+  $handler->display->display_options['filters']['type_1']['field'] = 'type';
+  $handler->display->display_options['filters']['type_1']['relationship'] = 'commerce_line_items_line_item_id';
+  $handler->display->display_options['filters']['type_1']['value'] = array(
+    'roomify_accommodation_option' => 'roomify_accommodation_option',
+  );
+  $handler->display->display_options['allow']['use_pager'] = 0;
+  $handler->display->display_options['allow']['items_per_page'] = 0;
+  $handler->display->display_options['allow']['offset'] = 0;
+  $handler->display->display_options['allow']['link_to_view'] = 0;
+  $handler->display->display_options['allow']['more_link'] = 0;
+  $handler->display->display_options['allow']['path_override'] = 0;
+  $handler->display->display_options['allow']['title_override'] = 'title_override';
+  $handler->display->display_options['allow']['exposed_form'] = 0;
+  $handler->display->display_options['allow']['fields_override'] = 0;
+  $handler->display->display_options['argument_input'] = array(
+    'order_id' => array(
+      'type' => 'user',
+      'context' => 'entity:bat_booking.booking-accommodation-ref',
+      'context_optional' => 0,
+      'panel' => '4',
+      'fixed' => '',
+      'label' => 'Commerce Order: Order ID',
+    ),
+  );
+  $handler->display->display_options['inherit_panels_path'] = '1';
+
+  /* Display: Property Details */
+  $handler = $view->new_display('panel_pane', 'Property Details', 'panel_pane_3');
+  $handler->display->display_options['defaults']['style_plugin'] = FALSE;
+  $handler->display->display_options['style_plugin'] = 'default';
+  $handler->display->display_options['defaults']['style_options'] = FALSE;
+  $handler->display->display_options['defaults']['row_plugin'] = FALSE;
+  $handler->display->display_options['row_plugin'] = 'fields';
+  $handler->display->display_options['defaults']['row_options'] = FALSE;
+  $handler->display->display_options['defaults']['header'] = FALSE;
+  $handler->display->display_options['defaults']['relationships'] = FALSE;
+  /* Relationship: Commerce Order: Referenced line items */
+  $handler->display->display_options['relationships']['commerce_line_items_line_item_id']['id'] = 'commerce_line_items_line_item_id';
+  $handler->display->display_options['relationships']['commerce_line_items_line_item_id']['table'] = 'field_data_commerce_line_items';
+  $handler->display->display_options['relationships']['commerce_line_items_line_item_id']['field'] = 'commerce_line_items_line_item_id';
+  $handler->display->display_options['relationships']['commerce_line_items_line_item_id']['required'] = TRUE;
+  /* Relationship: Entity Reference: Referenced Entity */
+  $handler->display->display_options['relationships']['commerce_booking_reference_target_id']['id'] = 'commerce_booking_reference_target_id';
+  $handler->display->display_options['relationships']['commerce_booking_reference_target_id']['table'] = 'field_data_commerce_booking_reference';
+  $handler->display->display_options['relationships']['commerce_booking_reference_target_id']['field'] = 'commerce_booking_reference_target_id';
+  $handler->display->display_options['relationships']['commerce_booking_reference_target_id']['relationship'] = 'commerce_line_items_line_item_id';
+  /* Relationship: Entity Reference: Referenced Entity */
+  $handler->display->display_options['relationships']['booking_event_reference_target_id']['id'] = 'booking_event_reference_target_id';
+  $handler->display->display_options['relationships']['booking_event_reference_target_id']['table'] = 'field_data_booking_event_reference';
+  $handler->display->display_options['relationships']['booking_event_reference_target_id']['field'] = 'booking_event_reference_target_id';
+  $handler->display->display_options['relationships']['booking_event_reference_target_id']['relationship'] = 'commerce_booking_reference_target_id';
+  /* Relationship: Entity Reference: Referenced Entity */
+  $handler->display->display_options['relationships']['event_bat_unit_reference_target_id']['id'] = 'event_bat_unit_reference_target_id';
+  $handler->display->display_options['relationships']['event_bat_unit_reference_target_id']['table'] = 'field_data_event_bat_unit_reference';
+  $handler->display->display_options['relationships']['event_bat_unit_reference_target_id']['field'] = 'event_bat_unit_reference_target_id';
+  $handler->display->display_options['relationships']['event_bat_unit_reference_target_id']['relationship'] = 'booking_event_reference_target_id';
+  /* Relationship: Unit: Type */
+  $handler->display->display_options['relationships']['type_id']['id'] = 'type_id';
+  $handler->display->display_options['relationships']['type_id']['table'] = 'bat_units';
+  $handler->display->display_options['relationships']['type_id']['field'] = 'type_id';
+  $handler->display->display_options['relationships']['type_id']['relationship'] = 'event_bat_unit_reference_target_id';
+  /* Relationship: Entity Reference: Referenced Entity */
+  $handler->display->display_options['relationships']['field_st_property_reference_target_id']['id'] = 'field_st_property_reference_target_id';
+  $handler->display->display_options['relationships']['field_st_property_reference_target_id']['table'] = 'field_data_field_st_property_reference';
+  $handler->display->display_options['relationships']['field_st_property_reference_target_id']['field'] = 'field_st_property_reference_target_id';
+  $handler->display->display_options['relationships']['field_st_property_reference_target_id']['relationship'] = 'type_id';
+  $handler->display->display_options['defaults']['fields'] = FALSE;
+  /* Field: Roomify Property: Search/Featured Image */
+  $handler->display->display_options['fields']['field_sp_featured_image']['id'] = 'field_sp_featured_image';
+  $handler->display->display_options['fields']['field_sp_featured_image']['table'] = 'field_data_field_sp_featured_image';
+  $handler->display->display_options['fields']['field_sp_featured_image']['field'] = 'field_sp_featured_image';
+  $handler->display->display_options['fields']['field_sp_featured_image']['relationship'] = 'field_st_property_reference_target_id';
+  $handler->display->display_options['fields']['field_sp_featured_image']['label'] = '';
+  $handler->display->display_options['fields']['field_sp_featured_image']['element_label_colon'] = FALSE;
+  $handler->display->display_options['fields']['field_sp_featured_image']['click_sort_column'] = 'fid';
+  $handler->display->display_options['fields']['field_sp_featured_image']['settings'] = array(
+    'image_style' => 'homepage_features',
+    'image_link' => 'content',
+    'conditions' => array(
+      0 => array(
+        'condition' => '',
+      ),
+    ),
+  );
+  /* Field: Roomify Property: Label */
+  $handler->display->display_options['fields']['name']['id'] = 'name';
+  $handler->display->display_options['fields']['name']['table'] = 'roomify_properties';
+  $handler->display->display_options['fields']['name']['field'] = 'name';
+  $handler->display->display_options['fields']['name']['relationship'] = 'field_st_property_reference_target_id';
+  $handler->display->display_options['fields']['name']['label'] = '';
+  $handler->display->display_options['fields']['name']['element_label_colon'] = FALSE;
+  $handler->display->display_options['fields']['name']['element_wrapper_type'] = 'h2';
+  /* Field: Type: Label */
+  $handler->display->display_options['fields']['name_1']['id'] = 'name_1';
+  $handler->display->display_options['fields']['name_1']['table'] = 'bat_types';
+  $handler->display->display_options['fields']['name_1']['field'] = 'name';
+  $handler->display->display_options['fields']['name_1']['relationship'] = 'type_id';
+  $handler->display->display_options['fields']['name_1']['label'] = 'Room Type';
+  $handler->display->display_options['fields']['name_1']['element_wrapper_type'] = 'h2';
+  $handler->display->display_options['defaults']['arguments'] = FALSE;
+  /* Contextual filter: Commerce Line Item: Order ID */
+  $handler->display->display_options['arguments']['order_id']['id'] = 'order_id';
+  $handler->display->display_options['arguments']['order_id']['table'] = 'commerce_line_item';
+  $handler->display->display_options['arguments']['order_id']['field'] = 'order_id';
+  $handler->display->display_options['arguments']['order_id']['relationship'] = 'commerce_line_items_line_item_id';
+  $handler->display->display_options['arguments']['order_id']['default_action'] = 'default';
+  $handler->display->display_options['arguments']['order_id']['default_argument_type'] = 'raw';
+  $handler->display->display_options['arguments']['order_id']['default_argument_options']['index'] = '3';
+  $handler->display->display_options['arguments']['order_id']['summary']['number_of_records'] = '0';
+  $handler->display->display_options['arguments']['order_id']['summary']['format'] = 'default_summary';
+  $handler->display->display_options['arguments']['order_id']['summary_options']['items_per_page'] = '25';
+  $handler->display->display_options['defaults']['filter_groups'] = FALSE;
+  $handler->display->display_options['defaults']['filters'] = FALSE;
+  /* Filter criterion: Commerce Order: Order type */
+  $handler->display->display_options['filters']['type']['id'] = 'type';
+  $handler->display->display_options['filters']['type']['table'] = 'commerce_order';
+  $handler->display->display_options['filters']['type']['field'] = 'type';
+  $handler->display->display_options['filters']['type']['value'] = array(
+    'commerce_order' => 'commerce_order',
+  );
+  /* Filter criterion: Commerce Line Item: Type */
+  $handler->display->display_options['filters']['type_1']['id'] = 'type_1';
+  $handler->display->display_options['filters']['type_1']['table'] = 'commerce_line_item';
+  $handler->display->display_options['filters']['type_1']['field'] = 'type';
+  $handler->display->display_options['filters']['type_1']['relationship'] = 'commerce_line_items_line_item_id';
+  $handler->display->display_options['filters']['type_1']['value'] = array(
+    'roomify_accommodation_booking' => 'roomify_accommodation_booking',
+  );
+  $handler->display->display_options['allow']['use_pager'] = 0;
+  $handler->display->display_options['allow']['items_per_page'] = 0;
+  $handler->display->display_options['allow']['offset'] = 0;
+  $handler->display->display_options['allow']['link_to_view'] = 0;
+  $handler->display->display_options['allow']['more_link'] = 0;
+  $handler->display->display_options['allow']['path_override'] = 0;
+  $handler->display->display_options['allow']['title_override'] = 'title_override';
+  $handler->display->display_options['allow']['exposed_form'] = 0;
+  $handler->display->display_options['allow']['fields_override'] = 0;
+  $handler->display->display_options['argument_input'] = array(
+    'order_id' => array(
+      'type' => 'user',
+      'context' => 'entity:bat_booking.booking-accommodation-ref',
+      'context_optional' => 0,
+      'panel' => '4',
+      'fixed' => '',
+      'label' => 'Commerce Order: Order ID',
+    ),
+  );
+  $handler->display->display_options['inherit_panels_path'] = '1';
+
+  /* Display: Summary */
+  $handler = $view->new_display('panel_pane', 'Summary', 'panel_pane_4');
+  $handler->display->display_options['defaults']['style_plugin'] = FALSE;
+  $handler->display->display_options['style_plugin'] = 'default';
+  $handler->display->display_options['defaults']['style_options'] = FALSE;
+  $handler->display->display_options['defaults']['row_plugin'] = FALSE;
+  $handler->display->display_options['row_plugin'] = 'fields';
+  $handler->display->display_options['row_options']['inline'] = array(
+    'name' => 'name',
+    'name_1' => 'name_1',
+    'booking_start_date' => 'booking_start_date',
+    'booking_end_date' => 'booking_end_date',
+    'nights' => 'nights',
+    'commerce_unit_price' => 'commerce_unit_price',
+  );
+  $handler->display->display_options['defaults']['row_options'] = FALSE;
+  $handler->display->display_options['defaults']['relationships'] = FALSE;
+  /* Relationship: Commerce Order: Referenced line items */
+  $handler->display->display_options['relationships']['commerce_line_items_line_item_id']['id'] = 'commerce_line_items_line_item_id';
+  $handler->display->display_options['relationships']['commerce_line_items_line_item_id']['table'] = 'field_data_commerce_line_items';
+  $handler->display->display_options['relationships']['commerce_line_items_line_item_id']['field'] = 'commerce_line_items_line_item_id';
+  $handler->display->display_options['relationships']['commerce_line_items_line_item_id']['required'] = TRUE;
+  /* Relationship: Entity Reference: Referenced Entity */
+  $handler->display->display_options['relationships']['commerce_booking_reference_target_id']['id'] = 'commerce_booking_reference_target_id';
+  $handler->display->display_options['relationships']['commerce_booking_reference_target_id']['table'] = 'field_data_commerce_booking_reference';
+  $handler->display->display_options['relationships']['commerce_booking_reference_target_id']['field'] = 'commerce_booking_reference_target_id';
+  $handler->display->display_options['relationships']['commerce_booking_reference_target_id']['relationship'] = 'commerce_line_items_line_item_id';
+  /* Relationship: Entity Reference: Referenced Entity */
+  $handler->display->display_options['relationships']['booking_event_reference_target_id']['id'] = 'booking_event_reference_target_id';
+  $handler->display->display_options['relationships']['booking_event_reference_target_id']['table'] = 'field_data_booking_event_reference';
+  $handler->display->display_options['relationships']['booking_event_reference_target_id']['field'] = 'booking_event_reference_target_id';
+  $handler->display->display_options['relationships']['booking_event_reference_target_id']['relationship'] = 'commerce_booking_reference_target_id';
+  /* Relationship: Entity Reference: Referenced Entity */
+  $handler->display->display_options['relationships']['event_bat_unit_reference_target_id']['id'] = 'event_bat_unit_reference_target_id';
+  $handler->display->display_options['relationships']['event_bat_unit_reference_target_id']['table'] = 'field_data_event_bat_unit_reference';
+  $handler->display->display_options['relationships']['event_bat_unit_reference_target_id']['field'] = 'event_bat_unit_reference_target_id';
+  $handler->display->display_options['relationships']['event_bat_unit_reference_target_id']['relationship'] = 'booking_event_reference_target_id';
+  /* Relationship: Unit: Type */
+  $handler->display->display_options['relationships']['type_id']['id'] = 'type_id';
+  $handler->display->display_options['relationships']['type_id']['table'] = 'bat_units';
+  $handler->display->display_options['relationships']['type_id']['field'] = 'type_id';
+  $handler->display->display_options['relationships']['type_id']['relationship'] = 'event_bat_unit_reference_target_id';
+  /* Relationship: Entity Reference: Referenced Entity */
+  $handler->display->display_options['relationships']['field_st_property_reference_target_id']['id'] = 'field_st_property_reference_target_id';
+  $handler->display->display_options['relationships']['field_st_property_reference_target_id']['table'] = 'field_data_field_st_property_reference';
+  $handler->display->display_options['relationships']['field_st_property_reference_target_id']['field'] = 'field_st_property_reference_target_id';
+  $handler->display->display_options['relationships']['field_st_property_reference_target_id']['relationship'] = 'type_id';
+  $handler->display->display_options['defaults']['fields'] = FALSE;
+  /* Field: Roomify Property: Label */
+  $handler->display->display_options['fields']['name']['id'] = 'name';
+  $handler->display->display_options['fields']['name']['table'] = 'roomify_properties';
+  $handler->display->display_options['fields']['name']['field'] = 'name';
+  $handler->display->display_options['fields']['name']['relationship'] = 'field_st_property_reference_target_id';
+  $handler->display->display_options['fields']['name']['label'] = '';
+  $handler->display->display_options['fields']['name']['element_label_colon'] = FALSE;
+  $handler->display->display_options['fields']['name']['element_wrapper_type'] = 'strong';
+  $handler->display->display_options['fields']['name']['element_wrapper_class'] = 'clearfix';
+  /* Field: Type: Label */
+  $handler->display->display_options['fields']['name_1']['id'] = 'name_1';
+  $handler->display->display_options['fields']['name_1']['table'] = 'bat_types';
+  $handler->display->display_options['fields']['name_1']['field'] = 'name';
+  $handler->display->display_options['fields']['name_1']['relationship'] = 'type_id';
+  $handler->display->display_options['fields']['name_1']['label'] = 'Room Type';
+  $handler->display->display_options['fields']['name_1']['element_label_type'] = 'strong';
+  $handler->display->display_options['fields']['name_1']['element_wrapper_class'] = 'clearfix';
+  /* Field: Roomify Property: Search/Featured Image */
+  $handler->display->display_options['fields']['field_sp_featured_image']['id'] = 'field_sp_featured_image';
+  $handler->display->display_options['fields']['field_sp_featured_image']['table'] = 'field_data_field_sp_featured_image';
+  $handler->display->display_options['fields']['field_sp_featured_image']['field'] = 'field_sp_featured_image';
+  $handler->display->display_options['fields']['field_sp_featured_image']['relationship'] = 'field_st_property_reference_target_id';
+  $handler->display->display_options['fields']['field_sp_featured_image']['label'] = '';
+  $handler->display->display_options['fields']['field_sp_featured_image']['element_label_colon'] = FALSE;
+  $handler->display->display_options['fields']['field_sp_featured_image']['click_sort_column'] = 'fid';
+  $handler->display->display_options['fields']['field_sp_featured_image']['settings'] = array(
+    'image_style' => 'medium',
+    'image_link' => 'content',
+    'conditions' => array(
+      0 => array(
+        'condition' => '',
+      ),
+    ),
+  );
+  /* Field: Commerce Order: Order ID */
+  $handler->display->display_options['fields']['order_id']['id'] = 'order_id';
+  $handler->display->display_options['fields']['order_id']['table'] = 'commerce_order';
+  $handler->display->display_options['fields']['order_id']['field'] = 'order_id';
+  $handler->display->display_options['fields']['order_id']['label'] = '';
+  $handler->display->display_options['fields']['order_id']['exclude'] = TRUE;
+  $handler->display->display_options['fields']['order_id']['element_label_colon'] = FALSE;
+  /* Field: BAT Booking: Start Date */
+  $handler->display->display_options['fields']['booking_start_date']['id'] = 'booking_start_date';
+  $handler->display->display_options['fields']['booking_start_date']['table'] = 'field_data_booking_start_date';
+  $handler->display->display_options['fields']['booking_start_date']['field'] = 'booking_start_date';
+  $handler->display->display_options['fields']['booking_start_date']['relationship'] = 'commerce_booking_reference_target_id';
+  $handler->display->display_options['fields']['booking_start_date']['element_label_type'] = 'strong';
+  $handler->display->display_options['fields']['booking_start_date']['element_wrapper_class'] = 'clearfix';
+  $handler->display->display_options['fields']['booking_start_date']['settings'] = array(
+    'format_type' => 'bat_daily',
+    'custom_date_format' => '',
+    'fromto' => 'both',
+    'multiple_number' => '',
+    'multiple_from' => '',
+    'multiple_to' => '',
+    'show_remaining_days' => 0,
+    'conditions' => array(
+      0 => array(
+        'condition' => '',
+      ),
+    ),
+  );
+  /* Field: BAT Booking: End Date */
+  $handler->display->display_options['fields']['booking_end_date']['id'] = 'booking_end_date';
+  $handler->display->display_options['fields']['booking_end_date']['table'] = 'field_data_booking_end_date';
+  $handler->display->display_options['fields']['booking_end_date']['field'] = 'booking_end_date';
+  $handler->display->display_options['fields']['booking_end_date']['relationship'] = 'commerce_booking_reference_target_id';
+  $handler->display->display_options['fields']['booking_end_date']['element_label_type'] = 'strong';
+  $handler->display->display_options['fields']['booking_end_date']['element_wrapper_class'] = 'clearfix';
+  $handler->display->display_options['fields']['booking_end_date']['settings'] = array(
+    'format_type' => 'bat_daily',
+    'custom_date_format' => '',
+    'fromto' => 'both',
+    'multiple_number' => '',
+    'multiple_from' => '',
+    'multiple_to' => '',
+    'show_remaining_days' => 0,
+    'conditions' => array(
+      0 => array(
+        'condition' => '',
+      ),
+    ),
+  );
+  /* Field: BAT Booking: Nights */
+  $handler->display->display_options['fields']['nights']['id'] = 'nights';
+  $handler->display->display_options['fields']['nights']['table'] = 'bat_bookings';
+  $handler->display->display_options['fields']['nights']['field'] = 'nights';
+  $handler->display->display_options['fields']['nights']['relationship'] = 'commerce_booking_reference_target_id';
+  $handler->display->display_options['fields']['nights']['element_label_type'] = 'strong';
+  $handler->display->display_options['fields']['nights']['element_wrapper_class'] = 'clearfix';
+  /* Field: Commerce Line item: Unit price */
+  $handler->display->display_options['fields']['commerce_unit_price']['id'] = 'commerce_unit_price';
+  $handler->display->display_options['fields']['commerce_unit_price']['table'] = 'field_data_commerce_unit_price';
+  $handler->display->display_options['fields']['commerce_unit_price']['field'] = 'commerce_unit_price';
+  $handler->display->display_options['fields']['commerce_unit_price']['relationship'] = 'commerce_line_items_line_item_id';
+  $handler->display->display_options['fields']['commerce_unit_price']['label'] = 'Booking Price';
+  $handler->display->display_options['fields']['commerce_unit_price']['element_label_type'] = 'strong';
+  $handler->display->display_options['fields']['commerce_unit_price']['element_wrapper_class'] = 'clearfix';
+  $handler->display->display_options['fields']['commerce_unit_price']['click_sort_column'] = 'amount';
+  $handler->display->display_options['fields']['commerce_unit_price']['settings'] = array(
+    'calculation' => FALSE,
+    'conditions' => array(
+      0 => array(
+        'condition' => '',
+      ),
+    ),
+  );
+  $handler->display->display_options['defaults']['arguments'] = FALSE;
+  /* Contextual filter: Commerce Line Item: Order ID */
+  $handler->display->display_options['arguments']['order_id']['id'] = 'order_id';
+  $handler->display->display_options['arguments']['order_id']['table'] = 'commerce_line_item';
+  $handler->display->display_options['arguments']['order_id']['field'] = 'order_id';
+  $handler->display->display_options['arguments']['order_id']['relationship'] = 'commerce_line_items_line_item_id';
+  $handler->display->display_options['arguments']['order_id']['default_action'] = 'default';
+  $handler->display->display_options['arguments']['order_id']['default_argument_type'] = 'node';
+  $handler->display->display_options['arguments']['order_id']['summary']['number_of_records'] = '0';
+  $handler->display->display_options['arguments']['order_id']['summary']['format'] = 'default_summary';
+  $handler->display->display_options['arguments']['order_id']['summary_options']['items_per_page'] = '25';
+  $handler->display->display_options['defaults']['filter_groups'] = FALSE;
+  $handler->display->display_options['defaults']['filters'] = FALSE;
+  /* Filter criterion: Commerce Order: Order type */
+  $handler->display->display_options['filters']['type']['id'] = 'type';
+  $handler->display->display_options['filters']['type']['table'] = 'commerce_order';
+  $handler->display->display_options['filters']['type']['field'] = 'type';
+  $handler->display->display_options['filters']['type']['value'] = array(
+    'commerce_order' => 'commerce_order',
+  );
+  /* Filter criterion: Commerce Line Item: Type */
+  $handler->display->display_options['filters']['type_1']['id'] = 'type_1';
+  $handler->display->display_options['filters']['type_1']['table'] = 'commerce_line_item';
+  $handler->display->display_options['filters']['type_1']['field'] = 'type';
+  $handler->display->display_options['filters']['type_1']['relationship'] = 'commerce_line_items_line_item_id';
+  $handler->display->display_options['filters']['type_1']['value'] = array(
+    'roomify_accommodation_booking' => 'roomify_accommodation_booking',
+  );
+  $handler->display->display_options['allow']['use_pager'] = 0;
+  $handler->display->display_options['allow']['items_per_page'] = 0;
+  $handler->display->display_options['allow']['offset'] = 0;
+  $handler->display->display_options['allow']['link_to_view'] = 0;
+  $handler->display->display_options['allow']['more_link'] = 0;
+  $handler->display->display_options['allow']['path_override'] = 0;
+  $handler->display->display_options['allow']['title_override'] = 'title_override';
+  $handler->display->display_options['allow']['exposed_form'] = 0;
+  $handler->display->display_options['allow']['fields_override'] = 0;
+  $handler->display->display_options['argument_input'] = array(
+    'order_id' => array(
+      'type' => 'user',
+      'context' => 'entity:bat_booking.booking-accommodation-ref',
+      'context_optional' => 0,
+      'panel' => '4',
+      'fixed' => '',
+      'label' => 'Commerce Order: Order ID',
+    ),
+  );
+  $handler->display->display_options['inherit_panels_path'] = '0';
+  $translatables['roomify_order'] = array(
+    t('Master'),
+    t('more'),
+    t('Apply'),
+    t('Reset'),
+    t('Sort by'),
+    t('Asc'),
+    t('Desc'),
+    t('Items per page'),
+    t('- All -'),
+    t('Offset'),
+    t('« first'),
+    t('‹ previous'),
+    t('next ›'),
+    t('last »'),
+    t('Line items referenced by commerce_line_items'),
+    t('Type'),
+    t('Start Date'),
+    t('End Date'),
+    t('Nights'),
+    t('Price'),
+    t('All'),
+    t('Line Items (Booking)'),
+    t('BAT Booking entity referenced from commerce_booking_reference'),
+    t('Events entity referenced from booking_event_reference'),
+    t('Unit entity referenced from event_bat_unit_reference'),
+    t('Roomify Property entity referenced from field_st_property_reference'),
+    t('Booking ID'),
+    t('.'),
+    t(','),
+    t('Booking Price'),
+    t('View panes'),
+    t('Line Items (Options)'),
+    t('Option'),
+    t('Quantity'),
+    t('Option Price'),
+    t('Property Details'),
+    t('Room Type'),
+    t('Summary'),
+  );
+
+  $views['roomify_order'] = $view;
+
   return $views;
 }

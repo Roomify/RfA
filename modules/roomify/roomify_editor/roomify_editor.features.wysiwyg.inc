@@ -16,10 +16,6 @@ function roomify_editor_wysiwyg_default_profiles() {
     'format' => 'filtered_text',
     'editor' => 'ckeditor',
     'settings' => array(
-      'default' => 1,
-      'user_choose' => 0,
-      'show_toggle' => 1,
-      'add_to_summaries' => 1,
       'theme' => '',
       'language' => 'en',
       'buttons' => array(
@@ -73,6 +69,14 @@ function roomify_editor_wysiwyg_default_profiles() {
       'pasteFromWordPromptCleanup' => 0,
       'pasteFromWordRemoveFontStyles' => 0,
     ),
+    'preferences' => array(
+      'add_to_summaries' => 1,
+      'default' => 1,
+      'show_toggle' => 1,
+      'user_choose' => 0,
+      'version' => NULL,
+    ),
+    'name' => 'formatfiltered_text',
     'rdf_mapping' => array(),
   );
 
@@ -81,10 +85,6 @@ function roomify_editor_wysiwyg_default_profiles() {
     'format' => 'rich_text',
     'editor' => 'ckeditor',
     'settings' => array(
-      'default' => 1,
-      'user_choose' => 0,
-      'show_toggle' => 1,
-      'add_to_summaries' => 1,
       'theme' => '',
       'language' => 'en',
       'buttons' => array(
@@ -152,6 +152,14 @@ function roomify_editor_wysiwyg_default_profiles() {
       'advanced__active_tab' => 'edit-basic',
       'forcePasteAsPlainText' => 0,
     ),
+    'preferences' => array(
+      'add_to_summaries' => 1,
+      'default' => 1,
+      'show_toggle' => 1,
+      'user_choose' => 0,
+      'version' => NULL,
+    ),
+    'name' => 'formatrich_text',
     'rdf_mapping' => array(),
   );
 
