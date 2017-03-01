@@ -130,6 +130,7 @@ dependencies[] = role_delegation
 dependencies[] = redirect
 dependencies[] = taxonomy_access_fix
 dependencies[] = userone
+dependencies[] = entity_edit_protection
 
 ; Users
 dependencies[] = profile2

@@ -650,3 +650,10 @@ function roomify_system_update_7038() {
   $metatag_config['global:frontpage'] = TRUE;
   variable_set('default_metatag_config', $metatag_config);
 }
+
+/**
+ * Enable module 'Entity Edit Protection'.
+ */
+function roomify_system_update_7039() {
+  module_enable(array('entity_edit_protection'));
+}
