@@ -65,6 +65,7 @@
             },
             {
               text: Drupal.t('Cancel'),
+              'id': 'btnCancel',
               click: function () {
                 $(this).dialog('close');
               },

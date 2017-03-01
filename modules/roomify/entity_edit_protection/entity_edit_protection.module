@@ -10,6 +10,7 @@
  */
 function entity_edit_protection_form_alter(&$form, &$form_state, $form_id) {
   if ((isset($form['#entity_type']) && ($form['actions']['submit']['#type'] === 'submit'))) {
-    drupal_add_js(drupal_get_path('module', 'entity_edit_protection') . '/entity_edit_protection.js');
+    $form['#attached']['js'][] = drupal_get_path('module', 'entity_edit_protection') . '/js/entity_edit_protection.js';
+    $form['#attached']['css'][] = drupal_get_path('module', 'entity_edit_protection') . '/css/entity_edit_protection.css';
   }
 }
