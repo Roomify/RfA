@@ -1724,6 +1724,22 @@ body.adminimal-theme .cke_reset_all label {
   display: inline-block;
   padding: 55px 1em 0 1em;
 }
+.page-admin-bat-properties-view-all .view-properties td.views-field.views-field-property-types-edit-link {
+  width: 120px;
+  text-align: center;
+}
+.page-admin-bat-properties-view-all .view-properties td.views-field.views-field-property-types-edit-link a {
+  background: url("../images/rooms.png") no-repeat right 50% bottom 20px;
+  background-size: 35px 35px;
+  display: inline-block;
+  padding: 55px 1em 0 1em;
+}
+.page-admin-bat-properties-view-all .view-properties td.views-field.views-field-property-types-edit-link a.casa-type {
+  background: url("../images/house.png") no-repeat right 50% bottom 20px;
+  background-size: 35px 35px;
+  display: inline-block;
+  padding: 55px 1em 0 1em;
+}
 .page-admin-bat-properties-view-all .footable-row-detail-inner {
   width: 100%;
 }
@@ -1825,10 +1841,16 @@ body.adminimal-theme .cke_reset_all label {
 .pane-properties-dashboard-properties .view-display-id-dashboard_properties td.views-field-name .property-name {
   display: inline-block;
   margin-top: 25px;
-  font-size: 18px;
+  font-size: 16px;
+  font-weight: 600;
+}
+@media (max-width: 768px) {
+  .pane-properties-dashboard-properties .view-display-id-dashboard_properties td.views-field-name .property-name {
+    margin-top: 0;
+  }
 }
 .pane-properties-dashboard-properties .view-display-id-dashboard_properties td.views-field.views-field-edit-unit {
-  width: 40px;
+  width: 30px;
 }
 .pane-properties-dashboard-properties .view-display-id-dashboard_properties td.views-field.views-field-edit-unit a {
   background: url("../images/edit.png") no-repeat right 50% bottom 20px;
@@ -1838,7 +1860,7 @@ body.adminimal-theme .cke_reset_all label {
   font-size: 14px;
 }
 .pane-properties-dashboard-properties .view-display-id-dashboard_properties td.views-field.views-field-nothing {
-  width: 40px;
+  width: 30px;
 }
 .pane-properties-dashboard-properties .view-display-id-dashboard_properties td.views-field.views-field-nothing a {
   background: url("../images/availability.png") no-repeat right 50% bottom 20px;
@@ -1848,10 +1870,28 @@ body.adminimal-theme .cke_reset_all label {
   font-size: 14px;
 }
 .pane-properties-dashboard-properties .view-display-id-dashboard_properties td.views-field.views-field-nothing-1 {
-  width: 40px;
+  width: 30px;
 }
 .pane-properties-dashboard-properties .view-display-id-dashboard_properties td.views-field.views-field-nothing-1 a {
   background: url("../images/pricing.png") no-repeat right 50% bottom 20px;
+  background-size: 28px 28px;
+  display: inline-block;
+  padding: 30px 1em 0 1em;
+  font-size: 14px;
+}
+.pane-properties-dashboard-properties .view-display-id-dashboard_properties td.views-field.views-field-property-types-edit-link {
+  width: 30px;
+  text-align: center;
+}
+.pane-properties-dashboard-properties .view-display-id-dashboard_properties td.views-field.views-field-property-types-edit-link a {
+  background: url("../images/rooms.png") no-repeat right 50% bottom 20px;
+  background-size: 28px 28px;
+  display: inline-block;
+  padding: 30px 1em 0 1em;
+  font-size: 14px;
+}
+.pane-properties-dashboard-properties .view-display-id-dashboard_properties td.views-field.views-field-property-types-edit-link a.casa-type {
+  background: url("../images/house.png") no-repeat right 50% bottom 20px;
   background-size: 28px 28px;
   display: inline-block;
   padding: 30px 1em 0 1em;
@@ -2037,7 +2077,7 @@ body.adminimal-skin-material table.views-table tbody tr td {
   width: 100%;
 }
 .roomify-dashboard .pane-properties-dashboard-properties {
-  margin-bottom: 30px;
+  margin: 20px 0;
   border-radius: 15px;
 }
 .roomify-dashboard .pane-properties-dashboard-properties .pane-title {
@@ -2076,6 +2116,7 @@ body.adminimal-skin-material table.views-table tbody tr td {
   padding: 15px;
   background: white;
   border-radius: 15px;
+  margin: 20px 0;
 }
 .roomify-dashboard .pane-panels-mini.pane-conversations .pane-title {
   position: absolute;
@@ -2132,6 +2173,7 @@ body.adminimal-skin-material table.views-table tbody tr td {
 .roomify-dashboard #mini-panel-conversations .ui-tabs-nav li a:active {
   outline: none;
 }
+.roomify-dashboard .pane-dashboard-guest-stays-panel-pane-1,
 .roomify-dashboard .pane-dashboard-bookings-panel-pane-1 {
   padding: 15px;
   background: white;
@@ -2139,12 +2181,14 @@ body.adminimal-skin-material table.views-table tbody tr td {
   position: relative;
   border: 10px solid transparent;
   background-clip: padding-box;
-  margin: 30px 0;
+  margin: 20px 0;
 }
+.roomify-dashboard .pane-dashboard-guest-stays-panel-pane-1 .views-table thead tr th,
 .roomify-dashboard .pane-dashboard-bookings-panel-pane-1 .views-table thead tr th {
   background: #efefef !important;
   color: #405467;
 }
+.roomify-dashboard .pane-dashboard-guest-stays-panel-pane-1 .pane-title,
 .roomify-dashboard .pane-dashboard-bookings-panel-pane-1 .pane-title {
   position: absolute;
   top: 0;
@@ -2157,6 +2201,7 @@ body.adminimal-skin-material table.views-table tbody tr td {
   font-weight: 600;
   padding-left: 40px;
 }
+.roomify-dashboard .pane-dashboard-guest-stays-panel-pane-1 .pane-title:before,
 .roomify-dashboard .pane-dashboard-bookings-panel-pane-1 .pane-title:before {
   content: '';
   width: 20px;
@@ -2168,18 +2213,28 @@ body.adminimal-skin-material table.views-table tbody tr td {
   background: url("../images/sidebar/bookings.png") center center no-repeat;
   background: url("../images/sidebar/bookings.svg") center center no-repeat, linear-gradient(transparent, transparent);
 }
+.roomify-dashboard .pane-dashboard-guest-stays-panel-pane-1 .pane-content,
 .roomify-dashboard .pane-dashboard-bookings-panel-pane-1 .pane-content {
   padding-top: 50px;
 }
+.roomify-dashboard .pane-dashboard-guest-stays-panel-pane-1 .pane-content .view-display-id-dashboard_properties thead,
 .roomify-dashboard .pane-dashboard-bookings-panel-pane-1 .pane-content .view-display-id-dashboard_properties thead {
   display: none;
 }
+.roomify-dashboard .pane-dashboard-guest-stays-panel-pane-1 .more-link a,
 .roomify-dashboard .pane-dashboard-bookings-panel-pane-1 .more-link a {
   margin-top: 10px;
   display: inline-block;
   text-align: right;
   width: 100%;
   color: #405467;
+}
+.roomify-dashboard .pane-dashboard-guest-stays-panel-pane-1 .view-dashboard-guest-stays .footable-row-detail-value a {
+  padding-left: 0;
+}
+.roomify-dashboard .pane-dashboard-guest-stays-panel-pane-1 .view-dashboard-guest-stays img {
+  max-width: 150px;
+  border-radius: 50%;
 }
 .page-admin-bat-config-booking-add-roomify-accommodation-booking #bat-booking-edit-form .field-name-booking-end-date,
 #bat-booking-edit-roomify-accommodation-booking-form .field-name-booking-end-date,

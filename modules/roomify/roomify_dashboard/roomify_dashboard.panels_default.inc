@@ -1619,7 +1619,7 @@ function roomify_dashboard_default_panels_mini() {
   );
   $pane->css = array(
     'css_id' => '',
-    'css_class' => 'col-xs-12 col-lg-6',
+    'css_class' => 'col-xs-12 col-lg-7',
   );
   $pane->extras = array();
   $pane->position = 0;
@@ -1648,7 +1648,7 @@ function roomify_dashboard_default_panels_mini() {
   );
   $pane->css = array(
     'css_id' => '',
-    'css_class' => 'col-xs-12 col-lg-6',
+    'css_class' => 'col-xs-12 col-lg-5',
   );
   $pane->extras = array();
   $pane->position = 1;
@@ -1656,6 +1656,45 @@ function roomify_dashboard_default_panels_mini() {
   $pane->uuid = 'c5c041b4-926d-44c9-89a8-209c83dde263';
   $display->content['new-c5c041b4-926d-44c9-89a8-209c83dde263'] = $pane;
   $display->panels['top'][1] = 'new-c5c041b4-926d-44c9-89a8-209c83dde263';
+  $pane = new stdClass();
+  $pane->pid = 'new-ca4af337-73f4-4ba2-a2df-15172b0902f0';
+  $pane->panel = 'top';
+  $pane->type = 'views_panes';
+  $pane->subtype = 'dashboard_guest_stays-panel_pane_1';
+  $pane->shown = TRUE;
+  $pane->access = array(
+    'plugins' => array(
+      0 => array(
+        'name' => 'role',
+        'settings' => array(
+          'rids' => array(
+            0 => 4,
+          ),
+        ),
+        'context' => 'requiredcontext_user_1',
+        'not' => FALSE,
+      ),
+    ),
+  );
+  $pane->configuration = array(
+    'arguments' => array(
+      'uid_1' => '%user:uid',
+    ),
+  );
+  $pane->cache = array();
+  $pane->style = array(
+    'settings' => NULL,
+  );
+  $pane->css = array(
+    'css_id' => '',
+    'css_class' => 'col-xs-12 col-lg-7',
+  );
+  $pane->extras = array();
+  $pane->position = 2;
+  $pane->locks = array();
+  $pane->uuid = 'ca4af337-73f4-4ba2-a2df-15172b0902f0';
+  $display->content['new-ca4af337-73f4-4ba2-a2df-15172b0902f0'] = $pane;
+  $display->panels['top'][2] = 'new-ca4af337-73f4-4ba2-a2df-15172b0902f0';
   $pane = new stdClass();
   $pane->pid = 'new-4de5afe7-0216-42e7-8bf2-0ddf9c41be77';
   $pane->panel = 'top';
@@ -1680,11 +1719,11 @@ function roomify_dashboard_default_panels_mini() {
     'css_class' => 'col-xs-12',
   );
   $pane->extras = array();
-  $pane->position = 2;
+  $pane->position = 3;
   $pane->locks = array();
   $pane->uuid = '4de5afe7-0216-42e7-8bf2-0ddf9c41be77';
   $display->content['new-4de5afe7-0216-42e7-8bf2-0ddf9c41be77'] = $pane;
-  $display->panels['top'][2] = 'new-4de5afe7-0216-42e7-8bf2-0ddf9c41be77';
+  $display->panels['top'][3] = 'new-4de5afe7-0216-42e7-8bf2-0ddf9c41be77';
   $display->hide_title = PANELS_TITLE_FIXED;
   $display->title_pane = '0';
   $mini->display = $display;

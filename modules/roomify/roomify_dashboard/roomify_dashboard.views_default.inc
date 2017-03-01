@@ -2297,8 +2297,9 @@ function roomify_dashboard_views_default_views() {
   $handler->display->display_options['defaults']['use_more_always'] = FALSE;
   $handler->display->display_options['use_more_always'] = FALSE;
   $handler->display->display_options['defaults']['use_more_text'] = FALSE;
-  $handler->display->display_options['use_more_text'] = 'See all';
+  $handler->display->display_options['use_more_text'] = 'View All';
   $handler->display->display_options['link_url'] = '/user/!1/orders';
+  $handler->display->display_options['defaults']['empty'] = FALSE;
   $handler->display->display_options['argument_input'] = array(
     'uid_1' => array(
       'type' => 'user',
@@ -2432,7 +2433,7 @@ function roomify_dashboard_views_default_views() {
     t('see booking details'),
     t('All'),
     t('Dashboard My Stays'),
-    t('See all'),
+    t('View All'),
     t('View panes'),
     t('My Stays sidebar'),
     t('<span class="glyphicon glyphicon-calendar"></span>Upcoming Bookings'),
@@ -3247,10 +3248,12 @@ function roomify_dashboard_views_default_views() {
     'status' => 'status',
     'property_id' => 'property_id',
     'type' => 'type',
+    'field_sp_featured_image' => 'field_sp_featured_image',
     'name' => 'name',
     'edit_unit' => 'edit_unit',
     'nothing' => 'nothing',
     'nothing_1' => 'nothing_1',
+    'property_types_edit_link' => 'property_types_edit_link',
   );
   $handler->display->display_options['style_options']['default'] = '-1';
   $handler->display->display_options['style_options']['info'] = array(
@@ -3269,6 +3272,13 @@ function roomify_dashboard_views_default_views() {
       'empty_column' => 0,
     ),
     'type' => array(
+      'sortable' => 0,
+      'default_sort_order' => 'asc',
+      'align' => '',
+      'separator' => '',
+      'empty_column' => 0,
+    ),
+    'field_sp_featured_image' => array(
       'sortable' => 0,
       'default_sort_order' => 'asc',
       'align' => '',
@@ -3297,6 +3307,11 @@ function roomify_dashboard_views_default_views() {
       'separator' => '',
       'empty_column' => 0,
     ),
+    'property_types_edit_link' => array(
+      'align' => '',
+      'separator' => '',
+      'empty_column' => 0,
+    ),
   );
   $handler->display->display_options['style_options']['footable'] = array(
     'striping' => 0,
@@ -3319,6 +3334,11 @@ function roomify_dashboard_views_default_views() {
         'phone' => 0,
         'tablet' => 0,
       ),
+      'field_sp_featured_image' => array(
+        'all' => 0,
+        'phone' => 0,
+        'tablet' => 0,
+      ),
       'name' => array(
         'all' => 0,
         'phone' => 0,
@@ -3335,6 +3355,11 @@ function roomify_dashboard_views_default_views() {
         'tablet' => 0,
       ),
       'nothing_1' => array(
+        'phone' => 'phone',
+        'all' => 0,
+        'tablet' => 0,
+      ),
+      'property_types_edit_link' => array(
         'phone' => 'phone',
         'all' => 0,
         'tablet' => 0,
@@ -3429,6 +3454,12 @@ function roomify_dashboard_views_default_views() {
   $handler->display->display_options['fields']['nothing_1']['alter']['path'] = 'admin/bat/config/property/manage/[property_id]/calendar/pricing';
   $handler->display->display_options['fields']['nothing_1']['alter']['link_class'] = 'pricing-link';
   $handler->display->display_options['fields']['nothing_1']['element_label_colon'] = FALSE;
+  /* Field: Roomify Property: Types Link */
+  $handler->display->display_options['fields']['property_types_edit_link']['id'] = 'property_types_edit_link';
+  $handler->display->display_options['fields']['property_types_edit_link']['table'] = 'roomify_properties';
+  $handler->display->display_options['fields']['property_types_edit_link']['field'] = 'property_types_edit_link';
+  $handler->display->display_options['fields']['property_types_edit_link']['label'] = '';
+  $handler->display->display_options['fields']['property_types_edit_link']['element_label_colon'] = FALSE;
   $handler->display->display_options['defaults']['sorts'] = FALSE;
   /* Sort criterion: Roomify Property: Changed */
   $handler->display->display_options['sorts']['changed']['id'] = 'changed';
@@ -3597,6 +3628,7 @@ function roomify_dashboard_views_default_views() {
     t(','),
     t('Property Name'),
   );
+
   $export['properties'] = $view;
 
   return $export;

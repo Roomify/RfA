@@ -114,6 +114,22 @@
           padding: 55px 1em 0 1em;
         }
       }
+      &.views-field-property-types-edit-link {
+        width: 120px;
+        text-align: center;
+        a {
+          background: url("../images/rooms.png") no-repeat right 50% bottom 20px;
+          background-size: 35px 35px;
+          display: inline-block;
+          padding: 55px 1em 0 1em;
+        }
+        a.casa-type {
+          background: url("../images/house.png") no-repeat right 50% bottom 20px;
+          background-size: 35px 35px;
+          display: inline-block;
+          padding: 55px 1em 0 1em;
+        }
+      }
     }
   }
   .footable-row-detail-inner {
@@ -210,12 +226,16 @@
       .property-name {
         display: inline-block;
         margin-top: 25px;
-        font-size: 18px;
+        font-size: 16px;
+        font-weight: 600;
+        @media (max-width: @screen-sm) {
+          margin-top: 0;
+        }
       }
     }
     td.views-field {
       &.views-field-edit-unit {
-        width: 40px;
+        width: 30px;
         a {
           background: url("../images/edit.png") no-repeat right 50% bottom 20px;
           background-size: 28px 28px;
@@ -225,7 +245,7 @@
         }
       }
       &.views-field-nothing {
-        width: 40px;
+        width: 30px;
         a {
           background: url("../images/availability.png") no-repeat right 50% bottom 20px;
           background-size: 28px 28px;
@@ -235,9 +255,30 @@
         }
       }
       &.views-field-nothing-1 {
-        width: 40px;
+        width: 30px;
         a {
           background: url("../images/pricing.png") no-repeat right 50% bottom 20px;
+          background-size: 28px 28px;
+          display: inline-block;
+          padding: 30px 1em 0 1em;
+          font-size: 14px;
+
+        }
+      }
+      &.views-field-property-types-edit-link {
+        width: 30px;
+        text-align: center;
+        a {
+          background: url("../images/rooms.png") no-repeat right 50% bottom 20px;
+          display: inline-block;
+          background-size: 28px 28px;
+          display: inline-block;
+          padding: 30px 1em 0 1em;
+          font-size: 14px;
+        }
+        a.casa-type {
+          background: url("../images/house.png") no-repeat right 50% bottom 20px;
+          display: inline-block;
           background-size: 28px 28px;
           display: inline-block;
           padding: 30px 1em 0 1em;

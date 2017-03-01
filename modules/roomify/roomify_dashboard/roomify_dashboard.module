@@ -341,6 +341,14 @@ function roomify_dashboard_views_data_alter(&$data) {
     'filter' => array('handler' => 'roomify_dashboard_filters_handler_filter_language_select'),
     'real field' => 'language',
   );
+
+  $data['roomify_properties']['property_types_edit_link'] = array(
+    'field' => array(
+      'title' => t('Types Link'),
+      'help' => t('Add a link to manage types.'),
+      'handler' => 'roomify_dashboard_handler_properties_types_edit_link',
+    ),
+  );
 }
 
 /**
