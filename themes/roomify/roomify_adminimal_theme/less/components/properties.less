@@ -202,19 +202,43 @@
 }
 .pane-properties-dashboard-properties {
   .view-display-id-dashboard_properties {
+    position: relative;
+    .view-header {
+      margin-bottom: 0;
+      text-align: right;
+      @media (min-width: @screen-sm-max) {
+        position: absolute;
+        right: 0;
+        top: -50px;
+      }
+    }
+    max-width: 968px;
+    margin: 0 auto;
+    .views-exposed-form {
+      input.form-autocomplete {
+        background-position: 98% 11px;
+      }
+      margin-bottom: 15px;
+      .form-submit {
+        margin-top: 2.11em;
+        @media (max-width: @screen-xs) {
+          margin-top: 10px;
+        }
+      }
+    }
     a {
       color: #405467;
     }
     td.views-field-name {
-      height: 70px;
+      height: 170px;
       .property-image {
         display: inline-block;
         float: left;
-        max-width: 70px;
-        margin-right: 10px;
+        width: 50%;
+        max-width: 170px;
         position: relative;
         left: -5px;
-        @media (max-width: @screen-sm) {
+        @media (max-width: @screen-sm-max) {
           display: none;
         }
         img {
@@ -223,13 +247,34 @@
           border-radius: 50%;
         }
       }
-      .property-name {
+      .property-info {
+        width: 50%;
         display: inline-block;
-        margin-top: 25px;
-        font-size: 16px;
-        font-weight: 600;
-        @media (max-width: @screen-sm) {
+        margin-top: 55px;
+        padding: 0 15px;
+        @media (max-width: @screen-sm-max) {
           margin-top: 0;
+        }
+        .property-name {
+          font-size: 18px;
+          font-weight: 600;
+          margin-bottom: 5px;
+        }
+        .property-created {
+          color: gray;
+          font-style: italic;
+          font-size: 12px;
+          .label {
+            font-weight: 600;
+          }
+        }
+        .property-changed {
+          color: gray;
+          font-style: italic;
+          font-size: 12px;
+          .label {
+            font-weight: 600;
+          }
         }
       }
     }

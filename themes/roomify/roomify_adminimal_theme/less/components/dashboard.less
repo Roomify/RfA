@@ -3,6 +3,24 @@
     display: inline-block;
     width: 100%;
     margin: 30px 0;
+    .ui-tabs#tabs-dashboard-top {
+      .ui-tabs-nav > li {
+        @media (max-width: @screen-sm-max) {
+          width: auto;
+          display: inline-block;
+          text-indent: -9999999px;
+          margin-bottom: 0px;
+          border-bottom-color: #3e545f;
+          width: 60px;
+          height: 50px;
+          a {
+            width: 60px;
+            height: 50px;
+            padding: 0;
+          }
+        }
+      }
+    }
   }
 	.pane-welcome-dashboad-message {
     display: inline-block;
@@ -139,8 +157,10 @@
     }  
   }
   #mini-panel-conversations {
-  	margin-top: 8px;
-  	margin-bottom: 8px;
+    margin: 0px auto;
+    display: table;
+    max-width: 968px;
+    width: 100%;
   	@media (max-width: @screen-lg) {
   		margin-top: 60px;
   		margin-bottom: 60px;
@@ -161,6 +181,16 @@
   					outline: none;
   				}
   			}
+        @media (max-width: @screen-sm-max) {
+          width: 100% !important;
+          height: 100% !important;
+          text-indent: 0px !important;
+          text-align: center !important;
+          a {
+            width: 100% !important;
+            height: 100% !important;
+          }
+        }
   		}
   	}
 	}
@@ -230,6 +260,11 @@
     position: relative;
     top: 4px;
     right: 6px;
+    @media (max-width: @screen-sm-max) {
+      position: absolute;
+      left: 20px;
+      top: 15px;
+    }
   }
   #dashboard-conversations-tab {
     background: url("../images/dashboard/conversations.png") center center no-repeat;
@@ -240,6 +275,11 @@
     position: relative;
     top: 4px;
     right: 6px;
+    @media (max-width: @screen-sm-max) {
+      position: absolute;
+      left: 20px;
+      top: 15px;
+    }
   }
   #dashboard-bookings-tab {
     background: url("../images/dashboard/bookings.png") center center no-repeat;
@@ -250,6 +290,11 @@
     position: relative;
     top: 4px;
     right: 6px;
+    @media (max-width: @screen-sm-max) {
+      position: absolute;
+      left: 20px;
+      top: 15px;
+    }
   }
   #dashboard-stays-tab {
     background: url("../images/dashboard/bookings.png") center center no-repeat;
@@ -260,5 +305,10 @@
     position: relative;
     top: 4px;
     right: 6px;
+    @media (max-width: @screen-sm-max) {
+      position: absolute;
+      left: 20px;
+      top: 15px;
+    }
   }
 }

@@ -695,6 +695,43 @@ function roomify_system_default_panels_mini() {
   $display->content['new-2bc0e516-24ac-4378-b368-d1afc0f67c7f'] = $pane;
   $display->panels['middle'][0] = 'new-2bc0e516-24ac-4378-b368-d1afc0f67c7f';
   $pane = new stdClass();
+  $pane->pid = 'new-dba3dadc-f6ad-4c23-85f7-c809d02aecc0';
+  $pane->panel = 'middle';
+  $pane->type = 'roomify_sidebar_user_menu';
+  $pane->subtype = 'roomify_sidebar_user_menu';
+  $pane->shown = TRUE;
+  $pane->access = array(
+    'plugins' => array(
+      0 => array(
+        'name' => 'role',
+        'settings' => array(
+          'rids' => array(
+            0 => 2,
+          ),
+        ),
+        'context' => 'logged-in-user',
+        'not' => FALSE,
+      ),
+    ),
+  );
+  $pane->configuration = array(
+    'roomify_sidebar_user_menu_title' => NULL,
+    'override_title' => 1,
+    'override_title_text' => '',
+    'override_title_heading' => 'h2',
+  );
+  $pane->cache = array();
+  $pane->style = array(
+    'settings' => NULL,
+  );
+  $pane->css = array();
+  $pane->extras = array();
+  $pane->position = 1;
+  $pane->locks = array();
+  $pane->uuid = 'dba3dadc-f6ad-4c23-85f7-c809d02aecc0';
+  $display->content['new-dba3dadc-f6ad-4c23-85f7-c809d02aecc0'] = $pane;
+  $display->panels['middle'][1] = 'new-dba3dadc-f6ad-4c23-85f7-c809d02aecc0';
+  $pane = new stdClass();
   $pane->pid = 'new-03c4e9e3-293e-4cdb-ad32-c1cbe7322676';
   $pane->panel = 'middle';
   $pane->type = 'block';
@@ -707,7 +744,7 @@ function roomify_system_default_panels_mini() {
         'settings' => array(
           'visibility_setting' => '0',
           'paths' => 'user
-      user/login',
+        user/login',
         ),
         'context' => 'empty',
         'not' => FALSE,
@@ -725,56 +762,21 @@ function roomify_system_default_panels_mini() {
   );
   $pane->css = array();
   $pane->extras = array();
-  $pane->position = 1;
+  $pane->position = 2;
   $pane->locks = array();
   $pane->uuid = '03c4e9e3-293e-4cdb-ad32-c1cbe7322676';
   $display->content['new-03c4e9e3-293e-4cdb-ad32-c1cbe7322676'] = $pane;
-  $display->panels['middle'][1] = 'new-03c4e9e3-293e-4cdb-ad32-c1cbe7322676';
+  $display->panels['middle'][2] = 'new-03c4e9e3-293e-4cdb-ad32-c1cbe7322676';
   $pane = new stdClass();
-  $pane->pid = 'new-a87ba983-deec-4fb9-ac58-9a3fb7ed0524';
-  $pane->panel = 'middle';
-  $pane->type = 'roomify_sidebar_user_menu';
-  $pane->subtype = 'roomify_sidebar_user_menu';
-  $pane->shown = TRUE;
-  $pane->access = array(
-    'plugins' => array(
-      0 => array(
-        'name' => 'php',
-        'settings' => array(
-          'description' => 'User is logged in',
-          'php' => 'return user_is_logged_in();',
-        ),
-        'not' => FALSE,
-      ),
-    ),
-  );
-  $pane->configuration = array(
-    'roomify_sidebar_user_menu_title' => NULL,
-    'override_title' => 0,
-    'override_title_text' => '',
-    'override_title_heading' => 'h2',
-  );
-  $pane->cache = array();
-  $pane->style = array(
-    'settings' => NULL,
-  );
-  $pane->css = array();
-  $pane->extras = array();
-  $pane->position = 2;
-  $pane->locks = array();
-  $pane->uuid = 'a87ba983-deec-4fb9-ac58-9a3fb7ed0524';
-  $display->content['new-a87ba983-deec-4fb9-ac58-9a3fb7ed0524'] = $pane;
-  $display->panels['middle'][2] = 'new-a87ba983-deec-4fb9-ac58-9a3fb7ed0524';
-  $pane = new stdClass();
-  $pane->pid = 'new-dbab1d0a-a618-4ea9-90de-de3943c65f38';
+  $pane->pid = 'new-2d7db47a-46fe-4fc4-b05b-2f05c6a277bb';
   $pane->panel = 'middle';
   $pane->type = 'block';
-  $pane->subtype = 'commerce_cart-cart';
+  $pane->subtype = 'menu-roomify_dashboard_menu';
   $pane->shown = TRUE;
   $pane->access = array();
   $pane->configuration = array(
     'override_title' => 1,
-    'override_title_text' => '<span class="glyphicon glyphicon-shopping-cart"></span>Your Reservation',
+    'override_title_text' => '',
     'override_title_heading' => 'h2',
   );
   $pane->cache = array();
@@ -785,47 +787,9 @@ function roomify_system_default_panels_mini() {
   $pane->extras = array();
   $pane->position = 3;
   $pane->locks = array();
-  $pane->uuid = 'dbab1d0a-a618-4ea9-90de-de3943c65f38';
-  $display->content['new-dbab1d0a-a618-4ea9-90de-de3943c65f38'] = $pane;
-  $display->panels['middle'][3] = 'new-dbab1d0a-a618-4ea9-90de-de3943c65f38';
-  $pane = new stdClass();
-  $pane->pid = 'new-dd1c8c74-969d-49ff-b1cf-51aa53480e41';
-  $pane->panel = 'middle';
-  $pane->type = 'views_panes';
-  $pane->subtype = 'favorite_properties-sidebar_favorites';
-  $pane->shown = TRUE;
-  $pane->access = array();
-  $pane->configuration = array();
-  $pane->cache = array();
-  $pane->style = array(
-    'settings' => NULL,
-  );
-  $pane->css = array();
-  $pane->extras = array();
-  $pane->position = 4;
-  $pane->locks = array();
-  $pane->uuid = 'dd1c8c74-969d-49ff-b1cf-51aa53480e41';
-  $display->content['new-dd1c8c74-969d-49ff-b1cf-51aa53480e41'] = $pane;
-  $display->panels['middle'][4] = 'new-dd1c8c74-969d-49ff-b1cf-51aa53480e41';
-  $pane = new stdClass();
-  $pane->pid = 'new-0f55c95c-4c45-4a6b-b870-7d1a51f2eafa';
-  $pane->panel = 'middle';
-  $pane->type = 'views_panes';
-  $pane->subtype = 'dashboard_guest_stays-panel_pane_2';
-  $pane->shown = TRUE;
-  $pane->access = array();
-  $pane->configuration = array();
-  $pane->cache = array();
-  $pane->style = array(
-    'settings' => NULL,
-  );
-  $pane->css = array();
-  $pane->extras = array();
-  $pane->position = 5;
-  $pane->locks = array();
-  $pane->uuid = '0f55c95c-4c45-4a6b-b870-7d1a51f2eafa';
-  $display->content['new-0f55c95c-4c45-4a6b-b870-7d1a51f2eafa'] = $pane;
-  $display->panels['middle'][5] = 'new-0f55c95c-4c45-4a6b-b870-7d1a51f2eafa';
+  $pane->uuid = '2d7db47a-46fe-4fc4-b05b-2f05c6a277bb';
+  $display->content['new-2d7db47a-46fe-4fc4-b05b-2f05c6a277bb'] = $pane;
+  $display->panels['middle'][3] = 'new-2d7db47a-46fe-4fc4-b05b-2f05c6a277bb';
   $display->hide_title = PANELS_TITLE_FIXED;
   $display->title_pane = 'new-03c4e9e3-293e-4cdb-ad32-c1cbe7322676';
   $mini->display = $display;

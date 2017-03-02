@@ -418,6 +418,13 @@ body.toggled #close-sidebar-wrapper {
   background: url("../images/sidebar/accounts.png") center center no-repeat;
   background: url("../images/sidebar/accounts.svg") center center no-repeat, linear-gradient(transparent, transparent);
 }
+body.in-maintenance #page {
+  width: 968px !important;
+}
+body.in-maintenance #content {
+  width: 100% !important;
+  display: inline-block;
+}
 body,
 body.adminimal-theme,
 body.page-user,
@@ -539,6 +546,9 @@ body.roomify-dashboard #page #content {
     width: 100%;
   }
 }
+body.adminimal-theme .autocomplete-deluxe-item {
+  height: auto !important;
+}
 /* COMPONENTS */
 #better-messages-wrapper #better-messages-default {
   border: 5px solid rgba(29, 29, 29, 0.5);
@@ -564,13 +574,12 @@ body.roomify-dashboard #page #content {
   padding: 20px;
 }
 #better-messages-wrapper #better-messages-default a.message-close {
-  background: transparent url('../images/x.png') no-repeat;
   display: inline-block;
   width: 100%;
   text-align: right;
-  height: 28px;
+  height: 40px;
   padding-right: 20px;
-  background-position: right 7px;
+  background-position: right 14px;
   color: #696969;
   text-decoration: none;
   font-weight: 400;
@@ -1814,21 +1823,51 @@ body.adminimal-theme .cke_reset_all label {
 .view-display-id-dashboard_properties .view-header {
   margin-bottom: 20px;
 }
+.pane-properties-dashboard-properties .view-display-id-dashboard_properties {
+  position: relative;
+  max-width: 968px;
+  margin: 0 auto;
+}
+.pane-properties-dashboard-properties .view-display-id-dashboard_properties .view-header {
+  margin-bottom: 0;
+  text-align: right;
+}
+@media (min-width: 991px) {
+  .pane-properties-dashboard-properties .view-display-id-dashboard_properties .view-header {
+    position: absolute;
+    right: 0;
+    top: -50px;
+  }
+}
+.pane-properties-dashboard-properties .view-display-id-dashboard_properties .views-exposed-form {
+  margin-bottom: 15px;
+}
+.pane-properties-dashboard-properties .view-display-id-dashboard_properties .views-exposed-form input.form-autocomplete {
+  background-position: 98% 11px;
+}
+.pane-properties-dashboard-properties .view-display-id-dashboard_properties .views-exposed-form .form-submit {
+  margin-top: 2.11em;
+}
+@media (max-width: 480px) {
+  .pane-properties-dashboard-properties .view-display-id-dashboard_properties .views-exposed-form .form-submit {
+    margin-top: 10px;
+  }
+}
 .pane-properties-dashboard-properties .view-display-id-dashboard_properties a {
   color: #405467;
 }
 .pane-properties-dashboard-properties .view-display-id-dashboard_properties td.views-field-name {
-  height: 70px;
+  height: 170px;
 }
 .pane-properties-dashboard-properties .view-display-id-dashboard_properties td.views-field-name .property-image {
   display: inline-block;
   float: left;
-  max-width: 70px;
-  margin-right: 10px;
+  width: 50%;
+  max-width: 170px;
   position: relative;
   left: -5px;
 }
-@media (max-width: 768px) {
+@media (max-width: 991px) {
   .pane-properties-dashboard-properties .view-display-id-dashboard_properties td.views-field-name .property-image {
     display: none;
   }
@@ -1838,16 +1877,37 @@ body.adminimal-theme .cke_reset_all label {
   height: auto;
   border-radius: 50%;
 }
-.pane-properties-dashboard-properties .view-display-id-dashboard_properties td.views-field-name .property-name {
+.pane-properties-dashboard-properties .view-display-id-dashboard_properties td.views-field-name .property-info {
+  width: 50%;
   display: inline-block;
-  margin-top: 25px;
-  font-size: 16px;
-  font-weight: 600;
+  margin-top: 55px;
+  padding: 0 15px;
 }
-@media (max-width: 768px) {
-  .pane-properties-dashboard-properties .view-display-id-dashboard_properties td.views-field-name .property-name {
+@media (max-width: 991px) {
+  .pane-properties-dashboard-properties .view-display-id-dashboard_properties td.views-field-name .property-info {
     margin-top: 0;
   }
+}
+.pane-properties-dashboard-properties .view-display-id-dashboard_properties td.views-field-name .property-info .property-name {
+  font-size: 18px;
+  font-weight: 600;
+  margin-bottom: 5px;
+}
+.pane-properties-dashboard-properties .view-display-id-dashboard_properties td.views-field-name .property-info .property-created {
+  color: gray;
+  font-style: italic;
+  font-size: 12px;
+}
+.pane-properties-dashboard-properties .view-display-id-dashboard_properties td.views-field-name .property-info .property-created .label {
+  font-weight: 600;
+}
+.pane-properties-dashboard-properties .view-display-id-dashboard_properties td.views-field-name .property-info .property-changed {
+  color: gray;
+  font-style: italic;
+  font-size: 12px;
+}
+.pane-properties-dashboard-properties .view-display-id-dashboard_properties td.views-field-name .property-info .property-changed .label {
+  font-weight: 600;
 }
 .pane-properties-dashboard-properties .view-display-id-dashboard_properties td.views-field.views-field-edit-unit {
   width: 30px;
@@ -1910,6 +1970,11 @@ body.adminimal-theme .cke_reset_all label {
   height: auto;
   box-shadow: none;
   background-color: transparent;
+}
+body.adminimal-skin-material table thead tr th {
+  background: rgba(52, 73, 94, 0.94) !important;
+  color: #ECF0F1;
+  border-bottom: 2px solid #ddd;
 }
 body.adminimal-skin-material table.table,
 body.adminimal-skin-material table.views-table {
@@ -1985,7 +2050,7 @@ body.adminimal-skin-material table.views-table tbody tr td {
     display: inline-block;
     text-align: center;
     margin-bottom: 4px;
-    border-bottom-color: #3e545f;
+    border-bottom-color: 2px solid #3e545f;
   }
   .ui-tabs .ui-tabs-nav li a {
     width: 100%;
@@ -2003,7 +2068,7 @@ body.adminimal-skin-material table.views-table tbody tr td {
 }
 .ui-tabs .ui-tabs-nav li.ui-state-active a {
   background: white;
-  border-bottom: 1px solid #3e545f;
+  border-bottom: none;
   color: #3e545f;
 }
 .ui-tabs .ui-tabs-panel {
@@ -2018,6 +2083,22 @@ body.adminimal-skin-material table.views-table tbody tr td {
   display: inline-block;
   width: 100%;
   margin: 30px 0;
+}
+@media (max-width: 991px) {
+  .roomify-dashboard .pane-dashboard .ui-tabs#tabs-dashboard-top .ui-tabs-nav > li {
+    width: auto;
+    display: inline-block;
+    text-indent: -9999999px;
+    margin-bottom: 0px;
+    border-bottom-color: #3e545f;
+    width: 60px;
+    height: 50px;
+  }
+  .roomify-dashboard .pane-dashboard .ui-tabs#tabs-dashboard-top .ui-tabs-nav > li a {
+    width: 60px;
+    height: 50px;
+    padding: 0;
+  }
 }
 .roomify-dashboard .pane-welcome-dashboad-message {
   display: inline-block;
@@ -2153,8 +2234,10 @@ body.adminimal-skin-material table.views-table tbody tr td {
   display: none;
 }
 .roomify-dashboard #mini-panel-conversations {
-  margin-top: 8px;
-  margin-bottom: 8px;
+  margin: 0px auto;
+  display: table;
+  max-width: 968px;
+  width: 100%;
 }
 @media (max-width: 1200px) {
   .roomify-dashboard #mini-panel-conversations {
@@ -2177,6 +2260,18 @@ body.adminimal-skin-material table.views-table tbody tr td {
 .roomify-dashboard #mini-panel-conversations .ui-tabs-nav li a:focus,
 .roomify-dashboard #mini-panel-conversations .ui-tabs-nav li a:active {
   outline: none;
+}
+@media (max-width: 991px) {
+  .roomify-dashboard #mini-panel-conversations .ui-tabs-nav li {
+    width: 100% !important;
+    height: 100% !important;
+    text-indent: 0px !important;
+    text-align: center !important;
+  }
+  .roomify-dashboard #mini-panel-conversations .ui-tabs-nav li a {
+    width: 100% !important;
+    height: 100% !important;
+  }
 }
 .roomify-dashboard .pane-dashboard-guest-stays-panel-pane-1,
 .roomify-dashboard .pane-dashboard-bookings-panel-pane-1 {
@@ -2242,6 +2337,13 @@ body.adminimal-skin-material table.views-table tbody tr td {
   top: 4px;
   right: 6px;
 }
+@media (max-width: 991px) {
+  .roomify-dashboard #dashboard-properties-tab {
+    position: absolute;
+    left: 20px;
+    top: 15px;
+  }
+}
 .roomify-dashboard #dashboard-conversations-tab {
   background: url("../images/dashboard/conversations.png") center center no-repeat;
   background: url("../images/dashboard/conversations.svg") center center no-repeat, linear-gradient(transparent, transparent);
@@ -2251,6 +2353,13 @@ body.adminimal-skin-material table.views-table tbody tr td {
   position: relative;
   top: 4px;
   right: 6px;
+}
+@media (max-width: 991px) {
+  .roomify-dashboard #dashboard-conversations-tab {
+    position: absolute;
+    left: 20px;
+    top: 15px;
+  }
 }
 .roomify-dashboard #dashboard-bookings-tab {
   background: url("../images/dashboard/bookings.png") center center no-repeat;
@@ -2262,6 +2371,13 @@ body.adminimal-skin-material table.views-table tbody tr td {
   top: 4px;
   right: 6px;
 }
+@media (max-width: 991px) {
+  .roomify-dashboard #dashboard-bookings-tab {
+    position: absolute;
+    left: 20px;
+    top: 15px;
+  }
+}
 .roomify-dashboard #dashboard-stays-tab {
   background: url("../images/dashboard/bookings.png") center center no-repeat;
   background: url("../images/dashboard/bookings.svg") center center no-repeat, linear-gradient(transparent, transparent);
@@ -2271,6 +2387,13 @@ body.adminimal-skin-material table.views-table tbody tr td {
   position: relative;
   top: 4px;
   right: 6px;
+}
+@media (max-width: 991px) {
+  .roomify-dashboard #dashboard-stays-tab {
+    position: absolute;
+    left: 20px;
+    top: 15px;
+  }
 }
 .page-admin-bat-config-booking-add-roomify-accommodation-booking #bat-booking-edit-form .field-name-booking-end-date,
 #bat-booking-edit-roomify-accommodation-booking-form .field-name-booking-end-date,
@@ -2404,6 +2527,9 @@ body.adminimal-skin-material table.views-table tbody tr td {
   height: 32px;
 }
 /* Custom font */
+html {
+  background: #263238;
+}
 input[type="submit"],
 input.form-submit,
 a.button,

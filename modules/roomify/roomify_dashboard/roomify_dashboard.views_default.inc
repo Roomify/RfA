@@ -3017,11 +3017,13 @@ function roomify_dashboard_views_default_views() {
   /* Display: Master */
   $handler = $view->new_display('default', 'Master', 'default');
   $handler->display->display_options['title'] = 'Your Properties';
+  $handler->display->display_options['use_ajax'] = TRUE;
   $handler->display->display_options['use_more_always'] = FALSE;
   $handler->display->display_options['access']['type'] = 'none';
   $handler->display->display_options['cache']['type'] = 'none';
   $handler->display->display_options['query']['type'] = 'views_query';
   $handler->display->display_options['exposed_form']['type'] = 'basic';
+  $handler->display->display_options['exposed_form']['options']['reset_button'] = TRUE;
   $handler->display->display_options['pager']['type'] = 'full';
   $handler->display->display_options['pager']['options']['items_per_page'] = '5';
   $handler->display->display_options['pager']['options']['offset'] = '0';
@@ -3148,7 +3150,7 @@ function roomify_dashboard_views_default_views() {
   $handler->display->display_options['empty']['area']['table'] = 'views';
   $handler->display->display_options['empty']['area']['field'] = 'area';
   $handler->display->display_options['empty']['area']['empty'] = TRUE;
-  $handler->display->display_options['empty']['area']['content'] = 'You don\'t have any properties yet! Please <a class="ctools-use-modal ctools-modal-roomify-dashboard-modal-style" href="/admin/bat/config/property/wizard/nojs">click here to add a new property</a>.';
+  $handler->display->display_options['empty']['area']['content'] = '<h2>You don\'t have any properties yet! Please add some property. </h2><div><a class="ctools-use-modal ctools-modal-roomify-dashboard-modal-style" href="/admin/bat/config/property/wizard/nojs">+ Add Property</a></div>.';
   $handler->display->display_options['empty']['area']['format'] = 'filtered_text';
   /* Field: Roomify Property: Status */
   $handler->display->display_options['fields']['status']['id'] = 'status';
@@ -3229,15 +3231,17 @@ function roomify_dashboard_views_default_views() {
   $handler->display->display_options['arguments']['uid']['specify_validation'] = TRUE;
   $handler->display->display_options['arguments']['uid']['validate']['type'] = 'php';
   $handler->display->display_options['arguments']['uid']['validate_options']['code'] = 'if (user_access(\'update any roomify_property entity\')) {
-    return FALSE;
-    }
-    else {
-    return TRUE;
-    }';
+      return FALSE;
+      }
+      else {
+      return TRUE;
+      }';
   $handler->display->display_options['arguments']['uid']['validate']['fail'] = 'ignore';
 
   /* Display: Dashboard Properties */
   $handler = $view->new_display('panel_pane', 'Dashboard Properties', 'dashboard_properties');
+  $handler->display->display_options['defaults']['use_ajax'] = FALSE;
+  $handler->display->display_options['use_ajax'] = TRUE;
   $handler->display->display_options['defaults']['use_more'] = FALSE;
   $handler->display->display_options['use_more'] = TRUE;
   $handler->display->display_options['defaults']['use_more_always'] = FALSE;
@@ -3396,6 +3400,21 @@ function roomify_dashboard_views_default_views() {
   $handler->display->display_options['fields']['property_id']['exclude'] = TRUE;
   $handler->display->display_options['fields']['property_id']['element_label_colon'] = FALSE;
   $handler->display->display_options['fields']['property_id']['separator'] = '';
+  /* Field: Roomify Property: Created date */
+  $handler->display->display_options['fields']['created']['id'] = 'created';
+  $handler->display->display_options['fields']['created']['table'] = 'roomify_properties';
+  $handler->display->display_options['fields']['created']['field'] = 'created';
+  $handler->display->display_options['fields']['created']['label'] = 'Created on';
+  $handler->display->display_options['fields']['created']['exclude'] = TRUE;
+  $handler->display->display_options['fields']['created']['date_format'] = 'bat';
+  $handler->display->display_options['fields']['created']['second_date_format'] = 'bat_daily';
+  /* Field: Roomify Property: Updated date */
+  $handler->display->display_options['fields']['changed']['id'] = 'changed';
+  $handler->display->display_options['fields']['changed']['table'] = 'roomify_properties';
+  $handler->display->display_options['fields']['changed']['field'] = 'changed';
+  $handler->display->display_options['fields']['changed']['exclude'] = TRUE;
+  $handler->display->display_options['fields']['changed']['date_format'] = 'bat';
+  $handler->display->display_options['fields']['changed']['second_date_format'] = 'bat_daily';
   /* Field: Roomify Property: Type */
   $handler->display->display_options['fields']['type']['id'] = 'type';
   $handler->display->display_options['fields']['type']['table'] = 'roomify_properties';
@@ -3428,7 +3447,11 @@ function roomify_dashboard_views_default_views() {
   $handler->display->display_options['fields']['name']['label'] = 'Properties';
   $handler->display->display_options['fields']['name']['alter']['alter_text'] = TRUE;
   $handler->display->display_options['fields']['name']['alter']['text'] = '<div class="property-image">[field_sp_featured_image]</div>
-    <div class="property-name">[name]</div>';
+  <div class="property-info">
+      <div class="property-name">[name]</div>
+      <div class="property-created"><span class="label">Created on: </span>[created]</div>
+      <div class="property-changed"><span class="label">Updated on: </span>[changed]</div>
+  </div>';
   $handler->display->display_options['fields']['name']['alter']['make_link'] = TRUE;
   $handler->display->display_options['fields']['name']['alter']['path'] = 'listing/[property_id]';
   $handler->display->display_options['fields']['name']['element_label_colon'] = FALSE;
@@ -3469,12 +3492,49 @@ function roomify_dashboard_views_default_views() {
   $handler->display->display_options['fields']['property_types_edit_link']['field'] = 'property_types_edit_link';
   $handler->display->display_options['fields']['property_types_edit_link']['label'] = '';
   $handler->display->display_options['fields']['property_types_edit_link']['element_label_colon'] = FALSE;
+  /* Field: Roomify Property: Label */
+  $handler->display->display_options['fields']['name_1']['id'] = 'name_1';
+  $handler->display->display_options['fields']['name_1']['table'] = 'roomify_properties';
+  $handler->display->display_options['fields']['name_1']['field'] = 'name';
+  $handler->display->display_options['fields']['name_1']['label'] = '';
+  $handler->display->display_options['fields']['name_1']['exclude'] = TRUE;
+  $handler->display->display_options['fields']['name_1']['element_label_colon'] = FALSE;
   $handler->display->display_options['defaults']['sorts'] = FALSE;
-  /* Sort criterion: Roomify Property: Changed */
+  /* Sort criterion: Roomify Property: Updated date */
   $handler->display->display_options['sorts']['changed']['id'] = 'changed';
   $handler->display->display_options['sorts']['changed']['table'] = 'roomify_properties';
   $handler->display->display_options['sorts']['changed']['field'] = 'changed';
   $handler->display->display_options['sorts']['changed']['order'] = 'DESC';
+  $handler->display->display_options['defaults']['filter_groups'] = FALSE;
+  $handler->display->display_options['defaults']['filters'] = FALSE;
+  /* Filter criterion: Roomify Property: Label */
+  $handler->display->display_options['filters']['name']['id'] = 'name';
+  $handler->display->display_options['filters']['name']['table'] = 'roomify_properties';
+  $handler->display->display_options['filters']['name']['field'] = 'name';
+  $handler->display->display_options['filters']['name']['operator'] = 'contains';
+  $handler->display->display_options['filters']['name']['exposed'] = TRUE;
+  $handler->display->display_options['filters']['name']['expose']['operator_id'] = 'name_op';
+  $handler->display->display_options['filters']['name']['expose']['label'] = 'Property Name';
+  $handler->display->display_options['filters']['name']['expose']['operator'] = 'name_op';
+  $handler->display->display_options['filters']['name']['expose']['identifier'] = 'name';
+  $handler->display->display_options['filters']['name']['expose']['remember_roles'] = array(
+    2 => '2',
+    1 => 0,
+    30037204 => 0,
+    4 => 0,
+    5 => 0,
+    6 => 0,
+    7 => 0,
+    8 => 0,
+    163670334 => 0,
+  );
+  $handler->display->display_options['filters']['name']['expose']['autocomplete_filter'] = 1;
+  $handler->display->display_options['filters']['name']['expose']['autocomplete_items'] = '10';
+  $handler->display->display_options['filters']['name']['expose']['autocomplete_min_chars'] = '0';
+  $handler->display->display_options['filters']['name']['expose']['autocomplete_field'] = 'name_1';
+  $handler->display->display_options['filters']['name']['expose']['autocomplete_raw_suggestion'] = 1;
+  $handler->display->display_options['filters']['name']['expose']['autocomplete_raw_dropdown'] = 1;
+  $handler->display->display_options['filters']['name']['expose']['autocomplete_dependent'] = 0;
   $handler->display->display_options['allow']['use_pager'] = 0;
   $handler->display->display_options['allow']['items_per_page'] = 0;
   $handler->display->display_options['allow']['offset'] = 0;
@@ -3620,7 +3680,7 @@ function roomify_dashboard_views_default_views() {
     t('next ›'),
     t('last »'),
     t('<a class="button add-property-button ctools-use-modal ctools-modal-roomify-dashboard-modal-style" href="/admin/bat/config/property/wizard/nojs">add property</a>'),
-    t('You don\'t have any properties yet! Please <a class="ctools-use-modal ctools-modal-roomify-dashboard-modal-style" href="/admin/bat/config/property/wizard/nojs">click here to add a new property</a>.'),
+    t('<h2>You don\'t have any properties yet! Please add some property. </h2><div><a class="ctools-use-modal ctools-modal-roomify-dashboard-modal-style" href="/admin/bat/config/property/wizard/nojs">+ Add Property</a></div>.'),
     t('.'),
     t('Properties'),
     t('Edit'),
@@ -3629,13 +3689,19 @@ function roomify_dashboard_views_default_views() {
     t('All'),
     t('Dashboard Properties'),
     t('View All'),
+    t('Created on'),
+    t('Updated date'),
     t('<div class="property-image">[field_sp_featured_image]</div>
-    <div class="property-name">[name]</div>'),
+  <div class="property-info">
+      <div class="property-name">[name]</div>
+      <div class="property-created"><span class="label">Created on: </span>[created]</div>
+      <div class="property-changed"><span class="label">Updated on: </span>[changed]</div>
+  </div>'),
+    t('Property Name'),
     t('View panes'),
     t('Properties View All'),
     t('Roomify property ID'),
     t(','),
-    t('Property Name'),
   );
 
   $export['properties'] = $view;
