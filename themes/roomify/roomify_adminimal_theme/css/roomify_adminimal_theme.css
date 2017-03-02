@@ -425,81 +425,84 @@ body.in-maintenance #content {
   width: 100% !important;
   display: inline-block;
 }
-body,
-body.adminimal-theme,
-body.page-user,
-body.page-admin {
+body.adminimal-skin-material {
+  background: white;
+}
+body.adminimal-skin-materia,
+body.adminimal-skin-materia.adminimal-theme,
+body.adminimal-skin-materia.page-user,
+body.adminimal-skin-materia.page-admin {
   font: normal 16px/1.538em Open Sans, "Segoe UI", "Helvetica", sans-serif !important;
   font-family: 'Lato', sans-serif !important;
 }
-body h1,
-body.adminimal-theme h1,
-body.page-user h1,
-body.page-admin h1,
-body h2,
-body.adminimal-theme h2,
-body.page-user h2,
-body.page-admin h2,
-body h3,
-body.adminimal-theme h3,
-body.page-user h3,
-body.page-admin h3,
-body h4,
-body.adminimal-theme h4,
-body.page-user h4,
-body.page-admin h4,
-body h5,
-body.adminimal-theme h5,
-body.page-user h5,
-body.page-admin h5,
-body h6,
-body.adminimal-theme h6,
-body.page-user h6,
-body.page-admin h6,
-body p,
-body.adminimal-theme p,
-body.page-user p,
-body.page-admin p,
-body a,
-body.adminimal-theme a,
-body.page-user a,
-body.page-admin a,
-body span,
-body.adminimal-theme span,
-body.page-user span,
-body.page-admin span,
-body strong,
-body.adminimal-theme strong,
-body.page-user strong,
-body.page-admin strong {
+body.adminimal-skin-materia h1,
+body.adminimal-skin-materia.adminimal-theme h1,
+body.adminimal-skin-materia.page-user h1,
+body.adminimal-skin-materia.page-admin h1,
+body.adminimal-skin-materia h2,
+body.adminimal-skin-materia.adminimal-theme h2,
+body.adminimal-skin-materia.page-user h2,
+body.adminimal-skin-materia.page-admin h2,
+body.adminimal-skin-materia h3,
+body.adminimal-skin-materia.adminimal-theme h3,
+body.adminimal-skin-materia.page-user h3,
+body.adminimal-skin-materia.page-admin h3,
+body.adminimal-skin-materia h4,
+body.adminimal-skin-materia.adminimal-theme h4,
+body.adminimal-skin-materia.page-user h4,
+body.adminimal-skin-materia.page-admin h4,
+body.adminimal-skin-materia h5,
+body.adminimal-skin-materia.adminimal-theme h5,
+body.adminimal-skin-materia.page-user h5,
+body.adminimal-skin-materia.page-admin h5,
+body.adminimal-skin-materia h6,
+body.adminimal-skin-materia.adminimal-theme h6,
+body.adminimal-skin-materia.page-user h6,
+body.adminimal-skin-materia.page-admin h6,
+body.adminimal-skin-materia p,
+body.adminimal-skin-materia.adminimal-theme p,
+body.adminimal-skin-materia.page-user p,
+body.adminimal-skin-materia.page-admin p,
+body.adminimal-skin-materia a,
+body.adminimal-skin-materia.adminimal-theme a,
+body.adminimal-skin-materia.page-user a,
+body.adminimal-skin-materia.page-admin a,
+body.adminimal-skin-materia span,
+body.adminimal-skin-materia.adminimal-theme span,
+body.adminimal-skin-materia.page-user span,
+body.adminimal-skin-materia.page-admin span,
+body.adminimal-skin-materia strong,
+body.adminimal-skin-materia.adminimal-theme strong,
+body.adminimal-skin-materia.page-user strong,
+body.adminimal-skin-materia.page-admin strong {
   font-family: 'Lato', sans-serif !important;
 }
-body .glyphicon,
-body.adminimal-theme .glyphicon,
-body.page-user .glyphicon,
-body.page-admin .glyphicon {
+body.adminimal-skin-materia .glyphicon,
+body.adminimal-skin-materia.adminimal-theme .glyphicon,
+body.adminimal-skin-materia.page-user .glyphicon,
+body.adminimal-skin-materia.page-admin .glyphicon {
   font-family: 'Glyphicons Halflings' !important;
 }
-body table td,
-body.adminimal-theme table td,
-body.page-user table td,
-body.page-admin table td,
-body table th,
-body.adminimal-theme table th,
-body.page-user table th,
-body.page-admin table th {
+body.adminimal-skin-materia table td,
+body.adminimal-skin-materia.adminimal-theme table td,
+body.adminimal-skin-materia.page-user table td,
+body.adminimal-skin-materia.page-admin table td,
+body.adminimal-skin-materia table th,
+body.adminimal-skin-materia.adminimal-theme table th,
+body.adminimal-skin-materia.page-user table th,
+body.adminimal-skin-materia.page-admin table th {
   font-family: 'Lato', sans-serif !important;
 }
-body .ui-widget table thead th,
-body.adminimal-theme .ui-widget table thead th,
-body.page-user .ui-widget table thead th,
-body.page-admin .ui-widget table thead th {
+body.adminimal-skin-materia .ui-widget table thead th,
+body.adminimal-skin-materia.adminimal-theme .ui-widget table thead th,
+body.adminimal-skin-materia.page-user .ui-widget table thead th,
+body.adminimal-skin-materia.page-admin .ui-widget table thead th {
   color: white;
 }
-body .ui-widget table thead th a,
-body.adminimal-theme .ui-widget table thead th a,
-body.page-user .ui-widget table thead th a,
-body.page-admin .ui-widget table thead th a {
+body.adminimal-skin-materia .ui-widget table thead th a,
+body.adminimal-skin-materia.adminimal-theme .ui-widget table thead th a,
+body.adminimal-skin-materia.page-user .ui-widget table thead th a,
+body.adminimal-skin-materia.page-admin .ui-widget table thead th a {
   color: white;
 }
 body.adminimal-skin-material .form-actions input {
@@ -577,15 +580,16 @@ body.adminimal-theme .autocomplete-deluxe-item {
   display: inline-block;
   width: 100%;
   text-align: right;
-  height: 40px;
-  padding-right: 20px;
-  background-position: right 14px;
-  color: #696969;
+  height: 35px;
+  color: #5a5a5a;
   text-decoration: none;
-  font-weight: 400;
-  font-size: 13px;
+  font-weight: 600;
+  font-size: 14px;
   background-size: 11px 11px;
-  margin-right: 10px;
+  background: #ffffff;
+  border-radius: 0;
+  margin: 0;
+  margin-top: 0;
 }
 #accordian {
   width: 100%;
@@ -1976,6 +1980,16 @@ body.adminimal-skin-material table thead tr th {
   color: #ECF0F1;
   border-bottom: 2px solid #ddd;
 }
+body.adminimal-skin-material table thead tr th.views-align-left {
+  text-align: left;
+}
+body.adminimal-skin-material table thead tr th.views-align-right {
+  text-align: right;
+}
+body.adminimal-skin-material table thead tr th a {
+  color: white !important;
+  text-decoration: underline;
+}
 body.adminimal-skin-material table.table,
 body.adminimal-skin-material table.views-table {
   border: 1px solid rgba(221, 221, 221, 0.78) !important;
@@ -2273,6 +2287,12 @@ body.adminimal-skin-material table.views-table tbody tr td {
     height: 100% !important;
   }
 }
+.roomify-dashboard .pane-dashboard-guest-stays-panel-pane-1 .view-dashboard-guest-stays {
+  margin: 0px auto;
+  display: table;
+  max-width: 968px;
+  width: 100%;
+}
 .roomify-dashboard .pane-dashboard-guest-stays-panel-pane-1,
 .roomify-dashboard .pane-dashboard-bookings-panel-pane-1 {
   background: white;
@@ -2527,7 +2547,8 @@ body.adminimal-skin-material table.views-table tbody tr td {
   height: 32px;
 }
 /* Custom font */
-html {
+html,
+body.adminimal-skin-material {
   background: #263238;
 }
 input[type="submit"],
@@ -2535,6 +2556,9 @@ input.form-submit,
 a.button,
 div.exposed-filters input#edit-submit {
   margin: 2px;
+}
+#references-dialog-page {
+  background: white;
 }
 a.cke_button {
   height: auto !important;

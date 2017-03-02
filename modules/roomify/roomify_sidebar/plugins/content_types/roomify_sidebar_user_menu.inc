@@ -53,11 +53,15 @@ function roomify_sidebar_user_menu_render($subtype, $conf, $args, $pane_context,
   $message .= '<div class="mail">' . $user->mail . '</div>';
 
   if (user_access('edit own property_owner profile', $user)) {
-    $message .= '<div class="property-owner-profile"><a class="btn"href="user/' . $user->uid . '/edit/property_owner?destination="/user">' . t('Edit Property Owner Profile') . '</a></div>';
+    $url = l(t('Edit Property Owner Profile'), 'user/' . $user->uid . '/edit/property_owner', array('attributes' => array('class' => array('btn')),'query' => array('destination' => '/user')));
+    $message .= '<div class="property-owner-profile">' . $url . '</div>';
   }
   if (user_access('edit own guest profile', $user)) {
-    $message .= '<div class="guest-profile"><a class="btn"href="user/' . $user->uid . '/edit/property_owner?destination="/user">' . t('Edit Guest Profile') . '</a></div>';
+
+    $url = l(t('Edit Guest Profile'), 'user/' . $user->uid . '/edit/guest', array('attributes' => array('class' => array('btn')),'query' => array('destination' => '/user')));
+    $message .= '<div class="guest-profile">' . $url . '</div>';
   }
+
   $message .= '<div class="logout"><a href="/user/logout?destination=/">Logout<span class="glyphicon glyphicon-log-out"></span></a></div>';
   $message .= '</div>';
   // Guest Profile Set.

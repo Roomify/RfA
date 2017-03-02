@@ -2154,29 +2154,29 @@ function roomify_dashboard_views_default_views() {
     'order_id' => array(
       'sortable' => 0,
       'default_sort_order' => 'asc',
-      'align' => '',
+      'align' => 'views-align-left',
       'separator' => '',
       'empty_column' => 0,
     ),
     'property_image' => array(
-      'align' => '',
+      'align' => 'views-align-left',
       'separator' => '',
       'empty_column' => 0,
     ),
     'line_item_title' => array(
-      'align' => '',
+      'align' => 'views-align-left',
       'separator' => '',
       'empty_column' => 0,
     ),
     'commerce_order_total' => array(
       'sortable' => 0,
       'default_sort_order' => 'asc',
-      'align' => '',
+      'align' => 'views-align-center',
       'separator' => '',
       'empty_column' => 0,
     ),
     'nothing' => array(
-      'align' => '',
+      'align' => 'views-align-right',
       'separator' => '',
       'empty_column' => 0,
     ),
@@ -2194,8 +2194,8 @@ function roomify_dashboard_views_default_views() {
       ),
       'property_image' => array(
         'phone' => 'phone',
-        'tablet' => 'tablet',
         'all' => 0,
+        'tablet' => 0,
       ),
       'line_item_title' => array(
         'all' => 0,
@@ -2204,13 +2204,13 @@ function roomify_dashboard_views_default_views() {
       ),
       'commerce_order_total' => array(
         'phone' => 'phone',
-        'tablet' => 'tablet',
         'all' => 0,
+        'tablet' => 0,
       ),
       'nothing' => array(
         'phone' => 'phone',
-        'tablet' => 'tablet',
         'all' => 0,
+        'tablet' => 0,
       ),
     ),
   );
@@ -2243,6 +2243,7 @@ function roomify_dashboard_views_default_views() {
   $handler->display->display_options['fields']['line_item_title']['table'] = 'commerce_line_item';
   $handler->display->display_options['fields']['line_item_title']['field'] = 'line_item_title';
   $handler->display->display_options['fields']['line_item_title']['relationship'] = 'commerce_line_items_line_item_id';
+  $handler->display->display_options['fields']['line_item_title']['label'] = 'Your Stay';
   $handler->display->display_options['fields']['line_item_title']['alter']['path'] = '[view_order]';
   /* Field: Commerce Order: Order total */
   $handler->display->display_options['fields']['commerce_order_total']['id'] = 'commerce_order_total';
@@ -2436,7 +2437,7 @@ function roomify_dashboard_views_default_views() {
     t('Desc'),
     t('You have not placed any orders with us yet.'),
     t('Line items referenced by commerce_line_items'),
-    t('Title'),
+    t('Your Stay'),
     t('Total'),
     t('View Details'),
     t('see booking details'),
@@ -3019,7 +3020,8 @@ function roomify_dashboard_views_default_views() {
   $handler->display->display_options['title'] = 'Your Properties';
   $handler->display->display_options['use_ajax'] = TRUE;
   $handler->display->display_options['use_more_always'] = FALSE;
-  $handler->display->display_options['access']['type'] = 'none';
+  $handler->display->display_options['access']['type'] = 'perm';
+  $handler->display->display_options['access']['perm'] = 'update own roomify_property entities';
   $handler->display->display_options['cache']['type'] = 'none';
   $handler->display->display_options['query']['type'] = 'views_query';
   $handler->display->display_options['exposed_form']['type'] = 'basic';
@@ -3231,11 +3233,11 @@ function roomify_dashboard_views_default_views() {
   $handler->display->display_options['arguments']['uid']['specify_validation'] = TRUE;
   $handler->display->display_options['arguments']['uid']['validate']['type'] = 'php';
   $handler->display->display_options['arguments']['uid']['validate_options']['code'] = 'if (user_access(\'update any roomify_property entity\')) {
-      return FALSE;
-      }
-      else {
-      return TRUE;
-      }';
+        return FALSE;
+        }
+        else {
+        return TRUE;
+        }';
   $handler->display->display_options['arguments']['uid']['validate']['fail'] = 'ignore';
 
   /* Display: Dashboard Properties */
@@ -3447,11 +3449,11 @@ function roomify_dashboard_views_default_views() {
   $handler->display->display_options['fields']['name']['label'] = 'Properties';
   $handler->display->display_options['fields']['name']['alter']['alter_text'] = TRUE;
   $handler->display->display_options['fields']['name']['alter']['text'] = '<div class="property-image">[field_sp_featured_image]</div>
-  <div class="property-info">
-      <div class="property-name">[name]</div>
-      <div class="property-created"><span class="label">Created on: </span>[created]</div>
-      <div class="property-changed"><span class="label">Updated on: </span>[changed]</div>
-  </div>';
+    <div class="property-info">
+        <div class="property-name">[name]</div>
+        <div class="property-created"><span class="label">Created on: </span>[created]</div>
+        <div class="property-changed"><span class="label">Updated on: </span>[changed]</div>
+    </div>';
   $handler->display->display_options['fields']['name']['alter']['make_link'] = TRUE;
   $handler->display->display_options['fields']['name']['alter']['path'] = 'listing/[property_id]';
   $handler->display->display_options['fields']['name']['element_label_colon'] = FALSE;
@@ -3692,11 +3694,11 @@ function roomify_dashboard_views_default_views() {
     t('Created on'),
     t('Updated date'),
     t('<div class="property-image">[field_sp_featured_image]</div>
-  <div class="property-info">
-      <div class="property-name">[name]</div>
-      <div class="property-created"><span class="label">Created on: </span>[created]</div>
-      <div class="property-changed"><span class="label">Updated on: </span>[changed]</div>
-  </div>'),
+    <div class="property-info">
+        <div class="property-name">[name]</div>
+        <div class="property-created"><span class="label">Created on: </span>[created]</div>
+        <div class="property-changed"><span class="label">Updated on: </span>[changed]</div>
+    </div>'),
     t('Property Name'),
     t('View panes'),
     t('Properties View All'),
