@@ -18,14 +18,14 @@
 }
 
 #deposit-options .tabledrag-toggle-weight-wrapper {
-	display: none;
+  display: none;
 }
 #deposit-options-table .form-wrapper {
-	margin-bottom: 0;
+  margin-bottom: 0;
 }
 #deposit-options-table .form-wrapper input[type="submit"] {
-	margin-bottom: 0;
-	margin-left: 25px;
+  margin-bottom: 0;
+  margin-left: 25px;
 }
 #deposit-options-table a.tabledrag-handle .handle {
   margin-top: -1px;
