@@ -21,7 +21,7 @@
 }
 
 .casa-pricing-calendar .fc-resource-area tr .fc-cell-content:hover {
-  background: #FFFFE0;
+  background: #ffffe0;
   cursor: pointer;
 }
 
@@ -105,16 +105,16 @@
 .ui-datepicker-calendar .price {
   text-align: center;
   font-size: 12px;
-  color: #A52A2A;
-  background: #DDD;
+  color: #a52a2a;
+  background: #ddd;
   height: 20px;
   min-width: 55px;
 }
 
 .ui-datepicker-calendar .ui-state-active + .price {
-  background: #0074BD;
-  color: #EFFDEF;
+  background: #0074bd;
+  color: #effdef;
 }
 .ui-datepicker-calendar .ui-state-highlight + .price {
-  background: #FFFCE5;
+  background: #fffce5;
 }
