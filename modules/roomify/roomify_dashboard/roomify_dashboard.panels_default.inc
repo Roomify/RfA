@@ -1589,9 +1589,17 @@ function roomify_dashboard_default_panels_mini() {
   $display->panel_settings = array(
     'style_settings' => array(
       'default' => NULL,
-      'top' => NULL,
+      'top' => array(
+        'region_title' => '',
+        'region_title_tag' => 'none',
+        'region_class' => '',
+        'panel_tab_id_pattern' => 'region',
+      ),
       'middle' => NULL,
       'bottom' => NULL,
+    ),
+    'top' => array(
+      'style' => 'tabs',
     ),
   );
   $display->cache = array();
@@ -1610,7 +1618,7 @@ function roomify_dashboard_default_panels_mini() {
   $pane->access = array();
   $pane->configuration = array(
     'override_title' => 1,
-    'override_title_text' => 'Your Properties',
+    'override_title_text' => '<span id="dashboard-properties-tab"></span>Your Properties',
     'override_title_heading' => 'h2',
   );
   $pane->cache = array();
@@ -1618,8 +1626,8 @@ function roomify_dashboard_default_panels_mini() {
     'settings' => NULL,
   );
   $pane->css = array(
-    'css_id' => '',
-    'css_class' => 'col-xs-12 col-lg-7',
+    'css_id' => 'dashboard-properties',
+    'css_class' => 'col-xs-12',
   );
   $pane->extras = array();
   $pane->position = 0;
@@ -1639,7 +1647,7 @@ function roomify_dashboard_default_panels_mini() {
       0 => 'requiredcontext_user_1',
     ),
     'override_title' => 1,
-    'override_title_text' => 'Conversations',
+    'override_title_text' => '<span id="dashboard-conversations-tab"></span>Conversations',
     'override_title_heading' => 'h2',
   );
   $pane->cache = array();
@@ -1647,8 +1655,8 @@ function roomify_dashboard_default_panels_mini() {
     'settings' => NULL,
   );
   $pane->css = array(
-    'css_id' => '',
-    'css_class' => 'col-xs-12 col-lg-5',
+    'css_id' => 'dashboard-conversations',
+    'css_class' => 'col-xs-12',
   );
   $pane->extras = array();
   $pane->position = 1;
@@ -1680,14 +1688,17 @@ function roomify_dashboard_default_panels_mini() {
     'arguments' => array(
       'uid_1' => '%user:uid',
     ),
+    'override_title' => 1,
+    'override_title_text' => '<span id="dashboard-stays-tab"></span>My Stays',
+    'override_title_heading' => 'h2',
   );
   $pane->cache = array();
   $pane->style = array(
     'settings' => NULL,
   );
   $pane->css = array(
-    'css_id' => '',
-    'css_class' => 'col-xs-12 col-lg-7',
+    'css_id' => 'dashboard-stays',
+    'css_class' => 'col-xs-12',
   );
   $pane->extras = array();
   $pane->position = 2;
@@ -1707,7 +1718,7 @@ function roomify_dashboard_default_panels_mini() {
       'uid' => '%user:uid',
     ),
     'override_title' => 1,
-    'override_title_text' => 'Bookings',
+    'override_title_text' => '<span id="dashboard-bookings-tab"></span>Bookings',
     'override_title_heading' => 'h2',
   );
   $pane->cache = array();
@@ -1715,7 +1726,7 @@ function roomify_dashboard_default_panels_mini() {
     'settings' => NULL,
   );
   $pane->css = array(
-    'css_id' => '',
+    'css_id' => 'dashboard-bookings',
     'css_class' => 'col-xs-12',
   );
   $pane->extras = array();

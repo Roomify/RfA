@@ -22,9 +22,12 @@
         font-size: 15px;
         font-weight: 500;
         line-height: 50px;
-
+        &:focus,
+        &:active {
+          outline: none;
+        }
         &:hover {
-          color:#000;
+          color: #3e545f;
         }
       }
       @media (max-width: @screen-sm) {
@@ -32,7 +35,7 @@
         display: inline-block;
         text-align: center;
         margin-bottom: 4px;
-        border-bottom-color: #E0E0E0;
+        border-bottom-color: #3e545f;
         a {
           width: 100%;
           display: inline-block;
@@ -41,12 +44,14 @@
 
       &.ui-state-active {
         border-bottom: 0;
+        background: #3e545f;
         @media (max-width: @screen-sm) {
           margin-bottom: 4px;
         }
         a {
           background: white;
-          border-bottom: 1px solid #405467;
+          border-bottom: 1px solid #3e545f;
+          color: #3e545f;
         }
       }
     }
@@ -54,8 +59,10 @@
 
   .ui-tabs-panel {
     background: white;
-    border-radius: 4px 0px 4px 4px;
+    border-radius: 0px 4px 4px 4px;
     padding: 40px 15px 20px 15px;
     border: 1px solid #ececec;
+    display: inline-block;
+    width: 100%;
   }
 }
