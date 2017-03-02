@@ -418,7 +418,6 @@ function roomify_offers_manage_offers_calendar() {
   $links = array();
 
   $css_files = array(
-    drupal_get_path('module', 'roomify_offers') . '/css/offers_pricing.css',
     drupal_get_path('module', 'bat_fullcalendar') . '/css/bat_fullcalendar_timeline.css',
   );
 
