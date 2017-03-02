@@ -1,11 +1,13 @@
 /* Common styles for the Property Wizard modal. */
 
 /* Override bat module modal header styling */
-div.ctools-modal-content .modal-header, .page-admin-bat #modalContent .ctools-modal-content .modal-header {
-  background: #F7F7F7;
-  background-color: #F7F7F7;
+div.ctools-modal-content .modal-header,
+.page-admin-bat #modalContent .ctools-modal-content .modal-header {
+  background: #f7f7f7;
+  background-color: #f7f7f7;
 }
-div.ctools-modal-content .modal-header .modal-title, .page-admin-bat #modalContent .ctools-modal-content .modal-header .modal-title {
+div.ctools-modal-content .modal-header .modal-title,
+.page-admin-bat #modalContent .ctools-modal-content .modal-header .modal-title {
   color: #000;
   font-family: Lato;
   font-weight: 400;
@@ -13,16 +15,20 @@ div.ctools-modal-content .modal-header .modal-title, .page-admin-bat #modalConte
 
 /* Add a nice drop shadow. */
 #modalContent div.ctools-modal-content {
-  -webkit-box-shadow:0 0 10px rgba(0, 0, 0, 0.5);
-  -moz-box-shadow:0 0 10px rgba(0, 0, 0, 0.5);
-  box-shadow:0 0 10px rgba(0, 0, 0, 0.5);
-  background: #F7F7F7;
+  -webkit-box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+  -moz-box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+  background: #f7f7f7;
   border: none;
   font-family: 'Lato';
 }
 /* Button styling. */
-#modalContent div.ctools-modal-content input[type=submit],a.button:link,a.button:visited,a.button:hover,a.button:active {
-  background: #4E6277;
+#modalContent div.ctools-modal-content input[type=submit],
+a.button:link,
+a.button:visited,
+a.button:hover,
+a.button:active {
+  background: #4e6277;
   border-radius: 5px;
   margin-top: 14px;
   color: #fff;
