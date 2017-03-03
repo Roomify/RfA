@@ -678,7 +678,7 @@ function roomify_dashboard_views_default_views() {
   $handler->display->display_options['header']['area']['id'] = 'area';
   $handler->display->display_options['header']['area']['table'] = 'views';
   $handler->display->display_options['header']['area']['field'] = 'area';
-  $handler->display->display_options['header']['area']['content'] = '<h2>Here you can find a list of future bookings.</h2>';
+  $handler->display->display_options['header']['area']['content'] = '<h2>Here you can find a list of future bookings. (Sorted by creation)</h2>';
   $handler->display->display_options['header']['area']['format'] = 'filtered_text';
   $handler->display->display_options['defaults']['empty'] = FALSE;
   $handler->display->display_options['defaults']['relationships'] = FALSE;
@@ -1212,7 +1212,7 @@ function roomify_dashboard_views_default_views() {
   $handler->display->display_options['header']['area']['id'] = 'area';
   $handler->display->display_options['header']['area']['table'] = 'views';
   $handler->display->display_options['header']['area']['field'] = 'area';
-  $handler->display->display_options['header']['area']['content'] = '<h2>Here you can find a list of bookings of the next 60 days.</h2>';
+  $handler->display->display_options['header']['area']['content'] = '<h2>Here you can find a list of bookings of the next 60 days. (Sorted by closest booking date)</h2>';
   $handler->display->display_options['header']['area']['format'] = 'filtered_text';
   $handler->display->display_options['defaults']['relationships'] = FALSE;
   /* Relationship: Entity Reference: Referenced Entity */
@@ -2095,7 +2095,7 @@ function roomify_dashboard_views_default_views() {
     t('End Date'),
     t('Future Bookings'),
     t('View all bookings'),
-    t('<h2>Here you can find a list of future bookings.</h2>'),
+    t('<h2>Here you can find a list of future bookings. (Sorted by creation)</h2>'),
     t('View panes'),
     t('Data export'),
     t('Commerce Line item entity referenced from booking_line_item_reference'),
@@ -2113,13 +2113,14 @@ function roomify_dashboard_views_default_views() {
     t('End Date (booking_end_date)'),
     t('Check-ins next 60 days'),
     t('Upcoming Bookings'),
-    t('<h2>Here you can find a list of bookings of the next 60 days.</h2>'),
+    t('<h2>Here you can find a list of bookings of the next 60 days. (Sorted by closest booking date)</h2>'),
     t('Past Bookings'),
     t('<h2>Here you can find a list of past bookings</h2>'),
     t('Next Arrivals'),
     t('Upcoming Arrivals'),
     t('<h2>There are no bookings starting in the next 30 days</h2>'),
   );
+
   $export['dashboard_bookings'] = $view;
 
   $view = new view();

@@ -1869,16 +1869,19 @@ function roomify_dashboard_default_panels_mini() {
   $display->panel_settings = array(
     'style_settings' => array(
       'default' => NULL,
-      'top' => array(
+      'middle' => array(
         'region_title' => '',
         'region_title_tag' => 'none',
         'region_class' => '',
         'panel_tab_id_pattern' => 'region',
       ),
-      'middle' => NULL,
       'bottom' => NULL,
+      'top' => NULL,
     ),
     'top' => array(
+      'style' => '-1',
+    ),
+    'middle' => array(
       'style' => 'tabs',
     ),
   );
@@ -1890,31 +1893,8 @@ function roomify_dashboard_default_panels_mini() {
   $display->content = array();
   $display->panels = array();
   $pane = new stdClass();
-  $pane->pid = 'new-33e395d7-fff0-4348-9217-0025358fe484';
-  $pane->panel = 'top';
-  $pane->type = 'views_panes';
-  $pane->subtype = 'dashboard_bookings-panel_pane_2';
-  $pane->shown = TRUE;
-  $pane->access = array();
-  $pane->configuration = array(
-    'arguments' => array(
-      'uid' => '%user:uid',
-    ),
-  );
-  $pane->cache = array();
-  $pane->style = array(
-    'settings' => NULL,
-  );
-  $pane->css = array();
-  $pane->extras = array();
-  $pane->position = 0;
-  $pane->locks = array();
-  $pane->uuid = '33e395d7-fff0-4348-9217-0025358fe484';
-  $display->content['new-33e395d7-fff0-4348-9217-0025358fe484'] = $pane;
-  $display->panels['top'][0] = 'new-33e395d7-fff0-4348-9217-0025358fe484';
-  $pane = new stdClass();
   $pane->pid = 'new-4004d4ed-8c7c-43e9-8507-8a8121f92ca8';
-  $pane->panel = 'top';
+  $pane->panel = 'middle';
   $pane->type = 'views_panes';
   $pane->subtype = 'dashboard_bookings-panel_pane_1';
   $pane->shown = TRUE;
@@ -1933,14 +1913,14 @@ function roomify_dashboard_default_panels_mini() {
   );
   $pane->css = array();
   $pane->extras = array();
-  $pane->position = 1;
+  $pane->position = 0;
   $pane->locks = array();
   $pane->uuid = '4004d4ed-8c7c-43e9-8507-8a8121f92ca8';
   $display->content['new-4004d4ed-8c7c-43e9-8507-8a8121f92ca8'] = $pane;
-  $display->panels['top'][1] = 'new-4004d4ed-8c7c-43e9-8507-8a8121f92ca8';
+  $display->panels['middle'][0] = 'new-4004d4ed-8c7c-43e9-8507-8a8121f92ca8';
   $pane = new stdClass();
   $pane->pid = 'new-c105c145-21ec-4c30-9300-f62b0f23f295';
-  $pane->panel = 'top';
+  $pane->panel = 'middle';
   $pane->type = 'views_panes';
   $pane->subtype = 'dashboard_bookings-panel_pane_4';
   $pane->shown = TRUE;
@@ -1956,14 +1936,41 @@ function roomify_dashboard_default_panels_mini() {
   );
   $pane->css = array();
   $pane->extras = array();
-  $pane->position = 2;
+  $pane->position = 1;
   $pane->locks = array();
   $pane->uuid = 'c105c145-21ec-4c30-9300-f62b0f23f295';
   $display->content['new-c105c145-21ec-4c30-9300-f62b0f23f295'] = $pane;
-  $display->panels['top'][2] = 'new-c105c145-21ec-4c30-9300-f62b0f23f295';
+  $display->panels['middle'][1] = 'new-c105c145-21ec-4c30-9300-f62b0f23f295';
+  $pane = new stdClass();
+  $pane->pid = 'new-33e395d7-fff0-4348-9217-0025358fe484';
+  $pane->panel = 'top';
+  $pane->type = 'views_panes';
+  $pane->subtype = 'dashboard_bookings-panel_pane_2';
+  $pane->shown = TRUE;
+  $pane->access = array();
+  $pane->configuration = array(
+    'arguments' => array(
+      'uid' => '%user:uid',
+    ),
+  );
+  $pane->cache = array();
+  $pane->style = array(
+    'settings' => NULL,
+  );
+  $pane->css = array(
+    'css_id' => '',
+    'css_class' => 'col-xs-12',
+  );
+  $pane->extras = array();
+  $pane->position = 0;
+  $pane->locks = array();
+  $pane->uuid = '33e395d7-fff0-4348-9217-0025358fe484';
+  $display->content['new-33e395d7-fff0-4348-9217-0025358fe484'] = $pane;
+  $display->panels['top'][0] = 'new-33e395d7-fff0-4348-9217-0025358fe484';
   $display->hide_title = PANELS_TITLE_FIXED;
   $display->title_pane = 'new-33e395d7-fff0-4348-9217-0025358fe484';
   $mini->display = $display;
+
   $export['bookings'] = $mini;
 
   return $export;

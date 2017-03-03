@@ -52,6 +52,7 @@ function roomify_sidebar_user_menu_render($subtype, $conf, $args, $pane_context,
   $message = '<div class="sidebar-profile-message"><div class="name">' . t('Hi @user!', array('@user' => $user->name)) . '</div>';
   $message .= '<div class="mail">' . $user->mail . '</div>';
 
+  $message .= '<div class="links-to-accounts">';
   $url = l(t('Edit Account'), 'user/' . $user->uid . '/edit', array('attributes' => array('class' => array('btn')),'query' => array('destination' => '/user')));
   $message .= '<div class="user-account">' . $url . '</div>';
   if (user_access('edit own property_owner profile', $user)) {
@@ -63,7 +64,8 @@ function roomify_sidebar_user_menu_render($subtype, $conf, $args, $pane_context,
     $url = l(t('Edit Guest Profile'), 'user/' . $user->uid . '/edit/guest', array('attributes' => array('class' => array('btn')),'query' => array('destination' => '/user')));
     $message .= '<div class="guest-profile">' . $url . '</div>';
   }
-
+  // Close links to accounts.
+  $message .= '</div>';
   $message .= '<div class="logout"><a href="/user/logout?destination=/">Logout<span class="glyphicon glyphicon-log-out"></span></a></div>';
   $message .= '</div>';
   // Guest Profile Set.
