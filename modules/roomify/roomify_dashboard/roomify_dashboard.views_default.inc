@@ -215,13 +215,6 @@ function roomify_dashboard_views_default_views() {
       ),
     ),
   );
-  /* No results behavior: Global: Text area */
-  $handler->display->display_options['empty']['area']['id'] = 'area';
-  $handler->display->display_options['empty']['area']['table'] = 'views';
-  $handler->display->display_options['empty']['area']['field'] = 'area';
-  $handler->display->display_options['empty']['area']['empty'] = TRUE;
-  $handler->display->display_options['empty']['area']['content'] = 'You do not have any bookings yet.';
-  $handler->display->display_options['empty']['area']['format'] = 'filtered_text';
   /* Relationship: Entity Reference: Referenced Entity */
   $handler->display->display_options['relationships']['booking_event_reference_target_id']['id'] = 'booking_event_reference_target_id';
   $handler->display->display_options['relationships']['booking_event_reference_target_id']['table'] = 'field_data_booking_event_reference';
@@ -372,11 +365,11 @@ function roomify_dashboard_views_default_views() {
   $handler->display->display_options['arguments']['uid']['specify_validation'] = TRUE;
   $handler->display->display_options['arguments']['uid']['validate']['type'] = 'php';
   $handler->display->display_options['arguments']['uid']['validate_options']['code'] = 'if (user_access(\'update any bat_booking entity\')) {
-          return FALSE;
-          }
-          else {
-          return TRUE;
-          }';
+              return FALSE;
+              }
+              else {
+              return TRUE;
+              }';
   $handler->display->display_options['arguments']['uid']['validate']['fail'] = 'ignore';
   /* Filter criterion: Events: State (event_state_reference) */
   $handler->display->display_options['filters']['event_state_reference_state_id']['id'] = 'event_state_reference_state_id';
@@ -677,13 +670,14 @@ function roomify_dashboard_views_default_views() {
   $handler->display->display_options['pager']['type'] = 'some';
   $handler->display->display_options['pager']['options']['items_per_page'] = '8';
   $handler->display->display_options['pager']['options']['offset'] = '0';
+  $handler->display->display_options['defaults']['header'] = FALSE;
+  /* Header: Global: Text area */
+  $handler->display->display_options['header']['area']['id'] = 'area';
+  $handler->display->display_options['header']['area']['table'] = 'views';
+  $handler->display->display_options['header']['area']['field'] = 'area';
+  $handler->display->display_options['header']['area']['content'] = '<h2>Here you can find a list of future bookings.</h2>';
+  $handler->display->display_options['header']['area']['format'] = 'filtered_text';
   $handler->display->display_options['defaults']['empty'] = FALSE;
-  /* No results behavior: Global: Text area */
-  $handler->display->display_options['empty']['area']['id'] = 'area';
-  $handler->display->display_options['empty']['area']['table'] = 'views';
-  $handler->display->display_options['empty']['area']['field'] = 'area';
-  $handler->display->display_options['empty']['area']['empty'] = TRUE;
-  $handler->display->display_options['empty']['area']['format'] = 'filtered_text';
   $handler->display->display_options['defaults']['relationships'] = FALSE;
   /* Relationship: Entity Reference: Referenced Entity */
   $handler->display->display_options['relationships']['booking_event_reference_target_id']['id'] = 'booking_event_reference_target_id';
@@ -835,10 +829,10 @@ function roomify_dashboard_views_default_views() {
   $handler->display->display_options['fields']['type']['element_label_colon'] = FALSE;
   $handler->display->display_options['fields']['type']['machine_name'] = TRUE;
   $handler->display->display_options['defaults']['sorts'] = FALSE;
-  /* Sort criterion: BAT Booking: Start Date (booking_start_date) */
-  $handler->display->display_options['sorts']['booking_start_date_value']['id'] = 'booking_start_date_value';
-  $handler->display->display_options['sorts']['booking_start_date_value']['table'] = 'field_data_booking_start_date';
-  $handler->display->display_options['sorts']['booking_start_date_value']['field'] = 'booking_start_date_value';
+  /* Sort criterion: BAT Booking: Created */
+  $handler->display->display_options['sorts']['created']['id'] = 'created';
+  $handler->display->display_options['sorts']['created']['table'] = 'bat_bookings';
+  $handler->display->display_options['sorts']['created']['field'] = 'created';
   $handler->display->display_options['defaults']['filter_groups'] = FALSE;
   $handler->display->display_options['defaults']['filters'] = FALSE;
   /* Filter criterion: Events: State (event_state_reference) */
@@ -1209,6 +1203,13 @@ function roomify_dashboard_views_default_views() {
   $handler->display->display_options['use_more_always'] = TRUE;
   $handler->display->display_options['defaults']['use_more_text'] = FALSE;
   $handler->display->display_options['use_more_text'] = 'View all bookings';
+  $handler->display->display_options['defaults']['header'] = FALSE;
+  /* Header: Global: Text area */
+  $handler->display->display_options['header']['area']['id'] = 'area';
+  $handler->display->display_options['header']['area']['table'] = 'views';
+  $handler->display->display_options['header']['area']['field'] = 'area';
+  $handler->display->display_options['header']['area']['content'] = '<h2>Here you can find a list of bookings of the next 60 days.</h2>';
+  $handler->display->display_options['header']['area']['format'] = 'filtered_text';
   $handler->display->display_options['defaults']['relationships'] = FALSE;
   /* Relationship: Entity Reference: Referenced Entity */
   $handler->display->display_options['relationships']['booking_event_reference_target_id']['id'] = 'booking_event_reference_target_id';
@@ -1433,14 +1434,14 @@ function roomify_dashboard_views_default_views() {
   $handler->display->display_options['use_more_always'] = TRUE;
   $handler->display->display_options['defaults']['use_more_text'] = FALSE;
   $handler->display->display_options['use_more_text'] = 'View all bookings';
+  $handler->display->display_options['defaults']['header'] = FALSE;
+  /* Header: Global: Text area */
+  $handler->display->display_options['header']['area']['id'] = 'area';
+  $handler->display->display_options['header']['area']['table'] = 'views';
+  $handler->display->display_options['header']['area']['field'] = 'area';
+  $handler->display->display_options['header']['area']['content'] = '<h2>Here you can find a list of past bookings</h2>';
+  $handler->display->display_options['header']['area']['format'] = 'filtered_text';
   $handler->display->display_options['defaults']['empty'] = FALSE;
-  /* No results behavior: Global: Text area */
-  $handler->display->display_options['empty']['area']['id'] = 'area';
-  $handler->display->display_options['empty']['area']['table'] = 'views';
-  $handler->display->display_options['empty']['area']['field'] = 'area';
-  $handler->display->display_options['empty']['area']['empty'] = TRUE;
-  $handler->display->display_options['empty']['area']['content'] = 'There are no past bookings';
-  $handler->display->display_options['empty']['area']['format'] = 'filtered_text';
   $handler->display->display_options['defaults']['relationships'] = FALSE;
   /* Relationship: Entity Reference: Referenced Entity */
   $handler->display->display_options['relationships']['booking_event_reference_target_id']['id'] = 'booking_event_reference_target_id';
@@ -2066,7 +2067,6 @@ function roomify_dashboard_views_default_views() {
     t('‹ previous'),
     t('next ›'),
     t('last »'),
-    t('You do not have any bookings yet.'),
     t('Events entity referenced from booking_event_reference'),
     t('Unit entity referenced from event_bat_unit_reference'),
     t('Type'),
@@ -2091,6 +2091,7 @@ function roomify_dashboard_views_default_views() {
     t('End Date'),
     t('Future Bookings'),
     t('View all bookings'),
+    t('<h2>Here you can find a list of future bookings.</h2>'),
     t('View panes'),
     t('Data export'),
     t('Commerce Line item entity referenced from booking_line_item_reference'),
@@ -2108,13 +2109,13 @@ function roomify_dashboard_views_default_views() {
     t('End Date (booking_end_date)'),
     t('Check-ins next 60 days'),
     t('Upcoming Bookings'),
+    t('<h2>Here you can find a list of bookings of the next 60 days.</h2>'),
     t('Past Bookings'),
-    t('There are no past bookings'),
+    t('<h2>Here you can find a list of past bookings</h2>'),
     t('Next Arrivals'),
     t('Upcoming Arrivals'),
     t('<h2>There are no bookings starting in the next 30 days</h2>'),
   );
-
   $export['dashboard_bookings'] = $view;
 
   $view = new view();
@@ -2300,6 +2301,13 @@ function roomify_dashboard_views_default_views() {
   $handler->display->display_options['defaults']['use_more_text'] = FALSE;
   $handler->display->display_options['use_more_text'] = 'View All';
   $handler->display->display_options['link_url'] = '/user/!1/orders';
+  $handler->display->display_options['defaults']['header'] = FALSE;
+  /* Header: Global: Text area */
+  $handler->display->display_options['header']['area']['id'] = 'area';
+  $handler->display->display_options['header']['area']['table'] = 'views';
+  $handler->display->display_options['header']['area']['field'] = 'area';
+  $handler->display->display_options['header']['area']['content'] = '<h2>Here you can find a list of your stays!</h2>';
+  $handler->display->display_options['header']['area']['format'] = 'filtered_text';
   $handler->display->display_options['defaults']['empty'] = FALSE;
   $handler->display->display_options['allow']['use_pager'] = 0;
   $handler->display->display_options['allow']['items_per_page'] = 0;
@@ -2444,6 +2452,7 @@ function roomify_dashboard_views_default_views() {
     t('All'),
     t('Dashboard My Stays'),
     t('View All'),
+    t('<h2>Here you can find a list of your stays!</h2>'),
     t('View panes'),
     t('My Stays sidebar'),
     t('<span class="glyphicon glyphicon-calendar"></span>Upcoming Bookings'),

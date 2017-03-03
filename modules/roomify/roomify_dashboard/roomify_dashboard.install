@@ -30,7 +30,7 @@ function _roomify_dashboard_create_dashboard_menu() {
 
   // Create Menu Links.
 	roomify_system_create_update_menu_link('Dashboard', 'user', 'roomify_dashboard_menu', -20, 1, 0, array('attributes' => array('class'=> 'dashboard')));
-  roomify_system_create_update_menu_link('Properties', 'user', 'roomify_dashboard_menu', -10, 1, 0, array('attributes' => array('class'=> 'properties')));
+  roomify_system_create_update_menu_link('Properties', 'admin/bat/properties/view-all', 'roomify_dashboard_menu', -10, 1, 0, array('attributes' => array('class'=> 'properties')));
   roomify_system_create_update_menu_link('Bookings', 'admin/bat/bookings', 'roomify_dashboard_menu', -9, 1, 0, array('attributes' => array('class'=> 'bookings')));
   roomify_system_create_update_menu_link('Conversations', 'user', 'roomify_dashboard_menu', -8, 1, 0, array('attributes' => array('class'=> 'conversations')));
   roomify_system_create_update_menu_link('Content', 'admin/content', 'roomify_dashboard_menu', -6, 1, 0, array('attributes' => array('class'=> 'content')));

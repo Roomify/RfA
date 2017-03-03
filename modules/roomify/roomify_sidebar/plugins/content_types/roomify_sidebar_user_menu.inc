@@ -52,6 +52,8 @@ function roomify_sidebar_user_menu_render($subtype, $conf, $args, $pane_context,
   $message = '<div class="sidebar-profile-message"><div class="name">' . t('Hi @user!', array('@user' => $user->name)) . '</div>';
   $message .= '<div class="mail">' . $user->mail . '</div>';
 
+  $url = l(t('Edit Account'), 'user/' . $user->uid . '/edit', array('attributes' => array('class' => array('btn')),'query' => array('destination' => '/user')));
+  $message .= '<div class="user-account">' . $url . '</div>';
   if (user_access('edit own property_owner profile', $user)) {
     $url = l(t('Edit Property Owner Profile'), 'user/' . $user->uid . '/edit/property_owner', array('attributes' => array('class' => array('btn')),'query' => array('destination' => '/user')));
     $message .= '<div class="property-owner-profile">' . $url . '</div>';

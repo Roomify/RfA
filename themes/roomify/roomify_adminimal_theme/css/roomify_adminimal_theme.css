@@ -225,19 +225,24 @@ body .sidebar-nav .pane-roomify-sidebar-user-menu .mail {
   color: #d4d4d4;
   margin-bottom: 15px;
 }
+body .sidebar-nav .pane-roomify-sidebar-user-menu .user-account,
 body .sidebar-nav .pane-roomify-sidebar-user-menu .property-owner-profile,
 body .sidebar-nav .pane-roomify-sidebar-user-menu .guest-profile {
   display: inline-block;
-  margin: 8px 0;
+  margin: 8px;
+  margin-left: 0;
+  float: left;
 }
+body .sidebar-nav .pane-roomify-sidebar-user-menu .user-account a.btn,
 body .sidebar-nav .pane-roomify-sidebar-user-menu .property-owner-profile a.btn,
 body .sidebar-nav .pane-roomify-sidebar-user-menu .guest-profile a.btn {
   background: #03A9F4;
-  padding: 6px 15px;
+  padding: 6px 10px;
   border-radius: 4px;
-  font-size: 14px;
+  font-size: 12px;
   color: white;
 }
+body .sidebar-nav .pane-roomify-sidebar-user-menu .user-account a.btn:hover,
 body .sidebar-nav .pane-roomify-sidebar-user-menu .property-owner-profile a.btn:hover,
 body .sidebar-nav .pane-roomify-sidebar-user-menu .guest-profile a.btn:hover {
   text-decoration: none;
@@ -330,7 +335,7 @@ body.toggled #close-sidebar-wrapper {
   display: inline-block;
   position: absolute;
   left: -35px;
-  top: 8px;
+  top: 6px;
   background: url("../images/sidebar/properties.png") center center no-repeat;
   background: url("../images/sidebar/properties.svg") center center no-repeat, linear-gradient(transparent, transparent);
 }
@@ -344,7 +349,7 @@ body.toggled #close-sidebar-wrapper {
   display: inline-block;
   position: absolute;
   left: -39px;
-  top: 6px;
+  top: 4px;
   background: url("../images/sidebar/dashboard.png") center center no-repeat;
   background: url("../images/sidebar/dashboard.svg") center center no-repeat, linear-gradient(transparent, transparent);
 }
@@ -358,7 +363,7 @@ body.toggled #close-sidebar-wrapper {
   display: inline-block;
   position: absolute;
   left: -32px;
-  top: 10px;
+  top: 8px;
   background: url("../images/sidebar/bookings.png") center center no-repeat;
   background: url("../images/sidebar/bookings.svg") center center no-repeat, linear-gradient(transparent, transparent);
 }
@@ -386,7 +391,7 @@ body.toggled #close-sidebar-wrapper {
   display: inline-block;
   position: absolute;
   left: -30px;
-  top: 10px;
+  top: 7px;
   background: url("../images/sidebar/content.png") center center no-repeat;
   background: url("../images/sidebar/content.svg") center center no-repeat, linear-gradient(transparent, transparent);
 }
@@ -400,7 +405,7 @@ body.toggled #close-sidebar-wrapper {
   display: inline-block;
   position: absolute;
   left: -33px;
-  top: 8px;
+  top: 6px;
   background: url("../images/sidebar/setting.png") center center no-repeat;
   background: url("../images/sidebar/setting.svg") center center no-repeat, linear-gradient(transparent, transparent);
 }
@@ -2247,6 +2252,7 @@ body.adminimal-skin-material table.views-table tbody tr td {
 .roomify-dashboard .pane-panels-mini.pane-conversations .pane-content .view-display-id-dashboard_properties thead {
   display: none;
 }
+.roomify-dashboard #mini-panel-bookings,
 .roomify-dashboard #mini-panel-conversations {
   margin: 0px auto;
   display: table;
@@ -2254,38 +2260,59 @@ body.adminimal-skin-material table.views-table tbody tr td {
   width: 100%;
 }
 @media (max-width: 1200px) {
+  .roomify-dashboard #mini-panel-bookings,
   .roomify-dashboard #mini-panel-conversations {
     margin-top: 60px;
     margin-bottom: 60px;
   }
 }
+.roomify-dashboard #mini-panel-bookings .ui-tabs-nav li,
 .roomify-dashboard #mini-panel-conversations .ui-tabs-nav li {
   float: right;
 }
+.roomify-dashboard #mini-panel-bookings .ui-tabs-nav li.ui-state-active-a,
 .roomify-dashboard #mini-panel-conversations .ui-tabs-nav li.ui-state-active-a {
   border-bottom: 1px solid #405467;
 }
+.roomify-dashboard #mini-panel-bookings .ui-tabs-nav li a,
 .roomify-dashboard #mini-panel-conversations .ui-tabs-nav li a {
   font-weight: 600;
   color: #405467;
   height: 43px;
   line-height: 2.9em;
 }
+.roomify-dashboard #mini-panel-bookings .ui-tabs-nav li a:focus,
 .roomify-dashboard #mini-panel-conversations .ui-tabs-nav li a:focus,
+.roomify-dashboard #mini-panel-bookings .ui-tabs-nav li a:active,
 .roomify-dashboard #mini-panel-conversations .ui-tabs-nav li a:active {
   outline: none;
 }
 @media (max-width: 991px) {
+  .roomify-dashboard #mini-panel-bookings .ui-tabs-nav li,
   .roomify-dashboard #mini-panel-conversations .ui-tabs-nav li {
     width: 100% !important;
     height: 100% !important;
     text-indent: 0px !important;
     text-align: center !important;
   }
+  .roomify-dashboard #mini-panel-bookings .ui-tabs-nav li a,
   .roomify-dashboard #mini-panel-conversations .ui-tabs-nav li a {
     width: 100% !important;
     height: 100% !important;
   }
+}
+.roomify-dashboard #mini-panel-bookings {
+  max-width: 100%;
+}
+.roomify-dashboard .pane-panels-mini.pane-bookings .pane-content {
+  padding-top: 30px;
+}
+.roomify-dashboard .pane-panels-mini.pane-bookings .pane-content .more-link a {
+  margin-top: 10px;
+  display: inline-block;
+  text-align: right;
+  width: 100%;
+  color: #405467;
 }
 .roomify-dashboard .pane-dashboard-guest-stays-panel-pane-1 .view-dashboard-guest-stays {
   margin: 0px auto;
@@ -2340,11 +2367,14 @@ body.adminimal-skin-material table.views-table tbody tr td {
   width: 100%;
   color: #405467;
 }
+.roomify-dashboard .pane-dashboard-guest-stays-panel-pane-1 .view-dashboard-guest-stays thead {
+  display: none;
+}
 .roomify-dashboard .pane-dashboard-guest-stays-panel-pane-1 .view-dashboard-guest-stays .footable-row-detail-value a {
   padding-left: 0;
 }
 .roomify-dashboard .pane-dashboard-guest-stays-panel-pane-1 .view-dashboard-guest-stays img {
-  max-width: 150px;
+  max-width: 170px;
   border-radius: 50%;
 }
 .roomify-dashboard #dashboard-properties-tab {

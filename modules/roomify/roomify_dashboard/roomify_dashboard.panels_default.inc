@@ -1707,15 +1707,15 @@ function roomify_dashboard_default_panels_mini() {
   $display->content['new-ca4af337-73f4-4ba2-a2df-15172b0902f0'] = $pane;
   $display->panels['top'][2] = 'new-ca4af337-73f4-4ba2-a2df-15172b0902f0';
   $pane = new stdClass();
-  $pane->pid = 'new-4de5afe7-0216-42e7-8bf2-0ddf9c41be77';
+  $pane->pid = 'new-e5acf8e5-2d72-4acb-95d7-58cb7ee5ef6d';
   $pane->panel = 'top';
-  $pane->type = 'views_panes';
-  $pane->subtype = 'dashboard_bookings-panel_pane_1';
+  $pane->type = 'panels_mini';
+  $pane->subtype = 'bookings';
   $pane->shown = TRUE;
   $pane->access = array();
   $pane->configuration = array(
-    'arguments' => array(
-      'uid' => '%user:uid',
+    'context' => array(
+      0 => 'requiredcontext_user_1',
     ),
     'override_title' => 1,
     'override_title_text' => '<span id="dashboard-bookings-tab"></span>Bookings',
@@ -1732,9 +1732,9 @@ function roomify_dashboard_default_panels_mini() {
   $pane->extras = array();
   $pane->position = 3;
   $pane->locks = array();
-  $pane->uuid = '4de5afe7-0216-42e7-8bf2-0ddf9c41be77';
-  $display->content['new-4de5afe7-0216-42e7-8bf2-0ddf9c41be77'] = $pane;
-  $display->panels['top'][3] = 'new-4de5afe7-0216-42e7-8bf2-0ddf9c41be77';
+  $pane->uuid = 'e5acf8e5-2d72-4acb-95d7-58cb7ee5ef6d';
+  $display->content['new-e5acf8e5-2d72-4acb-95d7-58cb7ee5ef6d'] = $pane;
+  $display->panels['top'][3] = 'new-e5acf8e5-2d72-4acb-95d7-58cb7ee5ef6d';
   $display->hide_title = PANELS_TITLE_FIXED;
   $display->title_pane = '0';
   $mini->display = $display;
@@ -1842,6 +1842,129 @@ function roomify_dashboard_default_panels_mini() {
   $display->title_pane = 'new-ea2e6343-f037-4670-9cc4-85a3f1f68190';
   $mini->display = $display;
   $export['conversations'] = $mini;
+
+  $mini = new stdClass();
+  $mini->disabled = FALSE; /* Edit this to true to make a default mini disabled initially */
+  $mini->api_version = 1;
+  $mini->name = 'bookings';
+  $mini->category = '';
+  $mini->admin_title = 'Bookings';
+  $mini->admin_description = '';
+  $mini->requiredcontexts = array(
+    0 => array(
+      'identifier' => 'User',
+      'keyword' => 'user',
+      'name' => 'user',
+      'type' => 'select',
+      'uid' => '',
+      'optional' => 0,
+      'id' => 1,
+    ),
+  );
+  $mini->contexts = array();
+  $mini->relationships = array();
+  $display = new panels_display();
+  $display->layout = 'bootstrap_one_column';
+  $display->layout_settings = array();
+  $display->panel_settings = array(
+    'style_settings' => array(
+      'default' => NULL,
+      'top' => array(
+        'region_title' => '',
+        'region_title_tag' => 'none',
+        'region_class' => '',
+        'panel_tab_id_pattern' => 'region',
+      ),
+      'middle' => NULL,
+      'bottom' => NULL,
+    ),
+    'top' => array(
+      'style' => 'tabs',
+    ),
+  );
+  $display->cache = array();
+  $display->title = '';
+  $display->uuid = 'd298efa5-e488-47b5-a1db-ced9f73a98cf';
+  $display->storage_type = 'panels_mini';
+  $display->storage_id = 'bookings';
+  $display->content = array();
+  $display->panels = array();
+  $pane = new stdClass();
+  $pane->pid = 'new-33e395d7-fff0-4348-9217-0025358fe484';
+  $pane->panel = 'top';
+  $pane->type = 'views_panes';
+  $pane->subtype = 'dashboard_bookings-panel_pane_2';
+  $pane->shown = TRUE;
+  $pane->access = array();
+  $pane->configuration = array(
+    'arguments' => array(
+      'uid' => '%user:uid',
+    ),
+  );
+  $pane->cache = array();
+  $pane->style = array(
+    'settings' => NULL,
+  );
+  $pane->css = array();
+  $pane->extras = array();
+  $pane->position = 0;
+  $pane->locks = array();
+  $pane->uuid = '33e395d7-fff0-4348-9217-0025358fe484';
+  $display->content['new-33e395d7-fff0-4348-9217-0025358fe484'] = $pane;
+  $display->panels['top'][0] = 'new-33e395d7-fff0-4348-9217-0025358fe484';
+  $pane = new stdClass();
+  $pane->pid = 'new-4004d4ed-8c7c-43e9-8507-8a8121f92ca8';
+  $pane->panel = 'top';
+  $pane->type = 'views_panes';
+  $pane->subtype = 'dashboard_bookings-panel_pane_1';
+  $pane->shown = TRUE;
+  $pane->access = array();
+  $pane->configuration = array(
+    'arguments' => array(
+      'uid' => '%user:uid',
+    ),
+    'override_title' => 1,
+    'override_title_text' => 'Future Bookings',
+    'override_title_heading' => 'h2',
+  );
+  $pane->cache = array();
+  $pane->style = array(
+    'settings' => NULL,
+  );
+  $pane->css = array();
+  $pane->extras = array();
+  $pane->position = 1;
+  $pane->locks = array();
+  $pane->uuid = '4004d4ed-8c7c-43e9-8507-8a8121f92ca8';
+  $display->content['new-4004d4ed-8c7c-43e9-8507-8a8121f92ca8'] = $pane;
+  $display->panels['top'][1] = 'new-4004d4ed-8c7c-43e9-8507-8a8121f92ca8';
+  $pane = new stdClass();
+  $pane->pid = 'new-c105c145-21ec-4c30-9300-f62b0f23f295';
+  $pane->panel = 'top';
+  $pane->type = 'views_panes';
+  $pane->subtype = 'dashboard_bookings-panel_pane_4';
+  $pane->shown = TRUE;
+  $pane->access = array();
+  $pane->configuration = array(
+    'arguments' => array(
+      'uid' => '%user:uid',
+    ),
+  );
+  $pane->cache = array();
+  $pane->style = array(
+    'settings' => NULL,
+  );
+  $pane->css = array();
+  $pane->extras = array();
+  $pane->position = 2;
+  $pane->locks = array();
+  $pane->uuid = 'c105c145-21ec-4c30-9300-f62b0f23f295';
+  $display->content['new-c105c145-21ec-4c30-9300-f62b0f23f295'] = $pane;
+  $display->panels['top'][2] = 'new-c105c145-21ec-4c30-9300-f62b0f23f295';
+  $display->hide_title = PANELS_TITLE_FIXED;
+  $display->title_pane = 'new-33e395d7-fff0-4348-9217-0025358fe484';
+  $mini->display = $display;
+  $export['bookings'] = $mini;
 
   return $export;
 }

@@ -156,6 +156,7 @@
     	}
     }  
   }
+  #mini-panel-bookings,
   #mini-panel-conversations {
     margin: 0px auto;
     display: table;
@@ -194,6 +195,21 @@
   		}
   	}
 	}
+  #mini-panel-bookings {
+    max-width: 100%;
+  }
+  .pane-panels-mini.pane-bookings {
+    .pane-content {
+      padding-top: 30px;
+      .more-link a {
+        margin-top: 10px;
+        display: inline-block;
+        text-align: right;
+        width: 100%;
+        color: #405467;
+      }
+    }
+  }
   .pane-dashboard-guest-stays-panel-pane-1 .view-dashboard-guest-stays {
     margin: 0px auto;
     display: table;
@@ -246,13 +262,16 @@
 	}
   .pane-dashboard-guest-stays-panel-pane-1 {
     .view-dashboard-guest-stays {
+      thead {
+        display: none;
+      }
       .footable-row-detail-value {
         a {
           padding-left: 0;
         }
       }
       img {
-        max-width: 150px;
+        max-width: 170px;
         border-radius: 50%;
       }
     }
