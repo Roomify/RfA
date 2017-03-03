@@ -56,8 +56,7 @@ Feature: Manage Property
     Then I click on the text "Manage pricing"
     And I should see "Price tester"
     Then I click on the text "Manage House"
-    And I should see "Property owner casa" in the "Property owner casa" row
-    Then I click on the element with css selector "td.views-field-nothing a"
+    And I should see "Edit Property owner casa"
     And I click on the text "Back to Property"
 
   Scenario: Dashboard - Add new property link
