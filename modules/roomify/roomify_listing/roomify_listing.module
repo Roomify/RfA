@@ -203,6 +203,15 @@ function roomify_listing_menu_local_tasks_alter(&$data, $router_item, $root_path
         if ($content['#link']['title'] == t('Manage pricing')) {
           $data['tabs'][0]['output'][$id]['#weight'] = -14;
         }
+        if ($property->type == 'casa_property') {
+          // If it's a Casa we should see the House type and not the view.
+          if ($content['#link']['title'] == t('Manage House')) {
+            if ($house_type = field_get_items('roomify_property', $property, 'property_bat_type_reference')) {
+              $destination = 'admin/bat/config/property/manage/' . $property->property_id;
+              $data['tabs'][0]['output'][$id]['#link']['href'] = 'admin/bat/config/types/manage/' . $house_type[0]['target_id'] . '/edit';
+            }
+          }
+        }
       }
 
       if ($property->type == 'casa_property' || $property->type == 'locanda_property') {
