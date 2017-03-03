@@ -1,5 +1,5 @@
 .ui-dialog .ui-dialog-titlebar {
-  background: #4E6277;
+  background: #4e6277;
 }
 .ui-dialog .ui-dialog-titlebar-close {
   display: none;
@@ -14,7 +14,7 @@
 }
 
 .ui-dialog .ui-button {
-  color: #FFF;
+  color: #ffffff;
   font-size: 16px;
   padding: 3px 6px;
   border: none !important;
