@@ -332,3 +332,21 @@ function roomify_accommodation_booking_update_7009() {
     }
   }
 }
+
+/**
+ * Remove booking notification email for cancelled bookings.
+ */
+function roomify_accommodation_booking_update_7010() {
+  $query = db_select('job_schedule', 'j');
+  $query->leftJoin('bat_bookings', 'booking_id', 'id = booking_id');
+  $item_ids = $query->fields('j', array('item_id'))
+    ->condition('j.name', array('roomify_accommodation_booking_owner_notification', 'roomify_accommodation_booking_guest_notification'), 'IN')
+    ->condition('booking_id', NULL)
+    ->execute()
+    ->fetchAllKeyed(0, 0);
+  if (!empty($item_ids)) {
+    db_delete('job_schedule')
+      ->condition('item_id', $item_ids, 'IN')
+      ->execute();
+  }
+}

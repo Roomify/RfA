@@ -1260,6 +1260,19 @@ function roomify_accommodation_booking_confirmation_form_submit($form, &$form_st
 function roomify_accommodation_booking_default_cer() {
   $items = array();
 
+  $items['bat_booking:roomify_accommodation_booking:booking_event_reference*bat_event:availability:event_booking_reference'] = entity_import('cer', '{
+    "cer_bidirectional" : { "und" : [ { "value" : "1" } ] },
+    "cer_enabled" : { "und" : [ { "value" : "1" } ] },
+    "cer_left" : { "und" : [
+        { "path" : "bat_booking:roomify_accommodation_booking:booking_event_reference" }
+      ]
+    },
+    "cer_right" : { "und" : [ { "path" : "bat_event:availability:event_booking_reference" } ] },
+    "cer_weight" : { "und" : [ { "value" : "0" } ] },
+    "identifier" : "bat_booking:roomify_accommodation_booking:booking_event_reference*bat_event:availability:event_booking_reference",
+    "rdf_mapping" : []
+  }');
+
   $items['bat_booking:roomify_accommodation_booking:booking_line_item_reference*commerce_line_item:roomify_accommodation_booking:commerce_booking_reference'] = entity_import('cer', '{
     "identifier" : "bat_booking:roomify_accommodation_booking:booking_line_item_reference*commerce_line_item:roomify_accommodation_booking:commerce_booking_reference",
     "cer_bidirectional" : { "und" : [ { "value" : "1" } ] },
@@ -1273,31 +1286,35 @@ function roomify_accommodation_booking_default_cer() {
     "rdf_mapping" : []
   }');
 
-  $items['bat_booking:booking_com:booking_line_item_reference*commerce_line_item:roomify_accommodation_booking:commerce_booking_reference'] = entity_import('cer', '{
-    "identifier" : "bat_booking:booking_com:booking_line_item_reference*commerce_line_item:roomify_accommodation_booking:commerce_booking_reference",
-    "cer_bidirectional" : { "und" : [ { "value" : "1" } ] },
-    "cer_enabled" : { "und" : [ { "value" : "1" } ] },
-    "cer_weight" : { "und" : [ { "value" : "0" } ] },
-    "cer_left" : { "und" : [ { "path" : "bat_booking:booking_com:booking_line_item_reference" } ] },
-    "cer_right" : { "und" : [
-        { "path" : "commerce_line_item:roomify_accommodation_booking:commerce_booking_reference" }
-      ]
-    },
-    "rdf_mapping" : []
-  }');
+  if (module_exists('roomify_channel_connector')) {
+    $items['bat_booking:booking_com:booking_line_item_reference*commerce_line_item:roomify_accommodation_booking:commerce_booking_reference'] = entity_import('cer', '{
+      "identifier" : "bat_booking:booking_com:booking_line_item_reference*commerce_line_item:roomify_accommodation_booking:commerce_booking_reference",
+      "cer_bidirectional" : { "und" : [ { "value" : "1" } ] },
+      "cer_enabled" : { "und" : [ { "value" : "1" } ] },
+      "cer_weight" : { "und" : [ { "value" : "0" } ] },
+      "cer_left" : { "und" : [ { "path" : "bat_booking:booking_com:booking_line_item_reference" } ] },
+      "cer_right" : { "und" : [
+          { "path" : "commerce_line_item:roomify_accommodation_booking:commerce_booking_reference" }
+        ]
+      },
+      "rdf_mapping" : []
+    }');
+  }
 
-  $items['bat_booking:ical:booking_line_item_reference*commerce_line_item:roomify_accommodation_booking:commerce_booking_reference'] = entity_import('cer', '{
-    "identifier" : "bat_booking:ical:booking_line_item_reference*commerce_line_item:roomify_accommodation_booking:commerce_booking_reference",
-    "cer_bidirectional" : { "und" : [ { "value" : "1" } ] },
-    "cer_enabled" : { "und" : [ { "value" : "1" } ] },
-    "cer_weight" : { "und" : [ { "value" : "0" } ] },
-    "cer_left" : { "und" : [ { "path" : "bat_booking:ical:booking_line_item_reference" } ] },
-    "cer_right" : { "und" : [
-        { "path" : "commerce_line_item:roomify_accommodation_booking:commerce_booking_reference" }
-      ]
-    },
-    "rdf_mapping" : []
-  }');
+  if (module_exists('roomify_channel_ical')) {
+    $items['bat_booking:ical:booking_line_item_reference*commerce_line_item:roomify_accommodation_booking:commerce_booking_reference'] = entity_import('cer', '{
+      "identifier" : "bat_booking:ical:booking_line_item_reference*commerce_line_item:roomify_accommodation_booking:commerce_booking_reference",
+      "cer_bidirectional" : { "und" : [ { "value" : "1" } ] },
+      "cer_enabled" : { "und" : [ { "value" : "1" } ] },
+      "cer_weight" : { "und" : [ { "value" : "0" } ] },
+      "cer_left" : { "und" : [ { "path" : "bat_booking:ical:booking_line_item_reference" } ] },
+      "cer_right" : { "und" : [
+          { "path" : "commerce_line_item:roomify_accommodation_booking:commerce_booking_reference" }
+        ]
+      },
+      "rdf_mapping" : []
+    }');
+  }
 
   return $items;
 }
@@ -1518,6 +1535,18 @@ function roomify_accommodation_booking_entity_update($entity, $type) {
         commerce_order_save($order);
       }
     }
+  }
+}
+
+/**
+ * Implements hook_entity_delete().
+ */
+function roomify_accommodation_booking_entity_delete($entity, $type) {
+  if ($type == 'bat_booking') {
+    db_delete('job_schedule')
+      ->condition('name', array('roomify_accommodation_booking_owner_notification', 'roomify_accommodation_booking_guest_notification'), 'IN')
+      ->condition('id', $entity->booking_id)
+      ->execute();
   }
 }
 
@@ -1797,7 +1826,7 @@ function roomify_accommodation_booking_form_alter(&$form, &$form_state, $form_id
         );
 
         $form['order']['info'] = array(
-          '#markup' => commerce_embed_view('commerce_line_item_table', 'default', array($order->order_id)),
+          '#markup' => views_embed_view('roomify_order', 'panel_pane_4', $order->order_id),
         );
 
         $form['order']['view'] = array(
@@ -1905,7 +1934,7 @@ function roomify_accommodation_booking_form_alter(&$form, &$form_state, $form_id
         );
 
         $form['order']['info'] = array(
-          '#markup' => commerce_embed_view('commerce_line_item_table', 'default', array($order->order_id)),
+          '#markup' => views_embed_view('roomify_order', 'panel_pane_4', $order->order_id),
         );
 
         $form['order']['view'] = array(
@@ -1989,7 +2018,7 @@ function roomify_accommodation_booking_form_alter(&$form, &$form_state, $form_id
         );
 
         $form['order']['info'] = array(
-          '#markup' => commerce_embed_view('commerce_line_item_table', 'default', array($order->order_id)),
+          '#markup' => views_embed_view('roomify_order', 'panel_pane_4', $order->order_id),
         );
 
         $form['order']['view'] = array(

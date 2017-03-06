@@ -116,6 +116,7 @@ function roomify_area_views_default_views() {
       ),
     ),
   );
+
   $handler->display->display_options['defaults']['filter_groups'] = FALSE;
   $handler->display->display_options['defaults']['filters'] = FALSE;
   /* Filter criterion: Taxonomy vocabulary: Machine name */

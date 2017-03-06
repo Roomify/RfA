@@ -30,6 +30,11 @@ Drupal.behaviors.roomify_bootstrap = {
       location.href = this.href;
     });
 
+    // Open Description tab if user clicks on 'See More'.
+    $('.user-info #see-more-property-description').click(function(){
+      $( '#ui-id-1' ).click();
+    });
+
     // Header color on the locanda listing page should be changed.
     if ($('.page-locanda-listing header .header-row').length) {
       color = $('.page-locanda-listing header .header-row').css( "background-color" );
