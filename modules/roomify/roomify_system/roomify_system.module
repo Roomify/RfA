@@ -2103,7 +2103,15 @@ function roomify_system_form_alter(&$form, &$form_state, $form_id) {
       unset($form['actions']['preview_changes']);
     }
   }
-
+  if ($form_id == 'user_profile_form') {
+    dpm($form);
+    if (isset($form['redirect'])) {
+      $form['redirect']['#access'] = FALSE;
+    }
+    if (isset($form['metatags'])) {
+      $form['metatags']['#access'] = FALSE;
+    }
+  }
   if (isset($form['redirect'])) {
     if ($form['redirect']['#type'] == 'fieldset') {
       $form['redirect']['#group'] = 'additional_settings';
