@@ -428,8 +428,11 @@ body.node-type-homepage {
         display: inline-block;
         font-style: italic;
         text-transform: lowercase;
+        width: 100%;
       }
       .price {
+        display:inline-block;
+        width: 100%;
         color: #0cea11;
       }
     }

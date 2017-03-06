@@ -12269,8 +12269,11 @@ body.node-type-homepage {
         font-size: 10px;
         display: inline-block;
         font-style: italic;
-        text-transform: lowercase; }
+        text-transform: lowercase;
+        width: 100%; }
       .pane-featured-properties-panel-pane-4 .views-field-name .starting-price .price {
+        display: inline-block;
+        width: 100%;
         color: #0cea11; }
   .pane-featured-properties-panel-pane-4 .views-field-field-sp-short-description {
     text-align: center;
@@ -12818,8 +12821,11 @@ body.node-type-homepage {
       .page-areas .view-areas-travel.view-display-id-all_areas_view .views-row .views-field-area-properties .starting-price .starting-from {
         font-size: 10px;
         display: inline-block;
-        font-style: italic; }
+        font-style: italic;
+        width: 100%; }
       .page-areas .view-areas-travel.view-display-id-all_areas_view .views-row .views-field-area-properties .starting-price .price {
+        display: inline-block;
+        width: 100%;
         color: #0cea11; }
   .page-areas .view-areas-travel.view-display-id-all_areas_view .views-row .views-field-nothing {
     display: inline-block;
