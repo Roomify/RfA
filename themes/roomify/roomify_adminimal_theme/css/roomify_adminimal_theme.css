@@ -2590,7 +2590,9 @@ body.adminimal-skin-material table.views-table tbody tr td {
 .page-admin-bat-bookings .views-exposed-widgets input {
   height: 32px;
 }
-/* Custom font */
+body.page-admin-appearance.adminimal-skin-material .theme-selector {
+  padding: 32px 6px !important;
+}
 html,
 body.adminimal-skin-material {
   background: #263238;
@@ -2600,12 +2602,6 @@ input.form-submit,
 a.button,
 div.exposed-filters input#edit-submit {
   margin: 2px;
-}
-#references-dialog-page {
-  background: white;
-}
-a.cke_button {
-  height: auto !important;
 }
 .ui-widget,
 .ui-widget .ui-widget,
@@ -2623,6 +2619,20 @@ body.adminimal-theme.adminimal-skin-material.style-checkboxes input[type=checkbo
 body.adminimal-theme.adminimal-skin-material.style-checkboxes input[type=radio] {
   width: 17px !important;
   height: 17px !important;
+}
+fieldset {
+  border-top: 3px solid #0074BD !important;
+  box-shadow: none !important;
+}
+fieldset legend {
+  background: none !important;
+}
+/* Custom font */
+#references-dialog-page {
+  background: white;
+}
+a.cke_button {
+  height: auto !important;
 }
 a.ctools-use-modal.button,
 a.ctools-use-modal,
@@ -2664,13 +2674,6 @@ a.ctools-use-modal:hover,
 .ctools-use-modal.add-offer-button {
   margin-bottom: 30px;
   display: inline-block;
-}
-fieldset {
-  border-top: 3px solid #0074BD !important;
-  box-shadow: none !important;
-}
-fieldset legend {
-  background: none !important;
 }
 /* Override bat modal close button styling. */
 .page-admin-bat #modalContent .ctools-modal-content .modal-content {

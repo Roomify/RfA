@@ -23,12 +23,10 @@ body {
     }
     #close-sidebar-icon {
       background: url('../images/close.png') center center no-repeat;
-      margin-right: 20px;
-      margin-top: 15px;
       text-indent: -999999px;
       display: block;
       cursor: pointer;
-      width: 20px;
+      width: 15px;
       background-size: contain;
       float: right;
     }
@@ -39,100 +37,89 @@ body {
     width: 100%;
     margin: 0;
     list-style: none;
-    padding: 10px;
+    padding: 10px 0;
     a {
       color: #fff;
     }
     .panel-pane {
       display: inline-block;
-      width: 100%;
       margin-bottom: 10px;
-      padding-bottom: 30px;
-      min-width: 320px;
-      &:after {
-        content: "";
-        width: 100px;
-        text-align: center;
-        height: 3px;
-        border-radius: 50px;
-        display: table;
-        margin: 0 auto;
-        background: #696969;
-        margin-top: 35px;
-      }
-      &:last-child {
-        &:after {
-          display: none;
-        }
-      }
-      .pane-title {
-        border-bottom: 0;
-        text-align: left;
-        width: 100%;
-        color: white;
-        font-weight: 400;
-        padding: 5px 15px;
-        font-size: 22px;
-      }
+      width: 100%;
+      padding-bottom: 17px;
+      padding-left: 8px;
+      padding-right: 12px;
     }
     .pane-roomify-sidebar-user-menu {
-
-      .pane-title {
-        margin-bottom: 5px;
-        font-size: 22px;
-      }
-      .roomify-sidebar-user-menu {
-        .roomify-sidebar-image {
-          width: 80px;
-          height: 80px;
+      color: white;
+      .roomify-sidebar-image {
+        width: 80px;
+        display: inline-block;
+        float: left;
+        height: 80px;
+        margin-right: 10px;
+        img {
+          width: 100%;
           border-radius: 50%;
-          display: table;
-          margin: 10px auto;
-          margin-bottom: 0px;
-          img {
-            border-radius: 50%;
-          }
+          border: 1px solid white;
         }
-        .sidebar-profile-message {
-          @include h3();
-          text-align: center;
+      }
+      .sidebar-profile-message {
+        bottom: 10px;
+        position: relative;
+      }
+      .name {
+        font-size: 22px;
+        font-weight: 600;
+        margin-bottom: 5px;
+      }
+      .mail {
+        font-size: 14px;
+        font-style: italic;
+        color: #d4d4d4;
+        margin-bottom: 15px;
+      }
+      .links-to-accounts {
+        display: inline-block;
+        width: 100%;
+        margin-top: 15px;
+        margin-bottom: 5px;
+      }
+      .user-account,
+      .property-owner-profile,
+      .guest-profile {
+        display: inline-block;
+        margin: 8px;
+        margin-left: 0;
+        float: left;
+        a.btn {
+          background: #03A9F4;
+          padding: 4px 8px;
+          border-radius: 4px;
+          font-size: 12px;
+          text-transform: capitalize;
           color: white;
-          margin-top: 0px;
-          margin-bottom: 30px;
-        }
-        li {
-          z-index: 999;
-          width: 90%;
-          display: block;
-          margin-left: 5%;
-          .glyphicon {
-            float: left;
-            display: inline-block;
-            top: 14px;
-            font-size: 16px;
-            margin-right: 10px;
-            z-index: 99;
-            padding-left: 5px;
-            color: #03A9F4;
-            &:hover {
-              color: black;
-            }
-          }
-          a {
-            font-size: 16px;
-            font-weight: 300;
-            &:hover {
-              color: black;
-            }
-          }
           &:hover {
-            background: #eeeeee;
-            .glyphicon {
-              color: black;
-            }
-             a {
-              color: black;
-            }
+            text-decoration: none;
+            opacity: .86;
+          }
+        }
+      }
+      .logout {
+        display: inline-block;
+        width: 100%;
+        margin: 10px 0;
+        text-align: right;
+        span {
+          margin-left: 8px;
+          font-size: 14px;
+        }
+        a {
+          text-transform: uppercase;
+          font-size: 14px;
+          font-weight: bold;
+          color: white;
+          &:hover {
+            text-decoration: none;
           }
         }
       }
@@ -560,6 +547,7 @@ body.toggled {
 
 .region-sidebar-toggle-menu {
   #accordian {
+    padding: 0;
     ul {
       .label {
         font-size: 22px;

@@ -6,7 +6,7 @@
 html, body, div, span, applet, object, iframe,
 h1, h2, .page-taxonomy-area .pane-term-name .pane-content, .page-taxonomy-area .field-name-field-area-title-description,
 .page-taxonomy-area .field-name-field-area-title-blog-posts,
-.page-taxonomy-area .field-name-field-title-featured-properties, h3, body .sidebar-nav .pane-roomify-sidebar-user-menu .roomify-sidebar-user-menu .sidebar-profile-message, .page-listing .pane-roomify-property-name, .page-checkout-review .checkout_review .pane-title td, .page-activities-search .view-display-id-panel_pane_1 .views-row .views-field-name,
+.page-taxonomy-area .field-name-field-title-featured-properties, h3, .page-listing .pane-roomify-property-name, .page-checkout-review .checkout_review .pane-title td, .page-activities-search .view-display-id-panel_pane_1 .views-row .views-field-name,
 .page-availability-search .view-display-id-panel_pane_1 .views-row .views-field-name, .page-activities-search .view-display-id-panel_pane_3 .property-row .views-field-name,
 .page-availability-search .view-display-id-panel_pane_3 .property-row .views-field-name, .page-blog .panel_sl_right .panel-pane .pane-title, .node-type-blog .panel_sl_right .panel-pane .pane-title, .page-things-to-do .panel_sl_right .panel-pane .pane-title, .node-type-activity .panel_sl_right .panel-pane .pane-title, .page-taxonomy-area .field-name-field-area-description-subtitle,
 .page-taxonomy-area .field-name-field-area-description-blog-post,
@@ -315,7 +315,6 @@ th {
   .page-taxonomy-area .field-name-field-area-title-blog-posts,
   .page-taxonomy-area .field-name-field-title-featured-properties,
   h3,
-  body .sidebar-nav .pane-roomify-sidebar-user-menu .roomify-sidebar-user-menu .sidebar-profile-message,
   .page-listing .pane-roomify-property-name,
   .page-checkout-review .checkout_review .pane-title td,
   .page-activities-search .view-display-id-panel_pane_1 .views-row .views-field-name,
@@ -338,7 +337,6 @@ th {
   .page-taxonomy-area .field-name-field-area-title-blog-posts,
   .page-taxonomy-area .field-name-field-title-featured-properties,
   h3,
-  body .sidebar-nav .pane-roomify-sidebar-user-menu .roomify-sidebar-user-menu .sidebar-profile-message,
   .page-listing .pane-roomify-property-name,
   .page-checkout-review .checkout_review .pane-title td,
   .page-activities-search .view-display-id-panel_pane_1 .views-row .views-field-name,
@@ -1276,7 +1274,7 @@ hr {
 
 h1, h2, .page-taxonomy-area .pane-term-name .pane-content, .page-taxonomy-area .field-name-field-area-title-description,
 .page-taxonomy-area .field-name-field-area-title-blog-posts,
-.page-taxonomy-area .field-name-field-title-featured-properties, h3, body .sidebar-nav .pane-roomify-sidebar-user-menu .roomify-sidebar-user-menu .sidebar-profile-message, .page-listing .pane-roomify-property-name, .page-checkout-review .checkout_review .pane-title td, .page-activities-search .view-display-id-panel_pane_1 .views-row .views-field-name,
+.page-taxonomy-area .field-name-field-title-featured-properties, h3, .page-listing .pane-roomify-property-name, .page-checkout-review .checkout_review .pane-title td, .page-activities-search .view-display-id-panel_pane_1 .views-row .views-field-name,
 .page-availability-search .view-display-id-panel_pane_1 .views-row .views-field-name, .page-activities-search .view-display-id-panel_pane_3 .property-row .views-field-name,
 .page-availability-search .view-display-id-panel_pane_3 .property-row .views-field-name, .page-blog .panel_sl_right .panel-pane .pane-title, .node-type-blog .panel_sl_right .panel-pane .pane-title, .page-things-to-do .panel_sl_right .panel-pane .pane-title, .node-type-activity .panel_sl_right .panel-pane .pane-title, .page-taxonomy-area .field-name-field-area-description-subtitle,
 .page-taxonomy-area .field-name-field-area-description-blog-post,
@@ -1295,13 +1293,12 @@ h1, h2, .page-taxonomy-area .pane-term-name .pane-content, .page-taxonomy-area .
   .page-taxonomy-area .pane-term-name .pane-content .small,
   .page-taxonomy-area .field-name-field-area-title-description .small,
   .page-taxonomy-area .field-name-field-area-title-blog-posts .small,
-  .page-taxonomy-area .field-name-field-title-featured-properties .small, h3 small, body .sidebar-nav .pane-roomify-sidebar-user-menu .roomify-sidebar-user-menu .sidebar-profile-message small, .page-listing .pane-roomify-property-name small, .page-checkout-review .checkout_review .pane-title td small, .page-activities-search .view-display-id-panel_pane_1 .views-row .views-field-name small,
+  .page-taxonomy-area .field-name-field-title-featured-properties .small, h3 small, .page-listing .pane-roomify-property-name small, .page-checkout-review .checkout_review .pane-title td small, .page-activities-search .view-display-id-panel_pane_1 .views-row .views-field-name small,
   .page-availability-search .view-display-id-panel_pane_1 .views-row .views-field-name small, .page-activities-search .view-display-id-panel_pane_3 .property-row .views-field-name small,
   .page-availability-search .view-display-id-panel_pane_3 .property-row .views-field-name small, .page-blog .panel_sl_right .panel-pane .pane-title small, .node-type-blog .panel_sl_right .panel-pane .pane-title small, .page-things-to-do .panel_sl_right .panel-pane .pane-title small, .node-type-activity .panel_sl_right .panel-pane .pane-title small, .page-taxonomy-area .field-name-field-area-description-subtitle small,
   .page-taxonomy-area .field-name-field-area-description-blog-post small,
   .page-taxonomy-area .field-name-field-desc-featured-properities small, .page-room-type .panel_sl_left .panel-pane.pane-type-availability-search .pane-title small, .page-room-type .panel_sl_left .panel-pane.pane-bat-type-field-st-amenities .pane-title small,
   h3 .small,
-  body .sidebar-nav .pane-roomify-sidebar-user-menu .roomify-sidebar-user-menu .sidebar-profile-message .small,
   .page-listing .pane-roomify-property-name .small,
   .page-checkout-review .checkout_review .pane-title td .small,
   .page-activities-search .view-display-id-panel_pane_1 .views-row .views-field-name .small,
@@ -1343,7 +1340,6 @@ h2,
 .page-taxonomy-area .field-name-field-area-title-blog-posts,
 .page-taxonomy-area .field-name-field-title-featured-properties, .h2,
 h3,
-body .sidebar-nav .pane-roomify-sidebar-user-menu .roomify-sidebar-user-menu .sidebar-profile-message,
 .page-listing .pane-roomify-property-name,
 .page-checkout-review .checkout_review .pane-title td,
 .page-activities-search .view-display-id-panel_pane_1 .views-row .views-field-name,
@@ -1376,7 +1372,6 @@ body .sidebar-nav .pane-roomify-sidebar-user-menu .roomify-sidebar-user-menu .si
   .page-taxonomy-area .field-name-field-title-featured-properties .small, .h2 small,
   .h2 .small,
   h3 small,
-  body .sidebar-nav .pane-roomify-sidebar-user-menu .roomify-sidebar-user-menu .sidebar-profile-message small,
   .page-listing .pane-roomify-property-name small,
   .page-checkout-review .checkout_review .pane-title td small,
   .page-activities-search .view-display-id-panel_pane_1 .views-row .views-field-name small,
@@ -1393,7 +1388,6 @@ body .sidebar-nav .pane-roomify-sidebar-user-menu .roomify-sidebar-user-menu .si
   .page-room-type .panel_sl_left .panel-pane.pane-type-availability-search .pane-title small,
   .page-room-type .panel_sl_left .panel-pane.pane-bat-type-field-st-amenities .pane-title small,
   h3 .small,
-  body .sidebar-nav .pane-roomify-sidebar-user-menu .roomify-sidebar-user-menu .sidebar-profile-message .small,
   .page-listing .pane-roomify-property-name .small,
   .page-checkout-review .checkout_review .pane-title td .small,
   .page-activities-search .view-display-id-panel_pane_1 .views-row .views-field-name .small,
@@ -1442,7 +1436,7 @@ h2, .page-taxonomy-area .pane-term-name .pane-content, .page-taxonomy-area .fiel
 .page-taxonomy-area .field-name-field-title-featured-properties, .h2 {
   font-size: 32px; }
 
-h3, body .sidebar-nav .pane-roomify-sidebar-user-menu .roomify-sidebar-user-menu .sidebar-profile-message, .page-listing .pane-roomify-property-name, .page-checkout-review .checkout_review .pane-title td, .page-activities-search .view-display-id-panel_pane_1 .views-row .views-field-name,
+h3, .page-listing .pane-roomify-property-name, .page-checkout-review .checkout_review .pane-title td, .page-activities-search .view-display-id-panel_pane_1 .views-row .views-field-name,
 .page-availability-search .view-display-id-panel_pane_1 .views-row .views-field-name, .page-activities-search .view-display-id-panel_pane_3 .property-row .views-field-name,
 .page-availability-search .view-display-id-panel_pane_3 .property-row .views-field-name, .page-blog .panel_sl_right .panel-pane .pane-title, .node-type-blog .panel_sl_right .panel-pane .pane-title, .page-things-to-do .panel_sl_right .panel-pane .pane-title, .node-type-activity .panel_sl_right .panel-pane .pane-title, .page-taxonomy-area .field-name-field-area-description-subtitle,
 .page-taxonomy-area .field-name-field-area-description-blog-post,
@@ -6437,7 +6431,7 @@ strong {
 
 h1, h2, .page-taxonomy-area .pane-term-name .pane-content, .page-taxonomy-area .field-name-field-area-title-description,
 .page-taxonomy-area .field-name-field-area-title-blog-posts,
-.page-taxonomy-area .field-name-field-title-featured-properties, h3, body .sidebar-nav .pane-roomify-sidebar-user-menu .roomify-sidebar-user-menu .sidebar-profile-message, .page-listing .pane-roomify-property-name, .page-checkout-review .checkout_review .pane-title td, .page-activities-search .view-display-id-panel_pane_1 .views-row .views-field-name,
+.page-taxonomy-area .field-name-field-title-featured-properties, h3, .page-listing .pane-roomify-property-name, .page-checkout-review .checkout_review .pane-title td, .page-activities-search .view-display-id-panel_pane_1 .views-row .views-field-name,
 .page-availability-search .view-display-id-panel_pane_1 .views-row .views-field-name, .page-activities-search .view-display-id-panel_pane_3 .property-row .views-field-name,
 .page-availability-search .view-display-id-panel_pane_3 .property-row .views-field-name, .page-blog .panel_sl_right .panel-pane .pane-title, .node-type-blog .panel_sl_right .panel-pane .pane-title, .page-things-to-do .panel_sl_right .panel-pane .pane-title, .node-type-activity .panel_sl_right .panel-pane .pane-title, .page-taxonomy-area .field-name-field-area-description-subtitle,
 .page-taxonomy-area .field-name-field-area-description-blog-post,
@@ -6461,7 +6455,7 @@ h2, .page-taxonomy-area .pane-term-name .pane-content, .page-taxonomy-area .fiel
   margin-bottom: 20px;
   line-height: 0.93; }
 
-h3, body .sidebar-nav .pane-roomify-sidebar-user-menu .roomify-sidebar-user-menu .sidebar-profile-message, .page-listing .pane-roomify-property-name, .page-checkout-review .checkout_review .pane-title td, .page-activities-search .view-display-id-panel_pane_1 .views-row .views-field-name,
+h3, .page-listing .pane-roomify-property-name, .page-checkout-review .checkout_review .pane-title td, .page-activities-search .view-display-id-panel_pane_1 .views-row .views-field-name,
 .page-availability-search .view-display-id-panel_pane_1 .views-row .views-field-name, .page-activities-search .view-display-id-panel_pane_3 .property-row .views-field-name,
 .page-availability-search .view-display-id-panel_pane_3 .property-row .views-field-name, .page-blog .panel_sl_right .panel-pane .pane-title, .node-type-blog .panel_sl_right .panel-pane .pane-title, .page-things-to-do .panel_sl_right .panel-pane .pane-title, .node-type-activity .panel_sl_right .panel-pane .pane-title, .page-taxonomy-area .field-name-field-area-description-subtitle,
 .page-taxonomy-area .field-name-field-area-description-blog-post,
@@ -7192,12 +7186,10 @@ body {
         display: none; }
     body #sidebar-wrapper #close-sidebar-icon {
       background: url("../images/close.png") center center no-repeat;
-      margin-right: 20px;
-      margin-top: 15px;
       text-indent: -999999px;
       display: block;
       cursor: pointer;
-      width: 20px;
+      width: 15px;
       background-size: contain;
       float: right; }
   body .sidebar-nav {
@@ -7206,79 +7198,81 @@ body {
     width: 100%;
     margin: 0;
     list-style: none;
-    padding: 10px; }
+    padding: 10px 0; }
     body .sidebar-nav a {
       color: #fff; }
     body .sidebar-nav .panel-pane {
       display: inline-block;
-      width: 100%;
       margin-bottom: 10px;
-      padding-bottom: 30px;
-      min-width: 320px; }
-      body .sidebar-nav .panel-pane:after {
-        content: "";
-        width: 100px;
-        text-align: center;
-        height: 3px;
-        border-radius: 50px;
-        display: table;
-        margin: 0 auto;
-        background: #696969;
-        margin-top: 35px; }
-      body .sidebar-nav .panel-pane:last-child:after {
-        display: none; }
-      body .sidebar-nav .panel-pane .pane-title {
-        border-bottom: 0;
-        text-align: left;
-        width: 100%;
-        color: white;
-        font-weight: 400;
-        padding: 5px 15px;
-        font-size: 22px; }
-    body .sidebar-nav .pane-roomify-sidebar-user-menu .pane-title {
-      margin-bottom: 5px;
-      font-size: 22px; }
-    body .sidebar-nav .pane-roomify-sidebar-user-menu .roomify-sidebar-user-menu .roomify-sidebar-image {
-      width: 80px;
-      height: 80px;
-      border-radius: 50%;
-      display: table;
-      margin: 10px auto;
-      margin-bottom: 0px; }
-      body .sidebar-nav .pane-roomify-sidebar-user-menu .roomify-sidebar-user-menu .roomify-sidebar-image img {
-        border-radius: 50%; }
-    body .sidebar-nav .pane-roomify-sidebar-user-menu .roomify-sidebar-user-menu .sidebar-profile-message {
-      text-align: center;
-      color: white;
-      margin-top: 0px;
-      margin-bottom: 30px; }
-    body .sidebar-nav .pane-roomify-sidebar-user-menu .roomify-sidebar-user-menu li {
-      z-index: 999;
-      width: 90%;
-      display: block;
-      margin-left: 5%; }
-      body .sidebar-nav .pane-roomify-sidebar-user-menu .roomify-sidebar-user-menu li .glyphicon {
-        float: left;
+      width: 100%;
+      padding-bottom: 17px;
+      padding-left: 8px;
+      padding-right: 12px; }
+    body .sidebar-nav .pane-roomify-sidebar-user-menu {
+      color: white; }
+      body .sidebar-nav .pane-roomify-sidebar-user-menu .roomify-sidebar-image {
+        width: 80px;
         display: inline-block;
-        top: 14px;
-        font-size: 16px;
-        margin-right: 10px;
-        z-index: 99;
-        padding-left: 5px;
-        color: #03A9F4; }
-        body .sidebar-nav .pane-roomify-sidebar-user-menu .roomify-sidebar-user-menu li .glyphicon:hover {
-          color: black; }
-      body .sidebar-nav .pane-roomify-sidebar-user-menu .roomify-sidebar-user-menu li a {
-        font-size: 16px;
-        font-weight: 300; }
-        body .sidebar-nav .pane-roomify-sidebar-user-menu .roomify-sidebar-user-menu li a:hover {
-          color: black; }
-      body .sidebar-nav .pane-roomify-sidebar-user-menu .roomify-sidebar-user-menu li:hover {
-        background: #eeeeee; }
-        body .sidebar-nav .pane-roomify-sidebar-user-menu .roomify-sidebar-user-menu li:hover .glyphicon {
-          color: black; }
-        body .sidebar-nav .pane-roomify-sidebar-user-menu .roomify-sidebar-user-menu li:hover a {
-          color: black; }
+        float: left;
+        height: 80px;
+        margin-right: 10px; }
+        body .sidebar-nav .pane-roomify-sidebar-user-menu .roomify-sidebar-image img {
+          width: 100%;
+          border-radius: 50%;
+          border: 1px solid white; }
+      body .sidebar-nav .pane-roomify-sidebar-user-menu .sidebar-profile-message {
+        bottom: 10px;
+        position: relative; }
+      body .sidebar-nav .pane-roomify-sidebar-user-menu .name {
+        font-size: 22px;
+        font-weight: 600;
+        margin-bottom: 5px; }
+      body .sidebar-nav .pane-roomify-sidebar-user-menu .mail {
+        font-size: 14px;
+        font-style: italic;
+        color: #d4d4d4;
+        margin-bottom: 15px; }
+      body .sidebar-nav .pane-roomify-sidebar-user-menu .links-to-accounts {
+        display: inline-block;
+        width: 100%;
+        margin-top: 15px;
+        margin-bottom: 5px; }
+      body .sidebar-nav .pane-roomify-sidebar-user-menu .user-account,
+      body .sidebar-nav .pane-roomify-sidebar-user-menu .property-owner-profile,
+      body .sidebar-nav .pane-roomify-sidebar-user-menu .guest-profile {
+        display: inline-block;
+        margin: 8px;
+        margin-left: 0;
+        float: left; }
+        body .sidebar-nav .pane-roomify-sidebar-user-menu .user-account a.btn,
+        body .sidebar-nav .pane-roomify-sidebar-user-menu .property-owner-profile a.btn,
+        body .sidebar-nav .pane-roomify-sidebar-user-menu .guest-profile a.btn {
+          background: #03A9F4;
+          padding: 4px 8px;
+          border-radius: 4px;
+          font-size: 12px;
+          text-transform: capitalize;
+          color: white; }
+          body .sidebar-nav .pane-roomify-sidebar-user-menu .user-account a.btn:hover,
+          body .sidebar-nav .pane-roomify-sidebar-user-menu .property-owner-profile a.btn:hover,
+          body .sidebar-nav .pane-roomify-sidebar-user-menu .guest-profile a.btn:hover {
+            text-decoration: none;
+            opacity: .86; }
+      body .sidebar-nav .pane-roomify-sidebar-user-menu .logout {
+        display: inline-block;
+        width: 100%;
+        margin: 10px 0;
+        text-align: right; }
+        body .sidebar-nav .pane-roomify-sidebar-user-menu .logout span {
+          margin-left: 8px;
+          font-size: 14px; }
+        body .sidebar-nav .pane-roomify-sidebar-user-menu .logout a {
+          text-transform: uppercase;
+          font-size: 14px;
+          font-weight: bold;
+          color: white; }
+          body .sidebar-nav .pane-roomify-sidebar-user-menu .logout a:hover {
+            text-decoration: none; }
     body .sidebar-nav .pane-user-login {
       padding: 0 15px; }
       body .sidebar-nav .pane-user-login .pane-title {
@@ -7533,8 +7527,6 @@ body.toggled #close-sidebar-wrapper {
       font-weight: 600;
       font-size: 18px;
       width: 100%;
-      padding-top: 8px;
-      padding-bottom: 10px;
       display: inline-block;
       padding: 8px 0px 10px 0px; }
       #accordian ul.menu li a:hover {
@@ -7596,95 +7588,97 @@ body.toggled #close-sidebar-wrapper {
     #accordian ul ul li a {
       transition: all 0.15s; }
 
-.region-sidebar-toggle-menu #accordian ul .label {
-  font-size: 22px;
-  font-weight: 400; }
-.region-sidebar-toggle-menu #accordian ul:first-child {
-  margin-left: 0; }
-.region-sidebar-toggle-menu #accordian .properties {
-  position: relative; }
-  .region-sidebar-toggle-menu #accordian .properties:before {
-    content: '';
-    width: 25px;
-    height: 25px;
-    display: inline-block;
-    position: absolute;
-    left: -35px;
-    top: 6px;
-    background: url("../images/sidebar/properties.png") center center no-repeat;
-    background: url("../images/sidebar/properties.svg") center center no-repeat, linear-gradient(transparent, transparent); }
-.region-sidebar-toggle-menu #accordian .dashboard {
-  position: relative; }
-  .region-sidebar-toggle-menu #accordian .dashboard:before {
-    content: '';
-    width: 30px;
-    height: 30px;
-    display: inline-block;
-    position: absolute;
-    left: -39px;
-    top: 4px;
-    background: url("../images/sidebar/dashboard.png") center center no-repeat;
-    background: url("../images/sidebar/dashboard.svg") center center no-repeat, linear-gradient(transparent, transparent); }
-.region-sidebar-toggle-menu #accordian .bookings {
-  position: relative; }
-  .region-sidebar-toggle-menu #accordian .bookings:before {
-    content: '';
-    width: 19px;
-    height: 19px;
-    display: inline-block;
-    position: absolute;
-    left: -32px;
-    top: 8px;
-    background: url("../images/sidebar/bookings.png") center center no-repeat;
-    background: url("../images/sidebar/bookings.svg") center center no-repeat, linear-gradient(transparent, transparent); }
-.region-sidebar-toggle-menu #accordian .conversations {
-  position: relative; }
-  .region-sidebar-toggle-menu #accordian .conversations:before {
-    content: '';
-    width: 25px;
-    height: 25px;
-    display: inline-block;
-    position: absolute;
-    left: -33px;
-    top: 8px;
-    background: url("../images/sidebar/conversations.png") center center no-repeat;
-    background: url("../images/sidebar/conversations.svg") center center no-repeat, linear-gradient(transparent, transparent); }
-.region-sidebar-toggle-menu #accordian .content {
-  position: relative; }
-  .region-sidebar-toggle-menu #accordian .content:before {
-    content: '';
-    width: 20px;
-    height: 20px;
-    display: inline-block;
-    position: absolute;
-    left: -30px;
-    top: 7px;
-    background: url("../images/sidebar/content.png") center center no-repeat;
-    background: url("../images/sidebar/content.svg") center center no-repeat, linear-gradient(transparent, transparent); }
-.region-sidebar-toggle-menu #accordian .settings {
-  position: relative; }
-  .region-sidebar-toggle-menu #accordian .settings:before {
-    content: '';
-    width: 25px;
-    height: 25px;
-    display: inline-block;
-    position: absolute;
-    left: -33px;
-    top: 6px;
-    background: url("../images/sidebar/setting.png") center center no-repeat;
-    background: url("../images/sidebar/setting.svg") center center no-repeat, linear-gradient(transparent, transparent); }
-.region-sidebar-toggle-menu #accordian .accounts {
-  position: relative; }
-  .region-sidebar-toggle-menu #accordian .accounts:before {
-    content: '';
-    width: 23px;
-    height: 23px;
-    display: inline-block;
-    position: absolute;
-    left: -32px;
-    top: 8px;
-    background: url("../images/sidebar/accounts.png") center center no-repeat;
-    background: url("../images/sidebar/accounts.svg") center center no-repeat, linear-gradient(transparent, transparent); }
+.region-sidebar-toggle-menu #accordian {
+  padding: 0; }
+  .region-sidebar-toggle-menu #accordian ul .label {
+    font-size: 22px;
+    font-weight: 400; }
+  .region-sidebar-toggle-menu #accordian ul:first-child {
+    margin-left: 0; }
+  .region-sidebar-toggle-menu #accordian .properties {
+    position: relative; }
+    .region-sidebar-toggle-menu #accordian .properties:before {
+      content: '';
+      width: 25px;
+      height: 25px;
+      display: inline-block;
+      position: absolute;
+      left: -35px;
+      top: 6px;
+      background: url("../images/sidebar/properties.png") center center no-repeat;
+      background: url("../images/sidebar/properties.svg") center center no-repeat, linear-gradient(transparent, transparent); }
+  .region-sidebar-toggle-menu #accordian .dashboard {
+    position: relative; }
+    .region-sidebar-toggle-menu #accordian .dashboard:before {
+      content: '';
+      width: 30px;
+      height: 30px;
+      display: inline-block;
+      position: absolute;
+      left: -39px;
+      top: 4px;
+      background: url("../images/sidebar/dashboard.png") center center no-repeat;
+      background: url("../images/sidebar/dashboard.svg") center center no-repeat, linear-gradient(transparent, transparent); }
+  .region-sidebar-toggle-menu #accordian .bookings {
+    position: relative; }
+    .region-sidebar-toggle-menu #accordian .bookings:before {
+      content: '';
+      width: 19px;
+      height: 19px;
+      display: inline-block;
+      position: absolute;
+      left: -32px;
+      top: 8px;
+      background: url("../images/sidebar/bookings.png") center center no-repeat;
+      background: url("../images/sidebar/bookings.svg") center center no-repeat, linear-gradient(transparent, transparent); }
+  .region-sidebar-toggle-menu #accordian .conversations {
+    position: relative; }
+    .region-sidebar-toggle-menu #accordian .conversations:before {
+      content: '';
+      width: 25px;
+      height: 25px;
+      display: inline-block;
+      position: absolute;
+      left: -33px;
+      top: 8px;
+      background: url("../images/sidebar/conversations.png") center center no-repeat;
+      background: url("../images/sidebar/conversations.svg") center center no-repeat, linear-gradient(transparent, transparent); }
+  .region-sidebar-toggle-menu #accordian .content {
+    position: relative; }
+    .region-sidebar-toggle-menu #accordian .content:before {
+      content: '';
+      width: 20px;
+      height: 20px;
+      display: inline-block;
+      position: absolute;
+      left: -30px;
+      top: 7px;
+      background: url("../images/sidebar/content.png") center center no-repeat;
+      background: url("../images/sidebar/content.svg") center center no-repeat, linear-gradient(transparent, transparent); }
+  .region-sidebar-toggle-menu #accordian .settings {
+    position: relative; }
+    .region-sidebar-toggle-menu #accordian .settings:before {
+      content: '';
+      width: 25px;
+      height: 25px;
+      display: inline-block;
+      position: absolute;
+      left: -33px;
+      top: 6px;
+      background: url("../images/sidebar/setting.png") center center no-repeat;
+      background: url("../images/sidebar/setting.svg") center center no-repeat, linear-gradient(transparent, transparent); }
+  .region-sidebar-toggle-menu #accordian .accounts {
+    position: relative; }
+    .region-sidebar-toggle-menu #accordian .accounts:before {
+      content: '';
+      width: 23px;
+      height: 23px;
+      display: inline-block;
+      position: absolute;
+      left: -32px;
+      top: 8px;
+      background: url("../images/sidebar/accounts.png") center center no-repeat;
+      background: url("../images/sidebar/accounts.svg") center center no-repeat, linear-gradient(transparent, transparent); }
 
 /* The Overlay (background) */
 .roomify-overlay {
