@@ -2104,7 +2104,6 @@ function roomify_system_form_alter(&$form, &$form_state, $form_id) {
     }
   }
   if ($form_id == 'user_profile_form') {
-    dpm($form);
     if (isset($form['redirect'])) {
       $form['redirect']['#access'] = FALSE;
     }
