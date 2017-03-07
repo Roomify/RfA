@@ -7603,8 +7603,8 @@ body.toggled #close-sidebar-wrapper {
       height: 25px;
       display: inline-block;
       position: absolute;
-      left: -35px;
-      top: 6px;
+      left: -37px;
+      top: 7px;
       background: url("../images/sidebar/properties.png") center center no-repeat;
       background: url("../images/sidebar/properties.svg") center center no-repeat, linear-gradient(transparent, transparent); }
   .region-sidebar-toggle-menu #accordian .dashboard {
@@ -7616,7 +7616,7 @@ body.toggled #close-sidebar-wrapper {
       display: inline-block;
       position: absolute;
       left: -39px;
-      top: 4px;
+      top: 8px;
       background: url("../images/sidebar/dashboard.png") center center no-repeat;
       background: url("../images/sidebar/dashboard.svg") center center no-repeat, linear-gradient(transparent, transparent); }
   .region-sidebar-toggle-menu #accordian .bookings {
@@ -7627,8 +7627,8 @@ body.toggled #close-sidebar-wrapper {
       height: 19px;
       display: inline-block;
       position: absolute;
-      left: -32px;
-      top: 8px;
+      left: -36px;
+      top: 10px;
       background: url("../images/sidebar/bookings.png") center center no-repeat;
       background: url("../images/sidebar/bookings.svg") center center no-repeat, linear-gradient(transparent, transparent); }
   .region-sidebar-toggle-menu #accordian .conversations {
@@ -7639,7 +7639,7 @@ body.toggled #close-sidebar-wrapper {
       height: 25px;
       display: inline-block;
       position: absolute;
-      left: -33px;
+      left: -36px;
       top: 8px;
       background: url("../images/sidebar/conversations.png") center center no-repeat;
       background: url("../images/sidebar/conversations.svg") center center no-repeat, linear-gradient(transparent, transparent); }
@@ -7651,8 +7651,8 @@ body.toggled #close-sidebar-wrapper {
       height: 20px;
       display: inline-block;
       position: absolute;
-      left: -30px;
-      top: 7px;
+      left: -32px;
+      top: 10px;
       background: url("../images/sidebar/content.png") center center no-repeat;
       background: url("../images/sidebar/content.svg") center center no-repeat, linear-gradient(transparent, transparent); }
   .region-sidebar-toggle-menu #accordian .settings {
@@ -7663,8 +7663,8 @@ body.toggled #close-sidebar-wrapper {
       height: 25px;
       display: inline-block;
       position: absolute;
-      left: -33px;
-      top: 6px;
+      left: -35px;
+      top: 8px;
       background: url("../images/sidebar/setting.png") center center no-repeat;
       background: url("../images/sidebar/setting.svg") center center no-repeat, linear-gradient(transparent, transparent); }
   .region-sidebar-toggle-menu #accordian .accounts {
@@ -7675,8 +7675,8 @@ body.toggled #close-sidebar-wrapper {
       height: 23px;
       display: inline-block;
       position: absolute;
-      left: -32px;
-      top: 8px;
+      left: -34px;
+      top: 10px;
       background: url("../images/sidebar/accounts.png") center center no-repeat;
       background: url("../images/sidebar/accounts.svg") center center no-repeat, linear-gradient(transparent, transparent); }
 
