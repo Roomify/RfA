@@ -1,0 +1,17 @@
+<?php
+
+/**
+ * @file
+ * Stops form from changing when user is posting.
+ */
+
+/**
+ * Implements hook_form_alter().
+ */
+function entity_edit_protection_form_alter(&$form, &$form_state, $form_id) {
+  if ((isset($form['#entity_type']) && ($form['actions']['submit']['#type'] === 'submit'))) {
+    $form['#attached']['js'][] = drupal_get_path('module', 'entity_edit_protection') . '/js/entity_edit_protection.js';
+    $form['#attached']['css'][] = drupal_get_path('module', 'entity_edit_protection') . '/css/entity_edit_protection.css';
+    $form['#attached']['library'][] = array('system', 'ui.dialog');
+  }
+}
