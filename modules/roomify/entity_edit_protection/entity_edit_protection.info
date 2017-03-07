@@ -1,0 +1,4 @@
+name = Entity Edit Protection
+description = Protect the user against navigating away from an entity or entityform edit form before saving their changes.
+core = 7.x
+package = Roomify
