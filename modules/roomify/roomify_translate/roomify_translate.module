@@ -123,3 +123,14 @@ function roomify_translate_language_fallback_candidates_alter(array &$fallback_c
     }
   }
 }
+
+/**
+ * Implements hook_entity_presave().
+ */
+function roomify_translate_entity_presave($entity, $type) {
+  if ($type == 'taxonomy_term') {
+    if (!isset($entity->language)) {
+      $entity->language = language_default('language');
+    }
+  }
+}
