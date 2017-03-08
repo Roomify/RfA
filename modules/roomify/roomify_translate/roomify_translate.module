@@ -123,3 +123,29 @@ function roomify_translate_language_fallback_candidates_alter(array &$fallback_c
     }
   }
 }
+
+/**
+ * Implementation of hook_field_attach_form().
+ */
+function roomify_translate_field_attach_form($entity_type, $entity, &$form, &$form_state, $langcode) {
+  list($id, , $bundle) = entity_extract_ids($entity_type, $entity);
+  if (empty($form['#entity_translation_source_form']) && entity_translation_enabled($entity_type, $bundle)) {
+    $handler = entity_translation_get_handler($entity_type, $entity);
+    $form_langcode = $handler->getActiveLanguage();
+    $translations = $handler->getTranslations();
+    $new_translation = !isset($translations->data[$form_langcode]);
+
+    if (!$handler->isNewEntity() && ($new_translation || count($translations->data) > 1) &&
+        $handler->getLanguage() !== $form_langcode) {
+      list(, , $bundle) = entity_extract_ids($entity_type, $entity);
+      foreach (field_info_instances($entity_type, $bundle) as $instance) {
+        $field_name = $instance['field_name'];
+        $field = field_info_field($field_name);
+
+        if (((boolean) $field['translatable']) === FALSE) {
+          $form[$field_name]['#disabled'] = TRUE;
+        }
+      }
+    }
+  }
+}
