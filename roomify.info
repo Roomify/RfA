@@ -134,3 +134,4 @@ dependencies[] = entity_edit_protection
 
 ; Users
 dependencies[] = profile2
+dependencies[] = profile2_page

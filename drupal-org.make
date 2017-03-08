@@ -374,6 +374,7 @@ projects[profile2][type] = module
 projects[profile2][download][type] = git
 projects[profile2][download][url] = https://git.drupal.org/project/profile2.git
 projects[profile2][download][revision] = 9a05fc78b5c3c3deb9d41fb8202b523602c80a77
+projects[profile2][patch][] = https://www.drupal.org/files/issues/profile2-entity_translation_support-1966640-25_0.patch
 
 projects[publishcontent][version] = 1.3
 
