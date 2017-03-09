@@ -68,11 +68,37 @@ function roomify_area_update_7006() {
 }
 
 /**
- * Featured image should be required..
+ * Featured image should be required.
  */
 function roomify_area_update_7007() {
 
   $instance_info = field_read_instance('taxonomy_term', 'field_area_featured_image', 'location');
   $instance_info['required'] = 1;
   field_update_instance($instance_info);
+}
+
+/**
+ * Add a dummy image to featured images empty.
+ */
+function roomify_area_update_7008() {
+  $location = taxonomy_vocabulary_machine_name_load('location');
+  $areas = taxonomy_get_tree($location->vid);
+
+  foreach ($areas as $term) {
+    $area = taxonomy_term_load($term->tid);
+    if (!field_get_items('taxonomy_term', $area, 'field_area_featured_image')) {
+      $image_file = file_get_contents(drupal_get_path('module', 'roomify_area') . '/images/800x600.png');
+      $image_file = file_save_data($image_file, roomify_system_file_dir() . 'area-test.png', FILE_EXISTS_RENAME);
+
+      $area->field_area_featured_image[LANGUAGE_NONE][0] = array(
+        'fid' => $image_file->fid,
+        'filename' => $image_file->filename,
+        'filemime' => $image_file->filemime,
+        'uri' => $image_file->uri,
+        'status' => 1,
+        'display' => 1,
+      );
+      taxonomy_term_save($area);
+    }
+  }
 }
