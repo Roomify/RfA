@@ -417,7 +417,7 @@ projects[search_api_ranges][download][revision] = c769589f3aa90a7413401169ce520f
 
 projects[search_api_sorts][version] = 1.7
 
-projects[services][version] = 3.18
+projects[services][version] = 3.19
 
 projects[services_api_key_auth][version] = 1.2
 
