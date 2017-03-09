@@ -354,15 +354,6 @@ function roomify_travel_preprocess_page(&$variables) {
       $variables['theme_hook_suggestions'][] = 'page__' . $nodetype;
     }
   }
-  // Areas custom template.
-  if(arg(0) == 'taxonomy' && arg(1) == 'term') {
-    $tid = (int)arg(2);
-    $term = taxonomy_term_load($tid);
-
-    if($term->vocabulary_machine_name == 'location') {
-      $variables['theme_hook_suggestions'][] = 'page__taxonomy__location';
-    }
-  }
   // Use a different page layout for B&Bs / Vacation rentls sites.
   $product = variable_get('roomify_accommodation_example_content', '');
   if (($product == 'b_and_b' || $product == 'vacation_rental') && arg(0) == 'listing') {
