@@ -144,6 +144,10 @@ function roomify_translate_field_attach_form($entity_type, $entity, &$form, &$fo
 
         if (((boolean) $field['translatable']) === FALSE) {
           $form[$field_name]['#disabled'] = TRUE;
+          // Add a message to let the user know about the disabled field.
+          if (!isset($form[$field_name]['#prefix'])) {
+            $form[$field_name]['#prefix'] = '<div style="text-decoration: underline;font-size: 12px;color: #fe2f2f;">' . t('You can edit this field only in the default language version.') . '</div>';
+          }
         }
       }
     }

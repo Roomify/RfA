@@ -187,7 +187,7 @@ projects[entityqueue][version] = 1.1
 
 projects[entity_rules][version] = 1.0-alpha4
 
-projects[entity_translation][version] = 1.0-beta5
+projects[entity_translation][version] = 1.0-beta6
 
 projects[entity2text][version] = 1.0-alpha3
 
