@@ -133,6 +133,13 @@ body .back-to-site-link a {
   padding: 40px 40px;
   margin-top: 0 !important;
   background: white;
+  border: 2px solid whitesmoke;
+  border-radius: 8px;
+  margin-bottom: 40px;
+}
+body.better-messages-popup #console.roomify-admin-messages {
+  padding: 0;
+  background: transparent;
 }
 body {
   padding-right: 0;
@@ -567,6 +574,12 @@ body.adminimal-theme .autocomplete-deluxe-item {
 #better-messages-wrapper #better-messages-default {
   border: 5px solid rgba(29, 29, 29, 0.5);
   border-radius: 6px;
+}
+#better-messages-wrapper #better-messages-default table {
+  table-layout: fixed;
+}
+#better-messages-wrapper #better-messages-default table .messages {
+  word-wrap: break-word;
 }
 #better-messages-wrapper #better-messages-default .messages-label {
   color: #FFFFFF;
@@ -2622,10 +2635,64 @@ body.adminimal-theme.adminimal-skin-material.style-checkboxes input[type=radio] 
 }
 fieldset {
   border-top: 3px solid #0074BD !important;
-  box-shadow: none !important;
+  margin-bottom: 35px;
+  padding: 20px;
 }
 fieldset legend {
   background: none !important;
+  padding: 0 10px;
+}
+a.tabledrag-handle .handle {
+  width: 23px;
+  height: 23px;
+}
+a.tabledrag-handle-hover .handle {
+  background-position: 6px -14px;
+}
+.page-admin-bat-config-types .field-type-bat-event-state-constraints-range td:nth-child(2) .form-wrapper input {
+  margin: 10px 0;
+}
+.page-admin-bat-config-types .field-type-bat-event-state-constraints-range #bat-constraints-range-add-more-wrapper .field-add-more-submit {
+  margin: 15px 0;
+}
+.page-admin-bat-config-types .bat-type-edit-form .form-item-name label,
+.page-admin-bat-config-types .bat-type-edit-form .form-item-base-price label,
+.page-admin-bat-config-types .bat-type-edit-form .form-item-commission-rate label,
+.page-admin-bat-config-types .bat-type-edit-form .rooms-unit-guest-capacity label,
+.page-admin-bat-config-types .bat-type-edit-form .field-name-field-owner label {
+  font-size: 20px;
+  font-weight: 300;
+  margin-bottom: 6px;
+}
+.page-admin-bat-config-types .bat-type-edit-form .rooms-unit-guest-capacity legend span {
+  font-size: 20px;
+  font-weight: 300;
+  margin: 15px 0px;
+  display: inline-block;
+}
+.page-admin-bat-config-types .field-name-field-rl-area,
+.page-admin-bat-config-types .field-name-field-rl-area-type {
+  display: inline-block;
+  width: 100%;
+  max-width: 100%;
+}
+.page-admin-bat-config-types .field-name-field-rl-property-short-desc input {
+  width: 100%;
+}
+.page-admin-bat-config-types .vertical-tabs fieldset.vertical-tabs-pane .fieldset-wrapper {
+  margin-top: 20px;
+}
+.page-admin-bat-config-types .field-type-addressfield .street-block {
+  display: inline-block;
+}
+.page-admin-bat-config-types .field-name-field-rl-how-to-reach-the-place,
+.page-admin-bat-config-types .field-name-field-rl-property-essentials {
+  max-width: 500px;
+  width: 100%;
+  display: inline-block;
+}
+.page-admin-bat-config-types .field-name-field-rl-property-promo {
+  max-width: 700px;
 }
 /* Custom font */
 #references-dialog-page {
