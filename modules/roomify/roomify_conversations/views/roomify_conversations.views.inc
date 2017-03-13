@@ -219,7 +219,7 @@ function roomify_conversations_views_default_views() {
   $handler->display->display_options['fields']['nothing']['label'] = 'Requested Dates';
   $handler->display->display_options['fields']['nothing']['exclude'] = TRUE;
   $handler->display->display_options['fields']['nothing']['alter']['text'] = '([conversation_book_start_date] - [conversation_book_end_date])
-            ';
+              ';
   /* Field: Type: Type */
   $handler->display->display_options['fields']['type']['id'] = 'type';
   $handler->display->display_options['fields']['type']['table'] = 'bat_types';
@@ -315,13 +315,13 @@ function roomify_conversations_views_default_views() {
   $handler->display->display_options['fields']['nothing_1']['ui_name'] = 'Conversation Info (linked)';
   $handler->display->display_options['fields']['nothing_1']['label'] = '';
   $handler->display->display_options['fields']['nothing_1']['alter']['text'] = '<div class="conversation-info">
-                  <div><a class="conversation-info-link" href="[url]">
-                    <div class="conversation-header">[name_2] [nothing]</div>
-                    <div class="conversation-message"><span class="conversation-message-author">[most_recent_message_user]</span><span title="[most_recent_message_1]" class="conversation-message-message">[most_recent_message]</span><span class="conversation-price">[booking_price]</span></div>
-                  </a></div>
-                </div>
-                <div class="conversation-reply"><a title="Quick Reply" class="quick-reply-button ctools-use-modal ctools-modal-roomify-dashboard-modal-style" href="/admin/conversations/[conversation_id]/quick-reply/nojs">Reply</a></div>
-                ';
+                    <div><a class="conversation-info-link" href="[url]">
+                      <div class="conversation-header">[name_2] [nothing]</div>
+                      <div class="conversation-message"><span class="conversation-message-author">[most_recent_message_user]</span><span title="[most_recent_message_1]" class="conversation-message-message">[most_recent_message]</span><span class="conversation-price">[booking_price]</span></div>
+                    </a></div>
+                  </div>
+                  <div class="conversation-reply"><a title="Quick Reply" class="quick-reply-button ctools-use-modal ctools-modal-roomify-dashboard-modal-style" href="/admin/conversations/[conversation_id]/quick-reply/nojs">Reply</a></div>
+                  ';
   $handler->display->display_options['fields']['nothing_1']['element_label_colon'] = FALSE;
   /* Field: User: Language */
   $handler->display->display_options['fields']['language']['id'] = 'language';
@@ -482,7 +482,7 @@ function roomify_conversations_views_default_views() {
   $handler->display->display_options['fields']['nothing']['label'] = 'Requested Dates';
   $handler->display->display_options['fields']['nothing']['exclude'] = TRUE;
   $handler->display->display_options['fields']['nothing']['alter']['text'] = '([conversation_book_start_date] - [conversation_book_end_date])
-              ';
+                ';
   /* Field: Type: Type */
   $handler->display->display_options['fields']['type']['id'] = 'type';
   $handler->display->display_options['fields']['type']['table'] = 'bat_types';
@@ -585,13 +585,13 @@ function roomify_conversations_views_default_views() {
   $handler->display->display_options['fields']['nothing_1']['ui_name'] = 'Conversation Info (linked)';
   $handler->display->display_options['fields']['nothing_1']['label'] = '';
   $handler->display->display_options['fields']['nothing_1']['alter']['text'] = '<div class="conversation-info">
-                  <div><a class="conversation-info-link" href="[url]">
-                    <div class="conversation-header">[name_2] [nothing]</div>
-                    <div class="conversation-message"><span class="conversation-message-author">[most_recent_message_user]</span><span title="[most_recent_message_1]" class="conversation-message-message">[most_recent_message]</span><span class="conversation-price">[booking_price]</span></div>
-                  </a></div>
-                </div>
-                <div class="conversation-reply"><a title="Quick Reply" class="quick-reply-button ctools-use-modal ctools-modal-roomify-dashboard-modal-style" href="[conversation_info]">Reply</a></div>
-                ';
+                    <div><a class="conversation-info-link" href="[url]">
+                      <div class="conversation-header">[name_2] [nothing]</div>
+                      <div class="conversation-message"><span class="conversation-message-author">[most_recent_message_user]</span><span title="[most_recent_message_1]" class="conversation-message-message">[most_recent_message]</span><span class="conversation-price">[booking_price]</span></div>
+                    </a></div>
+                  </div>
+                  <div class="conversation-reply"><a title="Quick Reply" class="quick-reply-button ctools-use-modal ctools-modal-roomify-dashboard-modal-style" href="[conversation_info]">Reply</a></div>
+                  ';
   $handler->display->display_options['fields']['nothing_1']['element_label_colon'] = FALSE;
   $handler->display->display_options['defaults']['arguments'] = FALSE;
   /* Contextual filter: User: Uid */
@@ -607,11 +607,11 @@ function roomify_conversations_views_default_views() {
   $handler->display->display_options['arguments']['uid']['specify_validation'] = TRUE;
   $handler->display->display_options['arguments']['uid']['validate']['type'] = 'php';
   $handler->display->display_options['arguments']['uid']['validate_options']['code'] = 'if (user_access(\'update any roomify_conversation entity\')) {
-                      return FALSE;
-                      }
-                      else {
-                      return TRUE;
-                      }';
+                        return FALSE;
+                        }
+                        else {
+                        return TRUE;
+                        }';
   $handler->display->display_options['arguments']['uid']['validate']['fail'] = 'ignore';
   $handler->display->display_options['allow']['use_pager'] = 0;
   $handler->display->display_options['allow']['items_per_page'] = 0;
@@ -642,10 +642,8 @@ function roomify_conversations_views_default_views() {
   $handler->display->display_options['defaults']['use_more_text'] = FALSE;
   $handler->display->display_options['use_more_text'] = 'View All';
   $handler->display->display_options['defaults']['access'] = FALSE;
-  $handler->display->display_options['access']['type'] = 'role';
-  $handler->display->display_options['access']['role'] = array(
-    6 => '6',
-  );
+  $handler->display->display_options['access']['type'] = 'perm';
+  $handler->display->display_options['access']['perm'] = 'view own roomify_conversation entities';
   $handler->display->display_options['defaults']['pager'] = FALSE;
   $handler->display->display_options['pager']['type'] = 'full';
   $handler->display->display_options['pager']['options']['items_per_page'] = '25';
@@ -783,7 +781,7 @@ function roomify_conversations_views_default_views() {
   $handler->display->display_options['fields']['nothing']['label'] = 'Requested Dates';
   $handler->display->display_options['fields']['nothing']['exclude'] = TRUE;
   $handler->display->display_options['fields']['nothing']['alter']['text'] = '([conversation_book_start_date] - [conversation_book_end_date])
-              ';
+                ';
   /* Field: Type: Type */
   $handler->display->display_options['fields']['type']['id'] = 'type';
   $handler->display->display_options['fields']['type']['table'] = 'bat_types';
@@ -879,13 +877,13 @@ function roomify_conversations_views_default_views() {
   $handler->display->display_options['fields']['nothing_1']['ui_name'] = 'Conversation Info (linked)';
   $handler->display->display_options['fields']['nothing_1']['label'] = '';
   $handler->display->display_options['fields']['nothing_1']['alter']['text'] = '<div class="conversation-info">
-                  <div><a class="conversation-info-link" href="[url]">
-                    <div class="conversation-header">[name_2] [nothing]</div>
-                    <div class="conversation-message"><span class="conversation-message-author">[most_recent_message_user]</span><span title="[most_recent_message_1]" class="conversation-message-message">[most_recent_message]</span><span class="conversation-price">[booking_price]</span></div>
-                  </a></div>
-                </div>
-                <div class="conversation-reply"><a title="Quick Reply" class="quick-reply-button ctools-use-modal ctools-modal-roomify-dashboard-modal-style" href="/admin/conversations/[conversation_id]/quick-reply/nojs">Reply</a></div>
-                ';
+                    <div><a class="conversation-info-link" href="[url]">
+                      <div class="conversation-header">[name_2] [nothing]</div>
+                      <div class="conversation-message"><span class="conversation-message-author">[most_recent_message_user]</span><span title="[most_recent_message_1]" class="conversation-message-message">[most_recent_message]</span><span class="conversation-price">[booking_price]</span></div>
+                    </a></div>
+                  </div>
+                  <div class="conversation-reply"><a title="Quick Reply" class="quick-reply-button ctools-use-modal ctools-modal-roomify-dashboard-modal-style" href="/admin/conversations/[conversation_id]/quick-reply/nojs">Reply</a></div>
+                  ';
   $handler->display->display_options['fields']['nothing_1']['element_label_colon'] = FALSE;
   $handler->display->display_options['defaults']['filter_groups'] = FALSE;
   $handler->display->display_options['defaults']['filters'] = FALSE;
@@ -1032,7 +1030,7 @@ function roomify_conversations_views_default_views() {
   $handler->display->display_options['fields']['nothing']['label'] = 'Requested Dates';
   $handler->display->display_options['fields']['nothing']['exclude'] = TRUE;
   $handler->display->display_options['fields']['nothing']['alter']['text'] = '([conversation_book_start_date] - [conversation_book_end_date])
-              ';
+                ';
   /* Field: Type: Type */
   $handler->display->display_options['fields']['type']['id'] = 'type';
   $handler->display->display_options['fields']['type']['table'] = 'bat_types';
@@ -1128,13 +1126,13 @@ function roomify_conversations_views_default_views() {
   $handler->display->display_options['fields']['nothing_1']['ui_name'] = 'Conversation Info (linked)';
   $handler->display->display_options['fields']['nothing_1']['label'] = '';
   $handler->display->display_options['fields']['nothing_1']['alter']['text'] = '<div class="conversation-info">
-                  <div><a class="conversation-info-link" href="[url]">
-                    <div class="conversation-header">[name_2] [nothing]</div>
-                    <div class="conversation-message"><span class="conversation-message-author">[most_recent_message_user]</span><span title="[most_recent_message_1]" class="conversation-message-message">[most_recent_message]</span><span class="conversation-price">[booking_price]</span></div>
-                  </a></div>
-                </div>
-                <div class="conversation-reply"><a title="Quick Reply" class="quick-reply-button ctools-use-modal ctools-modal-roomify-dashboard-modal-style" href="/admin/conversations/[conversation_id]/quick-reply/nojs">Reply</a></div>
-                ';
+                    <div><a class="conversation-info-link" href="[url]">
+                      <div class="conversation-header">[name_2] [nothing]</div>
+                      <div class="conversation-message"><span class="conversation-message-author">[most_recent_message_user]</span><span title="[most_recent_message_1]" class="conversation-message-message">[most_recent_message]</span><span class="conversation-price">[booking_price]</span></div>
+                    </a></div>
+                  </div>
+                  <div class="conversation-reply"><a title="Quick Reply" class="quick-reply-button ctools-use-modal ctools-modal-roomify-dashboard-modal-style" href="/admin/conversations/[conversation_id]/quick-reply/nojs">Reply</a></div>
+                  ';
   $handler->display->display_options['fields']['nothing_1']['element_label_colon'] = FALSE;
   $handler->display->display_options['allow']['use_pager'] = 0;
   $handler->display->display_options['allow']['items_per_page'] = 0;
@@ -1307,7 +1305,7 @@ function roomify_conversations_views_default_views() {
   $handler->display->display_options['fields']['nothing']['label'] = 'Requested Dates';
   $handler->display->display_options['fields']['nothing']['exclude'] = TRUE;
   $handler->display->display_options['fields']['nothing']['alter']['text'] = '([conversation_book_start_date] - [conversation_book_end_date])
-              ';
+                ';
   /* Field: Type: Type */
   $handler->display->display_options['fields']['type']['id'] = 'type';
   $handler->display->display_options['fields']['type']['table'] = 'bat_types';
@@ -1403,13 +1401,13 @@ function roomify_conversations_views_default_views() {
   $handler->display->display_options['fields']['nothing_1']['ui_name'] = 'Conversation Info (linked)';
   $handler->display->display_options['fields']['nothing_1']['label'] = '';
   $handler->display->display_options['fields']['nothing_1']['alter']['text'] = '<div class="conversation-info">
-                  <div><a class="conversation-info-link" href="[url]">
-                    <div class="conversation-header">[name_2] [nothing]</div>
-                    <div class="conversation-message"><span class="conversation-message-author">[most_recent_message_user]</span><span title="[most_recent_message_1]" class="conversation-message-message">[most_recent_message]</span><span class="conversation-price">[booking_price]</span></div>
-                  </a></div>
-                </div>
-                <div class="conversation-reply"><a title="Quick Reply" class="quick-reply-button ctools-use-modal ctools-modal-roomify-dashboard-modal-style" href="/admin/conversations/[conversation_id]/quick-reply/nojs">Reply</a></div>
-                ';
+                    <div><a class="conversation-info-link" href="[url]">
+                      <div class="conversation-header">[name_2] [nothing]</div>
+                      <div class="conversation-message"><span class="conversation-message-author">[most_recent_message_user]</span><span title="[most_recent_message_1]" class="conversation-message-message">[most_recent_message]</span><span class="conversation-price">[booking_price]</span></div>
+                    </a></div>
+                  </div>
+                  <div class="conversation-reply"><a title="Quick Reply" class="quick-reply-button ctools-use-modal ctools-modal-roomify-dashboard-modal-style" href="/admin/conversations/[conversation_id]/quick-reply/nojs">Reply</a></div>
+                  ';
   $handler->display->display_options['fields']['nothing_1']['element_label_colon'] = FALSE;
   $handler->display->display_options['defaults']['arguments'] = FALSE;
   /* Contextual filter: User: Uid */
@@ -1425,11 +1423,11 @@ function roomify_conversations_views_default_views() {
   $handler->display->display_options['arguments']['uid']['specify_validation'] = TRUE;
   $handler->display->display_options['arguments']['uid']['validate']['type'] = 'php';
   $handler->display->display_options['arguments']['uid']['validate_options']['code'] = 'if (user_access(\'update any roomify_conversation entity\')) {
-                      return FALSE;
-                      }
-                      else {
-                      return TRUE;
-                      }';
+                        return FALSE;
+                        }
+                        else {
+                        return TRUE;
+                        }';
   $handler->display->display_options['arguments']['uid']['validate']['fail'] = 'ignore';
   $handler->display->display_options['defaults']['filter_groups'] = FALSE;
   $handler->display->display_options['defaults']['filters'] = FALSE;
@@ -1515,7 +1513,7 @@ function roomify_conversations_views_default_views() {
     t('[name_2]'),
     t('Requested Dates'),
     t('([conversation_book_start_date] - [conversation_book_end_date])
-            '),
+              '),
     t('Further info'),
     t('Most recent message'),
     t('[most_recent_message]'),
@@ -1526,27 +1524,27 @@ function roomify_conversations_views_default_views() {
     t('[conversation_book_price]'),
     t('Most recent message - not trimmed'),
     t('<div class="conversation-info">
-                  <div><a class="conversation-info-link" href="[url]">
-                    <div class="conversation-header">[name_2] [nothing]</div>
-                    <div class="conversation-message"><span class="conversation-message-author">[most_recent_message_user]</span><span title="[most_recent_message_1]" class="conversation-message-message">[most_recent_message]</span><span class="conversation-price">[booking_price]</span></div>
-                  </a></div>
-                </div>
-                <div class="conversation-reply"><a title="Quick Reply" class="quick-reply-button ctools-use-modal ctools-modal-roomify-dashboard-modal-style" href="/admin/conversations/[conversation_id]/quick-reply/nojs">Reply</a></div>
-                '),
+                    <div><a class="conversation-info-link" href="[url]">
+                      <div class="conversation-header">[name_2] [nothing]</div>
+                      <div class="conversation-message"><span class="conversation-message-author">[most_recent_message_user]</span><span title="[most_recent_message_1]" class="conversation-message-message">[most_recent_message]</span><span class="conversation-price">[booking_price]</span></div>
+                    </a></div>
+                  </div>
+                  <div class="conversation-reply"><a title="Quick Reply" class="quick-reply-button ctools-use-modal ctools-modal-roomify-dashboard-modal-style" href="/admin/conversations/[conversation_id]/quick-reply/nojs">Reply</a></div>
+                  '),
     t('Language'),
     t('All'),
     t('Owner Conversations'),
     t('more'),
     t('([conversation_book_start_date] - [conversation_book_end_date])
-              '),
-    t('<div class="conversation-info">
-                  <div><a class="conversation-info-link" href="[url]">
-                    <div class="conversation-header">[name_2] [nothing]</div>
-                    <div class="conversation-message"><span class="conversation-message-author">[most_recent_message_user]</span><span title="[most_recent_message_1]" class="conversation-message-message">[most_recent_message]</span><span class="conversation-price">[booking_price]</span></div>
-                  </a></div>
-                </div>
-                <div class="conversation-reply"><a title="Quick Reply" class="quick-reply-button ctools-use-modal ctools-modal-roomify-dashboard-modal-style" href="[conversation_info]">Reply</a></div>
                 '),
+    t('<div class="conversation-info">
+                    <div><a class="conversation-info-link" href="[url]">
+                      <div class="conversation-header">[name_2] [nothing]</div>
+                      <div class="conversation-message"><span class="conversation-message-author">[most_recent_message_user]</span><span title="[most_recent_message_1]" class="conversation-message-message">[most_recent_message]</span><span class="conversation-price">[booking_price]</span></div>
+                    </a></div>
+                  </div>
+                  <div class="conversation-reply"><a title="Quick Reply" class="quick-reply-button ctools-use-modal ctools-modal-roomify-dashboard-modal-style" href="[conversation_info]">Reply</a></div>
+                  '),
     t('View panes'),
     t('Guest View All Conversations'),
     t('Items per page'),

@@ -1735,6 +1735,29 @@ function roomify_dashboard_default_panels_mini() {
   $pane->uuid = 'e5acf8e5-2d72-4acb-95d7-58cb7ee5ef6d';
   $display->content['new-e5acf8e5-2d72-4acb-95d7-58cb7ee5ef6d'] = $pane;
   $display->panels['top'][3] = 'new-e5acf8e5-2d72-4acb-95d7-58cb7ee5ef6d';
+  $pane = new stdClass();
+  $pane->pid = 'new-d2851759-9d5b-4367-9bab-6bd877387e8a';
+  $pane->panel = 'top';
+  $pane->type = 'views_panes';
+  $pane->subtype = 'favorite_properties-block_1';
+  $pane->shown = TRUE;
+  $pane->access = array();
+  $pane->configuration = array(
+    'override_title' => 1,
+    'override_title_text' => '<span id="dashboard-favorites-tab"></span>Favorites',
+    'override_title_heading' => 'h2',
+  );
+  $pane->cache = array();
+  $pane->style = array(
+    'settings' => NULL,
+  );
+  $pane->css = array();
+  $pane->extras = array();
+  $pane->position = 4;
+  $pane->locks = array();
+  $pane->uuid = 'd2851759-9d5b-4367-9bab-6bd877387e8a';
+  $display->content['new-d2851759-9d5b-4367-9bab-6bd877387e8a'] = $pane;
+  $display->panels['top'][4] = 'new-d2851759-9d5b-4367-9bab-6bd877387e8a';
   $display->hide_title = PANELS_TITLE_FIXED;
   $display->title_pane = '0';
   $mini->display = $display;

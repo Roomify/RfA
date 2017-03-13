@@ -1851,6 +1851,32 @@ body.adminimal-theme .cke_reset_all label {
 .view-display-id-dashboard_properties .view-header {
   margin-bottom: 20px;
 }
+.pane-favorite-properties-block-1 .view-favorite-properties {
+  position: relative;
+  max-width: 968px;
+  margin: 0 auto;
+  margin-top: 50px;
+}
+.pane-favorite-properties-block-1 .view-favorite-properties a {
+  color: #405467;
+}
+.pane-favorite-properties-block-1 .view-favorite-properties .views-field-field-sp-featured-image {
+  max-width: 130px;
+}
+.pane-favorite-properties-block-1 .view-favorite-properties .views-field-field-sp-featured-image img {
+  width: 100%;
+  height: auto;
+  border-radius: 50%;
+}
+.pane-favorite-properties-block-1 .view-favorite-properties .property-name {
+  font-size: 18px;
+  font-weight: 600;
+  margin-bottom: 5px;
+}
+.pane-favorite-properties-block-1 .view-favorite-properties .property-description {
+  color: gray;
+  font-style: italic;
+}
 .pane-properties-dashboard-properties .view-display-id-dashboard_properties {
   position: relative;
   max-width: 968px;
@@ -2438,6 +2464,23 @@ body.adminimal-skin-material table.views-table tbody tr td {
     top: 15px;
   }
 }
+.roomify-dashboard #dashboard-favorites-tab {
+  background: url("../images/dashboard/star.png") center center no-repeat;
+  background: url("../images/dashboard/star.svg") center center no-repeat, linear-gradient(transparent, transparent);
+  display: inline-block;
+  width: 22px;
+  height: 22px;
+  position: relative;
+  top: 5px;
+  right: 6px;
+}
+@media (max-width: 991px) {
+  .roomify-dashboard #dashboard-favorites-tab {
+    position: absolute;
+    left: 20px;
+    top: 15px;
+  }
+}
 .roomify-dashboard #dashboard-bookings-tab {
   background: url("../images/dashboard/bookings.png") center center no-repeat;
   background: url("../images/dashboard/bookings.svg") center center no-repeat, linear-gradient(transparent, transparent);
@@ -2609,6 +2652,10 @@ body.page-admin-appearance.adminimal-skin-material .theme-selector {
 html,
 body.adminimal-skin-material {
   background: #263238;
+}
+html.maintenance-page,
+body.adminimal-skin-material.maintenance-page {
+  background: #263238 !important;
 }
 input[type="submit"],
 input.form-submit,

@@ -365,11 +365,11 @@ function roomify_dashboard_views_default_views() {
   $handler->display->display_options['arguments']['uid']['specify_validation'] = TRUE;
   $handler->display->display_options['arguments']['uid']['validate']['type'] = 'php';
   $handler->display->display_options['arguments']['uid']['validate_options']['code'] = 'if (user_access(\'update any bat_booking entity\')) {
-              return FALSE;
-              }
-              else {
-              return TRUE;
-              }';
+                return FALSE;
+                }
+                else {
+                return TRUE;
+                }';
   $handler->display->display_options['arguments']['uid']['validate']['fail'] = 'ignore';
   /* Filter criterion: Events: State (event_state_reference) */
   $handler->display->display_options['filters']['event_state_reference_state_id']['id'] = 'event_state_reference_state_id';
@@ -2650,13 +2650,6 @@ function roomify_dashboard_views_default_views() {
   $handler->display->display_options['pager']['type'] = 'full';
   $handler->display->display_options['style_plugin'] = 'default';
   $handler->display->display_options['row_plugin'] = 'fields';
-  /* No results behavior: Global: Text area */
-  $handler->display->display_options['empty']['area']['id'] = 'area';
-  $handler->display->display_options['empty']['area']['table'] = 'views';
-  $handler->display->display_options['empty']['area']['field'] = 'area';
-  $handler->display->display_options['empty']['area']['empty'] = TRUE;
-  $handler->display->display_options['empty']['area']['content'] = 'You do not have any favorite properties yet!  <a href="/">Browse</a> the site to find a few.';
-  $handler->display->display_options['empty']['area']['format'] = 'filtered_text';
   /* Relationship: Flags: favorites */
   $handler->display->display_options['relationships']['flag_content_rel']['id'] = 'flag_content_rel';
   $handler->display->display_options['relationships']['flag_content_rel']['table'] = 'roomify_properties';
@@ -2696,6 +2689,40 @@ function roomify_dashboard_views_default_views() {
 
   /* Display: Favorites */
   $handler = $view->new_display('panel_pane', 'Favorites', 'block_1');
+  $handler->display->display_options['defaults']['style_plugin'] = FALSE;
+  $handler->display->display_options['style_plugin'] = 'table';
+  $handler->display->display_options['style_options']['columns'] = array(
+    'property_id' => 'property_id',
+    'field_sp_featured_image' => 'field_sp_featured_image',
+    'name' => 'name',
+  );
+  $handler->display->display_options['style_options']['default'] = '-1';
+  $handler->display->display_options['style_options']['info'] = array(
+    'property_id' => array(
+      'sortable' => 0,
+      'default_sort_order' => 'asc',
+      'align' => '',
+      'separator' => '',
+      'empty_column' => 0,
+    ),
+    'field_sp_featured_image' => array(
+      'sortable' => 0,
+      'default_sort_order' => 'asc',
+      'align' => '',
+      'separator' => '',
+      'empty_column' => 0,
+    ),
+    'name' => array(
+      'sortable' => 0,
+      'default_sort_order' => 'asc',
+      'align' => '',
+      'separator' => '',
+      'empty_column' => 0,
+    ),
+  );
+  $handler->display->display_options['defaults']['style_options'] = FALSE;
+  $handler->display->display_options['defaults']['row_plugin'] = FALSE;
+  $handler->display->display_options['defaults']['row_options'] = FALSE;
   $handler->display->display_options['defaults']['fields'] = FALSE;
   /* Field: Roomify Property: Roomify property ID */
   $handler->display->display_options['fields']['property_id']['id'] = 'property_id';
@@ -2710,8 +2737,8 @@ function roomify_dashboard_views_default_views() {
   $handler->display->display_options['fields']['field_sp_featured_image']['element_label_colon'] = FALSE;
   $handler->display->display_options['fields']['field_sp_featured_image']['click_sort_column'] = 'fid';
   $handler->display->display_options['fields']['field_sp_featured_image']['settings'] = array(
-    'image_style' => 'roomify_4_3',
-    'image_link' => '',
+    'image_style' => 'square',
+    'image_link' => 'content',
     'conditions' => array(
       0 => array(
         'condition' => '',
@@ -2723,12 +2750,34 @@ function roomify_dashboard_views_default_views() {
   $handler->display->display_options['fields']['name']['table'] = 'roomify_properties';
   $handler->display->display_options['fields']['name']['field'] = 'name';
   $handler->display->display_options['fields']['name']['label'] = '';
-  $handler->display->display_options['fields']['name']['alter']['alter_text'] = TRUE;
-  $handler->display->display_options['fields']['name']['alter']['text'] = '<div class="property-name">
-  [name]
-  </div>';
+  $handler->display->display_options['fields']['name']['exclude'] = TRUE;
   $handler->display->display_options['fields']['name']['alter']['path'] = '/listing/[property_id]';
   $handler->display->display_options['fields']['name']['element_label_colon'] = FALSE;
+  $handler->display->display_options['fields']['name']['element_wrapper_type'] = 'h3';
+  /* Field: Roomify Property: Property Short Description */
+  $handler->display->display_options['fields']['field_sp_short_description']['id'] = 'field_sp_short_description';
+  $handler->display->display_options['fields']['field_sp_short_description']['table'] = 'field_data_field_sp_short_description';
+  $handler->display->display_options['fields']['field_sp_short_description']['field'] = 'field_sp_short_description';
+  $handler->display->display_options['fields']['field_sp_short_description']['label'] = '';
+  $handler->display->display_options['fields']['field_sp_short_description']['alter']['alter_text'] = TRUE;
+  $handler->display->display_options['fields']['field_sp_short_description']['alter']['text'] = '<div class="property-name">[name]</div>
+  <div class="property-description">[field_sp_short_description]</div>
+  ';
+  $handler->display->display_options['fields']['field_sp_short_description']['element_label_colon'] = FALSE;
+  $handler->display->display_options['fields']['field_sp_short_description']['settings'] = array(
+    'conditions' => array(
+      0 => array(
+        'condition' => '',
+      ),
+    ),
+  );
+  /* Field: Global: Custom text */
+  $handler->display->display_options['fields']['nothing']['id'] = 'nothing';
+  $handler->display->display_options['fields']['nothing']['table'] = 'views';
+  $handler->display->display_options['fields']['nothing']['field'] = 'nothing';
+  $handler->display->display_options['fields']['nothing']['label'] = '';
+  $handler->display->display_options['fields']['nothing']['alter']['text'] = '<a href="/listing/[property_id]" target="_blank" class="btn btn-success view-property">View Property</a>';
+  $handler->display->display_options['fields']['nothing']['element_label_colon'] = FALSE;
   $handler->display->display_options['allow']['use_pager'] = 0;
   $handler->display->display_options['allow']['items_per_page'] = 0;
   $handler->display->display_options['allow']['offset'] = 0;
@@ -2769,15 +2818,15 @@ function roomify_dashboard_views_default_views() {
     t('‹ previous'),
     t('next ›'),
     t('last »'),
-    t('You do not have any favorite properties yet!  <a href="/">Browse</a> the site to find a few.'),
     t('flag'),
     t('Roomify property ID'),
     t('.'),
     t(','),
     t('Favorites'),
-    t('<div class="property-name">
-  [name]
-  </div>'),
+    t('<div class="property-name">[name]</div>
+  <div class="property-description">[field_sp_short_description]</div>
+  '),
+    t('<a href="/listing/[property_id]" target="_blank" class="btn btn-success view-property">View Property</a>'),
     t('View panes'),
     t('Sidebar Favorites'),
     t('<span class="glyphicon glyphicon-heart"></span>Favorite Properties'),

@@ -988,6 +988,7 @@ function roomify_system_roomify_rights() {
       'view past event information',
       'create bat_unit entities',
       'update any bat_booking entity',
+      'update own bat_booking entities',
       'view any bat_booking entity',
       'view any bat_event entity',
       'view any bat_unit entity',
@@ -1072,6 +1073,7 @@ function roomify_system_roomify_rights() {
       'view own commerce_order entities',
       'view any commerce order',
       'edit any commerce_order entity',
+      'configure bat settings',
     ),
     'content editor' => array(
       'access content overview',
