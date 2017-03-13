@@ -25,6 +25,7 @@ function roomify_dashboard_admin_paths() {
     'user/*' => TRUE,
     'user/*/stays' => TRUE,
     'user/*/conversations' => TRUE,
+    'profile-property_owner/*' => TRUE,
   );
 
   return $paths;

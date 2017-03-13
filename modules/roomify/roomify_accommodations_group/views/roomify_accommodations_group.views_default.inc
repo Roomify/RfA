@@ -649,7 +649,7 @@ function roomify_accommodations_group_views_default_views() {
   $handler->display->display_options['fields']['nothing']['label'] = 'Edit';
   $handler->display->display_options['fields']['nothing']['alter']['text'] = 'Edit';
   $handler->display->display_options['fields']['nothing']['alter']['make_link'] = TRUE;
-  $handler->display->display_options['fields']['nothing']['alter']['path'] = 'user/[user]/edit/property_owner';
+  $handler->display->display_options['fields']['nothing']['alter']['path'] = 'profile-property_owner/[user]/edit';
   /* Field: Group: Title */
   $handler->display->display_options['fields']['title']['id'] = 'title';
   $handler->display->display_options['fields']['title']['table'] = 'groups';
