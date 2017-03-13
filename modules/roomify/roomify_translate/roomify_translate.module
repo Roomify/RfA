@@ -153,3 +153,14 @@ function roomify_translate_field_attach_form($entity_type, $entity, &$form, &$fo
     }
   }
 }
+
+/**
+ * Implements hook_entity_presave().
+ */
+function roomify_translate_entity_presave($entity, $type) {
+  if ($type == 'taxonomy_term') {
+    if (!isset($entity->language)) {
+      $entity->language = language_default('language');
+    }
+  }
+}
