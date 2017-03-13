@@ -62,7 +62,7 @@ projects[better_db_updates][subdir] = contrib
 
 ; bootstrap
 projects[bootstrap][type] = theme
-projects[bootstrap][version] = 3.10
+projects[bootstrap][version] = 3.12
 
 ; adminimal
 projects[adminimal_theme][type] = theme
@@ -114,7 +114,7 @@ projects[commerce][patch][] = https://www.drupal.org/files/issues/commerce-delet
 projects[commerce][patch][] = https://www.drupal.org/files/issues/commerce-georgian_lari-2256853-6.patch
 projects[commerce][patch][] = https://www.drupal.org/files/issues/commerce-cart_product_add_php7-2762907-5.patch
 
-projects[commerce_addressbook] = 3.0-beta3
+projects[commerce_addressbook] = 3.0-rc3
 
 projects[commerce_authnet][version] = 1.4
 
@@ -263,7 +263,7 @@ projects[google_tag][version] = 1.0
 projects[group][version] = 1.0-beta6
 projects[group][patch][] = https://www.drupal.org/files/issues/group-profile2_integration-2701803-1.patch
 
-projects[jquery_update][version] = 3.0-alpha3
+projects[jquery_update][version] = 3.0-alpha4
 
 projects[job_scheduler][type] = module
 projects[job_scheduler][download][type] = git
@@ -320,7 +320,7 @@ projects[masonry][version] = 3.0-beta1
 
 projects[masonry_views][version] = 3.0
 
-projects[media][version] = 2.0-rc4
+projects[media][version] = 2.0-rc12
 
 projects[menu_admin_per_menu][version] = 1.0
 projects[menu_admin_per_menu][patch][] = https://www.drupal.org/files/issues/integrate-menu-translation-suport-2546214-1.patch
@@ -348,7 +348,7 @@ projects[panels_tabs][download][url] = https://git.drupal.org/project/panels_tab
 projects[panels_tabs][download][revision] = 2caec501daab91001712d153398df585ff6c238c
 projects[panels_tabs][patch][] = https://www.drupal.org/files/issues/panels_tabs-back_button_support-821334-18.patch
 
-projects[paragraphs][version] = 1.0-rc4
+projects[paragraphs][version] = 1.0-rc5
 
 projects[paragraphs_id][version] = 1.0-alpha2
 
@@ -403,7 +403,7 @@ projects[rrssb][download][revision] = 969397d5331003aa33869b53bd4ac94814f99852
 
 projects[s3fs][version] = 2.4
 
-projects[search_api][version] = 1.20
+projects[search_api][version] = 1.21
 
 projects[search_api_db][type] = module
 projects[search_api_db][download][type] = git
@@ -479,7 +479,7 @@ projects[views_date_format_sql][version] = 3.1
 
 projects[views_load_more][version] = 1.5
 
-projects[views_bulk_operations][version] = 3.3
+projects[views_bulk_operations][version] = 3.4
 
 projects[views_megarow][version] = 1.7
 
