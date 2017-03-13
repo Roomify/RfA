@@ -84,7 +84,8 @@ projects[adminimal_admin_menu][version] = 1.7
 
 projects[agrcache][version] = 1.7
 
-projects[autocomplete_deluxe][version] = 2
+projects[autocomplete_deluxe][version] = 2.2
+projects[autocomplete_deluxe][patch][] = https://www.drupal.org/files/issues/term_names-2858823-1.patch
 
 projects[backup_migrate][version] = 3.1
 projects[backup_migrate][patch][] = https://www.drupal.org/files/issues/backup_migrate-fix_constructor_for_future_version_php-2623598-5-7.x.patch
@@ -186,7 +187,7 @@ projects[entityqueue][version] = 1.1
 
 projects[entity_rules][version] = 1.0-alpha4
 
-projects[entity_translation][version] = 1.0-beta5
+projects[entity_translation][version] = 1.0-beta6
 
 projects[entity2text][version] = 1.0-alpha3
 
