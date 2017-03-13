@@ -26,7 +26,7 @@ function roomify_property_owner_profile_render($subtype, $conf, $args, $pane_con
 
   // Check for a description to user.
   if ($description = field_get_items('roomify_property', $property, 'field_sp_description')) {
-    $user_info = text_summary($description[0]['value'], $description[0]['format'], '160') . '</ br> ' . '<a href="#tabs-0-property-description-1">' . t('see more') . '</a>';
+    $user_info = text_summary($description[0]['value'], $description[0]['format'], '160') . '</ br> ' . '<a id="see-more-property-description" href="#tabs-0-property-description-1">' . t('see more') . '</a>';
   }
 
   // The default image is the featured one. A user image will override this.

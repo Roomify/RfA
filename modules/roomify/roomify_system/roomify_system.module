@@ -2126,6 +2126,12 @@ function roomify_system_form_alter(&$form, &$form_state, $form_id) {
       unset($form['actions']['preview_changes']);
     }
   }
+
+  if (isset($form['redirect'])) {
+    if ($form['redirect']['#type'] == 'fieldset') {
+      $form['redirect']['#group'] = 'additional_settings';
+    }
+  }
 }
 
 /**

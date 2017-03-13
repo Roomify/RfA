@@ -419,7 +419,7 @@ projects[search_api_ranges][download][revision] = c769589f3aa90a7413401169ce520f
 
 projects[search_api_sorts][version] = 1.7
 
-projects[services][version] = 3.18
+projects[services][version] = 3.19
 
 projects[services_api_key_auth][version] = 1.2
 
@@ -457,7 +457,7 @@ projects[variable][version] = 2.5
 
 projects[view_unpublished][version] = 1.2
 
-projects[views][version] = 3.14
+projects[views][version] = 3.15
 
 projects[views_autocomplete_filters][type] = module
 projects[views_autocomplete_filters][download][type] = git

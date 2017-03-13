@@ -40,8 +40,15 @@ Drupal.behaviors.roomifyTravelScripts = {
       // Get the index of this tab
       tabIndex = $("li").index($tabParent);
       // Open the appropriate tab
-      $( '#ui-id-' + $id ).click();
+      $('#ui-id-' + $id).click();
+
+      document.getElementById('property-types').scrollIntoView();
     }
+
+    // Open Description tab if user clicks on 'See More'.
+    $('.user-info #see-more-property-description').click(function(){
+      $( '#ui-id-1' ).click();
+    });
 
     // Hide overlay of slides without a title or a description.
     $('.page-listing .slide__overlay').each(function(i, obj) {

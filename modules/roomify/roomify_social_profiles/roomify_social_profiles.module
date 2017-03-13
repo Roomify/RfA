@@ -291,6 +291,7 @@ function rsp_settings($all = FALSE) {
  *   A string of markup for the list of buttons.
  */
 function rsp_get_buttons($node = NULL) {
+  $items = array();
   foreach (rsp_settings() as $name => $button) {
     // Set share and follow as the link.
     $items[] = array(
