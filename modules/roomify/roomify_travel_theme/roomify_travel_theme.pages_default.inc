@@ -178,7 +178,7 @@ function roomify_travel_theme_default_page_manager_handlers() {
     'formatter_settings' => array(),
     'context' => 'argument_entity_id:roomify_property_1',
     'override_title' => 1,
-    'override_title_text' => '<span id="property-policies-tab"></span>Polices',
+    'override_title_text' => '<span id="property-policies-tab"></span>Policies',
     'override_title_heading' => 'h3',
   );
   $pane->cache = array();
@@ -3436,7 +3436,7 @@ function roomify_travel_theme_default_page_manager_handlers() {
     'formatter_settings' => array(),
     'context' => 'argument_entity_id:roomify_property_1',
     'override_title' => 1,
-    'override_title_text' => '<span id="property-policies-tab"></span>Polices',
+    'override_title_text' => '<span id="property-policies-tab"></span>Policies',
     'override_title_heading' => 'h3',
   );
   $pane->cache = array();

@@ -28,7 +28,7 @@ function roomify_manage_property_render($subtype, $conf, $args, $pane_context, $
       $links = '<div class="manage-property-links"><div class="inner">';
 
       // Edit Property.
-      $edit_link_help = '<strong>' . t('EDIT PROPERTY') . '</strong>' . '<br>' . t('Edit fields such as slideshow, overview description, polices or location');
+      $edit_link_help = '<strong>' . t('EDIT PROPERTY') . '</strong>' . '<br>' . t('Edit fields such as slideshow, overview description, policies or location');
       $edit_link = '<div class="manage-icon edit-link" data-toggle="tooltip" data-html="true" title="' . $edit_link_help . '" data-placement="bottom">' . l(t('Manage Property'), 'admin/bat/config/property/manage/' . $property->property_id, array('html' => TRUE)) . '</div>';
 
       // Manage Availability.
