@@ -1118,6 +1118,7 @@ function roomify_accommodation_booking_confirmation_form_submit($form, &$form_st
 
   $start_date = $values['start_date'];
   $end_date = $values['end_date'];
+  $temp_end_date = clone($end_date);
   $end_date->sub(new DateInterval('PT1M'));
 
   $type_id = $values['type_id'];
@@ -1172,7 +1173,7 @@ function roomify_accommodation_booking_confirmation_form_submit($form, &$form_st
     $product = commerce_product_load($product_id);
     $line_item = commerce_product_line_item_new($product, 1, 0, array(), 'roomify_accommodation_booking');
 
-    $line_item->line_item_label = roomify_system_get_line_item_label($type, $property, $start_date, $end_date, $values['nights']);
+    $line_item->line_item_label = roomify_system_get_line_item_label($type, $property, $start_date, $temp_end_date, $values['nights']);
 
     // Add line item to cart.
     $line_item = commerce_cart_product_add($user->uid, $line_item, FALSE);
