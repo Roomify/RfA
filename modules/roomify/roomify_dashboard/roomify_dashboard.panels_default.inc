@@ -1673,13 +1673,12 @@ function roomify_dashboard_default_panels_mini() {
   $pane->access = array(
     'plugins' => array(
       0 => array(
-        'name' => 'role',
+        'name' => 'php',
         'settings' => array(
-          'rids' => array(
-            0 => 4,
-          ),
+          'description' => 'Is a Guest',
+          'php' => 'global $user;
+  return in_array(\'guest\', $user->roles);',
         ),
-        'context' => 'requiredcontext_user_1',
         'not' => FALSE,
       ),
     ),
@@ -1758,6 +1757,52 @@ function roomify_dashboard_default_panels_mini() {
   $pane->uuid = 'd2851759-9d5b-4367-9bab-6bd877387e8a';
   $display->content['new-d2851759-9d5b-4367-9bab-6bd877387e8a'] = $pane;
   $display->panels['top'][4] = 'new-d2851759-9d5b-4367-9bab-6bd877387e8a';
+  $pane = new stdClass();
+  $pane->pid = 'new-c58443f0-5efd-440c-916a-c5b8bcbdc63d';
+  $pane->panel = 'top';
+  $pane->type = 'views';
+  $pane->subtype = 'roomify_groups';
+  $pane->shown = TRUE;
+  $pane->access = array(
+    'plugins' => array(
+      0 => array(
+        'name' => 'php',
+        'settings' => array(
+          'description' => 'roomify_accommodations_group_dashboard exists',
+          'php' => 'return module_exists(\'roomify_accommodations_group_dashboard\');',
+        ),
+        'not' => FALSE,
+      ),
+    ),
+  );
+  $pane->configuration = array(
+    'override_pager_settings' => 0,
+    'use_pager' => 1,
+    'nodes_per_page' => '10',
+    'pager_id' => '0',
+    'offset' => '0',
+    'more_link' => 0,
+    'feed_icons' => 0,
+    'panel_args' => 0,
+    'link_to_view' => 0,
+    'args' => '',
+    'url' => '',
+    'display' => 'default',
+    'override_title' => 1,
+    'override_title_text' => '<span class="dashboard-group-tab"></span> Groups',
+    'override_title_heading' => 'h2',
+  );
+  $pane->cache = array();
+  $pane->style = array(
+    'settings' => NULL,
+  );
+  $pane->css = array();
+  $pane->extras = array();
+  $pane->position = 5;
+  $pane->locks = array();
+  $pane->uuid = 'c58443f0-5efd-440c-916a-c5b8bcbdc63d';
+  $display->content['new-c58443f0-5efd-440c-916a-c5b8bcbdc63d'] = $pane;
+  $display->panels['top'][5] = 'new-c58443f0-5efd-440c-916a-c5b8bcbdc63d';
   $display->hide_title = PANELS_TITLE_FIXED;
   $display->title_pane = '0';
   $mini->display = $display;

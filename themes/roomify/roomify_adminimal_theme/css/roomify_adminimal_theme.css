@@ -2515,6 +2515,23 @@ body.adminimal-skin-material table.views-table tbody tr td {
     top: 15px;
   }
 }
+.roomify-dashboard .dashboard-group-tab {
+  background: url("../images/dashboard/group.png") center center no-repeat;
+  background: url("../images/dashboard/group.svg") center center no-repeat, linear-gradient(transparent, transparent);
+  display: inline-block;
+  width: 18px;
+  height: 18px;
+  position: relative;
+  top: 2px;
+  right: 6px;
+}
+@media (max-width: 991px) {
+  .roomify-dashboard .dashboard-group-tab {
+    position: absolute;
+    left: 20px;
+    top: 15px;
+  }
+}
 .page-admin-bat-config-booking-add-roomify-accommodation-booking #bat-booking-edit-form .field-name-booking-end-date,
 #bat-booking-edit-roomify-accommodation-booking-form .field-name-booking-end-date,
 .page-admin-bat-config-booking-add-roomify-accommodation-booking #bat-booking-edit-form .field-name-booking-start-date,
@@ -2695,6 +2712,11 @@ a.tabledrag-handle .handle {
 }
 a.tabledrag-handle-hover .handle {
   background-position: 6px -14px;
+}
+html.js #panels-dnd-main div.ctools-dropdown div.ctools-dropdown-container ul li a,
+html.js div.panels-display-links div.ctools-dropdown-container ul li a {
+  font-size: inherit;
+  margin-bottom: 0;
 }
 .page-admin-bat-config-types .field-type-bat-event-state-constraints-range td:nth-child(2) .form-wrapper input {
   margin: 10px 0;
