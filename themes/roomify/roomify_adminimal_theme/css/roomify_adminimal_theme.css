@@ -2025,6 +2025,30 @@ body.adminimal-theme .cke_reset_all label {
   box-shadow: none;
   background-color: transparent;
 }
+.page-admin-bat-config-types-manage #main-content .vertical-tabs-panes fieldset,
+.page-admin-bat-config-property-manage #main-content .vertical-tabs-panes fieldset {
+  box-shadow: none;
+  display: block;
+  border: none;
+  padding-top: 10px;
+  border-top: none !important;
+}
+.page-admin-bat-config-types-manage #main-content .vertical-tabs-panes fieldset legend,
+.page-admin-bat-config-property-manage #main-content .vertical-tabs-panes fieldset legend {
+  display: none !important;
+}
+.page-admin-bat-config-types-manage .field-name-field-sp-gallery .property-gallery-show-text,
+.page-admin-bat-config-property-manage .field-name-field-sp-gallery .property-gallery-show-text,
+.page-admin-bat-config-types-manage .field-name-field-sp-gallery .form-submit.ajax-processed,
+.page-admin-bat-config-property-manage .field-name-field-sp-gallery .form-submit.ajax-processed {
+  display: inline-block;
+  font-size: 12px;
+  float: left;
+}
+.page-admin-bat-config-types-manage #edit-group_highlight .manualcrop-thumblist,
+.page-admin-bat-config-property-manage #edit-group_highlight .manualcrop-thumblist {
+  overflow: hidden;
+}
 body.adminimal-skin-material table thead tr th {
   background: rgba(52, 73, 94, 0.94) !important;
   color: #ECF0F1;
@@ -2536,7 +2560,7 @@ body.adminimal-skin-material table.views-table tbody tr td {
 #bat-booking-edit-roomify-accommodation-booking-form .field-name-booking-end-date,
 .page-admin-bat-config-booking-add-roomify-accommodation-booking #bat-booking-edit-form .field-name-booking-start-date,
 #bat-booking-edit-roomify-accommodation-booking-form .field-name-booking-start-date {
-  width: 30%;
+  width: 32%;
   float: left;
   margin-right: 1%;
 }
@@ -2548,8 +2572,9 @@ body.adminimal-skin-material table.views-table tbody tr td {
 }
 .page-admin-bat-config-booking-add-roomify-accommodation-booking #bat-booking-edit-form #availability-search,
 #bat-booking-edit-roomify-accommodation-booking-form #availability-search {
-  width: 38%;
+  width: 32%;
   float: left;
+  margin-right: 1%;
 }
 .page-admin-bat-config-booking-add-roomify-accommodation-booking #bat-booking-edit-form #booking-price,
 #bat-booking-edit-roomify-accommodation-booking-form #booking-price,
@@ -2621,7 +2646,7 @@ body.adminimal-skin-material table.views-table tbody tr td {
 .page-admin-bat-config-booking-add-booking-com #bat-booking-edit-form .field-name-booking-start-date,
 #bat-booking-edit-ical-form .field-name-booking-start-date,
 #bat-booking-edit-booking-com-form .field-name-booking-start-date {
-  width: 30%;
+  width: 32%;
   float: left;
   margin-right: 1%;
 }
@@ -2639,8 +2664,9 @@ body.adminimal-skin-material table.views-table tbody tr td {
 .page-admin-bat-config-booking-add-booking-com #bat-booking-edit-form #availability-search,
 #bat-booking-edit-ical-form #availability-search,
 #bat-booking-edit-booking-com-form #availability-search {
-  width: 38%;
+  width: 32%;
   float: left;
+  margin-right: 1%;
 }
 .page-admin-bat-config-booking-add-ical #bat-booking-edit-form .field-name-booking-event-reference,
 .page-admin-bat-config-booking-add-booking-com #bat-booking-edit-form .field-name-booking-event-reference,
@@ -2763,6 +2789,416 @@ html.js div.panels-display-links div.ctools-dropdown-container ul li a {
 .page-admin-bat-config-types .field-name-field-rl-property-promo {
   max-width: 700px;
 }
+.page-group .pane-group-properties-panel-pane-1 {
+  padding: 30px 20px;
+}
+.page-group .pane-group-properties-panel-pane-1 h2.pane-title {
+  font-size: 36px;
+  font-weight: 300;
+}
+.page-group .pane-group-properties-panel-pane-1 .view-empty {
+  margin-top: 36px;
+}
+.page-group .pane-group-properties-panel-pane-1 table {
+  border-collapse: separate;
+  border-spacing: 0 14px;
+}
+.page-group .pane-group-properties-panel-pane-1 .view-group-properties {
+  font-size: 14px;
+}
+.page-group .pane-group-properties-panel-pane-1 .view-group-properties thead {
+  display: none;
+}
+.page-group .pane-group-properties-panel-pane-1 .view-group-properties .view-content {
+  margin-top: -30px;
+}
+.page-group .pane-group-properties-panel-pane-1 .view-group-properties .view-content a {
+  color: #333;
+}
+.page-group .pane-group-properties-panel-pane-1 .view-group-properties tr {
+  -webkit-transition: 150ms background ease-in;
+  -moz-transition: 150ms background ease-in;
+  -ms-transition: 150ms background ease-in;
+  -o-transition: 150ms background ease-in;
+}
+.page-group .pane-group-properties-panel-pane-1 .view-group-properties tr.status-0 {
+  background: #F9EADA;
+}
+.page-group .pane-group-properties-panel-pane-1 .view-group-properties tr.status-0 a {
+  color: #989898 !important;
+}
+.page-group .pane-group-properties-panel-pane-1 .view-group-properties tr:hover {
+  background: whitesmoke !important;
+}
+.page-group .pane-group-properties-panel-pane-1 .view-group-properties tr:not(.views-row-last) td {
+  border-bottom: 1px solid #D2D2D2;
+  padding-bottom: 20px;
+}
+.page-group .pane-group-properties-panel-pane-1 .view-group-properties tr.even {
+  background: #fff;
+}
+.page-group .pane-group-properties-panel-pane-1 .view-group-properties td.views-field.views-field-name {
+  font-size: 24px;
+  font-weight: 300;
+  line-height: 1.2em;
+}
+.page-group .pane-group-properties-panel-pane-1 .view-group-properties td.views-field.views-field-edit-unit {
+  width: 40px;
+}
+.page-group .pane-group-properties-panel-pane-1 .view-group-properties td.views-field.views-field-edit-unit a {
+  background: url("../images/edit.png") no-repeat right 50% bottom 20px;
+  background-size: 35px 35px;
+  display: inline-block;
+  padding: 55px 1em 0 1em;
+}
+.page-group .pane-group-properties-panel-pane-1 .view-group-properties td.views-field.views-field-nothing {
+  width: 40px;
+}
+.page-group .pane-group-properties-panel-pane-1 .view-group-properties td.views-field.views-field-nothing a {
+  background: url("../images/availability.png") no-repeat right 50% bottom 20px;
+  background-size: 35px 35px;
+  display: inline-block;
+  padding: 55px 1em 0 1em;
+}
+.page-group .pane-group-properties-panel-pane-1 .view-group-properties td.views-field.views-field-nothing-1 {
+  width: 40px;
+}
+.page-group .pane-group-properties-panel-pane-1 .view-group-properties td.views-field.views-field-nothing-1 a {
+  background: url("../images/pricing.png") no-repeat right 50% bottom 20px;
+  background-size: 35px 35px;
+  display: inline-block;
+  padding: 55px 1em 0 1em;
+}
+.page-group .pane-group-properties-panel-pane-1 .view-group-properties tr.status-0 td.views-field.views-field-edit-unit a {
+  background-image: url("../images/edit-gray.png");
+}
+.page-group .pane-group-properties-panel-pane-1 .view-group-properties tr.status-0 td.views-field.views-field-nothing a {
+  background-image: url("../images/availability-gray.png");
+}
+.page-group .pane-group-properties-panel-pane-1 .view-group-properties tr.status-0 td.views-field.views-field-nothing-1 a {
+  background-image: url("../images/pricing-gray.png");
+}
+.page-group .pane-group-properties-panel-pane-1 .view-group-properties .footable-row-detail-inner {
+  width: 100%;
+}
+.page-group .pane-group-properties-panel-pane-1 .view-group-properties .footable-row-detail-inner .footable-row-detail-row {
+  width: 30%;
+  float: left;
+  margin: 0 1%;
+}
+@media (max-width: 480px) {
+  .page-group .pane-group-properties-panel-pane-1 .view-group-properties .footable-row-detail-inner .footable-row-detail-row {
+    width: 45%;
+    margin: 0;
+  }
+}
+.page-group .pane-group-properties-panel-pane-1 .view-group-properties .footable-row-detail-inner .footable-row-detail-row .footable-row-detail-value {
+  width: 100%;
+  text-align: center;
+}
+.page-group .pane-group-properties-panel-pane-1 .view-group-properties .footable-row-detail-inner .footable-row-detail-row .footable-row-detail-value img {
+  display: none;
+}
+.page-group .pane-group-properties-panel-pane-1 .view-group-properties .footable-row-detail-inner .footable-row-detail-row .footable-row-detail-value a {
+  background-repeat: no-repeat;
+  background-position: center center;
+  padding: 58px 1em 0 1em;
+  background-size: 40px 40px;
+  display: block;
+}
+.page-group .pane-group-properties-panel-pane-1 .view-group-properties .footable-row-detail-inner .footable-row-detail-row .footable-row-detail-value a {
+  background-image: url("../images/edit.png");
+}
+.page-group .pane-group-properties-panel-pane-1 .view-group-properties .footable-row-detail-inner .footable-row-detail-row .footable-row-detail-value a.availability-link {
+  background-image: url("../images/availability.png");
+}
+.page-group .pane-group-properties-panel-pane-1 .view-group-properties .footable-row-detail-inner .footable-row-detail-row .footable-row-detail-value a.pricing-link {
+  background-image: url("../images/pricing.png");
+}
+.page-group .pane-group-conversations-panel-pane-1 {
+  background: #3498DB;
+  padding: 15px 20px;
+  border-radius: 10px;
+  border-bottom: 2px solid #397AA7;
+  color: white;
+  -webkit-transition: 150ms background ease-in-out;
+  -moz-transition: 150ms background ease-in-out;
+  -ms-transition: 150ms background ease-in-out;
+  -o-transition: 150ms background ease-in-out;
+}
+.page-group .pane-group-conversations-panel-pane-1:hover {
+  background: #1ea4f7;
+}
+.page-group .pane-group-conversations-panel-pane-1 h2.pane-title {
+  font-size: 36px;
+  font-weight: 300;
+  line-height: 1.3em;
+  text-shadow: 1px 1px 1px #0074BD;
+}
+.page-group .pane-group-conversations-panel-pane-1 .pane-content {
+  max-height: 350px;
+  overflow: scroll;
+}
+.page-group .pane-group-conversations-panel-pane-1 .view-content {
+  margin-top: 20px;
+}
+.page-group .pane-group-conversations-panel-pane-1 .views-field-changed {
+  margin-bottom: 3px;
+  font-size: 14px;
+  font-weight: bold;
+  text-shadow: 1px 1px 1px #0074BD;
+}
+.page-group .pane-group-conversations-panel-pane-1 .views-field-nothing {
+  height: 100%;
+  position: relative;
+  border: 1px dotted #005082;
+  background: #F5F5F5;
+  font-size: 18px;
+  font-weight: 300;
+  margin-top: -1px;
+  margin-bottom: 22px;
+  padding: 15px 10px;
+  -webkit-transition: 150ms background ease-in-out;
+  -moz-transition: 150ms background ease-in-out;
+  -ms-transition: 150ms background ease-in-out;
+  -o-transition: 150ms background ease-in-out;
+}
+.page-group .pane-group-conversations-panel-pane-1 .views-field-nothing:hover {
+  background: white;
+}
+.page-group .pane-group-conversations-panel-pane-1 .views-field-nothing div.conversation-info {
+  display: inline-block;
+  vertical-align: top;
+  width: 92%;
+}
+.page-group .pane-group-conversations-panel-pane-1 .views-field-nothing a.conversation-info-link {
+  color: #333;
+  text-decoration: none;
+}
+.page-group .pane-group-conversations-panel-pane-1 .views-field-nothing a.conversation-info-link .conversation-header {
+  padding-bottom: 8px;
+}
+.page-group .pane-group-conversations-panel-pane-1 .views-field-nothing a.conversation-info-link .conversation-message-author {
+  display: inline-block;
+  width: 30%;
+  vertical-align: top;
+  font-style: italic;
+  font-weight: 800;
+  font-size: 14px;
+  padding-right: 4px;
+}
+.page-group .pane-group-conversations-panel-pane-1 .views-field-nothing a.conversation-info-link .conversation-message-message {
+  font-size: 14px;
+  display: inline-block;
+  width: 50%;
+}
+.page-group .pane-group-conversations-panel-pane-1 .views-field-nothing a.conversation-info-link .conversation-price {
+  font-style: italic;
+  font-weight: 800;
+  font-size: 14px;
+  width: 18%;
+  display: inline-block;
+  vertical-align: top;
+}
+.page-group .pane-group-conversations-panel-pane-1 .views-field-nothing div.conversation-reply {
+  display: inline-block;
+  float: right;
+  vertical-align: top;
+  margin-top: 20px;
+  margin-right: 10px;
+  height: 100%;
+  width: 25px;
+  position: absolute;
+  background: url("../images/reply.png") no-repeat;
+  background-size: 25px 25px, contain;
+}
+@media (max-width: 768px) {
+  .page-group .pane-group-conversations-panel-pane-1 .views-field-nothing div.conversation-reply {
+    height: initial;
+  }
+}
+.page-group .pane-group-conversations-panel-pane-1 .views-field-nothing div.conversation-reply a {
+  display: block;
+  height: 35px;
+  width: 35px;
+  text-indent: -9999px;
+  overflow: hidden;
+}
+.page-group .pane-group-bookings-panel-pane-2 {
+  margin-bottom: 40px;
+  background: #3498DB;
+  padding: 15px 20px;
+  border-radius: 10px;
+  border-bottom: 2px solid #397AA7;
+  color: white;
+}
+.page-group .pane-group-bookings-panel-pane-2 h2.pane-title {
+  font-size: 36px;
+  font-weight: 300;
+  line-height: 1.3em;
+  text-shadow: 1px 1px 1px #0074BD;
+}
+.page-group .pane-group-bookings-panel-pane-2 .view-group-bookings table thead th {
+  background: #3498db;
+  border-bottom: 1px solid #397aa7;
+  color: #FFFFFF !important;
+  text-transform: uppercase;
+  font-size: 18px;
+  padding-top: 25px;
+  padding-bottom: 25px;
+}
+.page-group .pane-group-bookings-panel-pane-2 .view-group-bookings table tbody td {
+  font-size: 18px;
+}
+.page-group .pane-group-bookings-panel-pane-2 .view-group-bookings .views-field-booking-full-name {
+  width: 50%;
+  line-height: 1.3em;
+  position: relative;
+  padding-left: 25px;
+}
+.page-group .pane-group-bookings-panel-pane-2 .view-group-bookings .views-field-booking-full-name .footable-toggle {
+  position: absolute;
+  left: 5px;
+}
+.page-group .pane-group-bookings-panel-pane-2 .view-group-bookings .footable-row-detail-cell {
+  padding: 0;
+  background: white;
+}
+.page-group .pane-group-bookings-panel-pane-2 .view-group-bookings .more-link a {
+  color: white;
+  margin-top: 30px;
+  display: block;
+  font-size: 14px;
+}
+.page-group .pane-group-bookings-panel-pane-2 .view-group-bookings .pager {
+  background: #3498db;
+  font-size: 16px;
+  padding: 12px 0;
+  display: inline-block;
+  width: 100%;
+}
+.page-group .ui-widget-content {
+  background: white;
+  padding: 0px;
+  border: 0px;
+}
+@media (min-width: 768px) {
+  .page-group .ui-widget-content .ui-tabs-panel {
+    border: 2px solid rgba(235, 235, 235, 0.45);
+    -webkit-box-shadow: 0px 24px 64px 5px rgba(179, 179, 179, 0.45);
+    -moz-box-shadow: 0px 24px 64px 5px rgba(179, 179, 179, 0.45);
+    box-shadow: 0px 24px 64px 5px rgba(179, 179, 179, 0.45);
+  }
+}
+.page-group .ui-tabs-panel.ui-widget-content {
+  padding: 50px 15px;
+}
+@media (min-width: 768px) {
+  .page-group .ui-tabs-panel.ui-widget-content {
+    padding: 80px 50px;
+  }
+}
+.page-group .ui-tabs-panel.ui-widget-content .pane-panels-mini {
+  display: inline-block;
+  width: 100%;
+}
+.page-group .ui-tabs .ui-tabs-nav {
+  background: #FDFDFD;
+  padding: 0px;
+  font-size: 16px;
+}
+.page-group .ui-tabs .ui-tabs-nav li {
+  margin-right: 5px;
+  background: #F5F5F5;
+  border-radius: 5px 5px 0 0;
+  position: relative;
+  top: 2px;
+}
+.page-group .ui-tabs .ui-tabs-nav li a {
+  color: #888888;
+  min-width: 120px;
+  text-align: center;
+}
+@media (max-width: 768px) {
+  .page-group .ui-tabs .ui-tabs-nav li {
+    width: 100%;
+    text-align: center;
+    display: flex;
+  }
+  .page-group .ui-tabs .ui-tabs-nav li a {
+    width: 100%;
+  }
+}
+.page-group .ui-tabs .ui-tabs-nav li.ui-state-active {
+  border-width: 0px;
+  background: white;
+  outline: none;
+}
+.page-group .ui-tabs .ui-tabs-nav li.ui-state-active a {
+  color: #006699;
+  font-weight: 700;
+  outline: none;
+  border-radius: 5px 5px 0px 0px;
+  border: 2px solid rgba(235, 235, 235, 0.45);
+  border-bottom: 0px;
+}
+.page-group .ui-tabs .ui-tabs-nav li:last-child {
+  float: right;
+  margin-right: 0;
+}
+.page-group .panel-col-bottom {
+  margin-top: 60px;
+  display: inline-block;
+}
+.page-group .panel-col-bottom .ui-tabs-nav {
+  background: white;
+}
+.page-group .panel-col-bottom .ui-widget-content .ui-tabs-panel {
+  box-shadow: none;
+}
+.view-add-ons .view-header {
+  display: inline-block;
+  margin-top: 15px;
+  margin-bottom: 40px;
+}
+.view-add-ons .view-header .add-on-button {
+  background: #4CAF50;
+  color: white;
+  font-size: 18px;
+}
+.view-add-ons .views-row {
+  display: inline-block;
+  width: 100%;
+  border-bottom: 1px solid #E4E4E4;
+  padding: 25px 10px;
+  -webkit-transition: 150ms background ease-in-out;
+  -moz-transition: 150ms background ease-in-out;
+  -ms-transition: 150ms background ease-in-out;
+  -o-transition: 150ms background ease-in-out;
+}
+.view-add-ons .views-row:hover {
+  background: #ECECEC;
+}
+.view-add-ons .views-row .views-field-title .field-content {
+  font-weight: 400;
+  font-size: 24px;
+}
+.view-add-ons .views-row .views-field-field-add-on-image {
+  float: left;
+  margin-right: 25px;
+}
+.view-add-ons .views-row .views-field-field-add-on-image img {
+  border-radius: 5px;
+}
+.view-add-ons .views-row .views-field-commerce-price {
+  font-size: 24px;
+  margin-bottom: 15px;
+}
+.view-add-ons .views-row .views-field-field-add-on-description {
+  font-size: 16px;
+  font-weight: 300;
+  line-height: 1.5em;
+}
 /* Custom font */
 #references-dialog-page {
   background: white;
@@ -2812,8 +3248,15 @@ a.ctools-use-modal:hover,
   display: inline-block;
 }
 /* Override bat modal close button styling. */
+.page-admin-bat #modalContent .ctools-modal-content {
+  border-radius: 4px;
+}
+.page-admin-bat #modalContent .ctools-modal-content .modal-header {
+  padding: 25px 25px 0px 25px;
+}
 .page-admin-bat #modalContent .ctools-modal-content .modal-content {
   min-height: inherit !important;
+  padding: 25px;
 }
 .page-admin-bat #modalContent .ctools-modal-content a.close {
   background: none;
@@ -2858,22 +3301,21 @@ a.ctools-use-modal:hover,
   display: none;
 }
 .property-gallery-show-text {
-  max-width: 200px;
-  padding: 6px 0px;
-  border-radius: 3px;
-  margin-top: 4px;
+  cursor: pointer;
+  padding: 4px 10px;
+  margin-top: 2px;
   border: none;
-  margin-bottom: 1em;
-  margin-right: 1em;
-  text-transform: uppercase;
   color: #fff;
   text-align: center;
   font-weight: normal;
   font-size: 1.077em;
-  font-family: "Lucida Grande", Verdana, sans-serif;
   background: #4d8f46;
+  font-family: Roboto, sans-serif;
+  text-transform: uppercase;
+  border-radius: 0.2rem;
   transition: all, 0.3s;
-  cursor: pointer;
+  line-height: 18px;
+  margin: 2px;
 }
 .property-gallery-show-text:hover {
   background: #4d8f46;

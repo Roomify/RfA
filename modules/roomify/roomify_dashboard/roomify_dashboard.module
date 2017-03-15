@@ -388,8 +388,6 @@ function roomify_dashboard_module_implements_alter(&$implementations, $hook) {
   }
 }
 
-
-
 /**
  * Implements hook_preprocess_html().
  */

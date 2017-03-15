@@ -19,12 +19,9 @@
 @import 'components/dashboard';
 @import 'components/bat_booking';
 @import 'components/overrides';
-//@import 'components/installation';
 @import 'components/bat_type';
-//@import 'components/roomify_dashboard';
-//@import 'components/roomify_group';
-//@import 'components/roomify_properties';
-//@import 'components/add_ons';
+@import 'components/roomify_group';
+@import 'components/add_ons';
 
 /* Custom font */
 @import url(https://fonts.googleapis.com/css?family=Lato:400,300,700);
@@ -65,8 +62,13 @@ a.ctools-use-modal,
 /* Override bat modal close button styling. */
 .page-admin-bat {
   #modalContent .ctools-modal-content {
+    border-radius: 4px;
+    .modal-header {
+      padding: 25px 25px 0px 25px;
+    }
     .modal-content {
       min-height: inherit !important;
+      padding: 25px;
     }
     a.close {
       background: none;
@@ -118,22 +120,21 @@ a.ctools-use-modal,
   display: none;
 }
 .property-gallery-show-text {
-  max-width: 200px;
-  padding: 6px 0px;
-  border-radius: 3px;
-  margin-top: 4px;
+  cursor: pointer;
+  padding: 4px 10px;
+  margin-top: 2px;
   border: none;
-  margin-bottom: 1em;
-  margin-right: 1em;
-  text-transform: uppercase;
   color: #fff;
   text-align: center;
   font-weight: normal;
   font-size: 1.077em;
-  font-family: "Lucida Grande",Verdana,sans-serif;
   background: #4d8f46;
+  font-family: Roboto, sans-serif;
+  text-transform: uppercase;
+  border-radius: 0.2rem;
   transition: all, 0.3s;
-  cursor: pointer;
+  line-height: 18px;
+  margin: 2px;
   &:hover {
     background: #4d8f46;
     opacity: 0.9;

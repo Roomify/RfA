@@ -63,10 +63,8 @@ function _roomify_dashboard_create_dashboard_menu() {
   $queue = entityqueue_queue_load('featured_areas');
   $subqueue = entityqueue_subqueue_load(reset($queue));
   roomify_system_create_update_menu_link('Featured Areas', 'admin/structure/entityqueue/list/featured_properties/subqueues/' . $subqueue->subqueue_id . '/edit', 'roomify_dashboard_menu', 4, 1, $content_mlid);
-
   roomify_system_create_update_menu_link('Main Menu', 'admin/structure/menu/manage/main-menu', 'roomify_dashboard_menu', 5, 1, $content_mlid);
   roomify_system_create_update_menu_link('Dashboard Menu', 'admin/structure/menu/manage/roomify_dashboard_menu', 'roomify_dashboard_menu', 6, 1, $content_mlid);
-
   roomify_system_create_update_menu_link('Email Templates', 'admin/bat/config/email-templates', 'roomify_dashboard_menu', 7, 1, $content_mlid);
   roomify_system_create_update_menu_link('Taxonomy', 'admin/structure/taxonomy', 'roomify_dashboard_menu', 8, 1, $content_mlid);
   roomify_system_create_update_menu_link('Footer', 'admin/config/content/roomify-footer', 'roomify_dashboard_menu', 10, 1, $content_mlid);
