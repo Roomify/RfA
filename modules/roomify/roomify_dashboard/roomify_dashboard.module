@@ -74,6 +74,7 @@ function roomify_dashboard_admin_paths() {
     'user/*' => TRUE,
     'user/*/stays' => TRUE,
     'user/*/conversations' => TRUE,
+    'profile-property_owner/*' => TRUE,
   );
 
   return $paths;
@@ -126,6 +127,17 @@ function roomify_dashboard_views_pre_render(&$view) {
       $type = $result->bat_types_bat_units_type;
       if ($type == 'home') {
         unset($result->bat_types_bat_units_name);
+      }
+    }
+
+    if ($view->current_display == 'views_data_export_1') {
+      foreach ($results as $key => $result) {
+        if ($result->bat_bookings_type == 'roomify_accommodation_booking') {
+          $result->bat_bookings_type = 'Standard';
+        }
+        elseif ($result->bat_bookings_type == 'ical') {
+          $result->bat_bookings_type = $result->field_ical_type;
+        }
       }
     }
   }

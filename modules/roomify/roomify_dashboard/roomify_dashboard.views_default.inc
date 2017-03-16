@@ -1109,6 +1109,26 @@ function roomify_dashboard_views_default_views() {
   $handler->display->display_options['fields']['commerce_customer_address_postal_code']['relationship'] = 'booking_guest_target_id';
   $handler->display->display_options['fields']['commerce_customer_address_postal_code']['label'] = 'ZIP - Postal Code';
   $handler->display->display_options['fields']['commerce_customer_address_postal_code']['element_label_colon'] = FALSE;
+  /* Field: BAT Booking: Type */
+  $handler->display->display_options['fields']['type_1']['id'] = 'type_1';
+  $handler->display->display_options['fields']['type_1']['table'] = 'bat_bookings';
+  $handler->display->display_options['fields']['type_1']['field'] = 'type';
+  $handler->display->display_options['fields']['type_1']['label'] = 'Provider';
+  $handler->display->display_options['fields']['type_1']['machine_name'] = TRUE;
+  /* Field: BAT Booking: iCal type */
+  $handler->display->display_options['fields']['field_ical_type']['id'] = 'field_ical_type';
+  $handler->display->display_options['fields']['field_ical_type']['table'] = 'field_data_field_ical_type';
+  $handler->display->display_options['fields']['field_ical_type']['field'] = 'field_ical_type';
+  $handler->display->display_options['fields']['field_ical_type']['label'] = '';
+  $handler->display->display_options['fields']['field_ical_type']['exclude'] = TRUE;
+  $handler->display->display_options['fields']['field_ical_type']['element_label_colon'] = FALSE;
+  $handler->display->display_options['fields']['field_ical_type']['settings'] = array(
+    'conditions' => array(
+      0 => array(
+        'condition' => '',
+      ),
+    ),
+  );
   $handler->display->display_options['defaults']['filter_groups'] = FALSE;
   $handler->display->display_options['defaults']['filters'] = FALSE;
   /* Filter criterion: Events: State (event_state_reference) */
@@ -2108,6 +2128,7 @@ function roomify_dashboard_views_default_views() {
     t('Address'),
     t('City'),
     t('ZIP - Postal Code'),
+    t('Provider'),
     t('Label'),
     t('Start Date (booking_start_date)'),
     t('End Date (booking_end_date)'),

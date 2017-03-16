@@ -16,7 +16,7 @@ Feature: Blog
     And I visit 'blog'
     And I click on the element with css selector ".roomify-add-blogpost"
     Then I should see "Create Blog Post"
-    Then I fill in "title_field[und][0][value]" with "A new blogpost"
+    Then I fill in "title_field[en][0][value]" with "A new blogpost"
     And I wait 3 seconds
     And I click "Categories and Placement"
     And I select "Blogpost Category 1" from "field_blog_categories[und][]"
@@ -24,10 +24,10 @@ Feature: Blog
     Then I visit 'blog'
     And I click on the element with css selector ".roomify-add-blogpost"
     Then I should see "Create Blog Post"
-    Then I fill in "title_field[und][0][value]" with "My new Blog post"
+    Then I fill in "title_field[en][0][value]" with "My new Blog post"
     And I attach the file "dog.jpg" to "edit-field-featured-image-und-0-upload"
     And I wait 3 seconds
-    And I fill in wysiwyg on field "body[und][0][value]" with "This is my blogpost body"
+    And I fill in wysiwyg on field "body[en][0][value]" with "This is my blogpost body"
     And I click "Categories and Placement"
     And I select "Blogpost Category 2" from "field_blog_categories[und][]"
     And I press "Save"

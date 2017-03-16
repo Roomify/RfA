@@ -657,3 +657,10 @@ function roomify_system_update_7038() {
 function roomify_system_update_7039() {
   module_enable(array('entity_edit_protection'));
 }
+
+/**
+ * Enable module 'Profile2 pages'.
+ */
+function roomify_system_update_7040() {
+  module_enable(array('profile2_page'));
+}

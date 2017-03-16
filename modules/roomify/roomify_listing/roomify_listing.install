@@ -60,7 +60,7 @@ function roomify_listing_create_property_owner_profile() {
       'type' => 'property_owner',
       'label' => t('Property Owner'),
       'weight' => 1,
-      'data' => array('registration' => FALSE, 'use_page' => FALSE),
+      'data' => array('registration' => FALSE, 'use_page' => TRUE),
     ));
 
     $type->save();
@@ -1252,4 +1252,24 @@ function roomify_listing_update_7028() {
  */
 function roomify_listing_update_7029() {
   roomify_listing_update_7027();
+}
+
+/**
+ * Enable option 'Provide a separate page for editing profiles.'
+ * on 'Property Owner' profiles.
+ */
+function roomify_listing_update_7030() {
+  $type = profile2_type_load('property_owner');
+  $type->data['use_page'] = TRUE;
+  $type->save();
+}
+
+/**
+ * Set profiles as translatable.
+ */
+function roomify_listing_update_7031() {
+  $translatable_entities = variable_get('entity_translation_entity_types', array());
+  $translatable_entities['profile2'] = 'profile2';
+
+  variable_set('entity_translation_entity_types', $translatable_entities);
 }
