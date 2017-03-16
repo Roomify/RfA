@@ -140,6 +140,7 @@ body .back-to-site-link a {
 body.better-messages-popup #console.roomify-admin-messages {
   padding: 0;
   background: transparent;
+  border: none;
 }
 body {
   padding-right: 0;
