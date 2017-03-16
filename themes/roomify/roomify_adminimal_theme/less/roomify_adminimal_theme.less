@@ -12,6 +12,7 @@
 @import 'components/conversations';
 @import 'components/agency';
 @import 'components/messages';
+@import 'components/modal';
 @import 'components/orders';
 @import 'components/properties';
 @import 'components/table';
@@ -57,37 +58,6 @@ a.ctools-use-modal,
 .ctools-use-modal.add-offer-button {
   margin-bottom: 30px;
   display: inline-block;
-}
-
-/* Override bat modal close button styling. */
-.page-admin-bat {
-  #modalContent .ctools-modal-content {
-    border-radius: 4px;
-    .modal-header {
-      padding: 25px 25px 0px 25px;
-    }
-    .modal-content {
-      min-height: inherit !important;
-      padding: 25px;
-    }
-    a.close {
-      background: none;
-      padding-left: 0;
-      img {
-        display: block;
-      }
-    }
-  }
-  div#modalContent div.ctools-modal-content {
-    min-width: 500px !important;
-    width: auto !important;
-    height: auto !important;
-    min-height: auto !important;
-    overflow: hidden;
-  }
-  div#modalContent div.ctools-modal-content.roomify-accommodations-booking-form {
-    overflow-y: scroll;
-  }
 }
 
 .roomify-administration-title {

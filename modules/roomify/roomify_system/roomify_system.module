@@ -744,7 +744,7 @@ function roomify_system_default_panels_mini() {
         'settings' => array(
           'visibility_setting' => '0',
           'paths' => 'user
-        user/login',
+          user/login',
         ),
         'context' => 'empty',
         'not' => FALSE,
@@ -773,7 +773,18 @@ function roomify_system_default_panels_mini() {
   $pane->type = 'block';
   $pane->subtype = 'menu-roomify_dashboard_menu';
   $pane->shown = TRUE;
-  $pane->access = array();
+  $pane->access = array(
+    'plugins' => array(
+      0 => array(
+        'name' => 'php',
+        'settings' => array(
+          'description' => 'User is logged in',
+          'php' => 'return user_is_logged_in();',
+        ),
+        'not' => FALSE,
+      ),
+    ),
+  );
   $pane->configuration = array(
     'override_title' => 1,
     'override_title_text' => '',

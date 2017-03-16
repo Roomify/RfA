@@ -1597,6 +1597,68 @@ body.adminimal-theme .cke_reset_all label {
   margin-top: 0 !important;
   padding-bottom: 0 !important;
 }
+#modalContent div.ctools-modal-content .form-item label {
+  font-size: 15px;
+  font-weight: 400;
+}
+#modalContent div.ctools-modal-content h2 {
+  font-size: 28px;
+  font-weight: 400;
+}
+#modalContent #edit-container {
+  padding-left: 0;
+}
+#modalContent .form-item-max-occupants,
+#modalContent .form-item-default-price {
+  display: inline-block;
+  width: 100%;
+  margin: 5px 0;
+}
+#roomify-property-wizard-form .form-item-property-name {
+  margin-bottom: 20px;
+}
+/* Override bat modal close button styling. */
+.page-admin-bat #modalContent .ctools-modal-content {
+  border-radius: 4px;
+}
+.page-admin-bat #modalContent .ctools-modal-content .modal-header {
+  padding: 25px 25px 0px 25px;
+}
+.page-admin-bat #modalContent .ctools-modal-content .modal-content {
+  min-height: inherit !important;
+  padding: 25px;
+}
+.page-admin-bat #modalContent .ctools-modal-content a.close {
+  background: none;
+  padding-left: 0;
+}
+.page-admin-bat #modalContent .ctools-modal-content a.close img {
+  display: block;
+}
+.page-admin-bat div#modalContent div.ctools-modal-content {
+  min-width: 500px !important;
+  width: auto !important;
+  height: auto !important;
+  min-height: auto !important;
+  overflow: hidden;
+}
+.page-admin-bat div#modalContent div.ctools-modal-content.roomify-accommodations-booking-form {
+  overflow-y: scroll;
+}
+body .ui-dialog .ui-widget-header {
+  background: #405467;
+}
+body .ui-dialog .ui-dialog-title {
+  font-size: 20px;
+  font-weight: 400;
+  margin: 5px 0;
+}
+body .ui-dialog .ui-dialog-content {
+  padding: 30px 10px;
+}
+body .ui-dialog .ui-button-text {
+  padding: 5px 10px;
+}
 .page-admin-bat-orders h2 {
   font-weight: 500;
 }
@@ -1687,7 +1749,6 @@ body.adminimal-theme .cke_reset_all label {
 .page-admin-bat-properties-view-all .view-properties .view-content .views-field-field-sp-featured-image img {
   width: 150px;
   border-radius: 50%;
-  border: 2px solid #263238;
 }
 .page-admin-bat-properties-view-all .view-properties .view-content .views-field-name a {
   font-weight: 500;
@@ -2048,6 +2109,22 @@ body.adminimal-theme .cke_reset_all label {
 .page-admin-bat-config-types-manage #edit-group_highlight .manualcrop-thumblist,
 .page-admin-bat-config-property-manage #edit-group_highlight .manualcrop-thumblist {
   overflow: hidden;
+}
+#roomify-locanda-event-ui-bulk-update-form fieldset .form-item-type label,
+#roomify-casa-event-ui-bulk-update-form fieldset .form-item-type label,
+#roomify-locanda-event-ui-bulk-update-form fieldset .form-item-state label,
+#roomify-casa-event-ui-bulk-update-form fieldset .form-item-state label {
+  margin-bottom: 8px;
+}
+#roomify-locanda-event-ui-bulk-update-form fieldset .form-item-type select,
+#roomify-casa-event-ui-bulk-update-form fieldset .form-item-type select,
+#roomify-locanda-event-ui-bulk-update-form fieldset .form-item-state select,
+#roomify-casa-event-ui-bulk-update-form fieldset .form-item-state select {
+  height: 25px;
+}
+#roomify-locanda-event-ui-bulk-update-form fieldset #edit-submit,
+#roomify-casa-event-ui-bulk-update-form fieldset #edit-submit {
+  margin-top: 2.45em;
 }
 body.adminimal-skin-material table thead tr th {
   background: rgba(52, 73, 94, 0.94) !important;
@@ -2723,6 +2800,12 @@ body.adminimal-theme.adminimal-skin-material.style-checkboxes input[type=radio] 
   width: 17px !important;
   height: 17px !important;
 }
+#ui-datepicker-div {
+  min-width: 250px;
+}
+#ui-datepicker-div .ui-datepicker-header {
+  padding-bottom: 15px;
+}
 fieldset {
   border-top: 3px solid #0074BD !important;
   margin-bottom: 35px;
@@ -3246,34 +3329,6 @@ a.ctools-use-modal:hover,
 .ctools-use-modal.add-offer-button {
   margin-bottom: 30px;
   display: inline-block;
-}
-/* Override bat modal close button styling. */
-.page-admin-bat #modalContent .ctools-modal-content {
-  border-radius: 4px;
-}
-.page-admin-bat #modalContent .ctools-modal-content .modal-header {
-  padding: 25px 25px 0px 25px;
-}
-.page-admin-bat #modalContent .ctools-modal-content .modal-content {
-  min-height: inherit !important;
-  padding: 25px;
-}
-.page-admin-bat #modalContent .ctools-modal-content a.close {
-  background: none;
-  padding-left: 0;
-}
-.page-admin-bat #modalContent .ctools-modal-content a.close img {
-  display: block;
-}
-.page-admin-bat div#modalContent div.ctools-modal-content {
-  min-width: 500px !important;
-  width: auto !important;
-  height: auto !important;
-  min-height: auto !important;
-  overflow: hidden;
-}
-.page-admin-bat div#modalContent div.ctools-modal-content.roomify-accommodations-booking-form {
-  overflow-y: scroll;
 }
 .roomify-administration-title a {
   color: white;
