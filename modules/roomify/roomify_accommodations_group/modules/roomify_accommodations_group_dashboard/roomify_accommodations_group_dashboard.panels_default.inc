@@ -111,4 +111,3 @@ function roomify_accommodations_group_dashboard_default_panels_mini() {
 
   return $export;
 }
-

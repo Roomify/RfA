@@ -572,7 +572,6 @@ function roomify_system_create_update_menu_link($title, $path, $menu = 'main-men
   menu_rebuild();
 }
 
-
 /**
  * Helper function creates or updates menu links. This is mainly used in the
  * hook_enable() functions of the various Roomify feature modules during site
@@ -606,7 +605,7 @@ function roomify_system_create_update_menu_link_with_token($title, $path, $menu 
     ),
     'plid' => $plid,
     'enabled' => $enabled,
-    'alter' => true,
+    'alter' => TRUE,
     'menu_token_enabled' => 1,
     'menu_token_type_node' => '_none',
     'menu_token_type_user' => 'user_context',

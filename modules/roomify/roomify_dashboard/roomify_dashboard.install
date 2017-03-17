@@ -19,17 +19,17 @@ function roomify_dashboard_install() {
  * Create the dashboard Menu.
  */
 function _roomify_dashboard_create_dashboard_menu() {
-	$menu = array(
+  $menu = array(
     'menu_name' => 'roomify_dashboard_menu',
     'title' => 'Roomify Dashboard Menu',
     'description' => 'A menu used to manage the roomify dashboard',
     'language' => 'en',
     'i18n_mode' => I18N_MODE_MULTIPLE,
-	);
-	menu_save($menu);
+  );
+  menu_save($menu);
 
   // Create Menu Links.
-	roomify_system_create_update_menu_link('Dashboard', 'user', 'roomify_dashboard_menu', -20, 1, 0, array('attributes' => array('class'=> 'dashboard')));
+  roomify_system_create_update_menu_link('Dashboard', 'user', 'roomify_dashboard_menu', -20, 1, 0, array('attributes' => array('class'=> 'dashboard')));
   roomify_system_create_update_menu_link('Properties', 'admin/bat/properties/view-all', 'roomify_dashboard_menu', -10, 1, 0, array('attributes' => array('class'=> 'properties')));
   roomify_system_create_update_menu_link('Bookings', 'admin/bat/bookings', 'roomify_dashboard_menu', -9, 1, 0, array('attributes' => array('class'=> 'bookings')));
   roomify_system_create_update_menu_link('Conversations', 'admin/bat/conversations/guest', 'roomify_dashboard_menu', -8, 1, 0, array('attributes' => array('class'=> 'conversations')));
@@ -51,7 +51,7 @@ function _roomify_dashboard_create_dashboard_menu() {
   roomify_system_create_update_menu_link('Conversations as Owner', 'admin/bat/conversations/owner', 'roomify_dashboard_menu', 1, 1, $conversations_mlid);
   roomify_system_create_update_menu_link('Conversations as Guest', 'admin/bat/conversations/guest', 'roomify_dashboard_menu', 1, 2, $conversations_mlid);
 
-  // Content Sub-Menu
+  // Content Sub-Menu.
   $content_mlid = roomify_system_get_menu_link_id('Content', 'admin/content', 'roomify_dashboard_menu', -6);
   roomify_system_create_update_menu_link('Site Pages', 'admin/content', 'roomify_dashboard_menu', 0, 1, $content_mlid);
   roomify_system_create_update_menu_link('Add new content', 'node/add', 'roomify_dashboard_menu', 2, 1, $content_mlid);

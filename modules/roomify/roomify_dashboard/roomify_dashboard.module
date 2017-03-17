@@ -7,7 +7,6 @@
 
 include_once 'roomify_dashboard.features.inc';
 
-
 /**
  * Implements hook_menu().
  */
@@ -150,7 +149,7 @@ function roomify_dashboard_views_pre_render(&$view) {
       $view->footer['area']->options['content'] = l('+' . ' ' . t('add property'), 'admin/bat/config/property/wizard/nojs', array('attributes' => array('class' => 'button add-property-button ctools-use-modal ctools-modal-roomify-dashboard-modal-style')));
     }
     if (empty($view->result) && isset($view->exposed_widgets)) {
-       $view->exposed_widgets = FALSE;
+      $view->exposed_widgets = FALSE;
     }
   }
 }
@@ -410,4 +409,3 @@ function roomify_dashboard_preprocess_html(&$vars) {
     $vars['classes_array'][] = 'better-messages-popup';
   }
 }
-
