@@ -20,14 +20,15 @@ Feature: Dashboard
     Given I am logged in as a user with the "authenticated user" role on this site
     And I visit "user"
     And I click on the text "My Account"
-    Then I should see "Visit Dashboard"
+    Then I should see "Dashboard"
 
   Scenario: View My Guest Profile Link if i am a Guest.
     Given I am logged in as a user with the "guest" role on this site
     And I visit "user"
-    And I click on the text "Account Settings"
-    Then I should see "My Guest Profile"
-    Given I click on the text "My Guest Profile"
+    And I click on the element with css selector ".roomify-sidebar-menu-toggle"
+    And I wait 1 seconds
+    Then I should see "Edit Guest Profile"
+    Given I click on the text "Edit Guest Profile"
     Then I should see "Name"
     And I should see "Image"
     And I should see "Bio"
@@ -35,9 +36,10 @@ Feature: Dashboard
   Scenario: View My Property Owner Profile Link if i am a Property Owner.
     Given I am logged in as a user with the "property owner" role on this site
     And I visit "user"
-    And I click on the text "Account Settings"
-    Then I should see "My Property Owner Profile"
-    Given I click on the text "My Property Owner Profile"
+    And I click on the element with css selector ".roomify-sidebar-menu-toggle"
+    And I wait 1 seconds
+    Then I should see "Edit Property Owner Profile"
+    Given I click on the text "Edit Property Owner Profile"
     Then I should see "Name"
     And I should see "Mailing Address"
     And I should see "Image"
@@ -46,7 +48,8 @@ Feature: Dashboard
   Scenario: View The Logout link.
     Given I am logged in as a user with the "authenticated user" role on this site
     And I visit "user"
-    And I click on the text "Account Settings"
+    And I click on the element with css selector ".roomify-sidebar-menu-toggle"
+    And I wait 1 seconds
     Then I should see "Logout"
     And I click on the element with css selector "#dashboard-logout"
     Then I am not logged in
@@ -102,7 +105,9 @@ Feature: Dashboard
 
     Given I am logged in as a user with the "authenticated user" role on this site
     And I visit "user"
-    Then I should not see the text "Manage Content"
+    And I click on the element with css selector ".roomify-sidebar-menu-toggle"
+    And I wait 1 seconds
+    Then I should not see the text "Content"
 
   Scenario: View the Manage Email Templates link
     Given I am logged in with the "access content overview,administer previewable email templates" permission
