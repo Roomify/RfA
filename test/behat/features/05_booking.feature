@@ -10,7 +10,7 @@ Feature: Booking
   Scenario: Add bookings
     Given I am logged in as "_roomify_manager"
     And I visit "user"
-    Then I click on the text "Manage Listing(s)"
+    Then I click on the text "Your Properties"
     And I click on the text "add property"
     And I wait for AJAX to finish
     Then I fill in "property_name" with "My casa for bookings"
@@ -33,7 +33,7 @@ Feature: Booking
     Then I press "Save Booking"
 
     Then I visit "user"
-    And I click on the text "Manage Listing(s)"
+    And I click on the text "Your Properties"
     Then I click on the text "add property"
     And I wait for AJAX to finish
     Then I fill in "property_name" with "My casa2 for bookings"

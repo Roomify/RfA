@@ -54,11 +54,15 @@ Feature: Dashboard
   Scenario: View the Manage Contact form link
     Given I am logged in with the "access content overview" permission
     And I visit "user"
-    And I click on the text "Manage Content"
+    And I click on the element with css selector ".roomify-sidebar-menu-toggle"
+    And I wait 1 seconds
+    And I click on the element with css selector ".pane-menu-roomify-dashboard-menu .content"
     Then I should not see the text "Manage Contact Forms"
     Given I am logged in with the "view any entityform,access content overview" permission
     And I visit "user"
-    And I click on the text "Manage Content"
+    And I click on the element with css selector ".roomify-sidebar-menu-toggle"
+    And I wait 1 seconds
+    And I click on the element with css selector ".pane-menu-roomify-dashboard-menu .content"
     Then I should see "Manage Contact Form Submissions"
     And I click on the element with css selector "#dashboard-manage-contact-forms"
     Then I should be on "form-submissions"
@@ -74,19 +78,25 @@ Feature: Dashboard
   Scenario: View the Manage Main Menu link
     Given I am logged in with the "access content overview,administer menu" permission
     And I visit "user"
-    And I click on the text "Manage Content"
-    Then I click on the text "Manage Main Menu"
+    And I click on the element with css selector ".roomify-sidebar-menu-toggle"
+    And I wait 1 seconds
+    And I click on the element with css selector ".pane-menu-roomify-dashboard-menu .content"
+    Then I click on the text "Main Menu"
     And the url should match "admin/structure/menu/manage/main-menu"
 
     Given I am logged in with the "access content overview" permission
     And I visit "user"
-    And I click on the text "Manage Content"
-    Then I should not see the text "Manage Main Menu"
+    And I click on the element with css selector ".roomify-sidebar-menu-toggle"
+    And I wait 1 seconds
+    And I click on the element with css selector ".pane-menu-roomify-dashboard-menu .content"
+    Then I should not see the text "Main Menu"
 
   Scenario: View the Manage Main Menu link
     Given I am logged in with the "access content overview" permission
     And I visit "user"
-    And I click on the text "Manage Content"
+    And I click on the element with css selector ".roomify-sidebar-menu-toggle"
+    And I wait 1 seconds
+    And I click on the element with css selector ".pane-menu-roomify-dashboard-menu .content"
     Then I click on the text "Site Pages"
     And the url should match "admin/content"
 
@@ -97,37 +107,49 @@ Feature: Dashboard
   Scenario: View the Manage Email Templates link
     Given I am logged in with the "access content overview,administer previewable email templates" permission
     And I visit "user"
-    And I click on the text "Manage Content"
+    And I click on the element with css selector ".roomify-sidebar-menu-toggle"
+    And I wait 1 seconds
+    And I click on the element with css selector ".pane-menu-roomify-dashboard-menu .content"
     Then I click on the text "Manage Email Templates"
     And the url should match "email-templates"
 
     Given I am logged in with the "access content overview" permission
     And I visit "user"
-    And I click on the text "Manage Content"
+    And I click on the element with css selector ".roomify-sidebar-menu-toggle"
+    And I wait 1 seconds
+    And I click on the element with css selector ".pane-menu-roomify-dashboard-menu .content"
     Then I should not see the text "Manage Email Templates"
 
   Scenario: View the Add new content link
     Given I am logged in with the "access content overview,create blog content" permission
     And I visit "user"
-    And I click on the text "Manage Content"
+    And I click on the element with css selector ".roomify-sidebar-menu-toggle"
+    And I wait 1 seconds
+    And I click on the element with css selector ".pane-menu-roomify-dashboard-menu .content"
     Then I click on the text "Add new content"
     And the url should match "node/add"
 
     Given I am logged in with the "access content overview" permission
     And I visit "user"
-    And I click on the text "Manage Content"
+    And I click on the element with css selector ".roomify-sidebar-menu-toggle"
+    And I wait 1 seconds
+    And I click on the element with css selector ".pane-menu-roomify-dashboard-menu .content"
     Then I should not see the text "Add new content"
 
   Scenario: Featured Properties
     Given I am logged in as "_roomify_manager"
     And I visit "user"
-    And I click on the text "Manage Content"
-    And I click on the text "Manage Featured Properties"
+    And I click on the element with css selector ".roomify-sidebar-menu-toggle"
+    And I wait 1 seconds
+    And I click on the element with css selector ".pane-menu-roomify-dashboard-menu .content"
+    And I click on the text "Featured Properties"
     Then I should see "Edit Featured Properties"
 
   Scenario: Featured Areas
     Given I am logged in as "_roomify_manager"
     And I visit "user"
-    And I click on the text "Manage Content"
-    And I click on the text "Manage Featured Areas"
+    And I click on the element with css selector ".roomify-sidebar-menu-toggle"
+    And I wait 1 seconds
+    And I click on the element with css selector ".pane-menu-roomify-dashboard-menu .content"
+    And I click on the text "Featured Areas"
     Then I should see "Edit Featured Areas"

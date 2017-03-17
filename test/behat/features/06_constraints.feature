@@ -4,7 +4,9 @@ Feature: Global Booking Constraints
   Scenario: How soon in advance can a booking start
     Given I am logged in as a user with the "roomify manager" role
     Then I visit "user"
-    And I click on the text "Manage Configuration"
+    And I click on the element with css selector ".roomify-sidebar-menu-toggle"
+    And I wait 1 seconds
+    And I click on the element with css selector ".pane-menu-roomify-dashboard-menu .bookings"
     And I click on the text "Global Booking Settings"
     Then I select "0" from "roomify_accommodation_booking_days_in_advance"
     And I press "Save configuration"
@@ -14,7 +16,9 @@ Feature: Global Booking Constraints
     Then I should see "Unfortunately no property is available for these dates, try others if possible."
 
     Then I visit "user"
-    And I click on the text "Manage Configuration"
+    And I click on the element with css selector ".roomify-sidebar-menu-toggle"
+    And I wait 1 seconds
+    And I click on the element with css selector ".pane-menu-roomify-dashboard-menu .bookings"
     And I click on the text "Global Booking Settings"
     Then I select "1" from "roomify_accommodation_booking_days_in_advance"
     And I press "Save configuration"
@@ -24,7 +28,9 @@ Feature: Global Booking Constraints
     Then I should see "Unfortunately no property is available for these dates, try others if possible."
 
     Then I visit "user"
-    And I click on the text "Manage Configuration"
+    And I click on the element with css selector ".roomify-sidebar-menu-toggle"
+    And I wait 1 seconds
+    And I click on the element with css selector ".pane-menu-roomify-dashboard-menu .bookings"
     And I click on the text "Global Booking Settings"
     Then I select "2" from "roomify_accommodation_booking_days_in_advance"
     And I press "Save configuration"
@@ -34,7 +40,9 @@ Feature: Global Booking Constraints
     Then I should see "Unfortunately no property is available for these dates, try others if possible."
 
     Then I visit "user"
-    And I click on the text "Manage Configuration"
+    And I click on the element with css selector ".roomify-sidebar-menu-toggle"
+    And I wait 1 seconds
+    And I click on the element with css selector ".pane-menu-roomify-dashboard-menu .bookings"
     And I click on the text "Global Booking Settings"
     Then I select "7" from "roomify_accommodation_booking_days_in_advance"
     And I press "Save configuration"
@@ -44,7 +52,9 @@ Feature: Global Booking Constraints
     Then I should see "Unfortunately no property is available for these dates, try others if possible."
 
     Then I visit "user"
-    And I click on the text "Manage Configuration"
+    And I click on the element with css selector ".roomify-sidebar-menu-toggle"
+    And I wait 1 seconds
+    And I click on the element with css selector ".pane-menu-roomify-dashboard-menu .bookings"
     And I click on the text "Global Booking Settings"
     Then I select "1" from "roomify_accommodation_booking_days_in_advance"
     And I press "Save configuration"
@@ -52,7 +62,9 @@ Feature: Global Booking Constraints
   Scenario: How far in advance can a booking be made
     Given I am logged in as a user with the "roomify manager" role
     Then I visit "user"
-    And I click on the text "Manage Configuration"
+    And I click on the element with css selector ".roomify-sidebar-menu-toggle"
+    And I wait 1 seconds
+    And I click on the element with css selector ".pane-menu-roomify-dashboard-menu .bookings"
     And I click on the text "Global Booking Settings"
     Then I fill in "roomify_accommodation_booking_future_limit[value]" with "1"
     And I select "31104000" from "roomify_accommodation_booking_future_limit[multiplier]"
@@ -63,7 +75,9 @@ Feature: Global Booking Constraints
     Then I should see "Unfortunately no property is available for these dates, try others if possible."
 
     Then I visit "user"
-    And I click on the text "Manage Configuration"
+    And I click on the element with css selector ".roomify-sidebar-menu-toggle"
+    And I wait 1 seconds
+    And I click on the element with css selector ".pane-menu-roomify-dashboard-menu .bookings"
     And I click on the text "Global Booking Settings"
     Then I fill in "roomify_accommodation_booking_future_limit[value]" with "3"
     And I select "2592000" from "roomify_accommodation_booking_future_limit[multiplier]"
@@ -74,7 +88,9 @@ Feature: Global Booking Constraints
     Then I should see "Unfortunately no property is available for these dates, try others if possible."
 
     Then I visit "user"
-    And I click on the text "Manage Configuration"
+    And I click on the element with css selector ".roomify-sidebar-menu-toggle"
+    And I wait 1 seconds
+    And I click on the element with css selector ".pane-menu-roomify-dashboard-menu .bookings"
     And I click on the text "Global Booking Settings"
     Then I fill in "roomify_accommodation_booking_future_limit[value]" with "12"
     And I select "86400" from "roomify_accommodation_booking_future_limit[multiplier]"
@@ -85,7 +101,9 @@ Feature: Global Booking Constraints
     Then I should see "Unfortunately no property is available for these dates, try others if possible."
 
     Then I visit "user"
-    And I click on the text "Manage Configuration"
+    And I click on the element with css selector ".roomify-sidebar-menu-toggle"
+    And I wait 1 seconds
+    And I click on the element with css selector ".pane-menu-roomify-dashboard-menu .bookings"
     And I click on the text "Global Booking Settings"
     Then I fill in "roomify_accommodation_booking_future_limit[value]" with "1"
     And I select "31104000" from "roomify_accommodation_booking_future_limit[multiplier]"

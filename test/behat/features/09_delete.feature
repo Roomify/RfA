@@ -4,7 +4,7 @@ Feature: Delete Property and Types
   Scenario: Roomify manager - Delete type and property
     Given I am logged in as a user with the "roomify manager" role
     And I visit "user"
-    Then I click on the text "Manage Listing(s)"
+    Then I click on the text "Your Properties"
     And I click on the text "add property"
     And I wait for AJAX to finish
     Then I fill in "property_name" with "Roomify manager locanda"
@@ -42,7 +42,7 @@ Feature: Delete Property and Types
   Scenario: Roomify manager - Delete property and all related types #1
     Given I am logged in as a user with the "roomify manager" role
     And I visit "user"
-    Then I click on the text "Manage Listing(s)"
+    Then I click on the text "Your Properties"
     And I click on the text "add property"
     And I wait for AJAX to finish
     Then I fill in "property_name" with "Roomify manager locanda"
@@ -74,7 +74,7 @@ Feature: Delete Property and Types
   Scenario: Roomify manager - Delete property and all related types #2
     Given I am logged in as a user with the "roomify manager" role
     And I visit "user"
-    Then I click on the text "Manage Listing(s)"
+    Then I click on the text "Your Properties"
     And I click on the text "add property"
     And I wait for AJAX to finish
     Then I fill in "property_name" with "Roomify manager locanda"

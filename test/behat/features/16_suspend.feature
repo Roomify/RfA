@@ -4,7 +4,7 @@ Feature: Suspend Property and Types
   Scenario: Roomify manager - Create new Property and Suspend
     Given I am logged in as a user with the "roomify manager" role
     And I visit "user"
-    Then I click on the text "Manage Listing(s)"
+    Then I click on the text "Your Properties"
     And I click on the text "add property"
     And I wait for AJAX to finish
     Then I fill in "property_name" with "Roomify manager casa"
