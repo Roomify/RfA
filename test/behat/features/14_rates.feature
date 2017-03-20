@@ -36,7 +36,7 @@ Feature: Manage Rates
 
   Scenario: Manage Rates as user with role "Property owner"
     Given I am logged in as a user with the "property owner" role
-    Then I click on the text "click here to add a new property"
+    Then I click on the text "+ add property"
     And I wait for AJAX to finish
     Then I fill in "property_name" with "Property owner casa"
     And I select the radio button "Single-Unit (entire home)"
@@ -66,7 +66,7 @@ Feature: Manage Rates
 
   Scenario: Change Rates as user with role "Property owner"
     Given I am logged in as a user with the "property owner" role
-    Then I click on the text "click here to add a new property"
+    Then I click on the text "+ add property"
     And I wait for AJAX to finish
     Then I fill in "property_name" with "Property owner casa"
     And I select the radio button "Single-Unit (entire home)"

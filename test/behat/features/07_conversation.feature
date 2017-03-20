@@ -12,7 +12,7 @@ Feature: Conversation
     Given I am logged in as "_roomify_manager"
     And I visit "user"
     Then I click on the text "Your Properties"
-    And I click on the text "add property"
+    And I click on the text "+ add property"
     And I wait for AJAX to finish
     Then I fill in "property_name" with "My casa for conversation"
     And I select the radio button "Single-Unit (entire home)"

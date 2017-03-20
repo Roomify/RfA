@@ -5,7 +5,7 @@ Feature: Suspend Property and Types
     Given I am logged in as a user with the "roomify manager" role
     And I visit "user"
     Then I click on the text "Your Properties"
-    And I click on the text "add property"
+    And I click on the text "+ add property"
     And I wait for AJAX to finish
     Then I fill in "property_name" with "Roomify manager casa"
     And I select the radio button "Single-Unit (entire home)"
@@ -29,7 +29,7 @@ Feature: Suspend Property and Types
 
   Scenario: Property owner - Create new Property and Suspend
     Given I am logged in as a user with the "property owner" role
-    Then I click on the text "click here to add a new property"
+    Then I click on the text "+ add property"
     And I wait for AJAX to finish
     Then I fill in "property_name" with "Property owner casa"
     And I select the radio button "Single-Unit (entire home)"

@@ -19,8 +19,9 @@ Feature: Dashboard
   Scenario: Viewing the My Account Link
     Given I am logged in as a user with the "authenticated user" role on this site
     And I visit "user"
-    And I click on the text "My Account"
-    Then I should see "Dashboard"
+    And I click on the element with css selector ".roomify-sidebar-menu-toggle"
+    And I wait 1 seconds
+    Then I should see "Edit Account"
 
   Scenario: View My Guest Profile Link if i am a Guest.
     Given I am logged in as a user with the "guest" role on this site
@@ -51,7 +52,7 @@ Feature: Dashboard
     And I click on the element with css selector ".roomify-sidebar-menu-toggle"
     And I wait 1 seconds
     Then I should see "Logout"
-    And I click on the element with css selector "#dashboard-logout"
+    And I click on the text "Logout"
     Then I am not logged in
 
   Scenario: View the Manage Main Menu link
