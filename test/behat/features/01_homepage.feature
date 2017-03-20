@@ -17,6 +17,7 @@ Feature: Roomify Homepage
     And I click on the element with css selector ".roomify-sidebar-menu-toggle"
     And I wait 1 seconds
     And I click on the element with css selector ".pane-menu-roomify-dashboard-menu .content"
+    And I wait 1 seconds
     And I click on the text "Featured Properties"
     Then I should see "Edit Featured Properties"
     And I fill in the autocomplete "eq_roomify_property[und][add][entity]" with "Casa Sul Mare" and click "Casa Sul Mare"

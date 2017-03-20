@@ -7,6 +7,7 @@ Feature: Special offers
     Then I click on the element with css selector ".roomify-sidebar-menu-toggle"
     And I wait 1 seconds
     And I click on the element with css selector ".pane-menu-roomify-dashboard-menu .bookings"
+    And I wait 1 seconds
     And I click on the text "Offers"
     Then I click on the text "add special offer"
     And I wait for AJAX to finish
@@ -40,6 +41,7 @@ Feature: Special offers
     Then I click on the element with css selector ".roomify-sidebar-menu-toggle"
     And I wait 1 seconds
     And I click on the element with css selector ".pane-menu-roomify-dashboard-menu .bookings"
+    And I wait 1 seconds
     And I click on the text "Offers"
     Then I click on the text "add special offer"
     And I wait for AJAX to finish

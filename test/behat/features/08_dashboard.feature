@@ -54,36 +54,13 @@ Feature: Dashboard
     And I click on the element with css selector "#dashboard-logout"
     Then I am not logged in
 
-  Scenario: View the Manage Contact form link
-    Given I am logged in with the "access content overview" permission
-    And I visit "user"
-    And I click on the element with css selector ".roomify-sidebar-menu-toggle"
-    And I wait 1 seconds
-    And I click on the element with css selector ".pane-menu-roomify-dashboard-menu .content"
-    Then I should not see the text "Manage Contact Forms"
-    Given I am logged in with the "view any entityform,access content overview" permission
-    And I visit "user"
-    And I click on the element with css selector ".roomify-sidebar-menu-toggle"
-    And I wait 1 seconds
-    And I click on the element with css selector ".pane-menu-roomify-dashboard-menu .content"
-    Then I should see "Manage Contact Form Submissions"
-    And I click on the element with css selector "#dashboard-manage-contact-forms"
-    Then I should be on "form-submissions"
-    Given I am logged in with the "view any entityform,access content overview,administer entityform types,administer fields" permission
-    And I visit "admin/structure/entityform_types"
-    When I click on "manage fields" on the row containing "Side Wide Contact"
-    Then I should see "First Name"
-    Then I should see "Last Name"
-    Then I should see "Telephone"
-    Then I should see "Mail Address"
-    Then I should see "More Information"
-
   Scenario: View the Manage Main Menu link
     Given I am logged in with the "access content overview,administer menu" permission
     And I visit "user"
     And I click on the element with css selector ".roomify-sidebar-menu-toggle"
     And I wait 1 seconds
     And I click on the element with css selector ".pane-menu-roomify-dashboard-menu .content"
+    And I wait 1 seconds
     Then I click on the text "Main Menu"
     And the url should match "admin/structure/menu/manage/main-menu"
 
@@ -100,6 +77,7 @@ Feature: Dashboard
     And I click on the element with css selector ".roomify-sidebar-menu-toggle"
     And I wait 1 seconds
     And I click on the element with css selector ".pane-menu-roomify-dashboard-menu .content"
+    And I wait 1 seconds
     Then I click on the text "Site Pages"
     And the url should match "admin/content"
 
@@ -115,7 +93,8 @@ Feature: Dashboard
     And I click on the element with css selector ".roomify-sidebar-menu-toggle"
     And I wait 1 seconds
     And I click on the element with css selector ".pane-menu-roomify-dashboard-menu .content"
-    Then I click on the text "Manage Email Templates"
+    And I wait 1 seconds
+    Then I click on the text "Email Templates"
     And the url should match "email-templates"
 
     Given I am logged in with the "access content overview" permission
@@ -123,7 +102,7 @@ Feature: Dashboard
     And I click on the element with css selector ".roomify-sidebar-menu-toggle"
     And I wait 1 seconds
     And I click on the element with css selector ".pane-menu-roomify-dashboard-menu .content"
-    Then I should not see the text "Manage Email Templates"
+    Then I should not see the text "Email Templates"
 
   Scenario: View the Add new content link
     Given I am logged in with the "access content overview,create blog content" permission
@@ -131,6 +110,7 @@ Feature: Dashboard
     And I click on the element with css selector ".roomify-sidebar-menu-toggle"
     And I wait 1 seconds
     And I click on the element with css selector ".pane-menu-roomify-dashboard-menu .content"
+    And I wait 1 seconds
     Then I click on the text "Add new content"
     And the url should match "node/add"
 
@@ -147,6 +127,7 @@ Feature: Dashboard
     And I click on the element with css selector ".roomify-sidebar-menu-toggle"
     And I wait 1 seconds
     And I click on the element with css selector ".pane-menu-roomify-dashboard-menu .content"
+    And I wait 1 seconds
     And I click on the text "Featured Properties"
     Then I should see "Edit Featured Properties"
 
@@ -156,5 +137,6 @@ Feature: Dashboard
     And I click on the element with css selector ".roomify-sidebar-menu-toggle"
     And I wait 1 seconds
     And I click on the element with css selector ".pane-menu-roomify-dashboard-menu .content"
+    And I wait 1 seconds
     And I click on the text "Featured Areas"
     Then I should see "Edit Featured Areas"
