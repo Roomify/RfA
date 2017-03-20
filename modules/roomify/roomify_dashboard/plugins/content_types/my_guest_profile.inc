@@ -17,7 +17,7 @@ function roomify_dashboard_my_guest_profile_render($subtype, $conf, $args, $pane
   global $user;
 
   $block = new stdClass();
-  $block->content = '<p>' . l('<strong>' . t('My Guest Profile') . '</strong><br />' . t('Change your Guest profile information such as name, image or biography'), 'user/' . $user->uid . '/edit/guest', array('html' => TRUE, 'attributes' => array('id' => 'dashboard-your-profile'))) . '</p>';
+  $block->content = '<p>' . l('<strong>' . t('My Guest Profile') . '</strong><br />' . t('Change your Guest profile information such as name, image or biography'), 'profile-guest/' . $user->uid . '/edit', array('html' => TRUE, 'attributes' => array('id' => 'dashboard-your-profile'))) . '</p>';
 
   return $block;
 }
