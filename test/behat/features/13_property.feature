@@ -38,7 +38,7 @@ Feature: Manage Property
 
   Scenario: Property owner - Create new Property
     Given I am logged in as a user with the "property owner" role
-    Then I click on the text "+ add property"
+    Then I click on the text "+ Add Property"
     And I wait for AJAX to finish
     Then I fill in "property_name" with "Property owner casa"
     And I select the radio button "Single-Unit (entire home)"

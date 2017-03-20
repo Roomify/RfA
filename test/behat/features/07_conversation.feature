@@ -41,7 +41,8 @@ Feature: Conversation
     And I should see "They will be able to reply and provide a customized offer for you."
 
     Given I am logged in as "_roomify_manager"
-    Then I click on the element with css selector ".conversation-info-link"
+    Then I click on the text "Conversations"
+    And I click on the element with css selector ".conversation-info-link"
     Then I scroll "make-offer" into view
     Then I click on the text "Make Offer"
     And I wait for AJAX to finish
@@ -57,7 +58,8 @@ Feature: Conversation
     And I wait for AJAX to finish
 
     Given I am logged in as "_guest"
-    Then I click on the element with css selector ".conversation-info-link"
+    Then I click on the text "Conversations"
+    And I click on the element with css selector ".conversation-info-link"
     Then I press "Book This"
     Then I press "Confirm booking"
     Then I fill in "customer_profile_billing[commerce_customer_address][und][0][name_line]" with "Test name"
