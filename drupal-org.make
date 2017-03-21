@@ -264,7 +264,7 @@ projects[google_tag][version] = 1.0
 projects[group][version] = 1.0-beta6
 projects[group][patch][] = https://www.drupal.org/files/issues/group-profile2_integration-2701803-1.patch
 
-projects[jquery_update][version] = 3.0-alpha4
+projects[jquery_update][version] = 3.0-alpha3
 
 projects[job_scheduler][type] = module
 projects[job_scheduler][download][type] = git
