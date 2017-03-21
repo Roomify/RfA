@@ -364,7 +364,7 @@ projects[pathauto_entity][version] = 1.0
 projects[pet][version] = 1.0-rc1
 projects[pet][patch][] = https://www.drupal.org/files/pet-add-rules-state-2092195-1.patch
 projects[pet][patch][] = https://www.drupal.org/files/issues/pet-specify_entity_types_for_tokens-2612754-1.patch
-projects[pet][patch][] = https://www.drupal.org/files/issues/multilanguage-support-2727733-5.patch
+projects[pet][patch][] = https://www.drupal.org/files/issues/multilanguage-support-2727733-6.patch
 
 projects[plupload][version] = 1.7
 ; https://www.drupal.org/node/2106583
