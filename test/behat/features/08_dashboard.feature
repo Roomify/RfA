@@ -55,7 +55,7 @@ Feature: Dashboard
     And I click on the text "Logout"
     Then I am not logged in
 
-  Scenario: View the Manage Main Menu link
+  Scenario: View the Manage Main Menu link #1
     Given I am logged in with the "access content overview,administer menu" permission
     And I visit "user"
     And I click on the element with css selector ".roomify-sidebar-menu-toggle"
@@ -72,7 +72,7 @@ Feature: Dashboard
     And I click on the element with css selector ".pane-menu-roomify-dashboard-menu .content"
     Then I should not see the text "Main Menu"
 
-  Scenario: View the Manage Main Menu link
+  Scenario: View the Manage Main Menu link #2
     Given I am logged in with the "access content overview" permission
     And I visit "user"
     And I click on the element with css selector ".roomify-sidebar-menu-toggle"
@@ -86,7 +86,7 @@ Feature: Dashboard
     And I visit "user"
     And I click on the element with css selector ".roomify-sidebar-menu-toggle"
     And I wait 1 seconds
-    Then I should not see the text "Content"
+    Then I should not see "Content" in the ".pane-menu-roomify-dashboard-menu .content" element
 
   Scenario: View the Manage Email Templates link
     Given I am logged in with the "access content overview,administer previewable email templates" permission

@@ -71,7 +71,7 @@ Feature: Manage Property
     Given I am logged in as a user with the "property owner" role
     And I visit "user"
     Then I click on the text "Your Properties"
-    And I should see the link "add property"
+    And I should see the link "+ Add Property"
 
     Given I am logged in as a user with the "roomify manager" role
     And I visit "user"

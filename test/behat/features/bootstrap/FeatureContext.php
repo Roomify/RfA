@@ -73,11 +73,23 @@ class FeatureContext extends DrupalSubContextBase implements CustomSnippetAccept
     $page = $this->getSession()->getPage();
     $element = $page->findAll('css', $selector);
 
-    if (strpos(strtolower($text), strtolower($element->getText()) !== false)) {
+    if (strpos(strtolower($text), strtolower($element->getText()) !== FALSE)) {
       return;
     }
 
     throw Exception("Text '{$text}' is not found in the '{$selector}' element.");
+  }
+
+  /**
+   * @Then /^(?:|I )should not see "(?P<text>.+)" in the "(?P<selector>\w+)" element$/
+   */
+  public function assertElementText($text, $selector) {
+    $page = $this->getSession()->getPage();
+    $element = $page->findAll('css', $selector);
+
+    if (strpos(strtolower($text), strtolower($element->getText()) !== FALSE)) {
+      throw Exception("Text '{$text}' is found in the '{$selector}' element.");
+    }
   }
 
   /**
