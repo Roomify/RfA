@@ -11,14 +11,14 @@
 function roomify_dashboard_install() {
   // Enable the User Panel.
   variable_set('page_manager_user_view_disabled', FALSE);
-  _roomify_dashboard_create_dashboard_menu();
+  roomify_dashboard_create_dashboard_menu();
   menu_rebuild();
 }
 
 /**
  * Create the dashboard Menu.
  */
-function _roomify_dashboard_create_dashboard_menu() {
+function roomify_dashboard_create_dashboard_menu() {
   $menu = array(
     'menu_name' => 'roomify_dashboard_menu',
     'title' => 'Roomify Dashboard Menu',
@@ -56,13 +56,28 @@ function _roomify_dashboard_create_dashboard_menu() {
   roomify_system_create_update_menu_link('Site Pages', 'admin/content', 'roomify_dashboard_menu', 0, 1, $content_mlid);
   roomify_system_create_update_menu_link('Add new content', 'node/add', 'roomify_dashboard_menu', 2, 1, $content_mlid);
 
-  $queue = entityqueue_queue_load('featured_properties');
-  $subqueue = entityqueue_subqueue_load(reset($queue));
-  roomify_system_create_update_menu_link('Featured Properties', 'admin/structure/entityqueue/list/featured_properties/subqueues/' . $subqueue->subqueue_id . '/edit', 'roomify_dashboard_menu', 3, 1, $content_mlid);
+  $featured_properties_subqueue_id = db_select('entityqueue_subqueue', 'e')
+    ->fields('e', array('subqueue_id'))
+    ->condition('queue', 'featured_properties')
+    ->execute()
+    ->fetchField();
+  if ($featured_properties_subqueue_id === FALSE) {
+    $featured_properties_subqueue_id = 2;
+  }
 
-  $queue = entityqueue_queue_load('featured_areas');
-  $subqueue = entityqueue_subqueue_load(reset($queue));
-  roomify_system_create_update_menu_link('Featured Areas', 'admin/structure/entityqueue/list/featured_properties/subqueues/' . $subqueue->subqueue_id . '/edit', 'roomify_dashboard_menu', 4, 1, $content_mlid);
+  roomify_system_create_update_menu_link('Featured Properties', 'admin/structure/entityqueue/list/featured_properties/subqueues/' . $featured_properties_subqueue_id . '/edit', 'roomify_dashboard_menu', 3, 1, $content_mlid);
+
+  $featured_areas_subqueue_id = db_select('entityqueue_subqueue', 'e')
+    ->fields('e', array('subqueue_id'))
+    ->condition('queue', 'featured_areas')
+    ->execute()
+    ->fetchField();
+  if ($featured_areas_subqueue_id === FALSE) {
+    $featured_areas_subqueue_id = 1;
+  }
+
+  roomify_system_create_update_menu_link('Featured Areas', 'admin/structure/entityqueue/list/featured_properties/subqueues/' . $featured_areas_subqueue_id . '/edit', 'roomify_dashboard_menu', 4, 1, $content_mlid);
+
   roomify_system_create_update_menu_link('Main Menu', 'admin/structure/menu/manage/main-menu', 'roomify_dashboard_menu', 5, 1, $content_mlid);
   roomify_system_create_update_menu_link('Dashboard Menu', 'admin/structure/menu/manage/roomify_dashboard_menu', 'roomify_dashboard_menu', 6, 1, $content_mlid);
   roomify_system_create_update_menu_link('Email Templates', 'admin/bat/config/email-templates', 'roomify_dashboard_menu', 7, 1, $content_mlid);
@@ -91,7 +106,6 @@ function _roomify_dashboard_create_dashboard_menu() {
   roomify_system_create_update_menu_link_with_token('Guest Profile', 'user/[current-user:uid]/edit/guest', 'roomify_dashboard_menu', 3, 1, $accounts_mlid, array());
   roomify_system_create_update_menu_link('Users', 'admin/people', 'roomify_dashboard_menu', 10, 1, $accounts_mlid);
   roomify_system_create_update_menu_link('Users Profiles', 'admin/people/profiles', 'roomify_dashboard_menu', 9, 1, $accounts_mlid);
-
 }
 
 /**
@@ -119,7 +133,7 @@ function roomify_dashboard_update_7003() {
  * Create the dashboard menu.
  */
 function roomify_dashboard_update_7004() {
-  _roomify_dashboard_create_dashboard_menu();
+  roomify_dashboard_create_dashboard_menu();
 }
 
 /**
