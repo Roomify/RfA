@@ -1,2 +1,14 @@
 // Pagination Styles
 
+.view {
+  .pagination {
+    > li > a {
+      &.progress-disabled {
+        float: left;
+        .ajax-progress-throbber {
+          margin-left: 7px;
+        }
+      }
+    }
+  }
+}

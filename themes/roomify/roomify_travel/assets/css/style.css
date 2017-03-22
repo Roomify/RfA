@@ -6542,6 +6542,11 @@ blockquote {
 .btn {
   padding: 6px 10px 4px; }
 
+.view .pagination > li > a.progress-disabled {
+  float: left; }
+  .view .pagination > li > a.progress-disabled .ajax-progress-throbber {
+    margin-left: 7px; }
+
 .messages-container {
   margin-right: auto;
   margin-left: auto;
