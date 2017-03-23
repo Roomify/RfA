@@ -409,3 +409,97 @@ function roomify_dashboard_preprocess_html(&$vars) {
     $vars['classes_array'][] = 'better-messages-popup';
   }
 }
+
+/**
+ * Create the dashboard Menu.
+ */
+function roomify_dashboard_create_dashboard_menu() {
+  $menu = array(
+    'menu_name' => 'roomify_dashboard_menu',
+    'title' => 'Roomify Dashboard Menu',
+    'description' => 'A menu used to manage the roomify dashboard',
+    'language' => 'en',
+    'i18n_mode' => I18N_MODE_MULTIPLE,
+  );
+  menu_save($menu);
+
+  // Create Menu Links.
+  roomify_system_create_update_menu_link('Dashboard', 'user', 'roomify_dashboard_menu', -20, 1, 0, array('attributes' => array('class' => 'dashboard')));
+  roomify_system_create_update_menu_link('Properties', 'admin/bat/properties/view-all', 'roomify_dashboard_menu', -10, 1, 0, array('attributes' => array('class' => 'properties')));
+  roomify_system_create_update_menu_link('Bookings', 'admin/bat/bookings', 'roomify_dashboard_menu', -9, 1, 0, array('attributes' => array('class' => 'bookings')));
+  roomify_system_create_update_menu_link('Conversations', 'admin/bat/conversations/guest', 'roomify_dashboard_menu', -8, 1, 0, array('attributes' => array('class' => 'conversations')));
+  roomify_system_create_update_menu_link('Content', 'admin/content', 'roomify_dashboard_menu', -6, 1, 0, array('attributes' => array('class' => 'content')));
+  roomify_system_create_update_menu_link('Accounts', 'user', 'roomify_dashboard_menu', -5, 1, 0, array('attributes' => array('class' => 'accounts')));
+  roomify_system_create_update_menu_link('Configuration', 'admin/bat/config/global/settings', 'roomify_dashboard_menu', -4, 1, 0, array('attributes' => array('class' => 'settings')));
+
+  // Booking Sub-menu.
+  $bookings_mlid = roomify_system_get_menu_link_id('Bookings', 'admin/bat/bookings', 'roomify_dashboard_menu', -9);
+  roomify_system_create_update_menu_link('Global Booking Settings', 'admin/bat/config/booking/settings', 'roomify_dashboard_menu', 0, 1, $bookings_mlid);
+  roomify_system_create_update_menu_link('Booking Notifications', 'admin/bat/config/booking/notifications', 'roomify_dashboard_menu', 1, 1, $bookings_mlid);
+  roomify_system_create_update_menu_link('Commerce Settings', 'admin/bat/config/commerce/settings', 'roomify_dashboard_menu', 1, 2, $bookings_mlid);
+  roomify_system_create_update_menu_link('Payment Methods', 'admin/roomify/payment_methods', 'roomify_dashboard_menu', 1, 2, $bookings_mlid);
+  roomify_system_create_update_menu_link('Terms & Conditions', 'admin/config/content/terms-and-conditions', 'roomify_dashboard_menu', 1, 2, $bookings_mlid);
+  roomify_system_create_update_menu_link('Offers', 'admin/bat/config/global/offers', 'roomify_dashboard_menu', 1, 2, $bookings_mlid);
+
+  // Conversations Sub-menu.
+  $conversations_mlid = roomify_system_get_menu_link_id('Conversations', 'admin/bat/conversations/guest', 'roomify_dashboard_menu', -8);
+  roomify_system_create_update_menu_link('Conversations as Owner', 'admin/bat/conversations/owner', 'roomify_dashboard_menu', 1, 1, $conversations_mlid);
+  roomify_system_create_update_menu_link('Conversations as Guest', 'admin/bat/conversations/guest', 'roomify_dashboard_menu', 1, 2, $conversations_mlid);
+
+  // Content Sub-Menu.
+  $content_mlid = roomify_system_get_menu_link_id('Content', 'admin/content', 'roomify_dashboard_menu', -6);
+  roomify_system_create_update_menu_link('Site Pages', 'admin/content', 'roomify_dashboard_menu', 0, 1, $content_mlid);
+  roomify_system_create_update_menu_link('Add new content', 'node/add', 'roomify_dashboard_menu', 2, 1, $content_mlid);
+
+  $featured_properties_subqueue_id = db_select('entityqueue_subqueue', 'e')
+    ->fields('e', array('subqueue_id'))
+    ->condition('queue', 'featured_properties')
+    ->execute()
+    ->fetchField();
+  if ($featured_properties_subqueue_id === FALSE) {
+    $featured_properties_subqueue_id = 1;
+  }
+
+  roomify_system_create_update_menu_link('Featured Properties', 'admin/structure/entityqueue/list/featured_properties/subqueues/' . $featured_properties_subqueue_id . '/edit', 'roomify_dashboard_menu', 3, 1, $content_mlid);
+
+  $featured_areas_subqueue_id = db_select('entityqueue_subqueue', 'e')
+    ->fields('e', array('subqueue_id'))
+    ->condition('queue', 'featured_areas')
+    ->execute()
+    ->fetchField();
+  if ($featured_areas_subqueue_id === FALSE) {
+    $featured_areas_subqueue_id = 2;
+  }
+
+  roomify_system_create_update_menu_link('Featured Areas', 'admin/structure/entityqueue/list/featured_properties/subqueues/' . $featured_areas_subqueue_id . '/edit', 'roomify_dashboard_menu', 4, 1, $content_mlid);
+
+  roomify_system_create_update_menu_link('Main Menu', 'admin/structure/menu/manage/main-menu', 'roomify_dashboard_menu', 5, 1, $content_mlid);
+  roomify_system_create_update_menu_link('Dashboard Menu', 'admin/structure/menu/manage/roomify_dashboard_menu', 'roomify_dashboard_menu', 6, 1, $content_mlid);
+  roomify_system_create_update_menu_link('Email Templates', 'admin/bat/config/email-templates', 'roomify_dashboard_menu', 7, 1, $content_mlid);
+  roomify_system_create_update_menu_link('Taxonomy', 'admin/structure/taxonomy', 'roomify_dashboard_menu', 8, 1, $content_mlid);
+  roomify_system_create_update_menu_link('Footer', 'admin/config/content/roomify-footer', 'roomify_dashboard_menu', 10, 1, $content_mlid);
+
+  // Configuration Sub-menu.
+  $configuration_mlid = roomify_system_get_menu_link_id('Configuration', 'admin/bat/config/global/settings', 'roomify_dashboard_menu', -4);
+  roomify_system_create_update_menu_link('Quick Setup', 'admin/bat/config/example-content', 'roomify_dashboard_menu', 0, 1, $configuration_mlid);
+  roomify_system_create_update_menu_link('Configure Social Sharing Platforms', 'admin/config/content/rsp', 'roomify_dashboard_menu', 1, 1, $configuration_mlid);
+  roomify_system_create_update_menu_link('Configure Social Feeds', 'admin/config/content/rsf', 'roomify_dashboard_menu', 2, 1, $configuration_mlid);
+  roomify_system_create_update_menu_link('Global Settings', 'admin/bat/config/global/settings', 'roomify_dashboard_menu', 3, 1, $configuration_mlid);
+  roomify_system_create_update_menu_link('Configure Channel Management', 'admin/config/services/channel-management', 'roomify_dashboard_menu', 4, 1, $configuration_mlid);
+  roomify_system_create_update_menu_link('Global Customer message', 'admin/config/content/rcs', 'roomify_dashboard_menu', 5, 1, $configuration_mlid);
+  roomify_system_create_update_menu_link('Availability Search form', 'admin/bat/config/availability-search/settings', 'roomify_dashboard_menu', 6, 1, $configuration_mlid);
+  roomify_system_create_update_menu_link('Integrations', 'admin/config/roomify-integrations', 'roomify_dashboard_menu', 7, 1, $configuration_mlid);
+  roomify_system_create_update_menu_link('Enquiry Form settings', 'admin/bat/config/enquiry/settings', 'roomify_dashboard_menu', 8, 1, $configuration_mlid);
+  roomify_system_create_update_menu_link('Redirects', 'admin/config/search/redirect', 'roomify_dashboard_menu', 9, 1, $configuration_mlid);
+  roomify_system_create_update_menu_link('Translations', 'admin/config/regional/translate', 'roomify_dashboard_menu', 10, 1, $configuration_mlid);
+  roomify_system_create_update_menu_link('Theme Colors', 'admin/bat/config/global/theme-colors', 'roomify_dashboard_menu', 11, 1, $configuration_mlid);
+
+  // Accounts Sub-menu.
+  $accounts_mlid = roomify_system_get_menu_link_id('Accounts', 'user', 'roomify_dashboard_menu', -5);
+  roomify_system_create_update_menu_link_with_token('My Account', 'user/[current-user:uid]/edit', 'roomify_dashboard_menu', 1, 1, $accounts_mlid, array());
+  roomify_system_create_update_menu_link_with_token('Property Owner Profile', 'profile-property_owner/[current-user:uid]/edit', 'roomify_dashboard_menu', 2, 1, $accounts_mlid, array());
+  roomify_system_create_update_menu_link_with_token('Guest Profile', 'user/[current-user:uid]/edit/guest', 'roomify_dashboard_menu', 3, 1, $accounts_mlid, array());
+  roomify_system_create_update_menu_link('Users', 'admin/people', 'roomify_dashboard_menu', 10, 1, $accounts_mlid);
+  roomify_system_create_update_menu_link('Users Profiles', 'admin/people/profiles', 'roomify_dashboard_menu', 9, 1, $accounts_mlid);
+}
+
