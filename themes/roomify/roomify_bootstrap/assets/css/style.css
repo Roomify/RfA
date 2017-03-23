@@ -5896,6 +5896,11 @@ body#lang-fr #qtranslate-chooser .lang-en {
       background: white;
       border: 1px solid white; }
 
+.view .pagination > li > a.progress-disabled {
+  float: left; }
+  .view .pagination > li > a.progress-disabled .ajax-progress-throbber {
+    margin-left: 7px; }
+
 .messages-container .messages-row {
   margin-left: -12px;
   margin-right: -12px; }
