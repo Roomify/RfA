@@ -338,6 +338,7 @@ function roomify_install_finished(&$install_state) {
   roomify_system_create_update_menu_link('Location', 'location', 'main-menu', -1);
   roomify_system_create_update_menu_link('Blog', 'blog', 'main-menu', -2);
 
+  drupal_flush_all_caches();
   // Create the sidebar menu.
   roomify_dashboard_create_dashboard_menu();
   menu_rebuild();

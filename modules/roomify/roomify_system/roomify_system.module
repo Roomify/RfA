@@ -58,6 +58,11 @@ function roomify_system_menu() {
     'type' => MENU_NORMAL_ITEM,
   );
 
+  $items['admin/bat/properties/view-all'] = array();
+  $items['admin/bat/conversations/guest'] = array();
+  $items['admin/bat/conversations/owner'] = array();
+  $items['admin/bat/bookings'] = array();
+
   return $items;
 }
 
