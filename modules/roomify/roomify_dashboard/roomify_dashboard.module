@@ -252,7 +252,7 @@ function roomify_dashboard_page_alter(&$page) {
         }
       }
 
-      $info_icon = '<img src="/' . drupal_get_path('module', 'roomify_dashboard') . '/images/info.png">';
+      $info_icon = '<img src="' . url(drupal_get_path('module', 'roomify_dashboard') . '/images/info.png') . '">';
       $page['content']['help']['content']['#markup'] = '<a target="_blank" href="' . $link . '"><div class="help-icon">' . $info_icon . '<span>' . t('Documentation') . '</span></div></a>';
     }
   }
