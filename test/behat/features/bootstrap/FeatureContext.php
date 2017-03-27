@@ -83,7 +83,7 @@ class FeatureContext extends DrupalSubContextBase implements CustomSnippetAccept
   /**
    * @Then /^(?:|I )should not see "(?P<text>.+)" in the "(?P<selector>\w+)" element$/
    */
-  public function assertElementText($text, $selector) {
+  public function disclaimElementText($text, $selector) {
     $page = $this->getSession()->getPage();
     $element = $page->findAll('css', $selector);
 
