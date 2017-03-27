@@ -371,7 +371,9 @@ function roomify_dashboard_views_data_alter(&$data) {
 function roomify_dashboard_menu_link_alter(&$item) {
   // Translating a menu link of the dashboard menu.
   if (isset($item['menu_name']) && $item['menu_name'] == 'roomify_dashboard_menu') {
-    $item['options']['query']['destination'] = 'user';
+    if ($item['link_path'] != 'node/add') {
+      $item['options']['query']['destination'] = 'user';
+    }
     $item['menu_token_enabled'] = 1;
     if (isset($item['language']) && $item['language'] != 'en' && $item['language'] != LANGUAGE_NONE) {
       // Check if the original link has a class.

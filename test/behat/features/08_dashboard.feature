@@ -86,10 +86,10 @@ Feature: Dashboard
     And I visit "user"
     And I click on the element with css selector ".roomify-sidebar-menu-toggle"
     And I wait 1 seconds
-    Then I should not see "Content" in the ".pane-menu-roomify-dashboard-menu .content" element
+    Then I should not see "Content" in the ".pane-menu-roomify-dashboard-menu" element
 
   Scenario: View the Manage Email Templates link
-    Given I am logged in with the "access content overview,administer previewable email templates" permission
+    Given I am logged in with the "access content overview,administer previewable email templates,configure bat settings,access content overview" permission
     And I visit "user"
     And I click on the element with css selector ".roomify-sidebar-menu-toggle"
     And I wait 1 seconds
