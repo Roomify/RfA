@@ -73,4 +73,27 @@ Drupal.behaviors.roomifyTravelScripts = {
   }
 };
 
+
+Drupal.behaviors.roomifyTravelReadMoreElements = {
+  attach: function (context, settings) {
+
+    $('.page-listing .view-reviews .comment').readmore({
+      speed: 75,
+      collapsedHeight: 50,
+      moreLink: '<a class="collapse-element-link" href="#">' + Drupal.t('Read more') + '</a>',
+      lessLink: '<a class="collapse-element-link" href="#">' + Drupal.t('Read less') + '</a>',
+    });
+    // If the user has another tab open as default we should recreate the readmore.
+    tabParent = $('#property-reviews-tab').parent();
+    $(tabParent).click(function() {
+      $('.page-listing .view-reviews .comment').readmore({
+        speed: 75,
+        collapsedHeight: 50,
+        moreLink: '<a class="collapse-element-link" href="#">' + Drupal.t('Read more') + '</a>',
+        lessLink: '<a class="collapse-element-link" href="#">' + Drupal.t('Read less') + '</a>',
+      });
+    });
+  }
+}
+
 })(jQuery);

@@ -1,0 +1,101 @@
+<?php
+
+/**
+ * @file
+ * Code for the Roomify Review feature.
+ */
+
+include_once 'roomify_review.features.inc';
+
+/**
+ * Implements hook_ctools_plugin_directory()
+ */
+function roomify_review_ctools_plugin_directory($owner, $plugin_type) {
+  if ($owner == 'ctools' && $plugin_type == 'content_types') {
+    return 'plugins/content_types';
+  }
+}
+
+/**
+ * Implements hook_views_api().
+ */
+function roomify_review_views_api() {
+  return array(
+    'api' => 3,
+    'path' => drupal_get_path('module', 'roomify_review') . '/views',
+  );
+}
+
+/**
+ * Implements hook_node_insert().
+ */
+function roomify_review_node_insert($node) {
+  if ($node->type == 'review') {
+    if ($property_id = field_get_items('node', $node, 'field_review_property_reviewed')) {
+      // Redirect the user to the property page after submission.
+      drupal_goto('/listing/' . $property_id[0]['target_id']);
+    }
+  }
+}
+
+/**
+ * Implements hook_pet_substitutions_alter().
+ */
+function roomify_review_pet_substitutions_alter(&$substitutions, $params) {
+  if (isset($params['rules_state']) && isset($params['rules_state']->variables['node'])) {
+    $node = $params['rules_state']->variables['node']->value();
+    $node_edit = $node->nid;
+    $substitutions['node'] = $node;
+  }
+  else {
+    return;
+  }
+}
+
+/**
+ * Implements hook_roomify_rights().
+ */
+function roomify_review_roomify_rights() {
+  $permissions = array_keys(user_permission_get_modules());
+
+  $rights['roomify_system'] = array(
+    'guest' => array(
+      'create review content',
+      'edit own review content',
+
+    ),
+    'roomify manager' => array(
+      'delete any review content',
+      'create review content',
+      'edit any review content',
+    ),
+  );
+
+  return $rights;
+}
+
+/**
+ * Implements hook_form_FORM_ID_alter().
+ * FORM_ID = review_node_form.
+ */
+function roomify_review_form_review_node_form_alter(&$form, &$form_state) {
+  global $user;
+
+  // Set the right property to review and disable the wselection.
+  if (isset($_GET['property_id']) && isset($form['field_review_property_reviewed'])) {
+    $form['field_review_property_reviewed'][LANGUAGE_NONE]['#default_value'] = $_GET['property_id'];
+    $form['field_review_property_reviewed']['#disabled'] = TRUE;
+  }
+}
+
+/**
+ * Implements hook_menu_link_alter().
+ * Hide Review from node/add page.
+ */
+function roomify_review_menu_link_alter(&$item) {
+  if (isset($item['menu_name']) && isset($item['link_path'])) {
+    if ($item['menu_name'] == 'navigation' && $item['link_path'] == 'node/add/review') {
+      $item['hidden'] = 1;
+    }
+  }
+}

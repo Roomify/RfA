@@ -386,6 +386,16 @@ body.page-single-property-listing {
       top: 3px;
       right: 6px;
     }
+    #property-reviews-tab {
+      background: url("../images/star.png") center center no-repeat;
+      background: url("../images/star.svg") center center no-repeat, linear-gradient(transparent, transparent);
+      display: inline-block;
+      width: 17px;
+      height: 17px;
+      position: relative;
+      top: 3px;
+      right: 6px;
+    }
   }
   // Property Amenities.
   .pane-roomify-property-field-sp-amenities {

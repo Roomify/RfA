@@ -6751,12 +6751,14 @@ blockquote {
       border-bottom-width: 1px; }
       .ui-tabs .ui-tabs-nav li a {
         height: 50px;
-        padding: 0 30px;
+        padding: 0 20px;
         background: #F9F9F9;
         color: #939393;
         font-size: 15px;
         font-weight: 500;
         line-height: 50px; }
+        .ui-tabs .ui-tabs-nav li a:focus {
+          outline: none; }
         .ui-tabs .ui-tabs-nav li a:hover {
           color: #000; }
       @media (max-width: 768px) {
@@ -6970,6 +6972,129 @@ blockquote {
         .paragraph-property .property-types .type-row .row-element.price {
           width: 30%;
           text-align: right; }
+
+#mini-panel-property_reviews {
+  display: inline-block;
+  width: 100%; }
+  #mini-panel-property_reviews .pane-property-reviews {
+    display: inline-block;
+    width: 100%; }
+  #mini-panel-property_reviews .pane-roomify-add-property-review-button {
+    margin-top: 15px;
+    margin-bottom: 50px;
+    font-size: inherit;
+    text-align: right;
+    width: 100%; }
+    #mini-panel-property_reviews .pane-roomify-add-property-review-button a {
+      color: white; }
+  #mini-panel-property_reviews .view-reviews .views-row {
+    display: inline-block;
+    width: 100%;
+    margin-bottom: 20px; }
+    #mini-panel-property_reviews .view-reviews .views-row .views-field-user-guest-image {
+      max-width: 60px;
+      display: inline-block;
+      float: left;
+      margin-right: 10px; }
+      #mini-panel-property_reviews .view-reviews .views-row .views-field-user-guest-image img {
+        border-radius: 50%; }
+    #mini-panel-property_reviews .view-reviews .views-row .panel-heading .name {
+      display: inline-block;
+      float: left;
+      margin-right: 8px;
+      font-weight: bold; }
+    #mini-panel-property_reviews .view-reviews .views-row .panel-heading .created {
+      display: inline-block;
+      text-transform: lowercase;
+      font-style: italic;
+      font-size: 15px;
+      font-weight: 400;
+      color: #ababab; }
+    #mini-panel-property_reviews .view-reviews .views-row .title {
+      display: inline-block;
+      width: calc(100% - 100px);
+      float: left;
+      font-weight: 400; }
+      @media (max-width: 480px) {
+        #mini-panel-property_reviews .view-reviews .views-row .title {
+          width: 100%; } }
+    #mini-panel-property_reviews .view-reviews .views-row .rating {
+      display: inline-block;
+      width: 100px;
+      float: right; }
+      @media (max-width: 480px) {
+        #mini-panel-property_reviews .view-reviews .views-row .rating {
+          width: 100%;
+          margin-top: 15px; } }
+    #mini-panel-property_reviews .view-reviews .views-row .comment {
+      width: 100%;
+      display: inline-block;
+      margin: 15px 0;
+      font-size: 16px; }
+      #mini-panel-property_reviews .view-reviews .views-row .comment:empty {
+        display: none; }
+      #mini-panel-property_reviews .view-reviews .views-row .comment[aria-expanded="false"] {
+        position: relative; }
+        #mini-panel-property_reviews .view-reviews .views-row .comment[aria-expanded="false"]:after {
+          position: absolute;
+          content: "";
+          display: inline-block;
+          width: 100%;
+          height: 50px;
+          bottom: 0;
+          left: 0;
+          /* Permalink - use to edit and share this gradient: http://colorzilla.com/gradient-editor/#ffffff+0,ffffff+100&0+0,1+100 */
+          background: -moz-linear-gradient(top, rgba(255, 255, 255, 0) 0%, white 100%);
+          /* FF3.6-15 */
+          background: -webkit-linear-gradient(top, rgba(255, 255, 255, 0) 0%, white 100%);
+          /* Chrome10-25,Safari5.1-6 */
+          background: linear-gradient(to bottom, rgba(255, 255, 255, 0) 0%, white 100%);
+          /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+          filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#00ffffff', endColorstr='#ffffff',GradientType=0 );
+          /* IE6-9 */ }
+    #mini-panel-property_reviews .view-reviews .views-row .views-field-nothing {
+      display: inline-block;
+      float: right;
+      width: calc(100% - 80px);
+      position: relative; }
+      @media (max-width: 480px) {
+        #mini-panel-property_reviews .view-reviews .views-row .views-field-nothing {
+          width: 100%;
+          margin-top: 20px; } }
+      #mini-panel-property_reviews .view-reviews .views-row .views-field-nothing .panel {
+        border-width: 1px 1px 4px 1px; }
+      #mini-panel-property_reviews .view-reviews .views-row .views-field-nothing:after, #mini-panel-property_reviews .view-reviews .views-row .views-field-nothing:before {
+        position: absolute;
+        top: 18px;
+        left: -16px;
+        right: 100%;
+        width: 0;
+        height: 0;
+        display: block;
+        content: "";
+        border-color: transparent;
+        border-style: solid solid outset;
+        pointer-events: none; }
+      #mini-panel-property_reviews .view-reviews .views-row .views-field-nothing:after {
+        border-width: 7px;
+        border-right-color: #f7f7f7;
+        margin-top: 1px;
+        margin-left: 3px; }
+      #mini-panel-property_reviews .view-reviews .views-row .views-field-nothing:before {
+        border-right-color: #e4e4e4;
+        border-width: 8px; }
+      #mini-panel-property_reviews .view-reviews .views-row .views-field-nothing .collapse-element-link {
+        font-size: 12px;
+        text-decoration: underline; }
+  #mini-panel-property_reviews .view-reviews .pager-load-more a {
+    background: #127ba3;
+    color: white;
+    border: 1px solid #158cba;
+    border-width: 0px 2px 4px 2px;
+    border-radius: 5px;
+    font-weight: 500; }
+    #mini-panel-property_reviews .view-reviews .pager-load-more a:hover {
+      background: #158cba; }
 
 header.roomify-header {
   margin-bottom: 0;
@@ -8242,6 +8367,15 @@ body.toggled #close-sidebar-wrapper {
     position: relative;
     top: 4px;
     right: 4px; }
+  .page-listing .panel_sl_left #property-reviews-tab {
+    background: url("../images/star.png") center center no-repeat;
+    background: url("../images/star.svg") center center no-repeat, linear-gradient(transparent, transparent);
+    display: inline-block;
+    width: 17px;
+    height: 17px;
+    position: relative;
+    top: 3px;
+    right: 6px; }
   .page-listing .panel_sl_left #property-rooms-tab {
     background: url("../images/property_type_tab.png") center center no-repeat;
     background: url("../images/property_type_tab.svg") center center no-repeat, linear-gradient(transparent, transparent);
@@ -14263,6 +14397,15 @@ body.page-single-property-listing {
     body.page-single-property-listing .panel-content-bottom #property-rooms-tab {
       background: url("../images/property_type_tab.png") center center no-repeat;
       background: url("../images/property_type_tab.svg") center center no-repeat, linear-gradient(transparent, transparent);
+      display: inline-block;
+      width: 17px;
+      height: 17px;
+      position: relative;
+      top: 3px;
+      right: 6px; }
+    body.page-single-property-listing .panel-content-bottom #property-reviews-tab {
+      background: url("../images/star.png") center center no-repeat;
+      background: url("../images/star.svg") center center no-repeat, linear-gradient(transparent, transparent);
       display: inline-block;
       width: 17px;
       height: 17px;

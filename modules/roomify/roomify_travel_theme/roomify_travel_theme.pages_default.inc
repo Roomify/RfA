@@ -264,6 +264,49 @@ function roomify_travel_theme_default_page_manager_handlers() {
   $display->content['new-2afd9cbd-f378-4858-9cfe-31cd76925e38'] = $pane;
   $display->panels['left'][4] = 'new-2afd9cbd-f378-4858-9cfe-31cd76925e38';
   $pane = new stdClass();
+  $pane->pid = 'new-96c76c2d-bc7e-48d9-bab3-b598120df78b';
+  $pane->panel = 'left';
+  $pane->type = 'panels_mini';
+  $pane->subtype = 'property_reviews';
+  $pane->shown = TRUE;
+  $pane->access = array(
+    'plugins' => array(
+      0 => array(
+        'name' => 'entity_field_value:roomify_property:casa_property:field_sp_allow_property_reviews',
+        'settings' => array(
+          'field_sp_allow_property_reviews' => array(
+            'und' => array(
+              0 => array(
+                'value' => 1,
+              ),
+            ),
+          ),
+          'field_sp_allow_property_reviews_value' => array(
+            0 => 1,
+          ),
+        ),
+        'context' => 'argument_entity_id:roomify_property_1',
+        'not' => FALSE,
+      ),
+    ),
+  );
+  $pane->configuration = array(
+    'override_title' => 1,
+    'override_title_text' => '<span id="property-reviews-tab"></span>Reviews',
+    'override_title_heading' => 'h2',
+  );
+  $pane->cache = array();
+  $pane->style = array(
+    'settings' => NULL,
+  );
+  $pane->css = array();
+  $pane->extras = array();
+  $pane->position = 5;
+  $pane->locks = array();
+  $pane->uuid = '96c76c2d-bc7e-48d9-bab3-b598120df78b';
+  $display->content['new-96c76c2d-bc7e-48d9-bab3-b598120df78b'] = $pane;
+  $display->panels['left'][5] = 'new-96c76c2d-bc7e-48d9-bab3-b598120df78b';
+  $pane = new stdClass();
   $pane->pid = 'new-6b1b6374-7759-470e-8cc9-9c34b7ae881c';
   $pane->panel = 'main-center';
   $pane->type = 'panels_mini';
@@ -561,10 +604,10 @@ function roomify_travel_theme_default_page_manager_handlers() {
         'settings' => array(
           'description' => 'Social Feeds Enabled',
           'php' => '$social_feeds_pages = variable_get(\'roomify_feed_pages\', array());
-        if (isset($social_feeds_pages[\'property_page\']) && $social_feeds_pages[\'property_page\'] === \'property_page\') {
-          return TRUE;
-        }
-        return FALSE;',
+          if (isset($social_feeds_pages[\'property_page\']) && $social_feeds_pages[\'property_page\'] === \'property_page\') {
+            return TRUE;
+          }
+          return FALSE;',
         ),
         'not' => FALSE,
       ),
@@ -595,10 +638,10 @@ function roomify_travel_theme_default_page_manager_handlers() {
         'settings' => array(
           'description' => 'Customer Message Enabled',
           'php' => '$customer_message = variable_get(\'roomify_customer_support_page\', array());
-  if (isset($customer_message[\'property_page\']) && $customer_message[\'property_page\'] === \'property_page\') {
-    return TRUE;
-  }
-  return FALSE;',
+    if (isset($customer_message[\'property_page\']) && $customer_message[\'property_page\'] === \'property_page\') {
+      return TRUE;
+    }
+    return FALSE;',
         ),
         'not' => FALSE,
       ),
@@ -3253,8 +3296,8 @@ function roomify_travel_theme_default_page_manager_handlers() {
           'settings' => array(
             'description' => 'Locanda or Casa',
             'php' => '$product = variable_get(\'roomify_accommodation_example_content\', \'\');
-    if ($product == \'b_and_b\' || $product == \'vacation_rental\')
-            return TRUE;',
+      if ($product == \'b_and_b\' || $product == \'vacation_rental\')
+              return TRUE;',
           ),
           'not' => FALSE,
         ),
@@ -3568,6 +3611,45 @@ function roomify_travel_theme_default_page_manager_handlers() {
   $display->content['new-0433d235-259a-4cd7-933d-5703a8ab2950'] = $pane;
   $display->panels['middle'][3] = 'new-0433d235-259a-4cd7-933d-5703a8ab2950';
   $pane = new stdClass();
+  $pane->pid = 'new-01204d2c-8fb2-496a-8e9e-b45f39bcf5c9';
+  $pane->panel = 'middle';
+  $pane->type = 'views_panes';
+  $pane->subtype = 'reviews-panel_pane_1';
+  $pane->shown = TRUE;
+  $pane->access = array(
+    'plugins' => array(
+      0 => array(
+        'name' => 'entity_field_value:roomify_property:casa_property:field_sp_allow_property_reviews',
+        'settings' => array(
+          'field_sp_allow_property_reviews' => array(
+            'und' => array(
+              0 => array(
+                'value' => 1,
+              ),
+            ),
+          ),
+          'field_sp_allow_property_reviews_value' => array(
+            0 => 1,
+          ),
+        ),
+        'context' => 'argument_entity_id:roomify_property_1',
+        'not' => FALSE,
+      ),
+    ),
+  );
+  $pane->configuration = array();
+  $pane->cache = array();
+  $pane->style = array(
+    'settings' => NULL,
+  );
+  $pane->css = array();
+  $pane->extras = array();
+  $pane->position = 4;
+  $pane->locks = array();
+  $pane->uuid = '01204d2c-8fb2-496a-8e9e-b45f39bcf5c9';
+  $display->content['new-01204d2c-8fb2-496a-8e9e-b45f39bcf5c9'] = $pane;
+  $display->panels['middle'][4] = 'new-01204d2c-8fb2-496a-8e9e-b45f39bcf5c9';
+  $pane = new stdClass();
   $pane->pid = 'new-681acaee-a6c3-4fde-a101-3ae65b4b2777';
   $pane->panel = 'top';
   $pane->type = 'views';
@@ -3681,7 +3763,6 @@ function roomify_travel_theme_default_page_manager_handlers() {
   $display->hide_title = PANELS_TITLE_FIXED;
   $display->title_pane = 'new-e01ffd75-ddef-44c3-b1f6-12ecf4700622';
   $handler->conf['display'] = $display;
-  $export['page_listings__locanda-travel'] = $handler;
 
   return $export;
 }

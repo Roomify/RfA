@@ -1854,7 +1854,8 @@ function roomify_listing_create_property_fields($property_bundle) {
       2 => 'field_sp_featured_image',
       3 => 'field_sp_property_type',
       4 => 'field_sp_allow_instant_bookings',
-      5 => 'field_sp_property_details',
+      5 => 'field_sp_allow_property_reviews',
+      6 => 'field_sp_property_details',
     );
     $field_group->format_type = 'tab';
     $field_group->format_settings = array(
@@ -3061,6 +3062,7 @@ function roomify_listing_create_standard_type_fields($type_bundle) {
 
   roomify_listing_add_field_rates_ranges($type_bundle);
   roomify_listing_add_field_st_rates_for_person($type_bundle);
+  roomify_listing_add_reviews_field($property_bundle);
 }
 
 /**
@@ -4622,6 +4624,75 @@ function roomify_listing_add_field_st_rates_for_person($type_bundle) {
       'entity_type' => 'bat_type',
       'field_name' => 'field_st_rates_for_person',
       'label' => 'Vary rates based on number of people',
+      'required' => 0,
+      'settings' => array(
+        'entity_translation_sync' => FALSE,
+        'user_register_form' => FALSE,
+      ),
+      'widget' => array(
+        'active' => 1,
+        'module' => 'options',
+        'settings' => array(
+          'display_label' => 1,
+        ),
+        'type' => 'options_onoff',
+        'weight' => 10,
+      ),
+    );
+    field_create_instance($instance);
+  }
+}
+
+/**
+ * @param $type_bundle
+ */
+function roomify_listing_add_reviews_field($type_bundle) {
+  if (field_read_field('field_sp_allow_property_reviews') === FALSE) {
+    $field = array(
+      'cardinality' => 1,
+      'entity_types' => array(),
+      'field_name' => 'field_sp_allow_property_reviews',
+      'locked' => 0,
+      'module' => 'list',
+      'settings' => array(
+        'allowed_values' => array(
+          0 => '',
+          1 => '',
+        ),
+        'allowed_values_function' => '',
+        'entity_translation_sync' => FALSE,
+        'profile2_private' => FALSE,
+      ),
+      'translatable' => 0,
+      'type' => 'list_boolean',
+    );
+    field_create_field($field);
+  }
+
+  if (field_read_instance('roomify_property', 'field_sp_allow_property_reviews', $type_bundle) === FALSE) {
+    $instance = array(
+      'bundle' => $type_bundle,
+      'default_value' => array(
+        0 => array(
+          'value' => 1,
+        ),
+      ),
+      'deleted' => 0,
+      'description' => "This settings enable Reviews for your property. Guests will be able to see the a list of reviews and add their.",
+      'display' => array(
+        'default' => array(
+          'label' => 'above',
+          'module' => 'list',
+          'settings' => array(
+            'conditions' => array(),
+          ),
+          'type' => 'list_default',
+          'weight' => 53,
+        ),
+      ),
+      'entity_type' => 'roomify_property',
+      'field_name' => 'field_sp_allow_property_reviews',
+      'label' => 'Enable Reviews for this Property',
       'required' => 0,
       'settings' => array(
         'entity_translation_sync' => FALSE,
