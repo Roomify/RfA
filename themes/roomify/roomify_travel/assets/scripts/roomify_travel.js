@@ -124,4 +124,5 @@ Drupal.behaviors.roomifyTravelAccordian = {
  }
 };
 
+
 })(jQuery);
