@@ -65,6 +65,9 @@ function roomify_system_add_user_fields() {
       'field_name' => 'user_first_name',
       'label' => 'First Name',
       'required' => 0,
+      'settings' => array(
+        'user_register_form' => TRUE,
+      ),
       'widget' => array(
         'active' => 1,
         'module' => 'text',
@@ -95,6 +98,9 @@ function roomify_system_add_user_fields() {
       'field_name' => 'user_last_name',
       'label' => 'Last Name',
       'required' => 0,
+      'settings' => array(
+        'user_register_form' => TRUE,
+      ),
       'widget' => array(
         'active' => 1,
         'module' => 'text',
@@ -125,6 +131,9 @@ function roomify_system_add_user_fields() {
       'field_name' => 'user_telephone',
       'label' => 'Telephone',
       'required' => 0,
+      'settings' => array(
+        'user_register_form' => TRUE,
+      ),
       'widget' => array(
         'active' => 1,
         'module' => 'text',

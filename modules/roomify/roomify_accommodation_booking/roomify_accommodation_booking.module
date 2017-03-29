@@ -1613,6 +1613,58 @@ function roomify_accommodation_booking_form_bat_type_edit_form_alter(&$form, &$f
 }
 
 /**
+ * Implements hook_form_FORM_ID_alter().
+ *
+ * FORM_ID = user_register_form.
+ */
+function roomify_accommodation_booking_form_user_register_form_alter(&$form, &$form_state) {
+  if (strpos($form['#action'], 'render=references-dialog') !== FALSE) {
+    $form['account']['mail']['#required'] = FALSE;
+    $form['account']['pass']['#access'] = FALSE;
+    $form['account']['pass']['#required'] = FALSE;
+    $form['account']['roles']['#access'] = FALSE;
+    $form['account']['status']['#access'] = FALSE;
+    $form['metatags']['#access'] = FALSE;
+
+    if ($guest_role = user_role_load_by_name('guest')) {
+      $form['account']['roles']['#default_value'] = array($guest_role->rid);
+    }
+
+    $form['#validate'] = array_merge(array('roomify_accommodation_booking_form_user_register_form_validate'), $form['#validate']);
+  }
+}
+
+/**
+ * Implements hook_form_FORM_ID_alter().
+ *
+ * FORM_ID = user_profile_form.
+ */
+function roomify_accommodation_booking_form_user_profile_form_alter(&$form, &$form_state) {
+  if (strpos($form['#action'], 'render=references-dialog') !== FALSE) {
+    $form['account']['pass']['#access'] = FALSE;
+    $form['account']['roles']['#access'] = FALSE;
+    $form['account']['status']['#access'] = FALSE;
+    $form['metatags']['#access'] = FALSE;
+    $form['mimemail']['#access'] = FALSE;
+
+    if (isset($form['actions']['cancel'])) {
+      unset($form['actions']['cancel']);
+    }
+  }
+}
+
+/**
+ * Custom validate function for the user_register_form form.
+ */
+function roomify_accommodation_booking_form_user_register_form_validate($form, &$form_state) {
+  if (isset($form_state['values']['mail']) && empty($form_state['values']['mail'])) {
+    $form_state['values']['mail'] = user_password() . '@example.com';
+  }
+
+  $form_state['values']['pass'] = user_password();
+}
+
+/**
  * Implements hook_form_alter().
  */
 function roomify_accommodation_booking_form_alter(&$form, &$form_state, $form_id) {

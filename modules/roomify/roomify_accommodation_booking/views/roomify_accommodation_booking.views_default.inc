@@ -1313,10 +1313,37 @@ function roomify_accommodation_booking_views_default_views() {
   $handler->display->display_options['fields']['name']['id'] = 'name';
   $handler->display->display_options['fields']['name']['table'] = 'users';
   $handler->display->display_options['fields']['name']['field'] = 'name';
+  $handler->display->display_options['fields']['name']['label'] = 'Username';
   $handler->display->display_options['fields']['name']['alter']['word_boundary'] = FALSE;
   $handler->display->display_options['fields']['name']['alter']['ellipsis'] = FALSE;
   $handler->display->display_options['fields']['name']['element_label_colon'] = FALSE;
   $handler->display->display_options['fields']['name']['link_to_user'] = FALSE;
+  /* Field: User: E-mail */
+  $handler->display->display_options['fields']['mail']['id'] = 'mail';
+  $handler->display->display_options['fields']['mail']['table'] = 'users';
+  $handler->display->display_options['fields']['mail']['field'] = 'mail';
+  /* Field: User: First Name */
+  $handler->display->display_options['fields']['user_first_name']['id'] = 'user_first_name';
+  $handler->display->display_options['fields']['user_first_name']['table'] = 'field_data_user_first_name';
+  $handler->display->display_options['fields']['user_first_name']['field'] = 'user_first_name';
+  $handler->display->display_options['fields']['user_first_name']['settings'] = array(
+    'conditions' => array(
+      0 => array(
+        'condition' => '',
+      ),
+    ),
+  );
+  /* Field: User: Last Name */
+  $handler->display->display_options['fields']['user_last_name']['id'] = 'user_last_name';
+  $handler->display->display_options['fields']['user_last_name']['table'] = 'field_data_user_last_name';
+  $handler->display->display_options['fields']['user_last_name']['field'] = 'user_last_name';
+  $handler->display->display_options['fields']['user_last_name']['settings'] = array(
+    'conditions' => array(
+      0 => array(
+        'condition' => '',
+      ),
+    ),
+  );
   /* Sort criterion: User: Created date */
   $handler->display->display_options['sorts']['created']['id'] = 'created';
   $handler->display->display_options['sorts']['created']['table'] = 'users';
