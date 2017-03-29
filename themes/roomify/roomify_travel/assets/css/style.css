@@ -6976,66 +6976,76 @@ blockquote {
 #mini-panel-property_reviews {
   display: inline-block;
   width: 100%; }
-  #mini-panel-property_reviews .pane-property-reviews {
+  #mini-panel-property_reviews .pane-property-reviews-panel-pane-1 {
     display: inline-block;
     width: 100%; }
+  #mini-panel-property_reviews .pane-roomify-property-average-rating {
+    font-size: 30px;
+    font-weight: 600;
+    color: #fcbe1c;
+    display: block;
+    text-align: right;
+    padding: 15px; }
+    #mini-panel-property_reviews .pane-roomify-property-average-rating small {
+      font-weight: 300; }
   #mini-panel-property_reviews .pane-roomify-add-property-review-button {
     margin-top: 15px;
-    margin-bottom: 50px;
+    margin-bottom: 30px;
     font-size: inherit;
     text-align: right;
+    padding-right: 15px;
     width: 100%; }
     #mini-panel-property_reviews .pane-roomify-add-property-review-button a {
       color: white; }
-  #mini-panel-property_reviews .view-reviews .views-row {
+  #mini-panel-property_reviews .view-property-reviews .views-row {
     display: inline-block;
     width: 100%;
     margin-bottom: 20px; }
-    #mini-panel-property_reviews .view-reviews .views-row .views-field-user-guest-image {
+    #mini-panel-property_reviews .view-property-reviews .views-row .views-field-user-guest-image {
       max-width: 60px;
       display: inline-block;
       float: left;
       margin-right: 10px; }
-      #mini-panel-property_reviews .view-reviews .views-row .views-field-user-guest-image img {
+      #mini-panel-property_reviews .view-property-reviews .views-row .views-field-user-guest-image img {
         border-radius: 50%; }
-    #mini-panel-property_reviews .view-reviews .views-row .panel-heading .name {
+    #mini-panel-property_reviews .view-property-reviews .views-row .panel-heading .name {
       display: inline-block;
       float: left;
       margin-right: 8px;
       font-weight: bold; }
-    #mini-panel-property_reviews .view-reviews .views-row .panel-heading .created {
+    #mini-panel-property_reviews .view-property-reviews .views-row .panel-heading .created {
       display: inline-block;
       text-transform: lowercase;
       font-style: italic;
       font-size: 15px;
       font-weight: 400;
       color: #ababab; }
-    #mini-panel-property_reviews .view-reviews .views-row .title {
+    #mini-panel-property_reviews .view-property-reviews .views-row .title {
       display: inline-block;
       width: calc(100% - 100px);
       float: left;
       font-weight: 400; }
       @media (max-width: 480px) {
-        #mini-panel-property_reviews .view-reviews .views-row .title {
+        #mini-panel-property_reviews .view-property-reviews .views-row .title {
           width: 100%; } }
-    #mini-panel-property_reviews .view-reviews .views-row .rating {
+    #mini-panel-property_reviews .view-property-reviews .views-row .rating {
       display: inline-block;
       width: 100px;
       float: right; }
       @media (max-width: 480px) {
-        #mini-panel-property_reviews .view-reviews .views-row .rating {
+        #mini-panel-property_reviews .view-property-reviews .views-row .rating {
           width: 100%;
           margin-top: 15px; } }
-    #mini-panel-property_reviews .view-reviews .views-row .comment {
+    #mini-panel-property_reviews .view-property-reviews .views-row .comment {
       width: 100%;
       display: inline-block;
       margin: 15px 0;
       font-size: 16px; }
-      #mini-panel-property_reviews .view-reviews .views-row .comment:empty {
+      #mini-panel-property_reviews .view-property-reviews .views-row .comment:empty {
         display: none; }
-      #mini-panel-property_reviews .view-reviews .views-row .comment[aria-expanded="false"] {
+      #mini-panel-property_reviews .view-property-reviews .views-row .comment[aria-expanded="false"] {
         position: relative; }
-        #mini-panel-property_reviews .view-reviews .views-row .comment[aria-expanded="false"]:after {
+        #mini-panel-property_reviews .view-property-reviews .views-row .comment[aria-expanded="false"]:after {
           position: absolute;
           content: "";
           display: inline-block;
@@ -7052,18 +7062,18 @@ blockquote {
           /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
           filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#00ffffff', endColorstr='#ffffff',GradientType=0 );
           /* IE6-9 */ }
-    #mini-panel-property_reviews .view-reviews .views-row .views-field-nothing {
+    #mini-panel-property_reviews .view-property-reviews .views-row .views-field-nothing {
       display: inline-block;
       float: right;
       width: calc(100% - 80px);
       position: relative; }
       @media (max-width: 480px) {
-        #mini-panel-property_reviews .view-reviews .views-row .views-field-nothing {
+        #mini-panel-property_reviews .view-property-reviews .views-row .views-field-nothing {
           width: 100%;
           margin-top: 20px; } }
-      #mini-panel-property_reviews .view-reviews .views-row .views-field-nothing .panel {
+      #mini-panel-property_reviews .view-property-reviews .views-row .views-field-nothing .panel {
         border-width: 1px 1px 4px 1px; }
-      #mini-panel-property_reviews .view-reviews .views-row .views-field-nothing:after, #mini-panel-property_reviews .view-reviews .views-row .views-field-nothing:before {
+      #mini-panel-property_reviews .view-property-reviews .views-row .views-field-nothing:after, #mini-panel-property_reviews .view-property-reviews .views-row .views-field-nothing:before {
         position: absolute;
         top: 18px;
         left: -16px;
@@ -7075,25 +7085,25 @@ blockquote {
         border-color: transparent;
         border-style: solid solid outset;
         pointer-events: none; }
-      #mini-panel-property_reviews .view-reviews .views-row .views-field-nothing:after {
+      #mini-panel-property_reviews .view-property-reviews .views-row .views-field-nothing:after {
         border-width: 7px;
         border-right-color: #f7f7f7;
         margin-top: 1px;
         margin-left: 3px; }
-      #mini-panel-property_reviews .view-reviews .views-row .views-field-nothing:before {
+      #mini-panel-property_reviews .view-property-reviews .views-row .views-field-nothing:before {
         border-right-color: #e4e4e4;
         border-width: 8px; }
-      #mini-panel-property_reviews .view-reviews .views-row .views-field-nothing .collapse-element-link {
+      #mini-panel-property_reviews .view-property-reviews .views-row .views-field-nothing .collapse-element-link {
         font-size: 12px;
         text-decoration: underline; }
-  #mini-panel-property_reviews .view-reviews .pager-load-more a {
+  #mini-panel-property_reviews .view-property-reviews .pager-load-more a {
     background: #127ba3;
     color: white;
     border: 1px solid #158cba;
     border-width: 0px 2px 4px 2px;
     border-radius: 5px;
     font-weight: 500; }
-    #mini-panel-property_reviews .view-reviews .pager-load-more a:hover {
+    #mini-panel-property_reviews .view-property-reviews .pager-load-more a:hover {
       background: #158cba; }
 
 header.roomify-header {

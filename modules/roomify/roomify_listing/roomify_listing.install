@@ -1273,20 +1273,3 @@ function roomify_listing_update_7031() {
 
   variable_set('entity_translation_entity_types', $translatable_entities);
 }
-
-/**
- * Add Reviews field.
- */
-function roomify_listing_update_7032() {
-  module_enable(array('roomify_review'));
-  module_load_include('inc', 'roomify_listing', 'roomify_listing.fields');
-
-  foreach (array('casa_property', 'locanda_property') as $property_bundle) {
-    roomify_listing_add_reviews_field($property_bundle);
-    $field_group = field_group_load_field_group('group_basic_information', 'roomify_property', $property_bundle, 'form');
-    $field_group->children[5] = 'field_sp_allow_property_reviews';
-    $field_group->children[6] = 'field_sp_allow_instant_bookings';
-
-    field_group_group_save($field_group);
-  }
-}

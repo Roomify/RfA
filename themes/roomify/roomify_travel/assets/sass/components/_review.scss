@@ -1,21 +1,33 @@
 #mini-panel-property_reviews {
   display: inline-block;
   width: 100%;
-  .pane-property-reviews {
+  .pane-property-reviews-panel-pane-1 {
     display: inline-block;
     width: 100%;
   }
+  .pane-roomify-property-average-rating {
+    font-size: 30px;
+    font-weight: 600;
+    color: #fcbe1c;
+    display: block;
+    text-align: right;
+    padding: 15px;
+    small {
+      font-weight: 300;
+    }
+  }
   .pane-roomify-add-property-review-button {
     margin-top: 15px;
-    margin-bottom: 50px;
+    margin-bottom: 30px;
     font-size: inherit;
     text-align: right;
+    padding-right: 15px;
     width: 100%;
     a {
       color: white;
     }
   }
-  .view-reviews {
+  .view-property-reviews {
     .views-row {
       display: inline-block;
       width: 100%;

@@ -17,6 +17,40 @@ function roomify_review_ctools_plugin_directory($owner, $plugin_type) {
 }
 
 /**
+ * Implements hook_entity_property_info_alter().
+ */
+function roomify_review_entity_property_info_alter(&$info) {
+  $info['roomify_property']['properties']['average_rating'] = array(
+    'type' => 'integer',
+    'label' => t('Average rating'),
+    'sanitized' => TRUE,
+    'getter callback' => 'roomify_review_average_rating_getter_callback',
+  );
+}
+
+/**
+ * Calculate the average rating of a property.
+ */
+function roomify_review_average_rating_getter_callback($item) {
+  if (isset($item->field_sp_property_rating[LANGUAGE_NONE])) {
+    $average_rating = 0;
+    $count_rating = 0;
+
+    foreach ($item->field_sp_property_rating[LANGUAGE_NONE] as $rating) {
+      $node = node_load($rating['target_id']);
+      if (isset($node->field_review_rating[LANGUAGE_NONE][0]['rating'])) {
+        $average_rating += $node->field_review_rating[LANGUAGE_NONE][0]['rating'];
+        $count_rating++;
+      }
+    }
+    return intval($average_rating / $count_rating) . '<small>/100</small>';
+  }
+  else {
+    return '';
+  }
+}
+
+/**
  * Implements hook_views_api().
  */
 function roomify_review_views_api() {
@@ -85,6 +119,15 @@ function roomify_review_form_review_node_form_alter(&$form, &$form_state) {
   if (isset($_GET['property_id']) && isset($form['field_review_property_reviewed'])) {
     $form['field_review_property_reviewed'][LANGUAGE_NONE]['#default_value'] = $_GET['property_id'];
     $form['field_review_property_reviewed']['#disabled'] = TRUE;
+  }
+}
+
+/**
+ * Implements hook_form_alter().
+ */
+function roomify_review_form_alter(&$form, &$form_state, $form_id) {
+  if ($form_id == 'roomify_property_edit_casa_property_form' || $form_id == 'roomify_property_edit_locanda_property_form') {
+    $form['field_sp_property_rating']['#access'] = FALSE;
   }
 }
 

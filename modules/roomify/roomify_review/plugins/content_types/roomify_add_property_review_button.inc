@@ -20,7 +20,7 @@ $plugin = array(
 function roomify_add_property_review_button_render($subtype, $conf, $args, $pane_context, $incoming_content) {
   $link = '';
   if (user_access('create review content')) {
-    $link = l(t('Review Property'), 'node/add/review', array('query' => array('property_id' => $args[0]), 'attributes' => array('class' => array('btn btn-default btn-info', 'roomify-property-review'))));
+    $link = l(t('Review'), 'node/add/review', array('query' => array('property_id' => $args[0]), 'attributes' => array('class' => array('btn btn-default btn-info', 'roomify-property-review'))));
   }
 
   $block = new stdClass();
