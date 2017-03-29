@@ -1483,6 +1483,7 @@ function roomify_accommodation_booking_entity_insert($entity, $type) {
 
     roomify_accommodation_booking_add_line_item_reference($entity->type);
     roomify_accommodation_booking_add_booking_guest_field($entity->type);
+    roomify_accommodation_booking_add_booking_user_guest_field($entity->type);
   }
 }
 
@@ -1621,9 +1622,10 @@ function roomify_accommodation_booking_form_alter(&$form, &$form_state, $form_id
       global $user;
 
       // Update the profile reference field.
-      $form['booking_guest'][LANGUAGE_NONE][0]['target_id']['#attributes']['readonly'] = 'readonly';
-      $form['booking_guest'][LANGUAGE_NONE][0]['target_id']['#attributes']['style'] = 'background-color: #e4e4e4;';
-      $form['booking_guest'][LANGUAGE_NONE][0]['target_id']['#description'] = t('Use the "Create Billing information" link to add a new guest, or click "Search" to use a repeat guest\'s details.');
+      $form['booking_guest']['#access'] = FALSE;
+
+      $form['booking_user_guest'][LANGUAGE_NONE][0]['target_id']['#attributes']['readonly'] = 'readonly';
+      $form['booking_user_guest'][LANGUAGE_NONE][0]['target_id']['#attributes']['style'] = 'background-color: #e4e4e4;';
 
       // Remove the cancel button, users get access denied at the redirect.
       unset($form['actions']['delete']['#suffix']);
@@ -3319,7 +3321,7 @@ function roomify_accommodation_booking_references_dialog_entityreference_add_lin
   $add_links = references_dialog_entityreference_add_link($element, $widget_settings, $field, $instance);
 
   if (isset($add_links[0]['title'])) {
-    if ($add_links[0]['title'] == t('Create Billing information')) {
+    if ($add_links[0]['title'] == t('Create User')) {
       $add_links[0]['title'] = t('Add new Guest');
     }
   }
@@ -3333,7 +3335,7 @@ function roomify_accommodation_booking_references_dialog_entityreference_add_lin
 function roomify_accommodation_booking_references_dialog_entityreference_search_link($element, $widget_settings, $field, $instance) {
   $search_link = references_dialog_get_field_search_links($element, $widget_settings, $field, $instance);
 
-  if ($element['#entity_type'] == 'bat_booking' && $element['#field_name'] == 'booking_guest') {
+  if ($element['#entity_type'] == 'bat_booking' && $element['#field_name'] == 'booking_user_guest') {
     $search_link[0]['title'] = t('Search for existing Guest');
   }
 
