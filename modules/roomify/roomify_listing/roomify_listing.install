@@ -1285,18 +1285,18 @@ function roomify_listing_update_7032() {
 }
 
 /**
- * Add Reviews field.
+ * Helper function to add fields to the right vertical tab.
  */
 function roomify_listing_update_7033() {
   module_enable(array('roomify_review'));
-  module_load_include('inc', 'roomify_listing', 'roomify_listing.fields');
-
   foreach (array('casa_property', 'locanda_property') as $property_bundle) {
-    roomify_listing_add_reviews_field($property_bundle);
     $field_group = field_group_load_field_group('group_basic_information', 'roomify_property', $property_bundle, 'form');
-    $field_group->children[5] = 'field_sp_allow_property_reviews';
-    $field_group->children[6] = 'field_sp_allow_instant_bookings';
 
+    // Get the last key.
+    $key = count($field_group->children) - 1;
+    $field_group->children[$key + 1] = $field_group->children[$key];
+    $field_group->children[$key] = 'field_sp_allow_property_reviews';
     field_group_group_save($field_group);
   }
+  drupal_flush_all_caches();
 }
