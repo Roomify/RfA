@@ -88,8 +88,27 @@ function roomify_review_roomify_rights() {
  * Implements hook_form_FORM_ID_alter().
  * FORM_ID = review_node_form.
  */
-function roomify_review_form_review_node_form_alter(&$form, &$form_state) {
+function roomify_review_form_review_node_form_alter(&$form, &$form_state, $node) {
   global $user;
+
+  if (!empty($form['nid']['#value'])) {
+    $form['options']['#access'] = user_access('edit any review content');
+
+    $form['options']['promote']['#access'] = FALSE;
+    $form['options']['sticky']['#access'] = FALSE;
+    if ($form['#node']->status == 0) {
+      $form['review_unpublished'] = array(
+        '#markup' => '<div style="color: #FF4500; font-size: 20px; float: right;">' . t('Review Unpublished') . '</div>',
+        '#weight' => -100,
+      );
+    }
+    else {
+      $form['review_published'] = array(
+        '#markup' => '<div style="color: #4CAF50; font-size: 20px; float: right;">' . t('Review Published') . '</div>',
+        '#weight' => -100,
+      );
+    }
+  }
 
   // Set the right property to review and disable the wselection.
   if (isset($_GET['property_id']) && isset($form['field_review_property_reviewed'])) {
