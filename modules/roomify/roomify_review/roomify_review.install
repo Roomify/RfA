@@ -4,27 +4,3 @@
  * @file
  * Installation for roomify_listing.
  */
-
-/**
- * Implements hook_install().
- */
-function roomify_review_install() {
-  roomify_review_update_basic_property_group();
-}
-
-/**
- * Helper function to add fields to the right vertical tab.
- */
-function roomify_review_update_basic_property_group() {
-
-  foreach (array('casa_property', 'locanda_property') as $property_bundle) {
-    $field_group = field_group_load_field_group('group_basic_information', 'roomify_property', $property_bundle, 'form');
-
-    // Get the last key.
-    $key = count($field_group->children) - 1;
-    $field_group->children[$key + 1] = $field_group->children[$key];
-    $field_group->children[$key] = 'field_sp_allow_property_reviews';
-    field_group_group_save($field_group);
-  }
-  drupal_flush_all_caches();
-}

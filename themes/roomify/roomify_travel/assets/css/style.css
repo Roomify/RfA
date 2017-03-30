@@ -6988,13 +6988,17 @@ blockquote {
     padding: 15px; }
     #mini-panel-property_reviews .pane-roomify-property-average-rating small {
       font-weight: 300; }
+    #mini-panel-property_reviews .pane-roomify-property-average-rating .no-reviews {
+      font-size: 15px;
+      font-weight: 400;
+      font-style: italic; }
   #mini-panel-property_reviews .pane-roomify-add-property-review-button {
     margin-top: 15px;
     margin-bottom: 30px;
     font-size: inherit;
     text-align: right;
     padding-right: 15px;
-    width: 100%; }
+    text-align: left; }
     #mini-panel-property_reviews .pane-roomify-add-property-review-button a {
       color: white; }
   #mini-panel-property_reviews .view-property-reviews .views-row {
@@ -7105,6 +7109,44 @@ blockquote {
     font-weight: 500; }
     #mini-panel-property_reviews .view-property-reviews .pager-load-more a:hover {
       background: #158cba; }
+
+.node-type-review {
+  font-size: 17px; }
+  .node-type-review .pane-node-status {
+    display: inline-block;
+    width: 100%;
+    text-align: right;
+    margin-bottom: 30px; }
+    .node-type-review .pane-node-status .pane-content {
+      display: inline-block;
+      background: #4CAF50;
+      padding: 6px 15px;
+      color: white;
+      border-radius: 4px;
+      border-bottom: 2px solid #338237; }
+  .node-type-review.review-unpublished .pane-node-status .pane-content {
+    background: #F44336;
+    border-bottom: 2px solid #ad3027; }
+  .node-type-review .panel_sl_content {
+    background: white;
+    padding: 50px 30px;
+    border: 1px solid #dadada;
+    border-radius: 5px;
+    margin-top: 15px; }
+  .node-type-review .pane-node-field-review-property-reviewed,
+  .node-type-review .pane-node-field-review-rating {
+    display: inline-block;
+    width: 100%;
+    margin-bottom: 15px; }
+    .node-type-review .pane-node-field-review-property-reviewed .pane-title,
+    .node-type-review .pane-node-field-review-rating .pane-title {
+      float: left;
+      display: inline-block;
+      margin-right: 10px;
+      font-weight: 600; }
+  .node-type-review .pane-node-field-review-rating .pane-content {
+    display: inline-block;
+    margin-top: 5px; }
 
 header.roomify-header {
   margin-bottom: 0;
