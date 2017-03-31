@@ -236,8 +236,20 @@ function roomify_review_pet_substitutions_alter(&$substitutions, $params) {
 
     $substitutions['user'] = $user;
   }
-}
 
+  if (isset($params['rules_state']->variables['node'])) {
+    $node = $params['rules_state']->variables['node']->value();
+
+    if ($node->type == 'review') {
+      if ($property_reviewed = field_get_items('node', $node, 'field_review_property_reviewed')) {
+        $property = roomify_property_load($property_reviewed[0]['target_id']);
+        $substitutions['roomify_property'] = $property;
+      }
+    }
+    $substitutions['node'] = $node;
+  }
+
+}
 
 /**
  * Implements hook_commerce_checkout_complete().
@@ -267,6 +279,29 @@ function roomify_review_commerce_checkout_complete($order) {
           }
         }
       }
+    }
+  }
+}
+
+/**
+ * Implements hook_node_insert().
+ */
+function roomify_review_node_insert($node) {
+  if ($node->type == 'review') {
+    // Send a notification email to the property owner when a new review
+    // is submitted.
+    module_load_include('inc', 'pet', 'pet.rules');
+    if ($property_reviewed = field_get_items('node', $node, 'field_review_property_reviewed')) {
+
+      $property = roomify_property_load($property_reviewed[0]['target_id']);
+      $to_account = user_load($property->field_sp_owner[LANGUAGE_NONE][0]['target_id']);
+
+      $rules_state = new RulesState();
+      $node_wrapper = entity_metadata_wrapper('node', $node);
+      $rules_state->currentArguments['node'] = $node_wrapper;
+      $rules_state->variables['node'] = $node_wrapper;
+
+      pet_action_send_pet('new_review_submitted', NULL, $to_account, NULL, NULL, array(), $rules_state);
     }
   }
 }

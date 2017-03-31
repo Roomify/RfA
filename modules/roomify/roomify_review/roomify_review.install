@@ -2,7 +2,7 @@
 
 /**
  * @file
- * Installation for roomify_listing.
+ * Installation for roomify_review.
  */
 
 /**
@@ -15,6 +15,22 @@ function roomify_review_install() {
     "title" : "Roomify Review Property",
     "subject" : "Your booking  is complete!",
     "mail_body" : "Your booking for [roomify_property:name] on from [bat_booking:booking-start-date:custom:Y-m-d] to [bat_booking:booking-end-date:custom:Y-m-d] has been completed! \\r\\n\\r\\nPlease go \\u003Ca href=\\u0022[site:abs-url]\\/node\\/add\\/review?property_id=[roomify_property:property-id]\\u0022\\u003Ehere\\u003C\\/a\\u003E and add a review of the Property!\\r\\n\\r\\nThanks!",
+    "mail_body_plain" : "",
+    "send_plain" : "0",
+    "from_override" : "",
+    "cc_default" : "",
+    "bcc_default" : "",
+    "recipient_callback" : "",
+    "token_entity_types" : null,
+    "language" : "en",
+    "rdf_mapping" : []
+  }');
+
+  $items['new_review_submitted'] = entity_import('pet', '{
+    "name" : "new_review_submitted",
+    "title" : "New Review submitted",
+    "subject" : "A new review has been submitted",
+    "mail_body" : "Great news, you have a new review for your property [roomify_property:name]!\\r\\n\\r\\n\\u003Cstrong\\u003ETitle:\\u003C\\/strong\\u003E [node:title]\\r\\n\\u003Cstrong\\u003EProperty:\\u003C\\/strong\\u003E [roomify_property:name]\\r\\n\\r\\nYou may view, edit and publish the review \\u003Ca href=\\u0022[site:abs-url]\\/node\\/[node:nid]\\/edit\\u0022 target=\\u0022_blank\\u0022\\u003Ehere\\u003C\\/a\\u003E.\\r\\n",
     "mail_body_plain" : "",
     "send_plain" : "0",
     "from_override" : "",
