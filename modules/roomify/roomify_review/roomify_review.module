@@ -168,3 +168,105 @@ function roomify_review_preprocess_html(&$vars) {
     }
   }
 }
+
+/**
+ * Implements hook_cron_job_scheduler_info().
+ */
+function roomify_review_cron_job_scheduler_info() {
+  $info = array();
+  $info['roomify_review_guest_notification'] = array(
+    'queue name' => 'roomify_review_guest_notification_queue',
+  );
+  return $info;
+}
+
+/**
+ * Implements hook_cron_queue_info().
+ */
+function roomify_review_cron_queue_info() {
+  $queues = array();
+  $queues['roomify_review_guest_notification_queue'] = array(
+    'worker callback' => 'roomify_review_guest_notification_mail',
+  );
+
+  return $queues;
+}
+
+/**
+ * Send email to guest.
+ */
+function roomify_review_guest_notification_mail(array $job) {
+  watchdog('pippo', 'pippobello');
+  if ($booking = bat_booking_load($job['id'])) {
+    module_load_include('inc', 'pet', 'pet.rules');
+
+    $booking_wrapper = entity_metadata_wrapper('bat_booking', $booking);
+    $order = commerce_order_load($booking_wrapper->booking_line_item_reference->order_id->value());
+
+    $to_account = user_load($order->uid);
+
+    $rules_state = new RulesState();
+
+    $rules_state->currentArguments['bat_booking'] = $booking_wrapper;
+    $rules_state->variables['bat_booking'] = $booking_wrapper;
+
+    pet_action_send_pet('roomify_review_property', NULL, $to_account, NULL, NULL, array(), $rules_state);
+  }
+}
+
+/**
+ * Implements hook_pet_substitutions_alter().
+ */
+function roomify_review_pet_substitutions_alter(&$substitutions, $params) {
+  if (isset($params['rules_state']->variables['bat_booking'])) {
+    $booking = $params['rules_state']->variables['bat_booking']->value();
+
+    if ($booking->type == 'roomify_accommodation_booking') {
+      $booking_wrapper = entity_metadata_wrapper('bat_booking', $booking);
+
+      $type = bat_type_load($booking_wrapper->booking_event_reference->event_bat_unit_reference->type_id->value());
+      $property = roomify_property_load($type->field_st_property_reference[LANGUAGE_NONE][0]['target_id']);
+
+      $substitutions['roomify_property'] = $property;
+    }
+  }
+
+  if (isset($params['rules_state']->variables['user'])) {
+    $user = $params['rules_state']->variables['user']->value();
+
+    $substitutions['user'] = $user;
+  }
+}
+
+
+/**
+ * Implements hook_commerce_checkout_complete().
+ */
+function roomify_review_commerce_checkout_complete($order) {
+  $order_wrapper = entity_metadata_wrapper('commerce_order', $order);
+
+  foreach ($order->commerce_line_items as $lang => $item) {
+    foreach ($item as $item_id) {
+      $line_item = commerce_line_item_load($item_id['line_item_id']);
+      if ($line_item->type == 'roomify_accommodation_booking') {
+        $booking = bat_booking_load($line_item->commerce_booking_reference[LANGUAGE_NONE][0]['target_id']);
+
+        $end_date = new DateTime($booking->booking_end_date[LANGUAGE_NONE][0]['value']);
+
+        if ($days = variable_get('roomify_review_notification', 2)) {
+          $period = $end_date->getTimestamp() - REQUEST_TIME + (86400 * $days);
+
+          if ($period > 0) {
+            $job = array(
+              'type' => 'property rating',
+              'id' => $booking->booking_id,
+              'period' => $period,
+              'periodic' => FALSE,
+            );
+            JobScheduler::get('roomify_review_guest_notification')->set($job);
+          }
+        }
+      }
+    }
+  }
+}

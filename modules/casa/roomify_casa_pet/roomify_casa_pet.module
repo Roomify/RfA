@@ -73,6 +73,8 @@ function roomify_casa_pet_form_pet_form_alter(&$form, &$form_state) {
 
     case 'withdraw_offer':
       $form['mail_body']['#description'] = $body_default . t('</br></br>Tokens specific to this template: <em>Property Name</em> : [roomify_property:name] <em>Conversation Url</em> : [roomify_conversation:url] </br>');
+    case 'roomify_review_property':
+      $form['mail_body']['#description'] = $body_default . t('</br></br>Tokens specific to this template: <em>Property Name</em> : [roomify_property:name] <em>Property ID</em> : [roomify_property:property-id] <em>Booking Start Date [bat_booking:booking-start-date:custom:Y-m-d] <em>Booking End Date</em> [bat_booking:booking-end-date:custom:Y-m-d] </br>');
   }
 }
 

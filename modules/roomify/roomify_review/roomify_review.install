@@ -4,3 +4,30 @@
  * @file
  * Installation for roomify_listing.
  */
+
+/**
+ * Implements hook_install().
+ */
+function roomify_review_install() {
+
+  $items['roomify_review_property'] = entity_import('pet', '{
+    "name" : "roomify_review_property",
+    "title" : "Roomify Review Property",
+    "subject" : "Your booking  is complete!",
+    "mail_body" : "Your booking for [roomify_property:name] on from [bat_booking:booking-start-date:custom:Y-m-d] to [bat_booking:booking-end-date:custom:Y-m-d] has been completed! \\r\\n\\r\\nPlease go \\u003Ca href=\\u0022[site:abs-url]\\/node\\/add\\/review?property_id=[roomify_property:property-id]\\u0022\\u003Ehere\\u003C\\/a\\u003E and add a review of the Property!\\r\\n\\r\\nThanks!",
+    "mail_body_plain" : "",
+    "send_plain" : "0",
+    "from_override" : "",
+    "cc_default" : "",
+    "bcc_default" : "",
+    "recipient_callback" : "",
+    "token_entity_types" : null,
+    "language" : "en",
+    "rdf_mapping" : []
+  }');
+
+  foreach ($items as $item) {
+    $item->save();
+  }
+
+}

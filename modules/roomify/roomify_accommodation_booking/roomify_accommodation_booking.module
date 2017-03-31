@@ -3242,6 +3242,24 @@ function roomify_accommodation_booking_notifications_form($form, &$form_state) {
     '#markup' => l(t('Edit email template'), 'admin/structure/pets/manage/owner_booking_reminder'),
   );
 
+  if (module_exists('roomify_review')) {
+    $form['review'] = array(
+      '#type' => 'fieldset',
+      '#title' => t('Reviews Notification'),
+    );
+
+    $form['review']['roomify_review_notification'] = array(
+      '#type' => 'select',
+      '#title' => t('Review notification'),
+      '#description' => t('How many days after the checkout the request of review should be sent.'),
+      '#options' => $options,
+      '#field_suffix' => t('days after'),
+      '#default_value' => variable_get('roomify_review_notification', 2),
+    );
+    $form['review']['edit_link'] = array(
+      '#markup' => l(t('Edit email template'), 'admin/structure/pets/manage/roomify_review_property'),
+    );
+  }
   $form['#submit'][] = 'roomify_accommodation_booking_notifications_form_submit';
 
   return system_settings_form($form);
