@@ -439,3 +439,14 @@ function roomify_travel_theme_form_alter(&$form, &$form_state, $form_id) {
     $form['field_blog_sticky_at_top']['#access'] = FALSE;
   }
 }
+
+/**
+ * Implements hook_panels_pane_content_alter().
+ */
+function roomify_travel_theme_panels_pane_content_alter($content, $pane, $args, $contexts) {
+  if (base_path() != '/') {
+    if (isset($content->content) && $pane->type == 'custom') {
+      $content->content = str_replace('href="/node/add/', 'href="' . base_path() . 'node/add/', $content->content);
+    }
+  }
+}

@@ -13,3 +13,14 @@ function roomify_base_theme_ctools_plugin_api($module = NULL, $api = NULL) {
     return array("version" => "1");
   }
 }
+
+/**
+ * Implements hook_panels_pane_content_alter().
+ */
+function roomify_base_theme_panels_pane_content_alter($content, $pane, $args, $contexts) {
+  if (base_path() != '/') {
+    if (isset($content->content) && $pane->type == 'custom') {
+      $content->content = str_replace('href="/node/add/', 'href="' . base_path() . 'node/add/', $content->content);
+    }
+  }
+}
