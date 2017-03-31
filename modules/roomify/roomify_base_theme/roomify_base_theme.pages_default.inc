@@ -2561,6 +2561,32 @@ function roomify_base_theme_default_page_manager_handlers() {
   $display->content['new-90f88a03-550b-469e-a83f-2ddab03d8ac4'] = $pane;
   $display->panels['property-description'][3] = 'new-90f88a03-550b-469e-a83f-2ddab03d8ac4';
   $pane = new stdClass();
+  $pane->pid = 'new-52b57d62-41b6-4920-aebe-ac02642c1330';
+  $pane->panel = 'property-description';
+  $pane->type = 'panels_mini';
+  $pane->subtype = 'property_reviews';
+  $pane->shown = TRUE;
+  $pane->access = array();
+  $pane->configuration = array(
+    'context' => array(
+      0 => 'argument_entity_id:roomify_property_1',
+    ),
+    'override_title' => 1,
+    'override_title_text' => 'Reviews',
+    'override_title_heading' => 'h2',
+  );
+  $pane->cache = array();
+  $pane->style = array(
+    'settings' => NULL,
+  );
+  $pane->css = array();
+  $pane->extras = array();
+  $pane->position = 4;
+  $pane->locks = array();
+  $pane->uuid = '52b57d62-41b6-4920-aebe-ac02642c1330';
+  $display->content['new-52b57d62-41b6-4920-aebe-ac02642c1330'] = $pane;
+  $display->panels['property-description'][4] = 'new-52b57d62-41b6-4920-aebe-ac02642c1330';
+  $pane = new stdClass();
   $pane->pid = 'new-2ce187d9-ec1b-4cf5-a08e-f7e633f95258';
   $pane->panel = 'property-types';
   $pane->type = 'views_panes';
