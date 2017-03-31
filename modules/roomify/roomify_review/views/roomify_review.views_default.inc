@@ -832,6 +832,77 @@ function roomify_review_views_default_views() {
     'review' => 'review',
   );
   $handler->display->display_options['filters']['type']['group'] = 1;
+
+  /* Display: Owner Reviews */
+  $handler = $view->new_display('panel_pane', 'Owner Reviews', 'panel_pane_2');
+  $handler->display->display_options['display_description'] = 'A list of reviews of my property';
+  $handler->display->display_options['defaults']['relationships'] = FALSE;
+  /* Relationship: Content: Author */
+  $handler->display->display_options['relationships']['uid']['id'] = 'uid';
+  $handler->display->display_options['relationships']['uid']['table'] = 'node';
+  $handler->display->display_options['relationships']['uid']['field'] = 'uid';
+  $handler->display->display_options['relationships']['uid']['required'] = TRUE;
+  /* Relationship: User: Profile */
+  $handler->display->display_options['relationships']['profile']['id'] = 'profile';
+  $handler->display->display_options['relationships']['profile']['table'] = 'users';
+  $handler->display->display_options['relationships']['profile']['field'] = 'profile';
+  $handler->display->display_options['relationships']['profile']['relationship'] = 'uid';
+  $handler->display->display_options['relationships']['profile']['bundle_types'] = array(
+    'guest' => 'guest',
+  );
+  /* Relationship: Entity Reference: Referenced Entity */
+  $handler->display->display_options['relationships']['field_review_property_reviewed_target_id']['id'] = 'field_review_property_reviewed_target_id';
+  $handler->display->display_options['relationships']['field_review_property_reviewed_target_id']['table'] = 'field_data_field_review_property_reviewed';
+  $handler->display->display_options['relationships']['field_review_property_reviewed_target_id']['field'] = 'field_review_property_reviewed_target_id';
+  /* Relationship: Entity Reference: Referenced Entity */
+  $handler->display->display_options['relationships']['field_sp_owner_target_id']['id'] = 'field_sp_owner_target_id';
+  $handler->display->display_options['relationships']['field_sp_owner_target_id']['table'] = 'field_data_field_sp_owner';
+  $handler->display->display_options['relationships']['field_sp_owner_target_id']['field'] = 'field_sp_owner_target_id';
+  $handler->display->display_options['relationships']['field_sp_owner_target_id']['relationship'] = 'field_review_property_reviewed_target_id';
+  $handler->display->display_options['relationships']['field_sp_owner_target_id']['required'] = TRUE;
+  $handler->display->display_options['defaults']['arguments'] = FALSE;
+  /* Contextual filter: User: Uid */
+  $handler->display->display_options['arguments']['uid']['id'] = 'uid';
+  $handler->display->display_options['arguments']['uid']['table'] = 'users';
+  $handler->display->display_options['arguments']['uid']['field'] = 'uid';
+  $handler->display->display_options['arguments']['uid']['relationship'] = 'field_sp_owner_target_id';
+  $handler->display->display_options['arguments']['uid']['default_action'] = 'default';
+  $handler->display->display_options['arguments']['uid']['default_argument_type'] = 'current_user';
+  $handler->display->display_options['arguments']['uid']['summary']['number_of_records'] = '0';
+  $handler->display->display_options['arguments']['uid']['summary']['format'] = 'default_summary';
+  $handler->display->display_options['arguments']['uid']['summary_options']['items_per_page'] = '25';
+  $handler->display->display_options['defaults']['filter_groups'] = FALSE;
+  $handler->display->display_options['defaults']['filters'] = FALSE;
+  /* Filter criterion: Content: Published */
+  $handler->display->display_options['filters']['status']['id'] = 'status';
+  $handler->display->display_options['filters']['status']['table'] = 'node';
+  $handler->display->display_options['filters']['status']['field'] = 'status';
+  $handler->display->display_options['filters']['status']['value'] = 'All';
+  $handler->display->display_options['filters']['status']['group'] = 1;
+  $handler->display->display_options['filters']['status']['exposed'] = TRUE;
+  $handler->display->display_options['filters']['status']['expose']['operator_id'] = '';
+  $handler->display->display_options['filters']['status']['expose']['label'] = 'Published';
+  $handler->display->display_options['filters']['status']['expose']['operator'] = 'status_op';
+  $handler->display->display_options['filters']['status']['expose']['identifier'] = 'status';
+  $handler->display->display_options['filters']['status']['expose']['remember_roles'] = array(
+    2 => '2',
+    1 => 0,
+    30037204 => 0,
+    4 => 0,
+    5 => 0,
+    6 => 0,
+    7 => 0,
+    8 => 0,
+    163670334 => 0,
+  );
+  /* Filter criterion: Content: Type */
+  $handler->display->display_options['filters']['type']['id'] = 'type';
+  $handler->display->display_options['filters']['type']['table'] = 'node';
+  $handler->display->display_options['filters']['type']['field'] = 'type';
+  $handler->display->display_options['filters']['type']['value'] = array(
+    'review' => 'review',
+  );
+  $handler->display->display_options['filters']['type']['group'] = 1;
   $translatables['reviews'] = array(
     t('Master'),
     t('more'),
@@ -862,6 +933,9 @@ function roomify_review_views_default_views() {
     t('My Reviews'),
     t('All'),
     t('View panes'),
+    t('Owner Reviews'),
+    t('A list of reviews of my property'),
+    t('User entity referenced from field_sp_owner'),
   );
   $export['reviews'] = $view;
 
