@@ -14540,6 +14540,8 @@ body.page-single-property-listing {
           margin-top: 5px;
           font-weight: 400;
           font-style: italic; }
+  body.page-single-property-listing #mini-panel-property_reviews .panel-content-wrapper {
+    width: 100%; }
 
 body.node-type-offer .panel-content-bottom,
 body.node-type-offer .panel-content-top,
