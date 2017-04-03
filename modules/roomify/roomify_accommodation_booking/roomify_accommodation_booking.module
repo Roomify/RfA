@@ -1428,6 +1428,25 @@ function roomify_accommodation_booking_entity_insert($entity, $type) {
 
       $entity->booking_line_item_reference[LANGUAGE_NONE][0]['target_id'] = $line_item->line_item_id;
 
+      $user_fields = array(
+        'name' => commerce_order_unique_username($entity->field_bcom_first_name[LANGUAGE_NONE][0]['value'] . ' ' . $entity->field_bcom_last_name[LANGUAGE_NONE][0]['value']),
+        'mail' => $entity->field_bcom_email[LANGUAGE_NONE][0]['value'],
+        'pass' => user_password(8),
+        'status' => 1,
+        'init' => 'email address',
+        'roles' => array('guest'),
+      );
+
+      $new_user = user_save('', $user_fields);
+
+      $new_user->user_first_name[LANGUAGE_NONE][0]['value'] = $entity->field_bcom_first_name[LANGUAGE_NONE][0]['value'];
+      $new_user->user_last_name[LANGUAGE_NONE][0]['value'] = $entity->field_bcom_last_name[LANGUAGE_NONE][0]['value'];
+      $new_user->user_telephone[LANGUAGE_NONE][0]['value'] = $entity->field_bcom_telephone[LANGUAGE_NONE][0]['value'];
+
+      user_save($new_user);
+
+      $entity->booking_user_guest[LANGUAGE_NONE][0]['target_id'] = $new_user->uid;
+
       field_attach_update($type, $entity);
     }
     elseif ($entity->type == 'ical') {
@@ -1473,6 +1492,19 @@ function roomify_accommodation_booking_entity_insert($entity, $type) {
       commerce_order_save($order);
 
       $entity->booking_line_item_reference[LANGUAGE_NONE][0]['target_id'] = $line_item->line_item_id;
+
+      $user_fields = array(
+        'name' => commerce_order_unique_username('roomify-' . user_password(6)),
+        'mail' => user_password() . '@example.com',
+        'pass' => user_password(8),
+        'status' => 1,
+        'init' => 'email address',
+        'roles' => array('guest'),
+      );
+
+      $new_user = user_save('', $user_fields);
+
+      $entity->booking_user_guest[LANGUAGE_NONE][0]['target_id'] = $new_user->uid;
 
       field_attach_update($type, $entity);
     }
@@ -1840,23 +1872,7 @@ function roomify_accommodation_booking_form_alter(&$form, &$form_state, $form_id
         $line_item = commerce_line_item_load($booking->booking_line_item_reference[LANGUAGE_NONE][0]['target_id']);
         $order = commerce_order_load($line_item->order_id);
 
-        if (isset($booking->booking_guest[LANGUAGE_NONE][0]['target_id'])) {
-          if ($profile = commerce_customer_profile_load($booking->booking_guest[LANGUAGE_NONE][0]['target_id'])) {
-            $form['profile'] = array(
-             '#type' => 'fieldset',
-               '#title' => t('Guest Details'),
-              '#group' => 'additional_settings',
-              '#weight' => -100,
-            );
-
-            $profile_array = entity_view('commerce_customer_profile', array($profile->profile_id => $profile), 'customer');
-
-            $form['profile']['info'] = array(
-              '#markup' => '<div class="field-label">' . t('Address:') . '</div>' . drupal_render($profile_array),
-            );
-          }
-        }
-        elseif (isset($order->commerce_customer_billing[LANGUAGE_NONE][0]['profile_id'])) {
+        if (isset($order->commerce_customer_billing[LANGUAGE_NONE][0]['profile_id'])) {
           if ($profile = commerce_customer_profile_load($order->commerce_customer_billing[LANGUAGE_NONE][0]['profile_id'])) {
             $form['profile'] = array(
              '#type' => 'fieldset',
@@ -2183,11 +2199,6 @@ function roomify_accommodation_booking_add_booking_form_submit($form, &$form_sta
     // Create a new order.
     $order = commerce_order_new($type->uid, 'pending');
 
-    if (isset($form_state['values']['booking_guest'][LANGUAGE_NONE][0]['target_id']) &&
-        !empty($form_state['values']['booking_guest'][LANGUAGE_NONE][0]['target_id'])) {
-      $order->commerce_customer_billing[LANGUAGE_NONE][0]['profile_id'] = $form_state['values']['booking_guest'][LANGUAGE_NONE][0]['target_id'];
-    }
-
     commerce_order_save($order);
 
     // Create a new line item.
@@ -2382,14 +2393,6 @@ function roomify_accommodation_booking_bat_fullcalendar_formatted_event_alter(&$
     if (isset($result['bat_booking'])) {
       $booking = reset($result['bat_booking']);
       $booking = bat_booking_load($booking->booking_id);
-
-      if (isset($booking->booking_guest[LANGUAGE_NONE][0]['target_id'])) {
-        $customer_profile = commerce_customer_profile_load($booking->booking_guest[LANGUAGE_NONE][0]['target_id']);
-
-        if (isset($customer_profile->commerce_customer_address[LANGUAGE_NONE][0]['name_line'])) {
-          $formatted_event['title'] = $customer_profile->commerce_customer_address[LANGUAGE_NONE][0]['name_line'];
-        }
-      }
     }
   }
 }
@@ -2792,21 +2795,24 @@ function roomify_accommodation_booking_send_mail($line_item, $settings, $rules_s
     ->condition('ur.rid', $role->rid, '=')
     ->execute()
     ->fetchCol();
-  $users = user_load_multiple($uids);
 
-  $mails = array();
-  foreach ($users as $user) {
-    $mails[] = '<' . $user->mail . '>';
+  if (!empty($uids)) {
+    $users = user_load_multiple($uids);
+
+    $mails = array();
+    foreach ($users as $user) {
+      $mails[] = '<' . $user->mail . '>';
+    }
+    $pet_to = implode(',', $mails);
+
+    $pet = pet_load('new_order');
+    $params = array(
+      'pet_from' => variable_get('site_mail', ini_get('sendmail_from')),
+      'pet_to' => $pet_to,
+      'rules_state' => $rules_state,
+    );
+    pet_send_one_mail($pet, $params);
   }
-  $pet_to = implode(',', $mails);
-
-  $pet = pet_load('new_order');
-  $params = array(
-    'pet_from' => variable_get('site_mail', ini_get('sendmail_from')),
-    'pet_to' => $pet_to,
-    'rules_state' => $rules_state,
-  );
-  pet_send_one_mail($pet, $params);
 }
 
 /**
