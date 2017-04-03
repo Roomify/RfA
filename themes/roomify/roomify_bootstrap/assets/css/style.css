@@ -10667,7 +10667,7 @@ div.ctools-modal-dialog .modal-header .modal-title {
     .page-booking #modalContent .ctools-modal-dialog.modal-dialog .modal-content,
     .page-activity-booking #modalContent .ctools-modal-dialog.modal-dialog .modal-content {
       height: 100%;
-      overflow: hidden; }
+      overflow: auto; }
       @media (max-width: 767px) {
         .page-conversation-booking #modalContent .ctools-modal-dialog.modal-dialog .modal-content,
         .page-booking #modalContent .ctools-modal-dialog.modal-dialog .modal-content,
