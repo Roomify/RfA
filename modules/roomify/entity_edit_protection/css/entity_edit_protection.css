@@ -1,7 +1,7 @@
 .ui-dialog .ui-dialog-titlebar {
   background: #4e6277;
 }
-.ui-dialog .ui-dialog-titlebar-close {
+.ui-dialog.no-close .ui-dialog-titlebar-close {
   display: none;
 }
 .ui-dialog .ui-dialog-title {

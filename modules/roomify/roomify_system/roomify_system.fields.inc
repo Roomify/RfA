@@ -5,7 +5,7 @@
  */
 
 /**
- *
+ * Add user fields.
  */
 function roomify_system_add_user_fields() {
   $field_bases = array();
@@ -37,6 +37,23 @@ function roomify_system_add_user_fields() {
       'locked' => 1,
       'settings' => array(),
       'type' => 'text',
+    );
+  }
+
+  if (field_read_field('user_commerce_profile') === FALSE) {
+    $field_bases['user_commerce_profile'] = array(
+      'field_name' => 'user_commerce_profile',
+      'type' => 'entityreference',
+      'cardinality' => 1,
+      'locked' => 1,
+      'settings' => array(
+        'target_type' => 'commerce_customer_profile',
+        'handler_settings' => array(
+          'target_bundles' => array(
+            'billing' => 'billing',
+          ),
+        ),
+      ),
     );
   }
 
@@ -142,6 +159,25 @@ function roomify_system_add_user_fields() {
         ),
         'type' => 'text_textfield',
       ),
+    );
+  }
+
+  if (field_read_instance('user', 'user_commerce_profile', 'user') === FALSE) {
+    $field_instances['user-user-user_commerce_profile'] = array(
+      'field_name' => 'user_commerce_profile',
+      'entity_type' => 'user',
+      'label' => 'Commerce profile',
+      'bundle' => 'user',
+      'required' => FALSE,
+      'widget' => array(
+        'type' => 'entityreference_autocomplete',
+        'settings' => array(
+          'references_dialog_edit' => 1,
+          'references_dialog_add' => 1,
+          'references_dialog_search' => 0,
+        ),
+      ),
+      'settings' => array(),
     );
   }
 
