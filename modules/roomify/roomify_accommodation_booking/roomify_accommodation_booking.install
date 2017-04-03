@@ -362,3 +362,109 @@ function roomify_accommodation_booking_update_7011() {
     roomify_accommodation_booking_add_booking_user_guest_field($bundle->type);
   }
 }
+
+/**
+ * Create a dummy user for all iCal bookings.
+ */
+function roomify_accommodation_booking_update_7012() {
+  $query->entityCondition('entity_type', 'bat_booking')
+    ->entityCondition('bundle', 'ical');
+
+  $result = $query->execute();
+
+  if (isset($result['bat_booking'])) {
+    foreach ($result['bat_booking'] as $booking) {
+      $booking = bat_booking_load($booking->booking_id);
+
+      $user_fields = array(
+        'name' => commerce_order_unique_username('roomify-' . user_password(6)),
+        'mail' => user_password() . '@example.com',
+        'pass' => user_password(8),
+        'status' => 1,
+        'init' => 'email address',
+        'roles' => array('guest'),
+      );
+
+      $new_user = user_save('', $user_fields);
+
+      $booking->booking_user_guest[LANGUAGE_NONE][0]['target_id'] = $new_user->uid;
+
+      $booking->save();
+    }
+  }
+}
+
+/**
+ * Create a dummy user for all Booking.com bookings.
+ */
+function roomify_accommodation_booking_update_7013() {
+  $query->entityCondition('entity_type', 'bat_booking')
+    ->entityCondition('bundle', 'booking_com');
+
+  $result = $query->execute();
+
+  if (isset($result['bat_booking'])) {
+    foreach ($result['bat_booking'] as $booking) {
+      $booking = bat_booking_load($booking->booking_id);
+
+      $user_fields = array(
+        'name' => commerce_order_unique_username($booking->field_bcom_first_name[LANGUAGE_NONE][0]['value'] . ' ' . $booking->field_bcom_last_name[LANGUAGE_NONE][0]['value']),
+        'mail' => $booking->field_bcom_email[LANGUAGE_NONE][0]['value'],
+        'pass' => user_password(8),
+        'status' => 1,
+        'init' => 'email address',
+        'roles' => array('guest'),
+      );
+
+      $new_user = user_save('', $user_fields);
+
+      $new_user->user_first_name[LANGUAGE_NONE][0]['value'] = $booking->field_bcom_first_name[LANGUAGE_NONE][0]['value'];
+      $new_user->user_last_name[LANGUAGE_NONE][0]['value'] = $booking->field_bcom_last_name[LANGUAGE_NONE][0]['value'];
+      $new_user->user_telephone[LANGUAGE_NONE][0]['value'] = $booking->field_bcom_telephone[LANGUAGE_NONE][0]['value'];
+
+      user_save($new_user);
+
+      $booking->booking_user_guest[LANGUAGE_NONE][0]['target_id'] = $new_user->uid;
+
+      $booking->save();
+    }
+  }
+}
+
+/**
+ * Set "Guest" reference for all "Roomify Accommodation Booking" bookings.
+ */
+function roomify_accommodation_booking_update_7014() {
+  $query->entityCondition('entity_type', 'bat_booking')
+    ->entityCondition('bundle', 'roomify_accommodation_booking');
+
+  $result = $query->execute();
+
+  if (isset($result['bat_booking'])) {
+    foreach ($result['bat_booking'] as $booking) {
+      $booking = bat_booking_load($booking->booking_id);
+
+      if (isset($booking->booking_guest[LANGUAGE_NONE][0]['target_id'])) {
+        $profile = commerce_customer_profile_load($booking->booking_guest[LANGUAGE_NONE][0]['target_id']);
+
+        $booking->booking_user_guest[LANGUAGE_NONE][0]['target_id'] = $profile->uid;
+      }
+      else {
+        $user_fields = array(
+          'name' => commerce_order_unique_username('roomify-' . user_password(6)),
+          'mail' => user_password() . '@example.com',
+          'pass' => user_password(8),
+          'status' => 1,
+          'init' => 'email address',
+          'roles' => array('guest'),
+        );
+
+        $new_user = user_save('', $user_fields);
+
+        $booking->booking_user_guest[LANGUAGE_NONE][0]['target_id'] = $new_user->uid;
+      }
+
+      $booking->save();
+    }
+  }
+}
