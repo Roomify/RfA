@@ -389,7 +389,7 @@ function roomify_accommodation_booking_update_7012() {
 
       $booking->booking_user_guest[LANGUAGE_NONE][0]['target_id'] = $new_user->uid;
 
-      $booking->save();
+      field_attach_update('bat_booking', $booking);
     }
   }
 }
@@ -426,7 +426,7 @@ function roomify_accommodation_booking_update_7013() {
 
       $booking->booking_user_guest[LANGUAGE_NONE][0]['target_id'] = $new_user->uid;
 
-      $booking->save();
+      field_attach_update('bat_booking', $booking);
     }
   }
 }
@@ -464,7 +464,7 @@ function roomify_accommodation_booking_update_7014() {
         $booking->booking_user_guest[LANGUAGE_NONE][0]['target_id'] = $new_user->uid;
       }
 
-      $booking->save();
+      field_attach_update('bat_booking', $booking);
     }
   }
 }
