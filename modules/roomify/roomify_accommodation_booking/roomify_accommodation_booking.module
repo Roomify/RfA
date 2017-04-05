@@ -1494,7 +1494,7 @@ function roomify_accommodation_booking_entity_insert($entity, $type) {
       $entity->booking_line_item_reference[LANGUAGE_NONE][0]['target_id'] = $line_item->line_item_id;
 
       $user_fields = array(
-        'name' => commerce_order_unique_username('roomify-' . user_password(6)),
+        'name' => commerce_order_unique_username('rfa-guest-' . user_password(6)),
         'mail' => user_password() . '@example.com',
         'pass' => user_password(8),
         'status' => 1,
@@ -1682,15 +1682,20 @@ function roomify_accommodation_booking_user_update(&$edit, $account, $category) 
  */
 function roomify_accommodation_booking_form_user_register_form_alter(&$form, &$form_state) {
   if (strpos($form['#action'], 'render=references-dialog') !== FALSE) {
+    $form['account']['name']['#required'] = FALSE;
+    $form['account']['name']['#description'] = t('Using this (or email) the user will be able to access to the site.') . ' ' . $form['account']['name']['#description'];
     $form['account']['mail']['#required'] = FALSE;
     $form['account']['pass']['#access'] = FALSE;
     $form['account']['pass']['#required'] = FALSE;
     $form['account']['roles']['#access'] = FALSE;
+    $form['account']['roles_change']['#access'] = FALSE;
     $form['account']['status']['#access'] = FALSE;
     $form['metatags']['#access'] = FALSE;
-
+    $form['user_first_name']['#weight'] = -100;
+    $form['user_last_name']['#weight'] = -99;
+    $form['user_telephone']['#weight'] = -98;
     if ($guest_role = user_role_load_by_name('guest')) {
-      $form['account']['roles']['#default_value'] = array($guest_role->rid);
+      $form['account']['roles'][$guest_role->rid]['#default_value'] = TRUE;
     }
 
     $form['#validate'] = array_merge(array('roomify_accommodation_booking_form_user_register_form_validate'), $form['#validate']);
@@ -1727,6 +1732,20 @@ function roomify_accommodation_booking_form_user_profile_form_alter(&$form, &$fo
 function roomify_accommodation_booking_form_user_register_form_validate($form, &$form_state) {
   if (isset($form_state['values']['mail']) && empty($form_state['values']['mail'])) {
     $form_state['values']['mail'] = user_password() . '@example.com';
+  }
+
+  // Username is empty.
+  if (isset($form_state['values']['name']) && empty($form_state['values']['name'])) {
+    // We are going to create one for the user.
+    if (isset($form_state['values']['user_first_name'][LANGUAGE_NONE][0]['value']) && !empty($form_state['values']['user_first_name'][LANGUAGE_NONE][0]['value'])) {
+      $form_state['values']['name'] = commerce_order_unique_username($form_state['values']['user_first_name'][LANGUAGE_NONE][0]['value']);
+    }
+    elseif (isset($form_state['values']['user_last_name'][LANGUAGE_NONE][0]['value']) && !empty($form_state['values']['user_last_name'][LANGUAGE_NONE][0]['value'])) {
+      $form_state['values']['name'] = commerce_order_unique_username($form_state['values']['user_last_name'][LANGUAGE_NONE][0]['value']);
+    }
+    else {
+      $form_state['values']['name'] = commerce_order_unique_username('rfa-guest-' . user_password(6));
+    }
   }
 
   $form_state['values']['pass'] = user_password();

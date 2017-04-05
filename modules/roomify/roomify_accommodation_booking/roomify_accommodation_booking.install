@@ -385,7 +385,7 @@ function roomify_accommodation_booking_update_7012() {
         if ($user = user_load($profile->uid)) {
           if ($user->uid == 0 || !in_array('guest', $user->roles)) {
             $user_fields = array(
-              'name' => commerce_order_unique_username('roomify-' . user_password(6)),
+              'name' => commerce_order_unique_username('rfa-guest-' . user_password(6)),
               'mail' => user_password() . '@example.com',
               'pass' => user_password(8),
               'status' => 1,
@@ -406,7 +406,7 @@ function roomify_accommodation_booking_update_7012() {
       }
       else {
         $user_fields = array(
-          'name' => commerce_order_unique_username('roomify-' . user_password(6)),
+          'name' => commerce_order_unique_username('rfa-guest-' . user_password(6)),
           'mail' => user_password() . '@example.com',
           'pass' => user_password(8),
           'status' => 1,
@@ -519,7 +519,7 @@ function roomify_accommodation_booking_update_7014() {
             // The billing profile belongs to an anonymous user or
             // the owner is not a Guest.
             $user_fields = array(
-              'name' => commerce_order_unique_username('roomify-' . user_password(6)),
+              'name' => commerce_order_unique_username('rfa-guest-' . user_password(6)),
               'mail' => user_password() . '@example.com',
               'pass' => user_password(8),
               'status' => 1,
@@ -541,7 +541,7 @@ function roomify_accommodation_booking_update_7014() {
       // No profile, let's create a user for that.
       else {
         $user_fields = array(
-          'name' => commerce_order_unique_username('roomify-' . user_password(6)),
+          'name' => commerce_order_unique_username('rfa-guest-' . user_password(6)),
           'mail' => user_password() . '@example.com',
           'pass' => user_password(8),
           'status' => 1,
