@@ -900,6 +900,8 @@ function roomify_locanda_event_ui_pricing_test_form_callback($form, &$form_state
   $nights = $start_date->diff($end_date)->days;
 
   foreach ($rates as $type => $rate_id) {
+    $rate = roomify_rate_load($rate_id);
+
     $amount = roomify_locanda_event_ui_get_price($rates, $start_date, $temp_end_date, $type);
 
     $currency_setting = commerce_currency_load(commerce_default_currency());
