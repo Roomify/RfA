@@ -214,7 +214,7 @@
       }
       .modal-content {
         height: 100%;
-        overflow: hidden;
+        overflow: auto;
         @media (max-width: $screen-xs-max) {
           overflow: scroll;
         }
