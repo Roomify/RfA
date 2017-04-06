@@ -7,19 +7,19 @@
   padding: 12px 10px;
   color: white;
   z-index: 20;
-  -webkit-transition: 300ms left ease;  
-  -moz-transition:    300ms left ease;  
-  -ms-transition:     300ms left ease;  
-  -o-transition:      300ms left ease;  
+  -webkit-transition: 300ms left ease;
+  -moz-transition: 300ms left ease;
+  -ms-transition: 300ms left ease;
+  -o-transition: 300ms left ease;
 }
+
 .help-icon:hover {
   background: #1ea4f7;
   left: 0px;
-  -webkit-transition: 300ms left ease;  
-  -moz-transition:    300ms left ease;  
-  -ms-transition:     300ms left ease;  
-  -o-transition:      300ms left ease;  
-
+  -webkit-transition: 300ms left ease;
+  -moz-transition: 300ms left ease;
+  -ms-transition: 300ms left ease;
+  -o-transition: 300ms left ease;
 }
 
 .help-icon span {

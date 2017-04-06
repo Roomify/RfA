@@ -512,7 +512,7 @@ function roomify_dashboard_field_widget_form_alter(&$element, &$form_state, $con
   if ($context['field']['type'] == 'image') {
     // Loop through the element children (there will always be at least one).
     foreach (element_children($element) as $key => $child) {
-      // Add the new process function to the element
+      // Add the new process function to the element.
       $element[$key]['#process'][] = 'roomify_dashboard_image_field_widget_process';
     }
   }
