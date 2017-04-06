@@ -3236,7 +3236,7 @@ function roomify_dashboard_views_default_views() {
   $handler->display->display_options['empty']['area']['table'] = 'views';
   $handler->display->display_options['empty']['area']['field'] = 'area';
   $handler->display->display_options['empty']['area']['empty'] = TRUE;
-  $handler->display->display_options['empty']['area']['content'] = '<h2>You don\'t have any properties yet! Please add some property. </h2><div><a class="ctools-use-modal ctools-modal-roomify-dashboard-modal-style" href="/admin/bat/config/property/wizard/nojs">+ Add Property</a></div>.';
+  $handler->display->display_options['empty']['area']['content'] = '<h2>You don\'t have any properties yet! Please add a Property. </h2><div><a class="ctools-use-modal ctools-modal-roomify-dashboard-modal-style" href="/admin/bat/config/property/wizard/nojs">+ Add Property</a></div>.';
   $handler->display->display_options['empty']['area']['format'] = 'filtered_text';
   /* Field: Roomify Property: Status */
   $handler->display->display_options['fields']['status']['id'] = 'status';
@@ -3766,7 +3766,7 @@ function roomify_dashboard_views_default_views() {
     t('next ›'),
     t('last »'),
     t('<a class="button add-property-button ctools-use-modal ctools-modal-roomify-dashboard-modal-style" href="/admin/bat/config/property/wizard/nojs">add property</a>'),
-    t('<h2>You don\'t have any properties yet! Please add some property. </h2><div><a class="ctools-use-modal ctools-modal-roomify-dashboard-modal-style" href="/admin/bat/config/property/wizard/nojs">+ Add Property</a></div>.'),
+    t('<h2>You don\'t have any properties yet! Please add a Property. </h2><div><a class="ctools-use-modal ctools-modal-roomify-dashboard-modal-style" href="/admin/bat/config/property/wizard/nojs">+ Add Property</a></div>.'),
     t('.'),
     t('Properties'),
     t('Edit'),
