@@ -745,43 +745,10 @@ function roomify_casa_event_ui_pricing_update_form_submit($form, &$form_state) {
  * Builds a form when user can calculate price for a given date range and unit.
  */
 function roomify_casa_event_ui_pricing_test_form($form, &$form_state, $property_id, $event_type) {
-  $property = roomify_property_load($property_id);
-  $bat_event_type = bat_event_type_load($event_type);
-
-  $target_entity_type = $bat_event_type->target_entity_type;
-
-  $controller = entity_get_controller($target_entity_type);
-
-  foreach ($property->property_bat_type_reference[LANGUAGE_NONE] as $type_reference) {
-    $type_id = $type_reference['target_id'];
-
-    $rates = $controller->getReferencedIds($type_id);
-
-    $rate_options = array();
-    foreach ($rates as $rate) {
-      $rate = roomify_rate_load($rate['id']);
-
-      if (isset($rate->data['weekly']) && $rate->data['weekly']) {
-        $rate_options['weekly'] = $rate->rate_id;
-      }
-      elseif (isset($rate->data['monthly']) && $rate->data['monthly']) {
-        $rate_options['monthly'] = $rate->rate_id;
-      }
-      else {
-        $rate_options['nightly'] = $rate->rate_id;
-      }
-    }
-
-    $form['type_id'] = array(
-      '#type' => 'hidden',
-      '#value' => $type_id,
-    );
-
-    $form['rates'] = array(
-      '#type' => 'hidden',
-      '#value' => $rate_options,
-    );
-  }
+  $form['event_type'] = array(
+    '#type' => 'hidden',
+    '#value' => $event_type,
+  );
 
   $form['property_id'] = array(
     '#type' => 'hidden',
@@ -823,9 +790,6 @@ function roomify_casa_event_ui_pricing_test_form_callback($form, &$form_state) {
 
   $values = $form_state['values'];
 
-  $rates = $values['rates'];
-  $type_id = $values['type_id'];
-
   $start_date = new DateTime($values['bat_start_date']);
   $end_date = new DateTime($values['bat_end_date']);
 
@@ -842,41 +806,68 @@ function roomify_casa_event_ui_pricing_test_form_callback($form, &$form_state) {
 
   $nights = $start_date->diff($end_date)->days;
 
-  foreach ($rates as $type => $rate_id) {
-    $amount = roomify_casa_event_ui_get_price($rates, $start_date, $temp_end_date, $type);
+  $property = roomify_property_load($values['property_id']);
+  $bat_event_type = bat_event_type_load($values['event_type']);
 
-    $currency_setting = commerce_currency_load(commerce_default_currency());
-    $currency_symbol = $currency_setting['symbol'];
+  $target_entity_type = $bat_event_type->target_entity_type;
 
-    $booking_cost = commerce_currency_format($amount, $currency_setting['code']);
+  $controller = entity_get_controller($target_entity_type);
 
-    if (isset($rate->data['standard']) && $rate->data['standard'] && $nights < 7) {
-      $form['price_tester']['price']['#markup'] .= '<div>' . t('Using @rate rate: @amount <- Applicable value given date range', array(
-        '@rate' => $rate->name,
-        '@currency_symbol' => $currency_symbol,
-        '@amount' => $booking_cost,
-      )) . '</div>';
+  $rates = array();
+
+  foreach ($controller->getReferencedIds($property->property_bat_type_reference[LANGUAGE_NONE][0]['target_id']) as $rate) {
+    $rate = roomify_rate_load($rate['id']);
+
+    if (isset($rate->data['weekly']) && $rate->data['weekly']) {
+      $rates['weekly'][] = $rate->rate_id;
     }
-    elseif (isset($rate->data['weekly']) && $rate->data['weekly'] && $nights >= 7 && $nights < 28) {
-      $form['price_tester']['price']['#markup'] .= '<div>' . t('Using @rate rate: @amount <- Applicable value given date range', array(
-        '@rate' => $rate->name,
-        '@currency_symbol' => $currency_symbol,
-        '@amount' => $booking_cost,
-      )) . '</div>';
-    }
-    elseif (isset($rate->data['monthly']) && $rate->data['monthly'] && $nights >= 28) {
-      $form['price_tester']['price']['#markup'] .= '<div>' . t('Using @rate rate: @amount <- Applicable value given date range', array(
-        '@rate' => $rate->name,
-        '@currency_symbol' => $currency_symbol,
-        '@amount' => $booking_cost,
-      )) . '</div>';
+    elseif (isset($rate->data['monthly']) && $rate->data['monthly']) {
+      $rates['monthly'][] = $rate->rate_id;
     }
     else {
-      $form['price_tester']['price']['#markup'] .= '<div>' . t('Using @rate rate: @amount', array(
-        '@rate' => $rate->name,
-        '@currency_symbol' => $currency_symbol,
-        '@amount' => $booking_cost,
-      )) . '</div>';
+      $rates['nightly'][] = $rate->rate_id;
+    }
+  }
+
+  foreach ($rates as $type => $rate_ids) {
+    foreach ($rate_ids as $index => $rate_id) {
+      $rate = roomify_rate_load($rate_id);
+
+      $amount = roomify_casa_event_ui_get_price($rates, $start_date, $temp_end_date, $type, $index);
+
+      $currency_setting = commerce_currency_load(commerce_default_currency());
+      $currency_symbol = $currency_setting['symbol'];
+
+      $booking_cost = commerce_currency_format($amount, $currency_setting['code']);
+
+      if (isset($rate->data['standard']) && $rate->data['standard'] && $nights < 7) {
+        $form['price_tester']['price']['#markup'] .= '<div>' . t('Using @rate rate: @amount <- Applicable value given date range', array(
+          '@rate' => $rate->name,
+          '@currency_symbol' => $currency_symbol,
+          '@amount' => $booking_cost,
+        )) . '</div>';
+      }
+      elseif (isset($rate->data['weekly']) && $rate->data['weekly'] && $nights >= 7 && $nights < 28) {
+        $form['price_tester']['price']['#markup'] .= '<div>' . t('Using @rate rate: @amount <- Applicable value given date range', array(
+          '@rate' => $rate->name,
+          '@currency_symbol' => $currency_symbol,
+          '@amount' => $booking_cost,
+        )) . '</div>';
+      }
+      elseif (isset($rate->data['monthly']) && $rate->data['monthly'] && $nights >= 28) {
+        $form['price_tester']['price']['#markup'] .= '<div>' . t('Using @rate rate: @amount <- Applicable value given date range', array(
+          '@rate' => $rate->name,
+          '@currency_symbol' => $currency_symbol,
+          '@amount' => $booking_cost,
+        )) . '</div>';
+      }
+      else {
+        $form['price_tester']['price']['#markup'] .= '<div>' . t('Using @rate rate: @amount', array(
+          '@rate' => $rate->name,
+          '@currency_symbol' => $currency_symbol,
+          '@amount' => $booking_cost,
+        )) . '</div>';
+      }
     }
   }
 
@@ -1103,10 +1094,11 @@ function roomify_casa_event_ui_get_pricing_events($unit_type, $start_date, $end_
  * @param $start_date
  * @param $end_date
  * @param string $type
+ * @param $index
  *
  * @return int
  */
-function roomify_casa_event_ui_get_price($rates, $start_date, $end_date, $type = 'nightly') {
+function roomify_casa_event_ui_get_price($rates, $start_date, $end_date, $type, $index) {
   global $databases;
 
   $prefix = (isset($databases['default']['default']['prefix'])) ? $databases['default']['default']['prefix'] : '';
@@ -1114,7 +1106,7 @@ function roomify_casa_event_ui_get_price($rates, $start_date, $end_date, $type =
   $state_store = new DrupalDBStore('pricing', DrupalDBStore::BAT_STATE, $prefix);
   $event_store = new DrupalDBStore('pricing', DrupalDBStore::BAT_EVENT, $prefix);
 
-  $rate = roomify_rate_load($rates[$type]);
+  $rate = roomify_rate_load($rates[$type][$index]);
 
   $units = array(
     $rate->rate_id => new Unit($rate->rate_id, 0),
@@ -1149,10 +1141,10 @@ function roomify_casa_event_ui_get_price($rates, $start_date, $end_date, $type =
         }
         else {
           if ($type == 'weekly') {
-            $amount += roomify_casa_event_ui_get_price($rates, $event->getStartDate(), $event->getEndDate(), 'nightly');
+            $amount += roomify_casa_event_ui_get_price($rates, $event->getStartDate(), $event->getEndDate(), 'nightly', $index);
           }
           elseif ($type == 'monthly') {
-            $amount += roomify_casa_event_ui_get_price($rates, $event->getStartDate(), $event->getEndDate(), 'weekly');
+            $amount += roomify_casa_event_ui_get_price($rates, $event->getStartDate(), $event->getEndDate(), 'weekly', $index);
           }
           else {
             $valuator = new IntervalValuator($event->getStartDate(), $event->getEndDate(), $unit, $state_store, $duration_unit);

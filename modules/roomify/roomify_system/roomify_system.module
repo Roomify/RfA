@@ -888,6 +888,7 @@ function roomify_system_roomify_rights() {
       'view own roomify_conversation entities',
       'update own roomify_conversation entities',
       'view own commerce_order entities',
+      'view own guest profile',
     ),
     'property owner' => array(
       'edit own property_owner profile',
@@ -929,6 +930,7 @@ function roomify_system_roomify_rights() {
       'edit meta tags',
       'view any commerce_customer_profile entity',
       'create commerce_customer_profile entities',
+      'view own property_owner profile',
     ),
     'roomify manager' => array(
       'administer fields',
@@ -1028,6 +1030,7 @@ function roomify_system_roomify_rights() {
       // Profiles2.
       'administer profile types',
       'administer profiles',
+      'view own property_owner profile',
       // Access Redirects.
       'administer redirects',
       'use media wysiwyg',

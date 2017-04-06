@@ -74,11 +74,22 @@ function roomify_listing_menu_alter(&$items) {
 /**
  * Access callback for the 'Add Units' menu.
  */
-function roomify_listing_add_units_access_callback($type) {
-  if ($type->type == 'home') {
+function roomify_listing_add_units_access_callback($bat_type) {
+  if ($bat_type->type == 'home') {
     return FALSE;
   }
   else {
+    if (module_exists('roomify_channel_ical')) {
+      $property_id = $bat_type->field_st_property_reference[LANGUAGE_NONE][0]['target_id'];
+
+      $ical_providers = _roomify_channel_ical_providers();
+      foreach ($ical_providers as $type => $title) {
+        if (variable_get('roomify_channel_ical_import_url_' . $property_id . '_' . $bat_type->type_id . '_' . $type, '')) {
+          return FALSE;
+        }
+      }
+    }
+
     return user_access('create bat_unit entities');
   }
 }
@@ -110,9 +121,10 @@ function roomify_listing_menu_local_tasks_alter(&$data, $router_item, $root_path
 
   if (!empty($data['tabs'])) {
     $paths = array(
-      0 => 'admin/bat/config/types/manage/%/edit',
-      1 => 'admin/bat/config/types/manage/%/units',
-      2 => 'admin/bat/config/types/manage/%/translate',
+      'admin/bat/config/types/manage/%/edit',
+      'admin/bat/config/types/manage/%/units',
+      'admin/bat/config/types/manage/%/translate',
+      'admin/bat/config/types/manage/%/channel-management',
     );
 
     if (in_array($root_path, $paths)) {
@@ -158,18 +170,6 @@ function roomify_listing_menu_local_tasks_alter(&$data, $router_item, $root_path
       foreach ($data['tabs'][0]['output'] as $id => $content) {
         if ($content['#link']['title'] == t('Edit')) {
           $data['tabs'][0]['output'][$id]['#weight'] = -18;
-        }
-        if ($content['#link']['title'] == t('Manage Availability')) {
-          $data['tabs'][0]['output'][$id]['#weight'] = -16;
-        }
-        if ($content['#link']['title'] == t('Manage Pricing')) {
-          $data['tabs'][0]['output'][$id]['#weight'] = -14;
-        }
-        if ($content['#link']['title'] == t('Channel Management')) {
-          $data['tabs'][0]['output'][$id]['#weight'] = -12;
-        }
-        if ($content['#link']['title'] == t('Manage Commissions')) {
-          $data['tabs'][0]['output'][$id]['#weight'] = -10;
         }
         if ($content['#link']['path'] == 'admin/bat/config/types/manage/%/view') {
           unset($data['tabs'][0]['output'][$id]);
@@ -742,6 +742,26 @@ function roomify_listing_form_alter(&$form, &$form_state, $form_id) {
           $form['field_sp_owner']['#access'] = TRUE;
           $form['field_sp_manager']['#access'] = TRUE;
         }
+      }
+    }
+    if (isset($form['field_sp_property_type'])) {
+      if (!user_access('add terms in property_type')) {
+        $form['field_sp_property_type'][LANGUAGE_NONE]['#description'] = t('Select a Property type, contact the administrator of the site to add new Property types');
+      }
+    }
+    if (isset($form['field_sp_amenities'])) {
+      if (!user_access('add terms in amenities')) {
+        $form['field_sp_amenities'][LANGUAGE_NONE]['#description'] = '';
+      }
+    }
+    if (isset($form['field_sp_area'])) {
+      if (!user_access('add terms in location')) {
+        $form['field_sp_area'][LANGUAGE_NONE]['#description'] = '';
+      }
+    }
+    if (isset($form['field_sp_area_type'])) {
+      if (!user_access('add terms in area_type')) {
+        $form['field_sp_area_type'][LANGUAGE_NONE]['#description'] = '';
       }
     }
   }

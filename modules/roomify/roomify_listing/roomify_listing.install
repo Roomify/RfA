@@ -80,7 +80,7 @@ function roomify_listing_create_guest_profile() {
       'type' => 'guest',
       'label' => t('Guest'),
       'weight' => 1,
-      'data' => array('registration' => FALSE, 'use_page' => FALSE),
+      'data' => array('registration' => FALSE, 'use_page' => TRUE),
     ));
 
     $type->save();
@@ -1275,9 +1275,19 @@ function roomify_listing_update_7031() {
 }
 
 /**
- * Helper function to add fields to the right vertical tab.
+ * Enable option 'Provide a separate page for editing profiles.'
+ * on 'Guest' profiles.
  */
 function roomify_listing_update_7032() {
+  $type = profile2_type_load('guest');
+  $type->data['use_page'] = TRUE;
+  $type->save();
+}
+
+/**
+ * Helper function to add fields to the right vertical tab.
+ */
+function roomify_listing_update_7033() {
   module_enable(array('roomify_review'));
   foreach (array('casa_property', 'locanda_property') as $property_bundle) {
     $field_group = field_group_load_field_group('group_basic_information', 'roomify_property', $property_bundle, 'form');

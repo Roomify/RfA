@@ -9153,7 +9153,7 @@ body.toggled #close-sidebar-wrapper {
     .page-conversation-booking #modalContent .ctools-modal-dialog.modal-dialog .modal-content,
     .page-booking #modalContent .ctools-modal-dialog.modal-dialog .modal-content {
       height: 100%;
-      overflow: hidden; }
+      overflow: auto; }
       @media (max-width: 767px) {
         .page-conversation-booking #modalContent .ctools-modal-dialog.modal-dialog .modal-content,
         .page-booking #modalContent .ctools-modal-dialog.modal-dialog .modal-content {
