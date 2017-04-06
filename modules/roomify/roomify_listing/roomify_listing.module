@@ -744,6 +744,26 @@ function roomify_listing_form_alter(&$form, &$form_state, $form_id) {
         }
       }
     }
+    if (isset($form['field_sp_property_type'])) {
+      if (!user_access('add terms in property_type')) {
+        $form['field_sp_property_type'][LANGUAGE_NONE]['#description'] = t('Select a Property type, contact the administrator of the site to add new Property types');
+      }
+    }
+    if (isset($form['field_sp_amenities'])) {
+      if (!user_access('add terms in amenities')) {
+        $form['field_sp_amenities'][LANGUAGE_NONE]['#description'] = '';
+      }
+    }
+    if (isset($form['field_sp_area'])) {
+      if (!user_access('add terms in location')) {
+        $form['field_sp_area'][LANGUAGE_NONE]['#description'] = '';
+      }
+    }
+    if (isset($form['field_sp_area_type'])) {
+      if (!user_access('add terms in area_type')) {
+        $form['field_sp_area_type'][LANGUAGE_NONE]['#description'] = '';
+      }
+    }
   }
 
   // Home BAT type and Room BAT type.
