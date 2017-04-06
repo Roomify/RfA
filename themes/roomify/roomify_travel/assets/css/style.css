@@ -6536,6 +6536,11 @@ blockquote {
 .btn {
   padding: 6px 10px 4px; }
 
+.view .pagination > li > a.progress-disabled {
+  float: left; }
+  .view .pagination > li > a.progress-disabled .ajax-progress-throbber {
+    margin-left: 7px; }
+
 .messages-container {
   margin-right: auto;
   margin-left: auto;
@@ -9122,7 +9127,7 @@ body.toggled #close-sidebar-wrapper {
     .page-conversation-booking #modalContent .ctools-modal-dialog.modal-dialog .modal-content,
     .page-booking #modalContent .ctools-modal-dialog.modal-dialog .modal-content {
       height: 100%;
-      overflow: hidden; }
+      overflow: auto; }
       @media (max-width: 767px) {
         .page-conversation-booking #modalContent .ctools-modal-dialog.modal-dialog .modal-content,
         .page-booking #modalContent .ctools-modal-dialog.modal-dialog .modal-content {

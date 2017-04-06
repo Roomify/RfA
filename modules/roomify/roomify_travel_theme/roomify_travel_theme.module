@@ -427,8 +427,9 @@ function roomify_travel_theme_form_alter(&$form, &$form_state, $form_id) {
       $form['container']['arrival']['#title'] = t('Arrival');
       $form['container']['departure']['#title'] = t('Departure');
 
-      $form['container']['arrival']['#attributes']['placeholder'] = $start_date->format('Y-m-d');
-      $form['container']['departure']['#attributes']['placeholder'] = $end_date->format('Y-m-d');
+      $date_format = variable_get('bat_daily_date_format', 'Y-m-d');
+      $form['container']['arrival']['#attributes']['placeholder'] = $start_date->format($date_format);
+      $form['container']['departure']['#attributes']['placeholder'] = $end_date->format($date_format);
 
     }
   }
@@ -437,5 +438,16 @@ function roomify_travel_theme_form_alter(&$form, &$form_state, $form_id) {
   }
   if ($form_id == 'blog_node_form') {
     $form['field_blog_sticky_at_top']['#access'] = FALSE;
+  }
+}
+
+/**
+ * Implements hook_panels_pane_content_alter().
+ */
+function roomify_travel_theme_panels_pane_content_alter($content, $pane, $args, $contexts) {
+  if (base_path() != '/') {
+    if (isset($content->content) && $pane->type == 'custom') {
+      $content->content = str_replace('href="/node/add/', 'href="' . base_path() . 'node/add/', $content->content);
+    }
   }
 }

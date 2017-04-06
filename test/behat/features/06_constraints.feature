@@ -117,3 +117,18 @@ Feature: Global Booking Constraints
     Then I fill in "roomify_accommodation_booking_future_limit[value]" with "1"
     And I select "31104000" from "roomify_accommodation_booking_future_limit[multiplier]"
     And I press "Save configuration"
+
+  Scenario: "Booking Constraints" field widget
+    Given I am logged in as a user with the "roomify manager" role
+    Then I visit "admin/bat/config/types/manage/3/edit"
+    Then I should see "Booking Constraints"
+    Then I press "Set min/max period"
+    And I wait for AJAX to finish
+    And I should see "Minimum Booking Length is"
+    And I should see "Maximum Booking Length is"
+    And I should see "Only if booking starts on a specific day"
+    Then I click on the element with css selector "#edit-bat-constraints-range-und-add-more"
+    And I wait for AJAX to finish
+    Then I click on the element with css selector "#edit-bat-constraints-range-und-1-group-conditions-add-checkin-day"
+    And I wait for AJAX to finish
+    And I should see "Booking start day must be"
