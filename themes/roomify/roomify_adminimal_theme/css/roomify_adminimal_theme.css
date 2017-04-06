@@ -2828,9 +2828,6 @@ html.js div.panels-display-links div.ctools-dropdown-container ul li a {
   font-size: inherit;
   margin-bottom: 0;
 }
-.page-admin-bat-config-types .field-type-bat-event-state-constraints-range td:nth-child(2) .form-wrapper input {
-  margin: 10px 0;
-}
 .page-admin-bat-config-types .field-type-bat-event-state-constraints-range #bat-constraints-range-add-more-wrapper .field-add-more-submit {
   margin: 15px 0;
 }
@@ -3487,4 +3484,13 @@ a.ctools-use-modal:hover,
 }
 #references-dialog-page .view-customer-profiles td {
   cursor: pointer;
+}
+.manualcrop-style-button-holder {
+  padding-bottom: 1em;
+}
+.manualcrop-style-button-holder input {
+  background: #FF9800 !important;
+}
+.vertical-tabs-panes fieldset fieldset .fieldset-legend {
+  display: none;
 }
