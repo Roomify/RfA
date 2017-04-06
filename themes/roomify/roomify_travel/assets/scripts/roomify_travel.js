@@ -83,7 +83,7 @@ Drupal.behaviors.roomifyTravelAccordian = {
   $('.pane-menu-roomify-dashboard-menu .dropdown-menu').removeClass('dropdown-menu');
   $('.region-sidebar-toggle-menu .pane-menu-roomify-dashboard-menu').attr('id','accordian');
   $("#accordian ul.menu .expanded > a").removeAttr("href").css("cursor","pointer");
-  $("#accordian ul.menu .expanded > a").click(function(){
+  $("#accordian ul.menu .expanded > a").once().click(function(){
     activeItem = $(this).parent().parent().find('.active');
     activeItem.removeClass('active');
     $(this).closest('li').toggleClass('active');
