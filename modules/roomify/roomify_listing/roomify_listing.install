@@ -80,7 +80,7 @@ function roomify_listing_create_guest_profile() {
       'type' => 'guest',
       'label' => t('Guest'),
       'weight' => 1,
-      'data' => array('registration' => FALSE, 'use_page' => FALSE),
+      'data' => array('registration' => FALSE, 'use_page' => TRUE),
     ));
 
     $type->save();
@@ -1272,4 +1272,14 @@ function roomify_listing_update_7031() {
   $translatable_entities['profile2'] = 'profile2';
 
   variable_set('entity_translation_entity_types', $translatable_entities);
+}
+
+/**
+ * Enable option 'Provide a separate page for editing profiles.'
+ * on 'Guest' profiles.
+ */
+function roomify_listing_update_7032() {
+  $type = profile2_type_load('guest');
+  $type->data['use_page'] = TRUE;
+  $type->save();
 }
