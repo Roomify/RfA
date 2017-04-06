@@ -200,7 +200,133 @@ function roomify_system_views_default_views() {
 
   /* Display: Page */
   $handler = $view->new_display('page', 'Page', 'page');
+  $handler->display->display_options['defaults']['fields'] = FALSE;
+  /* Field: Profile: Profile ID */
+  $handler->display->display_options['fields']['pid']['id'] = 'pid';
+  $handler->display->display_options['fields']['pid']['table'] = 'profile';
+  $handler->display->display_options['fields']['pid']['field'] = 'pid';
+  $handler->display->display_options['fields']['pid']['exclude'] = TRUE;
+  /* Field: Profile: Image */
+  $handler->display->display_options['fields']['guest_image']['id'] = 'guest_image';
+  $handler->display->display_options['fields']['guest_image']['table'] = 'field_data_guest_image';
+  $handler->display->display_options['fields']['guest_image']['field'] = 'guest_image';
+  $handler->display->display_options['fields']['guest_image']['click_sort_column'] = 'fid';
+  $handler->display->display_options['fields']['guest_image']['settings'] = array(
+    'image_style' => 'square',
+    'image_link' => '',
+    'conditions' => array(
+      0 => array(
+        'condition' => '',
+      ),
+    ),
+  );
+  /* Field: Profile: Image */
+  $handler->display->display_options['fields']['property_owner_image']['id'] = 'property_owner_image';
+  $handler->display->display_options['fields']['property_owner_image']['table'] = 'field_data_property_owner_image';
+  $handler->display->display_options['fields']['property_owner_image']['field'] = 'property_owner_image';
+  $handler->display->display_options['fields']['property_owner_image']['label'] = '';
+  $handler->display->display_options['fields']['property_owner_image']['element_label_colon'] = FALSE;
+  $handler->display->display_options['fields']['property_owner_image']['click_sort_column'] = 'fid';
+  $handler->display->display_options['fields']['property_owner_image']['settings'] = array(
+    'image_style' => 'square',
+    'image_link' => '',
+    'conditions' => array(
+      0 => array(
+        'condition' => '',
+      ),
+    ),
+  );
+  /* Field: Profile: Name */
+  $handler->display->display_options['fields']['property_owner_name']['id'] = 'property_owner_name';
+  $handler->display->display_options['fields']['property_owner_name']['table'] = 'field_data_property_owner_name';
+  $handler->display->display_options['fields']['property_owner_name']['field'] = 'property_owner_name';
+  $handler->display->display_options['fields']['property_owner_name']['settings'] = array(
+    'conditions' => array(
+      0 => array(
+        'condition' => '',
+      ),
+    ),
+  );
+  /* Field: Profile: Name */
+  $handler->display->display_options['fields']['guest_name']['id'] = 'guest_name';
+  $handler->display->display_options['fields']['guest_name']['table'] = 'field_data_guest_name';
+  $handler->display->display_options['fields']['guest_name']['field'] = 'guest_name';
+  $handler->display->display_options['fields']['guest_name']['label'] = '';
+  $handler->display->display_options['fields']['guest_name']['element_label_colon'] = FALSE;
+  $handler->display->display_options['fields']['guest_name']['settings'] = array(
+    'conditions' => array(
+      0 => array(
+        'condition' => '',
+      ),
+    ),
+  );
+  /* Field: User: Name */
+  $handler->display->display_options['fields']['name']['id'] = 'name';
+  $handler->display->display_options['fields']['name']['table'] = 'users';
+  $handler->display->display_options['fields']['name']['field'] = 'name';
+  $handler->display->display_options['fields']['name']['relationship'] = 'user';
+  $handler->display->display_options['fields']['name']['label'] = 'Username';
+  $handler->display->display_options['fields']['name']['link_to_user'] = FALSE;
+  /* Field: Profile: Type */
+  $handler->display->display_options['fields']['type']['id'] = 'type';
+  $handler->display->display_options['fields']['type']['table'] = 'profile';
+  $handler->display->display_options['fields']['type']['field'] = 'type';
+  $handler->display->display_options['fields']['type']['label'] = 'Profile Type';
+  /* Field: User: Uid */
+  $handler->display->display_options['fields']['uid']['id'] = 'uid';
+  $handler->display->display_options['fields']['uid']['table'] = 'users';
+  $handler->display->display_options['fields']['uid']['field'] = 'uid';
+  $handler->display->display_options['fields']['uid']['relationship'] = 'user';
+  $handler->display->display_options['fields']['uid']['label'] = '';
+  $handler->display->display_options['fields']['uid']['exclude'] = TRUE;
+  $handler->display->display_options['fields']['uid']['element_label_colon'] = FALSE;
+  $handler->display->display_options['fields']['uid']['link_to_user'] = FALSE;
+  /* Field: Profile: Type */
+  $handler->display->display_options['fields']['type_2']['id'] = 'type_2';
+  $handler->display->display_options['fields']['type_2']['table'] = 'profile';
+  $handler->display->display_options['fields']['type_2']['field'] = 'type';
+  $handler->display->display_options['fields']['type_2']['label'] = '';
+  $handler->display->display_options['fields']['type_2']['exclude'] = TRUE;
+  $handler->display->display_options['fields']['type_2']['element_label_colon'] = FALSE;
+  $handler->display->display_options['fields']['type_2']['machine_name'] = TRUE;
+  /* Field: Profile: Edit Profile */
+  $handler->display->display_options['fields']['edit_profile']['id'] = 'edit_profile';
+  $handler->display->display_options['fields']['edit_profile']['table'] = 'profile';
+  $handler->display->display_options['fields']['edit_profile']['field'] = 'edit_profile';
+  $handler->display->display_options['fields']['edit_profile']['alter']['alter_text'] = TRUE;
+  $handler->display->display_options['fields']['edit_profile']['alter']['text'] = 'Edit Profile';
+  $handler->display->display_options['fields']['edit_profile']['alter']['make_link'] = TRUE;
+  $handler->display->display_options['fields']['edit_profile']['alter']['path'] = 'profile-[type_2]/[uid]/edit';
+  $handler->display->display_options['fields']['edit_profile']['text'] = 'edit profile';
   $handler->display->display_options['path'] = 'admin/people/profiles';
+  $translatables['profiles'] = array(
+    t('Master'),
+    t('Profiles'),
+    t('more'),
+    t('Apply'),
+    t('Reset'),
+    t('Sort by'),
+    t('Asc'),
+    t('Desc'),
+    t('Items per page'),
+    t('- All -'),
+    t('Offset'),
+    t('« first'),
+    t('‹ previous'),
+    t('next ›'),
+    t('last »'),
+    t('User'),
+    t('Profile ID'),
+    t('.'),
+    t(','),
+    t('Image'),
+    t('Name'),
+    t('Username'),
+    t('Profile Type'),
+    t('Edit Profile'),
+    t('edit profile'),
+    t('Page'),
+  );
 
   $views['profiles'] = $view;
 
