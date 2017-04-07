@@ -1861,6 +1861,9 @@ function roomify_accommodation_booking_form_alter(&$form, &$form_state, $form_id
           $form_state['input']['booking_price'][LANGUAGE_NONE][0]['amount'] = round($price / 100, 2);
         }
       }
+      if (isset($form['actions']['cancel'])) {
+        $form['actions']['cancel']['#markup'] = l(t('Cancel'), 'user');
+      }
     }
     if ($form['#entity_type'] == 'bat_booking' && $form['#bundle'] == 'booking_com' &&
         ($form_id == 'bat_booking_form' || $form_id == 'bat_booking_edit_form' || $form_id == 'bat_booking_edit_booking_com_form')) {
