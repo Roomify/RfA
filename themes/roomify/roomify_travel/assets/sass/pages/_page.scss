@@ -1,0 +1,5 @@
+.node-type-page {
+	.page-header {
+		@include make-xs-column(12);
+	}
+}

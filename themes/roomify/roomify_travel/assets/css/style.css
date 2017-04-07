@@ -6662,7 +6662,7 @@ blockquote {
 .ui-datepicker {
   border-radius: 0;
   border: none !important;
-  background: #4A4A4A !important;
+  background: #127ba3 !important;
   padding: 0;
   z-index: 9999 !important; }
   .ui-datepicker table {
@@ -6681,6 +6681,8 @@ blockquote {
     border: none;
     padding: 0;
     opacity: 1 !important; }
+    .ui-datepicker td a {
+      text-decoration: none; }
     .ui-datepicker td .ui-state-default {
       background: transparent;
       border: none;
@@ -6689,16 +6691,16 @@ blockquote {
       font-weight: 300;
       font-size: 16px;
       padding: 5px 0 !important;
-      color: #8FB98B !important; }
+      color: #4CAF50 !important; }
       .ui-datepicker td .ui-state-default:hover {
-        background: #8FB98B;
+        background: #4CAF50;
         color: #FFF !important; }
     .ui-datepicker td .ui-state-active {
       background: #2e3641;
       color: #FFF !important; }
   .ui-datepicker td.ui-datepicker-unselectable .ui-state-default {
     padding: 5px 0;
-    color: #C50000 !important; }
+    color: #f90a0a !important; }
     .ui-datepicker td.ui-datepicker-unselectable .ui-state-default:hover {
       background: white; }
   .ui-datepicker .ui-datepicker-title {
@@ -6756,7 +6758,8 @@ blockquote {
         color: #939393;
         font-size: 15px;
         font-weight: 500;
-        line-height: 50px; }
+        line-height: 50px;
+        outline: none; }
         .ui-tabs .ui-tabs-nav li a:hover {
           color: #000; }
       @media (max-width: 768px) {
@@ -7578,7 +7581,7 @@ body.toggled #close-sidebar-wrapper {
       right: 0;
       border-radius: 0;
       background: rgba(0, 0, 0, 0.9);
-      border: 0; }
+      border: 2px solid #1d1d1d; }
       .roomify-overlay .overlay-content .menu li .dropdown-menu li a {
         font-size: 22px;
         text-align: center;
@@ -8488,13 +8491,21 @@ body.toggled #close-sidebar-wrapper {
     border: 1px solid #ececec;
     border-radius: 2px; }
     .page-listing .panel-content-bottom .pane-featured-properties-panel-pane-3 .pane-title {
-      border-bottom: 1px solid #ececec;
-      padding-bottom: 15px; }
+      padding: 0px 25px;
+      text-transform: capitalize; }
     .page-listing .panel-content-bottom .pane-featured-properties-panel-pane-3 .view-featured-properties .slick-next.slick-arrow {
       right: 15px; }
     .page-listing .panel-content-bottom .pane-featured-properties-panel-pane-3 .view-featured-properties .slick-prev.slick-arrow {
       left: 15px; }
 
+.page-conversation-booking .page-header,
+.page-booking .page-header {
+  position: relative;
+  float: left;
+  width: 100%;
+  min-height: 1px;
+  padding-left: 15px;
+  padding-right: 15px; }
 .page-conversation-booking #roomify-accommodation-booking-current-search-form .current-search-item.current-search-arrival, .page-conversation-booking #roomify-accommodation-booking-current-search-form .current-search-item.current-search-departure, .page-conversation-booking #roomify-accommodation-booking-current-search-form .current-search-item.current-search-nights, .page-conversation-booking #roomify-accommodation-booking-current-search-form .current-search-item.current-search-price, .page-conversation-booking #roomify-accommodation-booking-current-search-form .current-search-item.current-search-group-size,
 .page-booking #roomify-accommodation-booking-current-search-form .current-search-item.current-search-arrival,
 .page-booking #roomify-accommodation-booking-current-search-form .current-search-item.current-search-departure,
@@ -9688,7 +9699,8 @@ ol.inline.commerce-checkout-progress {
         color: white;
         margin: 20px 0;
         padding: 0 5px;
-        font-style: italic; }
+        font-style: italic;
+        font-weight: 400; }
       .page-activities-search .view-display-id-panel_pane_3 .property-row:hover .featured-image-with-description .property-info .property-types-table,
       .page-availability-search .view-display-id-panel_pane_3 .property-row:hover .featured-image-with-description .property-info .property-types-table {
         width: 100%;
@@ -9718,19 +9730,22 @@ ol.inline.commerce-checkout-progress {
               text-indent: -9999999px; }
             .page-activities-search .view-display-id-panel_pane_3 .property-row:hover .featured-image-with-description .property-info .property-types-table .types .type-icons .icon.capacity,
             .page-availability-search .view-display-id-panel_pane_3 .property-row:hover .featured-image-with-description .property-info .property-types-table .types .type-icons .icon.capacity {
-              background-image: url("../images/small/capacity_small.png");
+              background: url("../images/small/white_users.png") center center no-repeat;
+              background: url("../images/small/white_users.svg") center center no-repeat, linear-gradient(transparent, transparent);
               text-indent: -9999999px;
               background-repeat: no-repeat;
               background-position: center center; }
             .page-activities-search .view-display-id-panel_pane_3 .property-row:hover .featured-image-with-description .property-info .property-types-table .types .type-icons .icon.bedrooms,
             .page-availability-search .view-display-id-panel_pane_3 .property-row:hover .featured-image-with-description .property-info .property-types-table .types .type-icons .icon.bedrooms {
-              background-image: url("../images/small/beds_small.png");
+              background: url("../images/small/white_single_beds.png") center center no-repeat;
+              background: url("../images/small/white_single_beds.svg") center center no-repeat, linear-gradient(transparent, transparent);
               text-indent: -9999999px;
               background-repeat: no-repeat;
               background-position: center center; }
             .page-activities-search .view-display-id-panel_pane_3 .property-row:hover .featured-image-with-description .property-info .property-types-table .types .type-icons .icon.price,
             .page-availability-search .view-display-id-panel_pane_3 .property-row:hover .featured-image-with-description .property-info .property-types-table .types .type-icons .icon.price {
-              background-image: url("../images/small/price_small.png");
+              background: url("../images/small/money.png") center center no-repeat;
+              background: url("../images/small/money.svg") center center no-repeat, linear-gradient(transparent, transparent);
               text-indent: -9999999px;
               background-repeat: no-repeat;
               background-position: center center; }
@@ -9741,7 +9756,7 @@ ol.inline.commerce-checkout-progress {
             .page-activities-search .view-display-id-panel_pane_3 .property-row:hover .featured-image-with-description .property-info .property-types-table .types .type-row .row-element,
             .page-availability-search .view-display-id-panel_pane_3 .property-row:hover .featured-image-with-description .property-info .property-types-table .types .type-row .row-element {
               width: 20%;
-              padding: 10px;
+              padding: 7px;
               text-align: center;
               color: white; }
               .page-activities-search .view-display-id-panel_pane_3 .property-row:hover .featured-image-with-description .property-info .property-types-table .types .type-row .row-element.name,
@@ -9889,32 +9904,31 @@ ol.inline.commerce-checkout-progress {
           margin-left: 2%;
           text-align: left;
           padding-left: 0; }
-.page-activities-search .view-display-id-panel_pane_2 #leaflet-map .leaflet-popup-content-wrapper,
-.page-availability-search .view-display-id-panel_pane_2 #leaflet-map .leaflet-popup-content-wrapper {
+.page-activities-search .view-display-id-panel_pane_2 .leaflet-container .leaflet-popup-content-wrapper,
+.page-availability-search .view-display-id-panel_pane_2 .leaflet-container .leaflet-popup-content-wrapper {
   border-radius: 4px; }
-.page-activities-search .view-display-id-panel_pane_2 #leaflet-map .leaflet-popup,
-.page-availability-search .view-display-id-panel_pane_2 #leaflet-map .leaflet-popup {
+.page-activities-search .view-display-id-panel_pane_2 .leaflet-container .leaflet-popup,
+.page-availability-search .view-display-id-panel_pane_2 .leaflet-container .leaflet-popup {
   min-height: 250px; }
-  .page-activities-search .view-display-id-panel_pane_2 #leaflet-map .leaflet-popup .leaflet-popup-content,
-  .page-availability-search .view-display-id-panel_pane_2 #leaflet-map .leaflet-popup .leaflet-popup-content {
+  .page-activities-search .view-display-id-panel_pane_2 .leaflet-container .leaflet-popup .leaflet-popup-content,
+  .page-availability-search .view-display-id-panel_pane_2 .leaflet-container .leaflet-popup .leaflet-popup-content {
     max-width: 170px;
     margin: 14px; }
-  .page-activities-search .view-display-id-panel_pane_2 #leaflet-map .leaflet-popup a,
-  .page-availability-search .view-display-id-panel_pane_2 #leaflet-map .leaflet-popup a {
+  .page-activities-search .view-display-id-panel_pane_2 .leaflet-container .leaflet-popup a,
+  .page-availability-search .view-display-id-panel_pane_2 .leaflet-container .leaflet-popup a {
     font-size: 16px;
-    color: #000000;
     text-decoration: underline; }
-  .page-activities-search .view-display-id-panel_pane_2 #leaflet-map .leaflet-popup .roomify-property-short-description,
-  .page-availability-search .view-display-id-panel_pane_2 #leaflet-map .leaflet-popup .roomify-property-short-description {
+  .page-activities-search .view-display-id-panel_pane_2 .leaflet-container .leaflet-popup .roomify-property-short-description,
+  .page-availability-search .view-display-id-panel_pane_2 .leaflet-container .leaflet-popup .roomify-property-short-description {
     margin: 5px 0;
     font-size: 13px; }
-  .page-activities-search .view-display-id-panel_pane_2 #leaflet-map .leaflet-popup .roomify-property-image,
-  .page-availability-search .view-display-id-panel_pane_2 #leaflet-map .leaflet-popup .roomify-property-image {
+  .page-activities-search .view-display-id-panel_pane_2 .leaflet-container .leaflet-popup .roomify-property-image,
+  .page-availability-search .view-display-id-panel_pane_2 .leaflet-container .leaflet-popup .roomify-property-image {
     display: inline-block;
     max-width: 250px;
     margin: 5px 0; }
-    .page-activities-search .view-display-id-panel_pane_2 #leaflet-map .leaflet-popup .roomify-property-image img,
-    .page-availability-search .view-display-id-panel_pane_2 #leaflet-map .leaflet-popup .roomify-property-image img {
+    .page-activities-search .view-display-id-panel_pane_2 .leaflet-container .leaflet-popup .roomify-property-image img,
+    .page-availability-search .view-display-id-panel_pane_2 .leaflet-container .leaflet-popup .roomify-property-image img {
       width: 100% !important;
       border-radius: 2px;
       min-width: 120px;
@@ -10672,7 +10686,9 @@ ol.inline.commerce-checkout-progress {
 
 .pane-search-api-sorts-search-sorts {
   float: right;
-  margin-bottom: 15px; }
+  margin-bottom: 15px;
+  font-size: 12px;
+  margin-top: 8px; }
   .pane-search-api-sorts-search-sorts .search-api-sorts {
     margin-bottom: 0; }
     .pane-search-api-sorts-search-sorts .search-api-sorts li {
@@ -10689,31 +10705,29 @@ ol.inline.commerce-checkout-progress {
         padding: 3px; }
         .pane-search-api-sorts-search-sorts .search-api-sorts li svg path {
           fill: white; }
-      .pane-search-api-sorts-search-sorts .search-api-sorts li:first-child {
-        padding: 0 10px 0 15px; }
-        .pane-search-api-sorts-search-sorts .search-api-sorts li:first-child:before {
-          width: 30px;
-          height: 30px;
-          background: url("../../images/sort.png") no-repeat center center;
-          background: url("../../images/sort.svg") center center no-repeat, linear-gradient(transparent, transparent);
-          content: '';
-          display: inline-block;
-          background-size: 30px 30px;
-          position: relative;
-          top: 10px;
-          right: 5px; }
+      .pane-search-api-sorts-search-sorts .search-api-sorts li:first-child:before {
+        width: 20px;
+        height: 20px;
+        background: url("../../images/sort.png") no-repeat center center;
+        background: url("../../images/sort.svg") center center no-repeat, linear-gradient(transparent, transparent);
+        content: '';
+        display: inline-block;
+        background-size: 25px 25px;
+        position: relative;
+        top: 5px;
+        right: 5px; }
       .pane-search-api-sorts-search-sorts .search-api-sorts li:last-child {
-        padding: 0 0 0 15px; }
+        padding: 0 0 0 10px; }
         .pane-search-api-sorts-search-sorts .search-api-sorts li:last-child:before {
-          width: 30px;
-          height: 30px;
+          width: 20px;
+          height: 20px;
           background: url("../../images/price-sort.png") no-repeat center center;
           background: url("../../images/price-sort.svg") center center no-repeat, linear-gradient(transparent, transparent);
           content: '';
           display: inline-block;
-          background-size: 25px 25px;
+          background-size: 20px 20px;
           position: relative;
-          top: 10px;
+          top: 5px;
           right: 0; }
       .pane-search-api-sorts-search-sorts .search-api-sorts li .sort-item.active-sort {
         text-decoration: underline;
@@ -11184,7 +11198,7 @@ ol.inline.commerce-checkout-progress {
     text-align: right;
     margin-top: 25px; }
     .page-blog .view-id-blog_travel.view-display-id-panel_pane_1 .views-row .views-field-view-node .btn {
-      font-size: 15px;
+      font-size: 13px;
       width: 140px; }
       .page-blog .view-id-blog_travel.view-display-id-panel_pane_1 .views-row .views-field-view-node .btn a {
         color: white; }
@@ -11643,7 +11657,7 @@ ol.inline.commerce-checkout-progress {
     display: inline-block;
     margin-top: 25px; }
     .page-things-to-do .view-id-things_to_do_index.view-display-id-panel_pane_1 .views-row .views-field-view-node .btn {
-      font-size: 15px;
+      font-size: 13px;
       width: 140px; }
       .page-things-to-do .view-id-things_to_do_index.view-display-id-panel_pane_1 .views-row .views-field-view-node .btn a {
         color: white; }
@@ -12119,8 +12133,8 @@ body.node-type-homepage {
   .pane-featured-properties-panel-pane-3 .views-field-field-sp-featured-image img {
     -webkit-transform: scale(1);
     transform: scale(1);
-    -webkit-transition: 1s ease-in-out;
-    transition: 1s ease-in-out;
+    -webkit-transition: 500ms ease-in-out;
+    transition: 500ms ease-in-out;
     margin: 0 auto;
     border-radius: 2px; }
   .pane-featured-properties-panel-pane-3 .views-field-field-sp-featured-image:hover img {
@@ -12295,8 +12309,8 @@ body.node-type-homepage {
   .pane-featured-properties-panel-pane-4 .views-field-field-sp-featured-image img {
     -webkit-transform: scale(1);
     transform: scale(1);
-    -webkit-transition: 1s ease-in-out;
-    transition: 1s ease-in-out;
+    -webkit-transition: 500ms ease-in-out;
+    transition: 500ms ease-in-out;
     margin: 0 auto;
     border-radius: 2px 2px 0 0; }
   .pane-featured-properties-panel-pane-4 .views-field-field-sp-featured-image:hover img {
@@ -12339,8 +12353,8 @@ body.node-type-homepage {
     .pane-featured-areas-panel-pane-1 .view-display-id-panel_pane_1 .views-field-field-area-featured-image img {
       -webkit-transform: scale(1);
       transform: scale(1);
-      -webkit-transition: 1s ease-in-out;
-      transition: 1s ease-in-out;
+      -webkit-transition: 500ms ease-in-out;
+      transition: 500ms ease-in-out;
       margin: 0 auto;
       border-radius: 2px 2px 0 0; }
     .pane-featured-areas-panel-pane-1 .view-display-id-panel_pane_1 .views-field-field-area-featured-image:hover img {

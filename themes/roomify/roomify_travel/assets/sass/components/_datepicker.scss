@@ -3,7 +3,7 @@
 .ui-datepicker {
   border-radius: 0;
   border: none !important;
-  background: #4A4A4A !important;
+  background: #127ba3 !important;
   padding: 0;
   z-index: 9999 !important;
   table {
@@ -25,6 +25,9 @@
     border: none;
     padding: 0;
     opacity: 1 !important;
+    a {
+      text-decoration: none;
+    }
     .ui-state-default {
       background: transparent;
       border: none;
@@ -33,9 +36,9 @@
       font-weight: 300;
       font-size: 16px;
       padding: 5px 0 !important;
-      color: #8FB98B !important;
+      color: #4CAF50 !important;
       &:hover {
-        background: #8FB98B;
+        background: #4CAF50;
         color: #FFF !important;
       }
     }
@@ -46,7 +49,7 @@
   }
   td.ui-datepicker-unselectable .ui-state-default {
     padding: 5px 0;
-    color: #C50000 !important;
+    color: #f90a0a !important;
     &:hover {
       background: white;
     }
