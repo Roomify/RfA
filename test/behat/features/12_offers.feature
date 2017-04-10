@@ -58,7 +58,7 @@ Feature: Special offers
 
     Then I visit "admin/bat/config/property/manage/1/offers"
     And I click on "Participate" on the row containing "Percentage offer"
-    And I visit "lisitng/1"
+    And I visit "listing/1"
     And I should see "Percentage offer"
     Then I visit "booking/2017-07-02/2017-07-05/1"
     And I should see "$30.00" in the ".current-search-item.current-search-price .offer-cost" element
