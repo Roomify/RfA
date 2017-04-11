@@ -1664,23 +1664,14 @@ function roomify_accommodation_booking_form_commerce_customer_ui_customer_profil
 }
 
 /**
- * Implements hook_user_update().
- */
-function roomify_accommodation_booking_user_update(&$edit, $account, $category) {
-  if ($profile = commerce_customer_profile_load($account->user_commerce_profile[LANGUAGE_NONE][0]['target_id'])) {
-    if ($profile->uid == 0) {
-      $profile->uid = $account->uid;
-      commerce_customer_profile_save($profile);
-    }
-  }
-}
-
-/**
  * Implements hook_form_FORM_ID_alter().
  *
  * FORM_ID = user_register_form.
  */
 function roomify_accommodation_booking_form_user_register_form_alter(&$form, &$form_state) {
+  $form['user_first_name']['#weight'] = -100;
+  $form['user_last_name']['#weight'] = -99;
+  $form['user_telephone']['#weight'] = -98;
   if (strpos($form['#action'], 'render=references-dialog') !== FALSE) {
     $form['account']['name']['#required'] = FALSE;
     $form['account']['name']['#description'] = t('Using this (or email) the user will be able to access to the site.') . ' ' . $form['account']['name']['#description'];
@@ -1691,9 +1682,7 @@ function roomify_accommodation_booking_form_user_register_form_alter(&$form, &$f
     $form['account']['roles_change']['#access'] = FALSE;
     $form['account']['status']['#access'] = FALSE;
     $form['metatags']['#access'] = FALSE;
-    $form['user_first_name']['#weight'] = -100;
-    $form['user_last_name']['#weight'] = -99;
-    $form['user_telephone']['#weight'] = -98;
+    $form['locale']['#access'] = FALSE;
     if ($guest_role = user_role_load_by_name('guest')) {
       $form['account']['roles'][$guest_role->rid]['#default_value'] = TRUE;
     }
@@ -1944,6 +1933,20 @@ function roomify_accommodation_booking_form_alter(&$form, &$form_state, $form_id
           }
         }
 
+        if (isset($booking->booking_user_guest[LANGUAGE_NONE][0]['target_id'])) {
+          if ($guest_information = user_load($booking->booking_user_guest[LANGUAGE_NONE][0]['target_id'])) {
+            $form['guest'] = array(
+              '#type' => 'fieldset',
+              '#title' => t('Guest Information'),
+              '#group' => 'additional_settings',
+              '#weight' => -100,
+            );
+            $form['guest']['info'] = array(
+              '#markup' => views_embed_view('booking_guest', 'panel_pane_1', $booking->booking_id),
+            );
+          }
+        }
+
         $form['order'] = array(
           '#type' => 'fieldset',
           '#title' => t('Order'),
@@ -2037,20 +2040,19 @@ function roomify_accommodation_booking_form_alter(&$form, &$form_state, $form_id
         $line_item = commerce_line_item_load($booking->booking_line_item_reference[LANGUAGE_NONE][0]['target_id']);
         $order = commerce_order_load($line_item->order_id);
 
-        $profile = commerce_customer_profile_load($order->commerce_customer_billing[LANGUAGE_NONE][0]['profile_id']);
-
-        $form['profile'] = array(
-          '#type' => 'fieldset',
-          '#title' => t('Guest Details'),
-          '#group' => 'additional_settings',
-          '#weight' => -100,
-        );
-
-        $profile_array = entity_view('commerce_customer_profile', array($profile->profile_id => $profile), 'customer');
-
-        $form['profile']['info'] = array(
-          '#markup' => '<div class="field-label">' . t('Address:') . '</div>' . drupal_render($profile_array),
-        );
+        if (isset($booking->booking_user_guest[LANGUAGE_NONE][0]['target_id'])) {
+          if ($guest_information = user_load($booking->booking_user_guest[LANGUAGE_NONE][0]['target_id'])) {
+            $form['guest'] = array(
+              '#type' => 'fieldset',
+              '#title' => t('Guest Information'),
+              '#group' => 'additional_settings',
+              '#weight' => -100,
+            );
+            $form['guest']['info'] = array(
+              '#markup' => views_embed_view('booking_guest', 'panel_pane_1', $booking->booking_id),
+            );
+          }
+        }
 
         $form['order'] = array(
           '#type' => 'fieldset',
@@ -2121,20 +2123,19 @@ function roomify_accommodation_booking_form_alter(&$form, &$form_state, $form_id
         $line_item = commerce_line_item_load($booking->booking_line_item_reference[LANGUAGE_NONE][0]['target_id']);
         $order = commerce_order_load($line_item->order_id);
 
-        $profile = commerce_customer_profile_load($order->commerce_customer_billing[LANGUAGE_NONE][0]['profile_id']);
-
-        $form['profile'] = array(
-          '#type' => 'fieldset',
-          '#title' => t('Guest Details'),
-          '#group' => 'additional_settings',
-          '#weight' => -100,
-        );
-
-        $profile_array = entity_view('commerce_customer_profile', array($profile->profile_id => $profile), 'customer');
-
-        $form['profile']['info'] = array(
-          '#markup' => '<div class="field-label">' . t('Address:') . '</div>' . drupal_render($profile_array),
-        );
+        if (isset($booking->booking_user_guest[LANGUAGE_NONE][0]['target_id'])) {
+          if ($guest_information = user_load($booking->booking_user_guest[LANGUAGE_NONE][0]['target_id'])) {
+            $form['guest'] = array(
+              '#type' => 'fieldset',
+              '#title' => t('Guest Information'),
+              '#group' => 'additional_settings',
+              '#weight' => -100,
+            );
+            $form['guest']['info'] = array(
+              '#markup' => views_embed_view('booking_guest', 'panel_pane_1', $booking->booking_id),
+            );
+          }
+        }
 
         $form['order'] = array(
           '#type' => 'fieldset',

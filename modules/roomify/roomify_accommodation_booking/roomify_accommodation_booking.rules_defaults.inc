@@ -50,6 +50,23 @@ function roomify_accommodation_booking_default_rules_configuration() {
               }
             ]
           },
+          { "CONDITIONAL" : [
+              {
+                "IF" : { "entity_has_field" : {
+                    "entity" : [ "customer-profile" ],
+                    "field" : "commerce_customer_address"
+                  }
+                },
+                "DO" : [
+                  { "data_set" : {
+                      "data" : [ "commerce-order:owner:user-address" ],
+                      "value" : [ "customer-profile:commerce-customer-address" ]
+                    }
+                  }
+                ]
+              }
+            ]
+          },
           { "LOOP" : {
               "USING" : { "list" : [ "commerce-order:commerce-line-items" ] },
               "ITEM" : { "line_item" : "Line item" },
