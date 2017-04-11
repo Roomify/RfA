@@ -6929,7 +6929,7 @@ blockquote {
     color: #ffffff; }
   .paragraph-property .property-types {
     display: inline-block;
-    width: 100%;
+    display: none;
     margin-top: 20px;
     width: 96%;
     color: white; }
@@ -7913,8 +7913,9 @@ body.toggled #close-sidebar-wrapper {
     text-align: justify;
     font-weight: 400;
     font-style: italic;
-    line-height: 1.57em;
-    margin-bottom: 20px; }
+    margin-bottom: 20px;
+    color: #989898;
+    line-height: 1.37em; }
     @media (max-width: 991px) {
       .page-listing .pane-roomify-property-field-sp-short-description {
         text-align: center; } }
@@ -10430,7 +10431,34 @@ ol.inline.commerce-checkout-progress {
     background: #d8d8d8;
     color: #666;
     border-bottom: 1px solid #d0d0d0;
-    border-top: 1px solid #d0d0d0; }
+    border-top: 1px solid #d0d0d0;
+    position: relative;
+    cursor: pointer; }
+    .page-availability-search .panel-sl-left-content-wrapper .panel_sl_left .pane-current-search-properties .pane-title:before,
+    .page-availability-search .panel-sl-left-content-wrapper .panel_sl_left .panel-pane.pane-block .pane-title:before {
+      content: '';
+      position: absolute;
+      width: 35px;
+      right: 2px;
+      top: 2px;
+      height: 35px;
+      transform: rotate(90deg);
+      background-size: contain;
+      background: url("../images/chevron_right.png") no-repeat center center;
+      background: url("../images/chevron_right.svg") center center no-repeat, linear-gradient(transparent, transparent);
+      -webkit-transition: 150ms transform ease;
+      -moz-transition: 150ms transform ease;
+      -ms-transition: 150ms transform ease;
+      -o-transition: 150ms transform ease; }
+    .page-availability-search .panel-sl-left-content-wrapper .panel_sl_left .pane-current-search-properties .pane-title.hidden-content,
+    .page-availability-search .panel-sl-left-content-wrapper .panel_sl_left .panel-pane.pane-block .pane-title.hidden-content {
+      -webkit-transition: 150ms transform ease;
+      -moz-transition: 150ms transform ease;
+      -ms-transition: 150ms transform ease;
+      -o-transition: 150ms transform ease; }
+      .page-availability-search .panel-sl-left-content-wrapper .panel_sl_left .pane-current-search-properties .pane-title.hidden-content:before,
+      .page-availability-search .panel-sl-left-content-wrapper .panel_sl_left .panel-pane.pane-block .pane-title.hidden-content:before {
+        transform: rotate(0deg); }
     .page-availability-search .panel-sl-left-content-wrapper .panel_sl_left .pane-current-search-properties .pane-title .glyphicon,
     .page-availability-search .panel-sl-left-content-wrapper .panel_sl_left .panel-pane.pane-block .pane-title .glyphicon {
       display: none; }
@@ -10453,6 +10481,9 @@ ol.inline.commerce-checkout-progress {
       border-bottom: 1px solid #116e92;
       position: relative;
       margin-bottom: 15px; }
+      .page-availability-search .panel-sl-left-content-wrapper .panel_sl_left .pane-current-search-properties#availability-search-facet .pane-title:before,
+      .page-availability-search .panel-sl-left-content-wrapper .panel_sl_left .panel-pane.pane-block#availability-search-facet .pane-title:before {
+        display: none; }
       .page-availability-search .panel-sl-left-content-wrapper .panel_sl_left .pane-current-search-properties#availability-search-facet .pane-title:after,
       .page-availability-search .panel-sl-left-content-wrapper .panel_sl_left .panel-pane.pane-block#availability-search-facet .pane-title:after {
         content: "";
@@ -14527,3 +14558,19 @@ body.node-type-offer .pane-offer-panel-pane-2 .pager-load-more {
       background-color: #fff; }
     body.node-type-offer .pane-offer-panel-pane-2 .pager-load-more a:hover {
       border-bottom-width: 3px; }
+
+.node-type-page .page-header {
+  position: relative;
+  float: left;
+  width: 100%;
+  min-height: 1px;
+  padding-left: 15px;
+  padding-right: 15px; }
+
+.node-type-landing-page .page-header {
+  position: relative;
+  float: left;
+  width: 100%;
+  min-height: 1px;
+  padding-left: 15px;
+  padding-right: 15px; }
