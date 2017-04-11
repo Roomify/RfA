@@ -126,8 +126,16 @@ function roomify_review_form_review_node_form_alter(&$form, &$form_state, $node)
       );
     }
   }
-
-  // Set the right property to review and disable the wselection.
+  // It's not a new node.
+  if (isset($form['#node']->field_review_property_reviewed['und'][0]['target_id']) && !empty($form['#node']->field_review_property_reviewed['und'][0]['target_id'])) {
+    if ($property = roomify_property_load($form['#node']->field_review_property_reviewed['und'][0]['target_id'])) {
+      if ($property->field_sp_owner[LANGUAGE_NONE][0]['target_id'] == $user->uid) {
+        $form['options']['status']['#access'] = TRUE;
+        $form['options']['#access'] = TRUE;
+      }
+    }
+  }
+  // Set the right property to review and disable the selection.
   if (isset($_GET['property_id']) && isset($form['field_review_property_reviewed'])) {
     $form['field_review_property_reviewed'][LANGUAGE_NONE]['#default_value'] = $_GET['property_id'];
     $form['field_review_property_reviewed']['#disabled'] = TRUE;
@@ -142,7 +150,10 @@ function roomify_review_form_review_node_form_alter(&$form, &$form_state, $node)
 function roomify_review_form_review_node_form_submit($form, &$form_state) {
   $node = $form_state['node'];
 
-  drupal_set_message(t('Thanks! Your comment is under review and will be published after a Manager approval.'), 'status');
+  // Set a message if the review is unpublished.
+  if ($node->status == 0) {
+    drupal_set_message(t('Thanks! Your comment is under review and will be published after a Manager approval.'), 'status');
+  }
   if (isset($node->field_review_property_reviewed[LANGUAGE_NONE][0]['target_id']) &&
       !empty($node->field_review_property_reviewed[LANGUAGE_NONE][0]['target_id'])) {
     $form_state['redirect'] = 'listing/' . $node->field_review_property_reviewed[LANGUAGE_NONE][0]['target_id'];
@@ -213,7 +224,6 @@ function roomify_review_cron_queue_info() {
  * Send email to guest.
  */
 function roomify_review_guest_notification_mail(array $job) {
-  watchdog('pippo', 'pippobello');
   if ($booking = bat_booking_load($job['id'])) {
     module_load_include('inc', 'pet', 'pet.rules');
 
