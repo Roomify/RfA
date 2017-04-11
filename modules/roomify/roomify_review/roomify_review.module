@@ -85,6 +85,23 @@ function roomify_review_roomify_rights() {
 }
 
 /**
+ * Implements hook_node_access().
+ */
+function roomify_review_node_access($node, $op, $account) {
+  if (isset($node->type) && $node->type == 'review') {
+    if (isset($node->field_review_property_reviewed[LANGUAGE_NONE][0]['target_id'])) {
+      if ($property = roomify_property_load($node->field_review_property_reviewed[LANGUAGE_NONE][0]['target_id'])) {
+        // Check if the user that is trying to edit the review is the Property Owner.
+        if ($property->field_sp_owner[LANGUAGE_NONE][0]['target_id'] == $account->uid) {
+          // Allow the access to the owner.
+          return NODE_ACCESS_ALLOW;
+        }
+      }
+    }
+  }
+}
+
+/**
  * Implements hook_form_FORM_ID_alter().
  * FORM_ID = review_node_form.
  */
