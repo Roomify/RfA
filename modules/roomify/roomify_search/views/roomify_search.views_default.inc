@@ -459,6 +459,12 @@ function roomify_search_views_default_views() {
   $handler->display->display_options['fields']['property_id']['exclude'] = TRUE;
   $handler->display->display_options['fields']['property_id']['element_label_colon'] = FALSE;
   $handler->display->display_options['fields']['property_id']['link_to_entity'] = 0;
+  /* Field: Indexed Roomify Property: Offers joined */
+  $handler->display->display_options['fields']['participating_offer']['id'] = 'participating_offer';
+  $handler->display->display_options['fields']['participating_offer']['table'] = 'search_api_index_properties_index';
+  $handler->display->display_options['fields']['participating_offer']['field'] = 'participating_offer';
+  $handler->display->display_options['fields']['participating_offer']['label'] = '';
+  $handler->display->display_options['fields']['participating_offer']['element_label_colon'] = FALSE;
   /* Field: Indexed Roomify Property: Search/Featured Image */
   $handler->display->display_options['fields']['field_sp_featured_image']['id'] = 'field_sp_featured_image';
   $handler->display->display_options['fields']['field_sp_featured_image']['table'] = 'search_api_index_properties_index';
