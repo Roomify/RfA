@@ -8485,6 +8485,58 @@ body.toggled #close-sidebar-wrapper {
         -moz-transition: 200ms background ease;
         -ms-transition: 200ms background ease;
         -o-transition: 200ms background ease; }
+  .page-listing .panel-pane.pane-property-on-offer {
+    display: inline-block;
+    width: calc(100% + 29px);
+    margin: 0 -15px;
+    background: #ff9800;
+    border-bottom: 3px solid #d28616;
+    color: #fff; }
+    @media (max-width: 992px) {
+      .page-listing .panel-pane.pane-property-on-offer {
+        width: 100%;
+        margin: 0 auto;
+        margin-top: 25px; } }
+    .page-listing .panel-pane.pane-property-on-offer .offer {
+      padding: 0px 10px;
+      margin-top: 6px; }
+      .page-listing .panel-pane.pane-property-on-offer .offer .offer-start,
+      .page-listing .panel-pane.pane-property-on-offer .offer .offer-end,
+      .page-listing .panel-pane.pane-property-on-offer .offer .offer-description {
+        display: inline-block; }
+      .page-listing .panel-pane.pane-property-on-offer .offer .offer-start,
+      .page-listing .panel-pane.pane-property-on-offer .offer .offer-end {
+        font-size: 16px;
+        font-weight: 600;
+        width: 100px;
+        text-align: center; }
+      .page-listing .panel-pane.pane-property-on-offer .offer .offer-description {
+        padding: 0 10px;
+        width: calc(100% - 230px);
+        font-weight: 500;
+        font-size: 16px; }
+        @media (max-width: 991px) {
+          .page-listing .panel-pane.pane-property-on-offer .offer .offer-description {
+            width: 100%; } }
+        .page-listing .panel-pane.pane-property-on-offer .offer .offer-description .offer-name {
+          display: inline-block;
+          float: left;
+          margin-right: 5px; }
+          .page-listing .panel-pane.pane-property-on-offer .offer .offer-description .offer-name a {
+            color: white;
+            text-decoration: underline; }
+      .page-listing .panel-pane.pane-property-on-offer .offer .date-arrow {
+        background: url("../images/arrow-right.png") 0 50% no-repeat;
+        background: url("../images/arrow-right.svg") center center no-repeat, linear-gradient(transparent, transparent);
+        display: inline-block;
+        width: 30px;
+        height: 30px;
+        position: relative;
+        top: 10px;
+        margin-top: 0;
+        text-indent: -9999px;
+        border: 0;
+        background-size: contain; }
   .page-listing .panel-content-bottom .pane-featured-properties-panel-pane-3 {
     margin: 40px 0;
     background: white;
@@ -10773,7 +10825,23 @@ ol.inline.commerce-checkout-progress {
   display: inline-block;
   width: 100%;
   padding: 25px 0;
-  border-bottom: 1px solid #ECECEC; }
+  padding-top: 18px;
+  border-bottom: 1px solid #ECECEC;
+  position: relative; }
+  .pane-properties-index-panel-pane-4 .view-properties-index .views-row .views-field-participating-offer {
+    position: absolute;
+    top: 24px;
+    left: -8px; }
+    .pane-properties-index-panel-pane-4 .view-properties-index .views-row .views-field-participating-offer .offer-icon {
+      position: relative;
+      display: block;
+      background: url("../images/offer.png") center center no-repeat;
+      background: url("../images/offer.svg") center center no-repeat, linear-gradient(transparent, transparent);
+      content: "";
+      width: 42px;
+      height: 18px;
+      cursor: pointer;
+      z-index: 2; }
   .pane-properties-index-panel-pane-4 .view-properties-index .views-row .views-field-field-sp-featured-image {
     position: relative;
     float: left;

@@ -978,7 +978,25 @@
       display: inline-block;
       width: 100%;
       padding: 25px 0;
+      padding-top: 18px;
       border-bottom: 1px solid #ECECEC;
+      position: relative;
+      .views-field-participating-offer {
+        position: absolute;
+        top: 24px;
+        left: -8px;
+        .offer-icon {
+          position: relative;
+          display: block;
+          background: url("../images/offer.png") center center no-repeat;
+          background: url("../images/offer.svg") center center no-repeat, linear-gradient(transparent, transparent);
+          content: "";
+          width: 42px;
+          height: 18px;
+          cursor: pointer;
+          z-index: 2;
+        }
+      }
       .views-field-field-sp-featured-image {
         @include make-xs-column(12, 0);
         @include make-sm-column(12, 0);
