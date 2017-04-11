@@ -12025,6 +12025,43 @@ body.node-type-homepage {
     @media (max-width: 768px) {
       body.node-type-homepage .pane-node-field-homepage-intro-text {
         display: none; } }
+    @media (min-width: 991px) {
+      body.node-type-homepage .pane-node-field-homepage-intro-text {
+        -webkit-animation-name: fadeIn;
+        -moz-animation-name: fadeIn;
+        -ms-animation-name: fadeIn;
+        -o-animation-name: fadeIn;
+        animation-name: fadeIn;
+        -webkit-animation-iteration-count: 1;
+        -moz-animation-iteration-count: 1;
+        -ms-animation-iteration-count: 1;
+        -o-animation-iteration-count: 1;
+        animation-iteration-count: 1;
+        -webkit-animation-duration: 2s;
+        -moz-animation-duration: 2s;
+        -ms-animation-duration: 2s;
+        -o-animation-duration: 2s;
+        animation-duration: 2s;
+        -webkit-animation-delay: 0.4s;
+        -moz-animation-delay: 0.4s;
+        -ms-animation-delay: 0.4s;
+        -o-animation-delay: 0.4s;
+        animation-delay: 0.4s;
+        -webkit-animation-timing-function: ease;
+        -moz-animation-timing-function: ease;
+        -ms-animation-timing-function: ease;
+        -o-animation-timing-function: ease;
+        animation-timing-function: ease;
+        -webkit-animation-fill-mode: both;
+        -moz-animation-fill-mode: both;
+        -ms-animation-fill-mode: both;
+        -o-animation-fill-mode: both;
+        animation-fill-mode: both;
+        -webkit-backface-visibility: hidden;
+        -moz-backface-visibility: hidden;
+        -ms-backface-visibility: hidden;
+        -o-backface-visibility: hidden;
+        backface-visibility: hidden; } }
   body.node-type-homepage .pane-roomify-listing-availability-search-block-roomify-property-search {
     top: calc(50% - 60px);
     width: 100%;
