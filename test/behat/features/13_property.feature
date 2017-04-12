@@ -4,8 +4,8 @@ Feature: Manage Property
   Scenario: Roomify manager - Create new Property
     Given I am logged in as a user with the "roomify manager" role
     And I visit "user"
-    Then I click on the text "Manage Listing(s)"
-    And I click on the text "add property"
+    Then I click on the text "Your Properties"
+    And I click on the text "+ add property"
     And I wait for AJAX to finish
     Then I fill in "property_name" with "Roomify manager locanda"
     And I select the radio button "Multi-Unit (multiple rooms / types within a property)"
@@ -38,7 +38,7 @@ Feature: Manage Property
 
   Scenario: Property owner - Create new Property
     Given I am logged in as a user with the "property owner" role
-    Then I click on the text "click here to add a new property"
+    Then I click on the text "+ Add Property"
     And I wait for AJAX to finish
     Then I fill in "property_name" with "Property owner casa"
     And I select the radio button "Single-Unit (entire home)"
@@ -62,23 +62,23 @@ Feature: Manage Property
   Scenario: Dashboard - Add new property link
     Given I am logged in as a user with the "guest" role
     And I visit "user"
-    Then I should not see the text "Manage Listing(s)"
+    Then I should not see the text "Your Properties"
 
     Given I am logged in as a user with the "content editor" role
     And I visit "user"
-    Then I should not see the text "Manage Listing(s)"
+    Then I should not see the text "Your Properties"
 
     Given I am logged in as a user with the "property owner" role
     And I visit "user"
-    Then I click on the text "Manage Listing(s)"
-    And I should see the link "click here to add a new property"
+    Then I click on the text "Your Properties"
+    And I should see the link "+ Add Property"
 
     Given I am logged in as a user with the "roomify manager" role
     And I visit "user"
-    Then I click on the text "Manage Listing(s)"
+    Then I click on the text "Your Properties"
     And I should see the link "add property"
 
     Given I am logged in as a user with the "roomify manager,property owner" role
     And I visit "user"
-    Then I click on the text "Manage Listing(s)"
+    Then I click on the text "Your Properties"
     And I should see the link "add property"

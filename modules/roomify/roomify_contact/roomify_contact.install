@@ -16,7 +16,7 @@ function roomify_contact_enable() {
   $entityform_block_types[] = 'contact';
   variable_set('entityform_block_types', $entityform_block_types);
 
-  roomify_system_create_update_menu_link('Contact us', 'contact-us', 'main-menu', 1, 1, array('alter' => TRUE));
+  roomify_system_create_update_menu_link('Contact us', 'contact-us', 'main-menu', 1, 1, 1, array('alter' => TRUE));
 
   // Add dependencies to date fields on contact form.
   roomify_contact_add_date_fields_booking_request_dependency();

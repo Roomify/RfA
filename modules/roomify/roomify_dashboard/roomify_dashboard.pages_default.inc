@@ -103,7 +103,7 @@ function roomify_dashboard_default_page_manager_handlers() {
   $pane->panel = 'middle';
   $pane->type = 'panels_mini';
   $pane->subtype = 'dashboard_manage_listings';
-  $pane->shown = TRUE;
+  $pane->shown = FALSE;
   $pane->access = array(
     'plugins' => array(
       0 => array(
@@ -140,7 +140,7 @@ function roomify_dashboard_default_page_manager_handlers() {
   $pane->panel = 'middle';
   $pane->type = 'panels_mini';
   $pane->subtype = 'dashboard_manage_travel';
-  $pane->shown = TRUE;
+  $pane->shown = FALSE;
   $pane->access = array(
     'plugins' => array(
       0 => array(
@@ -180,7 +180,7 @@ function roomify_dashboard_default_page_manager_handlers() {
   $pane->panel = 'middle';
   $pane->type = 'panels_mini';
   $pane->subtype = 'dashboard_manage_content';
-  $pane->shown = TRUE;
+  $pane->shown = FALSE;
   $pane->access = array(
     'plugins' => array(
       0 => array(
@@ -217,7 +217,7 @@ function roomify_dashboard_default_page_manager_handlers() {
   $pane->panel = 'middle';
   $pane->type = 'panels_mini';
   $pane->subtype = 'dashboard_manage_groups';
-  $pane->shown = TRUE;
+  $pane->shown = FALSE;
   $pane->access = array(
     'plugins' => array(
       0 => array(
@@ -254,7 +254,7 @@ function roomify_dashboard_default_page_manager_handlers() {
   $pane->panel = 'middle';
   $pane->type = 'panels_mini';
   $pane->subtype = 'dashboard_manage_configuration';
-  $pane->shown = TRUE;
+  $pane->shown = FALSE;
   $pane->access = array(
     'plugins' => array(
       0 => array(
@@ -291,7 +291,7 @@ function roomify_dashboard_default_page_manager_handlers() {
   $pane->panel = 'middle';
   $pane->type = 'theme_colors';
   $pane->subtype = 'theme_colors';
-  $pane->shown = TRUE;
+  $pane->shown = FALSE;
   $pane->access = array(
     'plugins' => array(
       2 => array(
@@ -326,7 +326,7 @@ function roomify_dashboard_default_page_manager_handlers() {
   $pane->panel = 'middle';
   $pane->type = 'panels_mini';
   $pane->subtype = 'dashboard_welcome';
-  $pane->shown = TRUE;
+  $pane->shown = FALSE;
   $pane->access = array();
   $pane->configuration = array(
     'override_title' => 1,
@@ -369,6 +369,32 @@ function roomify_dashboard_default_page_manager_handlers() {
   $pane->uuid = '2bd6054d-e65d-4cc2-930c-3f9d8eda497a';
   $display->content['new-2bd6054d-e65d-4cc2-930c-3f9d8eda497a'] = $pane;
   $display->panels['top'][0] = 'new-2bd6054d-e65d-4cc2-930c-3f9d8eda497a';
+  $pane = new stdClass();
+  $pane->pid = 'new-dc77e7a7-0de4-4ac4-997b-33a3b54ee02f';
+  $pane->panel = 'top';
+  $pane->type = 'panels_mini';
+  $pane->subtype = 'dashboard';
+  $pane->shown = TRUE;
+  $pane->access = array();
+  $pane->configuration = array(
+    'context' => array(
+      0 => 'argument_entity_id:user_1',
+    ),
+    'override_title' => 1,
+    'override_title_text' => '',
+    'override_title_heading' => 'h2',
+  );
+  $pane->cache = array();
+  $pane->style = array(
+    'settings' => NULL,
+  );
+  $pane->css = array();
+  $pane->extras = array();
+  $pane->position = 1;
+  $pane->locks = array();
+  $pane->uuid = 'dc77e7a7-0de4-4ac4-997b-33a3b54ee02f';
+  $display->content['new-dc77e7a7-0de4-4ac4-997b-33a3b54ee02f'] = $pane;
+  $display->panels['top'][1] = 'new-dc77e7a7-0de4-4ac4-997b-33a3b54ee02f';
   $display->hide_title = PANELS_TITLE_FIXED;
   $display->title_pane = '0';
   $handler->conf['display'] = $display;

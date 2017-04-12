@@ -31,20 +31,14 @@
 
   <?php print render($title_prefix); ?>
   <div class="roomify-administration-title">
-    <?php if ($title): ?>
-      <?php if ($is_dashboard): ?>
-        <h1 class="page-title"><?php print $back_home . ' - ' . $back_dashboard?></h1>
-      <?php else: ?>
-        <h1 class="page-title"><?php print $back_home . ' - ' . $back_dashboard . ' - ' . $title; ?></h1>
-      <?php endif; ?>
-    <?php endif; ?>
+    <h1 class="page-title"><?php print $back_home . ' - ' . $back_dashboard?></h1>
   </div>
   <?php print render($title_suffix); ?>
 
   <!-- AGENCY SIDEBAR MENU -->
-  <div class="agency-user-menu">
+  <div class="roomify-user-menu">
     <?php
-      print l(t('My Account'), '#menu-toggle', array('attributes' => array('class' => 'agency-sidebar-menu-toggle')));
+      print l(t('My Account'), '#menu-toggle', array('attributes' => array('class' => 'roomify-sidebar-menu-toggle')));
     ?>
   </div>
 
@@ -62,6 +56,11 @@
 <?php endif; ?>
 
 <div id="page">
+  <?php if ($title): ?>
+    <?php if (!$is_dashboard): ?>
+      <h1 class="page-title"><?php print $title; ?></h1>
+    <?php endif; ?>
+  <?php endif; ?>
   <div id="content" class="clearfix">
     <div class="element-invisible"><a id="main-content"></a></div>
 

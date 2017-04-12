@@ -17,6 +17,7 @@ function roomify_conversations_menu() {
     'page callback' => 'roomify_conversations_make_offer_page',
     'access arguments' => array('view own roomify_conversation entities'),
     'type' => MENU_CALLBACK,
+    'theme callback' => 'roomify_conversations_default_theme_callback',
   );
 
   $items['admin/conversations/%roomify_conversation/quick-reply/%ctools_js'] = array(
@@ -27,6 +28,13 @@ function roomify_conversations_menu() {
   );
 
   return $items;
+}
+
+/**
+ * Return the default theme.
+ */
+function roomify_conversations_default_theme_callback() {
+  return variable_get('theme_default', 'bartik');
 }
 
 /**

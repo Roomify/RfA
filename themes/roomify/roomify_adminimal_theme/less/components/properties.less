@@ -1,0 +1,429 @@
+.page-admin-bat-properties-view-all {
+  .view-properties {
+    font-size: 14px;
+    .view-header {
+      width: 100%;
+      display: inline-block;
+    }
+    .view-filters {
+      display: inline-block;
+      margin-bottom: 30px;
+      .views-exposed-form .views-exposed-widget .form-submit {
+        margin-top: 2.7em;
+      }
+    }
+    .view-header a {
+      float: left;
+      position: relative;
+      top: -15px;
+      padding-left: 32px;
+      background: #0074bd url("../images/plus_white.png") no-repeat 6px 12px;
+      background-size: 20px;
+      border-radius: 4px;
+      border-bottom: 2px solid #397AA7;
+      color: #ffffff;
+      font-size: 20px;
+      background-color: #3498db;
+      padding: 12px 18px 12px 38px;
+      text-decoration: none;
+      &:hover {
+        background-color: #1ea4f7;
+        text-decoration: none;
+      }
+    }
+    .view-content {
+      margin-top: -30px;
+      .views-field-field-sp-featured-image img {
+        width: 150px;
+        border-radius: 50%;
+      }
+      .views-field-name a {
+        font-weight: 500;
+        color: #263238;
+      }
+      a {
+        color: #333;
+      }
+      img {
+        float: left;
+      }
+    }
+    thead {
+      display: none;
+    }
+    tr.status-0 {
+      background: #F9EADA;
+      a {
+        color: #989898 !important;
+      }
+      td.views-field {
+        &.views-field-edit-unit a {
+          background-image: url("../images/edit-gray.png");
+        }
+        &.views-field-nothing a {
+          background-image: url("../images/availability-gray.png")
+        }
+        &.views-field-nothing-1 a {
+          background-image: url("../images/pricing-gray.png");
+        }
+      }
+    }
+    tr:not(.views-row-last) td {
+      border-bottom: 1px solid #DEDEDE;
+    }
+    tr.even {
+      background: #fff;
+    }
+    td.views-field {
+      &.views-field-field-sp-featured-image {
+        width: 170px;
+      }
+      &.views-field-name {
+        font-size: 24px;
+        font-weight: 300;
+        line-height: 1.2em;
+      }
+      &.views-field-edit-unit {
+        width: 120px;
+        text-align: center;
+        a {
+          background: url("../images/edit.png") no-repeat right 50% bottom 20px;
+          background-size: 35px 35px;
+          display: inline-block;
+          padding: 55px 1em 0 1em;
+        }
+      }
+      &.views-field-nothing {
+        width: 120px;
+        text-align: center;
+        a {
+          background: url("../images/availability.png") no-repeat right 50% bottom 20px;
+          background-size: 35px 35px;
+          display: inline-block;
+          padding: 55px 1em 0 1em;
+        }
+      }
+      &.views-field-nothing-1 {
+        width: 120px;
+        text-align: center;
+        a {
+          background: url("../images/pricing.png") no-repeat right 50% bottom 20px;
+          background-size: 35px 35px;
+          display: inline-block;
+          padding: 55px 1em 0 1em;
+        }
+      }
+      &.views-field-property-types-edit-link {
+        width: 120px;
+        text-align: center;
+        a {
+          background: url("../images/rooms.png") no-repeat right 50% bottom 20px;
+          background-size: 35px 35px;
+          display: inline-block;
+          padding: 55px 1em 0 1em;
+        }
+        a.casa-type {
+          background: url("../images/house.png") no-repeat right 50% bottom 20px;
+          background-size: 35px 35px;
+          display: inline-block;
+          padding: 55px 1em 0 1em;
+        }
+      }
+    }
+  }
+  .footable-row-detail-inner {
+    width: 100%;
+    .footable-row-detail-row {
+      width: 30%;
+      float: left;
+      margin: 0 1%;
+      .footable-row-detail-value {
+        width: 100%;
+        text-align: center;
+        img {
+          display: none;
+        }
+        a {
+          background-repeat: no-repeat;
+          background-position: center center;
+          padding: 58px 1em 0 1em;
+          background-size: 40px 40px;
+          display: block;
+        }
+        a {
+          background-image: url("../images/edit.png");
+        }
+        a.availability-link {
+          background-image: url("../images/availability.png")
+        }
+        a.pricing-link {
+          background-image: url("../images/pricing.png");
+        }
+      }
+    }
+  }
+}
+
+.page-admin-bat-properties {
+  .view-properties {
+    .view-header {
+      display: inline-block;
+      width: 100%;
+      .button {
+        .btn();
+      }
+      a {
+        padding-left: 32px;
+        background: #0074bd url("../images/plus_white.png") no-repeat 6px 12px;
+        background-size: 20px;
+      }
+    }
+    .views-exposed-form {
+      display: inline-block;
+      width: 100%;
+      margin-bottom: 20px;
+      label {
+        padding-bottom: 14px;
+      }
+      .form-item-name {
+        input {
+          height: 32px;
+        }
+      }
+    }
+  }
+}
+
+.view-display-id-dashboard_properties {
+  .view-header {
+    margin-bottom: 20px;
+  }
+}
+.pane-favorite-properties-block-1 {
+  .view-favorite-properties {
+    position: relative;
+    max-width: 968px;
+    margin: 0 auto;
+    margin-top: 50px;
+    a {
+      color: #405467;
+    }
+    .views-field-field-sp-featured-image {
+      max-width: 130px;
+      img {
+        width: 100%;
+        height: auto;
+        border-radius: 50%;
+      }
+    }
+    .property-name {
+      font-size: 18px;
+      font-weight: 600;
+      margin-bottom: 5px;
+    }
+    .property-description {
+       color: gray;
+       font-style: italic;
+     }
+  }
+}
+.pane-properties-dashboard-properties {
+  .view-display-id-dashboard_properties {
+    position: relative;
+    .view-header {
+      margin-bottom: 0;
+      text-align: right;
+      @media (min-width: @screen-sm-max) {
+        position: absolute;
+        right: 0;
+        top: -50px;
+      }
+    }
+    max-width: 968px;
+    margin: 0 auto;
+    .views-exposed-form {
+      input.form-autocomplete {
+        background-position: 98% 11px;
+      }
+      margin-bottom: 15px;
+      .form-submit {
+        margin-top: 2.11em;
+        @media (max-width: @screen-xs) {
+          margin-top: 10px;
+        }
+      }
+    }
+    a {
+      color: #405467;
+    }
+    td.views-field-name {
+      height: 170px;
+      .property-image {
+        display: inline-block;
+        float: left;
+        width: 50%;
+        max-width: 170px;
+        position: relative;
+        left: -5px;
+        @media (max-width: @screen-sm-max) {
+          display: none;
+        }
+        img {
+          width: 100%;
+          height: auto;
+          border-radius: 50%;
+        }
+      }
+      .property-info {
+        width: 50%;
+        display: inline-block;
+        margin-top: 55px;
+        padding: 0 15px;
+        @media (max-width: @screen-sm-max) {
+          margin-top: 0;
+        }
+        .property-name {
+          font-size: 18px;
+          font-weight: 600;
+          margin-bottom: 5px;
+        }
+        .property-created {
+          color: gray;
+          font-style: italic;
+          font-size: 12px;
+          .label {
+            font-weight: 600;
+          }
+        }
+        .property-changed {
+          color: gray;
+          font-style: italic;
+          font-size: 12px;
+          .label {
+            font-weight: 600;
+          }
+        }
+      }
+    }
+    td.views-field {
+      &.views-field-edit-unit {
+        width: 30px;
+        a {
+          background: url("../images/edit.png") no-repeat right 50% bottom 20px;
+          background-size: 28px 28px;
+          display: inline-block;
+          padding: 30px 1em 0 1em;
+          font-size: 14px;
+        }
+      }
+      &.views-field-nothing {
+        width: 30px;
+        a {
+          background: url("../images/availability.png") no-repeat right 50% bottom 20px;
+          background-size: 28px 28px;
+          display: inline-block;
+          padding: 30px 1em 0 1em;
+          font-size: 14px;
+        }
+      }
+      &.views-field-nothing-1 {
+        width: 30px;
+        a {
+          background: url("../images/pricing.png") no-repeat right 50% bottom 20px;
+          background-size: 28px 28px;
+          display: inline-block;
+          padding: 30px 1em 0 1em;
+          font-size: 14px;
+
+        }
+      }
+      &.views-field-property-types-edit-link {
+        width: 30px;
+        text-align: center;
+        a {
+          background: url("../images/rooms.png") no-repeat right 50% bottom 20px;
+          display: inline-block;
+          background-size: 28px 28px;
+          display: inline-block;
+          padding: 30px 1em 0 1em;
+          font-size: 14px;
+        }
+        a.casa-type {
+          background: url("../images/house.png") no-repeat right 50% bottom 20px;
+          display: inline-block;
+          background-size: 28px 28px;
+          display: inline-block;
+          padding: 30px 1em 0 1em;
+          font-size: 14px;
+        }
+      }
+    }
+    tr.status-0 {
+      td.views-field {
+        &.views-field-edit-unit a {
+          background-image: url("../images/edit-gray.png");
+        }
+        &.views-field-nothing a {
+          background-image: url("../images/availability-gray.png")
+        }
+        &.views-field-nothing-1 a {
+          background-image: url("../images/pricing-gray.png");
+        }
+      }
+    }
+  }
+}
+.dragdropfile-processed .dragdropfile-table-wrapper {
+  height: auto;
+  box-shadow: none;
+  background-color: transparent;
+}
+
+.page-admin-bat-config-types-manage,
+.page-admin-bat-config-property-manage {
+  #main-content {
+    .vertical-tabs-panes {
+      fieldset {
+        box-shadow: none;
+        display: block;
+        border: none;
+        padding-top: 10px;
+        border-top: none !important;
+        legend {
+          display: none !important;
+        }
+      }
+    }
+  }
+  .field-name-field-sp-gallery {
+    .property-gallery-show-text,
+    .form-submit.ajax-processed {
+      display: inline-block;
+      font-size: 12px;
+      float: left;
+    }
+  }
+  #edit-group_highlight {
+    .manualcrop-thumblist {
+      overflow: hidden;
+    }
+  }
+}
+
+#roomify-locanda-event-ui-bulk-update-form,
+#roomify-casa-event-ui-bulk-update-form {
+  fieldset {
+    .form-item-type,
+    .form-item-state {
+      label {
+        margin-bottom: 8px;
+      }
+      select {
+        height: 25px;
+      }
+    }
+    #edit-submit {
+      margin-top: 2.45em;
+    }
+  }
+}
