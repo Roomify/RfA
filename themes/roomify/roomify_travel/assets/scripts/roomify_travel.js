@@ -70,6 +70,11 @@ Drupal.behaviors.roomifyTravelScripts = {
     var hamburgerHeight = $('.roomify-header .roomify-site-menu .inner').outerHeight();
     $('.roomify-header .roomify-site-menu').css('top', (headerHeight - hamburgerHeight)/2 );
     $('.roomify-header .roomify-user-menu').css('top', (headerHeight - 28)/2);
+
+    $('.page-availability-search .panel-sl-left-content-wrapper .panel_sl_left .panel-pane.pane-block .pane-title').on('click', function(event) {
+      $(this).toggleClass('hidden-content');
+      $(this).parent().children('.pane-content').toggle('hide');
+    });
   }
 };
 

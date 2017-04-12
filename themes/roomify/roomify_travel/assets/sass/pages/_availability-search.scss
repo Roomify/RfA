@@ -291,6 +291,7 @@
               margin: 20px 0;
               padding: 0 5px;
               font-style: italic;
+              font-weight: 400;
             }
             .property-types-table {
               width: 100%;
@@ -317,19 +318,22 @@
                       text-indent: -9999999px;
                     }
                     &.capacity {
-                      background-image: url('../images/small/capacity_small.png');
+                      background: url('../images/small/white_users.png') center center no-repeat;
+                      background: url("../images/small/white_users.svg") center center no-repeat, linear-gradient(transparent, transparent);
                       text-indent: -9999999px;
                       background-repeat: no-repeat;
                       background-position: center center;
                     }
                     &.bedrooms {
-                      background-image: url('../images/small/beds_small.png');
+                      background: url('../images/small/white_single_beds.png') center center no-repeat;
+                      background: url("../images/small/white_single_beds.svg") center center no-repeat, linear-gradient(transparent, transparent);
                       text-indent: -9999999px;
                       background-repeat: no-repeat;
                       background-position: center center;
                     }
                     &.price {
-                      background-image: url('../images/small/price_small.png');
+                      background: url('../images/small/money.png') center center no-repeat;
+                      background: url("../images/small/money.svg") center center no-repeat, linear-gradient(transparent, transparent);
                       text-indent: -9999999px;
                       background-repeat: no-repeat;
                       background-position: center center;
@@ -341,7 +345,7 @@
                   margin-top: 10px;
                   .row-element {
                     width: 20%;
-                    padding: 10px;
+                    padding: 7px;
                     text-align: center;
                     color: white;
                     &.name {
@@ -504,7 +508,7 @@
   }
   // MAP VIEW
   .view-display-id-panel_pane_2 {
-    #leaflet-map {
+    .leaflet-container {
       .leaflet-popup-content-wrapper {
         border-radius: 4px;
       }
@@ -516,7 +520,6 @@
         }
         a {
           font-size: 16px;
-          color: #000000;
           text-decoration: underline;
         }
         .roomify-property-short-description {
@@ -686,6 +689,27 @@
           color: #666;
           border-bottom: 1px solid #d0d0d0;
           border-top: 1px solid #d0d0d0;
+          position: relative;
+          cursor: pointer;
+          &:before {
+            content: '';
+            position: absolute;
+            width: 35px;
+            right: 2px;
+            top: 2px;
+            height: 35px;
+            transform: rotate(90deg);
+            background-size: contain;
+            background: url('../images/chevron_right.png') no-repeat center center;
+            background: url("../images/chevron_right.svg") center center no-repeat, linear-gradient(transparent, transparent);
+            @include transition(150ms transform ease);
+          }
+          &.hidden-content {
+            @include transition(150ms transform ease);
+            &:before {
+              transform: rotate(0deg);
+            }
+          }
           .glyphicon {
             display: none;
           }
@@ -707,6 +731,9 @@
             border-bottom: 1px solid #116e92;
             position: relative;
             margin-bottom: 15px;
+            &:before {
+              display: none;
+            }
             &:after {
               content: "";
               width: 0;
@@ -879,7 +906,8 @@
 .pane-search-api-sorts-search-sorts {
   float: right;
   margin-bottom: 15px;
-
+  font-size: 12px;
+  margin-top: 8px;
   .search-api-sorts {
     margin-bottom: 0;
     li {
@@ -900,32 +928,31 @@
         }
       }
       &:first-child {
-        padding: 0 10px 0 15px;
         &:before {
-          width: 30px;
-          height: 30px;
+          width: 20px;
+          height: 20px;
           background: url('../../images/sort.png') no-repeat center center;
           background: url("../../images/sort.svg") center center no-repeat, linear-gradient(transparent, transparent);
           content: '';
           display: inline-block;
-          background-size: 30px 30px;
+          background-size: 25px 25px;
           position: relative;
-          top: 10px;
+          top: 5px;
           right: 5px;
         }
       }
       &:last-child {
-        padding: 0 0 0 15px;
+        padding: 0 0 0 10px;
         &:before {
-          width: 30px;
-          height: 30px;
+          width: 20px;
+          height: 20px;
           background: url('../../images/price-sort.png') no-repeat center center;
           background: url("../../images/price-sort.svg") center center no-repeat, linear-gradient(transparent, transparent);
           content: '';
           display: inline-block;
-          background-size: 25px 25px;
+          background-size: 20px 20px;
           position: relative;
-          top: 10px;
+          top: 5px;
           right: 0;
         }
       }
