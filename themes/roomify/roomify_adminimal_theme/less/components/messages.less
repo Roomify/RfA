@@ -2,6 +2,12 @@
   #better-messages-default {
     border: 5px solid rgba(29, 29, 29, 0.5);
     border-radius: 6px;
+    table {
+      table-layout: fixed;
+      .messages {
+        word-wrap: break-word;
+      }
+    }
     .messages-label {
       color: #FFFFFF;
       font-size: 15px;
@@ -26,19 +32,19 @@
       }
     }
     a.message-close {
-      background: transparent url('../images/x.png') no-repeat;
       display: inline-block;
       width: 100%;
       text-align: right;
-      height: 28px;
-      padding-right: 20px;
-      background-position: right 7px;
-      color: #696969;
+      height: 35px;
+      color: #5a5a5a;
       text-decoration: none;
-      font-weight: 400;
-      font-size: 13px;
+      font-weight: 600;
+      font-size: 14px;
       background-size: 11px 11px;
-      margin-right: 10px;
+      background: #ffffff;
+      border-radius: 0;
+      margin: 0;
+      margin-top: 0;
     }
   }
 }

@@ -1,298 +1,63 @@
 @import 'variables';
 @import 'custom-mixins';
 
-/* COMPONENTS */
-@import 'components/agency';
-@import 'components/bat_booking';
-@import 'components/sidebar-menu';
-@import 'components/installation';
-@import 'components/bat_type';
-@import 'components/roomify_dashboard';
-@import 'components/roomify_group';
-@import 'components/roomify_properties';
-@import 'components/add_ons';
-@import 'components/messages';
-@import 'components/orders';
+@import 'regions/header';
+@import 'regions/sidebar';
+@import 'regions/content';
 
+/* COMPONENTS */
+@import 'components/messages';
+@import 'components/accordion';
+@import 'components/calendars';
+@import 'components/conversations';
+@import 'components/agency';
+@import 'components/messages';
+@import 'components/modal';
+@import 'components/orders';
+@import 'components/properties';
+@import 'components/table';
+@import 'components/tabs';
+@import 'components/dashboard';
+@import 'components/bat_booking';
+@import 'components/overrides';
+@import 'components/bat_type';
+@import 'components/roomify_group';
+@import 'components/add_ons';
 
 /* Custom font */
 @import url(https://fonts.googleapis.com/css?family=Lato:400,300,700);
 @import url(https://fonts.googleapis.com/css?family=Open+Sans:400,800,700);
 
 
-body {
-  h1,h2,h3,h4,h5,h6,p,a,span,strong {
-    font-family: 'Lato', sans-serif !important;
-  }
-  table {
-    td, th {
-      font-family: 'Lato', sans-serif !important;
-      padding: 15px 10px;
-    }
-    thead {
-      tr {
-        th {
-          background: #545454;
-          font-weight: bold;
-          color: #fff !important;
-          a {
-            color: white !important;
-          }
-        }
-      }
-    }
-    tbody {
-      tr {
-        td {
-          font-size: 15px;
-        }
-      }
-    }
-  }
-  .ui-widget table thead th {
-    color: white;
-    a {
-      color: white;
-    }
-  }
+#references-dialog-page {
+  background: white;
 }
-.adminimal-theme #branding div.breadcrumb {
-  display: none;
-}
-.adminimal-theme #branding {
-  overflow: visible;
+a.cke_button {
+  height: auto !important;
 }
 
-.adminimal-theme .node-form tr {
-  &.even {
-    &:hover {
-      background-color: #F9F9F9;
-    }
-  }
-  &.odd {
-    &:hover {
-      background-color: #F9F9F9;
-    }
-  }
+a.ctools-use-modal.button,
+a.ctools-use-modal,
+.button {
+  .btn;
 }
-
-#branding h1.page-title {
-  @media (max-width: @screen-sm) {
-    font-size: 20px !important;
-    span {
-      font-size: 14px;
-    }
-  }
-}
-// Center all administration content and close it in a box.
-html, 
-body {
-  background-color: @lightest-gray !important;
-  //@media (max-width: 1140px) {
-    // RD-507 Disable narrowest screen width for admin them.
-    //width: 1140px !important;
-  //}
-}
-body {
-  font: 15px/1.6em 'Lato', sans-serif !important;
-  #console.roomify-admin-messages,
-  #page {
-    margin-bottom: 40px;
-    background-color: white;
-    padding: 25px;
-    border-radius: 5px;
-    max-width: 1200px;
-    margin-left: auto;
-    margin-right: auto;
-    border: 2px solid rgba(235, 235, 235, 0.45);
-  }
-  #console.roomify-admin-messages {
-    margin-top: 40px;
-    padding: 0px;
-    border: 0;
-  }
-  #page {
-    .box-shadow(0px 24px 64px 5px rgba(179,179,179,0.45));
-  }
-  .roomify-primary-local-tasks {
-    padding: 0;
-    max-width: 1250px;
-    display: table;
-    margin-left: auto;
-    width: 100%;
-    margin-right: auto;
+#ctools-export-ui-edit-item-wizard-form,
+#panels-panel-context-edit-content {
+  a.ctools-use-modal {
+    background: transparent;
+    text-transform: none;
+    padding: 0 10px;
     text-align: left;
-    margin-top: 40px;
-
-    ul.tabs {
-      background: @lightest-gray;
-      padding: 0px;
-      font-size: 16px;
-      li {
-        margin-right: 5px;
-        background: #F5F5F5;
-        border-radius: 5px 5px 0 0;
-        position: relative;
-        top: 2px;
-        &.pushed-right-tab {
-          float: right;
-          margin-right: 0 !important;
-        }
-        a {
-          color: @gray;
-          min-width: 120px;
-          text-align: center;
-        }
-        @media (max-width: @screen-sm) {
-          width: 100%;
-          text-align: center;
-          display: flex;
-          a {
-            width: 100%;
-          }
-        }
-        &:first-child {
-          &.active {
-            a {
-              left: -2px;
-              position: relative;
-            }
-          }
-        }
-        &.active {
-          border-width: 0px !important;
-          background: white;
-          outline: none;
-          a {
-            color: @blue;
-            font-weight: 700;
-            outline: none;
-            border-radius: 5px 5px 0px 0px;
-            border: 2px solid rgba(235, 235, 235, 0.45);
-            border-bottom: 0px;
-            z-index: 10;
-            .box-shadow(0px 0px 0px rgb(0,0,0))
-          }
-        }
-      }
+    font-size: initial;
+    &:hover {
+      border: none;
+      box-shadow: none;
     }
   }
-  #content-wrapper {
-    max-width: @screen-lg;
-    margin: 0 auto;
-  }
-  &.in-maintenance #content {
-    width: auto !important;
-  }
 }
-
-.agency-user-menu {
+.ctools-use-modal.add-offer-button {
+  margin-bottom: 30px;
   display: inline-block;
-  float: right;
-  margin-right: 50px;
-  @media (max-width: @screen-sm) {
-    margin-right: 0px;
-  }
-  a {
-    font-size: 29px;
-    color: #FFFFFF;
-    float: left;
-    font-family: "Open Sans", "Segoe UI", "Helvetica", sans-serif;
-    font-size: 32px;
-    font-weight: 300;
-    line-height: 38px;
-    @media (max-width: @screen-sm) {
-      margin: 20px;
-      font-size: 20px;
-    }
-  }
-  li ul {
-    display: none;
-    position: absolute;
-    background: #FDFDFD;
-    top: 75%;
-    right: 10px;
-    z-index: 999;
-    min-width: 150px;
-    padding: 10px;
-    border: 1px solid #333333;
-    border-radius: 8px;
-    @media (max-width: @screen-xs) {
-      top: 100%;
-    }
-    li {
-      list-style: none;
-      a {
-        color: #333333;
-      }
-    }
-  }
-}
-
-body .back-to-site-link  {
-  a {
-    background: url("../images/homepage.png") no-repeat center center;
-    width: 40px;
-    height: 40px;
-    display: inline-block;
-    float: left;
-    text-indent: -999999px;
-    margin-right: 10px;
-  }
-}
-#branding .pane-title {
-  margin: 0px;
-}
-
-// Better Messages
-#better-messages-wrapper {
-  #better-messages-default {
-    #messages-inner {
-      .content {
-        .messages.status,
-        .messages.error,
-        .messages.warning {
-          background: white;
-          border: 0px !important;
-          padding: 20px;
-        }
-      }
-    }
-  }
-}
-
-fieldset {
-  border-top: 3px solid #0074BD !important;
-  box-shadow: none !important;
-  legend {
-    background: none !important;
-  }
-}
-
-/* Override bat modal close button styling. */
-.page-admin-bat {
-  #modalContent .ctools-modal-content {
-    .modal-content {
-      min-height: inherit !important;
-    }
-    a.close {
-      background: none;
-      padding-left: 0;
-      img {
-        display: block;
-      }
-    }
-  }
-  div#modalContent div.ctools-modal-content {
-    min-width: 500px !important;
-    width: auto !important;
-    height: auto !important;
-    min-height: auto !important;
-    overflow: hidden;
-  }
-  div#modalContent div.ctools-modal-content.roomify-accommodations-booking-form {
-    overflow-y: scroll;
-  }
 }
 
 .roomify-administration-title {
@@ -325,20 +90,21 @@ fieldset {
   display: none;
 }
 .property-gallery-show-text {
-  max-width: 200px;
-  padding: 6px 0px;
-  border-radius: 0;
+  cursor: pointer;
+  padding: 4px 10px;
+  margin-top: 2px;
   border: none;
-  margin-bottom: 1em;
-  margin-right: 1em;
   color: #fff;
   text-align: center;
   font-weight: normal;
   font-size: 1.077em;
-  font-family: "Lucida Grande",Verdana,sans-serif;
   background: #4d8f46;
+  font-family: Roboto, sans-serif;
+  text-transform: uppercase;
+  border-radius: 0.2rem;
   transition: all, 0.3s;
-  cursor: pointer;
+  line-height: 18px;
+  margin: 2px;
   &:hover {
     background: #4d8f46;
     opacity: 0.9;
@@ -410,6 +176,7 @@ fieldset {
       background: #f7f7f7;
       float: left;
       display: inline-block;
+      color: #000;
       margin-right: 3%;
       background-repeat: no-repeat !important;
       background-size: 200px 300px !important;
@@ -417,7 +184,7 @@ fieldset {
       margin-top: 15px;
       border: 2px solid #ECECEC;
       padding: 15px;
-      font-size: 20px;
+      font-size: 16px;
       padding-top: 345px;
       text-align: center;
       background-position-x: 50% !important;
@@ -462,4 +229,16 @@ fieldset {
 
 #references-dialog-page .view-customer-profiles td {
   cursor: pointer;
+}
+.manualcrop-style-button-holder {
+  padding-bottom: 1em;
+  input {
+    background: #FF9800 !important;
+  }
+}
+
+.vertical-tabs-panes fieldset fieldset {
+  .fieldset-legend {
+    display: none;
+  }
 }

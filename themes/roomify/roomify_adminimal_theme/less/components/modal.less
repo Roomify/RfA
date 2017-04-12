@@ -1,0 +1,76 @@
+#modalContent div.ctools-modal-content {
+  .form-item label {
+	  font-size: 15px;
+	  font-weight: 400;
+	}
+	h2 {
+		font-size: 28px;
+		font-weight: 400;
+	}
+}
+#modalContent {
+	#edit-container {
+		padding-left: 0;
+	}
+	.form-item-max-occupants,
+	.form-item-default-price {
+		display: inline-block;
+		width: 100%;
+		margin: 5px 0;
+	}
+}
+
+#roomify-property-wizard-form {
+	.form-item-property-name {
+		margin-bottom: 20px;
+	}
+}
+
+/* Override bat modal close button styling. */
+.page-admin-bat {
+  #modalContent .ctools-modal-content {
+    border-radius: 4px;
+    .modal-header {
+      padding: 25px 25px 0px 25px;
+    }
+    .modal-content {
+      min-height: inherit !important;
+      padding: 25px;
+    }
+    a.close {
+      background: none;
+      padding-left: 0;
+      img {
+        display: block;
+      }
+    }
+  }
+  div#modalContent div.ctools-modal-content {
+    min-width: 500px !important;
+    width: auto !important;
+    height: auto !important;
+    min-height: auto !important;
+    overflow: hidden;
+  }
+  div#modalContent div.ctools-modal-content.roomify-accommodations-booking-form {
+    overflow-y: scroll;
+  }
+}
+
+
+body .ui-dialog {
+	.ui-widget-header {
+		background: #405467;
+	}
+	.ui-dialog-title {
+    font-size: 20px;
+    font-weight: 400;
+    margin: 5px 0;
+	}
+	.ui-dialog-content {
+		padding: 30px 10px;
+	}
+	.ui-button-text {
+		padding: 5px 10px;
+	}
+}

@@ -4,7 +4,7 @@ Drupal.behaviors.roomifyDashboardColor = {
   attach: function (context, settings) {
     var i, j, colors, field_name;
     // This behavior attaches by ID, so is only valid once on a page.
-    var form = $('.roomify-dashboard .color-form', context).once('color');
+    var form = $('#roomify-dashboard-theme-colors-form .color-form', context).once('color');
 
     if (form.length == 0) {
       return;

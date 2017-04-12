@@ -11,7 +11,6 @@
 function roomify_dashboard_install() {
   // Enable the User Panel.
   variable_set('page_manager_user_view_disabled', FALSE);
-  menu_rebuild();
 }
 
 /**
@@ -26,4 +25,27 @@ function roomify_dashboard_update_7001() {
  */
 function roomify_dashboard_update_7002() {
   features_revert(array('roomify_dashboard' => array('views_view')));
+}
+
+/**
+ * Enamble Menu Token module.
+ */
+function roomify_dashboard_update_7003() {
+  module_enable(array('menu_token'));
+}
+
+/**
+ * Create the dashboard menu.
+ */
+function roomify_dashboard_update_7004() {
+  roomify_dashboard_create_dashboard_menu();
+}
+
+/**
+ * Update admin theme skin.
+ */
+function roomify_dashboard_update_7005() {
+  $admin_theme_settings = variable_get('theme_roomify_adminimal_theme_settings', array());
+  $admin_theme_settings['adminimal_theme_skin'] = 'material';
+  variable_set('theme_roomify_adminimal_theme_settings', $admin_theme_settings);
 }
