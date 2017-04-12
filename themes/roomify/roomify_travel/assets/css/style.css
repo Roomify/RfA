@@ -6758,7 +6758,10 @@ blockquote {
         color: #939393;
         font-size: 15px;
         font-weight: 500;
-        line-height: 50px; }
+        line-height: 50px;
+        outline: none; }
+        .ui-tabs .ui-tabs-nav li a:focus {
+          outline: none; }
         .ui-tabs .ui-tabs-nav li a:focus {
           outline: none; }
         .ui-tabs .ui-tabs-nav li a:hover {
