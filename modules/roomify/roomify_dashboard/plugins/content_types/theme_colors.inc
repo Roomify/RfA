@@ -56,34 +56,3 @@ function roomify_dashboard_theme_colors_render($subtype, $conf, $args, $pane_con
 
   return $block;
 }
-
-/**
- *
- */
-function roomify_dashboard_theme_colors_form($form, &$form_state) {
-  $theme = variable_get('theme_default', NULL);
-
-  $form['color'] = array(
-    '#type' => 'fieldset',
-    '#title' => t('Color scheme'),
-    '#weight' => -1,
-    '#attributes' => array('id' => 'color_scheme_form'),
-    '#theme' => 'color_scheme_form',
-  );
-
-  $form['color'] += color_scheme_form($form, $form_state, $theme);
-
-  $form['#attached']['js'] = array(
-    drupal_get_path('module', 'roomify_dashboard') . '/js/roomify_dashboard_theme_colors.js',
-  );
-
-  $form['submit'] = array(
-    '#type' => 'submit',
-    '#value' => t('Save Colors'),
-  );
-
-  $form['#validate'][] = 'color_scheme_form_validate';
-  $form['#submit'][] = 'color_scheme_form_submit';
-
-  return $form;
-}

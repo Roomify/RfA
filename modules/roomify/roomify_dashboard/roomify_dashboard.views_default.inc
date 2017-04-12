@@ -41,11 +41,11 @@ function roomify_dashboard_views_default_views() {
   $handler->display->display_options['style_plugin'] = 'footable';
   $handler->display->display_options['style_options']['columns'] = array(
     'label' => 'label',
-    'booking_full_name' => 'booking_full_name',
     'booking_id' => 'booking_id',
     'property_id' => 'property_id',
     'name_1' => 'name_1',
     'name' => 'name',
+    'commerce_customer_address_name_line' => 'commerce_customer_address_name_line',
     'booking_start_date' => 'booking_start_date',
     'booking_end_date' => 'booking_end_date',
     'nights' => 'nights',
@@ -57,13 +57,6 @@ function roomify_dashboard_views_default_views() {
   $handler->display->display_options['style_options']['default'] = '-1';
   $handler->display->display_options['style_options']['info'] = array(
     'label' => array(
-      'sortable' => 0,
-      'default_sort_order' => 'asc',
-      'align' => 'views-align-left',
-      'separator' => '',
-      'empty_column' => 0,
-    ),
-    'booking_full_name' => array(
       'sortable' => 0,
       'default_sort_order' => 'asc',
       'align' => 'views-align-left',
@@ -95,6 +88,13 @@ function roomify_dashboard_views_default_views() {
       'sortable' => 0,
       'default_sort_order' => 'asc',
       'align' => 'views-align-left',
+      'separator' => '',
+      'empty_column' => 0,
+    ),
+    'commerce_customer_address_name_line' => array(
+      'sortable' => 0,
+      'default_sort_order' => 'asc',
+      'align' => '',
       'separator' => '',
       'empty_column' => 0,
     ),
@@ -153,11 +153,6 @@ function roomify_dashboard_views_default_views() {
         'phone' => 0,
         'tablet' => 0,
       ),
-      'booking_full_name' => array(
-        'phone' => 'phone',
-        'tablet' => 'tablet',
-        'all' => 0,
-      ),
       'booking_id' => array(
         'all' => 0,
         'phone' => 0,
@@ -178,14 +173,19 @@ function roomify_dashboard_views_default_views() {
         'phone' => 0,
         'tablet' => 0,
       ),
-      'booking_start_date' => array(
+      'commerce_customer_address_name_line' => array(
+        'phone' => 'phone',
         'all' => 0,
-        'phone' => 0,
+        'tablet' => 0,
+      ),
+      'booking_start_date' => array(
+        'phone' => 'phone',
+        'all' => 0,
         'tablet' => 0,
       ),
       'booking_end_date' => array(
+        'phone' => 'phone',
         'all' => 0,
-        'phone' => 0,
         'tablet' => 0,
       ),
       'nights' => array(
@@ -200,13 +200,13 @@ function roomify_dashboard_views_default_views() {
       ),
       'edit_unit' => array(
         'phone' => 'phone',
+        'tablet' => 'tablet',
         'all' => 0,
-        'tablet' => 0,
       ),
       'delete_unit' => array(
         'phone' => 'phone',
+        'tablet' => 'tablet',
         'all' => 0,
-        'tablet' => 0,
       ),
       'type' => array(
         'phone' => 'phone',
@@ -215,13 +215,6 @@ function roomify_dashboard_views_default_views() {
       ),
     ),
   );
-  /* No results behavior: Global: Text area */
-  $handler->display->display_options['empty']['area']['id'] = 'area';
-  $handler->display->display_options['empty']['area']['table'] = 'views';
-  $handler->display->display_options['empty']['area']['field'] = 'area';
-  $handler->display->display_options['empty']['area']['empty'] = TRUE;
-  $handler->display->display_options['empty']['area']['content'] = 'You do not have any bookings yet.';
-  $handler->display->display_options['empty']['area']['format'] = 'filtered_text';
   /* Relationship: Entity Reference: Referenced Entity */
   $handler->display->display_options['relationships']['booking_event_reference_target_id']['id'] = 'booking_event_reference_target_id';
   $handler->display->display_options['relationships']['booking_event_reference_target_id']['table'] = 'field_data_booking_event_reference';
@@ -372,11 +365,11 @@ function roomify_dashboard_views_default_views() {
   $handler->display->display_options['arguments']['uid']['specify_validation'] = TRUE;
   $handler->display->display_options['arguments']['uid']['validate']['type'] = 'php';
   $handler->display->display_options['arguments']['uid']['validate_options']['code'] = 'if (user_access(\'update any bat_booking entity\')) {
-      return FALSE;
-      }
-      else {
-      return TRUE;
-      }';
+                return FALSE;
+                }
+                else {
+                return TRUE;
+                }';
   $handler->display->display_options['arguments']['uid']['validate']['fail'] = 'ignore';
   /* Filter criterion: Events: State (event_state_reference) */
   $handler->display->display_options['filters']['event_state_reference_state_id']['id'] = 'event_state_reference_state_id';
@@ -402,6 +395,9 @@ function roomify_dashboard_views_default_views() {
 
   /* Display: Page */
   $handler = $view->new_display('page', 'Page', 'page_1');
+  $handler->display->display_options['defaults']['access'] = FALSE;
+  $handler->display->display_options['access']['type'] = 'perm';
+  $handler->display->display_options['access']['perm'] = 'update own bat_booking entities';
   $handler->display->display_options['defaults']['relationships'] = FALSE;
   /* Relationship: Entity Reference: Referenced Entity */
   $handler->display->display_options['relationships']['booking_event_reference_target_id']['id'] = 'booking_event_reference_target_id';
@@ -552,6 +548,17 @@ function roomify_dashboard_views_default_views() {
   $handler->display->display_options['fields']['type']['exclude'] = TRUE;
   $handler->display->display_options['fields']['type']['element_label_colon'] = FALSE;
   $handler->display->display_options['fields']['type']['machine_name'] = TRUE;
+  $handler->display->display_options['defaults']['sorts'] = FALSE;
+  /* Sort criterion: BAT Booking: Created */
+  $handler->display->display_options['sorts']['created']['id'] = 'created';
+  $handler->display->display_options['sorts']['created']['table'] = 'bat_bookings';
+  $handler->display->display_options['sorts']['created']['field'] = 'created';
+  $handler->display->display_options['sorts']['created']['order'] = 'DESC';
+  /* Sort criterion: BAT Booking: Created */
+  $handler->display->display_options['sorts']['created_1']['id'] = 'created_1';
+  $handler->display->display_options['sorts']['created_1']['table'] = 'bat_bookings';
+  $handler->display->display_options['sorts']['created_1']['field'] = 'created';
+  $handler->display->display_options['sorts']['created_1']['order'] = 'DESC';
   $handler->display->display_options['defaults']['filter_groups'] = FALSE;
   $handler->display->display_options['defaults']['filters'] = FALSE;
   /* Filter criterion: Events: State (event_state_reference) */
@@ -653,16 +660,27 @@ function roomify_dashboard_views_default_views() {
   /* Display: Future Bookings */
   $handler = $view->new_display('panel_pane', 'Future Bookings', 'panel_pane_1');
   $handler->display->display_options['defaults']['title'] = FALSE;
-  $handler->display->display_options['title'] = 'All Bookings';
   $handler->display->display_options['defaults']['use_ajax'] = FALSE;
   $handler->display->display_options['use_ajax'] = TRUE;
   $handler->display->display_options['defaults']['use_more'] = FALSE;
   $handler->display->display_options['use_more'] = TRUE;
   $handler->display->display_options['defaults']['use_more_always'] = FALSE;
   $handler->display->display_options['defaults']['use_more_always'] = FALSE;
-  $handler->display->display_options['use_more_always'] = TRUE;
+  $handler->display->display_options['use_more_always'] = FALSE;
   $handler->display->display_options['defaults']['use_more_text'] = FALSE;
   $handler->display->display_options['use_more_text'] = 'View all bookings';
+  $handler->display->display_options['defaults']['pager'] = FALSE;
+  $handler->display->display_options['pager']['type'] = 'some';
+  $handler->display->display_options['pager']['options']['items_per_page'] = '8';
+  $handler->display->display_options['pager']['options']['offset'] = '0';
+  $handler->display->display_options['defaults']['header'] = FALSE;
+  /* Header: Global: Text area */
+  $handler->display->display_options['header']['area']['id'] = 'area';
+  $handler->display->display_options['header']['area']['table'] = 'views';
+  $handler->display->display_options['header']['area']['field'] = 'area';
+  $handler->display->display_options['header']['area']['content'] = '<h2>Future bookings (sorted by most recently booked)</h2>';
+  $handler->display->display_options['header']['area']['format'] = 'filtered_text';
+  $handler->display->display_options['defaults']['empty'] = FALSE;
   $handler->display->display_options['defaults']['relationships'] = FALSE;
   /* Relationship: Entity Reference: Referenced Entity */
   $handler->display->display_options['relationships']['booking_event_reference_target_id']['id'] = 'booking_event_reference_target_id';
@@ -814,10 +832,11 @@ function roomify_dashboard_views_default_views() {
   $handler->display->display_options['fields']['type']['element_label_colon'] = FALSE;
   $handler->display->display_options['fields']['type']['machine_name'] = TRUE;
   $handler->display->display_options['defaults']['sorts'] = FALSE;
-  /* Sort criterion: BAT Booking: Start Date (booking_start_date) */
-  $handler->display->display_options['sorts']['booking_start_date_value']['id'] = 'booking_start_date_value';
-  $handler->display->display_options['sorts']['booking_start_date_value']['table'] = 'field_data_booking_start_date';
-  $handler->display->display_options['sorts']['booking_start_date_value']['field'] = 'booking_start_date_value';
+  /* Sort criterion: BAT Booking: Created */
+  $handler->display->display_options['sorts']['created']['id'] = 'created';
+  $handler->display->display_options['sorts']['created']['table'] = 'bat_bookings';
+  $handler->display->display_options['sorts']['created']['field'] = 'created';
+  $handler->display->display_options['sorts']['created']['order'] = 'DESC';
   $handler->display->display_options['defaults']['filter_groups'] = FALSE;
   $handler->display->display_options['defaults']['filters'] = FALSE;
   /* Filter criterion: Events: State (event_state_reference) */
@@ -846,6 +865,15 @@ function roomify_dashboard_views_default_views() {
   $handler->display->display_options['filters']['booking_start_date_value']['field'] = 'booking_start_date_value';
   $handler->display->display_options['filters']['booking_start_date_value']['operator'] = '>=';
   $handler->display->display_options['filters']['booking_start_date_value']['default_date'] = 'now';
+  $handler->display->display_options['allow']['use_pager'] = 0;
+  $handler->display->display_options['allow']['items_per_page'] = 0;
+  $handler->display->display_options['allow']['offset'] = 0;
+  $handler->display->display_options['allow']['link_to_view'] = 0;
+  $handler->display->display_options['allow']['more_link'] = 0;
+  $handler->display->display_options['allow']['path_override'] = 0;
+  $handler->display->display_options['allow']['title_override'] = 'title_override';
+  $handler->display->display_options['allow']['exposed_form'] = 0;
+  $handler->display->display_options['allow']['fields_override'] = 0;
   $handler->display->display_options['argument_input'] = array(
     'uid' => array(
       'type' => 'user',
@@ -1199,6 +1227,13 @@ function roomify_dashboard_views_default_views() {
   $handler->display->display_options['use_more_always'] = TRUE;
   $handler->display->display_options['defaults']['use_more_text'] = FALSE;
   $handler->display->display_options['use_more_text'] = 'View all bookings';
+  $handler->display->display_options['defaults']['header'] = FALSE;
+  /* Header: Global: Text area */
+  $handler->display->display_options['header']['area']['id'] = 'area';
+  $handler->display->display_options['header']['area']['table'] = 'views';
+  $handler->display->display_options['header']['area']['field'] = 'area';
+  $handler->display->display_options['header']['area']['content'] = '<h2>Upcoming bookings - next 60 days. (Sorted by closest booking date)</h2>';
+  $handler->display->display_options['header']['area']['format'] = 'filtered_text';
   $handler->display->display_options['defaults']['relationships'] = FALSE;
   /* Relationship: Entity Reference: Referenced Entity */
   $handler->display->display_options['relationships']['booking_event_reference_target_id']['id'] = 'booking_event_reference_target_id';
@@ -1423,14 +1458,14 @@ function roomify_dashboard_views_default_views() {
   $handler->display->display_options['use_more_always'] = TRUE;
   $handler->display->display_options['defaults']['use_more_text'] = FALSE;
   $handler->display->display_options['use_more_text'] = 'View all bookings';
+  $handler->display->display_options['defaults']['header'] = FALSE;
+  /* Header: Global: Text area */
+  $handler->display->display_options['header']['area']['id'] = 'area';
+  $handler->display->display_options['header']['area']['table'] = 'views';
+  $handler->display->display_options['header']['area']['field'] = 'area';
+  $handler->display->display_options['header']['area']['content'] = '<h2>Here you can find a list of past bookings</h2>';
+  $handler->display->display_options['header']['area']['format'] = 'filtered_text';
   $handler->display->display_options['defaults']['empty'] = FALSE;
-  /* No results behavior: Global: Text area */
-  $handler->display->display_options['empty']['area']['id'] = 'area';
-  $handler->display->display_options['empty']['area']['table'] = 'views';
-  $handler->display->display_options['empty']['area']['field'] = 'area';
-  $handler->display->display_options['empty']['area']['empty'] = TRUE;
-  $handler->display->display_options['empty']['area']['content'] = 'There are no past bookings';
-  $handler->display->display_options['empty']['area']['format'] = 'filtered_text';
   $handler->display->display_options['defaults']['relationships'] = FALSE;
   /* Relationship: Entity Reference: Referenced Entity */
   $handler->display->display_options['relationships']['booking_event_reference_target_id']['id'] = 'booking_event_reference_target_id';
@@ -2056,7 +2091,6 @@ function roomify_dashboard_views_default_views() {
     t('‹ previous'),
     t('next ›'),
     t('last »'),
-    t('You do not have any bookings yet.'),
     t('Events entity referenced from booking_event_reference'),
     t('Unit entity referenced from event_bat_unit_reference'),
     t('Type'),
@@ -2080,8 +2114,8 @@ function roomify_dashboard_views_default_views() {
     t('Start Date'),
     t('End Date'),
     t('Future Bookings'),
-    t('All Bookings'),
     t('View all bookings'),
+    t('<h2>Future bookings (sorted by most recently booked)</h2>'),
     t('View panes'),
     t('Data export'),
     t('Commerce Line item entity referenced from booking_line_item_reference'),
@@ -2100,8 +2134,9 @@ function roomify_dashboard_views_default_views() {
     t('End Date (booking_end_date)'),
     t('Check-ins next 60 days'),
     t('Upcoming Bookings'),
+    t('<h2>Upcoming bookings - next 60 days. (Sorted by closest booking date)</h2>'),
     t('Past Bookings'),
-    t('There are no past bookings'),
+    t('<h2>Here you can find a list of past bookings</h2>'),
     t('Next Arrivals'),
     t('Upcoming Arrivals'),
     t('<h2>There are no bookings starting in the next 30 days</h2>'),
@@ -2146,29 +2181,29 @@ function roomify_dashboard_views_default_views() {
     'order_id' => array(
       'sortable' => 0,
       'default_sort_order' => 'asc',
-      'align' => '',
+      'align' => 'views-align-left',
       'separator' => '',
       'empty_column' => 0,
     ),
     'property_image' => array(
-      'align' => '',
+      'align' => 'views-align-left',
       'separator' => '',
       'empty_column' => 0,
     ),
     'line_item_title' => array(
-      'align' => '',
+      'align' => 'views-align-left',
       'separator' => '',
       'empty_column' => 0,
     ),
     'commerce_order_total' => array(
       'sortable' => 0,
       'default_sort_order' => 'asc',
-      'align' => '',
+      'align' => 'views-align-center',
       'separator' => '',
       'empty_column' => 0,
     ),
     'nothing' => array(
-      'align' => '',
+      'align' => 'views-align-right',
       'separator' => '',
       'empty_column' => 0,
     ),
@@ -2186,8 +2221,8 @@ function roomify_dashboard_views_default_views() {
       ),
       'property_image' => array(
         'phone' => 'phone',
-        'tablet' => 'tablet',
         'all' => 0,
+        'tablet' => 0,
       ),
       'line_item_title' => array(
         'all' => 0,
@@ -2196,13 +2231,13 @@ function roomify_dashboard_views_default_views() {
       ),
       'commerce_order_total' => array(
         'phone' => 'phone',
-        'tablet' => 'tablet',
         'all' => 0,
+        'tablet' => 0,
       ),
       'nothing' => array(
         'phone' => 'phone',
-        'tablet' => 'tablet',
         'all' => 0,
+        'tablet' => 0,
       ),
     ),
   );
@@ -2235,6 +2270,7 @@ function roomify_dashboard_views_default_views() {
   $handler->display->display_options['fields']['line_item_title']['table'] = 'commerce_line_item';
   $handler->display->display_options['fields']['line_item_title']['field'] = 'line_item_title';
   $handler->display->display_options['fields']['line_item_title']['relationship'] = 'commerce_line_items_line_item_id';
+  $handler->display->display_options['fields']['line_item_title']['label'] = 'Your Stay';
   $handler->display->display_options['fields']['line_item_title']['alter']['path'] = '[view_order]';
   /* Field: Commerce Order: Order total */
   $handler->display->display_options['fields']['commerce_order_total']['id'] = 'commerce_order_total';
@@ -2289,8 +2325,25 @@ function roomify_dashboard_views_default_views() {
   $handler->display->display_options['defaults']['use_more_always'] = FALSE;
   $handler->display->display_options['use_more_always'] = FALSE;
   $handler->display->display_options['defaults']['use_more_text'] = FALSE;
-  $handler->display->display_options['use_more_text'] = 'See all';
+  $handler->display->display_options['use_more_text'] = 'View All';
   $handler->display->display_options['link_url'] = '/user/!1/orders';
+  $handler->display->display_options['defaults']['header'] = FALSE;
+  /* Header: Global: Text area */
+  $handler->display->display_options['header']['area']['id'] = 'area';
+  $handler->display->display_options['header']['area']['table'] = 'views';
+  $handler->display->display_options['header']['area']['field'] = 'area';
+  $handler->display->display_options['header']['area']['content'] = '<h2>Here you can find a list of your stays!</h2>';
+  $handler->display->display_options['header']['area']['format'] = 'filtered_text';
+  $handler->display->display_options['defaults']['empty'] = FALSE;
+  $handler->display->display_options['allow']['use_pager'] = 0;
+  $handler->display->display_options['allow']['items_per_page'] = 0;
+  $handler->display->display_options['allow']['offset'] = 0;
+  $handler->display->display_options['allow']['link_to_view'] = 0;
+  $handler->display->display_options['allow']['more_link'] = 0;
+  $handler->display->display_options['allow']['path_override'] = 0;
+  $handler->display->display_options['allow']['title_override'] = 'title_override';
+  $handler->display->display_options['allow']['exposed_form'] = 0;
+  $handler->display->display_options['allow']['fields_override'] = 0;
   $handler->display->display_options['argument_input'] = array(
     'uid_1' => array(
       'type' => 'user',
@@ -2418,13 +2471,14 @@ function roomify_dashboard_views_default_views() {
     t('Desc'),
     t('You have not placed any orders with us yet.'),
     t('Line items referenced by commerce_line_items'),
-    t('Title'),
+    t('Your Stay'),
     t('Total'),
     t('View Details'),
     t('see booking details'),
     t('All'),
     t('Dashboard My Stays'),
-    t('See all'),
+    t('View All'),
+    t('<h2>Here you can find a list of your stays!</h2>'),
     t('View panes'),
     t('My Stays sidebar'),
     t('<span class="glyphicon glyphicon-calendar"></span>Upcoming Bookings'),
@@ -2617,13 +2671,6 @@ function roomify_dashboard_views_default_views() {
   $handler->display->display_options['pager']['type'] = 'full';
   $handler->display->display_options['style_plugin'] = 'default';
   $handler->display->display_options['row_plugin'] = 'fields';
-  /* No results behavior: Global: Text area */
-  $handler->display->display_options['empty']['area']['id'] = 'area';
-  $handler->display->display_options['empty']['area']['table'] = 'views';
-  $handler->display->display_options['empty']['area']['field'] = 'area';
-  $handler->display->display_options['empty']['area']['empty'] = TRUE;
-  $handler->display->display_options['empty']['area']['content'] = 'You do not have any favorite properties yet!  <a href="/">Browse</a> the site to find a few.';
-  $handler->display->display_options['empty']['area']['format'] = 'filtered_text';
   /* Relationship: Flags: favorites */
   $handler->display->display_options['relationships']['flag_content_rel']['id'] = 'flag_content_rel';
   $handler->display->display_options['relationships']['flag_content_rel']['table'] = 'roomify_properties';
@@ -2663,6 +2710,40 @@ function roomify_dashboard_views_default_views() {
 
   /* Display: Favorites */
   $handler = $view->new_display('panel_pane', 'Favorites', 'block_1');
+  $handler->display->display_options['defaults']['style_plugin'] = FALSE;
+  $handler->display->display_options['style_plugin'] = 'table';
+  $handler->display->display_options['style_options']['columns'] = array(
+    'property_id' => 'property_id',
+    'field_sp_featured_image' => 'field_sp_featured_image',
+    'name' => 'name',
+  );
+  $handler->display->display_options['style_options']['default'] = '-1';
+  $handler->display->display_options['style_options']['info'] = array(
+    'property_id' => array(
+      'sortable' => 0,
+      'default_sort_order' => 'asc',
+      'align' => '',
+      'separator' => '',
+      'empty_column' => 0,
+    ),
+    'field_sp_featured_image' => array(
+      'sortable' => 0,
+      'default_sort_order' => 'asc',
+      'align' => '',
+      'separator' => '',
+      'empty_column' => 0,
+    ),
+    'name' => array(
+      'sortable' => 0,
+      'default_sort_order' => 'asc',
+      'align' => '',
+      'separator' => '',
+      'empty_column' => 0,
+    ),
+  );
+  $handler->display->display_options['defaults']['style_options'] = FALSE;
+  $handler->display->display_options['defaults']['row_plugin'] = FALSE;
+  $handler->display->display_options['defaults']['row_options'] = FALSE;
   $handler->display->display_options['defaults']['fields'] = FALSE;
   /* Field: Roomify Property: Roomify property ID */
   $handler->display->display_options['fields']['property_id']['id'] = 'property_id';
@@ -2677,8 +2758,8 @@ function roomify_dashboard_views_default_views() {
   $handler->display->display_options['fields']['field_sp_featured_image']['element_label_colon'] = FALSE;
   $handler->display->display_options['fields']['field_sp_featured_image']['click_sort_column'] = 'fid';
   $handler->display->display_options['fields']['field_sp_featured_image']['settings'] = array(
-    'image_style' => 'roomify_4_3',
-    'image_link' => '',
+    'image_style' => 'square',
+    'image_link' => 'content',
     'conditions' => array(
       0 => array(
         'condition' => '',
@@ -2690,12 +2771,34 @@ function roomify_dashboard_views_default_views() {
   $handler->display->display_options['fields']['name']['table'] = 'roomify_properties';
   $handler->display->display_options['fields']['name']['field'] = 'name';
   $handler->display->display_options['fields']['name']['label'] = '';
-  $handler->display->display_options['fields']['name']['alter']['alter_text'] = TRUE;
-  $handler->display->display_options['fields']['name']['alter']['text'] = '<div class="property-name">
-  [name]
-  </div>';
+  $handler->display->display_options['fields']['name']['exclude'] = TRUE;
   $handler->display->display_options['fields']['name']['alter']['path'] = '/listing/[property_id]';
   $handler->display->display_options['fields']['name']['element_label_colon'] = FALSE;
+  $handler->display->display_options['fields']['name']['element_wrapper_type'] = 'h3';
+  /* Field: Roomify Property: Property Short Description */
+  $handler->display->display_options['fields']['field_sp_short_description']['id'] = 'field_sp_short_description';
+  $handler->display->display_options['fields']['field_sp_short_description']['table'] = 'field_data_field_sp_short_description';
+  $handler->display->display_options['fields']['field_sp_short_description']['field'] = 'field_sp_short_description';
+  $handler->display->display_options['fields']['field_sp_short_description']['label'] = '';
+  $handler->display->display_options['fields']['field_sp_short_description']['alter']['alter_text'] = TRUE;
+  $handler->display->display_options['fields']['field_sp_short_description']['alter']['text'] = '<div class="property-name">[name]</div>
+  <div class="property-description">[field_sp_short_description]</div>
+  ';
+  $handler->display->display_options['fields']['field_sp_short_description']['element_label_colon'] = FALSE;
+  $handler->display->display_options['fields']['field_sp_short_description']['settings'] = array(
+    'conditions' => array(
+      0 => array(
+        'condition' => '',
+      ),
+    ),
+  );
+  /* Field: Global: Custom text */
+  $handler->display->display_options['fields']['nothing']['id'] = 'nothing';
+  $handler->display->display_options['fields']['nothing']['table'] = 'views';
+  $handler->display->display_options['fields']['nothing']['field'] = 'nothing';
+  $handler->display->display_options['fields']['nothing']['label'] = '';
+  $handler->display->display_options['fields']['nothing']['alter']['text'] = '<a href="/listing/[property_id]" target="_blank" class="btn btn-success view-property">View Property</a>';
+  $handler->display->display_options['fields']['nothing']['element_label_colon'] = FALSE;
   $handler->display->display_options['allow']['use_pager'] = 0;
   $handler->display->display_options['allow']['items_per_page'] = 0;
   $handler->display->display_options['allow']['offset'] = 0;
@@ -2736,15 +2839,15 @@ function roomify_dashboard_views_default_views() {
     t('‹ previous'),
     t('next ›'),
     t('last »'),
-    t('You do not have any favorite properties yet!  <a href="/">Browse</a> the site to find a few.'),
     t('flag'),
     t('Roomify property ID'),
     t('.'),
     t(','),
     t('Favorites'),
-    t('<div class="property-name">
-  [name]
-  </div>'),
+    t('<div class="property-name">[name]</div>
+  <div class="property-description">[field_sp_short_description]</div>
+  '),
+    t('<a href="/listing/[property_id]" target="_blank" class="btn btn-success view-property">View Property</a>'),
     t('View panes'),
     t('Sidebar Favorites'),
     t('<span class="glyphicon glyphicon-heart"></span>Favorite Properties'),
@@ -2999,11 +3102,14 @@ function roomify_dashboard_views_default_views() {
   /* Display: Master */
   $handler = $view->new_display('default', 'Master', 'default');
   $handler->display->display_options['title'] = 'Your Properties';
+  $handler->display->display_options['use_ajax'] = TRUE;
   $handler->display->display_options['use_more_always'] = FALSE;
-  $handler->display->display_options['access']['type'] = 'none';
+  $handler->display->display_options['access']['type'] = 'perm';
+  $handler->display->display_options['access']['perm'] = 'update own roomify_property entities';
   $handler->display->display_options['cache']['type'] = 'none';
   $handler->display->display_options['query']['type'] = 'views_query';
   $handler->display->display_options['exposed_form']['type'] = 'basic';
+  $handler->display->display_options['exposed_form']['options']['reset_button'] = TRUE;
   $handler->display->display_options['pager']['type'] = 'full';
   $handler->display->display_options['pager']['options']['items_per_page'] = '5';
   $handler->display->display_options['pager']['options']['offset'] = '0';
@@ -3130,7 +3236,7 @@ function roomify_dashboard_views_default_views() {
   $handler->display->display_options['empty']['area']['table'] = 'views';
   $handler->display->display_options['empty']['area']['field'] = 'area';
   $handler->display->display_options['empty']['area']['empty'] = TRUE;
-  $handler->display->display_options['empty']['area']['content'] = 'You don\'t have any properties yet! Please <a class="ctools-use-modal ctools-modal-roomify-dashboard-modal-style" href="/admin/bat/config/property/wizard/nojs">click here to add a new property</a>.';
+  $handler->display->display_options['empty']['area']['content'] = '<h2>You don\'t have any properties yet! Please add a Property. </h2><div><a class="ctools-use-modal ctools-modal-roomify-dashboard-modal-style" href="/admin/bat/config/property/wizard/nojs">+ Add Property</a></div>.';
   $handler->display->display_options['empty']['area']['format'] = 'filtered_text';
   /* Field: Roomify Property: Status */
   $handler->display->display_options['fields']['status']['id'] = 'status';
@@ -3211,15 +3317,17 @@ function roomify_dashboard_views_default_views() {
   $handler->display->display_options['arguments']['uid']['specify_validation'] = TRUE;
   $handler->display->display_options['arguments']['uid']['validate']['type'] = 'php';
   $handler->display->display_options['arguments']['uid']['validate_options']['code'] = 'if (user_access(\'update any roomify_property entity\')) {
-return FALSE;
-}
-else {
-return TRUE;
-}';
+        return FALSE;
+        }
+        else {
+        return TRUE;
+        }';
   $handler->display->display_options['arguments']['uid']['validate']['fail'] = 'ignore';
 
   /* Display: Dashboard Properties */
   $handler = $view->new_display('panel_pane', 'Dashboard Properties', 'dashboard_properties');
+  $handler->display->display_options['defaults']['use_ajax'] = FALSE;
+  $handler->display->display_options['use_ajax'] = TRUE;
   $handler->display->display_options['defaults']['use_more'] = FALSE;
   $handler->display->display_options['use_more'] = TRUE;
   $handler->display->display_options['defaults']['use_more_always'] = FALSE;
@@ -3239,10 +3347,12 @@ return TRUE;
     'status' => 'status',
     'property_id' => 'property_id',
     'type' => 'type',
+    'field_sp_featured_image' => 'field_sp_featured_image',
     'name' => 'name',
     'edit_unit' => 'edit_unit',
     'nothing' => 'nothing',
     'nothing_1' => 'nothing_1',
+    'property_types_edit_link' => 'property_types_edit_link',
   );
   $handler->display->display_options['style_options']['default'] = '-1';
   $handler->display->display_options['style_options']['info'] = array(
@@ -3261,6 +3371,13 @@ return TRUE;
       'empty_column' => 0,
     ),
     'type' => array(
+      'sortable' => 0,
+      'default_sort_order' => 'asc',
+      'align' => '',
+      'separator' => '',
+      'empty_column' => 0,
+    ),
+    'field_sp_featured_image' => array(
       'sortable' => 0,
       'default_sort_order' => 'asc',
       'align' => '',
@@ -3289,6 +3406,11 @@ return TRUE;
       'separator' => '',
       'empty_column' => 0,
     ),
+    'property_types_edit_link' => array(
+      'align' => '',
+      'separator' => '',
+      'empty_column' => 0,
+    ),
   );
   $handler->display->display_options['style_options']['footable'] = array(
     'striping' => 0,
@@ -3307,6 +3429,11 @@ return TRUE;
         'tablet' => 0,
       ),
       'type' => array(
+        'all' => 0,
+        'phone' => 0,
+        'tablet' => 0,
+      ),
+      'field_sp_featured_image' => array(
         'all' => 0,
         'phone' => 0,
         'tablet' => 0,
@@ -3331,18 +3458,178 @@ return TRUE;
         'all' => 0,
         'tablet' => 0,
       ),
+      'property_types_edit_link' => array(
+        'phone' => 'phone',
+        'all' => 0,
+        'tablet' => 0,
+      ),
     ),
   );
   $handler->display->display_options['defaults']['style_options'] = FALSE;
   $handler->display->display_options['defaults']['row_plugin'] = FALSE;
   $handler->display->display_options['defaults']['row_options'] = FALSE;
   $handler->display->display_options['defaults']['relationships'] = FALSE;
+  $handler->display->display_options['defaults']['fields'] = FALSE;
+  /* Field: Roomify Property: Status */
+  $handler->display->display_options['fields']['status']['id'] = 'status';
+  $handler->display->display_options['fields']['status']['table'] = 'roomify_properties';
+  $handler->display->display_options['fields']['status']['field'] = 'status';
+  $handler->display->display_options['fields']['status']['label'] = '';
+  $handler->display->display_options['fields']['status']['exclude'] = TRUE;
+  $handler->display->display_options['fields']['status']['element_label_colon'] = FALSE;
+  $handler->display->display_options['fields']['status']['separator'] = '';
+  /* Field: Roomify Property: Roomify property ID */
+  $handler->display->display_options['fields']['property_id']['id'] = 'property_id';
+  $handler->display->display_options['fields']['property_id']['table'] = 'roomify_properties';
+  $handler->display->display_options['fields']['property_id']['field'] = 'property_id';
+  $handler->display->display_options['fields']['property_id']['label'] = '';
+  $handler->display->display_options['fields']['property_id']['exclude'] = TRUE;
+  $handler->display->display_options['fields']['property_id']['element_label_colon'] = FALSE;
+  $handler->display->display_options['fields']['property_id']['separator'] = '';
+  /* Field: Roomify Property: Created date */
+  $handler->display->display_options['fields']['created']['id'] = 'created';
+  $handler->display->display_options['fields']['created']['table'] = 'roomify_properties';
+  $handler->display->display_options['fields']['created']['field'] = 'created';
+  $handler->display->display_options['fields']['created']['label'] = 'Created on';
+  $handler->display->display_options['fields']['created']['exclude'] = TRUE;
+  $handler->display->display_options['fields']['created']['date_format'] = 'bat';
+  $handler->display->display_options['fields']['created']['second_date_format'] = 'bat_daily';
+  /* Field: Roomify Property: Updated date */
+  $handler->display->display_options['fields']['changed']['id'] = 'changed';
+  $handler->display->display_options['fields']['changed']['table'] = 'roomify_properties';
+  $handler->display->display_options['fields']['changed']['field'] = 'changed';
+  $handler->display->display_options['fields']['changed']['exclude'] = TRUE;
+  $handler->display->display_options['fields']['changed']['date_format'] = 'bat';
+  $handler->display->display_options['fields']['changed']['second_date_format'] = 'bat_daily';
+  /* Field: Roomify Property: Type */
+  $handler->display->display_options['fields']['type']['id'] = 'type';
+  $handler->display->display_options['fields']['type']['table'] = 'roomify_properties';
+  $handler->display->display_options['fields']['type']['field'] = 'type';
+  $handler->display->display_options['fields']['type']['label'] = '';
+  $handler->display->display_options['fields']['type']['exclude'] = TRUE;
+  $handler->display->display_options['fields']['type']['element_label_colon'] = FALSE;
+  $handler->display->display_options['fields']['type']['machine_name'] = TRUE;
+  /* Field: Roomify Property: Search/Featured Image */
+  $handler->display->display_options['fields']['field_sp_featured_image']['id'] = 'field_sp_featured_image';
+  $handler->display->display_options['fields']['field_sp_featured_image']['table'] = 'field_data_field_sp_featured_image';
+  $handler->display->display_options['fields']['field_sp_featured_image']['field'] = 'field_sp_featured_image';
+  $handler->display->display_options['fields']['field_sp_featured_image']['label'] = '';
+  $handler->display->display_options['fields']['field_sp_featured_image']['exclude'] = TRUE;
+  $handler->display->display_options['fields']['field_sp_featured_image']['element_label_colon'] = FALSE;
+  $handler->display->display_options['fields']['field_sp_featured_image']['click_sort_column'] = 'fid';
+  $handler->display->display_options['fields']['field_sp_featured_image']['settings'] = array(
+    'image_style' => 'square',
+    'image_link' => '',
+    'conditions' => array(
+      0 => array(
+        'condition' => '',
+      ),
+    ),
+  );
+  /* Field: Roomify Property: Label */
+  $handler->display->display_options['fields']['name']['id'] = 'name';
+  $handler->display->display_options['fields']['name']['table'] = 'roomify_properties';
+  $handler->display->display_options['fields']['name']['field'] = 'name';
+  $handler->display->display_options['fields']['name']['label'] = 'Properties';
+  $handler->display->display_options['fields']['name']['alter']['alter_text'] = TRUE;
+  $handler->display->display_options['fields']['name']['alter']['text'] = '<div class="property-image">[field_sp_featured_image]</div>
+    <div class="property-info">
+        <div class="property-name">[name]</div>
+        <div class="property-created"><span class="label">Created on: </span>[created]</div>
+        <div class="property-changed"><span class="label">Updated on: </span>[changed]</div>
+    </div>';
+  $handler->display->display_options['fields']['name']['alter']['make_link'] = TRUE;
+  $handler->display->display_options['fields']['name']['alter']['path'] = 'listing/[property_id]';
+  $handler->display->display_options['fields']['name']['element_label_colon'] = FALSE;
+  /* Field: Roomify Property: Edit Link */
+  $handler->display->display_options['fields']['edit_unit']['id'] = 'edit_unit';
+  $handler->display->display_options['fields']['edit_unit']['table'] = 'roomify_properties';
+  $handler->display->display_options['fields']['edit_unit']['field'] = 'edit_unit';
+  $handler->display->display_options['fields']['edit_unit']['label'] = '';
+  $handler->display->display_options['fields']['edit_unit']['alter']['alter_text'] = TRUE;
+  $handler->display->display_options['fields']['edit_unit']['element_class'] = 'edit-link';
+  $handler->display->display_options['fields']['edit_unit']['element_label_colon'] = FALSE;
+  $handler->display->display_options['fields']['edit_unit']['text'] = 'Edit';
+  /* Field: Availability */
+  $handler->display->display_options['fields']['nothing']['id'] = 'nothing';
+  $handler->display->display_options['fields']['nothing']['table'] = 'views';
+  $handler->display->display_options['fields']['nothing']['field'] = 'nothing';
+  $handler->display->display_options['fields']['nothing']['ui_name'] = 'Availability';
+  $handler->display->display_options['fields']['nothing']['label'] = '';
+  $handler->display->display_options['fields']['nothing']['alter']['text'] = 'Availability';
+  $handler->display->display_options['fields']['nothing']['alter']['make_link'] = TRUE;
+  $handler->display->display_options['fields']['nothing']['alter']['path'] = 'admin/bat/config/property/manage/[property_id]/calendar/availability';
+  $handler->display->display_options['fields']['nothing']['alter']['link_class'] = 'availability-link';
+  $handler->display->display_options['fields']['nothing']['element_label_colon'] = FALSE;
+  /* Field: Pricing */
+  $handler->display->display_options['fields']['nothing_1']['id'] = 'nothing_1';
+  $handler->display->display_options['fields']['nothing_1']['table'] = 'views';
+  $handler->display->display_options['fields']['nothing_1']['field'] = 'nothing';
+  $handler->display->display_options['fields']['nothing_1']['ui_name'] = 'Pricing';
+  $handler->display->display_options['fields']['nothing_1']['label'] = '';
+  $handler->display->display_options['fields']['nothing_1']['alter']['text'] = 'Pricing';
+  $handler->display->display_options['fields']['nothing_1']['alter']['make_link'] = TRUE;
+  $handler->display->display_options['fields']['nothing_1']['alter']['path'] = 'admin/bat/config/property/manage/[property_id]/calendar/pricing';
+  $handler->display->display_options['fields']['nothing_1']['alter']['link_class'] = 'pricing-link';
+  $handler->display->display_options['fields']['nothing_1']['element_label_colon'] = FALSE;
+  /* Field: Roomify Property: Types Link */
+  $handler->display->display_options['fields']['property_types_edit_link']['id'] = 'property_types_edit_link';
+  $handler->display->display_options['fields']['property_types_edit_link']['table'] = 'roomify_properties';
+  $handler->display->display_options['fields']['property_types_edit_link']['field'] = 'property_types_edit_link';
+  $handler->display->display_options['fields']['property_types_edit_link']['label'] = '';
+  $handler->display->display_options['fields']['property_types_edit_link']['element_label_colon'] = FALSE;
+  /* Field: Roomify Property: Label */
+  $handler->display->display_options['fields']['name_1']['id'] = 'name_1';
+  $handler->display->display_options['fields']['name_1']['table'] = 'roomify_properties';
+  $handler->display->display_options['fields']['name_1']['field'] = 'name';
+  $handler->display->display_options['fields']['name_1']['label'] = '';
+  $handler->display->display_options['fields']['name_1']['exclude'] = TRUE;
+  $handler->display->display_options['fields']['name_1']['element_label_colon'] = FALSE;
   $handler->display->display_options['defaults']['sorts'] = FALSE;
-  /* Sort criterion: Roomify Property: Changed */
+  /* Sort criterion: Roomify Property: Updated date */
   $handler->display->display_options['sorts']['changed']['id'] = 'changed';
   $handler->display->display_options['sorts']['changed']['table'] = 'roomify_properties';
   $handler->display->display_options['sorts']['changed']['field'] = 'changed';
   $handler->display->display_options['sorts']['changed']['order'] = 'DESC';
+  $handler->display->display_options['defaults']['filter_groups'] = FALSE;
+  $handler->display->display_options['defaults']['filters'] = FALSE;
+  /* Filter criterion: Roomify Property: Label */
+  $handler->display->display_options['filters']['name']['id'] = 'name';
+  $handler->display->display_options['filters']['name']['table'] = 'roomify_properties';
+  $handler->display->display_options['filters']['name']['field'] = 'name';
+  $handler->display->display_options['filters']['name']['operator'] = 'contains';
+  $handler->display->display_options['filters']['name']['exposed'] = TRUE;
+  $handler->display->display_options['filters']['name']['expose']['operator_id'] = 'name_op';
+  $handler->display->display_options['filters']['name']['expose']['label'] = 'Property Name';
+  $handler->display->display_options['filters']['name']['expose']['operator'] = 'name_op';
+  $handler->display->display_options['filters']['name']['expose']['identifier'] = 'name';
+  $handler->display->display_options['filters']['name']['expose']['remember_roles'] = array(
+    2 => '2',
+    1 => 0,
+    30037204 => 0,
+    4 => 0,
+    5 => 0,
+    6 => 0,
+    7 => 0,
+    8 => 0,
+    163670334 => 0,
+  );
+  $handler->display->display_options['filters']['name']['expose']['autocomplete_filter'] = 1;
+  $handler->display->display_options['filters']['name']['expose']['autocomplete_items'] = '10';
+  $handler->display->display_options['filters']['name']['expose']['autocomplete_min_chars'] = '0';
+  $handler->display->display_options['filters']['name']['expose']['autocomplete_field'] = 'name_1';
+  $handler->display->display_options['filters']['name']['expose']['autocomplete_raw_suggestion'] = 1;
+  $handler->display->display_options['filters']['name']['expose']['autocomplete_raw_dropdown'] = 1;
+  $handler->display->display_options['filters']['name']['expose']['autocomplete_dependent'] = 0;
+  $handler->display->display_options['allow']['use_pager'] = 0;
+  $handler->display->display_options['allow']['items_per_page'] = 0;
+  $handler->display->display_options['allow']['offset'] = 0;
+  $handler->display->display_options['allow']['link_to_view'] = 0;
+  $handler->display->display_options['allow']['more_link'] = 0;
+  $handler->display->display_options['allow']['path_override'] = 0;
+  $handler->display->display_options['allow']['title_override'] = 'title_override';
+  $handler->display->display_options['allow']['exposed_form'] = 0;
+  $handler->display->display_options['allow']['fields_override'] = 0;
 
   /* Display: Properties View All */
   $handler = $view->new_display('page', 'Properties View All', 'properties_view_all');
@@ -3387,7 +3674,7 @@ return TRUE;
   $handler->display->display_options['fields']['field_sp_featured_image']['element_label_colon'] = FALSE;
   $handler->display->display_options['fields']['field_sp_featured_image']['click_sort_column'] = 'fid';
   $handler->display->display_options['fields']['field_sp_featured_image']['settings'] = array(
-    'image_style' => 'roomify_thumbnail_rectangled',
+    'image_style' => 'square',
     'image_link' => '',
     'conditions' => array(
       0 => array(
@@ -3479,7 +3766,7 @@ return TRUE;
     t('next ›'),
     t('last »'),
     t('<a class="button add-property-button ctools-use-modal ctools-modal-roomify-dashboard-modal-style" href="/admin/bat/config/property/wizard/nojs">add property</a>'),
-    t('You don\'t have any properties yet! Please <a class="ctools-use-modal ctools-modal-roomify-dashboard-modal-style" href="/admin/bat/config/property/wizard/nojs">click here to add a new property</a>.'),
+    t('<h2>You don\'t have any properties yet! Please add a Property. </h2><div><a class="ctools-use-modal ctools-modal-roomify-dashboard-modal-style" href="/admin/bat/config/property/wizard/nojs">+ Add Property</a></div>.'),
     t('.'),
     t('Properties'),
     t('Edit'),
@@ -3488,12 +3775,21 @@ return TRUE;
     t('All'),
     t('Dashboard Properties'),
     t('View All'),
+    t('Created on'),
+    t('Updated date'),
+    t('<div class="property-image">[field_sp_featured_image]</div>
+    <div class="property-info">
+        <div class="property-name">[name]</div>
+        <div class="property-created"><span class="label">Created on: </span>[created]</div>
+        <div class="property-changed"><span class="label">Updated on: </span>[changed]</div>
+    </div>'),
+    t('Property Name'),
     t('View panes'),
     t('Properties View All'),
     t('Roomify property ID'),
     t(','),
-    t('Property Name'),
   );
+
   $export['properties'] = $view;
 
   return $export;

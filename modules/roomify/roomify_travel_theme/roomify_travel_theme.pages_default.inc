@@ -701,6 +701,25 @@ function roomify_travel_theme_default_page_manager_handlers() {
   $pane->uuid = 'e295e42c-ed1e-4252-99d6-b2f26220ffd9';
   $display->content['new-e295e42c-ed1e-4252-99d6-b2f26220ffd9'] = $pane;
   $display->panels['top'][2] = 'new-e295e42c-ed1e-4252-99d6-b2f26220ffd9';
+  $pane = new stdClass();
+  $pane->pid = 'new-654faa0b-aa5f-4949-a268-0a8998831633';
+  $pane->panel = 'top';
+  $pane->type = 'property_on_offer';
+  $pane->subtype = 'property_on_offer';
+  $pane->shown = TRUE;
+  $pane->access = array();
+  $pane->configuration = array();
+  $pane->cache = array();
+  $pane->style = array(
+    'settings' => NULL,
+  );
+  $pane->css = array();
+  $pane->extras = array();
+  $pane->position = 3;
+  $pane->locks = array();
+  $pane->uuid = '654faa0b-aa5f-4949-a268-0a8998831633';
+  $display->content['new-654faa0b-aa5f-4949-a268-0a8998831633'] = $pane;
+  $display->panels['top'][3] = 'new-654faa0b-aa5f-4949-a268-0a8998831633';
   $display->hide_title = PANELS_TITLE_FIXED;
   $display->title_pane = 'new-e01ffd75-ddef-44c3-b1f6-12ecf4700622';
   $handler->conf['display'] = $display;

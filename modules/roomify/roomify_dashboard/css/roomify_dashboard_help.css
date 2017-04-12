@@ -1,25 +1,35 @@
 .help-icon {
   position: fixed;
   bottom: 11px;
-  right: 20px;
+  left: -136px;
   background: #0074bd;
-  border-radius: 26px;
-  padding: 12px 20px;
+  border-radius: 0px 26px 26px 0px;
+  padding: 12px 10px;
   color: white;
   z-index: 20;
+  -webkit-transition: 300ms left ease;
+  -moz-transition: 300ms left ease;
+  -ms-transition: 300ms left ease;
+  -o-transition: 300ms left ease;
 }
+
 .help-icon:hover {
   background: #1ea4f7;
+  left: 0px;
+  -webkit-transition: 300ms left ease;
+  -moz-transition: 300ms left ease;
+  -ms-transition: 300ms left ease;
+  -o-transition: 300ms left ease;
 }
 
 .help-icon span {
   font-family: "Open Sans", sans-serif !important;
-  font-size: 14px;
-  font-weight: 800;
-  margin-left: 6px;
+  font-weight: 500;
+  margin-right: 6px;
   vertical-align: middle;
-  letter-spacing: .6;
-  font-size: 1.25em;
+  letter-spacing: 0.6px;
+  font-size: 16px !important;
+  line-height: 20px !important;
 }
 
 .help-icon img {
@@ -27,12 +37,6 @@
   max-width: 20px;
   height: 20px;
   width: 100%;
-}
-
-@media screen and (max-width: 767px) {
-  .help-icon span {
-    display: none;
-  }
 }
 
 .help-icon .image {

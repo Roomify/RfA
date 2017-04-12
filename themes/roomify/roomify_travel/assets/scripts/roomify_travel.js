@@ -70,9 +70,13 @@ Drupal.behaviors.roomifyTravelScripts = {
     var hamburgerHeight = $('.roomify-header .roomify-site-menu .inner').outerHeight();
     $('.roomify-header .roomify-site-menu').css('top', (headerHeight - hamburgerHeight)/2 );
     $('.roomify-header .roomify-user-menu').css('top', (headerHeight - 28)/2);
+
+    $('.page-availability-search .panel-sl-left-content-wrapper .panel_sl_left .panel-pane.pane-block .pane-title').on('click', function(event) {
+      $(this).toggleClass('hidden-content');
+      $(this).parent().children('.pane-content').toggle('hide');
+    });
   }
 };
-
 
 Drupal.behaviors.roomifyTravelReadMoreElements = {
   attach: function (context, settings) {
@@ -95,5 +99,29 @@ Drupal.behaviors.roomifyTravelReadMoreElements = {
     });
   }
 }
+
+Drupal.behaviors.roomifyTravelAccordian = {
+  attach: function(context) {
+  $('.pane-menu-roomify-dashboard-menu .dropdown-toggle').removeAttr('data-toggle');
+  $('.pane-menu-roomify-dashboard-menu .dropdown-toggle').removeAttr('data-target');
+  $('.pane-menu-roomify-dashboard-menu li').removeClass('dropdown');
+  $('.pane-menu-roomify-dashboard-menu .dropdown-toggle').removeClass('dropdown-toggle');
+  $('.pane-menu-roomify-dashboard-menu .dropdown-menu').removeClass('dropdown-menu');
+  $('.region-sidebar-toggle-menu .pane-menu-roomify-dashboard-menu').attr('id','accordian');
+  $("#accordian ul.menu .expanded > a").removeAttr("href").css("cursor","pointer");
+  $("#accordian ul.menu .expanded > a").once().click(function(){
+    activeItem = $(this).parent().parent().find('.active');
+    activeItem.removeClass('active');
+    $(this).closest('li').toggleClass('active');
+    //slide up all the link lists
+    $("#accordian ul ul").slideUp();
+    //slide down the link list below the h3 clicked - only if its closed
+    if(!$(this).next().is(":visible"))
+    {
+      $(this).next().slideDown();
+    }
+  });
+ }
+};
 
 })(jQuery);

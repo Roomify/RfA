@@ -1,0 +1,302 @@
+body {
+  padding-right: 0;
+  .transition(100ms all ease);
+  #sidebar-wrapper {
+    z-index: 1000;
+    position: fixed;
+    right: 280px;
+    width: 0;
+    height: 100%;
+    margin-right: -280px;
+    overflow-y: auto;
+    background: #000;
+    overflow-x: hidden;
+    font-weight: 400;
+    #mini-panel-sidebar {
+      .panel-pane {
+        &:last-child {
+          border-bottom: none !important;
+        }
+      }
+    }
+    a {
+      font-weight: 400;
+    }
+    .transition(100ms all ease);
+    .close-sidebar {
+      border-bottom: 0;
+      margin-bottom: 0;
+      width: 100%;
+      padding-bottom: 10px;
+      &:after {
+        display: none;
+      }
+    }
+    #close-sidebar-icon {
+      background: url('../images/close.png') center center no-repeat;
+      text-indent: -999999px;
+      display: block;
+      cursor: pointer;
+      width: 15px;
+      background-size: contain;
+      float: right;
+    }
+  }
+  .sidebar-nav {
+    position: absolute;
+    top: 0;
+    width: 100%;
+    margin: 0;
+    list-style: none;
+    padding: 10px 0;
+    a {
+      color: #fff;
+    }
+    .panel-pane {
+      display: inline-block;
+      margin-bottom: 10px;
+      width: 100%;
+      padding-bottom: 17px;
+      padding-left: 17px;
+      padding-right: 17px;
+    }
+    .pane-roomify-sidebar-user-menu {
+      color: white;
+      .roomify-sidebar-image {
+        width: 80px;
+        display: inline-block;
+        float: left;
+        height: 80px;
+        margin-right: 10px;
+        img {
+          width: 100%;
+          border-radius: 50%;
+          border: 1px solid white;
+        }
+      }
+      .name {
+        font-size: 22px;
+        font-weight: 600;
+      }
+      .mail {
+        font-size: 14px;
+        font-style: italic;
+        color: #d4d4d4;
+        margin-bottom: 15px;
+      }
+      .links-to-accounts {
+        display: inline-block;
+        width: 100%;
+        margin-top: 15px;
+        margin-bottom: 5px;
+      }
+      .user-account,
+      .property-owner-profile,
+      .guest-profile {
+        display: inline-block;
+        margin: 8px;
+        margin-left: 0;
+        float: left;
+        a.btn {
+          background: #03A9F4;
+          padding: 6px 10px;
+          border-radius: 4px;
+          font-size: 12px;
+          color: white;
+          &:hover {
+            text-decoration: none;
+            opacity: .86;
+          }
+        }
+      }
+      .logout {
+        display: inline-block;
+        width: 100%;
+        margin: 10px 0;
+        text-align: right;
+        span {
+          margin-left: 8px;
+          font-size: 14px;
+        }
+        a {
+          text-transform: uppercase;
+          font-size: 14px;
+          font-weight: bold;
+          color: white;
+          &:hover {
+            text-decoration: none;
+          }
+        }
+      }
+    }
+    .pane-menu-roomify-dashboard-menu {
+      padding-left: 0;
+      padding-right: 0;
+    }
+  }
+  &.toggled {
+    padding-right: 350px;
+    margin-left: -350px;
+    #sidebar-wrapper {
+      width: 350px;
+      border-left: 2px solid #2B2B2B;
+    }
+  }
+  // SMALL DEVICES SIDEBAR
+ @media (max-width: @screen-xs) { // Mobile
+    #sidebar-wrapper {
+      right: 300px;
+      margin-right: -300px;
+      .sidebar-nav {
+        width: 300px;
+      }
+    }
+    &.toggled {
+      padding-right: 300px;
+      margin-left: -300px;
+      #sidebar-wrapper {
+        width: 300px;
+      }
+    }
+  }
+}
+
+.roomify-sidebar-link {
+  a {
+    font-size: 15px;
+    font-weight: 600;
+    line-height: 16px;
+  }
+}
+
+.roomify-sidebar-user-icon {
+  padding: 6px 10px;
+  span {
+    color: white;
+  }
+}
+
+body.toggled {
+  #close-sidebar-wrapper {
+    position: fixed;
+    z-index: 99;
+    width: 100%;
+    background: rgba(0, 0, 0, 0.35);
+    height: 100%;
+    cursor: pointer;
+    .transition(100ms all ease);
+  }
+}
+
+
+.region-sidebar-toggle-menu {
+  #accordian {
+    ul {
+      .label {
+        font-size: 22px;
+        font-weight: 400;
+      }
+      &:first-child {
+        margin-left: 0;
+      }
+    }
+    .properties {
+      position: relative;
+      &:before {
+        content: '';
+        width: 25px;
+        height: 25px;
+        display: inline-block;
+        position: absolute;
+        left: -35px;
+        top: 6px;
+        background: url("../images/sidebar/properties.png") center center no-repeat;
+        background: url("../images/sidebar/properties.svg") center center no-repeat, linear-gradient(transparent, transparent);
+      }
+    }
+    .dashboard {
+      position: relative;
+      &:before {
+        content: '';
+        width: 30px;
+        height: 30px;
+        display: inline-block;
+        position: absolute;
+        left: -39px;
+        top: 4px;
+        background: url("../images/sidebar/dashboard.png") center center no-repeat;
+        background: url("../images/sidebar/dashboard.svg") center center no-repeat, linear-gradient(transparent, transparent);
+      }
+    }
+    .bookings {
+      position: relative;
+      &:before {
+        content: '';
+        width: 19px;
+        height: 19px;
+        display: inline-block;
+        position: absolute;
+        left: -32px;
+        top: 8px;
+        background: url("../images/sidebar/bookings.png") center center no-repeat;
+        background: url("../images/sidebar/bookings.svg") center center no-repeat, linear-gradient(transparent, transparent);
+      }
+    }
+    .conversations {
+      position: relative;
+      &:before {
+        content: '';
+        width: 25px;
+        height: 25px;
+        display: inline-block;
+        position: absolute;
+        left: -33px;
+        top: 8px;
+        background: url("../images/sidebar/conversations.png") center center no-repeat;
+        background: url("../images/sidebar/conversations.svg") center center no-repeat, linear-gradient(transparent, transparent);
+      }
+    }
+    .content {
+      position: relative;
+      &:before {
+        content: '';
+        width: 20px;
+        height: 20px;
+        display: inline-block;
+        position: absolute;
+        left: -30px;
+        top: 7px;
+        background: url("../images/sidebar/content.png") center center no-repeat;
+        background: url("../images/sidebar/content.svg") center center no-repeat, linear-gradient(transparent, transparent);
+      }
+    }
+    .settings {
+      position: relative;
+      &:before {
+        content: '';
+        width: 25px;
+        height: 25px;
+        display: inline-block;
+        position: absolute;
+        left: -33px;
+        top: 6px;
+        background: url("../images/sidebar/setting.png") center center no-repeat;
+        background: url("../images/sidebar/setting.svg") center center no-repeat, linear-gradient(transparent, transparent);
+      }
+    }
+    .accounts {
+      position: relative;
+      &:before {
+        content: '';
+        width: 23px;
+        height: 23px;
+        display: inline-block;
+        position: absolute;
+        left: -32px;
+        top: 8px;
+        background: url("../images/sidebar/accounts.png") center center no-repeat;
+        background: url("../images/sidebar/accounts.svg") center center no-repeat, linear-gradient(transparent, transparent);
+      }
+    }
+  }
+}

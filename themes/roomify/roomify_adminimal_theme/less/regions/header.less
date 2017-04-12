@@ -1,0 +1,134 @@
+.roomify-user-menu {
+  display: inline-block;
+  float: right;
+  text-indent: -9999999px;
+  margin-right: 10px;
+  a {
+    background: url("../images/hamburger_menu.png") center center no-repeat;
+    background: url("../images/hamburger_menu.svg") center center no-repeat, linear-gradient(transparent, transparent);
+    width: 50px;
+    height: 50px;
+    display: block;
+    position: relative;
+    bottom: 5px;
+  }
+  li ul {
+    display: none;
+    position: absolute;
+    background: #FDFDFD;
+    top: 75%;
+    right: 10px;
+    z-index: 999;
+    min-width: 150px;
+    padding: 10px;
+    border: 1px solid #333333;
+    border-radius: 8px;
+    @media (max-width: @screen-xs) {
+      top: 100%;
+    }
+    li {
+      list-style: none;
+      a {
+        color: #333333;
+      }
+    }
+  }
+}
+
+body .back-to-site-link  {
+  a {
+    background: url("../images/homepage.png") no-repeat center center;
+    width: 40px;
+    height: 40px;
+    display: inline-block;
+    float: left;
+    text-indent: -999999px;
+    margin-right: 10px;
+  }
+}
+#branding {
+  border-bottom: 2px solid #f9f9f9;
+  padding: 10px 20px 0 37px !important;
+  a {
+    color: white;
+  }
+}
+
+#branding .pane-title {
+  margin: 0px;
+}
+
+// Better Messages
+#better-messages-wrapper {
+  #better-messages-default {
+    #messages-inner {
+      .content {
+        .messages.status,
+        .messages.error,
+        .messages.warning {
+          background: white;
+          border: 0px !important;
+          padding: 20px;
+        }
+      }
+    }
+  }
+}
+
+.adminimal-theme #branding div.breadcrumb {
+  display: none;
+}
+.adminimal-theme #branding {
+  overflow: visible;
+  background: #202020 !important;
+  box-shadow: none !important;
+}
+
+
+.adminimal-theme #navigation {
+  @media (min-width: @screen-sm) {
+    padding-left: 40px;
+    padding-right: 40px;
+  }
+	.tabs.primary {
+    background: white;
+    border-radius: 0px 0px 4px 4px;
+		li {
+			&:first-child {
+				margin-left: 0 !important;
+        a {
+          @media (min-width: @screen-sm) {
+            border-radius: 0px 0px 0px 4px;
+          }
+        }
+			}
+			a {
+		    border-radius: 0;
+		    text-transform: capitalize;
+		    @media (min-width: @screen-sm) {
+		    	background: white;
+		    	border-right: 2px solid #e4e4e4;
+		    	padding: 10px 18px;
+		    }
+			}
+		}
+	}
+}
+.roomify-dashboard {
+  .page-title {
+    text-align: center;
+  }
+}
+#console.roomify-admin-messages {
+  padding: 40px 40px;
+  margin-top: 0 !important;
+  background: white;
+  border: 2px solid whitesmoke;
+  border-radius: 8px;
+  margin-bottom: 40px;
+}
+body.better-messages-popup #console.roomify-admin-messages {
+  padding: 0;
+  background: transparent;
+  border: none;
+}

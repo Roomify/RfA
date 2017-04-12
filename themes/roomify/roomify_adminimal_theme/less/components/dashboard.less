@@ -1,0 +1,377 @@
+.roomify-dashboard {
+  .pane-dashboard {
+    display: inline-block;
+    width: 100%;
+    margin: 30px 0;
+    .ui-tabs#tabs-dashboard-top {
+      .ui-tabs-nav > li {
+        @media (max-width: @screen-sm-max) {
+          width: auto;
+          display: inline-block;
+          text-indent: -9999999px;
+          margin-bottom: 0px;
+          border-bottom-color: #3e545f;
+          width: 60px;
+          height: 50px;
+          a {
+            width: 60px;
+            height: 50px;
+            padding: 0;
+          }
+        }
+      }
+    }
+  }
+	.pane-welcome-dashboad-message {
+    display: inline-block;
+    width: 100%;
+    margin-bottom: 20px;
+    .roomify-welcome-image {
+      display: inline-block;
+      float: left;
+      max-width: 85px;
+      margin-right: 25px;
+      @media (max-width: @screen-sm) {
+        margin: 0 auto;
+        display: table;
+        float: none;
+      }
+      img {
+        width: 100%;
+        border-radius: 50%;
+        border: 2px solid #448EB4;
+      }
+    }
+    .welcome-dashboard-message {
+      font-style: italic;
+      color: #006699;
+      font-size: 32px;
+      margin-top: 35px;
+      display: inline-block;
+      @media (max-width: @screen-sm) {
+        font-size: 22px;
+        text-align: center;
+        line-height: 1.4em;
+        padding: 0 10px;
+        display: inline-block
+      }
+    }
+  }
+  .pane-properties-dashboard-properties {
+    background: white;
+    border-radius: 4px;
+    position: relative;
+    .pane-title {
+    	position: absolute;
+	    top: 0;
+	    width: 100%;
+	    left: 0;
+	    background: #405467;
+	    color: white;
+	    padding: 10px;
+	    border-radius: 4px 4px 0px 0px;
+	    font-weight: 600;
+    }
+    .pane-content {
+    	padding-top: 20px;
+    	.view-display-id-dashboard_properties {
+    		thead {
+    			display: none;
+    		}
+    	}
+    }
+    .more-link {
+    	margin-top: 10px;
+	    display: inline-block;
+	    text-align: right;
+	    width: 100%;
+    }
+  }
+  .pane-properties-dashboard-properties {
+  	margin: 20px 0;
+  	border-radius: 15px;
+  	.pane-title {
+  		padding-left: 35px;
+  		&:before {
+  			content: '';
+		    width: 25px;
+		    height: 25px;
+		    display: inline-block;
+		    position: absolute;
+		    left: 5px;
+		    top: 10px;
+        background: url("../images/sidebar/properties.png") center center no-repeat;
+        background: url("../images/sidebar/properties.svg") center center no-repeat, linear-gradient(transparent, transparent);
+  		}
+  	}
+  }
+  .pane-user-conversations-owner-conversations,
+  .pane-user-conversations-guest-conversations {
+  	.pane-title {
+  		padding-left: 35px;
+  		&:before {
+  			content: '';
+        width: 25px;
+        height: 25px;
+        display: inline-block;
+        position: absolute;
+        left: 5px;
+        top: 10px;
+        background: url("../images/sidebar/conversations.png") center center no-repeat;
+        background: url("../images/sidebar/conversations.svg") center center no-repeat, linear-gradient(transparent, transparent);
+  		}
+  	}
+  }
+  .pane-panels-mini.pane-conversations {
+    background: white;
+  	.pane-title {
+    	position: absolute;
+	    top: 0;
+	    width: 100%;
+	    left: 0;
+	    background: #405467;
+	    color: white;
+	    padding: 10px;
+	    border-radius: 4px 4px 0px 0px;
+	    font-weight: 600;
+	    padding-left: 40px;
+  		&:before {
+  			content: '';
+		    width: 20px;
+		    height: 20px;
+		    display: inline-block;
+		    position: absolute;
+		    left: 10px;
+		    top: 12px;
+        background: url("../images/sidebar/conversations.png") center center no-repeat;
+        background: url("../images/sidebar/conversations.svg") center center no-repeat, linear-gradient(transparent, transparent);
+  		}
+    }
+    .pane-content {
+    	padding-top: 30px;
+    	.view-display-id-dashboard_properties {
+    		thead {
+    			display: none;
+    		}
+    	}
+    }  
+  }
+  #mini-panel-bookings,
+  #mini-panel-conversations {
+    margin: 0px auto;
+    display: table;
+    max-width: 968px;
+    width: 100%;
+  	@media (max-width: @screen-lg) {
+  		margin-top: 60px;
+  		margin-bottom: 60px;
+  	}
+  	.ui-tabs-nav {
+  		li {
+  			float: right;
+  			&.ui-state-active-a {
+  				border-bottom: 1px solid #405467;
+  			}
+  			a {
+  				font-weight: 600;
+  				color: #405467;
+  				height: 43px;
+    			line-height: 2.9em;
+    			&:focus,
+  				&:active {
+  					outline: none;
+  				}
+  			}
+        @media (max-width: @screen-sm-max) {
+          width: 100% !important;
+          height: 100% !important;
+          text-indent: 0px !important;
+          text-align: center !important;
+          a {
+            width: 100% !important;
+            height: 100% !important;
+          }
+        }
+  		}
+  	}
+	}
+  #mini-panel-bookings {
+    max-width: 100%;
+    .panel-content-top {
+      margin-bottom: 100px;
+      display: inline-block;
+      width: 100%;
+      .pane-title {
+        display: none;
+      }
+    }
+  }
+  .pane-panels-mini.pane-bookings {
+    .pane-content {
+      padding-top: 30px;
+      .more-link a {
+        margin-top: 10px;
+        display: inline-block;
+        text-align: right;
+        width: 100%;
+        color: #405467;
+      }
+    }
+  }
+  .pane-dashboard-guest-stays-panel-pane-1 .view-dashboard-guest-stays {
+    margin: 0px auto;
+    display: table;
+    max-width: 968px;
+    width: 100%;
+  }
+  .pane-dashboard-guest-stays-panel-pane-1,
+	.pane-dashboard-bookings-panel-pane-1 {
+    background: white;
+    border-radius: 4px;
+    position: relative;
+    .pane-title {
+    	position: absolute;
+	    top: 0;
+	    width: 100%;
+	    left: 0;
+	    background: #405467;
+	    color: white;
+	    padding: 10px;
+	    border-radius: 4px 4px 0px 0px;
+	    font-weight: 600;
+	    padding-left: 40px;
+  		&:before {
+  			content: '';
+		    width: 20px;
+		    height: 20px;
+		    display: inline-block;
+		    position: absolute;
+		    left: 10px;
+		    top: 12px;
+        background: url("../images/sidebar/bookings.png") center center no-repeat;
+        background: url("../images/sidebar/bookings.svg") center center no-repeat, linear-gradient(transparent, transparent);
+  		}
+    }
+    .pane-content {
+    	padding-top: 40px;
+    	.view-display-id-dashboard_properties {
+    		thead {
+    			display: none;
+    		}
+    	}
+    }
+    .more-link a {
+    	margin-top: 10px;
+	    display: inline-block;
+	    text-align: right;
+	    width: 100%;
+	    color: #405467;
+    }
+	}
+  .pane-dashboard-guest-stays-panel-pane-1 {
+    .view-dashboard-guest-stays {
+      thead {
+        display: none;
+      }
+      .footable-row-detail-value {
+        a {
+          padding-left: 0;
+        }
+      }
+      img {
+        max-width: 170px;
+        border-radius: 50%;
+      }
+    }
+  }
+  #dashboard-properties-tab {
+    background: url("../images/dashboard/properties.png") center center no-repeat;
+    background: url("../images/dashboard/properties.svg") center center no-repeat, linear-gradient(transparent, transparent);
+    display: inline-block;
+    width: 21px;
+    height: 21px;
+    position: relative;
+    top: 4px;
+    right: 6px;
+    @media (max-width: @screen-sm-max) {
+      position: absolute;
+      left: 20px;
+      top: 15px;
+    }
+  }
+  #dashboard-conversations-tab {
+    background: url("../images/dashboard/conversations.png") center center no-repeat;
+    background: url("../images/dashboard/conversations.svg") center center no-repeat, linear-gradient(transparent, transparent);
+    display: inline-block;
+    width: 21px;
+    height: 21px;
+    position: relative;
+    top: 5px;
+    right: 6px;
+    @media (max-width: @screen-sm-max) {
+      position: absolute;
+      left: 20px;
+      top: 15px;
+    }
+  }
+  #dashboard-favorites-tab {
+    background: url("../images/dashboard/star.png") center center no-repeat;
+    background: url("../images/dashboard/star.svg") center center no-repeat, linear-gradient(transparent, transparent);
+    display: inline-block;
+    width: 22px;
+    height: 22px;
+    position: relative;
+    top: 5px;
+    right: 6px;
+    @media (max-width: @screen-sm-max) {
+      position: absolute;
+      left: 20px;
+      top: 15px;
+    }
+  }
+  #dashboard-bookings-tab {
+    background: url("../images/dashboard/bookings.png") center center no-repeat;
+    background: url("../images/dashboard/bookings.svg") center center no-repeat, linear-gradient(transparent, transparent);
+    display: inline-block;
+    width: 18px;
+    height: 18px;
+    position: relative;
+    top: 3px;
+    right: 6px;
+    @media (max-width: @screen-sm-max) {
+      position: absolute;
+      left: 20px;
+      top: 15px;
+    }
+  }
+  #dashboard-stays-tab {
+    background: url("../images/dashboard/reservation.png") center center no-repeat;
+    background: url("../images/dashboard/reservation.svg") center center no-repeat, linear-gradient(transparent, transparent);
+    display: inline-block;
+    width: 18px;
+    height: 18px;
+    position: relative;
+    top: 2px;
+    right: 6px;
+    @media (max-width: @screen-sm-max) {
+      position: absolute;
+      left: 20px;
+      top: 15px;
+    }
+  }
+  .dashboard-group-tab {
+    background: url("../images/dashboard/group.png") center center no-repeat;
+    background: url("../images/dashboard/group.svg") center center no-repeat, linear-gradient(transparent, transparent);
+    display: inline-block;
+    width: 18px;
+    height: 18px;
+    position: relative;
+    top: 2px;
+    right: 6px;
+    @media (max-width: @screen-sm-max) {
+      position: absolute;
+      left: 20px;
+      top: 15px;
+    }
+  }
+}

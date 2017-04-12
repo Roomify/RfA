@@ -238,3 +238,13 @@ function roomify_adminimal_theme_roomify_image_thumb_upload($variables) {
     return $output;
   }
 }
+
+/**
+ * Implements theme_menu_link().
+ */
+function roomify_adminimal_theme_menu_link(array $variables) {
+  if ($variables['element']['#below']) {
+  }
+
+  return theme_menu_link($variables);
+}

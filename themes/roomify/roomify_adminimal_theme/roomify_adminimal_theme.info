@@ -14,5 +14,7 @@ regions[help] = Help
 regions[page_top] = Page top
 regions[page_bottom] = Page bottom
 
+stylesheets[all][] = css/col12.css
 stylesheets[all][] = css/roomify_adminimal_theme.css
 scripts[] = js/roomify_adminimal_theme.js
+scripts[] = js/prefixfree.min.js

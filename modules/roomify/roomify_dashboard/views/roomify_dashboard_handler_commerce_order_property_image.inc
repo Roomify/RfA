@@ -43,7 +43,7 @@ class roomify_dashboard_handler_commerce_order_property_image extends views_hand
 
                   return l(theme('image_style', array(
                     'path' => $property->field_sp_featured_image[LANGUAGE_NONE][0]['uri'],
-                    'style_name' => 'homepage_features',
+                    'style_name' => 'square',
                   )), 'listing/' . $property->property_id, array('html' => TRUE));
                 }
               }
