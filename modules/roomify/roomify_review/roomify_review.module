@@ -63,6 +63,20 @@ function roomify_review_views_api() {
   );
 }
 
+
+/**
+ * Implements hook_permission().
+ */
+function roomify_review_permission() {
+  return array(
+    'administer property reviews' => array(
+      'title' => t('Administer Property Reviews'),
+      'description' => t('Administer reviews of your properties.'),
+    ),
+  );
+}
+
+
 /**
  * Implements hook_roomify_rights().
  */
@@ -74,10 +88,16 @@ function roomify_review_roomify_rights() {
       'create review content',
       'edit own review content',
     ),
+    'property owner' => array(
+      'create review content',
+      'edit own review content',
+      'administer property reviews',
+    ),
     'roomify manager' => array(
       'delete any review content',
       'create review content',
       'edit any review content',
+      'administer property reviews',
     ),
   );
 

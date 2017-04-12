@@ -268,6 +268,19 @@
 	    color: #405467;
     }
 	}
+  .pane-reviews-panel-pane-2,
+  .pane-reviews-panel-pane-1 {
+    padding: 25px 50px;
+    .views-field-field-review-rating {
+      text-align: center;
+      min-width: 120px;
+      .fivestar-static-item {
+        margin: 0 auto;
+        display: table;
+        margin-top: 10px;
+      }
+    }
+  }
   .pane-dashboard-guest-stays-panel-pane-1 {
     .view-dashboard-guest-stays {
       thead {
@@ -315,11 +328,26 @@
     }
   }
   #dashboard-favorites-tab {
+    background: url("../images/dashboard/heart.png") center center no-repeat;
+    background: url("../images/dashboard/heart.svg") center center no-repeat, linear-gradient(transparent, transparent);
+    display: inline-block;
+    width: 18px;
+    height: 18px;
+    position: relative;
+    top: 5px;
+    right: 6px;
+    @media (max-width: @screen-sm-max) {
+      position: absolute;
+      left: 20px;
+      top: 15px;
+    }
+  }
+  #dashboard-reviews-tab {
     background: url("../images/dashboard/star.png") center center no-repeat;
     background: url("../images/dashboard/star.svg") center center no-repeat, linear-gradient(transparent, transparent);
     display: inline-block;
-    width: 22px;
-    height: 22px;
+    width: 23px;
+    height: 23px;
     position: relative;
     top: 5px;
     right: 6px;

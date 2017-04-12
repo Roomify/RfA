@@ -257,7 +257,7 @@ function roomify_review_views_default_views() {
   $handler->display->display_options['use_ajax'] = TRUE;
   $handler->display->display_options['use_more_always'] = FALSE;
   $handler->display->display_options['access']['type'] = 'perm';
-  $handler->display->display_options['access']['perm'] = 'edit own review content';
+  $handler->display->display_options['access']['perm'] = 'administer property reviews';
   $handler->display->display_options['cache']['type'] = 'none';
   $handler->display->display_options['query']['type'] = 'views_query';
   $handler->display->display_options['exposed_form']['type'] = 'basic';
@@ -294,14 +294,14 @@ function roomify_review_views_default_views() {
     'title' => array(
       'sortable' => 0,
       'default_sort_order' => 'asc',
-      'align' => '',
+      'align' => 'views-align-left',
       'separator' => '',
       'empty_column' => 0,
     ),
     'status' => array(
       'sortable' => 0,
       'default_sort_order' => 'asc',
-      'align' => '',
+      'align' => 'views-align-left',
       'separator' => '',
       'empty_column' => 0,
     ),
@@ -315,29 +315,29 @@ function roomify_review_views_default_views() {
     'body' => array(
       'sortable' => 0,
       'default_sort_order' => 'asc',
-      'align' => '',
+      'align' => 'views-align-left',
       'separator' => '',
       'empty_column' => 0,
     ),
     'user_guest_name' => array(
-      'align' => '',
+      'align' => 'views-align-center',
       'separator' => '',
       'empty_column' => 0,
     ),
     'field_review_rating' => array(
       'sortable' => 0,
       'default_sort_order' => 'asc',
-      'align' => '',
+      'align' => 'views-align-center',
       'separator' => '',
       'empty_column' => 0,
     ),
     'edit_node' => array(
-      'align' => '',
+      'align' => 'views-align-center',
       'separator' => '',
       'empty_column' => 0,
     ),
     'delete_node' => array(
-      'align' => '',
+      'align' => 'views-align-center',
       'separator' => '',
       'empty_column' => 0,
     ),
@@ -575,7 +575,7 @@ function roomify_review_views_default_views() {
   $handler = $view->new_display('page', 'Page', 'page_1');
   $handler->display->display_options['defaults']['access'] = FALSE;
   $handler->display->display_options['access']['type'] = 'perm';
-  $handler->display->display_options['access']['perm'] = 'edit any review content';
+  $handler->display->display_options['access']['perm'] = 'administer property reviews';
   $handler->display->display_options['defaults']['style_plugin'] = FALSE;
   $handler->display->display_options['style_plugin'] = 'footable';
   $handler->display->display_options['style_options']['row_class'] = 'content-published-[status]';
@@ -728,6 +728,8 @@ function roomify_review_views_default_views() {
 
   /* Display: My Reviews */
   $handler = $view->new_display('panel_pane', 'My Reviews', 'panel_pane_1');
+  $handler->display->display_options['defaults']['title'] = FALSE;
+  $handler->display->display_options['title'] = 'My Reviews';
   $handler->display->display_options['defaults']['access'] = FALSE;
   $handler->display->display_options['access']['type'] = 'perm';
   $handler->display->display_options['access']['perm'] = 'edit own review content';
@@ -835,7 +837,10 @@ function roomify_review_views_default_views() {
 
   /* Display: Owner Reviews */
   $handler = $view->new_display('panel_pane', 'Owner Reviews', 'panel_pane_2');
+  $handler->display->display_options['defaults']['title'] = FALSE;
+  $handler->display->display_options['title'] = 'Proprety\'s Reviews';
   $handler->display->display_options['display_description'] = 'A list of reviews of my property';
+  $handler->display->display_options['defaults']['empty'] = FALSE;
   $handler->display->display_options['defaults']['relationships'] = FALSE;
   /* Relationship: Content: Author */
   $handler->display->display_options['relationships']['uid']['id'] = 'uid';
@@ -934,9 +939,11 @@ function roomify_review_views_default_views() {
     t('All'),
     t('View panes'),
     t('Owner Reviews'),
+    t('Proprety\'s Reviews'),
     t('A list of reviews of my property'),
     t('User entity referenced from field_sp_owner'),
   );
+
   $export['reviews'] = $view;
 
   return $export;

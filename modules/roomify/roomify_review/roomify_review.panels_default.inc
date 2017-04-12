@@ -109,7 +109,7 @@ function roomify_review_default_panels_mini() {
   );
   $pane->css = array(
     'css_id' => '',
-    'css_class' => 'col-xs-12 col-sm-6',
+    'css_class' => 'col-xs-12 col-sm-6 col-sm-offset-6',
   );
   $pane->extras = array();
   $pane->position = 1;
@@ -121,6 +121,80 @@ function roomify_review_default_panels_mini() {
   $display->title_pane = '0';
   $mini->display = $display;
   $export['property_reviews'] = $mini;
+
+  $mini = new stdClass();
+  $mini->disabled = FALSE; /* Edit this to true to make a default mini disabled initially */
+  $mini->api_version = 1;
+  $mini->name = 'reviews';
+  $mini->category = '';
+  $mini->admin_title = 'Reviews';
+  $mini->admin_description = '';
+  $mini->requiredcontexts = array();
+  $mini->contexts = array();
+  $mini->relationships = array();
+  $display = new panels_display();
+  $display->layout = 'bootstrap_one_column';
+  $display->layout_settings = array();
+  $display->panel_settings = array(
+    'style_settings' => array(
+      'default' => NULL,
+      'middle' => NULL,
+      'bottom' => NULL,
+      'top' => NULL,
+    ),
+    'top' => array(
+      'style' => '-1',
+    ),
+  );
+  $display->cache = array();
+  $display->title = '';
+  $display->uuid = '0880e045-d5c7-479e-9096-d0acda94b998';
+  $display->storage_type = 'panels_mini';
+  $display->storage_id = 'reviews';
+  $display->content = array();
+  $display->panels = array();
+  $pane = new stdClass();
+  $pane->pid = 'new-53ec137a-1907-4216-8fa9-6f0a7b2285a9';
+  $pane->panel = 'top';
+  $pane->type = 'views_panes';
+  $pane->subtype = 'reviews-panel_pane_2';
+  $pane->shown = TRUE;
+  $pane->access = array();
+  $pane->configuration = array();
+  $pane->cache = array();
+  $pane->style = array(
+    'settings' => NULL,
+  );
+  $pane->css = array();
+  $pane->extras = array();
+  $pane->position = 0;
+  $pane->locks = array();
+  $pane->uuid = '53ec137a-1907-4216-8fa9-6f0a7b2285a9';
+  $display->content['new-53ec137a-1907-4216-8fa9-6f0a7b2285a9'] = $pane;
+  $display->panels['top'][0] = 'new-53ec137a-1907-4216-8fa9-6f0a7b2285a9';
+  $pane = new stdClass();
+  $pane->pid = 'new-1505fe46-5e46-4324-97c2-a036128662c4';
+  $pane->panel = 'top';
+  $pane->type = 'views_panes';
+  $pane->subtype = 'reviews-panel_pane_1';
+  $pane->shown = TRUE;
+  $pane->access = array();
+  $pane->configuration = array();
+  $pane->cache = array();
+  $pane->style = array(
+    'settings' => NULL,
+  );
+  $pane->css = array();
+  $pane->extras = array();
+  $pane->position = 1;
+  $pane->locks = array();
+  $pane->uuid = '1505fe46-5e46-4324-97c2-a036128662c4';
+  $display->content['new-1505fe46-5e46-4324-97c2-a036128662c4'] = $pane;
+  $display->panels['top'][1] = 'new-1505fe46-5e46-4324-97c2-a036128662c4';
+  $display->hide_title = PANELS_TITLE_FIXED;
+  $display->title_pane = 'new-1505fe46-5e46-4324-97c2-a036128662c4';
+  $mini->display = $display;
+  $export['reviews'] = $mini;
 
   return $export;
 }
