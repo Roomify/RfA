@@ -1,0 +1,119 @@
+.view-user-conversations.view-display-id-guest_all_conversations,
+.view-user-conversations.view-display-id-owner_all_conversations,
+.pane-user-conversations-guest-conversations,
+.pane-user-conversations-owner-conversations {
+  .views-exposed-form {
+    display: inline-block;
+    width: 100%;
+    margin-bottom: 30px;
+    .views-exposed-widgets {
+      .form-submit {
+        margin-top: 2.14em !important;
+      }
+      input {
+        height: 32px;
+      }
+    }
+  }
+	.more-link a {
+		color: #405467;
+	}
+	.pane-content {
+		padding-top: 0;
+	}
+	.views-row {
+		display: inline-block;
+    width: 100%;
+    margin-bottom: 20px;
+    margin-top: 25px;
+    border: 1px solid #dddddd;
+    padding: 10px;
+    padding-bottom: 30px;
+    border-radius: 4px 0px 4px 4px;
+    background: #405467;
+    color: white;
+    position: relative;
+    a {
+    	color: white;
+    	&:hover {
+    		text-decoration: none;
+    	}
+    }
+    .conversation-header {
+    	font-weight: bold;
+    	font-size: 18px;
+    	margin-bottom: 6px;
+    }
+    .views-field-changed {
+    	position: absolute;
+	    top: -30px;
+	    left: 8px;
+	    color: #405467;
+	    font-size: 14px;
+    }
+    .conversation-message {
+    	.conversation-message-author {
+        display: inline-block;
+        width: 25%;
+        vertical-align: top;
+        font-style: italic;
+        font-weight: 800;
+        font-size: 14px;
+        padding-right: 4px;
+      }
+      .conversation-message-message {
+        font-size: 14px;
+        display: inline-block;
+        width: 55%;
+        margin-bottom: 6px;
+      }
+      .conversation-price {
+        width: 19%;
+		    color: #8BC34A;
+		    display: inline-block;
+		    vertical-align: top;
+		    text-align: right;
+      }
+    }
+    .conversation-reply {
+    	position: absolute;
+  		right: 5px;
+  		bottom: 0;
+  		a {
+  			background: none;
+  			text-indent: -999999px;
+  			width: 25px;
+  			height: 25px;
+  			background-size: contain;
+  			background: url("../images/quick_reply.png") center center no-repeat;
+      	background: url("../images/quick_reply.svg") center center no-repeat, linear-gradient(transparent, transparent);
+  			&:hover {
+  				box-shadow: none;
+  			}
+  		}
+    }
+	}
+}
+
+.view-user-conversations.view-display-id-guest_all_conversations,
+.view-user-conversations.view-display-id-owner_all_conversations {
+	.views-row {
+		width: 100%;
+    border-radius: 4px;
+    margin: 20px 0;
+    min-height: 140px;
+    display: inline-block;
+    float: left;
+    @media (min-width: @screen-lg) {
+    	width: 45.5%;
+    	margin: 40px 1%;
+    }
+    .views-field-changed {
+    	font-size: 20px;
+    	left: 0;
+    }
+    .conversation-message {
+    	min-height: 60px;
+    }
+	}
+}

@@ -211,7 +211,6 @@ function roomify_setup_product(&$install_state) {
 
   $modules = roomify_identify_module_dependencies($modules);
 
-
   $operations = array();
 
   // Enable the selected modules.
@@ -338,6 +337,11 @@ function roomify_install_finished(&$install_state) {
   roomify_system_create_update_menu_link('Things to do', 'things-to-do', 'main-menu', -3);
   roomify_system_create_update_menu_link('Location', 'location', 'main-menu', -1);
   roomify_system_create_update_menu_link('Blog', 'blog', 'main-menu', -2);
+
+  drupal_flush_all_caches();
+  // Create the sidebar menu.
+  roomify_dashboard_create_dashboard_menu();
+  menu_rebuild();
 
   // Save 'administrator' role to force creation of machine name.
   $admin_role = user_role_load_by_name('administrator');
@@ -557,6 +561,11 @@ function _roomify_install_set_themes() {
 
   variable_set('theme_default', $default_theme);
   variable_set('admin_theme', $admin_theme);
+
+  // Some settings for the administration theme.
+  $admin_theme_settings = variable_get('theme_' . $admin_theme . '_settings', array());
+  $admin_theme_settings['adminimal_theme_skin'] = 'material';
+  variable_set('theme_' . $admin_theme . '_settings', $admin_theme_settings);
 
   // Some settings for the default theme.
   $default_theme_settings = variable_get('theme_' . $default_theme . '_settings', array());

@@ -11,13 +11,26 @@
  */
 function roomify_global_addons_install() {
   // Create Amenities Vocabulary.
-  roomify_addons_create_profuct_fields();
+  roomify_addons_create_product_fields();
+
+  // Booking Sub-menu.
+  $bookings_mlid = roomify_system_get_menu_link_id('Bookings', 'admin/bat/bookings', 'roomify_dashboard_menu', -9);
+  roomify_system_create_update_menu_link('Add Ons', 'admin/bat/config/add-ons', 'roomify_dashboard_menu', 1, 2, $bookings_mlid);
 }
 
 /**
  *
  */
-function roomify_addons_create_profuct_fields() {
+function roomify_addons_create_product_fields() {
   module_load_include('inc', 'roomify_global_addons', 'roomify_global_addons.fields');
   roomify_add_on_product_fields();
+}
+
+/**
+ * Enable Global Addons menu item.
+ */
+function roomify_global_addons_update_7001() {
+  // Booking Sub-menu.
+  $bookings_mlid = roomify_system_get_menu_link_id('Bookings', 'admin/bat/bookings', 'roomify_dashboard_menu', -9);
+  roomify_system_create_update_menu_link('Add Ons', 'admin/bat/config/add-ons', 'roomify_dashboard_menu', 1, 2, $bookings_mlid);
 }

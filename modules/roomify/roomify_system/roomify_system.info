@@ -5,6 +5,7 @@ package = Roomify
 
 dependencies[] = commerce_checkout
 dependencies[] = ctools
+dependencies[] = entityqueue
 dependencies[] = file_entity
 dependencies[] = panels
 dependencies[] = panels_mini

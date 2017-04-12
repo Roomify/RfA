@@ -4,7 +4,10 @@ Feature: Special offers
   Scenario: Flat offer
     Given I am logged in as a user with the "roomify manager" role on this site
     And I visit "user"
-    Then I click on the text "Manage Configuration"
+    Then I click on the element with css selector ".roomify-sidebar-menu-toggle"
+    And I wait 1 seconds
+    And I click on the element with css selector ".pane-menu-roomify-dashboard-menu .bookings"
+    And I wait 1 seconds
     And I click on the text "Offers"
     Then I click on the text "add special offer"
     And I wait for AJAX to finish
@@ -35,7 +38,10 @@ Feature: Special offers
   Scenario: Percentage offer
     Given I am logged in as a user with the "roomify manager" role on this site
     And I visit "user"
-    Then I click on the text "Manage Configuration"
+    Then I click on the element with css selector ".roomify-sidebar-menu-toggle"
+    And I wait 1 seconds
+    And I click on the element with css selector ".pane-menu-roomify-dashboard-menu .bookings"
+    And I wait 1 seconds
     And I click on the text "Offers"
     Then I click on the text "add special offer"
     And I wait for AJAX to finish
