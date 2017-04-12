@@ -61,7 +61,7 @@ function roomify_sidebar_user_menu_render($subtype, $conf, $args, $pane_context,
   }
   if (user_access('edit own guest profile', $user)) {
 
-    $url = l(t('Edit Guest Profile'), 'user/' . $user->uid . '/edit/guest', array('attributes' => array('class' => array('btn')), 'query' => array('destination' => '/user')));
+    $url = l(t('Edit Guest Profile'), 'profile-guest/' . $user->uid . '/edit', array('attributes' => array('class' => array('btn')), 'query' => array('destination' => '/user')));
     $message .= '<div class="guest-profile">' . $url . '</div>';
   }
   // Close links to accounts.
