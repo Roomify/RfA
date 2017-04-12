@@ -40,11 +40,14 @@
       &:hover {
         background: #4CAF50;
         color: #FFF !important;
+
       }
     }
-    .ui-state-active {
-      background: #2e3641;
+    a.ui-state-hover,
+    a.ui-state-active {
+      background: #4CAF50 !important;
       color: #FFF !important;
+      border-radius: 50%;
     }
   }
   td.ui-datepicker-unselectable .ui-state-default {

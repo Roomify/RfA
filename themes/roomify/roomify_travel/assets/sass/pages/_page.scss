@@ -2,4 +2,7 @@
 	.page-header {
 		@include make-xs-column(12);
 	}
+	.panel_sl_content {
+		padding: 0;
+	}
 }

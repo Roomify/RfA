@@ -186,7 +186,7 @@
     background: url("../images/arrow_right.svg") center center no-repeat, linear-gradient(transparent, transparent);
     display: inline-block;
     position: absolute;
-    top: calc(50% - 15px);
+    top: 50%;
     width: 30px;
     height: 30px;
     margin-top: 0;
@@ -203,7 +203,7 @@
     background: url("../images/arrow_left.svg") center center no-repeat, linear-gradient(transparent, transparent);
     display: inline-block;
     position: absolute;
-    top: calc(50% - 15px);
+    top: 50%;
     width: 30px;
     height: 30px;
     margin-top: 0;

@@ -6536,6 +6536,10 @@ blockquote {
 .btn {
   padding: 6px 10px 4px; }
 
+.slick-next.slick-arrow,
+.slick-prev.slick-arrow {
+  outline: none; }
+
 .view .pagination > li > a.progress-disabled {
   float: left; }
   .view .pagination > li > a.progress-disabled .ajax-progress-throbber {
@@ -6689,9 +6693,11 @@ blockquote {
       .ui-datepicker td .ui-state-default:hover {
         background: #4CAF50;
         color: #FFF !important; }
-    .ui-datepicker td .ui-state-active {
-      background: #2e3641;
-      color: #FFF !important; }
+    .ui-datepicker td a.ui-state-hover,
+    .ui-datepicker td a.ui-state-active {
+      background: #4CAF50 !important;
+      color: #FFF !important;
+      border-radius: 50%; }
   .ui-datepicker td.ui-datepicker-unselectable .ui-state-default {
     padding: 5px 0;
     color: #f90a0a !important; }
@@ -7756,7 +7762,8 @@ body.toggled #close-sidebar-wrapper {
     position: absolute;
     top: 20px;
     right: 45px;
-    font-size: 60px; }
+    font-size: 46px;
+    color: #fff; }
   @media screen and (max-height: 450px) {
     .roomify-overlay a {
       font-size: 20px; }
@@ -8021,7 +8028,7 @@ body.toggled #close-sidebar-wrapper {
     background: url("../images/arrow_right.svg") center center no-repeat, linear-gradient(transparent, transparent);
     display: inline-block;
     position: absolute;
-    top: calc(50% - 15px);
+    top: 50%;
     width: 30px;
     height: 30px;
     margin-top: 0;
@@ -8037,7 +8044,7 @@ body.toggled #close-sidebar-wrapper {
     background: url("../images/arrow_left.svg") center center no-repeat, linear-gradient(transparent, transparent);
     display: inline-block;
     position: absolute;
-    top: calc(50% - 15px);
+    top: 50%;
     width: 30px;
     height: 30px;
     margin-top: 0;
@@ -12441,7 +12448,7 @@ body.node-type-homepage {
     background: url("../images/arrow_right.svg") center center no-repeat, linear-gradient(transparent, transparent);
     display: inline-block;
     position: absolute;
-    top: calc(45% - 15px);
+    top: calc(5% - 15px);
     width: 30px;
     height: 30px;
     margin-top: 0;
@@ -14831,6 +14838,8 @@ body.node-type-offer .pane-offer-panel-pane-2 .pager-load-more {
   min-height: 1px;
   padding-left: 15px;
   padding-right: 15px; }
+.node-type-page .panel_sl_content {
+  padding: 0; }
 
 .node-type-landing-page .page-header {
   position: relative;
