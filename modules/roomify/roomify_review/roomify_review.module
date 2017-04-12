@@ -63,7 +63,6 @@ function roomify_review_views_api() {
   );
 }
 
-
 /**
  * Implements hook_permission().
  */
@@ -75,7 +74,6 @@ function roomify_review_permission() {
     ),
   );
 }
-
 
 /**
  * Implements hook_roomify_rights().
