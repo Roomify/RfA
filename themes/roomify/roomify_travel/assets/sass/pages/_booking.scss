@@ -1,5 +1,8 @@
 .page-conversation-booking,
 .page-booking {
+  .page-header {
+    @include make-xs-column(12);
+  }
   #roomify-accommodation-booking-current-search-form {
     .current-search-item {
       &.current-search-arrival,

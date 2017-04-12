@@ -44,7 +44,7 @@
           right: 0;
           border-radius: 0;
           background: rgba(0, 0, 0, 0.90);
-          border: 0;
+          border: 2px solid #1d1d1d;
           li a {
             font-size: 22px;
             text-align: center;
@@ -69,7 +69,8 @@
     position: absolute;
     top: 20px;
     right: 45px;
-    font-size: 60px;
+    font-size: 46px;
+    color: #fff;
   }
   @media screen and (max-height: 450px) {
     a {
