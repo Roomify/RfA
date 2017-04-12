@@ -22,6 +22,13 @@ function roomify_search_views_data_alter(&$data) {
       'handler' => 'roomify_search_handler_starting_type_price',
     ),
   );
+  $data['search_api_index_properties_index']['participating_offer'] = array(
+    'field' => array(
+      'title' => t('Offers joined'),
+      'help' => t('Returns offers where the property participates.'),
+      'handler' => 'roomify_search_handler_offers_list',
+    ),
+  );
   $data['search_api_index_properties_index']['roomify_search_handler_beds_largest_room'] = array(
     'field' => array(
       'title' => t('N. of single beds of the largest Room'),

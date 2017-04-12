@@ -65,3 +65,4 @@ files[] = views/roomify_search_handler_bathrooms_largest_room.inc
 files[] = views/roomify_search_handler_area_blogposts.inc
 files[] = views/roomify_search_handler_double_beds_largest_room.inc
 files[] = views/roomify_search_handler_property_capacity.inc
+files[] = views/roomify_search_handler_offers_list.inc
