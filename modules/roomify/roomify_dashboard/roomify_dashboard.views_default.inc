@@ -45,7 +45,8 @@ function roomify_dashboard_views_default_views() {
     'property_id' => 'property_id',
     'name_1' => 'name_1',
     'name' => 'name',
-    'commerce_customer_address_name_line' => 'commerce_customer_address_name_line',
+    'user_last_name' => 'user_last_name',
+    'user_first_name' => 'user_first_name',
     'booking_start_date' => 'booking_start_date',
     'booking_end_date' => 'booking_end_date',
     'nights' => 'nights',
@@ -91,46 +92,53 @@ function roomify_dashboard_views_default_views() {
       'separator' => '',
       'empty_column' => 0,
     ),
-    'commerce_customer_address_name_line' => array(
+    'user_last_name' => array(
       'sortable' => 0,
       'default_sort_order' => 'asc',
       'align' => '',
       'separator' => '',
       'empty_column' => 0,
     ),
-    'booking_start_date' => array(
+    'user_first_name' => array(
       'sortable' => 0,
       'default_sort_order' => 'asc',
       'align' => 'views-align-left',
+      'separator' => '',
+      'empty_column' => 0,
+    ),
+    'booking_start_date' => array(
+      'sortable' => 0,
+      'default_sort_order' => 'asc',
+      'align' => 'views-align-center',
       'separator' => '',
       'empty_column' => 0,
     ),
     'booking_end_date' => array(
       'sortable' => 0,
       'default_sort_order' => 'asc',
-      'align' => 'views-align-left',
+      'align' => 'views-align-center',
       'separator' => '',
       'empty_column' => 0,
     ),
     'nights' => array(
-      'align' => 'views-align-left',
+      'align' => 'views-align-center',
       'separator' => '',
       'empty_column' => 0,
     ),
     'booking_price' => array(
       'sortable' => 0,
       'default_sort_order' => 'asc',
-      'align' => 'views-align-left',
+      'align' => 'views-align-center',
       'separator' => '',
       'empty_column' => 0,
     ),
     'edit_unit' => array(
-      'align' => 'views-align-left',
+      'align' => 'views-align-center',
       'separator' => '',
       'empty_column' => 0,
     ),
     'delete_unit' => array(
-      'align' => 'views-align-left',
+      'align' => 'views-align-center',
       'separator' => '',
       'empty_column' => 0,
     ),
@@ -173,9 +181,14 @@ function roomify_dashboard_views_default_views() {
         'phone' => 0,
         'tablet' => 0,
       ),
-      'commerce_customer_address_name_line' => array(
-        'phone' => 'phone',
+      'user_last_name' => array(
         'all' => 0,
+        'phone' => 0,
+        'tablet' => 0,
+      ),
+      'user_first_name' => array(
+        'all' => 0,
+        'phone' => 0,
         'tablet' => 0,
       ),
       'booking_start_date' => array(
@@ -365,11 +378,11 @@ function roomify_dashboard_views_default_views() {
   $handler->display->display_options['arguments']['uid']['specify_validation'] = TRUE;
   $handler->display->display_options['arguments']['uid']['validate']['type'] = 'php';
   $handler->display->display_options['arguments']['uid']['validate_options']['code'] = 'if (user_access(\'update any bat_booking entity\')) {
-                return FALSE;
-                }
-                else {
-                return TRUE;
-                }';
+                  return FALSE;
+                  }
+                  else {
+                  return TRUE;
+                  }';
   $handler->display->display_options['arguments']['uid']['validate']['fail'] = 'ignore';
   /* Filter criterion: Events: State (event_state_reference) */
   $handler->display->display_options['filters']['event_state_reference_state_id']['id'] = 'event_state_reference_state_id';
@@ -419,16 +432,40 @@ function roomify_dashboard_views_default_views() {
   $handler->display->display_options['relationships']['reverse_property_bat_type_reference_roomify_property']['field'] = 'reverse_property_bat_type_reference_roomify_property';
   $handler->display->display_options['relationships']['reverse_property_bat_type_reference_roomify_property']['relationship'] = 'type_id';
   /* Relationship: Entity Reference: Referenced Entity */
-  $handler->display->display_options['relationships']['booking_guest_target_id']['id'] = 'booking_guest_target_id';
-  $handler->display->display_options['relationships']['booking_guest_target_id']['table'] = 'field_data_booking_guest';
-  $handler->display->display_options['relationships']['booking_guest_target_id']['field'] = 'booking_guest_target_id';
+  $handler->display->display_options['relationships']['booking_user_guest_target_id']['id'] = 'booking_user_guest_target_id';
+  $handler->display->display_options['relationships']['booking_user_guest_target_id']['table'] = 'field_data_booking_user_guest';
+  $handler->display->display_options['relationships']['booking_user_guest_target_id']['field'] = 'booking_user_guest_target_id';
   $handler->display->display_options['defaults']['fields'] = FALSE;
-  /* Field: Commerce Customer profile: Address - Full name */
-  $handler->display->display_options['fields']['commerce_customer_address_name_line']['id'] = 'commerce_customer_address_name_line';
-  $handler->display->display_options['fields']['commerce_customer_address_name_line']['table'] = 'field_data_commerce_customer_address';
-  $handler->display->display_options['fields']['commerce_customer_address_name_line']['field'] = 'commerce_customer_address_name_line';
-  $handler->display->display_options['fields']['commerce_customer_address_name_line']['relationship'] = 'booking_guest_target_id';
-  $handler->display->display_options['fields']['commerce_customer_address_name_line']['label'] = 'Guest';
+  /* Field: User: Last Name */
+  $handler->display->display_options['fields']['user_last_name']['id'] = 'user_last_name';
+  $handler->display->display_options['fields']['user_last_name']['table'] = 'field_data_user_last_name';
+  $handler->display->display_options['fields']['user_last_name']['field'] = 'user_last_name';
+  $handler->display->display_options['fields']['user_last_name']['relationship'] = 'booking_user_guest_target_id';
+  $handler->display->display_options['fields']['user_last_name']['label'] = '';
+  $handler->display->display_options['fields']['user_last_name']['exclude'] = TRUE;
+  $handler->display->display_options['fields']['user_last_name']['element_label_colon'] = FALSE;
+  $handler->display->display_options['fields']['user_last_name']['settings'] = array(
+    'conditions' => array(
+      0 => array(
+        'condition' => '',
+      ),
+    ),
+  );
+  /* Field: User: First Name */
+  $handler->display->display_options['fields']['user_first_name']['id'] = 'user_first_name';
+  $handler->display->display_options['fields']['user_first_name']['table'] = 'field_data_user_first_name';
+  $handler->display->display_options['fields']['user_first_name']['field'] = 'user_first_name';
+  $handler->display->display_options['fields']['user_first_name']['relationship'] = 'booking_user_guest_target_id';
+  $handler->display->display_options['fields']['user_first_name']['label'] = 'Guest Name';
+  $handler->display->display_options['fields']['user_first_name']['alter']['alter_text'] = TRUE;
+  $handler->display->display_options['fields']['user_first_name']['alter']['text'] = '[user_first_name] [user_last_name]';
+  $handler->display->display_options['fields']['user_first_name']['settings'] = array(
+    'conditions' => array(
+      0 => array(
+        'condition' => '',
+      ),
+    ),
+  );
   /* Field: BAT Booking: Label */
   $handler->display->display_options['fields']['label']['id'] = 'label';
   $handler->display->display_options['fields']['label']['table'] = 'bat_bookings';
@@ -702,9 +739,9 @@ function roomify_dashboard_views_default_views() {
   $handler->display->display_options['relationships']['reverse_property_bat_type_reference_roomify_property']['field'] = 'reverse_property_bat_type_reference_roomify_property';
   $handler->display->display_options['relationships']['reverse_property_bat_type_reference_roomify_property']['relationship'] = 'type_id';
   /* Relationship: Entity Reference: Referenced Entity */
-  $handler->display->display_options['relationships']['booking_guest_target_id']['id'] = 'booking_guest_target_id';
-  $handler->display->display_options['relationships']['booking_guest_target_id']['table'] = 'field_data_booking_guest';
-  $handler->display->display_options['relationships']['booking_guest_target_id']['field'] = 'booking_guest_target_id';
+  $handler->display->display_options['relationships']['booking_user_guest_target_id']['id'] = 'booking_user_guest_target_id';
+  $handler->display->display_options['relationships']['booking_user_guest_target_id']['table'] = 'field_data_booking_user_guest';
+  $handler->display->display_options['relationships']['booking_user_guest_target_id']['field'] = 'booking_user_guest_target_id';
   $handler->display->display_options['defaults']['fields'] = FALSE;
   /* Field: BAT Booking: Label */
   $handler->display->display_options['fields']['label']['id'] = 'label';
@@ -749,12 +786,36 @@ function roomify_dashboard_views_default_views() {
   $handler->display->display_options['fields']['name']['alter']['text'] = '[name] [name_1]';
   $handler->display->display_options['fields']['name']['alter']['make_link'] = TRUE;
   $handler->display->display_options['fields']['name']['alter']['path'] = 'listing/[property_id]';
-  /* Field: Commerce Customer profile: Address - Full name */
-  $handler->display->display_options['fields']['commerce_customer_address_name_line']['id'] = 'commerce_customer_address_name_line';
-  $handler->display->display_options['fields']['commerce_customer_address_name_line']['table'] = 'field_data_commerce_customer_address';
-  $handler->display->display_options['fields']['commerce_customer_address_name_line']['field'] = 'commerce_customer_address_name_line';
-  $handler->display->display_options['fields']['commerce_customer_address_name_line']['relationship'] = 'booking_guest_target_id';
-  $handler->display->display_options['fields']['commerce_customer_address_name_line']['label'] = 'Guest';
+  /* Field: User: Last Name */
+  $handler->display->display_options['fields']['user_last_name']['id'] = 'user_last_name';
+  $handler->display->display_options['fields']['user_last_name']['table'] = 'field_data_user_last_name';
+  $handler->display->display_options['fields']['user_last_name']['field'] = 'user_last_name';
+  $handler->display->display_options['fields']['user_last_name']['relationship'] = 'booking_user_guest_target_id';
+  $handler->display->display_options['fields']['user_last_name']['label'] = '';
+  $handler->display->display_options['fields']['user_last_name']['exclude'] = TRUE;
+  $handler->display->display_options['fields']['user_last_name']['element_label_colon'] = FALSE;
+  $handler->display->display_options['fields']['user_last_name']['settings'] = array(
+    'conditions' => array(
+      0 => array(
+        'condition' => '',
+      ),
+    ),
+  );
+  /* Field: User: First Name */
+  $handler->display->display_options['fields']['user_first_name']['id'] = 'user_first_name';
+  $handler->display->display_options['fields']['user_first_name']['table'] = 'field_data_user_first_name';
+  $handler->display->display_options['fields']['user_first_name']['field'] = 'user_first_name';
+  $handler->display->display_options['fields']['user_first_name']['relationship'] = 'booking_user_guest_target_id';
+  $handler->display->display_options['fields']['user_first_name']['label'] = 'Guest';
+  $handler->display->display_options['fields']['user_first_name']['alter']['alter_text'] = TRUE;
+  $handler->display->display_options['fields']['user_first_name']['alter']['text'] = '[user_first_name]  [user_last_name] ';
+  $handler->display->display_options['fields']['user_first_name']['settings'] = array(
+    'conditions' => array(
+      0 => array(
+        'condition' => '',
+      ),
+    ),
+  );
   /* Field: BAT Booking: Start Date */
   $handler->display->display_options['fields']['booking_start_date']['id'] = 'booking_start_date';
   $handler->display->display_options['fields']['booking_start_date']['table'] = 'field_data_booking_start_date';
@@ -927,15 +988,10 @@ function roomify_dashboard_views_default_views() {
   $handler->display->display_options['relationships']['order_id']['table'] = 'commerce_line_item';
   $handler->display->display_options['relationships']['order_id']['field'] = 'order_id';
   $handler->display->display_options['relationships']['order_id']['relationship'] = 'booking_line_item_reference_target_id';
-  /* Relationship: Commerce Order: Owner */
-  $handler->display->display_options['relationships']['uid']['id'] = 'uid';
-  $handler->display->display_options['relationships']['uid']['table'] = 'commerce_order';
-  $handler->display->display_options['relationships']['uid']['field'] = 'uid';
-  $handler->display->display_options['relationships']['uid']['relationship'] = 'order_id';
   /* Relationship: Entity Reference: Referenced Entity */
-  $handler->display->display_options['relationships']['booking_guest_target_id']['id'] = 'booking_guest_target_id';
-  $handler->display->display_options['relationships']['booking_guest_target_id']['table'] = 'field_data_booking_guest';
-  $handler->display->display_options['relationships']['booking_guest_target_id']['field'] = 'booking_guest_target_id';
+  $handler->display->display_options['relationships']['booking_user_guest_target_id']['id'] = 'booking_user_guest_target_id';
+  $handler->display->display_options['relationships']['booking_user_guest_target_id']['table'] = 'field_data_booking_user_guest';
+  $handler->display->display_options['relationships']['booking_user_guest_target_id']['field'] = 'booking_user_guest_target_id';
   $handler->display->display_options['defaults']['fields'] = FALSE;
   /* Field: BAT Booking: Label */
   $handler->display->display_options['fields']['label']['id'] = 'label';
@@ -944,13 +1000,6 @@ function roomify_dashboard_views_default_views() {
   $handler->display->display_options['fields']['label']['label'] = '';
   $handler->display->display_options['fields']['label']['exclude'] = TRUE;
   $handler->display->display_options['fields']['label']['element_label_colon'] = FALSE;
-  /* Field: Commerce Customer profile: Address - Full name */
-  $handler->display->display_options['fields']['commerce_customer_address_name_line']['id'] = 'commerce_customer_address_name_line';
-  $handler->display->display_options['fields']['commerce_customer_address_name_line']['table'] = 'field_data_commerce_customer_address';
-  $handler->display->display_options['fields']['commerce_customer_address_name_line']['field'] = 'commerce_customer_address_name_line';
-  $handler->display->display_options['fields']['commerce_customer_address_name_line']['relationship'] = 'booking_guest_target_id';
-  $handler->display->display_options['fields']['commerce_customer_address_name_line']['label'] = 'Guest Name';
-  $handler->display->display_options['fields']['commerce_customer_address_name_line']['element_label_colon'] = FALSE;
   /* Field: BAT Booking: Bat booking ID */
   $handler->display->display_options['fields']['booking_id']['id'] = 'booking_id';
   $handler->display->display_options['fields']['booking_id']['table'] = 'bat_bookings';
@@ -1053,62 +1102,6 @@ function roomify_dashboard_views_default_views() {
   $handler->display->display_options['fields']['type']['exclude'] = TRUE;
   $handler->display->display_options['fields']['type']['element_label_colon'] = FALSE;
   $handler->display->display_options['fields']['type']['machine_name'] = TRUE;
-  /* Field: Commerce Customer profile: Telephone */
-  $handler->display->display_options['fields']['booking_telephone']['id'] = 'booking_telephone';
-  $handler->display->display_options['fields']['booking_telephone']['table'] = 'field_data_booking_telephone';
-  $handler->display->display_options['fields']['booking_telephone']['field'] = 'booking_telephone';
-  $handler->display->display_options['fields']['booking_telephone']['relationship'] = 'booking_guest_target_id';
-  $handler->display->display_options['fields']['booking_telephone']['element_label_colon'] = FALSE;
-  $handler->display->display_options['fields']['booking_telephone']['settings'] = array(
-    'conditions' => array(
-      0 => array(
-        'condition' => '',
-      ),
-    ),
-  );
-  /* Field: Commerce Order: E-mail */
-  $handler->display->display_options['fields']['mail']['id'] = 'mail';
-  $handler->display->display_options['fields']['mail']['table'] = 'commerce_order';
-  $handler->display->display_options['fields']['mail']['field'] = 'mail';
-  $handler->display->display_options['fields']['mail']['relationship'] = 'order_id';
-  $handler->display->display_options['fields']['mail']['label'] = '';
-  $handler->display->display_options['fields']['mail']['exclude'] = TRUE;
-  $handler->display->display_options['fields']['mail']['element_label_colon'] = FALSE;
-  $handler->display->display_options['fields']['mail']['render_as_link'] = 0;
-  /* Field: BAT Booking: Email */
-  $handler->display->display_options['fields']['field_bcom_email']['id'] = 'field_bcom_email';
-  $handler->display->display_options['fields']['field_bcom_email']['table'] = 'field_data_field_bcom_email';
-  $handler->display->display_options['fields']['field_bcom_email']['field'] = 'field_bcom_email';
-  $handler->display->display_options['fields']['field_bcom_email']['empty'] = '[mail]';
-  $handler->display->display_options['fields']['field_bcom_email']['hide_alter_empty'] = FALSE;
-  $handler->display->display_options['fields']['field_bcom_email']['settings'] = array(
-    'conditions' => array(
-      0 => array(
-        'condition' => '',
-      ),
-    ),
-  );
-  /* Field: Commerce Customer profile: Address - Thoroughfare (i.e. Street address) */
-  $handler->display->display_options['fields']['commerce_customer_address_thoroughfare']['id'] = 'commerce_customer_address_thoroughfare';
-  $handler->display->display_options['fields']['commerce_customer_address_thoroughfare']['table'] = 'field_data_commerce_customer_address';
-  $handler->display->display_options['fields']['commerce_customer_address_thoroughfare']['field'] = 'commerce_customer_address_thoroughfare';
-  $handler->display->display_options['fields']['commerce_customer_address_thoroughfare']['relationship'] = 'booking_guest_target_id';
-  $handler->display->display_options['fields']['commerce_customer_address_thoroughfare']['label'] = 'Address';
-  $handler->display->display_options['fields']['commerce_customer_address_thoroughfare']['element_label_colon'] = FALSE;
-  /* Field: Commerce Customer profile: Address - Locality (i.e. City) */
-  $handler->display->display_options['fields']['commerce_customer_address_locality']['id'] = 'commerce_customer_address_locality';
-  $handler->display->display_options['fields']['commerce_customer_address_locality']['table'] = 'field_data_commerce_customer_address';
-  $handler->display->display_options['fields']['commerce_customer_address_locality']['field'] = 'commerce_customer_address_locality';
-  $handler->display->display_options['fields']['commerce_customer_address_locality']['relationship'] = 'booking_guest_target_id';
-  $handler->display->display_options['fields']['commerce_customer_address_locality']['label'] = 'City';
-  $handler->display->display_options['fields']['commerce_customer_address_locality']['element_label_colon'] = FALSE;
-  /* Field: Commerce Customer profile: Address - Postal code */
-  $handler->display->display_options['fields']['commerce_customer_address_postal_code']['id'] = 'commerce_customer_address_postal_code';
-  $handler->display->display_options['fields']['commerce_customer_address_postal_code']['table'] = 'field_data_commerce_customer_address';
-  $handler->display->display_options['fields']['commerce_customer_address_postal_code']['field'] = 'commerce_customer_address_postal_code';
-  $handler->display->display_options['fields']['commerce_customer_address_postal_code']['relationship'] = 'booking_guest_target_id';
-  $handler->display->display_options['fields']['commerce_customer_address_postal_code']['label'] = 'ZIP - Postal Code';
-  $handler->display->display_options['fields']['commerce_customer_address_postal_code']['element_label_colon'] = FALSE;
   /* Field: BAT Booking: Type */
   $handler->display->display_options['fields']['type_1']['id'] = 'type_1';
   $handler->display->display_options['fields']['type_1']['table'] = 'bat_bookings';
@@ -1129,6 +1122,65 @@ function roomify_dashboard_views_default_views() {
       ),
     ),
   );
+  /* Field: User: First Name */
+  $handler->display->display_options['fields']['user_first_name']['id'] = 'user_first_name';
+  $handler->display->display_options['fields']['user_first_name']['table'] = 'field_data_user_first_name';
+  $handler->display->display_options['fields']['user_first_name']['field'] = 'user_first_name';
+  $handler->display->display_options['fields']['user_first_name']['relationship'] = 'booking_user_guest_target_id';
+  $handler->display->display_options['fields']['user_first_name']['settings'] = array(
+    'conditions' => array(
+      0 => array(
+        'condition' => '',
+      ),
+    ),
+  );
+  /* Field: User: Last Name */
+  $handler->display->display_options['fields']['user_last_name']['id'] = 'user_last_name';
+  $handler->display->display_options['fields']['user_last_name']['table'] = 'field_data_user_last_name';
+  $handler->display->display_options['fields']['user_last_name']['field'] = 'user_last_name';
+  $handler->display->display_options['fields']['user_last_name']['relationship'] = 'booking_user_guest_target_id';
+  $handler->display->display_options['fields']['user_last_name']['settings'] = array(
+    'conditions' => array(
+      0 => array(
+        'condition' => '',
+      ),
+    ),
+  );
+  /* Field: User: E-mail */
+  $handler->display->display_options['fields']['mail']['id'] = 'mail';
+  $handler->display->display_options['fields']['mail']['table'] = 'users';
+  $handler->display->display_options['fields']['mail']['field'] = 'mail';
+  $handler->display->display_options['fields']['mail']['relationship'] = 'booking_user_guest_target_id';
+  /* Field: User: Address - Locality (i.e. City) */
+  $handler->display->display_options['fields']['user_address_locality']['id'] = 'user_address_locality';
+  $handler->display->display_options['fields']['user_address_locality']['table'] = 'field_data_user_address';
+  $handler->display->display_options['fields']['user_address_locality']['field'] = 'user_address_locality';
+  $handler->display->display_options['fields']['user_address_locality']['relationship'] = 'booking_user_guest_target_id';
+  $handler->display->display_options['fields']['user_address_locality']['label'] = 'Locality (i.e. City)';
+  /* Field: User: Address - Administrative area (i.e. State / Province) */
+  $handler->display->display_options['fields']['user_address_administrative_area']['id'] = 'user_address_administrative_area';
+  $handler->display->display_options['fields']['user_address_administrative_area']['table'] = 'field_data_user_address';
+  $handler->display->display_options['fields']['user_address_administrative_area']['field'] = 'user_address_administrative_area';
+  $handler->display->display_options['fields']['user_address_administrative_area']['relationship'] = 'booking_user_guest_target_id';
+  /* Field: User: Address - Country */
+  $handler->display->display_options['fields']['user_address_country']['id'] = 'user_address_country';
+  $handler->display->display_options['fields']['user_address_country']['table'] = 'field_data_user_address';
+  $handler->display->display_options['fields']['user_address_country']['field'] = 'user_address_country';
+  $handler->display->display_options['fields']['user_address_country']['relationship'] = 'booking_user_guest_target_id';
+  $handler->display->display_options['fields']['user_address_country']['label'] = 'Country';
+  $handler->display->display_options['fields']['user_address_country']['display_name'] = 1;
+  /* Field: User: Address - Postal code */
+  $handler->display->display_options['fields']['user_address_postal_code']['id'] = 'user_address_postal_code';
+  $handler->display->display_options['fields']['user_address_postal_code']['table'] = 'field_data_user_address';
+  $handler->display->display_options['fields']['user_address_postal_code']['field'] = 'user_address_postal_code';
+  $handler->display->display_options['fields']['user_address_postal_code']['relationship'] = 'booking_user_guest_target_id';
+  $handler->display->display_options['fields']['user_address_postal_code']['label'] = 'Postal code';
+  /* Field: User: Address - Thoroughfare (i.e. Street address) */
+  $handler->display->display_options['fields']['user_address_thoroughfare']['id'] = 'user_address_thoroughfare';
+  $handler->display->display_options['fields']['user_address_thoroughfare']['table'] = 'field_data_user_address';
+  $handler->display->display_options['fields']['user_address_thoroughfare']['field'] = 'user_address_thoroughfare';
+  $handler->display->display_options['fields']['user_address_thoroughfare']['relationship'] = 'booking_user_guest_target_id';
+  $handler->display->display_options['fields']['user_address_thoroughfare']['label'] = 'Thoroughfare (i.e. Street address)';
   $handler->display->display_options['defaults']['filter_groups'] = FALSE;
   $handler->display->display_options['defaults']['filters'] = FALSE;
   /* Filter criterion: Events: State (event_state_reference) */
@@ -1255,9 +1307,9 @@ function roomify_dashboard_views_default_views() {
   $handler->display->display_options['relationships']['reverse_property_bat_type_reference_roomify_property']['field'] = 'reverse_property_bat_type_reference_roomify_property';
   $handler->display->display_options['relationships']['reverse_property_bat_type_reference_roomify_property']['relationship'] = 'type_id';
   /* Relationship: Entity Reference: Referenced Entity */
-  $handler->display->display_options['relationships']['booking_guest_target_id']['id'] = 'booking_guest_target_id';
-  $handler->display->display_options['relationships']['booking_guest_target_id']['table'] = 'field_data_booking_guest';
-  $handler->display->display_options['relationships']['booking_guest_target_id']['field'] = 'booking_guest_target_id';
+  $handler->display->display_options['relationships']['booking_user_guest_target_id']['id'] = 'booking_user_guest_target_id';
+  $handler->display->display_options['relationships']['booking_user_guest_target_id']['table'] = 'field_data_booking_user_guest';
+  $handler->display->display_options['relationships']['booking_user_guest_target_id']['field'] = 'booking_user_guest_target_id';
   $handler->display->display_options['defaults']['fields'] = FALSE;
   /* Field: BAT Booking: Label */
   $handler->display->display_options['fields']['label']['id'] = 'label';
@@ -1302,13 +1354,36 @@ function roomify_dashboard_views_default_views() {
   $handler->display->display_options['fields']['name']['alter']['text'] = '[name] [name_1]';
   $handler->display->display_options['fields']['name']['alter']['make_link'] = TRUE;
   $handler->display->display_options['fields']['name']['alter']['path'] = 'listing/[property_id]';
-  /* Field: Commerce Customer profile: Address - Full name */
-  $handler->display->display_options['fields']['commerce_customer_address_name_line']['id'] = 'commerce_customer_address_name_line';
-  $handler->display->display_options['fields']['commerce_customer_address_name_line']['table'] = 'field_data_commerce_customer_address';
-  $handler->display->display_options['fields']['commerce_customer_address_name_line']['field'] = 'commerce_customer_address_name_line';
-  $handler->display->display_options['fields']['commerce_customer_address_name_line']['relationship'] = 'booking_guest_target_id';
-  $handler->display->display_options['fields']['commerce_customer_address_name_line']['label'] = 'Guest';
-  $handler->display->display_options['fields']['commerce_customer_address_name_line']['element_label_colon'] = FALSE;
+  /* Field: User: Last Name */
+  $handler->display->display_options['fields']['user_last_name']['id'] = 'user_last_name';
+  $handler->display->display_options['fields']['user_last_name']['table'] = 'field_data_user_last_name';
+  $handler->display->display_options['fields']['user_last_name']['field'] = 'user_last_name';
+  $handler->display->display_options['fields']['user_last_name']['relationship'] = 'booking_user_guest_target_id';
+  $handler->display->display_options['fields']['user_last_name']['label'] = '';
+  $handler->display->display_options['fields']['user_last_name']['exclude'] = TRUE;
+  $handler->display->display_options['fields']['user_last_name']['element_label_colon'] = FALSE;
+  $handler->display->display_options['fields']['user_last_name']['settings'] = array(
+    'conditions' => array(
+      0 => array(
+        'condition' => '',
+      ),
+    ),
+  );
+  /* Field: User: First Name */
+  $handler->display->display_options['fields']['user_first_name']['id'] = 'user_first_name';
+  $handler->display->display_options['fields']['user_first_name']['table'] = 'field_data_user_first_name';
+  $handler->display->display_options['fields']['user_first_name']['field'] = 'user_first_name';
+  $handler->display->display_options['fields']['user_first_name']['relationship'] = 'booking_user_guest_target_id';
+  $handler->display->display_options['fields']['user_first_name']['label'] = 'Guest';
+  $handler->display->display_options['fields']['user_first_name']['alter']['alter_text'] = TRUE;
+  $handler->display->display_options['fields']['user_first_name']['alter']['text'] = '[user_first_name] [user_last_name]';
+  $handler->display->display_options['fields']['user_first_name']['settings'] = array(
+    'conditions' => array(
+      0 => array(
+        'condition' => '',
+      ),
+    ),
+  );
   /* Field: BAT Booking: Start Date */
   $handler->display->display_options['fields']['booking_start_date']['id'] = 'booking_start_date';
   $handler->display->display_options['fields']['booking_start_date']['table'] = 'field_data_booking_start_date';
@@ -1487,9 +1562,9 @@ function roomify_dashboard_views_default_views() {
   $handler->display->display_options['relationships']['reverse_property_bat_type_reference_roomify_property']['field'] = 'reverse_property_bat_type_reference_roomify_property';
   $handler->display->display_options['relationships']['reverse_property_bat_type_reference_roomify_property']['relationship'] = 'type_id';
   /* Relationship: Entity Reference: Referenced Entity */
-  $handler->display->display_options['relationships']['booking_guest_target_id']['id'] = 'booking_guest_target_id';
-  $handler->display->display_options['relationships']['booking_guest_target_id']['table'] = 'field_data_booking_guest';
-  $handler->display->display_options['relationships']['booking_guest_target_id']['field'] = 'booking_guest_target_id';
+  $handler->display->display_options['relationships']['booking_user_guest_target_id']['id'] = 'booking_user_guest_target_id';
+  $handler->display->display_options['relationships']['booking_user_guest_target_id']['table'] = 'field_data_booking_user_guest';
+  $handler->display->display_options['relationships']['booking_user_guest_target_id']['field'] = 'booking_user_guest_target_id';
   $handler->display->display_options['defaults']['fields'] = FALSE;
   /* Field: BAT Booking: Label */
   $handler->display->display_options['fields']['label']['id'] = 'label';
@@ -1534,13 +1609,36 @@ function roomify_dashboard_views_default_views() {
   $handler->display->display_options['fields']['name']['alter']['text'] = '[name] [name_1]';
   $handler->display->display_options['fields']['name']['alter']['make_link'] = TRUE;
   $handler->display->display_options['fields']['name']['alter']['path'] = 'listing/[property_id]';
-  /* Field: Commerce Customer profile: Address - Full name */
-  $handler->display->display_options['fields']['commerce_customer_address_name_line']['id'] = 'commerce_customer_address_name_line';
-  $handler->display->display_options['fields']['commerce_customer_address_name_line']['table'] = 'field_data_commerce_customer_address';
-  $handler->display->display_options['fields']['commerce_customer_address_name_line']['field'] = 'commerce_customer_address_name_line';
-  $handler->display->display_options['fields']['commerce_customer_address_name_line']['relationship'] = 'booking_guest_target_id';
-  $handler->display->display_options['fields']['commerce_customer_address_name_line']['label'] = 'Guest';
-  $handler->display->display_options['fields']['commerce_customer_address_name_line']['element_label_colon'] = FALSE;
+  /* Field: User: Last Name */
+  $handler->display->display_options['fields']['user_last_name']['id'] = 'user_last_name';
+  $handler->display->display_options['fields']['user_last_name']['table'] = 'field_data_user_last_name';
+  $handler->display->display_options['fields']['user_last_name']['field'] = 'user_last_name';
+  $handler->display->display_options['fields']['user_last_name']['relationship'] = 'booking_user_guest_target_id';
+  $handler->display->display_options['fields']['user_last_name']['label'] = '';
+  $handler->display->display_options['fields']['user_last_name']['exclude'] = TRUE;
+  $handler->display->display_options['fields']['user_last_name']['element_label_colon'] = FALSE;
+  $handler->display->display_options['fields']['user_last_name']['settings'] = array(
+    'conditions' => array(
+      0 => array(
+        'condition' => '',
+      ),
+    ),
+  );
+  /* Field: User: First Name */
+  $handler->display->display_options['fields']['user_first_name']['id'] = 'user_first_name';
+  $handler->display->display_options['fields']['user_first_name']['table'] = 'field_data_user_first_name';
+  $handler->display->display_options['fields']['user_first_name']['field'] = 'user_first_name';
+  $handler->display->display_options['fields']['user_first_name']['relationship'] = 'booking_user_guest_target_id';
+  $handler->display->display_options['fields']['user_first_name']['label'] = 'Guest';
+  $handler->display->display_options['fields']['user_first_name']['alter']['alter_text'] = TRUE;
+  $handler->display->display_options['fields']['user_first_name']['alter']['text'] = '[user_first_name] [user_last_name]';
+  $handler->display->display_options['fields']['user_first_name']['settings'] = array(
+    'conditions' => array(
+      0 => array(
+        'condition' => '',
+      ),
+    ),
+  );
   /* Field: BAT Booking: Start Date */
   $handler->display->display_options['fields']['booking_start_date']['id'] = 'booking_start_date';
   $handler->display->display_options['fields']['booking_start_date']['table'] = 'field_data_booking_start_date';
@@ -1886,17 +1984,40 @@ function roomify_dashboard_views_default_views() {
   $handler->display->display_options['relationships']['reverse_property_bat_type_reference_roomify_property']['field'] = 'reverse_property_bat_type_reference_roomify_property';
   $handler->display->display_options['relationships']['reverse_property_bat_type_reference_roomify_property']['relationship'] = 'type_id';
   /* Relationship: Entity Reference: Referenced Entity */
-  $handler->display->display_options['relationships']['booking_guest_target_id']['id'] = 'booking_guest_target_id';
-  $handler->display->display_options['relationships']['booking_guest_target_id']['table'] = 'field_data_booking_guest';
-  $handler->display->display_options['relationships']['booking_guest_target_id']['field'] = 'booking_guest_target_id';
+  $handler->display->display_options['relationships']['booking_user_guest_target_id']['id'] = 'booking_user_guest_target_id';
+  $handler->display->display_options['relationships']['booking_user_guest_target_id']['table'] = 'field_data_booking_user_guest';
+  $handler->display->display_options['relationships']['booking_user_guest_target_id']['field'] = 'booking_user_guest_target_id';
   $handler->display->display_options['defaults']['fields'] = FALSE;
-  /* Field: Commerce Customer profile: Address - Full name */
-  $handler->display->display_options['fields']['commerce_customer_address_name_line']['id'] = 'commerce_customer_address_name_line';
-  $handler->display->display_options['fields']['commerce_customer_address_name_line']['table'] = 'field_data_commerce_customer_address';
-  $handler->display->display_options['fields']['commerce_customer_address_name_line']['field'] = 'commerce_customer_address_name_line';
-  $handler->display->display_options['fields']['commerce_customer_address_name_line']['relationship'] = 'booking_guest_target_id';
-  $handler->display->display_options['fields']['commerce_customer_address_name_line']['label'] = 'Guest Name';
-  $handler->display->display_options['fields']['commerce_customer_address_name_line']['element_label_colon'] = FALSE;
+  /* Field: User: Last Name */
+  $handler->display->display_options['fields']['user_last_name']['id'] = 'user_last_name';
+  $handler->display->display_options['fields']['user_last_name']['table'] = 'field_data_user_last_name';
+  $handler->display->display_options['fields']['user_last_name']['field'] = 'user_last_name';
+  $handler->display->display_options['fields']['user_last_name']['relationship'] = 'booking_user_guest_target_id';
+  $handler->display->display_options['fields']['user_last_name']['label'] = '';
+  $handler->display->display_options['fields']['user_last_name']['exclude'] = TRUE;
+  $handler->display->display_options['fields']['user_last_name']['element_label_colon'] = FALSE;
+  $handler->display->display_options['fields']['user_last_name']['settings'] = array(
+    'conditions' => array(
+      0 => array(
+        'condition' => '',
+      ),
+    ),
+  );
+  /* Field: User: First Name */
+  $handler->display->display_options['fields']['user_first_name']['id'] = 'user_first_name';
+  $handler->display->display_options['fields']['user_first_name']['table'] = 'field_data_user_first_name';
+  $handler->display->display_options['fields']['user_first_name']['field'] = 'user_first_name';
+  $handler->display->display_options['fields']['user_first_name']['relationship'] = 'booking_user_guest_target_id';
+  $handler->display->display_options['fields']['user_first_name']['label'] = 'Guest';
+  $handler->display->display_options['fields']['user_first_name']['alter']['alter_text'] = TRUE;
+  $handler->display->display_options['fields']['user_first_name']['alter']['text'] = '[user_first_name] [user_last_name]';
+  $handler->display->display_options['fields']['user_first_name']['settings'] = array(
+    'conditions' => array(
+      0 => array(
+        'condition' => '',
+      ),
+    ),
+  );
   /* Field: BAT Booking: Label */
   $handler->display->display_options['fields']['label']['id'] = 'label';
   $handler->display->display_options['fields']['label']['table'] = 'bat_bookings';
@@ -2109,26 +2230,29 @@ function roomify_dashboard_views_default_views() {
     t('All'),
     t('State (event_state_reference)'),
     t('Page'),
-    t('Commerce Customer profile entity referenced from booking_guest'),
-    t('Guest'),
+    t('User entity referenced from booking_user_guest'),
+    t('Guest Name'),
+    t('[user_first_name] [user_last_name]'),
     t('Start Date'),
     t('End Date'),
     t('Future Bookings'),
     t('View all bookings'),
     t('<h2>Future bookings (sorted by most recently booked)</h2>'),
+    t('Guest'),
+    t('[user_first_name]  [user_last_name] '),
     t('View panes'),
     t('Data export'),
     t('Commerce Line item entity referenced from booking_line_item_reference'),
     t('Order'),
-    t('Order owner'),
-    t('Guest Name'),
-    t('Telephone'),
-    t('Email'),
-    t('[mail]'),
-    t('Address'),
-    t('City'),
-    t('ZIP - Postal Code'),
     t('Provider'),
+    t('First Name'),
+    t('Last Name'),
+    t('E-mail'),
+    t('Locality (i.e. City)'),
+    t('Address - Administrative area (i.e. State / Province)'),
+    t('Country'),
+    t('Postal code'),
+    t('Thoroughfare (i.e. Street address)'),
     t('Label'),
     t('Start Date (booking_start_date)'),
     t('End Date (booking_end_date)'),
