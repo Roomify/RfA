@@ -6392,6 +6392,16 @@ a.list-group-item-danger.active:hover, a.list-group-item-danger.active:focus {
   .container {
     width: 1200px; } }
 
+@-webkit-keyframes fadeIn {
+  0% {
+    pacity: 0; }
+  100% {
+    opacity: 1; } }
+@keyframes fadeIn {
+  0% {
+    opacity: 0; }
+  100% {
+    opacity: 1; } }
 /* Text meant only for screen readers */
 .screen-reader-text {
   clip: rect(1px, 1px, 1px, 1px);
