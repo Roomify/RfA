@@ -126,31 +126,6 @@ function roomify_review_node_access($node, $op, $account) {
 function roomify_review_form_review_node_form_alter(&$form, &$form_state, $node) {
   global $user;
 
-  // Let's load the property, if we know which one.
-  if ((isset($_GET['property_id']) && isset($form['field_review_property_reviewed']))) {
-    $property = roomify_property_load($_GET['property_id']);
-  }
-  if (isset($form['#node']->field_review_property_reviewed[LANGUAGE_NONE][0]['target_id']) && !empty($form['#node']->field_review_property_reviewed[LANGUAGE_NONE][0]['target_id'])) {
-    $property = roomify_property_load($form['#node']->field_review_property_reviewed[LANGUAGE_NONE][0]['target_id']);
-    if ($property->field_sp_owner[LANGUAGE_NONE][0]['target_id'] == $user->uid) {
-      $form['options']['status']['#access'] = TRUE;
-      $form['options']['#access'] = TRUE;
-    }
-  }
-
-  // Add an image if we have the property.
-  if (isset($property)) {
-    $image = FALSE;
-    if ($featured_image = field_get_items('roomify_property', $property, 'field_sp_featured_image')) {
-      $image = array(
-        'style_name' => 'square',
-        'path' => $featured_image[0]['uri'],
-      );
-    }
-    $form['property_reviewed']['#weight'] = -10;
-    $form['property_reviewed']['#markup'] = '<div class="roomify-property-reviewed"><div class="featured-image">' . theme('image_style', $image) . '</div><h1>' . t('Review for @name', array('@name' => $property->name)) . '</h1></div>';
-  }
-
   // Remove Metatags.
   if (isset($form['metatags'])) {
     $form['metatags']['#access'] = FALSE;
@@ -172,6 +147,32 @@ function roomify_review_form_review_node_form_alter(&$form, &$form_state, $node)
         '#weight' => -100,
       );
     }
+  }
+
+  // Let's load the property, if we know which one.
+  if ((isset($_GET['property_id']) && isset($form['field_review_property_reviewed']))) {
+    $property = roomify_property_load($_GET['property_id']);
+  }
+  if (isset($form['#node']->field_review_property_reviewed[LANGUAGE_NONE][0]['target_id']) && !empty($form['#node']->field_review_property_reviewed[LANGUAGE_NONE][0]['target_id'])) {
+    $property = roomify_property_load($form['#node']->field_review_property_reviewed[LANGUAGE_NONE][0]['target_id']);
+
+    if ($property->field_sp_owner[LANGUAGE_NONE][0]['target_id'] == $user->uid) {
+      $form['options']['status']['#access'] = TRUE;
+      $form['options']['#access'] = TRUE;
+    }
+  }
+
+  // Add an image if we have the property.
+  if (isset($property)) {
+    $image = FALSE;
+    if ($featured_image = field_get_items('roomify_property', $property, 'field_sp_featured_image')) {
+      $image = array(
+        'style_name' => 'square',
+        'path' => $featured_image[0]['uri'],
+      );
+    }
+    $form['property_reviewed']['#weight'] = -10;
+    $form['property_reviewed']['#markup'] = '<div class="roomify-property-reviewed"><div class="featured-image">' . theme('image_style', $image) . '</div><h1>' . t('Review for @name', array('@name' => $property->name)) . '</h1></div>';
   }
 
   if (($user->uid != 1) && (!in_array('roomify manager', $user->roles) || !in_array('administrator', $user->roles))) {
