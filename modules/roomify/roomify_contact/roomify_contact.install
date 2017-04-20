@@ -20,6 +20,35 @@ function roomify_contact_enable() {
 
   // Add dependencies to date fields on contact form.
   roomify_contact_add_date_fields_booking_request_dependency();
+
+  // Add PET contact form.
+  roomify_contact_form_add_pet();
+
+}
+
+/**
+ * Add PET contact form.
+ */
+function roomify_contact_form_add_pet() {
+  $items['new_email_from_contact_form'] = entity_import('pet', '{
+    "name" : "new_email_from_contact_form",
+    "title" : "New email from contact form",
+    "subject" : "New email from contact form",
+    "mail_body" : "\u003Cstrong\u003EYou have an enquiry from the sidewide Contact form!\u003C\/strong\u003E\r\n\r\n\u003Cstrong\u003EFirst Name\u003C\/strong\u003E:      [entityform:field_contact_first_name]\r\n\u003Cstrong\u003ELast Name\u003C\/strong\u003E:      [entityform:field_contact_last_name]\r\n\u003Cstrong\u003EMail Address\u003C\/strong\u003E:   [entityform:field_contact_mail_address]\r\n\u003Cstrong\u003ETelephone\u003C\/strong\u003E:       [entityform:field_contact_telephone]\r\n\r\n\u003Cu\u003E\u003Cstrong\u003ERequested Dates\u003Cstrong\u003E\u003C\/u\u003E\r\n\u003Cstrong\u003EArriva Date\u003C\/strong\u003E: [entityform:field_contact_arrival]\r\n\u003Cstrong\u003EDeparture Date\u003C\/strong\u003E: [entityform:field_contact_departure]\r\n\r\nThe following message was left:\r\n\u003Ci\u003E[entityform:field_contact_more_informations]\u003C\/i\u003E\r\n",
+    "mail_body_plain" : "",
+    "send_plain" : "0",
+    "from_override" : "",
+    "cc_default" : "",
+    "bcc_default" : "",
+    "recipient_callback" : "",
+    "token_entity_types" : null,
+    "language" : "en",
+    "rdf_mapping" : []
+  }');
+
+  foreach ($items as $item) {
+    $item->save();
+  }
 }
 
 /**
@@ -120,4 +149,11 @@ function roomify_contact_update_7003() {
   $instance_info['display']['default']['weight'] = 5;
   $instance_info['widget']['weight'] = 5;
   field_update_instance($instance_info);
+}
+
+/**
+ * Add PET contact form.
+ */
+function roomify_contact_update_7004() {
+  roomify_contact_form_add_pet();
 }

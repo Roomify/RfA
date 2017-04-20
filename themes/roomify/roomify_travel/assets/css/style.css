@@ -6746,6 +6746,14 @@ blockquote {
     font-weight: 300; }
   .ui-datepicker .ui-datepicker-prev span {
     background-position: -96px 0; }
+  .ui-datepicker select.ui-datepicker-month,
+  .ui-datepicker select.ui-datepicker-year {
+    font-size: 14px;
+    border-radius: 0;
+    text-align: center;
+    max-height: 25px;
+    color: #127ba3;
+    font-weight: 400; }
 
 .ui-tabs {
   padding: 0 !important;
