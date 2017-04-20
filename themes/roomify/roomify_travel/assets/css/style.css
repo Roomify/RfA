@@ -9390,6 +9390,62 @@ body.toggled #close-sidebar-wrapper {
   .page-contact-us .entitytype-contact-form .form-actions {
     padding-left: 15px; }
 
+.page-entityform .submitted {
+  display: inline-block;
+  width: 100%;
+  margin: 25px 0;
+  font-size: 18px; }
+.page-entityform .field-name-field-contact-arrival,
+.page-entityform .field-name-field-contact-departure,
+.page-entityform .field-name-field-contact-first-name,
+.page-entityform .field-name-field-contact-last-name,
+.page-entityform .field-name-field-contact-mail-address,
+.page-entityform .field-name-field-contact-telephone {
+  display: inline-block;
+  font-size: 16px;
+  width: 100%;
+  margin-bottom: 15px; }
+  .page-entityform .field-name-field-contact-arrival .field-label,
+  .page-entityform .field-name-field-contact-departure .field-label,
+  .page-entityform .field-name-field-contact-first-name .field-label,
+  .page-entityform .field-name-field-contact-last-name .field-label,
+  .page-entityform .field-name-field-contact-mail-address .field-label,
+  .page-entityform .field-name-field-contact-telephone .field-label {
+    display: inline-block;
+    float: left;
+    margin-right: 5px; }
+.page-entityform .field-name-field-booking-request {
+  display: none; }
+.page-entityform .field-name-field-contact-more-informations {
+  display: inline-block;
+  font-size: 16px;
+  width: 100%;
+  margin-bottom: 15px; }
+
+.page-entityform-edit #contact-entityform-edit-form .submitted {
+  display: inline-block;
+  width: 100%;
+  margin: 25px 0;
+  font-size: 18px; }
+.page-entityform-edit #contact-entityform-edit-form .field-name-field-contact-arrival,
+.page-entityform-edit #contact-entityform-edit-form .field-name-field-contact-departure {
+  width: 40%;
+  margin-right: 10%;
+  display: inline-block;
+  float: left; }
+  .page-entityform-edit #contact-entityform-edit-form .field-name-field-contact-arrival .panel-heading,
+  .page-entityform-edit #contact-entityform-edit-form .field-name-field-contact-departure .panel-heading {
+    background: #0074bd;
+    color: white; }
+  @media (max-width: 768px) {
+    .page-entityform-edit #contact-entityform-edit-form .field-name-field-contact-arrival,
+    .page-entityform-edit #contact-entityform-edit-form .field-name-field-contact-departure {
+      width: 100%;
+      margin: 0; } }
+.page-entityform-edit #contact-entityform-edit-form .redirect-list {
+  display: none;
+  width: 100%; }
+
 .page-cart .region-content {
   margin-left: -15px;
   margin-right: -15px; }

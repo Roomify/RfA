@@ -16,14 +16,16 @@ function roomify_contact_enable() {
   $entityform_block_types[] = 'contact';
   variable_set('entityform_block_types', $entityform_block_types);
 
-  roomify_system_create_update_menu_link('Contact us', 'contact-us', 'main-menu', 1, 1, 1, array('alter' => TRUE));
-
+  roomify_system_create_update_menu_link('Contact us', 'contact-us', 'main-menu', 10);
   // Add dependencies to date fields on contact form.
   roomify_contact_add_date_fields_booking_request_dependency();
 
   // Add PET contact form.
   roomify_contact_form_add_pet();
 
+  // Create link to enquiries.
+  $conversations_mlid = roomify_system_get_menu_link_id('Conversations', 'admin/bat/conversations/guest', 'roomify_dashboard_menu', -8);
+  roomify_system_create_update_menu_link('Site Wide contact enquiries', 'admin/structure/entityform_types/manage/contact/submissions', 'roomify_dashboard_menu', 5, 1, $conversations_mlid);
 }
 
 /**
@@ -156,4 +158,13 @@ function roomify_contact_update_7003() {
  */
 function roomify_contact_update_7004() {
   roomify_contact_form_add_pet();
+}
+
+/**
+ * Create menu link.
+ */
+function roomify_contact_update_7005() {
+  // Create link to enquiries.
+  $conversations_mlid = roomify_system_get_menu_link_id('Conversations', 'admin/bat/conversations/guest', 'roomify_dashboard_menu', -8);
+  roomify_system_create_update_menu_link('Site Wide contact enquiries', 'admin/structure/entityform_types/manage/contact/submissions', 'roomify_dashboard_menu', 5, 1, $conversations_mlid);
 }

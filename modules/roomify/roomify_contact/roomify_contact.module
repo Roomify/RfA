@@ -39,7 +39,6 @@ function roomify_contact_pet_substitutions_alter(&$substitutions, $params) {
 function roomify_contact_form_alter(&$form, &$form_state, $form_id) {
   // Remove default values from dates.
   if ($form['#form_id'] == 'contact_entityform_edit_form') {
-    dpm($form);
     $date_format = variable_get('bat_daily_date_format', 'Y-m-d');
     $form['field_contact_arrival'][LANGUAGE_NONE][0]['#default_value']['value'] = '';
     $form['field_contact_departure'][LANGUAGE_NONE][0]['#default_value']['value'] = '';
@@ -55,5 +54,15 @@ function roomify_contact_date_combo_process_alter(&$element, &$form_state, $cont
       $date_format = variable_get('bat_daily_date_format', 'Y-m-d');
       $element['value']['#date_format'] = $date_format;
     }
+  }
+}
+
+/**
+ * Implements hook_date_combo_process_alter().
+ */
+function roomify_contact_page_alter(&$page) {
+  if (strpos(current_path(), 'contact-us') !== FALSE) {
+    // Kill breadcrumb, set to empty array.
+    drupal_set_breadcrumb(array());
   }
 }
