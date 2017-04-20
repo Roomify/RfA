@@ -5,9 +5,8 @@
  * roomify_contact.rules_defaults.inc
  */
 
-
 /**
- * Implements hook_default_rules_configuration().
+ * Implements hook_default_rules_configuration.
  */
 function roomify_contact_default_rules_configuration() {
   $items = array();

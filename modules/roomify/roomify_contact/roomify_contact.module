@@ -46,7 +46,6 @@ function roomify_contact_form_alter(&$form, &$form_state, $form_id) {
   }
 }
 
-
 /**
  * Implements hook_date_combo_process_alter().
  */
