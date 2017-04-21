@@ -7,7 +7,7 @@
 /**
  *
  */
-class roomify_accommodation_booking_book_this_field extends entity_views_handler_field_text {
+class roomify_accommodation_booking_book_this_field extends views_handler_field {
 
   /**
    * {@inheritdoc}
