@@ -584,3 +584,10 @@ function roomify_accommodation_booking_update_7014() {
     }
   }
 }
+
+/**
+ * Enable 'administerusersbyrole' module.
+ */
+function roomify_accommodation_booking_update_7015() {
+  module_enable(array('administerusersbyrole'));
+}

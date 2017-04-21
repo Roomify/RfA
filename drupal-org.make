@@ -82,6 +82,8 @@ projects[admin_menu][version] = 3.0-rc5
 
 projects[adminimal_admin_menu][version] = 1.7
 
+projects[administerusersbyrole][version] = 2.0
+
 projects[agrcache][version] = 1.7
 
 projects[autocomplete_deluxe][version] = 2.2
@@ -103,6 +105,8 @@ projects[cer][download][type] = git
 projects[cer][download][url] = https://git.drupal.org/project/cer.git
 projects[cer][download][revision] = 68f4b2043ab1b200da4e21d506924d7cd332b67f
 projects[cer][patch][] = https://www.drupal.org/files/issues/cer-cer-field-collection-issues-2352783-3.patch
+
+projects[chain_menu_access][version] = 2.0
 
 projects[charts][version] = 2.0-rc1
 
@@ -386,6 +390,7 @@ projects[redirect][version] = 1.0-rc3
 
 projects[references_dialog][version] = 1.0-beta2
 projects[references_dialog][patch][] = https://www.drupal.org/files/issues/references_dialog-zindex-2833782-1.patch
+projects[references_dialog][patch][] = https://www.drupal.org/files/issues/references_dialog-create_users-2172321.patch
 
 projects[robotstxt][version] = 1.3
 

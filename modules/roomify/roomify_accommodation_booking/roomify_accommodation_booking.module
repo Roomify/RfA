@@ -2311,6 +2311,17 @@ function roomify_accommodation_booking_edit_booking_form_submit($form, &$form_st
 }
 
 /**
+ * Implements hook_module_implements_alter().
+ */
+function roomify_accommodation_booking_module_implements_alter(&$implementations, $hook) {
+  if ($hook == 'form_alter' && isset($implementations['roomify_accommodation_booking'])) {
+    $group = $implementations['roomify_accommodation_booking'];
+    unset($implementations['roomify_accommodation_booking']);
+    $implementations['roomify_accommodation_booking'] = $group;
+  }
+}
+
+/**
  * Implements hook_commerce_checkout_complete().
  */
 function roomify_accommodation_booking_commerce_checkout_complete($order) {

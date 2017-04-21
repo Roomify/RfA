@@ -959,6 +959,7 @@ function roomify_system_roomify_rights() {
       'access events index service',
       'access events calendar index service',
       'access edit event service',
+      'create users',
       'view past event information',
       'create bat_unit entities',
       'delete own bat_type entities',
@@ -1057,6 +1058,7 @@ function roomify_system_roomify_rights() {
       // Give permission to add users and give them
       // the guest, property owner, or roomify manager role.
       'administer users',
+      'create users',
       'assign guest role',
       'assign property owner role',
       'assign roomify manager role',
