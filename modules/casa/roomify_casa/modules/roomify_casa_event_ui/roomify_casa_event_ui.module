@@ -652,6 +652,8 @@ function roomify_casa_event_ui_pricing_update_form_ajax_callback($form, &$form_s
 function roomify_casa_event_ui_pricing_update_form_submit($form, &$form_state) {
   global $user;
 
+  $currency_setting = commerce_currency_load(commerce_default_currency());
+
   $start_date = new DateTime($form_state['values']['start_date']);
   $end_date = new DateTime($form_state['values']['end_date']);
   $end_date->add(new DateInterval('P1D'));
@@ -697,7 +699,7 @@ function roomify_casa_event_ui_pricing_update_form_submit($form, &$form_state) {
         $event->event_state_reference[LANGUAGE_NONE][0]['state_id'] = $state_id;
 
         $event->{$field_name}[LANGUAGE_NONE][0] = array(
-          'amount' => $form_state['values']['price'] * 100,
+          'amount' => $form_state['values']['price'] * pow(10, $currency_setting['decimals']),
           'currency_code' => commerce_default_currency(),
         );
 
@@ -733,7 +735,7 @@ function roomify_casa_event_ui_pricing_update_form_submit($form, &$form_state) {
     $event->event_state_reference[LANGUAGE_NONE][0]['state_id'] = $state_id;
 
     $event->{$field_name}[LANGUAGE_NONE][0] = array(
-      'amount' => $form_state['values']['price'] * 100,
+      'amount' => $form_state['values']['price'] * pow(10, $currency_setting['decimals']),
       'currency_code' => commerce_default_currency(),
     );
 
