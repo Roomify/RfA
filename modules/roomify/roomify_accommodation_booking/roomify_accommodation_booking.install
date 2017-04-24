@@ -596,5 +596,5 @@ function roomify_accommodation_booking_update_7015() {
  * Enable 'subuser' module.
  */
 function roomify_accommodation_booking_update_7016() {
-  module_enable(array('subuser'));
+  module_enable(array('subuser', 'subuser_ui'));
 }

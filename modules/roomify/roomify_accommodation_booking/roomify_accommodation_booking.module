@@ -1549,6 +1549,37 @@ function roomify_accommodation_booking_entity_update($entity, $type) {
       if ($entity->booking_start_date[LANGUAGE_NONE][0]['value'] != $entity->original->booking_start_date[LANGUAGE_NONE][0]['value']) {
         roomify_accommodation_booking_schedule_job($entity);
       }
+      // When a booking is updated, we should add the booking guest
+      // to the property owner subusers list.
+      if (module_exists('subuser')) {
+        if (isset($entity->booking_user_guest[LANGUAGE_NONE][0]['target_id']) && !empty($entity->booking_user_guest[LANGUAGE_NONE][0]['target_id'])) {
+          // Let's find the property.
+          if (isset($entity->booking_event_reference[LANGUAGE_NONE][0]['target_id'])) {
+            $event = bat_event_load($entity->booking_event_reference[LANGUAGE_NONE][0]['target_id']);
+            $event_wrapper = entity_metadata_wrapper('bat_event', $event);
+
+            $type = bat_type_load($event_wrapper->event_bat_unit_reference->type_id->value());
+
+            if ($property_id = field_get_items('bat_type', $type, 'field_st_property_reference')) {
+              $property = roomify_property_load($property_id[0]['target_id']);
+              if ($owner_id = field_get_items('roomify_property', $property, 'field_sp_owner')) {
+                $account = user_load($owner_id[0]['target_id']);
+                // Load Subusers.
+                $suids = subuser_load_all($account);
+                if (!in_array($entity->booking_user_guest[LANGUAGE_NONE][0]['target_id'], $suids)) {
+                  // Let's add the user to the list.
+                  $endpoints = array(
+                    array('entity_type' => 'user', 'entity_id' => $entity->booking_user_guest[LANGUAGE_NONE][0]['target_id']),
+                    array('entity_type' => 'user', 'entity_id' => $account->uid),
+                  );
+                  $relation = relation_create('subuser', $endpoints);
+                  relation_save($relation);
+                }
+              }
+            }
+          }
+        }
+      }
     }
     if ($entity->type == 'ical') {
       if (!isset($entity->original->booking_price[LANGUAGE_NONE][0]['amount']) ||
@@ -2344,6 +2375,7 @@ function roomify_accommodation_booking_commerce_checkout_complete($order) {
         $event->event_state_reference[LANGUAGE_NONE][0]['state_id'] = $booked_state['id'];
 
         $event->save();
+
       }
     }
   }

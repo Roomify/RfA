@@ -504,6 +504,7 @@ function roomify_dashboard_create_dashboard_menu() {
   roomify_system_create_update_menu_link_with_token('Guest Profile', 'profile-guest/[current-user:uid]/edit', 'roomify_dashboard_menu', 3, 1, $accounts_mlid, array());
   roomify_system_create_update_menu_link('Users', 'admin/people', 'roomify_dashboard_menu', 10, 1, $accounts_mlid);
   roomify_system_create_update_menu_link('Users Profiles', 'admin/people/profiles', 'roomify_dashboard_menu', 9, 1, $accounts_mlid);
+  roomify_system_create_update_menu_link_with_token('My Users', 'user/[current-user:uid]/subuser', 'roomify_dashboard_menu', 11, 1, $accounts_mlid, array());
 }
 
 /**

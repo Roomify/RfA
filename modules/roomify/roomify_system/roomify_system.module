@@ -2011,7 +2011,7 @@ function roomify_system_views_query_alter(&$view, &$query) {
       if (module_exists('subuser')) {
         $suids = subuser_load_all($user);
         if (!empty($suids)) {
-          foreach($suids as $suid) {
+          foreach ($suids as $suid) {
             // Add a filter for this uid.
             $conditions[] = array(
               'field' => 'users.uid',
