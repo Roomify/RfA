@@ -2270,3 +2270,46 @@ function roomify_system_theme() {
     ),
   );
 }
+
+/**
+ * Return all users who have the given role.
+ *
+ * @param int|string $role
+ *   Name of the role or the ID or the role.
+ * @param bool|TRUE $active_user
+ *   Determine, if only the active users should be returned.
+ * @return array
+ *   Array of user objects.
+ */
+function roomify_system_get_users_with_role($role, $active_user = TRUE) {
+  $users = array();
+  $rid = 0;
+  if (is_int($role)) {
+    $rid = $role;
+  }
+  else {
+    if ($role_obj = user_role_load_by_name($role)) {
+      $rid = $role_obj->rid;
+    }
+  }
+  if ($rid) {
+    $uids = db_select('users_roles', 'ur')
+      ->fields('ur', array('uid'))
+      ->condition('ur.rid', $rid)
+      ->execute()->fetchCol();
+    if (!empty($uids)) {
+      $query = new EntityFieldQuery();
+      $query->entityCondition('entity_type', 'user')
+        ->propertyCondition('uid', $uids, 'IN');
+      if ($active_user) {
+        $query->propertyCondition('status', 1);
+      }
+      $entities = $query->execute();
+      if (!empty($entities)) {
+        $users = user_load_multiple(array_keys($entities['user']));
+      }
+    }
+  }
+
+  return $users;
+}

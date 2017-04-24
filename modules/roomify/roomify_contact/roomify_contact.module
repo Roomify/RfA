@@ -6,3 +6,63 @@
  */
 
 include_once 'roomify_contact.features.inc';
+
+/**
+ * Send email to managers when a new contact form is submitted.
+ */
+function roomify_contact_notify_managers($entityform, $settings, $rules_state) {
+  module_load_include('inc', 'pet', 'pet.rules');
+
+  // Get all managers.
+  $managers = roomify_system_get_users_with_role('roomify manager');
+
+  foreach ($managers as $manager) {
+    pet_action_send_pet('new_email_from_contact_form', NULL, $manager, NULL, NULL, array(), $rules_state);
+
+  }
+}
+
+/**
+ * Implements hook_pet_substitutions_alter().
+ */
+function roomify_contact_pet_substitutions_alter(&$substitutions, $params) {
+  if (isset($params['rules_state']->currentArguments['entityform'])) {
+    $entityform = $params['rules_state']->currentArguments['entityform']->value();
+    $substitutions['entityform'] = $entityform;
+
+  }
+}
+
+/**
+ * Implements hook_pet_substitutions_alter().
+ */
+function roomify_contact_form_alter(&$form, &$form_state, $form_id) {
+  // Remove default values from dates.
+  if ($form['#form_id'] == 'contact_entityform_edit_form') {
+    $date_format = variable_get('bat_daily_date_format', 'Y-m-d');
+    $form['field_contact_arrival'][LANGUAGE_NONE][0]['#default_value']['value'] = '';
+    $form['field_contact_departure'][LANGUAGE_NONE][0]['#default_value']['value'] = '';
+  }
+}
+
+/**
+ * Implements hook_date_combo_process_alter().
+ */
+function roomify_contact_date_combo_process_alter(&$element, &$form_state, $context) {
+  if (isset($element['#entity_type']) && $element['#entity_type'] == 'entityform') {
+    if (isset($element['#field_name']) && ($element['#field_name'] == 'field_contact_arrival' || $element['#field_name'] == 'field_contact_departure')) {
+      $date_format = variable_get('bat_daily_date_format', 'Y-m-d');
+      $element['value']['#date_format'] = $date_format;
+    }
+  }
+}
+
+/**
+ * Implements hook_date_combo_process_alter().
+ */
+function roomify_contact_page_alter(&$page) {
+  if (strpos(current_path(), 'contact-us') !== FALSE) {
+    // Kill breadcrumb, set to empty array.
+    drupal_set_breadcrumb(array());
+  }
+}

@@ -98,3 +98,66 @@
     }
   }
 }
+
+.page-entityform {
+  .submitted {
+    display: inline-block;
+    width: 100%;
+    margin: 25px 0;
+    font-size: 18px;
+  }
+  .field-name-field-contact-arrival,
+  .field-name-field-contact-departure,
+  .field-name-field-contact-first-name,
+  .field-name-field-contact-last-name,
+  .field-name-field-contact-mail-address,
+  .field-name-field-contact-telephone {
+    display: inline-block;
+    font-size: 16px;
+    width: 100%;
+    margin-bottom: 15px;
+    .field-label {
+      display: inline-block;
+      float: left;
+      margin-right: 5px;
+    }
+  }
+  .field-name-field-booking-request {
+    display: none;
+  }
+  .field-name-field-contact-more-informations  {
+    display: inline-block;
+    font-size: 16px;
+    width: 100%;
+    margin-bottom: 15px;
+  }
+}
+.page-entityform-edit {
+  #contact-entityform-edit-form {
+    .submitted {
+      display: inline-block;
+      width: 100%;
+      margin: 25px 0;
+      font-size: 18px;
+    }
+    .field-name-field-contact-arrival,
+    .field-name-field-contact-departure {
+      width: 40%;
+      margin-right: 10%;
+      display: inline-block;
+      float: left;
+      .panel-heading {
+        background: #0074bd;
+        color: white;
+      }
+      @media (max-width: $screen-sm) {
+        width: 100%;
+        margin: 0;
+      }
+    }
+    .redirect-list {
+      display: none;
+      width: 100%;
+    }
+  }
+}
