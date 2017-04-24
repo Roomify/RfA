@@ -1,5 +1,5 @@
 name = Roomify Review
-description = Reviews feature for RfA
+description = Guest reviews for RfA
 core = 7.x
 package = Roomify
 dependencies[] = cer
