@@ -378,7 +378,7 @@ function roomify_dashboard_menu_link_alter(&$item) {
     $item['menu_token_enabled'] = 1;
     if (isset($item['language']) && $item['language'] != 'en' && $item['language'] != LANGUAGE_NONE) {
       // Check if the original link has a class.
-      if ($translations = $item['translation_set']->get_translations()) {
+      if ((isset($item['translation_set'])) && ($translations = $item['translation_set']->get_translations())) {
         $class = isset($translations['en']['options']['attributes']['class']) ? $translations['en']['options']['attributes']['class'] : '';
         $item['options']['attributes']['class'] = $class;
       }
