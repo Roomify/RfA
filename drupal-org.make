@@ -391,6 +391,9 @@ projects[redirect][version] = 1.0-rc3
 projects[references_dialog][version] = 1.0-beta2
 projects[references_dialog][patch][] = https://www.drupal.org/files/issues/references_dialog-zindex-2833782-1.patch
 projects[references_dialog][patch][] = https://www.drupal.org/files/issues/references_dialog-create_users-2172321.patch
+projects[references_dialog][patch][] = https://www.drupal.org/files/issues/wrong_UID_reference_field-2238801-1.patch
+
+projects[relation][version] = 1.0
 
 projects[robotstxt][version] = 1.3
 
@@ -446,6 +449,8 @@ projects[slick_views][download][revision] = 96cf95a9a58ace07dd576f24d9183e83fd0b
 projects[smtp][version] = 1.6
 
 projects[strongarm][version] = 2.0
+
+projects[subuser][version] = 2.0-alpha4
 
 projects[table_element][version] = 1.0-beta4
 
