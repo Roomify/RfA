@@ -894,7 +894,7 @@ function roomify_system_default_panels_mini() {
  */
 function roomify_system_roomify_rights() {
   $permissions = array_keys(user_permission_get_modules());
-  $guest_role = user_role_load_by_name('guest');
+
   $rights['roomify_system'] = array(
     'anonymous user' => array(
       'access checkout',
@@ -970,7 +970,6 @@ function roomify_system_roomify_rights() {
       'view any commerce_customer_profile entity',
       'create commerce_customer_profile entities',
       'view own property_owner profile',
-      'edit users with role ' . $guest_role->rid,
       // Authenticated users.
       'edit users with role 2',
     ),
@@ -1125,6 +1124,10 @@ function roomify_system_roomify_rights() {
     ),
     'administrator' => $permissions,
   );
+
+  if ($guest_role = user_role_load_by_name('guest')) {
+    $rights['roomify_system']['property owner'][] = 'edit users with role ' . $guest_role->rid;
+  }
 
   if (module_exists('roomify_channel_connector')) {
     $rights['roomify_system']['roomify manager'][] = 'configure channel management';
