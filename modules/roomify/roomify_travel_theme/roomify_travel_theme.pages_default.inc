@@ -3828,6 +3828,7 @@ function roomify_travel_theme_default_page_manager_handlers() {
   $display->hide_title = PANELS_TITLE_FIXED;
   $display->title_pane = 'new-e01ffd75-ddef-44c3-b1f6-12ecf4700622';
   $handler->conf['display'] = $display;
+  $export['page_listings__locanda-travel'] = $handler;
 
   return $export;
 }
