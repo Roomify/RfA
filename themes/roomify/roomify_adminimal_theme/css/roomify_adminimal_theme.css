@@ -2522,6 +2522,21 @@ body.adminimal-skin-material table.views-table tbody tr td {
   width: 100%;
   color: #405467;
 }
+.roomify-dashboard .pane-reviews-panel-pane-2,
+.roomify-dashboard .pane-reviews-panel-pane-1 {
+  padding: 25px 50px;
+}
+.roomify-dashboard .pane-reviews-panel-pane-2 .views-field-field-review-rating,
+.roomify-dashboard .pane-reviews-panel-pane-1 .views-field-field-review-rating {
+  text-align: center;
+  min-width: 120px;
+}
+.roomify-dashboard .pane-reviews-panel-pane-2 .views-field-field-review-rating .fivestar-static-item,
+.roomify-dashboard .pane-reviews-panel-pane-1 .views-field-field-review-rating .fivestar-static-item {
+  margin: 0 auto;
+  display: table;
+  margin-top: 10px;
+}
 .roomify-dashboard .pane-dashboard-guest-stays-panel-pane-1 .view-dashboard-guest-stays thead {
   display: none;
 }
@@ -2567,17 +2582,34 @@ body.adminimal-skin-material table.views-table tbody tr td {
   }
 }
 .roomify-dashboard #dashboard-favorites-tab {
-  background: url("../images/dashboard/star.png") center center no-repeat;
-  background: url("../images/dashboard/star.svg") center center no-repeat, linear-gradient(transparent, transparent);
+  background: url("../images/dashboard/heart.png") center center no-repeat;
+  background: url("../images/dashboard/heart.svg") center center no-repeat, linear-gradient(transparent, transparent);
   display: inline-block;
-  width: 22px;
-  height: 22px;
+  width: 18px;
+  height: 18px;
   position: relative;
   top: 5px;
   right: 6px;
 }
 @media (max-width: 991px) {
   .roomify-dashboard #dashboard-favorites-tab {
+    position: absolute;
+    left: 20px;
+    top: 15px;
+  }
+}
+.roomify-dashboard #dashboard-reviews-tab {
+  background: url("../images/dashboard/star.png") center center no-repeat;
+  background: url("../images/dashboard/star.svg") center center no-repeat, linear-gradient(transparent, transparent);
+  display: inline-block;
+  width: 23px;
+  height: 23px;
+  position: relative;
+  top: 5px;
+  right: 6px;
+}
+@media (max-width: 991px) {
+  .roomify-dashboard #dashboard-reviews-tab {
     position: absolute;
     left: 20px;
     top: 15px;
@@ -3493,4 +3525,27 @@ a.ctools-use-modal:hover,
 }
 .vertical-tabs-panes fieldset fieldset .fieldset-legend {
   display: none;
+}
+.roomify-property-reviewed {
+  display: inline-block;
+  width: 100%;
+  margin-bottom: 25px;
+  border-bottom: 5px solid white;
+  padding-bottom: 25px;
+}
+.roomify-property-reviewed .featured-image {
+  display: inline-block;
+  float: left;
+  width: 120px;
+  margin-right: 25px;
+}
+.roomify-property-reviewed .featured-image img {
+  width: 100%;
+  border-radius: 50%;
+  border: 2px solid #263238;
+}
+.roomify-property-reviewed h1 {
+  margin-top: 48px;
+  font-weight: 400;
+  font-style: italic;
 }

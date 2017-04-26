@@ -228,7 +228,7 @@ projects[field_group][download][revision] = 0a5404d623d0bec355d81a9646f2b7de93b9
 
 projects[flag][version] = 3.9
 
-projects[fivestar][version] = 2.1
+projects[fivestar][version] = 2.2
 
 projects[filefield_sources][version] = 1.10
 

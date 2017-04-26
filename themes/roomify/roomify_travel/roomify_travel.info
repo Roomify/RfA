@@ -48,6 +48,7 @@ scripts[] = 'assets/bootstrap/javascripts/transition.js'
 
 scripts[] = assets/scripts/prefixfree.min.js
 scripts[] = assets/scripts/roomify_travel.js
+scripts[] = assets/scripts/readmorejs.js
 
 plugins[panels][layouts] = layouts
 

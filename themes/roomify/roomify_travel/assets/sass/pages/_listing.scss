@@ -472,6 +472,16 @@
       top: 4px;
       right: 4px;
     }
+    #property-reviews-tab {
+      background: url("../images/star.png") center center no-repeat;
+      background: url("../images/star.svg") center center no-repeat, linear-gradient(transparent, transparent);
+      display: inline-block;
+      width: 17px;
+      height: 17px;
+      position: relative;
+      top: 3px;
+      right: 6px;
+    }
     #property-rooms-tab {
       background: url("../images/property_type_tab.png") center center no-repeat;
       background: url("../images/property_type_tab.svg") center center no-repeat, linear-gradient(transparent, transparent);
