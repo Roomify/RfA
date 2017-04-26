@@ -23,9 +23,6 @@ function roomify_contact_enable() {
   // Add PET contact form.
   roomify_contact_form_add_pet();
 
-  // Create link to enquiries.
-  $conversations_mlid = roomify_system_get_menu_link_id('Conversations', 'admin/bat/conversations/guest', 'roomify_dashboard_menu', -8);
-  roomify_system_create_update_menu_link('Site Wide contact enquiries', 'admin/structure/entityform_types/manage/contact/submissions', 'roomify_dashboard_menu', 5, 1, $conversations_mlid);
 }
 
 /**
