@@ -1,0 +1,380 @@
+<?php
+
+/**
+ * @file
+ * Code for the Roomify Review feature.
+ */
+
+include_once 'roomify_review.features.inc';
+
+/**
+ * Implements hook_ctools_plugin_directory()
+ */
+function roomify_review_ctools_plugin_directory($owner, $plugin_type) {
+  if ($owner == 'ctools' && $plugin_type == 'content_types') {
+    return 'plugins/content_types';
+  }
+}
+
+/**
+ * Implements hook_entity_property_info_alter().
+ */
+function roomify_review_entity_property_info_alter(&$info) {
+  $info['roomify_property']['properties']['average_rating'] = array(
+    'type' => 'integer',
+    'label' => t('Average rating'),
+    'sanitized' => TRUE,
+    'getter callback' => 'roomify_review_average_rating_getter_callback',
+  );
+}
+
+/**
+ * Calculate the average rating of a property.
+ */
+function roomify_review_average_rating_getter_callback($item) {
+  if (isset($item->field_sp_property_rating[LANGUAGE_NONE])) {
+    $average_rating = 0;
+    $count_rating = 0;
+
+    foreach ($item->field_sp_property_rating[LANGUAGE_NONE] as $rating) {
+      $node = node_load($rating['target_id']);
+      if ($node->status == '1' && isset($node->field_review_rating[LANGUAGE_NONE][0]['rating'])) {
+        $average_rating += $node->field_review_rating[LANGUAGE_NONE][0]['rating'];
+        $count_rating++;
+      }
+    }
+    if ($count_rating == 0) {
+      return '<div class="no-reviews">' . t('This property has not been reviewed yet!') . '</div>';
+    }
+    return intval($average_rating / $count_rating) . '<small>/100</small>';
+  }
+  else {
+    return '';
+  }
+}
+
+/**
+ * Implements hook_views_api().
+ */
+function roomify_review_views_api() {
+  return array(
+    'api' => 3,
+    'path' => drupal_get_path('module', 'roomify_review') . '/views',
+  );
+}
+
+/**
+ * Implements hook_permission().
+ */
+function roomify_review_permission() {
+  return array(
+    'administer property reviews' => array(
+      'title' => t('Administer Property Reviews'),
+      'description' => t('Administer reviews of your properties.'),
+    ),
+  );
+}
+
+/**
+ * Implements hook_roomify_rights().
+ */
+function roomify_review_roomify_rights() {
+  $permissions = array_keys(user_permission_get_modules());
+
+  $rights['roomify_review'] = array(
+    'guest' => array(
+      'create review content',
+      'edit own review content',
+    ),
+    'property owner' => array(
+      'create review content',
+      'edit own review content',
+      'administer property reviews',
+    ),
+    'roomify manager' => array(
+      'delete any review content',
+      'create review content',
+      'edit any review content',
+      'administer property reviews',
+    ),
+  );
+
+  return $rights;
+}
+
+/**
+ * Implements hook_node_access().
+ */
+function roomify_review_node_access($node, $op, $account) {
+  if (isset($node->type) && $node->type == 'review') {
+    if (isset($node->field_review_property_reviewed[LANGUAGE_NONE][0]['target_id'])) {
+      if ($property = roomify_property_load($node->field_review_property_reviewed[LANGUAGE_NONE][0]['target_id'])) {
+        // Check if the user that is trying to edit the review is the Property Owner.
+        if ($property->field_sp_owner[LANGUAGE_NONE][0]['target_id'] == $account->uid) {
+          // Allow the access to the owner.
+          return NODE_ACCESS_ALLOW;
+        }
+      }
+    }
+  }
+}
+
+/**
+ * Implements hook_form_FORM_ID_alter().
+ * FORM_ID = review_node_form.
+ */
+function roomify_review_form_review_node_form_alter(&$form, &$form_state, $node) {
+  global $user;
+
+  // Remove Metatags.
+  if (isset($form['metatags'])) {
+    $form['metatags']['#access'] = FALSE;
+  }
+  if (!empty($form['nid']['#value'])) {
+    $form['options']['#access'] = user_access('edit any review content');
+
+    $form['options']['promote']['#access'] = FALSE;
+    $form['options']['sticky']['#access'] = FALSE;
+    if ($form['#node']->status == 0) {
+      $form['review_unpublished'] = array(
+        '#markup' => '<div style="color: #FF4500; font-size: 20px; float: right;">' . t('Review Unpublished') . '</div>',
+        '#weight' => -100,
+      );
+    }
+    else {
+      $form['review_published'] = array(
+        '#markup' => '<div style="color: #4CAF50; font-size: 20px; float: right;">' . t('Review Published') . '</div>',
+        '#weight' => -100,
+      );
+    }
+  }
+
+  // Let's load the property, if we know which one.
+  if ((isset($_GET['property_id']) && isset($form['field_review_property_reviewed']))) {
+    $property = roomify_property_load($_GET['property_id']);
+  }
+  if (isset($form['#node']->field_review_property_reviewed[LANGUAGE_NONE][0]['target_id']) && !empty($form['#node']->field_review_property_reviewed[LANGUAGE_NONE][0]['target_id'])) {
+    $property = roomify_property_load($form['#node']->field_review_property_reviewed[LANGUAGE_NONE][0]['target_id']);
+
+    if ($property->field_sp_owner[LANGUAGE_NONE][0]['target_id'] == $user->uid) {
+      $form['options']['status']['#access'] = TRUE;
+      $form['options']['#access'] = TRUE;
+    }
+  }
+
+  // Add an image if we have the property.
+  if (isset($property)) {
+    $image = FALSE;
+    if ($featured_image = field_get_items('roomify_property', $property, 'field_sp_featured_image')) {
+      $image = array(
+        'style_name' => 'square',
+        'path' => $featured_image[0]['uri'],
+      );
+    }
+    $form['property_reviewed']['#weight'] = -10;
+    $form['property_reviewed']['#markup'] = '<div class="roomify-property-reviewed"><div class="featured-image">' . theme('image_style', $image) . '</div><h1>' . t('Review for @name', array('@name' => $property->name)) . '</h1></div>';
+  }
+
+  if (($user->uid !== 1) && (!in_array('roomify manager', $user->roles) || !in_array('administrator', $user->roles))) {
+    $form['field_review_property_reviewed']['#disabled'] = TRUE;
+    $form['field_review_property_reviewed']['#access'] = FALSE;
+  }
+  // Set the right property to review.
+  if (isset($_GET['property_id']) && isset($form['field_review_property_reviewed'])) {
+    // Set if empty.
+    if (!isset($form['field_review_property_reviewed'][LANGUAGE_NONE]['#default_value']) || empty($form['field_review_property_reviewed'][LANGUAGE_NONE]['#default_value'])) {
+      $form['field_review_property_reviewed'][LANGUAGE_NONE]['#default_value'] = $_GET['property_id'];
+    }
+  }
+
+  $form['actions']['submit']['#submit'][] = 'roomify_review_form_review_node_form_submit';
+}
+
+/**
+ * Custom submit function for the review_node_form form.
+ */
+function roomify_review_form_review_node_form_submit($form, &$form_state) {
+  $node = $form_state['node'];
+
+  // Set a message if the review is unpublished.
+  if ($node->status == 0) {
+    drupal_set_message(t("Thanks! Your review is under moderation and will be published after we've had a chance to approve it."), 'status');
+  }
+  if (isset($node->field_review_property_reviewed[LANGUAGE_NONE][0]['target_id']) &&
+      !empty($node->field_review_property_reviewed[LANGUAGE_NONE][0]['target_id'])) {
+    $form_state['redirect'] = 'listing/' . $node->field_review_property_reviewed[LANGUAGE_NONE][0]['target_id'];
+  }
+}
+
+/**
+ * Implements hook_form_alter().
+ */
+function roomify_review_form_alter(&$form, &$form_state, $form_id) {
+  if ($form_id == 'roomify_property_edit_casa_property_form' || $form_id == 'roomify_property_edit_locanda_property_form') {
+    $form['field_sp_property_rating']['#access'] = FALSE;
+  }
+}
+
+/**
+ * Implements hook_menu_link_alter().
+ * Hide Review from node/add page.
+ */
+function roomify_review_menu_link_alter(&$item) {
+  if (isset($item['menu_name']) && isset($item['link_path'])) {
+    if ($item['menu_name'] == 'navigation' && $item['link_path'] == 'node/add/review') {
+      $item['hidden'] = 1;
+    }
+  }
+}
+
+/**
+ * Implements hook_preprocess_html().
+ */
+function roomify_review_preprocess_html(&$vars) {
+  $node = menu_get_object();
+
+  if ($node && $node->type == 'review' && isset($node->nid)) {
+    if ($node->status) {
+      $vars['classes_array'][] = 'review-published';
+    }
+    else {
+      $vars['classes_array'][] = 'review-unpublished';
+    }
+  }
+}
+
+/**
+ * Implements hook_cron_job_scheduler_info().
+ */
+function roomify_review_cron_job_scheduler_info() {
+  $info = array();
+  $info['roomify_review_guest_notification'] = array(
+    'queue name' => 'roomify_review_guest_notification_queue',
+  );
+  return $info;
+}
+
+/**
+ * Implements hook_cron_queue_info().
+ */
+function roomify_review_cron_queue_info() {
+  $queues = array();
+  $queues['roomify_review_guest_notification_queue'] = array(
+    'worker callback' => 'roomify_review_guest_notification_mail',
+  );
+
+  return $queues;
+}
+
+/**
+ * Send email to guest.
+ */
+function roomify_review_guest_notification_mail(array $job) {
+  if ($booking = bat_booking_load($job['id'])) {
+    module_load_include('inc', 'pet', 'pet.rules');
+
+    $booking_wrapper = entity_metadata_wrapper('bat_booking', $booking);
+    $order = commerce_order_load($booking_wrapper->booking_line_item_reference->order_id->value());
+
+    $to_account = user_load($order->uid);
+
+    $rules_state = new RulesState();
+
+    $rules_state->currentArguments['bat_booking'] = $booking_wrapper;
+    $rules_state->variables['bat_booking'] = $booking_wrapper;
+
+    pet_action_send_pet('roomify_review_property', NULL, $to_account, NULL, NULL, array(), $rules_state);
+  }
+}
+
+/**
+ * Implements hook_pet_substitutions_alter().
+ */
+function roomify_review_pet_substitutions_alter(&$substitutions, $params) {
+  if (isset($params['rules_state']->variables['bat_booking'])) {
+    $booking = $params['rules_state']->variables['bat_booking']->value();
+
+    if ($booking->type == 'roomify_accommodation_booking') {
+      $booking_wrapper = entity_metadata_wrapper('bat_booking', $booking);
+
+      $type = bat_type_load($booking_wrapper->booking_event_reference->event_bat_unit_reference->type_id->value());
+      $property = roomify_property_load($type->field_st_property_reference[LANGUAGE_NONE][0]['target_id']);
+
+      $substitutions['roomify_property'] = $property;
+    }
+  }
+
+  if (isset($params['rules_state']->variables['user'])) {
+    $user = $params['rules_state']->variables['user']->value();
+
+    $substitutions['user'] = $user;
+  }
+
+  if (isset($params['rules_state']->variables['node'])) {
+    $node = $params['rules_state']->variables['node']->value();
+
+    if ($node->type == 'review') {
+      if ($property_reviewed = field_get_items('node', $node, 'field_review_property_reviewed')) {
+        $property = roomify_property_load($property_reviewed[0]['target_id']);
+        $substitutions['roomify_property'] = $property;
+      }
+    }
+    $substitutions['node'] = $node;
+  }
+
+}
+
+/**
+ * Implements hook_commerce_checkout_complete().
+ */
+function roomify_review_commerce_checkout_complete($order) {
+  $order_wrapper = entity_metadata_wrapper('commerce_order', $order);
+
+  foreach ($order->commerce_line_items as $lang => $item) {
+    foreach ($item as $item_id) {
+      $line_item = commerce_line_item_load($item_id['line_item_id']);
+      if ($line_item->type == 'roomify_accommodation_booking') {
+        $booking = bat_booking_load($line_item->commerce_booking_reference[LANGUAGE_NONE][0]['target_id']);
+
+        $end_date = new DateTime($booking->booking_end_date[LANGUAGE_NONE][0]['value']);
+
+        if ($days = variable_get('roomify_review_notification', 2)) {
+          $period = $end_date->getTimestamp() - REQUEST_TIME + (86400 * $days);
+
+          if ($period > 0) {
+            $job = array(
+              'type' => 'property rating',
+              'id' => $booking->booking_id,
+              'period' => $period,
+              'periodic' => FALSE,
+            );
+            JobScheduler::get('roomify_review_guest_notification')->set($job);
+          }
+        }
+      }
+    }
+  }
+}
+
+/**
+ * Implements hook_node_insert().
+ */
+function roomify_review_node_insert($node) {
+  if ($node->type == 'review') {
+    // Send a notification email to the property owner when a new review
+    // is submitted.
+    module_load_include('inc', 'pet', 'pet.rules');
+    if ($property_reviewed = field_get_items('node', $node, 'field_review_property_reviewed')) {
+
+      $property = roomify_property_load($property_reviewed[0]['target_id']);
+      $to_account = user_load($property->field_sp_owner[LANGUAGE_NONE][0]['target_id']);
+
+      $rules_state = new RulesState();
+      $node_wrapper = entity_metadata_wrapper('node', $node);
+      $rules_state->currentArguments['node'] = $node_wrapper;
+      $rules_state->variables['node'] = $node_wrapper;
+
+      pet_action_send_pet('new_review_submitted', NULL, $to_account, NULL, NULL, array(), $rules_state);
+    }
+  }
+}

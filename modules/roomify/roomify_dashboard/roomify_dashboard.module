@@ -406,10 +406,12 @@ function roomify_dashboard_module_implements_alter(&$implementations, $hook) {
  * Implements hook_preprocess_html().
  */
 function roomify_dashboard_preprocess_html(&$vars) {
-  $better_messages = better_messages_process_visibility();
-  $access = user_access('access better messages');
-  if ($better_messages && $access) {
-    $vars['classes_array'][] = 'better-messages-popup';
+  if (module_exists('better_messages')) {
+    $better_messages = better_messages_process_visibility();
+    $access = user_access('access better messages');
+    if ($better_messages && $access) {
+      $vars['classes_array'][] = 'better-messages-popup';
+    }
   }
 }
 
