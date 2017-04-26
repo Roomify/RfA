@@ -1283,3 +1283,20 @@ function roomify_listing_update_7032() {
   $type->data['use_page'] = TRUE;
   $type->save();
 }
+
+/**
+ * Helper function to add fields to the right vertical tab.
+ */
+function roomify_listing_update_7033() {
+  module_enable(array('roomify_review'));
+  foreach (array('casa_property', 'locanda_property') as $property_bundle) {
+    $field_group = field_group_load_field_group('group_basic_information', 'roomify_property', $property_bundle, 'form');
+
+    // Get the last key.
+    $key = count($field_group->children) - 1;
+    $field_group->children[$key + 1] = $field_group->children[$key];
+    $field_group->children[$key] = 'field_sp_allow_property_reviews';
+    field_group_group_save($field_group);
+  }
+  drupal_flush_all_caches();
+}

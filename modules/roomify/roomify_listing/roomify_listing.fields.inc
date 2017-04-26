@@ -1854,7 +1854,8 @@ function roomify_listing_create_property_fields($property_bundle) {
       2 => 'field_sp_featured_image',
       3 => 'field_sp_property_type',
       4 => 'field_sp_allow_instant_bookings',
-      5 => 'field_sp_property_details',
+      5 => 'field_sp_allow_property_reviews',
+      6 => 'field_sp_property_details',
     );
     $field_group->format_type = 'tab';
     $field_group->format_settings = array(
