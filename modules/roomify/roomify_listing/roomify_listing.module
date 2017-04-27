@@ -1393,7 +1393,7 @@ function roomify_listing_enquiry_form_submit($form, &$form_state) {
 
   $conversation->conversation_book_price[LANGUAGE_NONE][0] = array(
     'amount' => ($offer_amount == 0) ? $values['price'] * 100 : $offer_amount,
-    'currency_code' => 'USD',
+    'currency_code' => commerce_default_currency(),
     'data' => array(
       'components' => array(),
     ),
