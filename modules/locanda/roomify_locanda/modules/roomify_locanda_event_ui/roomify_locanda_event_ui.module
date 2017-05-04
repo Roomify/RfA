@@ -392,11 +392,13 @@ function roomify_locanda_event_ui_event_manager_form($form, &$form_state, $unit,
 
   $bat_unit = bat_unit_load($unit);
 
-  $form['booking'] = array(
-    '#type' => 'submit',
-    '#value' => t('Create booking'),
-    '#submit' => array('roomify_locanda_event_ui_event_manager_form_booking_submit'),
-  );
+  if (bat_booking_access('create', bat_booking_create(array('type' => 'roomify_accommodation_booking', 'uid' => 0)))) {
+    $form['booking'] = array(
+      '#type' => 'submit',
+      '#value' => t('Create booking'),
+      '#submit' => array('roomify_locanda_event_ui_event_manager_form_booking_submit'),
+    );
+  }
 
   return $form;
 }
