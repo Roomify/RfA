@@ -1284,6 +1284,10 @@ function roomify_accommodation_example_content_manage_form($form, &$form_state) 
  * Create or Remove "Vacation Rental" example content.
  */
 function roomify_accommodation_example_content_manage_form_vacation_rental_submit($form, &$form_state) {
+  if (isset($_GET['destination'])) {
+    unset($_GET['destination']);
+  }
+
   $installed_type = variable_get('roomify_accommodation_example_content');
 
   if ($installed_type == 'vacation_rental') {
@@ -1307,6 +1311,10 @@ function roomify_accommodation_example_content_manage_form_vacation_rental_submi
  * Create or Remove "B&B / Hotel" example content.
  */
 function roomify_accommodation_example_content_manage_form_b_and_b_submit($form, &$form_state) {
+  if (isset($_GET['destination'])) {
+    unset($_GET['destination']);
+  }
+
   $installed_type = variable_get('roomify_accommodation_example_content');
 
   if ($installed_type == 'b_and_b') {
@@ -1330,6 +1338,10 @@ function roomify_accommodation_example_content_manage_form_b_and_b_submit($form,
  * Create or Remove "Multi-property" example content.
  */
 function roomify_accommodation_example_content_manage_form_multi_property_submit($form, &$form_state) {
+  if (isset($_GET['destination'])) {
+    unset($_GET['destination']);
+  }
+
   $installed_type = variable_get('roomify_accommodation_example_content');
 
   if ($installed_type == 'multi_property') {
