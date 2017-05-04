@@ -71,13 +71,6 @@ function roomify_dashboard_views_default_views() {
       'separator' => '',
       'empty_column' => 0,
     ),
-    'booking_id' => array(
-      'sortable' => 0,
-      'default_sort_order' => 'asc',
-      'align' => 'views-align-left',
-      'separator' => '',
-      'empty_column' => 0,
-    ),
     'property_id' => array(
       'sortable' => 0,
       'default_sort_order' => 'asc',
@@ -96,6 +89,13 @@ function roomify_dashboard_views_default_views() {
       'sortable' => 0,
       'default_sort_order' => 'asc',
       'align' => 'views-align-left',
+      'separator' => '',
+      'empty_column' => 0,
+    ),
+    'commerce_customer_address_name_line' => array(
+      'sortable' => 0,
+      'default_sort_order' => 'asc',
+      'align' => '',
       'separator' => '',
       'empty_column' => 0,
     ),
@@ -186,7 +186,6 @@ function roomify_dashboard_views_default_views() {
       ),
       'booking_guest_name' => array(
         'all' => 0,
-        'phone' => 0,
         'tablet' => 0,
       ),
       'booking_start_date' => array(
