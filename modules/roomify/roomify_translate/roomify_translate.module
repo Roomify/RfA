@@ -82,6 +82,12 @@ function roomify_translate_module_implements_alter(&$implementations, $hook) {
     unset($implementations['roomify_translate']);
     $implementations['roomify_translate'] = $group;
   }
+
+  if ($hook == 'translated_menu_link_alter' && isset($implementations['roomify_translate'])) {
+    $group = $implementations['roomify_translate'];
+    unset($implementations['roomify_translate']);
+    $implementations['roomify_translate'] = $group;
+  }
 }
 
 /**
@@ -164,6 +170,30 @@ function roomify_translate_entity_presave($entity, $type) {
   if ($type == 'taxonomy_term') {
     if (!isset($entity->language)) {
       $entity->language = language_default('language');
+    }
+  }
+}
+
+/**
+ * Implements hook_translated_menu_link_alter().
+ *
+ * @see i18n_menu_translated_menu_link_alter()
+ */
+function roomify_translate_translated_menu_link_alter(&$item) {
+  if ($item['menu_name'] == 'roomify_dashboard_menu') {
+    if (!_i18n_menu_link_is_visible($item)) {
+      if ($item['i18n_tsid']) {
+        $translation_set = i18n_translation_set_load($item['i18n_tsid']);
+        $translations = $translation_set->get_translations();
+
+        if ($item['hidden'] && count($translations) == 1) {
+          $item['hidden'] = FALSE;
+        }
+      }
+
+      if ($item['hidden'] && $item['i18n_tsid'] == '0') {
+        $item['hidden'] = FALSE;
+      }
     }
   }
 }
