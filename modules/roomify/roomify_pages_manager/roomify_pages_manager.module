@@ -30,6 +30,8 @@ function roomify_pages_manager_ctools_render_alter(&$info, $page, $context) {
             $entity = $context_argument->data;
             $entity_type = str_replace('entity:', '', $context_argument->plugin);
 
+            drupal_set_title($entity->name);
+
             // Verify this is an appropriate entity.
             $entity_info = entity_get_info($entity_type);
             if (!empty($entity_info) && _metatag_entity_is_page($entity_type, $entity)) {
