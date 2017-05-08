@@ -2092,11 +2092,14 @@ body .ui-dialog .ui-button-text {
   box-shadow: none;
   display: block;
   border: none;
-  padding-top: 10px;
   border-top: none !important;
 }
-.page-admin-bat-config-types-manage #main-content .vertical-tabs-panes fieldset legend,
-.page-admin-bat-config-property-manage #main-content .vertical-tabs-panes fieldset legend {
+.page-admin-bat-config-types-manage #main-content .vertical-tabs-panes > fieldset,
+.page-admin-bat-config-property-manage #main-content .vertical-tabs-panes > fieldset {
+  padding-top: 10px;
+}
+.page-admin-bat-config-types-manage #main-content .vertical-tabs-panes > fieldset > legend,
+.page-admin-bat-config-property-manage #main-content .vertical-tabs-panes > fieldset > legend {
   display: none !important;
 }
 .page-admin-bat-config-types-manage .field-name-field-sp-gallery .property-gallery-show-text,
@@ -3522,9 +3525,6 @@ a.ctools-use-modal:hover,
 }
 .manualcrop-style-button-holder input {
   background: #FF9800 !important;
-}
-.vertical-tabs-panes fieldset fieldset .fieldset-legend {
-  display: none;
 }
 .roomify-property-reviewed {
   display: inline-block;
