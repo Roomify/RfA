@@ -382,6 +382,20 @@ function roomify_listing_entity_update($entity, $type) {
   if ($type == 'bat_type') {
     if ($entity->type == 'home' || $entity->type == 'room') {
       roomify_listing_update_rates($entity);
+
+      // Set the type with the maximum capacity to have the
+      // right number on the availability search filter.
+      if ($max_capacity = field_get_items('bat_type', $entity, 'field_st_max_capacity')) {
+        $max_properties_capacity = variable_get('roomify_max_property_type_capacity', '1');
+        if ($max_capacity[0]['value'] >= $max_properties_capacity) {
+          variable_set('roomify_max_property_type_capacity', $max_capacity[0]['value']);
+        }
+      }
+    }
+
+    // Re-index the Property after changes to the type.
+    if (module_exists('search_api') && isset($entity->field_st_property_reference[LANGUAGE_NONE][0]['target_id'])) {
+      search_api_track_item_change('roomify_property', array($entity->field_st_property_reference[LANGUAGE_NONE][0]['target_id']));
     }
   }
 }
