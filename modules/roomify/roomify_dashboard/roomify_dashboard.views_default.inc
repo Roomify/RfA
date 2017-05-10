@@ -51,6 +51,8 @@ function roomify_dashboard_views_default_views() {
     'booking_end_date' => 'booking_end_date',
     'nights' => 'nights',
     'booking_price' => 'booking_price',
+    'field_bcom_total_price' => 'field_bcom_total_price',
+    'booking_price_1' => 'booking_price_1',
     'edit_unit' => 'edit_unit',
     'delete_unit' => 'delete_unit',
     'type' => 'type',
@@ -68,6 +70,13 @@ function roomify_dashboard_views_default_views() {
       'sortable' => 0,
       'default_sort_order' => 'asc',
       'align' => 'views-align-left',
+      'separator' => '',
+      'empty_column' => 0,
+    ),
+    'booking_id' => array(
+      'sortable' => 0,
+      'default_sort_order' => 'asc',
+      'align' => '',
       'separator' => '',
       'empty_column' => 0,
     ),
@@ -89,13 +98,6 @@ function roomify_dashboard_views_default_views() {
       'sortable' => 0,
       'default_sort_order' => 'asc',
       'align' => 'views-align-left',
-      'separator' => '',
-      'empty_column' => 0,
-    ),
-    'commerce_customer_address_name_line' => array(
-      'sortable' => 0,
-      'default_sort_order' => 'asc',
-      'align' => '',
       'separator' => '',
       'empty_column' => 0,
     ),
@@ -126,6 +128,18 @@ function roomify_dashboard_views_default_views() {
     'booking_price' => array(
       'sortable' => 0,
       'default_sort_order' => 'asc',
+      'align' => 'views-align-center',
+      'separator' => '',
+      'empty_column' => 0,
+    ),
+    'field_bcom_total_price' => array(
+      'sortable' => 0,
+      'default_sort_order' => 'asc',
+      'align' => 'views-align-center',
+      'separator' => '',
+      'empty_column' => 0,
+    ),
+    'booking_price_1' => array(
       'align' => 'views-align-center',
       'separator' => '',
       'empty_column' => 0,
@@ -186,6 +200,7 @@ function roomify_dashboard_views_default_views() {
       ),
       'booking_guest_name' => array(
         'all' => 0,
+        'phone' => 0,
         'tablet' => 0,
       ),
       'booking_start_date' => array(
@@ -207,6 +222,16 @@ function roomify_dashboard_views_default_views() {
         'phone' => 'phone',
         'tablet' => 'tablet',
         'all' => 0,
+      ),
+      'field_bcom_total_price' => array(
+        'all' => 0,
+        'phone' => 0,
+        'tablet' => 0,
+      ),
+      'booking_price_1' => array(
+        'all' => 0,
+        'phone' => 0,
+        'tablet' => 0,
       ),
       'edit_unit' => array(
         'phone' => 'phone',
@@ -375,11 +400,11 @@ function roomify_dashboard_views_default_views() {
   $handler->display->display_options['arguments']['uid']['specify_validation'] = TRUE;
   $handler->display->display_options['arguments']['uid']['validate']['type'] = 'php';
   $handler->display->display_options['arguments']['uid']['validate_options']['code'] = 'if (user_access(\'update any bat_booking entity\')) {
-                    return FALSE;
-                    }
-                    else {
-                    return TRUE;
-                    }';
+                      return FALSE;
+                      }
+                      else {
+                      return TRUE;
+                      }';
   $handler->display->display_options['arguments']['uid']['validate']['fail'] = 'ignore';
   /* Filter criterion: Events: State (event_state_reference) */
   $handler->display->display_options['filters']['event_state_reference_state_id']['id'] = 'event_state_reference_state_id';
@@ -526,6 +551,7 @@ function roomify_dashboard_views_default_views() {
   $handler->display->display_options['fields']['booking_price']['id'] = 'booking_price';
   $handler->display->display_options['fields']['booking_price']['table'] = 'field_data_booking_price';
   $handler->display->display_options['fields']['booking_price']['field'] = 'booking_price';
+  $handler->display->display_options['fields']['booking_price']['exclude'] = TRUE;
   $handler->display->display_options['fields']['booking_price']['click_sort_column'] = 'amount';
   $handler->display->display_options['fields']['booking_price']['settings'] = array(
     'calculation' => FALSE,
@@ -535,6 +561,23 @@ function roomify_dashboard_views_default_views() {
       ),
     ),
   );
+  /* Field: BAT Booking: Total Price */
+  $handler->display->display_options['fields']['field_bcom_total_price']['id'] = 'field_bcom_total_price';
+  $handler->display->display_options['fields']['field_bcom_total_price']['table'] = 'field_data_field_bcom_total_price';
+  $handler->display->display_options['fields']['field_bcom_total_price']['field'] = 'field_bcom_total_price';
+  $handler->display->display_options['fields']['field_bcom_total_price']['exclude'] = TRUE;
+  $handler->display->display_options['fields']['field_bcom_total_price']['settings'] = array(
+    'conditions' => array(
+      0 => array(
+        'condition' => '',
+      ),
+    ),
+  );
+  /* Field: BAT Booking: Booking Price */
+  $handler->display->display_options['fields']['booking_price_1']['id'] = 'booking_price_1';
+  $handler->display->display_options['fields']['booking_price_1']['table'] = 'bat_bookings';
+  $handler->display->display_options['fields']['booking_price_1']['field'] = 'booking_price';
+  $handler->display->display_options['fields']['booking_price_1']['label'] = 'Price';
   /* Field: BAT Booking: Edit Link */
   $handler->display->display_options['fields']['edit_unit']['id'] = 'edit_unit';
   $handler->display->display_options['fields']['edit_unit']['table'] = 'bat_bookings';
@@ -1011,10 +1054,23 @@ function roomify_dashboard_views_default_views() {
   $handler->display->display_options['fields']['nights']['id'] = 'nights';
   $handler->display->display_options['fields']['nights']['table'] = 'bat_bookings';
   $handler->display->display_options['fields']['nights']['field'] = 'nights';
+  /* Field: BAT Booking: Total Price */
+  $handler->display->display_options['fields']['field_bcom_total_price']['id'] = 'field_bcom_total_price';
+  $handler->display->display_options['fields']['field_bcom_total_price']['table'] = 'field_data_field_bcom_total_price';
+  $handler->display->display_options['fields']['field_bcom_total_price']['field'] = 'field_bcom_total_price';
+  $handler->display->display_options['fields']['field_bcom_total_price']['exclude'] = TRUE;
+  $handler->display->display_options['fields']['field_bcom_total_price']['settings'] = array(
+    'conditions' => array(
+      0 => array(
+        'condition' => '',
+      ),
+    ),
+  );
   /* Field: BAT Booking: Price */
   $handler->display->display_options['fields']['booking_price']['id'] = 'booking_price';
   $handler->display->display_options['fields']['booking_price']['table'] = 'field_data_booking_price';
   $handler->display->display_options['fields']['booking_price']['field'] = 'booking_price';
+  $handler->display->display_options['fields']['booking_price']['exclude'] = TRUE;
   $handler->display->display_options['fields']['booking_price']['click_sort_column'] = 'amount';
   $handler->display->display_options['fields']['booking_price']['settings'] = array(
     'calculation' => FALSE,
@@ -1024,6 +1080,11 @@ function roomify_dashboard_views_default_views() {
       ),
     ),
   );
+  /* Field: BAT Booking: Booking Price */
+  $handler->display->display_options['fields']['booking_price_1']['id'] = 'booking_price_1';
+  $handler->display->display_options['fields']['booking_price_1']['table'] = 'bat_bookings';
+  $handler->display->display_options['fields']['booking_price_1']['field'] = 'booking_price';
+  $handler->display->display_options['fields']['booking_price_1']['label'] = 'Price';
   /* Field: BAT Booking: Edit Link */
   $handler->display->display_options['fields']['edit_unit']['id'] = 'edit_unit';
   $handler->display->display_options['fields']['edit_unit']['table'] = 'bat_bookings';
@@ -1239,6 +1300,7 @@ function roomify_dashboard_views_default_views() {
   $handler->display->display_options['fields']['booking_price']['id'] = 'booking_price';
   $handler->display->display_options['fields']['booking_price']['table'] = 'field_data_booking_price';
   $handler->display->display_options['fields']['booking_price']['field'] = 'booking_price';
+  $handler->display->display_options['fields']['booking_price']['exclude'] = TRUE;
   $handler->display->display_options['fields']['booking_price']['click_sort_column'] = 'amount';
   $handler->display->display_options['fields']['booking_price']['settings'] = array(
     'calculation' => FALSE,
@@ -1248,6 +1310,23 @@ function roomify_dashboard_views_default_views() {
       ),
     ),
   );
+  /* Field: BAT Booking: Total Price */
+  $handler->display->display_options['fields']['field_bcom_total_price']['id'] = 'field_bcom_total_price';
+  $handler->display->display_options['fields']['field_bcom_total_price']['table'] = 'field_data_field_bcom_total_price';
+  $handler->display->display_options['fields']['field_bcom_total_price']['field'] = 'field_bcom_total_price';
+  $handler->display->display_options['fields']['field_bcom_total_price']['exclude'] = TRUE;
+  $handler->display->display_options['fields']['field_bcom_total_price']['settings'] = array(
+    'conditions' => array(
+      0 => array(
+        'condition' => '',
+      ),
+    ),
+  );
+  /* Field: BAT Booking: Booking Price */
+  $handler->display->display_options['fields']['booking_price_1']['id'] = 'booking_price_1';
+  $handler->display->display_options['fields']['booking_price_1']['table'] = 'bat_bookings';
+  $handler->display->display_options['fields']['booking_price_1']['field'] = 'booking_price';
+  $handler->display->display_options['fields']['booking_price_1']['label'] = 'Price';
   /* Field: Type: Type */
   $handler->display->display_options['fields']['type']['id'] = 'type';
   $handler->display->display_options['fields']['type']['table'] = 'bat_types';
@@ -1434,6 +1513,12 @@ function roomify_dashboard_views_default_views() {
   $handler->display->display_options['use_more_always'] = TRUE;
   $handler->display->display_options['defaults']['use_more_text'] = FALSE;
   $handler->display->display_options['use_more_text'] = 'View all bookings';
+  $handler->display->display_options['defaults']['pager'] = FALSE;
+  $handler->display->display_options['pager']['type'] = 'full';
+  $handler->display->display_options['pager']['options']['items_per_page'] = '25';
+  $handler->display->display_options['pager']['options']['offset'] = '0';
+  $handler->display->display_options['pager']['options']['id'] = '0';
+  $handler->display->display_options['pager']['options']['quantity'] = '9';
   $handler->display->display_options['defaults']['header'] = FALSE;
   /* Header: Global: Text area */
   $handler->display->display_options['header']['area']['id'] = 'area';
@@ -1566,6 +1651,7 @@ function roomify_dashboard_views_default_views() {
   $handler->display->display_options['fields']['booking_price']['id'] = 'booking_price';
   $handler->display->display_options['fields']['booking_price']['table'] = 'field_data_booking_price';
   $handler->display->display_options['fields']['booking_price']['field'] = 'booking_price';
+  $handler->display->display_options['fields']['booking_price']['exclude'] = TRUE;
   $handler->display->display_options['fields']['booking_price']['click_sort_column'] = 'amount';
   $handler->display->display_options['fields']['booking_price']['settings'] = array(
     'calculation' => FALSE,
@@ -1575,6 +1661,23 @@ function roomify_dashboard_views_default_views() {
       ),
     ),
   );
+  /* Field: BAT Booking: Total Price */
+  $handler->display->display_options['fields']['field_bcom_total_price']['id'] = 'field_bcom_total_price';
+  $handler->display->display_options['fields']['field_bcom_total_price']['table'] = 'field_data_field_bcom_total_price';
+  $handler->display->display_options['fields']['field_bcom_total_price']['field'] = 'field_bcom_total_price';
+  $handler->display->display_options['fields']['field_bcom_total_price']['exclude'] = TRUE;
+  $handler->display->display_options['fields']['field_bcom_total_price']['settings'] = array(
+    'conditions' => array(
+      0 => array(
+        'condition' => '',
+      ),
+    ),
+  );
+  /* Field: BAT Booking: Booking Price */
+  $handler->display->display_options['fields']['booking_price_1']['id'] = 'booking_price_1';
+  $handler->display->display_options['fields']['booking_price_1']['table'] = 'bat_bookings';
+  $handler->display->display_options['fields']['booking_price_1']['field'] = 'booking_price';
+  $handler->display->display_options['fields']['booking_price_1']['label'] = 'Price';
   /* Field: BAT Booking: Edit Link */
   $handler->display->display_options['fields']['edit_unit']['id'] = 'edit_unit';
   $handler->display->display_options['fields']['edit_unit']['table'] = 'bat_bookings';
@@ -1804,6 +1907,7 @@ function roomify_dashboard_views_default_views() {
   $handler->display->display_options['fields']['booking_price']['id'] = 'booking_price';
   $handler->display->display_options['fields']['booking_price']['table'] = 'field_data_booking_price';
   $handler->display->display_options['fields']['booking_price']['field'] = 'booking_price';
+  $handler->display->display_options['fields']['booking_price']['exclude'] = TRUE;
   $handler->display->display_options['fields']['booking_price']['click_sort_column'] = 'amount';
   $handler->display->display_options['fields']['booking_price']['settings'] = array(
     'calculation' => FALSE,
@@ -1813,6 +1917,23 @@ function roomify_dashboard_views_default_views() {
       ),
     ),
   );
+  /* Field: BAT Booking: Total Price */
+  $handler->display->display_options['fields']['field_bcom_total_price']['id'] = 'field_bcom_total_price';
+  $handler->display->display_options['fields']['field_bcom_total_price']['table'] = 'field_data_field_bcom_total_price';
+  $handler->display->display_options['fields']['field_bcom_total_price']['field'] = 'field_bcom_total_price';
+  $handler->display->display_options['fields']['field_bcom_total_price']['exclude'] = TRUE;
+  $handler->display->display_options['fields']['field_bcom_total_price']['settings'] = array(
+    'conditions' => array(
+      0 => array(
+        'condition' => '',
+      ),
+    ),
+  );
+  /* Field: BAT Booking: Booking Price */
+  $handler->display->display_options['fields']['booking_price_1']['id'] = 'booking_price_1';
+  $handler->display->display_options['fields']['booking_price_1']['table'] = 'bat_bookings';
+  $handler->display->display_options['fields']['booking_price_1']['field'] = 'booking_price';
+  $handler->display->display_options['fields']['booking_price_1']['label'] = 'Price';
   /* Field: BAT Booking: Edit Link */
   $handler->display->display_options['fields']['edit_unit']['id'] = 'edit_unit';
   $handler->display->display_options['fields']['edit_unit']['table'] = 'bat_bookings';
@@ -2202,6 +2323,7 @@ function roomify_dashboard_views_default_views() {
   $handler->display->display_options['fields']['booking_price']['id'] = 'booking_price';
   $handler->display->display_options['fields']['booking_price']['table'] = 'field_data_booking_price';
   $handler->display->display_options['fields']['booking_price']['field'] = 'booking_price';
+  $handler->display->display_options['fields']['booking_price']['exclude'] = TRUE;
   $handler->display->display_options['fields']['booking_price']['click_sort_column'] = 'amount';
   $handler->display->display_options['fields']['booking_price']['settings'] = array(
     'calculation' => FALSE,
@@ -2211,6 +2333,23 @@ function roomify_dashboard_views_default_views() {
       ),
     ),
   );
+  /* Field: BAT Booking: Total Price */
+  $handler->display->display_options['fields']['field_bcom_total_price']['id'] = 'field_bcom_total_price';
+  $handler->display->display_options['fields']['field_bcom_total_price']['table'] = 'field_data_field_bcom_total_price';
+  $handler->display->display_options['fields']['field_bcom_total_price']['field'] = 'field_bcom_total_price';
+  $handler->display->display_options['fields']['field_bcom_total_price']['exclude'] = TRUE;
+  $handler->display->display_options['fields']['field_bcom_total_price']['settings'] = array(
+    'conditions' => array(
+      0 => array(
+        'condition' => '',
+      ),
+    ),
+  );
+  /* Field: BAT Booking: Booking Price */
+  $handler->display->display_options['fields']['booking_price_1']['id'] = 'booking_price_1';
+  $handler->display->display_options['fields']['booking_price_1']['table'] = 'bat_bookings';
+  $handler->display->display_options['fields']['booking_price_1']['field'] = 'booking_price';
+  $handler->display->display_options['fields']['booking_price_1']['label'] = 'Price';
   /* Field: BAT Booking: Edit Link */
   $handler->display->display_options['fields']['edit_unit']['id'] = 'edit_unit';
   $handler->display->display_options['fields']['edit_unit']['table'] = 'bat_bookings';
@@ -2336,6 +2475,7 @@ function roomify_dashboard_views_default_views() {
     t('Page'),
     t('User entity referenced from booking_user_guest'),
     t('Guest'),
+    t('Total Price'),
     t('Uid'),
     t('Start Date'),
     t('End Date'),

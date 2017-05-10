@@ -5,6 +5,10 @@
     width: 32%;
     float: left;
     margin-right: 1%;
+    @media (max-width: @screen-sm) {
+      width: 100%;
+      margin-right: 0;
+    }
     label {
       display: none;
     }
@@ -13,6 +17,10 @@
     width: 32%;
     float: left;
     margin-right: 1%;
+    @media (max-width: @screen-sm) {
+      width: 100%;
+      margin-right: 0;
+    }
   }
   #booking-price,
   .field-name-booking-event-reference {
@@ -82,11 +90,19 @@
     label {
       display: none;
     }
+    @media (max-width: @screen-sm) {
+      width: 100%;
+      margin-right: 0;
+    }
   }
   #availability-search {
     width: 32%;
     float: left;
     margin-right: 1%;
+    @media (max-width: @screen-sm) {
+      width: 100%;
+      margin-right: 0;
+    }
   }
   .field-name-booking-event-reference,
   .vertical-tabs {
@@ -104,6 +120,36 @@
     }
     input {
       height: 32px;
+    }
+  }
+}
+.page-admin-bat-config {
+  #bat-booking-edit-booking-com-form,
+  #bat-booking-edit-roomify-accommodation-booking-form,
+  #bat-booking-edit-ical-form {
+    .field-name-booking-user-guest {
+      display: inline-block;
+      border-top: 4px solid #0074bd;
+      width: 65%;
+      box-shadow: 0 1px 4px rgba(0, 0, 0, 0.18);
+      background: #fff;
+      border-radius: 3px;
+      position: relative;
+      margin-bottom: 40px;
+      position: relative;
+      padding: 20px;
+      padding-top: 70px;
+      @media (max-width: @screen-sm) {
+        width: 100%;
+        margin-right: 0;
+      }
+      label {
+        font-family: Roboto, sans-serif;
+        font-size: 20px;
+        font-weight: 500;
+        position: absolute;
+        top: 14px;
+      }
     }
   }
 }

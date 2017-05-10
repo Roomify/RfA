@@ -2019,6 +2019,8 @@ function roomify_accommodation_booking_form_alter(&$form, &$form_state, $form_id
         $form['booking_line_item_reference']['#access'] = FALSE;
       }
 
+      $form['booking_guest']['#access'] = FALSE;
+
       $booking = $form['#entity'];
 
       $currency_setting = commerce_currency_load(commerce_default_currency());
@@ -2102,6 +2104,7 @@ function roomify_accommodation_booking_form_alter(&$form, &$form_state, $form_id
         $form['field_event_id']['#access'] = FALSE;
       }
 
+      $form['booking_guest']['#access'] = FALSE;
       $booking = $form['#entity'];
 
       $currency_setting = commerce_currency_load(commerce_default_currency());

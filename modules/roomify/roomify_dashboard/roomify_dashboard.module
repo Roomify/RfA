@@ -334,6 +334,14 @@ function roomify_dashboard_page_alter(&$page) {
  * Implements hook_views_data_alter().
  */
 function roomify_dashboard_views_data_alter(&$data) {
+
+  $data['bat_bookings']['booking_price'] = array(
+    'field' => array(
+      'title' => t('Booking Price'),
+      'help' => t('Display the right booking price.'),
+      'handler' => 'roomify_dashboard_handler_bat_booking_price',
+    ),
+  );
   $data['commerce_order']['property_image'] = array(
     'field' => array(
       'title' => t('Roomify Property Image'),
