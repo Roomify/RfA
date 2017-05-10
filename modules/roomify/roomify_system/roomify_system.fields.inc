@@ -191,22 +191,22 @@ function roomify_system_add_user_fields() {
       'required' => 0,
       'settings' => array(
         'entity_translation_sync' => FALSE,
-        'user_register_form' => TRUE,
+        'user_register_form' => 1,
       ),
       'widget' => array(
         'active' => 1,
         'module' => 'addressfield',
         'settings' => array(
           'available_countries' => array(),
-          'default_country' => 'site_default',
+          'default_country' => '',
           'format_handlers' => array(
             'address' => 'address',
             'address-hide-postal-code' => 0,
             'address-hide-street' => 0,
             'address-hide-country' => 0,
             'organisation' => 0,
-            'name-full' => 1,
-            'name-oneline' => 1,
+            'name-full' => 0,
+            'name-oneline' => 0,
             'address-optional' => 0,
           ),
         ),

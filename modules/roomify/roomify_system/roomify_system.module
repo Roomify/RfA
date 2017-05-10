@@ -2180,7 +2180,7 @@ function roomify_system_form_alter(&$form, &$form_state, $form_id) {
       unset($form['actions']['preview_changes']);
     }
   }
-  if ($form_id == 'user_profile_form') {
+  if ($form_id == 'user_profile_form' || $form_id == 'user_register_form') {
     if (isset($form['redirect'])) {
       $form['redirect']['#access'] = FALSE;
     }
