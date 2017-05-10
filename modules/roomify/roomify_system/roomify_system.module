@@ -972,6 +972,7 @@ function roomify_system_roomify_rights() {
       'view own property_owner profile',
       // Authenticated users.
       'edit users with role 2',
+      'update own roomify_rate entities',
     ),
     'roomify manager' => array(
       'administer fields',
