@@ -75,6 +75,26 @@
   }
 }
 
+.pane-roomify-listing-availability-calendar-popup {
+  display: inline-block;
+  width: 100%;
+  position: relative;
+  a.ctools-modal-roomify-dashboard-modal-style {
+    background: url("../images/availability_calendar.png") 0 50% no-repeat;
+    background: url("../images/availability_calendar.svg") center center no-repeat, linear-gradient(transparent, transparent);
+    display: inline-block;
+    position: absolute;
+    width: 30px;
+    height: 30px;
+    margin-top: 0;
+    text-indent: -9999px;
+    border: 0;
+    background-size: contain;
+    top: -38px;
+    right: -18px;
+  }
+}
+
 .pane-roomify-property-name {
 
 }
@@ -626,7 +646,7 @@
                 text-decoration: none;
               }
               img {
-                max-width: 140px;
+                max-width: 240px;
                 border-radius: 2px;
                 margin-left: 25px;
                 margin-top: 15px;
@@ -699,6 +719,19 @@
                 margin-top: 5px;
                 font-style: italic;
                 color: #848484;
+              }
+              a.ctools-modal-roomify-dashboard-modal-style {
+                background: url("../images/availability_calendar.png") 0 50% no-repeat;
+                background: url("../images/availability_calendar.svg") center center no-repeat, linear-gradient(transparent, transparent);
+                display: inline-block;
+                width: 30px;
+                height: 30px;
+                margin-top: 0;
+                text-indent: -9999px;
+                border: 0;
+                background-size: contain;
+                position: relative;
+                bottom: 20px;
               }
             }
             .footable-row-detail-inner {
@@ -826,5 +859,45 @@
         }
       }
     }
+  }
+}
+
+.page-listing {
+  #modalContent {
+    @media (max-width: $screen-xs) {
+      left: 0px !important;
+    }
+  }
+  .ctools-modal-dialog.modal-dialog {
+    width: 100% !important;
+    height: 100% !important;
+    border-radius: 0px;
+    max-width: none !important;
+    margin: 0;
+    background-color: rgba(0, 0, 0, 0.75);
+    .modal-content {
+      height: 100%;
+      overflow: auto;
+      @media (max-width: $screen-xs-max) {
+        overflow: scroll;
+      }
+    }
+    #modal-content {
+      margin: 20px auto 0 auto;
+      max-height: 100% !important;
+      width: 100% !important;
+      @media (max-width: $screen-xs) {
+        padding: 10px;
+      }
+    }
+  }
+  div.modal-content {
+    background: none;
+    @include box-shadow(none);
+  }
+}
+.field-name-field-st-calendar-reference {
+  .field-label {
+    display: none;
   }
 }

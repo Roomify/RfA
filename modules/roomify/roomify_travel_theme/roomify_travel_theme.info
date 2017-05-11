@@ -14,3 +14,4 @@ dependencies[] = views
 
 files[] = views/roomify_travel_theme.views.inc
 files[] = views/roomify_travel_theme_handler_addtoany.inc
+files[] = views/roomify_travel_theme_handler_type_availability_calendar.inc

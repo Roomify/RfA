@@ -6838,11 +6838,11 @@ blockquote {
   top: 30px !important; }
   @media (min-width: 1200px) {
     #modalContent .ctools-modal-dialog.modal-dialog {
-      width: 680px !important; }
+      width: 640px !important; }
       #modalContent .ctools-modal-dialog.modal-dialog #modal-content {
-        width: 660px !important; } }
+        width: 620px !important; } }
   #modalContent .modal-content {
-    overflow: scroll; }
+    overflow: auto; }
   #modalContent .modal-header {
     border: none; }
     #modalContent .modal-header .modal-title {
@@ -8088,6 +8088,24 @@ body.toggled #close-sidebar-wrapper {
   .pane-property-location .pane-roomify-property-field-sp-address {
     margin: 15px 0; }
 
+.pane-roomify-listing-availability-calendar-popup {
+  display: inline-block;
+  width: 100%;
+  position: relative; }
+  .pane-roomify-listing-availability-calendar-popup a.ctools-modal-roomify-dashboard-modal-style {
+    background: url("../images/availability_calendar.png") 0 50% no-repeat;
+    background: url("../images/availability_calendar.svg") center center no-repeat, linear-gradient(transparent, transparent);
+    display: inline-block;
+    position: absolute;
+    width: 30px;
+    height: 30px;
+    margin-top: 0;
+    text-indent: -9999px;
+    border: 0;
+    background-size: contain;
+    top: -38px;
+    right: -18px; }
+
 .pane-roomify-property-flag-favorites-link {
   position: relative;
   z-index: 98;
@@ -8740,7 +8758,7 @@ body.toggled #close-sidebar-wrapper {
             font-size: 22px;
             text-decoration: none; }
           .page-listing .pane-property-travel-panel-pane-3 .views-table tbody tr td.views-field-field-st-gallery img {
-            max-width: 140px;
+            max-width: 240px;
             border-radius: 2px;
             margin-left: 25px;
             margin-top: 15px; }
@@ -8825,6 +8843,18 @@ body.toggled #close-sidebar-wrapper {
             margin-top: 5px;
             font-style: italic;
             color: #848484; }
+          .page-listing .pane-property-travel-panel-pane-3 .views-table tbody tr td.views-field-book-this a.ctools-modal-roomify-dashboard-modal-style {
+            background: url("../images/availability_calendar.png") 0 50% no-repeat;
+            background: url("../images/availability_calendar.svg") center center no-repeat, linear-gradient(transparent, transparent);
+            display: inline-block;
+            width: 30px;
+            height: 30px;
+            margin-top: 0;
+            text-indent: -9999px;
+            border: 0;
+            background-size: contain;
+            position: relative;
+            bottom: 20px; }
         .page-listing .pane-property-travel-panel-pane-3 .views-table tbody tr td .footable-row-detail-inner {
           margin: 10px 0;
           padding: 30px;
@@ -8923,6 +8953,40 @@ body.toggled #close-sidebar-wrapper {
       right: 15px; }
     .page-listing .panel-content-bottom .pane-featured-properties-panel-pane-3 .view-featured-properties .slick-prev.slick-arrow {
       left: 15px; }
+
+@media (max-width: 480px) {
+  .page-listing #modalContent {
+    left: 0px !important; } }
+.page-listing .ctools-modal-dialog.modal-dialog {
+  width: 100% !important;
+  height: 100% !important;
+  border-radius: 0px;
+  max-width: none !important;
+  margin: 0;
+  background-color: rgba(0, 0, 0, 0.75); }
+  .page-listing .ctools-modal-dialog.modal-dialog .modal-content {
+    height: 100%;
+    overflow: auto; }
+    @media (max-width: 767px) {
+      .page-listing .ctools-modal-dialog.modal-dialog .modal-content {
+        overflow: scroll; } }
+  .page-listing .ctools-modal-dialog.modal-dialog #modal-content {
+    margin: 20px auto 0 auto;
+    max-height: 100% !important;
+    width: 100% !important; }
+    @media (max-width: 480px) {
+      .page-listing .ctools-modal-dialog.modal-dialog #modal-content {
+        padding: 10px; } }
+.page-listing div.modal-content {
+  background: none;
+  box-shadow: none;
+  -webkit-box-shadow: none;
+  -moz-box-shadow: none;
+  -ms-box-shadow: none;
+  -o-box-shadow: none; }
+
+.field-name-field-st-calendar-reference .field-label {
+  display: none; }
 
 .page-conversation-booking .page-header,
 .page-booking .page-header {
@@ -14042,11 +14106,11 @@ div.ctools-modal-dialog .modal-header .modal-title {
   border: none;
   font-family: 'Lato';
   width: auto !important;
-  max-width: 500px !important;
+  max-width: 640px !important;
   height: auto !important;
   min-height: auto !important; }
   #modalContent div.ctools-modal-dialog .modal-body {
-    max-width: 500px !important; }
+    max-width: 640px !important; }
 
 /* Button styling. */
 #modalContent div.ctools-modal-dialog input[type=submit], a.button:link, a.button:visited, a.button:hover, a.button:active {

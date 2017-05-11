@@ -22,4 +22,11 @@ function roomify_travel_theme_views_data_alter(&$data) {
       'handler' => 'roomify_travel_theme_handler_addtoany',
     ),
   );
+  $data['roomify_properties']['type_calendar_reference'] = array(
+    'field' => array(
+      'title' => t('Type Calendar reference'),
+      'help' => t('Display a modal with the availability calendar'),
+      'handler' => 'roomify_travel_theme_handler_type_availability_calendar',
+    ),
+  );
 }
