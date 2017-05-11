@@ -279,17 +279,6 @@ function roomify_listing_field_collection_item_delete(FieldCollectionItemEntity 
  * Implements hook_entity_insert().
  */
 function roomify_listing_entity_insert($entity, $type) {
-  global $user;
-
-  if ($type == 'roomify_property' && $entity->type == 'standard_property') {
-    if (!isset($entity->field_sp_owner[LANGUAGE_NONE][0]['target_id'])) {
-      $entity->field_sp_owner[LANGUAGE_NONE][0]['target_id'] = $user->uid;
-      field_attach_update($type, $entity);
-    }
-
-    roomify_listing_edit_property_tax($entity);
-  }
-
   if ($type == 'bat_type') {
     if ($entity->type == 'home' || $entity->type == 'room') {
       roomify_listing_update_rates($entity);
@@ -305,8 +294,25 @@ function roomify_listing_entity_presave($entity, $type) {
 
   if ($type == 'roomify_property') {
     if ($entity->type == 'casa_property' || $entity->type == 'locanda_property') {
+      $types_reference = field_get_items($type, $entity, 'property_bat_type_reference');
+
       if (isset($entity->is_new) && $entity->is_new) {
         $entity->field_sp_manager[LANGUAGE_NONE][0]['target_id'] = $entity->uid;
+
+        if (empty($types_reference)) {
+          $bat_type = bat_type_create(
+            array(
+              'name' => $entity->name,
+              'type' => ($entity->type == 'casa_property') ? 'home' : 'room',
+              'uid' => $user->uid,
+              'created' => REQUEST_TIME,
+            )
+          );
+
+          $bat_type->save();
+
+          $entity->property_bat_type_reference[LANGUAGE_NONE][0]['target_id'] = $bat_type->type_id;
+        }
       }
       else {
         if (!isset($entity->field_sp_owner[LANGUAGE_NONE][0]['target_id'])) {
@@ -316,7 +322,7 @@ function roomify_listing_entity_presave($entity, $type) {
     }
 
     if ($entity->type == 'casa_property') {
-      foreach ($entity->property_bat_type_reference[LANGUAGE_NONE] as $type) {
+      foreach ($types_reference as $type) {
         if ($bat_type = bat_type_load($type['target_id'])) {
           $bat_type->name = $entity->name;
           $bat_type->save();
