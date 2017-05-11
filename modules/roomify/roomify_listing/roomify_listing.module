@@ -377,6 +377,35 @@ function roomify_listing_entity_update($entity, $type) {
 
   if ($type == 'roomify_property' && ($entity->type == 'casa_property' || $entity->type == 'locanda_property')) {
     roomify_listing_edit_property_tax($entity);
+
+    if ($entity->field_sp_manager[LANGUAGE_NONE][0]['target_id'] != $entity->original->field_sp_manager[LANGUAGE_NONE][0]['target_id']) {
+
+      foreach ($entity->property_bat_type_reference[LANGUAGE_NONE] as $type_id) {
+        $controller = entity_get_controller('roomify_rate');
+
+        foreach ($controller->getReferencedIds($type_id['target_id']) as $rate_id) {
+          $rate = roomify_rate_load($rate_id['id']);
+          $rate->uid = $entity->field_sp_manager[LANGUAGE_NONE][0]['target_id'];
+          $rate->save();
+        }
+
+        $query = db_select('bat_bookings', 'b');
+        $query->join('field_data_booking_event_reference', 'e', 'e.entity_id = b.booking_id');
+        $query->join('bat_events', 'ev', 'e.booking_event_reference_target_id = ev.event_id');
+        $query->join('field_data_event_bat_unit_reference', 'u', 'ev.event_id = u.entity_id');
+        $query->join('bat_units', 'unit', 'u.event_bat_unit_reference_target_id = unit.unit_id');
+        $query->condition('unit.type_id', $type_id['target_id']);
+        $query->fields('b', array('booking_id'));
+
+        $results = $query->execute()->fetchAll();
+
+        foreach ($results as $result) {
+          $booking = bat_booking_load($result->booking_id);
+          $booking->uid = $entity->field_sp_manager[LANGUAGE_NONE][0]['target_id'];
+          $booking->save();
+        }
+      }
+    }
   }
 
   if ($type == 'bat_type') {
