@@ -1855,3 +1855,28 @@ function roomify_conversations_inquiry_render($conversation) {
 
   return $output;
 }
+
+/**
+ * Implements hook_query_TAG_alter().
+ */
+function roomify_conversations_query_roomify_conversation_access_alter(QueryAlterableInterface $query) {
+  // Look for an event base table to pass to the query altering function or
+  // else assume we don't have the tables we need to establish order related
+  // altering right now.
+  foreach ($query->getTables() as $table) {
+    if ($table['table'] === 'roomify_conversations') {
+      $query->leftJoin('field_data_conversation_owner_user_ref', 'user_ref', 'roomify_conversations.conversation_id = user_ref.entity_id');
+
+      bat_entity_access_query_alter($query, 'roomify_conversation', $table['alias']);
+
+      break;
+    }
+  }
+}
+
+/**
+ * Implements hook_bat_entity_access_view_condition_roomify_conversation_alter().
+ */
+function roomify_conversations_bat_entity_access_view_condition_roomify_conversation_alter(&$conditions, $context) {
+  $conditions->condition('user_ref.conversation_owner_user_ref_target_id', $context['account']->uid);
+}
