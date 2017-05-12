@@ -11,6 +11,7 @@ dependencies[] = roomify_pages_manager
 dependencies[] = search_api
 dependencies[] = search_api_db
 dependencies[] = views
+dependencies[] = views_infinite_scroll
 
 files[] = views/roomify_travel_theme.views.inc
 files[] = views/roomify_travel_theme_handler_addtoany.inc
