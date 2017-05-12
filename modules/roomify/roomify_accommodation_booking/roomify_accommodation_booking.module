@@ -1705,7 +1705,7 @@ function roomify_accommodation_booking_form_user_register_form_alter(&$form, &$f
   $form['user_telephone']['#weight'] = -98;
   if (strpos($form['#action'], 'render=references-dialog') !== FALSE) {
     $form['account']['name']['#required'] = FALSE;
-    $form['account']['name']['#description'] = t('Using this (or email) the user will be able to access to the site.') . ' ' . $form['account']['name']['#description'];
+    $form['account']['name']['#description'] = t('Using this username (or their email) the user will be able to access the site.') . ' ' . $form['account']['name']['#description'];
     $form['account']['mail']['#required'] = FALSE;
     $form['account']['pass']['#access'] = FALSE;
     $form['account']['pass']['#required'] = FALSE;

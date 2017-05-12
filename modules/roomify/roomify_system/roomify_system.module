@@ -970,8 +970,6 @@ function roomify_system_roomify_rights() {
       'view any commerce_customer_profile entity',
       'create commerce_customer_profile entities',
       'view own property_owner profile',
-      // Authenticated users.
-      'edit users with role 2',
       'update own roomify_rate entities',
     ),
     'roomify manager' => array(
@@ -1126,6 +1124,9 @@ function roomify_system_roomify_rights() {
     'administrator' => $permissions,
   );
 
+  if ($authenticated_user_role = user_role_load_by_name('authenticated user')) {
+    $rights['roomify_system']['property owner'][] = 'edit users with role ' . $authenticated_user_role->rid;
+  }
   if ($guest_role = user_role_load_by_name('guest')) {
     $rights['roomify_system']['property owner'][] = 'edit users with role ' . $guest_role->rid;
   }
