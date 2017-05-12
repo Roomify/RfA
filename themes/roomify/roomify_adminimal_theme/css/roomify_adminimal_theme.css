@@ -1615,6 +1615,9 @@ body.adminimal-theme .cke_reset_all label {
   width: 100%;
   margin: 5px 0;
 }
+form[id^=roomify-property-wizard-form] h2,
+#roomify-property-wizard-form h2,
+form[id^=roomify-property-wizard-form] .form-item-property-name,
 #roomify-property-wizard-form .form-item-property-name {
   margin-bottom: 20px;
 }
@@ -2024,6 +2027,9 @@ body .ui-dialog .ui-button-text {
 }
 .pane-properties-dashboard-properties .view-display-id-dashboard_properties td.views-field-name .property-info .property-changed .label {
   font-weight: 600;
+}
+.pane-properties-dashboard-properties .view-display-id-dashboard_properties td.views-field a {
+  color: #5a5a5a;
 }
 .pane-properties-dashboard-properties .view-display-id-dashboard_properties td.views-field.views-field-edit-unit {
   width: 30px;
@@ -2737,6 +2743,9 @@ body.adminimal-skin-material table.views-table tbody tr td {
 #bat-booking-edit-ical-form fieldset#edit-order .view-order,
 #bat-booking-edit-booking-com-form fieldset#edit-order .view-order {
   font-size: 120%;
+}
+.page-admin-bat-config-property .form-type-textfield.form-item-name input {
+  font-size: 20px;
 }
 @media (max-width: 768px) {
   .page-admin-bat-config-property #calendar.field-name-booking-full-name {
@@ -3516,6 +3525,14 @@ a.ctools-use-modal:hover,
     padding-top: 15px;
     width: 80% !important;
   }
+}
+div.ctools-modal-content .modal-content {
+  padding: 1em;
+}
+div.ctools-modal-content div.type-container .container-inline .form-item input[name*=price],
+div.ctools-modal-content div.type-container .container-inline .form-item input[name*=rooms],
+div.ctools-modal-content div.type-container .container-inline .form-item input[name*=occupancy] {
+  width: 5em;
 }
 #references-dialog-page .view-customer-profiles td {
   cursor: pointer;
