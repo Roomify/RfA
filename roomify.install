@@ -311,6 +311,8 @@ function roomify_install_finished(&$install_state) {
 
   variable_set('mimemail_format', 'rich_text');
 
+  variable_set('logintoboggan_login_with_email', '1');
+
   // AddToAny Variables
   variable_set('addtoany_buttons_size', '25');
   variable_set('addtoany_additional_html', '<a class="a2a_button_facebook"></a>
