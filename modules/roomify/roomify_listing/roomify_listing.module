@@ -1524,3 +1524,38 @@ function roomify_listing_enquiry_done() {
 
   return check_markup($submission_reply_text['value'], $submission_reply_text['format']);
 }
+
+/**
+ * Implements hook_bat_calendar_settings_alter().
+ */
+function roomify_listing_bat_calendar_settings_alter(&$calendar_settings) {
+  foreach ($calendar_settings['batCalendar'] as $cal_id => $settings) {
+    if ($calendar_settings['batCalendar'][$cal_id]['defaultView'] == 'month') {
+      $calendar_settings['batCalendar'][$cal_id]['background'] = 'type-availability-calendar';
+      $calendar_settings['batCalendar'][$cal_id]['allDayDefault'] = TRUE;
+    }
+  }
+}
+
+/**
+ * Implements hook_bat_api_events_index_calendar_alter().
+ */
+function roomify_listing_bat_api_events_index_calendar_alter(&$events, $context) {
+  if ($context['background'] === 'type-availability-calendar') {
+    foreach ($events as $id => $event) {
+      if ($event['blocking']) {
+        $state = bat_event_load_state_by_machine_name(NOT_AVAILABLE);
+
+        $events[$id]['color'] = $state['color'];
+        $events[$id]['rendering'] = 'background';
+      }
+
+      $start_date = new DateTime($event['start']);
+      $end_date = new DateTime($event['end']);
+
+      if ($start_date->format('Y-m-d') != $end_date->format('Y-m-d')) {
+        $events[$id]['end'] = $end_date->add(new DateInterval('P1D'))->format('Y-m-d') . 'T00:00:00';
+      }
+    }
+  }
+}
