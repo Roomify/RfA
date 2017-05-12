@@ -1615,6 +1615,9 @@ body.adminimal-theme .cke_reset_all label {
   width: 100%;
   margin: 5px 0;
 }
+form[id^=roomify-property-wizard-form] h2,
+#roomify-property-wizard-form h2,
+form[id^=roomify-property-wizard-form] .form-item-property-name,
 #roomify-property-wizard-form .form-item-property-name {
   margin-bottom: 20px;
 }
@@ -2025,6 +2028,9 @@ body .ui-dialog .ui-button-text {
 .pane-properties-dashboard-properties .view-display-id-dashboard_properties td.views-field-name .property-info .property-changed .label {
   font-weight: 600;
 }
+.pane-properties-dashboard-properties .view-display-id-dashboard_properties td.views-field a {
+  color: #5a5a5a;
+}
 .pane-properties-dashboard-properties .view-display-id-dashboard_properties td.views-field.views-field-edit-unit {
   width: 30px;
 }
@@ -2092,11 +2098,14 @@ body .ui-dialog .ui-button-text {
   box-shadow: none;
   display: block;
   border: none;
-  padding-top: 10px;
   border-top: none !important;
 }
-.page-admin-bat-config-types-manage #main-content .vertical-tabs-panes fieldset legend,
-.page-admin-bat-config-property-manage #main-content .vertical-tabs-panes fieldset legend {
+.page-admin-bat-config-types-manage #main-content .vertical-tabs-panes > fieldset,
+.page-admin-bat-config-property-manage #main-content .vertical-tabs-panes > fieldset {
+  padding-top: 10px;
+}
+.page-admin-bat-config-types-manage #main-content .vertical-tabs-panes > fieldset > legend,
+.page-admin-bat-config-property-manage #main-content .vertical-tabs-panes > fieldset > legend {
   display: none !important;
 }
 .page-admin-bat-config-types-manage .field-name-field-sp-gallery .property-gallery-show-text,
@@ -2750,6 +2759,9 @@ body.adminimal-skin-material table.views-table tbody tr td {
 #bat-booking-edit-ical-form fieldset#edit-order .view-order,
 #bat-booking-edit-booking-com-form fieldset#edit-order .view-order {
   font-size: 120%;
+}
+.page-admin-bat-config-property .form-type-textfield.form-item-name input {
+  font-size: 20px;
 }
 @media (max-width: 768px) {
   .page-admin-bat-config-property #calendar.field-name-booking-full-name {
@@ -3589,7 +3601,18 @@ a.ctools-use-modal:hover,
     width: 80% !important;
   }
 }
-#references-dialog-page .view-users td {
+
+div.ctools-modal-content .modal-content {
+  padding: 1em;
+}
+div.ctools-modal-content div.type-container .container-inline .form-item input[name*=price],
+div.ctools-modal-content div.type-container .container-inline .form-item input[name*=rooms],
+div.ctools-modal-content div.type-container .container-inline .form-item input[name*=occupancy] {
+  width: 5em;
+}
+
+#references-dialog-page .view-users td,
+#references-dialog-page .view-customer-profiles td {
   cursor: pointer;
 }
 .manualcrop-style-button-holder {
@@ -3597,9 +3620,6 @@ a.ctools-use-modal:hover,
 }
 .manualcrop-style-button-holder input {
   background: #FF9800 !important;
-}
-.vertical-tabs-panes fieldset fieldset .fieldset-legend {
-  display: none;
 }
 .roomify-property-reviewed {
   display: inline-block;

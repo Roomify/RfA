@@ -226,6 +226,14 @@ a.ctools-use-modal,
     }
   }
 }
+div.ctools-modal-content .modal-content {
+  padding: 1em;
+}
+div.ctools-modal-content div.type-container .container-inline .form-item input[name*=price],
+div.ctools-modal-content div.type-container .container-inline .form-item input[name*=rooms],
+div.ctools-modal-content div.type-container .container-inline .form-item input[name*=occupancy] {
+  width: 5em;
+}
 
 #references-dialog-page .view-users td {
   cursor: pointer;
@@ -234,12 +242,6 @@ a.ctools-use-modal,
   padding-bottom: 1em;
   input {
     background: #FF9800 !important;
-  }
-}
-
-.vertical-tabs-panes fieldset fieldset {
-  .fieldset-legend {
-    display: none;
   }
 }
 
@@ -263,5 +265,6 @@ a.ctools-use-modal,
   h1 {
     margin-top: 48px;
     font-weight: 400;
+    font-style: italic;
   }
 }

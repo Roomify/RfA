@@ -39,9 +39,10 @@ function roomify_offers_menu() {
     'weight' => 2,
   );
 
-  $items['admin/bat/config/global/offers/add'] = array(
+  $items['admin/bat/config/global/offers/add/%ctools_js'] = array(
     'title' => 'Add Offer',
     'page callback' => 'roomify_offers_add_offer_page',
+    'page arguments' => array(6),
     'access arguments' => array('administer offers'),
   );
 
@@ -263,7 +264,7 @@ function roomify_offers_preprocess_offers_pricing_calendar(&$vars) {
 function roomify_offers_manage_page() {
   roomify_dashboard_setup_modal();
 
-  $button_add = l(t('add special offer'), 'admin/bat/config/global/offers/add', array('attributes' => array('class' => 'add-offer-button ctools-use-modal ctools-modal-roomify-dashboard-modal-style')));
+  $button_add = l(t('add special offer'), 'admin/bat/config/global/offers/add/ajax', array('attributes' => array('class' => 'add-offer-button ctools-use-modal ctools-modal-roomify-dashboard-modal-style')));
 
   $view = views_embed_view('special_offers', 'block_1');
 
@@ -273,28 +274,33 @@ function roomify_offers_manage_page() {
 /**
  * Add new offer modal page.
  */
-function roomify_offers_add_offer_page() {
-  ctools_include('ajax');
-  ctools_include('modal');
+function roomify_offers_add_offer_page($js = NULL) {
+  if ($js) {
+    ctools_include('ajax');
+    ctools_include('modal');
 
-  $form_state = array(
-    'ajax' => TRUE,
-    'title' => t('Add New Special Offer'),
-  );
+    $form_state = array(
+      'ajax' => TRUE,
+      'title' => t('Add New Special Offer'),
+    );
 
-  // Use ctools to generate ajax instructions for the browser to create
-  // a form in a modal popup.
-  $output = ctools_modal_form_wrapper('roomify_offers_add_offer_form', $form_state);
+    // Use ctools to generate ajax instructions for the browser to create
+    // a form in a modal popup.
+    $output = ctools_modal_form_wrapper('roomify_offers_add_offer_form', $form_state);
 
-  // If the form has been submitted, there may be additional instructions
-  // such as dismissing the modal popup.
-  if (!empty($form_state['ajax_commands'])) {
-    $output = $form_state['ajax_commands'];
+    // If the form has been submitted, there may be additional instructions
+    // such as dismissing the modal popup.
+    if (!empty($form_state['ajax_commands'])) {
+      $output = $form_state['ajax_commands'];
+    }
+
+    // Return the ajax instructions to the browser via ajax_render().
+    print ajax_render($output);
+    drupal_exit();
   }
-
-  // Return the ajax instructions to the browser via ajax_render().
-  print ajax_render($output);
-  drupal_exit();
+  else {
+    return drupal_get_form('roomify_offers_add_offer_form');
+  }
 }
 
 /**
@@ -390,9 +396,16 @@ function roomify_offers_add_offer_form_submit($form, &$form_state) {
 
   $rate->save();
 
-  ctools_add_js('ajax-responder');
-  $form_state['ajax_commands'][] = ctools_modal_command_dismiss();
-  $form_state['ajax_commands'][] = ctools_ajax_command_redirect('admin/bat/config/global/offers');
+  if (isset($form_state['ajax']) && $form_state['ajax']) {
+    ctools_add_js('ajax-responder');
+    $form_state['ajax_commands'][] = ctools_modal_command_dismiss();
+    $form_state['ajax_commands'][] = ctools_ajax_command_redirect('admin/bat/config/global/offers');
+  }
+  else {
+    drupal_set_message(t('Offer created'));
+
+    $form_state['redirect'] = 'admin/bat/config/global/offers';
+  }
 }
 
 /**

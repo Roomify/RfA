@@ -324,7 +324,7 @@ function roomify_dashboard_page_alter(&$page) {
         }
       }
 
-      $info_icon = '<img src="' . url(drupal_get_path('module', 'roomify_dashboard') . '/images/info.png') . '">';
+      $info_icon = '<img src="' . file_create_url(drupal_get_path('module', 'roomify_dashboard') . '/images/info.png') . '">';
       $page['content']['help']['content']['#markup'] = '<a target="_blank" href="' . $link . '"><div class="help-icon"><span>' . t('Documentation') . '</span>' . $info_icon . '</div></a>';
     }
   }
@@ -386,7 +386,7 @@ function roomify_dashboard_menu_link_alter(&$item) {
     $item['menu_token_enabled'] = 1;
     if (isset($item['language']) && $item['language'] != 'en' && $item['language'] != LANGUAGE_NONE) {
       // Check if the original link has a class.
-      if ($translations = $item['translation_set']->get_translations()) {
+      if ((isset($item['translation_set'])) && ($translations = $item['translation_set']->get_translations())) {
         $class = isset($translations['en']['options']['attributes']['class']) ? $translations['en']['options']['attributes']['class'] : '';
         $item['options']['attributes']['class'] = $class;
       }
