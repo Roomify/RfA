@@ -8977,6 +8977,51 @@ body.toggled #close-sidebar-wrapper {
     @media (max-width: 480px) {
       .page-listing .ctools-modal-dialog.modal-dialog #modal-content {
         padding: 10px; } }
+  .page-listing .ctools-modal-dialog.modal-dialog .field-type-bat-calendar-unit-type-reference {
+    padding: 28px;
+    background: white;
+    border-radius: 4px;
+    border: 1px solid #eaeaea; }
+    .page-listing .ctools-modal-dialog.modal-dialog .field-type-bat-calendar-unit-type-reference table:not(.table-bordered) > thead > tr > th,
+    .page-listing .ctools-modal-dialog.modal-dialog .field-type-bat-calendar-unit-type-reference table:not(.table-bordered) > tbody > tr > th,
+    .page-listing .ctools-modal-dialog.modal-dialog .field-type-bat-calendar-unit-type-reference table:not(.table-bordered) > tfoot > tr > th,
+    .page-listing .ctools-modal-dialog.modal-dialog .field-type-bat-calendar-unit-type-reference table:not(.table-bordered) > thead > tr > td,
+    .page-listing .ctools-modal-dialog.modal-dialog .field-type-bat-calendar-unit-type-reference table:not(.table-bordered) > tbody > tr > td,
+    .page-listing .ctools-modal-dialog.modal-dialog .field-type-bat-calendar-unit-type-reference table:not(.table-bordered) > tfoot > tr > td,
+    .page-listing .ctools-modal-dialog.modal-dialog .field-type-bat-calendar-unit-type-reference .table:not(.table-bordered) > thead > tr > th,
+    .page-listing .ctools-modal-dialog.modal-dialog .field-type-bat-calendar-unit-type-reference .table:not(.table-bordered) > tbody > tr > th,
+    .page-listing .ctools-modal-dialog.modal-dialog .field-type-bat-calendar-unit-type-reference .table:not(.table-bordered) > tfoot > tr > th,
+    .page-listing .ctools-modal-dialog.modal-dialog .field-type-bat-calendar-unit-type-reference .table:not(.table-bordered) > thead > tr > td,
+    .page-listing .ctools-modal-dialog.modal-dialog .field-type-bat-calendar-unit-type-reference .table:not(.table-bordered) > tbody > tr > td,
+    .page-listing .ctools-modal-dialog.modal-dialog .field-type-bat-calendar-unit-type-reference .table:not(.table-bordered) > tfoot > tr > td {
+      border-color: #717171; }
+  .page-listing .ctools-modal-dialog.modal-dialog .fc-head-container.fc-widget-header,
+  .page-listing .ctools-modal-dialog.modal-dialog .fc-day-header.fc-widget-header {
+    background: #1597d2;
+    color: white;
+    font-weight: 500;
+    text-transform: uppercase; }
+  .page-listing .ctools-modal-dialog.modal-dialog .calendar-legend {
+    display: inline-block;
+    width: 100%;
+    margin: 10px 0; }
+    .page-listing .ctools-modal-dialog.modal-dialog .calendar-legend .available-date,
+    .page-listing .ctools-modal-dialog.modal-dialog .calendar-legend .unavailable-date {
+      padding-left: 30px;
+      margin-right: 10px;
+      position: relative; }
+      .page-listing .ctools-modal-dialog.modal-dialog .calendar-legend .available-date:before,
+      .page-listing .ctools-modal-dialog.modal-dialog .calendar-legend .unavailable-date:before {
+        width: 20px;
+        height: 20px;
+        content: '';
+        background: #dce3d6;
+        display: inline-block;
+        position: absolute;
+        left: 5px;
+        top: -2px; }
+    .page-listing .ctools-modal-dialog.modal-dialog .calendar-legend .unavailable-date:before {
+      background: #f0bfbf; }
 .page-listing div.modal-content {
   background: none;
   box-shadow: none;

@@ -1153,6 +1153,10 @@ function roomfy_listing_type_availability_calendar_modal($type_id = NULL) {
     $calendar[0]['#prefix'] = '';
   }
   $contents = render($calendar);
+  $contents .= '<div class="calendar-legend">
+    <span class="available-date">' . t('Available Night') . '</span>
+    <span class="unavailable-date">' . t('Unavailable Night') . '</span>
+  </div>';
 
   return ctools_modal_render(t('@name Availability', array('@name' => $type->name)), $contents);
 }
