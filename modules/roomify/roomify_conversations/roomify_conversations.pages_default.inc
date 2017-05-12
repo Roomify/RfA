@@ -19,11 +19,12 @@ function roomify_conversations_default_page_manager_pages() {
   $page->access = array(
     'plugins' => array(
       0 => array(
-        'name' => 'perm',
+        'name' => 'php',
         'settings' => array(
-          'perm' => 'view own roomify_conversation entities',
+          'description' => '',
+          'php' => '$conversation = $contexts[\'argument_entity_id:roomify_conversation_1\']->data;
+  return roomify_conversation_access(\'view\', $conversation);',
         ),
-        'context' => 'logged-in-user',
         'not' => FALSE,
       ),
     ),
@@ -76,6 +77,8 @@ function roomify_conversations_default_page_manager_pages() {
   $display->cache = array();
   $display->title = 'Conversation %roomify_conversation:conversation-id';
   $display->uuid = '9f5a56b0-08e8-4ad2-8e77-cea38515974d';
+  $display->storage_type = 'page_manager';
+  $display->storage_id = 'page_conversation__panel';
   $display->content = array();
   $display->panels = array();
   $pane = new stdClass();
