@@ -386,6 +386,7 @@ projects[redirect][version] = 1.0-rc3
 
 projects[references_dialog][version] = 1.0-beta2
 projects[references_dialog][patch][] = https://www.drupal.org/files/issues/references_dialog-zindex-2833782-1.patch
+projects[references_dialog][patch][] = https://www.drupal.org/files/issues/creating_user_but-2238801-6.patch
 
 projects[robotstxt][version] = 1.3
 
