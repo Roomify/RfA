@@ -909,6 +909,9 @@
       .table:not(.table-bordered) > tfoot > tr > td {
         border-color: #717171;
       }
+      td.fc-past {
+        background: #efefef;
+      }
     }
     .fc-head-container.fc-widget-header,
     .fc-day-header.fc-widget-header {

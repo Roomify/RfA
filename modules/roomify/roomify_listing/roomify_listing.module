@@ -1552,6 +1552,7 @@ function roomify_listing_bat_api_events_index_calendar_alter(&$events, $context)
 
         $events[$id]['color'] = $state['color'];
         $events[$id]['rendering'] = 'background';
+        $events[$id]['title'] = $state['label'];
       }
 
       $start_date = new DateTime($event['start']);

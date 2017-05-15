@@ -8995,6 +8995,8 @@ body.toggled #close-sidebar-wrapper {
     .page-listing .ctools-modal-dialog.modal-dialog .field-type-bat-calendar-unit-type-reference .table:not(.table-bordered) > tbody > tr > td,
     .page-listing .ctools-modal-dialog.modal-dialog .field-type-bat-calendar-unit-type-reference .table:not(.table-bordered) > tfoot > tr > td {
       border-color: #717171; }
+    .page-listing .ctools-modal-dialog.modal-dialog .field-type-bat-calendar-unit-type-reference td.fc-past {
+      background: #efefef; }
   .page-listing .ctools-modal-dialog.modal-dialog .fc-head-container.fc-widget-header,
   .page-listing .ctools-modal-dialog.modal-dialog .fc-day-header.fc-widget-header {
     background: #1597d2;
