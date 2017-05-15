@@ -123,8 +123,21 @@ function roomify_review_node_access($node, $op, $account) {
  * Implements hook_form_FORM_ID_alter().
  * FORM_ID = review_node_form.
  */
-function roomify_review_form_review_node_form_alter(&$form, &$form_state, $node) {
+function roomify_review_form_review_node_form_alter(&$form, &$form_state, $form_id) {
   global $user;
+  if (isset($form['#node'])) {
+    $node = $form['#node'];
+    $access = FALSE;
+    if ($node->uid == $user->uid || in_array('administrator', $user->roles) || $user->uid == 1) {
+      $access = TRUE;
+    }
+    // Only Administrators and Review Authors should be able to edit it.
+    if (!$access) {
+      $form['field_review_rating']['#disabled'] = TRUE;
+      $form['title']['#disabled'] = TRUE;
+      $form['body']['#disabled'] = TRUE;
+    }
+  }
 
   // Remove Metatags.
   if (isset($form['metatags'])) {
