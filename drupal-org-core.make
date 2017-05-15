@@ -5,5 +5,6 @@ projects[drupal][version] = 7.54
 ; Patches for Core
 projects[drupal][patch][] = "http://drupal.org/files/issues/install-redirect-on-empty-database-728702-36.patch"
 projects[drupal][patch][] = "http://drupal.org/files/1275902-15-entity_uri_callback-D7.patch"
+projects[drupal][patch][] = "https://www.drupal.org/files/issues/DATE_RFC7231-2877243-1.patch"
 projects[drupal][patch][] = "patches/9to10_menu_max_parts.patch"
 projects[drupal][patch][] = "patches/exclude_flag_robottxt.patch"
