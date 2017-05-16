@@ -393,7 +393,9 @@ function roomify_accommodation_booking_views_default_views() {
   $handler->display->display_options['filters']['event_state_reference_state_id']['table'] = 'field_data_event_state_reference';
   $handler->display->display_options['filters']['event_state_reference_state_id']['field'] = 'event_state_reference_state_id';
   $handler->display->display_options['filters']['event_state_reference_state_id']['relationship'] = 'booking_event_reference_target_id';
-  $handler->display->display_options['filters']['event_state_reference_state_id']['value']['value'] = '4';
+  $handler->display->display_options['filters']['event_state_reference_state_id']['value'] = array(
+    'value' => '4',
+  );
   $handler->display->display_options['filters']['event_state_reference_state_id']['expose']['operator_id'] = 'event_state_reference_state_id_op';
   $handler->display->display_options['filters']['event_state_reference_state_id']['expose']['label'] = 'State (event_state_reference)';
   $handler->display->display_options['filters']['event_state_reference_state_id']['expose']['use_operator'] = TRUE;
@@ -422,6 +424,48 @@ function roomify_accommodation_booking_views_default_views() {
 
   /* Display: Block */
   $handler = $view->new_display('block', 'Block', 'block_1');
+  $handler->display->display_options['defaults']['sorts'] = FALSE;
+  /* Sort criterion: Events: Start Date */
+  $handler->display->display_options['sorts']['start_date']['id'] = 'start_date';
+  $handler->display->display_options['sorts']['start_date']['table'] = 'bat_events';
+  $handler->display->display_options['sorts']['start_date']['field'] = 'start_date';
+  $handler->display->display_options['sorts']['start_date']['relationship'] = 'booking_event_reference_target_id';
+  $translatables['upcoming_bookings'] = array(
+    t('Master'),
+    t('Bookings'),
+    t('more'),
+    t('Apply'),
+    t('Reset'),
+    t('Sort by'),
+    t('Asc'),
+    t('Desc'),
+    t('Items per page'),
+    t('- All -'),
+    t('Offset'),
+    t('« first'),
+    t('‹ previous'),
+    t('next ›'),
+    t('last »'),
+    t('You do not have any bookings yet.'),
+    t('Events entity referenced from booking_event_reference'),
+    t('Unit entity referenced from event_bat_unit_reference'),
+    t('Type'),
+    t('Roomify Property referencing Type from property_bat_type_reference'),
+    t('.'),
+    t(','),
+    t(' - [name_1]'),
+    t('Property'),
+    t('[name] [name_1]'),
+    t('Check-In'),
+    t('Check-Out'),
+    t('Nights'),
+    t('Price'),
+    t('Edit'),
+    t('Cancel'),
+    t('All'),
+    t('State (event_state_reference)'),
+    t('Block'),
+  );
 
   $views['upcoming_bookings'] = $view;
 
