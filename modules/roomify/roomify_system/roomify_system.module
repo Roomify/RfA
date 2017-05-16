@@ -908,7 +908,6 @@ function roomify_system_roomify_rights() {
       'view calendar data for any availability event',
       'access units calendar index service',
       'access events calendar index service',
-
     ),
     'authenticated user' => array(
       'access checkout',

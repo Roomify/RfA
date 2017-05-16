@@ -1535,8 +1535,14 @@ function roomify_listing_enquiry_done() {
 function roomify_listing_bat_calendar_settings_alter(&$calendar_settings) {
   foreach ($calendar_settings['batCalendar'] as $cal_id => $settings) {
     if ($calendar_settings['batCalendar'][$cal_id]['defaultView'] == 'month') {
+      $future_limit = variable_get('roomify_accommodation_booking_future_limit', 31104000);
+
       $calendar_settings['batCalendar'][$cal_id]['background'] = 'type-availability-calendar';
       $calendar_settings['batCalendar'][$cal_id]['allDayDefault'] = TRUE;
+      $calendar_settings['batCalendar'][$cal_id]['validRange'] = array(
+        'start' => date('Y-m-d'),
+        'end' => date('Y-m-d', REQUEST_TIME + $future_limit + 86400),
+      );
     }
   }
 }
@@ -1545,7 +1551,11 @@ function roomify_listing_bat_calendar_settings_alter(&$calendar_settings) {
  * Implements hook_bat_api_events_index_calendar_alter().
  */
 function roomify_listing_bat_api_events_index_calendar_alter(&$events, $context) {
-  if ($context['background'] === 'type-availability-calendar') {
+  global $user;
+
+  if ((is_array($user->roles) && !in_array('administrator', $user->roles) &&
+      !in_array('property owner', $user->roles) && !in_array('roomify manager', $user->roles)) ||
+      !is_array($user->roles) || $context['background'] === 'type-availability-calendar') {
     foreach ($events as $id => $event) {
       if ($event['blocking']) {
         $state = bat_event_load_state_by_machine_name(NOT_AVAILABLE);
