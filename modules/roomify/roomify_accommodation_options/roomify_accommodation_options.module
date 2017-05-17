@@ -8,6 +8,10 @@ define('ROOMIFY_ACCOMMODATION_OPTIONS_ADD', 'add');
 define('ROOMIFY_ACCOMMODATION_OPTIONS_ADD_DAILY', 'add-daily');
 define('ROOMIFY_ACCOMMODATION_OPTIONS_SUB', 'sub');
 define('ROOMIFY_ACCOMMODATION_OPTIONS_SUB_DAILY', 'sub-daily');
+define('ROOMIFY_ACCOMMODATION_OPTIONS_ADD_PERSON', 'add_person');
+define('ROOMIFY_ACCOMMODATION_OPTIONS_ADD_DAILY_PERSON', 'add-daily_person');
+define('ROOMIFY_ACCOMMODATION_OPTIONS_SUB_PERSON', 'sub_person');
+define('ROOMIFY_ACCOMMODATION_OPTIONS_SUB_DAILY_PERSON', 'sub-daily_person');
 define('ROOMIFY_ACCOMMODATION_OPTIONS_REPLACE', 'replace');
 define('ROOMIFY_ACCOMMODATION_OPTIONS_INCREASE', 'increase');
 define('ROOMIFY_ACCOMMODATION_OPTIONS_DECREASE', 'decrease');
@@ -246,7 +250,7 @@ function roomify_accommodation_options_field_widget_form(&$form, &$form_state, $
       '#title' => t('Value'),
       '#size' => 10,
       '#default_value' => isset($items[$delta]['value']) ? $items[$delta]['value'] : NULL,
-      '#element_validate' => array('element_validate_integer_positive'),
+      '#element_validate' => array('roomify_accommodation_options_element_value_validate'),
       '#attributes' => array(
         'class' => array('roomify_accommodation_options-option--value'),
       ),
@@ -286,6 +290,17 @@ function roomify_accommodation_options_field_widget_form(&$form, &$form_state, $
     $element['#attached']['css'] = array(drupal_get_path('module', 'roomify_accommodation_options') . '/css/roomify_accommodation_options_widget.css');
 
     return $element;
+  }
+}
+
+/**
+ * Form element validation handler for numeric elements that must be positive.
+ */
+function roomify_accommodation_options_element_value_validate($element, &$form_state) {
+  $value = $element['#value'];
+
+  if ($value != '' && (!is_numeric($value) || $value <= 0)) {
+    form_error($element, t('%name must be a positive number.', array('%name' => $element['#title'])));
   }
 }
 
@@ -416,6 +431,10 @@ function roomify_accommodation_options_price_options() {
     ROOMIFY_ACCOMMODATION_OPTIONS_ADD_DAILY => t('Add to price per night'),
     ROOMIFY_ACCOMMODATION_OPTIONS_SUB => t('Subtract from price'),
     ROOMIFY_ACCOMMODATION_OPTIONS_SUB_DAILY => t('Subtract from price per night'),
+    ROOMIFY_ACCOMMODATION_OPTIONS_ADD_PERSON => t('Add to price per person'),
+    ROOMIFY_ACCOMMODATION_OPTIONS_ADD_DAILY_PERSON => t('Add to price per night per person'),
+    ROOMIFY_ACCOMMODATION_OPTIONS_SUB_PERSON => t('Subtract from price per person'),
+    ROOMIFY_ACCOMMODATION_OPTIONS_SUB_DAILY_PERSON => t('Subtract from price per night per person'),
     ROOMIFY_ACCOMMODATION_OPTIONS_REPLACE => t('Replace price'),
     ROOMIFY_ACCOMMODATION_OPTIONS_INCREASE => t('Increase price by % amount'),
     ROOMIFY_ACCOMMODATION_OPTIONS_DECREASE => t('Decrease price by % amount'),
@@ -550,6 +569,34 @@ function roomify_accommodation_options_get_operation_label($option) {
         '@currency_symbol' => $currency_symbol,
       ));
       break;
+
+    case 'add_person':
+      $label = t('+@amount@currency_symbol per person to price', array(
+        '@amount' => $option['value'],
+        '@currency_symbol' => $currency_symbol,
+      ));
+      break;
+
+    case 'add-daily_person':
+      $label = t('+@amount@currency_symbol per night per person to price', array(
+        '@amount' => $option['value'],
+        '@currency_symbol' => $currency_symbol,
+      ));
+      break;
+
+    case 'sub_person':
+      $label = t('-@amount@currency_symbol per person from price', array(
+        '@amount' => $option['value'],
+        '@currency_symbol' => $currency_symbol,
+      ));
+      break;
+
+    case 'sub-daily_person':
+      $label = t('-@amount@currency_symbol per night per person from price', array(
+        '@amount' => $option['value'],
+        '@currency_symbol' => $currency_symbol,
+      ));
+      break;
   }
 
   return $label;
@@ -557,8 +604,16 @@ function roomify_accommodation_options_get_operation_label($option) {
 
 /**
  * Calculate the price for an option.
+ *
+ * @param $booking_price
+ * @param $option
+ * @param $quantity
+ * @param $nights
+ * @param $persons
+ *
+ * @return float
  */
-function roomify_accommodation_options_get_option_price($booking_price, $option, $quantity, $nights) {
+function roomify_accommodation_options_get_option_price($booking_price, $option, $quantity, $nights, $persons = 0) {
   $price = 0;
 
   switch ($option['operation']) {
@@ -590,6 +645,22 @@ function roomify_accommodation_options_get_option_price($booking_price, $option,
 
     case ROOMIFY_ACCOMMODATION_OPTIONS_DECREASE:
       $price -= $booking_price * $option['value'] / 100;
+      break;
+
+    case ROOMIFY_ACCOMMODATION_OPTIONS_ADD_PERSON:
+      $price += $option['value'] * $persons;
+      break;
+
+    case ROOMIFY_ACCOMMODATION_OPTIONS_ADD_DAILY_PERSON:
+      $price += $option['value'] * $nights * $persons;
+      break;
+
+    case ROOMIFY_ACCOMMODATION_OPTIONS_SUB_PERSON:
+      $price -= $option['value'] * $persons;
+      break;
+
+    case ROOMIFY_ACCOMMODATION_OPTIONS_SUB_DAILY_PERSON:
+      $price -= $option['value'] * $nights * $persons;
       break;
   }
 
