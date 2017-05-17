@@ -702,6 +702,8 @@ function roomify_accommodation_booking_confirmation_form($form, &$form_state, $s
     $form_state['storage']['group_size'] = check_plain($_GET['group_size']);
   }
 
+  $group_size = isset($form_state['storage']['group_size']) ? $form_state['storage']['group_size'] : 0;
+
   $total = $amount;
   $total_offer = $offer_amount;
 
@@ -711,24 +713,25 @@ function roomify_accommodation_booking_confirmation_form($form, &$form_state, $s
 
     if ($option['type'] == ROOMIFY_ACCOMMODATION_OPTIONS_MANDATORY) {
       $quantity = isset($form_state['values']['options'][$option_name . ':quantity']) ? $form_state['values']['options'][$option_name . ':quantity'] + 1 : 1;
-      $price = roomify_accommodation_options_get_option_price($amount / 100, $option, $quantity, $nights) * $quantity;
+
+      $price = roomify_accommodation_options_get_option_price($amount / 100, $option, $quantity, $nights, $group_size) * $quantity;
 
       $total += $price;
 
       if ($offer_amount > 0) {
-        $price = roomify_accommodation_options_get_option_price($offer_amount / 100, $option, $quantity, $nights) * $quantity;
+        $price = roomify_accommodation_options_get_option_price($offer_amount / 100, $option, $quantity, $nights, $group_size) * $quantity;
 
         $total_offer += $price;
       }
     }
     elseif (!empty($form_state['values']['options'][$option_name])) {
       $quantity = isset($form_state['values']['options'][$option_name . ':quantity']) ? $form_state['values']['options'][$option_name . ':quantity'] + 1 : 1;
-      $price = roomify_accommodation_options_get_option_price($amount / 100, $option, $quantity, $nights) * $quantity;
+      $price = roomify_accommodation_options_get_option_price($amount / 100, $option, $quantity, $nights, $group_size) * $quantity;
 
       $total += $price;
 
       if ($offer_amount > 0) {
-        $price = roomify_accommodation_options_get_option_price($offer_amount / 100, $option, $quantity, $nights) * $quantity;
+        $price = roomify_accommodation_options_get_option_price($offer_amount / 100, $option, $quantity, $nights, $group_size) * $quantity;
 
         $total_offer += $price;
       }
@@ -1114,6 +1117,8 @@ function roomify_accommodation_booking_confirmation_form_submit($form, &$form_st
 
   $values = $form_state['values'];
 
+  $group_size = isset($form_state['storage']['group_size']) ? $form_state['storage']['group_size'] : 0;
+
   $event_type = 'availability';
 
   $start_date = $values['start_date'];
@@ -1213,7 +1218,7 @@ function roomify_accommodation_booking_confirmation_form_submit($form, &$form_st
       // If the option is enabled:
       if (!empty($values['options'][$option_name])) {
         $quantity = isset($values['options'][$option_name . ':quantity']) ? $values['options'][$option_name . ':quantity'] + 1 : 1;
-        $price = roomify_accommodation_options_get_option_price($amount / 100, $option, $quantity, $values['nights']);
+        $price = roomify_accommodation_options_get_option_price($amount / 100, $option, $quantity, $values['nights'], $group_size);
 
         // Create the new line item.
         $option_line_item = entity_create('commerce_line_item', array(
