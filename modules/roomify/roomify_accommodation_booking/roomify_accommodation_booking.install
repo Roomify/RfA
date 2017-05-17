@@ -628,3 +628,48 @@ function roomify_accommodation_booking_update_7015() {
 function roomify_accommodation_booking_update_7016() {
   module_enable(array('subuser', 'subuser_ui'));
 }
+
+/**
+ * Set the Booking guest as Order user.
+ */
+function roomify_accommodation_booking_update_7017(&$sandbox) {
+  if (!isset($sandbox['progress'])) {
+    $sandbox['progress'] = 0;
+
+    $query = new EntityFieldQuery();
+    $query->entityCondition('entity_type', 'bat_booking')
+      ->entityCondition('bundle', 'roomify_accommodation_booking');
+
+    $sandbox['max'] = $query->count()->execute();
+  }
+
+  $query = new EntityFieldQuery();
+  $query->entityCondition('entity_type', 'bat_booking')
+    ->entityCondition('bundle', 'roomify_accommodation_booking')
+    ->range($sandbox['progress'], 20);
+
+  $result = $query->execute();
+
+  if (isset($result['bat_booking'])) {
+    foreach ($result['bat_booking'] as $booking) {
+      $booking = bat_booking_load($booking->booking_id);
+      $booking_wrapper = entity_metadata_wrapper('bat_booking', $booking);
+
+      if (isset($booking->booking_user_guest[LANGUAGE_NONE][0]['target_id'])) {
+        if ($user = $booking_wrapper->booking_user_guest->value()) {
+          if ($order = commerce_order_load($booking_wrapper->booking_line_item_reference->order_id->value())) {
+            if ($order->uid != $user->uid) {
+              $order->uid = $user->uid;
+
+              commerce_order_save($order);
+            }
+          }
+        }
+      }
+
+      $sandbox['progress']++;
+    }
+  }
+
+  $sandbox['#finished'] = empty($sandbox['max']) ? 1 : ($sandbox['progress'] / $sandbox['max']);
+}
