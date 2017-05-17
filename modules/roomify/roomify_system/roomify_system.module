@@ -2030,6 +2030,19 @@ function roomify_system_views_query_alter(&$view, &$query) {
             'conditions' => $conditions,
           );
         }
+        // No subusers, the list will show only the user himself.
+        else {
+          $conditions[] = array(
+            'field' => 'users.uid',
+            'value' => $user->uid,
+            'operator' => '=',
+          );
+          $view->query->where[] = array(
+            'args' => array(),
+            'type' => 'OR',
+            'conditions' => $conditions,
+          );
+        }
       }
     }
   }
