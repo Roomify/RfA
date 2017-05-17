@@ -440,10 +440,21 @@ function roomify_accommodation_booking_update_7012() {
 /**
  * Create a dummy user for all Booking.com bookings.
  */
-function roomify_accommodation_booking_update_7013() {
+function roomify_accommodation_booking_update_7013(&$sandbox) {
+  if (!isset($sandbox['progress'])) {
+    $sandbox['progress'] = 0;
+
+    $query = new EntityFieldQuery();
+    $query->entityCondition('entity_type', 'bat_booking')
+      ->entityCondition('bundle', 'booking_com');
+
+    $sandbox['max'] = $query->count()->execute();
+  }
+
   $query = new EntityFieldQuery();
   $query->entityCondition('entity_type', 'bat_booking')
-    ->entityCondition('bundle', 'booking_com');
+    ->entityCondition('bundle', 'booking_com')
+    ->range($sandbox['progress'], 20);
 
   $result = $query->execute();
 
@@ -507,17 +518,32 @@ function roomify_accommodation_booking_update_7013() {
       }
 
       field_attach_update('bat_booking', $booking);
+
+      $sandbox['progress']++;
     }
   }
+
+  $sandbox['#finished'] = empty($sandbox['max']) ? 1 : ($sandbox['progress'] / $sandbox['max']);
 }
 
 /**
  * Set "Guest" reference for all "Roomify Accommodation Booking" bookings.
  */
-function roomify_accommodation_booking_update_7014() {
+function roomify_accommodation_booking_update_7014(&$sandbox) {
+  if (!isset($sandbox['progress'])) {
+    $sandbox['progress'] = 0;
+
+    $query = new EntityFieldQuery();
+    $query->entityCondition('entity_type', 'bat_booking')
+      ->entityCondition('bundle', 'roomify_accommodation_booking');
+
+    $sandbox['max'] = $query->count()->execute();
+  }
+
   $query = new EntityFieldQuery();
   $query->entityCondition('entity_type', 'bat_booking')
-    ->entityCondition('bundle', 'roomify_accommodation_booking');
+    ->entityCondition('bundle', 'roomify_accommodation_booking')
+    ->range($sandbox['progress'], 20);
 
   $result = $query->execute();
 
@@ -581,8 +607,12 @@ function roomify_accommodation_booking_update_7014() {
       }
 
       field_attach_update('bat_booking', $booking);
+
+      $sandbox['progress']++;
     }
   }
+
+  $sandbox['#finished'] = empty($sandbox['max']) ? 1 : ($sandbox['progress'] / $sandbox['max']);
 }
 
 /**
