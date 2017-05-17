@@ -46,6 +46,7 @@ function roomify_integrations_schema() {
  */
 function roomify_integrations_install() {
   _roomify_integrations_check_zopim();
+  _roomify_integrations_check_googleanalytics();
 }
 
 /**
@@ -78,9 +79,33 @@ function _roomify_integrations_check_zopim() {
 }
 
 /**
+ * Check if Google Analytics is enabled or not.
+ */
+function _roomify_integrations_check_googleanalytics() {
+  $googleanalytics_status = 0;
+  if (module_exists('googleanalytics')) {
+    $googleanalytics_status = 1;
+  }
+  $record = array(
+    'name' => 'googleanalytics',
+    'label' => 'Google Analytics',
+    'status' => $googleanalytics_status,
+  );
+
+  drupal_write_record('roomify_integrations', $record);
+}
+
+/**
  * Add the Roomfiy Integrations table and update zopim status.
  */
 function roomify_integrations_update_7001() {
   db_create_table('roomify_integrations', drupal_get_schema_unprocessed('roomify_integrations', 'roomify_integrations'));
   _roomify_integrations_check_zopim();
+}
+
+/**
+ * Add Google Analytics.
+ */
+function roomify_integrations_update_7002() {
+  _roomify_integrations_check_googleanalytics();
 }
