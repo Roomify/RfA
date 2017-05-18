@@ -420,7 +420,11 @@ function roomify_accommodation_booking_confirmation_page($start_date, $end_date,
     if (!empty($offers)) {
       foreach ($offers as $offer) {
         if (isset($offer->offer_description[LANGUAGE_NONE][0]['value'])) {
-          $offer_descriptions[] = $offer->offer_description[LANGUAGE_NONE][0]['value'];
+          $offer_description = '<div class="roomify-property-offer">';
+          $offer_description .= '<div class="offer-name">' . $offer->name . '</div>';
+          $offer_description .= '<div class="offer-description">' . $offer->offer_description[LANGUAGE_NONE][0]['value'] . '</div>';
+          $offer_description .= '</div>';
+          $offer_descriptions[] = $offer_description;
         }
         if (isset($offer->offer_always_override_price[LANGUAGE_NONE][0]['value']) &&
             $offer->offer_always_override_price[LANGUAGE_NONE][0]['value']) {
