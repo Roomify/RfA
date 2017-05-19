@@ -18,3 +18,4 @@ dependencies[] = job_scheduler
 
 files[] = views/roomify_accommodation_booking.views.inc
 files[] = views/roomify_accommodation_booking_book_this_field.inc
+files[] = views/roomify_accommodation_booking_handler_booking_guest_name.inc
