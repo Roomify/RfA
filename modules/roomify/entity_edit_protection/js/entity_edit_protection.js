@@ -54,6 +54,7 @@
             autoOpen: true,
             width: 'auto',
             resizable: false,
+            dialogClass: 'no-close',
             buttons: [
             {
               text: Drupal.t('Continue without saving'),

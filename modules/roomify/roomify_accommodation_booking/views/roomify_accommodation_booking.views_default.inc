@@ -1288,5 +1288,251 @@ function roomify_accommodation_booking_views_default_views() {
 
   $views['roomify_order'] = $view;
 
+  $view = new view();
+  $view->name = 'users';
+  $view->description = '';
+  $view->tag = 'default';
+  $view->base_table = 'users';
+  $view->human_name = 'Users';
+  $view->core = 7;
+  $view->api_version = '3.0';
+  $view->disabled = FALSE; /* Edit this to true to make a default view disabled initially */
+
+  /* Display: Master */
+  $handler = $view->new_display('default', 'Master', 'default');
+  $handler->display->display_options['use_ajax'] = TRUE;
+  $handler->display->display_options['use_more_always'] = FALSE;
+  $handler->display->display_options['access']['type'] = 'perm';
+  $handler->display->display_options['access']['perm'] = 'access user profiles';
+  $handler->display->display_options['cache']['type'] = 'none';
+  $handler->display->display_options['query']['type'] = 'views_query';
+  $handler->display->display_options['exposed_form']['type'] = 'basic';
+  $handler->display->display_options['pager']['type'] = 'full';
+  $handler->display->display_options['style_plugin'] = 'table';
+  /* Field: User: Name */
+  $handler->display->display_options['fields']['name']['id'] = 'name';
+  $handler->display->display_options['fields']['name']['table'] = 'users';
+  $handler->display->display_options['fields']['name']['field'] = 'name';
+  $handler->display->display_options['fields']['name']['label'] = 'Username';
+  $handler->display->display_options['fields']['name']['alter']['word_boundary'] = FALSE;
+  $handler->display->display_options['fields']['name']['alter']['ellipsis'] = FALSE;
+  $handler->display->display_options['fields']['name']['element_label_colon'] = FALSE;
+  $handler->display->display_options['fields']['name']['link_to_user'] = FALSE;
+  /* Field: User: E-mail */
+  $handler->display->display_options['fields']['mail']['id'] = 'mail';
+  $handler->display->display_options['fields']['mail']['table'] = 'users';
+  $handler->display->display_options['fields']['mail']['field'] = 'mail';
+  /* Field: User: First Name */
+  $handler->display->display_options['fields']['user_first_name']['id'] = 'user_first_name';
+  $handler->display->display_options['fields']['user_first_name']['table'] = 'field_data_user_first_name';
+  $handler->display->display_options['fields']['user_first_name']['field'] = 'user_first_name';
+  $handler->display->display_options['fields']['user_first_name']['settings'] = array(
+    'conditions' => array(
+      0 => array(
+        'condition' => '',
+      ),
+    ),
+  );
+  /* Field: User: Last Name */
+  $handler->display->display_options['fields']['user_last_name']['id'] = 'user_last_name';
+  $handler->display->display_options['fields']['user_last_name']['table'] = 'field_data_user_last_name';
+  $handler->display->display_options['fields']['user_last_name']['field'] = 'user_last_name';
+  $handler->display->display_options['fields']['user_last_name']['settings'] = array(
+    'conditions' => array(
+      0 => array(
+        'condition' => '',
+      ),
+    ),
+  );
+  /* Sort criterion: User: Created date */
+  $handler->display->display_options['sorts']['created']['id'] = 'created';
+  $handler->display->display_options['sorts']['created']['table'] = 'users';
+  $handler->display->display_options['sorts']['created']['field'] = 'created';
+  $handler->display->display_options['sorts']['created']['order'] = 'DESC';
+  /* Filter criterion: User: The user ID */
+  $handler->display->display_options['filters']['uid_raw']['id'] = 'uid_raw';
+  $handler->display->display_options['filters']['uid_raw']['table'] = 'users';
+  $handler->display->display_options['filters']['uid_raw']['field'] = 'uid_raw';
+  $handler->display->display_options['filters']['uid_raw']['operator'] = '>';
+  $handler->display->display_options['filters']['uid_raw']['value']['value'] = '0';
+  /* Filter criterion: User: Name */
+  $handler->display->display_options['filters']['uid']['id'] = 'uid';
+  $handler->display->display_options['filters']['uid']['table'] = 'users';
+  $handler->display->display_options['filters']['uid']['field'] = 'uid';
+  $handler->display->display_options['filters']['uid']['value'] = '';
+  $handler->display->display_options['filters']['uid']['exposed'] = TRUE;
+  $handler->display->display_options['filters']['uid']['expose']['operator_id'] = 'uid_op';
+  $handler->display->display_options['filters']['uid']['expose']['label'] = 'Name';
+  $handler->display->display_options['filters']['uid']['expose']['operator'] = 'uid_op';
+  $handler->display->display_options['filters']['uid']['expose']['identifier'] = 'uid';
+  $handler->display->display_options['filters']['uid']['expose']['remember_roles'] = array(
+    2 => '2',
+    1 => 0,
+    30037204 => 0,
+    4 => 0,
+    5 => 0,
+    6 => 0,
+    7 => 0,
+    8 => 0,
+    163670334 => 0,
+  );
+
+  /* Display: Reference dialog Search */
+  $handler = $view->new_display('references_dialog', 'Reference dialog Search', 'references_dialog_1');
+  $handler->display->display_options['defaults']['style_options'] = FALSE;
+  $handler->display->display_options['defaults']['row_plugin'] = FALSE;
+  $handler->display->display_options['defaults']['row_options'] = FALSE;
+  $handler->display->display_options['attach'] = array(
+    0 => 'bat_booking:booking_user_guest:standard',
+    1 => 'bat_booking:booking_user_guest:roomify_accommodation_booking',
+    2 => 'bat_booking:booking_user_guest:conversation_booking',
+    3 => 'bat_booking:booking_user_guest:booking_com',
+  );
+
+  $views['users'] = $view;
+
+  $view = new view();
+  $view->name = 'booking_guest';
+  $view->description = '';
+  $view->tag = 'default';
+  $view->base_table = 'bat_bookings';
+  $view->human_name = 'Booking Guest';
+  $view->core = 7;
+  $view->api_version = '3.0';
+  $view->disabled = FALSE; /* Edit this to true to make a default view disabled initially */
+
+  /* Display: Master */
+  $handler = $view->new_display('default', 'Master', 'default');
+  $handler->display->display_options['use_more_always'] = FALSE;
+  $handler->display->display_options['access']['type'] = 'none';
+  $handler->display->display_options['cache']['type'] = 'none';
+  $handler->display->display_options['query']['type'] = 'views_query';
+  $handler->display->display_options['exposed_form']['type'] = 'basic';
+  $handler->display->display_options['pager']['type'] = 'full';
+  $handler->display->display_options['style_plugin'] = 'default';
+  $handler->display->display_options['row_plugin'] = 'fields';
+  /* Relationship: Entity Reference: Referenced Entity */
+  $handler->display->display_options['relationships']['booking_user_guest_target_id']['id'] = 'booking_user_guest_target_id';
+  $handler->display->display_options['relationships']['booking_user_guest_target_id']['table'] = 'field_data_booking_user_guest';
+  $handler->display->display_options['relationships']['booking_user_guest_target_id']['field'] = 'booking_user_guest_target_id';
+  $handler->display->display_options['relationships']['booking_user_guest_target_id']['required'] = TRUE;
+  /* Field: User: First Name */
+  $handler->display->display_options['fields']['user_first_name']['id'] = 'user_first_name';
+  $handler->display->display_options['fields']['user_first_name']['table'] = 'field_data_user_first_name';
+  $handler->display->display_options['fields']['user_first_name']['field'] = 'user_first_name';
+  $handler->display->display_options['fields']['user_first_name']['relationship'] = 'booking_user_guest_target_id';
+  $handler->display->display_options['fields']['user_first_name']['element_type'] = 'span';
+  $handler->display->display_options['fields']['user_first_name']['hide_empty'] = TRUE;
+  $handler->display->display_options['fields']['user_first_name']['settings'] = array(
+    'conditions' => array(
+      0 => array(
+        'condition' => '',
+      ),
+    ),
+  );
+  /* Field: User: Last Name */
+  $handler->display->display_options['fields']['user_last_name']['id'] = 'user_last_name';
+  $handler->display->display_options['fields']['user_last_name']['table'] = 'field_data_user_last_name';
+  $handler->display->display_options['fields']['user_last_name']['field'] = 'user_last_name';
+  $handler->display->display_options['fields']['user_last_name']['relationship'] = 'booking_user_guest_target_id';
+  $handler->display->display_options['fields']['user_last_name']['element_type'] = 'span';
+  $handler->display->display_options['fields']['user_last_name']['hide_empty'] = TRUE;
+  $handler->display->display_options['fields']['user_last_name']['settings'] = array(
+    'conditions' => array(
+      0 => array(
+        'condition' => '',
+      ),
+    ),
+  );
+  /* Field: User: Telephone */
+  $handler->display->display_options['fields']['user_telephone']['id'] = 'user_telephone';
+  $handler->display->display_options['fields']['user_telephone']['table'] = 'field_data_user_telephone';
+  $handler->display->display_options['fields']['user_telephone']['field'] = 'user_telephone';
+  $handler->display->display_options['fields']['user_telephone']['relationship'] = 'booking_user_guest_target_id';
+  $handler->display->display_options['fields']['user_telephone']['element_type'] = 'span';
+  $handler->display->display_options['fields']['user_telephone']['hide_empty'] = TRUE;
+  $handler->display->display_options['fields']['user_telephone']['settings'] = array(
+    'conditions' => array(
+      0 => array(
+        'condition' => '',
+      ),
+    ),
+  );
+  /* Field: User: E-mail */
+  $handler->display->display_options['fields']['mail']['id'] = 'mail';
+  $handler->display->display_options['fields']['mail']['table'] = 'users';
+  $handler->display->display_options['fields']['mail']['field'] = 'mail';
+  $handler->display->display_options['fields']['mail']['relationship'] = 'booking_user_guest_target_id';
+  $handler->display->display_options['fields']['mail']['element_type'] = 'span';
+  $handler->display->display_options['fields']['mail']['hide_empty'] = TRUE;
+  /* Field: User: Address */
+  $handler->display->display_options['fields']['user_address']['id'] = 'user_address';
+  $handler->display->display_options['fields']['user_address']['table'] = 'field_data_user_address';
+  $handler->display->display_options['fields']['user_address']['field'] = 'user_address';
+  $handler->display->display_options['fields']['user_address']['relationship'] = 'booking_user_guest_target_id';
+  $handler->display->display_options['fields']['user_address']['hide_empty'] = TRUE;
+  $handler->display->display_options['fields']['user_address']['click_sort_column'] = 'country';
+  $handler->display->display_options['fields']['user_address']['settings'] = array(
+    'use_widget_handlers' => 1,
+    'format_handlers' => array(
+      'address' => 'address',
+    ),
+    'conditions' => array(
+      0 => array(
+        'condition' => '',
+      ),
+    ),
+  );
+  /* Field: User: Edit link */
+  $handler->display->display_options['fields']['edit_node']['id'] = 'edit_node';
+  $handler->display->display_options['fields']['edit_node']['table'] = 'users';
+  $handler->display->display_options['fields']['edit_node']['field'] = 'edit_node';
+  $handler->display->display_options['fields']['edit_node']['relationship'] = 'booking_user_guest_target_id';
+  $handler->display->display_options['fields']['edit_node']['label'] = '';
+  $handler->display->display_options['fields']['edit_node']['element_label_colon'] = FALSE;
+  $handler->display->display_options['fields']['edit_node']['hide_empty'] = TRUE;
+  $handler->display->display_options['fields']['edit_node']['text'] = 'Edit Guest';
+  /* Contextual filter: BAT Booking: Bat booking ID */
+  $handler->display->display_options['arguments']['booking_id']['id'] = 'booking_id';
+  $handler->display->display_options['arguments']['booking_id']['table'] = 'bat_bookings';
+  $handler->display->display_options['arguments']['booking_id']['field'] = 'booking_id';
+  $handler->display->display_options['arguments']['booking_id']['default_action'] = 'default';
+  $handler->display->display_options['arguments']['booking_id']['default_argument_type'] = 'raw';
+  $handler->display->display_options['arguments']['booking_id']['default_argument_options']['index'] = '5';
+  $handler->display->display_options['arguments']['booking_id']['summary']['number_of_records'] = '0';
+  $handler->display->display_options['arguments']['booking_id']['summary']['format'] = 'default_summary';
+  $handler->display->display_options['arguments']['booking_id']['summary_options']['items_per_page'] = '25';
+
+  /* Display: Booking Guest */
+  $handler = $view->new_display('panel_pane', 'Booking Guest', 'panel_pane_1');
+  $translatables['booking_guest'] = array(
+    t('Master'),
+    t('more'),
+    t('Apply'),
+    t('Reset'),
+    t('Sort by'),
+    t('Asc'),
+    t('Desc'),
+    t('Items per page'),
+    t('- All -'),
+    t('Offset'),
+    t('« first'),
+    t('‹ previous'),
+    t('next ›'),
+    t('last »'),
+    t('User entity referenced from booking_user_guest'),
+    t('First Name'),
+    t('Last Name'),
+    t('Telephone'),
+    t('E-mail'),
+    t('Address'),
+    t('Edit Guest'),
+    t('All'),
+    t('Booking Guest'),
+    t('View panes'),
+  );
+
+  $views['booking_guest'] = $view;
+
   return $views;
 }

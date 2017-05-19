@@ -2683,6 +2683,15 @@ body.adminimal-skin-material table.views-table tbody tr td {
   float: left;
   margin-right: 1%;
 }
+@media (max-width: 768px) {
+  .page-admin-bat-config-booking-add-roomify-accommodation-booking #bat-booking-edit-form .field-name-booking-end-date,
+  #bat-booking-edit-roomify-accommodation-booking-form .field-name-booking-end-date,
+  .page-admin-bat-config-booking-add-roomify-accommodation-booking #bat-booking-edit-form .field-name-booking-start-date,
+  #bat-booking-edit-roomify-accommodation-booking-form .field-name-booking-start-date {
+    width: 100%;
+    margin-right: 0;
+  }
+}
 .page-admin-bat-config-booking-add-roomify-accommodation-booking #bat-booking-edit-form .field-name-booking-end-date label,
 #bat-booking-edit-roomify-accommodation-booking-form .field-name-booking-end-date label,
 .page-admin-bat-config-booking-add-roomify-accommodation-booking #bat-booking-edit-form .field-name-booking-start-date label,
@@ -2694,6 +2703,13 @@ body.adminimal-skin-material table.views-table tbody tr td {
   width: 32%;
   float: left;
   margin-right: 1%;
+}
+@media (max-width: 768px) {
+  .page-admin-bat-config-booking-add-roomify-accommodation-booking #bat-booking-edit-form #availability-search,
+  #bat-booking-edit-roomify-accommodation-booking-form #availability-search {
+    width: 100%;
+    margin-right: 0;
+  }
 }
 .page-admin-bat-config-booking-add-roomify-accommodation-booking #bat-booking-edit-form #booking-price,
 #bat-booking-edit-roomify-accommodation-booking-form #booking-price,
@@ -2782,6 +2798,19 @@ body.adminimal-skin-material table.views-table tbody tr td {
 #bat-booking-edit-booking-com-form .field-name-booking-start-date label {
   display: none;
 }
+@media (max-width: 768px) {
+  .page-admin-bat-config-booking-add-ical #bat-booking-edit-form .field-name-booking-end-date,
+  .page-admin-bat-config-booking-add-booking-com #bat-booking-edit-form .field-name-booking-end-date,
+  #bat-booking-edit-ical-form .field-name-booking-end-date,
+  #bat-booking-edit-booking-com-form .field-name-booking-end-date,
+  .page-admin-bat-config-booking-add-ical #bat-booking-edit-form .field-name-booking-start-date,
+  .page-admin-bat-config-booking-add-booking-com #bat-booking-edit-form .field-name-booking-start-date,
+  #bat-booking-edit-ical-form .field-name-booking-start-date,
+  #bat-booking-edit-booking-com-form .field-name-booking-start-date {
+    width: 100%;
+    margin-right: 0;
+  }
+}
 .page-admin-bat-config-booking-add-ical #bat-booking-edit-form #availability-search,
 .page-admin-bat-config-booking-add-booking-com #bat-booking-edit-form #availability-search,
 #bat-booking-edit-ical-form #availability-search,
@@ -2789,6 +2818,15 @@ body.adminimal-skin-material table.views-table tbody tr td {
   width: 32%;
   float: left;
   margin-right: 1%;
+}
+@media (max-width: 768px) {
+  .page-admin-bat-config-booking-add-ical #bat-booking-edit-form #availability-search,
+  .page-admin-bat-config-booking-add-booking-com #bat-booking-edit-form #availability-search,
+  #bat-booking-edit-ical-form #availability-search,
+  #bat-booking-edit-booking-com-form #availability-search {
+    width: 100%;
+    margin-right: 0;
+  }
 }
 .page-admin-bat-config-booking-add-ical #bat-booking-edit-form .field-name-booking-event-reference,
 .page-admin-bat-config-booking-add-booking-com #bat-booking-edit-form .field-name-booking-event-reference,
@@ -2810,6 +2848,37 @@ body.adminimal-skin-material table.views-table tbody tr td {
 }
 .page-admin-bat-bookings .views-exposed-widgets input {
   height: 32px;
+}
+.page-admin-bat-config #bat-booking-edit-booking-com-form .field-name-booking-user-guest,
+.page-admin-bat-config #bat-booking-edit-roomify-accommodation-booking-form .field-name-booking-user-guest,
+.page-admin-bat-config #bat-booking-edit-ical-form .field-name-booking-user-guest {
+  display: inline-block;
+  border-top: 4px solid #0074bd;
+  width: 65%;
+  box-shadow: 0 1px 4px rgba(0, 0, 0, 0.18);
+  background: #fff;
+  border-radius: 3px;
+  margin-bottom: 40px;
+  position: relative;
+  padding: 20px;
+  padding-top: 70px;
+}
+@media (max-width: 768px) {
+  .page-admin-bat-config #bat-booking-edit-booking-com-form .field-name-booking-user-guest,
+  .page-admin-bat-config #bat-booking-edit-roomify-accommodation-booking-form .field-name-booking-user-guest,
+  .page-admin-bat-config #bat-booking-edit-ical-form .field-name-booking-user-guest {
+    width: 100%;
+    margin-right: 0;
+  }
+}
+.page-admin-bat-config #bat-booking-edit-booking-com-form .field-name-booking-user-guest label,
+.page-admin-bat-config #bat-booking-edit-roomify-accommodation-booking-form .field-name-booking-user-guest label,
+.page-admin-bat-config #bat-booking-edit-ical-form .field-name-booking-user-guest label {
+  font-family: Roboto, sans-serif;
+  font-size: 20px;
+  font-weight: 500;
+  position: absolute;
+  top: 14px;
 }
 body.page-admin-appearance.adminimal-skin-material .theme-selector {
   padding: 32px 6px !important;
@@ -2871,6 +2940,12 @@ html.js #panels-dnd-main div.ctools-dropdown div.ctools-dropdown-container ul li
 html.js div.panels-display-links div.ctools-dropdown-container ul li a {
   font-size: inherit;
   margin-bottom: 0;
+}
+div.vertical-tabs .field-group-tab fieldset {
+  padding-top: 42px;
+}
+body.adminimal-skin-material .vertical-tabs-panes fieldset.vertical-tabs-pane {
+  box-shadow: 0 1px 4px rgba(0, 0, 0, 0.18);
 }
 .page-admin-bat-config-types .field-type-bat-event-state-constraints-range #bat-constraints-range-add-more-wrapper .field-add-more-submit {
   margin: 15px 0;
@@ -3526,6 +3601,7 @@ a.ctools-use-modal:hover,
     width: 80% !important;
   }
 }
+
 div.ctools-modal-content .modal-content {
   padding: 1em;
 }
@@ -3534,6 +3610,8 @@ div.ctools-modal-content div.type-container .container-inline .form-item input[n
 div.ctools-modal-content div.type-container .container-inline .form-item input[name*=occupancy] {
   width: 5em;
 }
+
+#references-dialog-page .view-users td,
 #references-dialog-page .view-customer-profiles td {
   cursor: pointer;
 }

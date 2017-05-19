@@ -959,6 +959,7 @@ function roomify_system_roomify_rights() {
       'access events index service',
       'access events calendar index service',
       'access edit event service',
+      'create users',
       'view past event information',
       'create bat_unit entities',
       'delete own bat_type entities',
@@ -969,6 +970,7 @@ function roomify_system_roomify_rights() {
       'view any commerce_customer_profile entity',
       'create commerce_customer_profile entities',
       'view own property_owner profile',
+      'update own roomify_rate entities',
     ),
     'roomify manager' => array(
       'administer fields',
@@ -1057,6 +1059,7 @@ function roomify_system_roomify_rights() {
       // Give permission to add users and give them
       // the guest, property owner, or roomify manager role.
       'administer users',
+      'create users',
       'assign guest role',
       'assign property owner role',
       'assign roomify manager role',
@@ -1120,6 +1123,13 @@ function roomify_system_roomify_rights() {
     ),
     'administrator' => $permissions,
   );
+
+  if ($authenticated_user_role = user_role_load_by_name('authenticated user')) {
+    $rights['roomify_system']['property owner'][] = 'edit users with role ' . $authenticated_user_role->rid;
+  }
+  if ($guest_role = user_role_load_by_name('guest')) {
+    $rights['roomify_system']['property owner'][] = 'edit users with role ' . $guest_role->rid;
+  }
 
   if (module_exists('roomify_channel_connector')) {
     $rights['roomify_system']['roomify manager'][] = 'configure channel management';
@@ -1998,6 +2008,45 @@ function roomify_system_menu_local_tasks_alter(&$data, $router_item, $root_path)
  * Implements hook_views_query_alter().
  */
 function roomify_system_views_query_alter(&$view, &$query) {
+  if ($view->name == 'users' && $view->current_display == 'references_dialog_1') {
+    global $user;
+    // Let's filter the view and show only subusers if the current
+    // user is a Property Owner but not a Roomify Manager.
+    if (in_array('property owner', $user->roles) && !in_array('roomify manager', $user->roles)) {
+      if (module_exists('subuser')) {
+        $suids = subuser_load_all($user);
+        if (!empty($suids)) {
+          foreach ($suids as $suid) {
+            // Add a filter for this uid.
+            $conditions[] = array(
+              'field' => 'users.uid',
+              'value' => $suid,
+              'operator' => '=',
+            );
+          }
+          $view->query->where[] = array(
+            'args' => array(),
+            'type' => 'OR',
+            'conditions' => $conditions,
+          );
+        }
+        // No subusers, the list will show only the user himself.
+        else {
+          $conditions[] = array(
+            'field' => 'users.uid',
+            'value' => $user->uid,
+            'operator' => '=',
+          );
+          $view->query->where[] = array(
+            'args' => array(),
+            'type' => 'OR',
+            'conditions' => $conditions,
+          );
+        }
+      }
+    }
+  }
+
   if ($view->name == 'property' && $view->current_display == 'panel_pane_1') {
     if ($property = roomify_property_load($view->args[0])) {
       global $language_content;
@@ -2146,7 +2195,7 @@ function roomify_system_form_alter(&$form, &$form_state, $form_id) {
       unset($form['actions']['preview_changes']);
     }
   }
-  if ($form_id == 'user_profile_form') {
+  if ($form_id == 'user_profile_form' || $form_id == 'user_register_form') {
     if (isset($form['redirect'])) {
       $form['redirect']['#access'] = FALSE;
     }

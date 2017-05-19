@@ -82,6 +82,8 @@ projects[admin_menu][version] = 3.0-rc5
 
 projects[adminimal_admin_menu][version] = 1.7
 
+projects[administerusersbyrole][version] = 2.0
+
 projects[agrcache][version] = 1.7
 
 projects[autocomplete_deluxe][version] = 2.2
@@ -103,6 +105,8 @@ projects[cer][download][type] = git
 projects[cer][download][url] = https://git.drupal.org/project/cer.git
 projects[cer][download][revision] = 68f4b2043ab1b200da4e21d506924d7cd332b67f
 projects[cer][patch][] = https://www.drupal.org/files/issues/cer-cer-field-collection-issues-2352783-3.patch
+
+projects[chain_menu_access][version] = 2.0
 
 projects[charts][version] = 2.0-rc1
 
@@ -387,6 +391,10 @@ projects[redirect][version] = 1.0-rc3
 projects[references_dialog][version] = 1.0-beta2
 projects[references_dialog][patch][] = https://www.drupal.org/files/issues/references_dialog-zindex-2833782-1.patch
 projects[references_dialog][patch][] = https://www.drupal.org/files/issues/creating_user_but-2238801-6.patch
+projects[references_dialog][patch][] = https://www.drupal.org/files/issues/references_dialog-create_users-2172321.patch
+projects[references_dialog][patch][] = https://www.drupal.org/files/issues/wrong_UID_reference_field-2238801-1.patch
+
+projects[relation][version] = 1.0
 
 projects[robotstxt][version] = 1.3
 
@@ -443,6 +451,8 @@ projects[smtp][version] = 1.6
 
 projects[strongarm][version] = 2.0
 
+projects[subuser][version] = 2.0-alpha4
+
 projects[table_element][version] = 1.0-beta4
 
 projects[taxonomy_access_fix][version] = 2.3
@@ -491,6 +501,7 @@ projects[views_megarow][version] = 1.7
 projects[views_php][version] = 1.0-alpha3
 
 projects[votingapi][version] = 2.12
+projects[votingapi][patch][] = https://www.drupal.org/files/issues/updating_voting_api_default_views-2679585-3.patch
 
 projects[vvf][version] = 1.2
 
