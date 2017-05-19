@@ -1436,19 +1436,6 @@ function roomify_listing_enquiry_form_submit($form, &$form_state) {
 
   $to_account = user_load($type->uid);
 
-  $pet = pet_load('new_booking_enquiry');
-  $pet_options = array();
-
-  if (isset($pet->from_override)) {
-    $pet_options['pet_from'] = $pet->from_override;
-  }
-  if (isset($pet->cc_default)) {
-    $pet_options['pet_cc'] = explode(',', $pet->cc_default);
-  }
-  if (isset($pet->bcc_default)) {
-    $pet_options['pet_bcc'] = explode(',', $pet->bcc_default);
-  }
-
   pet_action_send_pet('new_booking_enquiry', NULL, $to_account, NULL, NULL, $pet_options, $rules_state);
 
   $commands = array();
