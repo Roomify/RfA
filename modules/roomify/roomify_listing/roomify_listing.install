@@ -1289,6 +1289,12 @@ function roomify_listing_update_7032() {
  */
 function roomify_listing_update_7033() {
   module_enable(array('roomify_review'));
+}
+
+/**
+ * Helper function to add fields to the right vertical tab.
+ */
+function roomify_listing_update_7034() {
   foreach (array('casa_property', 'locanda_property') as $property_bundle) {
     $field_group = field_group_load_field_group('group_basic_information', 'roomify_property', $property_bundle, 'form');
 
