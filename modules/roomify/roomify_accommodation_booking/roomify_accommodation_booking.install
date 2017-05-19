@@ -68,6 +68,17 @@ function roomify_accommodation_booking_create_booking_type() {
 }
 
 /**
+ * Implements hook_update_dependencies().
+ */
+function roomify_accommodation_booking_update_dependencies() {
+  $dependencies['roomify_accommodation_booking'][7012] = array(
+    'roomify_system' => 7041,
+  );
+
+  return $dependencies;
+}
+
+/**
  * Add telephone field to booking.
  */
 function roomify_accommodation_booking_update_7001() {
@@ -349,4 +360,315 @@ function roomify_accommodation_booking_update_7010() {
       ->condition('item_id', $item_ids, 'IN')
       ->execute();
   }
+}
+
+/**
+ * Add field 'booking_user_guest' to all booking types.
+ */
+function roomify_accommodation_booking_update_7011() {
+  module_load_include('inc', 'roomify_accommodation_booking', 'roomify_accommodation_booking.fields');
+
+  $bundles = bat_booking_get_types();
+  foreach ($bundles as $bundle) {
+    roomify_accommodation_booking_add_booking_user_guest_field($bundle->type);
+  }
+}
+
+/**
+ * Create a dummy user for all iCal bookings.
+ */
+function roomify_accommodation_booking_update_7012() {
+  $query = new EntityFieldQuery();
+  $query->entityCondition('entity_type', 'bat_booking')
+    ->entityCondition('bundle', 'ical');
+
+  $result = $query->execute();
+
+  if (isset($result['bat_booking'])) {
+    $guest_role = user_role_load_by_name('guest');
+
+    foreach ($result['bat_booking'] as $booking) {
+      $booking = bat_booking_load($booking->booking_id);
+
+      // A profile is provided.
+      if (isset($booking->booking_guest[LANGUAGE_NONE][0]['target_id'])) {
+        $profile = commerce_customer_profile_load($booking->booking_guest[LANGUAGE_NONE][0]['target_id']);
+        if ($user = user_load($profile->uid)) {
+          // It is anonymous or not a guest.
+          if ($user->uid == 0 || !in_array('guest', $user->roles)) {
+            $user_fields = array(
+              'name' => commerce_order_unique_username('rfa-guest-' . user_password(6)),
+              'mail' => user_password() . '@example.com',
+              'pass' => user_password(8),
+              'status' => 1,
+              'init' => 'email address',
+              'roles' => array($guest_role->rid => $guest_role->name),
+            );
+
+            $new_user = user_save('', $user_fields);
+            $new_user->commerce_customer_address = $profile->commerce_customer_address;
+            user_save($new_user);
+            // Let's add information about the billing profile.
+            $profile->uid = $new_user->uid;
+            commerce_customer_profile_save($profile);
+            $booking->user_address[LANGUAGE_NONE][0]['target_id'] = $new_user->uid;
+          }
+          else {
+            $booking->booking_user_guest[LANGUAGE_NONE][0]['target_id'] = $profile->uid;
+          }
+        }
+      }
+      else {
+        $user_fields = array(
+          'name' => commerce_order_unique_username('rfa-guest-' . user_password(6)),
+          'mail' => user_password() . '@example.com',
+          'pass' => user_password(8),
+          'status' => 1,
+          'init' => 'email address',
+          'roles' => array($guest_role->rid => $guest_role->name)
+        );
+
+        $new_user = user_save('', $user_fields);
+        $booking->booking_user_guest[LANGUAGE_NONE][0]['target_id'] = $new_user->uid;
+      }
+
+      field_attach_update('bat_booking', $booking);
+    }
+  }
+}
+
+/**
+ * Create a dummy user for all Booking.com bookings.
+ */
+function roomify_accommodation_booking_update_7013(&$sandbox) {
+  if (!isset($sandbox['progress'])) {
+    $sandbox['progress'] = 0;
+
+    $query = new EntityFieldQuery();
+    $query->entityCondition('entity_type', 'bat_booking')
+      ->entityCondition('bundle', 'booking_com');
+
+    $sandbox['max'] = $query->count()->execute();
+  }
+
+  $query = new EntityFieldQuery();
+  $query->entityCondition('entity_type', 'bat_booking')
+    ->entityCondition('bundle', 'booking_com')
+    ->range($sandbox['progress'], 20);
+
+  $result = $query->execute();
+
+  if (isset($result['bat_booking'])) {
+    $guest_role = user_role_load_by_name('guest');
+    foreach ($result['bat_booking'] as $booking) {
+      $booking = bat_booking_load($booking->booking_id);
+
+      // A profile is provided.
+      if (isset($booking->booking_guest[LANGUAGE_NONE][0]['target_id'])) {
+        $profile = commerce_customer_profile_load($booking->booking_guest[LANGUAGE_NONE][0]['target_id']);
+        if ($user = user_load($profile->uid)) {
+          if ($user->uid == 0 || !in_array('guest', $user->roles)) {
+            $user_fields = array(
+              'name' => commerce_order_unique_username($booking->field_bcom_first_name[LANGUAGE_NONE][0]['value'] . ' ' . $booking->field_bcom_last_name[LANGUAGE_NONE][0]['value']),
+              'mail' => $booking->field_bcom_email[LANGUAGE_NONE][0]['value'],
+              'pass' => user_password(8),
+              'status' => 1,
+              'init' => 'email address',
+              'roles' => array($guest_role->rid => $guest_role->name)
+            );
+
+            $new_user = user_save('', $user_fields);
+
+            $new_user->user_first_name[LANGUAGE_NONE][0]['value'] = $booking->field_bcom_first_name[LANGUAGE_NONE][0]['value'];
+            $new_user->user_last_name[LANGUAGE_NONE][0]['value'] = $booking->field_bcom_last_name[LANGUAGE_NONE][0]['value'];
+            $new_user->user_telephone[LANGUAGE_NONE][0]['value'] = $booking->field_bcom_telephone[LANGUAGE_NONE][0]['value'];
+            $new_user->user_address = $profile->commerce_customer_address;
+            user_save($new_user);
+            // Let's add information about the billing profile.
+            $profile->uid = $new_user->uid;
+            commerce_customer_profile_save($profile);
+
+            $booking->booking_user_guest[LANGUAGE_NONE][0]['target_id'] = $new_user->uid;
+          }
+          else {
+            $booking->booking_user_guest[LANGUAGE_NONE][0]['target_id'] = $profile->uid;
+            $user->user_address = $profile->commerce_customer_address;
+          }
+        }
+      }
+      else {
+        $user_fields = array(
+          'name' => commerce_order_unique_username($booking->field_bcom_first_name[LANGUAGE_NONE][0]['value'] . ' ' . $booking->field_bcom_last_name[LANGUAGE_NONE][0]['value']),
+          'mail' => $booking->field_bcom_email[LANGUAGE_NONE][0]['value'],
+          'pass' => user_password(8),
+          'status' => 1,
+          'init' => 'email address',
+          'roles' => array($guest_role->rid => $guest_role->name)
+        );
+
+        $new_user = user_save('', $user_fields);
+
+        $new_user->user_first_name[LANGUAGE_NONE][0]['value'] = $booking->field_bcom_first_name[LANGUAGE_NONE][0]['value'];
+        $new_user->user_last_name[LANGUAGE_NONE][0]['value'] = $booking->field_bcom_last_name[LANGUAGE_NONE][0]['value'];
+        $new_user->user_telephone[LANGUAGE_NONE][0]['value'] = $booking->field_bcom_telephone[LANGUAGE_NONE][0]['value'];
+
+        user_save($new_user);
+
+        $booking->booking_user_guest[LANGUAGE_NONE][0]['target_id'] = $new_user->uid;
+      }
+
+      field_attach_update('bat_booking', $booking);
+
+      $sandbox['progress']++;
+    }
+  }
+
+  $sandbox['#finished'] = empty($sandbox['max']) ? 1 : ($sandbox['progress'] / $sandbox['max']);
+}
+
+/**
+ * Set "Guest" reference for all "Roomify Accommodation Booking" bookings.
+ */
+function roomify_accommodation_booking_update_7014(&$sandbox) {
+  if (!isset($sandbox['progress'])) {
+    $sandbox['progress'] = 0;
+
+    $query = new EntityFieldQuery();
+    $query->entityCondition('entity_type', 'bat_booking')
+      ->entityCondition('bundle', 'roomify_accommodation_booking');
+
+    $sandbox['max'] = $query->count()->execute();
+  }
+
+  $query = new EntityFieldQuery();
+  $query->entityCondition('entity_type', 'bat_booking')
+    ->entityCondition('bundle', 'roomify_accommodation_booking')
+    ->range($sandbox['progress'], 20);
+
+  $result = $query->execute();
+
+  if (isset($result['bat_booking'])) {
+    $guest_role = user_role_load_by_name('guest');
+    foreach ($result['bat_booking'] as $booking) {
+      $booking = bat_booking_load($booking->booking_id);
+
+      // A profile is provided.
+      if (isset($booking->booking_guest[LANGUAGE_NONE][0]['target_id'])) {
+        $profile = commerce_customer_profile_load($booking->booking_guest[LANGUAGE_NONE][0]['target_id']);
+        if ($user = user_load($profile->uid)) {
+          if ($user->uid == 0 || !in_array('guest', $user->roles)) {
+            // The billing profile belongs to an anonymous user or
+            // the owner is not a Guest.
+            $user_fields = array(
+              'name' => commerce_order_unique_username('rfa-guest-' . user_password(6)),
+              'mail' => user_password() . '@example.com',
+              'pass' => user_password(8),
+              'status' => 1,
+              'init' => 'email address',
+              'roles' => array($guest_role->rid => $guest_role->name)
+            );
+
+            $new_user = user_save('', $user_fields);
+            $new_user->user_address = $profile->commerce_customer_address;
+            $new_user->user_first_name[LANGUAGE_NONE][0]['value'] = $profile->commerce_customer_address[LANGUAGE_NONE][0]['first_name'];
+            $new_user->user_last_name[LANGUAGE_NONE][0]['value'] = $profile->commerce_customer_address[LANGUAGE_NONE][0]['last_name'];
+            $new_user->user_telephone[LANGUAGE_NONE][0]['value'] = $profile->booking_telephone[LANGUAGE_NONE][0]['value'];
+            $new_user = user_save($new_user);
+            // Let's add information about the billing profile.
+            $profile->uid = $new_user->uid;
+            commerce_customer_profile_save($profile);
+            $booking->booking_user_guest[LANGUAGE_NONE][0]['target_id'] = $new_user->uid;
+          }
+          else {
+            $user->user_address = $profile->commerce_customer_address;
+            $user->user_first_name[LANGUAGE_NONE][0]['value'] = $profile->commerce_customer_address[LANGUAGE_NONE][0]['first_name'];
+            $user->user_last_name[LANGUAGE_NONE][0]['value'] = $profile->commerce_customer_address[LANGUAGE_NONE][0]['last_name'];
+            $user->user_telephone[LANGUAGE_NONE][0]['value'] = $profile->booking_telephone[LANGUAGE_NONE][0]['value'];
+
+            user_save($user);
+            $booking->booking_user_guest[LANGUAGE_NONE][0]['target_id'] = $profile->uid;
+          }
+        }
+      }
+      // No profile, let's create a user for that.
+      else {
+        $user_fields = array(
+          'name' => commerce_order_unique_username('rfa-guest-' . user_password(6)),
+          'mail' => user_password() . '@example.com',
+          'pass' => user_password(8),
+          'status' => 1,
+          'init' => 'email address',
+          'roles' => array($guest_role->rid => $guest_role->name)
+        );
+
+        $new_user = user_save('', $user_fields);
+
+        $booking->booking_user_guest[LANGUAGE_NONE][0]['target_id'] = $new_user->uid;
+      }
+
+      field_attach_update('bat_booking', $booking);
+
+      $sandbox['progress']++;
+    }
+  }
+
+  $sandbox['#finished'] = empty($sandbox['max']) ? 1 : ($sandbox['progress'] / $sandbox['max']);
+}
+
+/**
+ * Enable 'administerusersbyrole' module.
+ */
+function roomify_accommodation_booking_update_7015() {
+  module_enable(array('administerusersbyrole'));
+}
+
+/**
+ * Enable 'subuser' module.
+ */
+function roomify_accommodation_booking_update_7016() {
+  module_enable(array('subuser', 'subuser_ui'));
+}
+
+/**
+ * Set the Booking guest as Order user.
+ */
+function roomify_accommodation_booking_update_7017(&$sandbox) {
+  if (!isset($sandbox['progress'])) {
+    $sandbox['progress'] = 0;
+
+    $query = new EntityFieldQuery();
+    $query->entityCondition('entity_type', 'bat_booking')
+      ->entityCondition('bundle', 'roomify_accommodation_booking');
+
+    $sandbox['max'] = $query->count()->execute();
+  }
+
+  $query = new EntityFieldQuery();
+  $query->entityCondition('entity_type', 'bat_booking')
+    ->range($sandbox['progress'], 20);
+
+  $result = $query->execute();
+
+  if (isset($result['bat_booking'])) {
+    foreach ($result['bat_booking'] as $booking) {
+      $booking = bat_booking_load($booking->booking_id);
+      $booking_wrapper = entity_metadata_wrapper('bat_booking', $booking);
+
+      if (isset($booking->booking_user_guest[LANGUAGE_NONE][0]['target_id'])) {
+        if ($user = $booking_wrapper->booking_user_guest->value()) {
+          if ($order = commerce_order_load($booking_wrapper->booking_line_item_reference->order_id->value())) {
+            if ($order->uid != $user->uid) {
+              $order->uid = $user->uid;
+
+              commerce_order_save($order);
+            }
+          }
+        }
+      }
+
+      $sandbox['progress']++;
+    }
+  }
+
+  $sandbox['#finished'] = empty($sandbox['max']) ? 1 : ($sandbox['progress'] / $sandbox['max']);
 }

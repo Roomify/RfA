@@ -11,22 +11,101 @@ function roomify_accommodation_booking_default_rules_configuration() {
   $rules = array();
 
   if ($guest_role = user_role_load_by_name('guest')) {
-    $rule = rules_reaction_rule();
-
-    $rule->label = t('Assign "guest" role on checkout');
-    $rule->tags = array('Commerce Checkout');
-    $rule->active = TRUE;
-
-    $rule
-      ->event('commerce_checkout_complete')
-      ->action('user_add_role', array(
-        'account:select' => 'commerce-order:owner',
-        'roles' => array($guest_role->rid),
-      ));
-
-    $rule->weight = 10;
-
-    $rules['rules_assign_guest_role_on_checkout'] = $rule;
+    $rules['rules_assign_guest_role_on_checkout'] = entity_import('rules_config', '{
+      "rules_assign_guest_role_on_checkout" : {
+        "LABEL" : "Assign \u0022guest\u0022 role on checkout",
+        "PLUGIN" : "reaction rule",
+        "WEIGHT" : "10",
+        "OWNER" : "rules",
+        "TAGS" : [ "Commerce Checkout" ],
+        "REQUIRES" : [ "rules", "rules_conditional", "commerce_checkout" ],
+        "ON" : { "commerce_checkout_complete" : [] },
+        "IF" : [
+          { "entity_has_field" : { "entity" : [ "commerce-order" ], "field" : "commerce_customer_billing" } }
+        ],
+        "DO" : [
+          { "user_add_role" : {
+              "account" : [ "commerce-order:owner" ],
+              "roles" : { "value" : [ "' . $guest_role->rid . '" ] }
+            }
+          },
+          { "entity_fetch" : {
+              "USING" : {
+                "type" : "commerce_customer_profile",
+                "id" : [ "commerce-order:commerce-customer-billing:profile-id" ]
+              },
+              "PROVIDE" : { "entity_fetched" : { "customer_profile" : "Customer profile" } }
+            }
+          },
+          { "CONDITIONAL" : [
+              {
+                "IF" : { "entity_has_field" : { "entity" : [ "customer-profile" ], "field" : "booking_telephone" } },
+                "DO" : [
+                  { "data_set" : {
+                      "data" : [ "commerce-order:owner:user-telephone" ],
+                      "value" : [ "customer-profile:booking-telephone" ]
+                    }
+                  }
+                ]
+              }
+            ]
+          },
+          { "CONDITIONAL" : [
+              {
+                "IF" : { "entity_has_field" : {
+                    "entity" : [ "customer-profile" ],
+                    "field" : "commerce_customer_address"
+                  }
+                },
+                "DO" : [
+                  { "data_set" : {
+                      "data" : [ "commerce-order:owner:user-address" ],
+                      "value" : [ "customer-profile:commerce-customer-address" ]
+                    }
+                  }
+                ]
+              }
+            ]
+          },
+          { "LOOP" : {
+              "USING" : { "list" : [ "commerce-order:commerce-line-items" ] },
+              "ITEM" : { "line_item" : "Line item" },
+              "DO" : [
+                { "CONDITIONAL" : [
+                    {
+                      "IF" : { "entity_has_field" : { "entity" : [ "line-item" ], "field" : "commerce_booking_reference" } },
+                      "DO" : [
+                        { "entity_fetch" : {
+                            "USING" : {
+                              "type" : "bat_booking",
+                              "id" : [ "line-item:commerce-booking-reference:booking-id" ]
+                            },
+                            "PROVIDE" : { "entity_fetched" : { "booking" : "Booking" } }
+                          }
+                        },
+                        { "CONDITIONAL" : [
+                            {
+                              "IF" : { "entity_has_field" : { "entity" : [ "booking" ], "field" : "booking_user_guest" } },
+                              "DO" : [
+                                { "data_set" : {
+                                    "data" : [ "booking:booking-user-guest" ],
+                                    "value" : [ "commerce-order:owner" ]
+                                  }
+                                }
+                              ]
+                            }
+                          ]
+                        }
+                      ]
+                    }
+                  ]
+                }
+              ]
+            }
+          }
+        ]
+      }
+    }');
   }
 
   $rule = rules_reaction_rule();
