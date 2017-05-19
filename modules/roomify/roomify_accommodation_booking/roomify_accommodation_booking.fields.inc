@@ -318,7 +318,7 @@ function roomify_accommodation_booking_add_addons_field($type_bundle) {
 }
 
 /**
- *
+ * Add booking 'Guest' field.
  */
 function roomify_accommodation_booking_add_booking_guest_field($bundle) {
   field_info_cache_clear();
@@ -348,6 +348,51 @@ function roomify_accommodation_booking_add_booking_guest_field($bundle) {
       'field_name' => 'booking_guest',
       'entity_type' => 'bat_booking',
       'label' => 'Guest',
+      'bundle' => $bundle,
+      'required' => FALSE,
+      'widget' => array(
+        'type' => 'entityreference_autocomplete',
+        'settings' => array(
+          'references_dialog_edit' => 1,
+          'references_dialog_add' => 1,
+          'references_dialog_search' => 1,
+        ),
+      ),
+      'settings' => array(),
+    );
+    field_create_instance($instance);
+  }
+}
+
+/**
+ * Add booking 'User Guest' field.
+ */
+function roomify_accommodation_booking_add_booking_user_guest_field($bundle) {
+  field_info_cache_clear();
+
+  if (field_read_field('booking_user_guest') === FALSE) {
+    $field = array(
+      'field_name' => 'booking_user_guest',
+      'type' => 'entityreference',
+      'cardinality' => 1,
+      'locked' => 1,
+      'settings' => array(
+        'target_type' => 'user',
+        'handler_settings' => array(
+          'target_bundles' => array(),
+        ),
+      ),
+    );
+    field_create_field($field);
+  }
+
+  field_cache_clear();
+
+  if (field_read_instance('bat_booking', 'booking_user_guest', $bundle) === FALSE) {
+    $instance = array(
+      'field_name' => 'booking_user_guest',
+      'entity_type' => 'bat_booking',
+      'label' => 'User Guest',
       'bundle' => $bundle,
       'required' => FALSE,
       'widget' => array(

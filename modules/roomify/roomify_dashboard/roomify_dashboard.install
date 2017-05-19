@@ -49,3 +49,12 @@ function roomify_dashboard_update_7005() {
   $admin_theme_settings['adminimal_theme_skin'] = 'material';
   variable_set('theme_roomify_adminimal_theme_settings', $admin_theme_settings);
 }
+
+/**
+ * Add My Users link
+ */
+function roomify_dashboard_update_7006() {
+  // Accounts Sub-menu.
+  $accounts_mlid = roomify_system_get_menu_link_id('Accounts', 'user', 'roomify_dashboard_menu', -5);
+  roomify_system_create_update_menu_link_with_token('My Users', 'user/[current-user:uid]/subuser', 'roomify_dashboard_menu', 11, 1, $accounts_mlid, array());
+}
