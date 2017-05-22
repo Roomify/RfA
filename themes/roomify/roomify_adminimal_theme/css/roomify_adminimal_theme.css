@@ -2186,6 +2186,12 @@ body.adminimal-skin-material table.views-table tbody tr td {
 .footable-row-detail-inner .footable-row-detail-name:empty {
   display: none;
 }
+#views-form-entityforms-autofields-table table .views-field-changed,
+#views-form-entityforms-autofields-table table .views-field-label-1,
+#views-form-entityforms-autofields-table table .views-field-field-contact-more-informations,
+#views-form-entityforms-autofields-table table .views-field-field-booking-request {
+  display: none;
+}
 .ui-tabs {
   padding: 0 !important;
   border: 0;
