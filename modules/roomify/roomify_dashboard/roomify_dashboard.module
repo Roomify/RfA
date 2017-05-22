@@ -303,17 +303,6 @@ function roomify_dashboard_page_alter(&$page) {
     if (!empty($valid_role) || $user->uid == 1) {
       drupal_add_css(drupal_get_path('module', 'roomify_dashboard') . '/css/roomify_dashboard_help.css');
 
-      if (module_exists('roomify_cloud_support')) {
-        $valid_urls = array(
-          'admin',
-          'user',
-        );
-
-        if (in_array(arg(0), $valid_urls) && user_access('view support popup')) {
-          drupal_add_js(drupal_get_path('module', 'roomify_dashboard') . '/js/roomify_dashboard_help.js');
-        }
-      }
-
       $link = 'http://docs.roomify.us/roomify_accommodations/index.html';
 
       $help_file = file_get_contents(drupal_get_path('module', 'roomify_dashboard') . '/roomify_dashboard_help.json');
