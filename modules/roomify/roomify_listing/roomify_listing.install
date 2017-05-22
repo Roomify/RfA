@@ -1306,3 +1306,14 @@ function roomify_listing_update_7034() {
   }
   drupal_flush_all_caches();
 }
+
+/**
+ * Add description to Default Cost field.
+ */
+function roomify_listing_update_7034() {
+  foreach (array('home', 'room') as $type_bundle) {
+    $instance_info = field_read_instance('bat_type', 'field_st_default_price', $type_bundle);
+    $instance_info['description'] = 'Change this value to update the default night price of your property. This will override the Standard Rate.';
+    field_update_instance($instance_info);
+  }
+}
