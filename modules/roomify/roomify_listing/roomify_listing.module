@@ -406,11 +406,40 @@ function roomify_listing_entity_update($entity, $type) {
         $entity->field_st_calendar_reference[LANGUAGE_NONE][0]['event_type_id'] = $availability_event->id;
         field_attach_update('bat_type', $entity);
       }
+      // Check if a default price is set.
+      if (isset($entity->field_st_default_price)) {
+        $default_price = field_get_items('bat_type', $entity, 'field_st_default_price');
+        if (!empty($default_price)) {
+          // Update the standard night rate with the default price.
+          $standard_rates = roomify_rate_get_rates('standard', $entity->type_id);
+          if (!empty($standard_rates)) {
+            foreach ($standard_rates as $rate) {
+              if ($rate->type == 'standard' && isset($rate->data['standard']) && $rate->data['standard']) {
+                $rate->rate_default_rate[LANGUAGE_NONE] = $default_price;
+                field_attach_update('roomify_rate', $rate);
+              }
+            }
+          }
+        }
+      }
     }
 
     // Re-index the Property after changes to the type.
     if (module_exists('search_api') && isset($entity->field_st_property_reference[LANGUAGE_NONE][0]['target_id'])) {
       search_api_track_item_change('roomify_property', array($entity->field_st_property_reference[LANGUAGE_NONE][0]['target_id']));
+    }
+  }
+  if ($type == 'roomify_rate') {
+    if ($entity->type == 'standard') {
+      // Check if the standard night rate is going to be updated.
+      if (isset($entity->data['standard']) && $entity->data['standard']) {
+        if (isset($entity->rate_default_rate)) {
+          $bat_type = bat_type_load($entity->rate_bat_type_reference[LANGUAGE_NONE][0]['target_id']);
+          // Update the default price of the type.
+          $bat_type->field_st_default_price = $entity->rate_default_rate;
+          field_attach_update('bat_type', $bat_type);
+        }
+      }
     }
   }
 }

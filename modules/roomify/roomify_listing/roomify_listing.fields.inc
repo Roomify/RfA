@@ -2576,7 +2576,7 @@ function roomify_listing_create_standard_type_fields($type_bundle) {
     $field_instances['bat_type-standard_type-field_st_default_price'] = array(
       'bundle' => $type_bundle,
       'default_value' => NULL,
-      'description' => '',
+      'description' => 'Change this value to update the default night price of your property. This will override the Standard Rate.',
       'display' => array(
         'default' => array(
           'label' => 'above',
