@@ -95,6 +95,116 @@ function roomify_homepage_views_default_views() {
 
   /* Display: Slideshow */
   $handler = $view->new_display('panel_pane', 'Slideshow', 'panel_pane_1');
+
+  /* Display: Offers */
+  $handler = $view->new_display('panel_pane', 'Offers', 'panel_pane_2');
+  $handler->display->display_options['defaults']['style_plugin'] = FALSE;
+  $handler->display->display_options['style_plugin'] = 'slick';
+  $handler->display->display_options['style_options']['slide_field_wrapper'] = 0;
+  $handler->display->display_options['style_options']['cache'] = '';
+  $handler->display->display_options['style_options']['mousewheel'] = 0;
+  $handler->display->display_options['style_options']['optionset'] = 'clone_of_roomify_slideshow_paragraph_1200x720';
+  $handler->display->display_options['style_options']['override'] = 1;
+  $handler->display->display_options['style_options']['overridables'] = array(
+    'arrows' => 'arrows',
+    'autoplay' => 0,
+    'dots' => 0,
+    'draggable' => 0,
+  );
+  $handler->display->display_options['style_options']['slide_caption'] = array(
+    'title' => 0,
+    'field_offer_image' => 0,
+    'field_offer_description' => 0,
+  );
+  $handler->display->display_options['style_options']['slide_overlay'] = '';
+  $handler->display->display_options['style_options']['preserve_keys'] = 0;
+  $handler->display->display_options['defaults']['style_options'] = FALSE;
+  $handler->display->display_options['defaults']['row_plugin'] = FALSE;
+  $handler->display->display_options['row_plugin'] = 'fields';
+  $handler->display->display_options['defaults']['row_options'] = FALSE;
+  $handler->display->display_options['defaults']['relationships'] = FALSE;
+  /* Relationship: Entity Reference: Referenced Entity */
+  $handler->display->display_options['relationships']['field_homepage_offers_target_id']['id'] = 'field_homepage_offers_target_id';
+  $handler->display->display_options['relationships']['field_homepage_offers_target_id']['table'] = 'field_data_field_homepage_offers';
+  $handler->display->display_options['relationships']['field_homepage_offers_target_id']['field'] = 'field_homepage_offers_target_id';
+  $handler->display->display_options['relationships']['field_homepage_offers_target_id']['required'] = TRUE;
+  $handler->display->display_options['defaults']['fields'] = FALSE;
+  /* Field: Content: Title */
+  $handler->display->display_options['fields']['title']['id'] = 'title';
+  $handler->display->display_options['fields']['title']['table'] = 'node';
+  $handler->display->display_options['fields']['title']['field'] = 'title';
+  $handler->display->display_options['fields']['title']['relationship'] = 'field_homepage_offers_target_id';
+  $handler->display->display_options['fields']['title']['label'] = '';
+  $handler->display->display_options['fields']['title']['element_label_colon'] = FALSE;
+  $handler->display->display_options['fields']['title']['element_wrapper_type'] = 'h2';
+  /* Field: Content: Nid */
+  $handler->display->display_options['fields']['nid']['id'] = 'nid';
+  $handler->display->display_options['fields']['nid']['table'] = 'node';
+  $handler->display->display_options['fields']['nid']['field'] = 'nid';
+  $handler->display->display_options['fields']['nid']['relationship'] = 'field_homepage_offers_target_id';
+  $handler->display->display_options['fields']['nid']['label'] = '';
+  $handler->display->display_options['fields']['nid']['exclude'] = TRUE;
+  $handler->display->display_options['fields']['nid']['element_label_colon'] = FALSE;
+  /* Field: Content: Image */
+  $handler->display->display_options['fields']['field_offer_image']['id'] = 'field_offer_image';
+  $handler->display->display_options['fields']['field_offer_image']['table'] = 'field_data_field_offer_image';
+  $handler->display->display_options['fields']['field_offer_image']['field'] = 'field_offer_image';
+  $handler->display->display_options['fields']['field_offer_image']['relationship'] = 'field_homepage_offers_target_id';
+  $handler->display->display_options['fields']['field_offer_image']['label'] = '';
+  $handler->display->display_options['fields']['field_offer_image']['element_label_colon'] = FALSE;
+  $handler->display->display_options['fields']['field_offer_image']['click_sort_column'] = 'fid';
+  $handler->display->display_options['fields']['field_offer_image']['settings'] = array(
+    'image_style' => 'roomify_1200x720',
+    'image_link' => 'content',
+    'conditions' => array(
+      0 => array(
+        'condition' => '',
+      ),
+    ),
+  );
+  /* Field: Content: Description */
+  $handler->display->display_options['fields']['field_offer_description']['id'] = 'field_offer_description';
+  $handler->display->display_options['fields']['field_offer_description']['table'] = 'field_data_field_offer_description';
+  $handler->display->display_options['fields']['field_offer_description']['field'] = 'field_offer_description';
+  $handler->display->display_options['fields']['field_offer_description']['relationship'] = 'field_homepage_offers_target_id';
+  $handler->display->display_options['fields']['field_offer_description']['label'] = '';
+  $handler->display->display_options['fields']['field_offer_description']['alter']['max_length'] = '300';
+  $handler->display->display_options['fields']['field_offer_description']['alter']['more_link'] = TRUE;
+  $handler->display->display_options['fields']['field_offer_description']['alter']['more_link_text'] = 'read more';
+  $handler->display->display_options['fields']['field_offer_description']['alter']['more_link_path'] = 'node/[nid]';
+  $handler->display->display_options['fields']['field_offer_description']['alter']['strip_tags'] = TRUE;
+  $handler->display->display_options['fields']['field_offer_description']['alter']['trim'] = TRUE;
+  $handler->display->display_options['fields']['field_offer_description']['element_label_colon'] = FALSE;
+  $handler->display->display_options['fields']['field_offer_description']['type'] = 'text_plain';
+  $handler->display->display_options['fields']['field_offer_description']['settings'] = array(
+    'conditions' => array(
+      0 => array(
+        'condition' => '',
+      ),
+    ),
+  );
+  $handler->display->display_options['defaults']['filter_groups'] = FALSE;
+  $handler->display->display_options['defaults']['filters'] = FALSE;
+  /* Filter criterion: Content: Published */
+  $handler->display->display_options['filters']['status']['id'] = 'status';
+  $handler->display->display_options['filters']['status']['table'] = 'node';
+  $handler->display->display_options['filters']['status']['field'] = 'status';
+  $handler->display->display_options['filters']['status']['value'] = 1;
+  $handler->display->display_options['filters']['status']['group'] = 1;
+  $handler->display->display_options['filters']['status']['expose']['operator'] = FALSE;
+  /* Filter criterion: Content: Type */
+  $handler->display->display_options['filters']['type']['id'] = 'type';
+  $handler->display->display_options['filters']['type']['table'] = 'node';
+  $handler->display->display_options['filters']['type']['field'] = 'type';
+  $handler->display->display_options['filters']['type']['value'] = array(
+    'homepage' => 'homepage',
+  );
+  /* Filter criterion: Content: Image (field_offer_image:fid) */
+  $handler->display->display_options['filters']['field_offer_image_fid']['id'] = 'field_offer_image_fid';
+  $handler->display->display_options['filters']['field_offer_image_fid']['table'] = 'field_data_field_offer_image';
+  $handler->display->display_options['filters']['field_offer_image_fid']['field'] = 'field_offer_image_fid';
+  $handler->display->display_options['filters']['field_offer_image_fid']['relationship'] = 'field_homepage_offers_target_id';
+  $handler->display->display_options['filters']['field_offer_image_fid']['operator'] = 'not empty';
   $translatables['homepage_travel'] = array(
     t('Master'),
     t('more'),
@@ -110,10 +220,14 @@ function roomify_homepage_views_default_views() {
     t('‹ previous'),
     t('next ›'),
     t('last »'),
+    t('Content entity referenced from field_homepage_offers'),
     t('All'),
     t('Slideshow'),
     t('View panes'),
+    t('Offers'),
+    t('read more'),
   );
+
   $export['homepage_travel'] = $view;
 
   return $export;
