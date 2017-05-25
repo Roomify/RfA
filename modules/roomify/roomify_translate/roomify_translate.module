@@ -199,8 +199,8 @@ function roomify_translate_translated_menu_link_alter(&$item) {
 }
 
 /**
-* Implements hook_language_switch_links_alter().
-*/
+ * Implements hook_language_switch_links_alter().
+ */
 function roomify_translate_language_switch_links_alter(&$links, $type, $path) {
   $params = drupal_get_query_parameters();
   foreach ($links as &$link) {
