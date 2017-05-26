@@ -41,7 +41,7 @@ function roomify_area_create_area_vocabulary() {
  * FORM_ID = property_bat_facets_availability
  * Select the default Area and hide from the form.
  */
-function roomify_area_form_property_bat_facets_availability_alter(&$form, &$form_state, $form_id) {
+function roomify_area_form_property_bat_facets_availability_alter(&$form, &$form_state) {
   $term = menu_get_object('taxonomy_term', 2);
   if (isset($term->tid)) {
     $location = variable_get('roomify_availability_search_form_location', '');
@@ -58,7 +58,7 @@ function roomify_area_form_property_bat_facets_availability_alter(&$form, &$form
  * FORM_ID = taxonomy_form_term
  * Add custom submit to location term submit.
  */
-function roomify_area_form_taxonomy_form_term_alter(&$form, &$form_state, $form_id) {
+function roomify_area_form_taxonomy_form_term_alter(&$form, &$form_state) {
   $form['#submit'][] = 'custom_roomify_area_submit';
 
   if (isset($form['field_area_featured_property'])) {

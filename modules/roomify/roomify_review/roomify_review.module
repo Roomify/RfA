@@ -123,19 +123,17 @@ function roomify_review_node_access($node, $op, $account) {
  * Implements hook_form_FORM_ID_alter().
  * FORM_ID = review_node_form.
  */
-function roomify_review_form_review_node_form_alter(&$form, &$form_state, $form_id) {
+function roomify_review_form_review_node_form_alter(&$form, &$form_state) {
   global $user;
+
   if (isset($form['#node'])) {
     $node = $form['#node'];
-    $access = FALSE;
-    if ($node->uid == $user->uid || in_array('administrator', $user->roles) || $user->uid == 1) {
-      $access = TRUE;
-    }
+
     // Only Administrators and Review Authors should be able to edit it.
-    if (!$access) {
-      $form['field_review_rating']['#disabled'] = TRUE;
+    if (!($node->uid == $user->uid || in_array('administrator', $user->roles) || $user->uid == 1)) {
       $form['title']['#disabled'] = TRUE;
       $form['body']['#disabled'] = TRUE;
+      $form['field_review_rating'][LANGUAGE_NONE][0]['rating']['#input'] = FALSE;
     }
   }
 
@@ -376,8 +374,8 @@ function roomify_review_node_insert($node) {
   if ($node->type == 'review') {
     // Send a notification email to the property owner when a new review
     // is submitted.
-    module_load_include('inc', 'pet', 'pet.rules');
     if ($property_reviewed = field_get_items('node', $node, 'field_review_property_reviewed')) {
+      module_load_include('inc', 'pet', 'pet.rules');
 
       $property = roomify_property_load($property_reviewed[0]['target_id']);
       $to_account = user_load($property->field_sp_owner[LANGUAGE_NONE][0]['target_id']);
