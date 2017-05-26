@@ -390,9 +390,8 @@ projects[redirect][version] = 1.0-rc3
 
 projects[references_dialog][version] = 1.0-beta2
 projects[references_dialog][patch][] = https://www.drupal.org/files/issues/references_dialog-zindex-2833782-1.patch
-projects[references_dialog][patch][] = https://www.drupal.org/files/issues/creating_user_but-2238801-6.patch
 projects[references_dialog][patch][] = https://www.drupal.org/files/issues/references_dialog-create_users-2172321.patch
-projects[references_dialog][patch][] = https://www.drupal.org/files/issues/wrong_UID_reference_field-2238801-1.patch
+projects[references_dialog][patch][] = https://www.drupal.org/files/issues/references_dialog-wrong_entity_id_reference_field-2238801-3.patch
 
 projects[relation][version] = 1.0
 
