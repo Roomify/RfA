@@ -247,6 +247,9 @@ function roomify_listing_form_bat_type_edit_form_alter(&$form, &$form_state) {
   if (isset($form['field_st_description']) && $form['#bundle'] == 'home') {
     $form['field_st_description']['#access'] = FALSE;
   }
+  if (isset($form['field_st_calendar_reference'])) {
+    $form['field_st_calendar_reference']['#access'] = FALSE;
+  }
   $form['actions']['submit']['#submit'][] = 'roomify_listing_edit_form_submit';
 
   if (isset($form['field_rates_ranges'])) {
@@ -396,6 +399,12 @@ function roomify_listing_entity_update($entity, $type) {
         if ($max_capacity[0]['value'] >= $max_properties_capacity) {
           variable_set('roomify_max_property_type_capacity', $max_capacity[0]['value']);
         }
+      }
+      if (!isset($field_st_calendar_reference[LANGUAGE_NONE][0]['unit_type_id']) || empty($field_st_calendar_reference[LANGUAGE_NONE][0]['unit_type_id'])) {
+        $availability_event = bat_event_type_load('availability');
+        $entity->field_st_calendar_reference[LANGUAGE_NONE][0]['unit_type_id'] = $entity->type_id;
+        $entity->field_st_calendar_reference[LANGUAGE_NONE][0]['event_type_id'] = $availability_event->id;
+        field_attach_update('bat_type', $entity);
       }
       // Check if a default price is set.
       if (isset($entity->field_st_default_price)) {
@@ -1144,7 +1153,41 @@ function roomify_listing_menu() {
     'type' => MENU_NORMAL_ITEM,
   );
 
+  $items['type-availability-calendar/%'] = array(
+    'title' => 'Availability Calendar Modal',
+    'page arguments' => array(1),
+    'page callback' => 'roomfy_listing_type_availability_calendar_modal',
+    'access callback' => TRUE,
+    'type' => MENU_NORMAL_ITEM,
+  );
+
   return $items;
+}
+
+function roomfy_listing_type_availability_calendar_modal($type_id = NULL) {
+  if ($type_id == NULL) {
+    return t('No type id was sent. Error.');
+  }
+
+  // Required includes for ctools to work.
+  ctools_include('modal');
+  ctools_include('ajax');
+
+  // Load the type object.
+  $type = bat_type_load($type_id);
+  $calendar = field_view_field('bat_type', $type, 'field_st_calendar_reference', array('type' => 'bat_calendar_reference_month_view'));
+
+  // Remove the Calendar title.
+  if (isset($calendar[0]['#prefix'])) {
+    $calendar[0]['#prefix'] = '';
+  }
+  $contents = render($calendar);
+  $contents .= '<div class="calendar-legend">
+    <span class="available-date">' . t('Available Night') . '</span>
+    <span class="unavailable-date">' . t('Unavailable Night') . '</span>
+  </div>';
+
+  return ctools_modal_render(t('@name Availability', array('@name' => $type->name)), $contents);
 }
 
 /**
@@ -1513,4 +1556,50 @@ function roomify_listing_enquiry_done() {
   $submission_reply_text = variable_get_value('roomify_submission_reply_text');
 
   return check_markup($submission_reply_text['value'], $submission_reply_text['format']);
+}
+
+/**
+ * Implements hook_bat_calendar_settings_alter().
+ */
+function roomify_listing_bat_calendar_settings_alter(&$calendar_settings) {
+  foreach ($calendar_settings['batCalendar'] as $cal_id => $settings) {
+    if ($calendar_settings['batCalendar'][$cal_id]['defaultView'] == 'month') {
+      $future_limit = variable_get('roomify_accommodation_booking_future_limit', 31104000);
+
+      $calendar_settings['batCalendar'][$cal_id]['background'] = 'type-availability-calendar';
+      $calendar_settings['batCalendar'][$cal_id]['allDayDefault'] = TRUE;
+      $calendar_settings['batCalendar'][$cal_id]['validRange'] = array(
+        'start' => date('Y-m-d'),
+        'end' => date('Y-m-d', REQUEST_TIME + $future_limit + 86400),
+      );
+    }
+  }
+}
+
+/**
+ * Implements hook_bat_api_events_index_calendar_alter().
+ */
+function roomify_listing_bat_api_events_index_calendar_alter(&$events, $context) {
+  global $user;
+
+  if ((is_array($user->roles) && !in_array('administrator', $user->roles) &&
+      !in_array('property owner', $user->roles) && !in_array('roomify manager', $user->roles)) ||
+      !is_array($user->roles) || $context['background'] === 'type-availability-calendar') {
+    foreach ($events as $id => $event) {
+      if ($event['blocking']) {
+        $state = bat_event_load_state_by_machine_name(NOT_AVAILABLE);
+
+        $events[$id]['color'] = $state['color'];
+        $events[$id]['rendering'] = 'background';
+        $events[$id]['title'] = $state['label'];
+      }
+
+      $start_date = new DateTime($event['start']);
+      $end_date = new DateTime($event['end']);
+
+      if ($start_date->format('Y-m-d') != $end_date->format('Y-m-d')) {
+        $events[$id]['end'] = $end_date->add(new DateInterval('P1D'))->format('Y-m-d') . 'T00:00:00';
+      }
+    }
+  }
 }

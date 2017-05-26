@@ -1317,3 +1317,29 @@ function roomify_listing_update_7035() {
     field_update_instance($instance_info);
   }
 }
+
+/**
+ * Add calendar reference field.
+ */
+function roomify_listing_update_7036() {
+  module_load_include('inc', 'roomify_listing', 'roomify_listing.fields');
+
+  foreach (array('home', 'room') as $type_bundle) {
+    roomify_listing_add_field_st_calendar_reference($type_bundle);
+  }
+}
+
+/**
+ * Fill existing types calendar reference with the type id.
+ */
+function roomify_listing_update_7037() {
+  $availability_event = bat_event_type_load('availability');
+  foreach (bat_type_ids() as $id => $name) {
+    $type = bat_type_load($id);
+    if ($type->type == 'room' || $type->type == 'home') {
+      $type->field_st_calendar_reference[LANGUAGE_NONE][0]['unit_type_id'] = $type->type_id;
+      $type->field_st_calendar_reference[LANGUAGE_NONE][0]['event_type_id'] = $availability_event->id;
+      field_attach_update('bat_type', $type);
+    }
+  }
+}
