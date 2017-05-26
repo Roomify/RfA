@@ -96,7 +96,7 @@ function _roomify_integrations_check_googleanalytics() {
 }
 
 /**
- * Add the Roomfiy Integrations table and update zopim status.
+ * Add the Roomify Integrations table and update zopim status.
  */
 function roomify_integrations_update_7001() {
   db_create_table('roomify_integrations', drupal_get_schema_unprocessed('roomify_integrations', 'roomify_integrations'));
