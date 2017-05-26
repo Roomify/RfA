@@ -37,7 +37,7 @@
    <!-- Footer. -->  
   <footer id="footer">
   	<div class="content">
-  		<p>Roomify for Accommodations - Copyright © 2016</p>
+  		<p>Roomify for Accommodations - Copyright © 2017</p>
   	</div>
 
   </footer>
