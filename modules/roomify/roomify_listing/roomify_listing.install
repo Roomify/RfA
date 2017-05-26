@@ -1321,7 +1321,7 @@ function roomify_listing_update_7035() {
 /**
  * Add calendar reference field.
  */
-function roomify_listing_update_7035() {
+function roomify_listing_update_7036() {
   module_load_include('inc', 'roomify_listing', 'roomify_listing.fields');
 
   foreach (array('home', 'room') as $type_bundle) {
@@ -1332,7 +1332,7 @@ function roomify_listing_update_7035() {
 /**
  * Fill existing types calendar reference with the type id.
  */
-function roomify_listing_update_7036() {
+function roomify_listing_update_7037() {
   $availability_event = bat_event_type_load('availability');
   foreach (bat_type_ids() as $id => $name) {
     $type = bat_type_load($id);
