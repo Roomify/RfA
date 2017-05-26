@@ -473,7 +473,7 @@ function roomify_dashboard_create_dashboard_menu() {
     $featured_areas_subqueue_id = 2;
   }
 
-  roomify_system_create_update_menu_link('Featured Areas', 'admin/structure/entityqueue/list/featured_properties/subqueues/' . $featured_areas_subqueue_id . '/edit', 'roomify_dashboard_menu', 4, 1, $content_mlid);
+  roomify_system_create_update_menu_link('Featured Areas', 'admin/structure/entityqueue/list/featured_areas/subqueues/' . $featured_areas_subqueue_id . '/edit', 'roomify_dashboard_menu', 4, 1, $content_mlid);
 
   roomify_system_create_update_menu_link('Main Menu', 'admin/structure/menu/manage/main-menu', 'roomify_dashboard_menu', 5, 1, $content_mlid);
   roomify_system_create_update_menu_link('Dashboard Menu', 'admin/structure/menu/manage/roomify_dashboard_menu', 'roomify_dashboard_menu', 6, 1, $content_mlid);
