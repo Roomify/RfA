@@ -186,7 +186,7 @@ function roomify_system_block_view($delta = '') {
 
   switch ($delta) {
     case 'roomify_footer_block':
-      $text = variable_get('roomify_footer_text', 'Roomify for Accommodations - Copyright © 2016');
+      $text = variable_get('roomify_footer_text', 'Roomify for Accommodations - Copyright © 2017');
       $block['content'] = isset($text['value']) ? $text['value'] : $text;
       break;
   }
@@ -198,7 +198,7 @@ function roomify_system_block_view($delta = '') {
  * Form "Roomify Footer".
  */
 function roomify_footer_form($form, &$form_state) {
-  $text = variable_get('roomify_footer_text', 'Roomify for Accommodations - Copyright © 2016');
+  $text = variable_get('roomify_footer_text', 'Roomify for Accommodations - Copyright © 2017');
   $form['roomify_footer_text'] = array(
     '#type' => 'text_format',
     '#title' => t('Footer'),
