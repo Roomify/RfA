@@ -365,8 +365,11 @@ projects[pathauto][version] = 1.3
 
 projects[pathauto_entity][version] = 1.0
 
-projects[pet][version] = 1.0-rc1
-projects[pet][patch][] = https://www.drupal.org/files/pet-add-rules-state-2092195-1.patch
+projects[pet][type] = module
+projects[pet][download][type] = git
+projects[pet][download][url] = https://git.drupal.org/project/pet.git
+projects[pet][download][revision] = 3a42221335ecf717a6a538e431394afcd7f198c3
+projects[pet][patch][] = https://www.drupal.org/files/issues/add-rule-state-and-allow-from-override-2879713-1.patch
 projects[pet][patch][] = https://www.drupal.org/files/issues/pet-specify_entity_types_for_tokens-2612754-1.patch
 projects[pet][patch][] = https://www.drupal.org/files/issues/multilanguage-support-2727733-6.patch
 
