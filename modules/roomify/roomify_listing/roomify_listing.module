@@ -1507,6 +1507,7 @@ function roomify_listing_enquiry_form_submit($form, &$form_state) {
   $rules_state->variables['roomify_conversation'] = $conversation_wrapper;
 
   $to_account = user_load($type->uid);
+
   pet_action_send_pet('new_booking_enquiry', NULL, $to_account, NULL, NULL, array(), $rules_state);
 
   $commands = array();
