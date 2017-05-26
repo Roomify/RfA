@@ -905,6 +905,9 @@ function roomify_system_roomify_rights() {
       'access better messages',
       'display EU Cookie Compliance popup',
       'use search_api_sorts',
+      'view calendar data for any availability event',
+      'access units calendar index service',
+      'access events calendar index service',
     ),
     'authenticated user' => array(
       'access checkout',
@@ -918,6 +921,9 @@ function roomify_system_roomify_rights() {
       'access better messages',
       'use manualcrop',
       'use search_api_sorts',
+      'view calendar data for any availability event',
+      'access units calendar index service',
+      'access events calendar index service',
     ),
     'guest' => array(
       'edit own guest profile',

@@ -988,6 +988,7 @@ function roomify_travel_theme_views_default_views() {
   $handler->display->display_options['style_plugin'] = 'footable';
   $handler->display->display_options['style_options']['columns'] = array(
     'type_id' => 'type_id',
+    'type_calendar_reference' => 'type_calendar_reference',
     'name' => 'field_st_gallery',
     'field_st_gallery' => 'field_st_gallery',
     'field_st_description' => 'field_st_description',
@@ -1002,6 +1003,11 @@ function roomify_travel_theme_views_default_views() {
     'type_id' => array(
       'sortable' => 0,
       'default_sort_order' => 'asc',
+      'align' => '',
+      'separator' => '',
+      'empty_column' => 0,
+    ),
+    'type_calendar_reference' => array(
       'align' => '',
       'separator' => '',
       'empty_column' => 0,
@@ -1057,9 +1063,14 @@ function roomify_travel_theme_views_default_views() {
     'striping' => 0,
     'expand' => 'name',
     'icon' => 'toggle-arrow',
-    'icon_size' => 'toggle-medium',
+    'icon_size' => '',
     'hide' => array(
       'type_id' => array(
+        'all' => 0,
+        'phone' => 0,
+        'tablet' => 0,
+      ),
+      'type_calendar_reference' => array(
         'all' => 0,
         'phone' => 0,
         'tablet' => 0,
@@ -1124,7 +1135,7 @@ function roomify_travel_theme_views_default_views() {
   $handler->display->display_options['fields']['type_id']['label'] = '';
   $handler->display->display_options['fields']['type_id']['exclude'] = TRUE;
   $handler->display->display_options['fields']['type_id']['element_label_colon'] = FALSE;
-  /* Field: Type: Name */
+  /* Field: Type: Label */
   $handler->display->display_options['fields']['name']['id'] = 'name';
   $handler->display->display_options['fields']['name']['table'] = 'bat_types';
   $handler->display->display_options['fields']['name']['field'] = 'name';
@@ -1213,12 +1224,22 @@ function roomify_travel_theme_views_default_views() {
   $handler->display->display_options['fields']['booking_cost']['field'] = 'booking_cost';
   $handler->display->display_options['fields']['booking_cost']['relationship'] = 'property_bat_type_reference_target_id';
   $handler->display->display_options['fields']['booking_cost']['label'] = 'Cost';
+  /* Field: Roomify Property: Type Calendar reference */
+  $handler->display->display_options['fields']['type_calendar_reference']['id'] = 'type_calendar_reference';
+  $handler->display->display_options['fields']['type_calendar_reference']['table'] = 'roomify_properties';
+  $handler->display->display_options['fields']['type_calendar_reference']['field'] = 'type_calendar_reference';
+  $handler->display->display_options['fields']['type_calendar_reference']['label'] = '';
+  $handler->display->display_options['fields']['type_calendar_reference']['exclude'] = TRUE;
+  $handler->display->display_options['fields']['type_calendar_reference']['element_label_colon'] = FALSE;
   /* Field: Type: Book This Link */
   $handler->display->display_options['fields']['book_this']['id'] = 'book_this';
   $handler->display->display_options['fields']['book_this']['table'] = 'bat_types';
   $handler->display->display_options['fields']['book_this']['field'] = 'book_this';
   $handler->display->display_options['fields']['book_this']['relationship'] = 'property_bat_type_reference_target_id';
   $handler->display->display_options['fields']['book_this']['label'] = '';
+  $handler->display->display_options['fields']['book_this']['alter']['alter_text'] = TRUE;
+  $handler->display->display_options['fields']['book_this']['alter']['text'] = '[type_calendar_reference] 
+  [book_this]';
   $handler->display->display_options['fields']['book_this']['element_label_colon'] = FALSE;
   $handler->display->display_options['defaults']['arguments'] = FALSE;
   /* Contextual filter: Roomify Property: Roomify property ID */
@@ -1272,7 +1293,7 @@ function roomify_travel_theme_views_default_views() {
   $handler->display->display_options['fields']['type_id']['label'] = '';
   $handler->display->display_options['fields']['type_id']['exclude'] = TRUE;
   $handler->display->display_options['fields']['type_id']['element_label_colon'] = FALSE;
-  /* Field: Type: Name */
+  /* Field: Type: Label */
   $handler->display->display_options['fields']['name']['id'] = 'name';
   $handler->display->display_options['fields']['name']['table'] = 'bat_types';
   $handler->display->display_options['fields']['name']['field'] = 'name';
@@ -1360,7 +1381,7 @@ function roomify_travel_theme_views_default_views() {
     t('Asc'),
     t('Desc'),
     t('<div class="title">[field_sp_gallery_1-title]</div>
-                <div class="alt">[field_sp_gallery_1-alt]</div>'),
+                  <div class="alt">[field_sp_gallery_1-alt]</div>'),
     t('All'),
     t('Property Types'),
     t('Type entity referenced from property_bat_type_reference'),
@@ -1370,9 +1391,12 @@ function roomify_travel_theme_views_default_views() {
     t('Max Capacity'),
     t('Beds'),
     t('Cost'),
+    t('[type_calendar_reference] 
+  [book_this]'),
     t('View panes'),
     t('Property Types List'),
   );
+
   $views['property_travel'] = $view;
 
   $view = new view();
