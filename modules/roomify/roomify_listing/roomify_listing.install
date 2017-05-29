@@ -1289,6 +1289,12 @@ function roomify_listing_update_7032() {
  */
 function roomify_listing_update_7033() {
   module_enable(array('roomify_review'));
+}
+
+/**
+ * Helper function to add fields to the right vertical tab.
+ */
+function roomify_listing_update_7034() {
   foreach (array('casa_property', 'locanda_property') as $property_bundle) {
     $field_group = field_group_load_field_group('group_basic_information', 'roomify_property', $property_bundle, 'form');
 
@@ -1299,4 +1305,41 @@ function roomify_listing_update_7033() {
     field_group_group_save($field_group);
   }
   drupal_flush_all_caches();
+}
+
+/**
+ * Add description to Default Cost field.
+ */
+function roomify_listing_update_7035() {
+  foreach (array('home', 'room') as $type_bundle) {
+    $instance_info = field_read_instance('bat_type', 'field_st_default_price', $type_bundle);
+    $instance_info['description'] = 'Change this value to update the default night price of your property. This will override the Standard Rate.';
+    field_update_instance($instance_info);
+  }
+}
+
+/**
+ * Add calendar reference field.
+ */
+function roomify_listing_update_7036() {
+  module_load_include('inc', 'roomify_listing', 'roomify_listing.fields');
+
+  foreach (array('home', 'room') as $type_bundle) {
+    roomify_listing_add_field_st_calendar_reference($type_bundle);
+  }
+}
+
+/**
+ * Fill existing types calendar reference with the type id.
+ */
+function roomify_listing_update_7037() {
+  $availability_event = bat_event_type_load('availability');
+  foreach (bat_type_ids() as $id => $name) {
+    $type = bat_type_load($id);
+    if ($type->type == 'room' || $type->type == 'home') {
+      $type->field_st_calendar_reference[LANGUAGE_NONE][0]['unit_type_id'] = $type->type_id;
+      $type->field_st_calendar_reference[LANGUAGE_NONE][0]['event_type_id'] = $availability_event->id;
+      field_attach_update('bat_type', $type);
+    }
+  }
 }

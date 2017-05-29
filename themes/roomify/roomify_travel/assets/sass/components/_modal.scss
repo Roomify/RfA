@@ -6,16 +6,16 @@
 #modalContent {
   .ctools-modal-dialog.modal-dialog {
     @media (min-width: $screen-lg) {
-      width: 680px !important;
+      width: 640px !important;
       #modal-content {
-        width: 660px !important;
+        width: 620px !important;
       }
     }
   }
   position: fixed !important;
   top: 30px !important;
   .modal-content {
-    overflow: scroll;
+    overflow: auto;
   }
   .modal-header {
     border: none;

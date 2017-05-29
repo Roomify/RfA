@@ -3,6 +3,47 @@
   .page-header {
     @include make-xs-column(12);
   }
+  .roomify-property-offer {
+    display: inline-block;
+    width: 100%;
+    padding: 10px 25px;
+    background: #ff9800;
+    border-bottom: 3px solid #d28616;
+    color: #fff;
+    position: relative;
+    min-height: 110px;
+    font-weight: 400;
+    &:after {
+      background: url("../images/offer_checkout.png") 0 50% no-repeat;
+      background: url("../images/offer_checkout.svg") center center no-repeat, linear-gradient(transparent, transparent);
+      display: inline-block;
+      width: 100px;
+      height: 100px;
+      position: absolute;
+      top: 0px;
+      content: '';
+      right: 0;
+      border: 0;
+      background-size: contain;
+      @media (max-width: $screen-sm) {
+        width: 40px;
+        height: 40px;
+      }
+    }
+    .offer-name {
+      font-weight: 400;
+      font-size: 20px;
+      margin: 10px 0;
+    }
+    .offer-name,
+    .offer-description {
+      display: inline-block;
+      width: calc(100% - 130px);
+      @media (max-width: $screen-sm) {
+        width: calc(100% - 50px);
+      }
+    }
+  }
   #roomify-accommodation-booking-current-search-form {
     .current-search-item {
       &.current-search-arrival,
@@ -16,7 +57,7 @@
         padding: 10px;
         border: 1px solid #E6E6E6;
         border-right: 0;
-        min-height: 120px;
+        min-height: 140px;
         background: white;
         @media (max-width: $screen-md) {
           border-right: 1px solid #E6E6E6;
@@ -49,7 +90,7 @@
           line-height: 1.4em;
         }
         .offer-cost {
-          color: #FF0000;
+          color: #ff9800;
           margin-top: 0;
           line-height: 1.4em;
         }
@@ -149,9 +190,11 @@
           text-decoration: line-through;
           margin-right: 10px;
         }
-        .offer-tax,
-        .offer-cost {
+        .offer-tax {
           color: #FF0000;
+        }
+        .offer-cost {
+          color: #ff9800;
         }
       }
       .bold {

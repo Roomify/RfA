@@ -49,3 +49,38 @@ function roomify_dashboard_update_7005() {
   $admin_theme_settings['adminimal_theme_skin'] = 'material';
   variable_set('theme_roomify_adminimal_theme_settings', $admin_theme_settings);
 }
+
+/**
+ * Add My Users link
+ */
+function roomify_dashboard_update_7006() {
+  // Accounts Sub-menu.
+  $accounts_mlid = roomify_system_get_menu_link_id('Accounts', 'user', 'roomify_dashboard_menu', -5);
+  roomify_system_create_update_menu_link_with_token('My Users', 'user/[current-user:uid]/subuser', 'roomify_dashboard_menu', 11, 1, $accounts_mlid, array());
+}
+
+/**
+ * Fix path of the menu link "Featured Areas".
+ */
+function roomify_dashboard_update_7007() {
+  $featured_areas_subqueue_id = db_select('entityqueue_subqueue', 'e')
+    ->fields('e', array('subqueue_id'))
+    ->condition('queue', 'featured_areas')
+    ->execute()
+    ->fetchField();
+  if ($featured_areas_subqueue_id === FALSE) {
+    $featured_areas_subqueue_id = 2;
+  }
+
+  $mlid = db_select('menu_links', 'ml')
+    ->fields('ml', array('mlid'))
+    ->condition('ml.menu_name', 'roomify_dashboard_menu')
+    ->condition('link_path', 'admin/structure/entityqueue/list/featured_properties/subqueues/' . $featured_areas_subqueue_id . '/edit')
+    ->execute()
+    ->fetchField();
+
+  if ($menu = menu_link_load($mlid)) {
+    $menu['link_path'] = 'admin/structure/entityqueue/list/featured_areas/subqueues/' . $featured_areas_subqueue_id . '/edit';
+    menu_link_save($menu);
+  }
+}

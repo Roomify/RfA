@@ -2576,7 +2576,7 @@ function roomify_listing_create_standard_type_fields($type_bundle) {
     $field_instances['bat_type-standard_type-field_st_default_price'] = array(
       'bundle' => $type_bundle,
       'default_value' => NULL,
-      'description' => '',
+      'description' => 'Change this value to update the default night price of your property. This will override the Standard Rate.',
       'display' => array(
         'default' => array(
           'label' => 'above',
@@ -3062,6 +3062,7 @@ function roomify_listing_create_standard_type_fields($type_bundle) {
 
   roomify_listing_add_field_rates_ranges($type_bundle);
   roomify_listing_add_field_st_rates_for_person($type_bundle);
+  roomify_listing_add_field_st_calendar_reference($type_bundle);
 }
 
 /**
@@ -4636,6 +4637,78 @@ function roomify_listing_add_field_st_rates_for_person($type_bundle) {
         ),
         'type' => 'options_onoff',
         'weight' => 10,
+      ),
+    );
+    field_create_instance($instance);
+  }
+}
+
+/**
+ * @param $type_bundle
+ */
+function roomify_listing_add_field_st_calendar_reference($type_bundle) {
+  if (field_read_field('field_st_calendar_reference') === FALSE) {
+    $field = array(
+      'active' => 1,
+      'cardinality' => 1,
+      'deleted' => 0,
+      'entity_types' => array(),
+      'field_name' => 'field_st_calendar_reference',
+      'indexes' => array(
+        'unit_type_id' => array(
+          0 => 'unit_type_id',
+        ),
+      ),
+      'locked' => 0,
+      'module' => 'bat_calendar_reference',
+      'settings' => array(
+        'entity_translation_sync' => FALSE,
+        'profile2_private' => FALSE,
+        'referenceable_event_types' => array(
+          1 => 1,
+          2 => 0,
+          3 => 0,
+        ),
+      ),
+      'translatable' => 0,
+      'type' => 'bat_calendar_unit_type_reference',
+    );
+    field_create_field($field);
+  }
+
+  if (field_read_instance('bat_type', 'field_st_calendar_reference', $type_bundle) === FALSE) {
+    $instance = array(
+      'bundle' => $type_bundle,
+      'default_value' => NULL,
+      'deleted' => 0,
+      'description' => '',
+      'display' => array(
+        'default' => array(
+          'label' => 'above',
+          'module' => 'bat_calendar_reference',
+          'settings' => array(
+            'conditions' => array(),
+          ),
+          'type' => 'bat_calendar_reference_timeline_view',
+          'weight' => 57,
+        ),
+      ),
+      'entity_type' => 'bat_type',
+      'field_name' => 'field_st_calendar_reference',
+      'label' => 'Calendar Reference',
+      'required' => 0,
+      'settings' => array(
+        'entity_translation_sync' => FALSE,
+        'user_register_form' => FALSE,
+      ),
+      'widget' => array(
+        'active' => 0,
+        'module' => 'bat_calendar_reference',
+        'settings' => array(
+          'autocomplete_match' => 'contains',
+        ),
+        'type' => 'bat_calendar_reference_unit_type_autocomplete',
+        'weight' => 43,
       ),
     );
     field_create_instance($instance);

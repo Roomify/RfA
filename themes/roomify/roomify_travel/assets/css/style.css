@@ -6838,11 +6838,11 @@ blockquote {
   top: 30px !important; }
   @media (min-width: 1200px) {
     #modalContent .ctools-modal-dialog.modal-dialog {
-      width: 680px !important; }
+      width: 640px !important; }
       #modalContent .ctools-modal-dialog.modal-dialog #modal-content {
-        width: 660px !important; } }
+        width: 620px !important; } }
   #modalContent .modal-content {
-    overflow: scroll; }
+    overflow: auto; }
   #modalContent .modal-header {
     border: none; }
     #modalContent .modal-header .modal-title {
@@ -7204,9 +7204,10 @@ header.roomify-header {
     header.roomify-header .roomify-site-name a.name {
       text-align: center;
       display: inline-block;
-      font-size: 22px;
+      font-size: 24px;
       margin-top: 5px;
-      width: 100%; }
+      width: 100%;
+      font-weight: 500; }
     header.roomify-header .roomify-site-name a.logo {
       display: table;
       margin: 8px auto;
@@ -8088,6 +8089,24 @@ body.toggled #close-sidebar-wrapper {
   .pane-property-location .pane-roomify-property-field-sp-address {
     margin: 15px 0; }
 
+.pane-roomify-listing-availability-calendar-popup {
+  display: inline-block;
+  width: 100%;
+  position: relative; }
+  .pane-roomify-listing-availability-calendar-popup a.ctools-modal-roomify-dashboard-modal-style {
+    background: url("../images/availability_calendar.png") 0 50% no-repeat;
+    background: url("../images/availability_calendar.svg") center center no-repeat, linear-gradient(transparent, transparent);
+    display: inline-block;
+    position: absolute;
+    width: 30px;
+    height: 30px;
+    margin-top: 0;
+    text-indent: -9999px;
+    border: 0;
+    background-size: contain;
+    top: -38px;
+    right: -18px; }
+
 .pane-roomify-property-flag-favorites-link {
   position: relative;
   z-index: 98;
@@ -8740,7 +8759,7 @@ body.toggled #close-sidebar-wrapper {
             font-size: 22px;
             text-decoration: none; }
           .page-listing .pane-property-travel-panel-pane-3 .views-table tbody tr td.views-field-field-st-gallery img {
-            max-width: 140px;
+            max-width: 240px;
             border-radius: 2px;
             margin-left: 25px;
             margin-top: 15px; }
@@ -8825,6 +8844,18 @@ body.toggled #close-sidebar-wrapper {
             margin-top: 5px;
             font-style: italic;
             color: #848484; }
+          .page-listing .pane-property-travel-panel-pane-3 .views-table tbody tr td.views-field-book-this a.ctools-modal-roomify-dashboard-modal-style {
+            background: url("../images/availability_calendar.png") 0 50% no-repeat;
+            background: url("../images/availability_calendar.svg") center center no-repeat, linear-gradient(transparent, transparent);
+            display: inline-block;
+            width: 30px;
+            height: 30px;
+            margin-top: 0;
+            text-indent: -9999px;
+            border: 0;
+            background-size: contain;
+            position: relative;
+            bottom: 20px; }
         .page-listing .pane-property-travel-panel-pane-3 .views-table tbody tr td .footable-row-detail-inner {
           margin: 10px 0;
           padding: 30px;
@@ -8924,6 +8955,87 @@ body.toggled #close-sidebar-wrapper {
     .page-listing .panel-content-bottom .pane-featured-properties-panel-pane-3 .view-featured-properties .slick-prev.slick-arrow {
       left: 15px; }
 
+@media (max-width: 480px) {
+  .page-listing #modalContent {
+    left: 0px !important; } }
+.page-listing .ctools-modal-dialog.modal-dialog {
+  width: 100% !important;
+  height: 100% !important;
+  border-radius: 0px;
+  max-width: none !important;
+  margin: 0;
+  background-color: rgba(0, 0, 0, 0.75); }
+  .page-listing .ctools-modal-dialog.modal-dialog .modal-content {
+    height: 100%;
+    overflow: auto; }
+    @media (max-width: 767px) {
+      .page-listing .ctools-modal-dialog.modal-dialog .modal-content {
+        overflow: scroll; } }
+  .page-listing .ctools-modal-dialog.modal-dialog #modal-content {
+    margin: 20px auto 0 auto;
+    max-height: 100% !important;
+    width: 100% !important; }
+    @media (max-width: 480px) {
+      .page-listing .ctools-modal-dialog.modal-dialog #modal-content {
+        padding: 10px; } }
+  .page-listing .ctools-modal-dialog.modal-dialog .field-type-bat-calendar-unit-type-reference {
+    padding: 28px;
+    background: white;
+    border-radius: 4px;
+    border: 1px solid #eaeaea; }
+    .page-listing .ctools-modal-dialog.modal-dialog .field-type-bat-calendar-unit-type-reference table:not(.table-bordered) > thead > tr > th,
+    .page-listing .ctools-modal-dialog.modal-dialog .field-type-bat-calendar-unit-type-reference table:not(.table-bordered) > tbody > tr > th,
+    .page-listing .ctools-modal-dialog.modal-dialog .field-type-bat-calendar-unit-type-reference table:not(.table-bordered) > tfoot > tr > th,
+    .page-listing .ctools-modal-dialog.modal-dialog .field-type-bat-calendar-unit-type-reference table:not(.table-bordered) > thead > tr > td,
+    .page-listing .ctools-modal-dialog.modal-dialog .field-type-bat-calendar-unit-type-reference table:not(.table-bordered) > tbody > tr > td,
+    .page-listing .ctools-modal-dialog.modal-dialog .field-type-bat-calendar-unit-type-reference table:not(.table-bordered) > tfoot > tr > td,
+    .page-listing .ctools-modal-dialog.modal-dialog .field-type-bat-calendar-unit-type-reference .table:not(.table-bordered) > thead > tr > th,
+    .page-listing .ctools-modal-dialog.modal-dialog .field-type-bat-calendar-unit-type-reference .table:not(.table-bordered) > tbody > tr > th,
+    .page-listing .ctools-modal-dialog.modal-dialog .field-type-bat-calendar-unit-type-reference .table:not(.table-bordered) > tfoot > tr > th,
+    .page-listing .ctools-modal-dialog.modal-dialog .field-type-bat-calendar-unit-type-reference .table:not(.table-bordered) > thead > tr > td,
+    .page-listing .ctools-modal-dialog.modal-dialog .field-type-bat-calendar-unit-type-reference .table:not(.table-bordered) > tbody > tr > td,
+    .page-listing .ctools-modal-dialog.modal-dialog .field-type-bat-calendar-unit-type-reference .table:not(.table-bordered) > tfoot > tr > td {
+      border-color: #717171; }
+    .page-listing .ctools-modal-dialog.modal-dialog .field-type-bat-calendar-unit-type-reference td.fc-past {
+      background: #efefef; }
+  .page-listing .ctools-modal-dialog.modal-dialog .fc-head-container.fc-widget-header,
+  .page-listing .ctools-modal-dialog.modal-dialog .fc-day-header.fc-widget-header {
+    background: #1597d2;
+    color: white;
+    font-weight: 500;
+    text-transform: uppercase; }
+  .page-listing .ctools-modal-dialog.modal-dialog .calendar-legend {
+    display: inline-block;
+    width: 100%;
+    margin: 10px 0; }
+    .page-listing .ctools-modal-dialog.modal-dialog .calendar-legend .available-date,
+    .page-listing .ctools-modal-dialog.modal-dialog .calendar-legend .unavailable-date {
+      padding-left: 30px;
+      margin-right: 10px;
+      position: relative; }
+      .page-listing .ctools-modal-dialog.modal-dialog .calendar-legend .available-date:before,
+      .page-listing .ctools-modal-dialog.modal-dialog .calendar-legend .unavailable-date:before {
+        width: 20px;
+        height: 20px;
+        content: '';
+        background: #dce3d6;
+        display: inline-block;
+        position: absolute;
+        left: 5px;
+        top: -2px; }
+    .page-listing .ctools-modal-dialog.modal-dialog .calendar-legend .unavailable-date:before {
+      background: #f0bfbf; }
+.page-listing div.modal-content {
+  background: none;
+  box-shadow: none;
+  -webkit-box-shadow: none;
+  -moz-box-shadow: none;
+  -ms-box-shadow: none;
+  -o-box-shadow: none; }
+
+.field-name-field-st-calendar-reference .field-label {
+  display: none; }
+
 .page-conversation-booking .page-header,
 .page-booking .page-header {
   position: relative;
@@ -8932,6 +9044,52 @@ body.toggled #close-sidebar-wrapper {
   min-height: 1px;
   padding-left: 15px;
   padding-right: 15px; }
+.page-conversation-booking .roomify-property-offer,
+.page-booking .roomify-property-offer {
+  display: inline-block;
+  width: 100%;
+  padding: 10px 25px;
+  background: #ff9800;
+  border-bottom: 3px solid #d28616;
+  color: #fff;
+  position: relative;
+  min-height: 110px;
+  font-weight: 400; }
+  .page-conversation-booking .roomify-property-offer:after,
+  .page-booking .roomify-property-offer:after {
+    background: url("../images/offer_checkout.png") 0 50% no-repeat;
+    background: url("../images/offer_checkout.svg") center center no-repeat, linear-gradient(transparent, transparent);
+    display: inline-block;
+    width: 100px;
+    height: 100px;
+    position: absolute;
+    top: 0px;
+    content: '';
+    right: 0;
+    border: 0;
+    background-size: contain; }
+    @media (max-width: 768px) {
+      .page-conversation-booking .roomify-property-offer:after,
+      .page-booking .roomify-property-offer:after {
+        width: 40px;
+        height: 40px; } }
+  .page-conversation-booking .roomify-property-offer .offer-name,
+  .page-booking .roomify-property-offer .offer-name {
+    font-weight: 400;
+    font-size: 20px;
+    margin: 10px 0; }
+  .page-conversation-booking .roomify-property-offer .offer-name,
+  .page-conversation-booking .roomify-property-offer .offer-description,
+  .page-booking .roomify-property-offer .offer-name,
+  .page-booking .roomify-property-offer .offer-description {
+    display: inline-block;
+    width: calc(100% - 130px); }
+    @media (max-width: 768px) {
+      .page-conversation-booking .roomify-property-offer .offer-name,
+      .page-conversation-booking .roomify-property-offer .offer-description,
+      .page-booking .roomify-property-offer .offer-name,
+      .page-booking .roomify-property-offer .offer-description {
+        width: calc(100% - 50px); } }
 .page-conversation-booking #roomify-accommodation-booking-current-search-form .current-search-item.current-search-arrival, .page-conversation-booking #roomify-accommodation-booking-current-search-form .current-search-item.current-search-departure, .page-conversation-booking #roomify-accommodation-booking-current-search-form .current-search-item.current-search-nights, .page-conversation-booking #roomify-accommodation-booking-current-search-form .current-search-item.current-search-price, .page-conversation-booking #roomify-accommodation-booking-current-search-form .current-search-item.current-search-group-size,
 .page-booking #roomify-accommodation-booking-current-search-form .current-search-item.current-search-arrival,
 .page-booking #roomify-accommodation-booking-current-search-form .current-search-item.current-search-departure,
@@ -8955,7 +9113,7 @@ body.toggled #close-sidebar-wrapper {
   padding: 10px;
   border: 1px solid #E6E6E6;
   border-right: 0;
-  min-height: 120px;
+  min-height: 140px;
   background: white; }
   @media (min-width: 768px) {
     .page-conversation-booking #roomify-accommodation-booking-current-search-form .current-search-item.current-search-arrival, .page-conversation-booking #roomify-accommodation-booking-current-search-form .current-search-item.current-search-departure, .page-conversation-booking #roomify-accommodation-booking-current-search-form .current-search-item.current-search-nights, .page-conversation-booking #roomify-accommodation-booking-current-search-form .current-search-item.current-search-price, .page-conversation-booking #roomify-accommodation-booking-current-search-form .current-search-item.current-search-group-size,
@@ -9021,7 +9179,7 @@ body.toggled #close-sidebar-wrapper {
     line-height: 1.4em; }
   .page-conversation-booking #roomify-accommodation-booking-current-search-form .current-search-item.current-search-price .offer-cost,
   .page-booking #roomify-accommodation-booking-current-search-form .current-search-item.current-search-price .offer-cost {
-    color: #FF0000;
+    color: #ff9800;
     margin-top: 0;
     line-height: 1.4em; }
 .page-conversation-booking #roomify-accommodation-booking-current-search-form .current-search-item.current-search-submit,
@@ -9339,10 +9497,11 @@ body.toggled #close-sidebar-wrapper {
         text-decoration: line-through;
         margin-right: 10px; }
       .page-conversation-booking #roomify-accommodation-booking-confirmation-form table .price .offer-tax,
-      .page-conversation-booking #roomify-accommodation-booking-confirmation-form table .price .offer-cost,
-      .page-booking #roomify-accommodation-booking-confirmation-form table .price .offer-tax,
-      .page-booking #roomify-accommodation-booking-confirmation-form table .price .offer-cost {
+      .page-booking #roomify-accommodation-booking-confirmation-form table .price .offer-tax {
         color: #FF0000; }
+      .page-conversation-booking #roomify-accommodation-booking-confirmation-form table .price .offer-cost,
+      .page-booking #roomify-accommodation-booking-confirmation-form table .price .offer-cost {
+        color: #ff9800; }
     .page-conversation-booking #roomify-accommodation-booking-confirmation-form table .bold,
     .page-booking #roomify-accommodation-booking-confirmation-form table .bold {
       font-weight: bold;
@@ -12411,18 +12570,20 @@ ol.inline.commerce-checkout-progress {
 body.page-location .page-header {
   display: none; }
 @media (max-width: 768px) {
-  body.page-location #leaflet-map {
+  body.page-location .view-location .leaflet-container {
     height: 400px !important; } }
-body.page-location #leaflet-map .leaflet-popup-content a {
+body.page-location .view-location .leaflet-container .leaflet-popup-content a {
   font-size: 15px; }
-body.page-location #leaflet-map .leaflet-popup-content .activity-image {
+body.page-location .view-location .leaflet-container .leaflet-popup-content .activity-image {
   display: inline-block;
   max-width: 200px;
   margin: 5px 0; }
-  body.page-location #leaflet-map .leaflet-popup-content .activity-image img {
+  body.page-location .view-location .leaflet-container .leaflet-popup-content .activity-image img {
     width: 100% !important;
     border-radius: 5px; }
-body.page-location #leaflet-map .leaflet-objects-pane img {
+body.page-location .view-location .leaflet-container img.leaflet-marker-icon {
+  width: auto !important; }
+body.page-location .view-location .leaflet-container .leaflet-objects-pane img {
   width: auto !important; }
 body.page-location .view-location .view-empty {
   margin: 34px;
@@ -14042,11 +14203,11 @@ div.ctools-modal-dialog .modal-header .modal-title {
   border: none;
   font-family: 'Lato';
   width: auto !important;
-  max-width: 500px !important;
+  max-width: 640px !important;
   height: auto !important;
   min-height: auto !important; }
   #modalContent div.ctools-modal-dialog .modal-body {
-    max-width: 500px !important; }
+    max-width: 640px !important; }
 
 /* Button styling. */
 #modalContent div.ctools-modal-dialog input[type=submit], a.button:link, a.button:visited, a.button:hover, a.button:active {
