@@ -245,19 +245,6 @@ function roomify_accommodation_booking_views_default_views() {
   $handler->display->display_options['fields']['label']['label'] = '';
   $handler->display->display_options['fields']['label']['exclude'] = TRUE;
   $handler->display->display_options['fields']['label']['element_label_colon'] = FALSE;
-  /* Field: BAT Booking: Full Name */
-  $handler->display->display_options['fields']['booking_full_name']['id'] = 'booking_full_name';
-  $handler->display->display_options['fields']['booking_full_name']['table'] = 'field_data_booking_full_name';
-  $handler->display->display_options['fields']['booking_full_name']['field'] = 'booking_full_name';
-  $handler->display->display_options['fields']['booking_full_name']['label'] = 'Guest Name';
-  $handler->display->display_options['fields']['booking_full_name']['empty'] = '[label]';
-  $handler->display->display_options['fields']['booking_full_name']['settings'] = array(
-    'conditions' => array(
-      0 => array(
-        'condition' => '',
-      ),
-    ),
-  );
   /* Field: BAT Booking: Bat booking ID */
   $handler->display->display_options['fields']['booking_id']['id'] = 'booking_id';
   $handler->display->display_options['fields']['booking_id']['table'] = 'bat_bookings';
@@ -274,7 +261,7 @@ function roomify_accommodation_booking_views_default_views() {
   $handler->display->display_options['fields']['property_id']['exclude'] = TRUE;
   $handler->display->display_options['fields']['property_id']['element_label_colon'] = FALSE;
   $handler->display->display_options['fields']['property_id']['separator'] = '';
-  /* Field: Type: Name */
+  /* Field: Type: Label */
   $handler->display->display_options['fields']['name_1']['id'] = 'name_1';
   $handler->display->display_options['fields']['name_1']['table'] = 'bat_types';
   $handler->display->display_options['fields']['name_1']['field'] = 'name';
@@ -370,24 +357,6 @@ function roomify_accommodation_booking_views_default_views() {
   $handler->display->display_options['fields']['type']['exclude'] = TRUE;
   $handler->display->display_options['fields']['type']['element_label_colon'] = FALSE;
   $handler->display->display_options['fields']['type']['machine_name'] = TRUE;
-  /* Contextual filter: BAT Booking: Uid */
-  $handler->display->display_options['arguments']['uid']['id'] = 'uid';
-  $handler->display->display_options['arguments']['uid']['table'] = 'bat_bookings';
-  $handler->display->display_options['arguments']['uid']['field'] = 'uid';
-  $handler->display->display_options['arguments']['uid']['default_action'] = 'default';
-  $handler->display->display_options['arguments']['uid']['default_argument_type'] = 'current_user';
-  $handler->display->display_options['arguments']['uid']['summary']['number_of_records'] = '0';
-  $handler->display->display_options['arguments']['uid']['summary']['format'] = 'default_summary';
-  $handler->display->display_options['arguments']['uid']['summary_options']['items_per_page'] = '25';
-  $handler->display->display_options['arguments']['uid']['specify_validation'] = TRUE;
-  $handler->display->display_options['arguments']['uid']['validate']['type'] = 'php';
-  $handler->display->display_options['arguments']['uid']['validate_options']['code'] = 'if (user_access(\'update any bat_booking entity\')) {
-    return FALSE;
-    }
-    else {
-    return TRUE;
-    }';
-  $handler->display->display_options['arguments']['uid']['validate']['fail'] = 'ignore';
   /* Filter criterion: Events: State (event_state_reference) */
   $handler->display->display_options['filters']['event_state_reference_state_id']['id'] = 'event_state_reference_state_id';
   $handler->display->display_options['filters']['event_state_reference_state_id']['table'] = 'field_data_event_state_reference';
