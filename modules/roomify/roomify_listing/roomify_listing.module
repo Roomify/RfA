@@ -436,7 +436,7 @@ function roomify_listing_entity_update($entity, $type) {
         $entity->field_st_calendar_reference[LANGUAGE_NONE][0]['event_type_id'] = $availability_event->id;
         field_attach_update('bat_type', $entity);
       }
- 
+
       // Check if a default price is set.
       if (isset($entity->field_st_default_price)) {
         $default_price = field_get_items('bat_type', $entity, 'field_st_default_price');
