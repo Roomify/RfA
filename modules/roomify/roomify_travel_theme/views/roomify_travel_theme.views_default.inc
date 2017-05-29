@@ -784,12 +784,9 @@ function roomify_travel_theme_views_default_views() {
   /* Display: All Areas */
   $handler = $view->new_display('panel_pane', 'All Areas', 'all_areas_view');
   $handler->display->display_options['defaults']['pager'] = FALSE;
-  $handler->display->display_options['pager']['type'] = 'load_more';
+  $handler->display->display_options['pager']['type'] = 'infinite_scroll';
   $handler->display->display_options['pager']['options']['items_per_page'] = '12';
   $handler->display->display_options['pager']['options']['offset'] = '0';
-  $handler->display->display_options['pager']['options']['id'] = '0';
-  $handler->display->display_options['pager']['options']['quantity'] = '9';
-  $handler->display->display_options['pager']['options']['effects']['speed'] = 'slow';
   $handler->display->display_options['defaults']['fields'] = FALSE;
   /* Field: Taxonomy term: Term ID */
   $handler->display->display_options['fields']['tid']['id'] = 'tid';
@@ -885,7 +882,7 @@ function roomify_travel_theme_views_default_views() {
     t('next ›'),
     t('last »'),
     t('All Areas'),
-    t('Load more'),
+    t('Show more'),
     t('.'),
     t('<h2>[name]</h2>
   <div class="area-short-description">[field_area_short_description]</div>

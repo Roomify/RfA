@@ -684,3 +684,10 @@ function roomify_system_update_7042() {
 
   roomify_system_add_user_fields();
 }
+
+/**
+ * Enable module 'Views Infinite scroll'.
+ */
+function roomify_system_update_7043() {
+  module_enable(array('views_infinite_scroll'));
+}
