@@ -53,9 +53,14 @@ function roomify_integrations_roomify_rights() {
   $rights['roomify_integrations'] = array(
     'roomify manager' => array(
       'administer roomify integrations',
-      'administer zopim',
     ),
   );
+  if (module_exists('zopim')) {
+    $rights['roomify_integrations']['roomify manager'][] = 'administer zopim';
+  }
+  if (module_exists('googleanalytics')) {
+    $rights['roomify_integrations']['roomify manager'][] = 'administer google analytics';
+  }
 
   return $rights;
 }
@@ -96,6 +101,7 @@ function roomify_integrations_form($form, &$form_state) {
  */
 function roomify_integrations_form_submit(&$form, &$form_state) {
   $values = $form_state['values'];
+  // Zopim Integration.
   if (isset($values['zopim'])) {
     if ($values['zopim'] == 1) {
       $zopim_status = 1;
@@ -118,6 +124,31 @@ function roomify_integrations_form_submit(&$form, &$form_state) {
     drupal_write_record('roomify_integrations', $record, array('name'));
     menu_rebuild();
   }
+
+  // Google Analytics Integration.
+  if (isset($values['googleanalytics'])) {
+    if ($values['googleanalytics'] == 1) {
+      $googleanalytics_status = 1;
+      if (!module_exists('googleanalytics')) {
+        module_enable(array('googleanalytics'));
+      }
+    }
+    else {
+      $googleanalytics_status = 0;
+      if (module_exists('googleanalytics')) {
+        module_disable(array('googleanalytics'));
+      }
+    }
+    $record = array(
+      'name' => 'googleanalytics',
+      'label' => 'Google Analytics',
+      'status' => $googleanalytics_status,
+    );
+
+    drupal_write_record('roomify_integrations', $record, array('name'));
+    menu_rebuild();
+  }
+  drupal_flush_all_caches();
 }
 
 /**
@@ -144,6 +175,15 @@ function roomify_manage_integrations_form($form, &$form_state) {
 
       $form['zopim'] = array(
         '#markup' => '<div class="zopim-integration">' . l($zopim_image . '<h3>' . t('Zopim Chat') . '</h3>' . t('Talk to your customers in real-time using a live chat.'), $zopim_path, array('html' => TRUE)) . '</div>'
+      );
+    }
+
+    if ($integration->name == 'googleanalytics') {
+      $googleanalytics_path = '/admin/config/system/googleanalytics';
+      $googleanalytics_image = theme_image(array('path' => $module_path . '/images/googleanalytics.png', 'attributes' => ''));
+
+      $form['googleanalytics'] = array(
+        '#markup' => '<div class="googleanalytics-integration">' . l($googleanalytics_image . '<h3>' . t('Google Analytics') . '</h3>' . t('Manage Google Analytics settings.'), $googleanalytics_path, array('html' => TRUE)) . '</div>'
       );
     }
   }
