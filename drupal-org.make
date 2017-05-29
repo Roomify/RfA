@@ -494,6 +494,8 @@ projects[views_data_export][version] = 3.1
 
 projects[views_date_format_sql][version] = 3.1
 
+projects[views_infinite_scroll][version] = 2.0
+
 projects[views_load_more][version] = 1.5
 
 projects[views_bulk_operations][version] = 3.4
