@@ -558,16 +558,16 @@ body.node-type-homepage {
   }
 }
 // Offers.
-.pane-homepage-travel-panel-pane-2 {
+.pane-homepage-offers-panel-pane-2 {
   background: white;
   width: 100%;
   display: inline-block;
   padding-top: 40px;
   padding-bottom: 60px;
-  .view-homepage-travel {
+  .view-homepage-offers {
     margin: 0 auto;
     max-width: 1200px;
-    .slick.slick--view--homepage-travel {
+    .slick.slick--view--homepage-offers {
       position: relative;
     }
     .slick-prev.slick-arrow {
@@ -616,6 +616,7 @@ body.node-type-homepage {
       position: absolute;
       padding: 40px;
       bottom: 0;
+      width: 100%;
       color: white;
       background: rgba(0, 0, 0, 0.55);
       font-size: 22px;

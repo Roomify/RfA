@@ -193,10 +193,10 @@ function roomify_homepage_default_page_manager_handlers() {
   $display->content['new-e88c8f7a-eb28-4c00-9697-0d8337f44af6'] = $pane;
   $display->panels['bottom'][2] = 'new-e88c8f7a-eb28-4c00-9697-0d8337f44af6';
   $pane = new stdClass();
-  $pane->pid = 'new-8cc50a1a-2b07-4e0c-b8b7-a5303ceea5d8';
+  $pane->pid = 'new-c3019b17-1947-4102-b8e0-f87abb1b3d61';
   $pane->panel = 'bottom';
   $pane->type = 'views_panes';
-  $pane->subtype = 'homepage_travel-panel_pane_2';
+  $pane->subtype = 'homepage_offers-panel_pane_2';
   $pane->shown = TRUE;
   $pane->access = array();
   $pane->configuration = array();
@@ -208,9 +208,9 @@ function roomify_homepage_default_page_manager_handlers() {
   $pane->extras = array();
   $pane->position = 3;
   $pane->locks = array();
-  $pane->uuid = '8cc50a1a-2b07-4e0c-b8b7-a5303ceea5d8';
-  $display->content['new-8cc50a1a-2b07-4e0c-b8b7-a5303ceea5d8'] = $pane;
-  $display->panels['bottom'][3] = 'new-8cc50a1a-2b07-4e0c-b8b7-a5303ceea5d8';
+  $pane->uuid = 'c3019b17-1947-4102-b8e0-f87abb1b3d61';
+  $display->content['new-c3019b17-1947-4102-b8e0-f87abb1b3d61'] = $pane;
+  $display->panels['bottom'][3] = 'new-c3019b17-1947-4102-b8e0-f87abb1b3d61';
   $pane = new stdClass();
   $pane->pid = 'new-c1895013-8a57-4022-8c59-5ce57526d669';
   $pane->panel = 'bottom';
