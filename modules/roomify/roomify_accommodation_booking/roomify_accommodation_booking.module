@@ -2244,6 +2244,11 @@ function roomify_accommodation_booking_add_booking_form_submit($form, &$form_sta
   $bat_type = bat_type_load($type_id);
   $property = roomify_property_load($bat_type->field_st_property_reference[LANGUAGE_NONE][0]['target_id']);
 
+  // Set the property owner as booking author.
+  if ($owner_user = user_load($bat_type->uid)) {
+    $form_state['values']['author_name'] = $owner_user->name;
+  }
+
   $event_type = 'availability';
 
   $valid_unit_ids = bat_event_get_matching_units($start_date, $temp_end_date, array(AVAILABLE), $type_id, $event_type, FALSE, FALSE);
