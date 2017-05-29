@@ -62,7 +62,7 @@ projects[better_db_updates][subdir] = contrib
 
 ; bootstrap
 projects[bootstrap][type] = theme
-projects[bootstrap][version] = 3.12
+projects[bootstrap][version] = 3.14
 
 ; adminimal
 projects[adminimal_theme][type] = theme
@@ -119,7 +119,7 @@ projects[commerce][patch][] = https://www.drupal.org/files/issues/commerce-delet
 projects[commerce][patch][] = https://www.drupal.org/files/issues/commerce-georgian_lari-2256853-6.patch
 projects[commerce][patch][] = https://www.drupal.org/files/issues/commerce-cart_product_add_php7-2762907-5.patch
 
-projects[commerce_addressbook] = 3.0-rc3
+projects[commerce_addressbook] = 3.0-rc4
 
 projects[commerce_authnet][version] = 1.4
 
@@ -143,7 +143,7 @@ projects[commerce_reports][version] = 4.0-beta2
 
 projects[commerce_checkout_progress][version] = 1.3
 
-projects[commerce_stripe][version] = 1.0
+projects[commerce_stripe][version] = 1.2
 
 projects[composed_field][version] = 1.0-rc1
 projects[composed_field][patch][] = https://www.drupal.org/files/issues/composed_field-check_serialized-1765888-6.patch
@@ -156,10 +156,7 @@ projects[content_menu][version] = 1.0
 
 projects[ctools][version] = 1.12
 
-; NB: the views field handlers patch is merged - shouldn't be needed as of version 2.10 of date.
-projects[date][version] = 2.9
-projects[date][patch][] = https://www.drupal.org/files/issues/date-allow_entering_of_custom_date_format_in_views_field_handlers-1504202-14.patch
-projects[date][patch][] = https://www.drupal.org/files/issues/date-fix_undefine_in_date_text_element_process-2339119-14.patch
+projects[date][version] = 2.10
 projects[date][patch][] = https://www.drupal.org/files/issues/date-input_disabled-1190830-14.patch
 
 projects[date_restrictions][type] = module
@@ -196,12 +193,12 @@ projects[entity_translation][version] = 1.0-beta6
 
 projects[entity2text][version] = 1.0-alpha3
 
-projects[entityform][version] = 2.0-rc3
+projects[entityform][version] = 2.0-rc4
 
 projects[entityform_block][version] = 1.3
 projects[entityform_block][patch][] = https://www.drupal.org/files/issues/entityform_block-hook_entity_type_delete-exception-2487898-13.patch
 
-projects[entityreference][version] = 1.2
+projects[entityreference][version] = 1.4
 
 projects[entityreference_prepopulate][version] = 1.7
 
@@ -243,7 +240,7 @@ projects[field_formatter_settings][version] = 1.1
 projects[footable][version] = 1.0
 projects[footable][patch][] = https://www.drupal.org/files/issues/footable-add_striping_option-2307701-4.patch
 
-projects[file_entity][version] = 2.0-beta3
+projects[file_entity][version] = 2.0
 
 projects[geofield][version] = 2.3
 
@@ -268,7 +265,7 @@ projects[google_tag][version] = 1.0
 projects[group][version] = 1.0-beta6
 projects[group][patch][] = https://www.drupal.org/files/issues/group-profile2_integration-2701803-1.patch
 
-projects[jquery_update][version] = 3.0-alpha3
+projects[jquery_update][version] = 3.0-alpha5
 
 projects[job_scheduler][type] = module
 projects[job_scheduler][download][type] = git
@@ -325,7 +322,7 @@ projects[masonry][version] = 3.0-beta1
 
 projects[masonry_views][version] = 3.0
 
-projects[media][version] = 2.0-rc12
+projects[media][version] = 2.4
 
 projects[menu_admin_per_menu][version] = 1.0
 projects[menu_admin_per_menu][patch][] = https://www.drupal.org/files/issues/integrate-menu-translation-suport-2546214-1.patch
@@ -337,7 +334,7 @@ projects[message][patch][] = https://www.drupal.org/files/issues/text-sanitized.
 
 projects[metatag][version] = 1.21
 
-projects[mimemail][version] = 1.0-beta4
+projects[mimemail][version] = 1.0
 
 projects[module_filter][version] = 2.0
 
@@ -394,7 +391,7 @@ projects[redirect][version] = 1.0-rc3
 projects[references_dialog][version] = 1.0-beta2
 projects[references_dialog][patch][] = https://www.drupal.org/files/issues/references_dialog-zindex-2833782-1.patch
 projects[references_dialog][patch][] = https://www.drupal.org/files/issues/references_dialog-create_users-2172321.patch
-projects[references_dialog][patch][] = https://www.drupal.org/files/issues/references_dialog-wrong_entity_id_reference_field-2238801-3.patch
+projects[references_dialog][patch][] = https://www.drupal.org/files/issues/creating_user_but-2238801-6.patch
 
 projects[relation][version] = 1.0
 
@@ -407,7 +404,7 @@ projects[role_export][download][type] = git
 projects[role_export][download][url] = https://git.drupal.org/project/role_export.git
 projects[role_export][download][revision] = 0aef061b79a1dd0a949d504a238bf8b3f9f41b1b
 
-projects[rules][version] = 2.9
+projects[rules][version] = 2.10
 
 projects[rules_conditional][version] = 1.0-beta2
 
@@ -435,7 +432,7 @@ projects[search_api_sorts][version] = 1.7
 
 projects[services][version] = 3.19
 
-projects[services_api_key_auth][version] = 1.2
+projects[services_api_key_auth][version] = 1.3
 
 projects[session_api][version] = 1.0-rc1
 
@@ -467,13 +464,13 @@ projects[token][version] = 1.7
 
 projects[userone][version] = 1.0-beta1
 
-projects[uuid][version] = 1.0-beta1
+projects[uuid][version] = 1.0
 
 projects[variable][version] = 2.5
 
 projects[view_unpublished][version] = 1.2
 
-projects[views][version] = 3.15
+projects[views][version] = 3.16
 
 projects[views_autocomplete_filters][type] = module
 projects[views_autocomplete_filters][download][type] = git
@@ -490,7 +487,7 @@ projects[views_contextual_filters_or][download][type] = git
 projects[views_contextual_filters_or][download][url] = https://git.drupal.org/project/views_contextual_filters_or.git
 projects[views_contextual_filters_or][download][revision] = 42891a0b0057c9b71c6bf59f043cd27efd3ac43e
 
-projects[views_data_export][version] = 3.1
+projects[views_data_export][version] = 3.2
 
 projects[views_date_format_sql][version] = 3.1
 
@@ -509,7 +506,7 @@ projects[votingapi][patch][] = https://www.drupal.org/files/issues/updating_voti
 
 projects[vvf][version] = 1.2
 
-projects[wysiwyg][version] = 2.3
+projects[wysiwyg][version] = 2.4
 
 projects[xautoload][version] = 5.7
 
