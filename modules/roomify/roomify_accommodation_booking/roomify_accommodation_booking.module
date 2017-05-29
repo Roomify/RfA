@@ -256,7 +256,7 @@ function roomify_accommodation_booking_views_default_views_alter(&$views) {
  *
  * FORM_ID = views_form_my_cart_default.
  */
-function roomify_accommodation_booking_form_views_form_my_cart_default_alter(&$form, &$form_state, $form_id) {
+function roomify_accommodation_booking_form_views_form_my_cart_default_alter(&$form, &$form_state) {
   // Hide 'Remove' button for mandatory add-ons.
   $line_items_to_disable = array();
   foreach ($form_state['order']->commerce_line_items[LANGUAGE_NONE] as $line_items) {
@@ -302,7 +302,7 @@ function roomify_accommodation_booking_form_views_form_my_cart_default_alter(&$f
  *
  * FORM_ID = views_form_commerce_cart_form_default.
  */
-function roomify_accommodation_booking_form_views_form_commerce_cart_form_default_alter(&$form, &$form_state, $form_id) {
+function roomify_accommodation_booking_form_views_form_commerce_cart_form_default_alter(&$form, &$form_state) {
   // Hide 'Remove' button for mandatory add-ons.
   $line_items_to_disable = array();
 

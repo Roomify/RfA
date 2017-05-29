@@ -451,3 +451,12 @@ function roomify_travel_theme_panels_pane_content_alter($content, $pane, $args, 
     }
   }
 }
+
+/**
+ * Implements hook_views_pre_render()
+ */
+function roomify_travel_theme_views_pre_render(&$views) {
+  if ($views->name == 'property_travel') {
+    roomify_dashboard_setup_modal();
+  }
+}

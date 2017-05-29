@@ -9,7 +9,7 @@ defaults[projects][subdir] = contrib
 projects[bat][type] = module
 projects[bat][download][type] = git
 projects[bat][download][url] = https://github.com/Roomify/bat_drupal.git
-projects[bat][download][tag] = 7.x-1.23
+projects[bat][download][tag] = 7.x-1.24
 projects[bat][subdir] = bat
 
 projects[bat_api][type] = module
@@ -365,8 +365,11 @@ projects[pathauto][version] = 1.3
 
 projects[pathauto_entity][version] = 1.0
 
-projects[pet][version] = 1.0-rc1
-projects[pet][patch][] = https://www.drupal.org/files/pet-add-rules-state-2092195-1.patch
+projects[pet][type] = module
+projects[pet][download][type] = git
+projects[pet][download][url] = https://git.drupal.org/project/pet.git
+projects[pet][download][revision] = 3a42221335ecf717a6a538e431394afcd7f198c3
+projects[pet][patch][] = https://www.drupal.org/files/issues/add-rule-state-and-allow-from-override-2879713-1.patch
 projects[pet][patch][] = https://www.drupal.org/files/issues/pet-specify_entity_types_for_tokens-2612754-1.patch
 projects[pet][patch][] = https://www.drupal.org/files/issues/multilanguage-support-2727733-6.patch
 
@@ -391,7 +394,7 @@ projects[redirect][version] = 1.0-rc3
 projects[references_dialog][version] = 1.0-beta2
 projects[references_dialog][patch][] = https://www.drupal.org/files/issues/references_dialog-zindex-2833782-1.patch
 projects[references_dialog][patch][] = https://www.drupal.org/files/issues/references_dialog-create_users-2172321.patch
-projects[references_dialog][patch][] = https://www.drupal.org/files/issues/wrong_UID_reference_field-2238801-1.patch
+projects[references_dialog][patch][] = https://www.drupal.org/files/issues/references_dialog-wrong_entity_id_reference_field-2238801-3.patch
 
 projects[relation][version] = 1.0
 
@@ -535,7 +538,7 @@ libraries[ckeditor][directory_name] = ckeditor
 libraries[ckeditor][type] = library
 libraries[ckeditor][destination] = libraries
 libraries[ckeditor][download][type] = get
-libraries[ckeditor][download][url] = http://ckeditor.com/online-builder/releases/minified/4.6.1/icy_orange/0.9/ckeditor_4.6.1_709554cb6b68.zip
+libraries[ckeditor][download][url] = http://ckeditor.com/online-builder/releases/minified/4.7.0/icy_orange/0.9/ckeditor_4.7.0_ba86e4eb19a3.zip
 
 ; imagesLoaded for masonry.
 libraries[imagesloaded][directory_name] = imagesloaded

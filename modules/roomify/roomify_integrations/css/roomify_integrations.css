@@ -1,19 +1,44 @@
+#roomify-manage-integrations-form .googleanalytics-integration a,
 #roomify-manage-integrations-form .zopim-integration a {
   display: inline-block;
-  width: 100%;
   float: left;
   color: black;
+  margin-bottom: 25px;
+  width: 50%;
+  margin-right: 50%;
+  border: 1px solid #e0e0e0;
+  border-radius: 5px;
+  padding: 15px;
+  background: white;
+}
+@media only screen and (max-width: 768px) {
+  #roomify-manage-integrations-form .googleanalytics-integration a,
+  #roomify-manage-integrations-form .zopim-integration a {
+    width: 100%;
+    margin-right: 0;
+  }
+}
+#roomify-manage-integrations-form a:hover {
+  text-decoration: none;
+}
+#roomify-manage-integrations-form  .googleanalytics-integration a img {
+  float: left;
+  margin-right: 15px;
+  width: 90px;
+  height: auto;
 }
 #roomify-manage-integrations-form  .zopim-integration a img {
   float: left;
   margin-right: 15px;
-  width: 70px;
+  width: 90px;
   height: auto;
 }
+#roomify-manage-integrations-form  .googleanalytics-integration a h3,
 #roomify-manage-integrations-form  .zopim-integration a h3 {
-  margin-bottom: 13px;
+  margin-bottom: 8px;
   margin-top: 15px;
 }
+#roomify-integrations-form input.form-submit,
 #roomify-integrations-form input.form-submit {
   margin-top: 20px;
 }
