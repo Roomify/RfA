@@ -1730,10 +1730,12 @@ function roomify_system_form_user_profile_form_alter(&$form, &$form_state) {
   global $user;
 
   $uid = $user->uid;
-  $allowed = FALSE;
+  $allowed = TRUE;
   $allowed_roles = array('administrator');
 
-  if ($form['#action'] == '/user/' . $uid . '/edit') {
+  // A manager can't update his role.
+  if (isset($_GET['q']) && strpos($_GET['q'], 'user/' . $uid . '/edit') !== FALSE) {
+    $allowed = FALSE;
     foreach ($user->roles as $role) {
       if (in_array($role, $allowed_roles) || $user->uid == 1) {
         $allowed = TRUE;
