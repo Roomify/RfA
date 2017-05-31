@@ -3607,7 +3607,6 @@ a.ctools-use-modal:hover,
     width: 80% !important;
   }
 }
-
 div.ctools-modal-content .modal-content {
   padding: 1em;
 }
@@ -3616,9 +3615,7 @@ div.ctools-modal-content div.type-container .container-inline .form-item input[n
 div.ctools-modal-content div.type-container .container-inline .form-item input[name*=occupancy] {
   width: 5em;
 }
-
-#references-dialog-page .view-users td,
-#references-dialog-page .view-customer-profiles td {
+#references-dialog-page .view-users td {
   cursor: pointer;
 }
 .manualcrop-style-button-holder {
@@ -3649,4 +3646,7 @@ div.ctools-modal-content div.type-container .container-inline .form-item input[n
   margin-top: 48px;
   font-weight: 400;
   font-style: italic;
+}
+.field-name-user-commerce-profile .references-dialog-links a {
+  padding: .5em 1.75em !important;
 }

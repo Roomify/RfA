@@ -691,3 +691,13 @@ function roomify_system_update_7042() {
 function roomify_system_update_7043() {
   module_enable(array('views_infinite_scroll'));
 }
+
+/**
+ * Add User fields.
+ */
+function roomify_system_update_7044() {
+  module_load_include('inc', 'roomify_system', 'roomify_system.fields');
+
+  roomify_system_add_user_fields();
+}
+
