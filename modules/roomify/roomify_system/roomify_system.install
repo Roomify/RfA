@@ -700,4 +700,3 @@ function roomify_system_update_7044() {
 
   roomify_system_add_user_fields();
 }
-

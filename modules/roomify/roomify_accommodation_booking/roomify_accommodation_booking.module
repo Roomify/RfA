@@ -1727,12 +1727,13 @@ function roomify_accommodation_booking_form_commerce_customer_ui_customer_profil
  * Implements hook_user_update().
  */
 function roomify_accommodation_booking_user_update(&$edit, $account, $category) {
-  $commerce_profiles = field_get_items('user', $account, 'user_commerce_profile');
-  foreach ($commerce_profiles as $item) {
-    $profile = commerce_customer_profile_load($item['target_id']);
-    if ($profile->uid == 0) {
-      $profile->uid = $account->uid;
-      commerce_customer_profile_save($profile);
+  if ($commerce_profiles = field_get_items('user', $account, 'user_commerce_profile')) {
+    foreach ($commerce_profiles as $item) {
+      $profile = commerce_customer_profile_load($item['target_id']);
+      if ($profile->uid == 0) {
+        $profile->uid = $account->uid;
+        commerce_customer_profile_save($profile);
+      }
     }
   }
 }
