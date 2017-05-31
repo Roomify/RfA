@@ -691,3 +691,19 @@ function roomify_system_update_7042() {
 function roomify_system_update_7043() {
   module_enable(array('views_infinite_scroll'));
 }
+
+/**
+ * Enable module "Google reCAPTCHA".
+ */
+function roomify_system_update_7044() {
+  module_enable(array('google_recaptcha'));
+
+  $tune = variable_get('google_recaptcha');
+
+  $tune['protected_forms'] = array(
+    'user_register_form',
+    'contact_entityform_edit_form',
+  );
+
+  variable_set('google_recaptcha', $tune);
+}

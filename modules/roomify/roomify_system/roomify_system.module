@@ -2321,3 +2321,17 @@ function roomify_system_get_users_with_role($role, $active_user = TRUE) {
 
   return $users;
 }
+
+/**
+ * Implements hook_google_recaptcha_available_forms_alter().
+ */
+function roomify_system_google_recaptcha_available_forms_alter(&$available_forms) {
+  $available_forms['contact_entityform_edit_form'] = 'Contact form';
+}
+
+/**
+ * Implements hook_google_recaptcha_always_protect_alter().
+ */
+function roomify_system_google_recaptcha_always_protect_alter(&$always_protected) {
+  $always_protected = array();
+}
