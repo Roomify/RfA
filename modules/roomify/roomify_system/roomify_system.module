@@ -1729,21 +1729,9 @@ function roomify_system_file_dir() {
 function roomify_system_form_user_profile_form_alter(&$form, &$form_state) {
   global $user;
 
-  $uid = $user->uid;
-  $allowed = FALSE;
-  $allowed_roles = array('administrator');
-
-  if ($form['#action'] == '/user/' . $uid . '/edit') {
-    foreach ($user->roles as $role) {
-      if (in_array($role, $allowed_roles) || $user->uid == 1) {
-        $allowed = TRUE;
-
-        break;
-      }
-    }
-  }
-
-  if (!$allowed) {
+  // A manager can't update his role.
+  if (strpos(current_path(), 'user/' . $user->uid . '/edit') === 0 &&
+      !(in_array('administrator', $user->roles) || $user->uid == 1)) {
     $form['account']['status']['#access'] = FALSE;
     $form['account']['roles_change']['#access'] = FALSE;
   }
@@ -1752,7 +1740,6 @@ function roomify_system_form_user_profile_form_alter(&$form, &$form_state) {
   if ($pass_reset) {
     $_GET['destination'] = 'user#tabs-0-middle-1';
   }
-
 }
 
 /**
