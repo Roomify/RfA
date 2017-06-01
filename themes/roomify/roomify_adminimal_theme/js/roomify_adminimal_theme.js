@@ -32,6 +32,11 @@ Drupal.behaviors.roomify_admin_js = {
       $(this).text($(this).text() == Drupal.t("Title and Description") ? Drupal.t("Close"): Drupal.t("Title and Description"));
     });
 
+    // Let's remove the wave effect class on links in tables that have a reference dialog.
+    // It breaks the popup title.
+    if (('table tbody td a.references-dialog-activate.waves-effect').length > 0) {
+      $('table tbody td a.references-dialog-activate.waves-effect').removeClass('waves-effect');
+    }
   }
 };
 
