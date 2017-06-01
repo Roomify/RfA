@@ -1338,11 +1338,10 @@ function roomify_accommodation_booking_entity_insert($entity, $type) {
     if ($entity->uid != 0 && $user = user_load($entity->uid)) {
       if ($commerce_profiles = field_get_items('user', $user, 'user_commerce_profile')) {
         $exists = FALSE;
-        foreach ($commerce_profiles as $item) {
-          foreach ($commerce_profiles as $commerce_profile) {
-            if ($commerce_profile['target_id'] == $entity->profile_id) {
-              $exists = TRUE;
-            }
+        foreach ($commerce_profiles as $commerce_profile) {
+          if ($commerce_profile['target_id'] == $entity->profile_id) {
+            $exists = TRUE;
+            break;
           }
         }
         if (!$exists) {
