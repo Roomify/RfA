@@ -51,7 +51,7 @@ function roomify_dashboard_update_7005() {
 }
 
 /**
- * Add My Users link
+ * Add My Users link.
  */
 function roomify_dashboard_update_7006() {
   // Accounts Sub-menu.

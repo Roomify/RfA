@@ -154,6 +154,10 @@ function roomify_system_permission() {
       'title' => t('View any commerce order'),
       'description' => t('Access to orders'),
     ),
+    'configure recaptcha' => array(
+      'title' => t('Configure Google reCAPTCHA'),
+      'description' => t('Configure Google reCAPTCHA settings'),
+    ),
   );
 }
 
@@ -1101,6 +1105,7 @@ function roomify_system_roomify_rights() {
       'view any commerce order',
       'edit any commerce_order entity',
       'configure bat settings',
+      'configure recaptcha',
     ),
     'content editor' => array(
       'access content overview',
@@ -1807,6 +1812,7 @@ function roomify_system_menu_alter(&$items) {
   $items['admin/commerce/orders/%commerce_order']['page callback'] = 'roomify_system_order_view';
   $items['admin/commerce/orders/%commerce_order']['access callback'] = '_roomify_system_commerce_order_view_access';
 
+  $items['admin/config/spam_protection/google_recaptcha/keys']['access arguments'] = array('configure recaptcha');
 }
 
 /**
