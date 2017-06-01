@@ -1726,14 +1726,33 @@ function roomify_accommodation_booking_form_commerce_customer_ui_customer_profil
  * Implements hook_user_update().
  */
 function roomify_accommodation_booking_user_update(&$edit, $account, $category) {
-  if ($commerce_profiles = field_get_items('user', $account, 'user_commerce_profile')) {
-    foreach ($commerce_profiles as $item) {
-      $profile = commerce_customer_profile_load($item['target_id']);
-      if ($profile->uid == 0) {
-        $profile->uid = $account->uid;
-        commerce_customer_profile_save($profile);
+  $old_profiles = array();
+  $current_profiles = array();
+
+  if (isset($account->original)) {
+    if ($commerce_profiles = field_get_items('user', $account->original, 'user_commerce_profile')) {
+      foreach ($commerce_profiles as $item) {
+        $old_profiles[] = $item['target_id'];
       }
     }
+  }
+
+  if ($commerce_profiles = field_get_items('user', $account, 'user_commerce_profile')) {
+    foreach ($commerce_profiles as $item) {
+      $current_profiles[] = $item['target_id'];
+    }
+  }
+
+  foreach (commerce_customer_profile_load_multiple($current_profiles) as $profile) {
+    if ($profile->uid != $account->uid) {
+      $profile->uid = $account->uid;
+      commerce_customer_profile_save($profile);
+    }
+  }
+
+  foreach (commerce_customer_profile_load_multiple(array_diff($old_profiles, $current_profiles)) as $profile) {
+    $profile->uid = 0;
+    commerce_customer_profile_save($profile);
   }
 }
 
