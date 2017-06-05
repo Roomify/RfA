@@ -771,4 +771,4 @@ function roomify_system_update_7046() {
 function roomify_system_update_7047() {
   $configuration_mlid = roomify_system_get_menu_link_id('Configuration', 'admin/bat/config/global/settings', 'roomify_dashboard_menu', -4);
   roomify_system_create_update_menu_link('Google reCAPTCHA', 'admin/config/spam_protection/google_recaptcha/keys', 'roomify_dashboard_menu', 12, 1, $configuration_mlid);
-  }
+}
