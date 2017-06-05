@@ -691,3 +691,60 @@ function roomify_system_update_7042() {
 function roomify_system_update_7043() {
   module_enable(array('views_infinite_scroll'));
 }
+
+/**
+ * Add User commerce profiles field.
+ */
+function roomify_system_update_7044() {
+  module_load_include('inc', 'roomify_system', 'roomify_system.fields');
+
+  roomify_system_add_user_fields();
+}
+
+/**
+ * Fill customer profiles in the user field.
+ */
+function roomify_system_update_7045(&$sandbox) {
+  if (!isset($sandbox['progress'])) {
+    $sandbox['progress'] = 0;
+
+    $query = new EntityFieldQuery();
+    $query->entityCondition('entity_type', 'commerce_customer_profile');
+    $sandbox['max'] = $query->count()->execute();
+  }
+
+  $query = new EntityFieldQuery();
+  $query->entityCondition('entity_type', 'commerce_customer_profile')
+    ->range($sandbox['progress'], 20);
+
+  $result = $query->execute();
+
+  if (isset($result['commerce_customer_profile'])) {
+    foreach ($result['commerce_customer_profile'] as $profile) {
+      $profile = commerce_customer_profile_load($profile->profile_id);
+      if ($profile->uid != 0) {
+        if ($user = user_load($profile->uid)) {
+          if (isset($user->user_commerce_profile)) {
+            $commerce_profiles = field_get_items('user', $user, 'user_commerce_profile');
+            $exists = FALSE;
+            foreach ($commerce_profiles as $commerce_profile) {
+              if ($commerce_profile['target_id'] == $profile->profile_id) {
+                $exists = TRUE;
+                break;
+              }
+            }
+
+            if (!$exists) {
+              // Let's add a new reference to the field.
+              $user->user_commerce_profile[LANGUAGE_NONE][]['target_id'] = $profile->profile_id;
+              field_attach_update('user', $user);
+            }
+          }
+        }
+      }
+      $sandbox['progress']++;
+    }
+  }
+
+  $sandbox['#finished'] = empty($sandbox['max']) ? 1 : ($sandbox['progress'] / $sandbox['max']);
+}
