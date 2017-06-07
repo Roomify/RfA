@@ -1111,6 +1111,7 @@ function roomify_system_roomify_rights() {
       'view any commerce order',
       'edit any commerce_order entity',
       'configure bat settings',
+      'administer addtoany',
     ),
     'content editor' => array(
       'access content overview',
@@ -2339,6 +2340,7 @@ function roomify_system_addtoany_settings_form($form, &$form_state) {
   $form['roomify_addtoany_settings'] = array(
     '#type' => 'checkboxes',
     '#title' => t('Enable AddToAny'),
+    '#description' => t('Define in which pages the social sharing buttons should be shown.'),
     '#options' => array(
       'property' => t('Property'),
       'type' => t('Type'),
