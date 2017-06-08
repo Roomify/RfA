@@ -27,7 +27,8 @@ function roomify_homepage_views_default_views() {
   $handler->display->display_options['cache']['type'] = 'none';
   $handler->display->display_options['query']['type'] = 'views_query';
   $handler->display->display_options['exposed_form']['type'] = 'basic';
-  $handler->display->display_options['pager']['type'] = 'full';
+  $handler->display->display_options['pager']['type'] = 'none';
+  $handler->display->display_options['pager']['options']['offset'] = '0';
   $handler->display->display_options['style_plugin'] = 'slick';
   $handler->display->display_options['style_options']['slide_field_wrapper'] = 0;
   $handler->display->display_options['style_options']['cache'] = '';
@@ -36,7 +37,7 @@ function roomify_homepage_views_default_views() {
   $handler->display->display_options['style_options']['override'] = 1;
   $handler->display->display_options['style_options']['overridables'] = array(
     'arrows' => 'arrows',
-    'autoplay' => 'autoplay',
+    'autoplay' => 0,
     'dots' => 0,
     'draggable' => 0,
   );
@@ -213,14 +214,6 @@ function roomify_homepage_views_default_views() {
     t('Sort by'),
     t('Asc'),
     t('Desc'),
-    t('Items per page'),
-    t('- All -'),
-    t('Offset'),
-    t('« first'),
-    t('‹ previous'),
-    t('next ›'),
-    t('last »'),
-    t('Content entity referenced from field_homepage_offers'),
     t('All'),
     t('Slideshow'),
     t('View panes'),

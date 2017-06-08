@@ -1333,6 +1333,25 @@ function roomify_accommodation_booking_default_cer() {
  * Implements hook_entity_insert().
  */
 function roomify_accommodation_booking_entity_insert($entity, $type) {
+  // We should check if the profile is set on the User field.
+  if ($type == 'commerce_customer_profile') {
+    if ($entity->uid != 0 && $user = user_load($entity->uid)) {
+      if ($commerce_profiles = field_get_items('user', $user, 'user_commerce_profile')) {
+        $exists = FALSE;
+        foreach ($commerce_profiles as $commerce_profile) {
+          if ($commerce_profile['target_id'] == $entity->profile_id) {
+            $exists = TRUE;
+            break;
+          }
+        }
+        if (!$exists) {
+          // Let's add a new reference to the field.
+          $user->user_commerce_profile[LANGUAGE_NONE][]['target_id'] = $entity->profile_id;
+          field_attach_update('user', $user);
+        }
+      }
+    }
+  }
   if ($type == 'bat_type') {
     if ($entity->type == 'home' || $entity->type == 'room') {
       global $user;
@@ -1704,6 +1723,40 @@ function roomify_accommodation_booking_form_commerce_customer_ui_customer_profil
 }
 
 /**
+ * Implements hook_user_update().
+ */
+function roomify_accommodation_booking_user_update(&$edit, $account, $category) {
+  $old_profiles = array();
+  $current_profiles = array();
+
+  if (isset($account->original)) {
+    if ($commerce_profiles = field_get_items('user', $account->original, 'user_commerce_profile')) {
+      foreach ($commerce_profiles as $item) {
+        $old_profiles[] = $item['target_id'];
+      }
+    }
+  }
+
+  if ($commerce_profiles = field_get_items('user', $account, 'user_commerce_profile')) {
+    foreach ($commerce_profiles as $item) {
+      $current_profiles[] = $item['target_id'];
+    }
+  }
+
+  foreach (commerce_customer_profile_load_multiple($current_profiles) as $profile) {
+    if ($profile->uid != $account->uid) {
+      $profile->uid = $account->uid;
+      commerce_customer_profile_save($profile);
+    }
+  }
+
+  foreach (commerce_customer_profile_load_multiple(array_diff($old_profiles, $current_profiles)) as $profile) {
+    $profile->uid = 0;
+    commerce_customer_profile_save($profile);
+  }
+}
+
+/**
  * Implements hook_form_FORM_ID_alter().
  *
  * FORM_ID = user_register_form.
@@ -1752,11 +1805,6 @@ function roomify_accommodation_booking_form_user_profile_form_alter(&$form, &$fo
     if (isset($form['actions']['cancel'])) {
       unset($form['actions']['cancel']);
     }
-  }
-
-  if (isset($form['user_commerce_profile'])) {
-    $form['user_commerce_profile'][LANGUAGE_NONE][0]['target_id']['#attributes']['readonly'] = 'readonly';
-    $form['user_commerce_profile'][LANGUAGE_NONE][0]['target_id']['#attributes']['style'] = 'background-color: #e4e4e4;';
   }
 }
 

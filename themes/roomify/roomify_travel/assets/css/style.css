@@ -9735,7 +9735,8 @@ body.toggled #close-sidebar-wrapper {
     .page-contact-us .entitytype-contact-form .field-name-field-contact-more-informations input {
       width: 100%; }
   .page-contact-us .entitytype-contact-form .form-actions {
-    padding-left: 15px; }
+    padding-left: 15px;
+    clear: both; }
 
 .page-entityform .submitted {
   display: inline-block;
@@ -15360,3 +15361,6 @@ body.node-type-offer .pane-offer-panel-pane-2 .pager-load-more {
   min-height: 1px;
   padding-left: 15px;
   padding-right: 15px; }
+
+[id^=google_recaptcha_] {
+  margin-bottom: 15px; }

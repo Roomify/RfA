@@ -31,6 +31,13 @@ function roomify_system_menu() {
     'access arguments' => array('administer roomify global site settings'),
   );
 
+  $items['admin/bat/config/addtoany/settings'] = array(
+    'title' => 'AddToAny Settings',
+    'page callback' => 'drupal_get_form',
+    'page arguments' => array('roomify_system_addtoany_settings_form'),
+    'access arguments' => array('administer addtoany'),
+  );
+
   $items['admin/config/content/roomify-footer'] = array(
     'title' => 'Roomify Footer',
     'description' => 'Edit the Site Footer text',
@@ -153,6 +160,10 @@ function roomify_system_permission() {
     'view any commerce order' => array(
       'title' => t('View any commerce order'),
       'description' => t('Access to orders'),
+    ),
+    'configure recaptcha' => array(
+      'title' => t('Configure Google reCAPTCHA'),
+      'description' => t('Configure Google reCAPTCHA settings'),
     ),
   );
 }
@@ -924,6 +935,8 @@ function roomify_system_roomify_rights() {
       'view calendar data for any availability event',
       'access units calendar index service',
       'access events calendar index service',
+      'view own commerce_customer_profile entities',
+      'edit own commerce_customer_profile entities',
     ),
     'guest' => array(
       'edit own guest profile',
@@ -933,6 +946,7 @@ function roomify_system_roomify_rights() {
       'update own roomify_conversation entities',
       'view own commerce_order entities',
       'view own guest profile',
+      'create commerce_customer_profile entities',
     ),
     'property owner' => array(
       'edit own property_owner profile',
@@ -1101,6 +1115,8 @@ function roomify_system_roomify_rights() {
       'view any commerce order',
       'edit any commerce_order entity',
       'configure bat settings',
+      'configure recaptcha',
+      'administer addtoany',
     ),
     'content editor' => array(
       'access content overview',
@@ -1729,21 +1745,9 @@ function roomify_system_file_dir() {
 function roomify_system_form_user_profile_form_alter(&$form, &$form_state) {
   global $user;
 
-  $uid = $user->uid;
-  $allowed = FALSE;
-  $allowed_roles = array('administrator');
-
-  if ($form['#action'] == '/user/' . $uid . '/edit') {
-    foreach ($user->roles as $role) {
-      if (in_array($role, $allowed_roles) || $user->uid == 1) {
-        $allowed = TRUE;
-
-        break;
-      }
-    }
-  }
-
-  if (!$allowed) {
+  // A manager can't update his role.
+  if (strpos(current_path(), 'user/' . $user->uid . '/edit') === 0 &&
+      !(in_array('administrator', $user->roles) || $user->uid == 1)) {
     $form['account']['status']['#access'] = FALSE;
     $form['account']['roles_change']['#access'] = FALSE;
   }
@@ -1752,7 +1756,6 @@ function roomify_system_form_user_profile_form_alter(&$form, &$form_state) {
   if ($pass_reset) {
     $_GET['destination'] = 'user#tabs-0-middle-1';
   }
-
 }
 
 /**
@@ -1820,6 +1823,7 @@ function roomify_system_menu_alter(&$items) {
   $items['admin/commerce/orders/%commerce_order']['page callback'] = 'roomify_system_order_view';
   $items['admin/commerce/orders/%commerce_order']['access callback'] = '_roomify_system_commerce_order_view_access';
 
+  $items['admin/config/spam_protection/google_recaptcha/keys']['access arguments'] = array('configure recaptcha');
 }
 
 /**
@@ -2333,4 +2337,38 @@ function roomify_system_get_users_with_role($role, $active_user = TRUE) {
   }
 
   return $users;
+}
+
+/**
+ * Implements hook_google_recaptcha_available_forms_alter().
+ */
+function roomify_system_google_recaptcha_available_forms_alter(&$available_forms) {
+  $available_forms['contact_entityform_edit_form'] = 'Contact form';
+}
+
+/**
+ * Implements hook_google_recaptcha_always_protect_alter().
+ */
+function roomify_system_google_recaptcha_always_protect_alter(&$always_protected) {
+  $always_protected = array();
+}
+
+/**
+ * AddToAny settings form.
+ */
+function roomify_system_addtoany_settings_form($form, &$form_state) {
+  $form['roomify_addtoany_settings'] = array(
+    '#type' => 'checkboxes',
+    '#title' => t('Enable AddToAny'),
+    '#description' => t('Define in which pages the social sharing buttons should be shown.'),
+    '#options' => array(
+      'property' => t('Property'),
+      'type' => t('Type'),
+      'blog' => t('Blog'),
+      'activity' => t('Things to do'),
+    ),
+    '#default_value' => variable_get('roomify_addtoany_settings', array('property' => 'property', 'type' => 'type', 'blog' => 'blog', 'activity' => 'activity')),
+  );
+
+  return system_settings_form($form);
 }

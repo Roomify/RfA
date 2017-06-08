@@ -327,6 +327,13 @@ function roomify_install_finished(&$install_state) {
   variable_set('image_toolkit', 'gd');
   variable_set('image_jpeg_quality', '100');
 
+  $tune = variable_get('google_recaptcha');
+  $tune['protected_forms'] = array(
+    'user_register_form',
+    'contact_entityform_edit_form',
+  );
+  variable_set('google_recaptcha', $tune);
+
   $menu = menu_load('main-menu');
   module_load_include('module', 'i18n');
   $menu['language'] = 'en';

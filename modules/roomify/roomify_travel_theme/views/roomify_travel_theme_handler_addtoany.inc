@@ -31,7 +31,11 @@ class roomify_travel_theme_handler_addtoany extends views_handler_field {
    */
   public function render($values) {
     if ($node = node_load($values->entity)) {
-      return addtoany_create_node_buttons($node);
+      $addtoany_settings = array_filter(variable_get('roomify_addtoany_settings', array('property' => 'property', 'type' => 'type', 'blog' => 'blog', 'activity' => 'activity')));
+
+      if (in_array($node->type, $addtoany_settings)) {
+        return addtoany_create_node_buttons($node);
+      }
     }
   }
 

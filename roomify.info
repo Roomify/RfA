@@ -132,6 +132,7 @@ dependencies[] = redirect
 dependencies[] = taxonomy_access_fix
 dependencies[] = userone
 dependencies[] = entity_edit_protection
+dependencies[] = google_recaptcha
 
 ; Users
 dependencies[] = profile2
