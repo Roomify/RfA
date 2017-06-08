@@ -748,3 +748,27 @@ function roomify_system_update_7045(&$sandbox) {
 
   $sandbox['#finished'] = empty($sandbox['max']) ? 1 : ($sandbox['progress'] / $sandbox['max']);
 }
+
+/**
+ * Enable module "Google reCAPTCHA".
+ */
+function roomify_system_update_7046() {
+  module_enable(array('google_recaptcha'));
+
+  $tune = variable_get('google_recaptcha');
+
+  $tune['protected_forms'] = array(
+    'user_register_form',
+    'contact_entityform_edit_form',
+  );
+
+  variable_set('google_recaptcha', $tune);
+}
+
+/**
+ * Add 'Google reCAPTCHA' menu link.
+ */
+function roomify_system_update_7047() {
+  $configuration_mlid = roomify_system_get_menu_link_id('Configuration', 'admin/bat/config/global/settings', 'roomify_dashboard_menu', -4);
+  roomify_system_create_update_menu_link('Google reCAPTCHA', 'admin/config/spam_protection/google_recaptcha/keys', 'roomify_dashboard_menu', 12, 1, $configuration_mlid);
+}

@@ -260,6 +260,8 @@ projects[getdirections][version] = 3.2
 
 projects[google_analytics][version] = 2.3
 
+projects[google_recaptcha][version] = 1.2
+
 projects[google_tag][version] = 1.0
 
 projects[group][version] = 1.0-beta6

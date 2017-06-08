@@ -161,6 +161,10 @@ function roomify_system_permission() {
       'title' => t('View any commerce order'),
       'description' => t('Access to orders'),
     ),
+    'configure recaptcha' => array(
+      'title' => t('Configure Google reCAPTCHA'),
+      'description' => t('Configure Google reCAPTCHA settings'),
+    ),
   );
 }
 
@@ -1111,6 +1115,7 @@ function roomify_system_roomify_rights() {
       'view any commerce order',
       'edit any commerce_order entity',
       'configure bat settings',
+      'configure recaptcha',
       'administer addtoany',
     ),
     'content editor' => array(
@@ -1818,6 +1823,7 @@ function roomify_system_menu_alter(&$items) {
   $items['admin/commerce/orders/%commerce_order']['page callback'] = 'roomify_system_order_view';
   $items['admin/commerce/orders/%commerce_order']['access callback'] = '_roomify_system_commerce_order_view_access';
 
+  $items['admin/config/spam_protection/google_recaptcha/keys']['access arguments'] = array('configure recaptcha');
 }
 
 /**
@@ -2331,6 +2337,20 @@ function roomify_system_get_users_with_role($role, $active_user = TRUE) {
   }
 
   return $users;
+}
+
+/**
+ * Implements hook_google_recaptcha_available_forms_alter().
+ */
+function roomify_system_google_recaptcha_available_forms_alter(&$available_forms) {
+  $available_forms['contact_entityform_edit_form'] = 'Contact form';
+}
+
+/**
+ * Implements hook_google_recaptcha_always_protect_alter().
+ */
+function roomify_system_google_recaptcha_always_protect_alter(&$always_protected) {
+  $always_protected = array();
 }
 
 /**
