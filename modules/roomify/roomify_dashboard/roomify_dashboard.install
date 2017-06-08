@@ -84,3 +84,12 @@ function roomify_dashboard_update_7007() {
     menu_link_save($menu);
   }
 }
+
+/**
+ * Add Social Sharing Buttons link.
+ */
+function roomify_dashboard_update_7008() {
+
+  $configuration_mlid = roomify_system_get_menu_link_id('Configuration', 'admin/bat/config/global/settings', 'roomify_dashboard_menu', -4);
+  roomify_system_create_update_menu_link('Social Sharing Buttons', 'admin/bat/config/addtoany/settings', 'roomify_dashboard_menu', 2, 1, $configuration_mlid);
+}

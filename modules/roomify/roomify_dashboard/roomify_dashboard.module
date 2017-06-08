@@ -486,6 +486,7 @@ function roomify_dashboard_create_dashboard_menu() {
   roomify_system_create_update_menu_link('Quick Setup', 'admin/bat/config/example-content', 'roomify_dashboard_menu', 0, 1, $configuration_mlid);
   roomify_system_create_update_menu_link('Configure Social Sharing Platforms', 'admin/config/content/rsp', 'roomify_dashboard_menu', 1, 1, $configuration_mlid);
   roomify_system_create_update_menu_link('Configure Social Feeds', 'admin/config/content/rsf', 'roomify_dashboard_menu', 2, 1, $configuration_mlid);
+  roomify_system_create_update_menu_link('Configure Socials Sharing on pages', 'admin/bat/config/addtoany/settings', 'roomify_dashboard_menu', 2, 1, $configuration_mlid);
   roomify_system_create_update_menu_link('Global Settings', 'admin/bat/config/global/settings', 'roomify_dashboard_menu', 3, 1, $configuration_mlid);
   roomify_system_create_update_menu_link('Configure Channel Management', 'admin/config/services/channel-management', 'roomify_dashboard_menu', 4, 1, $configuration_mlid);
   roomify_system_create_update_menu_link('Global Customer message', 'admin/config/content/rcs', 'roomify_dashboard_menu', 5, 1, $configuration_mlid);

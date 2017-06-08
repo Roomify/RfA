@@ -318,7 +318,22 @@ function roomify_base_theme_default_page_manager_handlers() {
   $pane->type = 'block';
   $pane->subtype = 'addtoany-addtoany_button';
   $pane->shown = TRUE;
-  $pane->access = array();
+  $pane->access = array(
+    'plugins' => array(
+      0 => array(
+        'name' => 'php',
+        'settings' => array(
+          'description' => '',
+          'php' => '$addtoany_settings = array_filter(variable_get(\'roomify_addtoany_settings\', array(\'property\' => \'property\', \'type\' => \'type\', \'blog\' => \'blog\', \'activity\' => \'activity\')));
+
+  if (in_array(\'blog\', $addtoany_settings)) {
+    return TRUE;
+  }',
+        ),
+        'not' => FALSE,
+      ),
+    ),
+  );
   $pane->configuration = array(
     'override_title' => 1,
     'override_title_text' => '',
@@ -601,7 +616,22 @@ function roomify_base_theme_default_page_manager_handlers() {
   $pane->type = 'block';
   $pane->subtype = 'addtoany-addtoany_button';
   $pane->shown = TRUE;
-  $pane->access = array();
+  $pane->access = array(
+    'plugins' => array(
+      0 => array(
+        'name' => 'php',
+        'settings' => array(
+          'description' => '',
+          'php' => '$addtoany_settings = array_filter(variable_get(\'roomify_addtoany_settings\', array(\'property\' => \'property\', \'type\' => \'type\', \'blog\' => \'blog\', \'activity\' => \'activity\')));
+
+  if (in_array(\'activity\', $addtoany_settings)) {
+    return TRUE;
+  }',
+        ),
+        'not' => FALSE,
+      ),
+    ),
+  );
   $pane->configuration = array(
     'override_title' => 1,
     'override_title_text' => '',
@@ -1474,7 +1504,22 @@ function roomify_base_theme_default_page_manager_handlers() {
   $pane->type = 'block';
   $pane->subtype = 'addtoany-addtoany_button';
   $pane->shown = TRUE;
-  $pane->access = array();
+  $pane->access = array(
+    'plugins' => array(
+      0 => array(
+        'name' => 'php',
+        'settings' => array(
+          'description' => '',
+          'php' => '$addtoany_settings = array_filter(variable_get(\'roomify_addtoany_settings\', array(\'property\' => \'property\', \'type\' => \'type\', \'blog\' => \'blog\', \'activity\' => \'activity\')));
+
+  if (in_array(\'property\', $addtoany_settings)) {
+    return TRUE;
+  }',
+        ),
+        'not' => FALSE,
+      ),
+    ),
+  );
   $pane->configuration = array(
     'override_title' => 1,
     'override_title_text' => '',
@@ -2133,7 +2178,22 @@ function roomify_base_theme_default_page_manager_handlers() {
   $pane->type = 'block';
   $pane->subtype = 'addtoany-addtoany_button';
   $pane->shown = TRUE;
-  $pane->access = array();
+  $pane->access = array(
+    'plugins' => array(
+      0 => array(
+        'name' => 'php',
+        'settings' => array(
+          'description' => '',
+          'php' => '$addtoany_settings = array_filter(variable_get(\'roomify_addtoany_settings\', array(\'property\' => \'property\', \'type\' => \'type\', \'blog\' => \'blog\', \'activity\' => \'activity\')));
+
+  if (in_array(\'property\', $addtoany_settings)) {
+    return TRUE;
+  }',
+        ),
+        'not' => FALSE,
+      ),
+    ),
+  );
   $pane->configuration = array(
     'override_title' => 1,
     'override_title_text' => '',

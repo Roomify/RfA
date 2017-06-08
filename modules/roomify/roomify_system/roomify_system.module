@@ -31,6 +31,13 @@ function roomify_system_menu() {
     'access arguments' => array('administer roomify global site settings'),
   );
 
+  $items['admin/bat/config/addtoany/settings'] = array(
+    'title' => 'AddToAny Settings',
+    'page callback' => 'drupal_get_form',
+    'page arguments' => array('roomify_system_addtoany_settings_form'),
+    'access arguments' => array('administer addtoany'),
+  );
+
   $items['admin/config/content/roomify-footer'] = array(
     'title' => 'Roomify Footer',
     'description' => 'Edit the Site Footer text',
@@ -1104,6 +1111,7 @@ function roomify_system_roomify_rights() {
       'view any commerce order',
       'edit any commerce_order entity',
       'configure bat settings',
+      'administer addtoany',
     ),
     'content editor' => array(
       'access content overview',
@@ -2323,4 +2331,24 @@ function roomify_system_get_users_with_role($role, $active_user = TRUE) {
   }
 
   return $users;
+}
+
+/**
+ * AddToAny settings form.
+ */
+function roomify_system_addtoany_settings_form($form, &$form_state) {
+  $form['roomify_addtoany_settings'] = array(
+    '#type' => 'checkboxes',
+    '#title' => t('Enable AddToAny'),
+    '#description' => t('Define in which pages the social sharing buttons should be shown.'),
+    '#options' => array(
+      'property' => t('Property'),
+      'type' => t('Type'),
+      'blog' => t('Blog'),
+      'activity' => t('Things to do'),
+    ),
+    '#default_value' => variable_get('roomify_addtoany_settings', array('property' => 'property', 'type' => 'type', 'blog' => 'blog', 'activity' => 'activity')),
+  );
+
+  return system_settings_form($form);
 }
