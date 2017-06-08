@@ -772,3 +772,13 @@ function roomify_system_update_7047() {
   $configuration_mlid = roomify_system_get_menu_link_id('Configuration', 'admin/bat/config/global/settings', 'roomify_dashboard_menu', -4);
   roomify_system_create_update_menu_link('Google reCAPTCHA', 'admin/config/spam_protection/google_recaptcha/keys', 'roomify_dashboard_menu', 12, 1, $configuration_mlid);
 }
+
+/**
+ * Set the Paragraphs entity as translatable.
+ */
+function roomify_system_update_7048() {
+  $translatable_entities = variable_get('entity_translation_entity_types', array());
+  $translatable_entities['paragraphs_item'] = 'paragraphs_item';
+
+  variable_set('entity_translation_entity_types', $translatable_entities);
+}
