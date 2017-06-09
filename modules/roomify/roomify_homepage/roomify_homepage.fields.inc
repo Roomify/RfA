@@ -12,16 +12,9 @@ function roomify_homepage_create_fields() {
 
   if (field_read_field('field_homepage_slideshow') === FALSE) {
     $field_bases['field_homepage_slideshow'] = array(
-      'active' => 1,
       'cardinality' => -1,
-      'deleted' => 0,
       'entity_types' => array(),
       'field_name' => 'field_homepage_slideshow',
-      'indexes' => array(
-        'fid' => array(
-          0 => 'fid',
-        ),
-      ),
       'locked' => 0,
       'module' => 'image',
       'settings' => array(
@@ -39,16 +32,9 @@ function roomify_homepage_create_fields() {
 
   if (field_read_field('field_homepage_main_text') === FALSE) {
     $field_bases['field_homepage_main_text'] = array(
-      'active' => 1,
       'cardinality' => 1,
-      'deleted' => 0,
       'entity_types' => array(),
       'field_name' => 'field_homepage_main_text',
-      'indexes' => array(
-        'format' => array(
-          0 => 'format',
-        ),
-      ),
       'locked' => 0,
       'module' => 'text',
       'settings' => array(
@@ -62,16 +48,9 @@ function roomify_homepage_create_fields() {
 
   if (field_read_field('field_homepage_intro_text') === FALSE) {
     $field_bases['field_homepage_intro_text'] = array(
-      'active' => 1,
       'cardinality' => 1,
-      'deleted' => 0,
       'entity_types' => array(),
       'field_name' => 'field_homepage_intro_text',
-      'indexes' => array(
-        'format' => array(
-          0 => 'format',
-        ),
-      ),
       'locked' => 0,
       'module' => 'text',
       'settings' => array(
@@ -85,16 +64,9 @@ function roomify_homepage_create_fields() {
 
   if (field_read_field('field_homepage_properties_view') === FALSE) {
     $field_bases['field_homepage_properties_view'] = array(
-      'active' => 1,
       'cardinality' => 1,
-      'deleted' => 0,
       'entity_types' => array(),
       'field_name' => 'field_homepage_properties_view',
-      'indexes' => array(
-        'value' => array(
-          0 => 'value',
-        ),
-      ),
       'locked' => 0,
       'module' => 'list',
       'settings' => array(
@@ -113,16 +85,9 @@ function roomify_homepage_create_fields() {
 
   if (field_read_field('field_homepage_areas') === FALSE) {
     $field_bases['field_homepage_areas'] = array(
-      'active' => 1,
       'cardinality' => 1,
-      'deleted' => 0,
       'entity_types' => array(),
       'field_name' => 'field_homepage_areas',
-      'indexes' => array(
-        'value' => array(
-          0 => 'value',
-        ),
-      ),
       'locked' => 0,
       'module' => 'list',
       'settings' => array(
@@ -139,6 +104,41 @@ function roomify_homepage_create_fields() {
     );
   }
 
+  if (field_read_field('field_homepage_offers') === FALSE) {
+    $field_bases['field_homepage_offers'] = array(
+      'cardinality' => -1,
+      'entity_types' => array(),
+      'field_name' => 'field_homepage_offers',
+      'locked' => 0,
+      'module' => 'entityreference',
+      'settings' => array(
+        'behaviors' => array(),
+        'entity_translation_sync' => FALSE,
+        'handler' => 'base',
+        'handler_settings' => array(
+          'behaviors' => array(
+            'entityqueue' => array(
+              'status' => 0,
+            ),
+            'views-select-list' => array(
+              'status' => 0,
+            ),
+          ),
+          'sort' => array(
+            'type' => 'none',
+          ),
+          'target_bundles' => array(
+            'offer' => 'offer',
+          ),
+        ),
+        'profile2_private' => FALSE,
+        'target_type' => 'node',
+      ),
+      'translatable' => 0,
+      'type' => 'entityreference',
+    );
+  }
+
   foreach ($field_bases as $field) {
     field_create_field($field);
   }
@@ -148,7 +148,6 @@ function roomify_homepage_create_fields() {
   if (field_read_instance('node', 'field_homepage_slideshow', 'homepage') === FALSE) {
     $field_instances['node-homepage-field_homepage_slideshow'] = array(
       'bundle' => 'homepage',
-      'deleted' => 0,
       'description' => '',
       'display' => array(
         'default' => array(
@@ -224,7 +223,6 @@ function roomify_homepage_create_fields() {
     $field_instances['node-homepage-field_homepage_main_text'] = array(
       'bundle' => 'homepage',
       'default_value' => NULL,
-      'deleted' => 0,
       'description' => '',
       'display' => array(
         'default' => array(
@@ -308,7 +306,6 @@ function roomify_homepage_create_fields() {
     $field_instances['node-homepage-field_homepage_intro_text'] = array(
       'bundle' => 'homepage',
       'default_value' => NULL,
-      'deleted' => 0,
       'description' => '',
       'display' => array(
         'default' => array(
@@ -396,7 +393,6 @@ function roomify_homepage_create_fields() {
           'value' => 'grid',
         ),
       ),
-      'deleted' => 0,
       'description' => 'Select how to display featured properties on this page. You may add featured properties from the Dashboard ( Manage Content / Manage Featured Properties)',
       'display' => array(
         'default' => array(
@@ -447,7 +443,6 @@ function roomify_homepage_create_fields() {
           'value' => 1,
         ),
       ),
-      'deleted' => 0,
       'description' => 'Check this if you want to show Featured Areas on your homepage. You may add featured areas from the Dashboard ( Manage Content / Manage Featured Areas)',
       'display' => array(
         'default' => array(
@@ -492,6 +487,59 @@ function roomify_homepage_create_fields() {
     );
   }
 
+  if (field_read_instance('node', 'field_homepage_offers', 'homepage') === FALSE) {
+    $field_instances['node-homepage-field_homepage_offers'] = array(
+      'bundle' => 'homepage',
+      'default_value' => NULL,
+      'default_value_function' => '',
+      'description' => 'Enable offers to show in the homepage. Remember the offer need to have an image to be shown. N.B. If you want to create a page for the offer you need to create an offer first, and, on the edit page, you will find a link to add a page for that.',
+      'display' => array(
+        'default' => array(
+          'label' => 'above',
+          'module' => 'entityreference',
+          'settings' => array(
+            'conditions' => array(),
+            'link' => FALSE,
+          ),
+          'type' => 'entityreference_label',
+          'weight' => 6,
+        ),
+        'landing_page_teaser' => array(
+          'label' => 'above',
+          'settings' => array(),
+          'type' => 'hidden',
+          'weight' => 0,
+        ),
+        'teaser' => array(
+          'label' => 'above',
+          'settings' => array(),
+          'type' => 'hidden',
+          'weight' => 0,
+        ),
+      ),
+      'entity_type' => 'node',
+      'field_name' => 'field_homepage_offers',
+      'label' => 'Offers',
+      'required' => 0,
+      'settings' => array(
+        'behaviors' => array(
+          'prepopulate' => array(
+            'status' => 0,
+          ),
+        ),
+        'entity_translation_sync' => FALSE,
+        'user_register_form' => FALSE,
+      ),
+      'widget' => array(
+        'active' => 1,
+        'module' => 'options',
+        'settings' => array(),
+        'type' => 'options_buttons',
+        'weight' => 9,
+      ),
+    );
+  }
+
   // Translatables
   // Included for use with string extractors like potx.
   t('Main Text');
@@ -501,6 +549,7 @@ function roomify_homepage_create_fields() {
   t('Areas');
   t('Check this if you want to show Featured Areas on your homepage. You may add featured areas from the Dashboard ( Manage Content / Manage Featured Areas)');
   t('Featured Properties View');
+  t('Offers');
 
   foreach ($field_instances as $instance) {
     field_create_instance($instance);
@@ -616,6 +665,33 @@ function roomify_homepage_create_fields() {
       ),
     );
     $field_groups['group_homepage_areas|node|homepage|form'] = $field_group;
+  }
+
+  if (field_group_load_field_group('group_homepage_offers', 'node', 'homepage', 'form') === NULL) {
+    $field_group = new stdClass();
+    $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
+    $field_group->api_version = 1;
+    $field_group->identifier = 'group_homepage_offers|node|homepage|form';
+    $field_group->group_name = 'group_homepage_offers';
+    $field_group->entity_type = 'node';
+    $field_group->bundle = 'homepage';
+    $field_group->mode = 'form';
+    $field_group->parent_name = '';
+    $field_group->label = 'Offers';
+    $field_group->weight = '6';
+    $field_group->children = array(
+      0 => 'field_homepage_offers',
+    );
+    $field_group->format_type = 'tab';
+    $field_group->format_settings = array(
+      'formatter' => 'closed',
+      'instance_settings' => array(
+        'description' => '',
+        'classes' => '',
+        'required_fields' => 1,
+      ),
+    );
+    $field_groups['group_homepage_offers|node|homepage|form'] = $field_group;
   }
 
   foreach ($field_groups as $group) {
