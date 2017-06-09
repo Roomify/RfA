@@ -283,6 +283,7 @@ function roomify_install_finished(&$install_state) {
   $translatable_entities['roomify_property'] = 'roomify_property';
   $translatable_entities['entityform'] = 'entityform';
   $translatable_entities['profile2'] = 'profile2';
+  $translatable_entities['paragraphs_item'] = 'paragraphs_item';
 
   // Enable translation for properties and types.
   variable_set('entity_translation_entity_types', $translatable_entities);

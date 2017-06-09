@@ -355,6 +355,7 @@ projects[panels_tabs][download][revision] = 2caec501daab91001712d153398df585ff6c
 projects[panels_tabs][patch][] = https://www.drupal.org/files/issues/panels_tabs-back_button_support-821334-18.patch
 
 projects[paragraphs][version] = 1.0-rc5
+projects[paragraphs][patch][] = https://www.drupal.org/files/issues/paragraphs-entity_translation-2452675-140.patch
 
 projects[paragraphs_id][version] = 1.0-alpha2
 
