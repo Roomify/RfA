@@ -12,16 +12,9 @@ function roomify_homepage_create_fields() {
 
   if (field_read_field('field_homepage_slideshow') === FALSE) {
     $field_bases['field_homepage_slideshow'] = array(
-      'active' => 1,
       'cardinality' => -1,
-      'deleted' => 0,
       'entity_types' => array(),
       'field_name' => 'field_homepage_slideshow',
-      'indexes' => array(
-        'fid' => array(
-          0 => 'fid',
-        ),
-      ),
       'locked' => 0,
       'module' => 'image',
       'settings' => array(
@@ -39,16 +32,9 @@ function roomify_homepage_create_fields() {
 
   if (field_read_field('field_homepage_main_text') === FALSE) {
     $field_bases['field_homepage_main_text'] = array(
-      'active' => 1,
       'cardinality' => 1,
-      'deleted' => 0,
       'entity_types' => array(),
       'field_name' => 'field_homepage_main_text',
-      'indexes' => array(
-        'format' => array(
-          0 => 'format',
-        ),
-      ),
       'locked' => 0,
       'module' => 'text',
       'settings' => array(
@@ -62,16 +48,9 @@ function roomify_homepage_create_fields() {
 
   if (field_read_field('field_homepage_intro_text') === FALSE) {
     $field_bases['field_homepage_intro_text'] = array(
-      'active' => 1,
       'cardinality' => 1,
-      'deleted' => 0,
       'entity_types' => array(),
       'field_name' => 'field_homepage_intro_text',
-      'indexes' => array(
-        'format' => array(
-          0 => 'format',
-        ),
-      ),
       'locked' => 0,
       'module' => 'text',
       'settings' => array(
@@ -85,16 +64,9 @@ function roomify_homepage_create_fields() {
 
   if (field_read_field('field_homepage_properties_view') === FALSE) {
     $field_bases['field_homepage_properties_view'] = array(
-      'active' => 1,
       'cardinality' => 1,
-      'deleted' => 0,
       'entity_types' => array(),
       'field_name' => 'field_homepage_properties_view',
-      'indexes' => array(
-        'value' => array(
-          0 => 'value',
-        ),
-      ),
       'locked' => 0,
       'module' => 'list',
       'settings' => array(
@@ -113,16 +85,9 @@ function roomify_homepage_create_fields() {
 
   if (field_read_field('field_homepage_areas') === FALSE) {
     $field_bases['field_homepage_areas'] = array(
-      'active' => 1,
       'cardinality' => 1,
-      'deleted' => 0,
       'entity_types' => array(),
       'field_name' => 'field_homepage_areas',
-      'indexes' => array(
-        'value' => array(
-          0 => 'value',
-        ),
-      ),
       'locked' => 0,
       'module' => 'list',
       'settings' => array(
@@ -141,16 +106,9 @@ function roomify_homepage_create_fields() {
 
   if (field_read_field('field_homepage_offers') === FALSE) {
     $field_bases['field_homepage_offers'] = array(
-      'active' => 1,
       'cardinality' => -1,
-      'deleted' => 0,
       'entity_types' => array(),
       'field_name' => 'field_homepage_offers',
-      'indexes' => array(
-        'target_id' => array(
-          0 => 'target_id',
-        ),
-      ),
       'locked' => 0,
       'module' => 'entityreference',
       'settings' => array(
@@ -190,7 +148,6 @@ function roomify_homepage_create_fields() {
   if (field_read_instance('node', 'field_homepage_slideshow', 'homepage') === FALSE) {
     $field_instances['node-homepage-field_homepage_slideshow'] = array(
       'bundle' => 'homepage',
-      'deleted' => 0,
       'description' => '',
       'display' => array(
         'default' => array(
@@ -266,7 +223,6 @@ function roomify_homepage_create_fields() {
     $field_instances['node-homepage-field_homepage_main_text'] = array(
       'bundle' => 'homepage',
       'default_value' => NULL,
-      'deleted' => 0,
       'description' => '',
       'display' => array(
         'default' => array(
@@ -350,7 +306,6 @@ function roomify_homepage_create_fields() {
     $field_instances['node-homepage-field_homepage_intro_text'] = array(
       'bundle' => 'homepage',
       'default_value' => NULL,
-      'deleted' => 0,
       'description' => '',
       'display' => array(
         'default' => array(
@@ -438,7 +393,6 @@ function roomify_homepage_create_fields() {
           'value' => 'grid',
         ),
       ),
-      'deleted' => 0,
       'description' => 'Select how to display featured properties on this page. You may add featured properties from the Dashboard ( Manage Content / Manage Featured Properties)',
       'display' => array(
         'default' => array(
@@ -489,7 +443,6 @@ function roomify_homepage_create_fields() {
           'value' => 1,
         ),
       ),
-      'deleted' => 0,
       'description' => 'Check this if you want to show Featured Areas on your homepage. You may add featured areas from the Dashboard ( Manage Content / Manage Featured Areas)',
       'display' => array(
         'default' => array(
@@ -539,7 +492,6 @@ function roomify_homepage_create_fields() {
       'bundle' => 'homepage',
       'default_value' => NULL,
       'default_value_function' => '',
-      'deleted' => 0,
       'description' => 'Enable offers to show in the homepage. Remember the offer need to have an image to be shown. N.B. If you want to create a page for the offer you need to create an offer first, and, on the edit page, you will find a link to add a page for that.',
       'display' => array(
         'default' => array(
