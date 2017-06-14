@@ -229,6 +229,24 @@
   font-size: 14px;
 }
 
+.node-type-landing-page .paragraphs-item-video {
+  display: inline-block;
+  width: 100%;
+}
+.node-type-landing-page .paragraphs-item-video .player {
+  position: relative;
+  height: 0;
+  overflow: hidden;
+  padding-bottom: 56.25%;
+}
+.node-type-landing-page .paragraphs-item-video iframe {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+}
+
 @media screen and (max-width: 768px) {
   .node-type-landing-page .paragraphs-item-slideshow .slick-active .slideshow-info {
     bottom: 5px;

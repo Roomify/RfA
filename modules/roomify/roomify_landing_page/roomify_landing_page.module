@@ -378,6 +378,7 @@ function roomify_landing_page_roomify_rights() {
       'view paragraph content property',
       'view paragraph content slideshow',
       'view paragraph content text',
+      'view paragraph content video',
     ),
     'authenticated user' => array(
       'view paragraph content 1_column_row',
@@ -397,6 +398,7 @@ function roomify_landing_page_roomify_rights() {
       'view paragraph content property',
       'view paragraph content slideshow',
       'view paragraph content text',
+      'view paragraph content video',
     ),
   );
 
