@@ -3675,7 +3675,7 @@ function roomify_landing_page_field_default_field_instances() {
     'description' => '',
     'display' => array(
       'default' => array(
-        'label' => 'above',
+        'label' => 'hidden',
         'module' => 'video_embed_field',
         'settings' => array(
           'conditions' => array(),
