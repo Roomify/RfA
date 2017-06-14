@@ -538,6 +538,24 @@ function roomify_landing_page_field_default_field_bases() {
     'type' => 'text',
   );
 
+  // Exported field_base: 'field_cta_video'.
+  $field_bases['field_cta_video'] = array(
+    'active' => 1,
+    'cardinality' => 1,
+    'deleted' => 0,
+    'entity_types' => array(),
+    'field_name' => 'field_cta_video',
+    'indexes' => array(),
+    'locked' => 0,
+    'module' => 'video_embed_field',
+    'settings' => array(
+      'entity_translation_sync' => FALSE,
+      'profile2_private' => FALSE,
+    ),
+    'translatable' => 0,
+    'type' => 'video_embed_field',
+  );
+
   // Exported field_base: 'field_eb_color'.
   $field_bases['field_eb_color'] = array(
     'active' => 1,
