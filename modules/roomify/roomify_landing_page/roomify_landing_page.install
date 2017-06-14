@@ -6,7 +6,7 @@
  */
 
 /**
- * Enables ffc module.
+ * Enable module "Field formatter conditions".
  */
 function roomify_landing_page_update_7001() {
   module_enable(array('ffc'));
@@ -193,4 +193,11 @@ function roomify_landing_page_update_7005(&$sandbox) {
   // To display a message to the user when the update is completed, return it.
   // If you do not want to display a completion message, simply return nothing.
   return t('Landing pages have been updated succesfully!');
+}
+
+/**
+ * Enable module "Video Embed Field".
+ */
+function roomify_landing_page_update_7006() {
+  module_enable(array('video_embed_field'));
 }

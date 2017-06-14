@@ -210,6 +210,11 @@ function roomify_landing_page_paragraphs_info() {
       'bundle' => 'text',
       'locked' => '1',
     ),
+    'video' => array(
+      'name' => 'Video',
+      'bundle' => 'video',
+      'locked' => '1',
+    ),
   );
   return $items;
 }
