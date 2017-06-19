@@ -182,6 +182,7 @@ function roomify_example_content_create_casa_sul_mare_example_property($type_id,
     'type' => 'casa_property',
     'name' => $property_name,
     'created' => REQUEST_TIME,
+    'language' => 'en',
   ));
 
   // Property Description.
@@ -310,6 +311,7 @@ function roomify_example_content_create_casa_azzurra_example_property($type_id, 
     'type' => 'casa_property',
     'name' => 'Casa Azzurra',
     'created' => REQUEST_TIME,
+    'language' => 'en',
   ));
 
   // Property Description.
@@ -577,6 +579,7 @@ function roomify_example_content_create_locanda_vivaldi_example_property($type_i
     'type' => 'locanda_property',
     'name' => $property_name,
     'created' => REQUEST_TIME,
+    'language' => 'en',
   ));
 
   // Property Description.
@@ -709,6 +712,7 @@ function roomify_example_content_create_miles_boutique_hotel_example_property($t
     'type' => 'locanda_property',
     'name' => 'Miles Boutique Hotel',
     'created' => REQUEST_TIME,
+    'language' => 'en',
   ));
 
   // Property Description.
