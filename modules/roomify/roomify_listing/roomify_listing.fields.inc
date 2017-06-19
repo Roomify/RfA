@@ -906,7 +906,7 @@ function roomify_listing_create_property_fields($property_bundle) {
       ),
       'widget' => array(
         'active' => 1,
-        'module' => 'image',
+        'module' => 'multiupload_imagefield_widget',
         'settings' => array(
           'dragdropfile_enabled' => 1,
           'dragdropfile_title' => 'Drag 1 or more on this area to upload with ease',
@@ -927,7 +927,7 @@ function roomify_listing_create_property_fields($property_bundle) {
           'preview_image_style' => 'thumbnail',
           'progress_indicator' => 'throbber',
         ),
-        'type' => 'image_image',
+        'type' => 'image_miw',
         'weight' => 23,
       ),
     );

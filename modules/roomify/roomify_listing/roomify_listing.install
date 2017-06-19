@@ -1343,3 +1343,15 @@ function roomify_listing_update_7037() {
     }
   }
 }
+
+/**
+ * Change widget of field 'field_sp_gallery' to 'Multiupload'.
+ */
+function roomify_listing_update_7038() {
+  foreach (array('casa_property', 'locanda_property') as $property_bundle) {
+    $instance_info = field_read_instance('roomify_property', 'field_sp_gallery', $property_bundle);
+    $instance_info['widget']['module'] = 'multiupload_imagefield_widget';
+    $instance_info['widget']['type'] = 'image_miw';
+    field_update_instance($instance_info);
+  }
+}

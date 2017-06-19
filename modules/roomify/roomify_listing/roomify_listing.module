@@ -1635,3 +1635,10 @@ function roomify_listing_bat_api_events_index_calendar_alter(&$events, $context)
     }
   }
 }
+
+/**
+ * Implements hook_dragdropfile_field_widget_types_alter().
+ */
+function roomify_listing_dragdropfile_field_widget_types_alter(&$supported) {
+  $supported[] = 'image_miw';
+}
