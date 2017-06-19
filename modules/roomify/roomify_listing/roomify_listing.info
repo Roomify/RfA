@@ -27,6 +27,7 @@ dependencies[] = geofield
 dependencies[] = geofield_gmap
 dependencies[] = leaflet_views
 dependencies[] = link
+dependencies[] = multiupload_imagefield_widget
 dependencies[] = number
 dependencies[] = options
 dependencies[] = page_manager

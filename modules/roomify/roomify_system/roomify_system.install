@@ -782,3 +782,10 @@ function roomify_system_update_7048() {
 
   variable_set('entity_translation_entity_types', $translatable_entities);
 }
+
+/**
+ * Enable module "Multiupload Imagefield Widget".
+ */
+function roomify_system_update_7049() {
+  module_enable(array('multiupload_imagefield_widget'));
+}
