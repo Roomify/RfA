@@ -165,6 +165,10 @@ function roomify_system_permission() {
       'title' => t('Configure Google reCAPTCHA'),
       'description' => t('Configure Google reCAPTCHA settings'),
     ),
+    'administer pathauto patterns' => array(
+      'title' => t('Administer Pathauto patterns'),
+      'description' => t('Let changes default patterns for entities'),
+    ),
   );
 }
 
@@ -1117,6 +1121,8 @@ function roomify_system_roomify_rights() {
       'configure bat settings',
       'configure recaptcha',
       'administer addtoany',
+      'create url aliases',
+      'administer pathauto patterns',
     ),
     'content editor' => array(
       'access content overview',
@@ -1824,6 +1830,7 @@ function roomify_system_menu_alter(&$items) {
   $items['admin/commerce/orders/%commerce_order']['access callback'] = '_roomify_system_commerce_order_view_access';
 
   $items['admin/config/spam_protection/google_recaptcha/keys']['access arguments'] = array('configure recaptcha');
+  $items['admin/config/search/path/patterns']['access arguments'] = array('administer pathauto patterns');
 }
 
 /**
