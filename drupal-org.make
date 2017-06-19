@@ -340,6 +340,10 @@ projects[mimemail][version] = 1.0
 
 projects[module_filter][version] = 2.0
 
+projects[multiupload_filefield_widget][version] = 1.13
+
+projects[multiupload_imagefield_widget][version] = 1.3
+
 projects[override_node_options][version] = 1.13
 
 projects[panels][version] = 3.9
