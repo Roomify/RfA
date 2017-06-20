@@ -42,7 +42,6 @@ function roomify_homepage_fields() {
  * Creates an example homepage.
  */
 function roomify_homepage_example_homepage() {
-
   // Load Images.
   $santorini = file_get_contents(drupal_get_path('module', 'roomify_homepage') . '/images/santorini.jpg');
   $santorini = file_save_data($santorini, roomify_system_file_dir() . 'standard.jpg', FILE_EXISTS_RENAME);
@@ -129,6 +128,8 @@ function roomify_homepage_example_homepage() {
   $node->field_homepage_intro_text['en'][0]['value'] = '<p style="text-align: center;"><span style="font-size:56px;">Welcome to your Roomify Site!</span></p>';
   $node->field_homepage_intro_text['en'][0]['format'] = 'landing_page_text';
   $node->field_homepage_intro_text['en'][0]['safe_value'] = '<p style="text-align: center;"><span style="font-size:56px;">Welcome to your Roomify Site!</span></p>';
+
+  $node->field_homepage_areas[LANGUAGE_NONE][0]['value'] = 1;
 
   node_save($node);
 

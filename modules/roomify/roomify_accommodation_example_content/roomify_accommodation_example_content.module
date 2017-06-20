@@ -269,6 +269,11 @@ function roomify_example_content_create_casa_sul_mare_example_property($type_id,
   // Highlight Image 3 Caption.
   $property_type->field_sp_highlight_image3_cap['en'][0]['value'] = 'Enjoy dinner at night watching the waves hit the beach.';
 
+  // Area
+  foreach (variable_get('roomify_accommodation_example_content_location_tids', array()) as $tid) {
+    $property_type->field_sp_area[LANGUAGE_NONE][]['tid'] = $tid;
+  }
+
   // Location.
   $property_type->field_sp_location[LANGUAGE_NONE][0]['geom'] = 'POINT (12.7317810 38.1882757)';
   $property_type->field_sp_location[LANGUAGE_NONE][0]['geo_type'] = 'point';
@@ -397,6 +402,11 @@ function roomify_example_content_create_casa_azzurra_example_property($type_id, 
 
   // Highlight Image 3 Caption.
   $property_type->field_sp_highlight_image3_cap['en'][0]['value'] = 'A fully equipped indoors kitchen.';
+
+  // Area
+  foreach (variable_get('roomify_accommodation_example_content_location_tids', array()) as $tid) {
+    $property_type->field_sp_area[LANGUAGE_NONE][]['tid'] = $tid;
+  }
 
   // Location.
   $property_type->field_sp_location[LANGUAGE_NONE][0]['geom'] = 'POINT (15.2895355 37.8514078)';
@@ -666,6 +676,11 @@ function roomify_example_content_create_locanda_vivaldi_example_property($type_i
   // Highlight Image 3 Caption.
   $property_type->field_sp_highlight_image3_cap['en'][0]['value'] = 'Enjoy meals at our wonderful traditional trattoria.';
 
+  // Area
+  foreach (variable_get('roomify_accommodation_example_content_location_tids', array()) as $tid) {
+    $property_type->field_sp_area[LANGUAGE_NONE][]['tid'] = $tid;
+  }
+
   // Location.
   $property_type->field_sp_location[LANGUAGE_NONE][0]['geom'] = 'POINT (14.8466491 36.7277406)';
   $property_type->field_sp_location[LANGUAGE_NONE][0]['geo_type'] = 'point';
@@ -798,6 +813,11 @@ function roomify_example_content_create_miles_boutique_hotel_example_property($t
 
   // Highlight Image 3 Caption.
   $property_type->field_sp_highlight_image3_cap['en'][0]['value'] = 'This time we went with a brown couch. Yellow seats on each side. A table in the middle. Boom.';
+
+  // Area
+  foreach (variable_get('roomify_accommodation_example_content_location_tids', array()) as $tid) {
+    $property_type->field_sp_area[LANGUAGE_NONE][]['tid'] = $tid;
+  }
 
   // Location.
   $property_type->field_sp_location[LANGUAGE_NONE][0]['geom'] = 'POINT (14.0181777 38.0364057)';
@@ -933,6 +953,8 @@ function roomify_example_content_create_conversation($start_date, $end_date, $pr
 function roomify_accommodation_example_content_vacation_rental() {
   $account = roomify_accommodation_example_content_get_manager_account();
 
+  roomify_accommodation_example_create_example_location_terms();
+
   $type_id = roomify_example_content_create_casa_example_type('My Vacation Rental', 6, 'casa_sul_mare', $account->uid);
   $property_id = roomify_example_content_create_casa_sul_mare_example_property($type_id, 'casa_sul_mare', $account->name, 'My Vacation Rental');
 
@@ -951,6 +973,8 @@ function roomify_accommodation_example_content_vacation_rental() {
 function roomify_accommodation_example_content_b_and_b() {
   $account = roomify_accommodation_example_content_get_manager_account();
 
+  roomify_accommodation_example_create_example_location_terms();
+
   $type_ids = roomify_example_content_create_example_types('The Doges Rooms', 4, 'locanda1', '10000', 'Vivaldi Suite', 2, 'locanda2', '10000', $account->uid);
   $property_id = roomify_example_content_create_locanda_vivaldi_example_property($type_ids, 5, 'locanda2', $account->name, 'My B&B / Hotel');
 
@@ -967,6 +991,8 @@ function roomify_accommodation_example_content_b_and_b() {
  * Example content for "Multi-property".
  */
 function roomify_accommodation_example_content_multi_property() {
+  roomify_accommodation_example_create_example_location_terms();
+
   // Create Roles for Guests.
   $guest_role = user_role_load_by_name('guest');
   $guest_rid = $guest_role->rid;
@@ -1093,7 +1119,10 @@ function roomify_accommodation_example_content_vacation_rental_delete() {
 
   $property->delete();
 
+  entity_delete_multiple('taxonomy_term', variable_get('roomify_accommodation_example_content_location_tids', array()));
+
   variable_del('roomify_accommodation_example_content');
+  variable_del('roomify_accommodation_example_content_location_tids');
   variable_set('roomify_accommodation_example_content_property_id', '');
   variable_set('site_frontpage', 'node');
   variable_set('site_name', 'Roomify');
@@ -1126,7 +1155,10 @@ function roomify_accommodation_example_content_b_and_b_delete() {
 
   $property->delete();
 
+  entity_delete_multiple('taxonomy_term', variable_get('roomify_accommodation_example_content_location_tids', array()));
+
   variable_del('roomify_accommodation_example_content');
+  variable_del('roomify_accommodation_example_content_location_tids');
   variable_set('roomify_accommodation_example_content_property_id', '');
   variable_set('site_frontpage', 'node');
   variable_set('site_name', 'Roomify');
@@ -1219,9 +1251,12 @@ function roomify_accommodation_example_content_multi_property_delete($type_delet
     drupal_uninstall_modules(array('roomify_homepage'));
   }
 
+  entity_delete_multiple('taxonomy_term', variable_get('roomify_accommodation_example_content_location_tids', array()));
+
   variable_del('roomify_accommodation_example_content');
   variable_del('roomify_accommodation_example_content_property_id');
   variable_del('roomify_accommodation_example_content_conversation_id');
+  variable_del('roomify_accommodation_example_content_location_tids');
 
   cache_clear_all('*', 'cache_page', TRUE);
 }
@@ -1498,4 +1533,60 @@ function roomify_accommodation_example_content_get_manager_account() {
   }
 
   return $account;
+}
+
+/**
+ * Creates Area example terms.
+ */
+function roomify_accommodation_example_create_example_location_terms() {
+  $module_path = drupal_get_path('module', 'roomify_accommodation_example_content');
+
+  $vocabulary = taxonomy_vocabulary_machine_name_load('location');
+
+  $image1_url = drupal_realpath($module_path . '/default_images/casa_azzurra/default_0.jpg');
+  $image1 = (object) array(
+    'uid' => 1,
+    'uri' => $image1_url,
+    'filemime' => file_get_mimetype($image1_url),
+    'status' => 1,
+  );
+  $image1 = file_copy($image1, roomify_system_file_dir());
+
+  $image2_url = drupal_realpath($module_path . '/default_images/casa_azzurra/default_1.jpg');
+  $image2 = (object) array(
+    'uid' => 1,
+    'uri' => $image2_url,
+    'filemime' => file_get_mimetype($image2_url),
+    'status' => 1,
+  );
+  $image2 = file_copy($image2, roomify_system_file_dir());
+
+  $image3_url = drupal_realpath($module_path . '/default_images/casa_azzurra/default_3.jpg');
+  $image3 = (object) array(
+    'uid' => 1,
+    'uri' => $image3_url,
+    'filemime' => file_get_mimetype($image3_url),
+    'status' => 1,
+  );
+  $image3 = file_copy($image3, roomify_system_file_dir());
+
+  $term1 = new stdClass();
+  $term1->name = 'Taormina';
+  $term1->field_area_featured_image[LANGUAGE_NONE][0] = (array) $image1;
+  $term1->vid = $vocabulary->vid;
+  taxonomy_term_save($term1);
+
+  $term2 = new stdClass();
+  $term2->name = 'Cefalù';
+  $term2->field_area_featured_image[LANGUAGE_NONE][0] = (array) $image2;
+  $term2->vid = $vocabulary->vid;
+  taxonomy_term_save($term2);
+
+  $term3 = new stdClass();
+  $term3->name = 'San Vito Lo Capo';
+  $term3->field_area_featured_image[LANGUAGE_NONE][0] = (array) $image3;
+  $term3->vid = $vocabulary->vid;
+  taxonomy_term_save($term3);
+
+  variable_set('roomify_accommodation_example_content_location_tids', array($term1->tid, $term2->tid, $term3->tid));
 }
