@@ -97,6 +97,15 @@ function roomify_example_content_create_homepage_node($pid1, $pid2, $pid3) {
     2 => array('target_id' => $pid3),
   );
   $subqueue->save();
+
+  // Add some featured areas.
+  $queue = entityqueue_queue_load('featured_areas');
+  $subqueue = entityqueue_subqueue_load(reset($queue));
+
+  foreach (variable_get('roomify_accommodation_example_content_location_tids', array()) as $id => $tid) {
+    $subqueue->eq_taxonomy_term[LANGUAGE_NONE][$id]['target_id'] = $tid;
+  }
+  $subqueue->save();
 }
 
 /**
