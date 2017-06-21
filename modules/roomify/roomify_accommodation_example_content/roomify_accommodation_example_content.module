@@ -269,7 +269,7 @@ function roomify_example_content_create_casa_sul_mare_example_property($type_id,
   // Highlight Image 3 Caption.
   $property_type->field_sp_highlight_image3_cap['en'][0]['value'] = 'Enjoy dinner at night watching the waves hit the beach.';
 
-  // Area
+  // Area.
   foreach (variable_get('roomify_accommodation_example_content_location_tids', array()) as $tid) {
     $property_type->field_sp_area[LANGUAGE_NONE][]['tid'] = $tid;
   }
@@ -403,7 +403,7 @@ function roomify_example_content_create_casa_azzurra_example_property($type_id, 
   // Highlight Image 3 Caption.
   $property_type->field_sp_highlight_image3_cap['en'][0]['value'] = 'A fully equipped indoors kitchen.';
 
-  // Area
+  // Area.
   foreach (variable_get('roomify_accommodation_example_content_location_tids', array()) as $tid) {
     $property_type->field_sp_area[LANGUAGE_NONE][]['tid'] = $tid;
   }
@@ -676,7 +676,7 @@ function roomify_example_content_create_locanda_vivaldi_example_property($type_i
   // Highlight Image 3 Caption.
   $property_type->field_sp_highlight_image3_cap['en'][0]['value'] = 'Enjoy meals at our wonderful traditional trattoria.';
 
-  // Area
+  // Area.
   foreach (variable_get('roomify_accommodation_example_content_location_tids', array()) as $tid) {
     $property_type->field_sp_area[LANGUAGE_NONE][]['tid'] = $tid;
   }
@@ -814,7 +814,7 @@ function roomify_example_content_create_miles_boutique_hotel_example_property($t
   // Highlight Image 3 Caption.
   $property_type->field_sp_highlight_image3_cap['en'][0]['value'] = 'This time we went with a brown couch. Yellow seats on each side. A table in the middle. Boom.';
 
-  // Area
+  // Area.
   foreach (variable_get('roomify_accommodation_example_content_location_tids', array()) as $tid) {
     $property_type->field_sp_area[LANGUAGE_NONE][]['tid'] = $tid;
   }
@@ -1543,7 +1543,7 @@ function roomify_accommodation_example_create_example_location_terms() {
 
   $vocabulary = taxonomy_vocabulary_machine_name_load('location');
 
-  $image1_url = drupal_realpath($module_path . '/default_images/casa_azzurra/default_0.jpg');
+  $image1_url = drupal_realpath($module_path . '/default_images/areas/taormina.jpg');
   $image1 = (object) array(
     'uid' => 1,
     'uri' => $image1_url,
@@ -1552,7 +1552,25 @@ function roomify_accommodation_example_create_example_location_terms() {
   );
   $image1 = file_copy($image1, roomify_system_file_dir());
 
-  $image2_url = drupal_realpath($module_path . '/default_images/casa_azzurra/default_1.jpg');
+  $taormina1_url = drupal_realpath($module_path . '/default_images/areas/taormina_1.jpg');
+  $taormina1 = (object) array(
+    'uid' => 1,
+    'uri' => $taormina1_url,
+    'filemime' => file_get_mimetype($taormina1_url),
+    'status' => 1,
+  );
+  $taormina1 = file_copy($taormina1, roomify_system_file_dir());
+
+  $taormina2_url = drupal_realpath($module_path . '/default_images/areas/taormina_2.jpg');
+  $taormina2 = (object) array(
+    'uid' => 1,
+    'uri' => $taormina2_url,
+    'filemime' => file_get_mimetype($taormina2_url),
+    'status' => 1,
+  );
+  $taormina2 = file_copy($taormina2, roomify_system_file_dir());
+
+  $image2_url = drupal_realpath($module_path . '/default_images/areas/cefalu.jpg');
   $image2 = (object) array(
     'uid' => 1,
     'uri' => $image2_url,
@@ -1561,7 +1579,25 @@ function roomify_accommodation_example_create_example_location_terms() {
   );
   $image2 = file_copy($image2, roomify_system_file_dir());
 
-  $image3_url = drupal_realpath($module_path . '/default_images/casa_azzurra/default_3.jpg');
+  $cefalu1_url = drupal_realpath($module_path . '/default_images/areas/cefalu_1.jpg');
+  $cefalu1 = (object) array(
+    'uid' => 1,
+    'uri' => $cefalu1_url,
+    'filemime' => file_get_mimetype($cefalu1_url),
+    'status' => 1,
+  );
+  $cefalu1 = file_copy($cefalu1, roomify_system_file_dir());
+
+  $cefalu2_url = drupal_realpath($module_path . '/default_images/areas/cefalu_2.jpg');
+  $cefalu2 = (object) array(
+    'uid' => 1,
+    'uri' => $cefalu2_url,
+    'filemime' => file_get_mimetype($cefalu2_url),
+    'status' => 1,
+  );
+  $cefalu2 = file_copy($cefalu2, roomify_system_file_dir());
+
+  $image3_url = drupal_realpath($module_path . '/default_images/areas/san_vito.jpg');
   $image3 = (object) array(
     'uid' => 1,
     'uri' => $image3_url,
@@ -1570,21 +1606,171 @@ function roomify_accommodation_example_create_example_location_terms() {
   );
   $image3 = file_copy($image3, roomify_system_file_dir());
 
+  $san_vito1_url = drupal_realpath($module_path . '/default_images/areas/san_vito_1.jpg');
+  $san_vito1 = (object) array(
+    'uid' => 1,
+    'uri' => $san_vito1_url,
+    'filemime' => file_get_mimetype($san_vito1_url),
+    'status' => 1,
+  );
+  $san_vito1 = file_copy($san_vito1, roomify_system_file_dir());
+
+  $san_vito2_url = drupal_realpath($module_path . '/default_images/areas/san_vito_2.jpg');
+  $san_vito2 = (object) array(
+    'uid' => 1,
+    'uri' => $san_vito2_url,
+    'filemime' => file_get_mimetype($san_vito2_url),
+    'status' => 1,
+  );
+  $san_vito2 = file_copy($san_vito2, roomify_system_file_dir());
+
+  $description = '<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>';
+
   $term1 = new stdClass();
   $term1->name = 'Taormina';
   $term1->field_area_featured_image[LANGUAGE_NONE][0] = (array) $image1;
+  $term1->description = $description;
+  $term1->description_field['en'][0]['value'] = $description;
+  $term1->description_field['en'][0]['format'] = 'filtered_text';
+  $term1->description_field['en'][0]['safe_value'] = $description;
+  $term1->description_field[LANGUAGE_NONE][0]['value'] = $description;
+  $term1->description_field[LANGUAGE_NONE][0]['format'] = 'filtered_text';
+  $term1->description_field[LANGUAGE_NONE][0]['safe_value'] = $description;
+
+  $term1->field_area_description_subtitle['en'][0]['value'] = 'a charming hillside town on the east coast of Sicily';
+  $term1->field_area_description_subtitle['en'][0]['safe_value'] = 'a charming hillside town on the east coast of Sicily';
+
+  $term1->field_title_featured_properties['en'][0]['value'] = 'Featured Properties';
+  $term1->field_title_featured_properties['en'][0]['safe_value'] = 'Featured Properties';
+
+  $term1->field_area_title_description['en'][0]['value'] = 'Taormina';
+  $term1->field_area_title_description['en'][0]['safe_value'] = 'Taormina';
+
+  
+  // Gallery.
+  $gallery = new ParagraphsItemEntity(array('field_name' => 'field_area_slideshow', 'bundle' => 'slideshow'));
+  $gallery->is_new = TRUE;
+  $gallery->field_cta_gallery_size[LANGUAGE_NONE][0]['value'] = '1';
+  $gallery->field_cta_gallery[LANGUAGE_NONE][0] = array(
+    'fid' => $taormina1->fid,
+    'filename' => $taormina1->filename,
+    'filemime' => $taormina1->filemime,
+    'uid' => 1,
+    'uri' => $taormina1->uri,
+    'status' => 1,
+    'display' => 1,
+  );
+  $gallery->field_cta_gallery[LANGUAGE_NONE][1] = array(
+    'fid' => $taormina2->fid,
+    'filename' => $taormina2->filename,
+    'filemime' => $taormina2->filemime,
+    'uid' => 1,
+    'uri' => $taormina2->uri,
+    'status' => 1,
+    'display' => 1,
+  );
+
+  $gallery->setHostEntity('term', $term1);
+  $gallery->save();
+
   $term1->vid = $vocabulary->vid;
   taxonomy_term_save($term1);
 
   $term2 = new stdClass();
   $term2->name = 'Cefalù';
   $term2->field_area_featured_image[LANGUAGE_NONE][0] = (array) $image2;
+  $term2->description = $description;
+  $term2->description_field['en'][0]['value'] = $description;
+  $term2->description_field['en'][0]['format'] = 'filtered_text';
+  $term2->description_field['en'][0]['safe_value'] = $description;
+  $term2->description_field[LANGUAGE_NONE][0]['value'] = $description;
+  $term2->description_field[LANGUAGE_NONE][0]['format'] = 'filtered_text';
+  $term2->description_field[LANGUAGE_NONE][0]['safe_value'] = $description;
+
+  $term2->field_area_description_subtitle['en'][0]['value'] = 'a fishing village and popular beach resort on the north coast of Sicily';
+  $term2->field_area_description_subtitle['en'][0]['safe_value'] = 'a fishing village and popular beach resort on the north coast of Sicily';
+
+  $term2->field_title_featured_properties['en'][0]['value'] = 'Featured Properties';
+  $term2->field_title_featured_properties['en'][0]['safe_value'] = 'Featured Properties';
+
+  $term2->field_area_title_description['en'][0]['value'] = 'Cefalù';
+  $term2->field_area_title_description['en'][0]['safe_value'] = 'Cefalù';
+
+  // Gallery.
+  $gallery = new ParagraphsItemEntity(array('field_name' => 'field_area_slideshow', 'bundle' => 'slideshow'));
+  $gallery->is_new = TRUE;
+  $gallery->field_cta_gallery_size[LANGUAGE_NONE][0]['value'] = '1';
+  $gallery->field_cta_gallery[LANGUAGE_NONE][0] = array(
+    'fid' => $cefalu1->fid,
+    'filename' => $cefalu1->filename,
+    'filemime' => $cefalu1->filemime,
+    'uid' => 1,
+    'uri' => $cefalu1->uri,
+    'status' => 1,
+    'display' => 1,
+  );
+  $gallery->field_cta_gallery[LANGUAGE_NONE][1] = array(
+    'fid' => $cefalu2->fid,
+    'filename' => $cefalu2->filename,
+    'filemime' => $cefalu2->filemime,
+    'uid' => 1,
+    'uri' => $cefalu2->uri,
+    'status' => 1,
+    'display' => 1,
+  );
+
+  $gallery->setHostEntity('term', $term2);
+  $gallery->save();
+
   $term2->vid = $vocabulary->vid;
   taxonomy_term_save($term2);
 
   $term3 = new stdClass();
-  $term3->name = 'San Vito Lo Capo';
+  $term3->name = 'San Vito lo Capo';
   $term3->field_area_featured_image[LANGUAGE_NONE][0] = (array) $image3;
+  $term3->description = $description;
+  $term3->description_field['en'][0]['value'] = $description;
+  $term3->description_field['en'][0]['format'] = 'filtered_text';
+  $term3->description_field['en'][0]['safe_value'] = $description;
+  $term3->description_field[LANGUAGE_NONE][0]['value'] = $description;
+  $term3->description_field[LANGUAGE_NONE][0]['format'] = 'filtered_text';
+  $term3->description_field[LANGUAGE_NONE][0]['safe_value'] = $description;
+
+  $term3->field_area_description_subtitle['en'][0]['value'] = 'a charming seaside town on the west coast of Sicily';
+  $term3->field_area_description_subtitle['en'][0]['safe_value'] = 'a charming seaside town on the west coast of Sicily';
+
+  $term3->field_title_featured_properties['en'][0]['value'] = 'Featured Properties';
+  $term3->field_title_featured_properties['en'][0]['safe_value'] = 'Featured Properties';
+
+  $term3->field_area_title_description['en'][0]['value'] = 'San Vito lo Capo';
+  $term3->field_area_title_description['en'][0]['safe_value'] = 'San Vito lo Capo';
+
+  // Gallery.
+  $gallery = new ParagraphsItemEntity(array('field_name' => 'field_area_slideshow', 'bundle' => 'slideshow'));
+  $gallery->is_new = TRUE;
+  $gallery->field_cta_gallery_size[LANGUAGE_NONE][0]['value'] = '1';
+  $gallery->field_cta_gallery[LANGUAGE_NONE][0] = array(
+    'fid' => $san_vito1->fid,
+    'filename' => $san_vito1->filename,
+    'filemime' => $san_vito1->filemime,
+    'uid' => 1,
+    'uri' => $san_vito1->uri,
+    'status' => 1,
+    'display' => 1,
+  );
+  $gallery->field_cta_gallery[LANGUAGE_NONE][1] = array(
+    'fid' => $san_vito2->fid,
+    'filename' => $san_vito2->filename,
+    'filemime' => $san_vito2->filemime,
+    'uid' => 1,
+    'uri' => $san_vito2->uri,
+    'status' => 1,
+    'display' => 1,
+  );
+
+  $gallery->setHostEntity('term', $term3);
+  $gallery->save();
+
   $term3->vid = $vocabulary->vid;
   taxonomy_term_save($term3);
 
