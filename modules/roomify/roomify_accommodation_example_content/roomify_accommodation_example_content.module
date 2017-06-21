@@ -1641,21 +1641,15 @@ function roomify_accommodation_example_create_example_location_terms() {
   $term1->description = $description;
   $term1->description_field['en'][0]['value'] = $description;
   $term1->description_field['en'][0]['format'] = 'filtered_text';
-  $term1->description_field['en'][0]['safe_value'] = $description;
   $term1->description_field[LANGUAGE_NONE][0]['value'] = $description;
   $term1->description_field[LANGUAGE_NONE][0]['format'] = 'filtered_text';
-  $term1->description_field[LANGUAGE_NONE][0]['safe_value'] = $description;
 
   $term1->field_area_description_subtitle['en'][0]['value'] = 'a charming hillside town on the east coast of Sicily';
-  $term1->field_area_description_subtitle['en'][0]['safe_value'] = 'a charming hillside town on the east coast of Sicily';
 
   $term1->field_title_featured_properties['en'][0]['value'] = 'Featured Properties';
-  $term1->field_title_featured_properties['en'][0]['safe_value'] = 'Featured Properties';
 
   $term1->field_area_title_description['en'][0]['value'] = 'Taormina';
-  $term1->field_area_title_description['en'][0]['safe_value'] = 'Taormina';
 
-  
   // Gallery.
   $gallery = new ParagraphsItemEntity(array('field_name' => 'field_area_slideshow', 'bundle' => 'slideshow'));
   $gallery->is_new = TRUE;
@@ -1691,19 +1685,14 @@ function roomify_accommodation_example_create_example_location_terms() {
   $term2->description = $description;
   $term2->description_field['en'][0]['value'] = $description;
   $term2->description_field['en'][0]['format'] = 'filtered_text';
-  $term2->description_field['en'][0]['safe_value'] = $description;
   $term2->description_field[LANGUAGE_NONE][0]['value'] = $description;
   $term2->description_field[LANGUAGE_NONE][0]['format'] = 'filtered_text';
-  $term2->description_field[LANGUAGE_NONE][0]['safe_value'] = $description;
 
   $term2->field_area_description_subtitle['en'][0]['value'] = 'a fishing village and popular beach resort on the north coast of Sicily';
-  $term2->field_area_description_subtitle['en'][0]['safe_value'] = 'a fishing village and popular beach resort on the north coast of Sicily';
 
   $term2->field_title_featured_properties['en'][0]['value'] = 'Featured Properties';
-  $term2->field_title_featured_properties['en'][0]['safe_value'] = 'Featured Properties';
 
   $term2->field_area_title_description['en'][0]['value'] = 'Cefalù';
-  $term2->field_area_title_description['en'][0]['safe_value'] = 'Cefalù';
 
   // Gallery.
   $gallery = new ParagraphsItemEntity(array('field_name' => 'field_area_slideshow', 'bundle' => 'slideshow'));
@@ -1740,19 +1729,14 @@ function roomify_accommodation_example_create_example_location_terms() {
   $term3->description = $description;
   $term3->description_field['en'][0]['value'] = $description;
   $term3->description_field['en'][0]['format'] = 'filtered_text';
-  $term3->description_field['en'][0]['safe_value'] = $description;
   $term3->description_field[LANGUAGE_NONE][0]['value'] = $description;
   $term3->description_field[LANGUAGE_NONE][0]['format'] = 'filtered_text';
-  $term3->description_field[LANGUAGE_NONE][0]['safe_value'] = $description;
 
   $term3->field_area_description_subtitle['en'][0]['value'] = 'a charming seaside town on the west coast of Sicily';
-  $term3->field_area_description_subtitle['en'][0]['safe_value'] = 'a charming seaside town on the west coast of Sicily';
 
   $term3->field_title_featured_properties['en'][0]['value'] = 'Featured Properties';
-  $term3->field_title_featured_properties['en'][0]['safe_value'] = 'Featured Properties';
 
   $term3->field_area_title_description['en'][0]['value'] = 'San Vito lo Capo';
-  $term3->field_area_title_description['en'][0]['safe_value'] = 'San Vito lo Capo';
 
   // Gallery.
   $gallery = new ParagraphsItemEntity(array('field_name' => 'field_area_slideshow', 'bundle' => 'slideshow'));
