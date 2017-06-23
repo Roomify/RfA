@@ -21,9 +21,8 @@ function roomify_review_ctools_plugin_directory($owner, $plugin_type) {
  */
 function roomify_review_entity_property_info_alter(&$info) {
   $info['roomify_property']['properties']['average_rating'] = array(
-    'type' => 'integer',
+    'type' => 'decimal',
     'label' => t('Average rating'),
-    'sanitized' => TRUE,
     'getter callback' => 'roomify_review_average_rating_getter_callback',
   );
 }
@@ -38,19 +37,17 @@ function roomify_review_average_rating_getter_callback($item) {
 
     foreach ($item->field_sp_property_rating[LANGUAGE_NONE] as $rating) {
       $node = node_load($rating['target_id']);
-      if ($node->status == '1' && isset($node->field_review_rating[LANGUAGE_NONE][0]['rating'])) {
+      if ($node->status == 1 && isset($node->field_review_rating[LANGUAGE_NONE][0]['rating'])) {
         $average_rating += $node->field_review_rating[LANGUAGE_NONE][0]['rating'];
         $count_rating++;
       }
     }
-    if ($count_rating == 0) {
-      return '<div class="no-reviews">' . t('This property has not been reviewed yet!') . '</div>';
+    if ($count_rating > 0) {
+      return $average_rating / $count_rating;
     }
-    return intval($average_rating / $count_rating) . '<small>/100</small>';
   }
-  else {
-    return '';
-  }
+
+  return 0;
 }
 
 /**
@@ -386,6 +383,20 @@ function roomify_review_node_insert($node) {
       $rules_state->variables['node'] = $node_wrapper;
 
       pet_action_send_pet('new_review_submitted', NULL, $to_account, NULL, NULL, array(), $rules_state);
+    }
+  }
+}
+
+/**
+ * Implements hook_preprocess_panels_pane().
+ */
+function roomify_review_preprocess_panels_pane(&$vars) {
+  if ($vars['pane']->subtype == 'roomify_property:average-rating') {
+    if ($vars['content'] == '0') {
+      $vars['content'] = '<div class="no-reviews">' . t('This property has not been reviewed yet!') . '</div>';
+    }
+    else {
+      $vars['content'] = intval($vars['content']) . '<small>/100</small>';
     }
   }
 }
