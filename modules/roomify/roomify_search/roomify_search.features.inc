@@ -81,6 +81,7 @@ function roomify_search_default_search_api_index() {
       "index_directly" : 1,
       "cron_limit" : "50",
       "fields" : {
+        "average_rating" : { "type" : "decimal" },
         "field_sp_area" : { "type" : "list\\u003Cinteger\\u003E", "entity_type" : "taxonomy_term" },
         "field_sp_area_type" : { "type" : "list\\u003Cinteger\\u003E", "entity_type" : "taxonomy_term" },
         "field_sp_owner" : { "type" : "integer", "entity_type" : "user" },
@@ -348,6 +349,12 @@ function roomify_search_default_search_api_server() {
             "column" : "value",
             "type" : "list\\u003Cinteger\\u003E",
             "boost" : "1.0"
+          },
+          "average_rating" : {
+            "table" : "search_api_db_properties_index",
+            "column" : "average_rating",
+            "type" : "decimal",
+            "boost" : "1.0"
           }
         },
         "activities_index" : {
@@ -405,7 +412,7 @@ function roomify_search_default_search_api_sort() {
     "field" : "priority",
     "name" : "Default",
     "enabled" : "1",
-    "weight" : "-95",
+    "weight" : "-99",
     "identifier" : "properties_index__priority",
     "default_sort" : "1",
     "default_sort_no_terms" : "1",
@@ -418,7 +425,7 @@ function roomify_search_default_search_api_sort() {
     "field" : "search_api_aggregation_1",
     "name" : "List by price",
     "enabled" : "1",
-    "weight" : "-89",
+    "weight" : "-97",
     "identifier" : "properties_index__search_api_aggregation_1",
     "default_sort" : "0",
     "default_sort_no_terms" : "0",
