@@ -1653,6 +1653,7 @@ function roomify_accommodation_example_create_example_location_terms() {
   // Gallery.
   $gallery = new ParagraphsItemEntity(array('field_name' => 'field_area_slideshow', 'bundle' => 'slideshow'));
   $gallery->is_new = TRUE;
+  $gallery->field_cta_title[LANGUAGE_NONE][0]['value'] = 'Taormina';
   $gallery->field_cta_gallery_size[LANGUAGE_NONE][0]['value'] = '1';
   $gallery->field_cta_gallery[LANGUAGE_NONE][0] = array(
     'fid' => $taormina1->fid,
@@ -1673,11 +1674,11 @@ function roomify_accommodation_example_create_example_location_terms() {
     'display' => 1,
   );
 
-  $gallery->setHostEntity('term', $term1);
-  $gallery->save();
-
   $term1->vid = $vocabulary->vid;
   taxonomy_term_save($term1);
+
+  $gallery->setHostEntity('taxonomy_term', $term1);
+  $gallery->save();
 
   $term2 = new stdClass();
   $term2->name = 'Cefalù';
@@ -1697,6 +1698,7 @@ function roomify_accommodation_example_create_example_location_terms() {
   // Gallery.
   $gallery = new ParagraphsItemEntity(array('field_name' => 'field_area_slideshow', 'bundle' => 'slideshow'));
   $gallery->is_new = TRUE;
+  $gallery->field_cta_title[LANGUAGE_NONE][0]['value'] = 'Cefalù';
   $gallery->field_cta_gallery_size[LANGUAGE_NONE][0]['value'] = '1';
   $gallery->field_cta_gallery[LANGUAGE_NONE][0] = array(
     'fid' => $cefalu1->fid,
@@ -1717,11 +1719,10 @@ function roomify_accommodation_example_create_example_location_terms() {
     'display' => 1,
   );
 
-  $gallery->setHostEntity('term', $term2);
-  $gallery->save();
-
   $term2->vid = $vocabulary->vid;
   taxonomy_term_save($term2);
+  $gallery->setHostEntity('taxonomy_term', $term2);
+  $gallery->save();
 
   $term3 = new stdClass();
   $term3->name = 'San Vito lo Capo';
@@ -1741,6 +1742,7 @@ function roomify_accommodation_example_create_example_location_terms() {
   // Gallery.
   $gallery = new ParagraphsItemEntity(array('field_name' => 'field_area_slideshow', 'bundle' => 'slideshow'));
   $gallery->is_new = TRUE;
+  $gallery->field_cta_title[LANGUAGE_NONE][0]['value'] = 'San Vito lo Capo';
   $gallery->field_cta_gallery_size[LANGUAGE_NONE][0]['value'] = '1';
   $gallery->field_cta_gallery[LANGUAGE_NONE][0] = array(
     'fid' => $san_vito1->fid,
@@ -1761,11 +1763,11 @@ function roomify_accommodation_example_create_example_location_terms() {
     'display' => 1,
   );
 
-  $gallery->setHostEntity('term', $term3);
-  $gallery->save();
-
   $term3->vid = $vocabulary->vid;
   taxonomy_term_save($term3);
+
+  $gallery->setHostEntity('taxonomy_term', $term3);
+  $gallery->save();
 
   variable_set('roomify_accommodation_example_content_location_tids', array($term1->tid, $term2->tid, $term3->tid));
 }
