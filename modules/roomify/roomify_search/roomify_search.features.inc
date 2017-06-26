@@ -87,6 +87,7 @@ function roomify_search_default_search_api_index() {
         "field_sp_owner" : { "type" : "integer", "entity_type" : "user" },
         "field_sp_property_type" : { "type" : "integer", "entity_type" : "taxonomy_term" },
         "field_sp_short_description" : { "type" : "text" },
+        "field_sp_weight" : { "type" : "integer" },
         "name" : { "type" : "text" },
         "priority" : { "type" : "integer" },
         "property_bat_type_reference" : { "type" : "list\\u003Cinteger\\u003E", "entity_type" : "bat_type" },
@@ -355,6 +356,12 @@ function roomify_search_default_search_api_server() {
             "column" : "average_rating",
             "type" : "decimal",
             "boost" : "1.0"
+          },
+          "field_sp_weight" : {
+            "table" : "search_api_db_properties_index",
+            "column" : "field_sp_weight",
+            "type" : "integer",
+            "boost" : "1.0"
           }
         },
         "activities_index" : {
@@ -407,15 +414,28 @@ function roomify_search_default_search_api_server() {
  */
 function roomify_search_default_search_api_sort() {
   $items = array();
+  $items['properties_index__field_sp_weight'] = entity_import('search_api_sort', '{
+    "index_id" : "properties_index",
+    "field" : "field_sp_weight",
+    "name" : "Default",
+    "enabled" : "1",
+    "weight" : "-99",
+    "identifier" : "properties_index__field_sp_weight",
+    "default_sort" : "1",
+    "default_sort_no_terms" : "1",
+    "default_order" : "asc",
+    "options" : { "field_name" : "Weight" },
+    "rdf_mapping" : []
+  }');
   $items['properties_index__priority'] = entity_import('search_api_sort', '{
     "index_id" : "properties_index",
     "field" : "priority",
     "name" : "Default",
-    "enabled" : "1",
-    "weight" : "-99",
+    "enabled" : "0",
+    "weight" : "-96",
     "identifier" : "properties_index__priority",
-    "default_sort" : "1",
-    "default_sort_no_terms" : "1",
+    "default_sort" : "0",
+    "default_sort_no_terms" : "0",
     "default_order" : "desc",
     "options" : { "field_name" : "Priority" },
     "rdf_mapping" : []
@@ -431,19 +451,6 @@ function roomify_search_default_search_api_sort() {
     "default_sort_no_terms" : "0",
     "default_order" : "asc",
     "options" : { "field_name" : "Price" },
-    "rdf_mapping" : []
-  }');
-  $items['properties_index__search_api_relevance'] = entity_import('search_api_sort', '{
-    "index_id" : "properties_index",
-    "field" : "search_api_relevance",
-    "name" : "Relevance",
-    "enabled" : "0",
-    "weight" : "-100",
-    "identifier" : "properties_index__search_api_relevance",
-    "default_sort" : "0",
-    "default_sort_no_terms" : "0",
-    "default_order" : "asc",
-    "options" : { "field_name" : "search_api_relevance" },
     "rdf_mapping" : []
   }');
   return $items;

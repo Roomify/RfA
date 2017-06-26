@@ -1362,3 +1362,14 @@ function roomify_listing_update_7038() {
     field_update_instance($instance_info);
   }
 }
+
+/**
+ * Add "Weight" field.
+ */
+function roomify_listing_update_7039() {
+  module_load_include('inc', 'roomify_listing', 'roomify_listing.fields');
+
+  foreach (array('casa_property', 'locanda_property') as $property_bundle) {
+    roomify_listing_create_property_fields($property_bundle);
+  }
+}

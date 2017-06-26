@@ -535,9 +535,7 @@ function roomify_listing_create_property_fields($property_bundle) {
 
   if (field_read_field('field_sp_property_details') === FALSE) {
     $field_bases['field_sp_property_details'] = array(
-      'active' => 1,
       'cardinality' => 1,
-      'deleted' => 0,
       'entity_types' => array(),
       'field_name' => 'field_sp_property_details',
       'indexes' => array(
@@ -553,6 +551,43 @@ function roomify_listing_create_property_fields($property_bundle) {
       ),
       'translatable' => 1,
       'type' => 'text_long',
+    );
+  }
+
+  if (field_read_field('field_sp_weight') === FALSE) {
+    $field_bases['field_sp_weight'] = array(
+      'cardinality' => 1,
+      'field_name' => 'field_sp_weight',
+      'locked' => 0,
+      'module' => 'list',
+      'settings' => array(
+        'allowed_values' => array(
+          -10 => '-10',
+          -9 => '-9',
+          -8 => '-8',
+          -7 => '-7',
+          -6 => '-6',
+          -5 => '-5',
+          -4 => '-4',
+          -3 => '-3',
+          -2 => '-2',
+          -1 => '-1',
+          0 => '0',
+          1 => '1',
+          2 => '2',
+          3 => '3',
+          4 => '4',
+          5 => '5',
+          6 => '6',
+          7 => '7',
+          8 => '8',
+          9 => '9',
+          10 => '10',
+        ),
+        'profile2_private' => FALSE,
+      ),
+      'translatable' => 0,
+      'type' => 'list_integer',
     );
   }
 
@@ -1830,6 +1865,31 @@ function roomify_listing_create_property_fields($property_bundle) {
     );
   }
 
+  if (field_read_instance('roomify_property', 'field_sp_weight', $property_bundle) === FALSE) {
+    $field_instances['roomify_property-standard_property-field_sp_weight'] = array(
+      'bundle' => $property_bundle,
+      'default_value' => array(
+        0 => array(
+          'value' => 0
+        ),
+      ),
+      'entity_type' => 'roomify_property',
+      'field_name' => 'field_sp_weight',
+      'label' => 'Weight',
+      'required' => 0,
+      'settings' => array(
+        'user_register_form' => FALSE,
+      ),
+      'widget' => array(
+        'active' => 1,
+        'module' => 'options',
+        'settings' => array(),
+        'type' => 'options_select',
+        'weight' => 44,
+      ),
+    );
+  }
+
   foreach ($field_instances as $instance) {
     field_create_instance($instance);
   }
@@ -3088,7 +3148,6 @@ function roomify_listing_property_owner_profile_fields() {
 
   if (field_read_field('property_owner_image') === FALSE) {
     $field_bases['property_owner_image'] = array(
-      'active' => 1,
       'cardinality' => 1,
       'entity_types' => array(),
       'field_name' => 'property_owner_image',
