@@ -332,17 +332,17 @@ body.toggled #close-sidebar-wrapper {
   -ms-transition: 100ms all ease;
   -o-transition: 100ms all ease;
 }
-.region-sidebar-toggle-menu #accordian ul .label {
+.region-sidebar-toggle-menu #accordion ul .label {
   font-size: 22px;
   font-weight: 400;
 }
-.region-sidebar-toggle-menu #accordian ul:first-child {
+.region-sidebar-toggle-menu #accordion ul:first-child {
   margin-left: 0;
 }
-.region-sidebar-toggle-menu #accordian .properties {
+.region-sidebar-toggle-menu #accordion .properties {
   position: relative;
 }
-.region-sidebar-toggle-menu #accordian .properties:before {
+.region-sidebar-toggle-menu #accordion .properties:before {
   content: '';
   width: 25px;
   height: 25px;
@@ -353,10 +353,10 @@ body.toggled #close-sidebar-wrapper {
   background: url("../images/sidebar/properties.png") center center no-repeat;
   background: url("../images/sidebar/properties.svg") center center no-repeat, linear-gradient(transparent, transparent);
 }
-.region-sidebar-toggle-menu #accordian .dashboard {
+.region-sidebar-toggle-menu #accordion .dashboard {
   position: relative;
 }
-.region-sidebar-toggle-menu #accordian .dashboard:before {
+.region-sidebar-toggle-menu #accordion .dashboard:before {
   content: '';
   width: 30px;
   height: 30px;
@@ -367,10 +367,10 @@ body.toggled #close-sidebar-wrapper {
   background: url("../images/sidebar/dashboard.png") center center no-repeat;
   background: url("../images/sidebar/dashboard.svg") center center no-repeat, linear-gradient(transparent, transparent);
 }
-.region-sidebar-toggle-menu #accordian .bookings {
+.region-sidebar-toggle-menu #accordion .bookings {
   position: relative;
 }
-.region-sidebar-toggle-menu #accordian .bookings:before {
+.region-sidebar-toggle-menu #accordion .bookings:before {
   content: '';
   width: 19px;
   height: 19px;
@@ -381,10 +381,10 @@ body.toggled #close-sidebar-wrapper {
   background: url("../images/sidebar/bookings.png") center center no-repeat;
   background: url("../images/sidebar/bookings.svg") center center no-repeat, linear-gradient(transparent, transparent);
 }
-.region-sidebar-toggle-menu #accordian .conversations {
+.region-sidebar-toggle-menu #accordion .conversations {
   position: relative;
 }
-.region-sidebar-toggle-menu #accordian .conversations:before {
+.region-sidebar-toggle-menu #accordion .conversations:before {
   content: '';
   width: 25px;
   height: 25px;
@@ -395,10 +395,10 @@ body.toggled #close-sidebar-wrapper {
   background: url("../images/sidebar/conversations.png") center center no-repeat;
   background: url("../images/sidebar/conversations.svg") center center no-repeat, linear-gradient(transparent, transparent);
 }
-.region-sidebar-toggle-menu #accordian .content {
+.region-sidebar-toggle-menu #accordion .content {
   position: relative;
 }
-.region-sidebar-toggle-menu #accordian .content:before {
+.region-sidebar-toggle-menu #accordion .content:before {
   content: '';
   width: 20px;
   height: 20px;
@@ -409,10 +409,10 @@ body.toggled #close-sidebar-wrapper {
   background: url("../images/sidebar/content.png") center center no-repeat;
   background: url("../images/sidebar/content.svg") center center no-repeat, linear-gradient(transparent, transparent);
 }
-.region-sidebar-toggle-menu #accordian .settings {
+.region-sidebar-toggle-menu #accordion .settings {
   position: relative;
 }
-.region-sidebar-toggle-menu #accordian .settings:before {
+.region-sidebar-toggle-menu #accordion .settings:before {
   content: '';
   width: 25px;
   height: 25px;
@@ -423,10 +423,10 @@ body.toggled #close-sidebar-wrapper {
   background: url("../images/sidebar/setting.png") center center no-repeat;
   background: url("../images/sidebar/setting.svg") center center no-repeat, linear-gradient(transparent, transparent);
 }
-.region-sidebar-toggle-menu #accordian .accounts {
+.region-sidebar-toggle-menu #accordion .accounts {
   position: relative;
 }
-.region-sidebar-toggle-menu #accordian .accounts:before {
+.region-sidebar-toggle-menu #accordion .accounts:before {
   content: '';
   width: 23px;
   height: 23px;
@@ -616,15 +616,15 @@ body.adminimal-theme .autocomplete-deluxe-item {
   margin: 0;
   margin-top: 0;
 }
-#accordian {
+#accordion {
   width: 100%;
   color: white;
 }
-#accordian ul.menu li {
+#accordion ul.menu li {
   width: 100%;
   display: inline-block;
 }
-#accordian ul.menu li a {
+#accordion ul.menu li a {
   color: white;
   font-weight: 600;
   font-size: 18px;
@@ -633,7 +633,7 @@ body.adminimal-theme .autocomplete-deluxe-item {
   padding-bottom: 10px;
   display: inline-block;
 }
-#accordian ul.menu li.expanded:after {
+#accordion ul.menu li.expanded:after {
   width: 17px;
   height: 17px;
   content: "";
@@ -651,28 +651,28 @@ body.adminimal-theme .autocomplete-deluxe-item {
   -ms-transition: 100ms transform ease;
   -o-transition: 100ms transform ease;
 }
-#accordian ul.menu li ul li a {
+#accordion ul.menu li ul li a {
   padding-top: 3px;
   padding-bottom: 3px;
   font-size: 15px;
 }
-#accordian .menu:first-child {
+#accordion .menu:first-child {
   padding: 10px 0px;
 }
-#accordian .menu:first-child > li {
+#accordion .menu:first-child > li {
   padding-left: 50px;
   position: relative;
 }
-#accordian .menu:first-child > li.active,
-#accordian .menu:first-child > li:hover {
+#accordion .menu:first-child > li.active,
+#accordion .menu:first-child > li:hover {
   background: #263238;
 }
-#accordian .menu:first-child > li.active > a,
-#accordian .menu:first-child > li:hover > a {
+#accordion .menu:first-child > li.active > a,
+#accordion .menu:first-child > li:hover > a {
   text-decoration: none;
 }
-#accordian .menu:first-child > li.active:before,
-#accordian .menu:first-child > li:hover:before {
+#accordion .menu:first-child > li.active:before,
+#accordion .menu:first-child > li:hover:before {
   width: 3px;
   height: 100%;
   content: "";
@@ -682,7 +682,7 @@ body.adminimal-theme .autocomplete-deluxe-item {
   left: 0px;
   top: 0px;
 }
-#accordian .menu:first-child > li.active.expanded:after {
+#accordion .menu:first-child > li.active.expanded:after {
   -ms-transform: rotate(360deg);
   -webkit-transform: rotate(360deg);
   transform: rotate(360deg);
@@ -691,16 +691,16 @@ body.adminimal-theme .autocomplete-deluxe-item {
   -ms-transition: 100ms transform ease;
   -o-transition: 100ms transform ease;
 }
-#accordian .menu:first-child > li .menu {
+#accordion .menu:first-child > li .menu {
   margin: 0.25em 0 0.75em 0em;
 }
-#accordian li {
+#accordion li {
   list-style: none;
 }
-#accordian ul ul {
+#accordion ul ul {
   display: none;
 }
-#accordian ul ul li a {
+#accordion ul ul li a {
   transition: all 0.15s;
 }
 .fc-time-area .fc-event-container {
@@ -2483,6 +2483,17 @@ body.adminimal-skin-material table.views-table tbody tr td {
   text-align: right;
   width: 100%;
   color: #405467;
+}
+.roomify-dashboard .pane-panels-mini.pane-bookings .pane-custom.pane-1 .pane-content {
+  padding-top: 0;
+  float: right;
+}
+.roomify-dashboard .pane-panels-mini.pane-bookings .pane-custom.pane-1 .pane-content a {
+  background: #2196f3;
+}
+.roomify-dashboard .pane-panels-mini.pane-bookings .pane-custom.pane-1 .pane-content a:hover {
+  background: #29B6F6;
+  box-shadow: 0 1px 5px rgba(0, 0, 0, 0.45);
 }
 .roomify-dashboard .pane-dashboard-guest-stays-panel-pane-1 .view-dashboard-guest-stays {
   margin: 0px auto;

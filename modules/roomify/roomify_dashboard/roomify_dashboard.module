@@ -435,21 +435,22 @@ function roomify_dashboard_create_dashboard_menu() {
   roomify_system_create_update_menu_link('Configuration', 'admin/bat/config/global/settings', 'roomify_dashboard_menu', -4, 1, 0, array('attributes' => array('class' => 'settings')));
 
   // Booking Sub-menu.
-  $bookings_mlid = roomify_system_get_menu_link_id('Bookings', 'admin/bat/bookings', 'roomify_dashboard_menu', -9);
-  roomify_system_create_update_menu_link('Global Booking Settings', 'admin/bat/config/booking/settings', 'roomify_dashboard_menu', 0, 1, $bookings_mlid);
-  roomify_system_create_update_menu_link('Booking Notifications', 'admin/bat/config/booking/notifications', 'roomify_dashboard_menu', 1, 1, $bookings_mlid);
-  roomify_system_create_update_menu_link('Commerce Settings', 'admin/bat/config/commerce/settings', 'roomify_dashboard_menu', 1, 2, $bookings_mlid);
+  $bookings_mlid = roomify_system_get_menu_link_id('Bookings', 'admin/bat/bookings', 'roomify_dashboard_menu');
+  roomify_system_create_update_menu_link('Global Calendar', 'admin/bat/config/availability-calendar', 'roomify_dashboard_menu', 0, 1, $bookings_mlid);
+  roomify_system_create_update_menu_link('Global Booking Settings', 'admin/bat/config/booking/settings', 'roomify_dashboard_menu', 1, 1, $bookings_mlid);
+  roomify_system_create_update_menu_link('Booking Notifications', 'admin/bat/config/booking/notifications', 'roomify_dashboard_menu', 2, 1, $bookings_mlid);
+  roomify_system_create_update_menu_link('Commerce Settings', 'admin/bat/config/commerce/settings', 'roomify_dashboard_menu', 3, 2, $bookings_mlid);
   roomify_system_create_update_menu_link('Payment Methods', 'admin/roomify/payment_methods', 'roomify_dashboard_menu', 1, 2, $bookings_mlid);
-  roomify_system_create_update_menu_link('Terms & Conditions', 'admin/config/content/terms-and-conditions', 'roomify_dashboard_menu', 1, 2, $bookings_mlid);
-  roomify_system_create_update_menu_link('Offers', 'admin/bat/config/global/offers', 'roomify_dashboard_menu', 1, 2, $bookings_mlid);
+  roomify_system_create_update_menu_link('Terms & Conditions', 'admin/config/content/terms-and-conditions', 'roomify_dashboard_menu', 4, 2, $bookings_mlid);
+  roomify_system_create_update_menu_link('Offers', 'admin/bat/config/global/offers', 'roomify_dashboard_menu', 5, 2, $bookings_mlid);
 
   // Conversations Sub-menu.
-  $conversations_mlid = roomify_system_get_menu_link_id('Conversations', 'admin/bat/conversations/guest', 'roomify_dashboard_menu', -8);
+  $conversations_mlid = roomify_system_get_menu_link_id('Conversations', 'admin/bat/conversations/guest', 'roomify_dashboard_menu');
   roomify_system_create_update_menu_link('Conversations as Owner', 'admin/bat/conversations/owner', 'roomify_dashboard_menu', 1, 1, $conversations_mlid);
   roomify_system_create_update_menu_link('Conversations as Guest', 'admin/bat/conversations/guest', 'roomify_dashboard_menu', 1, 2, $conversations_mlid);
 
   // Content Sub-Menu.
-  $content_mlid = roomify_system_get_menu_link_id('Content', 'admin/content', 'roomify_dashboard_menu', -6);
+  $content_mlid = roomify_system_get_menu_link_id('Content', 'admin/content', 'roomify_dashboard_menu');
   roomify_system_create_update_menu_link('Site Pages', 'admin/content', 'roomify_dashboard_menu', 0, 1, $content_mlid);
   roomify_system_create_update_menu_link('Add new content', 'node/add', 'roomify_dashboard_menu', 2, 1, $content_mlid);
 
@@ -482,7 +483,7 @@ function roomify_dashboard_create_dashboard_menu() {
   roomify_system_create_update_menu_link('Footer', 'admin/config/content/roomify-footer', 'roomify_dashboard_menu', 10, 1, $content_mlid);
 
   // Configuration Sub-menu.
-  $configuration_mlid = roomify_system_get_menu_link_id('Configuration', 'admin/bat/config/global/settings', 'roomify_dashboard_menu', -4);
+  $configuration_mlid = roomify_system_get_menu_link_id('Configuration', 'admin/bat/config/global/settings', 'roomify_dashboard_menu');
   roomify_system_create_update_menu_link('Quick Setup', 'admin/bat/config/example-content', 'roomify_dashboard_menu', 0, 1, $configuration_mlid);
   roomify_system_create_update_menu_link('Configure Social Sharing Platforms', 'admin/config/content/rsp', 'roomify_dashboard_menu', 1, 1, $configuration_mlid);
   roomify_system_create_update_menu_link('Configure Social Feeds', 'admin/config/content/rsf', 'roomify_dashboard_menu', 2, 1, $configuration_mlid);
@@ -499,7 +500,7 @@ function roomify_dashboard_create_dashboard_menu() {
   roomify_system_create_update_menu_link('Google reCAPTCHA', 'admin/config/spam_protection/google_recaptcha/keys', 'roomify_dashboard_menu', 12, 1, $configuration_mlid);
 
   // Accounts Sub-menu.
-  $accounts_mlid = roomify_system_get_menu_link_id('Accounts', 'user', 'roomify_dashboard_menu', -5);
+  $accounts_mlid = roomify_system_get_menu_link_id('Accounts', 'user', 'roomify_dashboard_menu');
   roomify_system_create_update_menu_link_with_token('My Account', 'user/[current-user:uid]/edit', 'roomify_dashboard_menu', 1, 1, $accounts_mlid, array());
   roomify_system_create_update_menu_link_with_token('Property Owner Profile', 'profile-property_owner/[current-user:uid]/edit', 'roomify_dashboard_menu', 2, 1, $accounts_mlid, array());
   roomify_system_create_update_menu_link_with_token('Guest Profile', 'profile-guest/[current-user:uid]/edit', 'roomify_dashboard_menu', 3, 1, $accounts_mlid, array());
@@ -532,4 +533,27 @@ function roomify_dashboard_image_field_widget_process($element, &$form_state, $f
   $element['alt']['#weight'] = 2;
 
   return $element;
+}
+
+/**
+ * Implements hook_views_query_alter().
+ */
+function roomify_dashboard_views_query_alter(&$view, &$query) {
+  if ($view->name == 'availability_calendar') {
+    if (!user_access('update any roomify_property entity')) {
+      global $user;
+
+      $view->query->where[] = array(
+        'args' => array(),
+        'type' => 'AND',
+        'conditions' => array(
+          array(
+            'field' => 'roomify_properties.uid',
+            'value' => $user->uid,
+            'operator' => '=',
+          ),
+        ),
+      );
+    }
+  }
 }
