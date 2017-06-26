@@ -51,6 +51,7 @@ features[search_api_index][] = activities_index
 features[search_api_index][] = properties_index
 features[search_api_server][] = properties
 features[search_api_sort][] = properties_index__field_sp_weight
+features[search_api_sort][] = properties_index__average_rating
 features[search_api_sort][] = properties_index__priority
 features[search_api_sort][] = properties_index__search_api_aggregation_1
 features[variable][] = facetapi_pretty_paths_searcher_search_api@properties_index
