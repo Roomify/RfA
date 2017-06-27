@@ -11466,10 +11466,97 @@ ol.inline.commerce-checkout-progress {
           height: 100%;
           display: table;
           margin: 0 auto; } }
+  .pane-properties-index-panel-pane-4 .view-properties-index .views-row .views-field-average-rating {
+    position: absolute;
+    right: 8px;
+    z-index: 1;
+    top: 27px; }
+  .pane-properties-index-panel-pane-4 .view-properties-index .views-row .property-details-2 {
+    position: relative;
+    float: left;
+    width: 25%;
+    min-height: 1px;
+    padding-left: 0;
+    padding-right: 0;
+    position: relative;
+    min-height: 1px;
+    padding-left: 0;
+    padding-right: 0;
+    position: relative;
+    min-height: 1px;
+    padding-left: 15px;
+    padding-right: 15px;
+    border-left: 2px solid #fff;
+    height: 204px;
+    background: #f9f9f9; }
+    @media (min-width: 768px) {
+      .pane-properties-index-panel-pane-4 .view-properties-index .views-row .property-details-2 {
+        float: left;
+        width: 16.66667%; } }
+    @media (min-width: 992px) {
+      .pane-properties-index-panel-pane-4 .view-properties-index .views-row .property-details-2 {
+        float: left;
+        width: 16.66667%; } }
+    @media (max-width: 991px) {
+      .pane-properties-index-panel-pane-4 .view-properties-index .views-row .property-details-2 {
+        height: auto; } }
+    .pane-properties-index-panel-pane-4 .view-properties-index .views-row .property-details-2 .price {
+      position: absolute;
+      right: 8px;
+      font-size: 18px;
+      top: 40px;
+      color: #4CAF50;
+      font-weight: 300; }
+      @media (max-width: 480px) {
+        .pane-properties-index-panel-pane-4 .view-properties-index .views-row .property-details-2 .price {
+          width: 100%;
+          position: relative;
+          display: inline-block;
+          margin-bottom: 10px;
+          right: 0;
+          top: 0; } }
+    .pane-properties-index-panel-pane-4 .view-properties-index .views-row .property-details-2 .book-now {
+      position: absolute;
+      right: 8px;
+      bottom: 8px;
+      color: white;
+      font-size: 10px;
+      color: #000000;
+      background-color: #ededed;
+      border-color: #e0d9d7;
+      color: #505050;
+      font-weight: 400; }
+      .pane-properties-index-panel-pane-4 .view-properties-index .views-row .property-details-2 .book-now:focus, .pane-properties-index-panel-pane-4 .view-properties-index .views-row .property-details-2 .book-now.focus {
+        color: #000000;
+        background-color: #d4d4d4;
+        border-color: #a8958f; }
+      .pane-properties-index-panel-pane-4 .view-properties-index .views-row .property-details-2 .book-now:hover {
+        color: #000000;
+        background-color: #d4d4d4;
+        border-color: #c5b8b5; }
+      .pane-properties-index-panel-pane-4 .view-properties-index .views-row .property-details-2 .book-now:active, .pane-properties-index-panel-pane-4 .view-properties-index .views-row .property-details-2 .book-now.active, .open > .pane-properties-index-panel-pane-4 .view-properties-index .views-row .property-details-2 .book-now.dropdown-toggle {
+        color: #000000;
+        background-color: #d4d4d4;
+        border-color: #c5b8b5; }
+        .pane-properties-index-panel-pane-4 .view-properties-index .views-row .property-details-2 .book-now:active:hover, .pane-properties-index-panel-pane-4 .view-properties-index .views-row .property-details-2 .book-now:active:focus, .pane-properties-index-panel-pane-4 .view-properties-index .views-row .property-details-2 .book-now:active.focus, .pane-properties-index-panel-pane-4 .view-properties-index .views-row .property-details-2 .book-now.active:hover, .pane-properties-index-panel-pane-4 .view-properties-index .views-row .property-details-2 .book-now.active:focus, .pane-properties-index-panel-pane-4 .view-properties-index .views-row .property-details-2 .book-now.active.focus, .open > .pane-properties-index-panel-pane-4 .view-properties-index .views-row .property-details-2 .book-now.dropdown-toggle:hover, .open > .pane-properties-index-panel-pane-4 .view-properties-index .views-row .property-details-2 .book-now.dropdown-toggle:focus, .open > .pane-properties-index-panel-pane-4 .view-properties-index .views-row .property-details-2 .book-now.dropdown-toggle.focus {
+          color: #000000;
+          background-color: #c2c2c2;
+          border-color: #a8958f; }
+      .pane-properties-index-panel-pane-4 .view-properties-index .views-row .property-details-2 .book-now:active, .pane-properties-index-panel-pane-4 .view-properties-index .views-row .property-details-2 .book-now.active, .open > .pane-properties-index-panel-pane-4 .view-properties-index .views-row .property-details-2 .book-now.dropdown-toggle {
+        background-image: none; }
+      .pane-properties-index-panel-pane-4 .view-properties-index .views-row .property-details-2 .book-now.disabled:hover, .pane-properties-index-panel-pane-4 .view-properties-index .views-row .property-details-2 .book-now.disabled:focus, .pane-properties-index-panel-pane-4 .view-properties-index .views-row .property-details-2 .book-now.disabled.focus, .pane-properties-index-panel-pane-4 .view-properties-index .views-row .property-details-2 .book-now[disabled]:hover, .pane-properties-index-panel-pane-4 .view-properties-index .views-row .property-details-2 .book-now[disabled]:focus, .pane-properties-index-panel-pane-4 .view-properties-index .views-row .property-details-2 .book-now[disabled].focus, fieldset[disabled] .pane-properties-index-panel-pane-4 .view-properties-index .views-row .property-details-2 .book-now:hover, fieldset[disabled] .pane-properties-index-panel-pane-4 .view-properties-index .views-row .property-details-2 .book-now:focus, fieldset[disabled] .pane-properties-index-panel-pane-4 .view-properties-index .views-row .property-details-2 .book-now.focus {
+        background-color: #ededed;
+        border-color: #e0d9d7; }
+      .pane-properties-index-panel-pane-4 .view-properties-index .views-row .property-details-2 .book-now .badge {
+        color: #ededed;
+        background-color: #000000; }
+      @media (max-width: 768px) {
+        .pane-properties-index-panel-pane-4 .view-properties-index .views-row .property-details-2 .book-now {
+          display: none; } }
   .pane-properties-index-panel-pane-4 .view-properties-index .views-row .property-details {
     position: relative;
     float: left;
-    width: 100%;
+    width: 75%;
     min-height: 1px;
     padding-left: 0;
     padding-right: 0;
@@ -11486,11 +11573,11 @@ ol.inline.commerce-checkout-progress {
     @media (min-width: 768px) {
       .pane-properties-index-panel-pane-4 .view-properties-index .views-row .property-details {
         float: left;
-        width: 100%; } }
+        width: 83.33333%; } }
     @media (min-width: 992px) {
       .pane-properties-index-panel-pane-4 .view-properties-index .views-row .property-details {
         float: left;
-        width: 66.66667%; } }
+        width: 50%; } }
     @media (max-width: 991px) {
       .pane-properties-index-panel-pane-4 .view-properties-index .views-row .property-details {
         height: auto; } }
@@ -11499,21 +11586,6 @@ ol.inline.commerce-checkout-progress {
       margin-top: 6px;
       margin-bottom: 10px;
       font-weight: 400; }
-    .pane-properties-index-panel-pane-4 .view-properties-index .views-row .property-details .price {
-      position: absolute;
-      right: 6px;
-      font-size: 18px;
-      top: 8px;
-      color: #4CAF50;
-      font-weight: 300; }
-      @media (max-width: 480px) {
-        .pane-properties-index-panel-pane-4 .view-properties-index .views-row .property-details .price {
-          width: 100%;
-          position: relative;
-          display: inline-block;
-          margin-bottom: 10px;
-          right: 0;
-          top: 0; } }
     .pane-properties-index-panel-pane-4 .view-properties-index .views-row .property-details .short-description {
       color: #666;
       margin-bottom: 20px; }
@@ -11645,44 +11717,6 @@ ol.inline.commerce-checkout-progress {
           position: relative; }
         .pane-properties-index-panel-pane-4 .view-properties-index .views-row .property-details table .area-type:empty:before {
           display: none; }
-    .pane-properties-index-panel-pane-4 .view-properties-index .views-row .property-details .book-now {
-      position: absolute;
-      right: 8px;
-      bottom: 8px;
-      color: white;
-      font-size: 10px;
-      color: #000000;
-      background-color: #ededed;
-      border-color: #e0d9d7;
-      color: #505050;
-      font-weight: 400; }
-      .pane-properties-index-panel-pane-4 .view-properties-index .views-row .property-details .book-now:focus, .pane-properties-index-panel-pane-4 .view-properties-index .views-row .property-details .book-now.focus {
-        color: #000000;
-        background-color: #d4d4d4;
-        border-color: #a8958f; }
-      .pane-properties-index-panel-pane-4 .view-properties-index .views-row .property-details .book-now:hover {
-        color: #000000;
-        background-color: #d4d4d4;
-        border-color: #c5b8b5; }
-      .pane-properties-index-panel-pane-4 .view-properties-index .views-row .property-details .book-now:active, .pane-properties-index-panel-pane-4 .view-properties-index .views-row .property-details .book-now.active, .open > .pane-properties-index-panel-pane-4 .view-properties-index .views-row .property-details .book-now.dropdown-toggle {
-        color: #000000;
-        background-color: #d4d4d4;
-        border-color: #c5b8b5; }
-        .pane-properties-index-panel-pane-4 .view-properties-index .views-row .property-details .book-now:active:hover, .pane-properties-index-panel-pane-4 .view-properties-index .views-row .property-details .book-now:active:focus, .pane-properties-index-panel-pane-4 .view-properties-index .views-row .property-details .book-now:active.focus, .pane-properties-index-panel-pane-4 .view-properties-index .views-row .property-details .book-now.active:hover, .pane-properties-index-panel-pane-4 .view-properties-index .views-row .property-details .book-now.active:focus, .pane-properties-index-panel-pane-4 .view-properties-index .views-row .property-details .book-now.active.focus, .open > .pane-properties-index-panel-pane-4 .view-properties-index .views-row .property-details .book-now.dropdown-toggle:hover, .open > .pane-properties-index-panel-pane-4 .view-properties-index .views-row .property-details .book-now.dropdown-toggle:focus, .open > .pane-properties-index-panel-pane-4 .view-properties-index .views-row .property-details .book-now.dropdown-toggle.focus {
-          color: #000000;
-          background-color: #c2c2c2;
-          border-color: #a8958f; }
-      .pane-properties-index-panel-pane-4 .view-properties-index .views-row .property-details .book-now:active, .pane-properties-index-panel-pane-4 .view-properties-index .views-row .property-details .book-now.active, .open > .pane-properties-index-panel-pane-4 .view-properties-index .views-row .property-details .book-now.dropdown-toggle {
-        background-image: none; }
-      .pane-properties-index-panel-pane-4 .view-properties-index .views-row .property-details .book-now.disabled:hover, .pane-properties-index-panel-pane-4 .view-properties-index .views-row .property-details .book-now.disabled:focus, .pane-properties-index-panel-pane-4 .view-properties-index .views-row .property-details .book-now.disabled.focus, .pane-properties-index-panel-pane-4 .view-properties-index .views-row .property-details .book-now[disabled]:hover, .pane-properties-index-panel-pane-4 .view-properties-index .views-row .property-details .book-now[disabled]:focus, .pane-properties-index-panel-pane-4 .view-properties-index .views-row .property-details .book-now[disabled].focus, fieldset[disabled] .pane-properties-index-panel-pane-4 .view-properties-index .views-row .property-details .book-now:hover, fieldset[disabled] .pane-properties-index-panel-pane-4 .view-properties-index .views-row .property-details .book-now:focus, fieldset[disabled] .pane-properties-index-panel-pane-4 .view-properties-index .views-row .property-details .book-now.focus {
-        background-color: #ededed;
-        border-color: #e0d9d7; }
-      .pane-properties-index-panel-pane-4 .view-properties-index .views-row .property-details .book-now .badge {
-        color: #ededed;
-        background-color: #000000; }
-      @media (max-width: 768px) {
-        .pane-properties-index-panel-pane-4 .view-properties-index .views-row .property-details .book-now {
-          display: none; } }
 
 .pane-properties-index-panel-pane-1,
 .pane-properties-index-panel-pane-3 {
