@@ -2136,6 +2136,9 @@ body .ui-dialog .ui-button-text {
 #roomify-casa-event-ui-bulk-update-form fieldset #edit-submit {
   margin-top: 2.45em;
 }
+.fc-timeline-event .fc-title {
+  color: #fff;
+}
 body.adminimal-skin-material table thead tr th {
   background: rgba(52, 73, 94, 0.94) !important;
   color: #ECF0F1;
