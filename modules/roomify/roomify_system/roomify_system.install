@@ -789,3 +789,10 @@ function roomify_system_update_7048() {
 function roomify_system_update_7049() {
   module_enable(array('multiupload_imagefield_widget'));
 }
+
+/**
+ * Enable module "XML sitemap".
+ */
+function roomify_system_update_7050() {
+  module_enable(array('xmlsitemap_custom', 'xmlsitemap_node', 'xmlsitemap_taxonomy'));
+}
