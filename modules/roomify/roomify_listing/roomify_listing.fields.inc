@@ -1876,7 +1876,7 @@ function roomify_listing_create_property_fields($property_bundle) {
       'entity_type' => 'roomify_property',
       'field_name' => 'field_sp_weight',
       'label' => 'Weight',
-      'required' => 0,
+      'required' => 1,
       'settings' => array(
         'user_register_form' => FALSE,
       ),
