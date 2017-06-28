@@ -2556,6 +2556,14 @@ function roomify_accommodation_booking_bat_fullcalendar_formatted_event_alter(&$
     if (isset($result['bat_booking'])) {
       $booking = reset($result['bat_booking']);
       $booking = bat_booking_load($booking->booking_id);
+
+      if (isset($booking->booking_user_guest[LANGUAGE_NONE][0]['target_id'])) {
+        $user = user_load($booking->booking_user_guest[LANGUAGE_NONE][0]['target_id']);
+
+        if (isset($user->user_first_name[LANGUAGE_NONE][0]['value']) && isset($user->user_last_name[LANGUAGE_NONE][0]['value'])) {
+          $formatted_event['title'] = $user->user_first_name[LANGUAGE_NONE][0]['value'] . ' ' . $user->user_last_name[LANGUAGE_NONE][0]['value'];
+        }
+      }
     }
   }
 }
