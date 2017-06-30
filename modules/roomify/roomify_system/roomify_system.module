@@ -1123,6 +1123,7 @@ function roomify_system_roomify_rights() {
       'administer addtoany',
       'create url aliases',
       'administer pathauto patterns',
+      'administer xmlsitemap',
     ),
     'content editor' => array(
       'access content overview',
