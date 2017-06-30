@@ -641,7 +641,7 @@ function roomify_system_create_update_menu_link_with_token($title, $path, $menu 
 /**
  * Helper function to get the mlid of updates menu links.
  */
-function roomify_system_get_menu_link_id($title, $path, $menu = 'main-menu', $weight = 0, $enabled = 1, array $options = array()) {
+function roomify_system_get_menu_link_id($title, $path, $menu = 'main-menu') {
   // If there is a preexisting menu item, load it, and update that.
   $existing_item = db_select('menu_links', 'ml')->condition('link_path', $path)->condition('link_title', $title)->condition('menu_name', $menu)->fields('ml')->range(0, 1)->execute()->fetchAssoc();
 
