@@ -2038,7 +2038,21 @@ function roomify_dashboard_default_panels_mini() {
   $pane->type = 'custom';
   $pane->subtype = 'custom';
   $pane->shown = TRUE;
-  $pane->access = array();
+  $pane->access = array(
+    'plugins' => array(
+      0 => array(
+        'name' => 'role',
+        'settings' => array(
+          'rids' => array(
+            0 => 4,
+            1 => 5,
+          ),
+        ),
+        'context' => 'requiredcontext_user_1',
+        'not' => FALSE,
+      ),
+    ),
+  );
   $pane->configuration = array(
     'admin_title' => 'Global Calendar',
     'title' => '',
