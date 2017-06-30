@@ -16,12 +16,6 @@ function roomify_landing_page_wysiwyg_default_profiles() {
     'format' => 'landing_page_text',
     'editor' => 'ckeditor',
     'settings' => array(
-      'default' => 1,
-      'user_choose' => 0,
-      'show_toggle' => 1,
-      'add_to_summaries' => 1,
-      'theme' => '',
-      'language' => 'en',
       'buttons' => array(
         'default' => array(
           'Bold' => 1,
@@ -47,6 +41,8 @@ function roomify_landing_page_wysiwyg_default_profiles() {
           'Glyphicons' => 1,
         ),
       ),
+      'theme' => '',
+      'language' => 'en',
       'toolbarLocation' => 'top',
       'resize_enabled' => 1,
       'default_toolbar_grouping' => 0,
@@ -54,12 +50,22 @@ function roomify_landing_page_wysiwyg_default_profiles() {
       'acf_mode' => 0,
       'acf_allowed_content' => '',
       'css_setting' => 'theme',
+      'css_theme' => 'roomify_adminimal_theme',
       'css_path' => '',
       'stylesSet' => '',
       'block_formats' => 'p,address,pre,h2,h3,h4,h5,h6,div',
-      'advanced__active_tab' => 'edit-basic',
       'forcePasteAsPlainText' => 0,
+      'pasteFromWordPromptCleanup' => 0,
+      'pasteFromWordRemoveFontStyles' => 0,
     ),
+    'preferences' => array(
+      'default' => 1,
+      'user_choose' => 0,
+      'show_toggle' => 1,
+      'add_to_summaries' => 1,
+      'version' => '4.7.1.08ffd39',
+    ),
+    'name' => 'formatlanding_page_text',
     'rdf_mapping' => array(),
   );
 
