@@ -441,7 +441,7 @@ projects[search_api_sorts][version] = 1.7
 
 projects[seo_checklist][version] = 4.1
 
-projects[services][version] = 3.19
+projects[services][version] = 3.20
 
 projects[services_api_key_auth][version] = 1.3
 
