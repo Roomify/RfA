@@ -110,6 +110,8 @@ projects[chain_menu_access][version] = 2.0
 
 projects[charts][version] = 2.0-rc1
 
+projects[checklistapi][version] = 1.2
+
 projects[chosen][version] = 2.0
 
 projects[classy_paragraphs][version] = 1.0
@@ -436,6 +438,8 @@ projects[search_api_ranges][download][url] = https://git.drupal.org/project/sear
 projects[search_api_ranges][download][revision] = c769589f3aa90a7413401169ce520f891bee7e20
 
 projects[search_api_sorts][version] = 1.7
+
+projects[seo_checklist][version] = 4.1
 
 projects[services][version] = 3.19
 
