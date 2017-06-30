@@ -2033,6 +2033,49 @@ function roomify_dashboard_default_panels_mini() {
   $display->content['new-c105c145-21ec-4c30-9300-f62b0f23f295'] = $pane;
   $display->panels['middle'][1] = 'new-c105c145-21ec-4c30-9300-f62b0f23f295';
   $pane = new stdClass();
+  $pane->pid = 'new-d6a51157-6567-42f8-898a-f75fefac287e';
+  $pane->panel = 'top';
+  $pane->type = 'custom';
+  $pane->subtype = 'custom';
+  $pane->shown = TRUE;
+  $pane->access = array(
+    'plugins' => array(
+      0 => array(
+        'name' => 'role',
+        'settings' => array(
+          'rids' => array(
+            0 => 4,
+            1 => 5,
+          ),
+        ),
+        'context' => 'requiredcontext_user_1',
+        'not' => FALSE,
+      ),
+    ),
+  );
+  $pane->configuration = array(
+    'admin_title' => 'Global Calendar',
+    'title' => '',
+    'title_heading' => 'h2',
+    'body' => '<a class="button" href="/admin/bat/config/availability-calendar">Global Calendar</a>',
+    'format' => 'full_html',
+    'substitute' => 1,
+  );
+  $pane->cache = array();
+  $pane->style = array(
+    'settings' => NULL,
+  );
+  $pane->css = array(
+    'css_id' => '',
+    'css_class' => 'col-xs-12',
+  );
+  $pane->extras = array();
+  $pane->position = 0;
+  $pane->locks = array();
+  $pane->uuid = 'd6a51157-6567-42f8-898a-f75fefac287e';
+  $display->content['new-d6a51157-6567-42f8-898a-f75fefac287e'] = $pane;
+  $display->panels['top'][0] = 'new-d6a51157-6567-42f8-898a-f75fefac287e';
+  $pane = new stdClass();
   $pane->pid = 'new-33e395d7-fff0-4348-9217-0025358fe484';
   $pane->panel = 'top';
   $pane->type = 'views_panes';
@@ -2053,11 +2096,11 @@ function roomify_dashboard_default_panels_mini() {
     'css_class' => 'col-xs-12',
   );
   $pane->extras = array();
-  $pane->position = 0;
+  $pane->position = 1;
   $pane->locks = array();
   $pane->uuid = '33e395d7-fff0-4348-9217-0025358fe484';
   $display->content['new-33e395d7-fff0-4348-9217-0025358fe484'] = $pane;
-  $display->panels['top'][0] = 'new-33e395d7-fff0-4348-9217-0025358fe484';
+  $display->panels['top'][1] = 'new-33e395d7-fff0-4348-9217-0025358fe484';
   $display->hide_title = PANELS_TITLE_FIXED;
   $display->title_pane = 'new-33e395d7-fff0-4348-9217-0025358fe484';
   $mini->display = $display;

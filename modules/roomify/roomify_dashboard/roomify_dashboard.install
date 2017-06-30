@@ -55,7 +55,7 @@ function roomify_dashboard_update_7005() {
  */
 function roomify_dashboard_update_7006() {
   // Accounts Sub-menu.
-  $accounts_mlid = roomify_system_get_menu_link_id('Accounts', 'user', 'roomify_dashboard_menu', -5);
+  $accounts_mlid = roomify_system_get_menu_link_id('Accounts', 'user', 'roomify_dashboard_menu');
   roomify_system_create_update_menu_link_with_token('My Users', 'user/[current-user:uid]/subuser', 'roomify_dashboard_menu', 11, 1, $accounts_mlid, array());
 }
 
@@ -89,7 +89,7 @@ function roomify_dashboard_update_7007() {
  * Add Social Sharing Buttons link.
  */
 function roomify_dashboard_update_7008() {
-  $configuration_mlid = roomify_system_get_menu_link_id('Configuration', 'admin/bat/config/global/settings', 'roomify_dashboard_menu', -4);
+  $configuration_mlid = roomify_system_get_menu_link_id('Configuration', 'admin/bat/config/global/settings', 'roomify_dashboard_menu');
   roomify_system_create_update_menu_link('Social Sharing Buttons', 'admin/bat/config/addtoany/settings', 'roomify_dashboard_menu', 2, 1, $configuration_mlid);
 }
 
@@ -97,6 +97,14 @@ function roomify_dashboard_update_7008() {
  * Add Pathauto patterns link.
  */
 function roomify_dashboard_update_7009() {
-  $configuration_mlid = roomify_system_get_menu_link_id('Configuration', 'admin/bat/config/global/settings', 'roomify_dashboard_menu', -4);
+  $configuration_mlid = roomify_system_get_menu_link_id('Configuration', 'admin/bat/config/global/settings', 'roomify_dashboard_menu');
   roomify_system_create_update_menu_link('Path patterns', 'admin/config/search/path/patterns', 'roomify_dashboard_menu', 13, 1, $configuration_mlid);
+}
+
+/**
+ * Add Global Calendar link.
+ */
+function roomify_dashboard_update_7010() {
+  $bookings_mlid = roomify_system_get_menu_link_id('Bookings', 'admin/bat/bookings', 'roomify_dashboard_menu');
+  roomify_system_create_update_menu_link('Global Calendar', 'admin/bat/config/availability-calendar', 'roomify_dashboard_menu', -1, 1, $bookings_mlid);
 }

@@ -9,13 +9,13 @@ defaults[projects][subdir] = contrib
 projects[bat][type] = module
 projects[bat][download][type] = git
 projects[bat][download][url] = https://github.com/Roomify/bat_drupal.git
-projects[bat][download][tag] = 7.x-1.24
+projects[bat][download][tag] = 7.x-1.27
 projects[bat][subdir] = bat
 
 projects[bat_api][type] = module
 projects[bat_api][download][type] = git
 projects[bat_api][download][url] = https://github.com/Roomify/bat_api.git
-projects[bat_api][download][tag] = 7.x-2.5
+projects[bat_api][download][tag] = 7.x-2.6
 projects[bat_api][subdir] = bat
 
 projects[bat_event_state_constraints][type] = module
@@ -34,7 +34,7 @@ projects[roomify_rate][subdir] = roomify
 projects[roomify_property][type] = module
 projects[roomify_property][download][type] = git
 projects[roomify_property][download][url] = https://github.com/Roomify/roomify_property.git
-projects[roomify_property][download][tag] = 1.24
+projects[roomify_property][download][tag] = 1.25
 projects[roomify_property][directory_name] = roomify_property
 projects[roomify_property][subdir] = roomify
 
@@ -109,6 +109,8 @@ projects[cer][patch][] = https://www.drupal.org/files/issues/cer-cer-field-colle
 projects[chain_menu_access][version] = 2.0
 
 projects[charts][version] = 2.0-rc1
+
+projects[checklistapi][version] = 1.2
 
 projects[chosen][version] = 2.0
 
@@ -437,6 +439,8 @@ projects[search_api_ranges][download][revision] = c769589f3aa90a7413401169ce520f
 
 projects[search_api_sorts][version] = 1.7
 
+projects[seo_checklist][version] = 4.1
+
 projects[services][version] = 3.20
 
 projects[services_api_key_auth][version] = 1.3
@@ -453,7 +457,7 @@ projects[slick_views][download][type] = git
 projects[slick_views][download][url] = https://git.drupal.org/project/slick_views.git
 projects[slick_views][download][revision] = 96cf95a9a58ace07dd576f24d9183e83fd0b3032
 
-projects[smtp][version] = 1.6
+projects[smtp][version] = 1.7
 
 projects[strongarm][version] = 2.0
 
@@ -546,7 +550,7 @@ libraries[ckeditor][directory_name] = ckeditor
 libraries[ckeditor][type] = library
 libraries[ckeditor][destination] = libraries
 libraries[ckeditor][download][type] = get
-libraries[ckeditor][download][url] = http://ckeditor.com/online-builder/releases/minified/4.7.0/icy_orange/0.9/ckeditor_4.7.0_ba86e4eb19a3.zip
+libraries[ckeditor][download][url] = http://ckeditor.com/online-builder/releases/minified/4.7.1/icy_orange/0.9/ckeditor_4.7.1_1cd8ccbecb17.zip
 
 ; imagesLoaded for masonry.
 libraries[imagesloaded][directory_name] = imagesloaded
