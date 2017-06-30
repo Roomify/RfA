@@ -457,7 +457,7 @@ projects[slick_views][download][type] = git
 projects[slick_views][download][url] = https://git.drupal.org/project/slick_views.git
 projects[slick_views][download][revision] = 96cf95a9a58ace07dd576f24d9183e83fd0b3032
 
-projects[smtp][version] = 1.6
+projects[smtp][version] = 1.7
 
 projects[strongarm][version] = 2.0
 
