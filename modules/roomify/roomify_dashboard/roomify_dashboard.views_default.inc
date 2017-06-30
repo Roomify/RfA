@@ -12,6 +12,57 @@ function roomify_dashboard_views_default_views() {
   $export = array();
 
   $view = new view();
+  $view->name = 'availability_calendar';
+  $view->description = '';
+  $view->tag = 'default';
+  $view->base_table = 'roomify_properties';
+  $view->human_name = 'Availability calendar';
+  $view->core = 7;
+  $view->api_version = '3.0';
+  $view->disabled = FALSE; /* Edit this to true to make a default view disabled initially */
+
+  /* Display: Master */
+  $handler = $view->new_display('default', 'Master', 'default');
+  $handler->display->display_options['title'] = 'Availability calendar';
+  $handler->display->display_options['use_more_always'] = FALSE;
+  $handler->display->display_options['access']['type'] = 'role';
+  $handler->display->display_options['access']['role'] = array(
+    3 => '3',
+    5 => '5',
+    4 => '4',
+  );
+  $handler->display->display_options['cache']['type'] = 'none';
+  $handler->display->display_options['query']['type'] = 'views_query';
+  $handler->display->display_options['exposed_form']['type'] = 'basic';
+  $handler->display->display_options['pager']['type'] = 'none';
+  $handler->display->display_options['pager']['options']['offset'] = '0';
+  $handler->display->display_options['style_plugin'] = 'availability_calendar_plugin_one_row';
+  $handler->display->display_options['style_options']['event_type'] = 'availability';
+  /* Field: Roomify Property: Roomify property ID */
+  $handler->display->display_options['fields']['property_id']['id'] = 'property_id';
+  $handler->display->display_options['fields']['property_id']['table'] = 'roomify_properties';
+  $handler->display->display_options['fields']['property_id']['field'] = 'property_id';
+
+  /* Display: Page */
+  $handler = $view->new_display('page', 'Page', 'page');
+  $handler->display->display_options['path'] = 'admin/bat/config/availability-calendar';
+  $translatables['availability_calendar'] = array(
+    t('Master'),
+    t('Availability calendar'),
+    t('more'),
+    t('Apply'),
+    t('Reset'),
+    t('Sort by'),
+    t('Asc'),
+    t('Desc'),
+    t('Roomify property ID'),
+    t('.'),
+    t(','),
+    t('Page'),
+  );
+  $export['availability_calendar'] = $view;
+
+  $view = new view();
   $view->name = 'dashboard_bookings';
   $view->description = '';
   $view->tag = 'default';

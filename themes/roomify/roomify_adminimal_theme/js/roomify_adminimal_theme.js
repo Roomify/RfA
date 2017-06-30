@@ -3,9 +3,9 @@
 Drupal.behaviors.roomify_admin_js = {
   attach: function(context) {
     // Toggle menu sidebar.
-    $("#close-sidebar-wrapper").once().click(function(e) {
+    $('#close-sidebar-wrapper').once().click(function(e) {
       e.preventDefault();
-      $("body").toggleClass("toggled");
+      $('body').toggleClass('toggled');
     });
 
     // Toggle menu sidebar
@@ -15,9 +15,9 @@ Drupal.behaviors.roomify_admin_js = {
     });
 
     // Toggle menu sidebar.
-    $(".roomify-sidebar-menu-toggle").once().click(function(e) {
+    $('.roomify-sidebar-menu-toggle').once().click(function(e) {
       e.preventDefault();
-      $("body").toggleClass("toggled");
+      $('body').toggleClass('toggled');
     });
 
     // Add a class to the tabs to push right.
@@ -40,26 +40,25 @@ Drupal.behaviors.roomify_admin_js = {
   }
 };
 
-
-Drupal.behaviors.roomifyAdminimalAccordian = {
+Drupal.behaviors.roomifyAdminimalaccordion = {
   attach: function(context) {
+    $('.region-sidebar-toggle-menu .pane-menu-roomify-dashboard-menu').attr('id', 'accordion');
 
-  $('.region-sidebar-toggle-menu .pane-menu-roomify-dashboard-menu').attr('id','accordian');
-  $("#accordian ul.menu .expanded > a").removeAttr("href").css("cursor","pointer");
-  $("#accordian ul.menu .expanded > a").once().click(function(){
-    activeItem = $(this).parent().parent().find('.active');
-    activeItem.removeClass('active');
-    $(this).closest('li').toggleClass('active');
-    //slide up all the link lists
-    $("#accordian ul ul").slideUp();
-    //slide down the link list below the h3 clicked - only if its closed
-    if(!$(this).next().is(":visible"))
-    {
-      $(this).next().slideDown();
-    }
-  });
- }
+    $('#accordion ul.menu .expanded > a').removeAttr('href').css('cursor', 'pointer');
+
+    $('#accordion ul.menu .expanded > a').once().click(function(e) {
+      $('#accordion ul ul').slideUp();
+
+      if ($(e.target).parent().is('.active')) {
+        $(this).parent().parent().find('.active').removeClass('active');
+      }
+      else {
+        $(this).parent().parent().find('.active').removeClass('active');
+        $(this).closest('li').toggleClass('active');
+        $(this).next().slideDown();
+      }
+    });
+  }
 };
-
 
 })(jQuery);
