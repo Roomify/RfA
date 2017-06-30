@@ -853,6 +853,11 @@ function roomify_listing_form_alter(&$form, &$form_state, $form_id) {
         $form['field_sp_area_type'][LANGUAGE_NONE]['#description'] = '';
       }
     }
+    if (isset($form['field_sp_weight'])) {
+      if (!(in_array('administrator', $user->roles) || in_array('roomify manager', $user->roles))) {
+        $form['field_sp_weight']['#access'] = FALSE;
+      }
+    }
   }
 
   // Home BAT type and Room BAT type.
