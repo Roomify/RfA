@@ -353,6 +353,19 @@ function roomify_install_finished(&$install_state) {
   roomify_dashboard_create_dashboard_menu();
   menu_rebuild();
 
+  // Include nodes and location terms to the xml_sitemap.
+  $node_types = array('blog', 'landing_page', 'offer', 'location', 'page', 'activity', 'homepage');
+  foreach ($node_types as $type) {
+    $settings = variable_get('xmlsitemap_settings_node_' . $type, array());
+    $settings['status'] = '1';
+    $settings['priority'] = '0.5';
+    variable_set('xmlsitemap_settings_node_' . $type, $settings);
+  }
+  $settings = variable_get('xmlsitemap_settings_taxonomy_term_location', array());
+  $settings['status'] = '1';
+  $settings['priority'] = '0.5';
+  variable_set('xmlsitemap_settings_taxonomy_term_location', $settings);
+
   // Save 'administrator' role to force creation of machine name.
   $admin_role = user_role_load_by_name('administrator');
   user_role_save($admin_role);
