@@ -9,7 +9,7 @@ Feature: Property Search
     And I visit "availability-search"
     Then I click on the text "List View"
     And I should see "Default" in the ".pane-search-api-sorts-search-sorts .search-api-sorts .sort-item.active-sort" element
-    And I should see "List by price" in the ".pane-search-api-sorts-search-sorts .search-api-sorts a.sort-item" element
+    And I should see "List by price" in the ".pane-search-api-sorts-search-sorts .search-api-sorts" element
     Then I follow "List by price"
     And I should see "Casa Azzurra" in the ".views-row-1 .property-details .name" element
     And I should see "Casa sul Mare" in the ".views-row-2 .property-details .name" element

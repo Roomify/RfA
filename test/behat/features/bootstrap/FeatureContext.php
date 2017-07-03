@@ -73,7 +73,7 @@ class FeatureContext extends DrupalSubContextBase implements CustomSnippetAccept
     $page = $this->getSession()->getPage();
     $element = $page->findAll('css', $selector);
 
-    if (strpos(strtolower($text), strtolower($element->getText()) !== FALSE)) {
+    if (strpos(strtolower($element->getText()), strtolower($text) !== FALSE)) {
       return;
     }
 
