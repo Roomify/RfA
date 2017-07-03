@@ -2041,12 +2041,9 @@ function roomify_dashboard_default_panels_mini() {
   $pane->access = array(
     'plugins' => array(
       0 => array(
-        'name' => 'role',
+        'name' => 'perm',
         'settings' => array(
-          'rids' => array(
-            0 => 4,
-            1 => 5,
-          ),
+          'perm' => 'view the availability global calendar',
         ),
         'context' => 'requiredcontext_user_1',
         'not' => FALSE,
