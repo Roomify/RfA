@@ -912,36 +912,56 @@
     margin-bottom: 0;
     li {
       display: inline-block;
+      padding: 0 0 0 20px;
       a {
         color: #6b6b6b;
+        font-size: 14px;
       }
       svg {
-        width: 24px;
-        height: 24px;
+        width: 20px;
+        height: 20px;
         left: 12px;
         position: relative;
-        top: 7px;
+        top: 5px;
         background: #006699;
         padding: 3px;
+        margin-right: 8px;
         path {
           fill: white;
         }
       }
+      // Default Sort
       &:first-child {
         &:before {
-          width: 20px;
-          height: 20px;
+          width: 22px;
+          height: 22px;
           background: url('../../images/sort.png') no-repeat center center;
           background: url("../../images/sort.svg") center center no-repeat, linear-gradient(transparent, transparent);
           content: '';
           display: inline-block;
-          background-size: 25px 25px;
+          background-size: 22px 22px;
           position: relative;
           top: 5px;
           right: 5px;
         }
       }
-      &:last-child {
+      // Rate Sort
+      &:nth-child(2) {
+        &:before {
+          width: 17px;
+          height: 17px;
+          background: url('../../images/rate-sort.png') no-repeat center center;
+          background: url("../../images/rate-sort.svg") center center no-repeat, linear-gradient(transparent, transparent);
+          content: '';
+          display: inline-block;
+          background-size: contain;
+          position: relative;
+          top: 3px;
+          right: 6px;
+        }
+      }
+      // Price sort
+      &:nth-child(3) {
         padding: 0 0 0 10px;
         &:before {
           width: 20px;
@@ -961,6 +981,7 @@
           text-decoration: underline;
           font-weight: bold;
           color: #000;
+          font-size: 14px;
         }
         img {
           display: inline-block;

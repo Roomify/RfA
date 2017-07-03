@@ -414,6 +414,7 @@ function roomify_search_default_search_api_server() {
  */
 function roomify_search_default_search_api_sort() {
   $items = array();
+
   $items['properties_index__field_sp_weight'] = entity_import('search_api_sort', '{
     "index_id" : "properties_index",
     "field" : "field_sp_weight",
@@ -427,6 +428,20 @@ function roomify_search_default_search_api_sort() {
     "options" : { "field_name" : "Weight" },
     "rdf_mapping" : []
   }');
+  $items['properties_index__average_rating'] = entity_import('search_api_sort', '{
+    "index_id" : "properties_index",
+    "field" : "average_rating",
+    "name" : "Average rating",
+    "enabled" : "1",
+    "weight" : "0",
+    "identifier" : "properties_index__average_rating",
+    "default_sort" : "0",
+    "default_sort_no_terms" : "0",
+    "default_order" : "desc",
+    "options" : { "field_name" : "Average rating" },
+    "rdf_mapping" : []
+  }');
+
   $items['properties_index__priority'] = entity_import('search_api_sort', '{
     "index_id" : "properties_index",
     "field" : "priority",

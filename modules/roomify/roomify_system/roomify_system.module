@@ -169,6 +169,10 @@ function roomify_system_permission() {
       'title' => t('Administer Pathauto patterns'),
       'description' => t('Let changes default patterns for entities'),
     ),
+    'view the availability global calendar' => array(
+      'title' => t('View the availability global calendar'),
+      'description' => t('Let user access to the global availability view'),
+    ),
   );
 }
 
@@ -995,6 +999,7 @@ function roomify_system_roomify_rights() {
       'create commerce_customer_profile entities',
       'view own property_owner profile',
       'update own roomify_rate entities',
+      'view the availability global calendar',
     ),
     'roomify manager' => array(
       'administer fields',
@@ -1124,6 +1129,7 @@ function roomify_system_roomify_rights() {
       'create url aliases',
       'administer pathauto patterns',
       'administer xmlsitemap',
+      'view the availability global calendar',
     ),
     'content editor' => array(
       'access content overview',

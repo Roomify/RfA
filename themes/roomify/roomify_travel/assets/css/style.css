@@ -11364,33 +11364,47 @@ ol.inline.commerce-checkout-progress {
   .pane-search-api-sorts-search-sorts .search-api-sorts {
     margin-bottom: 0; }
     .pane-search-api-sorts-search-sorts .search-api-sorts li {
-      display: inline-block; }
+      display: inline-block;
+      padding: 0 0 0 20px; }
       .pane-search-api-sorts-search-sorts .search-api-sorts li a {
-        color: #6b6b6b; }
+        color: #6b6b6b;
+        font-size: 14px; }
       .pane-search-api-sorts-search-sorts .search-api-sorts li svg {
-        width: 24px;
-        height: 24px;
+        width: 20px;
+        height: 20px;
         left: 12px;
         position: relative;
-        top: 7px;
+        top: 5px;
         background: #006699;
-        padding: 3px; }
+        padding: 3px;
+        margin-right: 8px; }
         .pane-search-api-sorts-search-sorts .search-api-sorts li svg path {
           fill: white; }
       .pane-search-api-sorts-search-sorts .search-api-sorts li:first-child:before {
-        width: 20px;
-        height: 20px;
+        width: 22px;
+        height: 22px;
         background: url("../../images/sort.png") no-repeat center center;
         background: url("../../images/sort.svg") center center no-repeat, linear-gradient(transparent, transparent);
         content: '';
         display: inline-block;
-        background-size: 25px 25px;
+        background-size: 22px 22px;
         position: relative;
         top: 5px;
         right: 5px; }
-      .pane-search-api-sorts-search-sorts .search-api-sorts li:last-child {
+      .pane-search-api-sorts-search-sorts .search-api-sorts li:nth-child(2):before {
+        width: 17px;
+        height: 17px;
+        background: url("../../images/rate-sort.png") no-repeat center center;
+        background: url("../../images/rate-sort.svg") center center no-repeat, linear-gradient(transparent, transparent);
+        content: '';
+        display: inline-block;
+        background-size: contain;
+        position: relative;
+        top: 3px;
+        right: 6px; }
+      .pane-search-api-sorts-search-sorts .search-api-sorts li:nth-child(3) {
         padding: 0 0 0 10px; }
-        .pane-search-api-sorts-search-sorts .search-api-sorts li:last-child:before {
+        .pane-search-api-sorts-search-sorts .search-api-sorts li:nth-child(3):before {
           width: 20px;
           height: 20px;
           background: url("../../images/price-sort.png") no-repeat center center;
@@ -11404,7 +11418,8 @@ ol.inline.commerce-checkout-progress {
       .pane-search-api-sorts-search-sorts .search-api-sorts li .sort-item.active-sort {
         text-decoration: underline;
         font-weight: bold;
-        color: #000; }
+        color: #000;
+        font-size: 14px; }
       .pane-search-api-sorts-search-sorts .search-api-sorts li .sort-item img {
         display: inline-block;
         margin-left: 10px;
