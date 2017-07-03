@@ -21,3 +21,21 @@ function roomify_search_update_7001() {
 
   cache_clear_all();
 }
+
+/**
+ * Re-index properties search.
+ */
+function roomify_search_update_7002() {
+
+  // Revert feature.
+  $feature = features_get_features('roomify_search');
+  $components = array_keys($feature->info['features']);
+  features_revert(array('roomify_search' => $components));
+
+  // Re-index properties.
+  $search_api_index = search_api_index_load('properties_index');
+  $search_api_index->clear();
+  search_api_index_items($search_api_index, -1);
+
+  cache_clear_all();
+}
