@@ -11514,16 +11514,37 @@ ol.inline.commerce-checkout-progress {
         width: 16.66667%; } }
     @media (max-width: 991px) {
       .pane-properties-index-panel-pane-4 .view-properties-index .views-row .property-details-2 {
-        height: auto; } }
+        height: auto;
+        width: 100%;
+        border-left: none;
+        text-align: center;
+        padding: 10px 0; } }
     .pane-properties-index-panel-pane-4 .view-properties-index .views-row .property-details-2 .price {
       position: absolute;
       right: 8px;
       font-size: 18px;
-      top: 40px;
+      top: 80px;
       color: #4CAF50;
       font-weight: 300; }
-      @media (max-width: 480px) {
+      @media (max-width: 991px) {
         .pane-properties-index-panel-pane-4 .view-properties-index .views-row .property-details-2 .price {
+          width: 100%;
+          position: relative;
+          display: inline-block;
+          margin-bottom: 10px;
+          right: 0;
+          top: 15px; } }
+    .pane-properties-index-panel-pane-4 .view-properties-index .views-row .property-details-2 .reviews {
+      position: absolute;
+      right: 8px;
+      font-size: 18px;
+      top: 40px;
+      color: #b1b1b1;
+      font-weight: 300;
+      text-transform: italic;
+      font-size: 12px; }
+      @media (max-width: 991px) {
+        .pane-properties-index-panel-pane-4 .view-properties-index .views-row .property-details-2 .reviews {
           width: 100%;
           position: relative;
           display: inline-block;
@@ -11532,7 +11553,7 @@ ol.inline.commerce-checkout-progress {
           top: 0; } }
     .pane-properties-index-panel-pane-4 .view-properties-index .views-row .property-details-2 .book-now {
       position: absolute;
-      right: 8px;
+      right: 30px;
       bottom: 8px;
       color: white;
       font-size: 10px;
@@ -11595,23 +11616,40 @@ ol.inline.commerce-checkout-progress {
         width: 50%; } }
     @media (max-width: 991px) {
       .pane-properties-index-panel-pane-4 .view-properties-index .views-row .property-details {
-        height: auto; } }
+        height: auto;
+        width: 100%; } }
     .pane-properties-index-panel-pane-4 .view-properties-index .views-row .property-details .name {
       font-size: 18px;
       margin-top: 6px;
       margin-bottom: 10px;
       font-weight: 400; }
+      @media (max-width: 480px) {
+        .pane-properties-index-panel-pane-4 .view-properties-index .views-row .property-details .name {
+          text-align: center; } }
     .pane-properties-index-panel-pane-4 .view-properties-index .views-row .property-details .short-description {
       color: #666;
-      margin-bottom: 20px; }
+      margin-bottom: 10px; }
+      @media (max-width: 480px) {
+        .pane-properties-index-panel-pane-4 .view-properties-index .views-row .property-details .short-description {
+          text-align: center; } }
     .pane-properties-index-panel-pane-4 .view-properties-index .views-row .property-details .table-responsive {
       border: none; }
     .pane-properties-index-panel-pane-4 .view-properties-index .views-row .property-details table {
       font-size: 10px; }
+      @media (min-width: 480px) {
+        .pane-properties-index-panel-pane-4 .view-properties-index .views-row .property-details table tr {
+          white-space: nowrap;
+          overflow: hidden;
+          text-overflow: ellipsis; } }
       .pane-properties-index-panel-pane-4 .view-properties-index .views-row .property-details table td {
-        padding: 5px 10px;
+        padding: 2px 8px;
         vertical-align: middle;
-        cursor: default; }
+        cursor: default;
+        display: inline-block; }
+        @media (max-width: 480px) {
+          .pane-properties-index-panel-pane-4 .view-properties-index .views-row .property-details table td {
+            width: 100% !important;
+            text-align: center; } }
         .pane-properties-index-panel-pane-4 .view-properties-index .views-row .property-details table td:empty {
           display: none; }
       .pane-properties-index-panel-pane-4 .view-properties-index .views-row .property-details table .area {
@@ -11650,7 +11688,8 @@ ol.inline.commerce-checkout-progress {
       .pane-properties-index-panel-pane-4 .view-properties-index .views-row .property-details table .single-beds {
         position: relative;
         color: #666;
-        font-size: 10px; }
+        font-size: 10px;
+        width: 70px; }
         .pane-properties-index-panel-pane-4 .view-properties-index .views-row .property-details table .single-beds:before {
           background: url("../images/single_beds.png") center center no-repeat;
           background: url("../images/single_beds.svg") center center no-repeat, linear-gradient(transparent, transparent);
@@ -11667,7 +11706,8 @@ ol.inline.commerce-checkout-progress {
       .pane-properties-index-panel-pane-4 .view-properties-index .views-row .property-details table .double-beds {
         position: relative;
         color: #666;
-        font-size: 10px; }
+        font-size: 10px;
+        width: 70px; }
         .pane-properties-index-panel-pane-4 .view-properties-index .views-row .property-details table .double-beds:before {
           background: url("../images/double_beds.png") center center no-repeat;
           background: url("../images/double_beds.svg") center center no-repeat, linear-gradient(transparent, transparent);
@@ -11684,7 +11724,8 @@ ol.inline.commerce-checkout-progress {
       .pane-properties-index-panel-pane-4 .view-properties-index .views-row .property-details table .capacity {
         position: relative;
         color: #666;
-        font-size: 10px; }
+        font-size: 10px;
+        width: 70px; }
         .pane-properties-index-panel-pane-4 .view-properties-index .views-row .property-details table .capacity:before {
           background: url("../images/users.png") center center no-repeat;
           background: url("../images/users.svg") center center no-repeat, linear-gradient(transparent, transparent);
@@ -11701,6 +11742,7 @@ ol.inline.commerce-checkout-progress {
       .pane-properties-index-panel-pane-4 .view-properties-index .views-row .property-details table .bathrooms {
         position: relative;
         color: #666;
+        width: 70px;
         font-size: 10px; }
         .pane-properties-index-panel-pane-4 .view-properties-index .views-row .property-details table .bathrooms:before {
           background: url("../images/bath.png") center center no-repeat;
