@@ -64,4 +64,11 @@ function roomify_search_views_data_alter(&$data) {
       'handler' => 'roomify_search_handler_property_capacity',
     ),
   );
+  $data['search_api_index_properties_index']['roomify_search_handler_reviews_number'] = array(
+    'field' => array(
+      'title' => t('Number of reviews'),
+      'help' => t('Number of reviews of the property'),
+      'handler' => 'roomify_search_handler_reviews_number',
+    ),
+  );
 }

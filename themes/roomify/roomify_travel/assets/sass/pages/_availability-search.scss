@@ -1037,30 +1037,53 @@
           }
         }
       }
-      .property-details {
-        @include make-xs-column(12, 0);
-        @include make-sm-column(12, 0);
-        @include make-md-column(8);
+      .views-field-average-rating {
+        position: absolute;
+        right: 8px;
+        z-index: 1;
+        top: 27px;
+      }
+
+      .property-details-2 {
+        @include make-xs-column(3, 0);
+        @include make-sm-column(2, 0);
+        @include make-md-column(2);
+        border-left: 2px solid #fff;
         height: 204px;
         background: #f9f9f9;
         @media (max-width: $screen-sm-max) {
           height: auto;
-        }
-        .name {
-          font-size: 18px;
-          margin-top: 6px;
-          margin-bottom: 10px;
-          font-weight: 400;
-
+          width: 100%;
+          border-left: none;
+          text-align: center;
+          padding: 10px 0;
         }
         .price {
           position: absolute;
-          right: 6px;
+          right: 8px;
           font-size: 18px;
-          top: 8px;
+          top: 80px;
           color: #4CAF50;
           font-weight: 300;
-          @media (max-width: $screen-xs) {
+          @media (max-width: $screen-sm-max) {
+            width: 100%;
+            position: relative;
+            display: inline-block;
+            margin-bottom: 10px;
+            right: 0;
+            top: 15px;
+          }
+        }
+        .reviews {
+          position: absolute;
+          right: 8px;
+          font-size: 18px;
+          top: 40px;
+          color: #b1b1b1;
+          font-weight: 300;
+          text-transform: italic;
+          font-size: 12px;
+          @media (max-width: $screen-sm-max) {
             width: 100%;
             position: relative;
             display: inline-block;
@@ -1069,19 +1092,67 @@
             top: 0;
           }
         }
+        .book-now {
+          position: absolute;
+          right: 30px;
+          bottom: 8px;
+          color: white;
+          font-size: 10px;
+          @include button-variant(#000000, rgb(237, 237, 237), #e0d9d7);
+          color: rgb(80, 80, 80);
+          font-weight: 400;
+          @media (max-width: $screen-sm) {
+            display: none;
+          }
+        }
+      }
+      .property-details {
+        @include make-xs-column(9, 0);
+        @include make-sm-column(10, 0);
+        @include make-md-column(6);
+        height: 204px;
+        background: #f9f9f9;
+        @media (max-width: $screen-sm-max) {
+          height: auto;
+          width: 100%;
+        }
+        .name {
+          font-size: 18px;
+          margin-top: 6px;
+          margin-bottom: 10px;
+          font-weight: 400;
+          @media (max-width: $screen-xs) {
+            text-align: center;
+          }
+        }
         .short-description {
           color: #666;
-          margin-bottom: 20px;
+          margin-bottom: 10px;
+          @media (max-width: $screen-xs) {
+            text-align: center;
+          }
         }
         .table-responsive {
           border: none;
         }
         table {
           font-size: 10px;
+          tr {
+            @media (min-width: $screen-xs) {
+              white-space: nowrap;
+              overflow: hidden;
+              text-overflow:ellipsis;
+            }
+          }
           td {
-            padding: 5px 10px;
+            padding: 2px 8px;
             vertical-align: middle;
             cursor: default;
+            display: inline-block;
+            @media (max-width: $screen-xs) {
+              width: 100% !important;
+              text-align: center;
+            }
             &:empty {
               display: none;
             }
@@ -1133,6 +1204,7 @@
             position: relative;
             color: #666;
             font-size: 10px;
+            width: 70px;
             &:before {
               background: url("../images/single_beds.png") center center no-repeat;
               background: url("../images/single_beds.svg") center center no-repeat, linear-gradient(transparent, transparent);
@@ -1155,6 +1227,7 @@
             position: relative;
             color: #666;
             font-size: 10px;
+            width: 70px;
             &:before {
               background: url("../images/double_beds.png") center center no-repeat;
               background: url("../images/double_beds.svg") center center no-repeat, linear-gradient(transparent, transparent);
@@ -1177,6 +1250,7 @@
             position: relative;
             color: #666;
             font-size: 10px;
+            width: 70px;
             &:before {
               background: url("../images/users.png") center center no-repeat;
               background: url("../images/users.svg") center center no-repeat, linear-gradient(transparent, transparent);
@@ -1198,6 +1272,7 @@
           .bathrooms {
             position: relative;
             color: #666;
+            width: 70px;
             font-size: 10px;
             &:before {
               background: url("../images/bath.png") center center no-repeat;
@@ -1238,19 +1313,6 @@
                 display: none;
               }
             }
-          }
-        }
-        .book-now {
-          position: absolute;
-          right: 8px;
-          bottom: 8px;
-          color: white;
-          font-size: 10px;
-          @include button-variant(#000000, rgb(237, 237, 237), #e0d9d7);
-          color: rgb(80, 80, 80);
-          font-weight: 400;
-          @media (max-width: $screen-sm) {
-            display: none;
           }
         }
       }

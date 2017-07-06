@@ -496,7 +496,7 @@ function roomify_search_views_default_views() {
   $handler->display->display_options['fields']['field_sp_short_description']['field'] = 'field_sp_short_description';
   $handler->display->display_options['fields']['field_sp_short_description']['label'] = '';
   $handler->display->display_options['fields']['field_sp_short_description']['exclude'] = TRUE;
-  $handler->display->display_options['fields']['field_sp_short_description']['alter']['max_length'] = '140';
+  $handler->display->display_options['fields']['field_sp_short_description']['alter']['max_length'] = '110';
   $handler->display->display_options['fields']['field_sp_short_description']['alter']['trim'] = TRUE;
   $handler->display->display_options['fields']['field_sp_short_description']['element_label_colon'] = FALSE;
   $handler->display->display_options['fields']['field_sp_short_description']['settings'] = array(
@@ -571,34 +571,55 @@ function roomify_search_views_default_views() {
   $handler->display->display_options['fields']['field_sp_area_type']['link_to_entity'] = 0;
   $handler->display->display_options['fields']['field_sp_area_type']['view_mode'] = 'full';
   $handler->display->display_options['fields']['field_sp_area_type']['bypass_access'] = 0;
+  /* Field: Indexed Roomify Property: Average rating */
+  $handler->display->display_options['fields']['average_rating']['id'] = 'average_rating';
+  $handler->display->display_options['fields']['average_rating']['table'] = 'search_api_index_properties_index';
+  $handler->display->display_options['fields']['average_rating']['field'] = 'average_rating';
+  $handler->display->display_options['fields']['average_rating']['label'] = '';
+  $handler->display->display_options['fields']['average_rating']['element_label_colon'] = FALSE;
+  $handler->display->display_options['fields']['average_rating']['precision'] = '0';
+  $handler->display->display_options['fields']['average_rating']['separator'] = '';
+  $handler->display->display_options['fields']['average_rating']['link_to_entity'] = 0;
+  /* Field: Indexed Roomify Property: Number of reviews */
+  $handler->display->display_options['fields']['roomify_search_handler_reviews_number']['id'] = 'roomify_search_handler_reviews_number';
+  $handler->display->display_options['fields']['roomify_search_handler_reviews_number']['table'] = 'search_api_index_properties_index';
+  $handler->display->display_options['fields']['roomify_search_handler_reviews_number']['field'] = 'roomify_search_handler_reviews_number';
+  $handler->display->display_options['fields']['roomify_search_handler_reviews_number']['label'] = '';
+  $handler->display->display_options['fields']['roomify_search_handler_reviews_number']['exclude'] = TRUE;
+  $handler->display->display_options['fields']['roomify_search_handler_reviews_number']['element_label_colon'] = FALSE;
   /* Field: Global: Custom text */
   $handler->display->display_options['fields']['nothing']['id'] = 'nothing';
   $handler->display->display_options['fields']['nothing']['table'] = 'views';
   $handler->display->display_options['fields']['nothing']['field'] = 'nothing';
   $handler->display->display_options['fields']['nothing']['label'] = '';
   $handler->display->display_options['fields']['nothing']['alter']['text'] = '<div class="name">[name]</div>
-      <div class="price">[starting_type_price]</div>
-      <div class="short-description">[field_sp_short_description]</div>
-      <table>
-        <tbody>
-          <tr>
-            <td data-toggle="tooltip" data-html="true" title="Max Capacity" data-placement="top" class="capacity">[roomify_search_handler_property_capacity]</td>
-            <td data-toggle="tooltip" data-html="true" title="Single Beds" data-placement="top" class="single-beds">[roomify_search_handler_beds_largest_room]</td>
-            <td data-toggle="tooltip" data-html="true" title="Double Beds" data-placement="top" class="double-beds">[roomify_search_handler_double_beds_largest_room]</td>
-            <td data-toggle="tooltip" data-html="true" title="Bathrooms" data-placement="top" class="bathrooms">[roomify_search_handler_bathrooms_largest_room]</td>
-          </tr>
-           <td data-toggle="tooltip" data-html="true" title="Area" data-placement="top" class="area">[field_sp_area]</td>
-           <td data-toggle="tooltip" data-html="true" title="Area Type" data-placement="top" class="area-type">[field_sp_area_type]</td>
-           <td data-toggle="tooltip" data-html="true" title="Property Type" data-placement="top" class="property-type">[field_sp_property_type]</td>
-          <tr>
-          </tr>
-        </tbody>
-      </table>
-      <a class="book-now btn btn-default btn-primary" href="/listing/[property_id]">Details</a>
-
-    ';
+    <div class="short-description">[field_sp_short_description]</div>
+    <table>
+      <tbody>
+        <tr>
+          <td data-toggle="tooltip" data-html="true" title="Max Capacity" data-placement="top" class="capacity">[roomify_search_handler_property_capacity]</td>
+          <td data-toggle="tooltip" data-html="true" title="Single Beds" data-placement="top" class="single-beds">[roomify_search_handler_beds_largest_room]</td>
+          <td data-toggle="tooltip" data-html="true" title="Double Beds" data-placement="top" class="double-beds">[roomify_search_handler_double_beds_largest_room]</td>
+          <td data-toggle="tooltip" data-html="true" title="Bathrooms" data-placement="top" class="bathrooms">[roomify_search_handler_bathrooms_largest_room]</td>
+        </tr>
+        <tr>
+          <td data-toggle="tooltip" data-html="true" title="Area" data-placement="top" class="area">[field_sp_area]</td>
+          <td data-toggle="tooltip" data-html="true" title="Area Type" data-placement="top" class="area-type">[field_sp_area_type]</td>
+          <td data-toggle="tooltip" data-html="true" title="Property Type" data-placement="top" class="property-type">[field_sp_property_type]</td>
+         </tr>
+       </tbody>
+      </table>';
   $handler->display->display_options['fields']['nothing']['element_label_colon'] = FALSE;
   $handler->display->display_options['fields']['nothing']['element_wrapper_class'] = 'property-details';
+  /* Field: Global: Custom text */
+  $handler->display->display_options['fields']['nothing_1']['id'] = 'nothing_1';
+  $handler->display->display_options['fields']['nothing_1']['table'] = 'views';
+  $handler->display->display_options['fields']['nothing_1']['field'] = 'nothing';
+  $handler->display->display_options['fields']['nothing_1']['label'] = '';
+  $handler->display->display_options['fields']['nothing_1']['alter']['text'] = '<div class="reviews">[roomify_search_handler_reviews_number]</div>
+  <div class="price">[starting_type_price]</div>';
+  $handler->display->display_options['fields']['nothing_1']['element_label_colon'] = FALSE;
+  $handler->display->display_options['fields']['nothing_1']['element_wrapper_class'] = 'property-details-2';
   $handler->display->display_options['allow']['use_pager'] = 0;
   $handler->display->display_options['allow']['items_per_page'] = 0;
   $handler->display->display_options['allow']['offset'] = 0;
@@ -635,41 +656,39 @@ function roomify_search_views_default_views() {
     t('Available Properties Map'),
     t('Map View'),
     t('<div class="roomify-property-short-description">[field_sp_short_description]</div>
-      <div class="roomify-property-image">[field_sp_featured_image]</div>'),
+        <div class="roomify-property-image">[field_sp_featured_image]</div>'),
     t('Grid View'),
     t('<div class="featured-image-with-description">
-          [field_sp_featured_image] 
-          <div class="property-info">
-            <div class="description">[field_sp_short_description]</div>
-            <div class="property-types-table">[property_types]</div>
-          </div>
-        </div>'),
-    t('<div class="property-info">
-            <div class="description">[field_sp_short_description]</div>
-            <div class="types">[property_types]</div>
+            [field_sp_featured_image] 
+            <div class="property-info">
+              <div class="description">[field_sp_short_description]</div>
+              <div class="property-types-table">[property_types]</div>
+            </div>
           </div>'),
+    t('<div class="property-info">
+              <div class="description">[field_sp_short_description]</div>
+              <div class="types">[property_types]</div>
+            </div>'),
     t('Details View'),
     t('<div class="name">[name]</div>
-      <div class="price">[starting_type_price]</div>
-      <div class="short-description">[field_sp_short_description]</div>
-      <table>
-        <tbody>
-          <tr>
-            <td data-toggle="tooltip" data-html="true" title="Max Capacity" data-placement="top" class="capacity">[roomify_search_handler_property_capacity]</td>
-            <td data-toggle="tooltip" data-html="true" title="Single Beds" data-placement="top" class="single-beds">[roomify_search_handler_beds_largest_room]</td>
-            <td data-toggle="tooltip" data-html="true" title="Double Beds" data-placement="top" class="double-beds">[roomify_search_handler_double_beds_largest_room]</td>
-            <td data-toggle="tooltip" data-html="true" title="Bathrooms" data-placement="top" class="bathrooms">[roomify_search_handler_bathrooms_largest_room]</td>
-          </tr>
-           <td data-toggle="tooltip" data-html="true" title="Area" data-placement="top" class="area">[field_sp_area]</td>
-           <td data-toggle="tooltip" data-html="true" title="Area Type" data-placement="top" class="area-type">[field_sp_area_type]</td>
-           <td data-toggle="tooltip" data-html="true" title="Property Type" data-placement="top" class="property-type">[field_sp_property_type]</td>
-          <tr>
-          </tr>
-        </tbody>
-      </table>
-      <a class="book-now btn btn-default btn-primary" href="/listing/[property_id]">Details</a>
-
-    '),
+    <div class="short-description">[field_sp_short_description]</div>
+    <table>
+      <tbody>
+        <tr>
+          <td data-toggle="tooltip" data-html="true" title="Max Capacity" data-placement="top" class="capacity">[roomify_search_handler_property_capacity]</td>
+          <td data-toggle="tooltip" data-html="true" title="Single Beds" data-placement="top" class="single-beds">[roomify_search_handler_beds_largest_room]</td>
+          <td data-toggle="tooltip" data-html="true" title="Double Beds" data-placement="top" class="double-beds">[roomify_search_handler_double_beds_largest_room]</td>
+          <td data-toggle="tooltip" data-html="true" title="Bathrooms" data-placement="top" class="bathrooms">[roomify_search_handler_bathrooms_largest_room]</td>
+        </tr>
+        <tr>
+          <td data-toggle="tooltip" data-html="true" title="Area" data-placement="top" class="area">[field_sp_area]</td>
+          <td data-toggle="tooltip" data-html="true" title="Area Type" data-placement="top" class="area-type">[field_sp_area_type]</td>
+          <td data-toggle="tooltip" data-html="true" title="Property Type" data-placement="top" class="property-type">[field_sp_property_type]</td>
+         </tr>
+       </tbody>
+      </table>'),
+    t('<div class="reviews">[roomify_search_handler_reviews_number]</div>
+  <div class="price">[starting_type_price]</div>'),
   );
 
   $export['properties_index'] = $view;
