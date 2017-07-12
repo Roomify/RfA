@@ -1,0 +1,7 @@
+<?php
+/**
+ * @file
+ * Code for the Roomify Properties List feature.
+ */
+
+include_once 'roomify_properties_list.features.inc';
