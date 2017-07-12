@@ -1,4 +1,5 @@
 <?php
+
 /**
  * @file
  * roomify_properties_list.strongarm.inc
