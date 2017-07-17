@@ -235,6 +235,7 @@ function roomify_search_views_default_views() {
   $handler->display->display_options['style_options']['zoom']['initialZoom'] = '-1';
   $handler->display->display_options['style_options']['zoom']['minZoom'] = '0';
   $handler->display->display_options['style_options']['zoom']['maxZoom'] = '18';
+  $handler->display->display_options['style_options']['zoom']['scrollWheelZoom'] = 0;
   $handler->display->display_options['style_options']['vector_display']['stroke'] = 0;
   $handler->display->display_options['style_options']['vector_display']['fill'] = 0;
   $handler->display->display_options['style_options']['vector_display']['clickable'] = 0;

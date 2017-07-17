@@ -4,6 +4,7 @@
   </div>
   <div class="panel-content-wrapper">
     <div class="panel_sl_content col-sm-12"> <?php print $content['middle']; ?></div>
+    <div class="panel_sl_content-2 col-sm-12"> <?php print $content['middle-second']; ?></div>
   </div>
   <div class="panel-content-bottom">
     <?php print $content['bottom']; ?>

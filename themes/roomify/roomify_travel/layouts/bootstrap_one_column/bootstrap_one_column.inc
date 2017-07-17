@@ -13,6 +13,7 @@ $plugin = array(
   'regions' => array(
     'top' => t('Top'),
     'middle' => t('Middle'),
+    'middle-second' => t('Middle Second'),
     'bottom' => t('Bottom'),
   ),
 );
