@@ -15516,6 +15516,8 @@ body.node-type-offer .pane-offer-panel-pane-2 .pager-load-more {
   border: 1px solid #ececec;
   display: inline-block;
   width: 100%; }
+  .node-type-properties-list .panel_sl_content-2:empty {
+    display: none; }
   @media (max-width: 768px) {
     .node-type-properties-list .panel_sl_content-2 .pane-block.panel-pane {
       margin-bottom: 50px; } }

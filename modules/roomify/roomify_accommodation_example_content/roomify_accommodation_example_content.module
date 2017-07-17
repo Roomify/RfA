@@ -109,6 +109,43 @@ function roomify_example_content_create_homepage_node($pid1, $pid2, $pid3) {
 }
 
 /**
+ * Create a property list node.
+ */
+function roomify_example_content_create_properties_list_node($p1, $p2, $p3) {
+  
+  $node = new stdClass();
+  $node->type = 'properties_list';
+  $node->title = 'Villas with Pool';
+  $node->language = 'en';
+  $node->uid = 1;
+  $node->status = 1;
+  $node->path['pathauto'] = 1;
+  $node = node_submit($node);
+
+  $image = file_get_contents(drupal_get_path('module', 'roomify_accommodation_example_content') . '/default_images/pool.jpg');
+  $image = file_save_data($image, roomify_system_file_dir() . 'pool.jpg', FILE_EXISTS_RENAME);
+
+  $node->body['en'][0]['value'] = '<p style="text-align: justify;">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.&nbsp;Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>';
+  $node->body['en'][0]['format'] = 'filtered_text';
+  $node->field_pl_featured_image[LANGUAGE_NONE][0] = array(
+    'fid' => $image->fid,
+    'filename' => $image->filename,
+    'filemime' => $image->filemime,
+    'uid' => 1,
+    'uri' => $image->uri,
+    'status' => 1,
+    'display' => 1,
+  );
+  $node->title_field['en'][0]['value'] = 'Villas with pool';
+
+  $node->field_properties_list_properties[LANGUAGE_NONE][0]['target_id'] = $p1;
+  $node->field_properties_list_properties[LANGUAGE_NONE][1]['target_id'] = $p2;
+  $node->field_properties_list_properties[LANGUAGE_NONE][2]['target_id'] = $p3;
+
+  node_save($node);
+}
+
+/**
  * Create a type "Example Casa".
  */
 function roomify_example_content_create_casa_example_type($name, $capacity, $images_folder, $uid, $price = '1000') {
@@ -1085,6 +1122,8 @@ function roomify_accommodation_example_content_multi_property() {
   // Create Homepage.
   variable_set('roomify_accommodation_example_content', 'multi_property');
   roomify_example_content_create_homepage_node($property_id_1, $property_id_2, $property_id_3);
+
+  roomify_example_content_create_properties_page_node($property_id_1, $property_id_2, $property_id_3);
 
   $property_ids = array(
     $property_id_1 => 'Casa Sul Mare',

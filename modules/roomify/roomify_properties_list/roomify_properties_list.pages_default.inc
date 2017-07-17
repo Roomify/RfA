@@ -71,7 +71,23 @@ function roomify_properties_list_default_page_manager_handlers() {
   $pane->type = 'views_panes';
   $pane->subtype = 'properties_index-panel_pane_4';
   $pane->shown = TRUE;
-  $pane->access = array();
+  $pane->access = array(
+    'plugins' => array(
+      1 => array(
+        'name' => 'php',
+        'settings' => array(
+          'description' => 'Properties are set',
+          'php' => 'if (isset($contexts[\'argument_entity_id:node_1\']->data->field_properties_list_properties)) {
+  if (empty($contexts[\'argument_entity_id:node_1\']->data->field_properties_list_properties)) {
+    return FALSE;
+  }
+  return TRUE;
+}',
+        ),
+        'not' => FALSE,
+      ),
+    ),
+  );
   $pane->configuration = array(
     'override_title' => 1,
     'override_title_text' => '',
@@ -94,7 +110,23 @@ function roomify_properties_list_default_page_manager_handlers() {
   $pane->type = 'views_panes';
   $pane->subtype = 'properties_index-panel_pane_2';
   $pane->shown = TRUE;
-  $pane->access = array();
+  $pane->access = array(
+    'plugins' => array(
+      0 => array(
+        'name' => 'php',
+        'settings' => array(
+          'description' => 'Properties are set',
+          'php' => 'if (isset($contexts[\'argument_entity_id:node_1\']->data->field_properties_list_properties)) {
+  if (empty($contexts[\'argument_entity_id:node_1\']->data->field_properties_list_properties)) {
+    return FALSE;
+  }
+  return TRUE;
+}',
+        ),
+        'not' => FALSE,
+      ),
+    ),
+  );
   $pane->configuration = array(
     'override_title' => 1,
     'override_title_text' => '',
@@ -147,7 +179,9 @@ function roomify_properties_list_default_page_manager_handlers() {
   $pane->type = 'block';
   $pane->subtype = 'facetapi-PSgMGV0vhgwKGBG76zNiI6gHpbuUpy7v';
   $pane->shown = TRUE;
-  $pane->access = array();
+  $pane->access = array(
+    'plugins' => array(),
+  );
   $pane->configuration = array(
     'override_title' => 1,
     'override_title_text' => 'Area',
@@ -207,7 +241,7 @@ function roomify_properties_list_default_page_manager_handlers() {
     'delta_offset' => '0',
     'delta_reversed' => FALSE,
     'formatter_settings' => array(
-      'image_style' => '',
+      'image_style' => '1600x460',
       'background_image_selector' => 'background-image-formatter',
       'background_image_output_type' => 'inline',
       'conditions' => array(

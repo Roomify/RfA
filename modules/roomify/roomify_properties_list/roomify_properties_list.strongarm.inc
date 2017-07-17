@@ -84,25 +84,62 @@ function roomify_properties_list_strongarm() {
   $strongarm = new stdClass();
   $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
   $strongarm->api_version = 1;
+  $strongarm->name = 'entity_translation_comment_filter_properties_list';
+  $strongarm->value = 0;
+  $export['entity_translation_comment_filter_properties_list'] = $strongarm;
+
+  $strongarm = new stdClass();
+  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
+  $strongarm->api_version = 1;
+  $strongarm->name = 'entity_translation_hide_translation_links_properties_list';
+  $strongarm->value = 1;
+  $export['entity_translation_hide_translation_links_properties_list'] = $strongarm;
+
+  $strongarm = new stdClass();
+  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
+  $strongarm->api_version = 1;
+  $strongarm->name = 'entity_translation_node_metadata_properties_list';
+  $strongarm->value = '0';
+  $export['entity_translation_node_metadata_properties_list'] = $strongarm;
+
+  $strongarm = new stdClass();
+  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
+  $strongarm->api_version = 1;
+  $strongarm->name = 'entity_translation_settings_node__properties_list';
+  $strongarm->value = array(
+    'default_language' => 'xx-et-default',
+    'hide_language_selector' => 1,
+    'exclude_language_none' => 1,
+    'lock_language' => 0,
+    'shared_fields_original_only' => 0,
+  );
+  $export['entity_translation_settings_node__properties_list'] = $strongarm;
+
+  $strongarm = new stdClass();
+  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
+  $strongarm->api_version = 1;
   $strongarm->name = 'field_bundle_settings_node__properties_list';
   $strongarm->value = array(
     'view_modes' => array(),
     'extra_fields' => array(
       'form' => array(
         'metatags' => array(
-          'weight' => '5',
+          'weight' => '7',
         ),
         'title' => array(
           'weight' => '0',
         ),
         'path' => array(
-          'weight' => '2',
+          'weight' => '4',
         ),
         'redirect' => array(
-          'weight' => '3',
+          'weight' => '5',
         ),
         'xmlsitemap' => array(
-          'weight' => '4',
+          'weight' => '6',
+        ),
+        'language' => array(
+          'weight' => '8',
         ),
       ),
       'display' => array(),
@@ -114,7 +151,7 @@ function roomify_properties_list_strongarm() {
   $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
   $strongarm->api_version = 1;
   $strongarm->name = 'language_content_type_properties_list';
-  $strongarm->value = '0';
+  $strongarm->value = '4';
   $export['language_content_type_properties_list'] = $strongarm;
 
   $strongarm = new stdClass();
@@ -132,6 +169,13 @@ function roomify_properties_list_strongarm() {
   $strongarm->name = 'menu_parent_properties_list';
   $strongarm->value = 'main-menu:0';
   $export['menu_parent_properties_list'] = $strongarm;
+
+  $strongarm = new stdClass();
+  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
+  $strongarm->api_version = 1;
+  $strongarm->name = 'metatag_enable_node__properties_list';
+  $strongarm->value = TRUE;
+  $export['metatag_enable_node__properties_list'] = $strongarm;
 
   $strongarm = new stdClass();
   $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */

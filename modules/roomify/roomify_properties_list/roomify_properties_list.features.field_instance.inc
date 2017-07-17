@@ -119,21 +119,23 @@ function roomify_properties_list_field_default_field_instances() {
         'dragdropfile_title' => '',
         'manualcrop_crop_info' => 1,
         'manualcrop_default_crop_area' => 1,
-        'manualcrop_enable' => 0,
+        'manualcrop_enable' => 1,
         'manualcrop_inline_crop' => 0,
-        'manualcrop_instant_crop' => 0,
+        'manualcrop_instant_crop' => 1,
         'manualcrop_instant_preview' => 1,
         'manualcrop_keyboard' => 1,
-        'manualcrop_maximize_default_crop_area' => 0,
+        'manualcrop_maximize_default_crop_area' => 1,
         'manualcrop_require_cropping' => array(),
-        'manualcrop_styles_list' => array(),
+        'manualcrop_styles_list' => array(
+          '1600x460' => '1600x460',
+        ),
         'manualcrop_styles_mode' => 'include',
         'manualcrop_thumblist' => 0,
         'preview_image_style' => 'thumbnail',
         'progress_indicator' => 'throbber',
       ),
       'type' => 'image_image',
-      'weight' => 7,
+      'weight' => 1,
     ),
   );
 
@@ -185,13 +187,20 @@ function roomify_properties_list_field_default_field_instances() {
     ),
     'widget' => array(
       'active' => 1,
-      'module' => 'options',
+      'module' => 'entityreference',
       'settings' => array(
+        'fields' => array(),
         'match_operator' => 'CONTAINS',
+        'path' => '',
+        'references_dialog_add' => 0,
+        'references_dialog_edit' => 0,
+        'references_dialog_search' => 0,
+        'references_dialog_search_view' => '',
         'size' => 60,
+        'type_settings' => array(),
       ),
-      'type' => 'options_buttons',
-      'weight' => 6,
+      'type' => 'entityreference_autocomplete',
+      'weight' => 9,
     ),
   );
 
@@ -240,7 +249,7 @@ function roomify_properties_list_field_default_field_instances() {
         'size' => 60,
       ),
       'type' => 'text_textfield',
-      'weight' => -5,
+      'weight' => 0,
     ),
   );
 

@@ -66,6 +66,9 @@
     border: 1px solid #ececec;
     display: inline-block;
     width: 100%;
+    &:empty {
+      display: none;
+    }
     .pane-block.panel-pane {
       @media (max-width: $screen-sm) {
         margin-bottom: 50px;
