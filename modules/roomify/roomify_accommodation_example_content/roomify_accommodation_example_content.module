@@ -1163,7 +1163,7 @@ function roomify_accommodation_example_content_multi_property() {
   variable_set('roomify_accommodation_example_content', 'multi_property');
   roomify_example_content_create_homepage_node($property_id_1, $property_id_2, $property_id_3);
 
-  roomify_example_content_create_properties_page_node($property_id_1, $property_id_2, $property_id_3);
+  roomify_example_content_create_properties_list_node($property_id_1, $property_id_2, $property_id_3);
 
   $property_ids = array(
     $property_id_1 => 'Casa Sul Mare',
