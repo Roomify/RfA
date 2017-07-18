@@ -142,6 +142,46 @@ function roomify_example_content_create_properties_list_node($p1, $p2, $p3) {
   $node->field_properties_list_properties[LANGUAGE_NONE][1]['target_id'] = $p2;
   $node->field_properties_list_properties[LANGUAGE_NONE][2]['target_id'] = $p3;
 
+  $highlight1 = file_get_contents(drupal_get_path('module', 'roomify_accommodation_example_content') . '/default_images/highlight1.jpg');
+  $highlight1 = file_save_data($highlight1, roomify_system_file_dir() . 'highlight1.jpg', FILE_EXISTS_RENAME);
+
+  $highlight2 = file_get_contents(drupal_get_path('module', 'roomify_accommodation_example_content') . '/default_images/highlight2.jpg');
+  $highlight2 = file_save_data($highlight2, roomify_system_file_dir() . 'highlight2.jpg', FILE_EXISTS_RENAME);
+
+  $highlight3 = file_get_contents(drupal_get_path('module', 'roomify_accommodation_example_content') . '/default_images/highlight3.jpg');
+  $highlight3 = file_save_data($highlight3, roomify_system_file_dir() . 'highlight3.jpg', FILE_EXISTS_RENAME);
+
+  $node->field_sp_highlight_image1[LANGUAGE_NONE][0] = array(
+    'fid' => $highlight1->fid,
+    'filename' => $highlight1->filename,
+    'filemime' => $highlight1->filemime,
+    'uid' => 1,
+    'uri' => $highlight1->uri,
+    'status' => 1,
+    'display' => 1,
+  );
+  // Highlight Image 3 Caption.
+  $node->field_sp_highlight_image1_cap['en'][0]['value'] = 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.';
+  $node->field_sp_highlight_image2[LANGUAGE_NONE][0] = array(
+    'fid' => $highlight2->fid,
+    'filename' => $highlight2->filename,
+    'filemime' => $highlight2->filemime,
+    'uid' => 1,
+    'uri' => $highlight2->uri,
+    'status' => 1,
+    'display' => 1,
+  );
+  $node->field_sp_highlight_image2_cap['en'][0]['value'] = 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.';
+  $node->field_sp_highlight_image3[LANGUAGE_NONE][0] = array(
+    'fid' => $highlight3->fid,
+    'filename' => $highlight3->filename,
+    'filemime' => $highlight3->filemime,
+    'uid' => 1,
+    'uri' => $highlight3->uri,
+    'status' => 1,
+    'display' => 1,
+  );
+  $node->field_sp_highlight_image3_cap['en'][0]['value'] = 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.';
   node_save($node);
 }
 

@@ -9,15 +9,30 @@
     font-weight: 400;
     margin: 0 auto;
     position: relative;
+    border-bottom: 1px solid #ececec;
+    &:before {
+      width: 0;
+      height: 0;
+      border-style: solid;
+      border-width: 30px 50px 0 50px;
+      border-color: #ececec transparent transparent transparent;
+      content: '';
+      position: absolute;
+      bottom: -31px;
+      left: 0;
+      display: table;
+      right: 0;
+      margin: 0 auto;
+    }
     &:after {
       width: 0;
       height: 0;
       border-style: solid;
-      border-width: 35px 50px 0 50px;
+      border-width: 30px 50px 0 50px;
       border-color: #ffffff transparent transparent transparent;
       content: '';
       position: absolute;
-      bottom: -26px;
+      bottom: -30px;
       left: 0;
       display: table;
       right: 0;
@@ -37,11 +52,14 @@
   .panel-content-top {
     margin-bottom: 50px;
   }
-  .panel-content-wrapper,
+  .highlights,
+  .panel-content-wrapper .panel_sl_content,
+  .panel-content-wrapper .panel_sl_content-2 .inner,
   .panel-content-bottom {
     display: table;
     margin: 0 auto;
     width: 1200px;
+    float: none;
     @media (max-width: 1440px) {
       max-width: 1128px;
     }
@@ -58,14 +76,63 @@
       max-width: 100%;
     }
   }
+  .highlights {
+    margin-bottom: 30px;
+  }
+  .pane-node-field-sp-highlight-image1,
+  .pane-node-field-sp-highlight-image2,
+  .pane-node-field-sp-highlight-image3,
+  .pane-node-field-sp-highlight-image1-cap,
+  .pane-node-field-sp-highlight-image2-cap,
+  .pane-node-field-sp-highlight-image3-cap {
+    font-weight: 400;
+    img {
+      margin: 0px auto 20px auto;
+      border: 1px solid #ececec;
+      border-radius: 2px;
+    }
+    .field-type-text {
+      margin-bottom: 50px;
+      text-align: center;
+    }
+  }
+
   .panel_sl_content-2 {
     background: white;
     padding: 25px;
-    margin-bottom: 50px;
-    border-radius: 2px;
-    border: 1px solid #ececec;
+    margin-bottom: 70px;
     display: inline-block;
     width: 100%;
+    position: relative;
+    border-bottom: 1px solid #ececec;
+    &:before {
+      width: 0;
+      height: 0;
+      border-style: solid;
+      border-width: 30px 50px 0 50px;
+      border-color: #ececec transparent transparent transparent;
+      content: '';
+      position: absolute;
+      bottom: -31px;
+      left: 0;
+      display: table;
+      right: 0;
+      margin: 0 auto;
+    }
+    &:after {
+      width: 0;
+      height: 0;
+      border-style: solid;
+      border-width: 30px 50px 0 50px;
+      border-color: #ffffff transparent transparent transparent;
+      content: '';
+      position: absolute;
+      bottom: -30px;
+      left: 0;
+      display: table;
+      right: 0;
+      margin: 0 auto;
+    }
     &:empty {
       display: none;
     }
@@ -108,9 +175,12 @@
     background-position: center; 
   }
   .pane-node-body {
-    display: inline-block;
+    display: table;
+    margin: 0 auto;
     width: 100%;
-    margin-bottom: 35px;
+    margin-top: 35px;
+    margin-bottom: 70px;
+    float: none;
   }
   .pane-properties-index-panel-pane-4 {
     .view-properties-index {
@@ -119,15 +189,31 @@
           border-bottom: 0;
         }
         .views-field-field-sp-featured-image {
-          height: 310px;
-          img {
-            height: 310px;
+          @media (min-width: $screen-md-max) {
+            height: 300px;
+            img {
+              height: 300px;
+            }
           }
         }
         .property-details {
           padding-left: 30px;
-          @media (min-width: $screen-sm-max) {
-            height: 310px;
+          table {
+            td {
+              @media (max-width: $screen-xs) {
+                width: 20% !important;
+                text-align: center;
+                &.area,
+                &.area-type,
+                &.property-type {
+                  width: 100% !important;
+                }
+              }
+            }
+          }
+
+          @media (min-width: $screen-md-max) {
+            height: 300px;
           }
           .name {
             font-size: 26px;
@@ -135,11 +221,11 @@
           }
         }
         .property-details-2 {
-          @media (min-width: $screen-sm-max) {
-            height: 310px;
+          @media (min-width: $screen-md-max) {
+            height: 300px;
           }
           .price {
-            font-size: 22px;
+            font-size: 18px;
           }
         }
       }
