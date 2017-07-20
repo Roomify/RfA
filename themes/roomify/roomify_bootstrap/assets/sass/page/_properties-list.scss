@@ -58,10 +58,10 @@
   .panel-content-bottom {
     display: table;
     margin: 0 auto;
-    width: 1200px;
+    width: 100%;
     float: none;
     @media (max-width: 1440px) {
-      max-width: 1128px;
+      max-width: 100%;
     }
     @media (max-width: 1200px) {
       max-width: 900px;
@@ -195,7 +195,7 @@
         }
         .property-info {
           height: 180px;
-          background: white;
+          background: #f1f1f1;
           padding: 25px;
           padding-left: 15px;
           max-width: 540px;
@@ -218,7 +218,7 @@
           position: relative;
           &:before {
             width: 1px;
-            background: #ececec;
+            background: #ffffff;
             height: calc(100% - 30px);
             position: absolute;
             left: 0;
