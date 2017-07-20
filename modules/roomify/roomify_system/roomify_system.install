@@ -795,6 +795,7 @@ function roomify_system_update_7049() {
  */
 function roomify_system_update_7050() {
   module_enable(array('xmlsitemap_custom', 'xmlsitemap_node', 'xmlsitemap_taxonomy'));
+
   $configuration_mlid = roomify_system_get_menu_link_id('Configuration', 'admin/bat/config/global/settings', 'roomify_dashboard_menu', -4);
   roomify_system_create_update_menu_link('XML Sitemap', 'admin/config/search/xmlsitemap', 'roomify_dashboard_menu', 13, 1, $configuration_mlid);
 
@@ -810,5 +811,11 @@ function roomify_system_update_7050() {
   $settings['status'] = '1';
   $settings['priority'] = '0.5';
   variable_set('xmlsitemap_settings_taxonomy_term_location', $settings);
+}
 
+/**
+ * Enable module "Alternate hreflang".
+ */
+function roomify_system_update_7051() {
+  module_enable(array('hreflang'));
 }
