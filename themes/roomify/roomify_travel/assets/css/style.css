@@ -15535,30 +15535,23 @@ body.node-type-offer .pane-offer-panel-pane-2 .pager-load-more {
       max-width: 100%; } }
 .node-type-properties-list .highlights {
   margin-bottom: 30px; }
-.node-type-properties-list .pane-node-field-sp-highlight-image1,
-.node-type-properties-list .pane-node-field-sp-highlight-image2,
-.node-type-properties-list .pane-node-field-sp-highlight-image3,
-.node-type-properties-list .pane-node-field-sp-highlight-image1-cap,
-.node-type-properties-list .pane-node-field-sp-highlight-image2-cap,
-.node-type-properties-list .pane-node-field-sp-highlight-image3-cap {
-  font-weight: 400; }
-  .node-type-properties-list .pane-node-field-sp-highlight-image1 img,
-  .node-type-properties-list .pane-node-field-sp-highlight-image2 img,
-  .node-type-properties-list .pane-node-field-sp-highlight-image3 img,
-  .node-type-properties-list .pane-node-field-sp-highlight-image1-cap img,
-  .node-type-properties-list .pane-node-field-sp-highlight-image2-cap img,
-  .node-type-properties-list .pane-node-field-sp-highlight-image3-cap img {
-    margin: 0px auto 20px auto;
-    border: 1px solid #ececec;
-    border-radius: 2px; }
-  .node-type-properties-list .pane-node-field-sp-highlight-image1 .field-type-text,
-  .node-type-properties-list .pane-node-field-sp-highlight-image2 .field-type-text,
-  .node-type-properties-list .pane-node-field-sp-highlight-image3 .field-type-text,
-  .node-type-properties-list .pane-node-field-sp-highlight-image1-cap .field-type-text,
-  .node-type-properties-list .pane-node-field-sp-highlight-image2-cap .field-type-text,
-  .node-type-properties-list .pane-node-field-sp-highlight-image3-cap .field-type-text {
-    margin-bottom: 50px;
-    text-align: center; }
+.node-type-properties-list .pane-node-field-sp-highlight-image1 img,
+.node-type-properties-list .pane-node-field-sp-highlight-image2 img,
+.node-type-properties-list .pane-node-field-sp-highlight-image3 img,
+.node-type-properties-list .pane-node-field-sp-highlight-image1-cap img,
+.node-type-properties-list .pane-node-field-sp-highlight-image2-cap img,
+.node-type-properties-list .pane-node-field-sp-highlight-image3-cap img {
+  margin: 0px auto 20px auto;
+  border: 1px solid #ececec;
+  border-radius: 2px; }
+.node-type-properties-list .pane-node-field-sp-highlight-image1 .field-type-text,
+.node-type-properties-list .pane-node-field-sp-highlight-image2 .field-type-text,
+.node-type-properties-list .pane-node-field-sp-highlight-image3 .field-type-text,
+.node-type-properties-list .pane-node-field-sp-highlight-image1-cap .field-type-text,
+.node-type-properties-list .pane-node-field-sp-highlight-image2-cap .field-type-text,
+.node-type-properties-list .pane-node-field-sp-highlight-image3-cap .field-type-text {
+  margin-bottom: 50px;
+  text-align: center; }
 .node-type-properties-list .panel_sl_content-2 {
   background: white;
   padding: 25px;
