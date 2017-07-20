@@ -51,10 +51,10 @@ function roomify_properties_list_field_group_info() {
     'weight' => '3',
     'children' => array(
       0 => 'field_sp_highlight_image1',
-      1 => 'field_sp_highlight_image2',
-      2 => 'field_sp_highlight_image3',
-      3 => 'field_sp_highlight_image1_cap',
-      4 => 'field_sp_highlight_image2_cap',
+      1 => 'field_sp_highlight_image1_cap',
+      2 => 'field_sp_highlight_image2',
+      3 => 'field_sp_highlight_image2_cap',
+      4 => 'field_sp_highlight_image3',
       5 => 'field_sp_highlight_image3_cap',
     ),
     'format_type' => 'tab',
@@ -84,6 +84,8 @@ function roomify_properties_list_field_group_info() {
     'weight' => '4',
     'children' => array(
       0 => 'field_properties_list_properties',
+      1 => 'field_pl_area_facet',
+      2 => 'field_pl_area_type_filter',
     ),
     'format_type' => 'tab',
     'format_settings' => array(

@@ -69,33 +69,13 @@ function roomify_properties_list_default_page_manager_handlers() {
   $display->content = array();
   $display->panels = array();
   $pane = new stdClass();
-  $pane->pid = 'new-7631801d-b61b-4ae4-8dd0-8d34dba24a48';
+  $pane->pid = 'new-5a97ec64-a311-47ee-90e4-3e09f9913419';
   $pane->panel = 'bottom';
   $pane->type = 'views_panes';
-  $pane->subtype = 'properties_index-panel_pane_4';
+  $pane->subtype = 'properties_index-panel_pane_5';
   $pane->shown = TRUE;
-  $pane->access = array(
-    'plugins' => array(
-      1 => array(
-        'name' => 'php',
-        'settings' => array(
-          'description' => 'Properties are set',
-          'php' => 'if (isset($contexts[\'argument_entity_id:node_1\']->data->field_properties_list_properties)) {
-  if (empty($contexts[\'argument_entity_id:node_1\']->data->field_properties_list_properties)) {
-    return FALSE;
-  }
-  return TRUE;
-}',
-        ),
-        'not' => FALSE,
-      ),
-    ),
-  );
-  $pane->configuration = array(
-    'override_title' => 1,
-    'override_title_text' => '',
-    'override_title_heading' => 'h2',
-  );
+  $pane->access = array();
+  $pane->configuration = array();
   $pane->cache = array();
   $pane->style = array(
     'settings' => NULL,
@@ -104,9 +84,9 @@ function roomify_properties_list_default_page_manager_handlers() {
   $pane->extras = array();
   $pane->position = 0;
   $pane->locks = array();
-  $pane->uuid = '7631801d-b61b-4ae4-8dd0-8d34dba24a48';
-  $display->content['new-7631801d-b61b-4ae4-8dd0-8d34dba24a48'] = $pane;
-  $display->panels['bottom'][0] = 'new-7631801d-b61b-4ae4-8dd0-8d34dba24a48';
+  $pane->uuid = '5a97ec64-a311-47ee-90e4-3e09f9913419';
+  $display->content['new-5a97ec64-a311-47ee-90e4-3e09f9913419'] = $pane;
+  $display->panels['bottom'][0] = 'new-5a97ec64-a311-47ee-90e4-3e09f9913419';
   $pane = new stdClass();
   $pane->pid = 'new-61b40018-b4c2-4835-8a8a-cb3c6924802a';
   $pane->panel = 'bottom';
@@ -387,7 +367,25 @@ function roomify_properties_list_default_page_manager_handlers() {
   $pane->subtype = 'facetapi-PSgMGV0vhgwKGBG76zNiI6gHpbuUpy7v';
   $pane->shown = TRUE;
   $pane->access = array(
-    'plugins' => array(),
+    'plugins' => array(
+      0 => array(
+        'name' => 'entity_field_value:node:properties_list:field_pl_area_facet',
+        'settings' => array(
+          'field_pl_area_facet' => array(
+            'und' => array(
+              0 => array(
+                'value' => 1,
+              ),
+            ),
+          ),
+          'field_pl_area_facet_value' => array(
+            0 => 1,
+          ),
+        ),
+        'context' => 'argument_entity_id:node_1',
+        'not' => FALSE,
+      ),
+    ),
   );
   $pane->configuration = array(
     'override_title' => 1,
@@ -414,7 +412,27 @@ function roomify_properties_list_default_page_manager_handlers() {
   $pane->type = 'block';
   $pane->subtype = 'facetapi-LZ5CVSwTZdsXhbhn7Z38s9xNZroPD6oC';
   $pane->shown = TRUE;
-  $pane->access = array();
+  $pane->access = array(
+    'plugins' => array(
+      0 => array(
+        'name' => 'entity_field_value:node:properties_list:field_pl_area_type_filter',
+        'settings' => array(
+          'field_pl_area_type_filter' => array(
+            'und' => array(
+              0 => array(
+                'value' => 1,
+              ),
+            ),
+          ),
+          'field_pl_area_type_filter_value' => array(
+            0 => 1,
+          ),
+        ),
+        'context' => 'argument_entity_id:node_1',
+        'not' => FALSE,
+      ),
+    ),
+  );
   $pane->configuration = array(
     'override_title' => 1,
     'override_title_text' => 'Area Type',

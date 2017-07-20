@@ -112,77 +112,80 @@ function roomify_example_content_create_homepage_node($pid1, $pid2, $pid3) {
  * Create a property list node.
  */
 function roomify_example_content_create_properties_list_node($p1, $p2, $p3) {
-  
-  $node = new stdClass();
-  $node->type = 'properties_list';
-  $node->title = 'Villas with Pool';
-  $node->language = 'en';
-  $node->uid = 1;
-  $node->status = 1;
-  $node->path['pathauto'] = 1;
-  $node = node_submit($node);
+  $example_nodes = array('pool' => array('title' => 'Villas with pool'), 'mountain' => array('title' => 'Lost in the mountains'), 'beach' => array('title' => 'In the beach!'));
 
-  $image = file_get_contents(drupal_get_path('module', 'roomify_accommodation_example_content') . '/default_images/pool.jpg');
-  $image = file_save_data($image, roomify_system_file_dir() . 'pool.jpg', FILE_EXISTS_RENAME);
+  foreach ($example_nodes as $key => $value) {
+    $node = new stdClass();
+    $node->type = 'properties_list';
+    $node->title = $value['title'];
+    $node->language = 'en';
+    $node->uid = 1;
+    $node->status = 1;
+    $node->path['pathauto'] = 1;
+    $node = node_submit($node);
 
-  $node->body['en'][0]['value'] = '<p style="text-align: justify;">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.&nbsp;Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>';
-  $node->body['en'][0]['format'] = 'filtered_text';
-  $node->field_pl_featured_image[LANGUAGE_NONE][0] = array(
-    'fid' => $image->fid,
-    'filename' => $image->filename,
-    'filemime' => $image->filemime,
-    'uid' => 1,
-    'uri' => $image->uri,
-    'status' => 1,
-    'display' => 1,
-  );
-  $node->title_field['en'][0]['value'] = 'Villas with pool';
+    $image = file_get_contents(drupal_get_path('module', 'roomify_accommodation_example_content') . '/default_images/' . $key . '/featured.jpg');
+    $image = file_save_data($image, roomify_system_file_dir() . $key . '.jpg', FILE_EXISTS_RENAME);
 
-  $node->field_properties_list_properties[LANGUAGE_NONE][0]['target_id'] = $p1;
-  $node->field_properties_list_properties[LANGUAGE_NONE][1]['target_id'] = $p2;
-  $node->field_properties_list_properties[LANGUAGE_NONE][2]['target_id'] = $p3;
+    $node->body['en'][0]['value'] = '<p style="text-align: justify;">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.&nbsp;Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>';
+    $node->body['en'][0]['format'] = 'filtered_text';
+    $node->field_pl_featured_image[LANGUAGE_NONE][0] = array(
+      'fid' => $image->fid,
+      'filename' => $image->filename,
+      'filemime' => $image->filemime,
+      'uid' => 1,
+      'uri' => $image->uri,
+      'status' => 1,
+      'display' => 1,
+    );
+    $node->title_field['en'][0]['value'] = $value['title'];
 
-  $highlight1 = file_get_contents(drupal_get_path('module', 'roomify_accommodation_example_content') . '/default_images/highlight1.jpg');
-  $highlight1 = file_save_data($highlight1, roomify_system_file_dir() . 'highlight1.jpg', FILE_EXISTS_RENAME);
+    $node->field_properties_list_properties[LANGUAGE_NONE][0]['target_id'] = $p1;
+    $node->field_properties_list_properties[LANGUAGE_NONE][1]['target_id'] = $p2;
+    $node->field_properties_list_properties[LANGUAGE_NONE][2]['target_id'] = $p3;
 
-  $highlight2 = file_get_contents(drupal_get_path('module', 'roomify_accommodation_example_content') . '/default_images/highlight2.jpg');
-  $highlight2 = file_save_data($highlight2, roomify_system_file_dir() . 'highlight2.jpg', FILE_EXISTS_RENAME);
+    $highlight1 = file_get_contents(drupal_get_path('module', 'roomify_accommodation_example_content') . '/default_images/' . $key . '/highlight1.jpg');
+    $highlight1 = file_save_data($highlight1, roomify_system_file_dir() . 'highlight1.jpg', FILE_EXISTS_RENAME);
 
-  $highlight3 = file_get_contents(drupal_get_path('module', 'roomify_accommodation_example_content') . '/default_images/highlight3.jpg');
-  $highlight3 = file_save_data($highlight3, roomify_system_file_dir() . 'highlight3.jpg', FILE_EXISTS_RENAME);
+    $highlight2 = file_get_contents(drupal_get_path('module', 'roomify_accommodation_example_content') . '/default_images/' . $key .'/highlight2.jpg');
+    $highlight2 = file_save_data($highlight2, roomify_system_file_dir() . 'highlight2.jpg', FILE_EXISTS_RENAME);
 
-  $node->field_sp_highlight_image1[LANGUAGE_NONE][0] = array(
-    'fid' => $highlight1->fid,
-    'filename' => $highlight1->filename,
-    'filemime' => $highlight1->filemime,
-    'uid' => 1,
-    'uri' => $highlight1->uri,
-    'status' => 1,
-    'display' => 1,
-  );
-  // Highlight Image 3 Caption.
-  $node->field_sp_highlight_image1_cap['en'][0]['value'] = 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.';
-  $node->field_sp_highlight_image2[LANGUAGE_NONE][0] = array(
-    'fid' => $highlight2->fid,
-    'filename' => $highlight2->filename,
-    'filemime' => $highlight2->filemime,
-    'uid' => 1,
-    'uri' => $highlight2->uri,
-    'status' => 1,
-    'display' => 1,
-  );
-  $node->field_sp_highlight_image2_cap['en'][0]['value'] = 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.';
-  $node->field_sp_highlight_image3[LANGUAGE_NONE][0] = array(
-    'fid' => $highlight3->fid,
-    'filename' => $highlight3->filename,
-    'filemime' => $highlight3->filemime,
-    'uid' => 1,
-    'uri' => $highlight3->uri,
-    'status' => 1,
-    'display' => 1,
-  );
-  $node->field_sp_highlight_image3_cap['en'][0]['value'] = 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.';
-  node_save($node);
+    $highlight3 = file_get_contents(drupal_get_path('module', 'roomify_accommodation_example_content') . '/default_images/' . $key .'/highlight3.jpg');
+    $highlight3 = file_save_data($highlight3, roomify_system_file_dir() . 'highlight3.jpg', FILE_EXISTS_RENAME);
+
+    $node->field_sp_highlight_image1[LANGUAGE_NONE][0] = array(
+      'fid' => $highlight1->fid,
+      'filename' => $highlight1->filename,
+      'filemime' => $highlight1->filemime,
+      'uid' => 1,
+      'uri' => $highlight1->uri,
+      'status' => 1,
+      'display' => 1,
+    );
+    // Highlight Image 3 Caption.
+    $node->field_sp_highlight_image1_cap['en'][0]['value'] = 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.';
+    $node->field_sp_highlight_image2[LANGUAGE_NONE][0] = array(
+      'fid' => $highlight2->fid,
+      'filename' => $highlight2->filename,
+      'filemime' => $highlight2->filemime,
+      'uid' => 1,
+      'uri' => $highlight2->uri,
+      'status' => 1,
+      'display' => 1,
+    );
+    $node->field_sp_highlight_image2_cap['en'][0]['value'] = 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.';
+    $node->field_sp_highlight_image3[LANGUAGE_NONE][0] = array(
+      'fid' => $highlight3->fid,
+      'filename' => $highlight3->filename,
+      'filemime' => $highlight3->filemime,
+      'uid' => 1,
+      'uri' => $highlight3->uri,
+      'status' => 1,
+      'display' => 1,
+    );
+    $node->field_sp_highlight_image3_cap['en'][0]['value'] = 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.';
+    node_save($node);
+  }
 }
 
 /**

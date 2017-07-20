@@ -65,6 +65,110 @@ function roomify_properties_list_field_default_field_instances() {
     ),
   );
 
+  // Exported field_instance: 'node-properties_list-field_pl_area_facet'.
+  $field_instances['node-properties_list-field_pl_area_facet'] = array(
+    'bundle' => 'properties_list',
+    'default_value' => array(
+      0 => array(
+        'value' => 1,
+      ),
+    ),
+    'deleted' => 0,
+    'description' => '',
+    'display' => array(
+      'default' => array(
+        'label' => 'above',
+        'module' => 'list',
+        'settings' => array(
+          'conditions' => array(),
+        ),
+        'type' => 'list_default',
+        'weight' => 10,
+      ),
+      'landing_page_teaser' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+      'teaser' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+    ),
+    'entity_type' => 'node',
+    'field_name' => 'field_pl_area_facet',
+    'label' => 'Area Filter',
+    'required' => 0,
+    'settings' => array(
+      'entity_translation_sync' => FALSE,
+      'user_register_form' => FALSE,
+    ),
+    'widget' => array(
+      'active' => 1,
+      'module' => 'options',
+      'settings' => array(
+        'display_label' => 1,
+      ),
+      'type' => 'options_onoff',
+      'weight' => 17,
+    ),
+  );
+
+  // Exported field_instance: 'node-properties_list-field_pl_area_type_filter'.
+  $field_instances['node-properties_list-field_pl_area_type_filter'] = array(
+    'bundle' => 'properties_list',
+    'default_value' => array(
+      0 => array(
+        'value' => 1,
+      ),
+    ),
+    'deleted' => 0,
+    'description' => '',
+    'display' => array(
+      'default' => array(
+        'label' => 'above',
+        'module' => 'list',
+        'settings' => array(
+          'conditions' => array(),
+        ),
+        'type' => 'list_default',
+        'weight' => 11,
+      ),
+      'landing_page_teaser' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+      'teaser' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+    ),
+    'entity_type' => 'node',
+    'field_name' => 'field_pl_area_type_filter',
+    'label' => 'Area type Filter',
+    'required' => 0,
+    'settings' => array(
+      'entity_translation_sync' => FALSE,
+      'user_register_form' => FALSE,
+    ),
+    'widget' => array(
+      'active' => 1,
+      'module' => 'options',
+      'settings' => array(
+        'display_label' => 1,
+      ),
+      'type' => 'options_onoff',
+      'weight' => 18,
+    ),
+  );
+
   // Exported field_instance: 'node-properties_list-field_pl_featured_image'.
   $field_instances['node-properties_list-field_pl_featured_image'] = array(
     'bundle' => 'properties_list',
@@ -200,7 +304,7 @@ function roomify_properties_list_field_default_field_instances() {
         'type_settings' => array(),
       ),
       'type' => 'entityreference_autocomplete',
-      'weight' => 9,
+      'weight' => 19,
     ),
   );
 
@@ -729,6 +833,8 @@ function roomify_properties_list_field_default_field_instances() {
 
   // Translatables
   // Included for use with string extractors like potx.
+  t('Area Filter');
+  t('Area type Filter');
   t('Body');
   t('Featured Image');
   t('Highlight Image 1');

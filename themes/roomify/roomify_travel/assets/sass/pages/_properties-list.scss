@@ -100,6 +100,7 @@
   .panel_sl_content-2 {
     background: white;
     padding: 25px;
+    padding-left: 15px;
     margin-bottom: 70px;
     display: inline-block;
     width: 100%;
@@ -182,56 +183,78 @@
     margin-bottom: 70px;
     float: none;
   }
-  .pane-properties-index-panel-pane-4 {
+  .pane-properties-index-panel-pane-5 {
     .view-properties-index {
       .views-row {
-        &:last-child {
-          border-bottom: 0;
+        margin-bottom: 30px;
+        img {
+          border-radius: 4px 4px 0 0;
         }
-        .views-field-field-sp-featured-image {
-          @media (min-width: $screen-md-max) {
-            height: 300px;
-            img {
-              height: 300px;
-            }
+        .views-field-average-rating {
+          position: absolute;
+          bottom: 160px;
+          right: 21px;
+        }
+        .property-info {
+          height: 180px;
+          background: white;
+          padding: 25px;
+          max-width: 540px;
+          border-radius: 0px 0px 4px 4px;
+        }
+        .content {
+          width: 75%;
+          display: inline-block;
+          float: left;
+          height: 180px;
+          padding-right: 15px;
+        }
+        .sidebar {
+          width: 25%;
+          display: inline-block;
+          float: left;
+          height: 180px;
+          padding-top: 25px;
+          padding-left: 15px;
+          position: relative;
+          &:before {
+            width: 1px;
+            background: #ececec;
+            height: calc(100% - 30px);
+            position: absolute;
+            left: 0;
+            top: 0;
+            content: '';
           }
         }
-        .property-details {
-          padding-left: 30px;
-          table {
-            td {
-              @media (max-width: $screen-xs) {
-                width: 20% !important;
-                text-align: center;
-                &.area,
-                &.area-type,
-                &.property-type {
-                  width: 100% !important;
-                }
-              }
-            }
-          }
-
-          @media (min-width: $screen-md-max) {
-            height: 300px;
-          }
-          .name {
-            font-size: 26px;
-            margin-bottom: 25px;
-          }
+        .reviews-number {
+          color: #bdbdbd;
+          font-size: 12px;
+          font-weight: 500;
+          text-align: center;
         }
-        .property-details-2 {
-          @media (min-width: $screen-md-max) {
-            height: 300px;
-          }
-          .price {
-            font-size: 18px;
-          }
+        .title {
+          font-size: 18px;
+          font-weight: bold;
+          margin-bottom: 5px;;
+          margin-top: 0;
+        }
+        .description {
+          font-size: 13px;
+          margin-bottom: 0;
+        }
+        .price {
+          text-align: center;
+          margin-top: 35px;
+          color: #4CAF50;
         }
       }
     }
   }
-  .pane-properties-index-panel-pane-2 {
+  .pane-properties-index-panel-pane-5 {
     margin-top: 50px;
+    margin-bottom: 30px;
+    display: inline-block;
+    width: 100%;
   }
 }

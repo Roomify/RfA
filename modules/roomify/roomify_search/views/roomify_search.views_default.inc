@@ -630,6 +630,107 @@ function roomify_search_views_default_views() {
   $handler->display->display_options['allow']['title_override'] = 'title_override';
   $handler->display->display_options['allow']['exposed_form'] = 0;
   $handler->display->display_options['allow']['fields_override'] = 0;
+
+  /* Display: Card View */
+  $handler = $view->new_display('panel_pane', 'Card View', 'panel_pane_5');
+  $handler->display->display_options['defaults']['style_plugin'] = FALSE;
+  $handler->display->display_options['style_plugin'] = 'default';
+  $handler->display->display_options['style_options']['row_class'] = 'col-xs-12 col-sm-6 col-lg-4';
+  $handler->display->display_options['defaults']['style_options'] = FALSE;
+  $handler->display->display_options['defaults']['row_plugin'] = FALSE;
+  $handler->display->display_options['row_plugin'] = 'fields';
+  $handler->display->display_options['defaults']['row_options'] = FALSE;
+  $handler->display->display_options['defaults']['fields'] = FALSE;
+  /* Field: Indexed Roomify Property: Roomify property ID */
+  $handler->display->display_options['fields']['property_id']['id'] = 'property_id';
+  $handler->display->display_options['fields']['property_id']['table'] = 'search_api_index_properties_index';
+  $handler->display->display_options['fields']['property_id']['field'] = 'property_id';
+  $handler->display->display_options['fields']['property_id']['label'] = '';
+  $handler->display->display_options['fields']['property_id']['exclude'] = TRUE;
+  $handler->display->display_options['fields']['property_id']['element_label_colon'] = FALSE;
+  $handler->display->display_options['fields']['property_id']['link_to_entity'] = 0;
+  /* Field: Indexed Roomify Property: Search/Featured Image */
+  $handler->display->display_options['fields']['field_sp_featured_image']['id'] = 'field_sp_featured_image';
+  $handler->display->display_options['fields']['field_sp_featured_image']['table'] = 'search_api_index_properties_index';
+  $handler->display->display_options['fields']['field_sp_featured_image']['field'] = 'field_sp_featured_image';
+  $handler->display->display_options['fields']['field_sp_featured_image']['label'] = '';
+  $handler->display->display_options['fields']['field_sp_featured_image']['element_label_colon'] = FALSE;
+  $handler->display->display_options['fields']['field_sp_featured_image']['click_sort_column'] = 'fid';
+  $handler->display->display_options['fields']['field_sp_featured_image']['settings'] = array(
+    'image_style' => 'roomify_4_3',
+    'image_link' => 'content',
+    'conditions' => array(
+      0 => array(
+        'condition' => '',
+      ),
+    ),
+  );
+  /* Field: Indexed Roomify Property: Label */
+  $handler->display->display_options['fields']['name']['id'] = 'name';
+  $handler->display->display_options['fields']['name']['table'] = 'search_api_index_properties_index';
+  $handler->display->display_options['fields']['name']['field'] = 'name';
+  $handler->display->display_options['fields']['name']['label'] = '';
+  $handler->display->display_options['fields']['name']['exclude'] = TRUE;
+  $handler->display->display_options['fields']['name']['element_label_colon'] = FALSE;
+  $handler->display->display_options['fields']['name']['element_wrapper_type'] = 'h2';
+  $handler->display->display_options['fields']['name']['link_to_entity'] = 0;
+  /* Field: Indexed Roomify Property: Property Short Description */
+  $handler->display->display_options['fields']['field_sp_short_description']['id'] = 'field_sp_short_description';
+  $handler->display->display_options['fields']['field_sp_short_description']['table'] = 'search_api_index_properties_index';
+  $handler->display->display_options['fields']['field_sp_short_description']['field'] = 'field_sp_short_description';
+  $handler->display->display_options['fields']['field_sp_short_description']['label'] = '';
+  $handler->display->display_options['fields']['field_sp_short_description']['exclude'] = TRUE;
+  $handler->display->display_options['fields']['field_sp_short_description']['alter']['max_length'] = '120';
+  $handler->display->display_options['fields']['field_sp_short_description']['alter']['word_boundary'] = FALSE;
+  $handler->display->display_options['fields']['field_sp_short_description']['alter']['strip_tags'] = TRUE;
+  $handler->display->display_options['fields']['field_sp_short_description']['alter']['trim'] = TRUE;
+  $handler->display->display_options['fields']['field_sp_short_description']['alter']['preserve_tags'] = '<p> <span>';
+  $handler->display->display_options['fields']['field_sp_short_description']['element_label_colon'] = FALSE;
+  $handler->display->display_options['fields']['field_sp_short_description']['settings'] = array(
+    'conditions' => array(
+      0 => array(
+        'condition' => '',
+      ),
+    ),
+  );
+  /* Field: Indexed Roomify Property: Number of reviews */
+  $handler->display->display_options['fields']['roomify_search_handler_reviews_number']['id'] = 'roomify_search_handler_reviews_number';
+  $handler->display->display_options['fields']['roomify_search_handler_reviews_number']['table'] = 'search_api_index_properties_index';
+  $handler->display->display_options['fields']['roomify_search_handler_reviews_number']['field'] = 'roomify_search_handler_reviews_number';
+  $handler->display->display_options['fields']['roomify_search_handler_reviews_number']['label'] = '';
+  $handler->display->display_options['fields']['roomify_search_handler_reviews_number']['exclude'] = TRUE;
+  $handler->display->display_options['fields']['roomify_search_handler_reviews_number']['element_label_colon'] = FALSE;
+  /* Field: Indexed Roomify Property: Starging Room Price */
+  $handler->display->display_options['fields']['starting_type_price']['id'] = 'starting_type_price';
+  $handler->display->display_options['fields']['starting_type_price']['table'] = 'search_api_index_properties_index';
+  $handler->display->display_options['fields']['starting_type_price']['field'] = 'starting_type_price';
+  $handler->display->display_options['fields']['starting_type_price']['label'] = '';
+  $handler->display->display_options['fields']['starting_type_price']['exclude'] = TRUE;
+  $handler->display->display_options['fields']['starting_type_price']['element_label_colon'] = FALSE;
+  /* Field: Global: Custom text */
+  $handler->display->display_options['fields']['nothing']['id'] = 'nothing';
+  $handler->display->display_options['fields']['nothing']['table'] = 'views';
+  $handler->display->display_options['fields']['nothing']['field'] = 'nothing';
+  $handler->display->display_options['fields']['nothing']['label'] = '';
+  $handler->display->display_options['fields']['nothing']['alter']['text'] = '<div class="property-info">
+    <div class="content">
+      <div class="title">[name]</div>
+      <div class="description">[field_sp_short_description]</div>
+     </div>
+     <div class="sidebar">
+      <div class="reviews-number">[roomify_search_handler_reviews_number]</div>
+      <div class="price">[starting_type_price]</div>
+     </div>
+  </div>';
+  $handler->display->display_options['fields']['nothing']['element_label_colon'] = FALSE;
+  /* Field: Indexed Roomify Property: Average rating */
+  $handler->display->display_options['fields']['average_rating']['id'] = 'average_rating';
+  $handler->display->display_options['fields']['average_rating']['table'] = 'search_api_index_properties_index';
+  $handler->display->display_options['fields']['average_rating']['field'] = 'average_rating';
+  $handler->display->display_options['fields']['average_rating']['label'] = '';
+  $handler->display->display_options['fields']['average_rating']['element_label_colon'] = FALSE;
+  $handler->display->display_options['fields']['average_rating']['precision'] = '0';
+  $handler->display->display_options['fields']['average_rating']['link_to_entity'] = 0;
   $translatables['properties_index'] = array(
     t('Master'),
     t('more'),
@@ -672,24 +773,35 @@ function roomify_search_views_default_views() {
             </div>'),
     t('Details View'),
     t('<div class="name">[name]</div>
-    <div class="short-description">[field_sp_short_description]</div>
-    <table>
-      <tbody>
-        <tr>
-          <td data-toggle="tooltip" data-html="true" title="Max Capacity" data-placement="top" class="capacity">[roomify_search_handler_property_capacity]</td>
-          <td data-toggle="tooltip" data-html="true" title="Single Beds" data-placement="top" class="single-beds">[roomify_search_handler_beds_largest_room]</td>
-          <td data-toggle="tooltip" data-html="true" title="Double Beds" data-placement="top" class="double-beds">[roomify_search_handler_double_beds_largest_room]</td>
-          <td data-toggle="tooltip" data-html="true" title="Bathrooms" data-placement="top" class="bathrooms">[roomify_search_handler_bathrooms_largest_room]</td>
-        </tr>
-        <tr>
-          <td data-toggle="tooltip" data-html="true" title="Area" data-placement="top" class="area">[field_sp_area]</td>
-          <td data-toggle="tooltip" data-html="true" title="Area Type" data-placement="top" class="area-type">[field_sp_area_type]</td>
-          <td data-toggle="tooltip" data-html="true" title="Property Type" data-placement="top" class="property-type">[field_sp_property_type]</td>
-         </tr>
-       </tbody>
-      </table>'),
+      <div class="short-description">[field_sp_short_description]</div>
+      <table>
+        <tbody>
+          <tr>
+            <td data-toggle="tooltip" data-html="true" title="Max Capacity" data-placement="top" class="capacity">[roomify_search_handler_property_capacity]</td>
+            <td data-toggle="tooltip" data-html="true" title="Single Beds" data-placement="top" class="single-beds">[roomify_search_handler_beds_largest_room]</td>
+            <td data-toggle="tooltip" data-html="true" title="Double Beds" data-placement="top" class="double-beds">[roomify_search_handler_double_beds_largest_room]</td>
+            <td data-toggle="tooltip" data-html="true" title="Bathrooms" data-placement="top" class="bathrooms">[roomify_search_handler_bathrooms_largest_room]</td>
+          </tr>
+          <tr>
+            <td data-toggle="tooltip" data-html="true" title="Area" data-placement="top" class="area">[field_sp_area]</td>
+            <td data-toggle="tooltip" data-html="true" title="Area Type" data-placement="top" class="area-type">[field_sp_area_type]</td>
+            <td data-toggle="tooltip" data-html="true" title="Property Type" data-placement="top" class="property-type">[field_sp_property_type]</td>
+           </tr>
+         </tbody>
+        </table>'),
     t('<div class="reviews">[roomify_search_handler_reviews_number]</div>
-  <div class="price">[starting_type_price]</div>'),
+    <div class="price">[starting_type_price]</div>'),
+    t('Card View'),
+    t('<div class="property-info">
+    <div class="content">
+      <div class="title">[name]</div>
+      <div class="description">[field_sp_short_description]</div>
+     </div>
+     <div class="sidebar">
+      <div class="reviews-number">[roomify_search_handler_reviews_number]</div>
+      <div class="price">[starting_type_price]</div>
+     </div>
+  </div>'),
   );
 
   $export['properties_index'] = $view;
