@@ -147,10 +147,10 @@ function roomify_example_content_create_properties_list_node($p1, $p2, $p3) {
     $highlight1 = file_get_contents(drupal_get_path('module', 'roomify_accommodation_example_content') . '/default_images/' . $key . '/highlight1.jpg');
     $highlight1 = file_save_data($highlight1, roomify_system_file_dir() . 'highlight1.jpg', FILE_EXISTS_RENAME);
 
-    $highlight2 = file_get_contents(drupal_get_path('module', 'roomify_accommodation_example_content') . '/default_images/' . $key .'/highlight2.jpg');
+    $highlight2 = file_get_contents(drupal_get_path('module', 'roomify_accommodation_example_content') . '/default_images/' . $key . '/highlight2.jpg');
     $highlight2 = file_save_data($highlight2, roomify_system_file_dir() . 'highlight2.jpg', FILE_EXISTS_RENAME);
 
-    $highlight3 = file_get_contents(drupal_get_path('module', 'roomify_accommodation_example_content') . '/default_images/' . $key .'/highlight3.jpg');
+    $highlight3 = file_get_contents(drupal_get_path('module', 'roomify_accommodation_example_content') . '/default_images/' . $key . '/highlight3.jpg');
     $highlight3 = file_save_data($highlight3, roomify_system_file_dir() . 'highlight3.jpg', FILE_EXISTS_RENAME);
 
     $node->field_sp_highlight_image1[LANGUAGE_NONE][0] = array(
@@ -1166,8 +1166,9 @@ function roomify_accommodation_example_content_multi_property() {
   variable_set('roomify_accommodation_example_content', 'multi_property');
   roomify_example_content_create_homepage_node($property_id_1, $property_id_2, $property_id_3);
 
-  roomify_example_content_create_properties_list_node($property_id_1, $property_id_2, $property_id_3);
-
+  if (module_exists('roomify_properties_list')) {
+    roomify_example_content_create_properties_list_node($property_id_1, $property_id_2, $property_id_3);
+  }
   $property_ids = array(
     $property_id_1 => 'Casa Sul Mare',
     $property_id_2 => 'Casa Azzurra',
