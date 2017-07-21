@@ -9,6 +9,11 @@
  * Implements hook_install().
  */
 function roomify_i18n_install() {
+  if ($vocabulary = taxonomy_vocabulary_machine_name_load('amenities')) {
+    $vocabulary->i18n_mode = I18N_MODE_ENTITY_TRANSLATION;
+]    taxonomy_vocabulary_save($vocabulary);
+
+  }
   roomify_i18n_entities_translation_settings();
 }
 
@@ -16,5 +21,17 @@ function roomify_i18n_install() {
  * Settings for properties and types translation.
  */
 function roomify_i18n_update_7001() {
+  roomify_i18n_entities_translation_settings();
+}
+
+/**
+ * Settings for properties and types translation.
+ */
+function roomify_i18n_update_7002() {
+
+  if ($vocabulary = taxonomy_vocabulary_machine_name_load('amenities')) {
+    $vocabulary->i18n_mode = I18N_MODE_ENTITY_TRANSLATION;
+    taxonomy_vocabulary_save($vocabulary);
+  }
   roomify_i18n_entities_translation_settings();
 }

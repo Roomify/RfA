@@ -105,7 +105,7 @@ function roomify_translate_form_alter(&$form, &$form_state, $form_id) {
 function roomify_translate_entities_translation_settings() {
   $settings['default_language'] = 'xx-et-default';
   $settings['hide_language_selector'] = 1;
-  $settings['exclude_language_none '] = 0;
+  $settings['exclude_language_none'] = 1;
   $settings['lock_language'] = 0;
   $settings['shared_fields_original_only'] = 0;
 
