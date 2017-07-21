@@ -278,6 +278,8 @@ projects[job_scheduler][download][type] = git
 projects[job_scheduler][download][url] = https://git.drupal.org/project/job_scheduler.git
 projects[job_scheduler][download][revision] = 9baaba6bebd34ad6842b1a5292d4d8b32dc9c65c
 
+projects[hreflang][version] = 1.3
+
 projects[i18n][version] = 1.15
 
 projects[i18nviews][version] = 3.0-alpha1
