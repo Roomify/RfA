@@ -123,3 +123,14 @@ function roomify_translate_update_7002() {
 
   _roomify_translate_replace_name_fields();
 }
+
+/**
+ * Make terms translatable.
+ */
+function roomify_translate_update_7003() {
+  if ($vocabulary = taxonomy_vocabulary_machine_name_load('amenities')) {
+    $vocabulary->i18n_mode = I18N_MODE_ENTITY_TRANSLATION;
+    taxonomy_vocabulary_save($vocabulary);
+  }
+  roomify_translate_entities_translation_settings();
+}
