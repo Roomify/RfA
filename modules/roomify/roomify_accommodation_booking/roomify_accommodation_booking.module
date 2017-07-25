@@ -3038,13 +3038,15 @@ function roomify_accommodation_booking_pet_substitutions_alter(&$substitutions, 
 
   if (isset($params['rules_state']->variables['commerce_order'])) {
     $commerce_order = $params['rules_state']->variables['commerce_order']->value();
-    $type = roomify_accommodation_booking_get_bat_types_from_order($commerce_order);
-    $property_reference = field_get_items('bat_type', $type, 'field_st_property_reference');
-    $property = roomify_property_load($property_reference[0]['target_id']);
 
-    $substitutions['commerce_order'] = $commerce_order;
-    $substitutions['bat_type'] = $type;
-    $substitutions['roomify_property'] = $property;
+    if ($type = roomify_accommodation_booking_get_bat_types_from_order($commerce_order)) {
+      $property_reference = field_get_items('bat_type', $type, 'field_st_property_reference');
+      $property = roomify_property_load($property_reference[0]['target_id']);
+
+      $substitutions['commerce_order'] = $commerce_order;
+      $substitutions['bat_type'] = $type;
+      $substitutions['roomify_property'] = $property;
+    }
   }
 
   if (isset($params['rules_state']->variables['bat_booking'])) {
@@ -3505,6 +3507,8 @@ function roomify_accommodation_booking_notifications_form_submit($form, &$form_s
  * @return BatType|false
  */
 function roomify_accommodation_booking_get_bat_types_from_order($order = FALSE) {
+  $type = FALSE;
+
   if ($order !== FALSE) {
     $wrapper = entity_metadata_wrapper('commerce_order', $order);
 
@@ -3524,11 +3528,9 @@ function roomify_accommodation_booking_get_bat_types_from_order($order = FALSE) 
         }
       }
     }
-
-    return $type;
   }
 
-  return FALSE;
+  return $type;
 }
 
 /**
