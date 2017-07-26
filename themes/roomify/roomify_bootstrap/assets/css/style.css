@@ -5964,25 +5964,31 @@ body#lang-fr #qtranslate-chooser .lang-en {
       border: none;
       text-align: center;
       margin: 0;
-      font-weight: normal;
+      font-weight: 300;
       font-size: 16px;
       padding: 5px 0 !important;
-      color: #8FB98B !important; }
-      .ui-datepicker td .ui-state-default:hover {
-        background: #8FB98B;
-        color: #FFF !important; }
+      color: #4CAF50 !important; }
+    .ui-datepicker td a.ui-state-hover {
+      background: #4CAF50 !important;
+      color: #FFF !important;
+      border-radius: 50%; }
     .ui-datepicker td .ui-state-active {
       background: #2e3641;
-      color: #FFF !important; }
+      color: #FFF !important;
+      border-radius: 50%; }
   .ui-datepicker td.ui-datepicker-unselectable .ui-state-default {
     padding: 5px 0;
-    color: #C50000 !important; }
+    color: #f90a0a !important; }
     .ui-datepicker td.ui-datepicker-unselectable .ui-state-default:hover {
       background: white; }
   .ui-datepicker .ui-datepicker-title {
     margin-top: .4em;
     margin-bottom: .3em;
     color: #e9f0f4; }
+    .ui-datepicker .ui-datepicker-title select {
+      color: #777;
+      font-weight: normal;
+      font-size: 13px; }
   .ui-datepicker .ui-datepicker-header {
     background: none;
     border: none; }
