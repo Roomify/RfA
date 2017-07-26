@@ -506,41 +506,43 @@
       }
     }
   }
-  // MAP VIEW
-  .view-display-id-panel_pane_2 {
-    .leaflet-container {
-      .leaflet-popup-content-wrapper {
-        border-radius: 4px;
+}
+
+// MAP VIEW
+.view-properties-index.view-display-id-panel_pane_2 {
+  .leaflet-container {
+    .leaflet-popup-content-wrapper {
+      border-radius: 4px;
+    }
+    .leaflet-popup {
+      min-height: 250px;
+      .leaflet-popup-content {
+        max-width: 170px;
+        margin: 14px;
       }
-      .leaflet-popup {
-        min-height: 250px;
-        .leaflet-popup-content {
-          max-width: 170px;
-          margin: 14px;
-        }
-        a {
-          font-size: 16px;
-          text-decoration: underline;
-        }
-        .roomify-property-short-description {
-          margin: 5px 0;
-          font-size: 13px;
-        }
-        .roomify-property-image {
-          display: inline-block;
-          max-width: 250px;
-          margin: 5px 0;
-          img {
-            width: 100% !important;
-            border-radius: 2px;
-            min-width: 120px;
-            min-height: 120px;
-          }
+      a {
+        font-size: 16px;
+        text-decoration: underline;
+      }
+      .roomify-property-short-description {
+        margin: 5px 0;
+        font-size: 13px;
+      }
+      .roomify-property-image {
+        display: inline-block;
+        max-width: 250px;
+        margin: 5px 0;
+        img {
+          width: 100% !important;
+          border-radius: 2px;
+          min-width: 120px;
+          min-height: 120px;
         }
       }
     }
   }
 }
+  
 #property-bat-activity-facets-availability,
 #roomify-property-search-block-form,
 #property-bat-facets-availability {
@@ -1121,6 +1123,7 @@
           margin-top: 6px;
           margin-bottom: 10px;
           font-weight: 400;
+          color: #3D3935;
           @media (max-width: $screen-xs) {
             text-align: center;
           }

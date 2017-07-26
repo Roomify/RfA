@@ -1,0 +1,34 @@
+<?php
+
+/**
+ * @file
+ * Code for the Roomify Properties List feature.
+ */
+
+include_once 'roomify_properties_list.features.inc';
+
+/**
+ * Implements hook_search_api_query_alter().
+ *
+ * @param SearchApiQueryInterface $query
+ *   The search query being executed.
+ */
+function roomify_properties_list_search_api_query_alter($query) {
+  if ($node = menu_get_object()) {
+    if ($node->type == 'properties_list') {
+      $info = entity_get_info($query->getIndex()->getEntityType());
+
+      if ($info['base table'] == 'roomify_properties') {
+        $properties_ids = array();
+
+        if (isset($node->field_properties_list_properties[LANGUAGE_NONE])) {
+          foreach ($node->field_properties_list_properties[LANGUAGE_NONE] as $property) {
+            $properties_ids[] = $property['target_id'];
+          }
+        }
+
+        $query->condition($info['entity keys']['id'], $properties_ids, 'IN');
+      }
+    }
+  }
+}

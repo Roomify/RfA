@@ -111,6 +111,7 @@ dependencies[] = roomify_pages_manager
 dependencies[] = roomify_social_feeds
 dependencies[] = roomify_integrations
 dependencies[] = roomify_review
+dependencies[] = roomify_properties_list
 
 ; Other
 dependencies[] = addtoany

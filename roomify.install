@@ -342,6 +342,7 @@ function roomify_install_finished(&$install_state) {
   menu_save($menu);
 
   // Create Common Menu Links.
+  roomify_system_create_update_menu_link('Home', '<front>', 'main-menu', -20);
   roomify_system_create_update_menu_link('Areas', 'areas', 'main-menu', -5);
   roomify_system_create_update_menu_link('Properties', 'availability-search', 'main-menu', -10);
   roomify_system_create_update_menu_link('Things to do', 'things-to-do', 'main-menu', -3);
@@ -354,7 +355,7 @@ function roomify_install_finished(&$install_state) {
   menu_rebuild();
 
   // Include nodes and location terms to the xml_sitemap.
-  $node_types = array('blog', 'landing_page', 'offer', 'location', 'page', 'activity', 'homepage');
+  $node_types = array('blog', 'landing_page', 'offer', 'location', 'page', 'activity', 'homepage', 'properties_list');
   foreach ($node_types as $type) {
     $settings = variable_get('xmlsitemap_settings_node_' . $type, array());
     $settings['status'] = '1';

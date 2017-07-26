@@ -819,3 +819,10 @@ function roomify_system_update_7050() {
 function roomify_system_update_7051() {
   module_enable(array('hreflang'));
 }
+
+/**
+ * nable module "Roomify Properties List".
+ */
+function roomify_system_update_7052() {
+  module_enable(array('roomify_properties_list'));
+}
