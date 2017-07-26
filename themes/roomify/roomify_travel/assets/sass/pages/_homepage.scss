@@ -18,6 +18,7 @@ body.node-type-homepage {
     position: relative;
   }
   // Slider
+  .view-homepage.view-display-id-panel_pane_1,
   .view-homepage-travel.view-display-id-panel_pane_1 {
     .views-field-field-homepage-slideshow {
       img {
@@ -50,11 +51,11 @@ body.node-type-homepage {
       position: relative;
     }
     .slick-prev.slick-arrow {
-      background: url("../images/arrow_left.png") 0 50% no-repeat;
-      background: url("../images/arrow_left.svg") center center no-repeat, linear-gradient(transparent, transparent);
+      background: url("../images/chevron_left.png") 0 50% no-repeat;
+      background: url("../images/chevron_left.svg") center center no-repeat, linear-gradient(transparent, transparent);
       display: inline-block;
       position: absolute;
-      top: calc(50% - 15px);
+      top: calc(45% - 30px);
       width: 30px;
       height: 30px;
       margin-top: 0;
@@ -62,13 +63,17 @@ body.node-type-homepage {
       border: 0;
       background-size: contain;
       left: 12px;
+      z-index: 3;
+      @media (max-width: $screen-xs) {
+        display: none !important;
+      }
     }
     .slick-next.slick-arrow {
-      background: url("../images/arrow_right.png") 0 50% no-repeat;
-      background: url("../images/arrow_right.svg") center center no-repeat, linear-gradient(transparent, transparent);
+      background: url("../images/chevron_right.png") 0 50% no-repeat;
+      background: url("../images/chevron_right.svg") center center no-repeat, linear-gradient(transparent, transparent);
       display: inline-block;
       position: absolute;
-      top: calc(50% - 15px);
+      top: calc(45% - 30px);
       width: 30px;
       height: 30px;
       margin-top: 0;
@@ -76,6 +81,10 @@ body.node-type-homepage {
       border: 0;
       background-size: contain;
       right: 12px;
+      z-index: 3;
+      @media (max-width: $screen-xs) {
+        display: none !important;
+      }
     }
   }
 
@@ -229,6 +238,12 @@ body.node-type-homepage {
       text-align: center;
     }
   }
+  .pane-node-field-homepage-main-text .pane-content {
+    max-width: 1200px;
+    display: table;
+    margin-left: auto;
+    margin-right: auto;
+  }
 }
 
 /* CAROUSEL */
@@ -294,11 +309,11 @@ body.node-type-homepage {
     transform: scale(1.2);
   }
   .slick-next.slick-arrow {
-    background: url("../images/arrow_right.png") 0 50% no-repeat;
-    background: url("../images/arrow_right.svg") center center no-repeat, linear-gradient(transparent, transparent);
+    background: url("../images/chevron_right.png") 0 50% no-repeat;
+    background: url("../images/chevron_right.svg") center center no-repeat, linear-gradient(transparent, transparent);
     display: inline-block;
     position: absolute;
-    top: calc(5% - 15px);
+    top: calc(45% - 15px);
     width: 30px;
     height: 30px;
     margin-top: 0;
@@ -311,8 +326,8 @@ body.node-type-homepage {
     }
   }
   .slick-prev.slick-arrow {
-    background: url("../images/arrow_left.png") 0 50% no-repeat;
-    background: url("../images/arrow_left.svg") center center no-repeat, linear-gradient(transparent, transparent);
+    background: url("../images/chevron_left.png") 0 50% no-repeat;
+    background: url("../images/chevron_left.svg") center center no-repeat, linear-gradient(transparent, transparent);
     display: inline-block;
     position: absolute;
     top: calc(45% - 15px);
@@ -571,8 +586,8 @@ body.node-type-homepage {
       position: relative;
     }
     .slick-prev.slick-arrow {
-      background: url("../images/arrow_left.png") 0 50% no-repeat;
-      background: url("../images/arrow_left.svg") center center no-repeat, linear-gradient(transparent, transparent);
+      background: url("../images/chevron_left.png") 0 50% no-repeat;
+      background: url("../images/chevron_left.svg") center center no-repeat, linear-gradient(transparent, transparent);
       display: inline-block;
       position: absolute;
       top: calc(50% - 15px);
@@ -588,8 +603,8 @@ body.node-type-homepage {
       }
     }
     .slick-next.slick-arrow {
-      background: url("../images/arrow_right.png") 0 50% no-repeat;
-      background: url("../images/arrow_right.svg") center center no-repeat, linear-gradient(transparent, transparent);
+      background: url("../images/chevron_right.png") 0 50% no-repeat;
+      background: url("../images/chevron_right.svg") center center no-repeat, linear-gradient(transparent, transparent);
       display: inline-block;
       position: absolute;
       top: calc(50% - 15px);
@@ -637,6 +652,72 @@ body.node-type-homepage {
         margin-top: 10px;
         font-style: italic;
         outline: none;
+      }
+    }
+  }
+}
+
+
+// Tight Homepage
+.node-type-homepage.homepage-tight {
+  .pane-node-field-homepage-main-text {
+    @include make-row();
+    background: white;
+    display: flex;
+    width: auto;
+    padding-top: 100px;
+    padding-bottom: 80px;
+  }
+  .pane-roomify-listing-availability-search-block-roomify-property-search {
+    position: relative;
+    width: 100%;
+    margin: 0 auto;
+    bottom: 1px;
+    max-width: 100%;
+    background: #f1f1f1;
+    border-radius: 0;
+    z-index: 1;
+    @media (max-width: $screen-xs) {
+      padding-bottom: 40px;
+    }
+    &:before {
+      width: 0;
+      height: 0;
+      border-style: solid;
+      border-width: 30px 50px 0 50px;
+      border-color: #ffffff transparent transparent transparent;
+      content: '';
+      position: absolute;
+      bottom: -31px;
+      left: 0;
+      display: table;
+      right: 0;
+      margin: 0 auto;
+    }
+    &:after {
+      width: 0;
+      height: 0;
+      border-style: solid;
+      border-width: 30px 50px 0 50px;
+      border-color: #f1f1f1 transparent transparent transparent;
+      content: '';
+      position: absolute;
+      bottom: -30px;
+      left: 0;
+      display: table;
+      right: 0;
+      margin: 0 auto;
+    }
+    form {
+      max-width: 1200px;
+      display: table;
+      margin: 0 auto;
+      width: 100%;
+      &#property-bat-facets-availability .form-wrapper {
+        input, select, .form-control {
+          background: #ffffff;
+          font-weight: 300;
+        }
       }
     }
   }

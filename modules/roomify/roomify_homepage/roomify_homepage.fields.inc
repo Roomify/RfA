@@ -139,6 +139,34 @@ function roomify_homepage_create_fields() {
     );
   }
 
+  if (field_read_field('field_homepage_style') === FALSE) {
+    $field_bases['field_homepage_style'] = array(
+      'active' => 1,
+      'cardinality' => 1,
+      'deleted' => 0,
+      'entity_types' => array(),
+      'field_name' => 'field_homepage_style',
+      'indexes' => array(
+        'value' => array(
+          0 => 'value',
+        ),
+      ),
+      'locked' => 0,
+      'module' => 'list',
+      'settings' => array(
+        'allowed_values' => array(
+          'large' => 'Large Slideshow',
+          'tight' => 'Tight Slideshow',
+        ),
+        'allowed_values_function' => '',
+        'entity_translation_sync' => FALSE,
+        'profile2_private' => FALSE,
+      ),
+      'translatable' => 0,
+      'type' => 'list_text',
+    );
+  }
+
   foreach ($field_bases as $field) {
     field_create_field($field);
   }
@@ -207,6 +235,7 @@ function roomify_homepage_create_fields() {
           'manualcrop_require_cropping' => array(),
           'manualcrop_styles_list' => array(
             'roomify_1200x720' => 'roomify_1200x720',
+            '1600x580' => '1600x580',
           ),
           'manualcrop_styles_mode' => 'include',
           'manualcrop_thumblist' => 0,
@@ -536,6 +565,57 @@ function roomify_homepage_create_fields() {
         'settings' => array(),
         'type' => 'options_buttons',
         'weight' => 9,
+      ),
+    );
+  }
+
+  if (field_read_instance('node', 'field_homepage_style', 'homepage') === FALSE) {
+    $field_instances['node-homepage-field_homepage_style'] = array(
+      'bundle' => 'homepage',
+      'default_value' => array(
+        0 => array(
+          'value' => 'tight',
+        ),
+      ),
+      'deleted' => 0,
+      'description' => '',
+      'display' => array(
+        'default' => array(
+          'label' => 'above',
+          'module' => 'list',
+          'settings' => array(
+            'conditions' => array(),
+          ),
+          'type' => 'list_default',
+          'weight' => 7,
+        ),
+        'landing_page_teaser' => array(
+          'label' => 'above',
+          'settings' => array(),
+          'type' => 'hidden',
+          'weight' => 0,
+        ),
+        'teaser' => array(
+          'label' => 'above',
+          'settings' => array(),
+          'type' => 'hidden',
+          'weight' => 0,
+        ),
+      ),
+      'entity_type' => 'node',
+      'field_name' => 'field_homepage_style',
+      'label' => 'Homepage Style',
+      'required' => 0,
+      'settings' => array(
+        'entity_translation_sync' => FALSE,
+        'user_register_form' => FALSE,
+      ),
+      'widget' => array(
+        'active' => 1,
+        'module' => 'options',
+        'settings' => array(),
+        'type' => 'options_buttons',
+        'weight' => 1,
       ),
     );
   }
