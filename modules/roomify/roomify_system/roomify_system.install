@@ -821,7 +821,7 @@ function roomify_system_update_7051() {
 }
 
 /**
- * nable module "Roomify Properties List".
+ * Enable module "Roomify Properties List".
  */
 function roomify_system_update_7052() {
   module_enable(array('roomify_properties_list'));
