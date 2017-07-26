@@ -602,7 +602,7 @@ function roomify_listing_create_property_fields($property_bundle) {
       'bundle' => $property_bundle,
       'default_value' => NULL,
       'default_value_function' => '',
-      'description' => 'Enter the user name of this property\'s owner. This field defaults to this unit\'s author, but may be set to another user. This name is used for reporting purposes, displaying the owner\'s name on Conversations and other purposes.',
+      'description' => "Enter the user name of this property's owner. This field defaults to this property's author, but may be set to another user. This name is used for reporting purposes, displaying the owner's name on Conversations and displaying a property owner's name/picture. Conversation notifications and editing privileges remain with the author of this property.",
       'display' => array(
         'default' => array(
           'label' => 'above',
