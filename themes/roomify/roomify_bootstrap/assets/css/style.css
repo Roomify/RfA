@@ -3036,55 +3036,20 @@ select[multiple].input-lg,
     color: #f0ad4e;
     background-color: #fff; }
 
-.btn-danger, .page-checkout fieldset.panel-default.checkout-buttons .checkout-back,
-.page-checkout fieldset.panel-default.checkout-buttons .checkout-cancel {
+.btn-danger {
   color: #fff;
   background-color: #d9534f;
   border-color: #d43f3a; }
-  .btn-danger:hover, .page-checkout fieldset.panel-default.checkout-buttons .checkout-back:hover,
-  .page-checkout fieldset.panel-default.checkout-buttons .checkout-cancel:hover, .btn-danger:focus, .page-checkout fieldset.panel-default.checkout-buttons .checkout-back:focus,
-  .page-checkout fieldset.panel-default.checkout-buttons .checkout-cancel:focus, .btn-danger.focus, .page-checkout fieldset.panel-default.checkout-buttons .focus.checkout-back,
-  .page-checkout fieldset.panel-default.checkout-buttons .focus.checkout-cancel, .btn-danger:active, .page-checkout fieldset.panel-default.checkout-buttons .checkout-back:active,
-  .page-checkout fieldset.panel-default.checkout-buttons .checkout-cancel:active, .btn-danger.active, .page-checkout fieldset.panel-default.checkout-buttons .active.checkout-back,
-  .page-checkout fieldset.panel-default.checkout-buttons .active.checkout-cancel, .open > .btn-danger.dropdown-toggle, .page-checkout fieldset.panel-default.checkout-buttons .open > .dropdown-toggle.checkout-back,
-  .page-checkout fieldset.panel-default.checkout-buttons .open > .dropdown-toggle.checkout-cancel {
+  .btn-danger:hover, .btn-danger:focus, .btn-danger.focus, .btn-danger:active, .btn-danger.active, .open > .btn-danger.dropdown-toggle {
     color: #fff;
     background-color: #c9302c;
     border-color: #ac2925; }
-  .btn-danger:active, .page-checkout fieldset.panel-default.checkout-buttons .checkout-back:active,
-  .page-checkout fieldset.panel-default.checkout-buttons .checkout-cancel:active, .btn-danger.active, .page-checkout fieldset.panel-default.checkout-buttons .active.checkout-back,
-  .page-checkout fieldset.panel-default.checkout-buttons .active.checkout-cancel, .open > .btn-danger.dropdown-toggle, .page-checkout fieldset.panel-default.checkout-buttons .open > .dropdown-toggle.checkout-back,
-  .page-checkout fieldset.panel-default.checkout-buttons .open > .dropdown-toggle.checkout-cancel {
+  .btn-danger:active, .btn-danger.active, .open > .btn-danger.dropdown-toggle {
     background-image: none; }
-  .btn-danger.disabled, .page-checkout fieldset.panel-default.checkout-buttons .disabled.checkout-back,
-  .page-checkout fieldset.panel-default.checkout-buttons .disabled.checkout-cancel, .btn-danger.disabled:hover, .page-checkout fieldset.panel-default.checkout-buttons .disabled.checkout-back:hover,
-  .page-checkout fieldset.panel-default.checkout-buttons .disabled.checkout-cancel:hover, .btn-danger.disabled:focus, .page-checkout fieldset.panel-default.checkout-buttons .disabled.checkout-back:focus,
-  .page-checkout fieldset.panel-default.checkout-buttons .disabled.checkout-cancel:focus, .btn-danger.disabled.focus, .page-checkout fieldset.panel-default.checkout-buttons .disabled.focus.checkout-back,
-  .page-checkout fieldset.panel-default.checkout-buttons .disabled.focus.checkout-cancel, .btn-danger.disabled:active, .page-checkout fieldset.panel-default.checkout-buttons .disabled.checkout-back:active,
-  .page-checkout fieldset.panel-default.checkout-buttons .disabled.checkout-cancel:active, .btn-danger.disabled.active, .page-checkout fieldset.panel-default.checkout-buttons .disabled.active.checkout-back,
-  .page-checkout fieldset.panel-default.checkout-buttons .disabled.active.checkout-cancel, .btn-danger[disabled], .page-checkout fieldset.panel-default.checkout-buttons [disabled].checkout-back,
-  .page-checkout fieldset.panel-default.checkout-buttons [disabled].checkout-cancel, .btn-danger[disabled]:hover, .page-checkout fieldset.panel-default.checkout-buttons [disabled].checkout-back:hover,
-  .page-checkout fieldset.panel-default.checkout-buttons [disabled].checkout-cancel:hover, .btn-danger[disabled]:focus, .page-checkout fieldset.panel-default.checkout-buttons [disabled].checkout-back:focus,
-  .page-checkout fieldset.panel-default.checkout-buttons [disabled].checkout-cancel:focus, .btn-danger[disabled].focus, .page-checkout fieldset.panel-default.checkout-buttons [disabled].focus.checkout-back,
-  .page-checkout fieldset.panel-default.checkout-buttons [disabled].focus.checkout-cancel, .btn-danger[disabled]:active, .page-checkout fieldset.panel-default.checkout-buttons [disabled].checkout-back:active,
-  .page-checkout fieldset.panel-default.checkout-buttons [disabled].checkout-cancel:active, .btn-danger[disabled].active, .page-checkout fieldset.panel-default.checkout-buttons [disabled].active.checkout-back,
-  .page-checkout fieldset.panel-default.checkout-buttons [disabled].active.checkout-cancel, fieldset[disabled] .btn-danger, fieldset[disabled] .page-checkout fieldset.panel-default.checkout-buttons .checkout-back, .page-checkout fieldset.panel-default.checkout-buttons fieldset[disabled] .checkout-back,
-  fieldset[disabled] .page-checkout fieldset.panel-default.checkout-buttons .checkout-cancel,
-  .page-checkout fieldset.panel-default.checkout-buttons fieldset[disabled] .checkout-cancel, fieldset[disabled] .btn-danger:hover, fieldset[disabled] .page-checkout fieldset.panel-default.checkout-buttons .checkout-back:hover, .page-checkout fieldset.panel-default.checkout-buttons fieldset[disabled] .checkout-back:hover,
-  fieldset[disabled] .page-checkout fieldset.panel-default.checkout-buttons .checkout-cancel:hover,
-  .page-checkout fieldset.panel-default.checkout-buttons fieldset[disabled] .checkout-cancel:hover, fieldset[disabled] .btn-danger:focus, fieldset[disabled] .page-checkout fieldset.panel-default.checkout-buttons .checkout-back:focus, .page-checkout fieldset.panel-default.checkout-buttons fieldset[disabled] .checkout-back:focus,
-  fieldset[disabled] .page-checkout fieldset.panel-default.checkout-buttons .checkout-cancel:focus,
-  .page-checkout fieldset.panel-default.checkout-buttons fieldset[disabled] .checkout-cancel:focus, fieldset[disabled] .btn-danger.focus, fieldset[disabled] .page-checkout fieldset.panel-default.checkout-buttons .focus.checkout-back, .page-checkout fieldset.panel-default.checkout-buttons fieldset[disabled] .focus.checkout-back,
-  fieldset[disabled] .page-checkout fieldset.panel-default.checkout-buttons .focus.checkout-cancel,
-  .page-checkout fieldset.panel-default.checkout-buttons fieldset[disabled] .focus.checkout-cancel, fieldset[disabled] .btn-danger:active, fieldset[disabled] .page-checkout fieldset.panel-default.checkout-buttons .checkout-back:active, .page-checkout fieldset.panel-default.checkout-buttons fieldset[disabled] .checkout-back:active,
-  fieldset[disabled] .page-checkout fieldset.panel-default.checkout-buttons .checkout-cancel:active,
-  .page-checkout fieldset.panel-default.checkout-buttons fieldset[disabled] .checkout-cancel:active, fieldset[disabled] .btn-danger.active, fieldset[disabled] .page-checkout fieldset.panel-default.checkout-buttons .active.checkout-back, .page-checkout fieldset.panel-default.checkout-buttons fieldset[disabled] .active.checkout-back,
-  fieldset[disabled] .page-checkout fieldset.panel-default.checkout-buttons .active.checkout-cancel,
-  .page-checkout fieldset.panel-default.checkout-buttons fieldset[disabled] .active.checkout-cancel {
+  .btn-danger.disabled, .btn-danger.disabled:hover, .btn-danger.disabled:focus, .btn-danger.disabled.focus, .btn-danger.disabled:active, .btn-danger.disabled.active, .btn-danger[disabled], .btn-danger[disabled]:hover, .btn-danger[disabled]:focus, .btn-danger[disabled].focus, .btn-danger[disabled]:active, .btn-danger[disabled].active, fieldset[disabled] .btn-danger, fieldset[disabled] .btn-danger:hover, fieldset[disabled] .btn-danger:focus, fieldset[disabled] .btn-danger.focus, fieldset[disabled] .btn-danger:active, fieldset[disabled] .btn-danger.active {
     background-color: #d9534f;
     border-color: #d43f3a; }
-  .btn-danger .badge, .page-checkout fieldset.panel-default.checkout-buttons .checkout-back .badge,
-  .page-checkout fieldset.panel-default.checkout-buttons .checkout-cancel .badge {
+  .btn-danger .badge {
     color: #d9534f;
     background-color: #fff; }
 
@@ -5864,6 +5829,16 @@ body#lang-fr .lang-en {
   display: none; }
 body#lang-fr #qtranslate-chooser .lang-en {
   display: block; }
+
+.btn {
+  padding: 9px 12px 7px;
+  border-width: 0 1px 4px 1px;
+  font-size: 15px;
+  font-weight: bold;
+  text-transform: uppercase; }
+  .btn:hover {
+    margin-top: 1px;
+    border-bottom-width: 3px; }
 
 .button, body.error404 .page-content-center a.button-404 {
   padding: 14px 40px;
@@ -10655,31 +10630,22 @@ div.ctools-modal-dialog .modal-header .modal-title {
     .page-conversation-booking #roomify-accommodation-booking-confirmation-form,
     .page-booking #roomify-accommodation-booking-confirmation-form {
       margin-bottom: 40px; } }
-  .page-conversation-booking #roomify-accommodation-booking-confirmation-form button,
-  .page-booking #roomify-accommodation-booking-confirmation-form button {
-    display: inline-block;
-    color: white;
-    font-weight: 500;
-    background: #000;
-    padding: 12px 15px;
-    border: 0; }
-    .page-conversation-booking #roomify-accommodation-booking-confirmation-form button:hover,
-    .page-booking #roomify-accommodation-booking-confirmation-form button:hover {
-      background: #8FB98B; }
-    .page-conversation-booking #roomify-accommodation-booking-confirmation-form button#edit-enquiry,
-    .page-booking #roomify-accommodation-booking-confirmation-form button#edit-enquiry {
-      background: #8FB98B; }
-      .page-conversation-booking #roomify-accommodation-booking-confirmation-form button#edit-enquiry:hover,
-      .page-booking #roomify-accommodation-booking-confirmation-form button#edit-enquiry:hover {
-        background: #8FB98B;
-        opacity: .86; }
-    .page-conversation-booking #roomify-accommodation-booking-confirmation-form button#edit-submit--2,
-    .page-booking #roomify-accommodation-booking-confirmation-form button#edit-submit--2 {
-      background: #2180B6; }
-      .page-conversation-booking #roomify-accommodation-booking-confirmation-form button#edit-submit--2:hover,
-      .page-booking #roomify-accommodation-booking-confirmation-form button#edit-submit--2:hover {
-        background: #2180B6;
-        opacity: .86; }
+  .page-conversation-booking #roomify-accommodation-booking-confirmation-form button#edit-enquiry,
+  .page-booking #roomify-accommodation-booking-confirmation-form button#edit-enquiry {
+    background-color: #8FB98B;
+    border-color: #8cab8a; }
+    .page-conversation-booking #roomify-accommodation-booking-confirmation-form button#edit-enquiry:hover,
+    .page-booking #roomify-accommodation-booking-confirmation-form button#edit-enquiry:hover {
+      background-color: #70a66b;
+      border-color: #6a9068; }
+  .page-conversation-booking #roomify-accommodation-booking-confirmation-form button#edit-submit--2,
+  .page-booking #roomify-accommodation-booking-confirmation-form button#edit-submit--2 {
+    background-color: #127BA3;
+    border-color: #158CBA; }
+    .page-conversation-booking #roomify-accommodation-booking-confirmation-form button#edit-submit--2:hover,
+    .page-booking #roomify-accommodation-booking-confirmation-form button#edit-submit--2:hover {
+      background-color: #0d5875;
+      border-color: #0f6383; }
   .page-conversation-booking #roomify-accommodation-booking-confirmation-form table,
   .page-booking #roomify-accommodation-booking-confirmation-form table {
     border: 1px solid #ddd; }
@@ -10890,25 +10856,19 @@ div.ctools-modal-dialog .modal-header .modal-title {
   @media (min-width: 992px) {
     .page-activity-booking #roomify-activity-booking-confirmation-form {
       margin-left: 16.66667%; } }
-  .page-activity-booking #roomify-activity-booking-confirmation-form button {
-    display: inline-block;
-    color: white;
-    font-weight: 500;
-    background: #000;
-    padding: 12px 15px;
-    border: 0; }
-    .page-activity-booking #roomify-activity-booking-confirmation-form button:hover {
-      background: #8FB98B; }
-    .page-activity-booking #roomify-activity-booking-confirmation-form button#edit-enquiry {
-      background: #8FB98B; }
-      .page-activity-booking #roomify-activity-booking-confirmation-form button#edit-enquiry:hover {
-        background: #8FB98B;
-        opacity: .86; }
-    .page-activity-booking #roomify-activity-booking-confirmation-form button#edit-submit--2 {
-      background: #2180B6; }
-      .page-activity-booking #roomify-activity-booking-confirmation-form button#edit-submit--2:hover {
-        background: #2180B6;
-        opacity: .86; }
+  .page-activity-booking #roomify-activity-booking-confirmation-form button#edit-enquiry {
+    background-color: #779D73;
+    border-color: #8FB98B;
+    margin-right: 10px; }
+    .page-activity-booking #roomify-activity-booking-confirmation-form button#edit-enquiry:hover {
+      background-color: #496147;
+      border-color: #5f795d; }
+  .page-activity-booking #roomify-activity-booking-confirmation-form button#edit-submit--2 {
+    background-color: #127BA3;
+    border-color: #158CBA; }
+    .page-activity-booking #roomify-activity-booking-confirmation-form button#edit-submit--2:hover {
+      background-color: #0d5875;
+      border-color: #0f6383; }
   .page-activity-booking #roomify-activity-booking-confirmation-form table {
     border: 1px solid #ddd; }
     .page-activity-booking #roomify-activity-booking-confirmation-form table th {
@@ -11045,7 +11005,6 @@ div.ctools-modal-dialog .modal-header .modal-title {
 .page-checkout .link-to-cart a {
   margin-right: 10px;
   padding: 10px 20px;
-  border: 0;
   margin-bottom: 30px; }
 .page-checkout .view-my-cart table {
   font-size: 14px;
@@ -11124,11 +11083,20 @@ div.ctools-modal-dialog .modal-header .modal-title {
       margin-right: 10px; }
     .page-checkout fieldset.panel-default.checkout-buttons .checkout-back,
     .page-checkout fieldset.panel-default.checkout-buttons .checkout-cancel {
+      color: #fff;
+      border: 1px solid transparent;
+      border-width: 0 1px 4px 1px;
+      background-color: #d9534f;
+      border-color: #d43f3a;
       margin-right: 10px;
       padding: 10px 20px; }
       .page-checkout fieldset.panel-default.checkout-buttons .checkout-back:hover,
       .page-checkout fieldset.panel-default.checkout-buttons .checkout-cancel:hover {
-        text-decoration: none; }
+        background-color: #c9302c;
+        border-color: #ac2925;
+        text-decoration: none;
+        margin-top: 1px;
+        border-bottom-width: 3px; }
 .page-checkout fieldset.customer_profile_billing .form-group {
   margin-bottom: 25px; }
 .page-checkout #commerce-checkout-form-review .checkout-help {
@@ -12118,7 +12086,8 @@ body.blog .news-listing-wrapper {
   margin: 0;
   font-size: 16px;
   background: #4A4A4A;
-  color: #F6F6F6; }
+  color: #F6F6F6;
+  width: 100%; }
   @media (max-width: 480px) {
     .pane-roomify-property-property-single-day-tour h2.pane-title,
     .pane-roomify-property-property-multi-day-activity h2.pane-title,
@@ -12144,17 +12113,34 @@ body.blog .news-listing-wrapper {
   display: inline-block;
   width: 100%;
   background: #FFF; }
-  .pane-roomify-property-property-single-day-tour .pane-content #single-day-tour-container,
+  .pane-roomify-property-property-single-day-tour .pane-content form,
+  .pane-roomify-property-property-multi-day-activity .pane-content form,
+  .pane-roomify-property-property-single-day-activity .pane-content form {
+    max-width: 650px;
+    width: 100%;
+    margin: 0 auto; }
+  .pane-roomify-property-property-single-day-tour .pane-content #single-day-tour-container-step1,
+  .pane-roomify-property-property-single-day-tour .pane-content #single-day-tour-container-step2,
   .pane-roomify-property-property-single-day-tour .pane-content #activity-container,
-  .pane-roomify-property-property-single-day-tour .pane-content .container-inline-date,
-  .pane-roomify-property-property-multi-day-activity .pane-content #single-day-tour-container,
+  .pane-roomify-property-property-multi-day-activity .pane-content #single-day-tour-container-step1,
+  .pane-roomify-property-property-multi-day-activity .pane-content #single-day-tour-container-step2,
   .pane-roomify-property-property-multi-day-activity .pane-content #activity-container,
-  .pane-roomify-property-property-multi-day-activity .pane-content .container-inline-date,
-  .pane-roomify-property-property-single-day-activity .pane-content #single-day-tour-container,
-  .pane-roomify-property-property-single-day-activity .pane-content #activity-container,
-  .pane-roomify-property-property-single-day-activity .pane-content .container-inline-date {
+  .pane-roomify-property-property-single-day-activity .pane-content #single-day-tour-container-step1,
+  .pane-roomify-property-property-single-day-activity .pane-content #single-day-tour-container-step2,
+  .pane-roomify-property-property-single-day-activity .pane-content #activity-container {
     width: 50%;
     float: left; }
+    @media (max-width: 670px) {
+      .pane-roomify-property-property-single-day-tour .pane-content #single-day-tour-container-step1,
+      .pane-roomify-property-property-single-day-tour .pane-content #single-day-tour-container-step2,
+      .pane-roomify-property-property-single-day-tour .pane-content #activity-container,
+      .pane-roomify-property-property-multi-day-activity .pane-content #single-day-tour-container-step1,
+      .pane-roomify-property-property-multi-day-activity .pane-content #single-day-tour-container-step2,
+      .pane-roomify-property-property-multi-day-activity .pane-content #activity-container,
+      .pane-roomify-property-property-single-day-activity .pane-content #single-day-tour-container-step1,
+      .pane-roomify-property-property-single-day-activity .pane-content #single-day-tour-container-step2,
+      .pane-roomify-property-property-single-day-activity .pane-content #activity-container {
+        width: 100%; } }
   .pane-roomify-property-property-single-day-tour .pane-content .container-inline-date label,
   .pane-roomify-property-property-multi-day-activity .pane-content .container-inline-date label,
   .pane-roomify-property-property-single-day-activity .pane-content .container-inline-date label {
@@ -12181,45 +12167,37 @@ body.blog .news-listing-wrapper {
   .pane-roomify-property-property-multi-day-activity .pane-content .ui-datepicker-inline,
   .pane-roomify-property-property-single-day-activity .pane-content .ui-datepicker-inline {
     width: 270px; }
-  .pane-roomify-property-property-single-day-tour .pane-content #single-day-tour-container select,
+  .pane-roomify-property-property-single-day-tour .pane-content #single-day-tour-container-step2 select,
   .pane-roomify-property-property-single-day-tour .pane-content #activity-container select,
-  .pane-roomify-property-property-multi-day-activity .pane-content #single-day-tour-container select,
+  .pane-roomify-property-property-multi-day-activity .pane-content #single-day-tour-container-step2 select,
   .pane-roomify-property-property-multi-day-activity .pane-content #activity-container select,
-  .pane-roomify-property-property-single-day-activity .pane-content #single-day-tour-container select,
+  .pane-roomify-property-property-single-day-activity .pane-content #single-day-tour-container-step2 select,
   .pane-roomify-property-property-single-day-activity .pane-content #activity-container select {
     width: calc(100% - 15px); }
-  .pane-roomify-property-property-single-day-tour .pane-content #single-day-tour-container button,
+  .pane-roomify-property-property-single-day-tour .pane-content #single-day-tour-container-step2 button,
   .pane-roomify-property-property-single-day-tour .pane-content #activity-container button,
-  .pane-roomify-property-property-multi-day-activity .pane-content #single-day-tour-container button,
+  .pane-roomify-property-property-multi-day-activity .pane-content #single-day-tour-container-step2 button,
   .pane-roomify-property-property-multi-day-activity .pane-content #activity-container button,
-  .pane-roomify-property-property-single-day-activity .pane-content #single-day-tour-container button,
+  .pane-roomify-property-property-single-day-activity .pane-content #single-day-tour-container-step2 button,
   .pane-roomify-property-property-single-day-activity .pane-content #activity-container button {
-    display: inline-block;
-    color: white;
-    font-weight: 500;
-    background: #000;
-    padding: 12px 15px;
-    border: 0;
+    text-transform: uppercase;
+    color: #fff;
     width: calc(100% - 15px);
-    border: 1px solid #779D73;
+    border-color: #8FB98B;
     font-size: 16px;
     font-weight: 600;
-    background: #8FB98B;
-    margin-top: 12px; }
-    .pane-roomify-property-property-single-day-tour .pane-content #single-day-tour-container button:hover,
+    background: #779D73;
+    margin-top: 12px;
+    padding: 11px 12px 9px; }
+    .pane-roomify-property-property-single-day-tour .pane-content #single-day-tour-container-step2 button:hover,
     .pane-roomify-property-property-single-day-tour .pane-content #activity-container button:hover,
-    .pane-roomify-property-property-multi-day-activity .pane-content #single-day-tour-container button:hover,
+    .pane-roomify-property-property-multi-day-activity .pane-content #single-day-tour-container-step2 button:hover,
     .pane-roomify-property-property-multi-day-activity .pane-content #activity-container button:hover,
-    .pane-roomify-property-property-single-day-activity .pane-content #single-day-tour-container button:hover,
+    .pane-roomify-property-property-single-day-activity .pane-content #single-day-tour-container-step2 button:hover,
     .pane-roomify-property-property-single-day-activity .pane-content #activity-container button:hover {
-      background: #8FB98B; }
-    .pane-roomify-property-property-single-day-tour .pane-content #single-day-tour-container button:hover,
-    .pane-roomify-property-property-single-day-tour .pane-content #activity-container button:hover,
-    .pane-roomify-property-property-multi-day-activity .pane-content #single-day-tour-container button:hover,
-    .pane-roomify-property-property-multi-day-activity .pane-content #activity-container button:hover,
-    .pane-roomify-property-property-single-day-activity .pane-content #single-day-tour-container button:hover,
-    .pane-roomify-property-property-single-day-activity .pane-content #activity-container button:hover {
-      opacity: .86; }
+      margin-top: 13px;
+      background: #496147;
+      border-color: #5f795d; }
 
 body.page-location .content-row {
   max-width: 100%;

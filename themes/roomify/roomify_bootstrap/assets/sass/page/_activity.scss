@@ -314,6 +314,7 @@
     font-size: 16px;
     background: #4A4A4A;
     color: #F6F6F6;
+    width: 100%;
     @media (max-width: $screen-xs) {
       display: inline-block;
       .title {
@@ -336,11 +337,21 @@
     width: 100%;
     background: #FFF;
 
-    #single-day-tour-container,
-    #activity-container,
-    .container-inline-date {
+    form {
+      max-width: 650px;
+      width: 100%;
+      margin: 0 auto;
+    }
+
+    #single-day-tour-container-step1,
+    #single-day-tour-container-step2,
+    #activity-container {
       width: 50%;
       float: left;
+
+      @media (max-width: 670px) {
+        width: 100%;
+      }
     }
 
     .container-inline-date {
@@ -370,21 +381,25 @@
       width: 270px;
     }
 
-    #single-day-tour-container,
+    #single-day-tour-container-step2,
     #activity-container {
       select {
         width: calc(100% - 15px);
       }
       button {
-        @include button-brooklin();
+        text-transform: uppercase;
+        color: #fff;
         width: calc(100% - 15px);
-        border: 1px solid #779D73;
+        border-color: $green;
         font-size: 16px;
         font-weight: 600;
-        background: $green;
+        background: #779D73;
         margin-top: 12px;
+        padding: 11px 12px 9px;
         &:hover {
-          opacity: .86;
+          margin-top: 13px;
+          background: #496147;
+          border-color: #5f795d;
         }
       }
     }
