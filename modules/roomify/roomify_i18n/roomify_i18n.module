@@ -31,10 +31,12 @@ function roomify_i18n_form_alter(&$form, &$form_state, $form_id) {
 function roomify_i18n_entities_translation_settings() {
   $settings['default_language'] = 'xx-et-default';
   $settings['hide_language_selector'] = 1;
-  $settings['exclude_language_none '] = 0;
+  $settings['exclude_language_none'] = 1;
   $settings['lock_language'] = 0;
   $settings['shared_fields_original_only'] = 0;
 
+  variable_set('entity_translation_taxonomy', array('amenities' => TRUE));
+  variable_set('entity_translation_settings_taxonomy_term__amenities', $settings);
   variable_set('entity_translation_settings_roomify_property__casa_property', $settings);
   variable_set('entity_translation_settings_roomify_property__locanda_property', $settings);
   variable_set('entity_translation_settings_bat_type__home', $settings);
