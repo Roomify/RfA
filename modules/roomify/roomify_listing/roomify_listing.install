@@ -1383,10 +1383,23 @@ function roomify_listing_update_7039() {
  * Change field owner description.
  */
 function roomify_listing_update_7040() {
-
   foreach (array('casa_property', 'locanda_property') as $property_bundle) {
     $instance_info = field_read_instance('roomify_property', 'field_sp_owner', $property_bundle);
     $instance_info['description'] = "Enter the user name of this property's owner. This field defaults to this property's author, but may be set to another user. This name is used for reporting purposes, displaying the owner's name on Conversations and displaying a property owner's name/picture. Conversation notifications and editing privileges remain with the author of this property.";
     field_update_instance($instance_info);
+  }
+}
+
+/**
+ * Resave all "amenities" terms to fill "name_field" when it is empty.
+ */
+function roomify_listing_update_7041() {
+  $vocabulary = taxonomy_vocabulary_machine_name_load('amenities');
+  $terms = entity_load('taxonomy_term', FALSE, array('vid' => $vocabulary->vid));
+
+  foreach ($terms as $term) {
+    if (empty($term->name_field)) {
+      taxonomy_term_save($term);
+    }
   }
 }
