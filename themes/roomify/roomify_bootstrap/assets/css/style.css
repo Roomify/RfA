@@ -5941,8 +5941,9 @@ body#lang-fr #qtranslate-chooser .lang-en {
       margin: 0;
       font-weight: 300;
       font-size: 16px;
-      padding: 5px 0 !important;
-      color: #4CAF50 !important; }
+      padding: 6px 0 !important;
+      color: #4CAF50 !important;
+      width: 35px; }
     .ui-datepicker td a.ui-state-hover {
       background: #4CAF50 !important;
       color: #FFF !important;
@@ -8472,30 +8473,20 @@ body.error404 .page-content-center {
             .section-booking-user-details .panel_sl_booking .pane-locanda-availability-search .pane-content .form-wrapper .listing-availability-search-submit button,
             .section-booking-user-details .panel_sl_booking .pane-roomify-listing-availability-search-block-roomify-listing-search .pane-content .form-wrapper .locanda-availability-search-submit button,
             .section-booking-user-details .panel_sl_booking .pane-roomify-listing-availability-search-block-roomify-listing-search .pane-content .form-wrapper .listing-availability-search-submit button {
-              display: inline-block;
-              color: white;
-              font-weight: 500;
-              background: #000;
-              padding: 12px 15px;
-              border: 0;
+              color: #fff;
               width: calc(100% - 15px);
-              border: 1px solid #789e75;
+              border-color: #8FB98B;
               font-size: 16px;
               font-weight: 600;
-              background: #8FB98B;
-              border-radius: 0;
+              background: #779D73;
               height: 45px;
               padding: 12px; }
               .section-booking-user-details .panel_sl_booking .pane-locanda-availability-search .pane-content .form-wrapper .locanda-availability-search-submit button:hover,
               .section-booking-user-details .panel_sl_booking .pane-locanda-availability-search .pane-content .form-wrapper .listing-availability-search-submit button:hover,
               .section-booking-user-details .panel_sl_booking .pane-roomify-listing-availability-search-block-roomify-listing-search .pane-content .form-wrapper .locanda-availability-search-submit button:hover,
               .section-booking-user-details .panel_sl_booking .pane-roomify-listing-availability-search-block-roomify-listing-search .pane-content .form-wrapper .listing-availability-search-submit button:hover {
-                background: #8FB98B; }
-              .section-booking-user-details .panel_sl_booking .pane-locanda-availability-search .pane-content .form-wrapper .locanda-availability-search-submit button:hover,
-              .section-booking-user-details .panel_sl_booking .pane-locanda-availability-search .pane-content .form-wrapper .listing-availability-search-submit button:hover,
-              .section-booking-user-details .panel_sl_booking .pane-roomify-listing-availability-search-block-roomify-listing-search .pane-content .form-wrapper .locanda-availability-search-submit button:hover,
-              .section-booking-user-details .panel_sl_booking .pane-roomify-listing-availability-search-block-roomify-listing-search .pane-content .form-wrapper .listing-availability-search-submit button:hover {
-                opacity: .86; }
+                background: #496147;
+                border-color: #5f795d; }
     @media (min-width: 992px) {
       .section-booking-user-details .panel_sl_booking .pane-locanda-availability-search {
         margin-bottom: 100px; } }
@@ -13062,11 +13053,11 @@ body.page-location .view-location .view-empty {
   .page-room-type .panel_sl_left .panel-pane.pane-type-availability-search .bat-type-availability-search-submit button {
     width: 100%;
     padding: 8px;
-    background: #5CA755;
-    border: 0;
-    text-transform: uppercase; }
+    background: #779D73;
+    border-color: #8FB98B; }
     .page-room-type .panel_sl_left .panel-pane.pane-type-availability-search .bat-type-availability-search-submit button:hover {
-      background: #66C15E; }
+      background: #496147;
+      border-color: #5f795d; }
 .page-room-type .panel_sl_left .panel-pane.pane-bat-type-field-st-amenities {
   margin-bottom: 20px;
   display: inline-block;
