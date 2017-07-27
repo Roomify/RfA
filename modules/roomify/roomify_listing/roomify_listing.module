@@ -684,7 +684,7 @@ function roomify_listing_create_amenities_vocabulary() {
     'name' => 'Amenities',
     'description' => 'A vocabulary used by the Roomify Listing module to describe amenities',
     'machine_name' => 'amenities',
-    'i18n_mode' => '1',
+    'i18n_mode' => I18N_MODE_ENTITY_TRANSLATION,
   );
 
   if (!taxonomy_vocabulary_machine_name_load('amenities')) {
@@ -739,6 +739,7 @@ function roomify_listing_create_example_amenities_terms() {
     $term = new stdClass();
     $term->name = $name;
     $term->vid = $vocabulary->vid;
+    $term->language = 'en';
     taxonomy_term_save($term);
   }
 }
