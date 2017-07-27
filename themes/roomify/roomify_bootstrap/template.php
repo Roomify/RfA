@@ -351,5 +351,32 @@ function roomify_bootstrap_preprocess_mimemail_message(&$variables) {
   $variables['footer_border'] = roomify_system_adjust_brightness($footer_bg, -25);
   $variables['header_color'] = $header_color;
   $variables['footer_color'] = $footer_color;
+}
 
+/**
+ * Implements theme_facetapi_title().
+ */
+function roomify_bootstrap_facetapi_title($variables) {
+  global $language;
+
+  if ($variables['facet']['#facet']['name'] == 'property_bat_type_reference:field_st_amenities') {
+    $vocabulary = taxonomy_vocabulary_machine_name_load('amenities');
+    $name = i18n_taxonomy_vocabulary_name($vocabulary, $language->language);
+
+    $variables['title'] = '<span class="glyphicon glyphicon-check"></span>' . $name;
+  }
+  elseif ($variables['facet']['#facet']['name'] == 'field_sp_area') {
+    $vocabulary = taxonomy_vocabulary_machine_name_load('location');
+    $name = i18n_taxonomy_vocabulary_name($vocabulary, $language->language);
+
+    $variables['title'] = '<span class="glyphicon glyphicon-check"></span>' . $name;
+  }
+  elseif ($variables['facet']['#facet']['name'] == 'field_sp_area_type') {
+    $vocabulary = taxonomy_vocabulary_machine_name_load('area_type');
+    $name = i18n_taxonomy_vocabulary_name($vocabulary, $language->language);
+
+    $variables['title'] = $name;
+  }
+
+  return $variables['title'];
 }
