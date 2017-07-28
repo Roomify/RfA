@@ -5934,6 +5934,12 @@ body#lang-fr #qtranslate-chooser .lang-en {
     border: none;
     padding: 0;
     opacity: 1 !important; }
+    .ui-datepicker td.ui-state-highlight {
+      border: none; }
+      .ui-datepicker td.ui-state-highlight a {
+        background: #2e3641;
+        color: #FFF !important;
+        border-radius: 50%; }
     .ui-datepicker td .ui-state-default {
       background: transparent;
       border: none;

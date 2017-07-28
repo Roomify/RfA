@@ -25,6 +25,14 @@
     border: none;
     padding: 0;
     opacity: 1 !important;
+    &.ui-state-highlight {
+      border: none;
+      a {
+        background: #2e3641;
+        color: #FFF !important;
+        border-radius: 50%;
+      }
+    }
     .ui-state-default {
       background: transparent;
       border: none;
