@@ -190,7 +190,7 @@ function roomify_homepage_update_7003() {
     ->condition('type', 'homepage', '=')
     ->execute()
     ->fetchCol();
-  
+
   // Get all of the homepage nodes.
   $nodes = node_load_multiple($nids);
 
