@@ -202,20 +202,20 @@ function _casa_create_pet_templates() {
   }');
 
   $items['booking_cancelled'] = entity_import('pet', '{
-     "name" : "booking_cancelled",
-     "title" : "Booking Cancelled",
-     "subject" : "Booking Cancelled",
-     "mail_body" : "This is a notification that the booking for:\r\n\r\n[roomify_property:name] - [bat_type:name]\r\n\r\nfrom [bat_booking:booking-start-date:custom:m\/d\/Y] to [bat_booking:booking-end-date:custom:m\/d\/Y]\r\n\r\nhas been cancelled. \r\n\r\nIf you have any queries please get in touch with [site:name]",
-     "mail_body_plain" : "",
-     "send_plain" : "0",
-     "from_override" : "",
-     "cc_default" : "",
-     "bcc_default" : "",
-     "recipient_callback" : "",
-     "token_entity_types" : [ "bat_type", "bat_booking", "roomify_property" ],
-     "language" : "en",
-     "rdf_mapping" : []
-   }');
+    "name" : "booking_cancelled",
+    "title" : "Booking Cancelled",
+    "subject" : "Booking Cancelled for [roomify_property:name]",
+    "mail_body" : "The booking for: \u003Cstrong\u003E[roomify_property:name] - [bat_type:name]\u003C\/strong\u003E has been \u003Cstrong\u003ECANCELLED\u003C\/strong\u003E\r\n\r\nBooking Details:\r\nCheck-in :   [bat_booking:booking-start-date:custom:d, M Y]\r\nCheck-out:  [bat_booking:booking-end-date:custom:d, M Y]\r\n\r\nIf you have any queries please get in touch with [site:name]\r\n",
+    "mail_body_plain" : "",
+    "send_plain" : "0",
+    "from_override" : "",
+    "cc_default" : "",
+    "bcc_default" : "",
+    "recipient_callback" : "",
+    "token_entity_types" : [ "bat_type", "bat_booking", "roomify_property" ],
+    "language" : "en",
+    "rdf_mapping" : []
+  }');
 
   $items['withdraw_offer'] = entity_import('pet', '{
     "name" : "withdraw_offer",
