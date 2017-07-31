@@ -291,6 +291,8 @@ projects[image_link_formatter][version] = 1.1
 
 projects[imageapi_optimize][version] = 1.2
 
+projects[imagecache_token][version] = 1.0-rc2
+
 projects[inline_entity_form][version] = 1.8
 
 projects[interval][version] = 1.0

@@ -720,3 +720,10 @@ function roomify_casa_pet_update_7016() {
     ->condition('language', '')
     ->execute();
 }
+
+/**
+ * Enable imagecache_token.
+ */
+function roomify_casa_pet_update_7017() {
+  module_enable('imagecache_token');
+}
