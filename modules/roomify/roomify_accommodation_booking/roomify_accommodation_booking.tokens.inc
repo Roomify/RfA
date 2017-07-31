@@ -52,14 +52,14 @@ function roomify_accommodation_booking_tokens($type, $tokens, array $data = arra
                 $name = $property->name;
                 if ($featured_image = field_get_items('roomify_property', $property, 'field_sp_featured_image')) {
                   $image = array('style_name' => 'square', 'path' => $featured_image[0]['uri']);
-                  $image['attributes'] = array('style' => 'border-radius: 50%;width:200px;border: 2px solid white;text-align:center;');
+                  $image['attributes'] = array('style' => 'width:270px;border: 2px solid white;vertical-align:bottom;');
                   $short_description = field_get_items('roomify_property', $property, 'field_sp_short_description');
                 }
               }
             }
           }
           $return[$original] = 
-            '<table style="width: 590px;padding:40px;background: #ececec;margin-bottom:20px;">
+            '<table style="width: 590px;padding-right:10px;background: #ececec;margin-bottom:20px;">
               <tbody>
                 <tr>
                   <td>' . theme('image_style', $image) . '</td>
