@@ -66,8 +66,8 @@ function roomify_accommodation_booking_tokens($type, $tokens, array $data = arra
                   <td style="padding-left:30px;padding-right:10px;">
                       <strong style="width:100%;font-size:23px">' . $name . '</strong>
                       <p style="margin:5px 0;font-size:13px;width:100%">' . $short_description[0]['value'] . '</p>
-                      <p style="margin:5px 0;width:100%">Check-in :   <strong>' .  $booking_start_date->format('d, M Y') . '</strong></p>
-                      <p style="margin:5px 0;width:100%">Check-out:  <strong>' . $booking_end_date->format('d, M Y') . '</strong></p>
+                      <p style="margin:5px 0;width:100%">Check-in :   <strong>' .  $booking_start_date->format('D, d M, Y') . '</strong></p>
+                      <p style="margin:5px 0;width:100%">Check-out:  <strong>' . $booking_end_date->format('D, d M, Y') . '</strong></p>
                   </td>
                 </tr>
               <tbody>
