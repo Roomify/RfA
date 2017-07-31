@@ -1620,14 +1620,6 @@ function roomify_system_default_rules_configuration_alter(&$configs) {
     }
   }
 
-  if (isset($configs['commerce_checkout_order_email'])) {
-    foreach ($configs['commerce_checkout_order_email']->actions() as $action) {
-      $action->delete();
-    }
-
-    $configs['commerce_checkout_order_email']->action('pet_action_send_pet', array('pet_name' => 'order_confirmation', 'to_text:select' => 'commerce-order:mail'));
-  }
-
   if (isset($configs['commerce_cart_add_to_cart_message'])) {
     $configs['commerce_cart_add_to_cart_message']->active = FALSE;
   }
