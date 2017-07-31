@@ -121,7 +121,6 @@ dependencies[] = better_messages
 dependencies[] = content_menu
 dependencies[] = entity_token
 dependencies[] = imageapi_optimize
-dependencies[] = imagecache_token
 dependencies[] = inline_entity_form
 dependencies[] = link
 dependencies[] = pet
