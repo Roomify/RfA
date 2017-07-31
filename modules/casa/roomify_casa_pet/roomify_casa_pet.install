@@ -156,15 +156,20 @@ function _casa_create_pet_templates() {
   $items['new_order'] = entity_import('pet', '{
     "name" : "new_order",
     "title" : "New Order",
-    "subject" : "New Booking for \u0022[roomify_property:name]\u0022",
-    "mail_body" : "Great news! Property \u0022[roomify_property:name]\u0022 has a new booking.\r\n\r\nStart Date: [bat_booking:booking-start-date:bat_daily]\r\nEnd Date: [bat_booking:booking-end-date:bat_daily]\r\nBooking cost: [bat_booking:booking_price]\r\n\r\nCustomer Name: [bat_booking:booking-full-name]\r\nCustomer Email: [commerce-line-item:order:mail]\r\nCustomer Address: [commerce-order:commerce-customer-billing:commerce_customer_address]\r\nCustomer Telephone: [bat_booking:booking-telephone]\r\n\r\nClick \u003Ca href=\u0022[commerce-line-item:order:view-url]\u0022\u003Ehere\u003C\/a\u003E for more details.",
+    "subject" : "New Booking for [roomify_property:name]",
+    "mail_body" : "Great news! Property \u003Cstrong\u003E[roomify_property:name] - [bat_type:name]\u003C\/strong\u003E has a new booking!\r\n\r\n\u003Cstrong\u003EBooking Details:\u003C\/strong\u003E\r\nRoom type:     \u003Cstrong\u003E[bat_type:name]\u003C\/strong\u003E\r\nCheck-in :       \u003Cstrong\u003E[bat_booking:booking-start-date:custom:d, M Y]\u003C\/strong\u003E\r\nCheck-out:      \u003Cstrong\u003E[bat_booking:booking-end-date:custom:d, M Y]\u003C\/strong\u003E\r\nBooking cost:  \u003Cstrong\u003E[bat_booking:booking_price]\u003C\/strong\u003E\r\n\r\n\u003Cstrong\u003EGuest Details:\u003C\/strong\u003E\r\nName:            \u003Cstrong\u003E[commerce-order:commerce-customer-billing:commerce-customer-address:name_line]\u003C\/strong\u003E\r\nTelephone:     \u003Cstrong\u003E[commerce-order:commerce-customer-billing:booking_telephone]\u003C\/strong\u003E\r\nEmail:            \u003Cstrong\u003E[commerce-order:mail]\u003C\/strong\u003E\r\n\r\nClick \u003Ca href=\u0022[commerce-line-item:order:view-url]\u0022\u003Ehere\u003C\/a\u003E for more details.",
     "mail_body_plain" : "",
     "send_plain" : "0",
     "from_override" : "",
     "cc_default" : "",
     "bcc_default" : "",
     "recipient_callback" : "",
-    "token_entity_types" : [ "commerce-line-item", "commerce-order", "roomify_property", "bat_booking" ],
+    "token_entity_types" : [
+      "commerce-line-item",
+      "commerce-order",
+      "roomify_property",
+      "bat_booking"
+    ],
     "language" : "en",
     "rdf_mapping" : []
   }');

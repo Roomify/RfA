@@ -2955,6 +2955,13 @@ function roomify_accommodation_booking_send_mail($line_item, $settings, $rules_s
   $line_item_wrapper = entity_metadata_wrapper('commerce_line_item', $line_item);
   $type = bat_type_load($line_item_wrapper->commerce_booking_reference->booking_event_reference->event_bat_unit_reference->type_id->value());
 
+  if (isset($line_item->commerce_booking_reference[LANGUAGE_NONE][0]['target_id'])) {
+    if ($booking = bat_booking_load($line_item->commerce_booking_reference[LANGUAGE_NONE][0]['target_id'])) {
+      $booking_wrapper = entity_metadata_wrapper('bat_booking', $booking);
+      $rules_state->currentArguments['bat_booking'] = $booking_wrapper;
+      $rules_state->variables['bat_booking'] = $booking_wrapper;
+    }
+  }
   $to_account = user_load($type->uid);
   pet_action_send_pet('new_order', NULL, $to_account, NULL, NULL, array(), $rules_state);
 

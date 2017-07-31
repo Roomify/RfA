@@ -60,7 +60,7 @@ function roomify_casa_pet_form_pet_form_alter(&$form, &$form_state) {
       break;
 
     case 'new_order':
-      $form['mail_body']['#description'] = $body_default . t('</br></br>Tokens specific to this template: <em>Property Name</em> :  [roomify_property:name] <em>Room Name</em> : [bat_type:name] <em>Booking Start Date</em> : [bat_booking:booking-start-date:bat_daily] <em>Booking End Date</em> : [bat_booking:booking-end-date:bat_daily] <em>Total Price</em> : [bat_booking:booking_price] <em>Customer Name</em> : [bat_booking:booking-full-name] <em>Customer Email</em> : [commerce-line-item:order:mail] <em>Customer Address</em> : [commerce-order:commerce-customer-billing:commerce_customer_address] <em>Customer Telephone</em> : [bat_booking:booking-telephone] <em>View Order Url</em> : [commerce-line-item:order:view-url]');
+      $form['mail_body']['#description'] = $body_default . t('</br></br>Tokens specific to this template: <em>Property Name</em> :  [roomify_property:name] <em>Room Name</em> : [bat_type:name] <em>Booking Start Date</em> : [bat_booking:booking-start-date:custom:d, M Y] <em>Booking End Date</em> : [bat_booking:booking-end-date:custom:d, M Y] <em>Total Price</em> : [bat_booking:booking_price] <em>Customer Name</em> : [commerce-order:commerce-customer-billing:commerce-customer-address:name_line] <em>Customer Email</em> : [commerce-order:mail] <em>Customer Address</em> : [commerce-order:commerce-customer-billing:commerce_customer_address] <em>Customer Telephone</em> : [bat_booking:booking-telephone] <em>View Order Url</em> : [commerce-line-item:order:view-url]');
       break;
 
     case 'order_confirmation':
