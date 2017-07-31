@@ -109,7 +109,7 @@ function _casa_create_pet_templates() {
     "name" : "new_conversation_message",
     "title" : "New conversation message",
     "subject" : "[site:name] - New message from [message:user:name]",
-    "mail_body" : "[message:user:name] sent a message:\\r\\n\\r\\n\\u0022[roomify_conversation:message]\\u0022\\r\\n\\r\\nYou may view and respond to their message here: \\u003Ca href=\\u0022[roomify_conversation:absolute_url]\\u0022\\u003E[roomify_conversation:absolute_url]\\u003C\\/a\\u003E",
+    "mail_body" : "Hello!\r\n\r\nYou have a new conversation message from [message:user:name]:\r\n\r\n\u0022[roomify_conversation:message]\u0022\r\n\r\nYou may view and respond to their message here: \u003Ca href=\u0022[roomify_conversation:absolute_url]\u0022\u003E[roomify_conversation:absolute_url]\u003C\/a\u003E",
     "mail_body_plain" : "",
     "send_plain" : "0",
     "from_override" : "",
