@@ -3376,12 +3376,26 @@ function roomify_accommodation_booking_owner_notification_mail(array $job) {
     $booking_wrapper = entity_metadata_wrapper('bat_booking', $booking);
 
     if ($type = bat_type_load($booking_wrapper->booking_event_reference->event_bat_unit_reference->type_id->value())) {
+
+      $type_wrapper = entity_metadata_wrapper('bat_type', $type);
+
       $to_account = user_load($type->uid);
 
       $rules_state = new RulesState();
 
+      if ($line_item = commerce_line_item_load($booking->booking_line_item_reference[LANGUAGE_NONE][0]['target_id'])) {
+        if ($order = commerce_order_load($line_item->order_id)) {
+          $order_wrapper = entity_metadata_wrapper('commerce_order', $order);
+          $rules_state->currentArguments['commerce_order'] = $order_wrapper;
+          $rules_state->variables['commerce_order'] = $order_wrapper;
+        }
+      }
+
       $rules_state->currentArguments['bat_booking'] = $booking_wrapper;
       $rules_state->variables['bat_booking'] = $booking_wrapper;
+
+      $rules_state->currentArguments['bat_type'] = $type_wrapper;
+      $rules_state->variables['bat_type'] = $type_wrapper;
 
       pet_action_send_pet('owner_booking_reminder', NULL, $to_account, NULL, NULL, array(), $rules_state);
     }

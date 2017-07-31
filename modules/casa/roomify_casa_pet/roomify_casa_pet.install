@@ -252,8 +252,8 @@ function _casa_create_pet_templates() {
   $items['owner_booking_reminder'] = entity_import('pet', '{
     "name" : "owner_booking_reminder",
     "title" : "Owner Booking reminder",
-    "subject" : "Booking reminder",
-    "mail_body" : "This is your booking reminder. The booking for [roomify_property:name] is now only [bat_booking:days-left] away!",
+    "subject" : "Booking reminder for [roomify_property:name]",
+    "mail_body" : "Hello [bat_type:author:user-first-name]!\r\n\r\nYour booking for \u003Cstrong\u003E[roomify_property:name]\u003C\/strong\u003E is coming up soon (only [bat_booking:days-left] away!) .\r\n\r\n\u003Cstrong\u003EBooking Details:\u003C\/strong\u003E\r\nCheck-in :   \u003Cstrong\u003E[bat_booking:booking-start-date:custom:d, M Y]\u003C\/strong\u003E\r\nCheck-out:  \u003Cstrong\u003E[bat_booking:booking-end-date:custom:d, M Y]\u003C\/strong\u003E\r\nRoom type: \u003Cstrong\u003E[bat_type:name]\u003C\/strong\u003E\r\n\r\n\u003Cstrong\u003EGuest Details:\u003C\/strong\u003E\r\nName: \u003Cstrong\u003E[bat_booking:booking-user-guest:user-first-name] [bat_booking:booking-user-guest:user-last-name]\u003C\/strong\u003E\r\nTelephone: \u003Cstrong\u003E[bat_booking:booking-user-guest:user-telephone]\u003C\/strong\u003E\r\nEmail: \u003Cstrong\u003E[commerce-order:mail]\u003C\/strong\u003E\r\n\r\nYou can find the status of your current reservation at: [commerce-order:customer-url]\r\n",
     "mail_body_plain" : "",
     "send_plain" : "0",
     "from_override" : "",
