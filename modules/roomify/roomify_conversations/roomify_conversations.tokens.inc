@@ -28,6 +28,10 @@ function roomify_conversations_token_info() {
     'name' => t('Property Owner'),
     'description' => t('Property Owner.'),
   );
+  $tokens['conversation_booking_details'] = array(
+    'name' => t('Details of the booking'),
+    'description' => t('Details of the booking'),
+  );
 
   return array(
     'tokens' => array('roomify_conversation' => $tokens),
@@ -45,12 +49,39 @@ function roomify_conversations_tokens($type, $tokens, array $data = array(), arr
 
     $type = bat_type_load($conversation->conversation_unit_type_ref[LANGUAGE_NONE][0]['target_id']);
     $property = roomify_property_load($type->field_st_property_reference[LANGUAGE_NONE][0]['target_id']);
+    $property_name = '';
+    $checkin = '';
+    $checkout = '';
+    $featured_image = '';
+    $guests = '';
+    $children = '';
 
     if ($property->type == 'locanda_property') {
       $property_name = $property->name . ' - ' . $type->name;
     }
     else {
       $property_name = $property->name;
+    }
+
+    if ($checkin = field_get_items('roomify_conversation', $conversation, 'conversation_book_start_date')) {
+      $checkin = new DateTime($checkin[0]['value']);
+      $checkin = '<p style="margin:5px 0;width:100%">' . t('Check In: ') . '<strong>' . $checkin->format('D, d M, Y') . '</strong></p>';
+    }
+    if ($checkout = field_get_items('roomify_conversation', $conversation, 'conversation_book_end_date')) {
+      $checkout = new DateTime($checkout[0]['value']);
+      $checkout = '<p style="margin:5px 0;width:100%">' . t('Check Out: ') . '<strong>' . $checkout->format('D, d M, Y') . '</strong></p>';
+    }
+    if ($featured_image = field_get_items('roomify_property', $property, 'field_sp_featured_image')) {
+      $image = array('style_name' => 'square', 'path' => $featured_image[0]['uri']);
+      $image['attributes'] = array('style' => 'width:270px;border: 2px solid white;vertical-align:bottom;');
+      $featured_image = theme('image_style', $image);
+    }
+    if ($guests = field_get_items('roomify_conversation', $conversation, 'conversation_guests')) {
+      dpm($guests);
+      $guests = '<p style="margin:5px 0;width:100%">' . t('Guests: ') . '<strong>' . $guests[0]['value'] . '</strong></p>';
+    }
+    if ($children = field_get_items('roomify_conversation', $conversation, 'conversation_children')) {
+      $children = '<p style="margin:5px 0;width:100%">' . t('Children: ') . '<strong>' . $children[0]['value'] . '</strong></p>';
     }
 
     foreach ($tokens as $name => $original) {
@@ -74,6 +105,20 @@ function roomify_conversations_tokens($type, $tokens, array $data = array(), arr
         case 'property_owner':
           $owner = user_load($property->uid);
           $return[$original] = $owner->name;
+          break;
+
+        case 'conversation_booking_details': 
+          $return[$original] = 
+            '<table style="width: 590px;padding-right:10px;background: #ececec;margin-bottom:20px;">
+              <tbody>
+                <tr>
+                  <td>' . $featured_image . '</td>
+                  <td style="padding-left:30px;padding-right:10px;">
+                      <strong style="width:100%;font-size:23px">' . $property_name . '</strong>' .
+                      $checkin . $checkout . $guests . $children . ' </td>
+                </tr>
+              <tbody>
+            </table>';
           break;
       }
     }

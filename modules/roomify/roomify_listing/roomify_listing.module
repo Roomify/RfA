@@ -1440,7 +1440,9 @@ function roomify_listing_enquiry_form_submit($form, &$form_state) {
 
   $account = user_load_by_mail($email_address);
 
+  $existing_account = TRUE;
   if ($account === FALSE) {
+    $existing_account = FALSE;
     // Create a new user and send a link to confirm the email address.
     $password = user_password(8);
 
@@ -1456,8 +1458,6 @@ function roomify_listing_enquiry_form_submit($form, &$form_state) {
     );
 
     $account = user_save('', $fields);
-
-    drupal_mail('roomify_conversations', 'register_no_approval_required', $email_address, NULL, array('account' => $account), variable_get('site_mail', ini_get('sendmail_from')));
   }
 
   // Assign 'guest' role.
@@ -1544,8 +1544,19 @@ function roomify_listing_enquiry_form_submit($form, &$form_state) {
   $rules_state->variables['roomify_conversation'] = $conversation_wrapper;
 
   $to_account = user_load($type->uid);
-
-  pet_action_send_pet('new_booking_enquiry', NULL, $to_account, NULL, NULL, array(), $rules_state);
+  
+  if ($existing_account) {
+    $user_wrapper = entity_metadata_wrapper('user', $to_account);
+    $rules_state->currentArguments['user'] = $user_wrapper;
+    $rules_state->variables['user'] = $user_wrapper;
+    pet_action_send_pet('authenticated_user_booking_enquiry', NULL, $to_account, NULL, NULL, array(), $rules_state);
+  }
+  else {
+    // Email user with login instruction
+    drupal_mail('roomify_conversations', 'register_no_approval_required', $email_address, NULL, array('account' => $account, 'roomify_conversation' => $conversation), variable_get('site_mail', ini_get('sendmail_from')));
+    // Email owner.
+    pet_action_send_pet('new_booking_enquiry', NULL, $to_account, NULL, NULL, array(), $rules_state);
+  }
 
   $commands = array();
   $commands[] = ctools_modal_command_dismiss();

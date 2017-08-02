@@ -43,6 +43,9 @@ function roomify_conversations_default_theme_callback() {
 function roomify_conversations_mail($key, &$message, $params) {
   $language = $message['language'];
   $variables = array('user' => $params['account']);
+  if (isset($params['roomify_conversation'])) {
+    $variables['roomify_conversation'] = $params['roomify_conversation'];
+  }
   $message['subject'] .= roomify_conversations_mail_text($key . '_subject', $language, $variables);
   $message['body'][] = roomify_conversations_mail_text($key . '_body', $language, $variables);
 }
@@ -61,7 +64,9 @@ function roomify_conversations_mail_text($key, $language = NULL, $variables = ar
       break;
 
     case 'register_no_approval_required_body':
-      $text = t("Hello [user:name],
+      $text = t("[roomify_conversation:conversation_booking_details]
+
+        Hello [user:name],
 
 Thank you for your enquiry!
 

@@ -77,7 +77,7 @@ function _casa_create_pet_templates() {
     "name" : "new_booking_enquiry",
     "title" : "New Booking Enquiry",
     "subject" : "New booking enquiry for [roomify_conversation:property_name]",
-    "mail_body" : "You have an enquiry regarding your listing \u003Cstrong\u003E[roomify_conversation:property_name]!\u003C\/strong\u003E\r\n\r\n\u003Cu\u003E\u003Cstrong\u003ERequested Dates\u003C\/strong\u003E\u003C\/u\u003E\r\nCheck In:     \u003Cstrong\u003E[roomify_conversation:conversation-book-start-date:custom:D, d M, Y]\u003C\/strong\u003E\r\nCheck Out:  \u003Cstrong\u003E[roomify_conversation:conversation-book-end-date:custom:D, d M, Y]\u003C\/strong\u003E\r\n\r\n\u003Cu\u003E\u003Cstrong\u003ECustomer Details\u003C\/strong\u003E\u003C\/u\u003E\r\nName:         \u003Cstrong\u003E[roomify_conversation:conversation-user-name]\u003C\/strong\u003E\r\nE-mail:        \u003Cstrong\u003E[roomify_conversation:conversation-user-email]\u003C\/strong\u003E\r\nTelephone:  \u003Cstrong\u003E[roomify_conversation:conversation-telephone]\u003C\/strong\u003E\r\nGuests:       \u003Cstrong\u003E[roomify_conversation:conversation-guests]\u003C\/strong\u003E\r\nChildren:     \u003Cstrong\u003E[roomify_conversation:conversation-children]\u003C\/strong\u003E\r\n\r\n\u003Cu\u003E\u003Cstrong\u003EThe following message was left:\u003C\/strong\u003E\u003C\/u\u003E\r\n[roomify_conversation:conversation-further-info]\r\n\r\n\r\n\r\n\u003Chr\/\u003E\r\n\r\n\u003Cem\u003EUsing Roomify Conversation you can keep the discussion onsite and create a dynamic offer for the user\u003C\/em\u003E\r\nView and respond to this enquiry here: \u003Ca href=\u0022[roomify_conversation:absolute_url]\u0022\u003E[roomify_conversation:absolute_url]\u003C\/a\u003E",
+    "mail_body" : "[roomify_conversation:conversation_booking_details]\r\n\r\nYou have an enquiry regarding your listing \u003Cstrong\u003E[roomify_conversation:property_name]!\u003C\/strong\u003E\r\n\r\n\u003Cu\u003E\u003Cstrong\u003ERequested Dates\u003C\/strong\u003E\u003C\/u\u003E\r\nCheck In:     \u003Cstrong\u003E[roomify_conversation:conversation-book-start-date:custom:D, d M, Y]\u003C\/strong\u003E\r\nCheck Out:  \u003Cstrong\u003E[roomify_conversation:conversation-book-end-date:custom:D, d M, Y]\u003C\/strong\u003E\r\n\r\n\u003Cu\u003E\u003Cstrong\u003ECustomer Details\u003C\/strong\u003E\u003C\/u\u003E\r\nName:         \u003Cstrong\u003E[roomify_conversation:conversation-user-name]\u003C\/strong\u003E\r\nE-mail:        \u003Cstrong\u003E[roomify_conversation:conversation-user-email]\u003C\/strong\u003E\r\nTelephone:  \u003Cstrong\u003E[roomify_conversation:conversation-telephone]\u003C\/strong\u003E\r\nGuests:       \u003Cstrong\u003E[roomify_conversation:conversation-guests]\u003C\/strong\u003E\r\nChildren:     \u003Cstrong\u003E[roomify_conversation:conversation-children]\u003C\/strong\u003E\r\n\r\n\u003Cu\u003E\u003Cstrong\u003EThe following message was left:\u003C\/strong\u003E\u003C\/u\u003E\r\n[roomify_conversation:conversation-further-info]\r\n\r\n\r\n\r\n\u003Chr\/\u003E\r\n\r\n\u003Cem\u003EUsing Roomify Conversation you can keep the discussion onsite and create a dynamic offer for the user\u003C\/em\u003E\r\nView and respond to this enquiry here: \u003Ca href=\u0022[roomify_conversation:absolute_url]\u0022\u003E[roomify_conversation:absolute_url]\u003C\/a\u003E",
     "mail_body_plain" : "You have an enquiry regarding your listing [roomify_conversation:property_name]!\r\n\r\nRequested Dates\r\nCheck In:     [roomify_conversation:conversation-book-start-date:custom:D, d M, Y]\r\nCheck Out:  [roomify_conversation:conversation-book-end-date:custom:D, d M, Y]\r\n\r\nCustomer Details\r\nName:         [roomify_conversation:conversation-user-name]\r\nE-mail:        [roomify_conversation:conversation-user-email]\r\nTelephone:  [roomify_conversation:conversation-telephone]\r\nGuests:       [roomify_conversation:conversation-guests]\r\nChildren:     [roomify_conversation:conversation-children]\r\n\r\nThe following message was left:\r\n[roomify_conversation:conversation-further-info]\r\n\r\nUsing Roomify Conversation you can keep the discussion onsite and create a dynamic offer for the user\r\nView and respond to this enquiry here: [roomify_conversation:absolute_url]",
     "send_plain" : "0",
     "from_override" : "",
@@ -93,7 +93,7 @@ function _casa_create_pet_templates() {
     "name" : "new_booking_offer",
     "title" : "New Booking Offer",
     "subject" : "New offer to book [bat_type:name]",
-    "mail_body" : "Hello [roomify_conversation:conversation-user-name]!\r\n\r\n[roomify_conversation:property_owner] has made you a special offer to book \u003Cstrong\u003E[roomify_conversation:property_name]\u003C\/strong\u003E.\r\n\r\n\u003Cu\u003E\u003Cstrong\u003ERequested Dates\u003C\/strong\u003E\u003C\/u\u003E\r\nCheck In:     \u003Cstrong\u003E[roomify_conversation:conversation-book-start-date:custom:D, d M, Y]\u003C\/strong\u003E\r\nCheck Out:  \u003Cstrong\u003E[roomify_conversation:conversation-book-end-date:custom:D, d M, Y]\u003C\/strong\u003E\r\n\r\nYou may view and accept this offer here: \u003Ca href=\u0022[roomify_conversation:absolute_url]\u0022\u003E[roomify_conversation:absolute_url]\u003C\/a\u003E",
+    "mail_body" : "[roomify_conversation:conversation_booking_details]\r\n\r\nHello [roomify_conversation:conversation-user-name]!\r\n\r\n[roomify_conversation:property_owner] has made you a special offer to book \u003Cstrong\u003E[roomify_conversation:property_name]\u003C\/strong\u003E.\r\n\r\n\u003Cu\u003E\u003Cstrong\u003ERequested Dates\u003C\/strong\u003E\u003C\/u\u003E\r\nCheck In:     \u003Cstrong\u003E[roomify_conversation:conversation-book-start-date:custom:D, d M, Y]\u003C\/strong\u003E\r\nCheck Out:  \u003Cstrong\u003E[roomify_conversation:conversation-book-end-date:custom:D, d M, Y]\u003C\/strong\u003E\r\n\r\nYou may view and accept this offer here: \u003Ca href=\u0022[roomify_conversation:absolute_url]\u0022\u003E[roomify_conversation:absolute_url]\u003C\/a\u003E",
     "mail_body_plain" : "",
     "send_plain" : "0",
     "from_override" : "",
@@ -109,7 +109,7 @@ function _casa_create_pet_templates() {
     "name" : "new_conversation_message",
     "title" : "New conversation message",
     "subject" : "[site:name] - New message from [message:user:name]",
-    "mail_body" : "Hello!\r\n\r\nYou have a new conversation message from [message:user:name]:\r\n\r\n\u0022[roomify_conversation:message]\u0022\r\n\r\nYou may view and respond to their message here: \u003Ca href=\u0022[roomify_conversation:absolute_url]\u0022\u003E[roomify_conversation:absolute_url]\u003C\/a\u003E",
+    "mail_body" : "[roomify_conversation:conversation_booking_details]\r\n\r\nHello!\r\n\r\nYou have a new conversation message from [message:user:name]:\r\n\r\n\u0022[roomify_conversation:message]\u0022\r\n\r\nYou may view and respond to their message here: \u003Ca href=\u0022[roomify_conversation:absolute_url]\u0022\u003E[roomify_conversation:absolute_url]\u003C\/a\u003E",
     "mail_body_plain" : "",
     "send_plain" : "0",
     "from_override" : "",
@@ -226,7 +226,7 @@ function _casa_create_pet_templates() {
     "name" : "withdraw_offer",
     "title" : "Withdraw offer",
     "subject" : "The offer made for [roomify_property:name] has been withdrawn",
-    "mail_body" : "Hello [roomify_conversation:conversation-user-name]!\r\n\r\nThe offer made for [roomify_property:name]:\r\nCheck In:     \u003Cstrong\u003E[roomify_conversation:conversation-book-start-date:custom:D, d M, Y]\u003C\/strong\u003E\r\nCheck Out:  \u003Cstrong\u003E[roomify_conversation:conversation-book-end-date:custom:D, d M, Y]\u003C\/strong\u003E\r\n\r\nhas been \u003Cstrong\u003E\u003Cu\u003Ewithdrawn.\u003C\/u\u003E\u003C\/strong\u003E\r\n\r\nIf you would like to continue your conversation with the owner \u003Ca href=\u0022[roomify_conversation:url]\u0022\u003Eclick here\u003C\/a\u003E .",
+    "mail_body" : "[roomify_conversation:conversation_booking_details]\r\n\r\nHello [roomify_conversation:conversation-user-name]!\r\n\r\nThe offer made for [roomify_property:name]:\r\nCheck In:     \u003Cstrong\u003E[roomify_conversation:conversation-book-start-date:custom:D, d M, Y]\u003C\/strong\u003E\r\nCheck Out:  \u003Cstrong\u003E[roomify_conversation:conversation-book-end-date:custom:D, d M, Y]\u003C\/strong\u003E\r\n\r\nhas been \u003Cstrong\u003E\u003Cu\u003Ewithdrawn.\u003C\/u\u003E\u003C\/strong\u003E\r\n\r\nIf you would like to continue your conversation with the owner \u003Ca href=\u0022[roomify_conversation:url]\u0022\u003Eclick here\u003C\/a\u003E .",
     "mail_body_plain" : "",
     "send_plain" : "0",
     "from_override" : "",
@@ -308,6 +308,22 @@ function roomify_casa_pet_update_7001() {
     "bcc_default" : "",
     "recipient_callback" : "",
     "token_entity_types" : [ "user" ],
+    "rdf_mapping" : []
+  }');
+
+  $items['authenticated_user_booking_enquiry'] = entity_import('pet', '{
+    "name" : "authenticated_user_booking_enquiry",
+    "title" : "Authenticated user booking enquiry",
+    "subject" : "Your enquiry has been sent!",
+    "mail_body" : "[roomify_conversation:conversation_booking_details]\r\n\r\nHello [roomify_conversation:conversation-user-name],\r\n\r\nThank you for your enquiry!\r\n\r\nYou can talk with the owner of the property by logging in to the site and visiting \u003Ca href=\u0022[roomify_conversation:absolute_url]\u0022\u003E[roomify_conversation:absolute_url]\u003C\/a\u003E\r\n\r\n--  [site:name] Team",
+    "mail_body_plain" : "",
+    "send_plain" : "0",
+    "from_override" : "",
+    "cc_default" : "",
+    "bcc_default" : "",
+    "recipient_callback" : "",
+    "token_entity_types" : null,
+    "language" : "en",
     "rdf_mapping" : []
   }');
 
@@ -719,4 +735,27 @@ function roomify_casa_pet_update_7016() {
     ->fields(array('language' => 'en'))
     ->condition('language', '')
     ->execute();
+}
+
+/**
+ * Add "Authenticated user booking enquiry" template.
+ */
+function roomify_casa_pet_update_7017() {
+  $item = entity_import('pet', '{
+    "name" : "authenticated_user_booking_enquiry",
+    "title" : "Authenticated user booking enquiry",
+    "subject" : "Your enquiry has been sent!",
+    "mail_body" : "[roomify_conversation:conversation_booking_details]\r\n\r\nHello [roomify_conversation:conversation-user-name],\r\n\r\nThank you for your enquiry!\r\n\r\nYou can talk with the owner of the property by logging in to the site and visiting \u003Ca href=\u0022[roomify_conversation:absolute_url]\u0022\u003E[roomify_conversation:absolute_url]\u003C\/a\u003E\r\n\r\n--  [site:name] Team",
+    "mail_body_plain" : "",
+    "send_plain" : "0",
+    "from_override" : "",
+    "cc_default" : "",
+    "bcc_default" : "",
+    "recipient_callback" : "",
+    "token_entity_types" : null,
+    "language" : "en",
+    "rdf_mapping" : []
+  }');
+
+  $item->save();
 }
