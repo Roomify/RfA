@@ -250,7 +250,7 @@ function roomify_update_pets_form($form, &$form_state) {
       '#markup' => t('Hi! We have made some changes to email templates. Clicking here you will delete your templates and import the new ones. Be carefult that this action will also delete your translated templates!'),
       '#suffix' => '</div>',
     );
-     $form['submit'] = array(
+    $form['submit'] = array(
       '#type' => 'submit',
       '#value' => t('Update Templates'),
     );
