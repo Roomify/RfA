@@ -200,7 +200,6 @@ function roomify_accommodation_booking_default_rules_configuration() {
     }
   }');
 
-
   $rules['commerce_checkout_order_email'] = entity_import('rules_config', '{ "commerce_checkout_order_email" : {
       "LABEL" : "Send an order notification e-mail",
       "PLUGIN" : "reaction rule",

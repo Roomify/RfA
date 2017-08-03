@@ -107,8 +107,8 @@ function roomify_conversations_tokens($type, $tokens, array $data = array(), arr
           $return[$original] = $owner->name;
           break;
 
-        case 'conversation_booking_details': 
-          $return[$original] = 
+        case 'conversation_booking_details':
+          $return[$original] =
             '<table style="width: 590px;padding-right:10px;background: #ececec;margin-bottom:20px;">
               <tbody>
                 <tr>

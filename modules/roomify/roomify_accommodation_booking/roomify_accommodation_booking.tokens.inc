@@ -39,7 +39,8 @@ function roomify_accommodation_booking_tokens($type, $tokens, array $data = arra
           $diff = $today->diff($booking_start_date);
 
           $return[$original] = ($diff->invert) ? -1 * $diff->days : $diff->days;
-        break;
+          break;
+
         case 'booking-table-details':
           $booking_start_date = new DateTime($booking->booking_start_date[LANGUAGE_NONE][0]['value']);
           $booking_end_date = new DateTime($booking->booking_end_date[LANGUAGE_NONE][0]['value']);
@@ -48,7 +49,7 @@ function roomify_accommodation_booking_tokens($type, $tokens, array $data = arra
           $short_description = '';
           if (isset($booking->booking_event_reference[LANGUAGE_NONE][0]['target_id'])) {
             if ($event = bat_event_load($booking->booking_event_reference[LANGUAGE_NONE][0]['target_id'])) {
-              $event_wrapper = entity_metadata_wrapper('bat_event', $event); 
+              $event_wrapper = entity_metadata_wrapper('bat_event', $event);
               $type = bat_type_load($event_wrapper->event_bat_unit_reference->type_id->value());
 
               if ($property_id = field_get_items('bat_type', $type, 'field_st_property_reference')) {
@@ -62,7 +63,7 @@ function roomify_accommodation_booking_tokens($type, $tokens, array $data = arra
               }
             }
           }
-          $return[$original] = 
+          $return[$original] =
             '<table style="width: 590px;padding-right:10px;background: #ececec;margin-bottom:20px;">
               <tbody>
                 <tr>
@@ -70,13 +71,13 @@ function roomify_accommodation_booking_tokens($type, $tokens, array $data = arra
                   <td style="padding-left:30px;padding-right:10px;">
                       <strong style="width:100%;font-size:23px">' . $name . '</strong>
                       <p style="margin:5px 0;font-size:13px;width:100%">' . $short_description[0]['value'] . '</p>
-                      <p style="margin:5px 0;width:100%">Check-in :   <strong>' .  $booking_start_date->format('D, d M, Y') . '</strong></p>
+                      <p style="margin:5px 0;width:100%">Check-in :   <strong>' . $booking_start_date->format('D, d M, Y') . '</strong></p>
                       <p style="margin:5px 0;width:100%">Check-out:  <strong>' . $booking_end_date->format('D, d M, Y') . '</strong></p>
                   </td>
                 </tr>
               <tbody>
             </table>';
-        break;
+          break;
       }
     }
   }
@@ -95,7 +96,7 @@ function roomify_accommodation_booking_tokens($type, $tokens, array $data = arra
             $image['attributes'] = array('style' => 'width:270px;border: 2px solid white;vertical-align:bottom;');
             $short_description = field_get_items('roomify_property', $property, 'field_sp_short_description');
           }
-          $return[$original] = 
+          $return[$original] =
             '<table style="width: 590px;padding-right:10px;background: #ececec;margin-bottom:20px;">
               <tbody>
                 <tr>
@@ -107,7 +108,7 @@ function roomify_accommodation_booking_tokens($type, $tokens, array $data = arra
                 </tr>
               <tbody>
             </table>';
-        break;
+          break;
       }
     }
   }
