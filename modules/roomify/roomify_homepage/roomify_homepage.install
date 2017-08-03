@@ -193,10 +193,10 @@ function roomify_homepage_update_7003() {
 
   // Get all of the homepage nodes.
   $nodes = node_load_multiple($nids);
-
   foreach ($nodes as $node) {
     if (isset($node->field_homepage_style)) {
       $node->field_homepage_style[LANGUAGE_NONE][0]['value'] = 'large';
+      field_attach_update('node', $node);
     }
   }
 }

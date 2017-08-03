@@ -10057,7 +10057,12 @@ ol.inline.commerce-checkout-progress {
   .page-activities-search #property-bat-facets-availability .form-wrapper .search-availability-submit,
   .page-availability-search #property-bat-facets-availability .form-wrapper .search-availability-submit {
     margin-top: 0;
-    width: 100%; }
+    width: 100%; } }
+  @media (min-width: 992px) and (min-width: 992px) {
+    .page-activities-search #property-bat-facets-availability .form-wrapper .search-availability-submit,
+    .page-availability-search #property-bat-facets-availability .form-wrapper .search-availability-submit {
+      padding: 0; } }
+@media (min-width: 992px) {
     .page-activities-search #property-bat-facets-availability .form-wrapper .search-availability-submit button,
     .page-availability-search #property-bat-facets-availability .form-wrapper .search-availability-submit button {
       font-size: 15px;
@@ -10666,7 +10671,7 @@ ol.inline.commerce-checkout-progress {
       #property-bat-facets-availability .form-wrapper .form-item-group-size,
       #property-bat-facets-availability .form-wrapper .form-item-location {
         float: left;
-        width: 25%; } }
+        width: 20%; } }
     @media (max-width: 991px) {
       #property-bat-activity-facets-availability .form-wrapper .form-item-group-size,
       #property-bat-activity-facets-availability .form-wrapper .form-item-location,
@@ -10703,7 +10708,7 @@ ol.inline.commerce-checkout-progress {
       #roomify-property-search-block-form .form-wrapper .form-item-group-size,
       #property-bat-facets-availability .form-wrapper .form-item-group-size {
         float: left;
-        width: 16.66667%; } }
+        width: 20%; } }
   #property-bat-activity-facets-availability .form-wrapper .bat-date-range,
   #roomify-property-search-block-form .form-wrapper .bat-date-range,
   #property-bat-facets-availability .form-wrapper .bat-date-range {
@@ -10732,12 +10737,12 @@ ol.inline.commerce-checkout-progress {
       #roomify-property-search-block-form .form-wrapper .bat-date-range,
       #property-bat-facets-availability .form-wrapper .bat-date-range {
         float: left;
-        width: 41.66667%; } }
-    @media (max-width: 768px) {
+        width: 40%; } }
+    @media (max-width: 992px) {
       #property-bat-activity-facets-availability .form-wrapper .bat-date-range,
       #roomify-property-search-block-form .form-wrapper .bat-date-range,
       #property-bat-facets-availability .form-wrapper .bat-date-range {
-        padding-right: 0; } }
+        margin-left: 0; } }
     #property-bat-activity-facets-availability .form-wrapper .bat-date-range .start-date,
     #roomify-property-search-block-form .form-wrapper .bat-date-range .start-date,
     #property-bat-facets-availability .form-wrapper .bat-date-range .start-date {
@@ -10750,8 +10755,8 @@ ol.inline.commerce-checkout-progress {
       padding-right: 15px;
       position: relative;
       min-height: 1px;
-      padding-left: 15px;
-      padding-right: 15px;
+      padding-left: 0;
+      padding-right: 0;
       margin-bottom: 15px; }
       @media (min-width: 768px) {
         #property-bat-activity-facets-availability .form-wrapper .bat-date-range .start-date,
@@ -10759,11 +10764,6 @@ ol.inline.commerce-checkout-progress {
         #property-bat-facets-availability .form-wrapper .bat-date-range .start-date {
           float: left;
           width: 50%; } }
-      @media (max-width: 768px) {
-        #property-bat-activity-facets-availability .form-wrapper .bat-date-range .start-date,
-        #roomify-property-search-block-form .form-wrapper .bat-date-range .start-date,
-        #property-bat-facets-availability .form-wrapper .bat-date-range .start-date {
-          padding-right: 0; } }
       #property-bat-activity-facets-availability .form-wrapper .bat-date-range .start-date .form-type-textfield label,
       #property-bat-activity-facets-availability .form-wrapper .bat-date-range .start-date .help-block,
       #roomify-property-search-block-form .form-wrapper .bat-date-range .start-date .form-type-textfield label,
@@ -10771,6 +10771,11 @@ ol.inline.commerce-checkout-progress {
       #property-bat-facets-availability .form-wrapper .bat-date-range .start-date .form-type-textfield label,
       #property-bat-facets-availability .form-wrapper .bat-date-range .start-date .help-block {
         display: none; }
+      @media (min-width: 992px) {
+        #property-bat-activity-facets-availability .form-wrapper .bat-date-range .start-date,
+        #roomify-property-search-block-form .form-wrapper .bat-date-range .start-date,
+        #property-bat-facets-availability .form-wrapper .bat-date-range .start-date {
+          padding-right: 15px; } }
     #property-bat-activity-facets-availability .form-wrapper .bat-date-range .end-date,
     #roomify-property-search-block-form .form-wrapper .bat-date-range .end-date,
     #property-bat-facets-availability .form-wrapper .bat-date-range .end-date {
@@ -10783,8 +10788,8 @@ ol.inline.commerce-checkout-progress {
       padding-right: 15px;
       position: relative;
       min-height: 1px;
-      padding-left: 15px;
-      padding-right: 15px;
+      padding-left: 0;
+      padding-right: 0;
       margin-bottom: 15px; }
       @media (min-width: 768px) {
         #property-bat-activity-facets-availability .form-wrapper .bat-date-range .end-date,
@@ -10792,11 +10797,6 @@ ol.inline.commerce-checkout-progress {
         #property-bat-facets-availability .form-wrapper .bat-date-range .end-date {
           float: left;
           width: 50%; } }
-      @media (max-width: 768px) {
-        #property-bat-activity-facets-availability .form-wrapper .bat-date-range .end-date,
-        #roomify-property-search-block-form .form-wrapper .bat-date-range .end-date,
-        #property-bat-facets-availability .form-wrapper .bat-date-range .end-date {
-          padding-right: 0; } }
       #property-bat-activity-facets-availability .form-wrapper .bat-date-range .end-date .form-type-textfield label,
       #property-bat-activity-facets-availability .form-wrapper .bat-date-range .end-date .help-block,
       #roomify-property-search-block-form .form-wrapper .bat-date-range .end-date .form-type-textfield label,
@@ -10829,7 +10829,7 @@ ol.inline.commerce-checkout-progress {
       #property-bat-facets-availability .form-wrapper .search-availability-submit,
       #property-bat-facets-availability .form-wrapper .search-submit {
         float: left;
-        width: 16.66667%; } }
+        width: 20%; } }
     @media (min-width: 768px) {
       #property-bat-activity-facets-availability .form-wrapper .search-availability-submit,
       #property-bat-activity-facets-availability .form-wrapper .search-submit,
@@ -10838,6 +10838,14 @@ ol.inline.commerce-checkout-progress {
       #property-bat-facets-availability .form-wrapper .search-availability-submit,
       #property-bat-facets-availability .form-wrapper .search-submit {
         margin-top: 32px; } }
+    @media (min-width: 992px) {
+      #property-bat-activity-facets-availability .form-wrapper .search-availability-submit,
+      #property-bat-activity-facets-availability .form-wrapper .search-submit,
+      #roomify-property-search-block-form .form-wrapper .search-availability-submit,
+      #roomify-property-search-block-form .form-wrapper .search-submit,
+      #property-bat-facets-availability .form-wrapper .search-availability-submit,
+      #property-bat-facets-availability .form-wrapper .search-submit {
+        padding: 0; } }
     #property-bat-activity-facets-availability .form-wrapper .search-availability-submit .form-submit,
     #property-bat-activity-facets-availability .form-wrapper .search-submit .form-submit,
     #roomify-property-search-block-form .form-wrapper .search-availability-submit .form-submit,
@@ -12837,8 +12845,8 @@ body.node-type-homepage {
     position: absolute;
     right: 0;
     border-radius: 2px;
-    background: rgba(0, 0, 0, 0.25);
-    padding: 38px 5px 22px 32px; }
+    background: rgba(0, 0, 0, 0.4);
+    padding: 50px 6px 30px 22px; }
     @media (min-width: 991px) {
       body.node-type-homepage .pane-roomify-listing-availability-search-block-roomify-property-search {
         -webkit-animation-name: fadeIn;
