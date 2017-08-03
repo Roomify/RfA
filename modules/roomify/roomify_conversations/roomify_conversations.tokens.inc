@@ -77,7 +77,6 @@ function roomify_conversations_tokens($type, $tokens, array $data = array(), arr
       $featured_image = theme('image_style', $image);
     }
     if ($guests = field_get_items('roomify_conversation', $conversation, 'conversation_guests')) {
-      dpm($guests);
       $guests = '<p style="margin:5px 0;width:100%">' . t('Guests: ') . '<strong>' . $guests[0]['value'] . '</strong></p>';
     }
     if ($children = field_get_items('roomify_conversation', $conversation, 'conversation_children')) {
