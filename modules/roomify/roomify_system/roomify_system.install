@@ -837,7 +837,7 @@ function roomify_system_update_7053() {
 
   $message = 'Hello ' . $site_name . '!
     we have made some changes to email templates that are sent through your site. We did not udpdate them cause we have to delete all existing templates (including translation) and recreate them with a new layout and text.</br>
-    If you want to update them visit this: ' . l('page', $url) . '
+    If you want to update them visit this ' . l('page', $url) . '
 
 
     Kind Regards,
