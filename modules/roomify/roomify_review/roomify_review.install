@@ -10,6 +10,13 @@
  */
 function roomify_review_install() {
 
+  _roomify_review_add_templates();
+}
+
+/**
+ * Creates pets.
+ */
+function _roomify_review_add_templates() {
   $items['roomify_review_property'] = entity_import('pet', '{
     "name" : "roomify_review_property",
     "title" : "Roomify Review Property",
@@ -45,5 +52,4 @@ function roomify_review_install() {
   foreach ($items as $item) {
     $item->save();
   }
-
 }

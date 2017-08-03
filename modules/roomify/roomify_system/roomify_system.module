@@ -65,6 +65,15 @@ function roomify_system_menu() {
     'type' => MENU_NORMAL_ITEM,
   );
 
+  $items['admin/bat/pet/update'] = array(
+    'title' => 'Roomify Update PETs',
+    'description' => 'Update Roomify email templates (PET)',
+    'page callback' => 'drupal_get_form',
+    'page arguments' => array('roomify_update_pets_form'),
+    'access arguments' => array('administer roomify global site settings'),
+    'type' => MENU_NORMAL_ITEM,
+  );
+
   $items['admin/bat/properties/view-all'] = array();
   $items['admin/bat/conversations/guest'] = array();
   $items['admin/bat/conversations/owner'] = array();
@@ -227,6 +236,54 @@ function roomify_footer_form($form, &$form_state) {
   );
 
   return system_settings_form($form);
+}
+
+/**
+ * Form "Update Pets".
+ */
+function roomify_update_pets_form($form, &$form_state) {
+  $updated = variable_get('roomify_pets_updated', FALSE);
+
+  if (!$updated) {
+    $form['intro'] = array(
+      '#prefix' => '<div style="width:100%;font-size:18px;line-height:1.3em;margin-bottom:30px;">',
+      '#markup' => t('Hi! We have made some changes to email templates. Clicking here you will delete your templates and import the new ones. Be carefult that this action will also delete your translated templates!'),
+      '#suffix' => '</div>',
+    );
+     $form['submit'] = array(
+      '#type' => 'submit',
+      '#value' => t('Update Templates'),
+    );
+  }
+  else {
+    $form['intro'] = array(
+      '#prefix' => '<div style="width:100%;font-size:18px;line-height:1.3em;margin-bottom:30px;">',
+      '#markup' => t('Nothing to update here!'),
+      '#suffix' => '</div>',
+    );
+  }
+
+  return $form;
+}
+
+/**
+ * Form "Update Pets" submit.
+ */
+function roomify_update_pets_form_submit($form, &$form_state) {
+  variable_set('roomify_pets_updated', TRUE);
+
+  db_truncate('pets')->execute();
+  module_load_include('install', 'roomify_casa_pet');
+  _casa_create_pet_templates();
+
+  module_load_include('install', 'roomify_contact');
+  roomify_contact_form_add_pet();
+
+  module_load_include('install', 'roomify_review');
+  _roomify_review_add_templates();
+
+  $form_state['redirect'] = 'user';
+  drupal_set_message(t('Email templates have been updated with success!'));
 }
 
 /**
@@ -1777,6 +1834,18 @@ function roomify_system_panels_pre_render($panels_display, $renderer) {
         $pane->access['plugins'][1]['not'] = FALSE;
       }
     }
+  }
+}
+
+/**
+ * Implements hook_mail for module_name.
+ */
+function roomify_system_mail($key, &$message, $params) {
+  switch ($key) {
+    case 'roomify_update_pets':
+      $message['subject'] = $params['subject'];
+      $message['body'][] = $params['body'];
+      break;
   }
 }
 
