@@ -15,14 +15,14 @@ Feature: Special offers
     And I select the radio button "Flat"
     And I fill in "bat_start_date[date]" with "2016-10-01"
     And I fill in "bat_start_date[time]" with "00:00"
-    And I fill in "bat_end_date[date]" with "2017-10-01"
+    And I fill in "bat_end_date[date]" with "2017-12-01"
     And I fill in "bat_end_date[time]" with "00:00"
     Then I press "Create"
     And I wait 10 seconds
 
     Then I visit "admin/bat/config/global/offers/calendar"
     And I wait 10 seconds
-    Then I select dates between "2017-08-01" and "2017-08-28" for the last rate
+    Then I select dates between "2017-10-01" and "2017-10-28" for the last rate
     And I wait 10 seconds
     Then I fill in "pricing_event_price[und][0][amount]" with "5"
     And I press "Update value"
@@ -31,7 +31,7 @@ Feature: Special offers
     Then I visit "admin/bat/config/property/manage/1/offers"
     And I click on "Participate" on the row containing "Flat offer"
 
-    Then I visit "booking/2017-08-02/2017-08-05/1"
+    Then I visit "booking/2017-10-02/2017-10-05/1"
     And I should see "$15.00" in the ".current-search-item.current-search-price .offer-cost" element
     And I should see "$15.00" in the "#roomify-accommodation-booking-confirmation-form .price .offer-cost" element
 
@@ -49,14 +49,14 @@ Feature: Special offers
     And I select the radio button "Percentage"
     And I fill in "bat_start_date[date]" with "2016-10-01"
     And I fill in "bat_start_date[time]" with "00:00"
-    And I fill in "bat_end_date[date]" with "2017-10-01"
+    And I fill in "bat_end_date[date]" with "2017-12-01"
     And I fill in "bat_end_date[time]" with "00:00"
     Then I press "Create"
     And I wait 10 seconds
 
     Then I visit "admin/bat/config/global/offers/calendar"
     And I wait 10 seconds
-    Then I select dates between "2017-10-01" and "2017-10-30" for the last rate
+    Then I select dates between "2017-12-01" and "2017-12-30" for the last rate
     And I wait 10 seconds
     Then I fill in "pricing_discount[und][0][value]" with "50"
     And I press "Update value"
@@ -66,6 +66,6 @@ Feature: Special offers
     And I click on "Participate" on the row containing "Percentage offer"
     And I visit "listing/1"
     And I should see "Percentage offer"
-    Then I visit "booking/2017-10-02/2017-10-05/1"
+    Then I visit "booking/2017-12-02/2017-12-05/1"
     And I should see "$30.00" in the ".current-search-item.current-search-price .offer-cost" element
     And I should see "$30.00" in the "#roomify-accommodation-booking-confirmation-form .price .offer-cost" element
