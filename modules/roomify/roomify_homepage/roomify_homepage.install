@@ -71,7 +71,7 @@ function roomify_homepage_example_homepage() {
 
   $node = node_submit($node);
 
-  $node->field_homepage_main_text['en'][0]['value'] = '<p style="text-align: center;"><strong><em><span style="font-size:36px;">Welcome to your Roomify Site!</span></em></strong></p><p style="text-align: center;"><em><span style="font-size:26px;"></span></em><span style="font-size:26px;">Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.&nbsp;</span></p>';
+  $node->field_homepage_main_text['en'][0]['value'] = '<p style="text-align: center;"><strong><em><span style="font-size:36px;">Welcome to your Roomify Site!</span></em></strong></p><p style="text-align: center;"><em><span style="font-size:26px;"></span></em><span style="font-size:26px;">Ut enim ad minim veniam, quis nostrud exercitation</span></p><p style="text-align: center;"><span style="font-size:26px;">ullamco laboris nisi ut aliquip ex ea commodo consequat.&nbsp;</span></p>';
   $node->field_homepage_main_text['en'][0]['format'] = 'landing_page_text';
 
   $node->field_homepage_slideshow[LANGUAGE_NONE][2] = array(
