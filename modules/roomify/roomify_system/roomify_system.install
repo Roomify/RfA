@@ -824,5 +824,9 @@ function roomify_system_update_7051() {
  * Enable module "Roomify Properties List".
  */
 function roomify_system_update_7052() {
+  // Enable the homepage module if the site it's a multiproperty.
+  if (variable_get('roomify_accommodation_example_content', '') == 'multi_property') {
+    module_enable(array('roomify_homepage'));
+  }
   module_enable(array('roomify_properties_list'));
 }
