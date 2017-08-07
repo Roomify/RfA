@@ -129,6 +129,19 @@ function roomify_homepage_example_homepage() {
 
   $node->field_homepage_areas[LANGUAGE_NONE][0]['value'] = 1;
 
+  $properties_list = db_query('SELECT nid FROM {node} WHERE type =  :type', array(
+    ':type' => 'properties_list',
+  ))->fetchCol();
+
+  if (isset($properties_list[0])) {
+    $node->field_homepage_properties_lists[LANGUAGE_NONE][0]['target_id'] = $properties_list[0];
+  }
+  if (isset($properties_list[1])) {
+    $node->field_homepage_properties_lists[LANGUAGE_NONE][1]['target_id'] = $properties_list[1];
+  }
+  if (isset($properties_list[2])) {
+    $node->field_homepage_properties_lists[LANGUAGE_NONE][2]['target_id'] = $properties_list[2];
+  }
   node_save($node);
 
   $product = variable_get('roomify_accommodation_example_content', '');
@@ -199,4 +212,13 @@ function roomify_homepage_update_7003() {
       field_attach_update('node', $node);
     }
   }
+}
+
+/**
+ * Creates properties lists field.
+ */
+function roomify_homepage_update_7004() {
+  module_load_include('inc', 'roomify_homepage', 'roomify_homepage.fields');
+
+  roomify_homepage_create_fields();
 }

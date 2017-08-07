@@ -1162,13 +1162,13 @@ function roomify_accommodation_example_content_multi_property() {
   // Create a location node to show in the map.
   roomify_example_content_create_location_example_node();
 
+  if (module_exists('roomify_properties_list')) {
+    $properties_list_nodes = roomify_example_content_create_properties_list_node($property_id_1, $property_id_2, $property_id_3);
+  }
   // Create Homepage.
   variable_set('roomify_accommodation_example_content', 'multi_property');
   roomify_example_content_create_homepage_node($property_id_1, $property_id_2, $property_id_3);
 
-  if (module_exists('roomify_properties_list')) {
-    roomify_example_content_create_properties_list_node($property_id_1, $property_id_2, $property_id_3);
-  }
   $property_ids = array(
     $property_id_1 => 'Casa Sul Mare',
     $property_id_2 => 'Casa Azzurra',

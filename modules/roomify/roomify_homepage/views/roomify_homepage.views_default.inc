@@ -185,6 +185,83 @@ function roomify_homepage_views_default_views() {
 
   /* Display: Tight Slideshow */
   $handler = $view->new_display('panel_pane', 'Tight Slideshow', 'panel_pane_1');
+
+  /* Display: Properties Lists */
+  $handler = $view->new_display('panel_pane', 'Properties Lists', 'panel_pane_2');
+  $handler->display->display_options['defaults']['pager'] = FALSE;
+  $handler->display->display_options['pager']['type'] = 'none';
+  $handler->display->display_options['pager']['options']['offset'] = '0';
+  $handler->display->display_options['defaults']['style_plugin'] = FALSE;
+  $handler->display->display_options['style_plugin'] = 'default';
+  $handler->display->display_options['defaults']['style_options'] = FALSE;
+  $handler->display->display_options['defaults']['row_plugin'] = FALSE;
+  $handler->display->display_options['row_plugin'] = 'fields';
+  $handler->display->display_options['defaults']['row_options'] = FALSE;
+  $handler->display->display_options['defaults']['relationships'] = FALSE;
+  /* Relationship: Entity Reference: Referenced Entity */
+  $handler->display->display_options['relationships']['field_homepage_properties_lists_target_id']['id'] = 'field_homepage_properties_lists_target_id';
+  $handler->display->display_options['relationships']['field_homepage_properties_lists_target_id']['table'] = 'field_data_field_homepage_properties_lists';
+  $handler->display->display_options['relationships']['field_homepage_properties_lists_target_id']['field'] = 'field_homepage_properties_lists_target_id';
+  $handler->display->display_options['relationships']['field_homepage_properties_lists_target_id']['required'] = TRUE;
+  $handler->display->display_options['defaults']['fields'] = FALSE;
+  /* Field: Content: Nid */
+  $handler->display->display_options['fields']['nid']['id'] = 'nid';
+  $handler->display->display_options['fields']['nid']['table'] = 'node';
+  $handler->display->display_options['fields']['nid']['field'] = 'nid';
+  $handler->display->display_options['fields']['nid']['relationship'] = 'field_homepage_properties_lists_target_id';
+  $handler->display->display_options['fields']['nid']['label'] = '';
+  $handler->display->display_options['fields']['nid']['exclude'] = TRUE;
+  $handler->display->display_options['fields']['nid']['element_label_colon'] = FALSE;
+  /* Field: Content: Title */
+  $handler->display->display_options['fields']['title']['id'] = 'title';
+  $handler->display->display_options['fields']['title']['table'] = 'node';
+  $handler->display->display_options['fields']['title']['field'] = 'title';
+  $handler->display->display_options['fields']['title']['relationship'] = 'field_homepage_properties_lists_target_id';
+  $handler->display->display_options['fields']['title']['label'] = '';
+  $handler->display->display_options['fields']['title']['exclude'] = TRUE;
+  $handler->display->display_options['fields']['title']['element_label_colon'] = FALSE;
+  $handler->display->display_options['fields']['title']['link_to_node'] = FALSE;
+  /* Field: Content: Featured Image */
+  $handler->display->display_options['fields']['field_pl_featured_image']['id'] = 'field_pl_featured_image';
+  $handler->display->display_options['fields']['field_pl_featured_image']['table'] = 'field_data_field_pl_featured_image';
+  $handler->display->display_options['fields']['field_pl_featured_image']['field'] = 'field_pl_featured_image';
+  $handler->display->display_options['fields']['field_pl_featured_image']['relationship'] = 'field_homepage_properties_lists_target_id';
+  $handler->display->display_options['fields']['field_pl_featured_image']['label'] = '';
+  $handler->display->display_options['fields']['field_pl_featured_image']['alter']['alter_text'] = TRUE;
+  $handler->display->display_options['fields']['field_pl_featured_image']['alter']['text'] = '<a href="/node/[nid]">
+  [field_pl_featured_image]
+  <div class="overlay">
+  <div class="content">[title]</div>
+  </div>
+  </a>';
+  $handler->display->display_options['fields']['field_pl_featured_image']['element_label_colon'] = FALSE;
+  $handler->display->display_options['fields']['field_pl_featured_image']['element_wrapper_class'] = 'hovereffect';
+  $handler->display->display_options['fields']['field_pl_featured_image']['click_sort_column'] = 'fid';
+  $handler->display->display_options['fields']['field_pl_featured_image']['settings'] = array(
+    'image_style' => 'roomify_1200x720',
+    'image_link' => '',
+    'conditions' => array(
+      0 => array(
+        'condition' => '',
+      ),
+    ),
+  );
+  $handler->display->display_options['defaults']['filter_groups'] = FALSE;
+  $handler->display->display_options['defaults']['filters'] = FALSE;
+  /* Filter criterion: Content: Published */
+  $handler->display->display_options['filters']['status']['id'] = 'status';
+  $handler->display->display_options['filters']['status']['table'] = 'node';
+  $handler->display->display_options['filters']['status']['field'] = 'status';
+  $handler->display->display_options['filters']['status']['value'] = 1;
+  $handler->display->display_options['filters']['status']['group'] = 1;
+  $handler->display->display_options['filters']['status']['expose']['operator'] = FALSE;
+  /* Filter criterion: Content: Type */
+  $handler->display->display_options['filters']['type']['id'] = 'type';
+  $handler->display->display_options['filters']['type']['table'] = 'node';
+  $handler->display->display_options['filters']['type']['field'] = 'type';
+  $handler->display->display_options['filters']['type']['value'] = array(
+    'homepage' => 'homepage',
+  );
   $translatables['homepage'] = array(
     t('Master'),
     t('more'),
@@ -196,6 +273,14 @@ function roomify_homepage_views_default_views() {
     t('All'),
     t('Tight Slideshow'),
     t('View panes'),
+    t('Properties Lists'),
+    t('Content entity referenced from field_homepage_properties_lists'),
+    t('<a href="/node/[nid]">
+  [field_pl_featured_image]
+  <div class="overlay">
+  <div class="content">[title]</div>
+  </div>
+  </a>'),
   );
   $export['homepage'] = $view;
 

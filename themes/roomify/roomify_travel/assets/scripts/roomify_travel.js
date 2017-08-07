@@ -124,5 +124,41 @@ Drupal.behaviors.roomifyTravelAccordian = {
  }
 };
 
+Drupal.behaviors.roomifyTravelHomepageScripts = {
+  attach: function(context) {
+    var view = '.homepage-properties-lists';
+    if ($('.homepage-properties-lists.2-items').length) {
+      $(view).find('.views-row-1').addClass('col-xs-12 col-sm-6');
+      $(view).find('.views-row-2').addClass('col-xs-12 col-sm-6');
+    }
+    if ($('.homepage-properties-lists.3-items').length) {
+      $(view).find('.views-row-1').addClass('col-xs-12 col-sm-8');
+      $(view).find('.views-row-2').addClass('col-xs-12 col-sm-4 small');
+      $(view).find('.views-row-3').addClass('col-xs-12 col-sm-4 small');
+    }
+    if ($('.homepage-properties-lists.4-items').length) {
+      $(view).find('.views-row-1').addClass('col-xs-12 col-sm-6');
+      $(view).find('.views-row-2').addClass('col-xs-12 col-sm-6');
+      $(view).find('.views-row-3').addClass('col-xs-12 col-sm-6');
+      $(view).find('.views-row-4').addClass('col-xs-12 col-sm-6');
+    }
+    if ($('.homepage-properties-lists.5-items').length) {
+      $(view).find('.views-row-1').addClass('col-xs-12 col-sm-8');
+      $(view).find('.views-row-2').addClass('col-xs-12 col-sm-4 small');
+      $(view).find('.views-row-3').addClass('col-xs-12 col-sm-4 small');
+      $(view).find('.views-row-4').addClass('col-xs-12 col-sm-6');
+      $(view).find('.views-row-5').addClass('col-xs-12 col-sm-6');
+    }
+    if ($('.homepage-properties-lists.6-items').length) {
+      $(view).find('.views-row-1').addClass('col-xs-12 col-sm-8');
+      $(view).find('.views-row-2').addClass('col-xs-12 col-sm-4 small');
+      $(view).find('.views-row-3').addClass('col-xs-12 col-sm-4 small');
+      $(view).find('.views-row-4').addClass('col-xs-12 col-sm-8 pull-right');
+      $(view).find('.views-row-5').addClass('col-xs-12 col-sm-4 small pull-left');
+      $(view).find('.views-row-6').addClass('col-xs-12 col-sm-4 small pull-left');
+    }
+  }
+};
+
 
 })(jQuery);

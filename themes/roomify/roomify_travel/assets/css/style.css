@@ -6999,6 +6999,18 @@ blockquote {
           width: 30%;
           text-align: right; }
 
+.hovereffect .overlay .content {
+  width: 100%;
+  height: 100%;
+  display: block;
+  position: relative;
+  top: 50%;
+  font-size: 32px;
+  color: white; }
+  @media (max-width: 768px) {
+    .hovereffect .overlay .content {
+      font-size: 20px; } }
+
 #mini-panel-property_reviews {
   display: inline-block;
   width: 100%; }
@@ -12912,6 +12924,7 @@ body.node-type-homepage {
         margin-top: 0; }
         body.node-type-homepage .pane-roomify-listing-availability-search-block-roomify-property-search form#property-bat-facets-availability .form-wrapper .search-availability-submit button {
           text-transform: capitalize; }
+  body.node-type-homepage .pane-homepage-panel-pane-2,
   body.node-type-homepage .pane-homepage-blogposts-panel-pane-1,
   body.node-type-homepage .pane-featured-properties-panel-pane-3,
   body.node-type-homepage .pane-featured-properties-panel-pane-4,
@@ -12921,6 +12934,7 @@ body.node-type-homepage {
     width: 100%;
     padding-top: 55px;
     padding-bottom: 55px; }
+    body.node-type-homepage .pane-homepage-panel-pane-2 .pane-title,
     body.node-type-homepage .pane-homepage-blogposts-panel-pane-1 .pane-title,
     body.node-type-homepage .pane-featured-properties-panel-pane-3 .pane-title,
     body.node-type-homepage .pane-featured-properties-panel-pane-4 .pane-title,
@@ -12933,6 +12947,35 @@ body.node-type-homepage {
     display: table;
     margin-left: auto;
     margin-right: auto; }
+
+.pane-homepage-panel-pane-2 .view-homepage {
+  margin-left: -15px;
+  margin-right: -15px;
+  margin: 0 auto;
+  max-width: 1200px; }
+  .pane-homepage-panel-pane-2 .view-homepage:before, .pane-homepage-panel-pane-2 .view-homepage:after {
+    content: " ";
+    display: table; }
+  .pane-homepage-panel-pane-2 .view-homepage:after {
+    clear: both; }
+  .pane-homepage-panel-pane-2 .view-homepage div[class*="col-"] {
+    padding-left: 7px;
+    padding-right: 7px; }
+  .pane-homepage-panel-pane-2 .view-homepage .views-row {
+    display: inline-block;
+    float: left;
+    margin-bottom: 12px; }
+    .pane-homepage-panel-pane-2 .view-homepage .views-row[class*="col-"] {
+      padding-left: 6px;
+      padding-right: 6px; }
+    .pane-homepage-panel-pane-2 .view-homepage .views-row img {
+      border-radius: 0;
+      border: none; }
+    .pane-homepage-panel-pane-2 .view-homepage .views-row.small {
+      margin-bottom: 8px; }
+      .pane-homepage-panel-pane-2 .view-homepage .views-row.small .overlay .content {
+        font-size: 20px;
+        top: 45%; }
 
 /* CAROUSEL */
 .pane-featured-properties-panel-pane-3 {

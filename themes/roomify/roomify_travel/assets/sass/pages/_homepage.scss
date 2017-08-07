@@ -224,6 +224,7 @@ body.node-type-homepage {
       }
     }
   }
+  .pane-homepage-panel-pane-2,
   .pane-homepage-blogposts-panel-pane-1,
   .pane-featured-properties-panel-pane-3,
   .pane-featured-properties-panel-pane-4,
@@ -243,6 +244,37 @@ body.node-type-homepage {
     display: table;
     margin-left: auto;
     margin-right: auto;
+  }
+}
+.pane-homepage-panel-pane-2 {
+  .view-homepage {
+    @include make-row();
+    margin: 0 auto;
+    max-width: 1200px;
+    div[class*="col-"] {
+      padding-left: 7px;
+      padding-right: 7px;
+    }
+    .views-row {
+      display: inline-block;
+      float: left;
+      margin-bottom: 12px;
+      &[class*="col-"] {
+        padding-left: 6px;
+        padding-right: 6px;
+      }
+      img {
+        border-radius: 0;
+        border: none;
+      }
+      &.small {
+        margin-bottom: 8px;
+        .overlay .content {
+          font-size: 20px;
+          top: 45%;
+        }
+      }
+    }
   }
 }
 
