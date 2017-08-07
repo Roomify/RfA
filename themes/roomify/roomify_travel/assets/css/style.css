@@ -12715,7 +12715,7 @@ body.page-location .view-location .view-empty {
   margin: 40px 0; }
 
 body.node-type-homepage {
-  background: #F8F8F8; }
+  background: #FFFFFF; }
   body.node-type-homepage strong {
     font-weight: 400; }
   body.node-type-homepage .tabs--primary {
@@ -12924,7 +12924,6 @@ body.node-type-homepage {
         margin-top: 0; }
         body.node-type-homepage .pane-roomify-listing-availability-search-block-roomify-property-search form#property-bat-facets-availability .form-wrapper .search-availability-submit button {
           text-transform: capitalize; }
-  body.node-type-homepage .pane-homepage-panel-pane-2,
   body.node-type-homepage .pane-homepage-blogposts-panel-pane-1,
   body.node-type-homepage .pane-featured-properties-panel-pane-3,
   body.node-type-homepage .pane-featured-properties-panel-pane-4,
@@ -12934,7 +12933,6 @@ body.node-type-homepage {
     width: 100%;
     padding-top: 55px;
     padding-bottom: 55px; }
-    body.node-type-homepage .pane-homepage-panel-pane-2 .pane-title,
     body.node-type-homepage .pane-homepage-blogposts-panel-pane-1 .pane-title,
     body.node-type-homepage .pane-featured-properties-panel-pane-3 .pane-title,
     body.node-type-homepage .pane-featured-properties-panel-pane-4 .pane-title,
@@ -12942,6 +12940,11 @@ body.node-type-homepage {
     body.node-type-homepage .pane-node-field-homepage-main-text .pane-title {
       margin-bottom: 45px;
       text-align: center; }
+  body.node-type-homepage .pane-homepage-panel-pane-2 {
+    display: inline-block;
+    width: 100%;
+    padding-top: 35px;
+    padding-bottom: 35px; }
   body.node-type-homepage .pane-node-field-homepage-main-text .pane-content {
     max-width: 1200px;
     display: table;
@@ -12981,7 +12984,6 @@ body.node-type-homepage {
 .pane-featured-properties-panel-pane-3 {
   display: inline-block;
   width: 100%;
-  background: #F8F8F8;
   padding-bottom: 20px;
   /* Zoom In #1 */ }
   .pane-featured-properties-panel-pane-3 .views-row {
@@ -13077,8 +13079,7 @@ body.node-type-homepage {
 
 .pane-homepage-blogposts-panel-pane-1 {
   display: inline-block;
-  width: 100%;
-  background: #F8F8F8; }
+  width: 100%; }
   .pane-homepage-blogposts-panel-pane-1 .blog-col {
     display: table;
     margin: 15px auto; }
@@ -13116,7 +13117,6 @@ body.node-type-homepage {
 .pane-featured-properties-panel-pane-4 {
   display: inline-block;
   width: 100%;
-  background: #F8F8F8;
   /* Zoom In #1 */ }
   .pane-featured-properties-panel-pane-4 .property-col {
     display: table;
@@ -13214,6 +13214,10 @@ body.node-type-homepage {
   background: white;
   width: 100%;
   display: inline-block; }
+  .pane-featured-areas-panel-pane-1 img {
+    border: none; }
+  .pane-featured-areas-panel-pane-1 .overlay {
+    pointer-events: none; }
   .pane-featured-areas-panel-pane-1 .view-display-id-panel_pane_1 {
     margin: 0 auto;
     max-width: 1200px;
@@ -13221,6 +13225,10 @@ body.node-type-homepage {
     .pane-featured-areas-panel-pane-1 .view-display-id-panel_pane_1 .area-col {
       display: table;
       margin: 15px auto; }
+      @media (max-width: 991px) {
+        .pane-featured-areas-panel-pane-1 .view-display-id-panel_pane_1 .area-col {
+          width: auto;
+          float: none; } }
     .pane-featured-areas-panel-pane-1 .view-display-id-panel_pane_1 .views-field-name {
       text-align: center;
       padding-bottom: 8px;
@@ -13241,8 +13249,11 @@ body.node-type-homepage {
       -webkit-mask-image: -webkit-radial-gradient(circle, white, black);
       border-radius: 2px 2px 0 0;
       max-width: 380px;
+      width: 100%;
       display: table;
       margin: 0 auto; }
+      .pane-featured-areas-panel-pane-1 .view-display-id-panel_pane_1 .views-field-field-area-featured-image img {
+        width: 100%; }
     .pane-featured-areas-panel-pane-1 .view-display-id-panel_pane_1 .views-field-field-area-featured-image img {
       -webkit-transform: scale(1);
       transform: scale(1);

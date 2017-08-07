@@ -796,6 +796,38 @@ function roomify_system_views_default_views() {
 
   /* Display: List */
   $handler = $view->new_display('panel_pane', 'List', 'panel_pane_1');
+  $handler->display->display_options['defaults']['fields'] = FALSE;
+  /* Field: Taxonomy term: Name */
+  $handler->display->display_options['fields']['name']['id'] = 'name';
+  $handler->display->display_options['fields']['name']['table'] = 'taxonomy_term_data';
+  $handler->display->display_options['fields']['name']['field'] = 'name';
+  $handler->display->display_options['fields']['name']['label'] = '';
+  $handler->display->display_options['fields']['name']['exclude'] = TRUE;
+  $handler->display->display_options['fields']['name']['alter']['word_boundary'] = FALSE;
+  $handler->display->display_options['fields']['name']['alter']['ellipsis'] = FALSE;
+  $handler->display->display_options['fields']['name']['element_label_colon'] = FALSE;
+  /* Field: Taxonomy term: Featured Image */
+  $handler->display->display_options['fields']['field_area_featured_image']['id'] = 'field_area_featured_image';
+  $handler->display->display_options['fields']['field_area_featured_image']['table'] = 'field_data_field_area_featured_image';
+  $handler->display->display_options['fields']['field_area_featured_image']['field'] = 'field_area_featured_image';
+  $handler->display->display_options['fields']['field_area_featured_image']['label'] = '';
+  $handler->display->display_options['fields']['field_area_featured_image']['alter']['alter_text'] = TRUE;
+  $handler->display->display_options['fields']['field_area_featured_image']['alter']['text'] = '[field_area_featured_image]
+  <div class="overlay">
+    <div class="content">[name]</div>
+  </div>';
+  $handler->display->display_options['fields']['field_area_featured_image']['element_label_colon'] = FALSE;
+  $handler->display->display_options['fields']['field_area_featured_image']['element_wrapper_class'] = 'hovereffect';
+  $handler->display->display_options['fields']['field_area_featured_image']['click_sort_column'] = 'fid';
+  $handler->display->display_options['fields']['field_area_featured_image']['settings'] = array(
+    'image_style' => 'roomify_350x470',
+    'image_link' => 'content',
+    'conditions' => array(
+      0 => array(
+        'condition' => '',
+      ),
+    ),
+  );
   $handler->display->display_options['allow']['use_pager'] = 0;
   $handler->display->display_options['allow']['items_per_page'] = 0;
   $handler->display->display_options['allow']['offset'] = 0;
@@ -815,6 +847,10 @@ function roomify_system_views_default_views() {
     t('Desc'),
     t('Taxonomy term Queue'),
     t('List'),
+    t('[field_area_featured_image]
+  <div class="overlay">
+    <div class="content">[name]</div>
+  </div>'),
     t('View panes'),
   );
   $views['featured_areas'] = $view;
