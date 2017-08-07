@@ -1335,23 +1335,26 @@ function roomify_accommodation_booking_default_cer() {
 function roomify_accommodation_booking_entity_insert($entity, $type) {
   // We should check if the profile is set on the User field.
   if ($type == 'commerce_customer_profile') {
-    if ($entity->uid != 0 && $user = user_load($entity->uid)) {
+    if ($entity->uid && ($user = user_load($entity->uid))) {
+      $exists = FALSE;
+
       if ($commerce_profiles = field_get_items('user', $user, 'user_commerce_profile')) {
-        $exists = FALSE;
         foreach ($commerce_profiles as $commerce_profile) {
           if ($commerce_profile['target_id'] == $entity->profile_id) {
             $exists = TRUE;
             break;
           }
         }
-        if (!$exists) {
-          // Let's add a new reference to the field.
-          $user->user_commerce_profile[LANGUAGE_NONE][]['target_id'] = $entity->profile_id;
-          field_attach_update('user', $user);
-        }
+      }
+
+      if (!$exists) {
+        // Let's add a new reference to the field.
+        $user->user_commerce_profile[LANGUAGE_NONE][]['target_id'] = $entity->profile_id;
+        field_attach_update('user', $user);
       }
     }
   }
+
   if ($type == 'bat_type') {
     if ($entity->type == 'home' || $entity->type == 'room') {
       global $user;
@@ -1551,6 +1554,27 @@ function roomify_accommodation_booking_entity_insert($entity, $type) {
  * Implements hook_entity_update().
  */
 function roomify_accommodation_booking_entity_update($entity, $type) {
+  if ($type == 'commerce_customer_profile') {
+    if ($entity->original->uid == 0 && ($user = user_load($entity->uid))) {
+      $exists = FALSE;
+
+      if ($commerce_profiles = field_get_items('user', $user, 'user_commerce_profile')) {
+        foreach ($commerce_profiles as $commerce_profile) {
+          if ($commerce_profile['target_id'] == $entity->profile_id) {
+            $exists = TRUE;
+            break;
+          }
+        }
+      }
+
+      if (!$exists) {
+        // Let's add a new reference to the field.
+        $user->user_commerce_profile[LANGUAGE_NONE][]['target_id'] = $entity->profile_id;
+        field_attach_update('user', $user);
+      }
+    }
+  }
+
   if ($type == 'bat_type') {
     if ($entity->type == 'home' || $entity->type == 'room') {
       if (isset($entity->field_st_property_reference[LANGUAGE_NONE][0]['target_id'])) {
