@@ -551,6 +551,44 @@ function roomify_conversations_add_guests_field() {
 }
 
 /**
+ * Add 'Adults' field.
+ */
+function roomify_conversations_add_adults_field() {
+  field_info_cache_clear();
+
+  if (field_read_field('conversation_adults') === FALSE) {
+    $field = array(
+      'field_name' => 'conversation_adults',
+      'type' => 'text',
+      'cardinality' => 1,
+      'locked' => 1,
+      'settings' => array(
+        'max_length' => 255,
+        'profile2_private' => FALSE,
+      ),
+    );
+    field_create_field($field);
+  }
+
+  field_cache_clear();
+
+  if (field_read_instance('roomify_conversation', 'conversation_adults', 'standard') === FALSE) {
+    $instance = array(
+      'field_name' => 'conversation_adults',
+      'entity_type' => 'roomify_conversation',
+      'label' => 'Adults',
+      'bundle' => 'standard',
+      'required' => FALSE,
+      'widget' => array(
+        'type' => 'text_textfield',
+        'weight' => 6,
+      ),
+    );
+    field_create_instance($instance);
+  }
+}
+
+/**
  * Add 'Children' field.
  */
 function roomify_conversations_add_children_field() {

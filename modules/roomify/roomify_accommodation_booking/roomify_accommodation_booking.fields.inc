@@ -410,6 +410,44 @@ function roomify_accommodation_booking_add_booking_user_guest_field($bundle) {
 }
 
 /**
+ * Add 'Guests' field.
+ */
+function roomify_accommodation_booking_add_guests_field($bundle) {
+  field_info_cache_clear();
+
+  if (field_read_field('booking_guests') === FALSE) {
+    $field = array(
+      'field_name' => 'booking_guests',
+      'type' => 'text',
+      'cardinality' => 1,
+      'locked' => 1,
+      'settings' => array(
+        'max_length' => 255,
+        'profile2_private' => FALSE,
+      ),
+    );
+    field_create_field($field);
+  }
+
+  field_cache_clear();
+
+  if (field_read_instance('bat_booking', 'booking_guests', $bundle) === FALSE) {
+    $instance = array(
+      'field_name' => 'booking_guests',
+      'entity_type' => 'bat_booking',
+      'label' => 'Guests',
+      'bundle' => $bundle,
+      'required' => FALSE,
+      'widget' => array(
+        'type' => 'text_textfield',
+        'weight' => 6,
+      ),
+    );
+    field_create_instance($instance);
+  }
+}
+
+/**
  * Add 'Adults' field.
  */
 function roomify_accommodation_booking_add_adults_field($bundle) {

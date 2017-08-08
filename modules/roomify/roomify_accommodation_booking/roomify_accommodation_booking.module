@@ -1206,7 +1206,8 @@ function roomify_accommodation_booking_confirmation_form_submit($form, &$form_st
 
     if (isset($values['conversation'])) {
       if ($conversation = roomify_conversation_load($values['conversation'])) {
-        $booking->booking_adults = $conversation->conversation_guests;
+        $booking->booking_guests = $conversation->conversation_guests;
+        $booking->booking_adults = $conversation->conversation_adults;
         $booking->booking_children = $conversation->conversation_children;
         $booking->booking_children_age = $conversation->conversation_children_age;
       }
