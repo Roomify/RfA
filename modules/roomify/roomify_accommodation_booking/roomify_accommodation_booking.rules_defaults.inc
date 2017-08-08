@@ -62,6 +62,16 @@ function roomify_accommodation_booking_default_rules_configuration() {
                       "data" : [ "commerce-order:owner:user-address" ],
                       "value" : [ "customer-profile:commerce-customer-address" ]
                     }
+                  },
+                  { "data_set" : {
+                      "data" : [ "commerce-order:owner:user-first-name" ],
+                      "value" : [ "customer-profile:commerce-customer-address:first-name" ]
+                    }
+                  },
+                  { "data_set" : {
+                      "data" : [ "commerce-order:owner:user-last-name" ],
+                      "value" : [ "customer-profile:commerce-customer-address:last-name" ]
+                    }
                   }
                 ]
               }
