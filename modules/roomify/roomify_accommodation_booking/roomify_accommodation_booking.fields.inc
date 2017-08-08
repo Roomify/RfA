@@ -440,7 +440,6 @@ function roomify_accommodation_booking_add_guests_field($bundle) {
       'required' => FALSE,
       'widget' => array(
         'type' => 'text_textfield',
-        'weight' => 6,
       ),
     );
     field_create_instance($instance);
@@ -478,7 +477,6 @@ function roomify_accommodation_booking_add_adults_field($bundle) {
       'required' => FALSE,
       'widget' => array(
         'type' => 'text_textfield',
-        'weight' => 6,
       ),
     );
     field_create_instance($instance);
@@ -516,7 +514,6 @@ function roomify_accommodation_booking_add_children_field($bundle) {
       'required' => FALSE,
       'widget' => array(
         'type' => 'text_textfield',
-        'weight' => 6,
       ),
     );
     field_create_instance($instance);
@@ -554,7 +551,6 @@ function roomify_accommodation_booking_add_children_age_field($bundle) {
       'required' => FALSE,
       'widget' => array(
         'type' => 'text_textfield',
-        'weight' => 6,
       ),
     );
     field_create_instance($instance);
