@@ -65,6 +65,10 @@ function roomify_accommodation_booking_create_booking_type() {
 
   // Add telephone field to Billing info.
   roomify_accommodation_booking_add_booking_telephone_to_billing_info();
+
+  roomify_accommodation_booking_add_adults_field('roomify_accommodation_booking');
+  roomify_accommodation_booking_add_children_field('roomify_accommodation_booking');
+  roomify_accommodation_booking_add_children_age_field('roomify_accommodation_booking');
 }
 
 /**
@@ -672,4 +676,16 @@ function roomify_accommodation_booking_update_7017(&$sandbox) {
   }
 
   $sandbox['#finished'] = empty($sandbox['max']) ? 1 : ($sandbox['progress'] / $sandbox['max']);
+}
+
+/**
+ * Add "Adults", "Children" and "Children age" fields
+ * to the "Roomify Accommodation Booking" type.
+ */
+function roomify_accommodation_booking_update_7018() {
+  module_load_include('inc', 'roomify_accommodation_booking', 'roomify_accommodation_booking.fields');
+
+  roomify_accommodation_booking_add_adults_field('roomify_accommodation_booking');
+  roomify_accommodation_booking_add_children_field('roomify_accommodation_booking');
+  roomify_accommodation_booking_add_children_age_field('roomify_accommodation_booking');
 }
