@@ -1202,7 +1202,9 @@ function roomify_accommodation_booking_confirmation_form_submit($form, &$form_st
       'amount' => $amount,
       'currency_code' => commerce_default_currency(),
     );
+    $booking->booking_guests[LANGUAGE_NONE][0]['value'] = $group_size;
     $booking->booking_adults[LANGUAGE_NONE][0]['value'] = $group_size;
+    $booking->booking_children[LANGUAGE_NONE][0]['value'] = 0;
 
     if (isset($values['conversation'])) {
       if ($conversation = roomify_conversation_load($values['conversation'])) {
