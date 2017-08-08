@@ -1395,7 +1395,7 @@ function roomify_listing_enquiry_form($form, &$form_state, $arrival_date, $depar
     for ($i = 0; $i < $form_state['values']['children']; $i++) {
       $form['children_ages']['children-age-' . $i] = array(
         '#type' => 'select',
-        '#title' => t('Age of children @num', array('@num' => ($i +1))),
+        '#title' => t('Age of children @num', array('@num' => ($i + 1))),
         '#title_display' => 'invisible',
         '#options' => range(0, 17),
         '#empty_option' => '',
