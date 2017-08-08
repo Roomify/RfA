@@ -1375,10 +1375,41 @@ function roomify_listing_enquiry_form($form, &$form_state, $arrival_date, $depar
   );
 
   $form['children'] = array(
-    '#type' => 'textfield',
-    '#title' => t('Children'),
-    '#size' => 12,
+    '#type' => 'select',
+    '#title' => t('How many children in your group?'),
+    '#options' => range(0, $group_size),
+    '#ajax' => array(
+      'callback' => 'roomify_listing_enquiry_form_ajax_callback',
+      'wrapper' => 'children-wrapper',
+    ),
   );
+
+  if (isset($form_state['values']['children']) && $form_state['values']['children'] > 0) {
+    $form['children_ages'] = array(
+      '#type' => 'fieldset',
+      '#title' => t('Ages of children'),
+      '#prefix' => '<div id="children-wrapper">',
+      '#suffix' => '</div>',
+    );
+
+    for ($i = 0; $i < $form_state['values']['children']; $i++) {
+      $form['children_ages']['children-age-' . $i] = array(
+        '#type' => 'select',
+        '#title' => t('Age of children @num', array('@num' => ($i +1))),
+        '#title_display' => 'invisible',
+        '#options' => range(0, 17),
+        '#empty_option' => '',
+        '#required' => TRUE,
+      );
+    }
+  }
+  else {
+    $form['children_ages'] = array(
+      '#type' => 'fieldset',
+      '#prefix' => '<div id="children-wrapper" style="display: none;">',
+      '#suffix' => '</div>',
+    );
+  }
 
   $form['further_info'] = array(
     '#type' => 'textarea',
@@ -1403,11 +1434,18 @@ function roomify_listing_enquiry_form($form, &$form_state, $arrival_date, $depar
       'class' => array('btn-primary'),
     ),
     '#ajax' => array(
-      'callback' => 'roomify_listing_enquiry_form_submit'
+      'callback' => 'roomify_listing_enquiry_form_submit',
     ),
   );
 
   return $form;
+}
+
+/**
+ * Ajax callback.
+ */
+function roomify_listing_enquiry_form_ajax_callback($form, &$form_state) {
+  return $form['children_ages'];
 }
 
 /**
@@ -1532,6 +1570,10 @@ function roomify_listing_enquiry_form_submit($form, &$form_state) {
   $conversation->conversation_further_info[LANGUAGE_NONE][0]['value'] = $values['further_info'];
   $conversation->conversation_children[LANGUAGE_NONE][0]['value'] = $values['children'];
   $conversation->conversation_telephone[LANGUAGE_NONE][0]['value'] = $values['telephone'];
+
+  for ($i = 0; $i < $values['children']; $i++) {
+    $conversation->conversation_children_age[LANGUAGE_NONE][]['value'] = $values['children-age-' . $i];
+  }
 
   roomify_conversation_save($conversation);
 

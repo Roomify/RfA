@@ -9610,6 +9610,11 @@ body.toggled #close-sidebar-wrapper {
           top: 12px;
           right: 12px;
           background: url(../images/x.png) center center no-repeat; }
+        .page-conversation-booking #modalContent .ctools-modal-dialog.modal-dialog #modal-content form #children-wrapper .form-item,
+        .page-booking #modalContent .ctools-modal-dialog.modal-dialog #modal-content form #children-wrapper .form-item {
+          display: inline-block;
+          min-width: 60px;
+          margin-right: 12px; }
   .page-conversation-booking #modalContent div.modal-content,
   .page-booking #modalContent div.modal-content {
     background: none;

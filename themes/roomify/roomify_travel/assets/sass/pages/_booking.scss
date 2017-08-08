@@ -300,6 +300,13 @@
             right: 12px;
             background: url(../images/x.png) center center no-repeat;
           }
+          #children-wrapper {
+            .form-item {
+              display: inline-block;
+              min-width: 60px;
+              margin-right: 12px;
+            }
+          }
         }
       }
     }
