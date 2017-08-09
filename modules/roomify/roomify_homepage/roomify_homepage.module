@@ -75,8 +75,8 @@ function roomify_homepage_node_info() {
  */
 function roomify_homepage_form_alter(&$form, &$form_state, $form_id) {
   if ($form_id == 'homepage_node_form') {
-    if (isset($form['field_homepage_style']['und']['#options']['_none'])) {
-      unset($form['field_homepage_style']['und']['#options']['_none']);
+    if (isset($form['field_homepage_style'][LANGUAGE_NONE]['#options']['_none'])) {
+      unset($form['field_homepage_style'][LANGUAGE_NONE]['#options']['_none']);
     }
   }
 }
