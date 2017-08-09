@@ -342,7 +342,7 @@ function roomify_bootstrap_wide_preprocess_mimemail_message(&$variables) {
   }
 
   // FOOTER TEXT
-  $footer_text = variable_get('roomify_footer_text', 'Roomify for Accommodations - Copyright © 2016');
+  $footer_text = variable_get('roomify_footer_text', 'Roomify for Accommodations - Copyright © 2017');
 
   $variables['footer_text'] = isset($footer_text['value']) ? $footer_text['value'] : $footer_text;
   $variables['header_bg'] = $header_bg;

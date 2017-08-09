@@ -2955,6 +2955,13 @@ function roomify_accommodation_booking_send_mail($line_item, $settings, $rules_s
   $line_item_wrapper = entity_metadata_wrapper('commerce_line_item', $line_item);
   $type = bat_type_load($line_item_wrapper->commerce_booking_reference->booking_event_reference->event_bat_unit_reference->type_id->value());
 
+  if (isset($line_item->commerce_booking_reference[LANGUAGE_NONE][0]['target_id'])) {
+    if ($booking = bat_booking_load($line_item->commerce_booking_reference[LANGUAGE_NONE][0]['target_id'])) {
+      $booking_wrapper = entity_metadata_wrapper('bat_booking', $booking);
+      $rules_state->currentArguments['bat_booking'] = $booking_wrapper;
+      $rules_state->variables['bat_booking'] = $booking_wrapper;
+    }
+  }
   $to_account = user_load($type->uid);
   pet_action_send_pet('new_order', NULL, $to_account, NULL, NULL, array(), $rules_state);
 
@@ -3351,6 +3358,13 @@ function roomify_accommodation_booking_guest_notification_mail(array $job) {
     if ($to_text !== NULL) {
       $rules_state = new RulesState();
 
+      if ($line_item = commerce_line_item_load($booking->booking_line_item_reference[LANGUAGE_NONE][0]['target_id'])) {
+        if ($order = commerce_order_load($line_item->order_id)) {
+          $order_wrapper = entity_metadata_wrapper('commerce_order', $order);
+          $rules_state->currentArguments['commerce_order'] = $order_wrapper;
+          $rules_state->variables['commerce_order'] = $order_wrapper;
+        }
+      }
       $rules_state->currentArguments['bat_booking'] = $booking_wrapper;
       $rules_state->variables['bat_booking'] = $booking_wrapper;
 
@@ -3369,12 +3383,26 @@ function roomify_accommodation_booking_owner_notification_mail(array $job) {
     $booking_wrapper = entity_metadata_wrapper('bat_booking', $booking);
 
     if ($type = bat_type_load($booking_wrapper->booking_event_reference->event_bat_unit_reference->type_id->value())) {
+
+      $type_wrapper = entity_metadata_wrapper('bat_type', $type);
+
       $to_account = user_load($type->uid);
 
       $rules_state = new RulesState();
 
+      if ($line_item = commerce_line_item_load($booking->booking_line_item_reference[LANGUAGE_NONE][0]['target_id'])) {
+        if ($order = commerce_order_load($line_item->order_id)) {
+          $order_wrapper = entity_metadata_wrapper('commerce_order', $order);
+          $rules_state->currentArguments['commerce_order'] = $order_wrapper;
+          $rules_state->variables['commerce_order'] = $order_wrapper;
+        }
+      }
+
       $rules_state->currentArguments['bat_booking'] = $booking_wrapper;
       $rules_state->variables['bat_booking'] = $booking_wrapper;
+
+      $rules_state->currentArguments['bat_type'] = $type_wrapper;
+      $rules_state->variables['bat_type'] = $type_wrapper;
 
       pet_action_send_pet('owner_booking_reminder', NULL, $to_account, NULL, NULL, array(), $rules_state);
     }

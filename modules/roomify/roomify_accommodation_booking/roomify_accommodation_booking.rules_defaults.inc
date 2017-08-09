@@ -200,6 +200,54 @@ function roomify_accommodation_booking_default_rules_configuration() {
     }
   }');
 
+  $rules['commerce_checkout_order_email'] = entity_import('rules_config', '{ "commerce_checkout_order_email" : {
+      "LABEL" : "Send an order notification e-mail",
+      "PLUGIN" : "reaction rule",
+      "WEIGHT" : "4",
+      "OWNER" : "rules",
+      "TAGS" : [ "Commerce Checkout" ],
+      "REQUIRES" : [ "rules_conditional", "rules", "pet", "commerce_checkout" ],
+      "ON" : { "commerce_checkout_complete" : [] },
+      "DO" : [
+        { "LOOP" : {
+            "USING" : { "list" : [ "commerce-order:commerce-line-items" ] },
+            "ITEM" : { "list_item" : "Current list item" },
+            "DO" : [
+              { "CONDITIONAL" : [
+                  {
+                    "IF" : { "data_is" : {
+                        "data" : [ "list-item:type" ],
+                        "value" : "roomify_accommodation_booking"
+                      }
+                    },
+                    "DO" : [
+                      { "entity_fetch" : {
+                          "USING" : {
+                            "type" : "bat_booking",
+                            "id" : [ "list-item:commerce-booking-reference:booking-id" ]
+                          },
+                          "PROVIDE" : { "entity_fetched" : { "bat_booking" : "Bat Booking" } }
+                        }
+                      },
+                      { "pet_action_send_pet" : {
+                          "pet_name" : "order_confirmation",
+                          "to_text" : "[commerce-order:mail]",
+                          "to_account" : [ "" ],
+                          "account_subs" : [ "" ],
+                          "node_subs" : [ "" ]
+                        }
+                      }
+                    ]
+                  }
+                ]
+              }
+            ]
+          }
+        }
+      ]
+    }
+  }');
+
   $rules['rules_notify_property_owner_when_a_booking_com_booking_is_update'] = entity_import('rules_config', '{ "rules_notify_property_owner_when_a_booking_com_booking_is_update" : {
       "LABEL" : "Notify property owner when a Booking.com booking is modified",
       "PLUGIN" : "reaction rule",

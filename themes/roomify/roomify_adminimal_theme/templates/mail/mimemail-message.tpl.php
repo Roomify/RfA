@@ -44,10 +44,11 @@
               </div>
             <?php endif; ?>
           </div>
-          <div class="content" style="font-size: 14px;padding: 50px 26px;width: 600px;display: table;height: 100%;border-left: 4px solid #ECECEC;border-right: 4px solid #ECECEC;border-top: 4px solid <?php print $header_border;?>;border-bottom: 4px solid <?php print $footer_border;?>;">
+         
+         <div class="content" style="font-size: 17px;line-height: 1.6em;color: #555555;padding: 40px 26px;width: 600px;display: table;height: 100%;border-left: 4px solid #ECECEC;border-right: 4px solid #ECECEC;border-top: 4px solid <?php print $header_border;?>;border-bottom: 4px solid <?php print $footer_border;?>;">
             <?php print $body; ?>
           </div>
-          <div class="footer" style="padding: 10px 30px;width: 600px;text-align: center;display: table;background: <?php print $footer_bg;?>;">
+          <div class="footer" style="padding: 40px 30px;width: 600px;text-align: center;display: table;background: <?php print $footer_bg;?>;">
             <div style="width: 100%;font-size:14px;text-align: center;color: <?php print $footer_color;?>"><?php print $footer_text; ?></div>
           </div>
         </table>
@@ -55,4 +56,3 @@
     </div>
   </body>
 </html>
-
