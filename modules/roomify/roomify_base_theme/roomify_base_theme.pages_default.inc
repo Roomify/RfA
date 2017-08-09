@@ -3360,8 +3360,8 @@ function roomify_base_theme_default_page_manager_handlers() {
   $pane->shown = TRUE;
   $pane->access = array();
   $pane->configuration = array(
-    'override_title' => 1,
-    'override_title_text' => '<span class="glyphicon glyphicon-check"></span>Area',
+    'override_title' => 0,
+    'override_title_text' => '',
     'override_title_heading' => 'h3',
   );
   $pane->cache = array();
@@ -3406,8 +3406,8 @@ function roomify_base_theme_default_page_manager_handlers() {
   $pane->shown = TRUE;
   $pane->access = array();
   $pane->configuration = array(
-    'override_title' => 1,
-    'override_title_text' => '<span class="glyphicon glyphicon-check"></span>Amenities',
+    'override_title' => 0,
+    'override_title_text' => '',
     'override_title_heading' => 'h3',
   );
   $pane->cache = array();

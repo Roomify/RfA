@@ -360,3 +360,25 @@ function roomify_travel_preprocess_page(&$variables) {
     $variables['theme_hook_suggestions'][] = 'page__locanda_listing';
   }
 }
+
+/**
+ * Implements theme_facetapi_title().
+ */
+function roomify_travel_facetapi_title($variables) {
+  global $language;
+
+  if ($variables['facet']['#facet']['name'] == 'property_bat_type_reference:field_st_amenities') {
+    $vocabulary = taxonomy_vocabulary_machine_name_load('amenities');
+    $variables['title'] = i18n_taxonomy_vocabulary_name($vocabulary, $language->language);
+  }
+  elseif ($variables['facet']['#facet']['name'] == 'field_sp_area') {
+    $vocabulary = taxonomy_vocabulary_machine_name_load('location');
+    $variables['title'] = i18n_taxonomy_vocabulary_name($vocabulary, $language->language);
+  }
+  elseif ($variables['facet']['#facet']['name'] == 'field_sp_area_type') {
+    $vocabulary = taxonomy_vocabulary_machine_name_load('area_type');
+    $variables['title'] = i18n_taxonomy_vocabulary_name($vocabulary, $language->language);
+  }
+
+  return $variables['title'];
+}

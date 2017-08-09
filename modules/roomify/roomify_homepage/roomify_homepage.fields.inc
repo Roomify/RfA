@@ -661,6 +661,7 @@ function roomify_homepage_create_fields() {
       ),
     );
   }
+
   if (field_read_instance('node', 'field_homepage_properties_lists', 'homepage') === FALSE) {
     $field_instances['node-homepage-field_homepage_properties_lists'] = array(
       'bundle' => 'homepage',

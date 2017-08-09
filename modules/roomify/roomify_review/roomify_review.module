@@ -382,6 +382,10 @@ function roomify_review_node_insert($node) {
       $rules_state->currentArguments['node'] = $node_wrapper;
       $rules_state->variables['node'] = $node_wrapper;
 
+      $property_wrapper = entity_metadata_wrapper('roomify_property', $property);
+      $rules_state->currentArguments['roomify_property'] = $property_wrapper;
+      $rules_state->variables['roomify_property'] = $property_wrapper;
+
       pet_action_send_pet('new_review_submitted', NULL, $to_account, NULL, NULL, array(), $rules_state);
     }
   }

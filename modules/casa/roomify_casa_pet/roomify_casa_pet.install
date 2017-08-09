@@ -61,7 +61,7 @@ function _casa_create_pet_templates() {
     "name" : "order_confirmation",
     "title" : "Reservation confirmation",
     "subject" : "Reservation [commerce-order:order-number] at [site:name]",
-    "mail_body" : "Thanks for your reservation [commerce-order:order-number] at [site:name].\r\n\r\nIf this is your first reservation with us, you will receive a separate e-mail with login instructions. You can view your reservation history with us at any time by logging into our website at:\r\n\r\n[site:login-url]\r\n\r\nYou can find the status of your current reservation at:\r\n\r\n[commerce-order:customer-url]\r\n\r\nPlease contact us if you have any questions about your reservation.\r\n\r\n[roomify_property:property-details]",
+    "mail_body" : "[bat_booking:booking-table-details]\r\n\r\nThanks for your reservation [commerce-order:order-number] at [site:name].\r\n\r\nIf this is your first reservation with us, you will receive a separate e-mail with login instructions. You can view your reservation history with us at any time by logging into our website at:\r\n\r\n[site:login-url]\r\n\r\nYou can find the status of your current reservation at:\r\n\r\n[commerce-order:customer-url]\r\n\r\nPlease contact us if you have any questions about your reservation.\r\n\r\n[roomify_property:property-details]",
     "mail_body_plain" : "",
     "send_plain" : "0",
     "from_override" : "",
@@ -76,9 +76,9 @@ function _casa_create_pet_templates() {
   $items['new_booking_enquiry'] = entity_import('pet', '{
     "name" : "new_booking_enquiry",
     "title" : "New Booking Enquiry",
-    "subject" : "New booking enquiry received",
-    "mail_body" : "\u003Cstrong\u003EYou have an enquiry regarding your listing [roomify_conversation:property_name]!\u003C\/strong\u003E\r\n\r\n\u003Chr\/\u003E\r\n\r\n\u003Cu\u003E\u003Cstrong\u003ERequested Dates\u003Cstrong\u003E\u003C\/u\u003E\r\nArrive: [roomify_conversation:conversation-book-start-date:custom:m\/d\/Y]\r\nDepart: [roomify_conversation:conversation-book-end-date:custom:m\/d\/Y].\r\n\r\n\u003Chr\/\u003E\r\n\r\nThe following message was left:\r\n[roomify_conversation:conversation-further-info]\r\n\r\n\u003Chr\/\u003E\r\nby [roomify_conversation:conversation-user-name]\r\nE-mail: [roomify_conversation:conversation-user-email]\r\n\u003Chr\/\u003E\r\n\r\n\u003Cem\u003EUsing Roomify Conversation you can keep the discussion onsite and create a dynamic offer for the user\u003C\/em\u003E\r\nView and respond to this enquiry here: \u003Ca href=\u0022[roomify_conversation:absolute_url]\u0022\u003E[roomify_conversation:absolute_url]\u003C\/a\u003E",
-    "mail_body_plain" : "You have an enquiry regarding your listing [bat_type:name]!\r\n\r\nRequested Dates\r\nArrive: [roomify_conversation:conversation-book-start-date:custom:m\/d\/Y]\r\nDepart: [roomify_conversation:conversation-book-end-date:custom:m\/d\/Y].\r\n\r\n\r\nThe following message was left:\r\n[roomify_conversation:conversation-further-info]\r\n\r\n\r\nby [roomify_conversation:conversation-user-name]\r\nE-mail: [roomify_conversation:conversation-user-email]\r\n\r\n\r\nUsing Roomify Conversation you can keep the discussion onsite and create a dynamic offer for the user\r\nView and respond to this enquiry here: \u003Ca href=\u0022[roomify_conversation:absolute_url]\u0022\u003E[roomify_conversation:absolute_url]\u003C\/a\u003E",
+    "subject" : "New booking enquiry for [roomify_conversation:property_name]",
+    "mail_body" : "[roomify_conversation:conversation_booking_details]\r\n\r\nYou have an enquiry regarding your listing \u003Cstrong\u003E[roomify_conversation:property_name]!\u003C\/strong\u003E\r\n\r\n\u003Cu\u003E\u003Cstrong\u003ERequested Dates\u003C\/strong\u003E\u003C\/u\u003E\r\nCheck In:     \u003Cstrong\u003E[roomify_conversation:conversation-book-start-date:custom:D, d M, Y]\u003C\/strong\u003E\r\nCheck Out:  \u003Cstrong\u003E[roomify_conversation:conversation-book-end-date:custom:D, d M, Y]\u003C\/strong\u003E\r\n\r\n\u003Cu\u003E\u003Cstrong\u003ECustomer Details\u003C\/strong\u003E\u003C\/u\u003E\r\nName:         \u003Cstrong\u003E[roomify_conversation:conversation-user-name]\u003C\/strong\u003E\r\nE-mail:        \u003Cstrong\u003E[roomify_conversation:conversation-user-email]\u003C\/strong\u003E\r\nTelephone:  \u003Cstrong\u003E[roomify_conversation:conversation-telephone]\u003C\/strong\u003E\r\nGuests:       \u003Cstrong\u003E[roomify_conversation:conversation-guests]\u003C\/strong\u003E\r\nChildren:     \u003Cstrong\u003E[roomify_conversation:conversation-children]\u003C\/strong\u003E\r\n\r\n\u003Cu\u003E\u003Cstrong\u003EThe following message was left:\u003C\/strong\u003E\u003C\/u\u003E\r\n[roomify_conversation:conversation-further-info]\r\n\r\n\r\n\r\n\u003Chr\/\u003E\r\n\r\n\u003Cem\u003EUsing Roomify Conversation you can keep the discussion onsite and create a dynamic offer for the user\u003C\/em\u003E\r\nView and respond to this enquiry here: \u003Ca href=\u0022[roomify_conversation:absolute_url]\u0022\u003E[roomify_conversation:absolute_url]\u003C\/a\u003E",
+    "mail_body_plain" : "You have an enquiry regarding your listing [roomify_conversation:property_name]!\r\n\r\nRequested Dates\r\nCheck In:     [roomify_conversation:conversation-book-start-date:custom:D, d M, Y]\r\nCheck Out:  [roomify_conversation:conversation-book-end-date:custom:D, d M, Y]\r\n\r\nCustomer Details\r\nName:         [roomify_conversation:conversation-user-name]\r\nE-mail:        [roomify_conversation:conversation-user-email]\r\nTelephone:  [roomify_conversation:conversation-telephone]\r\nGuests:       [roomify_conversation:conversation-guests]\r\nChildren:     [roomify_conversation:conversation-children]\r\n\r\nThe following message was left:\r\n[roomify_conversation:conversation-further-info]\r\n\r\nUsing Roomify Conversation you can keep the discussion onsite and create a dynamic offer for the user\r\nView and respond to this enquiry here: [roomify_conversation:absolute_url]",
     "send_plain" : "0",
     "from_override" : "",
     "cc_default" : "",
@@ -93,7 +93,7 @@ function _casa_create_pet_templates() {
     "name" : "new_booking_offer",
     "title" : "New Booking Offer",
     "subject" : "New offer to book [bat_type:name]",
-    "mail_body" : "[roomify_conversation:property_owner] has made you an offer to book [roomify_conversation:property_name].\\r\\n\\r\\nYou may view and accept this offer here: \\u003Ca href=\\u0022[roomify_conversation:absolute_url]\\u0022\\u003E[roomify_conversation:absolute_url]\\u003C\\/a\\u003E",
+    "mail_body" : "[roomify_conversation:conversation_booking_details]\r\n\r\nHello [roomify_conversation:conversation-user-name]!\r\n\r\n[roomify_conversation:property_owner] has made you a special offer to book \u003Cstrong\u003E[roomify_conversation:property_name]\u003C\/strong\u003E.\r\n\r\n\u003Cu\u003E\u003Cstrong\u003ERequested Dates\u003C\/strong\u003E\u003C\/u\u003E\r\nCheck In:     \u003Cstrong\u003E[roomify_conversation:conversation-book-start-date:custom:D, d M, Y]\u003C\/strong\u003E\r\nCheck Out:  \u003Cstrong\u003E[roomify_conversation:conversation-book-end-date:custom:D, d M, Y]\u003C\/strong\u003E\r\n\r\nYou may view and accept this offer here: \u003Ca href=\u0022[roomify_conversation:absolute_url]\u0022\u003E[roomify_conversation:absolute_url]\u003C\/a\u003E",
     "mail_body_plain" : "",
     "send_plain" : "0",
     "from_override" : "",
@@ -109,7 +109,7 @@ function _casa_create_pet_templates() {
     "name" : "new_conversation_message",
     "title" : "New conversation message",
     "subject" : "[site:name] - New message from [message:user:name]",
-    "mail_body" : "[message:user:name] sent a message:\\r\\n\\r\\n\\u0022[roomify_conversation:message]\\u0022\\r\\n\\r\\nYou may view and respond to their message here: \\u003Ca href=\\u0022[roomify_conversation:absolute_url]\\u0022\\u003E[roomify_conversation:absolute_url]\\u003C\\/a\\u003E",
+    "mail_body" : "[roomify_conversation:conversation_booking_details]\r\n\r\nHello!\r\n\r\nYou have a new conversation message from [message:user:name]:\r\n\r\n\u0022[roomify_conversation:message]\u0022\r\n\r\nYou may view and respond to their message here: \u003Ca href=\u0022[roomify_conversation:absolute_url]\u0022\u003E[roomify_conversation:absolute_url]\u003C\/a\u003E",
     "mail_body_plain" : "",
     "send_plain" : "0",
     "from_override" : "",
@@ -156,15 +156,20 @@ function _casa_create_pet_templates() {
   $items['new_order'] = entity_import('pet', '{
     "name" : "new_order",
     "title" : "New Order",
-    "subject" : "New Booking for \u0022[roomify_property:name]\u0022",
-    "mail_body" : "Great news! Property \u0022[roomify_property:name]\u0022 has a new booking.\r\n\r\nStart Date: [bat_booking:booking-start-date:bat_daily]\r\nEnd Date: [bat_booking:booking-end-date:bat_daily]\r\nBooking cost: [bat_booking:booking_price]\r\n\r\nCustomer Name: [bat_booking:booking-full-name]\r\nCustomer Email: [commerce-line-item:order:mail]\r\nCustomer Address: [commerce-order:commerce-customer-billing:commerce_customer_address]\r\nCustomer Telephone: [bat_booking:booking-telephone]\r\n\r\nClick \u003Ca href=\u0022[commerce-line-item:order:view-url]\u0022\u003Ehere\u003C\/a\u003E for more details.",
+    "subject" : "New Booking for [roomify_property:name]",
+    "mail_body" : "[bat_booking:booking-table-details]\r\n\r\nGreat news! Property \u003Cstrong\u003E[roomify_property:name] - [bat_type:name]\u003C\/strong\u003E has a new booking!\r\n\r\n\u003Cstrong\u003EBooking Details:\u003C\/strong\u003E\r\nRoom type:     \u003Cstrong\u003E[bat_type:name]\u003C\/strong\u003E\r\nCheck-in :       \u003Cstrong\u003E[bat_booking:booking-start-date:custom:D, d M, Y]\u003C\/strong\u003E\r\nCheck-out:      \u003Cstrong\u003E[bat_booking:booking-end-date:custom:D, d M, Y]\u003C\/strong\u003E\r\nBooking cost:  \u003Cstrong\u003E[bat_booking:booking_price]\u003C\/strong\u003E\r\n\r\n\u003Cstrong\u003EGuest Details:\u003C\/strong\u003E\r\nName:            \u003Cstrong\u003E[commerce-order:commerce-customer-billing:commerce-customer-address:name_line]\u003C\/strong\u003E\r\nTelephone:     \u003Cstrong\u003E[commerce-order:commerce-customer-billing:booking_telephone]\u003C\/strong\u003E\r\nEmail:            \u003Cstrong\u003E[commerce-order:mail]\u003C\/strong\u003E\r\n\r\nClick \u003Ca href=\u0022[commerce-line-item:order:view-url]\u0022\u003Ehere\u003C\/a\u003E for more details.",
     "mail_body_plain" : "",
     "send_plain" : "0",
     "from_override" : "",
     "cc_default" : "",
     "bcc_default" : "",
     "recipient_callback" : "",
-    "token_entity_types" : [ "commerce-line-item", "commerce-order", "roomify_property", "bat_booking" ],
+    "token_entity_types" : [
+      "commerce-line-item",
+      "commerce-order",
+      "roomify_property",
+      "bat_booking"
+    ],
     "language" : "en",
     "rdf_mapping" : []
   }');
@@ -172,8 +177,8 @@ function _casa_create_pet_templates() {
   $items['booking_com_booking_updated'] = entity_import('pet', '{
     "name" : "booking_com_booking_updated",
     "title" : "Booking.com booking updated",
-    "subject" : "Booking.com - Booking updated",
-    "mail_body" : "\u003Cstrong\u003EBooking for [bat_type:name]\u003C\/strong\u003E\r\n\r\nA booking has been updated for [roomify_property:name] -  [bat_type:name].\r\n\r\nStart Date: [bat_booking:booking-start-date:bat_daily]\r\nEnd Date: [bat_booking:booking-end-date:bat_daily]\r\n\r\nTotal Price: [bat_booking:field-bcom-total-price] [bat_booking:field-bcom-currency-code]\r\nCommission Amount: [bat_booking:field-bcom-commission-amount] [bat_booking:field-bcom-currency-code]\r\n\r\nCustomer Name: [bat_booking:field-bcom-first-name] [bat_booking:field-bcom-last-name]\r\nCustomer Email: [bat_booking:field-bcom-email]\r\nCustomer Address: [bat_booking:field-bcom-address]\r\nCustomer Telephone: [bat_booking:field-bcom-telephone]\r\n\r\nYou may view the booking \u003Ca href=\u0022[site:abs-url]\/admin\/bat\/config\/booking\/manage\/[bat_booking:booking-id]\u0022 target=\u0022_blank\u0022\u003Ehere\u003C\/a\u003E",
+    "subject" : "Booking.com - Booking for [roomify_property:name] updated",
+    "mail_body" : "[bat_booking:booking-table-details]\r\n\r\nA booking has been updated for \u003Cstrong\u003E[roomify_property:name] - [bat_type:name]\u003C\/strong\u003E.\r\n\r\n\u003Cstrong\u003EBooking Details:\u003C\/strong\u003E\r\nCheck In:      \u003Cstrong\u003E[bat_booking:booking-start-date:custom:D, d M, Y]\u003C\/strong\u003E\r\nCheck Out:   \u003Cstrong\u003E[bat_booking:booking-end-date:custom:D, d M, Y]\u003C\/strong\u003E\r\nTotal Price: [bat_booking:field-bcom-total-price] [bat_booking:field-bcom-currency-code]\r\nCommission Amount: [bat_booking:field-bcom-commission-amount] [bat_booking:field-bcom-currency-code]\r\n\r\n\u003Cstrong\u003EGuest Details:\u003C\/strong\u003E\r\nName:          \u003Cstrong\u003E[bat_booking:booking-user-guest:user-first-name] [bat_booking:booking-user-guest:user-last-name]\u003C\/strong\u003E\r\nMail:             \u003Cstrong\u003E[bat_booking:booking-user-guest:mail]\u003C\/strong\u003E\r\nTelephone:   \u003Cstrong\u003E[bat_booking:booking-user-guest:user-telephone]\u003C\/strong\u003E\r\n\r\n\u003Cstrong\u003EAddress:\u003C\/strong\u003E    \r\nthoroughfare: [bat_booking:booking-user-guest:user-address:thoroughfare]\r\nlocality:  [bat_booking:booking-user-guest:user-address:locality]\r\npostal code: [bat_booking:booking-user-guest:user-address:postal_code]\r\nadministrative area: [bat_booking:booking-user-guest:user-address:administrative_area]\r\ncountry: [bat_booking:booking-user-guest:user-address:country]\r\n\r\nYou may view the booking \u003Ca href=\u0022[site:abs-url]\/admin\/bat\/config\/booking\/manage\/[bat_booking:booking-id]\u0022 target=\u0022_blank\u0022\u003Ehere\u003C\/a\u003E",
     "mail_body_plain" : "",
     "send_plain" : "0",
     "from_override" : "",
@@ -188,8 +193,8 @@ function _casa_create_pet_templates() {
   $items['ical_booking_created_or_updated'] = entity_import('pet', '{
     "name" : "ical_booking_created_or_updated",
     "title" : "iCal booking created or updated",
-    "subject" : "iCal Booking",
-    "mail_body" : "\u003Cstrong\u003EBooking for [bat_type:name]\u003C\/strong\u003E\r\n\r\nA booking has been created or updated for [roomify_property:name] -  [bat_type:name].\r\n\r\nYou may view the booking \u003Ca href=\u0022[site:abs-url]\/admin\/bat\/config\/booking\/manage\/[bat_booking:booking-id]\u0022 target=\u0022_blank\u0022\u003Ehere\u003C\/a\u003E\r\n",
+    "subject" : "iCal Booking for [roomify_property:name]",
+    "mail_body" : "[bat_booking:booking-table-details]\r\n\r\nA booking has been created or updated for \u003Cstrong\u003E[roomify_property:name] - [bat_type:name]\u003C\/strong\u003E.\r\n\r\n\u003Cstrong\u003EBooking Details:\u003C\/strong\u003E\r\nCheck In:      \u003Cstrong\u003E[bat_booking:booking-start-date:custom:D, d M, Y]\u003C\/strong\u003E\r\nCheck Out:   \u003Cstrong\u003E[bat_booking:booking-end-date:custom:D, d M, Y]\u003C\/strong\u003E\r\n\r\n\u003Cstrong\u003EGuest Details:\u003C\/strong\u003E\r\nName:          \u003Cstrong\u003E[bat_booking:booking-user-guest:user-first-name] [bat_booking:booking-user-guest:user-last-name]\u003C\/strong\u003E\r\nMail:             \u003Cstrong\u003E[bat_booking:booking-user-guest:mail]\u003C\/strong\u003E\r\nTelephone:   \u003Cstrong\u003E[bat_booking:booking-user-guest:user-telephone]\u003C\/strong\u003E\r\n\r\n\u003Cstrong\u003EAddress:\u003C\/strong\u003E    \r\nthoroughfare: [bat_booking:booking-user-guest:user-address:thoroughfare]\r\nlocality:  [bat_booking:booking-user-guest:user-address:locality]\r\npostal code: [bat_booking:booking-user-guest:user-address:postal_code]\r\nadministrative area: [bat_booking:booking-user-guest:user-address:administrative_area]\r\ncountry: [bat_booking:booking-user-guest:user-address:country]\r\n\r\nYou may view the booking \u003Ca href=\u0022[site:abs-url]\/admin\/bat\/config\/booking\/manage\/[bat_booking:booking-id]\u0022 target=\u0022_blank\u0022\u003Ehere\u003C\/a\u003E",
     "mail_body_plain" : "",
     "send_plain" : "0",
     "from_override" : "",
@@ -202,26 +207,26 @@ function _casa_create_pet_templates() {
   }');
 
   $items['booking_cancelled'] = entity_import('pet', '{
-     "name" : "booking_cancelled",
-     "title" : "Booking Cancelled",
-     "subject" : "Booking Cancelled",
-     "mail_body" : "This is a notification that the booking for:\r\n\r\n[roomify_property:name] - [bat_type:name]\r\n\r\nfrom [bat_booking:booking-start-date:custom:m\/d\/Y] to [bat_booking:booking-end-date:custom:m\/d\/Y]\r\n\r\nhas been cancelled. \r\n\r\nIf you have any queries please get in touch with [site:name]",
-     "mail_body_plain" : "",
-     "send_plain" : "0",
-     "from_override" : "",
-     "cc_default" : "",
-     "bcc_default" : "",
-     "recipient_callback" : "",
-     "token_entity_types" : [ "bat_type", "bat_booking", "roomify_property" ],
-     "language" : "en",
-     "rdf_mapping" : []
-   }');
+    "name" : "booking_cancelled",
+    "title" : "Booking Cancelled",
+    "subject" : "Booking Cancelled for [roomify_property:name]",
+    "mail_body" : "The booking for: \u003Cstrong\u003E[roomify_property:name] - [bat_type:name]\u003C\/strong\u003E has been \u003Cstrong\u003ECANCELLED\u003C\/strong\u003E\r\n\r\nBooking Details:\r\nCheck-in :   [bat_booking:booking-start-date:custom:D, d M, Y]\r\nCheck-out:  [bat_booking:booking-end-date:custom:D, d M, Y]\r\n\r\nIf you have any queries please get in touch with [site:name]\r\n",
+    "mail_body_plain" : "",
+    "send_plain" : "0",
+    "from_override" : "",
+    "cc_default" : "",
+    "bcc_default" : "",
+    "recipient_callback" : "",
+    "token_entity_types" : [ "bat_type", "bat_booking", "roomify_property" ],
+    "language" : "en",
+    "rdf_mapping" : []
+  }');
 
   $items['withdraw_offer'] = entity_import('pet', '{
     "name" : "withdraw_offer",
     "title" : "Withdraw offer",
     "subject" : "The offer made for [roomify_property:name] has been withdrawn",
-    "mail_body" : "The offer made for [roomify_property:name] has been withdrawn.\r\n\r\nIf you would like to continue your conversation with the owner \u003Ca href=\u0022[roomify_conversation:url]\u0022\u003Eclick here\u003C\/a\u003E .",
+    "mail_body" : "[roomify_conversation:conversation_booking_details]\r\n\r\nHello [roomify_conversation:conversation-user-name]!\r\n\r\nThe offer made for [roomify_property:name]:\r\nCheck In:     \u003Cstrong\u003E[roomify_conversation:conversation-book-start-date:custom:D, d M, Y]\u003C\/strong\u003E\r\nCheck Out:  \u003Cstrong\u003E[roomify_conversation:conversation-book-end-date:custom:D, d M, Y]\u003C\/strong\u003E\r\n\r\nhas been \u003Cstrong\u003E\u003Cu\u003Ewithdrawn.\u003C\/u\u003E\u003C\/strong\u003E\r\n\r\nIf you would like to continue your conversation with the owner \u003Ca href=\u0022[roomify_conversation:url]\u0022\u003Eclick here\u003C\/a\u003E .",
     "mail_body_plain" : "",
     "send_plain" : "0",
     "from_override" : "",
@@ -236,8 +241,8 @@ function _casa_create_pet_templates() {
   $items['booking_reminder'] = entity_import('pet', '{
     "name" : "booking_reminder",
     "title" : "Guest Booking reminder",
-    "subject" : "Booking reminder",
-    "mail_body" : "This is your booking reminder. Your booking for [roomify_property:name] is now only [bat_booking:days-left] away!",
+    "subject" : "Booking reminder for [roomify_property:name]",
+    "mail_body" : "[bat_booking:booking-table-details]\r\n\r\nHello [bat_booking:booking-user-guest:user-first-name]!\r\n\r\nYour booking for \u003Cstrong\u003E[roomify_property:name]\u003C\/strong\u003E is coming up soon (only [bat_booking:days-left] away!) .\r\n\r\nBooking Details:\r\nCheck-in :   \u003Cstrong\u003E[bat_booking:booking-start-date:custom:D, d M, Y]\u003C\/strong\u003E\r\nCheck-out:  \u003Cstrong\u003E[bat_booking:booking-end-date:custom:D, d M, Y]\u003C\/strong\u003E\r\n\r\nYou can find the status of your current reservation at: [commerce-order:customer-url]\r\n\r\nPlease contact us if you have any questions about your reservation.\r\n\r\n[roomify_property:property-details]\r\n",
     "mail_body_plain" : "",
     "send_plain" : "0",
     "from_override" : "",
@@ -252,8 +257,8 @@ function _casa_create_pet_templates() {
   $items['owner_booking_reminder'] = entity_import('pet', '{
     "name" : "owner_booking_reminder",
     "title" : "Owner Booking reminder",
-    "subject" : "Booking reminder",
-    "mail_body" : "This is your booking reminder. The booking for [roomify_property:name] is now only [bat_booking:days-left] away!",
+    "subject" : "Booking reminder for [roomify_property:name]",
+    "mail_body" : "[bat_booking:booking-table-details]\r\n\r\nHello [bat_type:author:user-first-name]!\r\n\r\nYour booking for \u003Cstrong\u003E[roomify_property:name]\u003C\/strong\u003E is coming up soon (only [bat_booking:days-left] away!) .\r\n\r\n\u003Cstrong\u003EBooking Details:\u003C\/strong\u003E\r\nCheck-in :   \u003Cstrong\u003E[bat_booking:booking-start-date:custom:D, d M, Y]\u003C\/strong\u003E\r\nCheck-out:  \u003Cstrong\u003E[bat_booking:booking-end-date:custom:D, d M, Y]\u003C\/strong\u003E\r\nRoom type: \u003Cstrong\u003E[bat_type:name]\u003C\/strong\u003E\r\n\r\n\u003Cstrong\u003EGuest Details:\u003C\/strong\u003E\r\nName: \u003Cstrong\u003E[bat_booking:booking-user-guest:user-first-name] [bat_booking:booking-user-guest:user-last-name]\u003C\/strong\u003E\r\nTelephone: \u003Cstrong\u003E[bat_booking:booking-user-guest:user-telephone]\u003C\/strong\u003E\r\nEmail: \u003Cstrong\u003E[commerce-order:mail]\u003C\/strong\u003E\r\n\r\nYou can find the status of your current reservation at: [commerce-order:customer-url]\r\n",
     "mail_body_plain" : "",
     "send_plain" : "0",
     "from_override" : "",
@@ -303,6 +308,22 @@ function roomify_casa_pet_update_7001() {
     "bcc_default" : "",
     "recipient_callback" : "",
     "token_entity_types" : [ "user" ],
+    "rdf_mapping" : []
+  }');
+
+  $items['authenticated_user_booking_enquiry'] = entity_import('pet', '{
+    "name" : "authenticated_user_booking_enquiry",
+    "title" : "Authenticated user booking enquiry",
+    "subject" : "Your enquiry has been sent!",
+    "mail_body" : "[roomify_conversation:conversation_booking_details]\r\n\r\nHello [roomify_conversation:conversation-user-name],\r\n\r\nThank you for your enquiry!\r\n\r\nYou can talk with the owner of the property by logging in to the site and visiting \u003Ca href=\u0022[roomify_conversation:absolute_url]\u0022\u003E[roomify_conversation:absolute_url]\u003C\/a\u003E\r\n\r\n--  [site:name] Team",
+    "mail_body_plain" : "",
+    "send_plain" : "0",
+    "from_override" : "",
+    "cc_default" : "",
+    "bcc_default" : "",
+    "recipient_callback" : "",
+    "token_entity_types" : null,
+    "language" : "en",
     "rdf_mapping" : []
   }');
 
@@ -714,4 +735,27 @@ function roomify_casa_pet_update_7016() {
     ->fields(array('language' => 'en'))
     ->condition('language', '')
     ->execute();
+}
+
+/**
+ * Add "Authenticated user booking enquiry" template.
+ */
+function roomify_casa_pet_update_7017() {
+  $item = entity_import('pet', '{
+    "name" : "authenticated_user_booking_enquiry",
+    "title" : "Authenticated user booking enquiry",
+    "subject" : "Your enquiry has been sent!",
+    "mail_body" : "[roomify_conversation:conversation_booking_details]\r\n\r\nHello [roomify_conversation:conversation-user-name],\r\n\r\nThank you for your enquiry!\r\n\r\nYou can talk with the owner of the property by logging in to the site and visiting \u003Ca href=\u0022[roomify_conversation:absolute_url]\u0022\u003E[roomify_conversation:absolute_url]\u003C\/a\u003E\r\n\r\n--  [site:name] Team",
+    "mail_body_plain" : "",
+    "send_plain" : "0",
+    "from_override" : "",
+    "cc_default" : "",
+    "bcc_default" : "",
+    "recipient_callback" : "",
+    "token_entity_types" : null,
+    "language" : "en",
+    "rdf_mapping" : []
+  }');
+
+  $item->save();
 }

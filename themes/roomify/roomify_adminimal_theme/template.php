@@ -190,10 +190,10 @@ function roomify_adminimal_theme_preprocess_mimemail_message(&$variables) {
   $theme = variable_get('theme_default', 'roomify_bootstrap');
 
   // Default Colors
-  $header_bg = '#ECECEC';
-  $footer_bg = '#ECECEC';
-  $header_color = '#000000';
-  $footer_color = '#000000';
+  $header_bg = '#03A9F4';
+  $footer_bg = '#000000';
+  $header_color = '#FFFFFF';
+  $footer_color = '#FFFFFF';
 
   $custom_colors = variable_get('color_' . $theme . '_palette', '');
   if ($custom_colors) {
@@ -212,7 +212,7 @@ function roomify_adminimal_theme_preprocess_mimemail_message(&$variables) {
   }
 
   // FOOTER TEXT
-  $footer_text = variable_get('roomify_footer_text', 'Roomify for Accommodations - Copyright © 2016');
+  $footer_text = variable_get('roomify_footer_text', 'Roomify for Accommodations - Copyright © 2017');
 
   $variables['footer_text'] = isset($footer_text['value']) ? $footer_text['value'] : $footer_text;
   $variables['header_bg'] = $header_bg;

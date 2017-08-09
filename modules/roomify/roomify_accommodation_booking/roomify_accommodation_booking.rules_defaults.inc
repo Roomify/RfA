@@ -62,6 +62,16 @@ function roomify_accommodation_booking_default_rules_configuration() {
                       "data" : [ "commerce-order:owner:user-address" ],
                       "value" : [ "customer-profile:commerce-customer-address" ]
                     }
+                  },
+                  { "data_set" : {
+                      "data" : [ "commerce-order:owner:user-first-name" ],
+                      "value" : [ "customer-profile:commerce-customer-address:first-name" ]
+                    }
+                  },
+                  { "data_set" : {
+                      "data" : [ "commerce-order:owner:user-last-name" ],
+                      "value" : [ "customer-profile:commerce-customer-address:last-name" ]
+                    }
                   }
                 ]
               }
@@ -189,6 +199,54 @@ function roomify_accommodation_booking_default_rules_configuration() {
                     },
                     "DO" : [
                       { "roomify_accommodation_booking_send_mail" : { "commerce_line_item" : [ "list-item" ] } }
+                    ]
+                  }
+                ]
+              }
+            ]
+          }
+        }
+      ]
+    }
+  }');
+
+  $rules['commerce_checkout_order_email'] = entity_import('rules_config', '{ "commerce_checkout_order_email" : {
+      "LABEL" : "Send an order notification e-mail",
+      "PLUGIN" : "reaction rule",
+      "WEIGHT" : "4",
+      "OWNER" : "rules",
+      "TAGS" : [ "Commerce Checkout" ],
+      "REQUIRES" : [ "rules_conditional", "rules", "pet", "commerce_checkout" ],
+      "ON" : { "commerce_checkout_complete" : [] },
+      "DO" : [
+        { "LOOP" : {
+            "USING" : { "list" : [ "commerce-order:commerce-line-items" ] },
+            "ITEM" : { "list_item" : "Current list item" },
+            "DO" : [
+              { "CONDITIONAL" : [
+                  {
+                    "IF" : { "data_is" : {
+                        "data" : [ "list-item:type" ],
+                        "value" : "roomify_accommodation_booking"
+                      }
+                    },
+                    "DO" : [
+                      { "entity_fetch" : {
+                          "USING" : {
+                            "type" : "bat_booking",
+                            "id" : [ "list-item:commerce-booking-reference:booking-id" ]
+                          },
+                          "PROVIDE" : { "entity_fetched" : { "bat_booking" : "Bat Booking" } }
+                        }
+                      },
+                      { "pet_action_send_pet" : {
+                          "pet_name" : "order_confirmation",
+                          "to_text" : "[commerce-order:mail]",
+                          "to_account" : [ "" ],
+                          "account_subs" : [ "" ],
+                          "node_subs" : [ "" ]
+                        }
+                      }
                     ]
                   }
                 ]

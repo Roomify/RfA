@@ -191,7 +191,7 @@ function roomify_travel_theme_views_default_views() {
   $handler->display->display_options['fields']['created']['table'] = 'search_api_index_blogposts_index';
   $handler->display->display_options['fields']['created']['field'] = 'created';
   $handler->display->display_options['fields']['created']['date_format'] = 'custom';
-  $handler->display->display_options['fields']['created']['custom_date_format'] = 'd, M Y';
+  $handler->display->display_options['fields']['created']['custom_date_format'] = 'D, d M, Y';
   $handler->display->display_options['fields']['created']['second_date_format'] = 'bat_daily';
   $handler->display->display_options['fields']['created']['link_to_entity'] = 0;
   /* Field: Indexed Node: The main body text */
@@ -281,7 +281,7 @@ function roomify_travel_theme_views_default_views() {
   $handler->display->display_options['fields']['created']['table'] = 'search_api_index_blogposts_index';
   $handler->display->display_options['fields']['created']['field'] = 'created';
   $handler->display->display_options['fields']['created']['date_format'] = 'custom';
-  $handler->display->display_options['fields']['created']['custom_date_format'] = 'd, M Y';
+  $handler->display->display_options['fields']['created']['custom_date_format'] = 'D, d M, Y';
   $handler->display->display_options['fields']['created']['second_date_format'] = 'bat_daily';
   $handler->display->display_options['fields']['created']['link_to_entity'] = 0;
   /* Field: Indexed Node: The main body text */
