@@ -248,9 +248,6 @@
     width: 100%;
     background: #FFF;
   }
-}
-
-.pane-roomify-property-property-multi-day-tour {
   .row:before,
   .row:after {
     display: none;
@@ -273,10 +270,34 @@
     display: inline-block;
   }
 
+  form {
+    @media (max-width: $screen-sm) {
+      text-align: center;
+    }
+  }
+
   .form-item-participants {
     float: left;
-    width: 105px;
+    width: 90px;
     margin-right: 10px;
+
+    @media (max-width: $screen-sm) {
+      width: 100%;
+
+      select {
+        display: inline-block;
+        width: 100px;
+        margin-left: 10px;
+      }
+    }
+
+    label {
+      display: none;
+
+      @media (max-width: $screen-sm) {
+        display: inline-block;
+      }
+    }
   }
 
   .tour-price {
@@ -301,6 +322,9 @@
     &:hover {
       opacity: .86;
       color: #FFF;
+    }
+    @media (max-width: $screen-sm) {
+      float: none;
     }
   }
 }

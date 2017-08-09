@@ -286,7 +286,7 @@
       &#edit-enquiry {
         background-color: #779D73;
         border-color: #8FB98B;
-        margin-right: 10px;
+        margin-bottom: 7px;
         &:hover {
           background-color: #496147;
           border-color: #5f795d;
@@ -295,6 +295,8 @@
       &#edit-submit--2 {
         background-color: #127BA3;
         border-color: #158CBA;
+        margin-left: 10px;
+        margin-bottom: 7px;
         &:hover {
           background-color: #0d5875;
           border-color: #0f6383;
@@ -318,6 +320,7 @@
       }
       .name {
         padding-left: 25px;
+        white-space: pre-wrap;
       }
       .price {
         text-align: right;

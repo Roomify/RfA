@@ -10856,13 +10856,15 @@ div.ctools-modal-dialog .modal-header .modal-title {
   .page-activity-booking #roomify-activity-booking-confirmation-form button#edit-enquiry {
     background-color: #779D73;
     border-color: #8FB98B;
-    margin-right: 10px; }
+    margin-bottom: 7px; }
     .page-activity-booking #roomify-activity-booking-confirmation-form button#edit-enquiry:hover {
       background-color: #496147;
       border-color: #5f795d; }
   .page-activity-booking #roomify-activity-booking-confirmation-form button#edit-submit--2 {
     background-color: #127BA3;
-    border-color: #158CBA; }
+    border-color: #158CBA;
+    margin-left: 10px;
+    margin-bottom: 7px; }
     .page-activity-booking #roomify-activity-booking-confirmation-form button#edit-submit--2:hover {
       background-color: #0d5875;
       border-color: #0f6383; }
@@ -10879,7 +10881,8 @@ div.ctools-modal-dialog .modal-header .modal-title {
       .page-activity-booking #roomify-activity-booking-confirmation-form table tr td.name {
         border-right: 1px solid #ddd; }
     .page-activity-booking #roomify-activity-booking-confirmation-form table .name {
-      padding-left: 25px; }
+      padding-left: 25px;
+      white-space: pre-wrap; }
     .page-activity-booking #roomify-activity-booking-confirmation-form table .price {
       text-align: right; }
     .page-activity-booking #roomify-activity-booking-confirmation-form table .bold {
@@ -12032,7 +12035,6 @@ body.blog .news-listing-wrapper {
   display: inline-block;
   width: 100%;
   background: #FFF; }
-
 .pane-roomify-property-property-multi-day-tour .row:before,
 .pane-roomify-property-property-multi-day-tour .row:after {
   display: none; }
@@ -12046,10 +12048,25 @@ body.blog .news-listing-wrapper {
     width: 380px; }
 .pane-roomify-property-property-multi-day-tour label {
   display: inline-block; }
+@media (max-width: 768px) {
+  .pane-roomify-property-property-multi-day-tour form {
+    text-align: center; } }
 .pane-roomify-property-property-multi-day-tour .form-item-participants {
   float: left;
-  width: 105px;
+  width: 90px;
   margin-right: 10px; }
+  @media (max-width: 768px) {
+    .pane-roomify-property-property-multi-day-tour .form-item-participants {
+      width: 100%; }
+      .pane-roomify-property-property-multi-day-tour .form-item-participants select {
+        display: inline-block;
+        width: 100px;
+        margin-left: 10px; } }
+  .pane-roomify-property-property-multi-day-tour .form-item-participants label {
+    display: none; }
+    @media (max-width: 768px) {
+      .pane-roomify-property-property-multi-day-tour .form-item-participants label {
+        display: inline-block; } }
 .pane-roomify-property-property-multi-day-tour .tour-price {
   float: right;
   width: 230px;
@@ -12076,6 +12093,9 @@ body.blog .news-listing-wrapper {
   .pane-roomify-property-property-multi-day-tour button:hover {
     opacity: .86;
     color: #FFF; }
+  @media (max-width: 768px) {
+    .pane-roomify-property-property-multi-day-tour button {
+      float: none; } }
 
 .pane-roomify-property-property-single-day-tour h2.pane-title,
 .pane-roomify-property-property-multi-day-activity h2.pane-title,
