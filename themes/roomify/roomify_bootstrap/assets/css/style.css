@@ -10916,7 +10916,8 @@ div.ctools-modal-dialog .modal-header .modal-title {
   top: 0 !important;
   left: 0 !important;
   width: 100% !important;
-  height: 100% !important; }
+  height: 100% !important;
+  position: fixed !important; }
   .page-conversation-booking #modalContent .ctools-modal-dialog.modal-dialog,
   .page-booking #modalContent .ctools-modal-dialog.modal-dialog,
   .page-activity-booking #modalContent .ctools-modal-dialog.modal-dialog {
