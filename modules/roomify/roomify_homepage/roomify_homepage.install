@@ -46,14 +46,14 @@ function roomify_homepage_example_homepage() {
   $santorini = file_get_contents(drupal_get_path('module', 'roomify_homepage') . '/images/santorini.jpg');
   $santorini = file_save_data($santorini, roomify_system_file_dir() . 'standard.jpg', FILE_EXISTS_RENAME);
 
-  $capri = file_get_contents(drupal_get_path('module', 'roomify_homepage') . '/images/capri.png');
-  $capri = file_save_data($capri, roomify_system_file_dir() . 'standard.jpg', FILE_EXISTS_RENAME);
+  $beach = file_get_contents(drupal_get_path('module', 'roomify_homepage') . '/images/beach.jpg');
+  $beach = file_save_data($beach, roomify_system_file_dir() . 'standard.jpg', FILE_EXISTS_RENAME);
 
   $firenze = file_get_contents(drupal_get_path('module', 'roomify_homepage') . '/images/firenze.png');
   $firenze = file_save_data($firenze, roomify_system_file_dir() . 'standard.jpg', FILE_EXISTS_RENAME);
 
-  $agrigento = file_get_contents(drupal_get_path('module', 'roomify_homepage') . '/images/agrigento.png');
-  $agrigento = file_save_data($agrigento, roomify_system_file_dir() . 'standard.jpg', FILE_EXISTS_RENAME);
+  $pool = file_get_contents(drupal_get_path('module', 'roomify_homepage') . '/images/pool.jpg');
+  $pool = file_save_data($pool, roomify_system_file_dir() . 'standard.jpg', FILE_EXISTS_RENAME);
 
   $view = file_get_contents(drupal_get_path('module', 'roomify_homepage') . '/images/vista.png');
   $view = file_save_data($view, roomify_system_file_dir() . 'standard.jpg', FILE_EXISTS_RENAME);
@@ -85,21 +85,21 @@ function roomify_homepage_example_homepage() {
   );
 
   $node->field_homepage_slideshow[LANGUAGE_NONE][0] = array(
-    'fid' => $capri->fid,
-    'filename' => $capri->filename,
-    'filemime' => $capri->filemime,
+    'fid' => $beach->fid,
+    'filename' => $beach->filename,
+    'filemime' => $beach->filemime,
     'uid' => 1,
-    'uri' => $capri->uri,
+    'uri' => $beach->uri,
     'status' => 1,
     'display' => 1,
   );
 
   $node->field_homepage_slideshow[LANGUAGE_NONE][1] = array(
-    'fid' => $agrigento->fid,
-    'filename' => $agrigento->filename,
-    'filemime' => $agrigento->filemime,
+    'fid' => $pool->fid,
+    'filename' => $pool->filename,
+    'filemime' => $pool->filemime,
     'uid' => 1,
-    'uri' => $agrigento->uri,
+    'uri' => $pool->uri,
     'status' => 1,
     'display' => 1,
   );
@@ -171,4 +171,32 @@ function roomify_homepage_update_7002() {
   module_load_include('inc', 'roomify_homepage', 'roomify_homepage.fields');
 
   roomify_homepage_create_fields();
+}
+
+/**
+ * Updates homepages style.
+ */
+function roomify_homepage_update_7003() {
+  module_load_include('inc', 'roomify_homepage', 'roomify_homepage.fields');
+
+  roomify_homepage_create_fields();
+
+  $instance_info = field_read_instance('node', 'field_homepage_slideshow', 'homepage');
+  $instance_info['widget']['settings']['manualcrop_styles_list']['1600x580'] = '1600x580';
+  field_update_instance($instance_info);
+
+  $nids = db_select('node', 'n')
+    ->fields('n', array('nid'))
+    ->condition('type', 'homepage', '=')
+    ->execute()
+    ->fetchCol();
+
+  // Get all of the homepage nodes.
+  $nodes = node_load_multiple($nids);
+  foreach ($nodes as $node) {
+    if (isset($node->field_homepage_style)) {
+      $node->field_homepage_style[LANGUAGE_NONE][0]['value'] = 'large';
+      field_attach_update('node', $node);
+    }
+  }
 }
