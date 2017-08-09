@@ -873,8 +873,8 @@ function roomify_travel_theme_default_page_manager_handlers() {
   $pane->shown = TRUE;
   $pane->access = array();
   $pane->configuration = array(
-    'override_title' => 1,
-    'override_title_text' => '<span class="glyphicon glyphicon-check"></span>Area',
+    'override_title' => 0,
+    'override_title_text' => '',
     'override_title_heading' => 'h4',
   );
   $pane->cache = array();
@@ -896,8 +896,8 @@ function roomify_travel_theme_default_page_manager_handlers() {
   $pane->shown = TRUE;
   $pane->access = array();
   $pane->configuration = array(
-    'override_title' => 1,
-    'override_title_text' => 'Area Type',
+    'override_title' => 0,
+    'override_title_text' => '',
     'override_title_heading' => 'h3',
   );
   $pane->cache = array();
@@ -942,8 +942,8 @@ function roomify_travel_theme_default_page_manager_handlers() {
   $pane->shown = TRUE;
   $pane->access = array();
   $pane->configuration = array(
-    'override_title' => 1,
-    'override_title_text' => '<span class="glyphicon glyphicon-check"></span>Amenities',
+    'override_title' => 0,
+    'override_title_text' => '',
     'override_title_heading' => 'h4',
   );
   $pane->cache = array();
