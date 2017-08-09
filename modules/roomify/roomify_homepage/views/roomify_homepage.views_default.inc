@@ -136,6 +136,11 @@ function roomify_homepage_views_default_views() {
   $handler->display->display_options['style_options']['slide_overlay'] = '';
   $handler->display->display_options['style_options']['preserve_keys'] = 0;
   $handler->display->display_options['row_plugin'] = 'fields';
+  /* Relationship: Entity Reference: Referenced Entity */
+  $handler->display->display_options['relationships']['field_homepage_properties_lists_target_id']['id'] = 'field_homepage_properties_lists_target_id';
+  $handler->display->display_options['relationships']['field_homepage_properties_lists_target_id']['table'] = 'field_data_field_homepage_properties_lists';
+  $handler->display->display_options['relationships']['field_homepage_properties_lists_target_id']['field'] = 'field_homepage_properties_lists_target_id';
+  $handler->display->display_options['relationships']['field_homepage_properties_lists_target_id']['required'] = TRUE;
   /* Field: Content: Slideshow */
   $handler->display->display_options['fields']['field_homepage_slideshow']['id'] = 'field_homepage_slideshow';
   $handler->display->display_options['fields']['field_homepage_slideshow']['table'] = 'field_data_field_homepage_slideshow';
@@ -185,6 +190,17 @@ function roomify_homepage_views_default_views() {
 
   /* Display: Tight Slideshow */
   $handler = $view->new_display('panel_pane', 'Tight Slideshow', 'panel_pane_1');
+  $handler->display->display_options['defaults']['relationships'] = FALSE;
+  $handler->display->display_options['defaults']['arguments'] = FALSE;
+  /* Contextual filter: Content: Nid */
+  $handler->display->display_options['arguments']['nid']['id'] = 'nid';
+  $handler->display->display_options['arguments']['nid']['table'] = 'node';
+  $handler->display->display_options['arguments']['nid']['field'] = 'nid';
+  $handler->display->display_options['arguments']['nid']['default_action'] = 'default';
+  $handler->display->display_options['arguments']['nid']['default_argument_type'] = 'node';
+  $handler->display->display_options['arguments']['nid']['summary']['number_of_records'] = '0';
+  $handler->display->display_options['arguments']['nid']['summary']['format'] = 'default_summary';
+  $handler->display->display_options['arguments']['nid']['summary_options']['items_per_page'] = '25';
 
   /* Display: Properties Lists */
   $handler = $view->new_display('panel_pane', 'Properties Lists', 'panel_pane_2');
@@ -197,12 +213,6 @@ function roomify_homepage_views_default_views() {
   $handler->display->display_options['defaults']['row_plugin'] = FALSE;
   $handler->display->display_options['row_plugin'] = 'fields';
   $handler->display->display_options['defaults']['row_options'] = FALSE;
-  $handler->display->display_options['defaults']['relationships'] = FALSE;
-  /* Relationship: Entity Reference: Referenced Entity */
-  $handler->display->display_options['relationships']['field_homepage_properties_lists_target_id']['id'] = 'field_homepage_properties_lists_target_id';
-  $handler->display->display_options['relationships']['field_homepage_properties_lists_target_id']['table'] = 'field_data_field_homepage_properties_lists';
-  $handler->display->display_options['relationships']['field_homepage_properties_lists_target_id']['field'] = 'field_homepage_properties_lists_target_id';
-  $handler->display->display_options['relationships']['field_homepage_properties_lists_target_id']['required'] = TRUE;
   $handler->display->display_options['defaults']['fields'] = FALSE;
   /* Field: Content: Nid */
   $handler->display->display_options['fields']['nid']['id'] = 'nid';
@@ -229,11 +239,11 @@ function roomify_homepage_views_default_views() {
   $handler->display->display_options['fields']['field_pl_featured_image']['label'] = '';
   $handler->display->display_options['fields']['field_pl_featured_image']['alter']['alter_text'] = TRUE;
   $handler->display->display_options['fields']['field_pl_featured_image']['alter']['text'] = '<a href="/node/[nid]">
-  [field_pl_featured_image]
-  <div class="overlay">
-  <div class="content">[title]</div>
-  </div>
-  </a>';
+    [field_pl_featured_image]
+    <div class="overlay">
+    <div class="content">[title]</div>
+    </div>
+    </a>';
   $handler->display->display_options['fields']['field_pl_featured_image']['element_label_colon'] = FALSE;
   $handler->display->display_options['fields']['field_pl_featured_image']['element_wrapper_class'] = 'hovereffect';
   $handler->display->display_options['fields']['field_pl_featured_image']['click_sort_column'] = 'fid';
@@ -246,36 +256,6 @@ function roomify_homepage_views_default_views() {
       ),
     ),
   );
-  $handler->display->display_options['fields']['field_homepage_slideshow']['group_rows'] = FALSE;
-  $handler->display->display_options['fields']['field_homepage_slideshow']['delta_offset'] = '0';
-  /* Sort criterion: Content: Post date */
-  $handler->display->display_options['sorts']['created']['id'] = 'created';
-  $handler->display->display_options['sorts']['created']['table'] = 'node';
-  $handler->display->display_options['sorts']['created']['field'] = 'created';
-  $handler->display->display_options['sorts']['created']['order'] = 'DESC';
-  /* Contextual filter: Content: Nid */
-  $handler->display->display_options['arguments']['nid']['id'] = 'nid';
-  $handler->display->display_options['arguments']['nid']['table'] = 'node';
-  $handler->display->display_options['arguments']['nid']['field'] = 'nid';
-  $handler->display->display_options['arguments']['nid']['default_action'] = 'default';
-  $handler->display->display_options['arguments']['nid']['default_argument_type'] = 'node';
-  $handler->display->display_options['arguments']['nid']['summary']['number_of_records'] = '0';
-  $handler->display->display_options['arguments']['nid']['summary']['format'] = 'default_summary';
-  $handler->display->display_options['arguments']['nid']['summary_options']['items_per_page'] = '25';
-  /* Filter criterion: Content: Published */
-  $handler->display->display_options['filters']['status']['id'] = 'status';
-  $handler->display->display_options['filters']['status']['table'] = 'node';
-  $handler->display->display_options['filters']['status']['field'] = 'status';
-  $handler->display->display_options['filters']['status']['value'] = 1;
-  $handler->display->display_options['filters']['status']['group'] = 1;
-  $handler->display->display_options['filters']['status']['expose']['operator'] = FALSE;
-  /* Filter criterion: Content: Type */
-  $handler->display->display_options['filters']['type']['id'] = 'type';
-  $handler->display->display_options['filters']['type']['table'] = 'node';
-  $handler->display->display_options['filters']['type']['field'] = 'type';
-  $handler->display->display_options['filters']['type']['value'] = array(
-    'homepage' => 'homepage',
-  );
   $translatables['homepage'] = array(
     t('Master'),
     t('more'),
@@ -284,17 +264,17 @@ function roomify_homepage_views_default_views() {
     t('Sort by'),
     t('Asc'),
     t('Desc'),
+    t('Content entity referenced from field_homepage_properties_lists'),
     t('All'),
     t('Tight Slideshow'),
     t('View panes'),
     t('Properties Lists'),
-    t('Content entity referenced from field_homepage_properties_lists'),
     t('<a href="/node/[nid]">
-  [field_pl_featured_image]
-  <div class="overlay">
-  <div class="content">[title]</div>
-  </div>
-  </a>'),
+    [field_pl_featured_image]
+    <div class="overlay">
+    <div class="content">[title]</div>
+    </div>
+    </a>'),
   );
   $export['homepage'] = $view;
 
