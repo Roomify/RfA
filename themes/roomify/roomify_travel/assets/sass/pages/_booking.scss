@@ -286,6 +286,20 @@
           .form-textarea {
             resize: vertical;
           }
+          #children-wrapper {
+            .panel-heading {
+              background: #127BA3;
+              color: #fff;
+            }
+          }
+          .form-item-children {
+            select {
+              width: 100px;
+            }
+            .input-group-addon {
+              display: none;
+            }
+          }
           .title {
             font-size: 22px;
             font-weight: 400;
