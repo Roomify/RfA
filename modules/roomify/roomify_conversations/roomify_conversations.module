@@ -1741,9 +1741,9 @@ function roomify_conversations_inquiry_render($conversation) {
         if (count($ages) > 0) {
           $ages = '<span style="    font-size: 10px;position: absolute;left: 0;right: 0;font-weight: 400;color: #8c8c8c;">';
           $i = 1;
-          foreach($children_age as $age) {
+          foreach ($children_age as $age) {
             $count = $age['value'];
-            $ages .=   format_plural($count, t('@count year old'), t('@count years old'));
+            $ages .= format_plural($count, t('@count year old'), t('@count years old'));
             if ($i < count($children_age)) {
               $ages .= ' - ';
             }
