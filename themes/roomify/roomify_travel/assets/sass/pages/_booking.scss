@@ -286,6 +286,20 @@
           .form-textarea {
             resize: vertical;
           }
+          #children-wrapper {
+            .panel-heading {
+              background: #127BA3;
+              color: #fff;
+            }
+          }
+          .form-item-children {
+            select {
+              width: 100px;
+            }
+            .input-group-addon {
+              display: none;
+            }
+          }
           .title {
             font-size: 22px;
             font-weight: 400;
@@ -299,6 +313,13 @@
             top: 12px;
             right: 12px;
             background: url(../images/x.png) center center no-repeat;
+          }
+          #children-wrapper {
+            .form-item {
+              display: inline-block;
+              min-width: 60px;
+              margin-right: 12px;
+            }
           }
         }
       }

@@ -197,7 +197,9 @@ function roomify_conversations_create_conversation_type() {
   roomify_conversations_add_name_field();
   roomify_conversations_add_email_field();
   roomify_conversations_add_guests_field();
+  roomify_conversations_add_adults_field();
   roomify_conversations_add_children_field();
+  roomify_conversations_add_children_age_field();
   roomify_conversations_add_telephone_field();
   roomify_conversations_add_further_info_field();
   roomify_conversations_add_price_field();
@@ -281,4 +283,22 @@ function roomify_conversations_update_7004() {
   module_load_include('inc', 'roomify_conversations', 'roomify_conversations.fields');
 
   roomify_conversations_add_telephone_field();
+}
+
+/**
+ * Add 'Children age' field to conversation.
+ */
+function roomify_conversations_update_7005() {
+  module_load_include('inc', 'roomify_conversations', 'roomify_conversations.fields');
+
+  roomify_conversations_add_children_age_field();
+}
+
+/**
+ * Add 'Adults' field to conversation.
+ */
+function roomify_conversations_update_7006() {
+  module_load_include('inc', 'roomify_conversations', 'roomify_conversations.fields');
+
+  roomify_conversations_add_adults_field();
 }

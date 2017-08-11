@@ -9607,6 +9607,16 @@ body.toggled #close-sidebar-wrapper {
         .page-conversation-booking #modalContent .ctools-modal-dialog.modal-dialog #modal-content form .form-textarea,
         .page-booking #modalContent .ctools-modal-dialog.modal-dialog #modal-content form .form-textarea {
           resize: vertical; }
+        .page-conversation-booking #modalContent .ctools-modal-dialog.modal-dialog #modal-content form #children-wrapper .panel-heading,
+        .page-booking #modalContent .ctools-modal-dialog.modal-dialog #modal-content form #children-wrapper .panel-heading {
+          background: #127BA3;
+          color: #fff; }
+        .page-conversation-booking #modalContent .ctools-modal-dialog.modal-dialog #modal-content form .form-item-children select,
+        .page-booking #modalContent .ctools-modal-dialog.modal-dialog #modal-content form .form-item-children select {
+          width: 100px; }
+        .page-conversation-booking #modalContent .ctools-modal-dialog.modal-dialog #modal-content form .form-item-children .input-group-addon,
+        .page-booking #modalContent .ctools-modal-dialog.modal-dialog #modal-content form .form-item-children .input-group-addon {
+          display: none; }
         .page-conversation-booking #modalContent .ctools-modal-dialog.modal-dialog #modal-content form .title,
         .page-booking #modalContent .ctools-modal-dialog.modal-dialog #modal-content form .title {
           font-size: 22px;
@@ -9621,6 +9631,11 @@ body.toggled #close-sidebar-wrapper {
           top: 12px;
           right: 12px;
           background: url(../images/x.png) center center no-repeat; }
+        .page-conversation-booking #modalContent .ctools-modal-dialog.modal-dialog #modal-content form #children-wrapper .form-item,
+        .page-booking #modalContent .ctools-modal-dialog.modal-dialog #modal-content form #children-wrapper .form-item {
+          display: inline-block;
+          min-width: 60px;
+          margin-right: 12px; }
   .page-conversation-booking #modalContent div.modal-content,
   .page-booking #modalContent div.modal-content {
     background: none;
