@@ -29,5 +29,4 @@ Feature: Roomify Homepage
     And I press "Save"
     Then I am on the homepage
     And I should see "Featured Properties"
-    And I should see "Locanda Vivaldi"
-    And I should see "Casa Sul Mare"
+    And I should see "Areas"
