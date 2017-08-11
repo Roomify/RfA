@@ -1741,6 +1741,23 @@ function roomify_conversations_inquiry_render($conversation) {
   if (isset($conversation->conversation_children[LANGUAGE_NONE][0]['value'])) {
     if (!empty($conversation->conversation_children[LANGUAGE_NONE][0]['value'])) {
       $children = $conversation->conversation_children[LANGUAGE_NONE][0]['value'];
+      if ($children_age = field_get_items('roomify_conversation', $conversation, 'conversation_children_age')) {
+        $ages = '';
+        if (count($ages) > 0) {
+          $ages = '<span style="    font-size: 10px;position: absolute;left: 0;right: 0;font-weight: 400;color: #8c8c8c;">';
+          $i = 1;
+          foreach ($children_age as $age) {
+            $count = $age['value'];
+            $ages .= format_plural($count, t('@count year old'), t('@count years old'));
+            if ($i < count($children_age)) {
+              $ages .= ' - ';
+            }
+            $i++;
+          }
+          $ages .= '</span>';
+        }
+        $children = $children . '<br>' . $ages;
+      }
     }
   }
 

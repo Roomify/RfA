@@ -408,3 +408,151 @@ function roomify_accommodation_booking_add_booking_user_guest_field($bundle) {
     field_create_instance($instance);
   }
 }
+
+/**
+ * Add 'Guests' field.
+ */
+function roomify_accommodation_booking_add_guests_field($bundle) {
+  field_info_cache_clear();
+
+  if (field_read_field('booking_guests') === FALSE) {
+    $field = array(
+      'field_name' => 'booking_guests',
+      'type' => 'text',
+      'cardinality' => 1,
+      'locked' => 1,
+      'settings' => array(
+        'max_length' => 255,
+        'profile2_private' => FALSE,
+      ),
+    );
+    field_create_field($field);
+  }
+
+  field_cache_clear();
+
+  if (field_read_instance('bat_booking', 'booking_guests', $bundle) === FALSE) {
+    $instance = array(
+      'field_name' => 'booking_guests',
+      'entity_type' => 'bat_booking',
+      'label' => 'Guests',
+      'bundle' => $bundle,
+      'required' => FALSE,
+      'widget' => array(
+        'type' => 'text_textfield',
+      ),
+    );
+    field_create_instance($instance);
+  }
+}
+
+/**
+ * Add 'Adults' field.
+ */
+function roomify_accommodation_booking_add_adults_field($bundle) {
+  field_info_cache_clear();
+
+  if (field_read_field('booking_adults') === FALSE) {
+    $field = array(
+      'field_name' => 'booking_adults',
+      'type' => 'text',
+      'cardinality' => 1,
+      'locked' => 1,
+      'settings' => array(
+        'max_length' => 255,
+        'profile2_private' => FALSE,
+      ),
+    );
+    field_create_field($field);
+  }
+
+  field_cache_clear();
+
+  if (field_read_instance('bat_booking', 'booking_adults', $bundle) === FALSE) {
+    $instance = array(
+      'field_name' => 'booking_adults',
+      'entity_type' => 'bat_booking',
+      'label' => 'Adults',
+      'bundle' => $bundle,
+      'required' => FALSE,
+      'widget' => array(
+        'type' => 'text_textfield',
+      ),
+    );
+    field_create_instance($instance);
+  }
+}
+
+/**
+ * Add 'Children' field.
+ */
+function roomify_accommodation_booking_add_children_field($bundle) {
+  field_info_cache_clear();
+
+  if (field_read_field('booking_children') === FALSE) {
+    $field = array(
+      'field_name' => 'booking_children',
+      'type' => 'text',
+      'cardinality' => 1,
+      'locked' => 1,
+      'settings' => array(
+        'max_length' => 255,
+        'profile2_private' => FALSE,
+      ),
+    );
+    field_create_field($field);
+  }
+
+  field_cache_clear();
+
+  if (field_read_instance('bat_booking', 'booking_children', $bundle) === FALSE) {
+    $instance = array(
+      'field_name' => 'booking_children',
+      'entity_type' => 'bat_booking',
+      'label' => 'Children',
+      'bundle' => $bundle,
+      'required' => FALSE,
+      'widget' => array(
+        'type' => 'text_textfield',
+      ),
+    );
+    field_create_instance($instance);
+  }
+}
+
+/**
+ * Add 'Children age' field.
+ */
+function roomify_accommodation_booking_add_children_age_field($bundle) {
+  field_info_cache_clear();
+
+  if (field_read_field('booking_children_age') === FALSE) {
+    $field = array(
+      'field_name' => 'booking_children_age',
+      'type' => 'text',
+      'cardinality' => -1,
+      'locked' => 1,
+      'settings' => array(
+        'max_length' => 255,
+        'profile2_private' => FALSE,
+      ),
+    );
+    field_create_field($field);
+  }
+
+  field_cache_clear();
+
+  if (field_read_instance('bat_booking', 'booking_children_age', $bundle) === FALSE) {
+    $instance = array(
+      'field_name' => 'booking_children_age',
+      'entity_type' => 'bat_booking',
+      'label' => 'Children age',
+      'bundle' => $bundle,
+      'required' => FALSE,
+      'widget' => array(
+        'type' => 'text_textfield',
+      ),
+    );
+    field_create_instance($instance);
+  }
+}
