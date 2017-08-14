@@ -552,44 +552,69 @@ function roomify_system_views_default_views() {
   $handler->display->display_options['fields']['property_id']['label'] = '';
   $handler->display->display_options['fields']['property_id']['exclude'] = TRUE;
   $handler->display->display_options['fields']['property_id']['element_label_colon'] = FALSE;
-  /* Field: Roomify Property: Search/Featured Image */
-  $handler->display->display_options['fields']['field_sp_featured_image']['id'] = 'field_sp_featured_image';
-  $handler->display->display_options['fields']['field_sp_featured_image']['table'] = 'field_data_field_sp_featured_image';
-  $handler->display->display_options['fields']['field_sp_featured_image']['field'] = 'field_sp_featured_image';
-  $handler->display->display_options['fields']['field_sp_featured_image']['label'] = '';
-  $handler->display->display_options['fields']['field_sp_featured_image']['element_label_colon'] = FALSE;
-  $handler->display->display_options['fields']['field_sp_featured_image']['click_sort_column'] = 'fid';
-  $handler->display->display_options['fields']['field_sp_featured_image']['settings'] = array(
-    'image_style' => 'homepage_features',
-    'image_link' => 'content',
-    'conditions' => array(
-      0 => array(
-        'condition' => '',
-      ),
-    ),
-  );
   /* Field: Subqueue: Starting Price */
   $handler->display->display_options['fields']['starting_price']['id'] = 'starting_price';
   $handler->display->display_options['fields']['starting_price']['table'] = 'entityqueue_subqueue';
   $handler->display->display_options['fields']['starting_price']['field'] = 'starting_price';
   $handler->display->display_options['fields']['starting_price']['relationship'] = 'entityqueue_relationship';
   $handler->display->display_options['fields']['starting_price']['label'] = '';
+  $handler->display->display_options['fields']['starting_price']['exclude'] = TRUE;
   $handler->display->display_options['fields']['starting_price']['element_label_colon'] = FALSE;
   /* Field: Roomify Property: Label */
   $handler->display->display_options['fields']['name']['id'] = 'name';
   $handler->display->display_options['fields']['name']['table'] = 'roomify_properties';
   $handler->display->display_options['fields']['name']['field'] = 'name';
   $handler->display->display_options['fields']['name']['label'] = '';
+  $handler->display->display_options['fields']['name']['exclude'] = TRUE;
   $handler->display->display_options['fields']['name']['element_label_colon'] = FALSE;
-  /* Field: Roomify Property: Property Short Description */
-  $handler->display->display_options['fields']['field_sp_short_description']['id'] = 'field_sp_short_description';
-  $handler->display->display_options['fields']['field_sp_short_description']['table'] = 'field_data_field_sp_short_description';
-  $handler->display->display_options['fields']['field_sp_short_description']['field'] = 'field_sp_short_description';
-  $handler->display->display_options['fields']['field_sp_short_description']['label'] = '';
-  $handler->display->display_options['fields']['field_sp_short_description']['alter']['max_length'] = '120';
-  $handler->display->display_options['fields']['field_sp_short_description']['alter']['trim'] = TRUE;
-  $handler->display->display_options['fields']['field_sp_short_description']['element_label_colon'] = FALSE;
-  $handler->display->display_options['fields']['field_sp_short_description']['settings'] = array(
+  /* Field: Roomify Property: Area */
+  $handler->display->display_options['fields']['field_sp_area']['id'] = 'field_sp_area';
+  $handler->display->display_options['fields']['field_sp_area']['table'] = 'field_data_field_sp_area';
+  $handler->display->display_options['fields']['field_sp_area']['field'] = 'field_sp_area';
+  $handler->display->display_options['fields']['field_sp_area']['label'] = '';
+  $handler->display->display_options['fields']['field_sp_area']['exclude'] = TRUE;
+  $handler->display->display_options['fields']['field_sp_area']['element_label_colon'] = FALSE;
+  $handler->display->display_options['fields']['field_sp_area']['type'] = 'i18n_taxonomy_term_reference_plain';
+  $handler->display->display_options['fields']['field_sp_area']['settings'] = array(
+    'conditions' => array(
+      0 => array(
+        'condition' => '',
+      ),
+    ),
+  );
+  $handler->display->display_options['fields']['field_sp_area']['delta_offset'] = '0';
+  /* Field: Global: Custom text */
+  $handler->display->display_options['fields']['nothing']['id'] = 'nothing';
+  $handler->display->display_options['fields']['nothing']['table'] = 'views';
+  $handler->display->display_options['fields']['nothing']['field'] = 'nothing';
+  $handler->display->display_options['fields']['nothing']['label'] = '';
+  $handler->display->display_options['fields']['nothing']['exclude'] = TRUE;
+  $handler->display->display_options['fields']['nothing']['alter']['text'] = '<table>
+       <tbody>
+        <tr>
+          <td class="property-name"><div class="location">[field_sp_area]</div></td>
+          <td class="starting-price">[starting_price] </td>
+        </tr>
+      </tbody>
+      </table>';
+  $handler->display->display_options['fields']['nothing']['element_label_colon'] = FALSE;
+  /* Field: Roomify Property: Search/Featured Image */
+  $handler->display->display_options['fields']['field_sp_featured_image']['id'] = 'field_sp_featured_image';
+  $handler->display->display_options['fields']['field_sp_featured_image']['table'] = 'field_data_field_sp_featured_image';
+  $handler->display->display_options['fields']['field_sp_featured_image']['field'] = 'field_sp_featured_image';
+  $handler->display->display_options['fields']['field_sp_featured_image']['label'] = '';
+  $handler->display->display_options['fields']['field_sp_featured_image']['alter']['alter_text'] = TRUE;
+  $handler->display->display_options['fields']['field_sp_featured_image']['alter']['text'] = '[field_sp_featured_image]
+  <div class="overlay">
+  <div class="content">[name]</div>
+  </div>
+  <div class=property-info>[nothing]</div>';
+  $handler->display->display_options['fields']['field_sp_featured_image']['element_label_colon'] = FALSE;
+  $handler->display->display_options['fields']['field_sp_featured_image']['element_wrapper_class'] = 'hovereffect';
+  $handler->display->display_options['fields']['field_sp_featured_image']['click_sort_column'] = 'fid';
+  $handler->display->display_options['fields']['field_sp_featured_image']['settings'] = array(
+    'image_style' => 'roomify_350x470',
+    'image_link' => 'content',
     'conditions' => array(
       0 => array(
         'condition' => '',
@@ -637,22 +662,16 @@ function roomify_system_views_default_views() {
   $handler->display->display_options['fields']['starting_price']['label'] = '';
   $handler->display->display_options['fields']['starting_price']['exclude'] = TRUE;
   $handler->display->display_options['fields']['starting_price']['element_label_colon'] = FALSE;
-  /* Field: Roomify Property: Search/Featured Image */
-  $handler->display->display_options['fields']['field_sp_featured_image']['id'] = 'field_sp_featured_image';
-  $handler->display->display_options['fields']['field_sp_featured_image']['table'] = 'field_data_field_sp_featured_image';
-  $handler->display->display_options['fields']['field_sp_featured_image']['field'] = 'field_sp_featured_image';
-  $handler->display->display_options['fields']['field_sp_featured_image']['label'] = '';
-  $handler->display->display_options['fields']['field_sp_featured_image']['element_label_colon'] = FALSE;
-  $handler->display->display_options['fields']['field_sp_featured_image']['click_sort_column'] = 'fid';
-  $handler->display->display_options['fields']['field_sp_featured_image']['settings'] = array(
-    'image_style' => 'homepage_features',
-    'image_link' => 'content',
-    'conditions' => array(
-      0 => array(
-        'condition' => '',
-      ),
-    ),
-  );
+  /* Field: Roomify Property: Label */
+  $handler->display->display_options['fields']['name']['id'] = 'name';
+  $handler->display->display_options['fields']['name']['table'] = 'roomify_properties';
+  $handler->display->display_options['fields']['name']['field'] = 'name';
+  $handler->display->display_options['fields']['name']['label'] = '';
+  $handler->display->display_options['fields']['name']['exclude'] = TRUE;
+  $handler->display->display_options['fields']['name']['alter']['alter_text'] = TRUE;
+  $handler->display->display_options['fields']['name']['alter']['max_length'] = '20';
+  $handler->display->display_options['fields']['name']['alter']['word_boundary'] = FALSE;
+  $handler->display->display_options['fields']['name']['element_label_colon'] = FALSE;
   /* Field: Roomify Property: Area */
   $handler->display->display_options['fields']['field_sp_area']['id'] = 'field_sp_area';
   $handler->display->display_options['fields']['field_sp_area']['table'] = 'field_data_field_sp_area';
@@ -660,7 +679,7 @@ function roomify_system_views_default_views() {
   $handler->display->display_options['fields']['field_sp_area']['label'] = '';
   $handler->display->display_options['fields']['field_sp_area']['exclude'] = TRUE;
   $handler->display->display_options['fields']['field_sp_area']['element_label_colon'] = FALSE;
-  $handler->display->display_options['fields']['field_sp_area']['type'] = 'taxonomy_term_reference_link';
+  $handler->display->display_options['fields']['field_sp_area']['type'] = 'taxonomy_term_reference_plain';
   $handler->display->display_options['fields']['field_sp_area']['settings'] = array(
     'conditions' => array(
       0 => array(
@@ -669,23 +688,44 @@ function roomify_system_views_default_views() {
     ),
   );
   $handler->display->display_options['fields']['field_sp_area']['delta_offset'] = '0';
-  /* Field: Roomify Property: Label */
-  $handler->display->display_options['fields']['name']['id'] = 'name';
-  $handler->display->display_options['fields']['name']['table'] = 'roomify_properties';
-  $handler->display->display_options['fields']['name']['field'] = 'name';
-  $handler->display->display_options['fields']['name']['label'] = '';
-  $handler->display->display_options['fields']['name']['alter']['alter_text'] = TRUE;
-  $handler->display->display_options['fields']['name']['alter']['text'] = '<table>
-     <tbody>
-      <tr>
-        <td class="property-name">[name]<div class="location">[field_sp_area]</div></td>
-        <td class="starting-price">[starting_price] </td>
-      </tr>
-    </tbody>
-    </table>';
-  $handler->display->display_options['fields']['name']['alter']['max_length'] = '20';
-  $handler->display->display_options['fields']['name']['alter']['word_boundary'] = FALSE;
-  $handler->display->display_options['fields']['name']['element_label_colon'] = FALSE;
+  /* Field: Global: Custom text */
+  $handler->display->display_options['fields']['nothing']['id'] = 'nothing';
+  $handler->display->display_options['fields']['nothing']['table'] = 'views';
+  $handler->display->display_options['fields']['nothing']['field'] = 'nothing';
+  $handler->display->display_options['fields']['nothing']['label'] = '';
+  $handler->display->display_options['fields']['nothing']['exclude'] = TRUE;
+  $handler->display->display_options['fields']['nothing']['alter']['text'] = '<table>
+       <tbody>
+        <tr>
+          <td class="property-name"><div class="location">[field_sp_area]</div></td>
+          <td class="starting-price">[starting_price] </td>
+        </tr>
+      </tbody>
+      </table>';
+  $handler->display->display_options['fields']['nothing']['element_label_colon'] = FALSE;
+  /* Field: Roomify Property: Search/Featured Image */
+  $handler->display->display_options['fields']['field_sp_featured_image']['id'] = 'field_sp_featured_image';
+  $handler->display->display_options['fields']['field_sp_featured_image']['table'] = 'field_data_field_sp_featured_image';
+  $handler->display->display_options['fields']['field_sp_featured_image']['field'] = 'field_sp_featured_image';
+  $handler->display->display_options['fields']['field_sp_featured_image']['label'] = '';
+  $handler->display->display_options['fields']['field_sp_featured_image']['alter']['alter_text'] = TRUE;
+  $handler->display->display_options['fields']['field_sp_featured_image']['alter']['text'] = '[field_sp_featured_image]
+  <div class="overlay">
+  <div class="content">[name]</div>
+  </div>
+  <div class=property-info>[nothing]</div>';
+  $handler->display->display_options['fields']['field_sp_featured_image']['element_label_colon'] = FALSE;
+  $handler->display->display_options['fields']['field_sp_featured_image']['element_wrapper_class'] = 'hovereffect';
+  $handler->display->display_options['fields']['field_sp_featured_image']['click_sort_column'] = 'fid';
+  $handler->display->display_options['fields']['field_sp_featured_image']['settings'] = array(
+    'image_style' => 'roomify_350x470',
+    'image_link' => 'content',
+    'conditions' => array(
+      0 => array(
+        'condition' => '',
+      ),
+    ),
+  );
   $handler->display->display_options['allow']['use_pager'] = 0;
   $handler->display->display_options['allow']['items_per_page'] = 0;
   $handler->display->display_options['allow']['offset'] = 0;
@@ -711,15 +751,20 @@ function roomify_system_views_default_views() {
     t('View panes'),
     t('List'),
     t('Homepage Featured Properties'),
-    t('Grid List'),
     t('<table>
-     <tbody>
-      <tr>
-        <td class="property-name">[name]<div class="location">[field_sp_area]</div></td>
-        <td class="starting-price">[starting_price] </td>
-      </tr>
-    </tbody>
-    </table>'),
+       <tbody>
+        <tr>
+          <td class="property-name"><div class="location">[field_sp_area]</div></td>
+          <td class="starting-price">[starting_price] </td>
+        </tr>
+      </tbody>
+      </table>'),
+    t('[field_sp_featured_image]
+  <div class="overlay">
+  <div class="content">[name]</div>
+  </div>
+  <div class=property-info>[nothing]</div>'),
+    t('Grid List'),
   );
 
   $views['featured_properties'] = $view;
@@ -796,6 +841,38 @@ function roomify_system_views_default_views() {
 
   /* Display: List */
   $handler = $view->new_display('panel_pane', 'List', 'panel_pane_1');
+  $handler->display->display_options['defaults']['fields'] = FALSE;
+  /* Field: Taxonomy term: Name */
+  $handler->display->display_options['fields']['name']['id'] = 'name';
+  $handler->display->display_options['fields']['name']['table'] = 'taxonomy_term_data';
+  $handler->display->display_options['fields']['name']['field'] = 'name';
+  $handler->display->display_options['fields']['name']['label'] = '';
+  $handler->display->display_options['fields']['name']['exclude'] = TRUE;
+  $handler->display->display_options['fields']['name']['alter']['word_boundary'] = FALSE;
+  $handler->display->display_options['fields']['name']['alter']['ellipsis'] = FALSE;
+  $handler->display->display_options['fields']['name']['element_label_colon'] = FALSE;
+  /* Field: Taxonomy term: Featured Image */
+  $handler->display->display_options['fields']['field_area_featured_image']['id'] = 'field_area_featured_image';
+  $handler->display->display_options['fields']['field_area_featured_image']['table'] = 'field_data_field_area_featured_image';
+  $handler->display->display_options['fields']['field_area_featured_image']['field'] = 'field_area_featured_image';
+  $handler->display->display_options['fields']['field_area_featured_image']['label'] = '';
+  $handler->display->display_options['fields']['field_area_featured_image']['alter']['alter_text'] = TRUE;
+  $handler->display->display_options['fields']['field_area_featured_image']['alter']['text'] = '[field_area_featured_image]
+  <div class="overlay">
+    <div class="content">[name]</div>
+  </div>';
+  $handler->display->display_options['fields']['field_area_featured_image']['element_label_colon'] = FALSE;
+  $handler->display->display_options['fields']['field_area_featured_image']['element_wrapper_class'] = 'hovereffect';
+  $handler->display->display_options['fields']['field_area_featured_image']['click_sort_column'] = 'fid';
+  $handler->display->display_options['fields']['field_area_featured_image']['settings'] = array(
+    'image_style' => 'roomify_350x470',
+    'image_link' => 'content',
+    'conditions' => array(
+      0 => array(
+        'condition' => '',
+      ),
+    ),
+  );
   $handler->display->display_options['allow']['use_pager'] = 0;
   $handler->display->display_options['allow']['items_per_page'] = 0;
   $handler->display->display_options['allow']['offset'] = 0;
@@ -815,6 +892,10 @@ function roomify_system_views_default_views() {
     t('Desc'),
     t('Taxonomy term Queue'),
     t('List'),
+    t('[field_area_featured_image]
+  <div class="overlay">
+    <div class="content">[name]</div>
+  </div>'),
     t('View panes'),
   );
   $views['featured_areas'] = $view;

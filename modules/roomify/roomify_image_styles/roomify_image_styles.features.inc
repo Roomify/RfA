@@ -87,6 +87,25 @@ function roomify_image_styles_image_default_styles() {
     ),
   );
 
+  // Exported image style: roomify_350x470.
+  $styles['roomify_350x470'] = array(
+    'label' => 'Roomify 350x470',
+    'effects' => array(
+      1 => array(
+        'name' => 'manualcrop_crop_and_scale',
+        'data' => array(
+          'width' => 360,
+          'height' => 470,
+          'upscale' => 0,
+          'respectminimum' => 1,
+          'onlyscaleifcrop' => 0,
+          'style_name' => 'roomify_350x470',
+        ),
+        'weight' => 0,
+      ),
+    ),
+  );
+
   // Exported image style: roomify_4_3.
   $styles['roomify_4_3'] = array(
     'label' => 'Roomify 4:3',

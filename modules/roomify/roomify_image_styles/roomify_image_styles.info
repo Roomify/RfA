@@ -11,6 +11,7 @@ features[image][] = blog_post_image
 features[image][] = highlight
 features[image][] = homepage_features
 features[image][] = property_slider
+features[image][] = roomify_350x470
 features[image][] = roomify_4_3
 features[image][] = roomify_thumbnail_rectangled
 features[image][] = roomify_thumbnail_squared

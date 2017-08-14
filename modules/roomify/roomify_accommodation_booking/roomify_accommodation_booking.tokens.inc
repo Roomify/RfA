@@ -58,7 +58,9 @@ function roomify_accommodation_booking_tokens($type, $tokens, array $data = arra
                 if ($featured_image = field_get_items('roomify_property', $property, 'field_sp_featured_image')) {
                   $image = array('style_name' => 'square', 'path' => $featured_image[0]['uri']);
                   $image['attributes'] = array('style' => 'width:270px;border: 2px solid white;vertical-align:bottom;');
+                  $image = theme('image_style', $image);
                   $short_description = field_get_items('roomify_property', $property, 'field_sp_short_description');
+                  $short_description = $short_description[0]['value'];
                 }
               }
             }
@@ -67,10 +69,10 @@ function roomify_accommodation_booking_tokens($type, $tokens, array $data = arra
             '<table style="width: 590px;padding-right:10px;background: #ececec;margin-bottom:20px;">
               <tbody>
                 <tr>
-                  <td>' . theme('image_style', $image) . '</td>
+                  <td>' . $image . '</td>
                   <td style="padding-left:30px;padding-right:10px;">
                       <strong style="width:100%;font-size:23px">' . $name . '</strong>
-                      <p style="margin:5px 0;font-size:13px;width:100%">' . $short_description[0]['value'] . '</p>
+                      <p style="margin:5px 0;font-size:13px;width:100%">' . $short_description . '</p>
                       <p style="margin:5px 0;width:100%">Check-in :   <strong>' . $booking_start_date->format('D, d M, Y') . '</strong></p>
                       <p style="margin:5px 0;width:100%">Check-out:  <strong>' . $booking_end_date->format('D, d M, Y') . '</strong></p>
                   </td>
@@ -94,16 +96,18 @@ function roomify_accommodation_booking_tokens($type, $tokens, array $data = arra
           if ($featured_image = field_get_items('roomify_property', $property, 'field_sp_featured_image')) {
             $image = array('style_name' => 'square', 'path' => $featured_image[0]['uri']);
             $image['attributes'] = array('style' => 'width:270px;border: 2px solid white;vertical-align:bottom;');
+            $image = theme('image_style', $image);
             $short_description = field_get_items('roomify_property', $property, 'field_sp_short_description');
+            $short_description = $short_description[0]['value'];
           }
           $return[$original] =
             '<table style="width: 590px;padding-right:10px;background: #ececec;margin-bottom:20px;">
               <tbody>
                 <tr>
-                  <td>' . theme('image_style', $image) . '</td>
+                  <td>' . $image . '</td>
                   <td style="padding-left:30px;padding-right:10px;">
                     <strong style="width:100%;font-size:23px">' . $name . '</strong>
-                    <p style="margin:5px 0;font-size:13px;width:100%">' . $short_description[0]['value'] . '</p>
+                    <p style="margin:5px 0;font-size:13px;width:100%">' . $short_description . '</p>
                   </td>
                 </tr>
               <tbody>

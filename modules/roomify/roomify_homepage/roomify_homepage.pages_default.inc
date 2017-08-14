@@ -283,6 +283,25 @@ function roomify_homepage_default_page_manager_handlers() {
   $display->content['new-3991b356-5bf2-4ab4-87a4-78f732a447c9'] = $pane;
   $display->panels['middle'][0] = 'new-3991b356-5bf2-4ab4-87a4-78f732a447c9';
   $pane = new stdClass();
+  $pane->pid = 'new-ef157365-3743-48bc-9505-8c645333e111';
+  $pane->panel = 'middle';
+  $pane->type = 'views_panes';
+  $pane->subtype = 'homepage-panel_pane_2';
+  $pane->shown = TRUE;
+  $pane->access = array();
+  $pane->configuration = array();
+  $pane->cache = array();
+  $pane->style = array(
+    'settings' => NULL,
+  );
+  $pane->css = array();
+  $pane->extras = array();
+  $pane->position = 1;
+  $pane->locks = array();
+  $pane->uuid = 'ef157365-3743-48bc-9505-8c645333e111';
+  $display->content['new-ef157365-3743-48bc-9505-8c645333e111'] = $pane;
+  $display->panels['middle'][1] = 'new-ef157365-3743-48bc-9505-8c645333e111';
+  $pane = new stdClass();
   $pane->pid = 'new-e9ac8742-dda2-412e-98c8-0d4e228fa796';
   $pane->panel = 'top';
   $pane->type = 'entity_field';

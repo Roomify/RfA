@@ -80,3 +80,15 @@ function roomify_homepage_form_alter(&$form, &$form_state, $form_id) {
     }
   }
 }
+
+/**
+ * Implements hook_views_pre_render().
+ */
+function roomify_homepage_views_pre_render(&$view) {
+  if ($view->name == 'homepage') {
+    if ($view->current_display == 'panel_pane_2') {
+      $items = count($view->result);
+      $view->display_handler->set_option('css_class', $items . '-items homepage-properties-lists');
+    }
+  }
+}
