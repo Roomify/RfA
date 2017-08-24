@@ -27,8 +27,8 @@ Feature: Conversation
 
     Given I am logged in as "_guest"
     Then I visit last created property
-    Then I fill in "arrival[date]" with "2017-08-16"
-    Then I fill in "departure[date]" with "2017-08-21"
+    Then I fill in "arrival[date]" with "2017-11-16"
+    Then I fill in "departure[date]" with "2017-11-21"
     And I click on the text "Book Now"
     And I click on the text "Send an Enquiry"
     And I wait for AJAX to finish
