@@ -141,7 +141,7 @@ projects[commerce_features][version] = 1.1
 
 projects[commerce_fees][version] = 1.0-beta1
 
-projects[commerce_paypal][version] = 2.3
+projects[commerce_paypal][version] = 2.4
 
 projects[commerce_reports][version] = 4.0-beta2
 
@@ -193,7 +193,7 @@ projects[entityqueue][version] = 1.1
 
 projects[entity_rules][version] = 1.0-alpha4
 
-projects[entity_translation][version] = 1.0-beta6
+projects[entity_translation][version] = 1.0-beta7
 
 projects[entity2text][version] = 1.0-alpha3
 
@@ -202,7 +202,7 @@ projects[entityform][version] = 2.0-rc4
 projects[entityform_block][version] = 1.3
 projects[entityform_block][patch][] = https://www.drupal.org/files/issues/entityform_block-hook_entity_type_delete-exception-2487898-13.patch
 
-projects[entityreference][version] = 1.4
+projects[entityreference][version] = 1.5
 
 projects[entityreference_prepopulate][version] = 1.7
 
@@ -244,7 +244,7 @@ projects[field_formatter_settings][version] = 1.1
 projects[footable][version] = 1.0
 projects[footable][patch][] = https://www.drupal.org/files/issues/footable-add_striping_option-2307701-4.patch
 
-projects[file_entity][version] = 2.0
+projects[file_entity][version] = 2.4
 
 projects[geofield][version] = 2.3
 
@@ -289,7 +289,7 @@ projects[icon][version] = 1.0-beta6
 
 projects[image_link_formatter][version] = 1.1
 
-projects[imageapi_optimize][version] = 1.2
+projects[imageapi_optimize][version] = 1.3
 
 projects[inline_entity_form][version] = 1.8
 
@@ -330,7 +330,7 @@ projects[masonry][version] = 3.0-beta1
 
 projects[masonry_views][version] = 3.0
 
-projects[media][version] = 2.4
+projects[media][version] = 2.10
 
 projects[menu_admin_per_menu][version] = 1.0
 projects[menu_admin_per_menu][patch][] = https://www.drupal.org/files/issues/integrate-menu-translation-suport-2546214-1.patch
@@ -340,11 +340,11 @@ projects[menu_token][version] = 1.0-beta7
 projects[message][version] = 1.12
 projects[message][patch][] = https://www.drupal.org/files/issues/text-sanitized.patch
 
-projects[metatag][version] = 1.21
+projects[metatag][version] = 1.22
 
 projects[mimemail][version] = 1.0
 
-projects[module_filter][version] = 2.0
+projects[module_filter][version] = 2.1
 
 projects[multiupload_filefield_widget][version] = 1.13
 
@@ -406,7 +406,7 @@ projects[references_dialog][patch][] = https://www.drupal.org/files/issues/refer
 projects[references_dialog][patch][] = https://www.drupal.org/files/issues/references_dialog-create_users-2172321.patch
 projects[references_dialog][patch][] = https://www.drupal.org/files/issues/creating_user_but-2238801-6.patch
 
-projects[relation][version] = 1.0
+projects[relation][version] = 1.1
 
 projects[robotstxt][version] = 1.3
 
@@ -428,7 +428,7 @@ projects[rrssb][download][revision] = 969397d5331003aa33869b53bd4ac94814f99852
 
 projects[s3fs][version] = 2.4
 
-projects[search_api][version] = 1.21
+projects[search_api][version] = 1.22
 
 projects[search_api_db][type] = module
 projects[search_api_db][download][type] = git
@@ -487,7 +487,7 @@ projects[video_embed_field][version] = 2.0-beta11
 
 projects[view_unpublished][version] = 1.2
 
-projects[views][version] = 3.16
+projects[views][version] = 3.18
 
 projects[views_autocomplete_filters][type] = module
 projects[views_autocomplete_filters][download][type] = git
@@ -508,7 +508,7 @@ projects[views_data_export][version] = 3.2
 
 projects[views_date_format_sql][version] = 3.1
 
-projects[views_infinite_scroll][version] = 2.0
+projects[views_infinite_scroll][version] = 2.1
 
 projects[views_load_more][version] = 1.5
 
