@@ -10,7 +10,6 @@
     a {
       margin-right: 10px;
       padding: 10px 20px;
-      border: 0;
       margin-bottom: 30px;
     }
   }
@@ -122,11 +121,19 @@
       }
       .checkout-back,
       .checkout-cancel {
-        @extend .btn-danger;
+        color: #fff;
+        border: 1px solid transparent;
+        border-width: 0 1px 4px 1px;
+        background-color: #d9534f;
+        border-color: #d43f3a;
         margin-right: 10px;
         padding: 10px 20px;
         &:hover {
+          background-color: #c9302c;
+          border-color: #ac2925;
           text-decoration: none;
+          margin-top: 1px;
+          border-bottom-width: 3px;
         }
       }
     }

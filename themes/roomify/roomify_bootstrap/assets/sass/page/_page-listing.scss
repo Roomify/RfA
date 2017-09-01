@@ -432,17 +432,17 @@
             @include make-md-column(5);
             
             button {
-              @include button-brooklin();
+              color: #fff;
               width: calc(100% - 15px);
-              border: 1px solid rgb(120, 158, 117);
+              border-color: $green;
               font-size: 16px;
               font-weight: 600;
-              background: $green;
-              border-radius: 0;
+              background: #779D73;
               height: 45px;
               padding: 12px;
               &:hover {
-                opacity: .86;
+                background: #496147;
+                border-color: #5f795d;
               }
             }
           }

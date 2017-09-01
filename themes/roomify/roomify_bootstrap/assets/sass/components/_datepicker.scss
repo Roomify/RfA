@@ -25,28 +25,39 @@
     border: none;
     padding: 0;
     opacity: 1 !important;
+    &.ui-state-highlight {
+      border: none;
+      a {
+        background: #2e3641;
+        color: #FFF !important;
+        border-radius: 50%;
+      }
+    }
     .ui-state-default {
       background: transparent;
       border: none;
       text-align: center;
       margin: 0;
-      font-weight: normal;
+      font-weight: 300;
       font-size: 16px;
-      padding: 5px 0 !important;
-      color: #8FB98B !important;
-      &:hover {
-        background: #8FB98B;
-        color: #FFF !important;
-      }
+      padding: 6px 0 !important;
+      color: #4CAF50 !important;
+      width: 35px;
+    }
+    a.ui-state-hover {
+      background: #4CAF50 !important;
+      color: #FFF !important;
+      border-radius: 50%;
     }
     .ui-state-active {
       background: #2e3641;
       color: #FFF !important;
+      border-radius: 50%;
     }
   }
   td.ui-datepicker-unselectable .ui-state-default {
     padding: 5px 0;
-    color: #C50000 !important;
+    color: #f90a0a !important;
     &:hover {
       background: white;
     }
@@ -55,6 +66,11 @@
     margin-top: .4em;
     margin-bottom: .3em;
     color: #e9f0f4;
+    select {
+      color: #777;
+      font-weight: normal;
+      font-size: 13px;
+    }
   }
   .ui-datepicker-header {
     background: none;

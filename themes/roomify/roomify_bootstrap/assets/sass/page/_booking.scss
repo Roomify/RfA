@@ -105,19 +105,20 @@
       margin-bottom: 40px;
     }
     button {
-      @include button-brooklin();
       &#edit-enquiry {
-        background: $green;
+        background-color: #8FB98B;
+        border-color: #8cab8a;
         &:hover {
-          background: $green;
-          opacity: .86;
+          background-color: #70a66b;
+          border-color: #6a9068;
         }
       }
       &#edit-submit--2 {
-        background: $blue;
+        background-color: #127BA3;
+        border-color: #158CBA;
         &:hover {
-          background: $blue;
-          opacity: .86;
+          background-color: #0d5875;
+          border-color: #0f6383;
         }
       }
     }
@@ -282,19 +283,23 @@
       margin-left: 16.666666667%
     }
     button {
-      @include button-brooklin();
       &#edit-enquiry {
-        background: $green;
+        background-color: #779D73;
+        border-color: #8FB98B;
+        margin-bottom: 7px;
         &:hover {
-          background: $green;
-          opacity: .86;
+          background-color: #496147;
+          border-color: #5f795d;
         }
       }
       &#edit-submit--2 {
-        background: $blue;
+        background-color: #127BA3;
+        border-color: #158CBA;
+        margin-left: 10px;
+        margin-bottom: 7px;
         &:hover {
-          background: $blue;
-          opacity: .86;
+          background-color: #0d5875;
+          border-color: #0f6383;
         }
       }
     }
@@ -315,6 +320,7 @@
       }
       .name {
         padding-left: 25px;
+        white-space: pre-wrap;
       }
       .price {
         text-align: right;
@@ -362,6 +368,7 @@
     left: 0 !important;
     width: 100% !important;
     height: 100% !important;
+    position: fixed !important;
     .ctools-modal-dialog.modal-dialog {
       width: 100% !important;
       height: 100% !important;

@@ -227,11 +227,11 @@
           button {
             width: 100%;
             padding: 8px;
-            background: #5CA755;
-            border: 0;
-            text-transform: uppercase;
+            background: #779D73;
+            border-color: $green;
             &:hover {
-              background: #66C15E;
+              background: #496147;
+              border-color: #5f795d;
             }
           }
         }

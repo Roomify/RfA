@@ -1446,7 +1446,7 @@ dd {
   display: table; }
 .dl-horizontal dd:after {
   clear: both; }
-@media (min-width: 768px) {
+@media (min-width: 769px) {
   .dl-horizontal dt {
     float: left;
     width: 160px;
@@ -3036,55 +3036,20 @@ select[multiple].input-lg,
     color: #f0ad4e;
     background-color: #fff; }
 
-.btn-danger, .page-checkout fieldset.panel-default.checkout-buttons .checkout-back,
-.page-checkout fieldset.panel-default.checkout-buttons .checkout-cancel {
+.btn-danger {
   color: #fff;
   background-color: #d9534f;
   border-color: #d43f3a; }
-  .btn-danger:hover, .page-checkout fieldset.panel-default.checkout-buttons .checkout-back:hover,
-  .page-checkout fieldset.panel-default.checkout-buttons .checkout-cancel:hover, .btn-danger:focus, .page-checkout fieldset.panel-default.checkout-buttons .checkout-back:focus,
-  .page-checkout fieldset.panel-default.checkout-buttons .checkout-cancel:focus, .btn-danger.focus, .page-checkout fieldset.panel-default.checkout-buttons .focus.checkout-back,
-  .page-checkout fieldset.panel-default.checkout-buttons .focus.checkout-cancel, .btn-danger:active, .page-checkout fieldset.panel-default.checkout-buttons .checkout-back:active,
-  .page-checkout fieldset.panel-default.checkout-buttons .checkout-cancel:active, .btn-danger.active, .page-checkout fieldset.panel-default.checkout-buttons .active.checkout-back,
-  .page-checkout fieldset.panel-default.checkout-buttons .active.checkout-cancel, .open > .btn-danger.dropdown-toggle, .page-checkout fieldset.panel-default.checkout-buttons .open > .dropdown-toggle.checkout-back,
-  .page-checkout fieldset.panel-default.checkout-buttons .open > .dropdown-toggle.checkout-cancel {
+  .btn-danger:hover, .btn-danger:focus, .btn-danger.focus, .btn-danger:active, .btn-danger.active, .open > .btn-danger.dropdown-toggle {
     color: #fff;
     background-color: #c9302c;
     border-color: #ac2925; }
-  .btn-danger:active, .page-checkout fieldset.panel-default.checkout-buttons .checkout-back:active,
-  .page-checkout fieldset.panel-default.checkout-buttons .checkout-cancel:active, .btn-danger.active, .page-checkout fieldset.panel-default.checkout-buttons .active.checkout-back,
-  .page-checkout fieldset.panel-default.checkout-buttons .active.checkout-cancel, .open > .btn-danger.dropdown-toggle, .page-checkout fieldset.panel-default.checkout-buttons .open > .dropdown-toggle.checkout-back,
-  .page-checkout fieldset.panel-default.checkout-buttons .open > .dropdown-toggle.checkout-cancel {
+  .btn-danger:active, .btn-danger.active, .open > .btn-danger.dropdown-toggle {
     background-image: none; }
-  .btn-danger.disabled, .page-checkout fieldset.panel-default.checkout-buttons .disabled.checkout-back,
-  .page-checkout fieldset.panel-default.checkout-buttons .disabled.checkout-cancel, .btn-danger.disabled:hover, .page-checkout fieldset.panel-default.checkout-buttons .disabled.checkout-back:hover,
-  .page-checkout fieldset.panel-default.checkout-buttons .disabled.checkout-cancel:hover, .btn-danger.disabled:focus, .page-checkout fieldset.panel-default.checkout-buttons .disabled.checkout-back:focus,
-  .page-checkout fieldset.panel-default.checkout-buttons .disabled.checkout-cancel:focus, .btn-danger.disabled.focus, .page-checkout fieldset.panel-default.checkout-buttons .disabled.focus.checkout-back,
-  .page-checkout fieldset.panel-default.checkout-buttons .disabled.focus.checkout-cancel, .btn-danger.disabled:active, .page-checkout fieldset.panel-default.checkout-buttons .disabled.checkout-back:active,
-  .page-checkout fieldset.panel-default.checkout-buttons .disabled.checkout-cancel:active, .btn-danger.disabled.active, .page-checkout fieldset.panel-default.checkout-buttons .disabled.active.checkout-back,
-  .page-checkout fieldset.panel-default.checkout-buttons .disabled.active.checkout-cancel, .btn-danger[disabled], .page-checkout fieldset.panel-default.checkout-buttons [disabled].checkout-back,
-  .page-checkout fieldset.panel-default.checkout-buttons [disabled].checkout-cancel, .btn-danger[disabled]:hover, .page-checkout fieldset.panel-default.checkout-buttons [disabled].checkout-back:hover,
-  .page-checkout fieldset.panel-default.checkout-buttons [disabled].checkout-cancel:hover, .btn-danger[disabled]:focus, .page-checkout fieldset.panel-default.checkout-buttons [disabled].checkout-back:focus,
-  .page-checkout fieldset.panel-default.checkout-buttons [disabled].checkout-cancel:focus, .btn-danger[disabled].focus, .page-checkout fieldset.panel-default.checkout-buttons [disabled].focus.checkout-back,
-  .page-checkout fieldset.panel-default.checkout-buttons [disabled].focus.checkout-cancel, .btn-danger[disabled]:active, .page-checkout fieldset.panel-default.checkout-buttons [disabled].checkout-back:active,
-  .page-checkout fieldset.panel-default.checkout-buttons [disabled].checkout-cancel:active, .btn-danger[disabled].active, .page-checkout fieldset.panel-default.checkout-buttons [disabled].active.checkout-back,
-  .page-checkout fieldset.panel-default.checkout-buttons [disabled].active.checkout-cancel, fieldset[disabled] .btn-danger, fieldset[disabled] .page-checkout fieldset.panel-default.checkout-buttons .checkout-back, .page-checkout fieldset.panel-default.checkout-buttons fieldset[disabled] .checkout-back,
-  fieldset[disabled] .page-checkout fieldset.panel-default.checkout-buttons .checkout-cancel,
-  .page-checkout fieldset.panel-default.checkout-buttons fieldset[disabled] .checkout-cancel, fieldset[disabled] .btn-danger:hover, fieldset[disabled] .page-checkout fieldset.panel-default.checkout-buttons .checkout-back:hover, .page-checkout fieldset.panel-default.checkout-buttons fieldset[disabled] .checkout-back:hover,
-  fieldset[disabled] .page-checkout fieldset.panel-default.checkout-buttons .checkout-cancel:hover,
-  .page-checkout fieldset.panel-default.checkout-buttons fieldset[disabled] .checkout-cancel:hover, fieldset[disabled] .btn-danger:focus, fieldset[disabled] .page-checkout fieldset.panel-default.checkout-buttons .checkout-back:focus, .page-checkout fieldset.panel-default.checkout-buttons fieldset[disabled] .checkout-back:focus,
-  fieldset[disabled] .page-checkout fieldset.panel-default.checkout-buttons .checkout-cancel:focus,
-  .page-checkout fieldset.panel-default.checkout-buttons fieldset[disabled] .checkout-cancel:focus, fieldset[disabled] .btn-danger.focus, fieldset[disabled] .page-checkout fieldset.panel-default.checkout-buttons .focus.checkout-back, .page-checkout fieldset.panel-default.checkout-buttons fieldset[disabled] .focus.checkout-back,
-  fieldset[disabled] .page-checkout fieldset.panel-default.checkout-buttons .focus.checkout-cancel,
-  .page-checkout fieldset.panel-default.checkout-buttons fieldset[disabled] .focus.checkout-cancel, fieldset[disabled] .btn-danger:active, fieldset[disabled] .page-checkout fieldset.panel-default.checkout-buttons .checkout-back:active, .page-checkout fieldset.panel-default.checkout-buttons fieldset[disabled] .checkout-back:active,
-  fieldset[disabled] .page-checkout fieldset.panel-default.checkout-buttons .checkout-cancel:active,
-  .page-checkout fieldset.panel-default.checkout-buttons fieldset[disabled] .checkout-cancel:active, fieldset[disabled] .btn-danger.active, fieldset[disabled] .page-checkout fieldset.panel-default.checkout-buttons .active.checkout-back, .page-checkout fieldset.panel-default.checkout-buttons fieldset[disabled] .active.checkout-back,
-  fieldset[disabled] .page-checkout fieldset.panel-default.checkout-buttons .active.checkout-cancel,
-  .page-checkout fieldset.panel-default.checkout-buttons fieldset[disabled] .active.checkout-cancel {
+  .btn-danger.disabled, .btn-danger.disabled:hover, .btn-danger.disabled:focus, .btn-danger.disabled.focus, .btn-danger.disabled:active, .btn-danger.disabled.active, .btn-danger[disabled], .btn-danger[disabled]:hover, .btn-danger[disabled]:focus, .btn-danger[disabled].focus, .btn-danger[disabled]:active, .btn-danger[disabled].active, fieldset[disabled] .btn-danger, fieldset[disabled] .btn-danger:hover, fieldset[disabled] .btn-danger:focus, fieldset[disabled] .btn-danger.focus, fieldset[disabled] .btn-danger:active, fieldset[disabled] .btn-danger.active {
     background-color: #d9534f;
     border-color: #d43f3a; }
-  .btn-danger .badge, .page-checkout fieldset.panel-default.checkout-buttons .checkout-back .badge,
-  .page-checkout fieldset.panel-default.checkout-buttons .checkout-cancel .badge {
+  .btn-danger .badge {
     color: #d9534f;
     background-color: #fff; }
 
@@ -3286,7 +3251,7 @@ tbody.collapse.in {
   bottom: 100%;
   margin-bottom: 2px; }
 
-@media (min-width: 768px) {
+@media (min-width: 769px) {
   .navbar-right .dropdown-menu {
     right: 0;
     left: auto; }
@@ -3687,7 +3652,7 @@ tbody.collapse.in {
     display: table; }
   .navbar:after {
     clear: both; }
-  @media (min-width: 768px) {
+  @media (min-width: 769px) {
     .navbar {
       border-radius: 4px; } }
 
@@ -3696,7 +3661,7 @@ tbody.collapse.in {
   display: table; }
 .navbar-header:after {
   clear: both; }
-@media (min-width: 768px) {
+@media (min-width: 769px) {
   .navbar-header {
     float: left; } }
 
@@ -3712,7 +3677,7 @@ tbody.collapse.in {
     clear: both; }
   .navbar-collapse.in {
     overflow-y: auto; }
-  @media (min-width: 768px) {
+  @media (min-width: 769px) {
     .navbar-collapse {
       width: auto;
       border-top: 0;
@@ -3745,7 +3710,7 @@ tbody.collapse.in {
 .container-fluid > .navbar-collapse {
   margin-right: -12px;
   margin-left: -12px; }
-  @media (min-width: 768px) {
+  @media (min-width: 769px) {
     .container > .navbar-header, .messages-container > .navbar-header, .site-container > .navbar-header,
     .container > .navbar-collapse,
     .messages-container > .navbar-collapse,
@@ -3758,7 +3723,7 @@ tbody.collapse.in {
 .navbar-static-top {
   z-index: 1000;
   border-width: 0 0 1px; }
-  @media (min-width: 768px) {
+  @media (min-width: 769px) {
     .navbar-static-top {
       border-radius: 0; } }
 
@@ -3768,7 +3733,7 @@ tbody.collapse.in {
   right: 0;
   left: 0;
   z-index: 1030; }
-  @media (min-width: 768px) {
+  @media (min-width: 769px) {
     .navbar-fixed-top,
     .navbar-fixed-bottom {
       border-radius: 0; } }
@@ -3792,7 +3757,7 @@ tbody.collapse.in {
     text-decoration: none; }
   .navbar-brand > img {
     display: block; }
-  @media (min-width: 768px) {
+  @media (min-width: 769px) {
     .navbar > .container .navbar-brand, .navbar > .messages-container .navbar-brand, .navbar > .site-container .navbar-brand, .navbar > .container-fluid .navbar-brand {
       margin-left: -12px; } }
 
@@ -3816,7 +3781,7 @@ tbody.collapse.in {
     border-radius: 1px; }
   .navbar-toggle .icon-bar + .icon-bar {
     margin-top: 4px; }
-  @media (min-width: 768px) {
+  @media (min-width: 769px) {
     .navbar-toggle {
       display: none; } }
 
@@ -3826,7 +3791,7 @@ tbody.collapse.in {
     padding-top: 10px;
     padding-bottom: 10px;
     line-height: 20px; }
-  @media (max-width: 767px) {
+  @media (max-width: 768px) {
     .navbar-nav .open .dropdown-menu {
       position: static;
       float: none;
@@ -3842,7 +3807,7 @@ tbody.collapse.in {
         line-height: 20px; }
         .navbar-nav .open .dropdown-menu > li > a:hover, .navbar-nav .open .dropdown-menu > li > a:focus {
           background-image: none; } }
-  @media (min-width: 768px) {
+  @media (min-width: 769px) {
     .navbar-nav {
       float: left;
       margin: 0; }
@@ -3900,12 +3865,12 @@ tbody.collapse.in {
       margin-left: 0; }
     .navbar-form .has-feedback .form-control-feedback {
       top: 0; } }
-  @media (max-width: 767px) {
+  @media (max-width: 768px) {
     .navbar-form .form-group {
       margin-bottom: 5px; }
       .navbar-form .form-group:last-child {
         margin-bottom: 0; } }
-  @media (min-width: 768px) {
+  @media (min-width: 769px) {
     .navbar-form {
       width: auto;
       border: 0;
@@ -3941,13 +3906,13 @@ tbody.collapse.in {
 .navbar-text {
   margin-top: 15px;
   margin-bottom: 15px; }
-  @media (min-width: 768px) {
+  @media (min-width: 769px) {
     .navbar-text {
       float: left;
       margin-left: 12px;
       margin-right: 12px; } }
 
-@media (min-width: 768px) {
+@media (min-width: 769px) {
   .navbar-left {
     float: left !important; }
 
@@ -3989,7 +3954,7 @@ tbody.collapse.in {
   .navbar-default .navbar-nav > .open > a, .navbar-default .navbar-nav > .open > a:hover, .navbar-default .navbar-nav > .open > a:focus {
     background-color: #e7e7e7;
     color: #555; }
-  @media (max-width: 767px) {
+  @media (max-width: 768px) {
     .navbar-default .navbar-nav .open .dropdown-menu > li > a {
       color: #777; }
       .navbar-default .navbar-nav .open .dropdown-menu > li > a:hover, .navbar-default .navbar-nav .open .dropdown-menu > li > a:focus {
@@ -4045,7 +4010,7 @@ tbody.collapse.in {
   .navbar-inverse .navbar-nav > .open > a, .navbar-inverse .navbar-nav > .open > a:hover, .navbar-inverse .navbar-nav > .open > a:focus {
     background-color: #090909;
     color: #fff; }
-  @media (max-width: 767px) {
+  @media (max-width: 768px) {
     .navbar-inverse .navbar-nav .open .dropdown-menu > .dropdown-header {
       border-color: #090909; }
     .navbar-inverse .navbar-nav .open .dropdown-menu .divider {
@@ -5865,6 +5830,16 @@ body#lang-fr .lang-en {
 body#lang-fr #qtranslate-chooser .lang-en {
   display: block; }
 
+.btn {
+  padding: 9px 12px 7px;
+  border-width: 0 1px 4px 1px;
+  font-size: 15px;
+  font-weight: bold;
+  text-transform: uppercase; }
+  .btn:hover {
+    margin-top: 1px;
+    border-bottom-width: 3px; }
+
 .button, body.error404 .page-content-center a.button-404 {
   padding: 14px 40px;
   text-transform: uppercase;
@@ -5959,30 +5934,43 @@ body#lang-fr #qtranslate-chooser .lang-en {
     border: none;
     padding: 0;
     opacity: 1 !important; }
+    .ui-datepicker td.ui-state-highlight {
+      border: none; }
+      .ui-datepicker td.ui-state-highlight a {
+        background: #2e3641;
+        color: #FFF !important;
+        border-radius: 50%; }
     .ui-datepicker td .ui-state-default {
       background: transparent;
       border: none;
       text-align: center;
       margin: 0;
-      font-weight: normal;
+      font-weight: 300;
       font-size: 16px;
-      padding: 5px 0 !important;
-      color: #8FB98B !important; }
-      .ui-datepicker td .ui-state-default:hover {
-        background: #8FB98B;
-        color: #FFF !important; }
+      padding: 6px 0 !important;
+      color: #4CAF50 !important;
+      width: 35px; }
+    .ui-datepicker td a.ui-state-hover {
+      background: #4CAF50 !important;
+      color: #FFF !important;
+      border-radius: 50%; }
     .ui-datepicker td .ui-state-active {
       background: #2e3641;
-      color: #FFF !important; }
+      color: #FFF !important;
+      border-radius: 50%; }
   .ui-datepicker td.ui-datepicker-unselectable .ui-state-default {
     padding: 5px 0;
-    color: #C50000 !important; }
+    color: #f90a0a !important; }
     .ui-datepicker td.ui-datepicker-unselectable .ui-state-default:hover {
       background: white; }
   .ui-datepicker .ui-datepicker-title {
     margin-top: .4em;
     margin-bottom: .3em;
     color: #e9f0f4; }
+    .ui-datepicker .ui-datepicker-title select {
+      color: #777;
+      font-weight: normal;
+      font-size: 13px; }
   .ui-datepicker .ui-datepicker-header {
     background: none;
     border: none; }
@@ -8491,30 +8479,20 @@ body.error404 .page-content-center {
             .section-booking-user-details .panel_sl_booking .pane-locanda-availability-search .pane-content .form-wrapper .listing-availability-search-submit button,
             .section-booking-user-details .panel_sl_booking .pane-roomify-listing-availability-search-block-roomify-listing-search .pane-content .form-wrapper .locanda-availability-search-submit button,
             .section-booking-user-details .panel_sl_booking .pane-roomify-listing-availability-search-block-roomify-listing-search .pane-content .form-wrapper .listing-availability-search-submit button {
-              display: inline-block;
-              color: white;
-              font-weight: 500;
-              background: #000;
-              padding: 12px 15px;
-              border: 0;
+              color: #fff;
               width: calc(100% - 15px);
-              border: 1px solid #789e75;
+              border-color: #8FB98B;
               font-size: 16px;
               font-weight: 600;
-              background: #8FB98B;
-              border-radius: 0;
+              background: #779D73;
               height: 45px;
               padding: 12px; }
               .section-booking-user-details .panel_sl_booking .pane-locanda-availability-search .pane-content .form-wrapper .locanda-availability-search-submit button:hover,
               .section-booking-user-details .panel_sl_booking .pane-locanda-availability-search .pane-content .form-wrapper .listing-availability-search-submit button:hover,
               .section-booking-user-details .panel_sl_booking .pane-roomify-listing-availability-search-block-roomify-listing-search .pane-content .form-wrapper .locanda-availability-search-submit button:hover,
               .section-booking-user-details .panel_sl_booking .pane-roomify-listing-availability-search-block-roomify-listing-search .pane-content .form-wrapper .listing-availability-search-submit button:hover {
-                background: #8FB98B; }
-              .section-booking-user-details .panel_sl_booking .pane-locanda-availability-search .pane-content .form-wrapper .locanda-availability-search-submit button:hover,
-              .section-booking-user-details .panel_sl_booking .pane-locanda-availability-search .pane-content .form-wrapper .listing-availability-search-submit button:hover,
-              .section-booking-user-details .panel_sl_booking .pane-roomify-listing-availability-search-block-roomify-listing-search .pane-content .form-wrapper .locanda-availability-search-submit button:hover,
-              .section-booking-user-details .panel_sl_booking .pane-roomify-listing-availability-search-block-roomify-listing-search .pane-content .form-wrapper .listing-availability-search-submit button:hover {
-                opacity: .86; }
+                background: #496147;
+                border-color: #5f795d; }
     @media (min-width: 992px) {
       .section-booking-user-details .panel_sl_booking .pane-locanda-availability-search {
         margin-bottom: 100px; } }
@@ -10649,31 +10627,22 @@ div.ctools-modal-dialog .modal-header .modal-title {
     .page-conversation-booking #roomify-accommodation-booking-confirmation-form,
     .page-booking #roomify-accommodation-booking-confirmation-form {
       margin-bottom: 40px; } }
-  .page-conversation-booking #roomify-accommodation-booking-confirmation-form button,
-  .page-booking #roomify-accommodation-booking-confirmation-form button {
-    display: inline-block;
-    color: white;
-    font-weight: 500;
-    background: #000;
-    padding: 12px 15px;
-    border: 0; }
-    .page-conversation-booking #roomify-accommodation-booking-confirmation-form button:hover,
-    .page-booking #roomify-accommodation-booking-confirmation-form button:hover {
-      background: #8FB98B; }
-    .page-conversation-booking #roomify-accommodation-booking-confirmation-form button#edit-enquiry,
-    .page-booking #roomify-accommodation-booking-confirmation-form button#edit-enquiry {
-      background: #8FB98B; }
-      .page-conversation-booking #roomify-accommodation-booking-confirmation-form button#edit-enquiry:hover,
-      .page-booking #roomify-accommodation-booking-confirmation-form button#edit-enquiry:hover {
-        background: #8FB98B;
-        opacity: .86; }
-    .page-conversation-booking #roomify-accommodation-booking-confirmation-form button#edit-submit--2,
-    .page-booking #roomify-accommodation-booking-confirmation-form button#edit-submit--2 {
-      background: #2180B6; }
-      .page-conversation-booking #roomify-accommodation-booking-confirmation-form button#edit-submit--2:hover,
-      .page-booking #roomify-accommodation-booking-confirmation-form button#edit-submit--2:hover {
-        background: #2180B6;
-        opacity: .86; }
+  .page-conversation-booking #roomify-accommodation-booking-confirmation-form button#edit-enquiry,
+  .page-booking #roomify-accommodation-booking-confirmation-form button#edit-enquiry {
+    background-color: #8FB98B;
+    border-color: #8cab8a; }
+    .page-conversation-booking #roomify-accommodation-booking-confirmation-form button#edit-enquiry:hover,
+    .page-booking #roomify-accommodation-booking-confirmation-form button#edit-enquiry:hover {
+      background-color: #70a66b;
+      border-color: #6a9068; }
+  .page-conversation-booking #roomify-accommodation-booking-confirmation-form button#edit-submit--2,
+  .page-booking #roomify-accommodation-booking-confirmation-form button#edit-submit--2 {
+    background-color: #127BA3;
+    border-color: #158CBA; }
+    .page-conversation-booking #roomify-accommodation-booking-confirmation-form button#edit-submit--2:hover,
+    .page-booking #roomify-accommodation-booking-confirmation-form button#edit-submit--2:hover {
+      background-color: #0d5875;
+      border-color: #0f6383; }
   .page-conversation-booking #roomify-accommodation-booking-confirmation-form table,
   .page-booking #roomify-accommodation-booking-confirmation-form table {
     border: 1px solid #ddd; }
@@ -10884,25 +10853,21 @@ div.ctools-modal-dialog .modal-header .modal-title {
   @media (min-width: 992px) {
     .page-activity-booking #roomify-activity-booking-confirmation-form {
       margin-left: 16.66667%; } }
-  .page-activity-booking #roomify-activity-booking-confirmation-form button {
-    display: inline-block;
-    color: white;
-    font-weight: 500;
-    background: #000;
-    padding: 12px 15px;
-    border: 0; }
-    .page-activity-booking #roomify-activity-booking-confirmation-form button:hover {
-      background: #8FB98B; }
-    .page-activity-booking #roomify-activity-booking-confirmation-form button#edit-enquiry {
-      background: #8FB98B; }
-      .page-activity-booking #roomify-activity-booking-confirmation-form button#edit-enquiry:hover {
-        background: #8FB98B;
-        opacity: .86; }
-    .page-activity-booking #roomify-activity-booking-confirmation-form button#edit-submit--2 {
-      background: #2180B6; }
-      .page-activity-booking #roomify-activity-booking-confirmation-form button#edit-submit--2:hover {
-        background: #2180B6;
-        opacity: .86; }
+  .page-activity-booking #roomify-activity-booking-confirmation-form button#edit-enquiry {
+    background-color: #779D73;
+    border-color: #8FB98B;
+    margin-bottom: 7px; }
+    .page-activity-booking #roomify-activity-booking-confirmation-form button#edit-enquiry:hover {
+      background-color: #496147;
+      border-color: #5f795d; }
+  .page-activity-booking #roomify-activity-booking-confirmation-form button#edit-submit--2 {
+    background-color: #127BA3;
+    border-color: #158CBA;
+    margin-left: 10px;
+    margin-bottom: 7px; }
+    .page-activity-booking #roomify-activity-booking-confirmation-form button#edit-submit--2:hover {
+      background-color: #0d5875;
+      border-color: #0f6383; }
   .page-activity-booking #roomify-activity-booking-confirmation-form table {
     border: 1px solid #ddd; }
     .page-activity-booking #roomify-activity-booking-confirmation-form table th {
@@ -10916,7 +10881,8 @@ div.ctools-modal-dialog .modal-header .modal-title {
       .page-activity-booking #roomify-activity-booking-confirmation-form table tr td.name {
         border-right: 1px solid #ddd; }
     .page-activity-booking #roomify-activity-booking-confirmation-form table .name {
-      padding-left: 25px; }
+      padding-left: 25px;
+      white-space: pre-wrap; }
     .page-activity-booking #roomify-activity-booking-confirmation-form table .price {
       text-align: right; }
     .page-activity-booking #roomify-activity-booking-confirmation-form table .bold {
@@ -10953,7 +10919,8 @@ div.ctools-modal-dialog .modal-header .modal-title {
   top: 0 !important;
   left: 0 !important;
   width: 100% !important;
-  height: 100% !important; }
+  height: 100% !important;
+  position: fixed !important; }
   .page-conversation-booking #modalContent .ctools-modal-dialog.modal-dialog,
   .page-booking #modalContent .ctools-modal-dialog.modal-dialog,
   .page-activity-booking #modalContent .ctools-modal-dialog.modal-dialog {
@@ -11039,7 +11006,6 @@ div.ctools-modal-dialog .modal-header .modal-title {
 .page-checkout .link-to-cart a {
   margin-right: 10px;
   padding: 10px 20px;
-  border: 0;
   margin-bottom: 30px; }
 .page-checkout .view-my-cart table {
   font-size: 14px;
@@ -11118,11 +11084,20 @@ div.ctools-modal-dialog .modal-header .modal-title {
       margin-right: 10px; }
     .page-checkout fieldset.panel-default.checkout-buttons .checkout-back,
     .page-checkout fieldset.panel-default.checkout-buttons .checkout-cancel {
+      color: #fff;
+      border: 1px solid transparent;
+      border-width: 0 1px 4px 1px;
+      background-color: #d9534f;
+      border-color: #d43f3a;
       margin-right: 10px;
       padding: 10px 20px; }
       .page-checkout fieldset.panel-default.checkout-buttons .checkout-back:hover,
       .page-checkout fieldset.panel-default.checkout-buttons .checkout-cancel:hover {
-        text-decoration: none; }
+        background-color: #c9302c;
+        border-color: #ac2925;
+        text-decoration: none;
+        margin-top: 1px;
+        border-bottom-width: 3px; }
 .page-checkout fieldset.customer_profile_billing .form-group {
   margin-bottom: 25px; }
 .page-checkout #commerce-checkout-form-review .checkout-help {
@@ -12060,7 +12035,6 @@ body.blog .news-listing-wrapper {
   display: inline-block;
   width: 100%;
   background: #FFF; }
-
 .pane-roomify-property-property-multi-day-tour .row:before,
 .pane-roomify-property-property-multi-day-tour .row:after {
   display: none; }
@@ -12074,10 +12048,25 @@ body.blog .news-listing-wrapper {
     width: 380px; }
 .pane-roomify-property-property-multi-day-tour label {
   display: inline-block; }
+@media (max-width: 768px) {
+  .pane-roomify-property-property-multi-day-tour form {
+    text-align: center; } }
 .pane-roomify-property-property-multi-day-tour .form-item-participants {
   float: left;
-  width: 105px;
+  width: 90px;
   margin-right: 10px; }
+  @media (max-width: 768px) {
+    .pane-roomify-property-property-multi-day-tour .form-item-participants {
+      width: 100%; }
+      .pane-roomify-property-property-multi-day-tour .form-item-participants select {
+        display: inline-block;
+        width: 100px;
+        margin-left: 10px; } }
+  .pane-roomify-property-property-multi-day-tour .form-item-participants label {
+    display: none; }
+    @media (max-width: 768px) {
+      .pane-roomify-property-property-multi-day-tour .form-item-participants label {
+        display: inline-block; } }
 .pane-roomify-property-property-multi-day-tour .tour-price {
   float: right;
   width: 230px;
@@ -12104,6 +12093,9 @@ body.blog .news-listing-wrapper {
   .pane-roomify-property-property-multi-day-tour button:hover {
     opacity: .86;
     color: #FFF; }
+  @media (max-width: 768px) {
+    .pane-roomify-property-property-multi-day-tour button {
+      float: none; } }
 
 .pane-roomify-property-property-single-day-tour h2.pane-title,
 .pane-roomify-property-property-multi-day-activity h2.pane-title,
@@ -12112,7 +12104,8 @@ body.blog .news-listing-wrapper {
   margin: 0;
   font-size: 16px;
   background: #4A4A4A;
-  color: #F6F6F6; }
+  color: #F6F6F6;
+  width: 100%; }
   @media (max-width: 480px) {
     .pane-roomify-property-property-single-day-tour h2.pane-title,
     .pane-roomify-property-property-multi-day-activity h2.pane-title,
@@ -12138,17 +12131,34 @@ body.blog .news-listing-wrapper {
   display: inline-block;
   width: 100%;
   background: #FFF; }
-  .pane-roomify-property-property-single-day-tour .pane-content #single-day-tour-container,
+  .pane-roomify-property-property-single-day-tour .pane-content form,
+  .pane-roomify-property-property-multi-day-activity .pane-content form,
+  .pane-roomify-property-property-single-day-activity .pane-content form {
+    max-width: 650px;
+    width: 100%;
+    margin: 0 auto; }
+  .pane-roomify-property-property-single-day-tour .pane-content #single-day-tour-container-step1,
+  .pane-roomify-property-property-single-day-tour .pane-content #single-day-tour-container-step2,
   .pane-roomify-property-property-single-day-tour .pane-content #activity-container,
-  .pane-roomify-property-property-single-day-tour .pane-content .container-inline-date,
-  .pane-roomify-property-property-multi-day-activity .pane-content #single-day-tour-container,
+  .pane-roomify-property-property-multi-day-activity .pane-content #single-day-tour-container-step1,
+  .pane-roomify-property-property-multi-day-activity .pane-content #single-day-tour-container-step2,
   .pane-roomify-property-property-multi-day-activity .pane-content #activity-container,
-  .pane-roomify-property-property-multi-day-activity .pane-content .container-inline-date,
-  .pane-roomify-property-property-single-day-activity .pane-content #single-day-tour-container,
-  .pane-roomify-property-property-single-day-activity .pane-content #activity-container,
-  .pane-roomify-property-property-single-day-activity .pane-content .container-inline-date {
+  .pane-roomify-property-property-single-day-activity .pane-content #single-day-tour-container-step1,
+  .pane-roomify-property-property-single-day-activity .pane-content #single-day-tour-container-step2,
+  .pane-roomify-property-property-single-day-activity .pane-content #activity-container {
     width: 50%;
     float: left; }
+    @media (max-width: 670px) {
+      .pane-roomify-property-property-single-day-tour .pane-content #single-day-tour-container-step1,
+      .pane-roomify-property-property-single-day-tour .pane-content #single-day-tour-container-step2,
+      .pane-roomify-property-property-single-day-tour .pane-content #activity-container,
+      .pane-roomify-property-property-multi-day-activity .pane-content #single-day-tour-container-step1,
+      .pane-roomify-property-property-multi-day-activity .pane-content #single-day-tour-container-step2,
+      .pane-roomify-property-property-multi-day-activity .pane-content #activity-container,
+      .pane-roomify-property-property-single-day-activity .pane-content #single-day-tour-container-step1,
+      .pane-roomify-property-property-single-day-activity .pane-content #single-day-tour-container-step2,
+      .pane-roomify-property-property-single-day-activity .pane-content #activity-container {
+        width: 100%; } }
   .pane-roomify-property-property-single-day-tour .pane-content .container-inline-date label,
   .pane-roomify-property-property-multi-day-activity .pane-content .container-inline-date label,
   .pane-roomify-property-property-single-day-activity .pane-content .container-inline-date label {
@@ -12175,45 +12185,37 @@ body.blog .news-listing-wrapper {
   .pane-roomify-property-property-multi-day-activity .pane-content .ui-datepicker-inline,
   .pane-roomify-property-property-single-day-activity .pane-content .ui-datepicker-inline {
     width: 270px; }
-  .pane-roomify-property-property-single-day-tour .pane-content #single-day-tour-container select,
+  .pane-roomify-property-property-single-day-tour .pane-content #single-day-tour-container-step2 select,
   .pane-roomify-property-property-single-day-tour .pane-content #activity-container select,
-  .pane-roomify-property-property-multi-day-activity .pane-content #single-day-tour-container select,
+  .pane-roomify-property-property-multi-day-activity .pane-content #single-day-tour-container-step2 select,
   .pane-roomify-property-property-multi-day-activity .pane-content #activity-container select,
-  .pane-roomify-property-property-single-day-activity .pane-content #single-day-tour-container select,
+  .pane-roomify-property-property-single-day-activity .pane-content #single-day-tour-container-step2 select,
   .pane-roomify-property-property-single-day-activity .pane-content #activity-container select {
     width: calc(100% - 15px); }
-  .pane-roomify-property-property-single-day-tour .pane-content #single-day-tour-container button,
+  .pane-roomify-property-property-single-day-tour .pane-content #single-day-tour-container-step2 button,
   .pane-roomify-property-property-single-day-tour .pane-content #activity-container button,
-  .pane-roomify-property-property-multi-day-activity .pane-content #single-day-tour-container button,
+  .pane-roomify-property-property-multi-day-activity .pane-content #single-day-tour-container-step2 button,
   .pane-roomify-property-property-multi-day-activity .pane-content #activity-container button,
-  .pane-roomify-property-property-single-day-activity .pane-content #single-day-tour-container button,
+  .pane-roomify-property-property-single-day-activity .pane-content #single-day-tour-container-step2 button,
   .pane-roomify-property-property-single-day-activity .pane-content #activity-container button {
-    display: inline-block;
-    color: white;
-    font-weight: 500;
-    background: #000;
-    padding: 12px 15px;
-    border: 0;
+    text-transform: uppercase;
+    color: #fff;
     width: calc(100% - 15px);
-    border: 1px solid #779D73;
+    border-color: #8FB98B;
     font-size: 16px;
     font-weight: 600;
-    background: #8FB98B;
-    margin-top: 12px; }
-    .pane-roomify-property-property-single-day-tour .pane-content #single-day-tour-container button:hover,
+    background: #779D73;
+    margin-top: 12px;
+    padding: 11px 12px 9px; }
+    .pane-roomify-property-property-single-day-tour .pane-content #single-day-tour-container-step2 button:hover,
     .pane-roomify-property-property-single-day-tour .pane-content #activity-container button:hover,
-    .pane-roomify-property-property-multi-day-activity .pane-content #single-day-tour-container button:hover,
+    .pane-roomify-property-property-multi-day-activity .pane-content #single-day-tour-container-step2 button:hover,
     .pane-roomify-property-property-multi-day-activity .pane-content #activity-container button:hover,
-    .pane-roomify-property-property-single-day-activity .pane-content #single-day-tour-container button:hover,
+    .pane-roomify-property-property-single-day-activity .pane-content #single-day-tour-container-step2 button:hover,
     .pane-roomify-property-property-single-day-activity .pane-content #activity-container button:hover {
-      background: #8FB98B; }
-    .pane-roomify-property-property-single-day-tour .pane-content #single-day-tour-container button:hover,
-    .pane-roomify-property-property-single-day-tour .pane-content #activity-container button:hover,
-    .pane-roomify-property-property-multi-day-activity .pane-content #single-day-tour-container button:hover,
-    .pane-roomify-property-property-multi-day-activity .pane-content #activity-container button:hover,
-    .pane-roomify-property-property-single-day-activity .pane-content #single-day-tour-container button:hover,
-    .pane-roomify-property-property-single-day-activity .pane-content #activity-container button:hover {
-      opacity: .86; }
+      margin-top: 13px;
+      background: #496147;
+      border-color: #5f795d; }
 
 body.page-location .content-row {
   max-width: 100%;
@@ -13078,11 +13080,11 @@ body.page-location .view-location .view-empty {
   .page-room-type .panel_sl_left .panel-pane.pane-type-availability-search .bat-type-availability-search-submit button {
     width: 100%;
     padding: 8px;
-    background: #5CA755;
-    border: 0;
-    text-transform: uppercase; }
+    background: #779D73;
+    border-color: #8FB98B; }
     .page-room-type .panel_sl_left .panel-pane.pane-type-availability-search .bat-type-availability-search-submit button:hover {
-      background: #66C15E; }
+      background: #496147;
+      border-color: #5f795d; }
 .page-room-type .panel_sl_left .panel-pane.pane-bat-type-field-st-amenities {
   margin-bottom: 20px;
   display: inline-block;
