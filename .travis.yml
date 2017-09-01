@@ -28,7 +28,7 @@ before_install:
   - wget https://dl.google.com/linux/direct/google-chrome-stable_current_amd64.deb
   - sudo dpkg -i google-chrome*.deb
   - sh -e /etc/init.d/xvfb start
-  - wget http://chromedriver.storage.googleapis.com/2.28/chromedriver_linux64.zip && unzip chromedriver_linux64.zip && sudo mv chromedriver /usr/bin
+  - wget http://chromedriver.storage.googleapis.com/2.31/chromedriver_linux64.zip && unzip chromedriver_linux64.zip && sudo mv chromedriver /usr/bin
 
 before_script:
   # Increase the MySQL connection timeout on the PHP end.
@@ -102,8 +102,8 @@ before_script:
 
   # Fetch and start selenium.
   - mkdir -p $HOME/.cache
-  - wget -nc -O $HOME/.cache/selenium-server-standalone-3.3.0.jar http://selenium-release.storage.googleapis.com/3.3/selenium-server-standalone-3.3.0.jar || true
-  - java -jar $HOME/.cache/selenium-server-standalone-3.3.0.jar -port 4444 &> /tmp/selenium.log &
+  - wget -nc -O $HOME/.cache/selenium-server-standalone-3.4.0.jar http://selenium-release.storage.googleapis.com/3.4/selenium-server-standalone-3.4.0.jar || true
+  - java -jar $HOME/.cache/selenium-server-standalone-3.4.0.jar -port 4444 &> /tmp/selenium.log &
   - sleep 5
 
 
