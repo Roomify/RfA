@@ -4,6 +4,11 @@
   }
 }
 .page-checkout {
+  .form-type-select {
+    label {
+      display: block;
+    }
+  }
   .region-content {
     @include make-row();
   }

@@ -135,6 +135,7 @@ dependencies[] = userone
 dependencies[] = entity_edit_protection
 dependencies[] = google_recaptcha
 dependencies[] = hreflang
+dependencies[] = select2
 
 ; Users
 dependencies[] = profile2

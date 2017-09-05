@@ -7185,6 +7185,23 @@ blockquote {
     display: inline-block;
     margin-top: 5px; }
 
+.select2-selection.select2-selection--single {
+  transition: border-color ease-in-out 0.15s, box-shadow ease-in-out 0.15s;
+  line-height: 1.42857;
+  border: 1px solid #D4D3D3;
+  -webkit-box-shadow: inset 0 2px 0 rgba(0, 0, 0, 0.075);
+  box-shadow: inset 0 2px 0 rgba(0, 0, 0, 0.075);
+  height: 37px;
+  font-family: 'Lato' sans-serif;
+  border-radius: 4px;
+  border: 1px solid #e7e7e7; }
+
+.select2-container--default .select2-selection--single .select2-selection__arrow {
+  height: 35px; }
+
+.select2-container--default .select2-selection--single .select2-selection__rendered {
+  line-height: 38px; }
+
 header.roomify-header {
   margin-bottom: 0;
   border-radius: 0;
@@ -9832,6 +9849,8 @@ body.toggled #close-sidebar-wrapper {
   .page-cart .region-content:after {
     clear: both; }
 
+.page-checkout .form-type-select label {
+  display: block; }
 .page-checkout .region-content {
   margin-left: -15px;
   margin-right: -15px; }
@@ -10022,6 +10041,10 @@ ol.inline.commerce-checkout-progress {
   font-size: 16px;
   font-weight: 600; }
 
+.page-activities-search .select2-selection.select2-selection--single,
+.page-availability-search .select2-selection.select2-selection--single {
+  border-radius: 2px;
+  border: 1px solid #d4d3d3; }
 .page-activities-search .page-header,
 .page-availability-search .page-header {
   display: none; }
@@ -10706,6 +10729,14 @@ ol.inline.commerce-checkout-progress {
       #property-bat-facets-availability .form-wrapper .form-item-group-size,
       #property-bat-facets-availability .form-wrapper .form-item-location {
         margin-bottom: 15px; } }
+    @media (max-width: 767px) {
+      #property-bat-activity-facets-availability .form-wrapper .form-item-group-size .select2,
+      #property-bat-activity-facets-availability .form-wrapper .form-item-location .select2,
+      #roomify-property-search-block-form .form-wrapper .form-item-group-size .select2,
+      #roomify-property-search-block-form .form-wrapper .form-item-location .select2,
+      #property-bat-facets-availability .form-wrapper .form-item-group-size .select2,
+      #property-bat-facets-availability .form-wrapper .form-item-location .select2 {
+        width: 100%; } }
   #property-bat-activity-facets-availability .form-wrapper .form-item-group-size,
   #roomify-property-search-block-form .form-wrapper .form-item-group-size,
   #property-bat-facets-availability .form-wrapper .form-item-group-size {
@@ -10752,6 +10783,13 @@ ol.inline.commerce-checkout-progress {
     min-height: 1px;
     padding-left: 15px;
     padding-right: 15px; }
+    #property-bat-activity-facets-availability .form-wrapper .bat-date-range #edit-arrival input,
+    #property-bat-activity-facets-availability .form-wrapper .bat-date-range #edit-departure input,
+    #roomify-property-search-block-form .form-wrapper .bat-date-range #edit-arrival input,
+    #roomify-property-search-block-form .form-wrapper .bat-date-range #edit-departure input,
+    #property-bat-facets-availability .form-wrapper .bat-date-range #edit-arrival input,
+    #property-bat-facets-availability .form-wrapper .bat-date-range #edit-departure input {
+      background: #fff; }
     @media (min-width: 768px) {
       #property-bat-activity-facets-availability .form-wrapper .bat-date-range,
       #roomify-property-search-block-form .form-wrapper .bat-date-range,
@@ -11352,6 +11390,9 @@ ol.inline.commerce-checkout-progress {
     #property-bat-activity-facets-availability .form-wrapper .form-item-location {
       float: left;
       width: 41.66667%; } }
+  @media (max-width: 767px) {
+    #property-bat-activity-facets-availability .form-wrapper .form-item-location .select2 {
+      width: 100%; } }
 #property-bat-activity-facets-availability .form-wrapper .activity-date-range {
   position: relative;
   float: left;
@@ -12730,6 +12771,9 @@ body.page-location .view-location .view-empty {
 
 body.node-type-homepage {
   background: #FFFFFF; }
+  body.node-type-homepage .select2-selection.select2-selection--single {
+    border-radius: 2px;
+    border: 1px solid #d4d3d3; }
   body.node-type-homepage strong {
     font-weight: 400; }
   body.node-type-homepage .tabs--primary {

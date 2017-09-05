@@ -857,3 +857,21 @@ function roomify_system_update_7053() {
   );
   drupal_mail('roomify_system', 'roomify_update_pets', $site_email, language_default(), $params);
 }
+
+/**
+ * Enable module "Select2".
+ */
+function roomify_system_update_7054() {
+  module_enable(array('select2'));
+
+  // Select2 Settings.
+  variable_set('select2_update_settings_by_ajax', 1);
+  variable_set('select2_use_for_ac_elements', 0);
+  variable_set('select2_use_for_all_select_elements', 1);
+  variable_set('select2_use_for_all_select_elements_for_admin_pages', 1);
+  variable_set('select2_update_settings_by_ajax', 1);
+  variable_set('select2_min_options_count_for_search', 4);
+
+  $path = libraries_get_path('select2');
+  variable_set('select2_plugin_path', $path);
+}

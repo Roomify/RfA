@@ -1,5 +1,9 @@
 body.node-type-homepage {
   background: #FFFFFF;
+  .select2-selection.select2-selection--single {
+    border-radius: 2px;
+    border: 1px solid rgb(212, 211, 211);
+  }
   strong {
     font-weight: 400;
   }

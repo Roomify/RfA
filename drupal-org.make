@@ -443,6 +443,8 @@ projects[search_api_ranges][download][revision] = c769589f3aa90a7413401169ce520f
 
 projects[search_api_sorts][version] = 1.7
 
+projects[select2][version] = 1.x-dev
+
 projects[seo_checklist][version] = 4.1
 
 projects[services][version] = 3.20
@@ -546,6 +548,13 @@ libraries[chosen][type] = library
 libraries[chosen][destination] = libraries
 libraries[chosen][download][type] = get
 libraries[chosen][download][url] = https://github.com/harvesthq/chosen/releases/download/v1.6.2/chosen_v1.6.2.zip
+
+; select2
+libraries[select2][directory_name] = select2
+libraries[select2][type] = library
+libraries[select2][destination] = libraries
+libraries[select2][download][type] = get
+libraries[select2][download][url] = https://github.com/select2/select2/archive/4.0.3.zip
 
 ; ckeditor with plugins for asset module
 ; To update the link, go to http://ckeditor.com/builder and select the
