@@ -11174,7 +11174,7 @@ ol.inline.commerce-checkout-progress {
     .page-availability-search .panel-sl-left-content-wrapper .panel_sl_left .pane-current-search-properties.pane-current-search-properties .current-search-item .filter-main a,
     .page-availability-search .panel-sl-left-content-wrapper .panel_sl_left .panel-pane.pane-block.pane-current-search-properties .current-search-item .filter-main a {
       margin-bottom: 25px;
-      color: white; }
+      display: block; }
   .page-availability-search .panel-sl-left-content-wrapper .panel_sl_left .pane-current-search-properties.pane-current-search-properties .current-search-item ul,
   .page-availability-search .panel-sl-left-content-wrapper .panel_sl_left .panel-pane.pane-block.pane-current-search-properties .current-search-item ul {
     padding-left: 0; }

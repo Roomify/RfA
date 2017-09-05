@@ -9524,6 +9524,7 @@ body.error404 .page-content-center {
       text-align: right; }
       .page-availability-search .panel-sl-left-content-wrapper .panel_sl_left .panel-pane.pane-block.pane-current-search-properties .current-search-item .filter-main a {
         margin-bottom: 25px;
+        display: block;
         -webkit-transition: 200ms opacity ease-out;
         -moz-transition: 200ms opacity ease-out;
         -ms-transition: 200ms opacity ease-out;

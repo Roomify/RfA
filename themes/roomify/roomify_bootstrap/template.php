@@ -33,7 +33,7 @@ function roomify_bootstrap_current_search_item_wrapper(array $variables) {
 
   $path = explode('/',$_GET['q']);
 
-  $url = l(format_plural(count($fetched['f']), t('Clear All'), t('Clear All')), $path[0], array('query' => $copy_fetched, 'attributes' => array('class' => array('btn', 'btn-default', 'btn-danger'))));
+  $url = l(format_plural(count($fetched['f']), t('Show all Properties'), t('Show all Properties')), $path[0], array('query' => $copy_fetched, 'attributes' => array('class' => array('show-all-properties'))));
 
   return '<div' . drupal_attributes($attributes) . '><div class="filter-main">' . $url . '</div>' . $element['#children'] . '</div>';
 }
