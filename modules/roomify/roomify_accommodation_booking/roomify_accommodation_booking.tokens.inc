@@ -47,6 +47,7 @@ function roomify_accommodation_booking_tokens($type, $tokens, array $data = arra
           $image = '';
           $name = '';
           $short_description = '';
+          $guests = $booking->booking_guests[LANGUAGE_NONE][0]['value'];
           if (isset($booking->booking_event_reference[LANGUAGE_NONE][0]['target_id'])) {
             if ($event = bat_event_load($booking->booking_event_reference[LANGUAGE_NONE][0]['target_id'])) {
               $event_wrapper = entity_metadata_wrapper('bat_event', $event);
@@ -75,6 +76,7 @@ function roomify_accommodation_booking_tokens($type, $tokens, array $data = arra
                       <p style="margin:5px 0;font-size:13px;width:100%">' . $short_description . '</p>
                       <p style="margin:5px 0;width:100%">Check-in :   <strong>' . $booking_start_date->format('D, d M, Y') . '</strong></p>
                       <p style="margin:5px 0;width:100%">Check-out:  <strong>' . $booking_end_date->format('D, d M, Y') . '</strong></p>
+                      <p style="margin:5px 0;width:100%">Guests:  <strong>' . $guests . '</strong></p>
                   </td>
                 </tr>
               <tbody>
