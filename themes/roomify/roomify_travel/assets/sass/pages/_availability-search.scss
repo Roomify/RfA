@@ -1,5 +1,9 @@
 .page-activities-search,
 .page-availability-search {
+  .select2-selection.select2-selection--single {
+    border-radius: 2px;
+    border: 1px solid rgb(212, 211, 211);
+  }
   .page-header {
     display: none;
   }
@@ -594,6 +598,11 @@
       @media (max-width: $screen-sm-max) {
         margin-bottom: 15px;
       }
+      @media (max-width: $screen-xs-max) {
+        .select2 {
+          width: 100%;
+        }
+      }
     }
     .form-item-group-size {
       @include make-xs-column(12);
@@ -601,6 +610,10 @@
       @include make-md-column(2.4);
     }
     .bat-date-range {
+      #edit-arrival input,
+      #edit-departure input {
+        background: #fff;
+      }
       @include make-xs-column(12);
       @include make-sm-column(12);
       @include make-md-column(4.8);
@@ -884,6 +897,11 @@
    .form-wrapper .form-item-location {
     @include make-xs-column(12);
     @include make-sm-column(5);
+    @media (max-width: $screen-xs-max) {
+      .select2 {
+        width: 100%;
+      }
+    }
   }
   .form-wrapper .activity-date-range {
     @include make-xs-column(12);

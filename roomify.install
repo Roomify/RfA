@@ -335,6 +335,17 @@ function roomify_install_finished(&$install_state) {
   );
   variable_set('google_recaptcha', $tune);
 
+  // Select2 Settings.
+  variable_set('select2_update_settings_by_ajax', 1);
+  variable_set('select2_use_for_ac_elements', 0);
+  variable_set('select2_use_for_all_select_elements', 1);
+  variable_set('select2_use_for_all_select_elements_for_admin_pages', 1);
+  variable_set('select2_update_settings_by_ajax', 1);
+  variable_set('select2_min_options_count_for_search', 4);
+
+  $path = libraries_get_path('select2');
+  variable_set('select2_plugin_path', $path);
+
   $menu = menu_load('main-menu');
   module_load_include('module', 'i18n');
   $menu['language'] = 'en';
