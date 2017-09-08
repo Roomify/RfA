@@ -1,0 +1,4 @@
+name = Smartlook
+description = Website Visitor Recording Tool
+core = 7.x
+package = Analytics
