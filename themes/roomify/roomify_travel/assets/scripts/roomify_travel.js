@@ -75,6 +75,11 @@ Drupal.behaviors.roomifyTravelScripts = {
       $(this).toggleClass('hidden-content');
       $(this).parent().children('.pane-content').toggle('hide');
     });
+
+    if ($(window).width() < 768) {
+      $('.page-availability-search .panel-sl-left-content-wrapper .panel_sl_left .panel-pane.pane-block:not(#availability-search-facet) .pane-title').addClass('hidden-content');
+      $('.page-availability-search .panel-sl-left-content-wrapper .panel_sl_left .panel-pane.pane-block:not(#availability-search-facet) .pane-content').hide();
+    }
   }
 };
 

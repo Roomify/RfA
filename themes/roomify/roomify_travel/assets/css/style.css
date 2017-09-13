@@ -8001,6 +8001,13 @@ body.toggled #close-sidebar-wrapper {
       top: 15px;
       right: 35px; } }
 
+@media (max-width: 992px) {
+  .page-listing .roomify-travel-two-columns .panel-content-top {
+    margin-bottom: 20px; } }
+@media (max-width: 768px) {
+  .page-listing .pane-addtoany-addtoany-button {
+    margin-top: 15px; } }
+
 .pane-roomify-manage-property {
   position: relative;
   width: 100%;
@@ -8325,7 +8332,7 @@ body.toggled #close-sidebar-wrapper {
       text-align: center; } }
   .page-listing .pane-roomify-property-field-sp-short-description {
     text-align: justify;
-    font-weight: 400;
+    font-weight: 300;
     font-style: italic;
     margin-bottom: 20px;
     color: #989898;
@@ -11212,7 +11219,8 @@ ol.inline.commerce-checkout-progress {
     .page-availability-search .panel-sl-left-content-wrapper .panel_sl_left .pane-current-search-properties.pane-current-search-properties .current-search-item .filter-main a,
     .page-availability-search .panel-sl-left-content-wrapper .panel_sl_left .panel-pane.pane-block.pane-current-search-properties .current-search-item .filter-main a {
       margin-bottom: 25px;
-      display: block; }
+      display: block;
+      text-decoration: underline; }
   .page-availability-search .panel-sl-left-content-wrapper .panel_sl_left .pane-current-search-properties.pane-current-search-properties .current-search-item ul,
   .page-availability-search .panel-sl-left-content-wrapper .panel_sl_left .panel-pane.pane-block.pane-current-search-properties .current-search-item ul {
     padding-left: 0; }
@@ -11438,6 +11446,11 @@ ol.inline.commerce-checkout-progress {
     .pane-search-api-sorts-search-sorts .search-api-sorts li {
       display: inline-block;
       padding: 0 0 0 20px; }
+      @media (max-width: 480px) {
+        .pane-search-api-sorts-search-sorts .search-api-sorts li {
+          width: 100%;
+          text-align: center;
+          margin: 5px 0; } }
       .pane-search-api-sorts-search-sorts .search-api-sorts li a {
         color: #6b6b6b;
         font-size: 14px; }
@@ -13206,7 +13219,7 @@ body.node-type-homepage {
       width: 100%; }
     .pane-featured-properties-panel-pane-3 .property-info .property-name,
     .pane-featured-properties-panel-pane-4 .property-info .property-name {
-      width: 78%;
+      width: 70%;
       vertical-align: middle;
       max-width: 200px;
       white-space: nowrap;
@@ -13241,7 +13254,7 @@ body.node-type-homepage {
           display: none; }
     .pane-featured-properties-panel-pane-3 .property-info .starting-price,
     .pane-featured-properties-panel-pane-4 .property-info .starting-price {
-      width: 20%;
+      width: 30%;
       text-align: right;
       vertical-align: middle;
       font-weight: 400;

@@ -773,6 +773,7 @@
               a {
                 margin-bottom: 25px;
                 display: block;
+                text-decoration: underline;
               }
             }
             ul {
@@ -934,6 +935,11 @@
     li {
       display: inline-block;
       padding: 0 0 0 20px;
+      @media (max-width: $screen-xs) {
+        width: 100%;
+        text-align: center;
+        margin: 5px 0;
+      }
       a {
         color: #6b6b6b;
         font-size: 14px;

@@ -1,3 +1,15 @@
+.page-listing {
+  .roomify-travel-two-columns .panel-content-top {
+    @media (max-width: $screen-md) {
+      margin-bottom: 20px;
+    }
+  }
+  .pane-addtoany-addtoany-button {
+    @media (max-width: $screen-sm) {
+      margin-top: 15px;
+    }
+  }
+}
 // Listing Page Styles
 .pane-roomify-manage-property {
   position: relative;
@@ -269,7 +281,7 @@
   }
   .pane-roomify-property-field-sp-short-description {
     text-align: justify;
-    font-weight: 400;
+    font-weight: 300;
     @include h4();
     font-style: italic;
     margin-bottom: 20px;
