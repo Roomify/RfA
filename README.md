@@ -31,7 +31,7 @@ Absolutely! Full end user documentation [is available here](http://docs.roomify.
 
 #### How can I get support?
 
-Community support is available right here on github - just [file an issue](https://github.com/Roomify/RfA/issues) (after first searching for your issue!) and we will respond as time allows. If you would like to receive a guaranteed response time and support this project, you may [view our commercial support options here](https://store.roomify.us/roomify-accommodations-self-hosted).
+Community support is available right here on github - just [file an issue](https://github.com/Roomify/RfA/issues) (after first searching for your issue!) and we will respond as time allows.
 
 #### I would reallllly like Feature X to be added to Roomify for Accommodations - how can I get it?
 
