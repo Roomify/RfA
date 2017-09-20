@@ -1,0 +1,182 @@
+<?php
+
+/**
+ * @file
+ * Contains smartlook_tracking.module.
+ */
+
+/**
+ * Implements hook_menu().
+ */
+function smartlook_tracking_menu() {
+  $items = array();
+
+  $items['admin/config/system/smartlook'] = array(
+    'title' => 'Smartlook',
+    'page callback' => 'drupal_get_form',
+    'page arguments' => array('smartlook_tracking_admin_form'),
+    'access arguments' => array('administer smartlook tracking'),
+  );
+
+  return $items;
+}
+
+/**
+ * Implements hook_permission().
+ */
+function smartlook_tracking_permission() {
+  return array(
+    'administer smartlook tracking' => array(
+      'title' => 'Administer Smartlook',
+      'description' => 'Perform maintenance tasks for Smartlook.',
+    ),
+    'smartlook tracking' => array(
+      'title' => 'Smartlook tracking.',
+      'description' => 'Enable the Smartlook tracking script.',
+    ),
+  );
+}
+
+/**
+ * Implements hook_page_build().
+ */
+function smartlook_tracking_page_build(&$page) {
+  global $user;
+
+  // User ID=1 is Drupal's hardcoded administrator and has permissions for
+  // everything, but we don't want anything to be tracked for this user.
+  if ($user->uid == 1 || !user_access('smartlook tracking')) {
+    return;
+  }
+
+  $key = variable_get('smartlook_tracking_account');
+
+  if (!empty($key) && _smartlook_tracking_visibility_pages()) {
+    // Build tracker code.
+    $script = "window.smartlook||(function(d) {";
+    $script .= "var o=smartlook=function(){ o.api.push(arguments)},h=d.getElementsByTagName('head')[0];";
+    $script .= "var c=d.createElement('script');o.api=new Array();c.async=true;c.type='text/javascript';";
+    $script .= "c.charset='utf-8';c.src='//rec.smartlook.com/recorder.js';h.appendChild(c);";
+    $script .= "})(document);";
+    $script .= "smartlook('init', '" . $key . "');";
+
+    drupal_add_js($script, 'inline');
+  }
+}
+
+/**
+ * Admin form.
+ */
+function smartlook_tracking_admin_form($form, &$form_state) {
+  $form['general'] = array(
+    '#type' => 'fieldset',
+    '#title' => t('General settings'),
+  );
+
+  $form['general']['smartlook_tracking_account'] = array(
+    '#type' => 'textfield',
+    '#title' => t('Smartlook ID'),
+    '#description' => t('This ID is unique to each site you want to track separately. To get a Smartlook ID, <a href="@link">register your site with Smartlook</a>.', array('@link' => 'https://www.smartlook.com')),
+    '#maxlength' => 40,
+    '#size' => 40,
+    '#default_value' => variable_get('smartlook_tracking_account'),
+    '#required' => TRUE,
+  );
+
+  // Visibility settings.
+  $form['tracking_scope'] = array(
+    '#type' => 'fieldset',
+    '#title' => t('Advanced settings'),
+  );
+
+  // Page specific visibility configurations.
+  $visibility_request_path_pages = variable_get('smartlook_tracking_visibility_request_path_pages', "admin\nadmin/*\nbatch\nnode/add*\nnode/*/*\nuser/*/*");
+
+  $description = t("Specify pages by using their paths. Enter one path per line. The '*' character is a wildcard. Example paths are %blog for the blog page and %blog-wildcard for every personal blog. %front is the front page.", array('%blog' => 'blog', '%blog-wildcard' => 'blog/*', '%front' => '<front>'));
+
+  $form['tracking_scope']['page_visibility_settings']['smartlook_tracking_visibility_request_path_mode'] = array(
+    '#type' => 'radios',
+    '#title' => t('Add tracking to specific pages'),
+    '#options' => array(
+      t('Every page except the listed pages'),
+      t('The listed pages only'),
+    ),
+    '#default_value' => variable_get('smartlook_tracking_visibility_request_path_mode', 0),
+  );
+
+  $form['tracking_scope']['page_visibility_settings']['smartlook_tracking_visibility_request_path_pages'] = array(
+    '#type' => 'textarea',
+    '#title' => t('Pages'),
+    '#title_display' => 'invisible',
+    '#default_value' => !empty($visibility_request_path_pages) ? $visibility_request_path_pages : '',
+    '#description' => $description,
+    '#rows' => 10,
+  );
+
+  $form['submit'] = array(
+    '#type' => 'submit',
+    '#value' => t('Save configuration'),
+  );
+
+  return $form;
+}
+
+/**
+ * Validate function for the smartlook_tracking_admin_form form.
+ */
+function smartlook_tracking_admin_form_validate($form, &$form_state) {
+  // Trim some text values.
+  $form_state['values']['smartlook_tracking_account'] = trim($form_state['values']['smartlook_tracking_account']);
+  $form_state['values']['smartlook_tracking_visibility_request_path_pages'] = trim($form_state['values']['smartlook_tracking_visibility_request_path_pages']);
+
+  if (strlen($form_state['values']['smartlook_tracking_account']) != 40) {
+    form_set_error('smartlook_tracking_account', t('A valid Smartlook ID must be 40 characters long.'));
+  }
+}
+
+/**
+ * Submit function for the smartlook_tracking_admin_form form.
+ */
+function smartlook_tracking_admin_form_submit($form, &$form_state) {
+  $values = $form_state['values'];
+
+  variable_set('smartlook_tracking_account', $values['smartlook_tracking_account']);
+  variable_set('smartlook_tracking_visibility_request_path_mode', $values['smartlook_tracking_visibility_request_path_mode']);
+  variable_set('smartlook_tracking_visibility_request_path_pages', $values['smartlook_tracking_visibility_request_path_pages']);
+}
+
+/**
+ * Tracking visibility check for pages.
+ *
+ * Based on visibility setting this function returns TRUE if JS code should
+ * be added to the current page and otherwise FALSE.
+ */
+function _smartlook_tracking_visibility_pages() {
+  static $page_match;
+
+  // Cache visibility result if function is called more than once.
+  if (!isset($page_match)) {
+    $visibility_request_path_mode = variable_get('smartlook_tracking_visibility_request_path_mode', 0);
+    $visibility_request_path_pages = variable_get('smartlook_tracking_visibility_request_path_pages', "admin\nadmin/*\nbatch\nnode/add*\nnode/*/*\nuser/*/*");
+
+    // Match path if necessary.
+    if (!empty($visibility_request_path_pages)) {
+      // Convert path to lowercase. This allows comparison of the same path
+      // with different case. Ex: /Page, /page, /PAGE.
+      $pages = drupal_strtolower($visibility_request_path_pages);
+      // Compare the lowercase path alias (if any) and internal path.
+      $path = current_path();
+      $path_alias = drupal_strtolower(drupal_get_path_alias($path));
+      $page_match = drupal_match_path($path_alias, $pages) || (($path != $path_alias) && drupal_match_path($path, $pages));
+      // When $visibility_request_path_mode has a value of 0, the tracking
+      // code is displayed on all pages except those listed in $pages. When
+      // set to 1, it is displayed only on those pages listed in $pages.
+      $page_match = !($visibility_request_path_mode xor $page_match);
+    }
+    else {
+      $page_match = TRUE;
+    }
+  }
+
+  return $page_match;
+}
