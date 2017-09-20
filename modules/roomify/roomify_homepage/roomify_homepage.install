@@ -232,3 +232,42 @@ function roomify_homepage_update_7004() {
 
   roomify_homepage_create_fields();
 }
+
+/**
+ * Updates properties image style.
+ */
+function roomify_homepage_update_7005() {
+  module_load_include('inc', 'roomify_homepage', 'roomify_homepage.fields');
+
+  roomify_homepage_create_fields();
+
+  $nids = db_select('node', 'n')
+    ->fields('n', array('nid'))
+    ->condition('type', 'homepage', '=')
+    ->execute()
+    ->fetchCol();
+
+  // Get all of the homepage nodes.
+  $nodes = node_load_multiple($nids);
+  foreach ($nodes as $node) {
+    if (isset($node->field_homepage_properties_style)) {
+      $node->field_homepage_properties_style[LANGUAGE_NONE][0]['value'] = 'vertical';
+      field_attach_update('node', $node);
+    }
+    if (isset($node->field_homepage_areas_style)) {
+      $node->field_homepage_areas_style[LANGUAGE_NONE][0]['value'] = 'vertical';
+      field_attach_update('node', $node);
+    }
+  }
+
+  // Update Field Groups.
+  $field_group = field_group_load_field_group('group_homepage_areas', 'node', 'homepage', 'form');
+  $field_group->children[0] = 'field_homepage_areas_style';
+  $field_group->children[1] = 'field_homepage_areas';
+  field_group_group_save($field_group);
+
+  $field_group = field_group_load_field_group('group_homepage_properties', 'node', 'homepage', 'form');
+  $field_group->children[0] = 'field_homepage_properties_style';
+  $field_group->children[1] = 'field_homepage_properties_view';
+  field_group_group_save($field_group);
+}
