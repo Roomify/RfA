@@ -209,6 +209,62 @@ function roomify_homepage_create_fields() {
     );
   }
 
+  if (field_read_field('field_homepage_areas_style') === FALSE) {
+    $field_bases['field_homepage_areas_style'] = array(
+      'active' => 1,
+      'cardinality' => 1,
+      'deleted' => 0,
+      'entity_types' => array(),
+      'field_name' => 'field_homepage_areas_style',
+      'indexes' => array(
+        'value' => array(
+          0 => 'value',
+        ),
+      ),
+      'locked' => 0,
+      'module' => 'list',
+      'settings' => array(
+        'allowed_values' => array(
+          'vertical' => 'Vertical',
+          'horizontal' => 'Horizontal',
+        ),
+        'allowed_values_function' => '',
+        'entity_translation_sync' => FALSE,
+        'profile2_private' => FALSE,
+      ),
+      'translatable' => 0,
+      'type' => 'list_text',
+    );
+  }
+
+  if (field_read_field('field_homepage_properties_style') === FALSE) {
+    $field_bases['field_homepage_properties_style'] = array(
+      'active' => 1,
+      'cardinality' => 1,
+      'deleted' => 0,
+      'entity_types' => array(),
+      'field_name' => 'field_homepage_properties_style',
+      'indexes' => array(
+        'value' => array(
+          0 => 'value',
+        ),
+      ),
+      'locked' => 0,
+      'module' => 'list',
+      'settings' => array(
+        'allowed_values' => array(
+          'vertical' => 'Vertical',
+          'horizontal' => 'Horizontal',
+        ),
+        'allowed_values_function' => '',
+        'entity_translation_sync' => FALSE,
+        'profile2_private' => FALSE,
+      ),
+      'translatable' => 0,
+      'type' => 'list_text',
+    );
+  }
+
   foreach ($field_bases as $field) {
     field_create_field($field);
   }
@@ -729,6 +785,126 @@ function roomify_homepage_create_fields() {
     );
   }
 
+  if (field_read_instance('node', 'field_homepage_areas_style', 'homepage') === FALSE) {
+    $field_instances['node-homepage-field_homepage_areas_style'] = array(
+      'bundle' => 'homepage',
+      'default_value' => array(
+        0 => array(
+          'value' => 'vertical',
+        ),
+      ),
+      'deleted' => 0,
+      'description' => '',
+      'display' => array(
+        'default' => array(
+          'label' => 'above',
+          'module' => 'list',
+          'settings' => array(
+            'conditions' => array(),
+          ),
+          'type' => 'list_default',
+          'weight' => 10,
+        ),
+        'landing_page_teaser' => array(
+          'label' => 'above',
+          'settings' => array(),
+          'type' => 'hidden',
+          'weight' => 0,
+        ),
+        'teaser' => array(
+          'label' => 'above',
+          'settings' => array(),
+          'type' => 'hidden',
+          'weight' => 0,
+        ),
+      ),
+      'entity_type' => 'node',
+      'field_name' => 'field_homepage_areas_style',
+      'label' => 'Areas images style  ',
+      'required' => 0,
+      'settings' => array(
+        'entity_translation_sync' => FALSE,
+        'select2_integration' => array(
+          'styling' => array(
+            'dropdownAutoWidth' => 0,
+            'placeholder' => '',
+          ),
+          'use_select2' => 0,
+        ),
+        'user_register_form' => FALSE,
+      ),
+      'widget' => array(
+        'active' => 1,
+        'module' => 'options',
+        'settings' => array(
+          'use_select2' => FALSE,
+        ),
+        'type' => 'options_select',
+        'weight' => 43,
+      ),
+    );
+  }
+
+  if (field_read_instance('node', 'field_homepage_properties_style', 'homepage') === FALSE) {
+    $field_instances['node-homepage-field_homepage_properties_style'] = array(
+      'bundle' => 'homepage',
+      'default_value' => array(
+        0 => array(
+          'value' => 'vertical',
+        ),
+      ),
+      'deleted' => 0,
+      'description' => 'Select either to display images on a horizontal or vertical view.',
+      'display' => array(
+        'default' => array(
+          'label' => 'above',
+          'module' => 'list',
+          'settings' => array(
+            'conditions' => array(),
+          ),
+          'type' => 'list_default',
+          'weight' => 9,
+        ),
+        'landing_page_teaser' => array(
+          'label' => 'above',
+          'settings' => array(),
+          'type' => 'hidden',
+          'weight' => 0,
+        ),
+        'teaser' => array(
+          'label' => 'above',
+          'settings' => array(),
+          'type' => 'hidden',
+          'weight' => 0,
+        ),
+      ),
+      'entity_type' => 'node',
+      'field_name' => 'field_homepage_properties_style',
+      'label' => 'Properties images style',
+      'required' => 0,
+      'settings' => array(
+        'entity_translation_sync' => FALSE,
+        'select2_integration' => array(
+          'styling' => array(
+            'dropdownAutoWidth' => 0,
+            'placeholder' => '',
+          ),
+          'use_select2' => 0,
+        ),
+        'user_register_form' => FALSE,
+      ),
+      'widget' => array(
+        'active' => 1,
+        'module' => 'options',
+        'settings' => array(
+          'use_select2' => FALSE,
+        ),
+        'type' => 'options_select',
+        'weight' => 41,
+      ),
+    );
+  }
+
   // Translatables
   // Included for use with string extractors like potx.
   t('Main Text');
@@ -739,6 +915,9 @@ function roomify_homepage_create_fields() {
   t('Check this if you want to show Featured Areas on your homepage. You may add featured areas from the Dashboard ( Manage Content / Manage Featured Areas)');
   t('Featured Properties View');
   t('Offers');
+  t('Areas images style ');
+  t('Properties images style');
+  t('Select either to display images on a horizontal or vertical view.');
 
   foreach ($field_instances as $instance) {
     field_create_instance($instance);
@@ -786,7 +965,8 @@ function roomify_homepage_create_fields() {
     $field_group->label = 'Featured Properties';
     $field_group->weight = '3';
     $field_group->children = array(
-      0 => 'field_homepage_properties_view',
+      0 => 'field_homepage_properties_style',
+      1 => 'field_homepage_properties_view',
     );
     $field_group->format_type = 'tab';
     $field_group->format_settings = array(
@@ -870,7 +1050,8 @@ function roomify_homepage_create_fields() {
     $field_group->label = 'Areas';
     $field_group->weight = '5';
     $field_group->children = array(
-      0 => 'field_homepage_areas',
+      0 => 'field_homepage_areas_style',
+      1 => 'field_homepage_areas',
     );
     $field_group->format_type = 'tab';
     $field_group->format_settings = array(

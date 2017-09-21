@@ -230,7 +230,10 @@ body.node-type-homepage {
   .pane-homepage-blogposts-panel-pane-1,
   .pane-featured-properties-panel-pane-3,
   .pane-featured-properties-panel-pane-4,
+  .pane-featured-properties-panel-pane-5,
+  .pane-featured-properties-panel-pane-6,
   .pane-featured-areas-panel-pane-1,
+  .pane-featured-areas-panel-pane-2,
   .pane-node-field-homepage-main-text {
     display: inline-block;
     width: 100%;
@@ -259,6 +262,7 @@ body.node-type-homepage {
     @include make-row();
     margin: 0 auto;
     max-width: 1200px;
+    padding: 0 10px;
     div[class*="col-"] {
       padding-left: 7px;
       padding-right: 7px;
@@ -386,7 +390,7 @@ body.node-type-homepage {
       }
     }
    .views-field-title-field {
-      max-width: 360px;
+      max-width: 380px;
       width: 100%;
       display: table;
       margin: 0 auto;
@@ -398,7 +402,7 @@ body.node-type-homepage {
       }
     }
     .views-field-body {
-      max-width: 360px;
+      max-width: 380px;
       width: 100%;
       display: table;
       margin: 0 auto;
@@ -415,6 +419,7 @@ body.node-type-homepage {
 
 
 /* GRID VIEW */
+.pane-featured-properties-panel-pane-5,
 .pane-featured-properties-panel-pane-3,
 .pane-featured-properties-panel-pane-4 {
   display: inline-block;
@@ -437,10 +442,15 @@ body.node-type-homepage {
       padding: 0;
     }
   }
+  .view-featured-properties.view-display-id-panel_pane_5,
+  .view-featured-properties.view-display-id-panel_pane_6,
   .view-featured-properties.view-display-id-panel_pane_3,
   .view-featured-properties.view-display-id-panel_pane_4 {
     margin: 0 auto;
     max-width: 1200px;
+  }
+  .row {
+    margin: 0;
   }
   .property-info {
     pointer-events: none;
@@ -450,13 +460,14 @@ body.node-type-homepage {
     font-size: 16px;
     text-transform: uppercase;
     text-align: left;
-    max-width: 360px;
+    max-width: 380px;
     display: table;
     margin: 0 auto;
     color: white;
     background-color: rgba(0,0,0,0);
     width: 100%;
     padding: 8px 10px;
+    border-radius: 0px 0px 3px 3px;
     background: -moz-linear-gradient(top, rgba(0,0,0,0) 0%, rgba(0,0,0,0.75) 100%); /* FF3.6-15 */
     background: -webkit-linear-gradient(top, rgba(0,0,0,0) 0%,rgba(0,0,0,0.75) 100%); /* Chrome10-25,Safari5.1-6 */
     background: linear-gradient(to bottom, rgba(0,0,0,0) 0%,rgba(0,0,0,0.75) 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
@@ -524,14 +535,14 @@ body.node-type-homepage {
   }
   .views-field-field-sp-short-description {
     text-align: center;
-    max-width: 360px;
+    max-width: 30px;
     display: table;
     margin: 10px auto;
   }
   .views-field-field-sp-featured-image {
     overflow: hidden;
     -webkit-mask-image: -webkit-radial-gradient(circle, white, black);
-    max-width: 360px;
+    max-width: 380px;
     display: table;
     margin: 0 auto;
   }
@@ -547,8 +558,25 @@ body.node-type-homepage {
     -webkit-transform: scale(1.2);
     transform: scale(1.2);
   }
+  .view-featured-properties.view-display-id-panel_pane_5,
+  .view-featured-properties.view-display-id-panel_pane_6 {
+    .hovereffect .overlay .content {
+      top: 40%;
+    }
+    .row {
+      margin: 0;
+    }
+    .property-info {
+      max-width: 380px;
+    }
+    .views-field-field-sp-featured-image,
+    .views-field-field-sp-short-description {
+      max-width: 380px;
+    }
+  }
 }
 
+.pane-featured-areas-panel-pane-2,
 .pane-featured-areas-panel-pane-1 {
   background: white;
   width: 100%;
@@ -559,7 +587,11 @@ body.node-type-homepage {
   .overlay {
     pointer-events: none;
   }
+  .view-display-id-panel_pane_2,
   .view-display-id-panel_pane_1 {
+    .row {
+      margin: 0;
+    }
     margin: 0 auto;
     max-width: 1200px;
     .area-col {
@@ -578,7 +610,7 @@ body.node-type-homepage {
       font-size: 16px;
       text-transform: uppercase;
       text-align: center;
-      max-width: 360px;
+      max-width: 380px;
       display: table;
       margin: 0 auto;
       color: white;
@@ -589,7 +621,7 @@ body.node-type-homepage {
     .views-field-field-area-featured-image {
       overflow: hidden;
       -webkit-mask-image: -webkit-radial-gradient(circle, white, black);
-      max-width: 360px;
+      max-width: 380px;
       width: 100%;
       display: table;
       margin: 0 auto;
