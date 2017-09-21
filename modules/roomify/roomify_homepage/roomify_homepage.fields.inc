@@ -265,8 +265,6 @@ function roomify_homepage_create_fields() {
     );
   }
 
-
-
   foreach ($field_bases as $field) {
     field_create_field($field);
   }
@@ -786,7 +784,6 @@ function roomify_homepage_create_fields() {
       ),
     );
   }
-
 
   if (field_read_instance('node', 'field_homepage_areas_style', 'homepage') === FALSE) {
     $field_instances['node-homepage-field_homepage_areas_style'] = array(
