@@ -45,31 +45,20 @@ function smartlook_tracking_page_build(&$page) {
     return;
   }
 
-  $tracking_allowed = FALSE;
   $roles = variable_get('smartlook_roles_tracking', array());
-  foreach ($roles as $role) {
-    if ($role != '0') {
-      if (in_array($role, $user->roles)) {
-        $tracking_allowed = TRUE;
-        break;
-      }
-    }
-  }
 
-  if ($tracking_allowed) {
-    $key = variable_get('smartlook_tracking_account');
+  $key = variable_get('smartlook_tracking_account');
 
-    if (!empty($key) && _smartlook_tracking_visibility_pages()) {
-      // Build tracker code.
-      $script = "window.smartlook||(function(d) {";
-      $script .= "var o=smartlook=function(){ o.api.push(arguments)},h=d.getElementsByTagName('head')[0];";
-      $script .= "var c=d.createElement('script');o.api=new Array();c.async=true;c.type='text/javascript';";
-      $script .= "c.charset='utf-8';c.src='//rec.smartlook.com/recorder.js';h.appendChild(c);";
-      $script .= "})(document);";
-      $script .= "smartlook('init', '" . $key . "');";
+  if (!empty(array_intersect($roles, $user->roles)) && !empty($key) && _smartlook_tracking_visibility_pages()) {
+    // Build tracker code.
+    $script = "window.smartlook||(function(d) {";
+    $script .= "var o=smartlook=function(){ o.api.push(arguments)},h=d.getElementsByTagName('head')[0];";
+    $script .= "var c=d.createElement('script');o.api=new Array();c.async=true;c.type='text/javascript';";
+    $script .= "c.charset='utf-8';c.src='//rec.smartlook.com/recorder.js';h.appendChild(c);";
+    $script .= "})(document);";
+    $script .= "smartlook('init', '" . $key . "');";
 
-      drupal_add_js($script, 'inline');
-    }
+    drupal_add_js($script, 'inline');
   }
 }
 
@@ -161,7 +150,7 @@ function smartlook_tracking_admin_form_validate($form, &$form_state) {
 function smartlook_tracking_admin_form_submit($form, &$form_state) {
   $values = $form_state['values'];
 
-  variable_set('smartlook_roles_tracking', $values['smartlook_user_roles']);
+  variable_set('smartlook_roles_tracking', array_filter($values['smartlook_user_roles']));
   variable_set('smartlook_tracking_account', $values['smartlook_tracking_account']);
   variable_set('smartlook_tracking_visibility_request_path_mode', $values['smartlook_tracking_visibility_request_path_mode']);
   variable_set('smartlook_tracking_visibility_request_path_pages', $values['smartlook_tracking_visibility_request_path_pages']);
