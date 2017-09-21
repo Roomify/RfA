@@ -30,10 +30,6 @@ function smartlook_tracking_permission() {
       'title' => 'Administer Smartlook',
       'description' => 'Perform maintenance tasks for Smartlook.',
     ),
-    'smartlook tracking' => array(
-      'title' => 'Smartlook tracking.',
-      'description' => 'Enable the Smartlook tracking script.',
-    ),
   );
 }
 
@@ -45,22 +41,35 @@ function smartlook_tracking_page_build(&$page) {
 
   // User ID=1 is Drupal's hardcoded administrator and has permissions for
   // everything, but we don't want anything to be tracked for this user.
-  if ($user->uid == 1 || !user_access('smartlook tracking')) {
+  if ($user->uid == 1) {
     return;
   }
 
-  $key = variable_get('smartlook_tracking_account');
+  $tracking_allowed = FALSE;
+  $roles = variable_get('smartlook_roles_tracking', array());
+  foreach ($roles as $role) {
+    if ($role != '0') {
+      if (in_array($role, $user->roles)) {
+        $tracking_allowed = TRUE;
+        break;
+      }
+    }
+  }
 
-  if (!empty($key) && _smartlook_tracking_visibility_pages()) {
-    // Build tracker code.
-    $script = "window.smartlook||(function(d) {";
-    $script .= "var o=smartlook=function(){ o.api.push(arguments)},h=d.getElementsByTagName('head')[0];";
-    $script .= "var c=d.createElement('script');o.api=new Array();c.async=true;c.type='text/javascript';";
-    $script .= "c.charset='utf-8';c.src='//rec.smartlook.com/recorder.js';h.appendChild(c);";
-    $script .= "})(document);";
-    $script .= "smartlook('init', '" . $key . "');";
+  if ($tracking_allowed) {
+    $key = variable_get('smartlook_tracking_account');
 
-    drupal_add_js($script, 'inline');
+    if (!empty($key) && _smartlook_tracking_visibility_pages()) {
+      // Build tracker code.
+      $script = "window.smartlook||(function(d) {";
+      $script .= "var o=smartlook=function(){ o.api.push(arguments)},h=d.getElementsByTagName('head')[0];";
+      $script .= "var c=d.createElement('script');o.api=new Array();c.async=true;c.type='text/javascript';";
+      $script .= "c.charset='utf-8';c.src='//rec.smartlook.com/recorder.js';h.appendChild(c);";
+      $script .= "})(document);";
+      $script .= "smartlook('init', '" . $key . "');";
+
+      drupal_add_js($script, 'inline');
+    }
   }
 }
 
@@ -113,6 +122,17 @@ function smartlook_tracking_admin_form($form, &$form_state) {
     '#rows' => 10,
   );
 
+  $roles = array();
+  foreach(user_roles() as $role) {
+    $roles[$role] = $role;
+  }
+
+  $form['tracking_scope']['page_visibility_settings']['smartlook_user_roles'] = array(
+    '#type' => 'checkboxes',
+    '#options' => $roles,
+    '#default_value' => variable_get('smartlook_roles_tracking', array()),
+  );
+
   $form['submit'] = array(
     '#type' => 'submit',
     '#value' => t('Save configuration'),
@@ -140,6 +160,7 @@ function smartlook_tracking_admin_form_validate($form, &$form_state) {
 function smartlook_tracking_admin_form_submit($form, &$form_state) {
   $values = $form_state['values'];
 
+  variable_set('smartlook_roles_tracking', $values['smartlook_user_roles']);
   variable_set('smartlook_tracking_account', $values['smartlook_tracking_account']);
   variable_set('smartlook_tracking_visibility_request_path_mode', $values['smartlook_tracking_visibility_request_path_mode']);
   variable_set('smartlook_tracking_visibility_request_path_pages', $values['smartlook_tracking_visibility_request_path_pages']);
