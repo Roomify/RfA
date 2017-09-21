@@ -78,6 +78,12 @@ function roomify_homepage_form_alter(&$form, &$form_state, $form_id) {
     if (isset($form['field_homepage_style'][LANGUAGE_NONE]['#options']['_none'])) {
       unset($form['field_homepage_style'][LANGUAGE_NONE]['#options']['_none']);
     }
+    if (isset($form['field_homepage_areas_style'][LANGUAGE_NONE]['#options']['_none'])) {
+      unset($form['field_homepage_areas_style'][LANGUAGE_NONE]['#options']['_none']);
+    }
+    if (isset($form['field_homepage_properties_style'][LANGUAGE_NONE]['#options']['_none'])) {
+      unset($form['field_homepage_properties_style'][LANGUAGE_NONE]['#options']['_none']);
+    }
   }
 }
 
