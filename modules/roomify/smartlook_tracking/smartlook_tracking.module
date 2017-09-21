@@ -128,6 +128,7 @@ function smartlook_tracking_admin_form($form, &$form_state) {
   }
 
   $form['tracking_scope']['page_visibility_settings']['smartlook_user_roles'] = array(
+    '#title' => t('Choose which roles should be tracked'),
     '#type' => 'checkboxes',
     '#options' => $roles,
     '#default_value' => variable_get('smartlook_roles_tracking', array()),
