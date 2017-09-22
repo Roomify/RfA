@@ -14,7 +14,7 @@ function roomify_landing_page_slick_default_presets() {
   $preset = new stdClass();
   $preset->disabled = FALSE; /* Edit this to true to make a default preset disabled initially */
   $preset->api_version = 1;
-  $preset->name = 'clone_of_roomify_slideshow_paragraph_1200x720';
+  $preset->name = 'roomify_slideshow_paragraph_1200x720';
   $preset->label = 'Roomify Slideshow Paragraph 1200x720';
   $preset->breakpoints = 0;
   $preset->skin = '';
@@ -52,7 +52,7 @@ function roomify_landing_page_slick_default_presets() {
       'useTransform' => FALSE,
     ),
   );
-  $export['clone_of_roomify_slideshow_paragraph_1200x720'] = $preset;
+  $export['roomify_slideshow_paragraph_1200x720'] = $preset;
 
   $preset = new stdClass();
   $preset->disabled = FALSE; /* Edit this to true to make a default preset disabled initially */

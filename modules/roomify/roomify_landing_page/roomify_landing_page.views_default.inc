@@ -472,7 +472,7 @@ function roomify_landing_page_views_default_views() {
   $handler->display->display_options['style_plugin'] = 'slick';
   $handler->display->display_options['style_options']['slide_field_wrapper'] = 0;
   $handler->display->display_options['style_options']['cache'] = '';
-  $handler->display->display_options['style_options']['optionset'] = 'clone_of_roomify_slideshow_paragraph_1200x720';
+  $handler->display->display_options['style_options']['optionset'] = 'roomify_slideshow_paragraph_1200x720';
   $handler->display->display_options['style_options']['override'] = 0;
   $handler->display->display_options['style_options']['overridables'] = array(
     'arrows' => 0,
