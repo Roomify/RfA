@@ -12786,7 +12786,9 @@ body.node-type-homepage {
   background: #FFFFFF; }
   body.node-type-homepage .select2-selection.select2-selection--single {
     border-radius: 2px;
-    border: 1px solid #d4d3d3; }
+    border: 1px solid #d4d3d3;
+    font-weight: 400;
+    text-transform: lowercase; }
   body.node-type-homepage strong {
     font-weight: 400; }
   body.node-type-homepage .tabs--primary {
