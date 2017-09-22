@@ -112,7 +112,7 @@ function smartlook_tracking_admin_form($form, &$form_state) {
   );
 
   $roles = array();
-  foreach(user_roles() as $role) {
+  foreach (user_roles() as $role) {
     $roles[$role] = $role;
   }
 
