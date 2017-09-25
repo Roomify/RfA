@@ -275,13 +275,14 @@
         form {
           background: #F8F8F8;
           border-radius: 5px;
-          padding: 40px;
+          padding: 25px;
           position: relative;
           @media (max-width: $screen-xs) {
             padding: 10px 30px;
           }
           label {
             font-weight: 300;
+            width: 100%;
           }
           .form-textarea {
             resize: vertical;
@@ -320,6 +321,12 @@
               min-width: 60px;
               margin-right: 12px;
             }
+          }
+          .send-request {
+            display: inline-block;
+            width: 100%;
+            padding: 0 15px;
+            margin-top: 10px;
           }
         }
       }

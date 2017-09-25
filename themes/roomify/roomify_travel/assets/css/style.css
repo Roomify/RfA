@@ -9619,7 +9619,7 @@ body.toggled #close-sidebar-wrapper {
       .page-booking #modalContent .ctools-modal-dialog.modal-dialog #modal-content form {
         background: #F8F8F8;
         border-radius: 5px;
-        padding: 40px;
+        padding: 25px;
         position: relative; }
         @media (max-width: 480px) {
           .page-conversation-booking #modalContent .ctools-modal-dialog.modal-dialog #modal-content form,
@@ -9627,7 +9627,8 @@ body.toggled #close-sidebar-wrapper {
             padding: 10px 30px; } }
         .page-conversation-booking #modalContent .ctools-modal-dialog.modal-dialog #modal-content form label,
         .page-booking #modalContent .ctools-modal-dialog.modal-dialog #modal-content form label {
-          font-weight: 300; }
+          font-weight: 300;
+          width: 100%; }
         .page-conversation-booking #modalContent .ctools-modal-dialog.modal-dialog #modal-content form .form-textarea,
         .page-booking #modalContent .ctools-modal-dialog.modal-dialog #modal-content form .form-textarea {
           resize: vertical; }
@@ -9660,6 +9661,12 @@ body.toggled #close-sidebar-wrapper {
           display: inline-block;
           min-width: 60px;
           margin-right: 12px; }
+        .page-conversation-booking #modalContent .ctools-modal-dialog.modal-dialog #modal-content form .send-request,
+        .page-booking #modalContent .ctools-modal-dialog.modal-dialog #modal-content form .send-request {
+          display: inline-block;
+          width: 100%;
+          padding: 0 15px;
+          margin-top: 10px; }
   .page-conversation-booking #modalContent div.modal-content,
   .page-booking #modalContent div.modal-content {
     background: none;
