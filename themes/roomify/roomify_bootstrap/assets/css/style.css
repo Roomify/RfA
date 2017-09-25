@@ -9477,36 +9477,21 @@ body.error404 .page-content-center {
     #roomify-property-search-block-form .form-wrapper .search-submit .form-submit,
     #property-bat-facets-availability .form-wrapper .search-availability-submit .form-submit,
     #property-bat-facets-availability .form-wrapper .search-submit .form-submit {
-      display: inline-block;
-      color: white;
-      font-weight: 500;
-      background: #000;
-      padding: 12px 15px;
-      border: 0;
       height: 40px;
+      border: none;
       background: #5CA755;
-      border: 1px solid #779D73;
+      border-bottom: 2px solid #556f4f;
       padding: 6px;
-      font-size: 16px;
       text-transform: uppercase;
-      width: 100%;
-      font-weight: 400;
-      margin-left: 0;
-      border-radius: 0; }
+      width: 100%; }
       #property-bat-activity-facets-availability .form-wrapper .search-availability-submit .form-submit:hover,
       #property-bat-activity-facets-availability .form-wrapper .search-submit .form-submit:hover,
       #roomify-property-search-block-form .form-wrapper .search-availability-submit .form-submit:hover,
       #roomify-property-search-block-form .form-wrapper .search-submit .form-submit:hover,
       #property-bat-facets-availability .form-wrapper .search-availability-submit .form-submit:hover,
       #property-bat-facets-availability .form-wrapper .search-submit .form-submit:hover {
-        background: #8FB98B; }
-      #property-bat-activity-facets-availability .form-wrapper .search-availability-submit .form-submit:hover,
-      #property-bat-activity-facets-availability .form-wrapper .search-submit .form-submit:hover,
-      #roomify-property-search-block-form .form-wrapper .search-availability-submit .form-submit:hover,
-      #roomify-property-search-block-form .form-wrapper .search-submit .form-submit:hover,
-      #property-bat-facets-availability .form-wrapper .search-availability-submit .form-submit:hover,
-      #property-bat-facets-availability .form-wrapper .search-submit .form-submit:hover {
-        background: #66C15E; }
+        background: #556f4f;
+        border-bottom: 1px solid #556f4f; }
   #property-bat-activity-facets-availability .form-wrapper input, #property-bat-activity-facets-availability .form-wrapper select, #property-bat-activity-facets-availability .form-wrapper .form-control,
   #roomify-property-search-block-form .form-wrapper input,
   #roomify-property-search-block-form .form-wrapper select,

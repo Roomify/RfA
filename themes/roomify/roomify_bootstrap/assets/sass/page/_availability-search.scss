@@ -561,19 +561,16 @@
         margin-top: 30px;
       }
       .form-submit {
-        @include button-brooklin();
         height: 40px;
+        border: none;
         background: #5CA755;
-        border: 1px solid #779D73;
+        border-bottom: 2px solid #556f4f;
         padding: 6px;
-        font-size: 16px;
         text-transform: uppercase;
         width: 100%;
-        font-weight: 400;
-        margin-left: 0;
-        border-radius: 0;
         &:hover {
-         background: #66C15E;
+          background: #556f4f;
+          border-bottom: 1px solid #556f4f;
         }
       }
     }
