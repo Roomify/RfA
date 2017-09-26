@@ -33,6 +33,7 @@ Feature: Conversation
     And I click on the text "Send an Enquiry"
     And I wait for AJAX to finish
     Then I fill in "guest_name" with "Test user 1"
+    And I fill in "guest_last_name" with "LastName"
     And I fill in "further_info" with "Test text test text"
     Then I press "Send Request"
     And I wait for AJAX to finish
