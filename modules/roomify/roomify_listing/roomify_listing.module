@@ -1201,6 +1201,9 @@ function roomify_listing_menu() {
   return $items;
 }
 
+/**
+ *
+ */
 function roomfy_listing_type_availability_calendar_modal($type_id = NULL) {
   if ($type_id == NULL) {
     return t('No type id was sent. Error.');
@@ -1506,6 +1509,7 @@ function roomify_listing_enquiry_form_submit($form, &$form_state) {
     $existing_account = FALSE;
     // Create a new user and send a link to confirm the email address.
     $password = user_password(8);
+
     $fields = array(
       'name' => $user_name,
       'mail' => $email_address,
@@ -1518,11 +1522,11 @@ function roomify_listing_enquiry_form_submit($form, &$form_state) {
     );
 
     $account = user_save('', $fields);
+
     $account->user_first_name[LANGUAGE_NONE][0]['value'] = $values['guest_name'];
     $account->user_last_name[LANGUAGE_NONE][0]['value'] = $values['guest_last_name'];
     $account->user_telephone[LANGUAGE_NONE][0]['value'] = $values['telephone'];
     field_attach_update('user', $account);
-    $account = user_save($account);
   }
 
   // Assign 'guest' role.
