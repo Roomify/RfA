@@ -6758,6 +6758,10 @@ blockquote {
     color: #127ba3;
     font-weight: 400; }
 
+@media (max-width: 620px) {
+  #ui-datepicker-div {
+    width: 20em !important; } }
+
 .ui-tabs {
   padding: 0 !important;
   border: 0;
