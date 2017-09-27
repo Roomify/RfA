@@ -109,3 +109,9 @@
     font-weight: 400;
   }
 }
+
+#ui-datepicker-div {
+  @media (max-width: 620px) {
+    width: 20em !important;
+  }
+}

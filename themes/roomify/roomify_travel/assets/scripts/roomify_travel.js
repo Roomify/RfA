@@ -80,6 +80,12 @@ Drupal.behaviors.roomifyTravelScripts = {
       $('.page-availability-search .panel-sl-left-content-wrapper .panel_sl_left .panel-pane.pane-block:not(#availability-search-facet) .pane-title').addClass('hidden-content');
       $('.page-availability-search .panel-sl-left-content-wrapper .panel_sl_left .panel-pane.pane-block:not(#availability-search-facet) .pane-content').hide();
     }
+
+    if ($(window).width() <= 620) {
+      $('.form-type-date-popup input').datepicker({
+        numberOfMonths: 1
+      });
+    }
   }
 };
 
@@ -164,6 +170,5 @@ Drupal.behaviors.roomifyTravelHomepageScripts = {
     }
   }
 };
-
 
 })(jQuery);
