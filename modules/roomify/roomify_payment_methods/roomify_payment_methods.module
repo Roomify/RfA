@@ -82,14 +82,14 @@ function roomify_payment_methods_settings($form, &$form_state) {
     '#type' => 'textfield',
     '#title' => t('Secret Key'),
     '#description' => t('Secret API Key. Get your key from https://stripe.com/'),
-    '#default_value' => !empty($settings['secret_key']) ? $settings['secret_key'] : STRIPE_SECRET_KEY,
+    '#default_value' => !empty($settings['secret_key']) ? $settings['secret_key'] : '',
   );
 
   $form['stripe_settings']['public_key'] = array(
     '#type' => 'textfield',
     '#title' => t('Publishable Key'),
     '#description' => t('Publishable API Key. Get your key from https://stripe.com/'),
-    '#default_value' => !empty($settings['public_key']) ? $settings['public_key'] : STRIPE_PUBLIC_KEY,
+    '#default_value' => !empty($settings['public_key']) ? $settings['public_key'] : '',
   );
 
   // Paypal WPS.
