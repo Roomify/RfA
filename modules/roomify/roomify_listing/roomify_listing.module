@@ -1201,6 +1201,9 @@ function roomify_listing_menu() {
   return $items;
 }
 
+/**
+ *
+ */
 function roomfy_listing_type_availability_calendar_modal($type_id = NULL) {
   if ($type_id == NULL) {
     return t('No type id was sent. Error.');
@@ -1327,7 +1330,7 @@ function roomify_listing_enquiry_form($form, &$form_state, $arrival_date, $depar
   );
 
   $form['title'] = array(
-    '#markup' => '<div class="title">' . $title . '</div>',
+    '#markup' => '<div class="col-xs-12 title">' . $title . '</div>',
   );
 
   $form['instructions'] = array(
@@ -1336,14 +1339,26 @@ function roomify_listing_enquiry_form($form, &$form_state, $arrival_date, $depar
 
   $form['guest_name'] = array(
     '#type' => 'textfield',
-    '#title' => t('Name'),
+    '#title' => t('First Name'),
     '#required' => TRUE,
+    '#prefix' => '<div class="col-xs-12 col-sm-6">',
+    '#suffix' => '</div>',
+  );
+
+  $form['guest_last_name'] = array(
+    '#type' => 'textfield',
+    '#title' => t('Last Name'),
+    '#required' => TRUE,
+    '#prefix' => '<div class="col-xs-12 col-sm-6">',
+    '#suffix' => '</div>',
   );
 
   if ($user->uid > 0) {
     $form['email'] = array(
       '#type' => 'hidden',
       '#value' => $user->mail,
+      '#prefix' => '<div class="col-xs-12">',
+      '#suffix' => '</div>',
     );
   }
   else {
@@ -1351,12 +1366,16 @@ function roomify_listing_enquiry_form($form, &$form_state, $arrival_date, $depar
       '#type' => 'textfield',
       '#title' => t('Email'),
       '#required' => TRUE,
+      '#prefix' => '<div class="col-xs-12">',
+      '#suffix' => '</div>',
     );
   }
 
   $form['telephone'] = array(
     '#type' => 'textfield',
     '#title' => t('Telephone'),
+    '#prefix' => '<div class="col-xs-12">',
+    '#suffix' => '</div>',
   );
 
   $form['arrival_date'] = array(
@@ -1378,6 +1397,8 @@ function roomify_listing_enquiry_form($form, &$form_state, $arrival_date, $depar
     '#type' => 'select',
     '#title' => t('How many children in your group?'),
     '#options' => range(0, $group_size),
+    '#prefix' => '<div class="col-xs-12">',
+    '#suffix' => '</div>',
     '#ajax' => array(
       'callback' => 'roomify_listing_enquiry_form_ajax_callback',
       'wrapper' => 'children-wrapper',
@@ -1388,7 +1409,7 @@ function roomify_listing_enquiry_form($form, &$form_state, $arrival_date, $depar
     $form['children_ages'] = array(
       '#type' => 'fieldset',
       '#title' => t('Ages of children'),
-      '#prefix' => '<div id="children-wrapper">',
+      '#prefix' => '<div class="col-xs-12" id="children-wrapper">',
       '#suffix' => '</div>',
     );
 
@@ -1406,8 +1427,9 @@ function roomify_listing_enquiry_form($form, &$form_state, $arrival_date, $depar
   else {
     $form['children_ages'] = array(
       '#type' => 'fieldset',
-      '#prefix' => '<div id="children-wrapper" style="display: none;">',
+      '#prefix' => '<div class="col-xs-12" id="children-wrapper" style="display: none;">',
       '#suffix' => '</div>',
+
     );
   }
 
@@ -1415,6 +1437,8 @@ function roomify_listing_enquiry_form($form, &$form_state, $arrival_date, $depar
     '#type' => 'textarea',
     '#title' => t('Further info'),
     '#resizable' => FALSE,
+    '#prefix' => '<div class="col-xs-12">',
+    '#suffix' => '</div>',
   );
 
   $form['listing_type'] = array(
@@ -1433,6 +1457,8 @@ function roomify_listing_enquiry_form($form, &$form_state, $arrival_date, $depar
     '#attributes' => array(
       'class' => array('btn-primary'),
     ),
+    '#prefix' => '<div class="send-request">',
+    '#suffix' => '</div>',
     '#ajax' => array(
       'callback' => 'roomify_listing_enquiry_form_submit',
     ),
@@ -1496,6 +1522,11 @@ function roomify_listing_enquiry_form_submit($form, &$form_state) {
     );
 
     $account = user_save('', $fields);
+
+    $account->user_first_name[LANGUAGE_NONE][0]['value'] = $values['guest_name'];
+    $account->user_last_name[LANGUAGE_NONE][0]['value'] = $values['guest_last_name'];
+    $account->user_telephone[LANGUAGE_NONE][0]['value'] = $values['telephone'];
+    field_attach_update('user', $account);
   }
 
   // Assign 'guest' role.
