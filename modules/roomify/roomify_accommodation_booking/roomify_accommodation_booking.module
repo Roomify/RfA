@@ -1796,34 +1796,6 @@ function roomify_accommodation_booking_user_update(&$edit, $account, $category) 
 /**
  * Implements hook_form_FORM_ID_alter().
  *
- * FORM_ID = user_register_form.
- */
-function roomify_accommodation_booking_form_user_register_form_alter(&$form, &$form_state) {
-  $form['user_first_name']['#weight'] = -100;
-  $form['user_last_name']['#weight'] = -99;
-  $form['user_telephone']['#weight'] = -98;
-  if (strpos($form['#action'], 'render=references-dialog') !== FALSE) {
-    $form['account']['name']['#required'] = FALSE;
-    $form['account']['name']['#description'] = t('Using this username (or their email) the user will be able to access the site.') . ' ' . $form['account']['name']['#description'];
-    $form['account']['mail']['#required'] = FALSE;
-    $form['account']['pass']['#access'] = FALSE;
-    $form['account']['pass']['#required'] = FALSE;
-    $form['account']['roles']['#access'] = FALSE;
-    $form['account']['roles_change']['#access'] = FALSE;
-    $form['account']['status']['#access'] = FALSE;
-    $form['metatags']['#access'] = FALSE;
-    $form['locale']['#access'] = FALSE;
-    if ($guest_role = user_role_load_by_name('guest')) {
-      $form['account']['roles'][$guest_role->rid]['#default_value'] = TRUE;
-    }
-
-    $form['#validate'] = array_merge(array('roomify_accommodation_booking_form_user_register_form_validate'), $form['#validate']);
-  }
-}
-
-/**
- * Implements hook_form_FORM_ID_alter().
- *
  * FORM_ID = user_profile_form.
  */
 function roomify_accommodation_booking_form_user_profile_form_alter(&$form, &$form_state) {
@@ -1868,6 +1840,15 @@ function roomify_accommodation_booking_form_user_register_form_validate($form, &
   }
 
   $form_state['values']['pass'] = user_password();
+}
+
+/**
+ * Custom submit function for the user_register_form form.
+ */
+function roomify_accommodation_booking_form_user_register_form_submit($form, &$form_state) {
+  if ($guest_role = user_role_load_by_name('guest')) {
+    $form_state['values']['roles'][$guest_role->rid] = $guest_role->rid;
+  }
 }
 
 /**
@@ -2286,6 +2267,37 @@ function roomify_accommodation_booking_form_alter(&$form, &$form_state, $form_id
     if (isset($form['customer_profile_billing']['cancel_button'])) {
       $form['customer_profile_billing']['cancel_button']['#value'] = t('Cancel and Return to address selection');
       $form['customer_profile_billing']['cancel_button']['#attributes']['class'] = array('btn-warning');
+    }
+  }
+
+  if ($form_id == 'user_register_form' || $form_id == 'user_profile_form') {
+    $form['user_first_name']['#weight'] = -100;
+    $form['user_last_name']['#weight'] = -99;
+    $form['user_telephone']['#weight'] = -98;
+
+    if (strpos($form['#action'], 'render=references-dialog') !== FALSE) {
+      $form['account']['name']['#description'] = t('Using this username (or their email) the user will be able to access the site.') . ' ' . $form['account']['name']['#description'];
+      $form['account']['pass']['#access'] = FALSE;
+      $form['account']['pass']['#required'] = FALSE;
+      $form['account']['roles']['#access'] = FALSE;
+      $form['account']['roles_change']['#access'] = FALSE;
+      $form['account']['status']['#access'] = FALSE;
+      $form['metatags']['#access'] = FALSE;
+      $form['locale']['#access'] = FALSE;
+    }
+  }
+
+  if ($form_id == 'user_register_form') {
+    if (strpos($form['#action'], 'render=references-dialog') !== FALSE) {
+      $form['account']['name']['#required'] = FALSE;
+      $form['account']['mail']['#required'] = FALSE;
+
+      if ($guest_role = user_role_load_by_name('guest')) {
+        $form['account']['roles']['#default_value'][$guest_role->rid] = $guest_role->rid;
+        $form['account']['roles_change']['#default_value'][$guest_role->rid] = $guest_role->rid;
+      }
+
+      $form['#validate'] = array_merge(array('roomify_accommodation_booking_form_user_register_form_validate'), $form['#validate']);
     }
   }
 }
