@@ -1552,7 +1552,7 @@ function roomify_listing_enquiry_form_submit($form, &$form_state) {
   $conversation->conversation_book_start_date[LANGUAGE_NONE][0]['value'] = $values['arrival_date'];
   $conversation->conversation_book_end_date[LANGUAGE_NONE][0]['value'] = $values['departure_date'];
 
-  $conversation->conversation_user_name[LANGUAGE_NONE][0]['value'] = $values['guest_name'];
+  $conversation->conversation_user_name[LANGUAGE_NONE][0]['value'] = $values['guest_name'] . ' ' . $values['guest_last_name'];
 
   // Check for Offers.
   $offer_amount = 0;

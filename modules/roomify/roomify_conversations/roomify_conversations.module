@@ -1048,7 +1048,7 @@ function roomify_conversations_message_render($message) {
     $output .= '<div class="user-picture"><img height="40px" width="40px" src="' . $user_picture . '" /></div>';
     $output .= '<div class="text">' . $message->arguments['@string'] . '</div>';
 
-    $output .= '<div class="date">' . format_date($message->timestamp, 'custom', 'd.m.Y') . '</div>';
+    $output .= '<div class="date">' . format_date($message->timestamp, 'custom', 'd/m/Y H:i') . '</div>';
 
     $output .= '</div>';
   }
@@ -1058,7 +1058,7 @@ function roomify_conversations_message_render($message) {
     $output .= '<div class="text">' . $message->arguments['@string'] . '</div>';
     $output .= '<div class="user-picture"><img height="40px" width="40px" src="' . $user_picture . '" /></div>';
 
-    $output .= '<div class="date">' . format_date($message->timestamp, 'custom', 'd.m.Y') . '</div>';
+    $output .= '<div class="date">' . format_date($message->timestamp, 'custom', 'd/m/Y H:i') . '</div>';
 
     $output .= '</div>';
   }
@@ -1761,17 +1761,17 @@ function roomify_conversations_inquiry_render($conversation) {
     }
   }
 
-  $name = '';
+  $name = ' - ';
   if (isset($conversation->conversation_user_name[LANGUAGE_NONE][0]['value'])) {
     $name = $conversation->conversation_user_name[LANGUAGE_NONE][0]['value'];
   }
 
-  $user_email = '';
+  $user_email = ' - ';
   if (isset($conversation->conversation_user_email[LANGUAGE_NONE][0]['value'])) {
     $user_email = $conversation->conversation_user_email[LANGUAGE_NONE][0]['value'];
   }
 
-  $telephone = '';
+  $telephone = ' - ';
   if (isset($conversation->conversation_telephone[LANGUAGE_NONE][0]['value'])) {
     if (empty($conversation->conversation_telephone[LANGUAGE_NONE][0]['value'])) {
       $telephone = '-';
