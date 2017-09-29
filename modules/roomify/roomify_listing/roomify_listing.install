@@ -1403,3 +1403,66 @@ function roomify_listing_update_7041() {
     }
   }
 }
+
+/**
+ * Improve the edit property page.
+ */
+function roomify_listing_update_7042() {
+
+  foreach (array('casa_property', 'locanda_property') as $property_bundle) {
+
+    $instance_info = field_read_instance('roomify_property', 'field_sp_weight', $property_bundle);
+    $instance_info['description'] = 'Set this field to give a "weight" to the Property. This can be used on the default view of the availability search page where properties with a lighter weight will be displayed before.';
+    field_update_instance($instance_info);
+
+    $instance_info = field_read_instance('roomify_property', 'field_sp_featured_image', $property_bundle);
+    $instance_info['widget']['settings']['dragdropfile_enabled'] = 0;
+    $instance_info['widget']['settings']['dragdropfile_title'] = '';
+    $instance_info['widget']['settings']['manualcrop_instant_preview'] = 0;
+    $instance_info['widget']['settings']['manualcrop_thumblist'] = 0;
+    $instance_info['widget']['settings']['preview_image_style'] = 'medium';
+    field_update_instance($instance_info);
+
+    $instance_info = field_read_instance('roomify_property', 'field_sp_highlight_title', $property_bundle);
+    $instance_info['widget']['weight'] = 28;
+    field_update_instance($instance_info);
+
+    $instance_info = field_read_instance('roomify_property', 'field_sp_highlight_intro', $property_bundle);
+    $instance_info['widget']['weight'] = 29;
+    field_update_instance($instance_info);
+
+    $instance_info = field_read_instance('roomify_property', 'field_sp_highlight_image1', $property_bundle);
+    $instance_info['widget']['weight'] = 30;
+    $instance_info['widget']['settings']['dragdropfile_title'] = '';
+    $instance_info['widget']['settings']['manualcrop_instant_preview'] = 0;
+    $instance_info['widget']['settings']['manualcrop_thumblist'] = 0;
+    field_update_instance($instance_info);
+
+    $instance_info = field_read_instance('roomify_property', 'field_sp_highlight_image1_cap', $property_bundle);
+    $instance_info['widget']['weight'] = 31;
+    field_update_instance($instance_info);
+
+    $instance_info = field_read_instance('roomify_property', 'field_sp_highlight_image2', $property_bundle);
+    $instance_info['widget']['weight'] = 32;
+    $instance_info['widget']['settings']['dragdropfile_title'] = '';
+    $instance_info['widget']['settings']['manualcrop_instant_preview'] = 0;
+    $instance_info['widget']['settings']['manualcrop_thumblist'] = 0;
+    field_update_instance($instance_info);
+
+    $instance_info = field_read_instance('roomify_property', 'field_sp_highlight_image2_cap', $property_bundle);
+    $instance_info['widget']['weight'] = 33;
+    field_update_instance($instance_info);
+
+    $instance_info = field_read_instance('roomify_property', 'field_sp_highlight_image3', $property_bundle);
+    $instance_info['widget']['weight'] = 34;
+    $instance_info['widget']['settings']['dragdropfile_title'] = '';
+    $instance_info['widget']['settings']['manualcrop_instant_preview'] = 0;
+    $instance_info['widget']['settings']['manualcrop_thumblist'] = 0;
+    field_update_instance($instance_info);
+
+    $instance_info = field_read_instance('roomify_property', 'field_sp_highlight_image3_cap', $property_bundle);
+    $instance_info['widget']['weight'] = 35;
+    field_update_instance($instance_info);
+
+  }
+}

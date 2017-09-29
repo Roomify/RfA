@@ -782,12 +782,14 @@ function roomify_listing_create_property_fields($property_bundle) {
         'active' => 1,
         'module' => 'image',
         'settings' => array(
+          'dragdropfile_enabled' => 0,
+          'dragdropfile_title' => '',
           'manualcrop_crop_info' => 1,
           'manualcrop_default_crop_area' => 1,
           'manualcrop_enable' => 1,
           'manualcrop_inline_crop' => 0,
           'manualcrop_instant_crop' => 0,
-          'manualcrop_instant_preview' => 1,
+          'manualcrop_instant_preview' => 0,
           'manualcrop_keyboard' => 1,
           'manualcrop_maximize_default_crop_area' => 1,
           'manualcrop_require_cropping' => array(),
@@ -797,8 +799,8 @@ function roomify_listing_create_property_fields($property_bundle) {
             'square' => 'square',
           ),
           'manualcrop_styles_mode' => 'include',
-          'manualcrop_thumblist' => 1,
-          'preview_image_style' => 'thumbnail',
+          'manualcrop_thumblist' => 0,
+          'preview_image_style' => 'medium',
           'progress_indicator' => 'throbber',
         ),
         'type' => 'image_image',
@@ -1328,6 +1330,7 @@ function roomify_listing_create_property_fields($property_bundle) {
           'size' => 60,
         ),
         'type' => 'text_textfield',
+        'weight' => 28,
       ),
     );
   }
@@ -1362,6 +1365,7 @@ function roomify_listing_create_property_fields($property_bundle) {
           'rows' => 5,
         ),
         'type' => 'text_textarea',
+        'weight' => 29,
       ),
     );
   }
@@ -1403,12 +1407,13 @@ function roomify_listing_create_property_fields($property_bundle) {
         'active' => 1,
         'module' => 'image',
         'settings' => array(
+          'dragdropfile_title' => 0,
           'manualcrop_crop_info' => 1,
           'manualcrop_default_crop_area' => 1,
           'manualcrop_enable' => 1,
           'manualcrop_inline_crop' => 0,
           'manualcrop_instant_crop' => 0,
-          'manualcrop_instant_preview' => 1,
+          'manualcrop_instant_preview' => 0,
           'manualcrop_keyboard' => 1,
           'manualcrop_maximize_default_crop_area' => 1,
           'manualcrop_require_cropping' => array(),
@@ -1416,12 +1421,12 @@ function roomify_listing_create_property_fields($property_bundle) {
             'highlight' => 'highlight',
           ),
           'manualcrop_styles_mode' => 'include',
-          'manualcrop_thumblist' => 1,
+          'manualcrop_thumblist' => 0,
           'preview_image_style' => 'thumbnail',
           'progress_indicator' => 'throbber',
         ),
         'type' => 'image_image',
-        'weight' => 27,
+        'weight' => 30,
       ),
     );
   }
@@ -1452,6 +1457,7 @@ function roomify_listing_create_property_fields($property_bundle) {
           'size' => 60,
         ),
         'type' => 'text_textfield',
+        'weight' => 31,
       ),
     );
   }
@@ -1494,12 +1500,13 @@ function roomify_listing_create_property_fields($property_bundle) {
         'active' => 1,
         'module' => 'image',
         'settings' => array(
+          'dragdropfile_title' => 0,
           'manualcrop_crop_info' => 1,
           'manualcrop_default_crop_area' => 1,
           'manualcrop_enable' => 1,
           'manualcrop_inline_crop' => 0,
           'manualcrop_instant_crop' => 0,
-          'manualcrop_instant_preview' => 1,
+          'manualcrop_instant_preview' => 0,
           'manualcrop_keyboard' => 1,
           'manualcrop_maximize_default_crop_area' => 1,
           'manualcrop_require_cropping' => array(),
@@ -1507,12 +1514,12 @@ function roomify_listing_create_property_fields($property_bundle) {
             'highlight' => 'highlight',
           ),
           'manualcrop_styles_mode' => 'include',
-          'manualcrop_thumblist' => 1,
+          'manualcrop_thumblist' => 0,
           'preview_image_style' => 'thumbnail',
           'progress_indicator' => 'throbber',
         ),
         'type' => 'image_image',
-        'weight' => 29,
+        'weight' => 32,
       ),
     );
   }
@@ -1543,6 +1550,7 @@ function roomify_listing_create_property_fields($property_bundle) {
           'size' => 60,
         ),
         'type' => 'text_textfield',
+        'weight' => 33,
       ),
     );
   }
@@ -1584,12 +1592,13 @@ function roomify_listing_create_property_fields($property_bundle) {
         'active' => 1,
         'module' => 'image',
         'settings' => array(
+          'dragdropfile_title' => 0,
           'manualcrop_crop_info' => 1,
           'manualcrop_default_crop_area' => 1,
           'manualcrop_enable' => 1,
           'manualcrop_inline_crop' => 0,
           'manualcrop_instant_crop' => 0,
-          'manualcrop_instant_preview' => 1,
+          'manualcrop_instant_preview' => 0,
           'manualcrop_keyboard' => 1,
           'manualcrop_maximize_default_crop_area' => 1,
           'manualcrop_require_cropping' => array(),
@@ -1597,12 +1606,12 @@ function roomify_listing_create_property_fields($property_bundle) {
             'highlight' => 'highlight',
           ),
           'manualcrop_styles_mode' => 'include',
-          'manualcrop_thumblist' => 1,
+          'manualcrop_thumblist' => 0,
           'preview_image_style' => 'thumbnail',
           'progress_indicator' => 'throbber',
         ),
         'type' => 'image_image',
-        'weight' => 31,
+        'weight' => 34,
       ),
     );
   }
@@ -1629,6 +1638,7 @@ function roomify_listing_create_property_fields($property_bundle) {
       'widget' => array(
         'active' => 1,
         'module' => 'text',
+        'weight' => 35,
         'settings' => array(
           'size' => 60,
         ),
@@ -1876,6 +1886,7 @@ function roomify_listing_create_property_fields($property_bundle) {
       'entity_type' => 'roomify_property',
       'field_name' => 'field_sp_weight',
       'label' => 'Weight',
+      'description' => 'Set this field to give a "weight" to the Property. This can be used on the default view of the availability search page where properties with a lighter weight will be displayed before.',
       'required' => 1,
       'settings' => array(
         'user_register_form' => FALSE,
