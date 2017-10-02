@@ -3684,3 +3684,6 @@ div.ctools-modal-content div.type-container .container-inline .form-item input[n
 .page-admin-bat-config-booking-notifications .select2-container {
   min-width: 90px;
 }
+.page-admin-content .region-content .waves-button {
+  white-space: normal;
+}
