@@ -25,10 +25,13 @@ Feature: Conversation
     Then I fill in wysiwyg on field "field_sp_description[en][0][value]" with "Test description"
     And I press "Save Property"
 
+    Given dates "+1 month" and "+1 month +5 days" in format big-endian
+    And we save that into "DATE1,DATE2"
+
     Given I am logged in as "_guest"
     Then I visit last created property
-    Then I fill in "arrival[date]" with "2017-11-16"
-    Then I fill in "departure[date]" with "2017-11-21"
+    Then I fill in "arrival[date]" with "<<DATE1>>"
+    Then I fill in "departure[date]" with "<<DATE2>>"
     And I click on the text "Book Now"
     And I click on the text "Send an Enquiry"
     And I wait for AJAX to finish

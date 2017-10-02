@@ -1,6 +1,9 @@
 @api @javascript @global
 Feature: Manage Rates
 
+  Background:
+    Given I remove all properties and install the example content
+
   Scenario: Manage Rates as user with role "Roomify manager"
     Given I am logged in as a user with the "roomify manager" role
     Then I scroll "views-table" into view

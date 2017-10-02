@@ -6,14 +6,22 @@ Feature: Book Property
     And I visit "listing/1"
     Then I should see "Casa Sul Mare"
     And I should see "Starting from $20.00"
-    Then I fill in "arrival[date]" with "2017-12-17"
-    Then I fill in "departure[date]" with "2017-12-22"
+
+    Given dates "+3 months +5 days" and "+3 months +10 days" in format big-endian
+    And we save that into "DATE1,DATE2"
+
+    Then I fill in "arrival[date]" with "<<DATE1>>"
+    Then I fill in "departure[date]" with "<<DATE2>>"
     And I click on the text "Book Now"
     Then I should see "Booking for Casa Sul Mare"
     And I should see "$100.00" in the "TOTAL COST" row
     Then I click on the text "Change Search"
-    Then I fill in "arrival[date]" with "2017-12-17"
-    Then I fill in "departure[date]" with "2017-12-23"
+
+    Given dates "+3 months +5 days" and "+3 months +11 days" in format big-endian
+    And we save that into "DATE1,DATE2"
+
+    Then I fill in "arrival[date]" with "<<DATE1>>"
+    Then I fill in "departure[date]" with "<<DATE2>>"
     And I click on the text "Book Now"
     Then I should see "Booking for Casa Sul Mare"
     And I should see "$120.00" in the "TOTAL COST" row
@@ -22,12 +30,15 @@ Feature: Book Property
     Then I click on the text "Confirm booking"
 
   Scenario: Anonymous user - Send an Enquiry
+    Given dates "+5 days" and "+10 days" in format big-endian
+    And we save that into "DATE1,DATE2"
+
     Given I am not logged in
     And I visit "listing/1"
     Then I should see "Casa Sul Mare"
     And I should see "Starting from $20.00"
-    Then I fill in "arrival[date]" with "2017-10-17"
-    Then I fill in "departure[date]" with "2017-10-22"
+    Then I fill in "arrival[date]" with "<<DATE1>>"
+    Then I fill in "departure[date]" with "<<DATE2>>"
     And I click on the text "Book Now"
     Then I should see "Booking for Casa Sul Mare"
     And I click on the text "Send an Enquiry"
@@ -43,12 +54,15 @@ Feature: Book Property
     And I should see "They will be able to reply and provide a customized offer for you."
 
   Scenario: Guest user - Send an Enquiry
+    Given dates "+1 month +5 days" and "+1 month +10 days" in format big-endian
+    And we save that into "DATE1,DATE2"
+
     Given I am logged in as a user with the "guest" role
     And I visit "listing/1"
     Then I should see "Casa Sul Mare"
     And I should see "Starting from $20.00"
-    Then I fill in "arrival[date]" with "2017-11-17"
-    Then I fill in "departure[date]" with "2017-11-22"
+    Then I fill in "arrival[date]" with "<<DATE1>>"
+    Then I fill in "departure[date]" with "<<DATE2>>"
     And I click on the text "Book Now"
     Then I should see "Booking for Casa Sul Mare"
     And I click on the text "Send an Enquiry"

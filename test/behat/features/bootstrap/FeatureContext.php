@@ -47,7 +47,7 @@ class FeatureContext extends DrupalSubContextBase implements CustomSnippetAccept
    * @BeforeStep
    */
   public function beforeStep() {
-   $this->getSession()->resizeWindow(1440, 900, 'current');
+    $this->getSession()->resizeWindow(1440, 900, 'current');
   }
 
   public static function getAcceptedSnippetType() { return 'regex'; }
@@ -254,6 +254,44 @@ JS;
     }
 
     $popup_element->click();
+  }
+
+  /**
+   * @Given dates :date1 and :date2 in format big-endian
+   */
+  public function getDatesBigEndian($date1, $date2) {
+    $now = new DateTime();
+
+    $dateobject1 = clone($now);
+    $dateobject2 = clone($now);
+
+    if ($date1 != 'now') {
+      $dateobject1->modify($date1);
+    }
+    if ($date2 != 'now') {
+      $dateobject2->modify($date2);
+    }
+
+    return [$dateobject1->format('Y-m-d'), $dateobject2->format('Y-m-d')];
+  }
+
+  /**
+   * @Given dates :date1 and :date2 in format middle-endian
+   */
+  public function getDatesMiddleEndian($date1, $date2) {
+    $now = new DateTime();
+
+    $dateobject1 = clone($now);
+    $dateobject2 = clone($now);
+
+    if ($date1 != 'now') {
+      $dateobject1->modify($date1);
+    }
+    if ($date2 != 'now') {
+      $dateobject2->modify($date2);
+    }
+
+    return [$dateobject1->format('m/d/Y'), $dateobject2->format('m/d/Y')];
   }
 
 }
