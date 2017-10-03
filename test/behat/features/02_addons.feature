@@ -10,7 +10,10 @@ Feature: Add-ons
     And I fill in "field_addons[en][0][value]" with "50"
     Then I press "Save Type"
 
-    Then I visit "booking/2017-12-02/2017-12-05/2"
+    Given dates "+3 days" and "+6 days" in format big-endian
+    And we save that into "DATE1,DATE2"
+
+    Then I visit "booking/<<DATE1>>/<<DATE2>>/2"
     And I should see "$45.00" in the "#roomify-accommodation-booking-confirmation-form td.price" element
     And I check "options[decrease_price_by_percentage_amount]"
     And I wait for AJAX to finish
@@ -25,7 +28,10 @@ Feature: Add-ons
     And I fill in "field_addons[en][0][value]" with "50"
     Then I press "Save Type"
 
-    Then I visit "booking/2017-12-02/2017-12-05/2"
+    Given dates "+3 days" and "+6 days" in format big-endian
+    And we save that into "DATE1,DATE2"
+
+    Then I visit "booking/<<DATE1>>/<<DATE2>>/2"
     And I should see "$45.00" in the "#roomify-accommodation-booking-confirmation-form td.price" element
     And I check "options[increase_price_by_percentage_amount]"
     And I wait for AJAX to finish

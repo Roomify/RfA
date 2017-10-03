@@ -2,12 +2,14 @@ default:
   suites:
     default:
       contexts:
+        - rdx\behatvars\BehatVariablesContext
         - FeatureContext
         - Drupal\DrupalExtension\Context\MinkContext
         - Drupal\DrupalExtension\Context\MessageContext
         - Drupal\DrupalExtension\Context\DrushContext
         - Roomify\RoomifyExtension\Context\RoomifyContext
   extensions:
+    rdx\behatvars\BehatVariablesExtension: ~
     Behat\MinkExtension:
       base_url:  'http://127.0.0.1:8888'
       files_path:  '%paths.base%/testing_files'
