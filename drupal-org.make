@@ -563,7 +563,7 @@ libraries[ckeditor][directory_name] = ckeditor
 libraries[ckeditor][type] = library
 libraries[ckeditor][destination] = libraries
 libraries[ckeditor][download][type] = get
-libraries[ckeditor][download][url] = https://ckeditor.com/online-builder/releases/minified/4.7.3/icy_orange/0.9/ckeditor_4.7.3_8e6efb8f2d4a.zip
+libraries[ckeditor][download][url] = https://ckeditor.com/cke4/online-builder/releases/minified/4.7.3/icy_orange/0.9/ckeditor_4.7.3_dc56a7d8be5f.zip
 
 ; imagesLoaded for masonry.
 libraries[imagesloaded][directory_name] = imagesloaded
