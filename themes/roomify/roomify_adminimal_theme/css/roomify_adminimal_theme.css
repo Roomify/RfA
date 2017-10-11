@@ -2935,6 +2935,7 @@ body.adminimal-theme.adminimal-skin-material.style-checkboxes input[type=radio] 
   height: 17px !important;
 }
 #ui-datepicker-div {
+  z-index: 1005 !important;
   min-width: 250px;
 }
 #ui-datepicker-div .ui-datepicker-header {
