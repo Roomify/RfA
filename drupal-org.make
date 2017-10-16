@@ -9,13 +9,13 @@ defaults[projects][subdir] = contrib
 projects[bat][type] = module
 projects[bat][download][type] = git
 projects[bat][download][url] = https://github.com/Roomify/bat_drupal.git
-projects[bat][download][tag] = 7.x-1.28
+projects[bat][download][tag] = 7.x-1.31
 projects[bat][subdir] = bat
 
 projects[bat_api][type] = module
 projects[bat_api][download][type] = git
 projects[bat_api][download][url] = https://github.com/Roomify/bat_api.git
-projects[bat_api][download][tag] = 7.x-2.7
+projects[bat_api][download][tag] = 7.x-2.8
 projects[bat_api][subdir] = bat
 
 projects[bat_event_state_constraints][type] = module
@@ -642,14 +642,14 @@ libraries[fullcalendar][directory_name] = fullcalendar
 libraries[fullcalendar][type] = library
 libraries[fullcalendar][destination] = libraries
 libraries[fullcalendar][download][type] = get
-libraries[fullcalendar][download][url] = https://github.com/arshaw/fullcalendar/releases/download/v3.4.0/fullcalendar-3.4.0.zip
+libraries[fullcalendar][download][url] = https://github.com/arshaw/fullcalendar/releases/download/v3.6.1/fullcalendar-3.6.1.zip
 
 ; scheduler
 libraries[scheduler][directory_name] = fullcalendar-scheduler
 libraries[scheduler][type] = library
 libraries[scheduler][destination] = libraries
 libraries[scheduler][download][type] = get
-libraries[scheduler][download][url] = https://github.com/fullcalendar/fullcalendar-scheduler/releases/download/v1.6.2/fullcalendar-scheduler-1.6.2.zip
+libraries[scheduler][download][url] = https://github.com/fullcalendar/fullcalendar-scheduler/releases/download/v1.8.0/fullcalendar-scheduler-1.8.0.zip
 
 ; stripe-php
 libraries[stripe-php][download][type] = file
