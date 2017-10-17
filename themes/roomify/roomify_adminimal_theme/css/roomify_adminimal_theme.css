@@ -3688,3 +3688,10 @@ div.ctools-modal-content div.type-container .container-inline .form-item input[n
 .page-admin-content .region-content .waves-button {
   white-space: normal;
 }
+.view-roomify-user-orders .views-field-property-image {
+  max-width: 140px;
+}
+.view-roomify-user-orders .views-field-property-image img {
+  width: 100%;
+  border-radius: 50%;
+}

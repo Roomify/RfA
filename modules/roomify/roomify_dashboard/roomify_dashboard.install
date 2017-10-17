@@ -11,6 +11,20 @@
 function roomify_dashboard_install() {
   // Enable the User Panel.
   variable_set('page_manager_user_view_disabled', FALSE);
+
+  // Disable commerce user orders view.
+  disable_user_commere_orders_view();
+}
+
+/**
+ * Disable user commerce orders view.
+ */
+function disable_user_commere_orders_view() {
+  $view = views_get_view('commerce_user_orders');
+  if (!empty($view)) {
+    ctools_include('export');
+    ctools_export_crud_set_status('views_view', $view, TRUE);
+  }
 }
 
 /**
@@ -107,4 +121,11 @@ function roomify_dashboard_update_7009() {
 function roomify_dashboard_update_7010() {
   $bookings_mlid = roomify_system_get_menu_link_id('Bookings', 'admin/bat/bookings', 'roomify_dashboard_menu');
   roomify_system_create_update_menu_link('Global Calendar', 'admin/bat/config/availability-calendar', 'roomify_dashboard_menu', -1, 1, $bookings_mlid);
+}
+
+/**
+ * Disable user commerce orders view.
+ */
+function roomify_dashboard_update_7011() {
+  disable_user_commere_orders_view();
 }

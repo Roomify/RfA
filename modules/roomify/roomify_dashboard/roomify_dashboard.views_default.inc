@@ -4206,5 +4206,222 @@ function roomify_dashboard_views_default_views() {
 
   $export['properties'] = $view;
 
+  $view = new view();
+  $view->name = 'roomify_user_orders';
+  $view->description = 'Display a list of completed orders for a user.';
+  $view->tag = 'commerce';
+  $view->base_table = 'commerce_order';
+  $view->human_name = 'Roomify User orders';
+  $view->core = 7;
+  $view->api_version = '3.0';
+  $view->disabled = FALSE; /* Edit this to true to make a default view disabled initially */
+
+  /* Display: Defaults */
+  $handler = $view->new_display('default', 'Defaults', 'default');
+  $handler->display->display_options['title'] = 'Your Orders';
+  $handler->display->display_options['use_more_always'] = FALSE;
+  $handler->display->display_options['access']['type'] = 'perm';
+  $handler->display->display_options['access']['perm'] = 'view own commerce_order entities';
+  $handler->display->display_options['cache']['type'] = 'none';
+  $handler->display->display_options['query']['type'] = 'views_query';
+  $handler->display->display_options['query']['options']['query_comment'] = FALSE;
+  $handler->display->display_options['exposed_form']['type'] = 'basic';
+  $handler->display->display_options['pager']['type'] = 'full';
+  $handler->display->display_options['pager']['options']['items_per_page'] = 25;
+  $handler->display->display_options['style_plugin'] = 'table';
+  $handler->display->display_options['style_options']['columns'] = array(
+    'property_image' => 'property_image',
+    'line_item_label' => 'line_item_label',
+    'booking_id' => 'booking_id',
+    'commerce_order_total' => 'commerce_order_total',
+  );
+  $handler->display->display_options['style_options']['default'] = '-1';
+  $handler->display->display_options['style_options']['info'] = array(
+    'property_image' => array(
+      'align' => '',
+      'separator' => '',
+      'empty_column' => 0,
+    ),
+    'line_item_label' => array(
+      'sortable' => 0,
+      'default_sort_order' => 'asc',
+      'align' => '',
+      'separator' => '',
+      'empty_column' => 0,
+    ),
+    'booking_id' => array(
+      'sortable' => 0,
+      'default_sort_order' => 'asc',
+      'align' => 'views-align-center',
+      'separator' => '',
+      'empty_column' => 0,
+    ),
+    'commerce_order_total' => array(
+      'sortable' => 0,
+      'default_sort_order' => 'asc',
+      'align' => 'views-align-center',
+      'separator' => '',
+      'empty_column' => 0,
+    ),
+  );
+  /* No results behavior: Global: Text area */
+  $handler->display->display_options['empty']['text']['id'] = 'text';
+  $handler->display->display_options['empty']['text']['table'] = 'views';
+  $handler->display->display_options['empty']['text']['field'] = 'area';
+  $handler->display->display_options['empty']['text']['content'] = 'You have not placed any orders with us yet.';
+  $handler->display->display_options['empty']['text']['format'] = 'plain_text';
+  /* Field: Commerce Order: Order number */
+  $handler->display->display_options['fields']['order_number']['id'] = 'order_number';
+  $handler->display->display_options['fields']['order_number']['table'] = 'commerce_order';
+  $handler->display->display_options['fields']['order_number']['field'] = 'order_number';
+  $handler->display->display_options['fields']['order_number']['link_to_order'] = 'customer';
+  /* Field: Commerce Order: Created date */
+  $handler->display->display_options['fields']['created']['id'] = 'created';
+  $handler->display->display_options['fields']['created']['table'] = 'commerce_order';
+  $handler->display->display_options['fields']['created']['field'] = 'created';
+  $handler->display->display_options['fields']['created']['label'] = 'Created';
+  /* Field: Commerce Order: Updated date */
+  $handler->display->display_options['fields']['changed']['id'] = 'changed';
+  $handler->display->display_options['fields']['changed']['table'] = 'commerce_order';
+  $handler->display->display_options['fields']['changed']['field'] = 'changed';
+  /* Field: Commerce Order: Order total */
+  $handler->display->display_options['fields']['commerce_order_total']['id'] = 'commerce_order_total';
+  $handler->display->display_options['fields']['commerce_order_total']['table'] = 'field_data_commerce_order_total';
+  $handler->display->display_options['fields']['commerce_order_total']['field'] = 'commerce_order_total';
+  $handler->display->display_options['fields']['commerce_order_total']['label'] = 'Total';
+  $handler->display->display_options['fields']['commerce_order_total']['click_sort_column'] = 'amount';
+  $handler->display->display_options['fields']['commerce_order_total']['settings'] = array(
+    'calculation' => FALSE,
+  );
+  /* Field: Commerce Order: Order status */
+  $handler->display->display_options['fields']['status']['id'] = 'status';
+  $handler->display->display_options['fields']['status']['table'] = 'commerce_order';
+  $handler->display->display_options['fields']['status']['field'] = 'status';
+  /* Contextual filter: Commerce Order: Uid */
+  $handler->display->display_options['arguments']['uid_1']['id'] = 'uid_1';
+  $handler->display->display_options['arguments']['uid_1']['table'] = 'commerce_order';
+  $handler->display->display_options['arguments']['uid_1']['field'] = 'uid';
+  $handler->display->display_options['arguments']['uid_1']['default_action'] = 'not found';
+  $handler->display->display_options['arguments']['uid_1']['default_argument_type'] = 'fixed';
+  $handler->display->display_options['arguments']['uid_1']['summary']['number_of_records'] = '0';
+  $handler->display->display_options['arguments']['uid_1']['summary']['format'] = 'default_summary';
+  $handler->display->display_options['arguments']['uid_1']['summary_options']['items_per_page'] = '25';
+  $handler->display->display_options['arguments']['uid_1']['specify_validation'] = TRUE;
+  $handler->display->display_options['arguments']['uid_1']['validate']['type'] = 'current_user_or_role';
+  $handler->display->display_options['arguments']['uid_1']['validate_options']['restrict_roles'] = TRUE;
+  $handler->display->display_options['arguments']['uid_1']['validate_options']['roles'] = array(
+    3 => '3',
+  );
+  /* Filter criterion: Commerce Order: Order state */
+  $handler->display->display_options['filters']['state']['id'] = 'state';
+  $handler->display->display_options['filters']['state']['table'] = 'commerce_order';
+  $handler->display->display_options['filters']['state']['field'] = 'state';
+  $handler->display->display_options['filters']['state']['operator'] = 'not in';
+  $handler->display->display_options['filters']['state']['value'] = array(
+    'cart' => 'cart',
+    'checkout' => 'checkout',
+  );
+
+  /* Display: User Orders */
+  $handler = $view->new_display('page', 'User Orders', 'order_page');
+  $handler->display->display_options['defaults']['relationships'] = FALSE;
+  /* Relationship: Commerce Order: Referenced line items */
+  $handler->display->display_options['relationships']['commerce_line_items_line_item_id']['id'] = 'commerce_line_items_line_item_id';
+  $handler->display->display_options['relationships']['commerce_line_items_line_item_id']['table'] = 'field_data_commerce_line_items';
+  $handler->display->display_options['relationships']['commerce_line_items_line_item_id']['field'] = 'commerce_line_items_line_item_id';
+  $handler->display->display_options['relationships']['commerce_line_items_line_item_id']['required'] = TRUE;
+  /* Relationship: Entity Reference: Referencing entity */
+  $handler->display->display_options['relationships']['reverse_booking_line_item_reference_bat_booking']['id'] = 'reverse_booking_line_item_reference_bat_booking';
+  $handler->display->display_options['relationships']['reverse_booking_line_item_reference_bat_booking']['table'] = 'commerce_line_item';
+  $handler->display->display_options['relationships']['reverse_booking_line_item_reference_bat_booking']['field'] = 'reverse_booking_line_item_reference_bat_booking';
+  $handler->display->display_options['relationships']['reverse_booking_line_item_reference_bat_booking']['relationship'] = 'commerce_line_items_line_item_id';
+  $handler->display->display_options['relationships']['reverse_booking_line_item_reference_bat_booking']['required'] = TRUE;
+  $handler->display->display_options['defaults']['fields'] = FALSE;
+  /* Field: Commerce Order: Roomify Property Image */
+  $handler->display->display_options['fields']['property_image']['id'] = 'property_image';
+  $handler->display->display_options['fields']['property_image']['table'] = 'commerce_order';
+  $handler->display->display_options['fields']['property_image']['field'] = 'property_image';
+  $handler->display->display_options['fields']['property_image']['label'] = '';
+  $handler->display->display_options['fields']['property_image']['element_label_colon'] = FALSE;
+  /* Field: Commerce Line Item: Label */
+  $handler->display->display_options['fields']['line_item_label']['id'] = 'line_item_label';
+  $handler->display->display_options['fields']['line_item_label']['table'] = 'commerce_line_item';
+  $handler->display->display_options['fields']['line_item_label']['field'] = 'line_item_label';
+  $handler->display->display_options['fields']['line_item_label']['relationship'] = 'commerce_line_items_line_item_id';
+  $handler->display->display_options['fields']['line_item_label']['label'] = '';
+  $handler->display->display_options['fields']['line_item_label']['element_label_colon'] = FALSE;
+  /* Field: BAT Booking: Bat booking ID */
+  $handler->display->display_options['fields']['booking_id']['id'] = 'booking_id';
+  $handler->display->display_options['fields']['booking_id']['table'] = 'bat_bookings';
+  $handler->display->display_options['fields']['booking_id']['field'] = 'booking_id';
+  $handler->display->display_options['fields']['booking_id']['relationship'] = 'reverse_booking_line_item_reference_bat_booking';
+  $handler->display->display_options['fields']['booking_id']['label'] = 'Booking ID';
+  /* Field: Commerce Order: Order total */
+  $handler->display->display_options['fields']['commerce_order_total']['id'] = 'commerce_order_total';
+  $handler->display->display_options['fields']['commerce_order_total']['table'] = 'field_data_commerce_order_total';
+  $handler->display->display_options['fields']['commerce_order_total']['field'] = 'commerce_order_total';
+  $handler->display->display_options['fields']['commerce_order_total']['label'] = 'Total';
+  $handler->display->display_options['fields']['commerce_order_total']['click_sort_column'] = 'amount';
+  $handler->display->display_options['fields']['commerce_order_total']['settings'] = array(
+    'calculation' => FALSE,
+  );
+  /* Field: Commerce Order: Order ID */
+  $handler->display->display_options['fields']['order_id']['id'] = 'order_id';
+  $handler->display->display_options['fields']['order_id']['table'] = 'commerce_order';
+  $handler->display->display_options['fields']['order_id']['field'] = 'order_id';
+  $handler->display->display_options['fields']['order_id']['label'] = '';
+  $handler->display->display_options['fields']['order_id']['exclude'] = TRUE;
+  $handler->display->display_options['fields']['order_id']['element_label_colon'] = FALSE;
+  /* Field: Global: Custom text */
+  $handler->display->display_options['fields']['nothing']['id'] = 'nothing';
+  $handler->display->display_options['fields']['nothing']['table'] = 'views';
+  $handler->display->display_options['fields']['nothing']['field'] = 'nothing';
+  $handler->display->display_options['fields']['nothing']['label'] = '';
+  $handler->display->display_options['fields']['nothing']['alter']['text'] = 'see booking details';
+  $handler->display->display_options['fields']['nothing']['alter']['make_link'] = TRUE;
+  $handler->display->display_options['fields']['nothing']['alter']['path'] = '/user/!1/orders/[order_id]';
+  $handler->display->display_options['fields']['nothing']['element_label_colon'] = FALSE;
+  $handler->display->display_options['path'] = 'user/%/orders';
+  $handler->display->display_options['menu']['type'] = 'tab';
+  $handler->display->display_options['menu']['title'] = 'Orders';
+  $handler->display->display_options['menu']['weight'] = '15';
+  $handler->display->display_options['tab_options']['type'] = 'normal';
+  $handler->display->display_options['tab_options']['title'] = 'Orders';
+  $handler->display->display_options['tab_options']['description'] = 'User orders in the store.';
+  $handler->display->display_options['tab_options']['weight'] = '';
+  $handler->display->display_options['tab_options']['name'] = 'user-menu';
+  $translatables['roomify_user_orders'] = array(
+    t('Defaults'),
+    t('Your Orders'),
+    t('more'),
+    t('Apply'),
+    t('Reset'),
+    t('Sort by'),
+    t('Asc'),
+    t('Desc'),
+    t('Items per page'),
+    t('- All -'),
+    t('Offset'),
+    t('« first'),
+    t('‹ previous'),
+    t('next ›'),
+    t('last »'),
+    t('You have not placed any orders with us yet.'),
+    t('Order number'),
+    t('Created'),
+    t('Updated date'),
+    t('Total'),
+    t('Order status'),
+    t('All'),
+    t('User Orders'),
+    t('Line items referenced by commerce_line_items'),
+    t('BAT Booking referencing Commerce Line item from booking_line_item_reference'),
+    t('Booking ID'),
+    t('.'),
+    t(','),
+    t('see booking details'),
+  );
+  $export['roomify_user_orders'] = $view;
+
   return $export;
 }
