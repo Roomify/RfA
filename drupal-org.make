@@ -9,13 +9,13 @@ defaults[projects][subdir] = contrib
 projects[bat][type] = module
 projects[bat][download][type] = git
 projects[bat][download][url] = https://github.com/Roomify/bat_drupal.git
-projects[bat][download][tag] = 7.x-1.28
+projects[bat][download][tag] = 7.x-1.31
 projects[bat][subdir] = bat
 
 projects[bat_api][type] = module
 projects[bat_api][download][type] = git
 projects[bat_api][download][url] = https://github.com/Roomify/bat_api.git
-projects[bat_api][download][tag] = 7.x-2.7
+projects[bat_api][download][tag] = 7.x-2.8
 projects[bat_api][subdir] = bat
 
 projects[bat_event_state_constraints][type] = module
@@ -62,7 +62,7 @@ projects[better_db_updates][subdir] = contrib
 
 ; bootstrap
 projects[bootstrap][type] = theme
-projects[bootstrap][version] = 3.14
+projects[bootstrap][version] = 3.15
 
 ; adminimal
 projects[adminimal_theme][type] = theme
@@ -86,14 +86,13 @@ projects[administerusersbyrole][version] = 2.0
 
 projects[agrcache][version] = 1.7
 
-projects[autocomplete_deluxe][version] = 2.2
+projects[autocomplete_deluxe][version] = 2.3
 projects[autocomplete_deluxe][patch][] = https://www.drupal.org/files/issues/2554529-respect-disabled.patch
 projects[autocomplete_deluxe][patch][] = https://www.drupal.org/files/issues/term_names-2858823-1.patch
 
 projects[background_image_formatter][version] = 1.4
 
-projects[backup_migrate][version] = 3.1
-projects[backup_migrate][patch][] = https://www.drupal.org/files/issues/backup_migrate-fix_constructor_for_future_version_php-2623598-5-7.x.patch
+projects[backup_migrate][version] = 3.2
 
 projects[bean][version] = 1.9
 
@@ -244,7 +243,7 @@ projects[field_formatter_settings][version] = 1.1
 projects[footable][version] = 1.0
 projects[footable][patch][] = https://www.drupal.org/files/issues/footable-add_striping_option-2307701-4.patch
 
-projects[file_entity][version] = 2.4
+projects[file_entity][version] = 2.10
 
 projects[geofield][version] = 2.3
 
@@ -330,7 +329,7 @@ projects[masonry][version] = 3.0-beta1
 
 projects[masonry_views][version] = 3.0
 
-projects[media][version] = 2.10
+projects[media][version] = 2.12
 
 projects[menu_admin_per_menu][version] = 1.0
 projects[menu_admin_per_menu][patch][] = https://www.drupal.org/files/issues/integrate-menu-translation-suport-2546214-1.patch
@@ -430,10 +429,7 @@ projects[s3fs][version] = 2.4
 
 projects[search_api][version] = 1.22
 
-projects[search_api_db][type] = module
-projects[search_api_db][download][type] = git
-projects[search_api_db][download][url] = https://git.drupal.org/project/search_api_db.git
-projects[search_api_db][download][revision] = ceb10d8d2e8934cd89019a222ce8c0c33fa1f094
+projects[search_api_db][version] = 1.6
 projects[search_api_db][patch][] = https://www.drupal.org/files/issues/2219897-25--facets_for_empty_results.patch
 
 projects[search_api_ranges][type] = module
@@ -646,14 +642,14 @@ libraries[fullcalendar][directory_name] = fullcalendar
 libraries[fullcalendar][type] = library
 libraries[fullcalendar][destination] = libraries
 libraries[fullcalendar][download][type] = get
-libraries[fullcalendar][download][url] = https://github.com/arshaw/fullcalendar/releases/download/v3.4.0/fullcalendar-3.4.0.zip
+libraries[fullcalendar][download][url] = https://github.com/arshaw/fullcalendar/releases/download/v3.6.1/fullcalendar-3.6.1.zip
 
 ; scheduler
 libraries[scheduler][directory_name] = fullcalendar-scheduler
 libraries[scheduler][type] = library
 libraries[scheduler][destination] = libraries
 libraries[scheduler][download][type] = get
-libraries[scheduler][download][url] = https://github.com/fullcalendar/fullcalendar-scheduler/releases/download/v1.6.2/fullcalendar-scheduler-1.6.2.zip
+libraries[scheduler][download][url] = https://github.com/fullcalendar/fullcalendar-scheduler/releases/download/v1.8.0/fullcalendar-scheduler-1.8.0.zip
 
 ; stripe-php
 libraries[stripe-php][download][type] = file
