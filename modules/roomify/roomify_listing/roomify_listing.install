@@ -138,7 +138,7 @@ function roomify_listing_create_standard_event_states() {
   $event_state = array(
     'machine_name' => AVAILABLE,
     'label' => 'Available',
-    'color' => '#8BA175',
+    'color' => '#228A26',
     'calendar_label' => 'AV',
     'locked' => 1,
     'default' => 1,
@@ -170,7 +170,7 @@ function roomify_listing_create_standard_event_states() {
   $event_state = array(
     'machine_name' => BOOKED,
     'label' => 'Booked',
-    'color' => '#1A1A73',
+    'color' => '#0D47A1',
     'calendar_label' => 'Booked',
     'locked' => 1,
     'blocking' => 1,
@@ -1465,4 +1465,17 @@ function roomify_listing_update_7042() {
     field_update_instance($instance_info);
 
   }
+}
+
+/**
+ * Change Colors.
+ */
+function roomify_listing_update_7043() {
+  $booked = bat_event_load_state_by_machine_name('booked');
+  $booked['color'] = '#0D47A1';
+  bat_event_save_state($booked, 'availability');
+
+  $available = bat_event_load_state_by_machine_name('available');
+  $available['color'] = '#228A26';
+  bat_event_save_state($available, 'availability');
 }
