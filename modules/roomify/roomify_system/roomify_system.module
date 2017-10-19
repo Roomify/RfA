@@ -2316,7 +2316,7 @@ function check_google_recaptcha_keys($form, &$form_state) {
     $values = array_filter($form_state['values']['available_forms']);
     if (!empty($values)) {
       // User should not protect forms if keys are not set.
-      foreach($form_state['values']['available_forms'] as $key => $value) {
+      foreach ($form_state['values']['available_forms'] as $key => $value) {
         $form_state['values']['available_forms'][$key] = 0;
       }
       drupal_set_message(t('It seems that your Google reCAPTCHA keys are not set. Click on the "Keys and Settings" tab and set those before protecting forms.'), 'warning');
