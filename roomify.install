@@ -375,6 +375,13 @@ function roomify_install_finished(&$install_state) {
   $admin_role = user_role_load_by_name('administrator');
   user_role_save($admin_role);
 
+  variable_set('user_register', 0);
+
+  $tune = variable_get('google_recaptcha', array());
+  $tune['protected_forms'] = array();
+
+  variable_set('google_recaptcha', $tune);
+
   if (isset($messages['error'])) {
     $output = '<p>' . (isset($messages['error']) ? st('Review the messages above before visiting <a href="@url">your new site</a>.', array('@url' => url(''))) : st('<a href="@url">Visit your new site</a>.', array('@url' => url('')))) . '</p>';
     return $output;
