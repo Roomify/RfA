@@ -328,13 +328,6 @@ function roomify_install_finished(&$install_state) {
   variable_set('image_toolkit', 'gd');
   variable_set('image_jpeg_quality', '100');
 
-  $tune = variable_get('google_recaptcha');
-  $tune['protected_forms'] = array(
-    'user_register_form',
-    'contact_entityform_edit_form',
-  );
-  variable_set('google_recaptcha', $tune);
-
   // Select2 Settings.
   variable_set('select2_update_settings_by_ajax', 1);
   variable_set('select2_use_for_ac_elements', 0);
@@ -381,6 +374,13 @@ function roomify_install_finished(&$install_state) {
   // Save 'administrator' role to force creation of machine name.
   $admin_role = user_role_load_by_name('administrator');
   user_role_save($admin_role);
+
+  variable_set('user_register', 0);
+
+  $tune = variable_get('google_recaptcha', array());
+  $tune['protected_forms'] = array();
+
+  variable_set('google_recaptcha', $tune);
 
   if (isset($messages['error'])) {
     $output = '<p>' . (isset($messages['error']) ? st('Review the messages above before visiting <a href="@url">your new site</a>.', array('@url' => url(''))) : st('<a href="@url">Visit your new site</a>.', array('@url' => url('')))) . '</p>';

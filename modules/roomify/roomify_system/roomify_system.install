@@ -875,3 +875,25 @@ function roomify_system_update_7054() {
   $path = libraries_get_path('select2');
   variable_set('select2_plugin_path', $path);
 }
+
+/**
+ * Hide user register page.
+ */
+function roomify_system_update_7055() {
+  variable_set('user_register', 0);
+}
+
+/**
+ * Remove forms protected by "Google reCAPTCHA" if it is not set.
+ */
+function roomify_system_update_7056() {
+  if (module_exists('google_recaptcha')) {
+    $settings = variable_get('google_recaptcha', array());
+    // Google recaptcha is not set.
+    if (empty($settings['public_key']) || empty($settings['secret_key'])) {
+      $settings['protected_forms'] = array();
+      // Remove protected forms.
+      variable_set('google_recaptcha', $settings);
+    }
+  }
+}
