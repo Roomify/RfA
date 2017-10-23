@@ -2990,7 +2990,12 @@ function roomify_accommodation_booking_commerce_line_item_summary_link_info_alte
  */
 function roomify_accommodation_booking_preprocess_views_view(&$vars) {
   if ($vars['name'] == 'commerce_cart_summary') {
-    $vars['footer'] .= '<div class="link-to-cart">' . l(t('Edit Reservation'), 'cart', array('attributes' => array('class' => 'btn btn-info btn-default'))) . '</div>';
+    foreach ($vars['view']->result as $line_item) {
+      if ($line_item->commerce_line_item_field_data_commerce_line_items_type == 'roomify_accommodation_booking') {
+        $vars['footer'] .= '<div class="link-to-cart">' . l(t('Edit Reservation'), 'cart', array('attributes' => array('class' => 'btn btn-info btn-default'))) . '</div>';
+        break;
+      }
+    }
   }
 }
 
