@@ -241,8 +241,8 @@ function roomify_accommodation_booking_global_settings_form($form, &$form_state)
 
     $form['roomify_booking_settings']['roomify_accommodation_booking_page_settings_fieldset']['roomify_accommodation_booking_reminder_label'] = array(
       '#type' => 'textfield',
-      '#title' => t('Reminder label'),
-      '#default_value' => variable_get('roomify_accommodation_booking_reminder_label', 'Reminder (due 60 days before arrival)'),
+      '#title' => t('Remainder label'),
+      '#default_value' => variable_get('roomify_accommodation_booking_reminder_label', 'Remainder (due 60 days before arrival)'),
     );
 
     $form['roomify_booking_settings']['roomify_accommodation_booking_page_settings_fieldset']['roomify_accommodation_booking_total_cost_label'] = array(

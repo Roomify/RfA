@@ -886,7 +886,7 @@ function roomify_accommodation_booking_confirmation_form($form, &$form_state, $s
 
         $rows[] = array(
           array(
-            'data' => t(variable_get('roomify_accommodation_booking_reminder_label', 'Reminder (due 60 days before arrival)')),
+            'data' => t(variable_get('roomify_accommodation_booking_reminder_label', 'Remainder (due 60 days before arrival)')),
             'class' => 'name',
           ),
           array(
@@ -911,7 +911,7 @@ function roomify_accommodation_booking_confirmation_form($form, &$form_state, $s
 
         $rows[] = array(
           array(
-            'data' => t(variable_get('roomify_accommodation_booking_reminder_label', 'Reminder (due 60 days before arrival)')),
+            'data' => t(variable_get('roomify_accommodation_booking_reminder_label', 'Remainder (due 60 days before arrival)')),
             'class' => 'name',
           ),
           array(
@@ -935,7 +935,7 @@ function roomify_accommodation_booking_confirmation_form($form, &$form_state, $s
 
       $rows[] = array(
         array(
-          'data' => t(variable_get('roomify_accommodation_booking_reminder_label', 'Reminder (due 60 days before arrival)')),
+          'data' => t(variable_get('roomify_accommodation_booking_reminder_label', 'Remainder (due 60 days before arrival)')),
           'class' => 'name',
         ),
         array(
