@@ -644,14 +644,14 @@ libraries[fullcalendar][directory_name] = fullcalendar
 libraries[fullcalendar][type] = library
 libraries[fullcalendar][destination] = libraries
 libraries[fullcalendar][download][type] = get
-libraries[fullcalendar][download][url] = https://github.com/arshaw/fullcalendar/releases/download/v3.6.1/fullcalendar-3.6.1.zip
+libraries[fullcalendar][download][url] = https://github.com/arshaw/fullcalendar/releases/download/v3.6.2/fullcalendar-3.6.2.zip
 
 ; scheduler
 libraries[scheduler][directory_name] = fullcalendar-scheduler
 libraries[scheduler][type] = library
 libraries[scheduler][destination] = libraries
 libraries[scheduler][download][type] = get
-libraries[scheduler][download][url] = https://github.com/fullcalendar/fullcalendar-scheduler/releases/download/v1.8.0/fullcalendar-scheduler-1.8.0.zip
+libraries[scheduler][download][url] = https://github.com/fullcalendar/fullcalendar-scheduler/releases/download/v1.8.1/fullcalendar-scheduler-1.8.1.zip
 
 ; stripe-php
 libraries[stripe-php][download][type] = file

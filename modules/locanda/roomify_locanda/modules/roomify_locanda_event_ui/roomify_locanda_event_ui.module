@@ -312,6 +312,7 @@ function roomify_locanda_event_ui_bat_calendar_settings_alter(&$calendar_setting
       $calendar_settings['batCalendar'][0]['headerRight'] = 'timelineThirtyDay, timeline365Day';
       $calendar_settings['batCalendar'][0]['defaultView'] = 'timeline365Day';
       $calendar_settings['batCalendar'][0]['defaultDate'] = (new DateTime())->modify('-2 days')->format('Y-m-d');
+      $calendar_settings['batCalendar'][0]['viewsTimelineThirtyDaySlotDuration'] = array('days' => 1);
     }
   }
 }
