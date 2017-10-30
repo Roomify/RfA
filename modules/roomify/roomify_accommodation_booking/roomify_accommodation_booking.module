@@ -371,6 +371,7 @@ function roomify_accommodation_booking_confirmation_page($start_date, $end_date,
   $end_before->setTime(0, 0);
   $end_before->add(new DateInterval('PT' . $future_limit . 'S'));
 
+  // Try to book dates in the past.
   if ($start_date >= $end_date || $start_date < $start_after || $end_date > $end_before) {
     return drupal_not_found();
   }
@@ -385,6 +386,16 @@ function roomify_accommodation_booking_confirmation_page($start_date, $end_date,
   else {
     $property_id = field_get_items('bat_type', $type, 'field_st_property_reference');
     $property = entity_load_single('roomify_property', $property_id[0]['target_id']);
+  }
+
+  // Property not found.
+  if ($property === FALSE) {
+    return drupal_not_found();
+  }
+
+  // Type or Property is not published.
+  if (!($type->status) || !($property->status)) {
+    return drupal_not_found();
   }
 
   if (isset($type->name)) {
