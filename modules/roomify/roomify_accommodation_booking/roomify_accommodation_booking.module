@@ -399,14 +399,14 @@ function roomify_accommodation_booking_confirmation_page($start_date, $end_date,
   }
 
   if (isset($type->name)) {
-    drupal_set_title(t('Booking for @type_name', array('@type_name' => $type->name)));
+    drupal_set_title(t('Booking for !type_name', array('!type_name' => $type->name)));
     // Change Title for Locanda Properties.
     if ($property->type == 'locanda_property' && isset($property->name)) {
-      drupal_set_title(t('Booking for @property_name - @type_name', array('@property_name' => $property->name, '@type_name' => $type->name)));
+      drupal_set_title(t('Booking for !property_name - !type_name', array('!property_name' => $property->name, '!type_name' => $type->name)));
     }
     // Change Title for Casa Properties.
     if ($property->type == 'casa_property' && isset($property->name)) {
-      drupal_set_title(t('Booking for @property_name', array('@property_name' => $property->name)));
+      drupal_set_title(t('Booking for !property_name', array('!property_name' => $property->name)));
     }
   }
 
@@ -2878,16 +2878,16 @@ function roomify_accommodation_booking_conversation_confirmation_page($conversat
   }
 
   if (isset($type->name)) {
-    drupal_set_title(t('Booking for @type', array('@type' => $type->name)));
+    drupal_set_title(t('Booking for !type', array('!type' => $type->name)));
 
     // Change Title for Locanda Properties.
     if ($property->type == 'locanda_property' && isset($property->name)) {
-      drupal_set_title(t('Booking for @property - @type', array('@property' => $property->name, '@type' => $type->name)));
+      drupal_set_title(t('Booking for !property - !type', array('!property' => $property->name, '!type' => $type->name)));
     }
 
     // Change Title for Casa Properties.
     if ($property->type == 'casa_property' && isset($property->name)) {
-      drupal_set_title(t('Booking for @property', array('@property' => $property->name)));
+      drupal_set_title(t('Booking for !property', array('!property' => $property->name)));
     }
   }
 
