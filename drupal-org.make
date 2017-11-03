@@ -81,6 +81,7 @@ projects[addtoany][version] = 4.14
 projects[admin_menu][version] = 3.0-rc5
 
 projects[adminimal_admin_menu][version] = 1.7
+projects[adminimal_admin_menu][patch][] = https://www.drupal.org/files/issues/drupal_admin_undefined-2839894-4.patch
 
 projects[administerusersbyrole][version] = 2.0
 

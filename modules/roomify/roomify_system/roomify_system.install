@@ -31,7 +31,7 @@ function roomify_system_install() {
 function roomify_system_setup_advagg() {
   module_enable(array('advagg', 'advagg_js_compress', 'advagg_css_compress', 'advagg_mod', 'advagg_relocate'));
 
-  variable_set('advagg_js_compressor', 5);
+  variable_set('advagg_js_compressor', 4);
   variable_set('advagg_core_groups', FALSE);
   variable_set('advagg_resource_hints_dns_prefetch', TRUE);
   variable_set('advagg_resource_hints_preconnect', TRUE);
