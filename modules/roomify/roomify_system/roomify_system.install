@@ -21,6 +21,41 @@ function roomify_system_install() {
   variable_set('default_metatag_config', $metatag_config);
 
   roomify_system_add_user_fields();
+
+  roomify_system_setup_advagg();
+}
+
+/**
+ * Enable module "Advanced CSS/JS Aggregation" and submodules.
+ */
+function roomify_system_setup_advagg() {
+  module_enable(array('advagg', 'advagg_js_compress', 'advagg_css_compress', 'advagg_mod', 'advagg_relocate'));
+
+  variable_set('advagg_js_compressor', 5);
+  variable_set('advagg_core_groups', FALSE);
+  variable_set('advagg_resource_hints_dns_prefetch', TRUE);
+  variable_set('advagg_resource_hints_preconnect', TRUE);
+  variable_set('advagg_combine_css_media', TRUE);
+  variable_set('advagg_mod_js_preprocess', TRUE);
+  variable_set('advagg_mod_js_inline_resource_hints', TRUE);
+  variable_set('advagg_mod_js_head_extract', TRUE);
+  variable_set('advagg_mod_js_adjust_sort_external', TRUE);
+  variable_set('advagg_mod_js_adjust_sort_inline', TRUE);
+  variable_set('advagg_mod_js_adjust_sort_browsers', TRUE);
+  variable_set('advagg_mod_js_footer', 3);
+  variable_set('advagg_mod_js_defer', 2);
+  variable_set('advagg_mod_css_preprocess', TRUE);
+  variable_set('advagg_mod_css_head_extract', TRUE);
+  variable_set('advagg_mod_css_adjust_sort_external', TRUE);
+  variable_set('advagg_mod_css_adjust_sort_inline', TRUE);
+  variable_set('advagg_mod_css_adjust_sort_browsers', TRUE);
+  variable_set('advagg_relocate_js', TRUE);
+  variable_set('advagg_relocate_css', TRUE);
+  variable_set('advagg_relocate_css_inline_import', TRUE);
+  variable_set('advagg_relocate_css_inline_external', TRUE);
+
+  variable_set('preprocess_css', TRUE);
+  variable_set('preprocess_js', TRUE);
 }
 
 /**
@@ -896,4 +931,11 @@ function roomify_system_update_7056() {
       variable_set('google_recaptcha', $settings);
     }
   }
+}
+
+/**
+ * Enable module "Advanced CSS/JS Aggregation" and submodules.
+ */
+function roomify_system_update_7057() {
+  roomify_system_setup_advagg();
 }

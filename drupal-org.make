@@ -84,6 +84,8 @@ projects[adminimal_admin_menu][version] = 1.7
 
 projects[administerusersbyrole][version] = 2.0
 
+projects[advagg][version] = 2.28
+
 projects[agrcache][version] = 1.7
 
 projects[autocomplete_deluxe][version] = 2.3
