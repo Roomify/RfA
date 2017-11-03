@@ -528,6 +528,7 @@ projects[wysiwyg][version] = 2.4
 projects[xautoload][version] = 5.7
 
 projects[xmlsitemap][version] = 2.3
+projects[xmlsitemap][patch][] = https://www.drupal.org/files/issues/xmlsitemap-entity-integration-1461670-38.patch
 
 projects[zopim][version] = 1.2
 
