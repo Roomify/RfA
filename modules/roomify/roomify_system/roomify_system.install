@@ -897,3 +897,10 @@ function roomify_system_update_7056() {
     }
   }
 }
+
+/**
+ * Enable module "XML sitemap entity".
+ */
+function roomify_system_update_7057() {
+  module_enable(array('xmlsitemap_entity'));
+}
