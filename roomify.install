@@ -325,8 +325,10 @@ function roomify_install_finished(&$install_state) {
   variable_set('addtoany_image', 'a2a_svg_32');
 
   // Image Toolkit
-  variable_set('image_toolkit', 'gd');
+  variable_set('image_toolkit', 'imageapi_optimize');
+  variable_set('imageapi_optimize_toolkit', 'gd');
   variable_set('image_jpeg_quality', '100');
+  variable_set('imageapi_optimize_service', 'resmushit');
 
   // Select2 Settings.
   variable_set('select2_update_settings_by_ajax', 1);
