@@ -934,8 +934,28 @@ function roomify_system_update_7056() {
 }
 
 /**
- * Enable module "Advanced CSS/JS Aggregation" and submodules.
+ * Enable module "XML sitemap entity".
  */
 function roomify_system_update_7057() {
+  module_enable(array('xmlsitemap_entity'));
+}
+
+/**
+ * Include "Casa" and "Locanda" properties in the XML sitemap.
+ */
+function roomify_system_update_7058() {
+  $settings = array(
+    'status' => '1',
+    'priority' => '0.5',
+  );
+
+  variable_set('xmlsitemap_settings_roomify_property_casa_property', $settings);
+  variable_set('xmlsitemap_settings_roomify_property_locanda_property', $settings);
+}
+
+/**
+ * Enable module "Advanced CSS/JS Aggregation" and submodules.
+ */
+function roomify_system_update_7059() {
   roomify_system_setup_advagg();
 }
