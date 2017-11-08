@@ -136,6 +136,7 @@ dependencies[] = entity_edit_protection
 dependencies[] = google_recaptcha
 dependencies[] = hreflang
 dependencies[] = select2
+dependencies[] = yoast_seo
 
 ; Users
 dependencies[] = profile2

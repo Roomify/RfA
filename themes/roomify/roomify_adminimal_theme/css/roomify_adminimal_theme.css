@@ -3746,3 +3746,6 @@ div.ctools-modal-content div.type-container .container-inline .form-item input[n
 .page-admin-content .region-content .waves-button {
   white-space: normal;
 }
+fieldset#edit-yoast-seo legend span {
+  display: none;
+}

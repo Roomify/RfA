@@ -336,6 +336,9 @@ function roomify_install_finished(&$install_state) {
   variable_set('select2_update_settings_by_ajax', 1);
   variable_set('select2_min_options_count_for_search', 4);
 
+  // Yoast Settings.
+  variable_set('yoast_seo_vertical_tab', 1);
+
   $path = libraries_get_path('select2');
   variable_set('select2_plugin_path', $path);
 

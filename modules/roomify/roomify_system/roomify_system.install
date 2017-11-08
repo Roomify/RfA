@@ -939,3 +939,11 @@ function roomify_system_update_7056() {
 function roomify_system_update_7057() {
   roomify_system_setup_advagg();
 }
+
+/**
+ * Enable Yoast Seo.
+ */
+function roomify_system_update_7058() {
+  module_enable(array('yoast_seo'));
+  variable_set('yoast_seo_vertical_tab', 1);
+}
