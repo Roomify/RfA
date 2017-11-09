@@ -959,3 +959,18 @@ function roomify_system_update_7058() {
 function roomify_system_update_7059() {
   roomify_system_setup_advagg();
 }
+
+/**
+ * Enable "ImageAPI Optimize" and use "ReSmush.it" as ImageAPI Optimize Service.
+ */
+function roomify_system_update_7058() {
+  variable_set('image_toolkit', 'imageapi_optimize');
+  variable_set('imageapi_optimize_toolkit', 'gd');
+  variable_set('image_jpeg_quality', '100');
+  variable_set('imageapi_optimize_service', 'resmushit');
+
+  // Flush all image styles.
+  foreach (image_styles() as $style) {
+    image_style_flush($style);
+  }
+}
