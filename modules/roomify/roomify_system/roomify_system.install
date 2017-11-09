@@ -963,7 +963,7 @@ function roomify_system_update_7059() {
 /**
  * Enable "ImageAPI Optimize" and use "ReSmush.it" as ImageAPI Optimize Service.
  */
-function roomify_system_update_7058() {
+function roomify_system_update_7060() {
   variable_set('image_toolkit', 'imageapi_optimize');
   variable_set('imageapi_optimize_toolkit', 'gd');
   variable_set('image_jpeg_quality', '100');
