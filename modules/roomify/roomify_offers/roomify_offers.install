@@ -169,3 +169,13 @@ function roomify_offers_update_7006() {
     roomify_offers_add_node_reference_field($bundle);
   }
 }
+
+/**
+ * Add title and alt to image.
+ */
+function roomify_offers_update_7007() {
+  $instance_info = field_read_instance('node', 'field_offer_image', 'offer');
+  $instance_info['settings']['alt_field'] = 1;
+  $instance_info['settings']['title_field'] = 1;
+  field_update_instance($instance_info);
+}

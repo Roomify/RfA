@@ -72,3 +72,13 @@ function roomify_blog_update_7002() {
   }
 
 }
+
+/**
+ * Enable alt and title field on images.
+ */
+function roomify_blog_update_7003() {
+  $instance_info = field_read_instance('node', 'field_featured_image', 'blog');
+  $instance_info['settings']['alt_field'] = 1;
+  $instance_info['settings']['title_field'] = 1;
+  field_update_instance($instance_info);
+}

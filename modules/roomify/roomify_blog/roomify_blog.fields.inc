@@ -501,7 +501,7 @@ function roomify_blog_create_fields() {
       'label' => 'Featured Image',
       'required' => 0,
       'settings' => array(
-        'alt_field' => 0,
+        'alt_field' => 1,
         'default_image' => 0,
         'entity_translation_sync' => FALSE,
         'file_directory' => 'field_featured_image',
@@ -509,7 +509,7 @@ function roomify_blog_create_fields() {
         'max_filesize' => '',
         'max_resolution' => '2800x2800',
         'min_resolution' => '',
-        'title_field' => 0,
+        'title_field' => 1,
         'user_register_form' => FALSE,
       ),
       'widget' => array(

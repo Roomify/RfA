@@ -469,7 +469,7 @@ function roomify_offers_add_image_field() {
       'label' => 'Image',
       'required' => 0,
       'settings' => array(
-        'alt_field' => 0,
+        'alt_field' => 1,
         'default_image' => 0,
         'entity_translation_sync' => FALSE,
         'file_directory' => '',
@@ -477,7 +477,7 @@ function roomify_offers_add_image_field() {
         'max_filesize' => '',
         'max_resolution' => '',
         'min_resolution' => '',
-        'title_field' => 0,
+        'title_field' => 1,
         'user_register_form' => FALSE,
       ),
       'widget' => array(
