@@ -1485,30 +1485,19 @@ function roomify_listing_update_7043() {
  */
 function roomify_listing_update_7044() {
   foreach (array('casa_property', 'locanda_property') as $property_bundle) {
+    $fields = array(
+      'field_sp_featured_image',
+      'field_sp_gallery',
+      'field_sp_highlight_image1',
+      'field_sp_highlight_image2',
+      'field_sp_highlight_image3',
+    );
 
-    $instance_info = field_read_instance('roomify_property', 'field_sp_featured_image', $property_bundle);
-    $instance_info['settings']['alt_field'] = 1;
-    $instance_info['settings']['title_field'] = 1;
-    field_update_instance($instance_info);
-
-    $instance_info = field_read_instance('roomify_property', 'field_sp_gallery', $property_bundle);
-    $instance_info['settings']['alt_field'] = 1;
-    $instance_info['settings']['title_field'] = 1;
-    field_update_instance($instance_info);
-
-    $instance_info = field_read_instance('roomify_property', 'field_sp_highlight_image1', $property_bundle);
-    $instance_info['settings']['alt_field'] = 1;
-    $instance_info['settings']['title_field'] = 1;
-    field_update_instance($instance_info);
-
-    $instance_info = field_read_instance('roomify_property', 'field_sp_highlight_image2', $property_bundle);
-    $instance_info['settings']['alt_field'] = 1;
-    $instance_info['settings']['title_field'] = 1;
-    field_update_instance($instance_info);
-
-    $instance_info = field_read_instance('roomify_property', 'field_sp_highlight_image3', $property_bundle);
-    $instance_info['settings']['alt_field'] = 1;
-    $instance_info['settings']['title_field'] = 1;
-    field_update_instance($instance_info);
+    foreach ($fields as $field) {
+      $instance_info = field_read_instance('roomify_property', $field, $property_bundle);
+      $instance_info['settings']['alt_field'] = 1;
+      $instance_info['settings']['title_field'] = 1;
+      field_update_instance($instance_info);
+    }
   }
 }
