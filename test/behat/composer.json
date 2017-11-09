@@ -1,15 +1,15 @@
 {
     "require": {
-        "behat/behat": "~3.1",
+        "behat/behat": "3.3.1",
         "behat/mink": "1.7.1",
         "behat/mink-goutte-driver": "*",
         "behat/mink-selenium2-driver": "*",
-        "drupal/drupal-extension": "3.2.3",
+        "drupal/drupal-extension": "3.3.0",
         "symfony/process": "~2.1",
         "behat/symfony2-extension": "*",
         "symfony/form": "~2.8",
         "symfony/validator": "~2.8",
-        "behat/mink-extension": "*",
+        "behat/mink-extension": "2.2",
         "symfony/asset": "~2.8",
         "symfony/class-loader": "~2.8",
         "symfony/config": "~2.8",
@@ -20,9 +20,6 @@
         "symfony/http-kernel": "~2.8",
         "symfony/framework-bundle": "~2.0",
         "symfony/intl": "~2.8",
-        "symfony/class-loader": "~2.1",
-        "symfony/config": "~2.3",
-        "symfony/console": "~2.1",
         "symfony/dependency-injection": "~2.1",
         "symfony/event-dispatcher": "~2.1",
         "symfony/property-access": "~2.8",
@@ -36,8 +33,10 @@
         "doctrine/cache": "1.5.*",
         "doctrine/annotations": "1.4.0",
         "fabpot/goutte": "2.0.4",
+        "instaclick/php-webdriver": "1.4.5",
         "rdx/behat-variables": "~1.0.3",
-        "roomify/roomify-extension": "~1.0"
+        "roomify/roomify-extension": "~1.0",
+        "php": ">=5.6"
     },
     "minimum-stability": "dev",
     "config": {

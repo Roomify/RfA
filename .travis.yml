@@ -9,6 +9,9 @@ php:
   - 7.0
   - 7.1
 
+addons:
+  chrome: stable
+
 env:
   # Specify which versions of the product we will build.
   - PRODUCT=accommodations     THEME=default
@@ -23,8 +26,6 @@ before_install:
   - export CHROME_BIN=/usr/bin/google-chrome
   - export DISPLAY=:99.0
   - sudo apt-get install -y libappindicator1 fonts-liberation
-  - wget https://dl.google.com/linux/direct/google-chrome-stable_current_amd64.deb
-  - sudo dpkg -i google-chrome*.deb
   - sh -e /etc/init.d/xvfb start
   - wget http://chromedriver.storage.googleapis.com/2.33/chromedriver_linux64.zip && unzip chromedriver_linux64.zip && sudo mv chromedriver /usr/bin
 
@@ -100,8 +101,8 @@ before_script:
 
   # Fetch and start selenium.
   - mkdir -p $HOME/.cache
-  - wget -nc -O $HOME/.cache/selenium-server-standalone-3.4.0.jar http://selenium-release.storage.googleapis.com/3.4/selenium-server-standalone-3.4.0.jar || true
-  - java -jar $HOME/.cache/selenium-server-standalone-3.4.0.jar -port 4444 &> /tmp/selenium.log &
+  - wget -nc -O $HOME/.cache/selenium-server-standalone-3.7.1.jar http://selenium-release.storage.googleapis.com/3.7/selenium-server-standalone-3.7.1.jar || true
+  - java -jar $HOME/.cache/selenium-server-standalone-3.7.1.jar -port 4444 &> /tmp/selenium.log &
   - sleep 5
 
 
