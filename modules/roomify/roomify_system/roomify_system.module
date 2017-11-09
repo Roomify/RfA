@@ -1192,6 +1192,7 @@ function roomify_system_roomify_rights() {
       'administer pathauto patterns',
       'administer xmlsitemap',
       'view the availability global calendar',
+      'use yoast seo',
     ),
     'content editor' => array(
       'access content overview',

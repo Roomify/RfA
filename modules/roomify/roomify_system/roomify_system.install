@@ -974,3 +974,11 @@ function roomify_system_update_7060() {
     image_style_flush($style);
   }
 }
+
+/**
+ * Enable Yoast Seo.
+ */
+function roomify_system_update_7061() {
+  module_enable(array('yoast_seo'));
+  variable_set('yoast_seo_vertical_tab', 1);
+}

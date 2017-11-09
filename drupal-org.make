@@ -533,6 +533,11 @@ projects[xautoload][version] = 5.7
 projects[xmlsitemap][version] = 2.3
 projects[xmlsitemap][patch][] = https://www.drupal.org/files/issues/xmlsitemap-entity-integration-1461670-38.patch
 
+projects[yoast_seo][type] = module
+projects[yoast_seo][download][type] = git
+projects[yoast_seo][download][url] = https://git.drupal.org/project/yoast_seo.git
+projects[yoast_seo][download][revision] = 52cb19ed0281d40c0f5230747bc39d278a3b6a51
+
 projects[zopim][version] = 1.2
 
 ; +++++ Libraries +++++
