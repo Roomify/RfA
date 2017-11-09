@@ -767,7 +767,7 @@ function roomify_listing_create_property_fields($property_bundle) {
       'label' => 'Search/Featured Image',
       'required' => 0,
       'settings' => array(
-        'alt_field' => 0,
+        'alt_field' => 1,
         'default_image' => 0,
         'entity_translation_sync' => FALSE,
         'file_directory' => '',
@@ -775,7 +775,7 @@ function roomify_listing_create_property_fields($property_bundle) {
         'max_filesize' => '',
         'max_resolution' => '2800x2800',
         'min_resolution' => '',
-        'title_field' => 0,
+        'title_field' => 1,
         'user_register_form' => FALSE,
       ),
       'widget' => array(
@@ -1392,7 +1392,7 @@ function roomify_listing_create_property_fields($property_bundle) {
       'label' => 'Highlight Image 1',
       'required' => 0,
       'settings' => array(
-        'alt_field' => 0,
+        'alt_field' => 1,
         'default_image' => 0,
         'entity_translation_sync' => FALSE,
         'file_directory' => '',
@@ -1400,7 +1400,7 @@ function roomify_listing_create_property_fields($property_bundle) {
         'max_filesize' => '',
         'max_resolution' => '2800x2800',
         'min_resolution' => '',
-        'title_field' => 0,
+        'title_field' => 1,
         'user_register_form' => FALSE,
       ),
       'widget' => array(
@@ -1485,7 +1485,7 @@ function roomify_listing_create_property_fields($property_bundle) {
       'label' => 'Highlight Image 2',
       'required' => 0,
       'settings' => array(
-        'alt_field' => 0,
+        'alt_field' => 1,
         'default_image' => 0,
         'entity_translation_sync' => FALSE,
         'file_directory' => '',
@@ -1493,7 +1493,7 @@ function roomify_listing_create_property_fields($property_bundle) {
         'max_filesize' => '',
         'max_resolution' => '2800x2800',
         'min_resolution' => '',
-        'title_field' => 0,
+        'title_field' => 1,
         'user_register_form' => FALSE,
       ),
       'widget' => array(
@@ -1577,7 +1577,7 @@ function roomify_listing_create_property_fields($property_bundle) {
       'label' => 'Highlight Image 3',
       'required' => 0,
       'settings' => array(
-        'alt_field' => 0,
+        'alt_field' => 1,
         'default_image' => 0,
         'entity_translation_sync' => FALSE,
         'file_directory' => '',
@@ -1585,7 +1585,7 @@ function roomify_listing_create_property_fields($property_bundle) {
         'max_filesize' => '',
         'max_resolution' => '2800x2800',
         'min_resolution' => '',
-        'title_field' => 0,
+        'title_field' => 1,
         'user_register_form' => FALSE,
       ),
       'widget' => array(

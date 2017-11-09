@@ -271,3 +271,13 @@ function roomify_homepage_update_7005() {
   $field_group->children[1] = 'field_homepage_properties_view';
   field_group_group_save($field_group);
 }
+
+/**
+ * Enable alt and title field on images.
+ */
+function roomify_homepage_update_7006() {
+  $instance_info = field_read_instance('node', 'field_homepage_slideshow', 'homepage');
+  $instance_info['settings']['alt_field'] = 1;
+  $instance_info['settings']['title_field'] = 1;
+  field_update_instance($instance_info);
+}

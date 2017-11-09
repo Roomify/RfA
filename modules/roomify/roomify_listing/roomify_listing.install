@@ -1479,3 +1479,36 @@ function roomify_listing_update_7043() {
   $available['color'] = '#228A26';
   bat_event_save_state($available, 'availability');
 }
+
+/**
+ * Enable alt and title on images.
+ */
+function roomify_listing_update_7044() {
+  foreach (array('casa_property', 'locanda_property') as $property_bundle) {
+
+    $instance_info = field_read_instance('roomify_property', 'field_sp_featured_image', $property_bundle);
+    $instance_info['settings']['alt_field'] = 1;
+    $instance_info['settings']['title_field'] = 1;
+    field_update_instance($instance_info);
+
+    $instance_info = field_read_instance('roomify_property', 'field_sp_gallery', $property_bundle);
+    $instance_info['settings']['alt_field'] = 1;
+    $instance_info['settings']['title_field'] = 1;
+    field_update_instance($instance_info);
+
+    $instance_info = field_read_instance('roomify_property', 'field_sp_highlight_image1', $property_bundle);
+    $instance_info['settings']['alt_field'] = 1;
+    $instance_info['settings']['title_field'] = 1;
+    field_update_instance($instance_info);
+
+    $instance_info = field_read_instance('roomify_property', 'field_sp_highlight_image2', $property_bundle);
+    $instance_info['settings']['alt_field'] = 1;
+    $instance_info['settings']['title_field'] = 1;
+    field_update_instance($instance_info);
+
+    $instance_info = field_read_instance('roomify_property', 'field_sp_highlight_image3', $property_bundle);
+    $instance_info['settings']['alt_field'] = 1;
+    $instance_info['settings']['title_field'] = 1;
+    field_update_instance($instance_info);
+  }
+}
