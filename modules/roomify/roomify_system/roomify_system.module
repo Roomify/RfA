@@ -1978,14 +1978,17 @@ function roomify_system_commerce_entity_access_condition_commerce_order_alter(&$
 
           // Need to check if commerce_product_type = 'roomify_accommodation_product'.
           if ($line_item->commerce_product->value()->type == 'roomify_accommodation_product') {
-            $type = bat_type_load($line_item->commerce_booking_reference->booking_event_reference->event_bat_unit_reference->type_id->value());
+            if ($line_item->__isset('commerce_booking_reference') &&
+                $line_item->commerce_booking_reference->__isset('booking_event_reference')) {
+              $type = bat_type_load($line_item->commerce_booking_reference->booking_event_reference->event_bat_unit_reference->type_id->value());
 
-            // If the order's booking's type's author is equal to the current
-            // user, grant view access to this order.
-            if ($type->uid == $context['account']->uid || user_access('update any bat_booking entity')) {
-              // Add a generic condition that will satisfy the query to grant
-              // access.
-              $conditions->condition($context['base_table'] . '.type', 'commerce_order');
+              // If the order's booking's type's author is equal to the current
+              // user, grant view access to this order.
+              if ($type->uid == $context['account']->uid || user_access('update any bat_booking entity')) {
+                // Add a generic condition that will satisfy the query to grant
+                // access.
+                $conditions->condition($context['base_table'] . '.type', 'commerce_order');
+              }
             }
           }
         }

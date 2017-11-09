@@ -149,5 +149,6 @@ dependencies[] = subuser_ui
 ; XML sitemap
 dependencies[] = xmlsitemap
 dependencies[] = xmlsitemap_custom
+dependencies[] = xmlsitemap_entity
 dependencies[] = xmlsitemap_node
 dependencies[] = xmlsitemap_taxonomy

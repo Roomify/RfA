@@ -325,8 +325,10 @@ function roomify_install_finished(&$install_state) {
   variable_set('addtoany_image', 'a2a_svg_32');
 
   // Image Toolkit
-  variable_set('image_toolkit', 'gd');
+  variable_set('image_toolkit', 'imageapi_optimize');
+  variable_set('imageapi_optimize_toolkit', 'gd');
   variable_set('image_jpeg_quality', '100');
+  variable_set('imageapi_optimize_service', 'resmushit');
 
   // Select2 Settings.
   variable_set('select2_update_settings_by_ajax', 1);
@@ -384,6 +386,13 @@ function roomify_install_finished(&$install_state) {
   $tune['protected_forms'] = array();
 
   variable_set('google_recaptcha', $tune);
+
+  $settings = array(
+    'status' => '1',
+    'priority' => '0.5',
+  );
+  variable_set('xmlsitemap_settings_roomify_property_casa_property', $settings);
+  variable_set('xmlsitemap_settings_roomify_property_locanda_property', $settings);
 
   if (isset($messages['error'])) {
     $output = '<p>' . (isset($messages['error']) ? st('Review the messages above before visiting <a href="@url">your new site</a>.', array('@url' => url(''))) : st('<a href="@url">Visit your new site</a>.', array('@url' => url('')))) . '</p>';
