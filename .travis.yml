@@ -22,6 +22,9 @@ mysql:
   encoding: utf8
 
 before_install:
+  - if [[ $TRAVIS_PHP_VERSION = "5.6" ]]; then echo yes | pecl install apcu-4.0.11; fi
+  - phpenv config-add .travis/travis.php.ini
+
   - echo -e "machine github.com\n  login $CI_USER_TOKEN" >> ~/.netrc
   - export CHROME_BIN=/usr/bin/google-chrome
   - export DISPLAY=:99.0
@@ -54,9 +57,9 @@ before_script:
   - composer -n global require drush/drush:8.*
   - cd $TRAVIS_BUILD_DIR
   # Install drush composer extension.
-  - drush dl composer-8.x-1.x
+  - drush -n dl composer-8.x-1.x
   # Install drush registry_rebuild extension.
-  - drush dl registry_rebuild-7.x-2.x
+  - drush -n dl registry_rebuild-7.x-2.x
   # Install code sniffer.
   - composer -n global require drupal/coder
   # Register Drupal coding standards.
