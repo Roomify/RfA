@@ -22,15 +22,13 @@ mysql:
   encoding: utf8
 
 before_install:
-  - if [[ $TRAVIS_PHP_VERSION = "5.6" ]]; then echo yes | pecl install apcu-4.0.11; fi
-  - phpenv config-add .travis/travis.php.ini
-
   - echo -e "machine github.com\n  login $CI_USER_TOKEN" >> ~/.netrc
   - export CHROME_BIN=/usr/bin/google-chrome
   - export DISPLAY=:99.0
   - sudo apt-get install -y libappindicator1 fonts-liberation
   - sh -e /etc/init.d/xvfb start
   - wget http://chromedriver.storage.googleapis.com/2.33/chromedriver_linux64.zip && unzip chromedriver_linux64.zip && sudo mv chromedriver /usr/bin
+  - phpenv config-add .travis/travis.php.ini
 
 before_script:
   # Increase the MySQL connection timeout on the PHP end.
