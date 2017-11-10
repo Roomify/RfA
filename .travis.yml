@@ -153,6 +153,7 @@ deploy:
 cache:
   directories:
     - $HOME/.composer/cache
+    - $HOME/.drush
     - vendor
     - test/behat/bin
     - test/behat/vendor
