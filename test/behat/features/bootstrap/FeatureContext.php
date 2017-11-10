@@ -1,6 +1,6 @@
 <?php
 
-use Drupal\DrupalExtension\Context\DrupalSubContextBase,
+use Drupal\DrupalExtension\Context\RawDrupalContext,
     Drupal\Component\Utility\Random;
 
 use Behat\Gherkin\Node\PyStringNode,
@@ -16,7 +16,7 @@ use Drupal\DrupalDriverManager;
 /**
  * Defines application features from the specific context.
  */
-class FeatureContext extends DrupalSubContextBase implements CustomSnippetAcceptingContext {
+class FeatureContext extends RawDrupalContext implements CustomSnippetAcceptingContext {
 
   protected $dateFormat = 'd/m/Y';
 
@@ -34,9 +34,7 @@ class FeatureContext extends DrupalSubContextBase implements CustomSnippetAccept
    * You can also pass arbitrary arguments to the
    * context constructor through behat.yml.
    */
-  public function __construct(DrupalDriverManager $drupal) {
-    parent::__construct($drupal);
-
+  public function __construct() {
     variable_set('roomify_testing_environment', TRUE);
     if (variable_get('roomify_accommodation_example_content') == '') {
       roomify_accommodation_example_content_multi_property();
