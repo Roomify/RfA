@@ -486,6 +486,8 @@ projects[uuid][version] = 1.0
 
 projects[variable][version] = 2.5
 
+projects[video][version] = 2.13
+
 projects[video_embed_field][version] = 2.0-beta11
 
 projects[view_unpublished][version] = 1.2

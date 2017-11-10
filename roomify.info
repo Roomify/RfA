@@ -137,6 +137,7 @@ dependencies[] = google_recaptcha
 dependencies[] = hreflang
 dependencies[] = select2
 dependencies[] = yoast_seo
+dependencies[] = video
 
 ; Users
 dependencies[] = profile2
