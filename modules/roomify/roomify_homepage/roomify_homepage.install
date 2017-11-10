@@ -290,3 +290,14 @@ function roomify_homepage_update_7007() {
 
   roomify_homepage_create_fields();
 }
+
+/**
+ * Add style option "Video".
+ */
+function roomify_homepage_update_7008() {
+  $field = field_read_field('field_homepage_style');
+
+  $field['settings']['allowed_values']['video'] = 'Video';
+
+  field_update_field($field);
+}

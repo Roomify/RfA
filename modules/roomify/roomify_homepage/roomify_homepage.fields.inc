@@ -155,6 +155,7 @@ function roomify_homepage_create_fields() {
         'allowed_values' => array(
           'large' => 'Large Slideshow',
           'tight' => 'Tight Slideshow',
+          'video' => 'Video',
         ),
         'allowed_values_function' => '',
         'entity_translation_sync' => FALSE,
