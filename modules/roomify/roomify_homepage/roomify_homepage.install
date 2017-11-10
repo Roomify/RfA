@@ -281,3 +281,12 @@ function roomify_homepage_update_7006() {
   $instance_info['settings']['title_field'] = 1;
   field_update_instance($instance_info);
 }
+
+/**
+ * Creates video field.
+ */
+function roomify_homepage_update_7007() {
+  module_load_include('inc', 'roomify_homepage', 'roomify_homepage.fields');
+
+  roomify_homepage_create_fields();
+}

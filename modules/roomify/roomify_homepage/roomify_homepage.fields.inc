@@ -5,7 +5,7 @@
  */
 
 /**
- *
+ * Content type "Homepage" fields.
  */
 function roomify_homepage_create_fields() {
   $field_bases = array();
@@ -141,9 +141,7 @@ function roomify_homepage_create_fields() {
 
   if (field_read_field('field_homepage_style') === FALSE) {
     $field_bases['field_homepage_style'] = array(
-      'active' => 1,
       'cardinality' => 1,
-      'deleted' => 0,
       'entity_types' => array(),
       'field_name' => 'field_homepage_style',
       'indexes' => array(
@@ -169,9 +167,7 @@ function roomify_homepage_create_fields() {
 
   if (field_read_field('field_homepage_properties_lists') === FALSE) {
     $field_bases['field_homepage_properties_lists'] = array(
-      'active' => 1,
       'cardinality' => 6,
-      'deleted' => 0,
       'entity_types' => array(),
       'field_name' => 'field_homepage_properties_lists',
       'indexes' => array(
@@ -211,9 +207,7 @@ function roomify_homepage_create_fields() {
 
   if (field_read_field('field_homepage_areas_style') === FALSE) {
     $field_bases['field_homepage_areas_style'] = array(
-      'active' => 1,
       'cardinality' => 1,
-      'deleted' => 0,
       'entity_types' => array(),
       'field_name' => 'field_homepage_areas_style',
       'indexes' => array(
@@ -239,9 +233,7 @@ function roomify_homepage_create_fields() {
 
   if (field_read_field('field_homepage_properties_style') === FALSE) {
     $field_bases['field_homepage_properties_style'] = array(
-      'active' => 1,
       'cardinality' => 1,
-      'deleted' => 0,
       'entity_types' => array(),
       'field_name' => 'field_homepage_properties_style',
       'indexes' => array(
@@ -262,6 +254,36 @@ function roomify_homepage_create_fields() {
       ),
       'translatable' => 0,
       'type' => 'list_text',
+    );
+  }
+
+  if (field_read_field('field_homepage_video') === FALSE) {
+    $field_bases['field_homepage_video'] = array(
+      'cardinality' => 1,
+      'entity_types' => array(),
+      'field_name' => 'field_homepage_video',
+      'locked' => 0,
+      'module' => 'video',
+      'settings' => array(
+        'uri_scheme' => 'public',
+        'uri_scheme_converted' => 'public',
+        'uri_scheme_thumbnails' => 'public',
+        'autoconversion' => 0,
+        'thumbnail_format' => 'jpg',
+        'autothumbnail' => 'no',
+        'default_video_thumbnail' => array(
+          'fid' => 0,
+          'upload_button' => 'Upload',
+          'remove_button' => 'Remove',
+          'upload' => '',
+        ),
+        'preview_video_thumb_style' => 'thumbnail',
+        'presets' => array(),
+        'profile2_private' => FALSE,
+        'entity_translation_sync' => FALSE,
+      ),
+      'translatable' => 0,
+      'type' => 'video',
     );
   }
 
@@ -675,7 +697,6 @@ function roomify_homepage_create_fields() {
           'value' => 'tight',
         ),
       ),
-      'deleted' => 0,
       'description' => '',
       'display' => array(
         'default' => array(
@@ -723,7 +744,6 @@ function roomify_homepage_create_fields() {
       'bundle' => 'homepage',
       'default_value' => array(),
       'default_value_function' => '',
-      'deleted' => 0,
       'description' => '',
       'display' => array(
         'default' => array(
@@ -793,7 +813,6 @@ function roomify_homepage_create_fields() {
           'value' => 'vertical',
         ),
       ),
-      'deleted' => 0,
       'description' => '',
       'display' => array(
         'default' => array(
@@ -853,7 +872,6 @@ function roomify_homepage_create_fields() {
           'value' => 'vertical',
         ),
       ),
-      'deleted' => 0,
       'description' => 'Select either to display images on a horizontal or vertical view.',
       'display' => array(
         'default' => array(
@@ -901,6 +919,45 @@ function roomify_homepage_create_fields() {
         ),
         'type' => 'options_select',
         'weight' => 41,
+      ),
+    );
+  }
+
+  if (field_read_instance('node', 'field_homepage_video', 'homepage') === FALSE) {
+    $field_instances['node-homepage-field_homepage_video'] = array(
+      'bundle' => 'homepage',
+      'description' => '',
+      'display' => array(
+        'default' => array(
+          'label' => 'above',
+          'module' => 'video',
+          'settings' => array(
+            'conditions' => array(),
+          ),
+          'type' => 'video_formatter_player',
+          'weight' => 11,
+        ),
+      ),
+      'entity_type' => 'node',
+      'field_name' => 'field_homepage_video',
+      'label' => 'Video',
+      'required' => 0,
+      'settings' => array(
+        'entity_translation_sync' => FALSE,
+        'file_directory' => 'videos/original',
+        'file_extensions' => 'mp4 ogg avi mov wmv flv ogv webm',
+        'max_filesize' => '',
+        'default_dimensions' => '640x360',
+        'user_register_form' => FALSE,
+      ),
+      'widget' => array(
+        'active' => 1,
+        'module' => 'video',
+        'settings' => array(
+          'progress_indicator' => 'throbber',
+        ),
+        'type' => 'video_upload',
+        'weight' => 44,
       ),
     );
   }
