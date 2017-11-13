@@ -1069,7 +1069,7 @@ function roomify_homepage_default_page_manager_handlers() {
     'no_blocks' => 0,
     'pipeline' => 'standard',
     'body_classes_to_remove' => '',
-    'body_classes_to_add' => 'homepage-tight',
+    'body_classes_to_add' => 'homepage-tight homepage-video',
     'css_id' => '',
     'css' => '',
     'contexts' => array(),
