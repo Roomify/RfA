@@ -15,6 +15,7 @@ define('ROOMIFY_ACCOMMODATION_OPTIONS_SUB_DAILY_PERSON', 'sub-daily_person');
 define('ROOMIFY_ACCOMMODATION_OPTIONS_REPLACE', 'replace');
 define('ROOMIFY_ACCOMMODATION_OPTIONS_INCREASE', 'increase');
 define('ROOMIFY_ACCOMMODATION_OPTIONS_DECREASE', 'decrease');
+define('ROOMIFY_ACCOMMODATION_OPTIONS_NOCHARGE', 'no_charge');
 define('ROOMIFY_ACCOMMODATION_OPTIONS_PRICE_SINGLE_OCCUPANCY', 'single_occupancy');
 define('ROOMIFY_ACCOMMODATION_OPTIONS_DYNAMIC_MODIFIER', 'dynamic_modifier');
 define('ROOMIFY_ACCOMMODATION_OPTIONS_OPTIONAL', 'optional');
@@ -126,9 +127,10 @@ function roomify_accommodation_options_data_property_info($name = NULL) {
  * Implements hook_field_is_empty().
  */
 function roomify_accommodation_options_field_is_empty($item, $field) {
-  return empty($item['name']) || empty($item['quantity']) || !(is_numeric($item['quantity']) && is_int((int) $item['quantity']))
-    || empty($item['value']) || !is_numeric($item['value'])
-    || empty($item['operation']) || !in_array($item['operation'], array_keys(roomify_accommodation_options_price_options()));
+  return empty($item['name']) ||
+    empty($item['quantity']) || !(is_numeric($item['quantity']) && is_int((int) $item['quantity'])) ||
+    ((empty($item['value']) || !is_numeric($item['value'])) && $item['operation'] != 'no_charge') ||
+    empty($item['operation']) || !in_array($item['operation'], array_keys(roomify_accommodation_options_price_options()));
 }
 
 /**
@@ -249,10 +251,15 @@ function roomify_accommodation_options_field_widget_form(&$form, &$form_state, $
       '#type' => 'textfield',
       '#title' => t('Value'),
       '#size' => 10,
-      '#default_value' => isset($items[$delta]['value']) ? $items[$delta]['value'] : NULL,
+      '#default_value' => (isset($items[$delta]['value']) && $items[$delta]['value'] != 0) ? $items[$delta]['value'] : NULL,
       '#element_validate' => array('roomify_accommodation_options_element_value_validate'),
       '#attributes' => array(
         'class' => array('roomify_accommodation_options-option--value'),
+      ),
+      '#states' => array(
+        'disabled' => array(
+          ':input[name="field_addons[en][' . $delta . '][operation]"]' => array('value' => 'no_charge'),
+        )
       ),
     );
     $type_options = array(
@@ -299,7 +306,10 @@ function roomify_accommodation_options_field_widget_form(&$form, &$form_state, $
 function roomify_accommodation_options_element_value_validate($element, &$form_state) {
   $value = $element['#value'];
 
-  if ($value != '' && (!is_numeric($value) || $value <= 0)) {
+  if ($value == '') {
+    form_set_value($element, 0, $form_state);
+  }
+  elseif (!is_numeric($value) || $value <= 0) {
     form_error($element, t('%name must be a positive number.', array('%name' => $element['#title'])));
   }
 }
@@ -438,6 +448,7 @@ function roomify_accommodation_options_price_options() {
     ROOMIFY_ACCOMMODATION_OPTIONS_REPLACE => t('Replace price'),
     ROOMIFY_ACCOMMODATION_OPTIONS_INCREASE => t('Increase price by % amount'),
     ROOMIFY_ACCOMMODATION_OPTIONS_DECREASE => t('Decrease price by % amount'),
+    ROOMIFY_ACCOMMODATION_OPTIONS_NOCHARGE => t('No charge'),
   );
 }
 
@@ -561,6 +572,10 @@ function roomify_accommodation_options_get_operation_label($option) {
       $label = t('Decrease price by @amount%', array(
         '@amount' => $option['value'],
       ));
+      break;
+
+    case 'no_charge':
+      $label = t('Free');
       break;
 
     case 'sub':
