@@ -6,6 +6,11 @@ body.node-type-homepage {
     font-weight: 400;
     text-transform: lowercase;
   }
+  .select2.select2-container {
+    @media (max-width: $screen-xs-max) {
+      width: 100%;
+    }
+  }
   strong {
     font-weight: 400;
   }
@@ -789,9 +794,43 @@ body.node-type-homepage {
       &#property-bat-facets-availability .form-wrapper {
         input, select, .form-control {
           background: #ffffff;
-          font-weight: 300;
+          font-weight: 400;
         }
       }
+    }
+  }
+}
+
+.node-type-homepage.homepage-video {
+  .pane-node-field-homepage-video {
+    max-height: 600px;
+    background: #f1f1f1;
+    video {
+      width: 100%;
+    }
+  }
+  .pane-roomify-listing-availability-search-block-roomify-property-search {
+    @media (min-width: $screen-sm) {
+      bottom: 0;
+    }
+  }
+  .pane-roomify-listing-availability-search-block-roomify-property-search {
+    @media (min-width: $screen-sm-max) {
+      -webkit-animation-name: fadeIn;
+      -moz-animation-name: fadeIn;
+      -ms-animation-name: fadeIn;
+      -o-animation-name: fadeIn;
+      animation-name: fadeIn;
+      -webkit-animation-duration: 0s;
+      -moz-animation-duration: 0s;
+      -ms-animation-duration: 0s;
+      -o-animation-duration: 0s;
+      animation-duration: 0s;
+      -webkit-animation-delay: 0s;
+      -moz-animation-delay: 0s;
+      -ms-animation-delay: 0s;
+      -o-animation-delay: 0s;
+      animation-delay: 0s;
     }
   }
 }

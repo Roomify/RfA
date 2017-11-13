@@ -12800,6 +12800,9 @@ body.node-type-homepage {
     border: 1px solid #d4d3d3;
     font-weight: 400;
     text-transform: lowercase; }
+  @media (max-width: 767px) {
+    body.node-type-homepage .select2.select2-container {
+      width: 100%; } }
   body.node-type-homepage strong {
     font-weight: 400; }
   body.node-type-homepage .tabs--primary {
@@ -13603,7 +13606,33 @@ body.node-type-homepage {
     width: 100%; }
     .node-type-homepage.homepage-tight .pane-roomify-listing-availability-search-block-roomify-property-search form#property-bat-facets-availability .form-wrapper input, .node-type-homepage.homepage-tight .pane-roomify-listing-availability-search-block-roomify-property-search form#property-bat-facets-availability .form-wrapper select, .node-type-homepage.homepage-tight .pane-roomify-listing-availability-search-block-roomify-property-search form#property-bat-facets-availability .form-wrapper .form-control {
       background: #ffffff;
-      font-weight: 300; }
+      font-weight: 400; }
+
+.node-type-homepage.homepage-video .pane-node-field-homepage-video {
+  max-height: 600px;
+  background: #f1f1f1; }
+  .node-type-homepage.homepage-video .pane-node-field-homepage-video video {
+    width: 100%; }
+@media (min-width: 768px) {
+  .node-type-homepage.homepage-video .pane-roomify-listing-availability-search-block-roomify-property-search {
+    bottom: 0; } }
+@media (min-width: 991px) {
+  .node-type-homepage.homepage-video .pane-roomify-listing-availability-search-block-roomify-property-search {
+    -webkit-animation-name: fadeIn;
+    -moz-animation-name: fadeIn;
+    -ms-animation-name: fadeIn;
+    -o-animation-name: fadeIn;
+    animation-name: fadeIn;
+    -webkit-animation-duration: 0s;
+    -moz-animation-duration: 0s;
+    -ms-animation-duration: 0s;
+    -o-animation-duration: 0s;
+    animation-duration: 0s;
+    -webkit-animation-delay: 0s;
+    -moz-animation-delay: 0s;
+    -ms-animation-delay: 0s;
+    -o-animation-delay: 0s;
+    animation-delay: 0s; } }
 
 .page-taxonomy-area header {
   position: relative;

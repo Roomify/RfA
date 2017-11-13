@@ -172,6 +172,9 @@ function roomify_homepage_update_dependencies() {
   $dependencies['roomify_homepage'][7004] = array(
     'roomify_system' => 7052,
   );
+  $dependencies['roomify_homepage'][7007] = array(
+    'roomify_system' => 7062,
+  );
   return $dependencies;
 }
 
@@ -280,4 +283,24 @@ function roomify_homepage_update_7006() {
   $instance_info['settings']['alt_field'] = 1;
   $instance_info['settings']['title_field'] = 1;
   field_update_instance($instance_info);
+}
+
+/**
+ * Creates video field.
+ */
+function roomify_homepage_update_7007() {
+  module_load_include('inc', 'roomify_homepage', 'roomify_homepage.fields');
+
+  roomify_homepage_create_fields();
+}
+
+/**
+ * Add style option "Video".
+ */
+function roomify_homepage_update_7008() {
+  $field = field_read_field('field_homepage_style');
+
+  $field['settings']['allowed_values']['video'] = 'Video';
+
+  field_update_field($field);
 }

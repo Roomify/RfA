@@ -976,9 +976,16 @@ function roomify_system_update_7060() {
 }
 
 /**
- * Enable Yoast Seo.
+ * Enable module "Yoast Seo".
  */
 function roomify_system_update_7061() {
   module_enable(array('yoast_seo'));
   variable_set('yoast_seo_vertical_tab', 1);
+}
+
+/**
+ * Enable module "Video".
+ */
+function roomify_system_update_7062() {
+  module_enable(array('video'));
 }
