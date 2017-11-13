@@ -394,6 +394,16 @@ function roomify_install_finished(&$install_state) {
   variable_set('xmlsitemap_settings_roomify_property_casa_property', $settings);
   variable_set('xmlsitemap_settings_roomify_property_locanda_property', $settings);
 
+  $xautoload_cache_types = array(
+    'apc' => 'apc',
+    'apcu_q' => 0,
+    'apcu' => 'apcu',
+    'wincache' => 0,
+    'xcache' => 0,
+    'dbcache' => 0,
+  );
+  variable_set('xautoload_cache_types', $xautoload_cache_types);
+
   if (isset($messages['error'])) {
     $output = '<p>' . (isset($messages['error']) ? st('Review the messages above before visiting <a href="@url">your new site</a>.', array('@url' => url(''))) : st('<a href="@url">Visit your new site</a>.', array('@url' => url('')))) . '</p>';
     return $output;
