@@ -214,6 +214,8 @@ projects[epsacrop][version] = 2.4
 
 projects[eu_cookie_compliance][version] = 1.14
 
+projects[facebook_tracking_pixel][version] = 1.1
+
 projects[facetapi][version] = 1.5
 projects[facetapi][patch][] = https://www.drupal.org/files/issues/facetapi-cur-search-block-not-exported-1469002_2.patch
 projects[facetapi][patch][] = https://www.drupal.org/files/issues/facetapi-override_facet_label-1665164-22.patch
