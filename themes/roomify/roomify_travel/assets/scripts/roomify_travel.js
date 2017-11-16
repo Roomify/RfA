@@ -82,9 +82,9 @@ Drupal.behaviors.roomifyTravelScripts = {
     }
 
     if ($(window).width() <= 620) {
-      $('.form-type-date-popup input').datepicker({
-        numberOfMonths: 1
-      });
+      for (var id in Drupal.settings.datePopup) {
+        Drupal.settings.datePopup[id].settings.numberOfMonths = 1;
+      }
     }
   }
 };
