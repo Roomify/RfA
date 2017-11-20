@@ -35,7 +35,7 @@ Feature: Property Reviews
     And I click on the text "Reviews"
     Then I should see the text "This is a very nice place, I'll be back!"
     Then I click on the element with css selector ".manage-icon.edit-link"
-    And I wait 10 seconds
+    And i wait 5 seconds
     And I click on the element with css selector ".form-item-field-sp-allow-property-reviews-und input"
     And I press "Save Property"
     Then I visit "listing/1"
