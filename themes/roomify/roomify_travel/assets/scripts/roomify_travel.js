@@ -27,7 +27,7 @@ Drupal.behaviors.roomifyTravelScripts = {
     });
 
     // Top level menu links should be clickable.
-    $('.navbar .dropdown > a').click(function(){
+    $('.navbar .dropdown > a').click(function() {
       location.href = this.href;
     });
  
@@ -46,7 +46,7 @@ Drupal.behaviors.roomifyTravelScripts = {
     }
 
     // Open Description tab if user clicks on 'See More'.
-    $('.user-info #see-more-property-description').click(function(){
+    $('.user-info #see-more-property-description').click(function() {
       $( '#ui-id-1' ).click();
     });
 
@@ -58,11 +58,15 @@ Drupal.behaviors.roomifyTravelScripts = {
     });
 
     // Add an animation based on opacity.
-    $('#roomify-main-menu-overlay .closebtn').once().click(function(e) {
+    $('#roomify-main-menu-overlay .closebtn').once().click(function() {
       $('#roomify-main-menu-overlay').css('opacity', '0');
+      $('html').css('overflow', '');
+      $('html').css('position', '');
     });
-    $('.roomify-site-menu .navbar-toggle').once().click(function(e) {
+    $('.roomify-site-menu .navbar-toggle').once().click(function() {
       $('#roomify-main-menu-overlay').css('opacity', '1');
+      $('html').css('overflow', 'hidden');
+      $('html').css('position', 'fixed');
     });
 
     // Place hamburger and user icons in the center of the header.
@@ -120,7 +124,7 @@ Drupal.behaviors.roomifyTravelAccordian = {
   $('.pane-menu-roomify-dashboard-menu .dropdown-menu').removeClass('dropdown-menu');
   $('.region-sidebar-toggle-menu .pane-menu-roomify-dashboard-menu').attr('id','accordian');
   $("#accordian ul.menu .expanded > a").removeAttr("href").css("cursor","pointer");
-  $("#accordian ul.menu .expanded > a").once().click(function(){
+  $("#accordian ul.menu .expanded > a").once().click(function() {
     activeItem = $(this).parent().parent().find('.active');
     activeItem.removeClass('active');
     $(this).closest('li').toggleClass('active');
