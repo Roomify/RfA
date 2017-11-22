@@ -9,6 +9,10 @@
  * Checkout pane callback: returns the Terms & Conditions checkbox.
  */
 function roomify_terms_conditions_review_pane_checkout_form($form, &$form_state, $checkout_pane, $order) {
+  global $language;
+
+  variable_realm_switch('language', $language->language);
+
   $pane_form = array();
 
   $pane_form['terms_conditions'] = array(

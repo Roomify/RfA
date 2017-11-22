@@ -39,7 +39,11 @@ function roomify_terms_and_conditions_page_title() {
  * Terms & Conditions page callback.
  */
 function roomify_terms_conditions_page() {
-  $terms_conditions_body = variable_get_value('roomify_terms_conditions_body');
+  global $language;
+
+  variable_realm_switch('language', $language->language);
+
+  $terms_conditions_body = variable_get_value('roomify_terms_conditions_body', array('language' => $language));
 
   $terms_conditions_attachment = variable_get('terms_conditions_attachment', '');
 
