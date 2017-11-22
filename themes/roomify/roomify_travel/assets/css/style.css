@@ -7952,23 +7952,30 @@ body.toggled #close-sidebar-wrapper {
   -o-transition: 200ms opacity ease-in-out; }
   .roomify-overlay .overlay-content {
     position: relative;
-    top: 20%;
-    /* 25% from the top */
+    top: 15%;
     width: 100%;
     /* 100% width */
     text-align: center;
     /* Centered text/links */
     margin-top: 30px;
-    /* 30px top margin to avoid conflict with the close button on smaller screens */ }
+    /* 30px top margin to avoid conflict with the close button on smaller screens */
+    margin-bottom: 40px; }
+    @media (max-width: 480px) {
+      .roomify-overlay .overlay-content {
+        top: 5%; } }
     .roomify-overlay .overlay-content a {
       padding: 15px 8px;
       text-decoration: none;
       font-size: 36px;
       color: #818181;
+      line-height: 1.2em;
       display: block;
       /* Display block instead of inline */
       transition: 0.3s;
       /* Transition effects on hover (color) */ }
+      @media (max-width: 480px) {
+        .roomify-overlay .overlay-content a {
+          font-size: 26px; } }
       .roomify-overlay .overlay-content a:hover, .roomify-overlay .overlay-content a:focus {
         color: #f1f1f1; }
     .roomify-overlay .overlay-content .menu li:hover, .roomify-overlay .overlay-content .menu li:focus {
