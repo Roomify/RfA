@@ -1234,6 +1234,9 @@ function roomfy_listing_type_availability_calendar_modal($type_id = NULL) {
  * 'Contact Enquiry Sent' title callback.
  */
 function roomify_listing_contact_done_title_callback() {
+  global $language;
+
+  variable_realm_switch('language', $language->language);
 
   return variable_get_value('roomify_submission_reply_page_title');
 }
@@ -1308,6 +1311,9 @@ function roomify_customer_support_form_submit($form, &$form_state) {
  */
 function roomify_listing_enquiry_form($form, &$form_state, $arrival_date, $departure_date, $type_id, $amount, $group_size) {
   global $user;
+  global $language;
+
+  variable_realm_switch('language', $language->language);
 
   $form_instructions_text = variable_get_value('roomify_form_instructions_text');
 
@@ -1676,6 +1682,10 @@ function roomify_listing_enquiry_settings_form_submit($form, &$form_state) {
  * Submission_reply page.
  */
 function roomify_listing_enquiry_done() {
+  global $language;
+
+  variable_realm_switch('language', $language->language);
+
   $submission_reply_text = variable_get_value('roomify_submission_reply_text');
 
   return check_markup($submission_reply_text['value'], $submission_reply_text['format']);

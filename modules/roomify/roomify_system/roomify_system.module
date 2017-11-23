@@ -293,18 +293,13 @@ function roomify_update_pets_form_submit($form, &$form_state) {
 
 /**
  * Helper to switch the language of the variables to the proper one.
- *
- * @see https://www.drupal.org/node/2268415
  */
 function _roomify_system_prepare_variables_realm() {
-  if (empty($_GET['variable_realm_key_language'])) {
-    return;
-  }
+  module_load_include('form.inc', 'variable_realm');
 
-  $language = $_GET['variable_realm_key_language'];
+  $language = variable_realm_form_key_current('language');
 
-  variable_realm_switch('language', $language, FALSE);
-  variable_realm_rebuild();
+  variable_realm_switch('language', $language);
 }
 
 /**
