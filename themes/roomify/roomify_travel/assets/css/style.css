@@ -15857,6 +15857,8 @@ body.node-type-offer .pane-offer-panel-pane-2 .pager-load-more {
   margin: 0 auto;
   position: relative;
   border-bottom: 1px solid #ececec; }
+  .node-type-properties-list .pane-node-title-field h1 {
+    font-size: 26px; }
   .node-type-properties-list .pane-node-title-field:before {
     width: 0;
     height: 0;
