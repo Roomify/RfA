@@ -275,8 +275,8 @@
       color: #5D5D5D;
       .glyphicon {
         margin-right: 8px;
-        font-size: 16px;
-        top: 3px;
+        font-size: 14px;
+        top: 2px;
       }
     }
     .pane-content {
@@ -292,10 +292,11 @@
       display: inline-block;
       float: left;
       width: 100%;
-      padding: 15px 0;
+      padding: 2px 0;
       border-top: 0;
       text-transform: uppercase;
-      font-weight: 300;
+      font-weight: 400;
+      font-size: 12px;
       a {
         text-decoration: underline;
       }
@@ -338,8 +339,8 @@
       float: left;
       width: 100%;
       margin-top: 0;
-      padding: 15px 0;
-      border-top: 1px solid #EEEEEE;
+      padding: 2px 0;
+      font-size: 12px;
       display: inline-block;
     }
   }

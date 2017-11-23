@@ -12231,8 +12231,8 @@ ol.inline.commerce-checkout-progress {
     color: #5D5D5D; }
     .node-type-blog .roomify-blog-icon .pane-title .glyphicon {
       margin-right: 8px;
-      font-size: 16px;
-      top: 3px; }
+      font-size: 14px;
+      top: 2px; }
   .node-type-blog .roomify-blog-icon .pane-content {
     display: inline-block; }
   .node-type-blog .roomify-blog-icon.pane-node-field-blog-categories .glyphicon, .node-type-blog .roomify-blog-icon.pane-node-field-tags .glyphicon {
@@ -12241,10 +12241,11 @@ ol.inline.commerce-checkout-progress {
     display: inline-block;
     float: left;
     width: 100%;
-    padding: 15px 0;
+    padding: 2px 0;
     border-top: 0;
     text-transform: uppercase;
-    font-weight: 300; }
+    font-weight: 400;
+    font-size: 12px; }
     .node-type-blog .roomify-blog-icon.pane-node-field-blog-area a {
       text-decoration: underline; }
     @media (max-width: 480px) {
@@ -12279,8 +12280,8 @@ ol.inline.commerce-checkout-progress {
     float: left;
     width: 100%;
     margin-top: 0;
-    padding: 15px 0;
-    border-top: 1px solid #EEEEEE;
+    padding: 2px 0;
+    font-size: 12px;
     display: inline-block; }
 .node-type-blog .field-name-field-featured-image {
   margin: 25px 0; }
