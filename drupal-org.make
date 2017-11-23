@@ -286,6 +286,8 @@ projects[job_scheduler][download][revision] = 9baaba6bebd34ad6842b1a5292d4d8b32d
 
 projects[hreflang][version] = 1.3
 
+projects[hotjar][version] = 1.2
+
 projects[i18n][version] = 1.15
 
 projects[i18nviews][version] = 3.0-alpha1
