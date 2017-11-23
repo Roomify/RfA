@@ -140,7 +140,7 @@
           <div class="inner col-xs-1">
           <!-- Link to open sidebar menu -->
             <span class="roomify-sidebar-link">
-              <a class="roomify-sidebar-menu-toggle" href="#menu-toggle">
+              <a class="roomify-sidebar-menu-toggle" href="javascript:void(0)">
                 <!-- PRINT SVG USER ICON -->
                 <?php print(file_get_contents($directory . '/assets/images/user.svg')); ?>
               </a>

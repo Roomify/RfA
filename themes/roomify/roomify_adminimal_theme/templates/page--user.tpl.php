@@ -37,9 +37,7 @@
 
   <!-- AGENCY SIDEBAR MENU -->
   <div class="roomify-user-menu">
-    <?php
-      print l(t('My Account'), '#menu-toggle', array('attributes' => array('class' => 'roomify-sidebar-menu-toggle')));
-    ?>
+    <a class="roomify-sidebar-menu-toggle" href="javascript:void(0)"></a>
   </div>
 
 </div>
