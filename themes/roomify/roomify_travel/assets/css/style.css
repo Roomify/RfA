@@ -7195,7 +7195,7 @@ blockquote {
   border: 1px solid #D4D3D3;
   -webkit-box-shadow: inset 0 2px 0 rgba(0, 0, 0, 0.075);
   box-shadow: inset 0 2px 0 rgba(0, 0, 0, 0.075);
-  height: 37px;
+  height: 42px;
   font-family: 'Lato' sans-serif;
   border-radius: 4px;
   border: 1px solid #e7e7e7; }
@@ -7204,7 +7204,10 @@ blockquote {
   height: 35px; }
 
 .select2-container--default .select2-selection--single .select2-selection__rendered {
-  line-height: 38px; }
+  line-height: 41px; }
+
+.select2.select2-container {
+  font-size: 13px; }
 
 header.roomify-header {
   margin-bottom: 0;
@@ -10139,7 +10142,7 @@ ol.inline.commerce-checkout-progress {
 @media (min-width: 992px) {
     .page-activities-search #property-bat-facets-availability .form-wrapper .search-availability-submit button,
     .page-availability-search #property-bat-facets-availability .form-wrapper .search-availability-submit button {
-      font-size: 15px;
+      font-size: 13px;
       height: auto; }
     .page-activities-search #property-bat-facets-availability .form-wrapper .search-availability-submit:hover,
     .page-availability-search #property-bat-facets-availability .form-wrapper .search-availability-submit:hover {
@@ -10704,7 +10707,7 @@ ol.inline.commerce-checkout-progress {
   #property-bat-facets-availability .form-wrapper select,
   #property-bat-facets-availability .form-wrapper input {
     width: 100%;
-    height: 37px;
+    height: 42px;
     border-radius: 0;
     background: #F4F4F4;
     border: 1px solid #D4D3D3; }
@@ -10942,8 +10945,8 @@ ol.inline.commerce-checkout-progress {
     #property-bat-facets-availability .form-wrapper .search-availability-submit .form-submit,
     #property-bat-facets-availability .form-wrapper .search-submit .form-submit {
       text-transform: capitalize;
-      padding: 6px;
-      font-size: 15px;
+      padding: 9px;
+      font-size: 14px;
       width: 100%;
       color: #fff;
       background-color: #FF4136;
@@ -11124,7 +11127,7 @@ ol.inline.commerce-checkout-progress {
     -moz-appearance: inherit;
     -webkit-border-radius: 2px;
     color: #353535;
-    font-size: 15px; }
+    font-size: 13px; }
     #property-bat-activity-facets-availability .form-wrapper input.form-text::-webkit-input-placeholder, #property-bat-activity-facets-availability .form-wrapper select.form-text::-webkit-input-placeholder, #property-bat-activity-facets-availability .form-wrapper .form-control.form-text::-webkit-input-placeholder,
     #roomify-property-search-block-form .form-wrapper input.form-text::-webkit-input-placeholder,
     #roomify-property-search-block-form .form-wrapper select.form-text::-webkit-input-placeholder,
@@ -12805,8 +12808,8 @@ body.node-type-homepage {
   body.node-type-homepage .select2-selection.select2-selection--single {
     border-radius: 2px;
     border: 1px solid #d4d3d3;
-    font-weight: 400;
-    text-transform: lowercase; }
+    font-weight: 300;
+    text-transform: uppercase; }
   @media (max-width: 767px) {
     body.node-type-homepage .select2.select2-container {
       width: 100%; } }
@@ -13011,12 +13014,12 @@ body.node-type-homepage {
       body.node-type-homepage .pane-roomify-listing-availability-search-block-roomify-property-search form#property-bat-facets-availability .form-wrapper label {
         display: none !important; }
       body.node-type-homepage .pane-roomify-listing-availability-search-block-roomify-property-search form#property-bat-facets-availability .form-wrapper input, body.node-type-homepage .pane-roomify-listing-availability-search-block-roomify-property-search form#property-bat-facets-availability .form-wrapper select, body.node-type-homepage .pane-roomify-listing-availability-search-block-roomify-property-search form#property-bat-facets-availability .form-wrapper .form-control {
-        text-transform: lowercase;
-        font-weight: 400; }
+        text-transform: uppercase;
+        font-weight: 300; }
       body.node-type-homepage .pane-roomify-listing-availability-search-block-roomify-property-search form#property-bat-facets-availability .form-wrapper .search-availability-submit {
         margin-top: 0; }
         body.node-type-homepage .pane-roomify-listing-availability-search-block-roomify-property-search form#property-bat-facets-availability .form-wrapper .search-availability-submit button {
-          text-transform: capitalize; }
+          text-transform: uppercase; }
   body.node-type-homepage .pane-homepage-blogposts-panel-pane-1,
   body.node-type-homepage .pane-featured-properties-panel-pane-3,
   body.node-type-homepage .pane-featured-properties-panel-pane-4,
@@ -13613,11 +13616,14 @@ body.node-type-homepage {
     width: 100%; }
     .node-type-homepage.homepage-tight .pane-roomify-listing-availability-search-block-roomify-property-search form#property-bat-facets-availability .form-wrapper input, .node-type-homepage.homepage-tight .pane-roomify-listing-availability-search-block-roomify-property-search form#property-bat-facets-availability .form-wrapper select, .node-type-homepage.homepage-tight .pane-roomify-listing-availability-search-block-roomify-property-search form#property-bat-facets-availability .form-wrapper .form-control {
       background: #ffffff;
-      font-weight: 400; }
+      font-weight: 300; }
 
 .node-type-homepage.homepage-video .pane-node-field-homepage-video {
-  max-height: 600px;
+  max-height: 660px;
   background: #f1f1f1; }
+  .node-type-homepage.homepage-video .pane-node-field-homepage-video .field-name-field-homepage-video {
+    max-height: 660px;
+    overflow: hidden; }
   .node-type-homepage.homepage-video .pane-node-field-homepage-video video {
     width: 100%; }
 @media (min-width: 768px) {
@@ -15723,7 +15729,7 @@ body.node-type-offer .pane-offer-panel-pane-2 .view-offer form {
     min-width: 100px; }
   body.node-type-offer .pane-offer-panel-pane-2 .view-offer form .form-submit {
     margin-top: 32px;
-    height: 37px; }
+    height: 42px; }
 body.node-type-offer .pane-offer-panel-pane-2 .property-col {
   display: table;
   margin: 15px auto;

@@ -38,7 +38,7 @@
           padding: 0;
         }
         button {
-          font-size: 15px;
+          font-size: 13px;
           height: auto;
         }
         &:hover {
@@ -585,7 +585,7 @@
     select,
     input {
       width: 100%;
-      height: 37px;
+      height: 42px;
       border-radius: 0;
       background: #F4F4F4;
       border: 1px solid #D4D3D3;
@@ -658,8 +658,8 @@
       }
       .form-submit {
         text-transform: capitalize;
-        padding: 6px;
-        font-size: 15px;
+        padding: 9px;
+        font-size: 14px;
         width: 100%;
         @include button-variant($btn-danger-color, $btn-danger-bg, $btn-danger-border);
       }
@@ -670,7 +670,7 @@
       -moz-appearance: inherit;
       -webkit-border-radius: 2px;
       color: #353535;
-      font-size: 15px;
+      font-size: 13px;
       &.form-text::-webkit-input-placeholder {
         color: #353535;
       }

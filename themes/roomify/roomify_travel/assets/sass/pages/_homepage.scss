@@ -3,8 +3,8 @@ body.node-type-homepage {
   .select2-selection.select2-selection--single {
     border-radius: 2px;
     border: 1px solid rgb(212, 211, 211);
-    font-weight: 400;
-    text-transform: lowercase;
+    font-weight: 300;
+    text-transform: uppercase;
   }
   .select2.select2-container {
     @media (max-width: $screen-xs-max) {
@@ -222,13 +222,13 @@ body.node-type-homepage {
           display: none !important;
         }
         input, select, .form-control {
-          text-transform: lowercase;
-          font-weight: 400;
+          text-transform: uppercase;
+          font-weight: 300;
         }
         .search-availability-submit {
           margin-top: 0;
           button {
-            text-transform: capitalize;
+            text-transform: uppercase;
           }
         }
       }
@@ -794,7 +794,7 @@ body.node-type-homepage {
       &#property-bat-facets-availability .form-wrapper {
         input, select, .form-control {
           background: #ffffff;
-          font-weight: 400;
+          font-weight: 300;
         }
       }
     }
@@ -803,8 +803,12 @@ body.node-type-homepage {
 
 .node-type-homepage.homepage-video {
   .pane-node-field-homepage-video {
-    max-height: 600px;
+    max-height: 660px;
     background: #f1f1f1;
+    .field-name-field-homepage-video {
+      max-height: 660px;
+      overflow: hidden;
+    }
     video {
       width: 100%;
     }
