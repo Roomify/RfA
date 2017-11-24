@@ -2719,31 +2719,34 @@ body.adminimal-skin-material table.views-table tbody tr td {
     top: 15px;
   }
 }
-.view-dashboard-notifications .view-header {
+.pane-dashboard-notifications-panel-pane-1 .ajax-progress {
+  display: none;
+}
+.pane-dashboard-notifications-panel-pane-1 .view-dashboard-notifications .view-header {
   margin-bottom: 15px;
   width: 100%;
   display: inline-block;
 }
-.view-dashboard-notifications .view-header a {
+.pane-dashboard-notifications-panel-pane-1 .view-dashboard-notifications .view-header a {
   float: right;
 }
-.view-dashboard-notifications .views-row {
+.pane-dashboard-notifications-panel-pane-1 .view-dashboard-notifications .views-row {
   color: white;
   margin-bottom: 15px;
 }
-.view-dashboard-notifications .views-row .views-field-type {
+.pane-dashboard-notifications-panel-pane-1 .view-dashboard-notifications .views-row .views-field-type {
   padding: 5px 12px;
   background: #405467;
 }
-.view-dashboard-notifications .views-row .views-field-user-notifications-message {
+.pane-dashboard-notifications-panel-pane-1 .view-dashboard-notifications .views-row .views-field-user-notifications-message {
   padding: 7px 12px;
   background: #687c90;
 }
-.view-dashboard-notifications .views-row .views-field-hide {
+.pane-dashboard-notifications-panel-pane-1 .view-dashboard-notifications .views-row .views-field-hide {
   float: right;
   margin: 5px 12px;
 }
-.view-dashboard-notifications .views-row .views-field-hide a {
+.pane-dashboard-notifications-panel-pane-1 .view-dashboard-notifications .views-row .views-field-hide a {
   color: white;
 }
 .page-admin-bat-config-booking-add-roomify-accommodation-booking #bat-booking-edit-form .field-name-booking-end-date,
