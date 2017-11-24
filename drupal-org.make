@@ -530,6 +530,8 @@ projects[views_megarow][version] = 1.7
 
 projects[views_php][version] = 1.0-alpha3
 
+projects[views_refresh][version] = 1.2
+
 projects[votingapi][version] = 2.12
 projects[votingapi][patch][] = https://www.drupal.org/files/issues/updating_voting_api_default_views-2679585-3.patch
 

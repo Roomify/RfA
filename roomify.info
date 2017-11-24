@@ -53,6 +53,7 @@ dependencies[] = i18n_panels
 dependencies[] = views_content
 dependencies[] = views
 dependencies[] = views_data_export
+dependencies[] = views_refresh
 
 ; Rules
 dependencies[] = rules

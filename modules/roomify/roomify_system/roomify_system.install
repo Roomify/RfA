@@ -1074,3 +1074,10 @@ function roomify_system_update_7063() {
 function roomify_system_update_7064() {
   roomify_system_create_notification_types();
 }
+
+/**
+ * Enable module "Views Refresh".
+ */
+function roomify_system_update_7065() {
+  module_enable(array('views_refresh'));
+}
