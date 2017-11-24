@@ -231,6 +231,14 @@ function roomify_homepage_views_default_views() {
   $handler->display->display_options['fields']['title']['exclude'] = TRUE;
   $handler->display->display_options['fields']['title']['element_label_colon'] = FALSE;
   $handler->display->display_options['fields']['title']['link_to_node'] = FALSE;
+  /* Field: Content: Path */
+  $handler->display->display_options['fields']['path']['id'] = 'path';
+  $handler->display->display_options['fields']['path']['table'] = 'node';
+  $handler->display->display_options['fields']['path']['field'] = 'path';
+  $handler->display->display_options['fields']['path']['relationship'] = 'field_homepage_properties_lists_target_id';
+  $handler->display->display_options['fields']['path']['label'] = '';
+  $handler->display->display_options['fields']['path']['exclude'] = TRUE;
+  $handler->display->display_options['fields']['path']['element_label_colon'] = FALSE;
   /* Field: Content: Featured Image */
   $handler->display->display_options['fields']['field_pl_featured_image']['id'] = 'field_pl_featured_image';
   $handler->display->display_options['fields']['field_pl_featured_image']['table'] = 'field_data_field_pl_featured_image';
@@ -238,12 +246,12 @@ function roomify_homepage_views_default_views() {
   $handler->display->display_options['fields']['field_pl_featured_image']['relationship'] = 'field_homepage_properties_lists_target_id';
   $handler->display->display_options['fields']['field_pl_featured_image']['label'] = '';
   $handler->display->display_options['fields']['field_pl_featured_image']['alter']['alter_text'] = TRUE;
-  $handler->display->display_options['fields']['field_pl_featured_image']['alter']['text'] = '<a href="/node/[nid]">
-    [field_pl_featured_image]
-    <div class="overlay">
-    <div class="content">[title]</div>
-    </div>
-    </a>';
+  $handler->display->display_options['fields']['field_pl_featured_image']['alter']['text'] = '<a href="[path]">
+      [field_pl_featured_image]
+      <div class="overlay">
+      <div class="content">[title]</div>
+      </div>
+      </a>';
   $handler->display->display_options['fields']['field_pl_featured_image']['element_label_colon'] = FALSE;
   $handler->display->display_options['fields']['field_pl_featured_image']['element_wrapper_class'] = 'hovereffect';
   $handler->display->display_options['fields']['field_pl_featured_image']['click_sort_column'] = 'fid';
