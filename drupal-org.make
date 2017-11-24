@@ -484,6 +484,9 @@ projects[title][version] = 1.0-alpha9
 
 projects[token][version] = 1.7
 
+projects[user_notifications][version] = 2.x-dev
+projects[user_notifications][patch][] = https://www.drupal.org/files/issues/user_notifications-2926012-1.patch
+
 projects[userone][version] = 1.0-beta1
 
 projects[uuid][version] = 1.0
