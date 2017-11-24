@@ -2719,6 +2719,14 @@ body.adminimal-skin-material table.views-table tbody tr td {
     top: 15px;
   }
 }
+.view-dashboard-notifications .view-header {
+  margin-bottom: 15px;
+  width: 100%;
+  display: inline-block;
+}
+.view-dashboard-notifications .view-header a {
+  float: right;
+}
 .view-dashboard-notifications .views-row {
   color: white;
   margin-bottom: 15px;

@@ -4448,6 +4448,12 @@ function roomify_dashboard_views_default_views() {
   $handler->display->display_options['pager']['options']['id'] = '0';
   $handler->display->display_options['style_plugin'] = 'default';
   $handler->display->display_options['row_plugin'] = 'fields';
+  /* Header: Global: Text area */
+  $handler->display->display_options['header']['area']['id'] = 'area';
+  $handler->display->display_options['header']['area']['table'] = 'views';
+  $handler->display->display_options['header']['area']['field'] = 'area';
+  $handler->display->display_options['header']['area']['content'] = '<a href="/user-notifications/hide-all" class="use-ajax">Hide all</a>';
+  $handler->display->display_options['header']['area']['format'] = 'filtered_text';
   /* No results behavior: Global: Text area */
   $handler->display->display_options['empty']['area']['id'] = 'area';
   $handler->display->display_options['empty']['area']['table'] = 'views';
@@ -4515,6 +4521,7 @@ function roomify_dashboard_views_default_views() {
     t('‹ previous'),
     t('next ›'),
     t('last »'),
+    t('<a href="/user-notifications/hide-all" class="use-ajax">Hide all</a>'),
     t('No notifications to read.'),
     t('All'),
     t('Content pane'),
