@@ -28,6 +28,7 @@ features[panels_mini][] = dashboard_welcome
 features[views_view][] = availability_calendar
 features[views_view][] = dashboard_bookings
 features[views_view][] = dashboard_guest_stays
+features[views_view][] = dashboard_notifications
 features[views_view][] = email_templates
 features[views_view][] = favorite_properties
 features[views_view][] = form_submissions

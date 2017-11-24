@@ -1597,6 +1597,7 @@ function roomify_dashboard_default_panels_mini() {
       ),
       'middle' => NULL,
       'bottom' => NULL,
+      'middle-second' => NULL,
     ),
     'top' => array(
       'style' => 'tabs',
@@ -1826,6 +1827,25 @@ function roomify_dashboard_default_panels_mini() {
   $pane->uuid = 'c58443f0-5efd-440c-916a-c5b8bcbdc63d';
   $display->content['new-c58443f0-5efd-440c-916a-c5b8bcbdc63d'] = $pane;
   $display->panels['top'][6] = 'new-c58443f0-5efd-440c-916a-c5b8bcbdc63d';
+  $pane = new stdClass();
+  $pane->pid = 'new-9c03ae9f-5f7e-43fc-8af3-9bee26ba71d7';
+  $pane->panel = 'top';
+  $pane->type = 'views_panes';
+  $pane->subtype = 'dashboard_notifications-panel_pane_1';
+  $pane->shown = TRUE;
+  $pane->access = array();
+  $pane->configuration = array();
+  $pane->cache = array();
+  $pane->style = array(
+    'settings' => NULL,
+  );
+  $pane->css = array();
+  $pane->extras = array();
+  $pane->position = 7;
+  $pane->locks = array();
+  $pane->uuid = '9c03ae9f-5f7e-43fc-8af3-9bee26ba71d7';
+  $display->content['new-9c03ae9f-5f7e-43fc-8af3-9bee26ba71d7'] = $pane;
+  $display->panels['top'][7] = 'new-9c03ae9f-5f7e-43fc-8af3-9bee26ba71d7';
   $display->hide_title = PANELS_TITLE_FIXED;
   $display->title_pane = '0';
   $mini->display = $display;
