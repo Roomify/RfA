@@ -23,6 +23,77 @@ function roomify_system_install() {
   roomify_system_add_user_fields();
 
   roomify_system_setup_advagg();
+
+  roomify_system_create_notification_types();
+}
+
+/**
+ * Create notification types.
+ */
+function roomify_system_create_notification_types() {
+  $user_notifications_types = array(
+    array(
+      'name' => 'channel_manager_conflict',
+      'label' => 'Channel manager conflict',
+      'locked' => 1,
+    ),
+    array(
+      'name' => 'new_booking',
+      'label' => 'New Booking',
+      'locked' => 1,
+    ),
+    array(
+      'name' => 'new_conversation',
+      'label' => 'New Conversation',
+      'locked' => 1,
+    ),
+    array(
+      'name' => 'new_conversation_message',
+      'label' => 'New Conversation Message',
+      'locked' => 1,
+    ),
+  );
+
+  foreach ($user_notifications_types as $info) {
+    if (empty(entity_load_multiple_by_name('user_notifications_type', array($info['name'])))) {
+      $user_notifications_type = entity_get_controller('user_notifications_type')->create($info);
+      $user_notifications_type->save();
+
+      $instance = array(
+        'bundle' => $info['name'],
+        'default_value' => NULL,
+        'deleted' => 0,
+        'description' => 'Enter a message that will be displayed to a user as a notification.',
+        'display' => array(
+          'default' => array(
+            'label' => 'above',
+            'module' => 'text',
+            'settings' => array(),
+            'type' => 'text_default',
+            'weight' => 2,
+          ),
+        ),
+        'entity_type' => 'user_notifications',
+        'field_name' => 'user_notifications_message',
+        'label' => 'New Message',
+        'required' => 1,
+        'settings' => array(
+          'text_processing' => 0,
+          'user_register_form' => FALSE,
+        ),
+        'widget' => array(
+          'active' => 1,
+          'module' => 'text',
+          'settings' => array(
+            'rows' => 5,
+          ),
+          'type' => 'text_textarea',
+          'weight' => 3,
+        ),
+      );
+      field_create_instance($instance);
+    }
+  }
 }
 
 /**
@@ -995,4 +1066,11 @@ function roomify_system_update_7062() {
  */
 function roomify_system_update_7063() {
   module_enable(array('user_notifications'));
+}
+
+/**
+ * Create notification types.
+ */
+function roomify_system_update_7064() {
+  roomify_system_create_notification_types();
 }
