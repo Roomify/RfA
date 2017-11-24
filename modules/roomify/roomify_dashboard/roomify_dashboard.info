@@ -39,3 +39,4 @@ files[] = views/roomify_dashboard_filters_handler_filter_language_select.inc
 files[] = views/roomify_dashboard_handler_localized_edit_link.inc
 files[] = views/roomify_dashboard_handler_properties_types_edit_link.inc
 files[] = views/roomify_dashboard_handler_bat_booking_price.inc
+files[] = views/roomify_dashboard_handler_hide_notification.inc

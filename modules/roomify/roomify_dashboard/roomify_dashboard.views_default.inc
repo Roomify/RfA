@@ -4455,6 +4455,12 @@ function roomify_dashboard_views_default_views() {
   $handler->display->display_options['empty']['area']['empty'] = TRUE;
   $handler->display->display_options['empty']['area']['content'] = 'No notifications to read.';
   $handler->display->display_options['empty']['area']['format'] = 'filtered_text';
+  /* Field: User notification: Hide notification */
+  $handler->display->display_options['fields']['hide']['id'] = 'hide';
+  $handler->display->display_options['fields']['hide']['table'] = 'user_notifications';
+  $handler->display->display_options['fields']['hide']['field'] = 'hide';
+  $handler->display->display_options['fields']['hide']['label'] = '';
+  $handler->display->display_options['fields']['hide']['element_label_colon'] = FALSE;
   /* Field: User notification: User Notification type */
   $handler->display->display_options['fields']['type']['id'] = 'type';
   $handler->display->display_options['fields']['type']['table'] = 'user_notifications';
@@ -4483,6 +4489,13 @@ function roomify_dashboard_views_default_views() {
   $handler->display->display_options['arguments']['user_notifications_recipient_uid_target_id']['summary']['number_of_records'] = '0';
   $handler->display->display_options['arguments']['user_notifications_recipient_uid_target_id']['summary']['format'] = 'default_summary';
   $handler->display->display_options['arguments']['user_notifications_recipient_uid_target_id']['summary_options']['items_per_page'] = '25';
+  /* Filter criterion: User notification: State entity */
+  $handler->display->display_options['filters']['state']['id'] = 'state';
+  $handler->display->display_options['filters']['state']['table'] = 'user_notifications';
+  $handler->display->display_options['filters']['state']['field'] = 'state';
+  $handler->display->display_options['filters']['state']['value'] = array(
+    'unseen' => 'unseen',
+  );
 
   /* Display: Content pane */
   $handler = $view->new_display('panel_pane', 'Content pane', 'panel_pane_1');

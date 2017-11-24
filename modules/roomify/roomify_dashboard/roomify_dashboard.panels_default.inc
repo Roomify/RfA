@@ -1839,7 +1839,10 @@ function roomify_dashboard_default_panels_mini() {
   $pane->style = array(
     'settings' => NULL,
   );
-  $pane->css = array();
+  $pane->css = array(
+    'css_id' => '',
+    'css_class' => 'col-xs-12',
+  );
   $pane->extras = array();
   $pane->position = 7;
   $pane->locks = array();

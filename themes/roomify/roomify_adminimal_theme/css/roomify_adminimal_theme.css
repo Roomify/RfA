@@ -1,3 +1,5 @@
+@import url(https://fonts.googleapis.com/css?family=Lato:400,300,700);
+@import url(https://fonts.googleapis.com/css?family=Open+Sans:400,800,700);
 .btn-circle {
   width: 30px;
   height: 30px;
@@ -2717,6 +2719,25 @@ body.adminimal-skin-material table.views-table tbody tr td {
     top: 15px;
   }
 }
+.view-dashboard-notifications .views-row {
+  color: white;
+  margin-bottom: 15px;
+}
+.view-dashboard-notifications .views-row .views-field-type {
+  padding: 5px 12px;
+  background: #405467;
+}
+.view-dashboard-notifications .views-row .views-field-user-notifications-message {
+  padding: 7px 12px;
+  background: #687c90;
+}
+.view-dashboard-notifications .views-row .views-field-hide {
+  float: right;
+  margin: 5px 12px;
+}
+.view-dashboard-notifications .views-row .views-field-hide a {
+  color: white;
+}
 .page-admin-bat-config-booking-add-roomify-accommodation-booking #bat-booking-edit-form .field-name-booking-end-date,
 #bat-booking-edit-roomify-accommodation-booking-form .field-name-booking-end-date,
 .page-admin-bat-config-booking-add-roomify-accommodation-booking #bat-booking-edit-form .field-name-booking-start-date,
@@ -3455,42 +3476,6 @@ body.adminimal-skin-material .vertical-tabs-panes fieldset.vertical-tabs-pane {
   line-height: 33px;
 }
 /* Custom font */
-@font-face {
-  font-family: 'Lato';
-  font-style: normal;
-  font-weight: 300;
-  src: local('Lato Light'), local('Lato-Light'), url(https://fonts.gstatic.com/s/lato/v14/nj47mAZe0mYUIySgfn0wpQ.ttf) format('truetype');
-}
-@font-face {
-  font-family: 'Lato';
-  font-style: normal;
-  font-weight: 400;
-  src: local('Lato Regular'), local('Lato-Regular'), url(https://fonts.gstatic.com/s/lato/v14/v0SdcGFAl2aezM9Vq_aFTQ.ttf) format('truetype');
-}
-@font-face {
-  font-family: 'Lato';
-  font-style: normal;
-  font-weight: 700;
-  src: local('Lato Bold'), local('Lato-Bold'), url(https://fonts.gstatic.com/s/lato/v14/DvlFBScY1r-FMtZSYIYoYw.ttf) format('truetype');
-}
-@font-face {
-  font-family: 'Open Sans';
-  font-style: normal;
-  font-weight: 400;
-  src: local('Open Sans Regular'), local('OpenSans-Regular'), url(https://fonts.gstatic.com/s/opensans/v15/cJZKeOuBrn4kERxqtaUH3aCWcynf_cDxXwCLxiixG1c.ttf) format('truetype');
-}
-@font-face {
-  font-family: 'Open Sans';
-  font-style: normal;
-  font-weight: 700;
-  src: local('Open Sans Bold'), local('OpenSans-Bold'), url(https://fonts.gstatic.com/s/opensans/v15/k3k702ZOKiLJc3WVjuplzInF5uFdDttMLvmWuJdhhgs.ttf) format('truetype');
-}
-@font-face {
-  font-family: 'Open Sans';
-  font-style: normal;
-  font-weight: 800;
-  src: local('Open Sans ExtraBold'), local('OpenSans-ExtraBold'), url(https://fonts.gstatic.com/s/opensans/v15/EInbV5DfGHOiMmvb1Xr-honF5uFdDttMLvmWuJdhhgs.ttf) format('truetype');
-}
 #references-dialog-page {
   background: white;
 }
