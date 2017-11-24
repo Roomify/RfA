@@ -586,4 +586,36 @@
       }
     }
   }
+  .view-blog-travel.view-display-id-panel_pane_3 {
+    .views-row {
+      display: inline-block;
+      width: 100%;
+      margin-bottom: 25px;
+      .views-field-nothing {
+        display: inline-block;
+        float: left;
+        margin-left: 15px;
+        width: calc(100% - 155px);
+        .title {
+          font-size: 18px;
+          &:before {
+            display: none;
+          }
+        }
+      }
+      .views-field-field-featured-image {
+        display: inline-block;
+        float: left;
+        max-width: 140px;
+      }
+      .views-field-title-field {
+        display: inline-block;
+        margin-left: 15px;
+        font-size: 18px;
+        &:before {
+          display: none;
+        }
+      }
+    }
+  }
 }
