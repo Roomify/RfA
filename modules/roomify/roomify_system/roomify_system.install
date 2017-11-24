@@ -989,3 +989,10 @@ function roomify_system_update_7061() {
 function roomify_system_update_7062() {
   module_enable(array('video'));
 }
+
+/**
+ * Enable module "User Notifications".
+ */
+function roomify_system_update_7063() {
+  module_enable(array('user_notifications'));
+}
