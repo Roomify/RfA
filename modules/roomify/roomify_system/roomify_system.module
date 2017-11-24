@@ -2475,3 +2475,19 @@ function roomify_system_addtoany_settings_form($form, &$form_state) {
 
   return system_settings_form($form);
 }
+
+/**
+ * Implements hook_xmlsitemap_link_alter().
+ */
+function roomify_system_xmlsitemap_link_alter(&$link) {
+  if ($link['type'] == 'menu_link' || $link['type'] == 'taxonomy_term') {
+    $link['lastmod'] = time() - 3600 * rand(1, 12);
+    $link['changefreq'] = XMLSITEMAP_FREQUENCY_WEEKLY;
+  }
+
+  if ($link['type'] == 'roomify_property') {
+    if (!isset($link['changefreq']) || empty($link['changefreq'])) {
+      $link['changefreq'] = XMLSITEMAP_FREQUENCY_WEEKLY;
+    }
+  }
+}
