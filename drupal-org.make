@@ -536,7 +536,10 @@ projects[wysiwyg][version] = 2.4
 
 projects[xautoload][version] = 5.7
 
-projects[xmlsitemap][version] = 2.3
+projects[xmlsitemap][type] = module
+projects[xmlsitemap][download][type] = git
+projects[xmlsitemap][download][url] = https://git.drupal.org/project/xmlsitemap.git
+projects[xmlsitemap][download][revision] = eaaf1dd750c17ccca9c58cf40d1cda815b77cbb2
 projects[xmlsitemap][patch][] = https://www.drupal.org/files/issues/xmlsitemap-entity-integration-1461670-38.patch
 
 projects[yoast_seo][type] = module
