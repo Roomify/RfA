@@ -293,6 +293,13 @@ body.node-type-homepage {
           top: 45%;
         }
       }
+      .hovereffect a .overlay {
+        opacity: 1;
+        background: transparent;
+      }
+      .hovereffect a:hover .overlay {
+        background-color: rgba(0, 0, 0, 0.5);
+      }
     }
   }
 }

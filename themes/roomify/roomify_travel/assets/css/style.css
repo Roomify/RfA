@@ -13105,6 +13105,11 @@ body.node-type-homepage {
       .pane-homepage-panel-pane-2 .view-homepage .views-row.small .overlay .content {
         font-size: 20px;
         top: 45%; }
+    .pane-homepage-panel-pane-2 .view-homepage .views-row .hovereffect a .overlay {
+      opacity: 1;
+      background: transparent; }
+    .pane-homepage-panel-pane-2 .view-homepage .views-row .hovereffect a:hover .overlay {
+      background-color: rgba(0, 0, 0, 0.5); }
 
 /* CAROUSEL */
 .pane-featured-properties-panel-pane-3 {
