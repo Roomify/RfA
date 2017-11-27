@@ -156,7 +156,7 @@ function roomify_travel_theme_views_default_views() {
   $handler->display->display_options['pager']['type'] = 'full';
   $handler->display->display_options['style_plugin'] = 'default';
   $handler->display->display_options['row_plugin'] = 'fields';
-  /* Field: Indexed Node: Featured Image */
+  /* Field: Indexed Content: Featured Image */
   $handler->display->display_options['fields']['field_featured_image']['id'] = 'field_featured_image';
   $handler->display->display_options['fields']['field_featured_image']['table'] = 'search_api_index_blogposts_index';
   $handler->display->display_options['fields']['field_featured_image']['field'] = 'field_featured_image';
@@ -172,7 +172,7 @@ function roomify_travel_theme_views_default_views() {
       ),
     ),
   );
-  /* Field: Indexed Node: Title */
+  /* Field: Indexed Content: Title */
   $handler->display->display_options['fields']['title_field']['id'] = 'title_field';
   $handler->display->display_options['fields']['title_field']['table'] = 'search_api_index_blogposts_index';
   $handler->display->display_options['fields']['title_field']['field'] = 'title_field';
@@ -186,7 +186,7 @@ function roomify_travel_theme_views_default_views() {
       ),
     ),
   );
-  /* Field: Indexed Node: Date created */
+  /* Field: Indexed Content: Date created */
   $handler->display->display_options['fields']['created']['id'] = 'created';
   $handler->display->display_options['fields']['created']['table'] = 'search_api_index_blogposts_index';
   $handler->display->display_options['fields']['created']['field'] = 'created';
@@ -194,7 +194,7 @@ function roomify_travel_theme_views_default_views() {
   $handler->display->display_options['fields']['created']['custom_date_format'] = 'D, d M, Y';
   $handler->display->display_options['fields']['created']['second_date_format'] = 'bat_daily';
   $handler->display->display_options['fields']['created']['link_to_entity'] = 0;
-  /* Field: Indexed Node: The main body text */
+  /* Field: Indexed Content: The main body text */
   $handler->display->display_options['fields']['body']['id'] = 'body';
   $handler->display->display_options['fields']['body']['table'] = 'search_api_index_blogposts_index';
   $handler->display->display_options['fields']['body']['field'] = 'body';
@@ -217,7 +217,7 @@ function roomify_travel_theme_views_default_views() {
   $handler->display->display_options['fields']['view_node']['element_class'] = 'btn btn-default btn-primary';
   $handler->display->display_options['fields']['view_node']['element_label_colon'] = FALSE;
   $handler->display->display_options['fields']['view_node']['text'] = 'Read More';
-  /* Sort criterion: Indexed Node: Date created */
+  /* Sort criterion: Indexed Content: Date created */
   $handler->display->display_options['sorts']['created']['id'] = 'created';
   $handler->display->display_options['sorts']['created']['table'] = 'search_api_index_blogposts_index';
   $handler->display->display_options['sorts']['created']['field'] = 'created';
@@ -226,7 +226,7 @@ function roomify_travel_theme_views_default_views() {
   /* Display: Blogposts */
   $handler = $view->new_display('panel_pane', 'Blogposts', 'panel_pane_1');
   $handler->display->display_options['defaults']['fields'] = FALSE;
-  /* Field: Indexed Node: Node ID */
+  /* Field: Indexed Content: Node ID */
   $handler->display->display_options['fields']['nid']['id'] = 'nid';
   $handler->display->display_options['fields']['nid']['table'] = 'search_api_index_blogposts_index';
   $handler->display->display_options['fields']['nid']['field'] = 'nid';
@@ -234,23 +234,23 @@ function roomify_travel_theme_views_default_views() {
   $handler->display->display_options['fields']['nid']['exclude'] = TRUE;
   $handler->display->display_options['fields']['nid']['element_label_colon'] = FALSE;
   $handler->display->display_options['fields']['nid']['link_to_entity'] = 0;
-  /* Field: Indexed Node: Add to Any buttons */
+  /* Field: Indexed Content: Add to Any buttons */
   $handler->display->display_options['fields']['addtoany']['id'] = 'addtoany';
   $handler->display->display_options['fields']['addtoany']['table'] = 'search_api_index_blogposts_index';
   $handler->display->display_options['fields']['addtoany']['field'] = 'addtoany';
   $handler->display->display_options['fields']['addtoany']['label'] = '';
   $handler->display->display_options['fields']['addtoany']['exclude'] = TRUE;
   $handler->display->display_options['fields']['addtoany']['element_label_colon'] = FALSE;
-  /* Field: Indexed Node: Featured Image */
+  /* Field: Indexed Content: Featured Image */
   $handler->display->display_options['fields']['field_featured_image']['id'] = 'field_featured_image';
   $handler->display->display_options['fields']['field_featured_image']['table'] = 'search_api_index_blogposts_index';
   $handler->display->display_options['fields']['field_featured_image']['field'] = 'field_featured_image';
   $handler->display->display_options['fields']['field_featured_image']['label'] = '';
   $handler->display->display_options['fields']['field_featured_image']['alter']['alter_text'] = TRUE;
   $handler->display->display_options['fields']['field_featured_image']['alter']['text'] = '<div class="blogpost-image">
-   [addtoany]
-   [field_featured_image] 
-  </div>';
+     [addtoany]
+     [field_featured_image] 
+    </div>';
   $handler->display->display_options['fields']['field_featured_image']['element_label_colon'] = FALSE;
   $handler->display->display_options['fields']['field_featured_image']['click_sort_column'] = 'fid';
   $handler->display->display_options['fields']['field_featured_image']['settings'] = array(
@@ -262,7 +262,7 @@ function roomify_travel_theme_views_default_views() {
       ),
     ),
   );
-  /* Field: Indexed Node: Title */
+  /* Field: Indexed Content: Title */
   $handler->display->display_options['fields']['title_field']['id'] = 'title_field';
   $handler->display->display_options['fields']['title_field']['table'] = 'search_api_index_blogposts_index';
   $handler->display->display_options['fields']['title_field']['field'] = 'title_field';
@@ -276,7 +276,7 @@ function roomify_travel_theme_views_default_views() {
       ),
     ),
   );
-  /* Field: Indexed Node: Date created */
+  /* Field: Indexed Content: Date created */
   $handler->display->display_options['fields']['created']['id'] = 'created';
   $handler->display->display_options['fields']['created']['table'] = 'search_api_index_blogposts_index';
   $handler->display->display_options['fields']['created']['field'] = 'created';
@@ -284,7 +284,7 @@ function roomify_travel_theme_views_default_views() {
   $handler->display->display_options['fields']['created']['custom_date_format'] = 'D, d M, Y';
   $handler->display->display_options['fields']['created']['second_date_format'] = 'bat_daily';
   $handler->display->display_options['fields']['created']['link_to_entity'] = 0;
-  /* Field: Indexed Node: The main body text */
+  /* Field: Indexed Content: The main body text */
   $handler->display->display_options['fields']['body']['id'] = 'body';
   $handler->display->display_options['fields']['body']['table'] = 'search_api_index_blogposts_index';
   $handler->display->display_options['fields']['body']['field'] = 'body';
@@ -345,7 +345,7 @@ function roomify_travel_theme_views_default_views() {
   $handler->display->display_options['footer']['area_text_custom']['field'] = 'area_text_custom';
   $handler->display->display_options['footer']['area_text_custom']['content'] = '<a class="view-more-blog btn btn-default btn-primary" href="/blog">view more</a>';
   $handler->display->display_options['defaults']['fields'] = FALSE;
-  /* Field: Indexed Node: Featured Image */
+  /* Field: Indexed Content: Featured Image */
   $handler->display->display_options['fields']['field_featured_image']['id'] = 'field_featured_image';
   $handler->display->display_options['fields']['field_featured_image']['table'] = 'search_api_index_blogposts_index';
   $handler->display->display_options['fields']['field_featured_image']['field'] = 'field_featured_image';
@@ -361,7 +361,7 @@ function roomify_travel_theme_views_default_views() {
       ),
     ),
   );
-  /* Field: Indexed Node: Title */
+  /* Field: Indexed Content: Title */
   $handler->display->display_options['fields']['title_field']['id'] = 'title_field';
   $handler->display->display_options['fields']['title_field']['table'] = 'search_api_index_blogposts_index';
   $handler->display->display_options['fields']['title_field']['field'] = 'title_field';
@@ -375,7 +375,7 @@ function roomify_travel_theme_views_default_views() {
       ),
     ),
   );
-  /* Field: Indexed Node: The main body text */
+  /* Field: Indexed Content: The main body text */
   $handler->display->display_options['fields']['body']['id'] = 'body';
   $handler->display->display_options['fields']['body']['table'] = 'search_api_index_blogposts_index';
   $handler->display->display_options['fields']['body']['field'] = 'body';
@@ -392,13 +392,130 @@ function roomify_travel_theme_views_default_views() {
   );
   $handler->display->display_options['defaults']['filter_groups'] = FALSE;
   $handler->display->display_options['defaults']['filters'] = FALSE;
-  /* Filter criterion: Indexed Node: Featured Blogpost */
+  /* Filter criterion: Indexed Content: Featured Blogpost */
   $handler->display->display_options['filters']['field_featured_blogpost']['id'] = 'field_featured_blogpost';
   $handler->display->display_options['filters']['field_featured_blogpost']['table'] = 'search_api_index_blogposts_index';
   $handler->display->display_options['filters']['field_featured_blogpost']['field'] = 'field_featured_blogpost';
   $handler->display->display_options['filters']['field_featured_blogpost']['value'] = array(
     1 => '1',
   );
+  $handler->display->display_options['allow']['use_pager'] = 0;
+  $handler->display->display_options['allow']['items_per_page'] = 0;
+  $handler->display->display_options['allow']['offset'] = 0;
+  $handler->display->display_options['allow']['link_to_view'] = 0;
+  $handler->display->display_options['allow']['more_link'] = 0;
+  $handler->display->display_options['allow']['path_override'] = 0;
+  $handler->display->display_options['allow']['title_override'] = 'title_override';
+  $handler->display->display_options['allow']['exposed_form'] = 0;
+  $handler->display->display_options['allow']['fields_override'] = 0;
+
+  /* Display: Related posts (category) */
+  $handler = $view->new_display('panel_pane', 'Related posts (category)', 'panel_pane_3');
+  $handler->display->display_options['defaults']['pager'] = FALSE;
+  $handler->display->display_options['pager']['type'] = 'some';
+  $handler->display->display_options['pager']['options']['items_per_page'] = '5';
+  $handler->display->display_options['pager']['options']['offset'] = '0';
+  $handler->display->display_options['defaults']['relationships'] = FALSE;
+  /* Relationship: Indexed Content: Categories */
+  $handler->display->display_options['relationships']['field_blog_categories']['id'] = 'field_blog_categories';
+  $handler->display->display_options['relationships']['field_blog_categories']['table'] = 'search_api_index_blogposts_index';
+  $handler->display->display_options['relationships']['field_blog_categories']['field'] = 'field_blog_categories';
+  $handler->display->display_options['defaults']['fields'] = FALSE;
+  /* Field: Indexed Content: Featured Image */
+  $handler->display->display_options['fields']['field_featured_image']['id'] = 'field_featured_image';
+  $handler->display->display_options['fields']['field_featured_image']['table'] = 'search_api_index_blogposts_index';
+  $handler->display->display_options['fields']['field_featured_image']['field'] = 'field_featured_image';
+  $handler->display->display_options['fields']['field_featured_image']['label'] = '';
+  $handler->display->display_options['fields']['field_featured_image']['element_label_colon'] = FALSE;
+  $handler->display->display_options['fields']['field_featured_image']['click_sort_column'] = 'fid';
+  $handler->display->display_options['fields']['field_featured_image']['settings'] = array(
+    'image_style' => 'homepage_features',
+    'image_link' => 'content',
+    'conditions' => array(
+      0 => array(
+        'condition' => '',
+      ),
+    ),
+  );
+  /* Field: Indexed Content: Title */
+  $handler->display->display_options['fields']['title_field']['id'] = 'title_field';
+  $handler->display->display_options['fields']['title_field']['table'] = 'search_api_index_blogposts_index';
+  $handler->display->display_options['fields']['title_field']['field'] = 'title_field';
+  $handler->display->display_options['fields']['title_field']['label'] = '';
+  $handler->display->display_options['fields']['title_field']['exclude'] = TRUE;
+  $handler->display->display_options['fields']['title_field']['element_type'] = 'div';
+  $handler->display->display_options['fields']['title_field']['element_label_colon'] = FALSE;
+  $handler->display->display_options['fields']['title_field']['type'] = 'title_linked';
+  $handler->display->display_options['fields']['title_field']['settings'] = array(
+    'title_style' => '',
+    'title_link' => 'content',
+    'title_class' => '',
+    'conditions' => array(
+      0 => array(
+        'condition' => '',
+      ),
+    ),
+  );
+  /* Field: Indexed Content: The main body text */
+  $handler->display->display_options['fields']['body']['id'] = 'body';
+  $handler->display->display_options['fields']['body']['table'] = 'search_api_index_blogposts_index';
+  $handler->display->display_options['fields']['body']['field'] = 'body';
+  $handler->display->display_options['fields']['body']['label'] = '';
+  $handler->display->display_options['fields']['body']['exclude'] = TRUE;
+  $handler->display->display_options['fields']['body']['alter']['max_length'] = '70';
+  $handler->display->display_options['fields']['body']['alter']['word_boundary'] = FALSE;
+  $handler->display->display_options['fields']['body']['alter']['strip_tags'] = TRUE;
+  $handler->display->display_options['fields']['body']['alter']['trim'] = TRUE;
+  $handler->display->display_options['fields']['body']['alter']['preserve_tags'] = '<span><a>';
+  $handler->display->display_options['fields']['body']['element_label_colon'] = FALSE;
+  $handler->display->display_options['fields']['body']['settings'] = array(
+    'conditions' => array(
+      0 => array(
+        'condition' => '',
+      ),
+    ),
+  );
+  /* Field: Global: Custom text */
+  $handler->display->display_options['fields']['nothing']['id'] = 'nothing';
+  $handler->display->display_options['fields']['nothing']['table'] = 'views';
+  $handler->display->display_options['fields']['nothing']['field'] = 'nothing';
+  $handler->display->display_options['fields']['nothing']['label'] = '';
+  $handler->display->display_options['fields']['nothing']['alter']['text'] = '<div class="title">[title_field]</div>
+  [body]';
+  $handler->display->display_options['fields']['nothing']['element_label_colon'] = FALSE;
+  $handler->display->display_options['defaults']['arguments'] = FALSE;
+  /* Contextual filter: Indexed Content: Node ID */
+  $handler->display->display_options['arguments']['nid']['id'] = 'nid';
+  $handler->display->display_options['arguments']['nid']['table'] = 'search_api_index_blogposts_index';
+  $handler->display->display_options['arguments']['nid']['field'] = 'nid';
+  $handler->display->display_options['arguments']['nid']['default_action'] = 'default';
+  $handler->display->display_options['arguments']['nid']['default_argument_type'] = 'node';
+  $handler->display->display_options['arguments']['nid']['summary']['format'] = 'default_summary';
+  $handler->display->display_options['arguments']['nid']['break_phrase'] = 0;
+  $handler->display->display_options['arguments']['nid']['not'] = 1;
+  /* Contextual filter: Indexed Content: Categories */
+  $handler->display->display_options['arguments']['field_blog_categories']['id'] = 'field_blog_categories';
+  $handler->display->display_options['arguments']['field_blog_categories']['table'] = 'search_api_index_blogposts_index';
+  $handler->display->display_options['arguments']['field_blog_categories']['field'] = 'field_blog_categories';
+  $handler->display->display_options['arguments']['field_blog_categories']['default_action'] = 'default';
+  $handler->display->display_options['arguments']['field_blog_categories']['default_argument_type'] = 'taxonomy_tid';
+  $handler->display->display_options['arguments']['field_blog_categories']['default_argument_options']['term_page'] = FALSE;
+  $handler->display->display_options['arguments']['field_blog_categories']['default_argument_options']['node'] = TRUE;
+  $handler->display->display_options['arguments']['field_blog_categories']['default_argument_options']['limit'] = TRUE;
+  $handler->display->display_options['arguments']['field_blog_categories']['default_argument_options']['vocabularies'] = array(
+    'category' => 'category',
+  );
+  $handler->display->display_options['arguments']['field_blog_categories']['summary']['format'] = 'default_summary';
+  $handler->display->display_options['arguments']['field_blog_categories']['break_phrase'] = 0;
+  $handler->display->display_options['arguments']['field_blog_categories']['not'] = 0;
+  $handler->display->display_options['defaults']['filter_groups'] = FALSE;
+  $handler->display->display_options['defaults']['filters'] = FALSE;
+  /* Filter criterion: Indexed Content: Featured Blogpost */
+  $handler->display->display_options['filters']['field_featured_blogpost']['id'] = 'field_featured_blogpost';
+  $handler->display->display_options['filters']['field_featured_blogpost']['table'] = 'search_api_index_blogposts_index';
+  $handler->display->display_options['filters']['field_featured_blogpost']['field'] = 'field_featured_blogpost';
+  $handler->display->display_options['filters']['field_featured_blogpost']['operator'] = 'not empty';
+  $handler->display->display_options['filters']['field_featured_blogpost']['value'] = array();
   $handler->display->display_options['allow']['use_pager'] = 0;
   $handler->display->display_options['allow']['items_per_page'] = 0;
   $handler->display->display_options['allow']['offset'] = 0;
@@ -435,6 +552,11 @@ function roomify_travel_theme_views_default_views() {
     t('View panes'),
     t('Homepage'),
     t('<a class="view-more-blog btn btn-default btn-primary" href="/blog">view more</a>'),
+    t('Related posts (category)'),
+    t('Categories'),
+    t('<div class="title">[title_field]</div>
+  [body]'),
+    t('All'),
   );
 
   $views['blog_travel'] = $view;
