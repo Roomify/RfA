@@ -394,6 +394,9 @@ function roomify_install_finished(&$install_state) {
   variable_set('xmlsitemap_settings_roomify_property_casa_property', $settings);
   variable_set('xmlsitemap_settings_roomify_property_locanda_property', $settings);
 
+  // Need to be here to work.
+  module_enable(array('xmlsitemap_menu'));
+
   if (isset($messages['error'])) {
     $output = '<p>' . (isset($messages['error']) ? st('Review the messages above before visiting <a href="@url">your new site</a>.', array('@url' => url(''))) : st('<a href="@url">Visit your new site</a>.', array('@url' => url('')))) . '</p>';
     return $output;
