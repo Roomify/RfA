@@ -548,6 +548,7 @@ projects[yoast_seo][download][url] = https://git.drupal.org/project/yoast_seo.gi
 projects[yoast_seo][download][revision] = 52cb19ed0281d40c0f5230747bc39d278a3b6a51
 
 projects[zopim][version] = 1.2
+projects[zopim][patch][] = https://www.drupal.org/files/issues/zopim-v2-full-script-2090201-5-D7.patch
 
 ; +++++ Libraries +++++
 
