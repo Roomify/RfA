@@ -212,7 +212,7 @@ projects[environment_indicator][version] = 2.8
 
 projects[epsacrop][version] = 2.4
 
-projects[eu_cookie_compliance][version] = 1.14
+projects[eu_cookie_compliance][version] = 1.17
 
 projects[facebook_tracking_pixel][version] = 1.1
 
