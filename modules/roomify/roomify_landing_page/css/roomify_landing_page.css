@@ -109,7 +109,6 @@
 .node-type-landing-page .agency-3-columns-row .paragraphs-items .entity-paragraphs-item,
 .node-type-landing-page .agency-4-columns-row .paragraphs-items .entity-paragraphs-item {
   display: table;
-  display: -moz-deck;
   margin: 0 auto;
   max-width: 100%;
 }
