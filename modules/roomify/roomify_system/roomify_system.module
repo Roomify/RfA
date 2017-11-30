@@ -2491,3 +2491,30 @@ function roomify_system_xmlsitemap_link_alter(&$link) {
     }
   }
 }
+
+/**
+ * Implements hook_cron().
+ */
+function roomify_system_cron() {
+  // Set "Last modification date" on the frontpage item.
+  if ($node = menu_get_object('node', 1, variable_get('site_frontpage', 'node'))) {
+    xmlsitemap_link_save(
+      array(
+        'type' => 'frontpage',
+        'id' => 0,
+        'loc' => '',
+        'lastmod' => $node->changed,
+      )
+    );
+  }
+  else {
+    xmlsitemap_link_save(
+      array(
+        'type' => 'frontpage',
+        'id' => 0,
+        'loc' => '',
+        'lastmod' => time() - 3600 * rand(1, 12),
+      )
+    );
+  }
+}
