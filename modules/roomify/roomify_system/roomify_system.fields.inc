@@ -76,6 +76,16 @@ function roomify_system_add_user_fields() {
     );
   }
 
+  if (field_read_field('user_stripe_connect') === FALSE) {
+    $field_bases['user_stripe_connect'] = array(
+      'field_name' => 'user_stripe_connect',
+      'type' => 'commerce_stripe_connect_field',
+      'cardinality' => 1,
+      'locked' => 1,
+      'settings' => array(),
+    );
+  }
+
   foreach ($field_bases as $field) {
     field_create_field($field);
   }
@@ -247,6 +257,21 @@ function roomify_system_add_user_fields() {
           'references_dialog_add' => 1,
           'references_dialog_search' => 0,
         ),
+      ),
+      'settings' => array(),
+    );
+  }
+
+  if (field_read_instance('user', 'user_stripe_connect', 'user') === FALSE) {
+    $field_instances['user-user-user_stripe_connect'] = array(
+      'field_name' => 'user_stripe_connect',
+      'entity_type' => 'user',
+      'label' => 'Stripe Connect',
+      'bundle' => 'user',
+      'required' => FALSE,
+      'widget' => array(
+        'type' => 'commerce_stripe_connect_field',
+        'settings' => array(),
       ),
       'settings' => array(),
     );

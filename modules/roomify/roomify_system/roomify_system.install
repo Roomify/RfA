@@ -1003,3 +1003,12 @@ function roomify_system_update_7063() {
 function roomify_system_update_7064() {
   module_enable(array('commerce_stripe_connect_field'));
 }
+
+/**
+ * Add Stripe Connect field.
+ */
+function roomify_system_update_7065() {
+  module_load_include('inc', 'roomify_system', 'roomify_system.fields');
+
+  roomify_system_add_user_fields();
+}
