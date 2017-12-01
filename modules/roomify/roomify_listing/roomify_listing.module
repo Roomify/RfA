@@ -1324,11 +1324,25 @@ function roomify_listing_enquiry_form($form, &$form_state, $arrival_date, $depar
   $type = bat_type_load($type_id);
   $property = roomify_property_load($type->field_st_property_reference[LANGUAGE_NONE][0]['target_id']);
 
-  if ($property->type == 'locanda_property') {
-    $title = t('Booking Request for @property_name - @type_name', array('@property_name' => $property->name, '@type_name' => $type->name));
+  if (variable_get('roomify_accommodation_booking_allow_instant_bookings', 1) &&
+    isset($property->field_sp_allow_instant_bookings[LANGUAGE_NONE][0]['value']) &&
+    $property->field_sp_allow_instant_bookings[LANGUAGE_NONE][0]['value'] &&
+    ($type->type == 'home' || (!empty($type->field_st_allow_instant_bookings[LANGUAGE_NONE][0]['value'])))) {
+  
+    if ($property->type == 'locanda_property') {
+      $title = t('Booking Request for @property_name - @type_name', array('@property_name' => $property->name, '@type_name' => $type->name));
+    }
+    else {
+      $title = t('Booking Request for @property_name', array('@property_name' => $property->name));
+    }
   }
   else {
-    $title = t('Booking Request for @property_name', array('@property_name' => $property->name));
+    if ($property->type == 'locanda_property') {
+      $title = t('Enquiry Request for @property_name - @type_name', array('@property_name' => $property->name, '@type_name' => $type->name));
+    }
+    else {
+      $title = t('Enquiry Request for @property_name', array('@property_name' => $property->name));
+    }
   }
 
   $form['status_messages'] = array(
