@@ -8,6 +8,29 @@
 include_once 'roomify_contact.features.inc';
 
 /**
+ * Implements hook_menu().
+ */
+function roomify_contact_menu() {
+  $items = array();
+
+  $items['contact-us/done'] = array(
+    'title' => 'Enquiry sent successfully!',
+    'page callback' => 'roomify_contact_done_page',
+    'access callback' => TRUE,
+    'type' => MENU_CALLBACK,
+  );
+
+  return $items;
+}
+
+/**
+ * Contact us done page.
+ */
+function roomify_contact_done_page() {
+  return t('Thank you! Your enquiry has been received and we will get back to you soon!');
+}
+
+/**
  * Send email to managers when a new contact form is submitted.
  */
 function roomify_contact_notify_managers($entityform, $settings, $rules_state) {

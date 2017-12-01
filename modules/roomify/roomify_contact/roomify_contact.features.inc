@@ -55,7 +55,7 @@ function roomify_contact_default_entityform_type() {
         "163670334" : 0
       },
       "resubmit_action" : "new",
-      "redirect_path" : "\u003Cfront\u003E",
+      "redirect_path" : "contact-us\/done",
       "instruction_pre" : { "value" : "", "format" : "plain_text" },
       "current_type" : "contact",
       "enable_block" : 1
