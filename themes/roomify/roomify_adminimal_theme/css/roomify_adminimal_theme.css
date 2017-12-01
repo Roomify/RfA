@@ -2685,6 +2685,23 @@ body.adminimal-skin-material table.views-table tbody tr td {
     top: 15px;
   }
 }
+.roomify-dashboard #notifications-tab {
+  background: url("../images/dashboard/notification.png") center center no-repeat;
+  background: url("../images/dashboard/notification.svg") center center no-repeat, linear-gradient(transparent, transparent);
+  display: inline-block;
+  width: 18px;
+  height: 18px;
+  position: relative;
+  top: 4px;
+  right: 6px;
+}
+@media (max-width: 991px) {
+  .roomify-dashboard #notifications-tab {
+    position: absolute;
+    left: 20px;
+    top: 15px;
+  }
+}
 .roomify-dashboard #dashboard-stays-tab {
   background: url("../images/dashboard/reservation.png") center center no-repeat;
   background: url("../images/dashboard/reservation.svg") center center no-repeat, linear-gradient(transparent, transparent);
