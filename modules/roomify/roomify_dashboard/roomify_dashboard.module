@@ -170,6 +170,28 @@ function roomify_dashboard_views_pre_render(&$view) {
       $view->exposed_widgets = FALSE;
     }
   }
+
+  if ($view->name == 'dashboard_notifications') {
+    global $user;
+
+    $last_user_notifications_id = db_select('user_notifications', 'u')
+      ->fields('u', array('user_notifications_id'))
+      ->condition('author_uid', $user->uid)
+      ->condition('state', 'unseen')
+      ->orderBy('created', 'DESC')
+      ->range(0, 1)
+      ->execute()
+      ->fetchField();
+
+    if ($last_user_notifications_id !== FALSE) {
+      if (!isset($user->data['last_user_notifications_id']) || $user->data['last_user_notifications_id'] < $last_user_notifications_id) {
+        $view->set_title($view->get_title() . '<div id="notifications-to-read"></div>');
+
+        $user->data['last_user_notifications_id'] = $last_user_notifications_id;
+        user_save($user);
+      }
+    }
+  }
 }
 
 /**
