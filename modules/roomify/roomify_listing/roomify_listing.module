@@ -1328,7 +1328,6 @@ function roomify_listing_enquiry_form($form, &$form_state, $arrival_date, $depar
     isset($property->field_sp_allow_instant_bookings[LANGUAGE_NONE][0]['value']) &&
     $property->field_sp_allow_instant_bookings[LANGUAGE_NONE][0]['value'] &&
     ($type->type == 'home' || (!empty($type->field_st_allow_instant_bookings[LANGUAGE_NONE][0]['value'])))) {
-  
     if ($property->type == 'locanda_property') {
       $title = t('Booking Request for @property_name - @type_name', array('@property_name' => $property->name, '@type_name' => $type->name));
     }
