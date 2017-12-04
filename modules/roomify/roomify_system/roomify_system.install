@@ -1087,5 +1087,4 @@ function roomify_system_update_7065() {
  */
 function roomify_system_update_7066() {
   module_enable(array('views_refresh'));
- }
- 
+}
