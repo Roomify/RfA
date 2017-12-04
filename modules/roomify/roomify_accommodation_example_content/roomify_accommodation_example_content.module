@@ -948,6 +948,10 @@ function roomify_example_content_create_miles_boutique_hotel_example_property($t
  * Create example User.
  */
 function roomify_example_user($name, $pass, $roles) {
+  if ($account = user_load_by_name($name)) {
+    return $account;
+  }
+
   // Set up the user fields.
   $fields = array(
     'name' => $name,

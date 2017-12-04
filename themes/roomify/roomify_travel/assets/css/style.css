@@ -12472,6 +12472,29 @@ ol.inline.commerce-checkout-progress {
     border: 0;
     background-size: contain;
     left: 12px; }
+.node-type-blog .view-blog-travel.view-display-id-panel_pane_3 .views-row {
+  display: inline-block;
+  width: 100%;
+  margin-bottom: 25px; }
+  .node-type-blog .view-blog-travel.view-display-id-panel_pane_3 .views-row .views-field-nothing {
+    display: inline-block;
+    float: left;
+    margin-left: 15px;
+    width: calc(100% - 155px); }
+    .node-type-blog .view-blog-travel.view-display-id-panel_pane_3 .views-row .views-field-nothing .title {
+      font-size: 18px; }
+      .node-type-blog .view-blog-travel.view-display-id-panel_pane_3 .views-row .views-field-nothing .title:before {
+        display: none; }
+  .node-type-blog .view-blog-travel.view-display-id-panel_pane_3 .views-row .views-field-field-featured-image {
+    display: inline-block;
+    float: left;
+    max-width: 140px; }
+  .node-type-blog .view-blog-travel.view-display-id-panel_pane_3 .views-row .views-field-title-field {
+    display: inline-block;
+    margin-left: 15px;
+    font-size: 18px; }
+    .node-type-blog .view-blog-travel.view-display-id-panel_pane_3 .views-row .views-field-title-field:before {
+      display: none; }
 
 .page-things-to-do .panel_sl_content {
   padding: 30px;
@@ -13082,6 +13105,11 @@ body.node-type-homepage {
       .pane-homepage-panel-pane-2 .view-homepage .views-row.small .overlay .content {
         font-size: 20px;
         top: 45%; }
+    .pane-homepage-panel-pane-2 .view-homepage .views-row .hovereffect a .overlay {
+      opacity: 1;
+      background: transparent; }
+    .pane-homepage-panel-pane-2 .view-homepage .views-row .hovereffect a:hover .overlay {
+      background-color: rgba(0, 0, 0, 0.5); }
 
 /* CAROUSEL */
 .pane-featured-properties-panel-pane-3 {

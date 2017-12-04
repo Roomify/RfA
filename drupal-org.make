@@ -212,7 +212,7 @@ projects[environment_indicator][version] = 2.8
 
 projects[epsacrop][version] = 2.4
 
-projects[eu_cookie_compliance][version] = 1.14
+projects[eu_cookie_compliance][version] = 1.17
 
 projects[facebook_tracking_pixel][version] = 1.1
 
@@ -541,8 +541,11 @@ projects[wysiwyg][version] = 2.4
 
 projects[xautoload][version] = 5.7
 
-projects[xmlsitemap][version] = 2.3
-projects[xmlsitemap][patch][] = https://www.drupal.org/files/issues/xmlsitemap-entity-integration-1461670-38.patch
+projects[xmlsitemap][type] = module
+projects[xmlsitemap][download][type] = git
+projects[xmlsitemap][download][url] = https://git.drupal.org/project/xmlsitemap.git
+projects[xmlsitemap][download][revision] = eaaf1dd750c17ccca9c58cf40d1cda815b77cbb2
+projects[xmlsitemap][patch][] = https://www.drupal.org/files/issues/xmlsitemap-entity-integration-1461670-40.patch
 
 projects[yoast_seo][type] = module
 projects[yoast_seo][download][type] = git
@@ -550,6 +553,7 @@ projects[yoast_seo][download][url] = https://git.drupal.org/project/yoast_seo.gi
 projects[yoast_seo][download][revision] = 52cb19ed0281d40c0f5230747bc39d278a3b6a51
 
 projects[zopim][version] = 1.2
+projects[zopim][patch][] = https://www.drupal.org/files/issues/zopim-v2-full-script-2090201-5-D7.patch
 
 ; +++++ Libraries +++++
 

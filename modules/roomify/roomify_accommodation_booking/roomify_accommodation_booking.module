@@ -399,14 +399,39 @@ function roomify_accommodation_booking_confirmation_page($start_date, $end_date,
   }
 
   if (isset($type->name)) {
-    drupal_set_title(t('Booking for !type_name', array('!type_name' => $type->name)));
-    // Change Title for Locanda Properties.
-    if ($property->type == 'locanda_property' && isset($property->name)) {
-      drupal_set_title(t('Booking for !property_name - !type_name', array('!property_name' => $property->name, '!type_name' => $type->name)));
+    if (variable_get('roomify_accommodation_booking_allow_instant_bookings', 1) &&
+      isset($property->field_sp_allow_instant_bookings[LANGUAGE_NONE][0]['value']) &&
+      $property->field_sp_allow_instant_bookings[LANGUAGE_NONE][0]['value'] &&
+      ($type->type == 'home' || (!empty($type->field_st_allow_instant_bookings[LANGUAGE_NONE][0]['value'])))) {
+
+      drupal_set_title(t('Booking for !type_name', array('!type_name' => $type->name)));
+
+      if (isset($property->name)) {
+        // Change Title for Locanda Properties.
+        if ($property->type == 'locanda_property') {
+          drupal_set_title(t('Booking for !property_name - !type_name', array('!property_name' => $property->name, '!type_name' => $type->name)));
+        }
+
+        // Change Title for Casa Properties.
+        if ($property->type == 'casa_property') {
+          drupal_set_title(t('Booking for !property_name', array('!property_name' => $property->name)));
+        }
+      }
     }
-    // Change Title for Casa Properties.
-    if ($property->type == 'casa_property' && isset($property->name)) {
-      drupal_set_title(t('Booking for !property_name', array('!property_name' => $property->name)));
+    else {
+      drupal_set_title(t('Enquiry for !type_name', array('!type_name' => $type->name)));
+
+      if (isset($property->name)) {
+        // Change Title for Locanda Properties.
+        if ($property->type == 'locanda_property') {
+          drupal_set_title(t('Enquiry for !property_name - !type_name', array('!property_name' => $property->name, '!type_name' => $type->name)));
+        }
+
+        // Change Title for Casa Properties.
+        if ($property->type == 'casa_property') {
+          drupal_set_title(t('Enquiry for !property_name', array('!property_name' => $property->name)));
+        }
+      }
     }
   }
 
@@ -2878,16 +2903,39 @@ function roomify_accommodation_booking_conversation_confirmation_page($conversat
   }
 
   if (isset($type->name)) {
-    drupal_set_title(t('Booking for !type', array('!type' => $type->name)));
+    if (variable_get('roomify_accommodation_booking_allow_instant_bookings', 1) &&
+      isset($property->field_sp_allow_instant_bookings[LANGUAGE_NONE][0]['value']) &&
+      $property->field_sp_allow_instant_bookings[LANGUAGE_NONE][0]['value'] &&
+      ($type->type == 'home' || (!empty($type->field_st_allow_instant_bookings[LANGUAGE_NONE][0]['value'])))) {
 
-    // Change Title for Locanda Properties.
-    if ($property->type == 'locanda_property' && isset($property->name)) {
-      drupal_set_title(t('Booking for !property - !type', array('!property' => $property->name, '!type' => $type->name)));
+      drupal_set_title(t('Booking for !type', array('!type' => $type->name)));
+
+      if (isset($property->name)) {
+        // Change Title for Locanda Properties.
+        if ($property->type == 'locanda_property') {
+          drupal_set_title(t('Booking for !property - !type', array('!property' => $property->name, '!type' => $type->name)));
+        }
+
+        // Change Title for Casa Properties.
+        if ($property->type == 'casa_property') {
+          drupal_set_title(t('Booking for !property', array('!property' => $property->name)));
+        }
+      }
     }
+    else {
+      drupal_set_title(t('Enquiry for !type', array('!type' => $type->name)));
 
-    // Change Title for Casa Properties.
-    if ($property->type == 'casa_property' && isset($property->name)) {
-      drupal_set_title(t('Booking for !property', array('!property' => $property->name)));
+      if (isset($property->name)) {
+        // Change Title for Locanda Properties.
+        if ($property->type == 'locanda_property') {
+          drupal_set_title(t('Enquiry for !property - !type', array('!property' => $property->name, '!type' => $type->name)));
+        }
+
+        // Change Title for Casa Properties.
+        if ($property->type == 'casa_property') {
+          drupal_set_title(t('Enquiry for !property', array('!property' => $property->name)));
+        }
+      }
     }
   }
 

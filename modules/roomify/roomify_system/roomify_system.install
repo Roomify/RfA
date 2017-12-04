@@ -1062,22 +1062,30 @@ function roomify_system_update_7062() {
 }
 
 /**
- * Enable module "User Notifications".
+ * Enable module "XML sitemap menu".
  */
 function roomify_system_update_7063() {
+  module_enable(array('xmlsitemap_menu'));
+}
+
+/**
+ * Enable module "User Notifications".
+ */
+function roomify_system_update_7064() {
   module_enable(array('user_notifications'));
 }
 
 /**
  * Create notification types.
  */
-function roomify_system_update_7064() {
+function roomify_system_update_7065() {
   roomify_system_create_notification_types();
 }
 
 /**
  * Enable module "Views Refresh".
  */
-function roomify_system_update_7065() {
+function roomify_system_update_7066() {
   module_enable(array('views_refresh'));
-}
+ }
+ 
