@@ -22,4 +22,16 @@
       }
     }
   }
+  @media (max-width: $screen-xs){
+    p,span {
+      font-size: 12px !important;
+    }
+    .popup-content #popup-buttons {
+      button {
+        font-size: 12px;
+        padding: 4px 6px;
+        margin: 0;
+      }
+    }
+  }
 }

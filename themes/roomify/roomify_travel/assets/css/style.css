@@ -6833,6 +6833,13 @@ blockquote {
       opacity: .9; }
     #sliding-popup.sliding-popup-bottom .popup-content #popup-buttons button.find-more-button {
       background: #AF0606; }
+  @media (max-width: 480px) {
+    #sliding-popup.sliding-popup-bottom p, #sliding-popup.sliding-popup-bottom span {
+      font-size: 12px !important; }
+    #sliding-popup.sliding-popup-bottom .popup-content #popup-buttons button {
+      font-size: 12px;
+      padding: 4px 6px;
+      margin: 0; } }
 
 #modalBackdrop {
   background: #000000 !important;
