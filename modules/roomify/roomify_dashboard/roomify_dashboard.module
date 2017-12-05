@@ -174,16 +174,19 @@ function roomify_dashboard_views_pre_render(&$view) {
   if ($view->name == 'dashboard_notifications') {
     global $user;
 
-    $last_user_notifications_id = db_select('user_notifications', 'u')
-      ->fields('u', array('user_notifications_id'))
-      ->condition('author_uid', $user->uid)
-      ->condition('state', 'unseen')
-      ->orderBy('created', 'DESC')
-      ->range(0, 1)
-      ->execute()
-      ->fetchField();
+    $query = new EntityFieldQuery();
 
-    if ($last_user_notifications_id !== FALSE) {
+    $query->entityCondition('entity_type', 'user_notifications')
+      ->propertyCondition('state', 'unseen')
+      ->fieldCondition('user_notifications_recipient_uid', 'target_id', $user->uid)
+      ->propertyOrderBy('created', 'DESC')
+      ->range(0, 1);
+
+    $last_user_notification = $query->execute();
+
+    if (!empty($last_user_notification)) {
+      $last_user_notifications_id = key($last_user_notification['user_notifications']);
+
       if (!isset($user->data['last_user_notifications_id']) || $user->data['last_user_notifications_id'] < $last_user_notifications_id) {
         $view->set_title($view->get_title() . '<div id="notifications-to-read"></div>');
 
