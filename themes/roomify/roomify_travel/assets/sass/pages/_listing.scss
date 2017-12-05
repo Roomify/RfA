@@ -876,85 +876,98 @@
 
 .page-listing {
   #modalContent {
+    height: calc(100% - 60px) !important;
+    left: 50% !important;
+    -webkit-transform: translateX(-50%);
+    -ms-transform: translateX(-50%);
+    transform: translateX(-50%);
+    max-height: 740px;
     @media (max-width: $screen-xs) {
-      left: 0px !important;
-    }
-  }
-  .ctools-modal-dialog.modal-dialog {
-    width: 100% !important;
-    height: 100% !important;
-    border-radius: 0px;
-    max-width: none !important;
-    margin: 0;
-    background-color: rgba(0, 0, 0, 0.75);
-    .modal-content {
-      height: 100%;
-      overflow: auto;
-      @media (max-width: $screen-xs-max) {
-        overflow: scroll;
-      }
-    }
-    #modal-content {
-      margin: 20px auto 0 auto;
-      max-height: 100% !important;
+      top: 0 !important;
+      height: 100% !important;
       width: 100% !important;
-      @media (max-width: $screen-xs) {
-        padding: 10px;
-      }
     }
-    .field-type-bat-calendar-unit-type-reference {
-      padding: 28px;
-      background: white;
-      border-radius: 4px;
-      border: 1px solid #eaeaea;
-      table:not(.table-bordered) > thead > tr > th,
-      table:not(.table-bordered) > tbody > tr > th,
-      table:not(.table-bordered) > tfoot > tr > th,
-      table:not(.table-bordered) > thead > tr > td,
-      table:not(.table-bordered) > tbody > tr > td,
-      table:not(.table-bordered) > tfoot > tr > td,
-      .table:not(.table-bordered) > thead > tr > th,
-      .table:not(.table-bordered) > tbody > tr > th,
-      .table:not(.table-bordered) > tfoot > tr > th,
-      .table:not(.table-bordered) > thead > tr > td,
-      .table:not(.table-bordered) > tbody > tr > td,
-      .table:not(.table-bordered) > tfoot > tr > td {
-        border-color: #717171;
-      }
-      td.fc-past {
-        background: #efefef;
-      }
+    @media (min-width: $screen-xs) {
+      min-width: 480px;
     }
-    .fc-head-container.fc-widget-header,
-    .fc-day-header.fc-widget-header {
-      background: #1597d2;
-      color: white;
-      font-weight: 500;
-      text-transform: uppercase;
-    }
-    .calendar-legend {
-      display: inline-block;
-      width: 100%;
-      margin: 10px 0;
-      .available-date,
-      .unavailable-date {
-        padding-left: 30px;
-        margin-right: 10px;
-        position: relative;
-        &:before {
-          width: 20px;
-          height: 20px;
-          content: '';
-          background: #dce3d6;
-          display: inline-block;
-          position: absolute;
-          left: 5px;
-          top: -2px;
+    .ctools-modal-dialog.modal-dialog {
+      width: 100% !important;
+      height: 100% !important;
+      border-radius: 0px;
+      max-width: none !important;
+      margin: 0;
+      background-color: rgba(0, 0, 0, 0.75);
+      .modal-content {
+        height: 100%;
+        overflow: auto;
+        @media (max-width: $screen-xs-max) {
+          overflow: scroll;
         }
       }
-      .unavailable-date {
-        &:before {
-          background: #f0bfbf;
+      #modal-content {
+        margin: 20px auto 0 auto;
+        width: 100% !important;
+        @media (max-width: $screen-xs) {
+          padding: 10px;
+        }
+        &.ctools-modal-loading {
+          height: calc(100% - 100px);
+        }
+      }
+      .field-type-bat-calendar-unit-type-reference {
+        padding: 28px;
+        background: white;
+        border-radius: 4px;
+        border: 1px solid #eaeaea;
+        table:not(.table-bordered) > thead > tr > th,
+        table:not(.table-bordered) > tbody > tr > th,
+        table:not(.table-bordered) > tfoot > tr > th,
+        table:not(.table-bordered) > thead > tr > td,
+        table:not(.table-bordered) > tbody > tr > td,
+        table:not(.table-bordered) > tfoot > tr > td,
+        .table:not(.table-bordered) > thead > tr > th,
+        .table:not(.table-bordered) > tbody > tr > th,
+        .table:not(.table-bordered) > tfoot > tr > th,
+        .table:not(.table-bordered) > thead > tr > td,
+        .table:not(.table-bordered) > tbody > tr > td,
+        .table:not(.table-bordered) > tfoot > tr > td {
+          border-color: #717171;
+        }
+        td.fc-past {
+          background: #efefef;
+        }
+      }
+      .fc-head-container.fc-widget-header,
+      .fc-day-header.fc-widget-header {
+        background: #1597d2;
+        color: white;
+        font-weight: 500;
+        text-transform: uppercase;
+      }
+      .calendar-legend {
+        display: inline-block;
+        width: 100%;
+        margin: 10px 0;
+        .available-date,
+        .unavailable-date {
+          padding-left: 30px;
+          margin-right: 10px;
+          position: relative;
+          &:before {
+            width: 20px;
+            height: 20px;
+            content: '';
+            background: #dce3d6;
+            display: inline-block;
+            position: absolute;
+            left: 5px;
+            top: -2px;
+          }
+        }
+        .unavailable-date {
+          &:before {
+            background: #f0bfbf;
+          }
         }
       }
     }
