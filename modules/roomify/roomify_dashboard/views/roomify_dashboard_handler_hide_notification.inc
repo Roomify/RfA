@@ -4,6 +4,9 @@
  * @file
  */
 
+/**
+ *
+ */
 class roomify_dashboard_handler_hide_notification extends views_handler_field_entity {
 
   /**
@@ -26,7 +29,7 @@ class roomify_dashboard_handler_hide_notification extends views_handler_field_en
   public function render($values) {
     $user_notification = $this->get_value($values);
 
-    return l('Hide', 'user-notifications/' . $user_notification->user_notifications_id . '/hide', array('attributes' => array('class' => 'use-ajax')));
+    return l(t('Hide'), 'user-notifications/' . $user_notification->user_notifications_id . '/hide', array('attributes' => array('class' => 'use-ajax')));
   }
 
 }
