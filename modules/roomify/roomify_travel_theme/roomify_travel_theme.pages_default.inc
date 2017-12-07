@@ -130,6 +130,25 @@ function roomify_travel_theme_default_page_manager_handlers() {
   $display->content['new-e01ffd75-ddef-44c3-b1f6-12ecf4700622'] = $pane;
   $display->panels['left'][0] = 'new-e01ffd75-ddef-44c3-b1f6-12ecf4700622';
   $pane = new stdClass();
+  $pane->pid = 'new-4f7a236a-284f-476f-8577-4f6ac764b375';
+  $pane->panel = 'left';
+  $pane->type = 'roomify_availability_calendar';
+  $pane->subtype = 'roomify_availability_calendar';
+  $pane->shown = TRUE;
+  $pane->access = array();
+  $pane->configuration = array();
+  $pane->cache = array();
+  $pane->style = array(
+    'settings' => NULL,
+  );
+  $pane->css = array();
+  $pane->extras = array();
+  $pane->position = 1;
+  $pane->locks = array();
+  $pane->uuid = '4f7a236a-284f-476f-8577-4f6ac764b375';
+  $display->content['new-4f7a236a-284f-476f-8577-4f6ac764b375'] = $pane;
+  $display->panels['left'][1] = 'new-4f7a236a-284f-476f-8577-4f6ac764b375';
+  $pane = new stdClass();
   $pane->pid = 'new-f4c87a0f-8a2a-4a84-be06-b0fe7bf33e75';
   $pane->panel = 'left';
   $pane->type = 'entity_field';
@@ -157,11 +176,11 @@ function roomify_travel_theme_default_page_manager_handlers() {
     'css_class' => '',
   );
   $pane->extras = array();
-  $pane->position = 1;
+  $pane->position = 2;
   $pane->locks = array();
   $pane->uuid = 'f4c87a0f-8a2a-4a84-be06-b0fe7bf33e75';
   $display->content['new-f4c87a0f-8a2a-4a84-be06-b0fe7bf33e75'] = $pane;
-  $display->panels['left'][1] = 'new-f4c87a0f-8a2a-4a84-be06-b0fe7bf33e75';
+  $display->panels['left'][2] = 'new-f4c87a0f-8a2a-4a84-be06-b0fe7bf33e75';
   $pane = new stdClass();
   $pane->pid = 'new-4026878e-a350-4dc5-ba8a-8d11b6d248c7';
   $pane->panel = 'left';
@@ -190,11 +209,11 @@ function roomify_travel_theme_default_page_manager_handlers() {
     'css_class' => '',
   );
   $pane->extras = array();
-  $pane->position = 2;
+  $pane->position = 3;
   $pane->locks = array();
   $pane->uuid = '4026878e-a350-4dc5-ba8a-8d11b6d248c7';
   $display->content['new-4026878e-a350-4dc5-ba8a-8d11b6d248c7'] = $pane;
-  $display->panels['left'][2] = 'new-4026878e-a350-4dc5-ba8a-8d11b6d248c7';
+  $display->panels['left'][3] = 'new-4026878e-a350-4dc5-ba8a-8d11b6d248c7';
   $pane = new stdClass();
   $pane->pid = 'new-824392b0-c5d4-4ed7-ab57-b00e404fb51e';
   $pane->panel = 'left';
@@ -219,11 +238,11 @@ function roomify_travel_theme_default_page_manager_handlers() {
     'css_class' => '',
   );
   $pane->extras = array();
-  $pane->position = 3;
+  $pane->position = 4;
   $pane->locks = array();
   $pane->uuid = '824392b0-c5d4-4ed7-ab57-b00e404fb51e';
   $display->content['new-824392b0-c5d4-4ed7-ab57-b00e404fb51e'] = $pane;
-  $display->panels['left'][3] = 'new-824392b0-c5d4-4ed7-ab57-b00e404fb51e';
+  $display->panels['left'][4] = 'new-824392b0-c5d4-4ed7-ab57-b00e404fb51e';
   $pane = new stdClass();
   $pane->pid = 'new-2afd9cbd-f378-4858-9cfe-31cd76925e38';
   $pane->panel = 'left';
@@ -258,11 +277,11 @@ function roomify_travel_theme_default_page_manager_handlers() {
     'css_class' => '',
   );
   $pane->extras = array();
-  $pane->position = 4;
+  $pane->position = 5;
   $pane->locks = array();
   $pane->uuid = '2afd9cbd-f378-4858-9cfe-31cd76925e38';
   $display->content['new-2afd9cbd-f378-4858-9cfe-31cd76925e38'] = $pane;
-  $display->panels['left'][4] = 'new-2afd9cbd-f378-4858-9cfe-31cd76925e38';
+  $display->panels['left'][5] = 'new-2afd9cbd-f378-4858-9cfe-31cd76925e38';
   $pane = new stdClass();
   $pane->pid = 'new-96c76c2d-bc7e-48d9-bab3-b598120df78b';
   $pane->panel = 'left';
@@ -301,11 +320,11 @@ function roomify_travel_theme_default_page_manager_handlers() {
   );
   $pane->css = array();
   $pane->extras = array();
-  $pane->position = 5;
+  $pane->position = 6;
   $pane->locks = array();
   $pane->uuid = '96c76c2d-bc7e-48d9-bab3-b598120df78b';
   $display->content['new-96c76c2d-bc7e-48d9-bab3-b598120df78b'] = $pane;
-  $display->panels['left'][5] = 'new-96c76c2d-bc7e-48d9-bab3-b598120df78b';
+  $display->panels['left'][6] = 'new-96c76c2d-bc7e-48d9-bab3-b598120df78b';
   $pane = new stdClass();
   $pane->pid = 'new-6b1b6374-7759-470e-8cc9-9c34b7ae881c';
   $pane->panel = 'main-center';

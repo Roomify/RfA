@@ -8654,6 +8654,17 @@ body.toggled #close-sidebar-wrapper {
   .page-listing .panel_sl_left #property-description-tab {
     background: url("../images/description.png") center center no-repeat;
     background: url("../images/description.svg") center center no-repeat, linear-gradient(transparent, transparent);
+    background-size: 18px 18px;
+    display: inline-block;
+    width: 18px;
+    height: 18px;
+    position: relative;
+    top: 4px;
+    right: 6px; }
+  .page-listing .panel_sl_left #property-availability-tab {
+    background: url("../images/calendar.png") center center no-repeat;
+    background: url("../images/calendar.svg") center center no-repeat, linear-gradient(transparent, transparent);
+    background-size: 18px 18px;
     display: inline-block;
     width: 18px;
     height: 18px;
@@ -8663,6 +8674,7 @@ body.toggled #close-sidebar-wrapper {
   .page-listing .panel_sl_left #property-amenities-tab {
     background: url("../images/amenities.png") center center no-repeat;
     background: url("../images/amenities.svg") center center no-repeat, linear-gradient(transparent, transparent);
+    background-size: 15px 15px;
     display: inline-block;
     width: 15px;
     height: 15px;
@@ -8672,6 +8684,7 @@ body.toggled #close-sidebar-wrapper {
   .page-listing .panel_sl_left #property-policies-tab {
     background: url("../images/policies.png") center center no-repeat;
     background: url("../images/policies.svg") center center no-repeat, linear-gradient(transparent, transparent);
+    background-size: 18px 18px;
     display: inline-block;
     width: 18px;
     height: 18px;
@@ -8681,6 +8694,7 @@ body.toggled #close-sidebar-wrapper {
   .page-listing .panel_sl_left #property-location-tab {
     background: url("../images/location_tab.png") center center no-repeat;
     background: url("../images/location_tab.svg") center center no-repeat, linear-gradient(transparent, transparent);
+    background-size: 20px 20px;
     display: inline-block;
     width: 20px;
     height: 20px;
@@ -8690,6 +8704,7 @@ body.toggled #close-sidebar-wrapper {
   .page-listing .panel_sl_left #property-reviews-tab {
     background: url("../images/star.png") center center no-repeat;
     background: url("../images/star.svg") center center no-repeat, linear-gradient(transparent, transparent);
+    background-size: 17px 17px;
     display: inline-block;
     width: 17px;
     height: 17px;
@@ -8699,12 +8714,38 @@ body.toggled #close-sidebar-wrapper {
   .page-listing .panel_sl_left #property-rooms-tab {
     background: url("../images/property_type_tab.png") center center no-repeat;
     background: url("../images/property_type_tab.svg") center center no-repeat, linear-gradient(transparent, transparent);
+    background-size: 17px 17px;
     display: inline-block;
     width: 17px;
     height: 17px;
     position: relative;
     top: 3px;
     right: 6px; }
+  .page-listing .pane-roomify-availability-calendar {
+    display: inline-block; }
+    .page-listing .pane-roomify-availability-calendar .fc-day-grid-container {
+      height: auto !important; }
+    .page-listing .pane-roomify-availability-calendar .calendar-legend {
+      display: inline-block;
+      width: 100%;
+      margin: 10px 0; }
+      .page-listing .pane-roomify-availability-calendar .calendar-legend .available-date,
+      .page-listing .pane-roomify-availability-calendar .calendar-legend .unavailable-date {
+        padding-left: 30px;
+        margin-right: 10px;
+        position: relative; }
+        .page-listing .pane-roomify-availability-calendar .calendar-legend .available-date:before,
+        .page-listing .pane-roomify-availability-calendar .calendar-legend .unavailable-date:before {
+          width: 20px;
+          height: 20px;
+          content: '';
+          background: #dce3d6;
+          display: inline-block;
+          position: absolute;
+          left: 5px;
+          top: -2px; }
+      .page-listing .pane-roomify-availability-calendar .calendar-legend .unavailable-date:before {
+        background: #f0bfbf; }
   .page-listing .pane-roomify-owner-social-pages {
     display: inline-block;
     width: 100%;
