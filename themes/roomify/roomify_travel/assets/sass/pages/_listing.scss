@@ -9,6 +9,9 @@
       margin-top: 15px;
     }
   }
+  .second-section {
+    min-height: 40px;
+  }
 }
 // Listing Page Styles
 .pane-roomify-manage-property {
@@ -467,6 +470,18 @@
     #property-description-tab {
       background: url("../images/description.png") center center no-repeat;
       background: url("../images/description.svg") center center no-repeat, linear-gradient(transparent, transparent);
+      background-size: 18px 18px;
+      display: inline-block;
+      width: 18px;
+      height: 18px;
+      position: relative;
+      top: 4px;
+      right: 6px;
+    }
+    #property-availability-tab {
+      background: url("../images/calendar.png") center center no-repeat;
+      background: url("../images/calendar.svg") center center no-repeat, linear-gradient(transparent, transparent);
+      background-size: 18px 18px;
       display: inline-block;
       width: 18px;
       height: 18px;
@@ -477,6 +492,7 @@
     #property-amenities-tab {
       background: url("../images/amenities.png") center center no-repeat;
       background: url("../images/amenities.svg") center center no-repeat, linear-gradient(transparent, transparent);
+      background-size: 15px 15px;
       display: inline-block;
       width: 15px;
       height: 15px;
@@ -487,6 +503,7 @@
     #property-policies-tab {
       background: url("../images/policies.png") center center no-repeat;
       background: url("../images/policies.svg") center center no-repeat, linear-gradient(transparent, transparent);
+      background-size: 18px 18px;
       display: inline-block;
       width: 18px;
       height: 18px;
@@ -497,6 +514,7 @@
     #property-location-tab {
       background: url("../images/location_tab.png") center center no-repeat;
       background: url("../images/location_tab.svg") center center no-repeat, linear-gradient(transparent, transparent);
+      background-size: 20px 20px;
       display: inline-block;
       width: 20px;
       height: 20px;
@@ -507,6 +525,7 @@
     #property-reviews-tab {
       background: url("../images/star.png") center center no-repeat;
       background: url("../images/star.svg") center center no-repeat, linear-gradient(transparent, transparent);
+      background-size: 17px 17px;
       display: inline-block;
       width: 17px;
       height: 17px;
@@ -517,12 +536,45 @@
     #property-rooms-tab {
       background: url("../images/property_type_tab.png") center center no-repeat;
       background: url("../images/property_type_tab.svg") center center no-repeat, linear-gradient(transparent, transparent);
+      background-size: 17px 17px;
       display: inline-block;
       width: 17px;
       height: 17px;
       position: relative;
       top: 3px;
       right: 6px;
+    }
+  }
+  .pane-roomify-availability-calendar {
+    display: inline-block;
+    .fc-day-grid-container {
+      height: auto !important;
+    }
+    .calendar-legend {
+      display: inline-block;
+      width: 100%;
+      margin: 10px 0;
+      .available-date,
+      .unavailable-date {
+        padding-left: 30px;
+        margin-right: 10px;
+        position: relative;
+        &:before {
+          width: 20px;
+          height: 20px;
+          content: '';
+          background: #dce3d6;
+          display: inline-block;
+          position: absolute;
+          left: 5px;
+          top: -2px;
+        }
+      }
+      .unavailable-date {
+        &:before {
+          background: #f0bfbf;
+        }
+      }
     }
   }
   .pane-roomify-owner-social-pages {
@@ -914,62 +966,6 @@
           height: calc(100% - 100px);
         }
       }
-      .field-type-bat-calendar-unit-type-reference {
-        padding: 28px;
-        background: white;
-        border-radius: 4px;
-        border: 1px solid #eaeaea;
-        table:not(.table-bordered) > thead > tr > th,
-        table:not(.table-bordered) > tbody > tr > th,
-        table:not(.table-bordered) > tfoot > tr > th,
-        table:not(.table-bordered) > thead > tr > td,
-        table:not(.table-bordered) > tbody > tr > td,
-        table:not(.table-bordered) > tfoot > tr > td,
-        .table:not(.table-bordered) > thead > tr > th,
-        .table:not(.table-bordered) > tbody > tr > th,
-        .table:not(.table-bordered) > tfoot > tr > th,
-        .table:not(.table-bordered) > thead > tr > td,
-        .table:not(.table-bordered) > tbody > tr > td,
-        .table:not(.table-bordered) > tfoot > tr > td {
-          border-color: #717171;
-        }
-        td.fc-past {
-          background: #efefef;
-        }
-      }
-      .fc-head-container.fc-widget-header,
-      .fc-day-header.fc-widget-header {
-        background: #1597d2;
-        color: white;
-        font-weight: 500;
-        text-transform: uppercase;
-      }
-      .calendar-legend {
-        display: inline-block;
-        width: 100%;
-        margin: 10px 0;
-        .available-date,
-        .unavailable-date {
-          padding-left: 30px;
-          margin-right: 10px;
-          position: relative;
-          &:before {
-            width: 20px;
-            height: 20px;
-            content: '';
-            background: #dce3d6;
-            display: inline-block;
-            position: absolute;
-            left: 5px;
-            top: -2px;
-          }
-        }
-        .unavailable-date {
-          &:before {
-            background: #f0bfbf;
-          }
-        }
-      }
     }
   }
   div.modal-content {
@@ -980,5 +976,81 @@
 .field-name-field-st-calendar-reference {
   .field-label {
     display: none;
+  }
+}
+.page-listing {
+  .panel_sl_left {
+    @media (max-width: $screen-md) {
+      li.ui-state-default {
+        width: 49% !important;
+        display: inline-block;
+        float: left;
+        margin: 0px !important;
+        a {
+          width: 100%;
+        }
+      }
+    }
+    @media (max-width: $screen-sm) {
+      li.ui-state-default {
+        width: 100% !important;
+      }
+    }
+  }
+  .field-type-bat-calendar-unit-type-reference {
+    padding: 28px;
+    background: white;
+    border-radius: 4px;
+    border: 1px solid #eaeaea;
+    table:not(.table-bordered) > thead > tr > th,
+    table:not(.table-bordered) > tbody > tr > th,
+    table:not(.table-bordered) > tfoot > tr > th,
+    table:not(.table-bordered) > thead > tr > td,
+    table:not(.table-bordered) > tbody > tr > td,
+    table:not(.table-bordered) > tfoot > tr > td,
+    .table:not(.table-bordered) > thead > tr > th,
+    .table:not(.table-bordered) > tbody > tr > th,
+    .table:not(.table-bordered) > tfoot > tr > th,
+    .table:not(.table-bordered) > thead > tr > td,
+    .table:not(.table-bordered) > tbody > tr > td,
+    .table:not(.table-bordered) > tfoot > tr > td {
+      border-color: #717171;
+    }
+    td.fc-past {
+      background: #efefef;
+    }
+  }
+  .fc-head-container.fc-widget-header,
+  .fc-day-header.fc-widget-header {
+    background: #1597d2;
+    color: white;
+    font-weight: 500;
+    text-transform: uppercase;
+  }
+  .calendar-legend {
+    display: inline-block;
+    width: 100%;
+    margin: 10px 0;
+    .available-date,
+    .unavailable-date {
+      padding-left: 30px;
+      margin-right: 10px;
+      position: relative;
+      &:before {
+        width: 20px;
+        height: 20px;
+        content: '';
+        background: #dce3d6;
+        display: inline-block;
+        position: absolute;
+        left: 5px;
+        top: -2px;
+      }
+    }
+    .unavailable-date {
+      &:before {
+        background: #f0bfbf;
+      }
+    }
   }
 }
