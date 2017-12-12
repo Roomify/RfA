@@ -714,21 +714,63 @@ function roomify_search_views_default_views() {
   $handler->display->display_options['fields']['starting_type_price']['label'] = '';
   $handler->display->display_options['fields']['starting_type_price']['exclude'] = TRUE;
   $handler->display->display_options['fields']['starting_type_price']['element_label_colon'] = FALSE;
+  /* Field: Indexed Roomify Property: N. of Bathrooms of the largest Room */
+  $handler->display->display_options['fields']['roomify_search_handler_bathrooms_largest_room']['id'] = 'roomify_search_handler_bathrooms_largest_room';
+  $handler->display->display_options['fields']['roomify_search_handler_bathrooms_largest_room']['table'] = 'search_api_index_properties_index';
+  $handler->display->display_options['fields']['roomify_search_handler_bathrooms_largest_room']['field'] = 'roomify_search_handler_bathrooms_largest_room';
+  $handler->display->display_options['fields']['roomify_search_handler_bathrooms_largest_room']['label'] = '';
+  $handler->display->display_options['fields']['roomify_search_handler_bathrooms_largest_room']['exclude'] = TRUE;
+  $handler->display->display_options['fields']['roomify_search_handler_bathrooms_largest_room']['element_label_colon'] = FALSE;
+  /* Field: Indexed Roomify Property: N. of double beds of the largest Room */
+  $handler->display->display_options['fields']['roomify_search_handler_double_beds_largest_room']['id'] = 'roomify_search_handler_double_beds_largest_room';
+  $handler->display->display_options['fields']['roomify_search_handler_double_beds_largest_room']['table'] = 'search_api_index_properties_index';
+  $handler->display->display_options['fields']['roomify_search_handler_double_beds_largest_room']['field'] = 'roomify_search_handler_double_beds_largest_room';
+  $handler->display->display_options['fields']['roomify_search_handler_double_beds_largest_room']['label'] = '';
+  $handler->display->display_options['fields']['roomify_search_handler_double_beds_largest_room']['exclude'] = TRUE;
+  $handler->display->display_options['fields']['roomify_search_handler_double_beds_largest_room']['element_label_colon'] = FALSE;
+  /* Field: Indexed Roomify Property: The Property Capacity */
+  $handler->display->display_options['fields']['roomify_search_handler_property_capacity']['id'] = 'roomify_search_handler_property_capacity';
+  $handler->display->display_options['fields']['roomify_search_handler_property_capacity']['table'] = 'search_api_index_properties_index';
+  $handler->display->display_options['fields']['roomify_search_handler_property_capacity']['field'] = 'roomify_search_handler_property_capacity';
+  $handler->display->display_options['fields']['roomify_search_handler_property_capacity']['label'] = '';
+  $handler->display->display_options['fields']['roomify_search_handler_property_capacity']['exclude'] = TRUE;
+  $handler->display->display_options['fields']['roomify_search_handler_property_capacity']['element_label_colon'] = FALSE;
+  /* Field: Indexed Roomify Property: N. of single beds of the largest Room */
+  $handler->display->display_options['fields']['roomify_search_handler_beds_largest_room']['id'] = 'roomify_search_handler_beds_largest_room';
+  $handler->display->display_options['fields']['roomify_search_handler_beds_largest_room']['table'] = 'search_api_index_properties_index';
+  $handler->display->display_options['fields']['roomify_search_handler_beds_largest_room']['field'] = 'roomify_search_handler_beds_largest_room';
+  $handler->display->display_options['fields']['roomify_search_handler_beds_largest_room']['label'] = '';
+  $handler->display->display_options['fields']['roomify_search_handler_beds_largest_room']['exclude'] = TRUE;
+  $handler->display->display_options['fields']['roomify_search_handler_beds_largest_room']['element_label_colon'] = FALSE;
   /* Field: Global: Custom text */
   $handler->display->display_options['fields']['nothing']['id'] = 'nothing';
   $handler->display->display_options['fields']['nothing']['table'] = 'views';
   $handler->display->display_options['fields']['nothing']['field'] = 'nothing';
   $handler->display->display_options['fields']['nothing']['label'] = '';
   $handler->display->display_options['fields']['nothing']['alter']['text'] = '<div class="property-info">
-    <div class="content">
-      <div class="title">[name]</div>
-      <div class="description">[field_sp_short_description]</div>
-     </div>
-     <div class="sidebar">
-      <div class="reviews-number">[roomify_search_handler_reviews_number]</div>
-      <div class="price">[starting_type_price]</div>
-     </div>
-  </div>';
+      <div class="content">
+        <div class="title">[name]</div>
+        <div class="description">[field_sp_short_description]</div>
+    
+     
+        <div class="info">
+  <table>
+    <tbody>
+      <tr>
+        <td data-toggle="tooltip" data-html="true" title="Max Capacity" data-placement="top" class="capacity">[roomify_search_handler_property_capacity]</td>
+        <td data-toggle="tooltip" data-html="true" title="Single Beds" data-placement="top" class="single-beds">[roomify_search_handler_beds_largest_room]</td>
+        <td data-toggle="tooltip" data-html="true" title="Double Beds" data-placement="top" class="double-beds">[roomify_search_handler_double_beds_largest_room]</td>
+        <td data-toggle="tooltip" data-html="true" title="Bathrooms" data-placement="top" class="bathrooms">[roomify_search_handler_bathrooms_largest_room]</td>
+      </tr>
+    </tbody>
+  </table>
+       </div>
+       </div>
+       <div class="sidebar">
+        <div class="reviews-number">[roomify_search_handler_reviews_number]</div>
+        <div class="price">[starting_type_price]</div>
+       </div>
+    </div>';
   $handler->display->display_options['fields']['nothing']['element_label_colon'] = FALSE;
   /* Field: Indexed Roomify Property: Average rating */
   $handler->display->display_options['fields']['average_rating']['id'] = 'average_rating';
@@ -799,16 +841,31 @@ function roomify_search_views_default_views() {
     t('<div class="reviews">[roomify_search_handler_reviews_number]</div>
     <div class="price">[starting_type_price]</div>'),
     t('Card View'),
+    t('Load more'),
     t('<div class="property-info">
-    <div class="content">
-      <div class="title">[name]</div>
-      <div class="description">[field_sp_short_description]</div>
-     </div>
-     <div class="sidebar">
-      <div class="reviews-number">[roomify_search_handler_reviews_number]</div>
-      <div class="price">[starting_type_price]</div>
-     </div>
-  </div>'),
+      <div class="content">
+        <div class="title">[name]</div>
+        <div class="description">[field_sp_short_description]</div>
+    
+     
+        <div class="info">
+  <table>
+    <tbody>
+      <tr>
+        <td data-toggle="tooltip" data-html="true" title="Max Capacity" data-placement="top" class="capacity">[roomify_search_handler_property_capacity]</td>
+        <td data-toggle="tooltip" data-html="true" title="Single Beds" data-placement="top" class="single-beds">[roomify_search_handler_beds_largest_room]</td>
+        <td data-toggle="tooltip" data-html="true" title="Double Beds" data-placement="top" class="double-beds">[roomify_search_handler_double_beds_largest_room]</td>
+        <td data-toggle="tooltip" data-html="true" title="Bathrooms" data-placement="top" class="bathrooms">[roomify_search_handler_bathrooms_largest_room]</td>
+      </tr>
+    </tbody>
+  </table>
+       </div>
+       </div>
+       <div class="sidebar">
+        <div class="reviews-number">[roomify_search_handler_reviews_number]</div>
+        <div class="price">[starting_type_price]</div>
+       </div>
+    </div>'),
   );
 
   $export['properties_index'] = $view;
