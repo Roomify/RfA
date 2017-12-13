@@ -193,29 +193,132 @@
         }
         .views-field-average-rating {
           position: absolute;
-          bottom: 160px;
-          right: 21px;
+          bottom: 190px;
+          right: 24px;
         }
         .property-info {
-          height: 180px;
+          height: 220px;
           background: white;
           padding: 25px;
           padding-left: 15px;
+          padding-right: 15px;
           max-width: 540px;
           border-radius: 0px 0px 4px 4px;
+          display: inline-block;
+          width: 100%;
+          .info {
+            position: absolute;
+            bottom: 20px;
+            table {
+              max-width: 200px;
+            }
+            .single-beds {
+              position: relative;
+              color: #a8a8a8;
+              font-size: 10px;
+              width: 45px;
+              &:before {
+                background: url("../images/light_gray/single_beds.png") center center no-repeat;
+                background: url("../images/light_gray/single_beds.svg") center center no-repeat, linear-gradient(transparent, transparent);
+                content: "";
+                display: inline-block;
+                width: 20px;
+                height: 20px;
+                margin-right: 7px;
+                top: 6px;
+                left: 2px;
+                position: relative;
+              }
+              &:empty {
+                &:before {
+                  display: none;
+                }
+              }
+            }
+            .double-beds {
+              position: relative;
+              color: #a8a8a8;
+              font-size: 10px;
+              width: 45px;
+              &:before {
+                background: url("../images/light_gray/double_beds.png") center center no-repeat;
+                background: url("../images/light_gray/double_beds.svg") center center no-repeat, linear-gradient(transparent, transparent);
+                content: "";
+                display: inline-block;
+                width: 22px;
+                height: 22px;
+                margin-right: 7px;
+                top: 7px;
+                left: 2px;
+                position: relative;
+              }
+              &:empty {
+                &:before {
+                  display: none;
+                }
+              }
+            }
+            .capacity {
+              position: relative;
+              color: #a8a8a8;
+              font-weight: bold;
+              font-size: 10px;
+              width: 45px;
+              &:before {
+                background: url("../images/light_gray/users.png") center center no-repeat;
+                background: url("../images/light_gray/users.svg") center center no-repeat, linear-gradient(transparent, transparent);
+                content: "";
+                display: inline-block;
+                width: 20px;
+                height: 20px;
+                margin-right: 7px;
+                top: 5px;
+                left: 2px;
+                position: relative;
+              }
+              &:empty {
+                &:before {
+                  display: none;
+                }
+              }
+            }
+            .bathrooms {
+              position: relative;
+              color: #a8a8a8;
+              width: 45px;
+              font-size: 10px;
+              &:before {
+                background: url("../images/light_gray/bath.png") center center no-repeat;
+                background: url("../images/light_gray/bath.svg") center center no-repeat, linear-gradient(transparent, transparent);
+                content: "";
+                display: inline-block;
+                width: 20px;
+                height: 17px;
+                margin-right: 7px;
+                top: 5px;
+                left: 2px;
+                position: relative;
+              }
+              &:empty {
+                &:before {
+                  display: none;
+                }
+              }
+            }
+          }
         }
         .content {
-          width: 75%;
+          width: 72%;
           display: inline-block;
           float: left;
-          height: 180px;
+          height: 220px;
           padding-right: 15px;
         }
         .sidebar {
-          width: 25%;
+          width: 28%;
           display: inline-block;
           float: left;
-          height: 180px;
+          height: 220px;
           padding-top: 25px;
           padding-left: 15px;
           position: relative;
@@ -237,7 +340,6 @@
         }
         .title {
           font-size: 18px;
-          font-weight: bold;
           margin-bottom: 5px;;
           margin-top: 0;
         }
@@ -247,8 +349,14 @@
         }
         .price {
           text-align: center;
-          margin-top: 35px;
           color: #4CAF50;
+          font-size: 13px;
+          position: absolute;
+          bottom: 40px;
+          .starting-from {
+            display: inline-block;
+            width: 100%;
+          }
         }
       }
     }
