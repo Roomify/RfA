@@ -110,10 +110,6 @@
   }
 }
 
-.pane-roomify-property-name {
-
-}
-
 .pane-roomify-property-flag-favorites-link {
   position: relative;
   z-index: 98;
@@ -276,7 +272,7 @@
       border: 1px solid #ececec;
     }
   }
-  .pane-roomify-property-name {
+  .pane-roomify-property-name h1 {
     @include h3();
     @media (max-width: $screen-sm-max) {
       text-align: center;

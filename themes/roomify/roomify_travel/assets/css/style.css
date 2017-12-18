@@ -6,7 +6,7 @@
 html, body, div, span, applet, object, iframe,
 h1, h2, .page-taxonomy-area .pane-term-name .pane-content, .page-taxonomy-area .field-name-field-area-title-description,
 .page-taxonomy-area .field-name-field-area-title-blog-posts,
-.page-taxonomy-area .field-name-field-title-featured-properties, h3, .page-listing .pane-roomify-property-name, .page-checkout-review .checkout_review .pane-title td, .page-activities-search .view-display-id-panel_pane_1 .views-row .views-field-name,
+.page-taxonomy-area .field-name-field-title-featured-properties, h3, .page-listing .pane-roomify-property-name h1, .page-checkout-review .checkout_review .pane-title td, .page-activities-search .view-display-id-panel_pane_1 .views-row .views-field-name,
 .page-availability-search .view-display-id-panel_pane_1 .views-row .views-field-name, .page-activities-search .view-display-id-panel_pane_3 .property-row .views-field-name,
 .page-availability-search .view-display-id-panel_pane_3 .property-row .views-field-name, .page-blog .panel_sl_right .panel-pane .pane-title, .node-type-blog .panel_sl_right .panel-pane .pane-title, .page-things-to-do .panel_sl_right .panel-pane .pane-title, .node-type-activity .panel_sl_right .panel-pane .pane-title, .page-taxonomy-area .field-name-field-area-description-subtitle,
 .page-taxonomy-area .field-name-field-area-description-blog-post,
@@ -314,7 +314,7 @@ th {
   .page-taxonomy-area .field-name-field-area-title-blog-posts,
   .page-taxonomy-area .field-name-field-title-featured-properties,
   h3,
-  .page-listing .pane-roomify-property-name,
+  .page-listing .pane-roomify-property-name h1,
   .page-checkout-review .checkout_review .pane-title td,
   .page-activities-search .view-display-id-panel_pane_1 .views-row .views-field-name,
   .page-availability-search .view-display-id-panel_pane_1 .views-row .views-field-name,
@@ -336,7 +336,7 @@ th {
   .page-taxonomy-area .field-name-field-area-title-blog-posts,
   .page-taxonomy-area .field-name-field-title-featured-properties,
   h3,
-  .page-listing .pane-roomify-property-name,
+  .page-listing .pane-roomify-property-name h1,
   .page-checkout-review .checkout_review .pane-title td,
   .page-activities-search .view-display-id-panel_pane_1 .views-row .views-field-name,
   .page-availability-search .view-display-id-panel_pane_1 .views-row .views-field-name,
@@ -1273,7 +1273,7 @@ hr {
 
 h1, h2, .page-taxonomy-area .pane-term-name .pane-content, .page-taxonomy-area .field-name-field-area-title-description,
 .page-taxonomy-area .field-name-field-area-title-blog-posts,
-.page-taxonomy-area .field-name-field-title-featured-properties, h3, .page-listing .pane-roomify-property-name, .page-checkout-review .checkout_review .pane-title td, .page-activities-search .view-display-id-panel_pane_1 .views-row .views-field-name,
+.page-taxonomy-area .field-name-field-title-featured-properties, h3, .page-listing .pane-roomify-property-name h1, .page-checkout-review .checkout_review .pane-title td, .page-activities-search .view-display-id-panel_pane_1 .views-row .views-field-name,
 .page-availability-search .view-display-id-panel_pane_1 .views-row .views-field-name, .page-activities-search .view-display-id-panel_pane_3 .property-row .views-field-name,
 .page-availability-search .view-display-id-panel_pane_3 .property-row .views-field-name, .page-blog .panel_sl_right .panel-pane .pane-title, .node-type-blog .panel_sl_right .panel-pane .pane-title, .page-things-to-do .panel_sl_right .panel-pane .pane-title, .node-type-activity .panel_sl_right .panel-pane .pane-title, .page-taxonomy-area .field-name-field-area-description-subtitle,
 .page-taxonomy-area .field-name-field-area-description-blog-post,
@@ -1292,13 +1292,13 @@ h1, h2, .page-taxonomy-area .pane-term-name .pane-content, .page-taxonomy-area .
   .page-taxonomy-area .pane-term-name .pane-content .small,
   .page-taxonomy-area .field-name-field-area-title-description .small,
   .page-taxonomy-area .field-name-field-area-title-blog-posts .small,
-  .page-taxonomy-area .field-name-field-title-featured-properties .small, h3 small, .page-listing .pane-roomify-property-name small, .page-checkout-review .checkout_review .pane-title td small, .page-activities-search .view-display-id-panel_pane_1 .views-row .views-field-name small,
+  .page-taxonomy-area .field-name-field-title-featured-properties .small, h3 small, .page-listing .pane-roomify-property-name h1 small, .page-checkout-review .checkout_review .pane-title td small, .page-activities-search .view-display-id-panel_pane_1 .views-row .views-field-name small,
   .page-availability-search .view-display-id-panel_pane_1 .views-row .views-field-name small, .page-activities-search .view-display-id-panel_pane_3 .property-row .views-field-name small,
   .page-availability-search .view-display-id-panel_pane_3 .property-row .views-field-name small, .page-blog .panel_sl_right .panel-pane .pane-title small, .node-type-blog .panel_sl_right .panel-pane .pane-title small, .page-things-to-do .panel_sl_right .panel-pane .pane-title small, .node-type-activity .panel_sl_right .panel-pane .pane-title small, .page-taxonomy-area .field-name-field-area-description-subtitle small,
   .page-taxonomy-area .field-name-field-area-description-blog-post small,
   .page-taxonomy-area .field-name-field-desc-featured-properities small, .page-room-type .panel_sl_left .panel-pane.pane-type-availability-search .pane-title small, .page-room-type .panel_sl_left .panel-pane.pane-bat-type-field-st-amenities .pane-title small,
   h3 .small,
-  .page-listing .pane-roomify-property-name .small,
+  .page-listing .pane-roomify-property-name h1 .small,
   .page-checkout-review .checkout_review .pane-title td .small,
   .page-activities-search .view-display-id-panel_pane_1 .views-row .views-field-name .small,
   .page-availability-search .view-display-id-panel_pane_1 .views-row .views-field-name .small,
@@ -1339,7 +1339,7 @@ h2,
 .page-taxonomy-area .field-name-field-area-title-blog-posts,
 .page-taxonomy-area .field-name-field-title-featured-properties, .h2,
 h3,
-.page-listing .pane-roomify-property-name,
+.page-listing .pane-roomify-property-name h1,
 .page-checkout-review .checkout_review .pane-title td,
 .page-activities-search .view-display-id-panel_pane_1 .views-row .views-field-name,
 .page-availability-search .view-display-id-panel_pane_1 .views-row .views-field-name,
@@ -1371,7 +1371,7 @@ h3,
   .page-taxonomy-area .field-name-field-title-featured-properties .small, .h2 small,
   .h2 .small,
   h3 small,
-  .page-listing .pane-roomify-property-name small,
+  .page-listing .pane-roomify-property-name h1 small,
   .page-checkout-review .checkout_review .pane-title td small,
   .page-activities-search .view-display-id-panel_pane_1 .views-row .views-field-name small,
   .page-availability-search .view-display-id-panel_pane_1 .views-row .views-field-name small,
@@ -1387,7 +1387,7 @@ h3,
   .page-room-type .panel_sl_left .panel-pane.pane-type-availability-search .pane-title small,
   .page-room-type .panel_sl_left .panel-pane.pane-bat-type-field-st-amenities .pane-title small,
   h3 .small,
-  .page-listing .pane-roomify-property-name .small,
+  .page-listing .pane-roomify-property-name h1 .small,
   .page-checkout-review .checkout_review .pane-title td .small,
   .page-activities-search .view-display-id-panel_pane_1 .views-row .views-field-name .small,
   .page-availability-search .view-display-id-panel_pane_1 .views-row .views-field-name .small,
@@ -1435,7 +1435,7 @@ h2, .page-taxonomy-area .pane-term-name .pane-content, .page-taxonomy-area .fiel
 .page-taxonomy-area .field-name-field-title-featured-properties, .h2 {
   font-size: 32px; }
 
-h3, .page-listing .pane-roomify-property-name, .page-checkout-review .checkout_review .pane-title td, .page-activities-search .view-display-id-panel_pane_1 .views-row .views-field-name,
+h3, .page-listing .pane-roomify-property-name h1, .page-checkout-review .checkout_review .pane-title td, .page-activities-search .view-display-id-panel_pane_1 .views-row .views-field-name,
 .page-availability-search .view-display-id-panel_pane_1 .views-row .views-field-name, .page-activities-search .view-display-id-panel_pane_3 .property-row .views-field-name,
 .page-availability-search .view-display-id-panel_pane_3 .property-row .views-field-name, .page-blog .panel_sl_right .panel-pane .pane-title, .node-type-blog .panel_sl_right .panel-pane .pane-title, .page-things-to-do .panel_sl_right .panel-pane .pane-title, .node-type-activity .panel_sl_right .panel-pane .pane-title, .page-taxonomy-area .field-name-field-area-description-subtitle,
 .page-taxonomy-area .field-name-field-area-description-blog-post,
@@ -6443,7 +6443,7 @@ strong {
 
 h1, h2, .page-taxonomy-area .pane-term-name .pane-content, .page-taxonomy-area .field-name-field-area-title-description,
 .page-taxonomy-area .field-name-field-area-title-blog-posts,
-.page-taxonomy-area .field-name-field-title-featured-properties, h3, .page-listing .pane-roomify-property-name, .page-checkout-review .checkout_review .pane-title td, .page-activities-search .view-display-id-panel_pane_1 .views-row .views-field-name,
+.page-taxonomy-area .field-name-field-title-featured-properties, h3, .page-listing .pane-roomify-property-name h1, .page-checkout-review .checkout_review .pane-title td, .page-activities-search .view-display-id-panel_pane_1 .views-row .views-field-name,
 .page-availability-search .view-display-id-panel_pane_1 .views-row .views-field-name, .page-activities-search .view-display-id-panel_pane_3 .property-row .views-field-name,
 .page-availability-search .view-display-id-panel_pane_3 .property-row .views-field-name, .page-blog .panel_sl_right .panel-pane .pane-title, .node-type-blog .panel_sl_right .panel-pane .pane-title, .page-things-to-do .panel_sl_right .panel-pane .pane-title, .node-type-activity .panel_sl_right .panel-pane .pane-title, .page-taxonomy-area .field-name-field-area-description-subtitle,
 .page-taxonomy-area .field-name-field-area-description-blog-post,
@@ -6467,7 +6467,7 @@ h2, .page-taxonomy-area .pane-term-name .pane-content, .page-taxonomy-area .fiel
   margin-bottom: 20px;
   line-height: 0.93; }
 
-h3, .page-listing .pane-roomify-property-name, .page-checkout-review .checkout_review .pane-title td, .page-activities-search .view-display-id-panel_pane_1 .views-row .views-field-name,
+h3, .page-listing .pane-roomify-property-name h1, .page-checkout-review .checkout_review .pane-title td, .page-activities-search .view-display-id-panel_pane_1 .views-row .views-field-name,
 .page-availability-search .view-display-id-panel_pane_1 .views-row .views-field-name, .page-activities-search .view-display-id-panel_pane_3 .property-row .views-field-name,
 .page-availability-search .view-display-id-panel_pane_3 .property-row .views-field-name, .page-blog .panel_sl_right .panel-pane .pane-title, .node-type-blog .panel_sl_right .panel-pane .pane-title, .page-things-to-do .panel_sl_right .panel-pane .pane-title, .node-type-activity .panel_sl_right .panel-pane .pane-title, .page-taxonomy-area .field-name-field-area-description-subtitle,
 .page-taxonomy-area .field-name-field-area-description-blog-post,
@@ -8350,7 +8350,7 @@ body.toggled #close-sidebar-wrapper {
     border-radius: 2px;
     border: 1px solid #ececec; }
   @media (max-width: 991px) {
-    .page-listing .pane-roomify-property-name {
+    .page-listing .pane-roomify-property-name h1 {
       text-align: center; } }
   .page-listing .pane-roomify-property-field-sp-short-description {
     text-align: justify;
