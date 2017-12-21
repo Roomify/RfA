@@ -62,11 +62,13 @@ Drupal.behaviors.roomifyTravelScripts = {
       $('#roomify-main-menu-overlay').css('opacity', '0');
       $('html').css('overflow', '');
       $('html').css('position', '');
+      $('html').css('width', '');
     });
     $('.roomify-site-menu .navbar-toggle').once().click(function() {
       $('#roomify-main-menu-overlay').css('opacity', '1');
       $('html').css('overflow', 'hidden');
       $('html').css('position', 'fixed');
+      $('html').css('width', '100%');
     });
 
     // Place hamburger and user icons in the center of the header.
