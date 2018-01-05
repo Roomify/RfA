@@ -20,7 +20,25 @@ function roomify_contact_menu() {
     'type' => MENU_CALLBACK,
   );
 
+  $items['admin/structure/entityform_types/manage/%entityform_type/page_text'] = array(
+    'title' => 'Page text',
+    'page callback' => 'drupal_get_form',
+    'page arguments' => array('roomify_contact_page_text_form'),
+    'access arguments' => array('view any entityform'),
+    'type' => MENU_LOCAL_TASK,
+    'weight' => 200,
+  );
+
   return $items;
+}
+
+/**
+ * Implements hook_ctools_plugin_directory().
+ */
+function roomify_contact_ctools_plugin_directory($owner, $plugin_type) {
+  if ($owner == 'ctools' && $plugin_type == 'content_types') {
+    return 'plugins/content_types';
+  }
 }
 
 /**
@@ -88,4 +106,36 @@ function roomify_contact_page_alter(&$page) {
     // Kill breadcrumb, set to empty array.
     drupal_set_breadcrumb(array());
   }
+}
+
+/**
+ * Contact-us page text configuration form.
+ */
+function roomify_contact_page_text_form($form, &$form_state) {
+  form_load_include($form_state, 'inc', 'variable_realm', 'variable_realm.variable');
+  module_load_include('form.inc', 'variable');
+  _roomify_system_prepare_variables_realm();
+
+  $form['description'] = array(
+    '#markup' => '<h4>' . t('This text will be used on the contact us page.') . '</h4>',
+  );
+
+  $form['roomify_contact_page_text'] = variable_form_element(variable_get_info('roomify_contact_page_text'));
+
+  $form['submit'] = array(
+    '#type' => 'submit',
+    '#value' => t('Save configuration'),
+  );
+
+  $form['#submit'] = array('roomify_contact_page_text_form_submit');
+  variable_realm_variable_settings_form_alter($form, $form_state, 'roomify_contact_page_text_form');
+
+  return $form;
+}
+
+/**
+ * Submit function for the roomify_contact_page_text_form form.
+ */
+function roomify_contact_page_text_form_submit($form, &$form_state) {
+  drupal_set_message(t('The configuration options have been saved'));
 }
