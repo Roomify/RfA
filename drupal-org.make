@@ -62,7 +62,7 @@ projects[better_db_updates][subdir] = contrib
 
 ; bootstrap
 projects[bootstrap][type] = theme
-projects[bootstrap][version] = 3.15
+projects[bootstrap][version] = 3.16
 
 ; adminimal
 projects[adminimal_theme][type] = theme
@@ -85,7 +85,7 @@ projects[adminimal_admin_menu][patch][] = https://www.drupal.org/files/issues/dr
 
 projects[administerusersbyrole][version] = 2.0
 
-projects[advagg][version] = 2.28
+projects[advagg][version] = 2.30
 
 projects[agrcache][version] = 1.7
 
@@ -95,7 +95,7 @@ projects[autocomplete_deluxe][patch][] = https://www.drupal.org/files/issues/ter
 
 projects[background_image_formatter][version] = 1.4
 
-projects[backup_migrate][version] = 3.2
+projects[backup_migrate][version] = 3.3
 
 projects[bean][version] = 1.9
 
@@ -120,10 +120,8 @@ projects[chosen][version] = 2.0
 
 projects[classy_paragraphs][version] = 1.0
 
-projects[commerce][version] = 1.13
+projects[commerce][version] = 1.14
 projects[commerce][patch][] = https://www.drupal.org/files/issues/commerce-delete_line_items_without_products-2261289-4.patch
-projects[commerce][patch][] = https://www.drupal.org/files/issues/commerce-georgian_lari-2256853-6.patch
-projects[commerce][patch][] = https://www.drupal.org/files/issues/commerce-cart_product_add_php7-2762907-5.patch
 
 projects[commerce_addressbook] = 3.0-rc4
 
@@ -191,7 +189,7 @@ projects[entitycache][version] = 1.5
 
 projects[entity_background][version] = 1.0-alpha6
 
-projects[entityqueue][version] = 1.1
+projects[entityqueue][version] = 1.3
 
 projects[entity_rules][version] = 1.0-alpha4
 
@@ -250,7 +248,7 @@ projects[field_formatter_settings][version] = 1.1
 projects[footable][version] = 1.0
 projects[footable][patch][] = https://www.drupal.org/files/issues/footable-add_striping_option-2307701-4.patch
 
-projects[file_entity][version] = 2.10
+projects[file_entity][version] = 2.12
 
 projects[geofield][version] = 2.3
 
@@ -288,7 +286,7 @@ projects[hreflang][version] = 1.3
 
 projects[hotjar][version] = 1.2
 
-projects[i18n][version] = 1.15
+projects[i18n][version] = 1.22
 
 projects[i18nviews][version] = 3.0-alpha1
 projects[i18nviews][patch][] = https://www.drupal.org/files/issues/i18nviews-2245917-1-export-translatables-v1.patch
@@ -332,13 +330,13 @@ projects[mailsystem][download][type] = git
 projects[mailsystem][download][url] = https://git.drupal.org/project/mailsystem.git
 projects[mailsystem][download][revision] = 966e13e7024a428e35dfc1e505ae6a774eb148a2
 
-projects[manualcrop][version] = 1.6
+projects[manualcrop][version] = 1.7
 
 projects[masonry][version] = 3.0-beta1
 
 projects[masonry_views][version] = 3.0
 
-projects[media][version] = 2.12
+projects[media][version] = 2.14
 
 projects[menu_admin_per_menu][version] = 1.0
 projects[menu_admin_per_menu][patch][] = https://www.drupal.org/files/issues/integrate-menu-translation-suport-2546214-1.patch
