@@ -177,3 +177,13 @@ function roomify_contact_update_7006() {
     $entityform_type->save();
   }
 }
+
+/**
+ * Add 'Contact-us page text' variable as translatable.
+ */
+function roomify_contact_update_7007() {
+  $variable_realm_list = variable_get('variable_realm_list_language', array());
+  $variable_realm_list[] = 'roomify_contact_page_text';
+
+  variable_set('variable_realm_list_language', $variable_realm_list);
+}
