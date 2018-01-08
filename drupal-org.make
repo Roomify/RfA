@@ -157,7 +157,10 @@ projects[conditional_fields][version] = 3.0-alpha2
 
 projects[content_menu][version] = 1.0
 
-projects[ctools][version] = 1.12
+projects[ctools][type] = module
+projects[ctools][download][type] = git
+projects[ctools][download][url] = https://git.drupal.org/project/ctools.git
+projects[ctools][download][revision] = 166eac2a2fe6dd678178a96845815526147a736f
 
 projects[date][version] = 2.10
 projects[date][patch][] = https://www.drupal.org/files/issues/date-input_disabled-1190830-14.patch
