@@ -9781,6 +9781,17 @@ body.toggled #close-sidebar-wrapper {
   .page-contact-us .region-content:after,
   .page-contact-us .bootstrap-one-column:after {
     clear: both; }
+.page-contact-us .region-content .panel-pane {
+  margin-bottom: 15px;
+  display: inline-block;
+  width: 100%;
+  padding: 15px;
+  background: white;
+  border: 1px solid #ececec;
+  border-radius: 2px; }
+  .page-contact-us .region-content .panel-pane .pane-title {
+    border-bottom: 1px solid #ececec;
+    padding-bottom: 15px; }
 .page-contact-us .panel_sl_content {
   padding: 0; }
 .page-contact-us .panel {

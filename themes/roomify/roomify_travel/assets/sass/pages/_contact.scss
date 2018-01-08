@@ -5,6 +5,21 @@
   .bootstrap-one-column {
     @include make-row();
   }
+  .region-content {
+    .panel-pane {
+      margin-bottom: 15px;
+      display: inline-block;
+      width: 100%;
+      padding: 15px;
+      background: white;
+      border: 1px solid #ececec;
+      border-radius: 2px;
+      .pane-title {
+        border-bottom: 1px solid #ececec;
+        padding-bottom: 15px
+      }
+    }
+  }
   .panel_sl_content {
     padding: 0;
   }
