@@ -540,7 +540,7 @@ projects[xmlsitemap][type] = module
 projects[xmlsitemap][download][type] = git
 projects[xmlsitemap][download][url] = https://git.drupal.org/project/xmlsitemap.git
 projects[xmlsitemap][download][revision] = eaaf1dd750c17ccca9c58cf40d1cda815b77cbb2
-projects[xmlsitemap][patch][] = https://www.drupal.org/files/issues/xmlsitemap-entity-integration-1461670-40.patch
+projects[xmlsitemap][patch][] = https://www.drupal.org/files/issues/xmlsitemap-entity-integration-1461670-41.patch
 
 projects[yoast_seo][type] = module
 projects[yoast_seo][download][type] = git
