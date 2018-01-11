@@ -23,7 +23,7 @@ function access_if_travel_theme_group($conf, $context) {
     if (isset($all_themes[$theme]->info['base theme'])) {
       // It has a subtheme.
       $base_themes = drupal_find_base_themes($all_themes, $theme);
-      foreach($base_themes as $key => $base) {
+      foreach ($base_themes as $key => $base) {
         if ($key == 'roomify_travel') {
           return TRUE;
         }
