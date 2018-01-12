@@ -3526,7 +3526,7 @@ function roomify_accommodation_booking_owner_notification_mail(array $job) {
  * 'Booking Notifications' configuration form.
  */
 function roomify_accommodation_booking_notifications_form($form, &$form_state) {
-  $options = array(0 => t('- Skip -')) + array_combine(range(1, 30), range(1, 30));
+  $options = array(0 => t('- Skip -')) + array_combine(range(1, 60), range(1, 60));
 
   $form['guest'] = array(
     '#type' => 'fieldset',
