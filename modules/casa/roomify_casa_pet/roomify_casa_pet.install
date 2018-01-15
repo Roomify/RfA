@@ -286,6 +286,22 @@ function _casa_create_pet_templates() {
     "rdf_mapping" : []
   }');
 
+  $item['roomify_check_status_booking'] = entity_import('pet', '{
+    "name" : "roomify_check_status_booking",
+    "title" : "Check Status",
+    "subject" : "",
+    "mail_body" : "",
+    "mail_body_plain" : "",
+    "send_plain" : "0",
+    "from_override" : "",
+    "cc_default" : "",
+    "bcc_default" : "",
+    "recipient_callback" : "",
+    "token_entity_types" : null,
+    "language" : "en",
+    "rdf_mapping" : []
+  }');
+
   foreach ($items as $item) {
     $item->save();
   }
@@ -762,6 +778,29 @@ function roomify_casa_pet_update_7017() {
     "title" : "Authenticated user booking enquiry",
     "subject" : "Your enquiry has been sent!",
     "mail_body" : "[roomify_conversation:conversation_booking_details]\r\n\r\nHello [roomify_conversation:conversation-user-name],\r\n\r\nThank you for your enquiry!\r\n\r\nYou can talk with the owner of the property by logging in to the site and visiting \u003Ca href=\u0022[roomify_conversation:absolute_url]\u0022\u003E[roomify_conversation:absolute_url]\u003C\/a\u003E\r\n\r\n--  [site:name] Team",
+    "mail_body_plain" : "",
+    "send_plain" : "0",
+    "from_override" : "",
+    "cc_default" : "",
+    "bcc_default" : "",
+    "recipient_callback" : "",
+    "token_entity_types" : null,
+    "language" : "en",
+    "rdf_mapping" : []
+  }');
+
+  $item->save();
+}
+
+/**
+ * Add "Check Status" template.
+ */
+function roomify_casa_pet_update_7018() {
+  $item = entity_import('pet', '{
+    "name" : "roomify_check_status_booking",
+    "title" : "Check Status",
+    "subject" : "",
+    "mail_body" : "",
     "mail_body_plain" : "",
     "send_plain" : "0",
     "from_override" : "",
