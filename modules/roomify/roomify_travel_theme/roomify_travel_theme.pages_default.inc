@@ -33,10 +33,8 @@ function roomify_travel_theme_default_page_manager_handlers() {
     'access' => array(
       'plugins' => array(
         0 => array(
-          'name' => 'theme',
-          'settings' => array(
-            'theme' => 'roomify_travel',
-          ),
+          'name' => 'travel_theme_or_subtheme',
+          'settings' => NULL,
           'not' => FALSE,
         ),
       ),
@@ -803,10 +801,8 @@ function roomify_travel_theme_default_page_manager_handlers() {
     'access' => array(
       'plugins' => array(
         0 => array(
-          'name' => 'theme',
-          'settings' => array(
-            'theme' => 'roomify_travel',
-          ),
+          'name' => 'travel_theme_or_subtheme',
+          'settings' => NULL,
           'not' => FALSE,
         ),
       ),
@@ -1121,10 +1117,8 @@ function roomify_travel_theme_default_page_manager_handlers() {
     'access' => array(
       'plugins' => array(
         0 => array(
-          'name' => 'theme',
-          'settings' => array(
-            'theme' => 'roomify_travel',
-          ),
+          'name' => 'travel_theme_or_subtheme',
+          'settings' => NULL,
           'not' => FALSE,
         ),
       ),
@@ -1385,10 +1379,8 @@ function roomify_travel_theme_default_page_manager_handlers() {
           'not' => FALSE,
         ),
         1 => array(
-          'name' => 'theme',
-          'settings' => array(
-            'theme' => 'roomify_travel',
-          ),
+          'name' => 'travel_theme_or_subtheme',
+          'settings' => NULL,
           'not' => FALSE,
         ),
       ),
@@ -1860,10 +1852,8 @@ function roomify_travel_theme_default_page_manager_handlers() {
     'access' => array(
       'plugins' => array(
         0 => array(
-          'name' => 'theme',
-          'settings' => array(
-            'theme' => 'roomify_travel',
-          ),
+          'name' => 'travel_theme_or_subtheme',
+          'settings' => NULL,
           'not' => FALSE,
         ),
         1 => array(
@@ -2186,10 +2176,8 @@ function roomify_travel_theme_default_page_manager_handlers() {
           'not' => FALSE,
         ),
         1 => array(
-          'name' => 'theme',
-          'settings' => array(
-            'theme' => 'roomify_travel',
-          ),
+          'name' => 'travel_theme_or_subtheme',
+          'settings' => NULL,
           'not' => FALSE,
         ),
       ),
@@ -2288,11 +2276,9 @@ function roomify_travel_theme_default_page_manager_handlers() {
     'name' => 'location-travel',
     'access' => array(
       'plugins' => array(
-        1 => array(
-          'name' => 'theme',
-          'settings' => array(
-            'theme' => 'roomify_travel',
-          ),
+        0 => array(
+          'name' => 'travel_theme_or_subtheme',
+          'settings' => NULL,
           'not' => FALSE,
         ),
       ),
@@ -2404,10 +2390,8 @@ function roomify_travel_theme_default_page_manager_handlers() {
     'access' => array(
       'plugins' => array(
         0 => array(
-          'name' => 'theme',
-          'settings' => array(
-            'theme' => 'roomify_travel',
-          ),
+          'name' => 'travel_theme_or_subtheme',
+          'settings' => NULL,
           'not' => FALSE,
         ),
       ),
@@ -2645,10 +2629,8 @@ function roomify_travel_theme_default_page_manager_handlers() {
           'not' => FALSE,
         ),
         1 => array(
-          'name' => 'theme',
-          'settings' => array(
-            'theme' => 'roomify_travel',
-          ),
+          'name' => 'travel_theme_or_subtheme',
+          'settings' => NULL,
           'not' => FALSE,
         ),
       ),
@@ -2739,10 +2721,8 @@ function roomify_travel_theme_default_page_manager_handlers() {
     'access' => array(
       'plugins' => array(
         0 => array(
-          'name' => 'theme',
-          'settings' => array(
-            'theme' => 'roomify_travel',
-          ),
+          'name' => 'travel_theme_or_subtheme',
+          'settings' => NULL,
           'not' => FALSE,
         ),
       ),
@@ -3176,10 +3156,8 @@ function roomify_travel_theme_default_page_manager_handlers() {
     'access' => array(
       'plugins' => array(
         0 => array(
-          'name' => 'theme',
-          'settings' => array(
-            'theme' => 'roomify_travel',
-          ),
+          'name' => 'travel_theme_or_subtheme',
+          'settings' => NULL,
           'not' => FALSE,
         ),
       ),
@@ -3290,11 +3268,9 @@ function roomify_travel_theme_default_page_manager_handlers() {
     'name' => 'single-area-blogposts-travel',
     'access' => array(
       'plugins' => array(
-        1 => array(
-          'name' => 'theme',
-          'settings' => array(
-            'theme' => 'roomify_travel',
-          ),
+        0 => array(
+          'name' => 'travel_theme_or_subtheme',
+          'settings' => NULL,
           'not' => FALSE,
         ),
       ),
@@ -3410,10 +3386,8 @@ function roomify_travel_theme_default_page_manager_handlers() {
     'access' => array(
       'plugins' => array(
         0 => array(
-          'name' => 'theme',
-          'settings' => array(
-            'theme' => 'roomify_travel',
-          ),
+          'name' => 'travel_theme_or_subtheme',
+          'settings' => NULL,
           'not' => FALSE,
         ),
         1 => array(
