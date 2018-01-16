@@ -23,6 +23,15 @@ function roomify_travel_theme_modules_enabled($modules) {
 }
 
 /**
+ * Implements hook_ctools_plugin_directory().
+ */
+function roomify_travel_theme_ctools_plugin_directory($owner, $plugin_type) {
+  if ($owner == 'ctools' && !empty($plugin_type)) {
+    return "plugins/{$plugin_type}";
+  }
+}
+
+/**
  * Implements hook_ctools_plugin_api().
  */
 function roomify_travel_theme_ctools_plugin_api($module = NULL, $api = NULL) {

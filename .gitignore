@@ -14,3 +14,5 @@ test/behat/vendor
 themes/roomify/roomify_bootstrap/assets/.sass-cache
 themes/roomify/roomify_bootstrap_wide/assets/.sass-cache
 themes/roomify/roomify_travel/assets/.sass-cache
+themes/roomify/roomify_travel/starterkit/roomify_travel_subtheme/assets/.sass-cache
+themes/roomify/roomify_travel/starterkit/roomify_travel_subtheme/assets/sass/.sass-cache
