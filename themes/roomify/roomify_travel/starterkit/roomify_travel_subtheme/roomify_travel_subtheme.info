@@ -1,0 +1,33 @@
+name = Roomify Travel Subtheme
+description = Custom Roomify Travel sass starterkit.
+base theme = roomify_travel
+core = 7.x
+
+; ========================================
+; Regions
+; ========================================
+regions[navigation] = Navigation
+regions[header] = Top Bar
+regions[highlighted] = Highlighted
+regions[help] = Help
+regions[sidebar_toggle_menu] = Sidebar Toggle Menu
+regions[content] = Content
+regions[sidebar_first] = Primary
+regions[sidebar_second] = Secondary
+regions[postscript] = Postscript
+regions[footer] = Footer
+regions[page_top] = Page top
+regions[page_bottom] = Page bottom
+
+stylesheets[all][] = assets/css/roomify_travel_subtheme.css
+scripts[] = 'assets/scripts/roomify_travel_subtheme.js'
+
+; ========================================
+;Panels layouts. You can place multiple layouts under the "layouts" folder.
+; ========================================
+
+plugins[panels][layouts] = layouts
+
+; Disable BootstrapCDN so the compiled LESS source files can be used.
+settings[bootstrap_cdn] = ''
+
