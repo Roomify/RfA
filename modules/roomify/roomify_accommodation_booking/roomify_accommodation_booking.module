@@ -3420,6 +3420,20 @@ function roomify_accommodation_booking_schedule_job($booking) {
       JobScheduler::get('roomify_accommodation_booking_guest_notification')->set($job);
     }
   }
+
+  if ($days = variable_get('roomify_check_status_notification', 0)) {
+    $period = $start_date->getTimestamp() - REQUEST_TIME + (86400 * $days);
+
+    if ($period > 0) {
+      $job = array(
+        'type' => 'email check status ' . $days . ' days after',
+        'id' => $booking->booking_id,
+        'period' => $period,
+        'periodic' => FALSE,
+      );
+      JobScheduler::get('roomify_accommodation_booking_check_status_notification')->set($job);
+    }
+  }
 }
 
 /**
@@ -3432,6 +3446,9 @@ function roomify_accommodation_booking_cron_job_scheduler_info() {
   );
   $info['roomify_accommodation_booking_owner_notification'] = array(
     'queue name' => 'roomify_accommodation_booking_owner_notification_queue',
+  );
+  $info['roomify_accommodation_booking_check_status_notification'] = array(
+    'queue name' => 'roomify_accommodation_booking_check_status_notification_queue',
   );
   return $info;
 }
@@ -3446,6 +3463,9 @@ function roomify_accommodation_booking_cron_queue_info() {
   );
   $queues['roomify_accommodation_booking_owner_notification_queue'] = array(
     'worker callback' => 'roomify_accommodation_booking_owner_notification_mail',
+  );
+  $queues['roomify_accommodation_booking_check_status_notification_queue'] = array(
+    'worker callback' => 'roomify_accommodation_booking_check_status_notification_mail',
   );
   return $queues;
 }
@@ -3523,10 +3543,40 @@ function roomify_accommodation_booking_owner_notification_mail(array $job) {
 }
 
 /**
+ * Send 'Check Status' email to guest.
+ */
+function roomify_accommodation_booking_check_status_notification_mail(array $job) {
+  if ($booking = bat_booking_load($job['id'])) {
+    module_load_include('inc', 'pet', 'pet.rules');
+
+    $booking_wrapper = entity_metadata_wrapper('bat_booking', $booking);
+
+    $to_text = NULL;
+    if ($booking->type == 'booking_com') {
+      $to_text = $booking_wrapper->field_bcom_email->value();
+    }
+    elseif ($booking->type == 'roomify_accommodation_booking') {
+      $user = user_load($booking->uid);
+      $to_text = $user->mail;
+    }
+
+    if ($to_text !== NULL) {
+      $rules_state = new RulesState();
+
+      $rules_state->currentArguments['bat_booking'] = $booking_wrapper;
+      $rules_state->variables['bat_booking'] = $booking_wrapper;
+
+      pet_action_send_pet('roomify_check_status_booking', $to_text, NULL, NULL, NULL, array(), $rules_state);
+    }
+  }
+}
+
+/**
  * 'Booking Notifications' configuration form.
  */
 function roomify_accommodation_booking_notifications_form($form, &$form_state) {
-  $options = array(0 => t('- Skip -')) + array_combine(range(1, 80), range(1, 80));
+  $days80_options = array(0 => t('- Skip -')) + array_combine(range(1, 80), range(1, 80));
+  $days30_options = array(0 => t('- Skip -')) + array_combine(range(1, 30), range(1, 30));
 
   $form['guest'] = array(
     '#type' => 'fieldset',
@@ -3536,7 +3586,7 @@ function roomify_accommodation_booking_notifications_form($form, &$form_state) {
   $form['guest']['roomify_guest_first_notification'] = array(
     '#type' => 'select',
     '#title' => t('First notification'),
-    '#options' => $options,
+    '#options' => $days80_options,
     '#field_suffix' => t('days before'),
     '#default_value' => variable_get('roomify_guest_first_notification', 0),
   );
@@ -3544,7 +3594,7 @@ function roomify_accommodation_booking_notifications_form($form, &$form_state) {
   $form['guest']['roomify_guest_second_notification'] = array(
     '#type' => 'select',
     '#title' => t('Second notification'),
-    '#options' => $options,
+    '#options' => $days80_options,
     '#field_suffix' => t('days before'),
     '#default_value' => variable_get('roomify_guest_second_notification', 0),
   );
@@ -3552,7 +3602,7 @@ function roomify_accommodation_booking_notifications_form($form, &$form_state) {
   $form['guest']['roomify_guest_third_notification'] = array(
     '#type' => 'select',
     '#title' => t('Third notification'),
-    '#options' => $options,
+    '#options' => $days80_options,
     '#field_suffix' => t('days before'),
     '#default_value' => variable_get('roomify_guest_third_notification', 0),
   );
@@ -3560,7 +3610,7 @@ function roomify_accommodation_booking_notifications_form($form, &$form_state) {
   $form['guest']['roomify_guest_fourth_notification'] = array(
     '#type' => 'select',
     '#title' => t('Fourth notification'),
-    '#options' => $options,
+    '#options' => $days80_options,
     '#field_suffix' => t('days before'),
     '#default_value' => variable_get('roomify_guest_fourth_notification', 0),
   );
@@ -3577,7 +3627,7 @@ function roomify_accommodation_booking_notifications_form($form, &$form_state) {
   $form['owner']['roomify_owner_first_notification'] = array(
     '#type' => 'select',
     '#title' => t('First notification'),
-    '#options' => $options,
+    '#options' => $days80_options,
     '#field_suffix' => t('days before'),
     '#default_value' => variable_get('roomify_owner_first_notification', 0),
   );
@@ -3585,7 +3635,7 @@ function roomify_accommodation_booking_notifications_form($form, &$form_state) {
   $form['owner']['roomify_owner_second_notification'] = array(
     '#type' => 'select',
     '#title' => t('Second notification'),
-    '#options' => $options,
+    '#options' => $days80_options,
     '#field_suffix' => t('days before'),
     '#default_value' => variable_get('roomify_owner_second_notification', 0),
   );
@@ -3593,7 +3643,7 @@ function roomify_accommodation_booking_notifications_form($form, &$form_state) {
   $form['owner']['roomify_owner_third_notification'] = array(
     '#type' => 'select',
     '#title' => t('Third notification'),
-    '#options' => $options,
+    '#options' => $days80_options,
     '#field_suffix' => t('days before'),
     '#default_value' => variable_get('roomify_owner_third_notification', 0),
   );
@@ -3601,7 +3651,7 @@ function roomify_accommodation_booking_notifications_form($form, &$form_state) {
   $form['owner']['roomify_owner_fourth_notification'] = array(
     '#type' => 'select',
     '#title' => t('Fourth notification'),
-    '#options' => $options,
+    '#options' => $days80_options,
     '#field_suffix' => t('days before'),
     '#default_value' => variable_get('roomify_owner_fourth_notification', 0),
   );
@@ -3620,7 +3670,7 @@ function roomify_accommodation_booking_notifications_form($form, &$form_state) {
       '#type' => 'select',
       '#title' => t('Review notification'),
       '#description' => t('A request to review the property will be sent this many days after the guest checks out.'),
-      '#options' => $options,
+      '#options' => $days30_options,
       '#field_suffix' => t('days after'),
       '#default_value' => variable_get('roomify_review_notification', 2),
     );
@@ -3628,6 +3678,24 @@ function roomify_accommodation_booking_notifications_form($form, &$form_state) {
       '#markup' => l(t('Edit email template'), 'admin/structure/pets/manage/roomify_review_property'),
     );
   }
+
+  $form['check_status'] = array(
+    '#type' => 'fieldset',
+    '#title' => t('Check Status Notification'),
+  );
+
+  $form['check_status']['roomify_check_status_notification'] = array(
+    '#type' => 'select',
+    '#title' => t('Check Status notification'),
+    '#description' => t('A request to check the booking status will be sent this many days after the guest checks in.'),
+    '#options' => $days30_options,
+    '#field_suffix' => t('days after'),
+    '#default_value' => variable_get('roomify_check_status_notification', 0),
+  );
+  $form['check_status']['edit_link'] = array(
+    '#markup' => l(t('Edit email template'), 'admin/structure/pets/manage/roomify_check_status_booking'),
+  );
+
   $form['#submit'][] = 'roomify_accommodation_booking_notifications_form_submit';
 
   return system_settings_form($form);
@@ -3637,7 +3705,7 @@ function roomify_accommodation_booking_notifications_form($form, &$form_state) {
  * Submit function for the roomify_accommodation_booking_notifications_form form.
  */
 function roomify_accommodation_booking_notifications_form_submit($form, &$form_state) {
-  if ($form['guest']['roomify_guest_first_notification']['#value'] != $form['guest']['roomify_guest_first_notification']['#default_value'] || $form['guest']['roomify_guest_second_notification']['#value'] != $form['guest']['roomify_guest_second_notification']['#default_value'] || $form['guest']['roomify_guest_third_notification']['#value'] != $form['guest']['roomify_guest_third_notification']['#default_value'] || $form['guest']['roomify_guest_fourth_notification']['#value'] != $form['guest']['roomify_guest_fourth_notification']['#default_value'] || $form['owner']['roomify_owner_first_notification']['#value'] != $form['owner']['roomify_owner_first_notification']['#default_value'] || $form['owner']['roomify_owner_second_notification']['#value'] != $form['owner']['roomify_owner_second_notification']['#default_value'] || $form['owner']['roomify_owner_third_notification']['#value'] != $form['owner']['roomify_owner_third_notification']['#default_value'] || $form['owner']['roomify_owner_fourth_notification']['#value'] != $form['owner']['roomify_owner_fourth_notification']['#default_value']) {
+  if ($form['guest']['roomify_guest_first_notification']['#value'] != $form['guest']['roomify_guest_first_notification']['#default_value'] || $form['guest']['roomify_guest_second_notification']['#value'] != $form['guest']['roomify_guest_second_notification']['#default_value'] || $form['guest']['roomify_guest_third_notification']['#value'] != $form['guest']['roomify_guest_third_notification']['#default_value'] || $form['guest']['roomify_guest_fourth_notification']['#value'] != $form['guest']['roomify_guest_fourth_notification']['#default_value'] || $form['owner']['roomify_owner_first_notification']['#value'] != $form['owner']['roomify_owner_first_notification']['#default_value'] || $form['owner']['roomify_owner_second_notification']['#value'] != $form['owner']['roomify_owner_second_notification']['#default_value'] || $form['owner']['roomify_owner_third_notification']['#value'] != $form['owner']['roomify_owner_third_notification']['#default_value'] || $form['owner']['roomify_owner_fourth_notification']['#value'] != $form['owner']['roomify_owner_fourth_notification']['#default_value'] || $form['check_status']['roomify_check_status_notification']['#value'] != $form['check_status']['roomify_check_status_notification']['#default_value']) {
     drupal_set_message(t('This configuration will be applied to all future bookings made on @sitename. Reminders for existing bookings will be sent at the intervals configured at the time the booking was made.', array('@sitename' => variable_get('site_name', 'Drupal'))), 'warning');
   }
 }
