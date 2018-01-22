@@ -13,7 +13,14 @@
  */
 ?>
 
-<video preload="auto" autoplay loop muted playsinline>
+<?php
+if (!empty($item['thumbnailfile'])) {
+  $poster = check_plain($item['thumbnailfile']->url);
+  echo '<img src="' . $poster . '" style="display: none;" />';
+}
+?>
+
+<video preload="auto" autoplay loop muted playsinline style="display: none;">
 <?php
 foreach ($files as $index => $file) {
   if (strncmp($file->filemime, 'video/', 6) !== 0) {
