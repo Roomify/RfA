@@ -22,7 +22,6 @@ Thanks! We welcome bug reports, feature suggestions, and code contributions. Ple
 
 If you'd like to make a donation to help support on-going development you may do so via:
 
-* GratiPay: [![Gratipay Team](https://img.shields.io/gratipay/team/roomify.svg?style=plastic)](https://gratipay.com/roomify/)
 * PayPal: [![](https://www.paypalobjects.com/en_US/i/btn/btn_donate_LG.gif)](https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=ZVCQTS64Y4JCL)
 
 #### Is there documentation?
