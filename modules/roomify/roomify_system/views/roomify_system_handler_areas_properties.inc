@@ -34,11 +34,13 @@ class roomify_system_handler_areas_properties extends views_handler_field {
     $properties_ids = roomify_property_ids();
     $area_properties = array();
     foreach ($properties as $property) {
-      $areas = field_get_items('roomify_property', $property, 'field_sp_area');
-      if (!empty($areas)) {
-        foreach ($areas as $area) {
-          if ($area['tid'] == $values->tid) {
-            $area_properties[] = $property;
+      if ($property->status == 1) {
+        $areas = field_get_items('roomify_property', $property, 'field_sp_area');
+        if (!empty($areas)) {
+          foreach ($areas as $area) {
+            if ($area['tid'] == $values->tid) {
+              $area_properties[] = $property;
+            }
           }
         }
       }
