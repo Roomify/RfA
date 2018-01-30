@@ -1,0 +1,70 @@
+diff --git a/includes/pet.admin.inc b/includes/pet.admin.inc
+index 11104ce..1faaefb 100755
+--- a/includes/pet.admin.inc
++++ b/includes/pet.admin.inc
+@@ -172,6 +172,13 @@ function pet_form($form, &$form_state, $pet, $op = 'edit') {
+   );
+   $form['tokens'] = pet_token_help($pet->token_entity_types);
+ 
++  $form['active'] = array(
++    '#type' => 'checkbox',
++    '#title' => t('Active template'),
++    '#default_value' => $pet->active,
++    '#weight' => 100,
++  );
++
+   $form['actions'] = array('#type' => 'actions');
+   $form['actions']['submit'] = array(
+     '#type' => 'submit',
+diff --git a/pet.install b/pet.install
+index 5610546..cfa5432 100755
+--- a/pet.install
++++ b/pet.install
+@@ -111,6 +111,13 @@ function pet_schema() {
+         'not null' => TRUE,
+         'default' => '',
+       ),
++      'active' => array(
++        'type' => 'int',
++        'not null' => TRUE,
++        'default' => 0x01,
++        'size' => 'tiny',
++        'description' => 'Active status.',
++      ),
+     ),
+     'primary key' => array('pid'),
+   );
+@@ -154,3 +161,16 @@ function pet_update_7002() {
+ 
+   db_drop_unique_key('pets', 'name');
+ }
++
++/**
++ * Add column active.
++ */
++function pet_update_7003() {
++  db_add_field('pets', 'active', array(
++    'type' => 'int',
++    'not null' => TRUE,
++    'default' => 0x01,
++    'size' => 'tiny',
++    'description' => 'Active status.',
++  ));
++}
+diff --git a/pet.rules.inc b/pet.rules.inc
+index f50a168..8ef4d6f 100644
+--- a/pet.rules.inc
++++ b/pet.rules.inc
+@@ -61,6 +61,12 @@ function pet_rules_action_info() {
+ function pet_action_send_pet($pet_name, $to_text, $to_account, $account_subs, $node_subs, $settings, $rules_state) {
+   $pet = pet_load($pet_name);
+ 
++  // Pet not active.
++  if (!$pet->active) {
++    watchdog('pet', 'Don\'t send %name PET because is not active.', array('%name' => $pet_name), WATCHDOG_NOTICE);
++    return;
++  }
++
+   // Resolve the recipient
+   if (isset($to_account)) {
+     $pet_to = $to_account->mail;

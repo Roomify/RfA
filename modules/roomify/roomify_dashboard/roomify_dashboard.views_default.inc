@@ -3020,6 +3020,14 @@ function roomify_dashboard_views_default_views() {
   $handler->display->display_options['fields']['language_1']['id'] = 'language_1';
   $handler->display->display_options['fields']['language_1']['table'] = 'pets';
   $handler->display->display_options['fields']['language_1']['field'] = 'language';
+  /* Field: Previewable Email Template: Active */
+  $handler->display->display_options['fields']['active']['id'] = 'active';
+  $handler->display->display_options['fields']['active']['table'] = 'pets';
+  $handler->display->display_options['fields']['active']['field'] = 'active';
+  $handler->display->display_options['fields']['active']['alter']['alter_text'] = TRUE;
+  $handler->display->display_options['fields']['active']['alter']['text'] = 'Active';
+  $handler->display->display_options['fields']['active']['empty'] = 'Disabled';
+  $handler->display->display_options['fields']['active']['empty_zero'] = TRUE;
   /* Field: Previewable Email Template: Machine-readable name */
   $handler->display->display_options['fields']['name']['id'] = 'name';
   $handler->display->display_options['fields']['name']['table'] = 'pets';
@@ -3059,6 +3067,8 @@ function roomify_dashboard_views_default_views() {
     t('Language select list'),
     t('Page'),
     t('Language'),
+    t('Active'),
+    t('Disabled'),
   );
 
   $export['email_templates'] = $view;
