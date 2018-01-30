@@ -107,8 +107,7 @@ projects[better_formats][version] = 1.0-beta2
 projects[cer][type] = module
 projects[cer][download][type] = git
 projects[cer][download][url] = https://git.drupal.org/project/cer.git
-projects[cer][download][revision] = 68f4b2043ab1b200da4e21d506924d7cd332b67f
-projects[cer][patch][] = https://www.drupal.org/files/issues/cer-cer-field-collection-issues-2352783-3.patch
+projects[cer][download][revision] = 886048a494a3d3c8fea79564b3a01e00ebed6754
 
 projects[chain_menu_access][version] = 2.0
 
