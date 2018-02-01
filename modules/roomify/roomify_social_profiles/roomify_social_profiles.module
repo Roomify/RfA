@@ -321,7 +321,7 @@ function roomify_social_profiles_page_alter(&$page) {
   if (isset($page['#theme']) && $page['#theme'] == 'references_dialog_page') {
     return;
   }
-  dpm(current_path());
+
   if (!path_is_admin(current_path())) {
     if (variable_get('roomify_whatsapp_number', '') != '') {
       $whatsapp_icon = '<img src="' . file_create_url(drupal_get_path('module', 'roomify_social_profiles') . '/images/whatsapp.png') . '">';
