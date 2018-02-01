@@ -3,3 +3,9 @@
   margin-right: 10px;
   float: left;
 }
+.whatsapp-icon {
+  position: fixed;
+  bottom: 40px;
+  left: 30px;
+  z-index: 25;
+}
