@@ -204,6 +204,12 @@ function rsp_form() {
     );
   }
 
+  $form['roomify_whatsapp_number'] = array(
+    '#type' => 'textfield',
+    '#title' => t('Whatsapp Number'),
+    '#description' => t('If this field is set you will see a WhatsApp icon throughout the site and users will be able to contact you'),
+    '#default_value' => variable_get('roomify_whatsapp_number', ''),
+  );
   $form['#validate'][] = 'rsp_form_validate';
 
   return system_settings_form($form);
@@ -305,4 +311,22 @@ function rsp_get_buttons($node = NULL) {
   // Don't have to worry about adding them more than once.
 
   return $items;
+}
+
+/**
+ * Implements hook_page_alter().
+ */
+function roomify_social_profiles_page_alter(&$page) {
+
+  if (isset($page['#theme']) && $page['#theme'] == 'references_dialog_page') {
+    return;
+  }
+
+  if (!path_is_admin(current_path())) {
+    if (variable_get('roomify_whatsapp_number', '') != '') {
+      $whatsapp_icon = '<img src="' . file_create_url(drupal_get_path('module', 'roomify_social_profiles') . '/images/whatsapp.png') . '">';
+      $link = 'https://api.whatsapp.com/send?phone=' . variable_get('roomify_whatsapp_number', '');
+      $page['content']['whatsapp']['content']['#markup'] = '<a target="_blank" href="' . $link . '"><div class="whatsapp-icon"><span></span>' . $whatsapp_icon . '</div></a>';
+    }
+  }
 }
