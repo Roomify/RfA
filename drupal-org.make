@@ -62,7 +62,7 @@ projects[better_db_updates][subdir] = contrib
 
 ; bootstrap
 projects[bootstrap][type] = theme
-projects[bootstrap][version] = 3.16
+projects[bootstrap][version] = 3.19
 
 ; adminimal
 projects[adminimal_theme][type] = theme
