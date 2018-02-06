@@ -13739,6 +13739,7 @@ body.node-type-homepage {
   .node-type-homepage.homepage-video .pane-node-field-homepage-video .field-name-field-homepage-video {
     max-height: 660px;
     overflow: hidden; }
+  .node-type-homepage.homepage-video .pane-node-field-homepage-video img,
   .node-type-homepage.homepage-video .pane-node-field-homepage-video video {
     width: 100%; }
 @media (min-width: 768px) {
