@@ -92,6 +92,16 @@ Drupal.behaviors.roomifyTravelScripts = {
         Drupal.settings.datePopup[id].settings.numberOfMonths = 1;
       }
     }
+
+    if (/Android|webOS|iPhone|iPad|iPod|pocket|psp|kindle|avantgo|blazer|midori|Tablet|Palm|maemo|plucker|phone|BlackBerry|symbian|IEMobile|mobile|ZuneWP7|Windows Phone|Opera Mini/i.test(navigator.userAgent) &&
+        $('.node-type-homepage.homepage-video .pane-node-field-homepage-video img').length) {
+      $('.node-type-homepage.homepage-video .pane-node-field-homepage-video video').hide();
+      $('.node-type-homepage.homepage-video .pane-node-field-homepage-video img').show();
+    }
+    else {
+      $('.node-type-homepage.homepage-video .pane-node-field-homepage-video video').show();
+      $('.node-type-homepage.homepage-video .pane-node-field-homepage-video img').hide();
+    }
   }
 };
 

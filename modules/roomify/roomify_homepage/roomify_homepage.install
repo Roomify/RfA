@@ -304,3 +304,14 @@ function roomify_homepage_update_7008() {
 
   field_update_field($field);
 }
+
+/**
+ * Enable "Manually upload a thumbnail" on homepage Video field.
+ */
+function roomify_homepage_update_7009() {
+  $field = field_read_field('field_homepage_video');
+
+  $field['settings']['autothumbnail'] = 'manual_upload';
+
+  field_update_field($field);
+}
