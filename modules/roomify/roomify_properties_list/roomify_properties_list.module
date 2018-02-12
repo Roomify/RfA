@@ -32,3 +32,17 @@ function roomify_properties_list_search_api_query_alter($query) {
     }
   }
 }
+
+/**
+ * Implements hook_metatag_metatags_view_alter()
+ */
+function roomify_properties_list_metatag_metatags_view_alter(&$output, $instance) {
+  // Add Custom logic to overwrite the canonical tag here.
+  if ($node = menu_get_object()) {
+    if ($node->type == 'properties_list') {
+      global $base_url;
+      $alias = drupal_get_path_alias('node/' . $node->nid);
+      $output['canonical']['#attached']['drupal_add_html_head'][0][0]['#value'] = $base_url . '/' . $alias;
+    }
+  }
+}
