@@ -1,8 +1,8 @@
 diff --git a/robots.txt b/robots.txt
-index a2ee32e..99252ad 100644
+index a2ee32e..b4e745c 100644
 --- a/robots.txt
 +++ b/robots.txt
-@@ -78,6 +78,10 @@ Disallow: /user/register/
+@@ -78,6 +78,14 @@ Disallow: /user/register/
  Disallow: /user/password/
  Disallow: /user/login/
  Disallow: /user/logout/
@@ -10,10 +10,14 @@ index a2ee32e..99252ad 100644
 +Disallow: /flag/
 +Disallow: /type-availability-calendar/
 +Disallow: /*/type-availability-calendar/
++Disallow: /file/
++Disallow: /*/file/
++Disallow: /availability-search/
++Disallow: /*/availability-search/
  # Paths (no clean URLs)
  Disallow: /?q=admin/
  Disallow: /?q=comment/reply/
-@@ -88,3 +92,7 @@ Disallow: /?q=user/password/
+@@ -88,3 +96,11 @@ Disallow: /?q=user/password/
  Disallow: /?q=user/register/
  Disallow: /?q=user/login/
  Disallow: /?q=user/logout/
@@ -21,3 +25,7 @@ index a2ee32e..99252ad 100644
 +Disallow: /?q=flag/
 +Disallow: /?q=type-availability-calendar/
 +Disallow: /?q=*/type-availability-calendar/
++Disallow: /?q=file/
++Disallow: /?q=*/file/
++Disallow: /?q=availability-search/
++Disallow: /?q=*/availability-search/
