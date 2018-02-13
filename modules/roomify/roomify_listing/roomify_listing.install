@@ -1501,3 +1501,16 @@ function roomify_listing_update_7044() {
     }
   }
 }
+
+/**
+ * Change widget to "Autocomplete" for "field_st_property_reference".
+ */
+function roomify_listing_update_7045() {
+  foreach (array('home', 'room') as $type_bundle) {
+    $instance_info = field_read_instance('bat_type', 'field_st_property_reference', $type_bundle);
+    $instance_info['widget'] = array(
+      'type' => 'entityreference_autocomplete',
+    );
+    field_update_instance($instance_info);
+  }
+}
