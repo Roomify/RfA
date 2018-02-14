@@ -387,6 +387,11 @@ function roomify_system_views_default_views() {
   $handler->display->display_options['sorts']['entityqueue_relationship']['id'] = 'entityqueue_relationship';
   $handler->display->display_options['sorts']['entityqueue_relationship']['table'] = 'roomify_properties';
   $handler->display->display_options['sorts']['entityqueue_relationship']['field'] = 'entityqueue_relationship';
+  /* Filter criterion: Roomify Property: Status */
+  $handler->display->display_options['filters']['status']['id'] = 'status';
+  $handler->display->display_options['filters']['status']['table'] = 'roomify_properties';
+  $handler->display->display_options['filters']['status']['field'] = 'status';
+  $handler->display->display_options['filters']['status']['value']['value'] = '1';
 
   /* Display: Featured Properties */
   $handler = $view->new_display('panel_pane', 'Featured Properties', 'panel_pane_1');
