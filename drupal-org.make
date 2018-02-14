@@ -393,6 +393,7 @@ projects[pet][download][revision] = 3a42221335ecf717a6a538e431394afcd7f198c3
 projects[pet][patch][] = https://www.drupal.org/files/issues/add-rule-state-and-allow-from-override-2879713-1.patch
 projects[pet][patch][] = https://www.drupal.org/files/issues/pet-specify_entity_types_for_tokens-2612754-1.patch
 projects[pet][patch][] = https://www.drupal.org/files/issues/multilanguage-support-2727733-6.patch
+projects[pet][patch][] = patches/pet_active.patch
 
 projects[plupload][version] = 1.7
 ; https://www.drupal.org/node/2106583
