@@ -282,7 +282,7 @@ projects[hreflang][version] = 1.3
 
 projects[hotjar][version] = 1.2
 
-projects[i18n][version] = 1.22
+projects[i18n][version] = 1.15
 
 projects[i18nviews][version] = 3.0-alpha1
 projects[i18nviews][patch][] = https://www.drupal.org/files/issues/i18nviews-2245917-1-export-translatables-v1.patch
