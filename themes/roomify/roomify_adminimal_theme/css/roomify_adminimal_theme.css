@@ -714,6 +714,10 @@ body.adminimal-theme .autocomplete-deluxe-item {
 .fc-ltr .fc-timeline-event .fc-bg {
   opacity: 0;
 }
+.view-availability-calendar #availability-calendar {
+  height: calc(100vh - 300px);
+  min-height: 350px;
+}
 .view-availability-calendar .fc-ltr .fc-timeline-event {
   top: 2% !important;
   height: 98%;
