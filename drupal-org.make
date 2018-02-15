@@ -182,7 +182,7 @@ projects[elements][version] = 1.4
 
 projects[email][version] = 1.3
 
-projects[entity][version] = 1.8
+projects[entity][version] = 1.9
 
 projects[entitycache][version] = 1.5
 
