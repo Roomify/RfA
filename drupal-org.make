@@ -229,10 +229,7 @@ projects[ffc][version] = 1.0-beta2
 
 projects[field_collection][version] = 1.0-beta12
 
-projects[field_group][type] = module
-projects[field_group][download][type] = git
-projects[field_group][download][url] = https://git.drupal.org/project/field_group.git
-projects[field_group][download][revision] = 0a5404d623d0bec355d81a9646f2b7de93b958e4
+projects[field_group][version] = 1.6
 
 projects[flag][version] = 3.9
 
