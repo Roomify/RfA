@@ -120,6 +120,8 @@ projects[chosen][version] = 2.0
 
 projects[classy_paragraphs][version] = 1.0
 
+projects[colorbox] = 2.13
+
 projects[commerce][version] = 1.13
 projects[commerce][patch][] = https://www.drupal.org/files/issues/commerce-delete_line_items_without_products-2261289-4.patch
 projects[commerce][patch][] = https://www.drupal.org/files/issues/commerce-georgian_lari-2256853-6.patch
@@ -585,6 +587,13 @@ libraries[ckeditor][type] = library
 libraries[ckeditor][destination] = libraries
 libraries[ckeditor][download][type] = get
 libraries[ckeditor][download][url] = https://ckeditor.com/cke4/online-builder/releases/minified/4.7.3/icy_orange/0.9/ckeditor_4.7.3_dc56a7d8be5f.zip
+
+; colorbox
+libraries[colorbox][directory_name] = colorbox
+libraries[colorbox][type] = library
+libraries[colorbox][destination] = libraries
+libraries[colorbox][download][type] = get
+libraries[colorbox][download][url] = https://github.com/jackmoore/colorbox/archive/1.x.zip
 
 ; imagesLoaded for masonry.
 libraries[imagesloaded][directory_name] = imagesloaded

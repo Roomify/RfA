@@ -1,5 +1,16 @@
 body.page-single-property-listing {
   background: #F8F8F8;
+  .main-container {
+    @media (min-width: $screen-sm) {
+      padding-bottom: 147px;
+    }
+  }
+  .select2-selection--single {
+    height: 35px;
+  }
+  .select2-container--default .select2-selection--single .select2-selection__rendered {
+    line-height: 33px;
+  }
   strong {
     font-weight: 400;
   }
@@ -92,7 +103,7 @@ body.page-single-property-listing {
     }
     @media (min-width: $screen-sm-max) {
       form {
-        padding: 45px 20px 30px 50px;
+        padding: 60px 0px 35px 50px;
         background: rgba(0,0,0,0.6);
         border-radius: 2px;
       }
@@ -232,7 +243,7 @@ body.page-single-property-listing {
 	        padding: 6px;
 	        font-size: 14px;
 	        width: 100%;
-          @include button-variant($btn-danger-color, $btn-danger-bg, $btn-danger-border);
+          @include button-variant($btn-success-color, $btn-success-bg, $btn-success-border);
 	      }
 	    }
       .listing-availability-search-submit {
@@ -393,6 +404,16 @@ body.page-single-property-listing {
       top: 3px;
       right: 6px;
     }
+    #property-gallery-tab {
+      background: url("../images/gallery.png") center center no-repeat;
+      background: url("../images/gallery.svg") center center no-repeat, linear-gradient(transparent, transparent);
+      display: inline-block;
+      width: 17px;
+      height: 17px;
+      position: relative;
+      top: 3px;
+      right: 6px;
+    }
   }
   // Property Amenities.
   .pane-roomify-property-field-sp-amenities {
@@ -478,6 +499,16 @@ body.page-single-property-listing {
           font-weight: 400;
           font-style: italic;
         }
+      }
+    }
+  }
+  .view-single-property-gallery {
+    .gallery-item {
+      margin-bottom: 25px;
+      img {
+        margin: 0 auto;
+        display: table;
+        border-radius: 2px;
       }
     }
   }

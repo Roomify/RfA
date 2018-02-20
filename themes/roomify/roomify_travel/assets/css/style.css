@@ -10050,7 +10050,34 @@ body.toggled #close-sidebar-wrapper {
     padding-top: 15px;
     padding-bottom: 15px; }
     .page-checkout fieldset.panel-default.checkout-buttons .checkout-continue {
-      margin-right: 10px; }
+      margin-right: 10px;
+      color: #fff;
+      background-color: #28B62C;
+      border-color: #23a127; }
+      .page-checkout fieldset.panel-default.checkout-buttons .checkout-continue:focus, .page-checkout fieldset.panel-default.checkout-buttons .checkout-continue.focus {
+        color: #fff;
+        background-color: #1f8c22;
+        border-color: #0c390e; }
+      .page-checkout fieldset.panel-default.checkout-buttons .checkout-continue:hover {
+        color: #fff;
+        background-color: #1f8c22;
+        border-color: #186f1b; }
+      .page-checkout fieldset.panel-default.checkout-buttons .checkout-continue:active, .page-checkout fieldset.panel-default.checkout-buttons .checkout-continue.active, .open > .page-checkout fieldset.panel-default.checkout-buttons .checkout-continue.dropdown-toggle {
+        color: #fff;
+        background-color: #1f8c22;
+        border-color: #186f1b; }
+        .page-checkout fieldset.panel-default.checkout-buttons .checkout-continue:active:hover, .page-checkout fieldset.panel-default.checkout-buttons .checkout-continue:active:focus, .page-checkout fieldset.panel-default.checkout-buttons .checkout-continue:active.focus, .page-checkout fieldset.panel-default.checkout-buttons .checkout-continue.active:hover, .page-checkout fieldset.panel-default.checkout-buttons .checkout-continue.active:focus, .page-checkout fieldset.panel-default.checkout-buttons .checkout-continue.active.focus, .open > .page-checkout fieldset.panel-default.checkout-buttons .checkout-continue.dropdown-toggle:hover, .open > .page-checkout fieldset.panel-default.checkout-buttons .checkout-continue.dropdown-toggle:focus, .open > .page-checkout fieldset.panel-default.checkout-buttons .checkout-continue.dropdown-toggle.focus {
+          color: #fff;
+          background-color: #186f1b;
+          border-color: #0c390e; }
+      .page-checkout fieldset.panel-default.checkout-buttons .checkout-continue:active, .page-checkout fieldset.panel-default.checkout-buttons .checkout-continue.active, .open > .page-checkout fieldset.panel-default.checkout-buttons .checkout-continue.dropdown-toggle {
+        background-image: none; }
+      .page-checkout fieldset.panel-default.checkout-buttons .checkout-continue.disabled:hover, .page-checkout fieldset.panel-default.checkout-buttons .checkout-continue.disabled:focus, .page-checkout fieldset.panel-default.checkout-buttons .checkout-continue.disabled.focus, .page-checkout fieldset.panel-default.checkout-buttons .checkout-continue[disabled]:hover, .page-checkout fieldset.panel-default.checkout-buttons .checkout-continue[disabled]:focus, .page-checkout fieldset.panel-default.checkout-buttons .checkout-continue[disabled].focus, fieldset[disabled] .page-checkout fieldset.panel-default.checkout-buttons .checkout-continue:hover, fieldset[disabled] .page-checkout fieldset.panel-default.checkout-buttons .checkout-continue:focus, fieldset[disabled] .page-checkout fieldset.panel-default.checkout-buttons .checkout-continue.focus {
+        background-color: #28B62C;
+        border-color: #23a127; }
+      .page-checkout fieldset.panel-default.checkout-buttons .checkout-continue .badge {
+        color: #28B62C;
+        background-color: #fff; }
     .page-checkout fieldset.panel-default.checkout-buttons .button-operator {
       margin-right: 10px; }
     .page-checkout fieldset.panel-default.checkout-buttons .checkout-back,
@@ -14926,6 +14953,13 @@ div.ctools-modal-dialog .modal-header .modal-title {
 body.page-single-property-listing {
   background: #F8F8F8;
   /* PROPERTY TYPES */ }
+  @media (min-width: 768px) {
+    body.page-single-property-listing .main-container {
+      padding-bottom: 147px; } }
+  body.page-single-property-listing .select2-selection--single {
+    height: 35px; }
+  body.page-single-property-listing .select2-container--default .select2-selection--single .select2-selection__rendered {
+    line-height: 33px; }
   body.page-single-property-listing strong {
     font-weight: 400; }
   body.page-single-property-listing .tabs--primary {
@@ -15008,7 +15042,7 @@ body.page-single-property-listing {
     @media (min-width: 991px) {
       body.page-single-property-listing .pane-roomify-listing-availability-search-block-roomify-listing-search form,
       body.page-single-property-listing .pane-locanda-availability-search form {
-        padding: 45px 20px 30px 50px;
+        padding: 60px 0px 35px 50px;
         background: rgba(0, 0, 0, 0.6);
         border-radius: 2px; } }
     @media (max-width: 1200px) {
@@ -15293,8 +15327,8 @@ body.page-single-property-listing {
           font-size: 14px;
           width: 100%;
           color: #fff;
-          background-color: #FF4136;
-          border-color: #ff291d; }
+          background-color: #28B62C;
+          border-color: #23a127; }
           body.page-single-property-listing .pane-roomify-listing-availability-search-block-roomify-listing-search form .listing-availability-search-submit .form-submit:focus, body.page-single-property-listing .pane-roomify-listing-availability-search-block-roomify-listing-search form .listing-availability-search-submit .form-submit.focus,
           body.page-single-property-listing .pane-roomify-listing-availability-search-block-roomify-listing-search form .locanda-availability-search-submit .form-submit:focus,
           body.page-single-property-listing .pane-roomify-listing-availability-search-block-roomify-listing-search form .locanda-availability-search-submit .form-submit.focus,
@@ -15311,8 +15345,8 @@ body.page-single-property-listing {
           body.page-single-property-listing .pane-locanda-availability-search form .search-submit .form-submit:focus,
           body.page-single-property-listing .pane-locanda-availability-search form .search-submit .form-submit.focus {
             color: #fff;
-            background-color: #ff1103;
-            border-color: #9c0900; }
+            background-color: #1f8c22;
+            border-color: #0c390e; }
           body.page-single-property-listing .pane-roomify-listing-availability-search-block-roomify-listing-search form .listing-availability-search-submit .form-submit:hover,
           body.page-single-property-listing .pane-roomify-listing-availability-search-block-roomify-listing-search form .locanda-availability-search-submit .form-submit:hover,
           body.page-single-property-listing .pane-roomify-listing-availability-search-block-roomify-listing-search form .search-availability-submit .form-submit:hover,
@@ -15322,8 +15356,8 @@ body.page-single-property-listing {
           body.page-single-property-listing .pane-locanda-availability-search form .search-availability-submit .form-submit:hover,
           body.page-single-property-listing .pane-locanda-availability-search form .search-submit .form-submit:hover {
             color: #fff;
-            background-color: #ff1103;
-            border-color: #de0c00; }
+            background-color: #1f8c22;
+            border-color: #186f1b; }
           body.page-single-property-listing .pane-roomify-listing-availability-search-block-roomify-listing-search form .listing-availability-search-submit .form-submit:active, body.page-single-property-listing .pane-roomify-listing-availability-search-block-roomify-listing-search form .listing-availability-search-submit .form-submit.active, .open > body.page-single-property-listing .pane-roomify-listing-availability-search-block-roomify-listing-search form .listing-availability-search-submit .form-submit.dropdown-toggle,
           body.page-single-property-listing .pane-roomify-listing-availability-search-block-roomify-listing-search form .locanda-availability-search-submit .form-submit:active,
           body.page-single-property-listing .pane-roomify-listing-availability-search-block-roomify-listing-search form .locanda-availability-search-submit .form-submit.active, .open >
@@ -15347,8 +15381,8 @@ body.page-single-property-listing {
           body.page-single-property-listing .pane-locanda-availability-search form .search-submit .form-submit.active, .open >
           body.page-single-property-listing .pane-locanda-availability-search form .search-submit .form-submit.dropdown-toggle {
             color: #fff;
-            background-color: #ff1103;
-            border-color: #de0c00; }
+            background-color: #1f8c22;
+            border-color: #186f1b; }
             body.page-single-property-listing .pane-roomify-listing-availability-search-block-roomify-listing-search form .listing-availability-search-submit .form-submit:active:hover, body.page-single-property-listing .pane-roomify-listing-availability-search-block-roomify-listing-search form .listing-availability-search-submit .form-submit:active:focus, body.page-single-property-listing .pane-roomify-listing-availability-search-block-roomify-listing-search form .listing-availability-search-submit .form-submit:active.focus, body.page-single-property-listing .pane-roomify-listing-availability-search-block-roomify-listing-search form .listing-availability-search-submit .form-submit.active:hover, body.page-single-property-listing .pane-roomify-listing-availability-search-block-roomify-listing-search form .listing-availability-search-submit .form-submit.active:focus, body.page-single-property-listing .pane-roomify-listing-availability-search-block-roomify-listing-search form .listing-availability-search-submit .form-submit.active.focus, .open > body.page-single-property-listing .pane-roomify-listing-availability-search-block-roomify-listing-search form .listing-availability-search-submit .form-submit.dropdown-toggle:hover, .open > body.page-single-property-listing .pane-roomify-listing-availability-search-block-roomify-listing-search form .listing-availability-search-submit .form-submit.dropdown-toggle:focus, .open > body.page-single-property-listing .pane-roomify-listing-availability-search-block-roomify-listing-search form .listing-availability-search-submit .form-submit.dropdown-toggle.focus,
             body.page-single-property-listing .pane-roomify-listing-availability-search-block-roomify-listing-search form .locanda-availability-search-submit .form-submit:active:hover,
             body.page-single-property-listing .pane-roomify-listing-availability-search-block-roomify-listing-search form .locanda-availability-search-submit .form-submit:active:focus,
@@ -15414,8 +15448,8 @@ body.page-single-property-listing {
             body.page-single-property-listing .pane-locanda-availability-search form .search-submit .form-submit.dropdown-toggle:focus, .open >
             body.page-single-property-listing .pane-locanda-availability-search form .search-submit .form-submit.dropdown-toggle.focus {
               color: #fff;
-              background-color: #de0c00;
-              border-color: #9c0900; }
+              background-color: #186f1b;
+              border-color: #0c390e; }
           body.page-single-property-listing .pane-roomify-listing-availability-search-block-roomify-listing-search form .listing-availability-search-submit .form-submit:active, body.page-single-property-listing .pane-roomify-listing-availability-search-block-roomify-listing-search form .listing-availability-search-submit .form-submit.active, .open > body.page-single-property-listing .pane-roomify-listing-availability-search-block-roomify-listing-search form .listing-availability-search-submit .form-submit.dropdown-toggle,
           body.page-single-property-listing .pane-roomify-listing-availability-search-block-roomify-listing-search form .locanda-availability-search-submit .form-submit:active,
           body.page-single-property-listing .pane-roomify-listing-availability-search-block-roomify-listing-search form .locanda-availability-search-submit .form-submit.active, .open >
@@ -15503,8 +15537,8 @@ body.page-single-property-listing {
           body.page-single-property-listing .pane-locanda-availability-search form .search-submit .form-submit:hover, fieldset[disabled]
           body.page-single-property-listing .pane-locanda-availability-search form .search-submit .form-submit:focus, fieldset[disabled]
           body.page-single-property-listing .pane-locanda-availability-search form .search-submit .form-submit.focus {
-            background-color: #FF4136;
-            border-color: #ff291d; }
+            background-color: #28B62C;
+            border-color: #23a127; }
           body.page-single-property-listing .pane-roomify-listing-availability-search-block-roomify-listing-search form .listing-availability-search-submit .form-submit .badge,
           body.page-single-property-listing .pane-roomify-listing-availability-search-block-roomify-listing-search form .locanda-availability-search-submit .form-submit .badge,
           body.page-single-property-listing .pane-roomify-listing-availability-search-block-roomify-listing-search form .search-availability-submit .form-submit .badge,
@@ -15513,7 +15547,7 @@ body.page-single-property-listing {
           body.page-single-property-listing .pane-locanda-availability-search form .locanda-availability-search-submit .form-submit .badge,
           body.page-single-property-listing .pane-locanda-availability-search form .search-availability-submit .form-submit .badge,
           body.page-single-property-listing .pane-locanda-availability-search form .search-submit .form-submit .badge {
-            color: #FF4136;
+            color: #28B62C;
             background-color: #fff; }
       body.page-single-property-listing .pane-roomify-listing-availability-search-block-roomify-listing-search form .listing-availability-search-submit,
       body.page-single-property-listing .pane-locanda-availability-search form .listing-availability-search-submit {
@@ -15696,6 +15730,15 @@ body.page-single-property-listing {
       position: relative;
       top: 3px;
       right: 6px; }
+    body.page-single-property-listing .panel-content-bottom #property-gallery-tab {
+      background: url("../images/gallery.png") center center no-repeat;
+      background: url("../images/gallery.svg") center center no-repeat, linear-gradient(transparent, transparent);
+      display: inline-block;
+      width: 17px;
+      height: 17px;
+      position: relative;
+      top: 3px;
+      right: 6px; }
   body.page-single-property-listing .pane-roomify-property-field-sp-amenities .field-name-field-sp-amenities .field-item.even,
   body.page-single-property-listing .pane-roomify-property-field-sp-amenities .field-name-field-sp-amenities .field-item.odd {
     display: inline-block;
@@ -15772,6 +15815,12 @@ body.page-single-property-listing {
           margin-top: 5px;
           font-weight: 400;
           font-style: italic; }
+  body.page-single-property-listing .view-single-property-gallery .gallery-item {
+    margin-bottom: 25px; }
+    body.page-single-property-listing .view-single-property-gallery .gallery-item img {
+      margin: 0 auto;
+      display: table;
+      border-radius: 2px; }
   body.page-single-property-listing #mini-panel-property_reviews .panel-content-wrapper {
     width: 100%; }
 

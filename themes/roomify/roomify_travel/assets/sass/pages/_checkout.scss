@@ -126,6 +126,7 @@
       padding-bottom: 15px;
       .checkout-continue {
         margin-right: 10px;
+        @include button-variant($btn-success-color, $btn-success-bg, $btn-success-border);
       }
       .button-operator {
         margin-right: 10px;

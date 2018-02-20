@@ -996,3 +996,10 @@ function roomify_system_update_7062() {
 function roomify_system_update_7063() {
   module_enable(array('xmlsitemap_menu'));
 }
+
+/**
+ * Enable module "Colorbox".
+ */
+function roomify_system_update_7064() {
+  module_enable(array('colorbox'));
+}
