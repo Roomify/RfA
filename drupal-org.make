@@ -24,6 +24,11 @@ projects[bat_event_state_constraints][download][url] = https://github.com/Roomif
 projects[bat_event_state_constraints][download][tag] = 1.2
 projects[bat_event_state_constraints][subdir] = bat
 
+projects[commerce_stripe_connect_field][type] = module
+projects[commerce_stripe_connect_field][download][type] = git
+projects[commerce_stripe_connect_field][download][url] = https://github.com/Roomify/commerce_stripe_connect_field
+projects[commerce_stripe_connect_field][download][branch] = 7.x-3.x
+
 projects[roomify_rate][type] = module
 projects[roomify_rate][download][type] = git
 projects[roomify_rate][download][url] = https://github.com/Roomify/roomify_rate.git
