@@ -491,9 +491,19 @@ function roomify_accommodation_booking_confirmation_page($start_date, $end_date,
     $offer_amount = 0;
     $offer_descriptions = array();
   }
-
-  $currency_setting = commerce_currency_load(commerce_default_currency());
-  $currency_symbol = $currency_setting['symbol'];
+  if (module_exists('commerce_multicurrency')) {
+    $currency_setting = commerce_currency_load(commerce_multicurrency_get_user_currency_code());
+    $currency_symbol = $currency_setting['symbol'];
+    $currency_code = $currency_setting['code'];
+    $default_currency_code = commerce_default_currency();
+    $amount = commerce_multicurrency_conversion($amount, $default_currency_code, $currency_code);
+    $offer_amount = commerce_multicurrency_conversion($offer_amount, $default_currency_code, $currency_code);
+  }
+  else {
+    $currency_setting = commerce_currency_load(commerce_default_currency());
+    $currency_symbol = $currency_setting['symbol'];
+  }
+  
 
   $booking_cost = commerce_currency_format($amount, $currency_setting['code']);
 
@@ -748,18 +758,29 @@ function roomify_accommodation_booking_confirmation_form($form, &$form_state, $s
   $total_offer = $offer_amount;
 
   // Add price for each selected option.
+  //If commerce_multicurrency module exists, then calculate prices in user selected currency
   foreach (roomify_accommodation_options_get_type_options($type) as $option) {
     $option_name = roomify_accommodation_options_get_machine_name($option['name']);
 
     if ($option['type'] == ROOMIFY_ACCOMMODATION_OPTIONS_MANDATORY) {
       $quantity = isset($form_state['values']['options'][$option_name . ':quantity']) ? $form_state['values']['options'][$option_name . ':quantity'] + 1 : 1;
-
+        
       $price = roomify_accommodation_options_get_option_price($amount / 100, $option, $quantity, $nights, $group_size) * $quantity;
+      if (module_exists('commerce_multicurrency')) {
+        $currency_code = commerce_multicurrency_get_user_currency_code();
+        $default_currency_code = commerce_default_currency();
+        $price = commerce_multicurrency_conversion($price, $default_currency_code, $currency_code);
+      }
 
       $total += $price;
 
       if ($offer_amount > 0) {
         $price = roomify_accommodation_options_get_option_price($offer_amount / 100, $option, $quantity, $nights, $group_size) * $quantity;
+        if (module_exists('commerce_multicurrency')) {
+          $currency_code = commerce_multicurrency_get_user_currency_code();
+          $default_currency_code = commerce_default_currency();
+          $price = commerce_multicurrency_conversion($price, $default_currency_code, $currency_code);
+        }
 
         $total_offer += $price;
       }
@@ -767,18 +788,41 @@ function roomify_accommodation_booking_confirmation_form($form, &$form_state, $s
     elseif (!empty($form_state['values']['options'][$option_name])) {
       $quantity = isset($form_state['values']['options'][$option_name . ':quantity']) ? $form_state['values']['options'][$option_name . ':quantity'] + 1 : 1;
       $price = roomify_accommodation_options_get_option_price($amount / 100, $option, $quantity, $nights, $group_size) * $quantity;
+      if (module_exists('commerce_multicurrency')) {
+        $currency_code = commerce_multicurrency_get_user_currency_code();
+        $default_currency_code = commerce_default_currency();
+        $price = commerce_multicurrency_conversion($price, $default_currency_code, $currency_code);
+      }
 
       $total += $price;
 
       if ($offer_amount > 0) {
         $price = roomify_accommodation_options_get_option_price($offer_amount / 100, $option, $quantity, $nights, $group_size) * $quantity;
+        if (module_exists('commerce_multicurrency')) {
+          $currency_code = commerce_multicurrency_get_user_currency_code();
+          $default_currency_code = commerce_default_currency();
+          $price = commerce_multicurrency_conversion($price, $default_currency_code, $currency_code);
+        }
 
         $total_offer += $price;
       }
     }
   }
+/**
+ * Show price in user selected currency if commerce_multicurrency module installed. 
+ */
 
-  $currency_setting = commerce_currency_load(commerce_default_currency());
+  if (module_exists('commerce_multicurrency')) {
+    $currency_setting = commerce_currency_load(commerce_multicurrency_get_user_currency_code());
+    $currency_symbol = $currency_setting['symbol'];
+    $currency_code = $currency_setting['code'];
+    $default_currency_code = commerce_default_currency();
+  }
+  else {
+    $currency_setting = commerce_currency_load(commerce_default_currency());
+  
+  }
+  
 
   $header = array(
     array(
@@ -1069,6 +1113,7 @@ function roomify_accommodation_booking_confirmation_form($form, &$form_state, $s
 /**
  * Ajax callback on booking search results page when an Options state changes.
  */
+
 function roomify_accommodation_booking_options_change_callback(&$form, $form_state) {
   list($type, $price, $tmp, $fieldset, $tmp, $index, $tmp, $option) = preg_split('/[\[(.)\]]/', $form_state['triggering_element']['#name']);
   $option = $price;
