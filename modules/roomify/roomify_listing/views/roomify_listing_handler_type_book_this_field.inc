@@ -74,7 +74,7 @@ class roomify_listing_handler_type_book_this_field extends bat_type_handler_link
       }
     }
     else {
-      $return = l($text, '/listing/' . $property->property_id, array('attributes' => array('class' => array('btn btn-primary btn-info'), 'html' => 'true', 'disabled' => 'true')));
+      $return = l($text, '/listing/' . $property->property_id, array('attributes' => array('class' => array('btn btn-primary btn-info'), 'html' => 'true', 'disabled' => 'true', 'data-toggle' => 'tooltip', 'data-placement' => 'top', 'title' => t('define dates to check availability'))));
       $return .= '<div class="info">' . t('define dates to check availability') . '</div>';
     }
 
