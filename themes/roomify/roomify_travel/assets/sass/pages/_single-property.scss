@@ -5,6 +5,9 @@ body.page-single-property-listing {
       padding-bottom: 147px;
     }
   }
+  .select2.select2-container {
+    width: 100%;
+  }
   .select2-selection--single {
     height: 35px;
   }
@@ -310,6 +313,7 @@ body.page-single-property-listing {
     font-size: 26px;
     text-align: center;
     margin: 50px 0;
+    line-height: 1.5em;
     @media (max-width: $screen-xs) {
       margin-bottom: 0;
     }
@@ -454,13 +458,41 @@ body.page-single-property-listing {
       margin-bottom: 25px;
       border-bottom: 1px solid #e0e0e0;
       padding-bottom: 25px;
+      position: relative;
       &.views-row-last {
         border: none;
       }
+      .views-field-nothing {
+        width: 100%;
+        margin-bottom: 10px;
+        display: inline-block;
+        .property-details {
+          float: none;
+          @media (max-width: $screen-xs) {
+            width: 100%;
+            display: inline-block;
+          }
+        }
+        @media (min-width: $screen-sm) {
+          width: 25%;
+          display: inline-block;
+          float: left;
+          .property-details {
+            float: right;
+          }
+        }
+      }
       .views-field-name {
+        width: 100%;
+        margin-bottom: 10px;
+        @media (min-width: $screen-sm) {
+          width: 75%;
+          display: inline-block;
+          float: left;
+        }
         a {
           font-size: 20px;
-          margin-bottom: 20px;
+          margin-bottom: 0px;
           display: inline-block;
           color: initial;
           @media (min-width: $screen-md) {
@@ -468,19 +500,33 @@ body.page-single-property-listing {
           }
         }
       }
-       .views-field-field-st-description {
+      .views-field-field-st-description {
         font-size: 16px;
-       }
+        margin-bottom: 20px;
+      }
       .views-field-field-st-gallery {
         display: inline-block;
         float: left;
         margin-right: 20px;
-        max-width: 360px;
+        max-width: 270px;
         @media (max-width: $screen-xs) {
           margin-bottom: 15px;
+          float: none;
         }
         img {
           border-radius: 2px;
+        }
+      }
+      .views-field-field-st-gallery-1 {
+        display: inline-block;
+        width: 100%;
+        margin-top: 20px;
+        img {
+          width: 70px;
+          margin-right: 10px;
+          margin-bottom: 10px;
+          display: inline-block;
+          float: left;
         }
       }
       .views-field-book-this {
@@ -518,9 +564,147 @@ body.page-single-property-listing {
     margin-top: 20px;
     .pane-title {
       text-align: center;
+      font-weight: 300;
+      text-transform: uppercase;
     }
+  }
+  .views-field-field-st-amenities{
+    font-size: 12px;
+    color: #aaaaaa;
+    margin-bottom: 20px;
   }
   #mini-panel-property_reviews .panel-content-wrapper {
     width: 100%;
+  }
+  .property-details {
+    .table-responsive {
+      border: none;
+    }
+    table {
+      font-size: 10px;
+      @media (max-width: $screen-xs) {
+        width: 100%;
+      }
+      tr {
+        @media (min-width: $screen-xs) {
+          white-space: nowrap;
+          overflow: hidden;
+          text-overflow:ellipsis;
+        }
+      }
+      td {
+        padding: 2px 8px;
+        vertical-align: middle;
+        cursor: default;
+        display: inline-block;
+        &:empty {
+          display: none;
+        }
+      }
+      .single-beds {
+        position: relative;
+        color: #666;
+        font-size: 10px;
+        width: 50px;
+        @media (max-width: $screen-xs) {
+          width: 25%;
+        }
+        &:before {
+          background: url("../images/single_beds.png") center center no-repeat;
+          background: url("../images/single_beds.svg") center center no-repeat, linear-gradient(transparent, transparent);
+          content: "";
+          display: inline-block;
+          width: 25px;
+          height: 25px;
+          margin-right: 10px;
+          top: 6px;
+          left: 2px;
+          position: relative;
+        }
+        &:empty {
+          &:before {
+            display: none;
+          }
+        }
+      }
+      .double-beds {
+        position: relative;
+        color: #666;
+        font-size: 10px;
+        width: 50px;
+        @media (max-width: $screen-xs) {
+          width: 25%;
+        }
+        &:before {
+          background: url("../images/double_beds.png") center center no-repeat;
+          background: url("../images/double_beds.svg") center center no-repeat, linear-gradient(transparent, transparent);
+          content: "";
+          display: inline-block;
+          width: 25px;
+          height: 25px;
+          margin-right: 10px;
+          top: 6px;
+          left: 2px;
+          position: relative;
+        }
+        &:empty {
+          &:before {
+            display: none;
+          }
+        }
+      }
+      .capacity {
+        position: relative;
+        color: #666;
+        font-size: 10px;
+        width: 50px;
+        @media (max-width: $screen-xs) {
+          width: 25%;
+        }
+        &:before {
+          background: url("../images/users.png") center center no-repeat;
+          background: url("../images/users.svg") center center no-repeat, linear-gradient(transparent, transparent);
+          content: "";
+          display: inline-block;
+          width: 20px;
+          height: 25px;
+          margin-right: 10px;
+          top: 5px;
+          left: 2px;
+          position: relative;
+        }
+        &:empty {
+          &:before {
+            display: none;
+          }
+        }
+      }
+      .bathrooms {
+        position: relative;
+        color: #666;
+        width: 50px;
+        @media (max-width: $screen-xs) {
+          width: 25%;
+        }
+        font-size: 10px;
+        &:before {
+          background: url("../images/bath.png") center center no-repeat;
+          background: url("../images/bath.svg") center center no-repeat, linear-gradient(transparent, transparent);
+          content: "";
+          display: inline-block;
+          width: 19px;
+          height: 24px;
+          margin-right: 10px;
+          top: 5px;
+          left: 2px;
+          position: relative;
+        }
+        &:empty {
+          &:before {
+            display: none;
+          }
+        }
+      }
+    }
   }
 }
