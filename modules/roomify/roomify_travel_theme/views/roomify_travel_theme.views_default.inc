@@ -1776,7 +1776,7 @@ function roomify_travel_theme_views_default_views() {
   $handler->display->display_options['style_options']['columns_xs'] = '12';
   $handler->display->display_options['style_options']['columns_sm'] = '6';
   $handler->display->display_options['style_options']['columns_md'] = '4';
-  $handler->display->display_options['style_options']['columns_lg'] = '3';
+  $handler->display->display_options['style_options']['columns_lg'] = '4';
   $handler->display->display_options['style_options']['column_class'] = 'gallery-item';
   $handler->display->display_options['defaults']['style_options'] = FALSE;
   $handler->display->display_options['defaults']['row_plugin'] = FALSE;
@@ -1792,7 +1792,7 @@ function roomify_travel_theme_views_default_views() {
   $handler->display->display_options['fields']['field_sp_gallery']['click_sort_column'] = 'fid';
   $handler->display->display_options['fields']['field_sp_gallery']['type'] = 'colorbox';
   $handler->display->display_options['fields']['field_sp_gallery']['settings'] = array(
-    'colorbox_node_style' => 'roomify_thumbnail_rectangled',
+    'colorbox_node_style' => 'homepage_features',
     'colorbox_node_style_first' => '',
     'colorbox_image_style' => '',
     'colorbox_gallery' => 'post',
