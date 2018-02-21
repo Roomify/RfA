@@ -442,7 +442,7 @@ body.page-single-property-listing {
     display: inline-block;
     width: 100%;
     padding: 18px;
-    margin-top: 40px;
+    margin-top: 20px;
     margin-bottom: 40px;
     @media (max-width: $screen-xs) {
       padding: 0;
@@ -510,6 +510,14 @@ body.page-single-property-listing {
         display: table;
         border-radius: 2px;
       }
+    }
+  }
+  .pane-property-travel-panel-pane-1 {
+    width: 100%;
+    display: inline-block;
+    margin-top: 20px;
+    .pane-title {
+      text-align: center;
     }
   }
   #mini-panel-property_reviews .panel-content-wrapper {

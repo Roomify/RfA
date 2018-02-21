@@ -15757,7 +15757,7 @@ body.page-single-property-listing {
     display: inline-block;
     width: 100%;
     padding: 18px;
-    margin-top: 40px;
+    margin-top: 20px;
     margin-bottom: 40px; }
     @media (max-width: 480px) {
       body.page-single-property-listing .view-property-travel {
@@ -15821,6 +15821,12 @@ body.page-single-property-listing {
       margin: 0 auto;
       display: table;
       border-radius: 2px; }
+  body.page-single-property-listing .pane-property-travel-panel-pane-1 {
+    width: 100%;
+    display: inline-block;
+    margin-top: 20px; }
+    body.page-single-property-listing .pane-property-travel-panel-pane-1 .pane-title {
+      text-align: center; }
   body.page-single-property-listing #mini-panel-property_reviews .panel-content-wrapper {
     width: 100%; }
 
