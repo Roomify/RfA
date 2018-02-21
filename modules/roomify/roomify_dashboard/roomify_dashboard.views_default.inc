@@ -4433,5 +4433,111 @@ function roomify_dashboard_views_default_views() {
   );
   $export['roomify_user_orders'] = $view;
 
+  $view = new view();
+  $view->name = 'dashboard_notifications';
+  $view->description = '';
+  $view->tag = 'default';
+  $view->base_table = 'user_notifications';
+  $view->human_name = 'Dashboard notifications';
+  $view->core = 7;
+  $view->api_version = '3.0';
+  $view->disabled = FALSE; /* Edit this to true to make a default view disabled initially */
+
+  /* Display: Master */
+  $handler = $view->new_display('default', 'Master', 'default');
+  $handler->display->display_options['title'] = '<span id="notifications-tab"></span>Notifications';
+  $handler->display->display_options['use_ajax'] = TRUE;
+  $handler->display->display_options['use_more_always'] = FALSE;
+  $handler->display->display_options['access']['type'] = 'none';
+  $handler->display->display_options['cache']['type'] = 'none';
+  $handler->display->display_options['query']['type'] = 'views_query';
+  $handler->display->display_options['exposed_form']['type'] = 'basic';
+  $handler->display->display_options['pager']['type'] = 'mini';
+  $handler->display->display_options['pager']['options']['items_per_page'] = '10';
+  $handler->display->display_options['pager']['options']['offset'] = '0';
+  $handler->display->display_options['pager']['options']['id'] = '0';
+  $handler->display->display_options['style_plugin'] = 'default';
+  $handler->display->display_options['row_plugin'] = 'fields';
+  /* Header: Global: Text area */
+  $handler->display->display_options['header']['area']['id'] = 'area';
+  $handler->display->display_options['header']['area']['table'] = 'views';
+  $handler->display->display_options['header']['area']['field'] = 'area';
+  $handler->display->display_options['header']['area']['content'] = '<a href="/user-notifications/hide-all" class="use-ajax hide-all">Hide all</a>';
+  $handler->display->display_options['header']['area']['format'] = 'filtered_text';
+  /* No results behavior: Global: Text area */
+  $handler->display->display_options['empty']['area']['id'] = 'area';
+  $handler->display->display_options['empty']['area']['table'] = 'views';
+  $handler->display->display_options['empty']['area']['field'] = 'area';
+  $handler->display->display_options['empty']['area']['empty'] = TRUE;
+  $handler->display->display_options['empty']['area']['content'] = 'No notifications to read.';
+  $handler->display->display_options['empty']['area']['format'] = 'filtered_text';
+  /* Field: User notification: Hide notification */
+  $handler->display->display_options['fields']['hide']['id'] = 'hide';
+  $handler->display->display_options['fields']['hide']['table'] = 'user_notifications';
+  $handler->display->display_options['fields']['hide']['field'] = 'hide';
+  $handler->display->display_options['fields']['hide']['label'] = '';
+  $handler->display->display_options['fields']['hide']['element_label_colon'] = FALSE;
+  /* Field: User notification: User Notification type */
+  $handler->display->display_options['fields']['type']['id'] = 'type';
+  $handler->display->display_options['fields']['type']['table'] = 'user_notifications';
+  $handler->display->display_options['fields']['type']['field'] = 'type';
+  $handler->display->display_options['fields']['type']['label'] = '';
+  $handler->display->display_options['fields']['type']['element_label_colon'] = FALSE;
+  /* Field: User notification: New Message */
+  $handler->display->display_options['fields']['user_notifications_message']['id'] = 'user_notifications_message';
+  $handler->display->display_options['fields']['user_notifications_message']['table'] = 'field_data_user_notifications_message';
+  $handler->display->display_options['fields']['user_notifications_message']['field'] = 'user_notifications_message';
+  $handler->display->display_options['fields']['user_notifications_message']['label'] = '';
+  $handler->display->display_options['fields']['user_notifications_message']['element_label_colon'] = FALSE;
+  $handler->display->display_options['fields']['user_notifications_message']['settings'] = array(
+    'conditions' => array(
+      0 => array(
+        'condition' => '',
+      ),
+    ),
+  );
+  /* Contextual filter: User notification: Notification Recipient (user_notifications_recipient_uid) */
+  $handler->display->display_options['arguments']['user_notifications_recipient_uid_target_id']['id'] = 'user_notifications_recipient_uid_target_id';
+  $handler->display->display_options['arguments']['user_notifications_recipient_uid_target_id']['table'] = 'field_data_user_notifications_recipient_uid';
+  $handler->display->display_options['arguments']['user_notifications_recipient_uid_target_id']['field'] = 'user_notifications_recipient_uid_target_id';
+  $handler->display->display_options['arguments']['user_notifications_recipient_uid_target_id']['default_action'] = 'default';
+  $handler->display->display_options['arguments']['user_notifications_recipient_uid_target_id']['default_argument_type'] = 'current_user';
+  $handler->display->display_options['arguments']['user_notifications_recipient_uid_target_id']['summary']['number_of_records'] = '0';
+  $handler->display->display_options['arguments']['user_notifications_recipient_uid_target_id']['summary']['format'] = 'default_summary';
+  $handler->display->display_options['arguments']['user_notifications_recipient_uid_target_id']['summary_options']['items_per_page'] = '25';
+  /* Filter criterion: User notification: State entity */
+  $handler->display->display_options['filters']['state']['id'] = 'state';
+  $handler->display->display_options['filters']['state']['table'] = 'user_notifications';
+  $handler->display->display_options['filters']['state']['field'] = 'state';
+  $handler->display->display_options['filters']['state']['value'] = array(
+    'unseen' => 'unseen',
+  );
+
+  /* Display: Content pane */
+  $handler = $view->new_display('panel_pane', 'Content pane', 'panel_pane_1');
+  $translatables['dashboard_notifications'] = array(
+    t('Master'),
+    t('Notifications'),
+    t('more'),
+    t('Apply'),
+    t('Reset'),
+    t('Sort by'),
+    t('Asc'),
+    t('Desc'),
+    t('Items per page'),
+    t('- All -'),
+    t('Offset'),
+    t('« first'),
+    t('‹ previous'),
+    t('next ›'),
+    t('last »'),
+    t('<a href="/user-notifications/hide-all" class="use-ajax hide-all">Hide all</a>'),
+    t('No notifications to read.'),
+    t('All'),
+    t('Content pane'),
+    t('View panes'),
+  );
+  $export['dashboard_notifications'] = $view;
+
   return $export;
 }

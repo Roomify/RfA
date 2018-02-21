@@ -20,6 +20,23 @@ function roomify_dashboard_menu() {
     'access arguments' => array('administer theme colors'),
   );
 
+  $items['user-notifications/%user_notifications/hide'] = array(
+    'delivery callback' => 'ajax_deliver',
+    'page callback' => 'roomify_dashboard_hide_user_notification',
+    'page arguments' => array(1),
+    'access callback' => 'roomify_dashboard_hide_user_notification_access',
+    'access arguments' => array(1),
+    'type' => MENU_CALLBACK,
+  );
+
+  $items['user-notifications/hide-all'] = array(
+    'delivery callback' => 'ajax_deliver',
+    'page callback' => 'roomify_dashboard_hide_all_user_notification',
+    'page arguments' => array(1),
+    'access callback' => TRUE,
+    'type' => MENU_CALLBACK,
+  );
+
   return $items;
 }
 
@@ -151,6 +168,31 @@ function roomify_dashboard_views_pre_render(&$view) {
     }
     if (empty($view->result) && isset($view->exposed_widgets)) {
       $view->exposed_widgets = FALSE;
+    }
+  }
+
+  if ($view->name == 'dashboard_notifications') {
+    global $user;
+
+    $query = new EntityFieldQuery();
+
+    $query->entityCondition('entity_type', 'user_notifications')
+      ->propertyCondition('state', 'unseen')
+      ->fieldCondition('user_notifications_recipient_uid', 'target_id', $user->uid)
+      ->propertyOrderBy('created', 'DESC')
+      ->range(0, 1);
+
+    $last_user_notification = $query->execute();
+
+    if (!empty($last_user_notification)) {
+      $last_user_notifications_id = key($last_user_notification['user_notifications']);
+
+      if (!isset($user->data['last_user_notifications_id']) || $user->data['last_user_notifications_id'] < $last_user_notifications_id) {
+        $view->set_title($view->get_title() . '<div id="notifications-to-read"></div>');
+
+        $user->data['last_user_notifications_id'] = $last_user_notifications_id;
+        user_save($user);
+      }
     }
   }
 }
@@ -361,6 +403,14 @@ function roomify_dashboard_views_data_alter(&$data) {
       'handler' => 'roomify_dashboard_handler_properties_types_edit_link',
     ),
   );
+
+  $data['user_notifications']['hide'] = array(
+    'field' => array(
+      'title' => t('Hide notification'),
+      'help' => t('Hide notification'),
+      'handler' => 'roomify_dashboard_handler_hide_notification',
+    ),
+  );
 }
 
 /**
@@ -557,4 +607,59 @@ function roomify_dashboard_views_query_alter(&$view, &$query) {
       );
     }
   }
+}
+
+/**
+ * Hide user notification access callback.
+ */
+function roomify_dashboard_hide_user_notification_access($user_notification) {
+  global $user;
+
+  if ($user_notification->wrapper->user_notifications_recipient_uid->uid->value() == $user->uid) {
+    return TRUE;
+  }
+
+  return FALSE;
+}
+
+/**
+ * Hide user notification.
+ */
+function roomify_dashboard_hide_user_notification($user_notification) {
+  $user_notification->update_state('seen');
+
+  $commands = array();
+
+  $commands[] = views_refresh_ajax_command_refresh('.view-dashboard-notifications');
+
+  return array(
+    '#type' => 'ajax',
+    '#commands' => $commands,
+  );
+}
+
+function roomify_dashboard_hide_all_user_notification() {
+  global $user;
+
+  $query = new EntityFieldQuery();
+  $query->entityCondition('entity_type', 'user_notifications');
+  $query->propertyCondition('state', 'unseen');
+  $query->fieldCondition('user_notifications_recipient_uid', 'target_id', $user->uid);
+
+  $results = $query->execute();
+  if (isset($results['user_notifications'])) {
+    foreach ($results['user_notifications'] as $result) {
+      $user_notification = user_notifications_load($result->user_notifications_id);
+      $user_notification->update_state('seen');
+    }
+  }
+
+  $commands = array();
+
+  $commands[] = views_refresh_ajax_command_refresh('.view-dashboard-notifications');
+
+  return array(
+    '#type' => 'ajax',
+    '#commands' => $commands,
+  );
 }

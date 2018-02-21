@@ -488,6 +488,9 @@ projects[title][version] = 1.0-alpha9
 
 projects[token][version] = 1.7
 
+projects[user_notifications][version] = 2.x-dev
+projects[user_notifications][patch][] = https://www.drupal.org/files/issues/user_notifications-2926012-1.patch
+
 projects[userone][version] = 1.0-beta1
 
 projects[uuid][version] = 1.0
@@ -530,6 +533,8 @@ projects[views_bulk_operations][version] = 3.4
 projects[views_megarow][version] = 1.7
 
 projects[views_php][version] = 1.0-alpha3
+
+projects[views_refresh][version] = 1.2
 
 projects[votingapi][version] = 2.12
 projects[votingapi][patch][] = https://www.drupal.org/files/issues/updating_voting_api_default_views-2679585-3.patch

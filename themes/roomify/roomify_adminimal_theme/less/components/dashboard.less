@@ -385,6 +385,30 @@
       top: 15px;
     }
   }
+  #notifications-tab {
+    background: url("../images/dashboard/notification.png") center center no-repeat;
+    background: url("../images/dashboard/notification.svg") center center no-repeat, linear-gradient(transparent, transparent);
+    display: inline-block;
+    width: 18px;
+    height: 18px;
+    position: relative;
+    top: 4px;
+    right: 6px;
+    @media (max-width: @screen-sm-max) {
+      position: absolute;
+      left: 20px;
+      top: 15px;
+    }
+  }
+  #notifications-to-read {
+    background: red;
+    width: 10px;
+    height: 10px;
+    border-radius: 5px;
+    position: absolute;
+    top: 4px;
+    right: 4px;
+  }
   #dashboard-stays-tab {
     background: url("../images/dashboard/reservation.png") center center no-repeat;
     background: url("../images/dashboard/reservation.svg") center center no-repeat, linear-gradient(transparent, transparent);
@@ -413,6 +437,45 @@
       position: absolute;
       left: 20px;
       top: 15px;
+    }
+  }
+}
+
+.pane-dashboard-notifications-panel-pane-1 {
+  .ajax-progress {
+    display: none;
+  }
+  .view-dashboard-notifications {
+    .view-header {
+      margin-bottom: 15px;
+      width: 100%;
+      display: inline-block;
+      a {
+        float: right;
+      }
+    }
+    .views-row {
+      color: white;
+      margin-bottom: 15px;
+      .views-field-type {
+        padding: 5px 12px;
+        background: #405467;
+      }
+      .views-field-user-notifications-message {
+        padding: 7px 12px;
+        background: #687c90;
+      }
+      .views-field-hide {
+        float: right;
+        margin: 5px 8px;
+        a {
+          display: block;
+          text-indent: -999999px;
+          width: 24px;
+          background: url('../images/close.png') center center no-repeat;
+          background-size: 10px;
+        }
+      }
     }
   }
 }

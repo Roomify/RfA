@@ -37,6 +37,14 @@ Drupal.behaviors.roomify_admin_js = {
     if (('table tbody td a.references-dialog-activate.waves-effect').length > 0) {
       $('table tbody td a.references-dialog-activate.waves-effect').removeClass('waves-effect');
     }
+
+    $('.view-dashboard-notifications .views-field-hide a').once().click(function() {
+      $(this).closest('.views-row').fadeOut('slow');
+    });
+    $('.view-dashboard-notifications .hide-all').once().click(function() {
+      $(this).closest('.view').find('.view-content').fadeOut('slow');
+      $(this).closest('.view').find('ul.pager').fadeOut('slow');
+    });
   }
 };
 

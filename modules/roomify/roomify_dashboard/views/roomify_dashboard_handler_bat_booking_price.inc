@@ -28,7 +28,6 @@ class roomify_dashboard_handler_bat_booking_price extends views_handler_field {
    * {@inheritdoc}
    */
   public function render($values) {
-
     // Standard Booking.
     if (isset($values->field_booking_price) && (!empty($values->field_booking_price[0]['rendered']['#markup']))) {
       return $values->field_booking_price[0]['rendered']['#markup'];
