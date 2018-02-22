@@ -27,7 +27,8 @@ function roomify_travel_theme_views_default_views() {
   $handler->display->display_options['cache']['type'] = 'none';
   $handler->display->display_options['query']['type'] = 'views_query';
   $handler->display->display_options['exposed_form']['type'] = 'basic';
-  $handler->display->display_options['pager']['type'] = 'none';
+  $handler->display->display_options['pager']['type'] = 'some';
+  $handler->display->display_options['pager']['options']['items_per_page'] = '5';
   $handler->display->display_options['pager']['options']['offset'] = '0';
   $handler->display->display_options['style_plugin'] = 'slick';
   $handler->display->display_options['style_options']['slide_thumbnail'] = 'field_sp_gallery_2';
@@ -80,7 +81,7 @@ function roomify_travel_theme_views_default_views() {
   $handler->display->display_options['fields']['field_sp_gallery_1']['label'] = '';
   $handler->display->display_options['fields']['field_sp_gallery_1']['alter']['alter_text'] = TRUE;
   $handler->display->display_options['fields']['field_sp_gallery_1']['alter']['text'] = '<div class="title">[field_sp_gallery_1-title]</div>
-    <div class="description">[field_sp_gallery_1-alt]</div>';
+      <div class="description">[field_sp_gallery_1-alt]</div>';
   $handler->display->display_options['fields']['field_sp_gallery_1']['element_label_colon'] = FALSE;
   $handler->display->display_options['fields']['field_sp_gallery_1']['click_sort_column'] = 'fid';
   $handler->display->display_options['fields']['field_sp_gallery_1']['settings'] = array(
@@ -131,7 +132,7 @@ function roomify_travel_theme_views_default_views() {
     t('Asc'),
     t('Desc'),
     t('<div class="title">[field_sp_gallery_1-title]</div>
-    <div class="description">[field_sp_gallery_1-alt]</div>'),
+      <div class="description">[field_sp_gallery_1-alt]</div>'),
     t('All'),
   );
   $views['property_slideshow'] = $view;
@@ -1415,6 +1416,85 @@ function roomify_travel_theme_views_default_views() {
   $handler->display->display_options['fields']['name']['alter']['make_link'] = TRUE;
   $handler->display->display_options['fields']['name']['alter']['path'] = 'room-type/[type_id]';
   $handler->display->display_options['fields']['name']['element_label_colon'] = FALSE;
+  /* Field: Type: Bathrooms */
+  $handler->display->display_options['fields']['field_st_bathrooms']['id'] = 'field_st_bathrooms';
+  $handler->display->display_options['fields']['field_st_bathrooms']['table'] = 'field_data_field_st_bathrooms';
+  $handler->display->display_options['fields']['field_st_bathrooms']['field'] = 'field_st_bathrooms';
+  $handler->display->display_options['fields']['field_st_bathrooms']['relationship'] = 'property_bat_type_reference_target_id';
+  $handler->display->display_options['fields']['field_st_bathrooms']['label'] = '';
+  $handler->display->display_options['fields']['field_st_bathrooms']['exclude'] = TRUE;
+  $handler->display->display_options['fields']['field_st_bathrooms']['element_label_colon'] = FALSE;
+  $handler->display->display_options['fields']['field_st_bathrooms']['settings'] = array(
+    'conditions' => array(
+      0 => array(
+        'condition' => '',
+      ),
+    ),
+  );
+  /* Field: Type: Max Capacity */
+  $handler->display->display_options['fields']['field_st_max_capacity']['id'] = 'field_st_max_capacity';
+  $handler->display->display_options['fields']['field_st_max_capacity']['table'] = 'field_data_field_st_max_capacity';
+  $handler->display->display_options['fields']['field_st_max_capacity']['field'] = 'field_st_max_capacity';
+  $handler->display->display_options['fields']['field_st_max_capacity']['relationship'] = 'property_bat_type_reference_target_id';
+  $handler->display->display_options['fields']['field_st_max_capacity']['label'] = '';
+  $handler->display->display_options['fields']['field_st_max_capacity']['exclude'] = TRUE;
+  $handler->display->display_options['fields']['field_st_max_capacity']['element_label_colon'] = FALSE;
+  $handler->display->display_options['fields']['field_st_max_capacity']['settings'] = array(
+    'thousand_separator' => '',
+    'prefix_suffix' => 1,
+    'conditions' => array(
+      0 => array(
+        'condition' => '',
+      ),
+    ),
+  );
+  /* Field: Type: Double beds */
+  $handler->display->display_options['fields']['field_st_double_bed']['id'] = 'field_st_double_bed';
+  $handler->display->display_options['fields']['field_st_double_bed']['table'] = 'field_data_field_st_double_bed';
+  $handler->display->display_options['fields']['field_st_double_bed']['field'] = 'field_st_double_bed';
+  $handler->display->display_options['fields']['field_st_double_bed']['relationship'] = 'property_bat_type_reference_target_id';
+  $handler->display->display_options['fields']['field_st_double_bed']['label'] = '';
+  $handler->display->display_options['fields']['field_st_double_bed']['exclude'] = TRUE;
+  $handler->display->display_options['fields']['field_st_double_bed']['element_label_colon'] = FALSE;
+  $handler->display->display_options['fields']['field_st_double_bed']['settings'] = array(
+    'conditions' => array(
+      0 => array(
+        'condition' => '',
+      ),
+    ),
+  );
+  /* Field: Type: Single Beds */
+  $handler->display->display_options['fields']['field_st_single_bed']['id'] = 'field_st_single_bed';
+  $handler->display->display_options['fields']['field_st_single_bed']['table'] = 'field_data_field_st_single_bed';
+  $handler->display->display_options['fields']['field_st_single_bed']['field'] = 'field_st_single_bed';
+  $handler->display->display_options['fields']['field_st_single_bed']['relationship'] = 'property_bat_type_reference_target_id';
+  $handler->display->display_options['fields']['field_st_single_bed']['label'] = '';
+  $handler->display->display_options['fields']['field_st_single_bed']['exclude'] = TRUE;
+  $handler->display->display_options['fields']['field_st_single_bed']['element_label_colon'] = FALSE;
+  $handler->display->display_options['fields']['field_st_single_bed']['settings'] = array(
+    'conditions' => array(
+      0 => array(
+        'condition' => '',
+      ),
+    ),
+  );
+  /* Field: Global: Custom text */
+  $handler->display->display_options['fields']['nothing']['id'] = 'nothing';
+  $handler->display->display_options['fields']['nothing']['table'] = 'views';
+  $handler->display->display_options['fields']['nothing']['field'] = 'nothing';
+  $handler->display->display_options['fields']['nothing']['label'] = '';
+  $handler->display->display_options['fields']['nothing']['alter']['text'] = '<table>
+        <tbody>
+          <tr>
+            <td data-toggle="tooltip" data-html="true" title="" data-placement="top" class="capacity" data-original-title="Max Capacity">[field_st_max_capacity]</td>
+            <td data-toggle="tooltip" data-html="true" title="" data-placement="top" class="single-beds" data-original-title="Single Beds">[field_st_single_bed]</td>
+            <td data-toggle="tooltip" data-html="true" title="" data-placement="top" class="double-beds" data-original-title="Double Beds">[field_st_double_bed]</td>
+            <td data-toggle="tooltip" data-html="true" title="" data-placement="top" class="bathrooms" data-original-title="Bathrooms">[field_st_bathrooms]</td>
+          </tr>
+         </tbody>
+        </table>';
+  $handler->display->display_options['fields']['nothing']['element_class'] = 'property-details';
+  $handler->display->display_options['fields']['nothing']['element_label_colon'] = FALSE;
   /* Field: Type: Type Gallery */
   $handler->display->display_options['fields']['field_st_gallery']['id'] = 'field_st_gallery';
   $handler->display->display_options['fields']['field_st_gallery']['table'] = 'field_data_field_st_gallery';
@@ -1450,6 +1530,47 @@ function roomify_travel_theme_views_default_views() {
       ),
     ),
   );
+  /* Field: Type: Type Amenities */
+  $handler->display->display_options['fields']['field_st_amenities']['id'] = 'field_st_amenities';
+  $handler->display->display_options['fields']['field_st_amenities']['table'] = 'field_data_field_st_amenities';
+  $handler->display->display_options['fields']['field_st_amenities']['field'] = 'field_st_amenities';
+  $handler->display->display_options['fields']['field_st_amenities']['relationship'] = 'property_bat_type_reference_target_id';
+  $handler->display->display_options['fields']['field_st_amenities']['label'] = '';
+  $handler->display->display_options['fields']['field_st_amenities']['element_label_colon'] = FALSE;
+  $handler->display->display_options['fields']['field_st_amenities']['type'] = 'taxonomy_term_reference_plain';
+  $handler->display->display_options['fields']['field_st_amenities']['settings'] = array(
+    'conditions' => array(
+      0 => array(
+        'condition' => '',
+      ),
+    ),
+  );
+  $handler->display->display_options['fields']['field_st_amenities']['delta_offset'] = '0';
+  /* Field: Type: Type Gallery */
+  $handler->display->display_options['fields']['field_st_gallery_1']['id'] = 'field_st_gallery_1';
+  $handler->display->display_options['fields']['field_st_gallery_1']['table'] = 'field_data_field_st_gallery';
+  $handler->display->display_options['fields']['field_st_gallery_1']['field'] = 'field_st_gallery';
+  $handler->display->display_options['fields']['field_st_gallery_1']['relationship'] = 'property_bat_type_reference_target_id';
+  $handler->display->display_options['fields']['field_st_gallery_1']['label'] = '';
+  $handler->display->display_options['fields']['field_st_gallery_1']['element_label_colon'] = FALSE;
+  $handler->display->display_options['fields']['field_st_gallery_1']['click_sort_column'] = 'fid';
+  $handler->display->display_options['fields']['field_st_gallery_1']['type'] = 'colorbox';
+  $handler->display->display_options['fields']['field_st_gallery_1']['settings'] = array(
+    'colorbox_node_style' => 'roomify_thumbnail_squared',
+    'colorbox_node_style_first' => '',
+    'colorbox_image_style' => '',
+    'colorbox_gallery' => 'post',
+    'colorbox_gallery_custom' => '',
+    'colorbox_caption' => 'auto',
+    'colorbox_caption_custom' => '',
+    'conditions' => array(
+      0 => array(
+        'condition' => '',
+      ),
+    ),
+  );
+  $handler->display->display_options['fields']['field_st_gallery_1']['delta_offset'] = '0';
+  $handler->display->display_options['fields']['field_st_gallery_1']['separator'] = '';
   /* Field: Type: Book This Link */
   $handler->display->display_options['fields']['book_this']['id'] = 'book_this';
   $handler->display->display_options['fields']['book_this']['table'] = 'bat_types';
@@ -1505,11 +1626,20 @@ function roomify_travel_theme_views_default_views() {
     t('Beds'),
     t('Cost'),
     t('[type_calendar_reference] 
-  [book_this]'),
+    [book_this]'),
     t('View panes'),
     t('Property Types List'),
+    t('<table>
+        <tbody>
+          <tr>
+            <td data-toggle="tooltip" data-html="true" title="" data-placement="top" class="capacity" data-original-title="Max Capacity">[field_st_max_capacity]</td>
+            <td data-toggle="tooltip" data-html="true" title="" data-placement="top" class="single-beds" data-original-title="Single Beds">[field_st_single_bed]</td>
+            <td data-toggle="tooltip" data-html="true" title="" data-placement="top" class="double-beds" data-original-title="Double Beds">[field_st_double_bed]</td>
+            <td data-toggle="tooltip" data-html="true" title="" data-placement="top" class="bathrooms" data-original-title="Bathrooms">[field_st_bathrooms]</td>
+          </tr>
+         </tbody>
+        </table>'),
   );
-
   $views['property_travel'] = $view;
 
   $view = new view();
@@ -1725,6 +1855,121 @@ function roomify_travel_theme_views_default_views() {
     t('Facets block'),
   );
   $views['blog_categories'] = $view;
+
+  $view = new view();
+  $view->name = 'single_property_gallery';
+  $view->description = '';
+  $view->tag = 'default';
+  $view->base_table = 'roomify_properties';
+  $view->human_name = 'Single Property gallery';
+  $view->core = 7;
+  $view->api_version = '3.0';
+  $view->disabled = FALSE; /* Edit this to true to make a default view disabled initially */
+
+  /* Display: Master */
+  $handler = $view->new_display('default', 'Master', 'default');
+  $handler->display->display_options['use_more_always'] = FALSE;
+  $handler->display->display_options['access']['type'] = 'none';
+  $handler->display->display_options['cache']['type'] = 'none';
+  $handler->display->display_options['query']['type'] = 'views_query';
+  $handler->display->display_options['exposed_form']['type'] = 'basic';
+  $handler->display->display_options['pager']['type'] = 'full';
+  $handler->display->display_options['style_plugin'] = 'default';
+  $handler->display->display_options['row_plugin'] = 'fields';
+  /* Field: Roomify Property: Roomify property ID */
+  $handler->display->display_options['fields']['property_id']['id'] = 'property_id';
+  $handler->display->display_options['fields']['property_id']['table'] = 'roomify_properties';
+  $handler->display->display_options['fields']['property_id']['field'] = 'property_id';
+  /* Contextual filter: Roomify Property: Roomify property ID */
+  $handler->display->display_options['arguments']['property_id']['id'] = 'property_id';
+  $handler->display->display_options['arguments']['property_id']['table'] = 'roomify_properties';
+  $handler->display->display_options['arguments']['property_id']['field'] = 'property_id';
+  $handler->display->display_options['arguments']['property_id']['default_action'] = 'default';
+  $handler->display->display_options['arguments']['property_id']['default_argument_type'] = 'raw';
+  $handler->display->display_options['arguments']['property_id']['default_argument_options']['index'] = '1';
+  $handler->display->display_options['arguments']['property_id']['summary']['number_of_records'] = '0';
+  $handler->display->display_options['arguments']['property_id']['summary']['format'] = 'default_summary';
+  $handler->display->display_options['arguments']['property_id']['summary_options']['items_per_page'] = '25';
+
+  /* Display: Gallery */
+  $handler = $view->new_display('panel_pane', 'Gallery', 'panel_pane_1');
+  $handler->display->display_options['defaults']['title'] = FALSE;
+  $handler->display->display_options['title'] = '<span id="property-gallery-tab"></span>Images Gallery';
+  $handler->display->display_options['defaults']['pager'] = FALSE;
+  $handler->display->display_options['pager']['type'] = 'none';
+  $handler->display->display_options['pager']['options']['offset'] = '0';
+  $handler->display->display_options['defaults']['style_plugin'] = FALSE;
+  $handler->display->display_options['style_plugin'] = 'views_bootstrap_grid_plugin_style';
+  $handler->display->display_options['style_options']['columns_horizontal'] = '-1';
+  $handler->display->display_options['style_options']['columns_vertical'] = '4';
+  $handler->display->display_options['style_options']['columns_xs'] = '12';
+  $handler->display->display_options['style_options']['columns_sm'] = '6';
+  $handler->display->display_options['style_options']['columns_md'] = '4';
+  $handler->display->display_options['style_options']['columns_lg'] = '4';
+  $handler->display->display_options['style_options']['column_class'] = 'gallery-item';
+  $handler->display->display_options['defaults']['style_options'] = FALSE;
+  $handler->display->display_options['defaults']['row_plugin'] = FALSE;
+  $handler->display->display_options['row_plugin'] = 'fields';
+  $handler->display->display_options['defaults']['row_options'] = FALSE;
+  $handler->display->display_options['defaults']['fields'] = FALSE;
+  /* Field: Roomify Property: Image Gallery */
+  $handler->display->display_options['fields']['field_sp_gallery']['id'] = 'field_sp_gallery';
+  $handler->display->display_options['fields']['field_sp_gallery']['table'] = 'field_data_field_sp_gallery';
+  $handler->display->display_options['fields']['field_sp_gallery']['field'] = 'field_sp_gallery';
+  $handler->display->display_options['fields']['field_sp_gallery']['label'] = '';
+  $handler->display->display_options['fields']['field_sp_gallery']['element_label_colon'] = FALSE;
+  $handler->display->display_options['fields']['field_sp_gallery']['click_sort_column'] = 'fid';
+  $handler->display->display_options['fields']['field_sp_gallery']['type'] = 'colorbox';
+  $handler->display->display_options['fields']['field_sp_gallery']['settings'] = array(
+    'colorbox_node_style' => 'homepage_features',
+    'colorbox_node_style_first' => '',
+    'colorbox_image_style' => '',
+    'colorbox_gallery' => 'post',
+    'colorbox_gallery_custom' => '',
+    'colorbox_caption' => 'auto',
+    'colorbox_caption_custom' => '',
+    'conditions' => array(
+      0 => array(
+        'condition' => '',
+      ),
+    ),
+  );
+  $handler->display->display_options['fields']['field_sp_gallery']['group_rows'] = FALSE;
+  $handler->display->display_options['fields']['field_sp_gallery']['delta_offset'] = '0';
+  $handler->display->display_options['fields']['field_sp_gallery']['multi_type'] = 'ul';
+  $handler->display->display_options['defaults']['filter_groups'] = FALSE;
+  $handler->display->display_options['defaults']['filters'] = FALSE;
+  /* Filter criterion: Roomify Property: Image Gallery (field_sp_gallery:language) */
+  $handler->display->display_options['filters']['language']['id'] = 'language';
+  $handler->display->display_options['filters']['language']['table'] = 'field_data_field_sp_gallery';
+  $handler->display->display_options['filters']['language']['field'] = 'language';
+  $handler->display->display_options['filters']['language']['value'] = array(
+    '***DEFAULT_LANGUAGE***' => '***DEFAULT_LANGUAGE***',
+  );
+  $translatables['single_property_gallery'] = array(
+    t('Master'),
+    t('more'),
+    t('Apply'),
+    t('Reset'),
+    t('Sort by'),
+    t('Asc'),
+    t('Desc'),
+    t('Items per page'),
+    t('- All -'),
+    t('Offset'),
+    t('« first'),
+    t('‹ previous'),
+    t('next ›'),
+    t('last »'),
+    t('Roomify property ID'),
+    t('.'),
+    t(','),
+    t('All'),
+    t('Gallery'),
+    t('<span id="property-gallery-tab"></span>Images Gallery'),
+    t('View panes'),
+  );
+  $views['single_property_gallery'] = $view;
 
   return $views;
 }

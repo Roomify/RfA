@@ -219,7 +219,7 @@ function roomify_system_block_view($delta = '') {
 
   switch ($delta) {
     case 'roomify_footer_block':
-      $text = variable_get('roomify_footer_text', 'Roomify for Accommodations - Copyright © 2017');
+      $text = variable_get('roomify_footer_text', 'Roomify for Accommodations - Copyright © 2018');
       $block['content'] = isset($text['value']) ? $text['value'] : $text;
       break;
   }
@@ -231,7 +231,7 @@ function roomify_system_block_view($delta = '') {
  * Form "Roomify Footer".
  */
 function roomify_footer_form($form, &$form_state) {
-  $text = variable_get('roomify_footer_text', 'Roomify for Accommodations - Copyright © 2017');
+  $text = variable_get('roomify_footer_text', 'Roomify for Accommodations - Copyright © 2018');
   $form['roomify_footer_text'] = array(
     '#type' => 'text_format',
     '#title' => t('Footer'),
@@ -2166,9 +2166,9 @@ function roomify_system_views_query_alter(&$view, &$query) {
         $current_language = $property->language;
       }
 
-      $query->where[0]['conditions'][1]['value'][':field_data_field_sp_gallery_field_sp_gallery'] = array($current_language);
-      $query->where[0]['conditions'][2]['value'][':field_data_field_sp_gallery_field_sp_gallery1'] = array($current_language);
-      $query->where[0]['conditions'][3]['value'][':field_data_field_sp_gallery_field_sp_gallery2'] = array($current_language);
+      $query->where[0]['conditions'][1]['value'][key($query->where[0]['conditions'][1]['value'])] = array($current_language);
+      $query->where[0]['conditions'][2]['value'][key($query->where[0]['conditions'][2]['value'])] = array($current_language);
+      $query->where[0]['conditions'][3]['value'][key($query->where[0]['conditions'][3]['value'])] = array($current_language);
     }
   }
 

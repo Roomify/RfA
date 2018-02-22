@@ -15,5 +15,6 @@ $plugin = array(
     'middle' => t('Middle'),
     'middle-second' => t('Middle Second'),
     'bottom' => t('Bottom'),
+    'down' => t('Down'),
   ),
 );

@@ -1040,6 +1040,8 @@ function roomify_listing_default_panels_mini() {
   $display->cache = array();
   $display->title = '';
   $display->uuid = '3bc6abee-e568-4a3a-813b-19fc716e0b54';
+  $display->storage_type = 'panels_mini';
+  $display->storage_id = 'property_location';
   $display->content = array();
   $display->panels = array();
   $pane = new stdClass();
@@ -1108,7 +1110,20 @@ function roomify_listing_default_panels_mini() {
   $pane->type = 'views_panes';
   $pane->subtype = 'property-panel_pane_5';
   $pane->shown = TRUE;
-  $pane->access = array();
+  $pane->access = array(
+    'plugins' => array(
+      0 => array(
+        'name' => 'php',
+        'settings' => array(
+          'description' => 'If is agency',
+          'php' => '$product = variable_get(\'roomify_accommodation_example_content\', \'\');
+        if ($product != \'b_and_b\' && $product != \'vacation_rental\')
+                return TRUE;',
+        ),
+        'not' => FALSE,
+      ),
+    ),
+  );
   $pane->configuration = array();
   $pane->cache = array();
   $pane->style = array(

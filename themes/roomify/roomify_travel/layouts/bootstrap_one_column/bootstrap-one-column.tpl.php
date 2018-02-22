@@ -9,4 +9,7 @@
   <div class="panel-content-bottom">
     <?php print $content['bottom']; ?>
   </div>
+  <div class="panel-content-down">
+    <?php print $content['down']; ?>
+  </div>
 </div>

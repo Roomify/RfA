@@ -62,12 +62,19 @@ class roomify_listing_handler_type_book_this_field extends bat_type_handler_link
           $return .= '<div class="info">' . t('not available for these dates') . '<div>';
         }
         else {
-          $return = l($text, '/booking/' . $arrival . '/' . $departure . '/' . $type->type_id, array('query' => array('property' => $property->property_id, 'group_size' => $group_size), 'attributes' => array('class' => array('btn btn-primary btn-info'), 'html' => 'true')));
+          if ($instant_booking[0]['value']) {
+            $currency_setting = commerce_currency_load(commerce_default_currency());
+            $currency_symbol = $currency_setting['symbol'];
+            $price = roomify_accommodation_booking_calculate_price($start_date, $end_date, $type->type_id);
+            $booking_cost = commerce_currency_format($price, $currency_setting['code']);
+            $text = $text . ' ' . t('at @booking_cost', array('@booking_cost' => $booking_cost));
+          }
+          $return = l($text, '/booking/' . $arrival . '/' . $departure . '/' . $type->type_id, array('query' => array('property' => $property->property_id, 'group_size' => $group_size), 'attributes' => array('class' => array('btn btn-primary btn-success'), 'html' => 'true')));
         }
       }
     }
     else {
-      $return = l($text, '/listing/' . $property->property_id, array('attributes' => array('class' => array('btn btn-primary btn-info'), 'html' => 'true', 'disabled' => 'true')));
+      $return = l($text, '/listing/' . $property->property_id, array('attributes' => array('class' => array('btn btn-primary btn-info'), 'html' => 'true', 'disabled' => 'true', 'data-toggle' => 'tooltip', 'data-placement' => 'top', 'title' => t('define dates to check availability'))));
       $return .= '<div class="info">' . t('define dates to check availability') . '</div>';
     }
 
