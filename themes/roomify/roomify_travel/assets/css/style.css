@@ -14953,6 +14953,25 @@ div.ctools-modal-dialog .modal-header .modal-title {
 body.page-single-property-listing {
   background: #F8F8F8;
   /* PROPERTY TYPES */ }
+  @media (min-width: 992px) {
+    body.page-single-property-listing .ui-tabs .ui-tabs-panel {
+      padding: 90px; } }
+  body.page-single-property-listing .ui-tabs .ui-tabs-panel h1, body.page-single-property-listing .ui-tabs .ui-tabs-panel h2, body.page-single-property-listing .ui-tabs .ui-tabs-panel .page-taxonomy-area .pane-term-name .pane-content, .page-taxonomy-area .pane-term-name body.page-single-property-listing .ui-tabs .ui-tabs-panel .pane-content, body.page-single-property-listing .ui-tabs .ui-tabs-panel .page-taxonomy-area .field-name-field-area-title-description, .page-taxonomy-area body.page-single-property-listing .ui-tabs .ui-tabs-panel .field-name-field-area-title-description,
+  body.page-single-property-listing .ui-tabs .ui-tabs-panel .page-taxonomy-area .field-name-field-area-title-blog-posts,
+  .page-taxonomy-area body.page-single-property-listing .ui-tabs .ui-tabs-panel .field-name-field-area-title-blog-posts,
+  body.page-single-property-listing .ui-tabs .ui-tabs-panel .page-taxonomy-area .field-name-field-title-featured-properties,
+  .page-taxonomy-area body.page-single-property-listing .ui-tabs .ui-tabs-panel .field-name-field-title-featured-properties, body.page-single-property-listing .ui-tabs .ui-tabs-panel h3, body.page-single-property-listing .ui-tabs .ui-tabs-panel .page-listing .pane-roomify-property-name h1, .page-listing .pane-roomify-property-name body.page-single-property-listing .ui-tabs .ui-tabs-panel h1, body.page-single-property-listing .ui-tabs .ui-tabs-panel .page-checkout-review .checkout_review .pane-title td, .page-checkout-review .checkout_review .pane-title body.page-single-property-listing .ui-tabs .ui-tabs-panel td, body.page-single-property-listing .ui-tabs .ui-tabs-panel .page-activities-search .view-display-id-panel_pane_1 .views-row .views-field-name, .page-activities-search .view-display-id-panel_pane_1 .views-row body.page-single-property-listing .ui-tabs .ui-tabs-panel .views-field-name,
+  body.page-single-property-listing .ui-tabs .ui-tabs-panel .page-availability-search .view-display-id-panel_pane_1 .views-row .views-field-name,
+  .page-availability-search .view-display-id-panel_pane_1 .views-row body.page-single-property-listing .ui-tabs .ui-tabs-panel .views-field-name, body.page-single-property-listing .ui-tabs .ui-tabs-panel .page-activities-search .view-display-id-panel_pane_3 .property-row .views-field-name, .page-activities-search .view-display-id-panel_pane_3 .property-row body.page-single-property-listing .ui-tabs .ui-tabs-panel .views-field-name,
+  body.page-single-property-listing .ui-tabs .ui-tabs-panel .page-availability-search .view-display-id-panel_pane_3 .property-row .views-field-name,
+  .page-availability-search .view-display-id-panel_pane_3 .property-row body.page-single-property-listing .ui-tabs .ui-tabs-panel .views-field-name, body.page-single-property-listing .ui-tabs .ui-tabs-panel .page-blog .panel_sl_right .panel-pane .pane-title, .page-blog .panel_sl_right .panel-pane body.page-single-property-listing .ui-tabs .ui-tabs-panel .pane-title, body.page-single-property-listing .ui-tabs .ui-tabs-panel .node-type-blog .panel_sl_right .panel-pane .pane-title, .node-type-blog .panel_sl_right .panel-pane body.page-single-property-listing .ui-tabs .ui-tabs-panel .pane-title, body.page-single-property-listing .ui-tabs .ui-tabs-panel .page-things-to-do .panel_sl_right .panel-pane .pane-title, .page-things-to-do .panel_sl_right .panel-pane body.page-single-property-listing .ui-tabs .ui-tabs-panel .pane-title, body.page-single-property-listing .ui-tabs .ui-tabs-panel .node-type-activity .panel_sl_right .panel-pane .pane-title, .node-type-activity .panel_sl_right .panel-pane body.page-single-property-listing .ui-tabs .ui-tabs-panel .pane-title, body.page-single-property-listing .ui-tabs .ui-tabs-panel .page-taxonomy-area .field-name-field-area-description-subtitle, .page-taxonomy-area body.page-single-property-listing .ui-tabs .ui-tabs-panel .field-name-field-area-description-subtitle,
+  body.page-single-property-listing .ui-tabs .ui-tabs-panel .page-taxonomy-area .field-name-field-area-description-blog-post,
+  .page-taxonomy-area body.page-single-property-listing .ui-tabs .ui-tabs-panel .field-name-field-area-description-blog-post,
+  body.page-single-property-listing .ui-tabs .ui-tabs-panel .page-taxonomy-area .field-name-field-desc-featured-properities,
+  .page-taxonomy-area body.page-single-property-listing .ui-tabs .ui-tabs-panel .field-name-field-desc-featured-properities, body.page-single-property-listing .ui-tabs .ui-tabs-panel .page-room-type .panel_sl_left .panel-pane.pane-type-availability-search .pane-title, .page-room-type .panel_sl_left .panel-pane.pane-type-availability-search body.page-single-property-listing .ui-tabs .ui-tabs-panel .pane-title, body.page-single-property-listing .ui-tabs .ui-tabs-panel .page-room-type .panel_sl_left .panel-pane.pane-bat-type-field-st-amenities .pane-title, .page-room-type .panel_sl_left .panel-pane.pane-bat-type-field-st-amenities body.page-single-property-listing .ui-tabs .ui-tabs-panel .pane-title, body.page-single-property-listing .ui-tabs .ui-tabs-panel h4, body.page-single-property-listing .ui-tabs .ui-tabs-panel .pane-property-location .panel-content-right .pane-title, .pane-property-location .panel-content-right body.page-single-property-listing .ui-tabs .ui-tabs-panel .pane-title,
+  body.page-single-property-listing .ui-tabs .ui-tabs-panel .pane-property-location .panel-content-left .pane-title,
+  .pane-property-location .panel-content-left body.page-single-property-listing .ui-tabs .ui-tabs-panel .pane-title, body.page-single-property-listing .ui-tabs .ui-tabs-panel .page-listing .pane-roomify-property-field-sp-short-description, .page-listing body.page-single-property-listing .ui-tabs .ui-tabs-panel .pane-roomify-property-field-sp-short-description, body.page-single-property-listing .ui-tabs .ui-tabs-panel .node-type-blog .panel-content-bottom .pane-blog-panel-pane-9 .views-field-name, .node-type-blog .panel-content-bottom .pane-blog-panel-pane-9 body.page-single-property-listing .ui-tabs .ui-tabs-panel .views-field-name {
+    line-height: 1.4em; }
   @media (min-width: 768px) {
     body.page-single-property-listing .main-container {
       padding-bottom: 147px; } }
@@ -15835,7 +15854,7 @@ body.page-single-property-listing {
       body.page-single-property-listing .view-property-travel .views-row .views-field-book-this {
         display: inline-block;
         width: 100%;
-        margin-top: 20px; }
+        margin-top: 60px; }
         body.page-single-property-listing .view-property-travel .views-row .views-field-book-this a.btn {
           position: relative;
           float: left;
@@ -15865,7 +15884,7 @@ body.page-single-property-listing {
   body.page-single-property-listing .pane-property-travel-panel-pane-1 {
     width: 100%;
     display: inline-block;
-    margin-top: 20px; }
+    margin-top: 60px; }
     body.page-single-property-listing .pane-property-travel-panel-pane-1 .pane-title {
       text-align: center;
       font-weight: 300;

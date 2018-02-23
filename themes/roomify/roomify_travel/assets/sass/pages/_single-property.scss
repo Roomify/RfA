@@ -1,5 +1,13 @@
 body.page-single-property-listing {
   background: #F8F8F8;
+  .ui-tabs .ui-tabs-panel {
+    @media (min-width: $screen-md) {
+      padding: 90px;
+    }
+    h1,h2,h3,h4 {
+      line-height: 1.4em;
+    }
+  }
   .main-container {
     @media (min-width: $screen-sm) {
       padding-bottom: 147px;
@@ -532,7 +540,7 @@ body.page-single-property-listing {
       .views-field-book-this {
         display: inline-block;
         width: 100%;
-        margin-top: 20px;
+        margin-top: 60px;
         a.btn {
           @include make-xs-column(4);
           float: right;
@@ -561,7 +569,7 @@ body.page-single-property-listing {
   .pane-property-travel-panel-pane-1 {
     width: 100%;
     display: inline-block;
-    margin-top: 20px;
+    margin-top: 60px;
     .pane-title {
       text-align: center;
       font-weight: 300;
