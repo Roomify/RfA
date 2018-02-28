@@ -375,32 +375,13 @@ function roomify_travel_theme_default_page_manager_handlers() {
   $display->content['new-e3e68037-8a08-468b-9f60-3aebd76b903d'] = $pane;
   $display->panels['main-left'][0] = 'new-e3e68037-8a08-468b-9f60-3aebd76b903d';
   $pane = new stdClass();
-  $pane->pid = 'new-681acaee-a6c3-4fde-a101-3ae65b4b2777';
+  $pane->pid = 'new-9e48cc04-62f7-49bb-8beb-41a62fdd2ead';
   $pane->panel = 'main-left';
-  $pane->type = 'views';
-  $pane->subtype = 'property_slideshow';
+  $pane->type = 'views_panes';
+  $pane->subtype = 'property_slideshow-panel_pane_2';
   $pane->shown = TRUE;
   $pane->access = array();
-  $pane->configuration = array(
-    'override_pager_settings' => 0,
-    'use_pager' => 0,
-    'nodes_per_page' => '0',
-    'pager_id' => '0',
-    'offset' => '0',
-    'more_link' => 0,
-    'feed_icons' => 0,
-    'panel_args' => 0,
-    'link_to_view' => 0,
-    'args' => '',
-    'url' => '',
-    'display' => 'default',
-    'context' => array(
-      0 => '',
-    ),
-    'override_title' => 1,
-    'override_title_text' => '',
-    'override_title_heading' => 'h2',
-  );
+  $pane->configuration = array();
   $pane->cache = array();
   $pane->style = array(
     'settings' => NULL,
@@ -409,9 +390,9 @@ function roomify_travel_theme_default_page_manager_handlers() {
   $pane->extras = array();
   $pane->position = 1;
   $pane->locks = array();
-  $pane->uuid = '681acaee-a6c3-4fde-a101-3ae65b4b2777';
-  $display->content['new-681acaee-a6c3-4fde-a101-3ae65b4b2777'] = $pane;
-  $display->panels['main-left'][1] = 'new-681acaee-a6c3-4fde-a101-3ae65b4b2777';
+  $pane->uuid = '9e48cc04-62f7-49bb-8beb-41a62fdd2ead';
+  $display->content['new-9e48cc04-62f7-49bb-8beb-41a62fdd2ead'] = $pane;
+  $display->panels['main-left'][1] = 'new-9e48cc04-62f7-49bb-8beb-41a62fdd2ead';
   $pane = new stdClass();
   $pane->pid = 'new-531705a1-93a7-4271-8003-d6673e6fc1ae';
   $pane->panel = 'main-right';
@@ -640,10 +621,10 @@ function roomify_travel_theme_default_page_manager_handlers() {
         'settings' => array(
           'description' => 'Social Feeds Enabled',
           'php' => '$social_feeds_pages = variable_get(\'roomify_feed_pages\', array());
-            if (isset($social_feeds_pages[\'property_page\']) && $social_feeds_pages[\'property_page\'] === \'property_page\') {
-              return TRUE;
-            }
-            return FALSE;',
+              if (isset($social_feeds_pages[\'property_page\']) && $social_feeds_pages[\'property_page\'] === \'property_page\') {
+                return TRUE;
+              }
+              return FALSE;',
         ),
         'not' => FALSE,
       ),
@@ -674,10 +655,10 @@ function roomify_travel_theme_default_page_manager_handlers() {
         'settings' => array(
           'description' => 'Customer Message Enabled',
           'php' => '$customer_message = variable_get(\'roomify_customer_support_page\', array());
-      if (isset($customer_message[\'property_page\']) && $customer_message[\'property_page\'] === \'property_page\') {
-        return TRUE;
-      }
-      return FALSE;',
+        if (isset($customer_message[\'property_page\']) && $customer_message[\'property_page\'] === \'property_page\') {
+          return TRUE;
+        }
+        return FALSE;',
         ),
         'not' => FALSE,
       ),
@@ -728,9 +709,9 @@ function roomify_travel_theme_default_page_manager_handlers() {
           'description' => '',
           'php' => '$addtoany_settings = array_filter(variable_get(\'roomify_addtoany_settings\', array(\'property\' => \'property\', \'type\' => \'type\', \'blog\' => \'blog\', \'activity\' => \'activity\')));
 
-  if (in_array(\'property\', $addtoany_settings)) {
-    return TRUE;
-  }',
+    if (in_array(\'property\', $addtoany_settings)) {
+      return TRUE;
+    }',
         ),
         'not' => FALSE,
       ),
@@ -3858,32 +3839,13 @@ function roomify_travel_theme_default_page_manager_handlers() {
   $display->content['new-01204d2c-8fb2-496a-8e9e-b45f39bcf5c9'] = $pane;
   $display->panels['middle'][4] = 'new-01204d2c-8fb2-496a-8e9e-b45f39bcf5c9';
   $pane = new stdClass();
-  $pane->pid = 'new-681acaee-a6c3-4fde-a101-3ae65b4b2777';
+  $pane->pid = 'new-5b2b21bd-5230-475c-a265-7bfecbe27907';
   $pane->panel = 'top';
-  $pane->type = 'views';
-  $pane->subtype = 'property_slideshow';
+  $pane->type = 'views_panes';
+  $pane->subtype = 'property_slideshow-panel_pane_1';
   $pane->shown = TRUE;
   $pane->access = array();
-  $pane->configuration = array(
-    'override_pager_settings' => 0,
-    'use_pager' => 0,
-    'nodes_per_page' => '0',
-    'pager_id' => '0',
-    'offset' => '0',
-    'more_link' => 0,
-    'feed_icons' => 0,
-    'panel_args' => 0,
-    'link_to_view' => 0,
-    'args' => '',
-    'url' => '',
-    'display' => 'default',
-    'context' => array(
-      0 => '',
-    ),
-    'override_title' => 1,
-    'override_title_text' => '',
-    'override_title_heading' => 'h2',
-  );
+  $pane->configuration = array();
   $pane->cache = array();
   $pane->style = array(
     'settings' => NULL,
@@ -3892,9 +3854,9 @@ function roomify_travel_theme_default_page_manager_handlers() {
   $pane->extras = array();
   $pane->position = 0;
   $pane->locks = array();
-  $pane->uuid = '681acaee-a6c3-4fde-a101-3ae65b4b2777';
-  $display->content['new-681acaee-a6c3-4fde-a101-3ae65b4b2777'] = $pane;
-  $display->panels['top'][0] = 'new-681acaee-a6c3-4fde-a101-3ae65b4b2777';
+  $pane->uuid = '5b2b21bd-5230-475c-a265-7bfecbe27907';
+  $display->content['new-5b2b21bd-5230-475c-a265-7bfecbe27907'] = $pane;
+  $display->panels['top'][0] = 'new-5b2b21bd-5230-475c-a265-7bfecbe27907';
   $pane = new stdClass();
   $pane->pid = 'new-c76a5f05-7a42-4b0f-9177-1f62886e7f7d';
   $pane->panel = 'top';

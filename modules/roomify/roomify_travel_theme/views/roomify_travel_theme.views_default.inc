@@ -123,6 +123,15 @@ function roomify_travel_theme_views_default_views() {
   $handler->display->display_options['arguments']['property_id']['summary']['number_of_records'] = '0';
   $handler->display->display_options['arguments']['property_id']['summary']['format'] = 'default_summary';
   $handler->display->display_options['arguments']['property_id']['summary_options']['items_per_page'] = '25';
+
+  /* Display: Property Slideshow (single) */
+  $handler = $view->new_display('panel_pane', 'Property Slideshow (single)', 'panel_pane_1');
+
+  /* Display: Property Slideshow */
+  $handler = $view->new_display('panel_pane', 'Property Slideshow', 'panel_pane_2');
+  $handler->display->display_options['defaults']['pager'] = FALSE;
+  $handler->display->display_options['pager']['type'] = 'none';
+  $handler->display->display_options['pager']['options']['offset'] = '0';
   $translatables['property_slideshow'] = array(
     t('Master'),
     t('more'),
@@ -134,6 +143,9 @@ function roomify_travel_theme_views_default_views() {
     t('<div class="title">[field_sp_gallery_1-title]</div>
       <div class="description">[field_sp_gallery_1-alt]</div>'),
     t('All'),
+    t('Property Slideshow (single)'),
+    t('View panes'),
+    t('Property Slideshow'),
   );
   $views['property_slideshow'] = $view;
 
