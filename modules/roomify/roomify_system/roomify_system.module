@@ -2155,7 +2155,7 @@ function roomify_system_views_query_alter(&$view, &$query) {
     }
   }
 
-  if ($view->name == 'property_slideshow' && $view->current_display == 'default') {
+  if ($view->name == 'property_slideshow' && ($view->current_display == 'panel_pane_1' || $view->current_display == 'panel_pane_2')) {
     if ($property = roomify_property_load($view->args[0])) {
       global $language_content;
 
