@@ -15,7 +15,7 @@ projects[bat][subdir] = bat
 projects[bat_api][type] = module
 projects[bat_api][download][type] = git
 projects[bat_api][download][url] = https://github.com/Roomify/bat_api.git
-projects[bat_api][download][tag] = 7.x-2.8
+projects[bat_api][download][tag] = 7.x-2.9
 projects[bat_api][subdir] = bat
 
 projects[bat_event_state_constraints][type] = module
