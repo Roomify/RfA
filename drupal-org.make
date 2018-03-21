@@ -259,13 +259,8 @@ projects[file_entity][version] = 2.10
 
 projects[geofield][version] = 2.3
 
-projects[geofield_gmap][type] = module
-projects[geofield_gmap][download][type] = git
-projects[geofield_gmap][download][url] = https://git.drupal.org/project/geofield_gmap.git
-projects[geofield_gmap][download][revision] = b09bbfa9ff2020b7ccd64b69a563b858618a92f1
-projects[geofield_gmap][patch][] = https://www.drupal.org/files/issues/fix-api-key-not-being-used-2746209-16.patch
-projects[geofield_gmap][patch][] = https://www.drupal.org/files/issues/geofield_gmap-zoom_after_selecting_address-2562835-1.patch
-projects[geofield_gmap][patch][] = https://www.drupal.org/files/issues/geofield_gmap-allow_html_tags_description-2847341-1.patch
+projects[geofield_gmap][version] = 2.0-alpha1
+projects[geofield_gmap][patch][] = https://www.drupal.org/files/issues/2018-03-21/geofield_gmap-zoom_after_selecting_address-2562835-4.patch
 
 projects[geolocation][version] = 1.6
 
@@ -586,7 +581,7 @@ libraries[ckeditor][directory_name] = ckeditor
 libraries[ckeditor][type] = library
 libraries[ckeditor][destination] = libraries
 libraries[ckeditor][download][type] = get
-libraries[ckeditor][download][url] = https://ckeditor.com/cke4/online-builder/releases/minified/4.7.3/icy_orange/0.9/ckeditor_4.7.3_dc56a7d8be5f.zip
+libraries[ckeditor][download][url] = https://ckeditor.com/cke4/online-builder/releases/minified/4.9.0/icy_orange/0.9/ckeditor_4.9.0_6d61f0c8b6ae.zip
 
 ; colorbox
 libraries[colorbox][directory_name] = colorbox
