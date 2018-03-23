@@ -1105,6 +1105,13 @@ function roomify_blog_views_default_views() {
     'blog' => 'blog',
   );
   $handler->display->display_options['filters']['type']['group'] = 1;
+  /* Filter criterion: Roomify Property: Status */
+  $handler->display->display_options['filters']['status_1']['id'] = 'status_1';
+  $handler->display->display_options['filters']['status_1']['table'] = 'roomify_properties';
+  $handler->display->display_options['filters']['status_1']['field'] = 'status';
+  $handler->display->display_options['filters']['status_1']['relationship'] = 'reverse_field_sp_area_roomify_property';
+  $handler->display->display_options['filters']['status_1']['operator'] = '>';
+  $handler->display->display_options['filters']['status_1']['value']['value'] = '0';
   $handler->display->display_options['allow']['use_pager'] = 0;
   $handler->display->display_options['allow']['items_per_page'] = 0;
   $handler->display->display_options['allow']['offset'] = 0;
