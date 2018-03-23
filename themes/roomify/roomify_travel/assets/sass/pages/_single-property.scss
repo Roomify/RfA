@@ -40,6 +40,130 @@ body.page-single-property-listing {
     position: relative;
   }
   .pane-property-slideshow-panel-pane-1 {
+    background: white;
+    padding: 0;
+    border: 1px solid #ececec;
+    border-right: none;
+    @media (min-width: $screen-md) {
+      height: 635px;
+    }
+    .slide__content {
+      position: relative;
+      .slide__caption {
+        min-height: 0;
+        padding: 0;
+      }
+      // Description
+      .slide__overlay {
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        background: rgba(0,0,0,.5);
+        text-align: center;
+        padding: 15px;
+        color: white;
+        
+        .title {
+          font-size: 22px;
+          font-weight: 400;
+        }
+        
+        .alt {
+          font-size: 16px;
+          color: #999;
+          font-style: italic;
+        }
+        @media (max-width: $screen-xs) {
+          display: none;
+        }
+      }
+    }
+    
+    .slick-wrapper {
+      margin-bottom: 70px;
+      @media (max-width: $screen-xs) {
+        margin-bottom: 0;
+      }
+    }
+    .slick-dots {
+      bottom: -35px;
+    }
+    #slick-asnavfor-thumbnail-slider.slick__slider.slick-slider {
+      margin-left: 25px;
+      margin-right: 25px;
+    }
+    .slick--display--thumbnail {
+      top: 22px;
+      @media (max-width: $screen-xs) {
+        display: none;
+      }
+      .slick-arrow {
+        display: none !important;
+      }
+      .slick__slide {
+        margin-right: 6px;
+        margin-left: 6px;
+        img {
+          border: 4px solid transparent;
+        }
+        &.slick-current {
+          img {
+            border-color: rgba(0, 188, 212, 0.7);
+          }
+        }
+      }
+    }
+    .slick-dotted.slick-slider {
+
+    }
+    .slick.slick--view--property {
+      position: relative;
+    }
+    .slick-next.slick-arrow {
+      background: url("../images/arrow_right.png") 0 50% no-repeat;
+      background: url("../images/arrow_right.svg") center center no-repeat, linear-gradient(transparent, transparent);
+      display: inline-block;
+      position: absolute;
+      top: 50%;
+      width: 30px;
+      height: 30px;
+      margin-top: 0;
+      text-indent: -9999px;
+      border: 0;
+      background-size: contain;
+      right: 12px;
+      @media (max-width: $screen-sm) {
+        display: none !important;
+      }
+    }
+    .slick-prev.slick-arrow {
+      background: url("../images/arrow_left.png") 0 50% no-repeat;
+      background: url("../images/arrow_left.svg") center center no-repeat, linear-gradient(transparent, transparent);
+      display: inline-block;
+      position: absolute;
+      top: 50%;
+      width: 30px;
+      height: 30px;
+      margin-top: 0;
+      text-indent: -9999px;
+      border: 0;
+      background-size: contain;
+      left: 12px;
+      @media (max-width: $screen-sm) {
+        display: none !important;
+      }
+    }
+  }
+  .pane-roomify-property-name {
+    display: inline-block;
+    width: 100%;
+    padding: 10px 0;
+    text-align: center;
+    margin-top: 80px;
+    line-height: 1.5em;
+  }
+  .pane-property-slideshow-panel-pane-1 {
 	  border: none;
 	  min-height: inherit;
     max-height: none;
@@ -317,15 +441,18 @@ body.page-single-property-listing {
 	.pane-roomify-property-field-sp-short-description {
 		display: inline-block;
     width: 100%;
-    padding: 20px 0;
+    padding: 10px 0;
     font-size: 26px;
     text-align: center;
-    margin: 50px 0;
+    margin-bottom: 50px;
     line-height: 1.5em;
     @media (max-width: $screen-xs) {
       margin-bottom: 0;
     }
 	}
+  .pane-roomify-travel-highlights {
+    margin-top: 40px;
+  }
 	.panel-content-wrapper,
 	.panel-content-bottom {
 		@include container-fixed;
