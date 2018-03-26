@@ -16424,7 +16424,7 @@ body.node-type-offer .pane-offer-panel-pane-2 .pager-load-more {
   background-position: center; }
   @media (max-width: 480px) {
     .node-type-properties-list .field-name-field-pl-featured-image .background-image-formatter {
-      width: 200px; } }
+      height: 200px; } }
 .node-type-properties-list .pane-node-body {
   display: table;
   margin: 0 auto;
