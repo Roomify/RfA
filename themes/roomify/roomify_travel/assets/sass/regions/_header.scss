@@ -49,6 +49,12 @@ header.roomify-header {
       display: table;
       margin: 8px auto;
       max-height: 60px;
+      @media (max-width: $screen-xs) {
+        max-width: 150px;
+        img {
+          width: 100%;
+        }
+      }
     }
   }
   // USER MENU

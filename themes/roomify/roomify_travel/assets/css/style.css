@@ -7256,6 +7256,11 @@ header.roomify-header {
       display: table;
       margin: 8px auto;
       max-height: 60px; }
+      @media (max-width: 480px) {
+        header.roomify-header .roomify-site-name a.logo {
+          max-width: 150px; }
+          header.roomify-header .roomify-site-name a.logo img {
+            width: 100%; } }
   header.roomify-header .roomify-user-menu {
     position: relative; }
     header.roomify-header .roomify-user-menu .roomify-sidebar-link {
@@ -16417,6 +16422,9 @@ body.node-type-offer .pane-offer-panel-pane-2 .pager-load-more {
   max-width: 1600px;
   margin: 0 auto;
   background-position: center; }
+  @media (max-width: 480px) {
+    .node-type-properties-list .field-name-field-pl-featured-image .background-image-formatter {
+      width: 200px; } }
 .node-type-properties-list .pane-node-body {
   display: table;
   margin: 0 auto;
