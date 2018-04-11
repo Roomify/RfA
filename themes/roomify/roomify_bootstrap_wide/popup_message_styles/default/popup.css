@@ -29,14 +29,17 @@
 }
 
 #popup-message-close {
-  font-size: 18px;
+  font-size: 12px;
   line-height: 14px;
   right: 6px;
   top: 4px;
   position: absolute;
-  color: #ffffff;
+  color: #fff;
+  background: #e40202;
   display: block;
   cursor: pointer;
+  padding: 4px 8px;
+  border-radius: 5px;
 }
 
 #popup-message-window p,
