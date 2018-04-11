@@ -1,0 +1,45 @@
+#popup-message-background {
+  display: none;
+  position: fixed;
+  _position: absolute; /* hack for internet explorer 6*/
+  height: 100%;
+  width: 100%;
+  top: 0;
+  left: 0;
+  background: #000000;
+  z-index: 1;
+}
+
+#popup-message-window {
+  display: none;
+  position: fixed;
+  _position: absolute; /* hack for internet explorer 6*/
+  overflow: auto;
+  background: #ffffff;
+  z-index: 200;
+  font-size: 13px;
+}
+
+#popup-message-window h1.popup-message-title {
+  text-align: left;
+  font-size: 22px;
+  font-weight: 700;
+  padding-bottom: 2px;
+  margin-bottom: 20px;
+}
+
+#popup-message-close {
+  font-size: 18px;
+  line-height: 14px;
+  right: 6px;
+  top: 4px;
+  position: absolute;
+  color: #ffffff;
+  display: block;
+  cursor: pointer;
+}
+
+#popup-message-window p,
+#popup-message-window .media {
+  margin: 0;
+}

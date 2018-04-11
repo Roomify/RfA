@@ -139,6 +139,7 @@ dependencies[] = hreflang
 dependencies[] = select2
 dependencies[] = yoast_seo
 dependencies[] = video
+dependencies[] = popup_message
 
 ; Users
 dependencies[] = profile2

@@ -400,6 +400,9 @@ projects[pm_existing_pages][version] = 1.4
 
 projects[popup_field_group][version] = 1.0
 
+projects[popup_message][version] = 1.2
+projects[popup_message][patch][] = https://www.drupal.org/files/issues/popup_message-title-not-required-1854924-3.patch
+
 projects[profile2][type] = module
 projects[profile2][download][type] = git
 projects[profile2][download][url] = https://git.drupal.org/project/profile2.git
