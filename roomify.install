@@ -344,6 +344,8 @@ function roomify_install_finished(&$install_state) {
   $path = libraries_get_path('select2');
   variable_set('select2_plugin_path', $path);
 
+  variable_set('popup_message_visibility_pages', 'admin/*');
+
   $menu = menu_load('main-menu');
   module_load_include('module', 'i18n');
   $menu['language'] = 'en';

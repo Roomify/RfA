@@ -984,6 +984,7 @@ function roomify_system_roomify_rights() {
       'view calendar data for any availability event',
       'access units calendar index service',
       'access events calendar index service',
+      'display popup message',
     ),
     'authenticated user' => array(
       'access checkout',
@@ -1002,6 +1003,7 @@ function roomify_system_roomify_rights() {
       'access events calendar index service',
       'view own commerce_customer_profile entities',
       'edit own commerce_customer_profile entities',
+      'display popup message',
     ),
     'guest' => array(
       'edit own guest profile',
@@ -1188,6 +1190,7 @@ function roomify_system_roomify_rights() {
       'administer xmlsitemap',
       'view the availability global calendar',
       'use yoast seo',
+      'popup message administration',
     ),
     'content editor' => array(
       'access content overview',
@@ -1704,6 +1707,22 @@ function roomify_system_availability_search_settings_form($form, &$form_state) {
   );
 
   return system_settings_form($form);
+}
+
+/**
+ * Implements hook_form_FORM_ID_alter().
+ */
+function roomify_system_form_popup_message_settings_alter(&$form, &$form_state) {
+  $theme_path = drupal_get_path('theme', variable_get('theme_default', NULL));
+
+  $popup_message_style_path = $theme_path . '/popup_message_styles/default/popup.css';
+
+  $form['popup_message_fieldset']['popup_message_style']['#prefix'] = '<div style="display: none;">';
+  $form['popup_message_fieldset']['popup_message_style']['#suffix'] = '</div>';
+
+  if (in_array($popup_message_style_path, $form['popup_message_fieldset']['popup_message_style']['#options'])) {
+    $form['popup_message_fieldset']['popup_message_style']['#default_value'] = $popup_message_style_path;
+  }
 }
 
 /**
