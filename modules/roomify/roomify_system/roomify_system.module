@@ -984,6 +984,7 @@ function roomify_system_roomify_rights() {
       'view calendar data for any availability event',
       'access units calendar index service',
       'access events calendar index service',
+      'display popup message',
     ),
     'authenticated user' => array(
       'access checkout',
@@ -1002,6 +1003,7 @@ function roomify_system_roomify_rights() {
       'access events calendar index service',
       'view own commerce_customer_profile entities',
       'edit own commerce_customer_profile entities',
+      'display popup message',
     ),
     'guest' => array(
       'edit own guest profile',
@@ -1188,6 +1190,7 @@ function roomify_system_roomify_rights() {
       'administer xmlsitemap',
       'view the availability global calendar',
       'use yoast seo',
+      'popup message administration',
     ),
     'content editor' => array(
       'access content overview',
