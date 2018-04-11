@@ -1714,7 +1714,7 @@ function roomify_system_availability_search_settings_form($form, &$form_state) {
  */
 function roomify_system_form_popup_message_settings_alter(&$form, &$form_state) {
   $theme_path = drupal_get_path('theme', variable_get('theme_default', NULL));
-  
+
   $popup_message_style_path = $theme_path . '/popup_message_styles/default/popup.css';
 
   $form['popup_message_fieldset']['popup_message_style']['#prefix'] = '<div style="display: none;">';
