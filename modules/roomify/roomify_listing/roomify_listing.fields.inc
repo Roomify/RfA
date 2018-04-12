@@ -2917,11 +2917,7 @@ function roomify_listing_create_standard_type_fields($type_bundle) {
         'user_register_form' => FALSE,
       ),
       'widget' => array(
-        'active' => 1,
-        'module' => 'options',
-        'settings' => array(),
-        'type' => 'options_select',
-        'weight' => 11,
+        'type' => 'entityreference_autocomplete',
       ),
     );
   }
