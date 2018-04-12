@@ -372,25 +372,7 @@ function roomify_homepage_views_default_views() {
   /* Display: Offers */
   $handler = $view->new_display('panel_pane', 'Offers', 'panel_pane_2');
   $handler->display->display_options['defaults']['style_plugin'] = FALSE;
-  $handler->display->display_options['style_plugin'] = 'slick';
-  $handler->display->display_options['style_options']['slide_field_wrapper'] = 0;
-  $handler->display->display_options['style_options']['cache'] = '';
-  $handler->display->display_options['style_options']['mousewheel'] = 0;
-  $handler->display->display_options['style_options']['optionset'] = 'roomify_slideshow_paragraph_1200x720';
-  $handler->display->display_options['style_options']['override'] = 1;
-  $handler->display->display_options['style_options']['overridables'] = array(
-    'arrows' => 'arrows',
-    'autoplay' => 0,
-    'dots' => 0,
-    'draggable' => 0,
-  );
-  $handler->display->display_options['style_options']['slide_caption'] = array(
-    'title' => 0,
-    'field_offer_image' => 0,
-    'field_offer_description' => 0,
-  );
-  $handler->display->display_options['style_options']['slide_overlay'] = '';
-  $handler->display->display_options['style_options']['preserve_keys'] = 0;
+  $handler->display->display_options['style_plugin'] = 'default';
   $handler->display->display_options['defaults']['style_options'] = FALSE;
   $handler->display->display_options['defaults']['row_plugin'] = FALSE;
   $handler->display->display_options['row_plugin'] = 'fields';
@@ -401,15 +383,13 @@ function roomify_homepage_views_default_views() {
   $handler->display->display_options['relationships']['field_homepage_offers_target_id']['table'] = 'field_data_field_homepage_offers';
   $handler->display->display_options['relationships']['field_homepage_offers_target_id']['field'] = 'field_homepage_offers_target_id';
   $handler->display->display_options['relationships']['field_homepage_offers_target_id']['required'] = TRUE;
+  /* Relationship: Entity Reference: Referenced Entity */
+  $handler->display->display_options['relationships']['field_offer_reference_target_id']['id'] = 'field_offer_reference_target_id';
+  $handler->display->display_options['relationships']['field_offer_reference_target_id']['table'] = 'field_data_field_offer_reference';
+  $handler->display->display_options['relationships']['field_offer_reference_target_id']['field'] = 'field_offer_reference_target_id';
+  $handler->display->display_options['relationships']['field_offer_reference_target_id']['relationship'] = 'field_homepage_offers_target_id';
+  $handler->display->display_options['relationships']['field_offer_reference_target_id']['required'] = TRUE;
   $handler->display->display_options['defaults']['fields'] = FALSE;
-  /* Field: Content: Title */
-  $handler->display->display_options['fields']['title']['id'] = 'title';
-  $handler->display->display_options['fields']['title']['table'] = 'node';
-  $handler->display->display_options['fields']['title']['field'] = 'title';
-  $handler->display->display_options['fields']['title']['relationship'] = 'field_homepage_offers_target_id';
-  $handler->display->display_options['fields']['title']['label'] = '';
-  $handler->display->display_options['fields']['title']['element_label_colon'] = FALSE;
-  $handler->display->display_options['fields']['title']['element_wrapper_type'] = 'h2';
   /* Field: Content: Nid */
   $handler->display->display_options['fields']['nid']['id'] = 'nid';
   $handler->display->display_options['fields']['nid']['table'] = 'node';
@@ -435,6 +415,14 @@ function roomify_homepage_views_default_views() {
       ),
     ),
   );
+  /* Field: Content: Title */
+  $handler->display->display_options['fields']['title']['id'] = 'title';
+  $handler->display->display_options['fields']['title']['table'] = 'node';
+  $handler->display->display_options['fields']['title']['field'] = 'title';
+  $handler->display->display_options['fields']['title']['relationship'] = 'field_homepage_offers_target_id';
+  $handler->display->display_options['fields']['title']['label'] = '';
+  $handler->display->display_options['fields']['title']['element_label_colon'] = FALSE;
+  $handler->display->display_options['fields']['title']['element_wrapper_type'] = 'h2';
   /* Field: Content: Description */
   $handler->display->display_options['fields']['field_offer_description']['id'] = 'field_offer_description';
   $handler->display->display_options['fields']['field_offer_description']['table'] = 'field_data_field_offer_description';
@@ -496,6 +484,7 @@ function roomify_homepage_views_default_views() {
     t('All'),
     t('Offers'),
     t('Content entity referenced from field_homepage_offers'),
+    t('Roomify Rate entity referenced from field_offer_reference'),
     t('read more'),
     t('View panes'),
   );

@@ -51,6 +51,12 @@ Drupal.behaviors.roomifyTravelScripts = {
     });
 
     // Hide overlay of slides without a title or a description.
+    $('.page-single-property-listing .slide__overlay').each(function(i, obj) {
+      if ($(this).children('.title:empty').length && $(this).children('.description:empty').length) {
+        $(this).closest('.slide__caption').hide();
+      }
+    });
+
     $('.page-listing .slide__overlay').each(function(i, obj) {
       if ($(this).children('.title:empty').length && $(this).children('.description:empty').length) {
         $(this).closest('.slide__caption').hide();

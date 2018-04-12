@@ -219,7 +219,7 @@ function roomify_system_block_view($delta = '') {
 
   switch ($delta) {
     case 'roomify_footer_block':
-      $text = variable_get('roomify_footer_text', 'Roomify for Accommodations - Copyright © 2017');
+      $text = variable_get('roomify_footer_text', 'Roomify for Accommodations - Copyright © 2018');
       $block['content'] = isset($text['value']) ? $text['value'] : $text;
       break;
   }
@@ -231,7 +231,7 @@ function roomify_system_block_view($delta = '') {
  * Form "Roomify Footer".
  */
 function roomify_footer_form($form, &$form_state) {
-  $text = variable_get('roomify_footer_text', 'Roomify for Accommodations - Copyright © 2017');
+  $text = variable_get('roomify_footer_text', 'Roomify for Accommodations - Copyright © 2018');
   $form['roomify_footer_text'] = array(
     '#type' => 'text_format',
     '#title' => t('Footer'),
@@ -984,6 +984,7 @@ function roomify_system_roomify_rights() {
       'view calendar data for any availability event',
       'access units calendar index service',
       'access events calendar index service',
+      'display popup message',
     ),
     'authenticated user' => array(
       'access checkout',
@@ -1002,6 +1003,7 @@ function roomify_system_roomify_rights() {
       'access events calendar index service',
       'view own commerce_customer_profile entities',
       'edit own commerce_customer_profile entities',
+      'display popup message',
     ),
     'guest' => array(
       'edit own guest profile',
@@ -1188,6 +1190,7 @@ function roomify_system_roomify_rights() {
       'administer xmlsitemap',
       'view the availability global calendar',
       'use yoast seo',
+      'popup message administration',
     ),
     'content editor' => array(
       'access content overview',
@@ -1709,6 +1712,22 @@ function roomify_system_availability_search_settings_form($form, &$form_state) {
 /**
  * Implements hook_form_FORM_ID_alter().
  */
+function roomify_system_form_popup_message_settings_alter(&$form, &$form_state) {
+  $theme_path = drupal_get_path('theme', variable_get('theme_default', NULL));
+
+  $popup_message_style_path = $theme_path . '/popup_message_styles/default/popup.css';
+
+  $form['popup_message_fieldset']['popup_message_style']['#prefix'] = '<div style="display: none;">';
+  $form['popup_message_fieldset']['popup_message_style']['#suffix'] = '</div>';
+
+  if (in_array($popup_message_style_path, $form['popup_message_fieldset']['popup_message_style']['#options'])) {
+    $form['popup_message_fieldset']['popup_message_style']['#default_value'] = $popup_message_style_path;
+  }
+}
+
+/**
+ * Implements hook_form_FORM_ID_alter().
+ */
 function roomify_system_form_bat_type_edit_form_alter(&$form, &$form_state) {
   global $user;
 
@@ -2155,7 +2174,7 @@ function roomify_system_views_query_alter(&$view, &$query) {
     }
   }
 
-  if ($view->name == 'property_slideshow' && $view->current_display == 'default') {
+  if ($view->name == 'property_slideshow' && ($view->current_display == 'panel_pane_1' || $view->current_display == 'panel_pane_2')) {
     if ($property = roomify_property_load($view->args[0])) {
       global $language_content;
 
@@ -2166,9 +2185,9 @@ function roomify_system_views_query_alter(&$view, &$query) {
         $current_language = $property->language;
       }
 
-      $query->where[0]['conditions'][1]['value'][':field_data_field_sp_gallery_field_sp_gallery'] = array($current_language);
-      $query->where[0]['conditions'][2]['value'][':field_data_field_sp_gallery_field_sp_gallery1'] = array($current_language);
-      $query->where[0]['conditions'][3]['value'][':field_data_field_sp_gallery_field_sp_gallery2'] = array($current_language);
+      $query->where[0]['conditions'][1]['value'][key($query->where[0]['conditions'][1]['value'])] = array($current_language);
+      $query->where[0]['conditions'][2]['value'][key($query->where[0]['conditions'][2]['value'])] = array($current_language);
+      $query->where[0]['conditions'][3]['value'][key($query->where[0]['conditions'][3]['value'])] = array($current_language);
     }
   }
 

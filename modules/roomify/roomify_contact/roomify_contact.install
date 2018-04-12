@@ -23,6 +23,10 @@ function roomify_contact_enable() {
   // Add PET contact form.
   roomify_contact_form_add_pet();
 
+  $variable_realm_list = variable_get('variable_realm_list_language', array());
+  $variable_realm_list[] = 'roomify_contact_page_text';
+
+  variable_set('variable_realm_list_language', $variable_realm_list);
 }
 
 /**

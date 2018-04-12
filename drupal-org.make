@@ -15,7 +15,7 @@ projects[bat][subdir] = bat
 projects[bat_api][type] = module
 projects[bat_api][download][type] = git
 projects[bat_api][download][url] = https://github.com/Roomify/bat_api.git
-projects[bat_api][download][tag] = 7.x-2.8
+projects[bat_api][download][tag] = 7.x-2.9
 projects[bat_api][subdir] = bat
 
 projects[bat_event_state_constraints][type] = module
@@ -34,7 +34,7 @@ projects[roomify_rate][subdir] = roomify
 projects[roomify_property][type] = module
 projects[roomify_property][download][type] = git
 projects[roomify_property][download][url] = https://github.com/Roomify/roomify_property.git
-projects[roomify_property][download][tag] = 1.29
+projects[roomify_property][download][tag] = 1.30
 projects[roomify_property][directory_name] = roomify_property
 projects[roomify_property][subdir] = roomify
 
@@ -118,6 +118,8 @@ projects[checklistapi][version] = 1.2
 projects[chosen][version] = 2.0
 
 projects[classy_paragraphs][version] = 1.0
+
+projects[colorbox] = 2.13
 
 projects[commerce][version] = 1.14
 projects[commerce][patch][] = https://www.drupal.org/files/issues/commerce-delete_line_items_without_products-2261289-4.patch
@@ -248,13 +250,8 @@ projects[file_entity][version] = 2.12
 
 projects[geofield][version] = 2.3
 
-projects[geofield_gmap][type] = module
-projects[geofield_gmap][download][type] = git
-projects[geofield_gmap][download][url] = https://git.drupal.org/project/geofield_gmap.git
-projects[geofield_gmap][download][revision] = b09bbfa9ff2020b7ccd64b69a563b858618a92f1
-projects[geofield_gmap][patch][] = https://www.drupal.org/files/issues/fix-api-key-not-being-used-2746209-16.patch
-projects[geofield_gmap][patch][] = https://www.drupal.org/files/issues/geofield_gmap-zoom_after_selecting_address-2562835-1.patch
-projects[geofield_gmap][patch][] = https://www.drupal.org/files/issues/geofield_gmap-allow_html_tags_description-2847341-1.patch
+projects[geofield_gmap][version] = 2.0-alpha1
+projects[geofield_gmap][patch][] = https://www.drupal.org/files/issues/2018-03-21/geofield_gmap-zoom_after_selecting_address-2562835-4.patch
 
 projects[geolocation][version] = 1.6
 
@@ -393,6 +390,9 @@ projects[plupload][patch][] = https://www.drupal.org/files/plupload-cannot-uploa
 projects[pm_existing_pages][version] = 1.4
 
 projects[popup_field_group][version] = 1.0
+
+projects[popup_message][version] = 1.2
+projects[popup_message][patch][] = https://www.drupal.org/files/issues/popup_message-title-not-required-1854924-3.patch
 
 projects[profile2][type] = module
 projects[profile2][download][type] = git
@@ -575,7 +575,14 @@ libraries[ckeditor][directory_name] = ckeditor
 libraries[ckeditor][type] = library
 libraries[ckeditor][destination] = libraries
 libraries[ckeditor][download][type] = get
-libraries[ckeditor][download][url] = https://ckeditor.com/cke4/online-builder/releases/minified/4.7.3/icy_orange/0.9/ckeditor_4.7.3_dc56a7d8be5f.zip
+libraries[ckeditor][download][url] = https://ckeditor.com/cke4/online-builder/releases/minified/4.9.0/icy_orange/0.9/ckeditor_4.9.0_6d61f0c8b6ae.zip
+
+; colorbox
+libraries[colorbox][directory_name] = colorbox
+libraries[colorbox][type] = library
+libraries[colorbox][destination] = libraries
+libraries[colorbox][download][type] = get
+libraries[colorbox][download][url] = https://github.com/jackmoore/colorbox/archive/1.x.zip
 
 ; imagesLoaded for masonry.
 libraries[imagesloaded][directory_name] = imagesloaded

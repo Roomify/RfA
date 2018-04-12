@@ -996,3 +996,27 @@ function roomify_system_update_7062() {
 function roomify_system_update_7063() {
   module_enable(array('xmlsitemap_menu'));
 }
+
+/**
+ * Enable module "Colorbox".
+ */
+function roomify_system_update_7064() {
+  module_enable(array('colorbox'));
+}
+
+/**
+ * Enable module "Popup Message".
+ */
+function roomify_system_update_7065() {
+  module_enable(array('popup_message'));
+
+  variable_set('popup_message_visibility_pages', 'admin/*');
+}
+
+/**
+ * Add 'Popup Message' menu link.
+ */
+function roomify_system_update_7066() {
+  $configuration_mlid = roomify_system_get_menu_link_id('Configuration', 'admin/bat/config/global/settings', 'roomify_dashboard_menu');
+  roomify_system_create_update_menu_link('Popup Message', 'admin/config/user-interface/popup_message', 'roomify_dashboard_menu', 14, 1, $configuration_mlid);
+}

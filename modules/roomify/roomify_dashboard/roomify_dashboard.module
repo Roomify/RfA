@@ -499,6 +499,7 @@ function roomify_dashboard_create_dashboard_menu() {
   roomify_system_create_update_menu_link('Theme Colors', 'admin/bat/config/global/theme-colors', 'roomify_dashboard_menu', 11, 1, $configuration_mlid);
   roomify_system_create_update_menu_link('Google reCAPTCHA', 'admin/config/spam_protection/google_recaptcha/keys', 'roomify_dashboard_menu', 12, 1, $configuration_mlid);
   roomify_system_create_update_menu_link('XML Sitemap', 'admin/config/search/xmlsitemap', 'roomify_dashboard_menu', 13, 1, $configuration_mlid);
+  roomify_system_create_update_menu_link('Popup Message', 'admin/config/user-interface/popup_message', 'roomify_dashboard_menu', 14, 1, $configuration_mlid);
 
   // Accounts Sub-menu.
   $accounts_mlid = roomify_system_get_menu_link_id('Accounts', 'user', 'roomify_dashboard_menu');
