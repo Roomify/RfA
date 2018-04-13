@@ -120,6 +120,7 @@ dependencies[] = better_formats
 dependencies[] = better_messages
 dependencies[] = content_menu
 dependencies[] = colorbox
+dependencies[] = media_colorbox
 dependencies[] = entity_token
 dependencies[] = imageapi_optimize
 dependencies[] = inline_entity_form
