@@ -2076,6 +2076,7 @@ function roomify_system_form_user_pass_reset_alter(&$form, &$form_state) {
  */
 function roomify_system_menu_local_tasks_alter(&$data, $router_item, $root_path) {
   if (!empty($data['tabs'])) {
+    global $user;
 
     $paths = array(
       0 => 'user/%/edit',
@@ -2084,7 +2085,6 @@ function roomify_system_menu_local_tasks_alter(&$data, $router_item, $root_path)
 
     if (in_array($root_path, $paths)) {
       foreach ($data['tabs'][0]['output'] as $id => $content) {
-
         // Hide Orders tab.
         if ($content['#link']['path'] == 'user/%/orders') {
           unset($data['tabs'][0]['output'][$id]);
@@ -2094,6 +2094,12 @@ function roomify_system_menu_local_tasks_alter(&$data, $router_item, $root_path)
           $data['tabs'][0]['output'][$id]['#link']['href'] = 'user';
           $data['tabs'][0]['output'][$id]['#link']['title'] = t('Dashboard');
         }
+      }
+    }
+
+    if (isset($data['tabs'][1])) {
+      if ($user->uid != 1 && !in_array('administrator', $user->roles)) {
+        unset($data['tabs'][1]);
       }
     }
   }
