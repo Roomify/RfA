@@ -1020,3 +1020,10 @@ function roomify_system_update_7066() {
   $configuration_mlid = roomify_system_get_menu_link_id('Configuration', 'admin/bat/config/global/settings', 'roomify_dashboard_menu');
   roomify_system_create_update_menu_link('Popup Message', 'admin/config/user-interface/popup_message', 'roomify_dashboard_menu', 14, 1, $configuration_mlid);
 }
+
+/**
+ * Enable module "Media Colorbox".
+ */
+function roomify_system_update_7067() {
+  module_enable(array('media_colorbox'));
+}
