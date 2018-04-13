@@ -1026,4 +1026,8 @@ function roomify_system_update_7066() {
  */
 function roomify_system_update_7067() {
   module_enable(array('media_colorbox'));
+
+  $media_colorbox_display = file_display_new('image', 'colorbox', 'file_field_media_colorbox');
+  $media_colorbox_display->status = 1;
+  file_display_save($media_colorbox_display);
 }
