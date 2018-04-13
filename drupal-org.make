@@ -255,7 +255,7 @@ projects[field_formatter_settings][version] = 1.1
 projects[footable][version] = 1.0
 projects[footable][patch][] = https://www.drupal.org/files/issues/footable-add_striping_option-2307701-4.patch
 
-projects[file_entity][version] = 2.10
+projects[file_entity][version] = 2.20
 
 projects[geofield][version] = 2.3
 
@@ -338,7 +338,9 @@ projects[masonry][version] = 3.0-beta1
 
 projects[masonry_views][version] = 3.0
 
-projects[media][version] = 2.12
+projects[media][version] = 2.16
+
+projects[media_colorbox][version] = 1.0-rc4
 
 projects[menu_admin_per_menu][version] = 1.0
 projects[menu_admin_per_menu][patch][] = https://www.drupal.org/files/issues/integrate-menu-translation-suport-2546214-1.patch
