@@ -40,7 +40,7 @@
   <?php endif; ?>
 
   <?php if ($secondary_local_tasks): ?>
-    <div class="tabs-secondary clearfix"><ul class="tabs secondary"><?php //print render($secondary_local_tasks); ?></ul></div>
+    <div class="tabs-secondary clearfix"><ul class="tabs secondary"><?php print render($secondary_local_tasks); ?></ul></div>
   <?php endif; ?>
 
 </div>
