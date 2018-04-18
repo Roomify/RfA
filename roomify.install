@@ -346,6 +346,8 @@ function roomify_install_finished(&$install_state) {
 
   variable_set('popup_message_visibility_pages', 'admin/*');
 
+  variable_set('media_wysiwyg_external_link', TRUE);
+
   // Enable "Media Colorbox" display.
   $media_colorbox_display = file_display_new('image', 'colorbox', 'file_field_media_colorbox');
   $media_colorbox_display->status = 1;

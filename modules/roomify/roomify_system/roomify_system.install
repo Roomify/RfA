@@ -1031,3 +1031,10 @@ function roomify_system_update_7067() {
   $media_colorbox_display->status = 1;
   file_display_save($media_colorbox_display);
 }
+
+/**
+ * Enable option "Provide the ability to link media to pages".
+ */
+function roomify_system_update_7068() {
+  variable_set('media_wysiwyg_external_link', TRUE);
+}
