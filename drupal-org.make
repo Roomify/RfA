@@ -62,7 +62,7 @@ projects[better_db_updates][subdir] = contrib
 
 ; bootstrap
 projects[bootstrap][type] = theme
-projects[bootstrap][version] = 3.15
+projects[bootstrap][version] = 3.19
 
 ; adminimal
 projects[adminimal_theme][type] = theme
@@ -85,7 +85,7 @@ projects[adminimal_admin_menu][patch][] = https://www.drupal.org/files/issues/dr
 
 projects[administerusersbyrole][version] = 2.0
 
-projects[advagg][version] = 2.28
+projects[advagg][version] = 2.30
 
 projects[agrcache][version] = 1.7
 
@@ -95,7 +95,7 @@ projects[autocomplete_deluxe][patch][] = https://www.drupal.org/files/issues/ter
 
 projects[background_image_formatter][version] = 1.4
 
-projects[backup_migrate][version] = 3.2
+projects[backup_migrate][version] = 3.3
 
 projects[bean][version] = 1.9
 
@@ -107,8 +107,7 @@ projects[better_formats][version] = 1.0-beta2
 projects[cer][type] = module
 projects[cer][download][type] = git
 projects[cer][download][url] = https://git.drupal.org/project/cer.git
-projects[cer][download][revision] = 68f4b2043ab1b200da4e21d506924d7cd332b67f
-projects[cer][patch][] = https://www.drupal.org/files/issues/cer-cer-field-collection-issues-2352783-3.patch
+projects[cer][download][revision] = 886048a494a3d3c8fea79564b3a01e00ebed6754
 
 projects[chain_menu_access][version] = 2.0
 
@@ -122,10 +121,8 @@ projects[classy_paragraphs][version] = 1.0
 
 projects[colorbox] = 2.13
 
-projects[commerce][version] = 1.13
+projects[commerce][version] = 1.14
 projects[commerce][patch][] = https://www.drupal.org/files/issues/commerce-delete_line_items_without_products-2261289-4.patch
-projects[commerce][patch][] = https://www.drupal.org/files/issues/commerce-georgian_lari-2256853-6.patch
-projects[commerce][patch][] = https://www.drupal.org/files/issues/commerce-cart_product_add_php7-2762907-5.patch
 
 projects[commerce_addressbook] = 3.0-rc4
 
@@ -162,10 +159,7 @@ projects[conditional_fields][version] = 3.0-alpha2
 
 projects[content_menu][version] = 1.0
 
-projects[ctools][type] = module
-projects[ctools][download][type] = git
-projects[ctools][download][url] = https://git.drupal.org/project/ctools.git
-projects[ctools][download][revision] = 166eac2a2fe6dd678178a96845815526147a736f
+projects[ctools][version] = 1.13
 
 projects[date][version] = 2.10
 projects[date][patch][] = https://www.drupal.org/files/issues/date-input_disabled-1190830-14.patch
@@ -190,13 +184,13 @@ projects[elements][version] = 1.4
 
 projects[email][version] = 1.3
 
-projects[entity][version] = 1.8
+projects[entity][version] = 1.9
 
 projects[entitycache][version] = 1.5
 
 projects[entity_background][version] = 1.0-alpha6
 
-projects[entityqueue][version] = 1.1
+projects[entityqueue][version] = 1.3
 
 projects[entity_rules][version] = 1.0-alpha4
 
@@ -237,10 +231,7 @@ projects[ffc][version] = 1.0-beta2
 
 projects[field_collection][version] = 1.0-beta12
 
-projects[field_group][type] = module
-projects[field_group][download][type] = git
-projects[field_group][download][url] = https://git.drupal.org/project/field_group.git
-projects[field_group][download][revision] = 0a5404d623d0bec355d81a9646f2b7de93b958e4
+projects[field_group][version] = 1.6
 
 projects[flag][version] = 3.9
 
@@ -332,7 +323,7 @@ projects[mailsystem][download][type] = git
 projects[mailsystem][download][url] = https://git.drupal.org/project/mailsystem.git
 projects[mailsystem][download][revision] = 966e13e7024a428e35dfc1e505ae6a774eb148a2
 
-projects[manualcrop][version] = 1.6
+projects[manualcrop][version] = 1.7
 
 projects[masonry][version] = 3.0-beta1
 
