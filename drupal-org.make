@@ -85,7 +85,7 @@ projects[adminimal_admin_menu][patch][] = https://www.drupal.org/files/issues/dr
 
 projects[administerusersbyrole][version] = 2.0
 
-projects[advagg][version] = 2.30
+projects[advagg][version] = 2.33
 
 projects[agrcache][version] = 1.7
 
@@ -95,7 +95,7 @@ projects[autocomplete_deluxe][patch][] = https://www.drupal.org/files/issues/ter
 
 projects[background_image_formatter][version] = 1.4
 
-projects[backup_migrate][version] = 3.3
+projects[backup_migrate][version] = 3.5
 
 projects[bean][version] = 1.9
 
