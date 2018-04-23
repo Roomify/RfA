@@ -246,7 +246,7 @@ projects[field_formatter_settings][version] = 1.1
 projects[footable][version] = 1.0
 projects[footable][patch][] = https://www.drupal.org/files/issues/footable-add_striping_option-2307701-4.patch
 
-projects[file_entity][version] = 2.12
+projects[file_entity][version] = 2.20
 
 projects[geofield][version] = 2.3
 
@@ -329,7 +329,9 @@ projects[masonry][version] = 3.0-beta1
 
 projects[masonry_views][version] = 3.0
 
-projects[media][version] = 2.14
+projects[media][version] = 2.16
+
+projects[media_colorbox][version] = 1.0-rc4
 
 projects[menu_admin_per_menu][version] = 1.0
 projects[menu_admin_per_menu][patch][] = https://www.drupal.org/files/issues/integrate-menu-translation-suport-2546214-1.patch
@@ -575,7 +577,7 @@ libraries[ckeditor][directory_name] = ckeditor
 libraries[ckeditor][type] = library
 libraries[ckeditor][destination] = libraries
 libraries[ckeditor][download][type] = get
-libraries[ckeditor][download][url] = https://ckeditor.com/cke4/online-builder/releases/minified/4.9.0/icy_orange/0.9/ckeditor_4.9.0_6d61f0c8b6ae.zip
+libraries[ckeditor][download][url] = https://ckeditor.com/cke4/online-builder/releases/minified/4.9.2/icy_orange/0.9/ckeditor_4.9.2_c3cb8f2a46d0.zip
 
 ; colorbox
 libraries[colorbox][directory_name] = colorbox
