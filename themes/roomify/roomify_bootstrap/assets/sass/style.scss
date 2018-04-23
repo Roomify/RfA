@@ -63,5 +63,6 @@
 @import "page/offer";
 @import "page/properties-list";
 
-// Block Styles
-// @import "block/block";
+[id^=google_recaptcha_] {
+  margin-bottom: 15px;
+}

@@ -7824,7 +7824,8 @@ body.roomify-distro-homepage .properties .paragraph-property {
     .page-contact-us .entitytype-contact-form .field-name-field-contact-more-informations input {
       width: 100%; }
   .page-contact-us .entitytype-contact-form .form-actions {
-    padding-left: 15px; }
+    padding-left: 15px;
+    clear: both; }
 
 .page-entityform .tabs--primary {
   display: none; }
@@ -14001,3 +14002,6 @@ body.node-type-offer .pane-offer-panel-pane-2 .views-field-name {
   margin-bottom: 30px;
   display: inline-block;
   width: 100%; }
+
+[id^=google_recaptcha_] {
+  margin-bottom: 15px; }
