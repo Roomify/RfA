@@ -3013,8 +3013,7 @@ function roomify_accommodation_booking_commerce_cart_line_item_refresh($line_ite
                 if ($action->getElementName() == 'roomify_accommodation_booking_deposit_apply') {
                   module_load_include('inc', 'commerce_line_item', 'commerce_line_item.rules');
 
-                  $multiply_amount = $action->settings['amount'];
-                  roomify_accommodation_booking_deposit_apply($line_item, $multiply_amount, 'base_price', 1);
+                  roomify_accommodation_booking_deposit_apply($line_item);
                 }
               }
             }
