@@ -9,7 +9,7 @@ dependencies[] = roomify_casa
 dependencies[] = roomify_locanda
 dependencies[] = bat_booking
 dependencies[] = bat_facets
-dependencies[] = cer (>=3.x)
+dependencies[] = cer
 dependencies[] = commerce_cart
 dependencies[] = commerce_customer_ui
 dependencies[] = commerce_order_ui
