@@ -9,7 +9,7 @@
         "behat/symfony2-extension": "*",
         "symfony/form": "~2.8",
         "symfony/validator": "~2.8",
-        "behat/mink-extension": "2.2",
+        "behat/mink-extension": "2.3.1",
         "symfony/asset": "~2.8",
         "symfony/class-loader": "~2.8",
         "symfony/config": "~2.8",
