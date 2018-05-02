@@ -480,6 +480,222 @@ function roomify_dashboard_views_default_views() {
   $handler->display->display_options['defaults']['access'] = FALSE;
   $handler->display->display_options['access']['type'] = 'perm';
   $handler->display->display_options['access']['perm'] = 'update own bat_booking entities';
+  $handler->display->display_options['defaults']['style_plugin'] = FALSE;
+  $handler->display->display_options['style_plugin'] = 'footable';
+  $handler->display->display_options['style_options']['columns'] = array(
+    'booking_guest_name' => 'booking_guest_name',
+    'label' => 'label',
+    'booking_id' => 'booking_id',
+    'property_id' => 'property_id',
+    'name_1' => 'name_1',
+    'name' => 'name',
+    'booking_start_date' => 'booking_start_date',
+    'booking_end_date' => 'booking_end_date',
+    'nights' => 'nights',
+    'booking_price' => 'booking_price',
+    'field_bcom_total_price' => 'field_bcom_total_price',
+    'booking_price_1' => 'booking_price_1',
+    'edit_unit' => 'edit_unit',
+    'delete_unit' => 'delete_unit',
+    'type' => 'type',
+    'uid' => 'uid',
+  );
+  $handler->display->display_options['style_options']['default'] = '-1';
+  $handler->display->display_options['style_options']['info'] = array(
+    'booking_guest_name' => array(
+      'align' => 'views-align-left',
+      'separator' => '',
+      'empty_column' => 0,
+    ),
+    'label' => array(
+      'sortable' => 0,
+      'default_sort_order' => 'asc',
+      'align' => 'views-align-left',
+      'separator' => '',
+      'empty_column' => 0,
+    ),
+    'booking_id' => array(
+      'sortable' => 0,
+      'default_sort_order' => 'asc',
+      'align' => '',
+      'separator' => '',
+      'empty_column' => 0,
+    ),
+    'property_id' => array(
+      'sortable' => 0,
+      'default_sort_order' => 'asc',
+      'align' => 'views-align-left',
+      'separator' => '',
+      'empty_column' => 0,
+    ),
+    'name_1' => array(
+      'sortable' => 0,
+      'default_sort_order' => 'asc',
+      'align' => 'views-align-left',
+      'separator' => '',
+      'empty_column' => 0,
+    ),
+    'name' => array(
+      'sortable' => 0,
+      'default_sort_order' => 'asc',
+      'align' => 'views-align-left',
+      'separator' => '',
+      'empty_column' => 0,
+    ),
+    'booking_start_date' => array(
+      'sortable' => 1,
+      'default_sort_order' => 'asc',
+      'align' => 'views-align-center',
+      'separator' => '',
+      'empty_column' => 0,
+    ),
+    'booking_end_date' => array(
+      'sortable' => 0,
+      'default_sort_order' => 'asc',
+      'align' => 'views-align-center',
+      'separator' => '',
+      'empty_column' => 0,
+    ),
+    'nights' => array(
+      'align' => 'views-align-center',
+      'separator' => '',
+      'empty_column' => 0,
+    ),
+    'booking_price' => array(
+      'sortable' => 0,
+      'default_sort_order' => 'asc',
+      'align' => 'views-align-center',
+      'separator' => '',
+      'empty_column' => 0,
+    ),
+    'field_bcom_total_price' => array(
+      'sortable' => 0,
+      'default_sort_order' => 'asc',
+      'align' => 'views-align-center',
+      'separator' => '',
+      'empty_column' => 0,
+    ),
+    'booking_price_1' => array(
+      'align' => 'views-align-center',
+      'separator' => '',
+      'empty_column' => 0,
+    ),
+    'edit_unit' => array(
+      'align' => 'views-align-center',
+      'separator' => '',
+      'empty_column' => 0,
+    ),
+    'delete_unit' => array(
+      'align' => 'views-align-center',
+      'separator' => '',
+      'empty_column' => 0,
+    ),
+    'type' => array(
+      'sortable' => 0,
+      'default_sort_order' => 'asc',
+      'align' => 'views-align-left',
+      'separator' => '',
+      'empty_column' => 0,
+    ),
+    'uid' => array(
+      'sortable' => 0,
+      'default_sort_order' => 'asc',
+      'align' => '',
+      'separator' => '',
+      'empty_column' => 0,
+    ),
+  );
+  $handler->display->display_options['style_options']['footable'] = array(
+    'striping' => 0,
+    'expand' => 'name',
+    'icon' => 'toggle-arrow-small',
+    'icon_size' => '',
+    'hide' => array(
+      'booking_guest_name' => array(
+        'all' => 0,
+        'phone' => 0,
+        'tablet' => 0,
+      ),
+      'label' => array(
+        'all' => 0,
+        'phone' => 0,
+        'tablet' => 0,
+      ),
+      'booking_id' => array(
+        'all' => 0,
+        'phone' => 0,
+        'tablet' => 0,
+      ),
+      'property_id' => array(
+        'all' => 0,
+        'phone' => 0,
+        'tablet' => 0,
+      ),
+      'name_1' => array(
+        'all' => 0,
+        'phone' => 0,
+        'tablet' => 0,
+      ),
+      'name' => array(
+        'all' => 0,
+        'phone' => 0,
+        'tablet' => 0,
+      ),
+      'booking_start_date' => array(
+        'phone' => 'phone',
+        'all' => 0,
+        'tablet' => 0,
+      ),
+      'booking_end_date' => array(
+        'phone' => 'phone',
+        'all' => 0,
+        'tablet' => 0,
+      ),
+      'nights' => array(
+        'phone' => 'phone',
+        'tablet' => 'tablet',
+        'all' => 0,
+      ),
+      'booking_price' => array(
+        'phone' => 'phone',
+        'tablet' => 'tablet',
+        'all' => 0,
+      ),
+      'field_bcom_total_price' => array(
+        'all' => 0,
+        'phone' => 0,
+        'tablet' => 0,
+      ),
+      'booking_price_1' => array(
+        'all' => 0,
+        'phone' => 0,
+        'tablet' => 0,
+      ),
+      'edit_unit' => array(
+        'phone' => 'phone',
+        'tablet' => 'tablet',
+        'all' => 0,
+      ),
+      'delete_unit' => array(
+        'phone' => 'phone',
+        'tablet' => 'tablet',
+        'all' => 0,
+      ),
+      'type' => array(
+        'phone' => 'phone',
+        'tablet' => 'tablet',
+        'all' => 0,
+      ),
+      'uid' => array(
+        'all' => 0,
+        'phone' => 0,
+        'tablet' => 0,
+      ),
+    ),
+  );
+  $handler->display->display_options['defaults']['style_options'] = FALSE;
+  $handler->display->display_options['defaults']['row_plugin'] = FALSE;
+  $handler->display->display_options['defaults']['row_options'] = FALSE;
   $handler->display->display_options['defaults']['relationships'] = FALSE;
   /* Relationship: Entity Reference: Referenced Entity */
   $handler->display->display_options['relationships']['booking_event_reference_target_id']['id'] = 'booking_event_reference_target_id';
