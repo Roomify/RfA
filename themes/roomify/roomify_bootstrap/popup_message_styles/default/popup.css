@@ -40,6 +40,7 @@
   cursor: pointer;
   padding: 4px 8px;
   border-radius: 5px;
+  z-index: 10;
 }
 
 #popup-message-window p,
