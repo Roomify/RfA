@@ -102,3 +102,26 @@ function roomify_area_update_7008() {
     }
   }
 }
+
+/**
+ * Use correct widget for area location field.
+ */
+function roomify_area_update_7009() {
+  $instance_info = field_read_instance('taxonomy_term', 'field_area_location', 'location');
+  $instance_info['widget'] = array(
+    'active' => 1,
+    'module' => 'geofield_gmap',
+    'settings' => array(
+      'click_to_place_marker' => FALSE,
+      'confirm_center_marker' => FALSE,
+      'map_type' => 'ROADMAP',
+      'marker_draggable' => 0,
+      'scrollwheel' => 0,
+      'zoom_after_address_change' => TRUE,
+    ),
+    'type' => 'geofield_gmap',
+    'weight' => 3,
+  );
+
+  field_update_instance($instance_info);
+}
