@@ -1109,12 +1109,16 @@ function roomify_area_taxonomy_fields() {
       ),
       'widget' => array(
         'active' => 1,
-        'module' => 'geolocation_googlemaps',
+        'module' => 'geofield_gmap',
         'settings' => array(
+          'click_to_place_marker' => FALSE,
+          'confirm_center_marker' => FALSE,
+          'map_type' => 'ROADMAP',
           'marker_draggable' => 0,
           'scrollwheel' => 0,
+          'zoom_after_address_change' => TRUE,
         ),
-        'type' => 'geolocation_googlemap',
+        'type' => 'geofield_gmap',
         'weight' => 3,
       ),
     );
