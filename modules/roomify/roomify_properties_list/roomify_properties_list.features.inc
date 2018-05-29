@@ -21,6 +21,13 @@ function roomify_properties_list_ctools_plugin_api($module = NULL, $api = NULL) 
 }
 
 /**
+ * Implements hook_views_api().
+ */
+function roomify_properties_list_views_api($module = NULL, $api = NULL) {
+  return array("api" => "3.0");
+}
+
+/**
  * Implements hook_image_default_styles().
  */
 function roomify_properties_list_image_default_styles() {

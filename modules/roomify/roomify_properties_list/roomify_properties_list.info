@@ -70,3 +70,7 @@ features[variable][] = node_options_properties_list
 features[variable][] = node_preview_properties_list
 features[variable][] = node_submitted_properties_list
 features[variable][] = xmlsitemap_settings_node_properties_list
+features[views_view][] = properties_list
+features_exclude[dependencies][views] = views
+features_exclude[dependencies][views_bootstrap] = views_bootstrap
+features_exclude[dependencies][views_content] = views_content

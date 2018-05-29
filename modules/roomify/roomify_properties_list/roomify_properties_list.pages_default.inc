@@ -127,6 +127,29 @@ function roomify_properties_list_default_page_manager_handlers() {
   $display->content['new-61b40018-b4c2-4835-8a8a-cb3c6924802a'] = $pane;
   $display->panels['bottom'][1] = 'new-61b40018-b4c2-4835-8a8a-cb3c6924802a';
   $pane = new stdClass();
+  $pane->pid = 'new-f3f8c3aa-613f-42b4-b2ff-f1c43ddff149';
+  $pane->panel = 'bottom';
+  $pane->type = 'views_panes';
+  $pane->subtype = 'properties_list-panel_pane_1';
+  $pane->shown = TRUE;
+  $pane->access = array();
+  $pane->configuration = array(
+    'override_title' => 1,
+    'override_title_text' => 'Other Types',
+    'override_title_heading' => 'h3',
+  );
+  $pane->cache = array();
+  $pane->style = array(
+    'settings' => NULL,
+  );
+  $pane->css = array();
+  $pane->extras = array();
+  $pane->position = 2;
+  $pane->locks = array();
+  $pane->uuid = 'f3f8c3aa-613f-42b4-b2ff-f1c43ddff149';
+  $display->content['new-f3f8c3aa-613f-42b4-b2ff-f1c43ddff149'] = $pane;
+  $display->panels['bottom'][2] = 'new-f3f8c3aa-613f-42b4-b2ff-f1c43ddff149';
+  $pane = new stdClass();
   $pane->pid = 'new-85344fda-1eab-4d87-a7fc-b37f18d7dc7f';
   $pane->panel = 'highlight1';
   $pane->type = 'entity_field';

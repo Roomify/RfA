@@ -370,4 +370,30 @@
     display: inline-block;
     width: 100%;
   }
+  .pane-properties-list-panel-pane-1 {
+    display: inline-block;
+    width: 100%;
+    margin-top: 60px;
+    padding: 40px;
+    background: white;
+    border: 2px solid #efefef;
+    border-radius: 4px;
+    .page-column {
+      margin-bottom: 20px;
+      .hovereffect a .overlay {
+        opacity: 1;
+        background: transparent;
+      }
+      .hovereffect a:hover .overlay {
+        background-color: rgba(0, 0, 0, 0.5);
+      }
+      .hovereffect .overlay .content {
+        font-size: 22px;
+        top: 47%;
+      }
+    }
+    .pane-title {
+      margin-bottom: 30px;
+    }
+  }
 }

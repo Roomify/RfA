@@ -16576,6 +16576,26 @@ body.node-type-offer .pane-offer-panel-pane-2 .pager-load-more {
   margin-bottom: 30px;
   display: inline-block;
   width: 100%; }
+.node-type-properties-list .pane-properties-list-panel-pane-1 {
+  display: inline-block;
+  width: 100%;
+  margin-top: 60px;
+  padding: 40px;
+  background: white;
+  border: 2px solid #efefef;
+  border-radius: 4px; }
+  .node-type-properties-list .pane-properties-list-panel-pane-1 .page-column {
+    margin-bottom: 20px; }
+    .node-type-properties-list .pane-properties-list-panel-pane-1 .page-column .hovereffect a .overlay {
+      opacity: 1;
+      background: transparent; }
+    .node-type-properties-list .pane-properties-list-panel-pane-1 .page-column .hovereffect a:hover .overlay {
+      background-color: rgba(0, 0, 0, 0.5); }
+    .node-type-properties-list .pane-properties-list-panel-pane-1 .page-column .hovereffect .overlay .content {
+      font-size: 22px;
+      top: 47%; }
+  .node-type-properties-list .pane-properties-list-panel-pane-1 .pane-title {
+    margin-bottom: 30px; }
 
 [id^=google_recaptcha_] {
   margin-bottom: 15px; }
