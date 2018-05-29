@@ -129,6 +129,27 @@ function roomify_properties_list_views_default_views() {
   $handler->display->display_options['arguments']['nid']['summary']['format'] = 'default_summary';
   $handler->display->display_options['arguments']['nid']['summary_options']['items_per_page'] = '25';
   $handler->display->display_options['arguments']['nid']['not'] = TRUE;
+  $handler->display->display_options['defaults']['filter_groups'] = FALSE;
+  $handler->display->display_options['defaults']['filters'] = FALSE;
+  /* Filter criterion: Content: Published */
+  $handler->display->display_options['filters']['status']['id'] = 'status';
+  $handler->display->display_options['filters']['status']['table'] = 'node';
+  $handler->display->display_options['filters']['status']['field'] = 'status';
+  $handler->display->display_options['filters']['status']['value'] = 1;
+  $handler->display->display_options['filters']['status']['group'] = 1;
+  $handler->display->display_options['filters']['status']['expose']['operator'] = FALSE;
+  /* Filter criterion: Content: Type */
+  $handler->display->display_options['filters']['type']['id'] = 'type';
+  $handler->display->display_options['filters']['type']['table'] = 'node';
+  $handler->display->display_options['filters']['type']['field'] = 'type';
+  $handler->display->display_options['filters']['type']['value'] = array(
+    'properties_list' => 'properties_list',
+  );
+  /* Filter criterion: Content: Featured Image (field_pl_featured_image:fid) */
+  $handler->display->display_options['filters']['field_pl_featured_image_fid']['id'] = 'field_pl_featured_image_fid';
+  $handler->display->display_options['filters']['field_pl_featured_image_fid']['table'] = 'field_data_field_pl_featured_image';
+  $handler->display->display_options['filters']['field_pl_featured_image_fid']['field'] = 'field_pl_featured_image_fid';
+  $handler->display->display_options['filters']['field_pl_featured_image_fid']['operator'] = 'not empty';
   $handler->display->display_options['allow']['use_pager'] = 0;
   $handler->display->display_options['allow']['items_per_page'] = 0;
   $handler->display->display_options['allow']['offset'] = 0;
