@@ -159,7 +159,7 @@ projects[conditional_fields][version] = 3.0-alpha2
 
 projects[content_menu][version] = 1.0
 
-projects[ctools][version] = 1.13
+projects[ctools][version] = 1.14
 
 projects[date][version] = 2.10
 projects[date][patch][] = https://www.drupal.org/files/issues/date-input_disabled-1190830-14.patch
@@ -174,7 +174,7 @@ projects[date_datepicker_inline][download][type] = git
 projects[date_datepicker_inline][download][url] = https://git.drupal.org/project/date_datepicker_inline.git
 projects[date_datepicker_inline][download][revision] = c6aa61c6c8247fca72dece2b4bbee13400ee15e6
 
-projects[devel][version] = 1.5
+projects[devel][version] = 1.6
 
 projects[diff][version] = 3.3
 
@@ -190,7 +190,7 @@ projects[entitycache][version] = 1.5
 
 projects[entity_background][version] = 1.0-alpha6
 
-projects[entityqueue][version] = 1.3
+projects[entityqueue][version] = 1.5
 
 projects[entity_rules][version] = 1.0-alpha4
 
@@ -341,7 +341,7 @@ projects[menu_token][version] = 1.0-beta7
 projects[message][version] = 1.12
 projects[message][patch][] = https://www.drupal.org/files/issues/text-sanitized.patch
 
-projects[metatag][version] = 1.22
+projects[metatag][version] = 1.25
 
 projects[mimemail][version] = 1.0
 
