@@ -21,7 +21,7 @@ projects[bat_api][subdir] = bat
 projects[bat_event_state_constraints][type] = module
 projects[bat_event_state_constraints][download][type] = git
 projects[bat_event_state_constraints][download][url] = https://github.com/Roomify/bat_event_state_constraints.git
-projects[bat_event_state_constraints][download][tag] = 1.2
+projects[bat_event_state_constraints][download][tag] = 1.3
 projects[bat_event_state_constraints][subdir] = bat
 
 projects[roomify_rate][type] = module
