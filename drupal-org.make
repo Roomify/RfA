@@ -367,6 +367,7 @@ projects[panels_tabs][patch][] = https://www.drupal.org/files/issues/panels_tabs
 
 projects[paragraphs][version] = 1.0-rc5
 projects[paragraphs][patch][] = https://www.drupal.org/files/issues/paragraphs-entity_translation-2452675-140.patch
+projects[paragraphs][patch][] = https://www.drupal.org/files/issues/paragraphs-ajax.2680101.1.patch
 
 projects[paragraphs_id][version] = 1.0-alpha2
 
