@@ -529,10 +529,18 @@ function roomify_accommodation_options_get_machine_name($option_name, $pattern =
  */
 function roomify_accommodation_options_get_operation_label($option) {
   $label = '';
-
-  $currency_setting = commerce_currency_load(commerce_default_currency());
-  $currency_symbol = $currency_setting['symbol'];
-
+  if (module_exists('commerce_multicurrency')) {
+    $currency_setting = commerce_currency_load(commerce_multicurrency_get_user_currency_code());
+    $currency_symbol = $currency_setting['symbol'];
+    $currency_code = $currency_setting['code'];
+    $default_currency_code = commerce_default_currency();
+    $option['value'] = round(commerce_multicurrency_conversion($option['value'], $default_currency_code, $currency_code),2,PHP_ROUND_HALF_UP);  
+  }
+  else {
+    $currency_setting = commerce_currency_load(commerce_default_currency());
+    $currency_symbol = $currency_setting['symbol'];
+  }
+  
   switch ($option['operation']) {
     case 'add':
       $label = t('+@amount@currency_symbol to price', array(
@@ -678,6 +686,6 @@ function roomify_accommodation_options_get_option_price($booking_price, $option,
       $price -= $option['value'] * $nights * $persons;
       break;
   }
-
   return $price * 100;
+  
 }
