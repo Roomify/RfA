@@ -614,7 +614,16 @@ function roomify_accommodation_options_get_operation_label($option) {
       break;
   }
 
-  return $label;
+  $data = array(
+    'label' => &$label
+  );
+  $context = array(
+    'option' => $option
+  );
+  // Allow other modules to alter the option label.
+  drupal_alter('roomify_accommodation_options_operation_label', $data, $context);
+
+  return $data['label'];
 }
 
 /**
@@ -679,5 +688,18 @@ function roomify_accommodation_options_get_option_price($booking_price, $option,
       break;
   }
 
-  return $price * 100;
+  // Allow other modules to modify the option price.
+  $data = array(
+    'price' => &$price
+  );
+  $context = array(
+    'booking_price' => $booking_price,
+    'option' => $option,
+    'quantity' => $quantity,
+    'nights' => $nights,
+    'persons' => $persons
+  );
+  drupal_alter('roomify_accommodation_options_option_price', $data, $context);
+
+  return $data['price'] * 100;
 }
