@@ -76,7 +76,7 @@ projects[adminimal_theme][patch][] = "https://www.drupal.org/files/issues/admini
 
 projects[addressfield][version] = 1.2
 
-projects[addtoany][version] = 4.14
+projects[addtoany][version] = 4.15
 
 projects[admin_menu][version] = 3.0-rc5
 
@@ -411,7 +411,7 @@ projects[references_dialog][patch][] = https://www.drupal.org/files/issues/refer
 projects[references_dialog][patch][] = https://www.drupal.org/files/issues/references_dialog-create_users-2172321.patch
 projects[references_dialog][patch][] = https://www.drupal.org/files/issues/creating_user_but-2238801-6.patch
 
-projects[relation][version] = 1.1
+projects[relation][version] = 1.2
 
 projects[robotstxt][version] = 1.3
 
@@ -422,7 +422,7 @@ projects[role_export][download][type] = git
 projects[role_export][download][url] = https://git.drupal.org/project/role_export.git
 projects[role_export][download][revision] = 0aef061b79a1dd0a949d504a238bf8b3f9f41b1b
 
-projects[rules][version] = 2.10
+projects[rules][version] = 2.11
 
 projects[rules_conditional][version] = 1.0-beta2
 
@@ -473,7 +473,7 @@ projects[subuser][version] = 2.0-alpha4
 
 projects[table_element][version] = 1.0-beta4
 
-projects[taxonomy_access_fix][version] = 2.3
+projects[taxonomy_access_fix][version] = 2.4
 
 projects[timefield][version] = 1.0-alpha2
 
@@ -524,12 +524,11 @@ projects[views_megarow][version] = 1.7
 
 projects[views_php][version] = 1.0-alpha3
 
-projects[votingapi][version] = 2.12
-projects[votingapi][patch][] = https://www.drupal.org/files/issues/updating_voting_api_default_views-2679585-3.patch
+projects[votingapi][version] = 2.15
 
 projects[vvf][version] = 1.2
 
-projects[wysiwyg][version] = 2.4
+projects[wysiwyg][version] = 2.5
 
 projects[xautoload][version] = 5.7
 
