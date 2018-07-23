@@ -80,8 +80,7 @@ projects[addtoany][version] = 4.14
 
 projects[admin_menu][version] = 3.0-rc5
 
-projects[adminimal_admin_menu][version] = 1.7
-projects[adminimal_admin_menu][patch][] = https://www.drupal.org/files/issues/drupal_admin_undefined-2839894-4.patch
+projects[adminimal_admin_menu][version] = 1.9
 
 projects[administerusersbyrole][version] = 2.0
 
@@ -180,7 +179,7 @@ projects[diff][version] = 3.3
 
 projects[dragdropfile][version] = 1.7
 
-projects[elements][version] = 1.4
+projects[elements][version] = 1.5
 
 projects[email][version] = 1.3
 
@@ -194,7 +193,7 @@ projects[entityqueue][version] = 1.5
 
 projects[entity_rules][version] = 1.0-alpha4
 
-projects[entity_translation][version] = 1.0-beta7
+projects[entity_translation][version] = 1.0
 
 projects[entity2text][version] = 1.0-alpha3
 
@@ -246,14 +245,14 @@ projects[field_formatter_settings][version] = 1.1
 projects[footable][version] = 1.0
 projects[footable][patch][] = https://www.drupal.org/files/issues/footable-add_striping_option-2307701-4.patch
 
-projects[file_entity][version] = 2.20
+projects[file_entity][version] = 2.22
 
 projects[geofield][version] = 2.3
 
 projects[geofield_gmap][version] = 2.0-alpha1
 projects[geofield_gmap][patch][] = https://www.drupal.org/files/issues/2018-03-21/geofield_gmap-zoom_after_selecting_address-2562835-4.patch
 
-projects[geolocation][version] = 1.6
+projects[geolocation][version] = 1.7
 
 projects[geophp][version] = 1.7
 
@@ -308,7 +307,7 @@ projects[less][version] = 4.0
 
 projects[libraries][version] = 2.3
 
-projects[link][version] = 1.4
+projects[link][version] = 1.5
 
 projects[jsonlog][version] = 2.1
 
@@ -329,7 +328,7 @@ projects[masonry][version] = 3.0-beta1
 
 projects[masonry_views][version] = 3.0
 
-projects[media][version] = 2.16
+projects[media][version] = 2.19
 
 projects[media_colorbox][version] = 1.0-rc4
 
@@ -392,7 +391,7 @@ projects[plupload][patch][] = https://www.drupal.org/files/plupload-cannot-uploa
 
 projects[pm_existing_pages][version] = 1.4
 
-projects[popup_field_group][version] = 1.0
+projects[popup_field_group][version] = 1.1
 
 projects[popup_message][version] = 1.2
 projects[popup_message][patch][] = https://www.drupal.org/files/issues/popup_message-title-not-required-1854924-3.patch
@@ -434,7 +433,7 @@ projects[rrssb][download][revision] = 969397d5331003aa33869b53bd4ac94814f99852
 
 projects[s3fs][version] = 2.4
 
-projects[search_api][version] = 1.22
+projects[search_api][version] = 1.24
 
 projects[search_api_db][version] = 1.6
 projects[search_api_db][patch][] = https://www.drupal.org/files/issues/2219897-25--facets_for_empty_results.patch
@@ -484,7 +483,7 @@ projects[token][version] = 1.7
 
 projects[userone][version] = 1.0-beta1
 
-projects[uuid][version] = 1.0
+projects[uuid][version] = 1.2
 
 projects[variable][version] = 2.5
 
@@ -494,7 +493,7 @@ projects[video_embed_field][version] = 2.0-beta11
 
 projects[view_unpublished][version] = 1.2
 
-projects[views][version] = 3.18
+projects[views][version] = 3.20
 
 projects[views_autocomplete_filters][type] = module
 projects[views_autocomplete_filters][download][type] = git
@@ -519,7 +518,7 @@ projects[views_infinite_scroll][version] = 2.1
 
 projects[views_load_more][version] = 1.5
 
-projects[views_bulk_operations][version] = 3.4
+projects[views_bulk_operations][version] = 3.5
 
 projects[views_megarow][version] = 1.7
 
