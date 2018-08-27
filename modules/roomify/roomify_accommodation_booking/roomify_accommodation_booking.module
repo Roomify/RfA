@@ -376,10 +376,6 @@ function roomify_accommodation_booking_confirmation_page($start_date, $end_date,
     return drupal_not_found();
   }
 
-  global $databases;
-
-  $prefix = (isset($databases['default']['default']['prefix'])) ? $databases['default']['default']['prefix'] : '';
-
   if (isset($_GET['property'])) {
     $property = entity_load_single('roomify_property', check_plain($_GET['property']));
   }
@@ -2874,9 +2870,6 @@ function roomify_accommodation_booking_commerce_line_item_delete($line_item) {
  */
 function roomify_accommodation_booking_conversation_confirmation_page($conversation) {
   global $user;
-  global $databases;
-
-  $prefix = (isset($databases['default']['default']['prefix'])) ? $databases['default']['default']['prefix'] : '';
 
   if ($user->uid != $conversation->uid) {
     return drupal_access_denied();
@@ -3192,10 +3185,6 @@ function roomify_accommodation_booking_pet_substitutions_alter(&$substitutions, 
  * @return int
  */
 function roomify_accommodation_booking_get_price($rates, $start_date, $end_date, $nights, $type = 'nightly', $offers = array()) {
-  global $databases;
-
-  $prefix = (isset($databases['default']['default']['prefix'])) ? $databases['default']['default']['prefix'] : '';
-
   if ($type == 'offer') {
     $rate = array_pop($offers);
   }
@@ -3213,8 +3202,8 @@ function roomify_accommodation_booking_get_price($rates, $start_date, $end_date,
     $event_type = 'percentage_discount';
   }
 
-  $state_store = new DrupalDBStore($event_type, DrupalDBStore::BAT_STATE, $prefix);
-  $event_store = new DrupalDBStore($event_type, DrupalDBStore::BAT_EVENT, $prefix);
+  $state_store = new DrupalDBStore($event_type, DrupalDBStore::BAT_STATE, bat_get_db_prefix());
+  $event_store = new DrupalDBStore($event_type, DrupalDBStore::BAT_EVENT, bat_get_db_prefix());
 
   $calendar = new Calendar($units, $event_store);
   $events = $calendar->getEvents($start_date, $end_date);

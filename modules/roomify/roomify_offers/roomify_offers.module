@@ -464,8 +464,6 @@ function roomify_offers_manage_offers_calendar() {
  * @param $end_date
  */
 function roomify_offers_services_events_index_calendar($start_date, $end_date) {
-  global $databases;
-
   $events_json = array();
 
   foreach (array('special_offer', 'special_offer_percentage') as $rate_type) {
@@ -478,8 +476,7 @@ function roomify_offers_services_events_index_calendar($start_date, $end_date) {
     $bat_event_type = bat_event_type_load($event_type);
 
     // For each type of event create a state store and an event store.
-    $prefix = (isset($databases['default']['default']['prefix'])) ? $databases['default']['default']['prefix'] : '';
-    $event_store = new DrupalDBStore($event_type, DrupalDBStore::BAT_EVENT, $prefix);
+    $event_store = new DrupalDBStore($event_type, DrupalDBStore::BAT_EVENT, bat_get_db_prefix());
 
     $start_date_object = new DateTime($start_date);
     $end_date_object = new DateTime($end_date);
@@ -677,10 +674,6 @@ function roomify_offers_get_offers($property, $start_date, $end_date) {
   $result = $query->execute();
 
   if (isset($result['roomify_rate'])) {
-    global $databases;
-
-    $prefix = (isset($databases['default']['default']['prefix'])) ? $databases['default']['default']['prefix'] : '';
-
     foreach ($result['roomify_rate'] as $rate_id) {
       $rate = roomify_rate_load($rate_id->rate_id);
 
@@ -698,7 +691,7 @@ function roomify_offers_get_offers($property, $start_date, $end_date) {
           $event_type = 'percentage_discount';
         }
 
-        $event_store = new DrupalDBStore($event_type, DrupalDBStore::BAT_EVENT, $prefix);
+        $event_store = new DrupalDBStore($event_type, DrupalDBStore::BAT_EVENT, bat_get_db_prefix());
 
         $calendar = new Calendar($rates, $event_store);
         $events = $calendar->getEvents($start_date, $end_date);

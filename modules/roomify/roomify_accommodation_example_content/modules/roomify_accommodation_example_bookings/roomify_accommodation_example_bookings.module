@@ -15,10 +15,6 @@ use Roomify\Bat\Valuator\IntervalValuator;
  * Create Example booking.
  */
 function roomify_example_content_create_booking($start_date, $end_date, $type_id, $guest) {
-  global $databases;
-
-  $prefix = (isset($databases['default']['default']['prefix'])) ? $databases['default']['default']['prefix'] : '';
-
   $event_type = 'availability';
 
   $nights = $end_date->diff($start_date)->days;
