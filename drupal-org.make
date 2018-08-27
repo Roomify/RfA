@@ -34,7 +34,7 @@ projects[roomify_rate][subdir] = roomify
 projects[roomify_property][type] = module
 projects[roomify_property][download][type] = git
 projects[roomify_property][download][url] = https://github.com/Roomify/roomify_property.git
-projects[roomify_property][download][tag] = 1.30
+projects[roomify_property][download][tag] = 1.31
 projects[roomify_property][directory_name] = roomify_property
 projects[roomify_property][subdir] = roomify
 
