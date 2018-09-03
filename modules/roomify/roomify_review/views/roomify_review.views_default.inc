@@ -187,6 +187,12 @@ function roomify_review_views_default_views() {
       </div>
     </div>';
   $handler->display->display_options['fields']['nothing']['element_label_colon'] = FALSE;
+  /* Sort criterion: Content: Post date */
+  $handler->display->display_options['sorts']['created']['id'] = 'created';
+  $handler->display->display_options['sorts']['created']['table'] = 'node';
+  $handler->display->display_options['sorts']['created']['field'] = 'created';
+  $handler->display->display_options['sorts']['created']['relationship'] = 'reverse_field_review_property_reviewed_node';
+  $handler->display->display_options['sorts']['created']['order'] = 'DESC';
   /* Contextual filter: Roomify Property: Roomify property ID */
   $handler->display->display_options['arguments']['property_id']['id'] = 'property_id';
   $handler->display->display_options['arguments']['property_id']['table'] = 'roomify_properties';
