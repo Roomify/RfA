@@ -53,3 +53,50 @@ function _roomify_review_add_templates() {
     $item->save();
   }
 }
+
+/**
+ * Schedule jobs to send review emails to guests for manually creating bookings.
+ */
+function roomify_review_update_7001() {
+  $query = new EntityFieldQuery();
+
+  $query->entityCondition('entity_type', 'bat_booking')
+    ->entityCondition('bundle', 'roomify_accommodation_booking')
+    ->fieldCondition('booking_end_date', 'value', date('Y-m-d'), '>');
+
+  $result = $query->execute();
+
+  if (isset($result['bat_booking'])) {
+    foreach ($result['bat_booking'] as $booking) {
+      $booking = bat_booking_load($booking->booking_id);
+
+      if (!empty($booking->booking_user_guest[LANGUAGE_NONE][0]['target_id'])) {
+        $end_date = new DateTime($booking->booking_end_date[LANGUAGE_NONE][0]['value']);
+
+        if ($days = variable_get('roomify_review_notification', 2)) {
+          $period = $end_date->getTimestamp() - REQUEST_TIME + (86400 * $days);
+
+          if ($period > 0) {
+            $existing_job = db_select('job_schedule', 'j')
+              ->fields('j', array('item_id'))
+              ->condition('name', 'roomify_review_guest_notification')
+              ->condition('type', 'property rating')
+              ->condition('id', $booking->booking_id)
+              ->execute()
+              ->fetchAll();
+
+            if (empty($existing_job)) {
+              $job = array(
+                'type' => 'property rating',
+                'id' => $booking->booking_id,
+                'period' => $period,
+                'periodic' => FALSE,
+              );
+              JobScheduler::get('roomify_review_guest_notification')->set($job);
+            }
+          }
+        }
+      }
+    }
+  }
+}

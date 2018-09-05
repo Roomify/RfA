@@ -121,7 +121,9 @@ function roomify_review_node_access($node, $op, $account) {
  * FORM_ID = bat_booking_edit_form.
  */
 function roomify_review_form_bat_booking_edit_form_alter(&$form, &$form_state) {
-  $form['actions']['submit']['#submit'][] = 'roomify_review_form_bat_booking_edit_form_submit';
+  if (isset($form['#entity']->is_new) && $form['#entity']->is_new) {
+    $form['actions']['submit']['#submit'][] = 'roomify_review_form_bat_booking_edit_form_submit';
+  }
 }
 
 /**
