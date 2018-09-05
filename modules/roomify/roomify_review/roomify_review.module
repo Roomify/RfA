@@ -118,6 +118,40 @@ function roomify_review_node_access($node, $op, $account) {
 
 /**
  * Implements hook_form_FORM_ID_alter().
+ * FORM_ID = bat_booking_edit_form.
+ */
+function roomify_review_form_bat_booking_edit_form_alter(&$form, &$form_state) {
+  $form['actions']['submit']['#submit'][] = 'roomify_review_form_bat_booking_edit_form_submit';
+}
+
+/**
+ * Custom submit function for the bat_booking_edit_form form.
+ */
+function roomify_review_form_bat_booking_edit_form_submit($form, &$form_state) {
+  $booking = $form_state['bat_booking'];
+
+  // Send review email to guest.
+  if (!empty($booking->booking_user_guest[LANGUAGE_NONE][0]['target_id'])) {
+    $end_date = new DateTime($booking->booking_end_date[LANGUAGE_NONE][0]['value']);
+
+    if ($days = variable_get('roomify_review_notification', 2)) {
+      $period = $end_date->getTimestamp() - REQUEST_TIME + (86400 * $days);
+
+      if ($period > 0) {
+        $job = array(
+          'type' => 'property rating',
+          'id' => $booking->booking_id,
+          'period' => $period,
+          'periodic' => FALSE,
+        );
+        JobScheduler::get('roomify_review_guest_notification')->set($job);
+      }
+    }
+  }
+}
+
+/**
+ * Implements hook_form_FORM_ID_alter().
  * FORM_ID = review_node_form.
  */
 function roomify_review_form_review_node_form_alter(&$form, &$form_state) {
