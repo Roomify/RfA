@@ -27,7 +27,7 @@ before_install:
   - export DISPLAY=:99.0
   - sudo apt-get install -y libappindicator1 fonts-liberation
   - sh -e /etc/init.d/xvfb start
-  - wget http://chromedriver.storage.googleapis.com/2.41/chromedriver_linux64.zip && unzip chromedriver_linux64.zip && sudo mv chromedriver /usr/bin
+  - wget http://chromedriver.storage.googleapis.com/2.42/chromedriver_linux64.zip && unzip chromedriver_linux64.zip && sudo mv chromedriver /usr/bin
 
 before_script:
   # Increase the MySQL connection timeout on the PHP end.
