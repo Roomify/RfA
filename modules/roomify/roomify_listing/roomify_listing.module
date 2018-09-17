@@ -1651,18 +1651,18 @@ function roomify_listing_enquiry_form_submit($form, &$form_state) {
   $rules_state->currentArguments['roomify_conversation'] = $conversation_wrapper;
   $rules_state->variables['roomify_conversation'] = $conversation_wrapper;
 
-  $to_account = user_load($type->uid);
-
   if ($existing_account) {
-    $user_wrapper = entity_metadata_wrapper('user', $to_account);
+    $user_wrapper = entity_metadata_wrapper('user', $account);
     $rules_state->currentArguments['user'] = $user_wrapper;
     $rules_state->variables['user'] = $user_wrapper;
-    pet_action_send_pet('authenticated_user_booking_enquiry', NULL, $to_account, NULL, NULL, array(), $rules_state);
+    pet_action_send_pet('authenticated_user_booking_enquiry', NULL, $account, NULL, NULL, array(), $rules_state);
   }
   else {
     // Email user with login instruction.
     drupal_mail('roomify_conversations', 'register_no_approval_required', $email_address, NULL, array('account' => $account, 'roomify_conversation' => $conversation), variable_get('site_mail', ini_get('sendmail_from')));
     // Email owner.
+
+    $to_account = user_load($type->uid);
     pet_action_send_pet('new_booking_enquiry', NULL, $to_account, NULL, NULL, array(), $rules_state);
   }
 
