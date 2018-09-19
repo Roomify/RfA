@@ -8,12 +8,15 @@
 include_once 'roomify_properties_list.features.inc';
 
 /**
- * Implements hook_search_api_query_alter().
+ * Implements hook_search_api_db_query_alter().
  *
+ * @param SelectQueryInterface $db_query
+ *   The database query to be executed for the search. Will have "item_id" and
+ *   "score" columns in its result.
  * @param SearchApiQueryInterface $query
- *   The search query being executed.
+ *   The search query that is being executed.
  */
-function roomify_properties_list_search_api_query_alter($query) {
+function roomify_properties_list_search_api_db_query_alter(SelectQueryInterface &$db_query, SearchApiQueryInterface $query) {
   if ($node = menu_get_object()) {
     if ($node->type == 'properties_list') {
       $info = entity_get_info($query->getIndex()->getEntityType());
@@ -27,7 +30,11 @@ function roomify_properties_list_search_api_query_alter($query) {
           }
         }
 
-        $query->condition($info['entity keys']['id'], $properties_ids, 'IN');
+        $db_query->condition($info['entity keys']['id'], $properties_ids, 'IN');
+
+        if ($properties_ids) {
+          $db_query->orderBy('FIELD(' . $info['entity keys']['id'] . ',' . implode(',', $properties_ids) . ')');
+        }
       }
     }
   }
