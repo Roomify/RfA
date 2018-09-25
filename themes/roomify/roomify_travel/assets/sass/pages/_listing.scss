@@ -190,9 +190,6 @@
     @media (max-width: $screen-xs) {
       display: none;
     }
-    .slick-arrow {
-      display: none !important;
-    }
     .slick__slide {
       margin-right: 6px;
       margin-left: 6px;
@@ -225,9 +222,6 @@
     border: 0;
     background-size: contain;
     right: 12px;
-    @media (max-width: $screen-sm) {
-      display: none !important;
-    }
   }
   .slick-prev.slick-arrow {
     background: url("../images/arrow_left.png") 0 50% no-repeat;
@@ -242,9 +236,6 @@
     border: 0;
     background-size: contain;
     left: 12px;
-    @media (max-width: $screen-sm) {
-      display: none !important;
-    }
   }
 }
 
