@@ -48,9 +48,11 @@ function roomify_accommodation_booking_tokens($type, $tokens, array $data = arra
           $name = '';
           $short_description = '';
           $guests = '';
+
           if (isset($booking->booking_guests[LANGUAGE_NONE][0]['value'])) {
             $guests = '<p style="margin:5px 0;width:100%">Guests:  <strong>' . $booking->booking_guests[LANGUAGE_NONE][0]['value'] . '</strong></p>';
           }
+
           if (isset($booking->booking_event_reference[LANGUAGE_NONE][0]['target_id'])) {
             if ($event = bat_event_load($booking->booking_event_reference[LANGUAGE_NONE][0]['target_id'])) {
               $event_wrapper = entity_metadata_wrapper('bat_event', $event);
@@ -59,16 +61,18 @@ function roomify_accommodation_booking_tokens($type, $tokens, array $data = arra
               if ($property_id = field_get_items('bat_type', $type, 'field_st_property_reference')) {
                 $property = roomify_property_load($property_id[0]['target_id']);
                 $name = $property->name;
+
                 if ($featured_image = field_get_items('roomify_property', $property, 'field_sp_featured_image')) {
-                  $image = array('style_name' => 'square', 'path' => $featured_image[0]['uri']);
-                  $image['attributes'] = array('style' => 'width:270px;border: 2px solid white;vertical-align:bottom;');
-                  $image = theme('image_style', $image);
+                  $image_url = image_style_url('square', $featured_image[0]['uri']);
+                  $image = '<img style="width: 270px; border: 2px solid white; vertical-align: bottom;" src="' . urlencode($image_url) . '" />';
+
                   $short_description = field_get_items('roomify_property', $property, 'field_sp_short_description');
                   $short_description = $short_description[0]['value'];
                 }
               }
             }
           }
+
           $return[$original] =
             '<table style="width: 590px;padding-right:10px;background: #ececec;margin-bottom:20px;">
               <tbody>
@@ -97,13 +101,15 @@ function roomify_accommodation_booking_tokens($type, $tokens, array $data = arra
           $name = '';
           $short_description = '';
           $name = $property->name;
+
           if ($featured_image = field_get_items('roomify_property', $property, 'field_sp_featured_image')) {
-            $image = array('style_name' => 'square', 'path' => $featured_image[0]['uri']);
-            $image['attributes'] = array('style' => 'width:270px;border: 2px solid white;vertical-align:bottom;');
-            $image = theme('image_style', $image);
+            $image_url = image_style_url('square', $featured_image[0]['uri']);
+            $image = '<img style="width: 270px; border: 2px solid white; vertical-align: bottom;" src="' . urlencode($image_url) . '" />';
+
             $short_description = field_get_items('roomify_property', $property, 'field_sp_short_description');
             $short_description = $short_description[0]['value'];
           }
+
           $return[$original] =
             '<table style="width: 590px;padding-right:10px;background: #ececec;margin-bottom:20px;">
               <tbody>
