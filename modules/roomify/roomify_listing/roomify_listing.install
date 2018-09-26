@@ -1514,3 +1514,14 @@ function roomify_listing_update_7045() {
     field_update_instance($instance_info);
   }
 }
+
+/**
+ * Add field "Video Gallery".
+ */
+function roomify_listing_update_7046() {
+  module_load_include('inc', 'roomify_listing', 'roomify_listing.fields');
+
+  foreach (array('casa_property', 'locanda_property') as $property_bundle) {
+    roomify_listing_add_field_sp_video_gallery($property_bundle);
+  }
+}

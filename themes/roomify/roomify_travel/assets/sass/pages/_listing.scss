@@ -136,15 +136,19 @@
   padding: 0;
   border: 1px solid #ececec;
   border-right: none;
+
   @media (min-width: $screen-md) {
     height: 635px;
   }
+
   .slide__content {
     position: relative;
+
     .slide__caption {
       min-height: 0;
       padding: 0;
     }
+
     // Description
     .slide__overlay {
       position: absolute;
@@ -168,6 +172,21 @@
       }
       @media (max-width: $screen-xs) {
         display: none;
+      }
+    }
+
+    .embedded-video {
+      position: relative;
+      width: 100%;
+      height: 0;
+      padding-bottom: 60%;
+
+      iframe {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
       }
     }
   }

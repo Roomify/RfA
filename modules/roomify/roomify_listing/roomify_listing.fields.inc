@@ -2395,9 +2395,7 @@ function roomify_listing_create_standard_type_fields($type_bundle) {
 
   if (field_read_field('field_st_details') === FALSE) {
     $field_bases['field_st_details'] = array(
-      'active' => 1,
       'cardinality' => 1,
-      'deleted' => 0,
       'entity_types' => array(),
       'field_name' => 'field_st_details',
       'indexes' => array(
@@ -4715,9 +4713,7 @@ function roomify_listing_add_field_st_rates_for_person($type_bundle) {
 function roomify_listing_add_field_st_calendar_reference($type_bundle) {
   if (field_read_field('field_st_calendar_reference') === FALSE) {
     $field = array(
-      'active' => 1,
       'cardinality' => 1,
-      'deleted' => 0,
       'entity_types' => array(),
       'field_name' => 'field_st_calendar_reference',
       'indexes' => array(
@@ -4779,4 +4775,72 @@ function roomify_listing_add_field_st_calendar_reference($type_bundle) {
     );
     field_create_instance($instance);
   }
+}
+
+/**
+ * @param $property_bundle
+ */
+function roomify_listing_add_field_sp_video_gallery($property_bundle) {
+  if (field_read_field('field_sp_video_gallery') === FALSE) {
+    $field = array(
+      'cardinality' => 1,
+      'field_name' => 'field_sp_video_gallery',
+      'locked' => 0,
+      'settings' => array(
+        'default_image' => 0,
+        'entity_translation_sync' => FALSE,
+        'profile2_private' => FALSE,
+      ),
+      'type' => 'video_embed_field',
+    );
+    field_create_field($field);
+  }
+
+  if (field_read_instance('roomify_property', 'field_sp_video_gallery', $property_bundle) === FALSE) {
+    $instance = array(
+      'bundle' => $property_bundle,
+      'default_value' => NULL,
+      'description' => '',
+      'display' => array(
+        'default' => array(
+          'label' => 'above',
+          'module' => 'video_embed_field',
+          'settings' => array(
+            'video_style' => 'normal',
+            'description' => 1,
+            'description_position' => 'bottom',
+            'conditions' => array(),
+          ),
+          'type' => 'video_embed_field',
+          'weight' => 68,
+        ),
+      ),
+      'entity_type' => 'roomify_property',
+      'field_name' => 'field_sp_video_gallery',
+      'label' => ' Video Gallery',
+      'required' => 0,
+      'settings' => array(
+        'allowed_providers' => array(
+          'youtube' => 'youtube',
+          'vimeo' => 'vimeo',
+        ),
+        'description_field' => 0,
+        'description_length' => '128',
+        'user_register_form' => FALSE,
+        'entity_translation_sync' => FALSE,
+      ),
+      'widget' => array(
+        'active' => 0,
+        'module' => 'video_embed_field',
+        'settings' => array(),
+        'type' => 'video_embed_field_video',
+        'weight' => 24,
+      ),
+    );
+    field_create_instance($instance);
+  }
+
+  $field_group = field_group_load_field_group('group_image_gallery', 'roomify_property', $property_bundle, 'form');
+  $field_group->children[] = 'field_sp_video_gallery';
+  field_group_group_save($field_group);
 }

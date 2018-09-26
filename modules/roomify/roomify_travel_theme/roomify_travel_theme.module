@@ -462,10 +462,23 @@ function roomify_travel_theme_panels_pane_content_alter($content, $pane, $args, 
 }
 
 /**
- * Implements hook_views_pre_render()
+ * Implements hook_views_pre_render().
  */
 function roomify_travel_theme_views_pre_render(&$views) {
   if ($views->name == 'property_travel') {
     roomify_dashboard_setup_modal();
+  }
+  elseif ($views->name == 'property_slideshow') {
+    if (!empty($views->result[0]->field_field_sp_video_gallery)) {
+      $video_row = (object) array(
+        'field_field_sp_gallery' => $views->result[0]->field_field_sp_video_gallery,
+        'field_field_sp_gallery_1' => $views->result[0]->field_field_sp_video_gallery,
+        'field_field_sp_gallery_2' => $views->result[0]->field_field_sp_video_gallery_1,
+        'field_field_sp_video_gallery' => $views->result[0]->field_field_sp_video_gallery,
+        'field_field_sp_video_gallery_1' => $views->result[0]->field_field_sp_video_gallery_1,
+      );
+
+      $views->result = array_merge(array($video_row), $views->result);
+    }
   }
 }

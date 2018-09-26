@@ -66,6 +66,7 @@ function roomify_casa_create_casa_property_type() {
   roomify_property_type_save($property_type);
 
   roomify_listing_create_property_fields('casa_property');
+  roomify_listing_add_field_sp_video_gallery('casa_property');
 
   roomify_listing_add_casa_field_tax_description_dependency();
   roomify_listing_add_casa_field_tax_rate_dependency();

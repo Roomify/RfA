@@ -46,6 +46,7 @@ function roomify_locanda_create_locanda_property_type() {
   roomify_property_type_save($property_type);
 
   roomify_listing_create_property_fields('locanda_property');
+  roomify_listing_add_field_sp_video_gallery('locanda_property');
 
   roomify_listing_add_locanda_field_tax_description_dependency();
   roomify_listing_add_locanda_field_tax_rate_dependency();

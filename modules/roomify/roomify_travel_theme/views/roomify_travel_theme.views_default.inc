@@ -51,6 +51,7 @@ function roomify_travel_theme_views_default_views() {
     'field_sp_gallery' => 0,
     'field_sp_gallery_1' => 0,
     'field_sp_gallery_2' => 0,
+    'field_sp_video_gallery' => 0,
   );
   $handler->display->display_options['style_options']['slide_image'] = 'field_sp_gallery';
   $handler->display->display_options['style_options']['slide_overlay'] = 'field_sp_gallery_1';
@@ -113,6 +114,38 @@ function roomify_travel_theme_views_default_views() {
   );
   $handler->display->display_options['fields']['field_sp_gallery_2']['group_rows'] = FALSE;
   $handler->display->display_options['fields']['field_sp_gallery_2']['delta_offset'] = '0';
+  /* Field: Roomify Property: Video Gallery */
+  $handler->display->display_options['fields']['field_sp_video_gallery']['id'] = 'field_sp_video_gallery';
+  $handler->display->display_options['fields']['field_sp_video_gallery']['table'] = 'field_data_field_sp_video_gallery';
+  $handler->display->display_options['fields']['field_sp_video_gallery']['field'] = 'field_sp_video_gallery';
+  $handler->display->display_options['fields']['field_sp_video_gallery']['label'] = '';
+  $handler->display->display_options['fields']['field_sp_video_gallery']['element_label_colon'] = FALSE;
+  $handler->display->display_options['fields']['field_sp_video_gallery']['click_sort_column'] = 'video_url';
+  $handler->display->display_options['fields']['field_sp_video_gallery']['settings'] = array(
+    'video_style' => 'normal',
+    'conditions' => array(
+      0 => array(
+        'condition' => '',
+      ),
+    ),
+  );
+  /* Field: Roomify Property: Video Gallery */
+  $handler->display->display_options['fields']['field_sp_video_gallery_1']['id'] = 'field_sp_video_gallery_1';
+  $handler->display->display_options['fields']['field_sp_video_gallery_1']['table'] = 'field_data_field_sp_video_gallery';
+  $handler->display->display_options['fields']['field_sp_video_gallery_1']['field'] = 'field_sp_video_gallery';
+  $handler->display->display_options['fields']['field_sp_video_gallery_1']['label'] = '';
+  $handler->display->display_options['fields']['field_sp_video_gallery_1']['element_label_colon'] = FALSE;
+  $handler->display->display_options['fields']['field_sp_video_gallery_1']['click_sort_column'] = 'video_url';
+  $handler->display->display_options['fields']['field_sp_video_gallery_1']['type'] = 'video_embed_field_thumbnail';
+  $handler->display->display_options['fields']['field_sp_video_gallery_1']['settings'] = array(
+    'image_style' => 'slideshow_thumbnail',
+    'image_link' => '',
+    'conditions' => array(
+      0 => array(
+        'condition' => '',
+      ),
+    ),
+  );
   /* Contextual filter: Roomify Property: Roomify property ID */
   $handler->display->display_options['arguments']['property_id']['id'] = 'property_id';
   $handler->display->display_options['arguments']['property_id']['table'] = 'roomify_properties';
