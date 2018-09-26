@@ -202,6 +202,10 @@
         }
       }
     }
+    .slick-next.slick-arrow,
+    .slick-prev.slick-arrow {
+      display: none !important;
+    }
   }
   .slick-dotted.slick-slider {
 

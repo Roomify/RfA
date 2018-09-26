@@ -8300,6 +8300,9 @@ body.toggled #close-sidebar-wrapper {
         border: 4px solid transparent; }
       .pane-property-slideshow-panel-pane-2 .slick--display--thumbnail .slick__slide.slick-current img {
         border-color: rgba(0, 188, 212, 0.7); }
+    .pane-property-slideshow-panel-pane-2 .slick--display--thumbnail .slick-next.slick-arrow,
+    .pane-property-slideshow-panel-pane-2 .slick--display--thumbnail .slick-prev.slick-arrow {
+      display: none !important; }
   .pane-property-slideshow-panel-pane-2 .slick.slick--view--property {
     position: relative; }
   .pane-property-slideshow-panel-pane-2 .slick-next.slick-arrow {
