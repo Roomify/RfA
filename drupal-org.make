@@ -9,7 +9,7 @@ defaults[projects][subdir] = contrib
 projects[bat][type] = module
 projects[bat][download][type] = git
 projects[bat][download][url] = https://github.com/Roomify/bat_drupal.git
-projects[bat][download][tag] = 7.x-1.35
+projects[bat][download][tag] = 7.x-1.36
 projects[bat][subdir] = bat
 
 projects[bat_api][type] = module
