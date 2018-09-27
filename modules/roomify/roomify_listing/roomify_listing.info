@@ -42,6 +42,7 @@ dependencies[] = slick
 dependencies[] = slick_views
 dependencies[] = taxonomy
 dependencies[] = text
+dependencies[] = video_embed_field
 dependencies[] = views
 dependencies[] = views_bootstrap
 dependencies[] = views_content

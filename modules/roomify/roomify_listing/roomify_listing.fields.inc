@@ -4800,7 +4800,7 @@ function roomify_listing_add_field_sp_video_gallery($property_bundle) {
     $instance = array(
       'bundle' => $property_bundle,
       'default_value' => NULL,
-      'description' => '',
+      'description' => 'Include here a video link from youtube or vimeo and this will be added to the gallery.',
       'display' => array(
         'default' => array(
           'label' => 'above',

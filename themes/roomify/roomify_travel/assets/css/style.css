@@ -8314,6 +8314,27 @@ body.toggled #close-sidebar-wrapper {
     .pane-property-slideshow-panel-pane-2 .slick--display--thumbnail .slick-next.slick-arrow,
     .pane-property-slideshow-panel-pane-2 .slick--display--thumbnail .slick-prev.slick-arrow {
       display: none !important; }
+    .pane-property-slideshow-panel-pane-2 .slick--display--thumbnail .video-thumb {
+      position: relative;
+      width: 100%;
+      height: 100%;
+      display: block; }
+      .pane-property-slideshow-panel-pane-2 .slick--display--thumbnail .video-thumb:before {
+        pointer-events: none;
+        background: url("../images/play.png") 0 50% no-repeat;
+        background: url("../images/play.svg") center center no-repeat, linear-gradient(transparent, transparent);
+        display: inline-block;
+        position: absolute;
+        width: 50px;
+        height: 50px;
+        border-radius: 50%;
+        margin-top: 0;
+        text-indent: -9999px;
+        border: 0;
+        background-size: contain;
+        right: calc(50% - 25px);
+        top: calc(50% - 20px);
+        content: ''; }
   .pane-property-slideshow-panel-pane-2 .slick.slick--view--property {
     position: relative; }
   .pane-property-slideshow-panel-pane-2 .slick-next.slick-arrow {

@@ -478,6 +478,10 @@ function roomify_travel_theme_views_pre_render(&$views) {
         'field_field_sp_video_gallery_1' => $views->result[0]->field_field_sp_video_gallery_1,
       );
 
+      $video_row->field_field_sp_gallery_2[0]['rendered']['#prefix'] = '<div class="video-thumb">';
+      $video_row->field_field_sp_gallery_2[0]['rendered']['#suffix'] = '</div>';
+
+
       $views->result = array_merge(array($video_row), $views->result);
     }
   }
