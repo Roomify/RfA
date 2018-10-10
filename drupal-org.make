@@ -62,7 +62,7 @@ projects[better_db_updates][subdir] = contrib
 
 ; bootstrap
 projects[bootstrap][type] = theme
-projects[bootstrap][version] = 3.19
+projects[bootstrap][version] = 3.21
 
 ; adminimal
 projects[adminimal_theme][type] = theme
@@ -125,7 +125,7 @@ projects[commerce][patch][] = https://www.drupal.org/files/issues/commerce-delet
 
 projects[commerce_addressbook] = 3.0-rc4
 
-projects[commerce_authnet][version] = 1.4
+projects[commerce_authnet][version] = 1.6
 
 projects[commerce_cart_expiration][version] = 1.4
 
@@ -141,7 +141,7 @@ projects[commerce_features][version] = 1.1
 
 projects[commerce_fees][version] = 1.0-beta1
 
-projects[commerce_paypal][version] = 2.4
+projects[commerce_paypal][version] = 2.5
 
 projects[commerce_reports][version] = 4.0-beta2
 
@@ -305,7 +305,7 @@ projects[leaflet_more_maps][version] = 1.17
 
 projects[less][version] = 4.0
 
-projects[libraries][version] = 2.3
+projects[libraries][version] = 2.5
 
 projects[link][version] = 1.5
 
@@ -328,7 +328,7 @@ projects[masonry][version] = 3.0-beta1
 
 projects[masonry_views][version] = 3.0
 
-projects[media][version] = 2.19
+projects[media][version] = 2.20
 
 projects[media_colorbox][version] = 1.0-rc4
 
@@ -433,9 +433,9 @@ projects[rrssb][download][revision] = 969397d5331003aa33869b53bd4ac94814f99852
 
 projects[s3fs][version] = 2.4
 
-projects[search_api][version] = 1.24
+projects[search_api][version] = 1.25
 
-projects[search_api_db][version] = 1.6
+projects[search_api_db][version] = 1.7
 projects[search_api_db][patch][] = https://www.drupal.org/files/issues/2219897-25--facets_for_empty_results.patch
 
 projects[search_api_ranges][type] = module
