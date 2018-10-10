@@ -47,12 +47,6 @@
   <div id="console" class="clearfix roomify-admin-messages"><?php print $messages; ?></div>
 <?php endif; ?>
 
-<?php if ($primary_local_tasks && !$is_dashboard): ?>
-  <div class="roomify-primary-local-tasks">
-    <?php print render($primary_local_tasks); ?>
-  </div>
-<?php endif; ?>
-
 <div id="page">
   <?php if ($title): ?>
     <?php if (!$is_dashboard): ?>
