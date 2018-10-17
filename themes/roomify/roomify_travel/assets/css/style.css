@@ -7210,6 +7210,10 @@ blockquote {
   display: table;
   margin-left: auto;
   margin-right: auto; }
+  @media (max-width: 480px) {
+    #reviewCarousel {
+      width: 100%;
+      height: 390px; } }
   #reviewCarousel .carousel-control.left,
   #reviewCarousel .carousel-control.right {
     background-image: none; }
