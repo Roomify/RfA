@@ -7176,7 +7176,7 @@ blockquote {
     border-bottom: 2px solid #ad3027; }
   .node-type-review .panel_sl_content {
     background: white;
-    padding: 50px 30px;
+    padding: 40px 25px;
     border: 1px solid #dadada;
     border-radius: 5px;
     margin-top: 15px; }
@@ -7194,6 +7194,98 @@ blockquote {
   .node-type-review .pane-node-field-review-rating .pane-content {
     display: inline-block;
     margin-top: 5px; }
+
+.pane-roomify-properties-list-reviews .container.no-reviews #reviewCarousel {
+  font-size: 18px;
+  text-align: center;
+  padding-top: 140px; }
+
+#reviewCarousel {
+  height: 350px;
+  border: 2px solid #eeefee;
+  padding: 30px 60px;
+  width: 380px;
+  background: white;
+  margin-bottom: 25px;
+  display: table;
+  margin-left: auto;
+  margin-right: auto; }
+  #reviewCarousel .carousel-control.left,
+  #reviewCarousel .carousel-control.right {
+    background-image: none; }
+    #reviewCarousel .carousel-control.left .glyphicon:before,
+    #reviewCarousel .carousel-control.right .glyphicon:before {
+      color: #040e13; }
+  #reviewCarousel .btnrating {
+    pointer-events: none;
+    background: white; }
+    #reviewCarousel .btnrating i {
+      margin-top: 6px;
+      font-size: 12px; }
+  #reviewCarousel .total-rating {
+    height: 95px;
+    display: block;
+    position: absolute;
+    bottom: 0;
+    width: 376px;
+    left: 0;
+    border-top: 1px solid #f0f1f0;
+    padding: 0 40px; }
+    #reviewCarousel .total-rating .total-score {
+      display: inline-block;
+      width: 100%;
+      margin-top: 10px;
+      margin-bottom: 10px;
+      margin-top: 15px; }
+  #reviewCarousel .item .title {
+    font-size: 18px;
+    font-weight: bold; }
+  #reviewCarousel .item .name {
+    font-size: 14px; }
+  #reviewCarousel .item .info {
+    margin-bottom: 35px; }
+  #reviewCarousel .item .quote {
+    height: 50px;
+    display: inline-block;
+    width: 100%;
+    margin-bottom: 20px;
+    background: url("../images/quote.png") center center no-repeat;
+    background: url("../images/quote.svg") center center no-repeat, linear-gradient(transparent, transparent); }
+  #reviewCarousel .item .rating {
+    margin: 20px auto;
+    display: block;
+    background: #FFC107;
+    width: 60px;
+    padding: 17px 10px 14px 10px;
+    height: 60px;
+    font-size: 20px;
+    font-weight: bold;
+    text-align: center;
+    border-radius: 50%;
+    color: white; }
+  #reviewCarousel .btnrating {
+    margin-right: 1px;
+    width: 30px;
+    height: 30px;
+    padding: 0; }
+    #reviewCarousel .btnrating.filled {
+      background: #3985df;
+      border-color: #3671af;
+      border: 1px solid #4190e3; }
+      #reviewCarousel .btnrating.filled i {
+        color: #fff; }
+    #reviewCarousel .btnrating.empty {
+      border: 1px solid #cecece; }
+      #reviewCarousel .btnrating.empty i {
+        color: #bdbdbd; }
+  #reviewCarousel .glyphicon-chevron-left,
+  #reviewCarousel .glyphicon-chevron-right {
+    top: calc(50% - 42px); }
+  @media (min-width: 768px) {
+    #reviewCarousel .carousel-control .glyphicon-chevron-left, #reviewCarousel .carousel-control .glyphicon-chevron-right, #reviewCarousel .carousel-control .icon-prev, #reviewCarousel .carousel-control .icon-next {
+      width: 20px;
+      height: 20px;
+      font-size: 20px; } }
 
 .select2-selection.select2-selection--single {
   transition: border-color ease-in-out 0.15s, box-shadow ease-in-out 0.15s;
@@ -16340,7 +16432,7 @@ body.node-type-offer .pane-offer-panel-pane-2 .pager-load-more {
     width: 100%;
     padding: 0; }
 .node-type-properties-list .panel-content-top {
-  margin-bottom: 50px; }
+  margin-bottom: 70px; }
 .node-type-properties-list .highlights,
 .node-type-properties-list .panel-content-wrapper .panel_sl_content,
 .node-type-properties-list .panel-content-wrapper .panel_sl_content-2 .inner,
@@ -16395,6 +16487,9 @@ body.node-type-offer .pane-offer-panel-pane-2 .pager-load-more {
 .node-type-properties-list .pane-node-field-sp-highlight-image3-cap .field-type-text {
   margin-bottom: 50px;
   text-align: center; }
+.node-type-properties-list .panel-content-wrapper .panel_sl_content {
+  margin-top: 35px;
+  margin-bottom: 70px; }
 .node-type-properties-list .panel_sl_content-2 {
   background: white;
   padding: 25px;
@@ -16466,10 +16561,7 @@ body.node-type-offer .pane-offer-panel-pane-2 .pager-load-more {
 .node-type-properties-list .pane-node-body {
   display: table;
   margin: 0 auto;
-  width: 100%;
-  margin-top: 35px;
-  margin-bottom: 70px;
-  float: none; }
+  margin-bottom: 25px; }
 .node-type-properties-list .pane-properties-index-panel-pane-5 .view-properties-index .views-row {
   margin-bottom: 30px; }
   .node-type-properties-list .pane-properties-index-panel-pane-5 .view-properties-index .views-row img {

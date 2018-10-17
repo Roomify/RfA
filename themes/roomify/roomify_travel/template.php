@@ -359,6 +359,10 @@ function roomify_travel_preprocess_page(&$variables) {
   if (($product == 'b_and_b' || $product == 'vacation_rental') && arg(0) == 'listing') {
     $variables['theme_hook_suggestions'][] = 'page__locanda_listing';
   }
+  // Remove title, we set that in the panel.
+  if ($product == 'multi_property' && arg(0) == 'listing') {
+    $variables['title'] = '';
+  }
 }
 
 /**

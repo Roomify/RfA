@@ -65,6 +65,58 @@ function roomify_properties_list_field_default_field_instances() {
     ),
   );
 
+  // Exported field_instance: 'node-properties_list-field_add_reviews_block'.
+  $field_instances['node-properties_list-field_add_reviews_block'] = array(
+    'bundle' => 'properties_list',
+    'default_value' => array(
+      0 => array(
+        'value' => 0,
+      ),
+    ),
+    'deleted' => 0,
+    'description' => 'This will add a reviews block. Reviews will be taken from the properties added on this page.',
+    'display' => array(
+      'default' => array(
+        'label' => 'above',
+        'module' => 'list',
+        'settings' => array(
+          'conditions' => array(),
+        ),
+        'type' => 'list_default',
+        'weight' => 12,
+      ),
+      'landing_page_teaser' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+      'teaser' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+    ),
+    'entity_type' => 'node',
+    'field_name' => 'field_add_reviews_block',
+    'label' => 'Add Reviews Block',
+    'required' => 0,
+    'settings' => array(
+      'entity_translation_sync' => FALSE,
+      'user_register_form' => FALSE,
+    ),
+    'widget' => array(
+      'active' => 1,
+      'module' => 'options',
+      'settings' => array(
+        'display_label' => 1,
+      ),
+      'type' => 'options_onoff',
+      'weight' => 20,
+    ),
+  );
+
   // Exported field_instance: 'node-properties_list-field_pl_area_facet'.
   $field_instances['node-properties_list-field_pl_area_facet'] = array(
     'bundle' => 'properties_list',
@@ -833,6 +885,7 @@ function roomify_properties_list_field_default_field_instances() {
 
   // Translatables
   // Included for use with string extractors like potx.
+  t('Add Reviews Block');
   t('Area Filter');
   t('Area type Filter');
   t('Body');
@@ -845,6 +898,7 @@ function roomify_properties_list_field_default_field_instances() {
   t('Highlight Image 3 Caption');
   t('Properties');
   t('The best resolution to use for this is image is <b>1600x460</b>.');
+  t('This will add a reviews block. Reviews will be taken from the properties added on this page.');
   t('Title');
 
   return $field_instances;

@@ -8,6 +8,15 @@
 include_once 'roomify_properties_list.features.inc';
 
 /**
+ * Implements hook_ctools_plugin_directory().
+ */
+function roomify_properties_list_ctools_plugin_directory($owner, $plugin_type) {
+  if ($owner == 'ctools' && $plugin_type == 'content_types') {
+    return 'plugins/content_types';
+  }
+}
+
+/**
  * Implements hook_search_api_db_query_alter().
  *
  * @param SelectQueryInterface $db_query

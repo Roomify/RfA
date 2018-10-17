@@ -84,9 +84,9 @@ function roomify_properties_list_field_group_info() {
     'label' => 'Properties',
     'weight' => '4',
     'children' => array(
-      0 => 'field_properties_list_properties',
-      1 => 'field_pl_area_facet',
-      2 => 'field_pl_area_type_filter',
+      0 => 'field_pl_area_facet',
+      1 => 'field_pl_area_type_filter',
+      2 => 'field_properties_list_properties',
     ),
     'format_type' => 'tab',
     'format_settings' => array(

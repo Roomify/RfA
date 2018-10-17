@@ -192,6 +192,13 @@ function roomify_review_form_review_node_form_alter(&$form, &$form_state) {
       );
     }
   }
+  // The review is new.
+  else {
+    if ($user->uid == 1 || in_array('roomify manager', $user->roles) || in_array('administrator', $user->roles)) {
+
+       $form['options']['status']['#default_value'] = 1;
+    }
+  }
 
   // Let's load the property, if we know which one.
   if ((isset($_GET['property_id']) && isset($form['field_review_property_reviewed']))) {
@@ -219,9 +226,12 @@ function roomify_review_form_review_node_form_alter(&$form, &$form_state) {
     $form['property_reviewed']['#markup'] = '<div class="roomify-property-reviewed"><div class="featured-image">' . theme('image_style', $image) . '</div><h1>' . t('Review for @name', array('@name' => $property->name)) . '</h1></div>';
   }
 
-  if (($user->uid !== 1) && (!in_array('roomify manager', $user->roles) || !in_array('administrator', $user->roles))) {
-    $form['field_review_property_reviewed']['#disabled'] = TRUE;
-    $form['field_review_property_reviewed']['#access'] = FALSE;
+  if (!in_array('roomify manager', $user->roles) && !in_array('administrator', $user->roles)) {
+    if ($user->uid != 1) {
+      $form['field_review_property_reviewed']['#disabled'] = TRUE;
+      $form['field_review_property_reviewed']['#access'] = FALSE;
+      $form['field_review_channel']['#access'] = FALSE;
+    }
   }
   // Set the right property to review.
   if (isset($_GET['property_id']) && isset($form['field_review_property_reviewed'])) {

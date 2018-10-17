@@ -53,7 +53,7 @@
     }
   }
   .panel-content-top {
-    margin-bottom: 50px;
+    margin-bottom: 70px;
   }
   .highlights,
   .panel-content-wrapper .panel_sl_content,
@@ -98,7 +98,10 @@
       text-align: center;
     }
   }
-
+  .panel-content-wrapper .panel_sl_content {
+    margin-top: 35px;
+    margin-bottom: 70px;
+  }
   .panel_sl_content-2 {
     background: white;
     padding: 25px;
@@ -182,10 +185,7 @@
   .pane-node-body {
     display: table;
     margin: 0 auto;
-    width: 100%;
-    margin-top: 35px;
-    margin-bottom: 70px;
-    float: none;
+    margin-bottom: 25px;
   }
   .pane-properties-index-panel-pane-5 {
     .view-properties-index {
@@ -395,5 +395,7 @@
     .pane-title {
       margin-bottom: 30px;
     }
+  }
+  .reviews-block {
   }
 }

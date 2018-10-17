@@ -96,7 +96,90 @@ function roomify_review_field_default_field_instances() {
         'summary_rows' => 5,
       ),
       'type' => 'text_textarea_with_summary',
-      'weight' => 1,
+      'weight' => 3,
+    ),
+  );
+
+  // Exported field_instance: 'node-review-field_review_channel'.
+  $field_instances['node-review-field_review_channel'] = array(
+    'bundle' => 'review',
+    'default_value' => NULL,
+    'deleted' => 0,
+    'description' => '',
+    'display' => array(
+      'default' => array(
+        'label' => 'above',
+        'module' => 'text',
+        'settings' => array(
+          'conditions' => array(),
+        ),
+        'type' => 'text_default',
+        'weight' => 4,
+      ),
+      'landing_page_teaser' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+      'teaser' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+    ),
+    'entity_type' => 'node',
+    'field_name' => 'field_review_channel',
+    'label' => 'Review Channel',
+    'required' => 0,
+    'settings' => array(
+      'better_formats' => array(
+        'allowed_formats' => array(
+          'filtered_html' => 'filtered_html',
+          'filtered_text' => 'filtered_text',
+          'full_html' => 'full_html',
+          'landing_page_text' => 'landing_page_text',
+          'plain_text' => 'plain_text',
+          'rich_text' => 'rich_text',
+        ),
+        'allowed_formats_toggle' => 0,
+        'default_order_toggle' => 0,
+        'default_order_wrapper' => array(
+          'formats' => array(
+            'filtered_html' => array(
+              'weight' => 0,
+            ),
+            'filtered_text' => array(
+              'weight' => -10,
+            ),
+            'full_html' => array(
+              'weight' => 1,
+            ),
+            'landing_page_text' => array(
+              'weight' => 0,
+            ),
+            'plain_text' => array(
+              'weight' => 10,
+            ),
+            'rich_text' => array(
+              'weight' => -9,
+            ),
+          ),
+        ),
+      ),
+      'entity_translation_sync' => FALSE,
+      'text_processing' => 0,
+      'user_register_form' => FALSE,
+    ),
+    'widget' => array(
+      'active' => 1,
+      'module' => 'text',
+      'settings' => array(
+        'size' => 60,
+      ),
+      'type' => 'text_textfield',
+      'weight' => 2,
     ),
   );
 
@@ -111,6 +194,7 @@ function roomify_review_field_default_field_instances() {
         'label' => 'above',
         'module' => 'entityreference',
         'settings' => array(
+          'bypass_access' => FALSE,
           'conditions' => array(),
           'link' => FALSE,
         ),
@@ -140,9 +224,11 @@ function roomify_review_field_default_field_instances() {
     ),
     'widget' => array(
       'module' => 'options',
-      'settings' => array(),
+      'settings' => array(
+        'use_select2' => FALSE,
+      ),
       'type' => 'options_select',
-      'weight' => 6,
+      'weight' => 8,
     ),
   );
 
@@ -203,7 +289,90 @@ function roomify_review_field_default_field_instances() {
         ),
       ),
       'type' => 'stars',
-      'weight' => 2,
+      'weight' => 4,
+    ),
+  );
+
+  // Exported field_instance: 'node-review-field_reviewer_name'.
+  $field_instances['node-review-field_reviewer_name'] = array(
+    'bundle' => 'review',
+    'default_value' => NULL,
+    'deleted' => 0,
+    'description' => '',
+    'display' => array(
+      'default' => array(
+        'label' => 'above',
+        'module' => 'text',
+        'settings' => array(
+          'conditions' => array(),
+        ),
+        'type' => 'text_default',
+        'weight' => 3,
+      ),
+      'landing_page_teaser' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+      'teaser' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+    ),
+    'entity_type' => 'node',
+    'field_name' => 'field_reviewer_name',
+    'label' => 'Reviewer Name',
+    'required' => 0,
+    'settings' => array(
+      'better_formats' => array(
+        'allowed_formats' => array(
+          'filtered_html' => 'filtered_html',
+          'filtered_text' => 'filtered_text',
+          'full_html' => 'full_html',
+          'landing_page_text' => 'landing_page_text',
+          'plain_text' => 'plain_text',
+          'rich_text' => 'rich_text',
+        ),
+        'allowed_formats_toggle' => 0,
+        'default_order_toggle' => 0,
+        'default_order_wrapper' => array(
+          'formats' => array(
+            'filtered_html' => array(
+              'weight' => 0,
+            ),
+            'filtered_text' => array(
+              'weight' => -10,
+            ),
+            'full_html' => array(
+              'weight' => 1,
+            ),
+            'landing_page_text' => array(
+              'weight' => 0,
+            ),
+            'plain_text' => array(
+              'weight' => 10,
+            ),
+            'rich_text' => array(
+              'weight' => -9,
+            ),
+          ),
+        ),
+      ),
+      'entity_translation_sync' => FALSE,
+      'text_processing' => 0,
+      'user_register_form' => FALSE,
+    ),
+    'widget' => array(
+      'active' => 1,
+      'module' => 'text',
+      'settings' => array(
+        'size' => 60,
+      ),
+      'type' => 'text_textfield',
+      'weight' => 1,
     ),
   );
 
@@ -261,6 +430,7 @@ function roomify_review_field_default_field_instances() {
         'label' => 'above',
         'module' => 'entityreference',
         'settings' => array(
+          'bypass_access' => FALSE,
           'conditions' => array(),
           'link' => FALSE,
         ),
@@ -284,7 +454,9 @@ function roomify_review_field_default_field_instances() {
     'widget' => array(
       'active' => 1,
       'module' => 'options',
-      'settings' => array(),
+      'settings' => array(
+        'use_select2' => FALSE,
+      ),
       'type' => 'options_select',
       'weight' => 43,
     ),
@@ -344,6 +516,7 @@ function roomify_review_field_default_field_instances() {
         'label' => 'above',
         'module' => 'entityreference',
         'settings' => array(
+          'bypass_access' => FALSE,
           'conditions' => array(),
           'link' => FALSE,
         ),
@@ -367,7 +540,9 @@ function roomify_review_field_default_field_instances() {
     'widget' => array(
       'active' => 1,
       'module' => 'options',
-      'settings' => array(),
+      'settings' => array(
+        'use_select2' => FALSE,
+      ),
       'type' => 'options_select',
       'weight' => 44,
     ),
@@ -379,6 +554,8 @@ function roomify_review_field_default_field_instances() {
   t('Enable Reviews for this Property');
   t('Property Reviewed');
   t('Rating');
+  t('Review Channel');
+  t('Reviewer Name');
   t('Reviews Rating');
   t('This settings enable Reviews for your property. Guests will be able to see the a list of reviews and add their.');
 

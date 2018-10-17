@@ -108,6 +108,12 @@ Drupal.behaviors.roomifyTravelScripts = {
       $('.node-type-homepage.homepage-video .pane-node-field-homepage-video video').show();
       $('.node-type-homepage.homepage-video .pane-node-field-homepage-video img').hide();
     }
+
+    if ($('.node-type-properties-list #reviewCarousel').length) {
+      $('.pane-node-body').addClass('col-xs-12 col-md-8');
+      $('.pane-roomify-properties-list-reviews').addClass('col-xs-12 col-md-4');
+    }
+
   }
 };
 
