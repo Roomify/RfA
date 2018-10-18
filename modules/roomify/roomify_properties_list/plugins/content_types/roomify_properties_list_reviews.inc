@@ -68,7 +68,7 @@ function roomify_add_reviews_block_render($subtype, $conf, $args, $pane_context,
 
         $items .= '<div class="item ' . $active . '">
                    <div class="quote"></div>
-                   <div class="title">' .  substr($review->title, 0, 60) . '</div>
+                   <div class="title">' . substr($review->title, 0, 60) . '</div>
                    <div class="info">' . $info . '</div></div>';
       }
 
