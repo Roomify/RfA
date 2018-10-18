@@ -342,7 +342,7 @@ projects[message][patch][] = https://www.drupal.org/files/issues/text-sanitized.
 
 projects[metatag][version] = 1.25
 
-projects[mimemail][version] = 1.0
+projects[mimemail][version] = 1.1
 
 projects[module_filter][version] = 2.1
 
