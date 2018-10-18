@@ -43,9 +43,17 @@ function roomify_add_reviews_block_render($subtype, $conf, $args, $pane_context,
   $li = '';
   $items = '';
 
-  if (!empty($reviews)) {
-    foreach ($reviews as $review_id) {
-      $review = node_load($review_id);
+  // Sort reviews ascending.
+  $result = db_select('node', 'n')
+    ->fields('n')
+    ->condition('nid', $reviews, 'IN')
+    ->orderby('created', 'DESC')
+    ->execute()
+    ->fetchAll();
+
+  if (!empty($result)) {
+    foreach ($result as $r) {
+      $review = node_load($r->nid);
       if ($reviewer = field_get_items('node', $review, 'field_reviewer_name')) {
         if (!empty($reviewer[0]['value'])) {
           $name = '<span class="reviewer-name">' . $reviewer[0]['value'] . '</span>';

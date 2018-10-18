@@ -159,6 +159,11 @@ function roomify_review_form_bat_booking_edit_form_submit($form, &$form_state) {
 function roomify_review_form_review_node_form_alter(&$form, &$form_state) {
   global $user;
 
+  if ($user->uid == 1 || in_array('administrator', $user->roles) || in_array('roomify manager', $user->roles)) {
+    $form['author']['#access'] = TRUE;
+    $form['author']['date']['#access'] = TRUE;
+  }
+
   if (isset($form['#node'])) {
     $node = $form['#node'];
 
