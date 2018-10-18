@@ -195,8 +195,7 @@ function roomify_review_form_review_node_form_alter(&$form, &$form_state) {
   // The review is new.
   else {
     if ($user->uid == 1 || in_array('roomify manager', $user->roles) || in_array('administrator', $user->roles)) {
-
-       $form['options']['status']['#default_value'] = 1;
+      $form['options']['status']['#default_value'] = 1;
     }
   }
 

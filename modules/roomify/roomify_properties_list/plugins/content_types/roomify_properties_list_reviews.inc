@@ -66,11 +66,10 @@ function roomify_add_reviews_block_render($subtype, $conf, $args, $pane_context,
         $li .= '<li data-target="reviewCarousel" data-slide-to="' . $counter . '" class="' . $active . '"></li>';
         $counter++;
 
-        $items .= '<div class="item ' . $active . '">'
-          . '<div class="quote"></div>'
-          . '<div class="title">' .  substr($review->title, 0, 60) . '</div>'
-          . '<div class="info">' . $info . '</div>'
-          . '</div>';
+        $items .= '<div class="item ' . $active . '">
+                   <div class="quote"></div>
+                   <div class="title">' .  substr($review->title, 0, 60) . '</div>
+                   <div class="info">' . $info . '</div></div>';
       }
 
       $rating += $review->field_review_rating[LANGUAGE_NONE][0]['rating'];
@@ -78,7 +77,7 @@ function roomify_add_reviews_block_render($subtype, $conf, $args, $pane_context,
 
     $total_rating = round($rating / count($reviews) / 10, 1);
     $value = round($total_rating / 2);
-    $total = '<div class="total-score">Total Score: <b>' . $total_rating .'</b> |  <u><b>' . count($reviews) .' reviews</b></u></div>';
+    $total = '<div class="total-score">Total Score: <b>' . $total_rating . '</b> |  <u><b>' . count($reviews) . ' reviews</b></u></div>';
 
     for ($i = 5; $i > 0; $i--) {
       if ($value > 0) {
