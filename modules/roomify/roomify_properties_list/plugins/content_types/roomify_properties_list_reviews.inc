@@ -42,6 +42,7 @@ function roomify_add_reviews_block_render($subtype, $conf, $args, $pane_context,
   $counter = 0;
   $li = '';
   $items = '';
+  $from = '';
 
   // Sort reviews ascending.
   $result = db_select('node', 'n')
@@ -59,12 +60,18 @@ function roomify_add_reviews_block_render($subtype, $conf, $args, $pane_context,
           $name = '<span class="reviewer-name">' . $reviewer[0]['value'] . '</span>';
         }
       }
+
+      if ($channel = field_get_items('node', $review, 'field_review_channel')) {
+        if (!empty($channel[0]['value'])) {
+          $from = ', ' . $channel[0]['value'];
+        }
+      }
       $date = date('F y', $review->created);
       if (empty($name)) {
-        $info = $date;
+        $info = $date . $from;
       }
       else {
-        $info = $name . ', ' . $date;
+        $info = $name . ', ' . $date . $from;
       }
 
       $active = ($counter == 0) ? 'active' : '';

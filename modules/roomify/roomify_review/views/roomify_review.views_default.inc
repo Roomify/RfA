@@ -176,16 +176,16 @@ function roomify_review_views_default_views() {
   $handler->display->display_options['fields']['nothing']['field'] = 'nothing';
   $handler->display->display_options['fields']['nothing']['label'] = '';
   $handler->display->display_options['fields']['nothing']['alter']['text'] = '<div class="panel panel-default review-wrapper">
-      <div class="panel-heading">
-        <div class="name">[user_guest_name]</div>
-        <div class="created">[created]</div>
-      </div>
-      <div class="panel-body review-content">
-        <div class="title">[title]</div>
-        <div class="rating">[field_review_rating]</div>
-        <div class="comment">[body]</div>
-      </div>
-    </div>';
+        <div class="panel-heading">
+          <div class="name">[user_guest_name]</div>
+          <div class="created">[created]</div>
+        </div>
+        <div class="panel-body review-content">
+          <div class="title">[title]</div>
+          <div class="rating">[field_review_rating]</div>
+          <div class="comment">[body]</div>
+        </div>
+      </div>';
   $handler->display->display_options['fields']['nothing']['element_label_colon'] = FALSE;
   /* Sort criterion: Content: Post date */
   $handler->display->display_options['sorts']['created']['id'] = 'created';
@@ -212,6 +212,167 @@ function roomify_review_views_default_views() {
 
   /* Display: Reviews */
   $handler = $view->new_display('panel_pane', 'Reviews', 'panel_pane_1');
+  $handler->display->display_options['defaults']['fields'] = FALSE;
+  /* Field: Content: Reviewer Name */
+  $handler->display->display_options['fields']['field_reviewer_name']['id'] = 'field_reviewer_name';
+  $handler->display->display_options['fields']['field_reviewer_name']['table'] = 'field_data_field_reviewer_name';
+  $handler->display->display_options['fields']['field_reviewer_name']['field'] = 'field_reviewer_name';
+  $handler->display->display_options['fields']['field_reviewer_name']['relationship'] = 'reverse_field_review_property_reviewed_node';
+  $handler->display->display_options['fields']['field_reviewer_name']['label'] = '';
+  $handler->display->display_options['fields']['field_reviewer_name']['exclude'] = TRUE;
+  $handler->display->display_options['fields']['field_reviewer_name']['element_label_colon'] = FALSE;
+  $handler->display->display_options['fields']['field_reviewer_name']['settings'] = array(
+    'conditions' => array(
+      0 => array(
+        'condition' => '',
+      ),
+    ),
+  );
+  /* Field: Content: Review Channel */
+  $handler->display->display_options['fields']['field_review_channel']['id'] = 'field_review_channel';
+  $handler->display->display_options['fields']['field_review_channel']['table'] = 'field_data_field_review_channel';
+  $handler->display->display_options['fields']['field_review_channel']['field'] = 'field_review_channel';
+  $handler->display->display_options['fields']['field_review_channel']['relationship'] = 'reverse_field_review_property_reviewed_node';
+  $handler->display->display_options['fields']['field_review_channel']['label'] = '';
+  $handler->display->display_options['fields']['field_review_channel']['exclude'] = TRUE;
+  $handler->display->display_options['fields']['field_review_channel']['element_label_colon'] = FALSE;
+  $handler->display->display_options['fields']['field_review_channel']['settings'] = array(
+    'conditions' => array(
+      0 => array(
+        'condition' => '',
+      ),
+    ),
+  );
+  /* Field: Profile: Name */
+  $handler->display->display_options['fields']['property_owner_name']['id'] = 'property_owner_name';
+  $handler->display->display_options['fields']['property_owner_name']['table'] = 'field_data_property_owner_name';
+  $handler->display->display_options['fields']['property_owner_name']['field'] = 'property_owner_name';
+  $handler->display->display_options['fields']['property_owner_name']['relationship'] = 'profile';
+  $handler->display->display_options['fields']['property_owner_name']['label'] = '';
+  $handler->display->display_options['fields']['property_owner_name']['exclude'] = TRUE;
+  $handler->display->display_options['fields']['property_owner_name']['element_label_colon'] = FALSE;
+  $handler->display->display_options['fields']['property_owner_name']['settings'] = array(
+    'conditions' => array(
+      0 => array(
+        'condition' => '',
+      ),
+    ),
+  );
+  /* Field: User: Name */
+  $handler->display->display_options['fields']['name']['id'] = 'name';
+  $handler->display->display_options['fields']['name']['table'] = 'users';
+  $handler->display->display_options['fields']['name']['field'] = 'name';
+  $handler->display->display_options['fields']['name']['relationship'] = 'uid';
+  $handler->display->display_options['fields']['name']['label'] = '';
+  $handler->display->display_options['fields']['name']['exclude'] = TRUE;
+  $handler->display->display_options['fields']['name']['element_label_colon'] = FALSE;
+  $handler->display->display_options['fields']['name']['link_to_user'] = FALSE;
+  /* Field: Profile: Image */
+  $handler->display->display_options['fields']['guest_image']['id'] = 'guest_image';
+  $handler->display->display_options['fields']['guest_image']['table'] = 'field_data_guest_image';
+  $handler->display->display_options['fields']['guest_image']['field'] = 'guest_image';
+  $handler->display->display_options['fields']['guest_image']['relationship'] = 'profile';
+  $handler->display->display_options['fields']['guest_image']['label'] = '';
+  $handler->display->display_options['fields']['guest_image']['exclude'] = TRUE;
+  $handler->display->display_options['fields']['guest_image']['element_label_colon'] = FALSE;
+  $handler->display->display_options['fields']['guest_image']['click_sort_column'] = 'fid';
+  $handler->display->display_options['fields']['guest_image']['settings'] = array(
+    'image_style' => 'square',
+    'image_link' => '',
+    'conditions' => array(
+      0 => array(
+        'condition' => '',
+      ),
+    ),
+  );
+  /* Field: Content: User/Guest image */
+  $handler->display->display_options['fields']['user_guest_image']['id'] = 'user_guest_image';
+  $handler->display->display_options['fields']['user_guest_image']['table'] = 'node';
+  $handler->display->display_options['fields']['user_guest_image']['field'] = 'user_guest_image';
+  $handler->display->display_options['fields']['user_guest_image']['relationship'] = 'reverse_field_review_property_reviewed_node';
+  $handler->display->display_options['fields']['user_guest_image']['label'] = '';
+  $handler->display->display_options['fields']['user_guest_image']['element_label_colon'] = FALSE;
+  /* Field: Content: User/Guest name */
+  $handler->display->display_options['fields']['user_guest_name']['id'] = 'user_guest_name';
+  $handler->display->display_options['fields']['user_guest_name']['table'] = 'node';
+  $handler->display->display_options['fields']['user_guest_name']['field'] = 'user_guest_name';
+  $handler->display->display_options['fields']['user_guest_name']['relationship'] = 'reverse_field_review_property_reviewed_node';
+  $handler->display->display_options['fields']['user_guest_name']['label'] = '';
+  $handler->display->display_options['fields']['user_guest_name']['exclude'] = TRUE;
+  $handler->display->display_options['fields']['user_guest_name']['element_label_colon'] = FALSE;
+  /* Field: Content: Title */
+  $handler->display->display_options['fields']['title']['id'] = 'title';
+  $handler->display->display_options['fields']['title']['table'] = 'node';
+  $handler->display->display_options['fields']['title']['field'] = 'title';
+  $handler->display->display_options['fields']['title']['relationship'] = 'reverse_field_review_property_reviewed_node';
+  $handler->display->display_options['fields']['title']['label'] = '';
+  $handler->display->display_options['fields']['title']['exclude'] = TRUE;
+  $handler->display->display_options['fields']['title']['element_label_colon'] = FALSE;
+  $handler->display->display_options['fields']['title']['link_to_node'] = FALSE;
+  /* Field: Content: Rating */
+  $handler->display->display_options['fields']['field_review_rating']['id'] = 'field_review_rating';
+  $handler->display->display_options['fields']['field_review_rating']['table'] = 'field_data_field_review_rating';
+  $handler->display->display_options['fields']['field_review_rating']['field'] = 'field_review_rating';
+  $handler->display->display_options['fields']['field_review_rating']['relationship'] = 'reverse_field_review_property_reviewed_node';
+  $handler->display->display_options['fields']['field_review_rating']['label'] = '';
+  $handler->display->display_options['fields']['field_review_rating']['exclude'] = TRUE;
+  $handler->display->display_options['fields']['field_review_rating']['element_label_colon'] = FALSE;
+  $handler->display->display_options['fields']['field_review_rating']['click_sort_column'] = 'rating';
+  $handler->display->display_options['fields']['field_review_rating']['settings'] = array(
+    'widget' => array(
+      'fivestar_widget' => 'profiles/roomify/modules/contrib/fivestar/widgets/basic/basic.css',
+    ),
+    'expose' => 1,
+    'style' => 'user',
+    'text' => 'none',
+    'conditions' => array(
+      0 => array(
+        'condition' => '',
+      ),
+    ),
+  );
+  /* Field: Content: Post date */
+  $handler->display->display_options['fields']['created']['id'] = 'created';
+  $handler->display->display_options['fields']['created']['table'] = 'node';
+  $handler->display->display_options['fields']['created']['field'] = 'created';
+  $handler->display->display_options['fields']['created']['relationship'] = 'reverse_field_review_property_reviewed_node';
+  $handler->display->display_options['fields']['created']['label'] = '';
+  $handler->display->display_options['fields']['created']['exclude'] = TRUE;
+  $handler->display->display_options['fields']['created']['element_label_colon'] = FALSE;
+  $handler->display->display_options['fields']['created']['date_format'] = 'time ago';
+  $handler->display->display_options['fields']['created']['second_date_format'] = 'bat_daily';
+  /* Field: Content: Body */
+  $handler->display->display_options['fields']['body']['id'] = 'body';
+  $handler->display->display_options['fields']['body']['table'] = 'field_data_body';
+  $handler->display->display_options['fields']['body']['field'] = 'body';
+  $handler->display->display_options['fields']['body']['relationship'] = 'reverse_field_review_property_reviewed_node';
+  $handler->display->display_options['fields']['body']['label'] = '';
+  $handler->display->display_options['fields']['body']['exclude'] = TRUE;
+  $handler->display->display_options['fields']['body']['element_label_colon'] = FALSE;
+  $handler->display->display_options['fields']['body']['settings'] = array(
+    'conditions' => array(
+      0 => array(
+        'condition' => '',
+      ),
+    ),
+  );
+  /* Field: Global: Custom text */
+  $handler->display->display_options['fields']['nothing']['id'] = 'nothing';
+  $handler->display->display_options['fields']['nothing']['table'] = 'views';
+  $handler->display->display_options['fields']['nothing']['field'] = 'nothing';
+  $handler->display->display_options['fields']['nothing']['label'] = '';
+  $handler->display->display_options['fields']['nothing']['alter']['text'] = '<div class="panel panel-default review-wrapper">
+        <div class="panel-heading">
+          <div class="name">[user_guest_name]</div>
+          <div class="created">[created]</div>
+        </div>
+        <div class="panel-body review-content">
+          <div class="title">[title]</div>
+          <div class="rating">[field_review_rating]</div>
+          <div class="comment">[body]</div>
+        </div>
+      </div>';
+  $handler->display->display_options['fields']['nothing']['element_label_colon'] = FALSE;
   $translatables['property_reviews'] = array(
     t('Master'),
     t('more'),
@@ -232,16 +393,16 @@ function roomify_review_views_default_views() {
     t('author'),
     t('Profile'),
     t('<div class="panel panel-default review-wrapper">
-      <div class="panel-heading">
-        <div class="name">[user_guest_name]</div>
-        <div class="created">[created]</div>
-      </div>
-      <div class="panel-body review-content">
-        <div class="title">[title]</div>
-        <div class="rating">[field_review_rating]</div>
-        <div class="comment">[body]</div>
-      </div>
-    </div>'),
+        <div class="panel-heading">
+          <div class="name">[user_guest_name]</div>
+          <div class="created">[created]</div>
+        </div>
+        <div class="panel-body review-content">
+          <div class="title">[title]</div>
+          <div class="rating">[field_review_rating]</div>
+          <div class="comment">[body]</div>
+        </div>
+      </div>'),
     t('All'),
     t('Reviews'),
     t('View panes'),

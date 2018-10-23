@@ -36,6 +36,9 @@ class roomify_review_handler_user_guest_name_field extends views_handler_field {
     if (isset($values->field_field_reviewer_name[0]['rendered']['#markup'])) {
       $name = $values->field_field_reviewer_name[0]['rendered']['#markup'];
     }
+    if (isset($values->field_field_review_channel[0]['rendered']['#markup'])) {
+      $name .= ', ' . $values->field_field_review_channel[0]['rendered']['#markup'];
+    }
     return t('by @name', array('@name' => $name));
 
   }
