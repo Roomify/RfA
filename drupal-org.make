@@ -74,7 +74,7 @@ projects[adminimal_theme][patch][] = "https://www.drupal.org/files/issues/admini
 ; +++++ Contrib Modules +++++
 
 
-projects[addressfield][version] = 1.2
+projects[addressfield][version] = 1.3
 
 projects[addtoany][version] = 4.15
 
@@ -224,7 +224,7 @@ projects[fast_404][version] = 1.5
 
 projects[fb_likebox][version] = 2.3
 
-projects[features][version] = 2.10
+projects[features][version] = 2.11
 
 projects[ffc][version] = 1.0-beta2
 
@@ -247,7 +247,7 @@ projects[footable][patch][] = https://www.drupal.org/files/issues/footable-add_s
 
 projects[file_entity][version] = 2.22
 
-projects[geofield][version] = 2.3
+projects[geofield][version] = 2.4
 
 projects[geofield_gmap][version] = 2.0-alpha1
 projects[geofield_gmap][patch][] = https://www.drupal.org/files/issues/2018-03-21/geofield_gmap-zoom_after_selecting_address-2562835-4.patch
