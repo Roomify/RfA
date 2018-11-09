@@ -109,6 +109,7 @@ projects[cer][download][url] = https://git.drupal.org/project/cer.git
 projects[cer][download][revision] = 886048a494a3d3c8fea79564b3a01e00ebed6754
 
 projects[chain_menu_access][version] = 2.0
+projects[chain_menu_access][patch][] = https://www.drupal.org/files/issues/2018-10-19/chain_menu_access-deprecated_function-D7-2995656-10.patch
 
 projects[charts][version] = 2.0-rc1
 
