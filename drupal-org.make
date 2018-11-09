@@ -424,7 +424,7 @@ projects[role_export][download][revision] = 0aef061b79a1dd0a949d504a238bf8b3f9f4
 
 projects[rules][version] = 2.11
 
-projects[rules_conditional][version] = 1.0-beta2
+projects[rules_conditional][version] = 1.x-dev
 
 projects[rrssb][type] = module
 projects[rrssb][download][type] = git
