@@ -63,13 +63,14 @@ projects[better_db_updates][subdir] = contrib
 ; bootstrap
 projects[bootstrap][type] = theme
 projects[bootstrap][version] = 3.21
+projects[bootstrap][patch][] = https://www.drupal.org/files/issues/2018-09-14/php7-countable-2999011-9.patch
 
 ; adminimal
 projects[adminimal_theme][type] = theme
 projects[adminimal_theme][version] = 1.24
 ; Fix issue with module_filter not being detected.
 ; See: https://www.drupal.org/node/2763581
-projects[adminimal_theme][patch][] = "https://www.drupal.org/files/issues/adminimal_theme_1_24-2763581-34_0.patch"
+projects[adminimal_theme][patch][] = https://www.drupal.org/files/issues/adminimal_theme_1_24-2763581-34_0.patch
 
 ; +++++ Contrib Modules +++++
 
@@ -683,7 +684,7 @@ libraries[stripe-php][download][type] = file
 libraries[stripe-php][download][url] = https://github.com/stripe/stripe-php/archive/v1.18.0.zip
 libraries[stripe-php][directory_name] = stripe-php
 libraries[stripe-php][type] = "library"
-libraries[stripe-php][patch][] = "patches/stripe_support_tls_1_2.patch"
+libraries[stripe-php][patch][] = patches/stripe_support_tls_1_2.patch
 
 ; rrssb
 libraries[rrssb][directory_name] = rrssb
