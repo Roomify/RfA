@@ -79,7 +79,7 @@ projects[addressfield][version] = 1.3
 
 projects[addtoany][version] = 4.15
 
-projects[admin_menu][version] = 3.0-rc5
+projects[admin_menu][version] = 3.x-dev
 
 projects[adminimal_admin_menu][version] = 1.9
 
@@ -177,7 +177,7 @@ projects[date_datepicker_inline][download][revision] = c6aa61c6c8247fca72dece2b4
 
 projects[devel][version] = 1.6
 
-projects[diff][version] = 3.3
+projects[diff][version] = 3.4
 
 projects[dragdropfile][version] = 1.7
 
@@ -357,7 +357,7 @@ projects[override_node_options][version] = 1.13
 
 projects[panels][version] = 3.9
 
-projects[panels_everywhere][version] = 1.0-rc2
+projects[panels_everywhere][version] = 1.0
 
 projects[panels_bootstrap_layouts][version] = 3.0
 
@@ -435,7 +435,7 @@ projects[rrssb][download][type] = git
 projects[rrssb][download][url] = https://git.drupal.org/project/rrssb.git
 projects[rrssb][download][revision] = 969397d5331003aa33869b53bd4ac94814f99852
 
-projects[s3fs][version] = 2.4
+projects[s3fs][version] = 2.12
 
 projects[search_api][version] = 1.25
 
