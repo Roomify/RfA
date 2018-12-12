@@ -62,8 +62,7 @@ projects[better_db_updates][subdir] = contrib
 
 ; bootstrap
 projects[bootstrap][type] = theme
-projects[bootstrap][version] = 3.21
-projects[bootstrap][patch][] = https://www.drupal.org/files/issues/2018-09-14/php7-countable-2999011-9.patch
+projects[bootstrap][version] = 3.22
 
 ; adminimal
 projects[adminimal_theme][type] = theme
@@ -79,7 +78,7 @@ projects[addressfield][version] = 1.3
 
 projects[addtoany][version] = 4.15
 
-projects[admin_menu][version] = 3.x-dev
+projects[admin_menu][version] = 3.0-rc6
 
 projects[adminimal_admin_menu][version] = 1.9
 
@@ -276,7 +275,7 @@ projects[job_scheduler][download][type] = git
 projects[job_scheduler][download][url] = https://git.drupal.org/project/job_scheduler.git
 projects[job_scheduler][download][revision] = 9baaba6bebd34ad6842b1a5292d4d8b32dc9c65c
 
-projects[hreflang][version] = 1.3
+projects[hreflang][version] = 1.4
 
 projects[hotjar][version] = 1.2
 
