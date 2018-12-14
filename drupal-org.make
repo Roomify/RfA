@@ -143,7 +143,7 @@ projects[commerce_features][version] = 1.1
 
 projects[commerce_fees][version] = 1.0-beta1
 
-projects[commerce_paypal][version] = 2.5
+projects[commerce_paypal][version] = 2.6
 
 projects[commerce_reports][version] = 4.0-beta2
 
@@ -504,15 +504,9 @@ projects[views_autocomplete_filters][download][type] = git
 projects[views_autocomplete_filters][download][url] = https://git.drupal.org/project/views_autocomplete_filters.git
 projects[views_autocomplete_filters][download][revision] = 39443b0b95dbc50151ec0684ff91143a3fcbe6d2
 
-projects[views_bootstrap][type] = module
-projects[views_bootstrap][download][type] = git
-projects[views_bootstrap][download][url] = https://git.drupal.org/project/views_bootstrap.git
-projects[views_bootstrap][download][revision] = eee44d0f4f567aef22f7a4bdb7d64e1a715e6449
+projects[views_bootstrap][version] = 3.2
 
-projects[views_contextual_filters_or][type] = module
-projects[views_contextual_filters_or][download][type] = git
-projects[views_contextual_filters_or][download][url] = https://git.drupal.org/project/views_contextual_filters_or.git
-projects[views_contextual_filters_or][download][revision] = 42891a0b0057c9b71c6bf59f043cd27efd3ac43e
+projects[views_contextual_filters_or][version] = 1.0
 
 projects[views_data_export][version] = 3.2
 
