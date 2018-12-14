@@ -70,6 +70,7 @@ projects[adminimal_theme][version] = 1.24
 ; Fix issue with module_filter not being detected.
 ; See: https://www.drupal.org/node/2763581
 projects[adminimal_theme][patch][] = https://www.drupal.org/files/issues/adminimal_theme_1_24-2763581-34_0.patch
+projects[adminimal_theme][patch][] = https://www.drupal.org/files/issues/2018-09-28/adminimal_theme-php_72_count-2951412-9.patch
 
 ; +++++ Contrib Modules +++++
 
