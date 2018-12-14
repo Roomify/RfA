@@ -170,10 +170,7 @@ projects[date_restrictions][download][type] = git
 projects[date_restrictions][download][url] = https://git.drupal.org/project/date_restrictions.git
 projects[date_restrictions][download][revision] = e2de47a66ea160aedca3d22fd1ab0ab4a4363af8
 
-projects[date_datepicker_inline][type] = module
-projects[date_datepicker_inline][download][type] = git
-projects[date_datepicker_inline][download][url] = https://git.drupal.org/project/date_datepicker_inline.git
-projects[date_datepicker_inline][download][revision] = c6aa61c6c8247fca72dece2b4bbee13400ee15e6
+projects[date_datepicker_inline][version] = 1.1
 
 projects[devel][version] = 1.6
 
@@ -400,10 +397,7 @@ projects[popup_field_group][version] = 1.1
 projects[popup_message][version] = 1.2
 projects[popup_message][patch][] = https://www.drupal.org/files/issues/popup_message-title-not-required-1854924-3.patch
 
-projects[profile2][type] = module
-projects[profile2][download][type] = git
-projects[profile2][download][url] = https://git.drupal.org/project/profile2.git
-projects[profile2][download][revision] = 9a05fc78b5c3c3deb9d41fb8202b523602c80a77
+projects[profile2][version] = 1.5
 projects[profile2][patch][] = https://www.drupal.org/files/issues/profile2-entity_translation_support-1966640-25_0.patch
 
 projects[publishcontent][version] = 1.3
