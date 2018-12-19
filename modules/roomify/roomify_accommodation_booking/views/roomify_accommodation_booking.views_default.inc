@@ -1389,6 +1389,34 @@ function roomify_accommodation_booking_views_default_views() {
     8 => 0,
     163670334 => 0,
   );
+  /* Filter criterion: User: E-mail */
+  $handler->display->display_options['filters']['mail']['id'] = 'mail';
+  $handler->display->display_options['filters']['mail']['table'] = 'users';
+  $handler->display->display_options['filters']['mail']['field'] = 'mail';
+  $handler->display->display_options['filters']['mail']['operator'] = 'contains';
+  $handler->display->display_options['filters']['mail']['exposed'] = TRUE;
+  $handler->display->display_options['filters']['mail']['expose']['operator_id'] = 'mail_op';
+  $handler->display->display_options['filters']['mail']['expose']['label'] = 'E-mail';
+  $handler->display->display_options['filters']['mail']['expose']['operator'] = 'mail_op';
+  $handler->display->display_options['filters']['mail']['expose']['identifier'] = 'mail';
+  $handler->display->display_options['filters']['mail']['expose']['remember_roles'] = array(
+    2 => '2',
+    1 => 0,
+    3 => 0,
+    4 => 0,
+    5 => 0,
+    6 => 0,
+    7 => 0,
+    8 => 0,
+    163670334 => 0,
+  );
+  $handler->display->display_options['filters']['mail']['expose']['autocomplete_filter'] = 1;
+  $handler->display->display_options['filters']['mail']['expose']['autocomplete_items'] = '10';
+  $handler->display->display_options['filters']['mail']['expose']['autocomplete_min_chars'] = '0';
+  $handler->display->display_options['filters']['mail']['expose']['autocomplete_field'] = 'mail';
+  $handler->display->display_options['filters']['mail']['expose']['autocomplete_raw_suggestion'] = 1;
+  $handler->display->display_options['filters']['mail']['expose']['autocomplete_raw_dropdown'] = 1;
+  $handler->display->display_options['filters']['mail']['expose']['autocomplete_dependent'] = 0;
 
   /* Display: Reference dialog Search */
   $handler = $view->new_display('references_dialog', 'Reference dialog Search', 'references_dialog_1');
