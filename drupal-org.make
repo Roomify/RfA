@@ -95,7 +95,7 @@ projects[autocomplete_deluxe][patch][] = https://www.drupal.org/files/issues/ter
 
 projects[background_image_formatter][version] = 1.4
 
-projects[backup_migrate][version] = 3.5
+projects[backup_migrate][version] = 3.6
 
 projects[bean][version] = 1.9
 
