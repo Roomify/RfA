@@ -729,6 +729,14 @@ body.adminimal-theme .autocomplete-deluxe-item {
 .fc-title {
   text-transform: uppercase;
 }
+body.page-admin.page-admin-bat-config-availability-calendar #page {
+  padding: 15px;
+}
+body.page-admin.page-admin-bat-config-availability-calendar #page .page-title {
+  font-size: 20px;
+  margin-top: 10px;
+  text-align: center;
+}
 .view-user-conversations.view-display-id-guest_all_conversations .views-exposed-form,
 .view-user-conversations.view-display-id-owner_all_conversations .views-exposed-form,
 .pane-user-conversations-guest-conversations .views-exposed-form,
