@@ -399,6 +399,7 @@ projects[popup_message][patch][] = https://www.drupal.org/files/issues/popup_mes
 
 projects[profile2][version] = 1.5
 projects[profile2][patch][] = https://www.drupal.org/files/issues/profile2-entity_translation_support-1966640-25_0.patch
+projects[profile2][patch][] = patches/profile2.patch
 
 projects[publishcontent][version] = 1.3
 
