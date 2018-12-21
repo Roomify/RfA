@@ -43,7 +43,6 @@
         }
       }
       .pane-title {
-        @include h3();
         .glyphicon {
           display: none;
         }
@@ -298,7 +297,6 @@
         }
       }
       .pane-title {
-        @include h3();
         .glyphicon {
           display: none;
         }

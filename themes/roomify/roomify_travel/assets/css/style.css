@@ -4,14 +4,7 @@
 @import url("https://fonts.googleapis.com/css?family=Open+Sans:400,300,300italic,400italic,600,600italic,700,700italic,800,800italic)");
 @import url("https://fonts.googleapis.com/css?family=Lato:100,100i,300,300i,400,400i,700,700i,900,900i");
 html, body, div, span, applet, object, iframe,
-h1, h2, .page-taxonomy-area .pane-term-name .pane-content, .page-taxonomy-area .field-name-field-area-title-description,
-.page-taxonomy-area .field-name-field-area-title-blog-posts,
-.page-taxonomy-area .field-name-field-title-featured-properties, h3, .page-listing .pane-roomify-property-name h1, .page-checkout-review .checkout_review .pane-title td, .page-activities-search .view-display-id-panel_pane_1 .views-row .views-field-name,
-.page-availability-search .view-display-id-panel_pane_1 .views-row .views-field-name, .page-activities-search .view-display-id-panel_pane_3 .property-row .views-field-name,
-.page-availability-search .view-display-id-panel_pane_3 .property-row .views-field-name, .page-blog .panel_sl_right .panel-pane .pane-title, .node-type-blog .panel_sl_right .panel-pane .pane-title, .page-things-to-do .panel_sl_right .panel-pane .pane-title, .node-type-activity .panel_sl_right .panel-pane .pane-title, .page-taxonomy-area .field-name-field-area-description-subtitle,
-.page-taxonomy-area .field-name-field-area-description-blog-post,
-.page-taxonomy-area .field-name-field-desc-featured-properities, .page-room-type .panel_sl_left .panel-pane.pane-type-availability-search .pane-title, .page-room-type .panel_sl_left .panel-pane.pane-bat-type-field-st-amenities .pane-title, h4, .pane-property-location .panel-content-right .pane-title,
-.pane-property-location .panel-content-left .pane-title, .page-listing .pane-roomify-property-field-sp-short-description, .node-type-blog .panel-content-bottom .pane-blog-panel-pane-9 .views-field-name, h5, h6, p, blockquote, pre,
+h1, h2, h3, h4, h5, h6, p, blockquote, pre,
 a, abbr, acronym, address, big, cite, code,
 del, dfn, em, font, ins, kbd, q, s, samp,
 small, strike, strong, sub, sup, tt, var,
@@ -309,48 +302,12 @@ th {
 
   p,
   h2,
-  .page-taxonomy-area .pane-term-name .pane-content,
-  .page-taxonomy-area .field-name-field-area-title-description,
-  .page-taxonomy-area .field-name-field-area-title-blog-posts,
-  .page-taxonomy-area .field-name-field-title-featured-properties,
-  h3,
-  .page-listing .pane-roomify-property-name h1,
-  .page-checkout-review .checkout_review .pane-title td,
-  .page-activities-search .view-display-id-panel_pane_1 .views-row .views-field-name,
-  .page-availability-search .view-display-id-panel_pane_1 .views-row .views-field-name,
-  .page-activities-search .view-display-id-panel_pane_3 .property-row .views-field-name,
-  .page-availability-search .view-display-id-panel_pane_3 .property-row .views-field-name,
-  .page-blog .panel_sl_right .panel-pane .pane-title,
-  .node-type-blog .panel_sl_right .panel-pane .pane-title,
-  .page-things-to-do .panel_sl_right .panel-pane .pane-title,
-  .node-type-activity .panel_sl_right .panel-pane .pane-title,
-  .page-taxonomy-area .field-name-field-area-description-subtitle,
-  .page-taxonomy-area .field-name-field-area-description-blog-post,
-  .page-taxonomy-area .field-name-field-desc-featured-properities,
-  .page-room-type .panel_sl_left .panel-pane.pane-type-availability-search .pane-title,
-  .page-room-type .panel_sl_left .panel-pane.pane-bat-type-field-st-amenities .pane-title {
+  h3 {
     orphans: 3;
     widows: 3; }
 
-  h2, .page-taxonomy-area .pane-term-name .pane-content, .page-taxonomy-area .field-name-field-area-title-description,
-  .page-taxonomy-area .field-name-field-area-title-blog-posts,
-  .page-taxonomy-area .field-name-field-title-featured-properties,
-  h3,
-  .page-listing .pane-roomify-property-name h1,
-  .page-checkout-review .checkout_review .pane-title td,
-  .page-activities-search .view-display-id-panel_pane_1 .views-row .views-field-name,
-  .page-availability-search .view-display-id-panel_pane_1 .views-row .views-field-name,
-  .page-activities-search .view-display-id-panel_pane_3 .property-row .views-field-name,
-  .page-availability-search .view-display-id-panel_pane_3 .property-row .views-field-name,
-  .page-blog .panel_sl_right .panel-pane .pane-title,
-  .node-type-blog .panel_sl_right .panel-pane .pane-title,
-  .page-things-to-do .panel_sl_right .panel-pane .pane-title,
-  .node-type-activity .panel_sl_right .panel-pane .pane-title,
-  .page-taxonomy-area .field-name-field-area-description-subtitle,
-  .page-taxonomy-area .field-name-field-area-description-blog-post,
-  .page-taxonomy-area .field-name-field-desc-featured-properities,
-  .page-room-type .panel_sl_left .panel-pane.pane-type-availability-search .pane-title,
-  .page-room-type .panel_sl_left .panel-pane.pane-bat-type-field-st-amenities .pane-title {
+  h2,
+  h3 {
     page-break-after: avoid; }
 
   .navbar {
@@ -1271,54 +1228,17 @@ hr {
 [role="button"] {
   cursor: pointer; }
 
-h1, h2, .page-taxonomy-area .pane-term-name .pane-content, .page-taxonomy-area .field-name-field-area-title-description,
-.page-taxonomy-area .field-name-field-area-title-blog-posts,
-.page-taxonomy-area .field-name-field-title-featured-properties, h3, .page-listing .pane-roomify-property-name h1, .page-checkout-review .checkout_review .pane-title td, .page-activities-search .view-display-id-panel_pane_1 .views-row .views-field-name,
-.page-availability-search .view-display-id-panel_pane_1 .views-row .views-field-name, .page-activities-search .view-display-id-panel_pane_3 .property-row .views-field-name,
-.page-availability-search .view-display-id-panel_pane_3 .property-row .views-field-name, .page-blog .panel_sl_right .panel-pane .pane-title, .node-type-blog .panel_sl_right .panel-pane .pane-title, .page-things-to-do .panel_sl_right .panel-pane .pane-title, .node-type-activity .panel_sl_right .panel-pane .pane-title, .page-taxonomy-area .field-name-field-area-description-subtitle,
-.page-taxonomy-area .field-name-field-area-description-blog-post,
-.page-taxonomy-area .field-name-field-desc-featured-properities, .page-room-type .panel_sl_left .panel-pane.pane-type-availability-search .pane-title, .page-room-type .panel_sl_left .panel-pane.pane-bat-type-field-st-amenities .pane-title, h4, .pane-property-location .panel-content-right .pane-title,
-.pane-property-location .panel-content-left .pane-title, .page-listing .pane-roomify-property-field-sp-short-description, .node-type-blog .panel-content-bottom .pane-blog-panel-pane-9 .views-field-name, h5, h6,
+h1, h2, h3, h4, h5, h6,
 .h1, .h2, .h3, .h4, .h5, .h6 {
   font-family: inherit;
   font-weight: 400;
   line-height: 1.1;
   color: #333333; }
   h1 small,
-  h1 .small, h2 small, .page-taxonomy-area .pane-term-name .pane-content small, .page-taxonomy-area .field-name-field-area-title-description small,
-  .page-taxonomy-area .field-name-field-area-title-blog-posts small,
-  .page-taxonomy-area .field-name-field-title-featured-properties small,
-  h2 .small,
-  .page-taxonomy-area .pane-term-name .pane-content .small,
-  .page-taxonomy-area .field-name-field-area-title-description .small,
-  .page-taxonomy-area .field-name-field-area-title-blog-posts .small,
-  .page-taxonomy-area .field-name-field-title-featured-properties .small, h3 small, .page-listing .pane-roomify-property-name h1 small, .page-checkout-review .checkout_review .pane-title td small, .page-activities-search .view-display-id-panel_pane_1 .views-row .views-field-name small,
-  .page-availability-search .view-display-id-panel_pane_1 .views-row .views-field-name small, .page-activities-search .view-display-id-panel_pane_3 .property-row .views-field-name small,
-  .page-availability-search .view-display-id-panel_pane_3 .property-row .views-field-name small, .page-blog .panel_sl_right .panel-pane .pane-title small, .node-type-blog .panel_sl_right .panel-pane .pane-title small, .page-things-to-do .panel_sl_right .panel-pane .pane-title small, .node-type-activity .panel_sl_right .panel-pane .pane-title small, .page-taxonomy-area .field-name-field-area-description-subtitle small,
-  .page-taxonomy-area .field-name-field-area-description-blog-post small,
-  .page-taxonomy-area .field-name-field-desc-featured-properities small, .page-room-type .panel_sl_left .panel-pane.pane-type-availability-search .pane-title small, .page-room-type .panel_sl_left .panel-pane.pane-bat-type-field-st-amenities .pane-title small,
-  h3 .small,
-  .page-listing .pane-roomify-property-name h1 .small,
-  .page-checkout-review .checkout_review .pane-title td .small,
-  .page-activities-search .view-display-id-panel_pane_1 .views-row .views-field-name .small,
-  .page-availability-search .view-display-id-panel_pane_1 .views-row .views-field-name .small,
-  .page-activities-search .view-display-id-panel_pane_3 .property-row .views-field-name .small,
-  .page-availability-search .view-display-id-panel_pane_3 .property-row .views-field-name .small,
-  .page-blog .panel_sl_right .panel-pane .pane-title .small,
-  .node-type-blog .panel_sl_right .panel-pane .pane-title .small,
-  .page-things-to-do .panel_sl_right .panel-pane .pane-title .small,
-  .node-type-activity .panel_sl_right .panel-pane .pane-title .small,
-  .page-taxonomy-area .field-name-field-area-description-subtitle .small,
-  .page-taxonomy-area .field-name-field-area-description-blog-post .small,
-  .page-taxonomy-area .field-name-field-desc-featured-properities .small,
-  .page-room-type .panel_sl_left .panel-pane.pane-type-availability-search .pane-title .small,
-  .page-room-type .panel_sl_left .panel-pane.pane-bat-type-field-st-amenities .pane-title .small, h4 small, .pane-property-location .panel-content-right .pane-title small,
-  .pane-property-location .panel-content-left .pane-title small, .page-listing .pane-roomify-property-field-sp-short-description small, .node-type-blog .panel-content-bottom .pane-blog-panel-pane-9 .views-field-name small,
-  h4 .small,
-  .pane-property-location .panel-content-right .pane-title .small,
-  .pane-property-location .panel-content-left .pane-title .small,
-  .page-listing .pane-roomify-property-field-sp-short-description .small,
-  .node-type-blog .panel-content-bottom .pane-blog-panel-pane-9 .views-field-name .small, h5 small,
+  h1 .small, h2 small,
+  h2 .small, h3 small,
+  h3 .small, h4 small,
+  h4 .small, h5 small,
   h5 .small, h6 small,
   h6 .small,
   .h1 small,
@@ -1333,91 +1253,28 @@ h1, h2, .page-taxonomy-area .pane-term-name .pane-content, .page-taxonomy-area .
     color: #999999; }
 
 h1, .h1,
-h2,
-.page-taxonomy-area .pane-term-name .pane-content,
-.page-taxonomy-area .field-name-field-area-title-description,
-.page-taxonomy-area .field-name-field-area-title-blog-posts,
-.page-taxonomy-area .field-name-field-title-featured-properties, .h2,
-h3,
-.page-listing .pane-roomify-property-name h1,
-.page-checkout-review .checkout_review .pane-title td,
-.page-activities-search .view-display-id-panel_pane_1 .views-row .views-field-name,
-.page-availability-search .view-display-id-panel_pane_1 .views-row .views-field-name,
-.page-activities-search .view-display-id-panel_pane_3 .property-row .views-field-name,
-.page-availability-search .view-display-id-panel_pane_3 .property-row .views-field-name,
-.page-blog .panel_sl_right .panel-pane .pane-title,
-.node-type-blog .panel_sl_right .panel-pane .pane-title,
-.page-things-to-do .panel_sl_right .panel-pane .pane-title,
-.node-type-activity .panel_sl_right .panel-pane .pane-title,
-.page-taxonomy-area .field-name-field-area-description-subtitle,
-.page-taxonomy-area .field-name-field-area-description-blog-post,
-.page-taxonomy-area .field-name-field-desc-featured-properities,
-.page-room-type .panel_sl_left .panel-pane.pane-type-availability-search .pane-title,
-.page-room-type .panel_sl_left .panel-pane.pane-bat-type-field-st-amenities .pane-title, .h3 {
+h2, .h2,
+h3, .h3 {
   margin-top: 21px;
   margin-bottom: 10.5px; }
   h1 small,
   h1 .small, .h1 small,
   .h1 .small,
   h2 small,
-  .page-taxonomy-area .pane-term-name .pane-content small,
-  .page-taxonomy-area .field-name-field-area-title-description small,
-  .page-taxonomy-area .field-name-field-area-title-blog-posts small,
-  .page-taxonomy-area .field-name-field-title-featured-properties small,
-  h2 .small,
-  .page-taxonomy-area .pane-term-name .pane-content .small,
-  .page-taxonomy-area .field-name-field-area-title-description .small,
-  .page-taxonomy-area .field-name-field-area-title-blog-posts .small,
-  .page-taxonomy-area .field-name-field-title-featured-properties .small, .h2 small,
+  h2 .small, .h2 small,
   .h2 .small,
   h3 small,
-  .page-listing .pane-roomify-property-name h1 small,
-  .page-checkout-review .checkout_review .pane-title td small,
-  .page-activities-search .view-display-id-panel_pane_1 .views-row .views-field-name small,
-  .page-availability-search .view-display-id-panel_pane_1 .views-row .views-field-name small,
-  .page-activities-search .view-display-id-panel_pane_3 .property-row .views-field-name small,
-  .page-availability-search .view-display-id-panel_pane_3 .property-row .views-field-name small,
-  .page-blog .panel_sl_right .panel-pane .pane-title small,
-  .node-type-blog .panel_sl_right .panel-pane .pane-title small,
-  .page-things-to-do .panel_sl_right .panel-pane .pane-title small,
-  .node-type-activity .panel_sl_right .panel-pane .pane-title small,
-  .page-taxonomy-area .field-name-field-area-description-subtitle small,
-  .page-taxonomy-area .field-name-field-area-description-blog-post small,
-  .page-taxonomy-area .field-name-field-desc-featured-properities small,
-  .page-room-type .panel_sl_left .panel-pane.pane-type-availability-search .pane-title small,
-  .page-room-type .panel_sl_left .panel-pane.pane-bat-type-field-st-amenities .pane-title small,
-  h3 .small,
-  .page-listing .pane-roomify-property-name h1 .small,
-  .page-checkout-review .checkout_review .pane-title td .small,
-  .page-activities-search .view-display-id-panel_pane_1 .views-row .views-field-name .small,
-  .page-availability-search .view-display-id-panel_pane_1 .views-row .views-field-name .small,
-  .page-activities-search .view-display-id-panel_pane_3 .property-row .views-field-name .small,
-  .page-availability-search .view-display-id-panel_pane_3 .property-row .views-field-name .small,
-  .page-blog .panel_sl_right .panel-pane .pane-title .small,
-  .node-type-blog .panel_sl_right .panel-pane .pane-title .small,
-  .page-things-to-do .panel_sl_right .panel-pane .pane-title .small,
-  .node-type-activity .panel_sl_right .panel-pane .pane-title .small,
-  .page-taxonomy-area .field-name-field-area-description-subtitle .small,
-  .page-taxonomy-area .field-name-field-area-description-blog-post .small,
-  .page-taxonomy-area .field-name-field-desc-featured-properities .small,
-  .page-room-type .panel_sl_left .panel-pane.pane-type-availability-search .pane-title .small,
-  .page-room-type .panel_sl_left .panel-pane.pane-bat-type-field-st-amenities .pane-title .small, .h3 small,
+  h3 .small, .h3 small,
   .h3 .small {
     font-size: 65%; }
 
-h4, .pane-property-location .panel-content-right .pane-title,
-.pane-property-location .panel-content-left .pane-title, .page-listing .pane-roomify-property-field-sp-short-description, .node-type-blog .panel-content-bottom .pane-blog-panel-pane-9 .views-field-name, .h4,
+h4, .h4,
 h5, .h5,
 h6, .h6 {
   margin-top: 10.5px;
   margin-bottom: 10.5px; }
-  h4 small, .pane-property-location .panel-content-right .pane-title small,
-  .pane-property-location .panel-content-left .pane-title small, .page-listing .pane-roomify-property-field-sp-short-description small, .node-type-blog .panel-content-bottom .pane-blog-panel-pane-9 .views-field-name small,
-  h4 .small,
-  .pane-property-location .panel-content-right .pane-title .small,
-  .pane-property-location .panel-content-left .pane-title .small,
-  .page-listing .pane-roomify-property-field-sp-short-description .small,
-  .node-type-blog .panel-content-bottom .pane-blog-panel-pane-9 .views-field-name .small, .h4 small,
+  h4 small,
+  h4 .small, .h4 small,
   .h4 .small,
   h5 small,
   h5 .small, .h5 small,
@@ -1430,20 +1287,13 @@ h6, .h6 {
 h1, .h1 {
   font-size: 39px; }
 
-h2, .page-taxonomy-area .pane-term-name .pane-content, .page-taxonomy-area .field-name-field-area-title-description,
-.page-taxonomy-area .field-name-field-area-title-blog-posts,
-.page-taxonomy-area .field-name-field-title-featured-properties, .h2 {
+h2, .h2 {
   font-size: 32px; }
 
-h3, .page-listing .pane-roomify-property-name h1, .page-checkout-review .checkout_review .pane-title td, .page-activities-search .view-display-id-panel_pane_1 .views-row .views-field-name,
-.page-availability-search .view-display-id-panel_pane_1 .views-row .views-field-name, .page-activities-search .view-display-id-panel_pane_3 .property-row .views-field-name,
-.page-availability-search .view-display-id-panel_pane_3 .property-row .views-field-name, .page-blog .panel_sl_right .panel-pane .pane-title, .node-type-blog .panel_sl_right .panel-pane .pane-title, .page-things-to-do .panel_sl_right .panel-pane .pane-title, .node-type-activity .panel_sl_right .panel-pane .pane-title, .page-taxonomy-area .field-name-field-area-description-subtitle,
-.page-taxonomy-area .field-name-field-area-description-blog-post,
-.page-taxonomy-area .field-name-field-desc-featured-properities, .page-room-type .panel_sl_left .panel-pane.pane-type-availability-search .pane-title, .page-room-type .panel_sl_left .panel-pane.pane-bat-type-field-st-amenities .pane-title, .h3 {
+h3, .h3 {
   font-size: 25px; }
 
-h4, .pane-property-location .panel-content-right .pane-title,
-.pane-property-location .panel-content-left .pane-title, .page-listing .pane-roomify-property-field-sp-short-description, .node-type-blog .panel-content-bottom .pane-blog-panel-pane-9 .views-field-name, .h4 {
+h4, .h4 {
   font-size: 17px; }
 
 h5, .h5 {
@@ -4583,9 +4433,7 @@ a.thumbnail.active {
   margin-bottom: 21px;
   border: 1px solid transparent;
   border-radius: 4px; }
-  .alert h4, .alert .pane-property-location .panel-content-right .pane-title, .pane-property-location .panel-content-right .alert .pane-title,
-  .alert .pane-property-location .panel-content-left .pane-title,
-  .pane-property-location .panel-content-left .alert .pane-title, .alert .page-listing .pane-roomify-property-field-sp-short-description, .page-listing .alert .pane-roomify-property-field-sp-short-description, .alert .node-type-blog .panel-content-bottom .pane-blog-panel-pane-9 .views-field-name, .node-type-blog .panel-content-bottom .pane-blog-panel-pane-9 .alert .views-field-name {
+  .alert h4 {
     margin-top: 0;
     color: inherit; }
   .alert .alert-link {
@@ -6441,14 +6289,7 @@ strong {
   font-family: "Lato", sans-serif;
   font-weight: bold; }
 
-h1, h2, .page-taxonomy-area .pane-term-name .pane-content, .page-taxonomy-area .field-name-field-area-title-description,
-.page-taxonomy-area .field-name-field-area-title-blog-posts,
-.page-taxonomy-area .field-name-field-title-featured-properties, h3, .page-listing .pane-roomify-property-name h1, .page-checkout-review .checkout_review .pane-title td, .page-activities-search .view-display-id-panel_pane_1 .views-row .views-field-name,
-.page-availability-search .view-display-id-panel_pane_1 .views-row .views-field-name, .page-activities-search .view-display-id-panel_pane_3 .property-row .views-field-name,
-.page-availability-search .view-display-id-panel_pane_3 .property-row .views-field-name, .page-blog .panel_sl_right .panel-pane .pane-title, .node-type-blog .panel_sl_right .panel-pane .pane-title, .page-things-to-do .panel_sl_right .panel-pane .pane-title, .node-type-activity .panel_sl_right .panel-pane .pane-title, .page-taxonomy-area .field-name-field-area-description-subtitle,
-.page-taxonomy-area .field-name-field-area-description-blog-post,
-.page-taxonomy-area .field-name-field-desc-featured-properities, .page-room-type .panel_sl_left .panel-pane.pane-type-availability-search .pane-title, .page-room-type .panel_sl_left .panel-pane.pane-bat-type-field-st-amenities .pane-title, h4, .pane-property-location .panel-content-right .pane-title,
-.pane-property-location .panel-content-left .pane-title, .page-listing .pane-roomify-property-field-sp-short-description, .node-type-blog .panel-content-bottom .pane-blog-panel-pane-9 .views-field-name, h5, h6 {
+h1, h2, h3, h4, h5, h6 {
   margin: 0 0 10px 0;
   padding: 0;
   font-family: "Lato", sans-serif;
@@ -6461,17 +6302,11 @@ h1 {
     h1 {
       line-height: 1.26; } }
 
-h2, .page-taxonomy-area .pane-term-name .pane-content, .page-taxonomy-area .field-name-field-area-title-description,
-.page-taxonomy-area .field-name-field-area-title-blog-posts,
-.page-taxonomy-area .field-name-field-title-featured-properties {
+h2 {
   margin-bottom: 20px;
   line-height: 0.93; }
 
-h3, .page-listing .pane-roomify-property-name h1, .page-checkout-review .checkout_review .pane-title td, .page-activities-search .view-display-id-panel_pane_1 .views-row .views-field-name,
-.page-availability-search .view-display-id-panel_pane_1 .views-row .views-field-name, .page-activities-search .view-display-id-panel_pane_3 .property-row .views-field-name,
-.page-availability-search .view-display-id-panel_pane_3 .property-row .views-field-name, .page-blog .panel_sl_right .panel-pane .pane-title, .node-type-blog .panel_sl_right .panel-pane .pane-title, .page-things-to-do .panel_sl_right .panel-pane .pane-title, .node-type-activity .panel_sl_right .panel-pane .pane-title, .page-taxonomy-area .field-name-field-area-description-subtitle,
-.page-taxonomy-area .field-name-field-area-description-blog-post,
-.page-taxonomy-area .field-name-field-desc-featured-properities, .page-room-type .panel_sl_left .panel-pane.pane-type-availability-search .pane-title, .page-room-type .panel_sl_left .panel-pane.pane-bat-type-field-st-amenities .pane-title {
+h3 {
   margin-bottom: 20px; }
 
 p {
@@ -6892,11 +6727,7 @@ blockquote {
   transition: all .4s linear;
   border-radius: 3px; }
 
-.hovereffect h2, .hovereffect .page-taxonomy-area .pane-term-name .pane-content, .page-taxonomy-area .pane-term-name .hovereffect .pane-content, .hovereffect .page-taxonomy-area .field-name-field-area-title-description, .page-taxonomy-area .hovereffect .field-name-field-area-title-description,
-.hovereffect .page-taxonomy-area .field-name-field-area-title-blog-posts,
-.page-taxonomy-area .hovereffect .field-name-field-area-title-blog-posts,
-.hovereffect .page-taxonomy-area .field-name-field-title-featured-properties,
-.page-taxonomy-area .hovereffect .field-name-field-title-featured-properties {
+.hovereffect h2 {
   text-transform: uppercase;
   color: #fff;
   text-align: center;
@@ -6938,11 +6769,7 @@ blockquote {
   opacity: 1;
   filter: alpha(opacity=100); }
 
-.hovereffect:hover h2, .hovereffect:hover .page-taxonomy-area .pane-term-name .pane-content, .page-taxonomy-area .pane-term-name .hovereffect:hover .pane-content, .hovereffect:hover .page-taxonomy-area .field-name-field-area-title-description, .page-taxonomy-area .hovereffect:hover .field-name-field-area-title-description,
-.hovereffect:hover .page-taxonomy-area .field-name-field-area-title-blog-posts,
-.page-taxonomy-area .hovereffect:hover .field-name-field-area-title-blog-posts,
-.hovereffect:hover .page-taxonomy-area .field-name-field-title-featured-properties,
-.page-taxonomy-area .hovereffect:hover .field-name-field-title-featured-properties, .hovereffect:hover a.info {
+.hovereffect:hover h2, .hovereffect:hover a.info {
   opacity: 1;
   filter: alpha(opacity=100);
   -ms-transform: translatey(0);
@@ -8738,11 +8565,7 @@ body.toggled #close-sidebar-wrapper {
         -moz-border-radius: 50%;
         -ms-border-radius: 50%;
         -o-border-radius: 50%; }
-    .page-listing .listing-contact-block-top h2.user-property-owner-name, .page-listing .listing-contact-block-top .page-taxonomy-area .pane-term-name .user-property-owner-name.pane-content, .page-taxonomy-area .pane-term-name .page-listing .listing-contact-block-top .user-property-owner-name.pane-content, .page-listing .listing-contact-block-top .page-taxonomy-area .user-property-owner-name.field-name-field-area-title-description, .page-taxonomy-area .page-listing .listing-contact-block-top .user-property-owner-name.field-name-field-area-title-description,
-    .page-listing .listing-contact-block-top .page-taxonomy-area .user-property-owner-name.field-name-field-area-title-blog-posts,
-    .page-taxonomy-area .page-listing .listing-contact-block-top .user-property-owner-name.field-name-field-area-title-blog-posts,
-    .page-listing .listing-contact-block-top .page-taxonomy-area .user-property-owner-name.field-name-field-title-featured-properties,
-    .page-taxonomy-area .page-listing .listing-contact-block-top .user-property-owner-name.field-name-field-title-featured-properties {
+    .page-listing .listing-contact-block-top h2.user-property-owner-name {
       font-size: 18px;
       text-align: center;
       margin-bottom: 5px;
@@ -10618,20 +10441,8 @@ ol.inline.commerce-checkout-progress {
       .page-availability-search .view-display-id-panel_pane_3 .property-row .views-field-name {
         width: 100%;
         margin-bottom: 15px; } }
-    .page-activities-search .view-display-id-panel_pane_3 .property-row .views-field-name h2, .page-activities-search .view-display-id-panel_pane_3 .property-row .views-field-name .page-taxonomy-area .pane-term-name .pane-content, .page-taxonomy-area .pane-term-name .page-activities-search .view-display-id-panel_pane_3 .property-row .views-field-name .pane-content, .page-activities-search .view-display-id-panel_pane_3 .property-row .views-field-name .page-taxonomy-area .field-name-field-area-title-description, .page-taxonomy-area .page-activities-search .view-display-id-panel_pane_3 .property-row .views-field-name .field-name-field-area-title-description,
-    .page-activities-search .view-display-id-panel_pane_3 .property-row .views-field-name .page-taxonomy-area .field-name-field-area-title-blog-posts,
-    .page-taxonomy-area .page-activities-search .view-display-id-panel_pane_3 .property-row .views-field-name .field-name-field-area-title-blog-posts,
-    .page-activities-search .view-display-id-panel_pane_3 .property-row .views-field-name .page-taxonomy-area .field-name-field-title-featured-properties,
-    .page-taxonomy-area .page-activities-search .view-display-id-panel_pane_3 .property-row .views-field-name .field-name-field-title-featured-properties,
-    .page-availability-search .view-display-id-panel_pane_3 .property-row .views-field-name h2,
-    .page-availability-search .view-display-id-panel_pane_3 .property-row .views-field-name .page-taxonomy-area .pane-term-name .pane-content,
-    .page-taxonomy-area .pane-term-name .page-availability-search .view-display-id-panel_pane_3 .property-row .views-field-name .pane-content,
-    .page-availability-search .view-display-id-panel_pane_3 .property-row .views-field-name .page-taxonomy-area .field-name-field-area-title-description,
-    .page-taxonomy-area .page-availability-search .view-display-id-panel_pane_3 .property-row .views-field-name .field-name-field-area-title-description,
-    .page-availability-search .view-display-id-panel_pane_3 .property-row .views-field-name .page-taxonomy-area .field-name-field-area-title-blog-posts,
-    .page-taxonomy-area .page-availability-search .view-display-id-panel_pane_3 .property-row .views-field-name .field-name-field-area-title-blog-posts,
-    .page-availability-search .view-display-id-panel_pane_3 .property-row .views-field-name .page-taxonomy-area .field-name-field-title-featured-properties,
-    .page-taxonomy-area .page-availability-search .view-display-id-panel_pane_3 .property-row .views-field-name .field-name-field-title-featured-properties {
+    .page-activities-search .view-display-id-panel_pane_3 .property-row .views-field-name h2,
+    .page-availability-search .view-display-id-panel_pane_3 .property-row .views-field-name h2 {
       margin-top: 0; }
   .page-activities-search .view-display-id-panel_pane_3 .property-row .views-field-field-sp-featured-image img,
   .page-availability-search .view-display-id-panel_pane_3 .property-row .views-field-field-sp-featured-image img {
@@ -13442,9 +13253,7 @@ body.node-type-homepage {
       display: table;
       margin: 0 auto;
       margin-top: 15px; }
-      .pane-homepage-blogposts-panel-pane-1 .view-homepage-blogposts.view-display-id-panel_pane_1 .views-field-title-field h4, .pane-homepage-blogposts-panel-pane-1 .view-homepage-blogposts.view-display-id-panel_pane_1 .views-field-title-field .pane-property-location .panel-content-right .pane-title, .pane-property-location .panel-content-right .pane-homepage-blogposts-panel-pane-1 .view-homepage-blogposts.view-display-id-panel_pane_1 .views-field-title-field .pane-title,
-      .pane-homepage-blogposts-panel-pane-1 .view-homepage-blogposts.view-display-id-panel_pane_1 .views-field-title-field .pane-property-location .panel-content-left .pane-title,
-      .pane-property-location .panel-content-left .pane-homepage-blogposts-panel-pane-1 .view-homepage-blogposts.view-display-id-panel_pane_1 .views-field-title-field .pane-title, .pane-homepage-blogposts-panel-pane-1 .view-homepage-blogposts.view-display-id-panel_pane_1 .views-field-title-field .page-listing .pane-roomify-property-field-sp-short-description, .page-listing .pane-homepage-blogposts-panel-pane-1 .view-homepage-blogposts.view-display-id-panel_pane_1 .views-field-title-field .pane-roomify-property-field-sp-short-description, .pane-homepage-blogposts-panel-pane-1 .view-homepage-blogposts.view-display-id-panel_pane_1 .views-field-title-field .node-type-blog .panel-content-bottom .pane-blog-panel-pane-9 .views-field-name, .node-type-blog .panel-content-bottom .pane-blog-panel-pane-9 .pane-homepage-blogposts-panel-pane-1 .view-homepage-blogposts.view-display-id-panel_pane_1 .views-field-title-field .views-field-name {
+      .pane-homepage-blogposts-panel-pane-1 .view-homepage-blogposts.view-display-id-panel_pane_1 .views-field-title-field h4 {
         font-size: 18px;
         font-weight: 400;
         line-height: 1.35em; }
@@ -15021,11 +14830,7 @@ div.ctools-modal-dialog .modal-header .modal-title {
   font-weight: bold; }
 
 /* Styling for header. */
-#modalContent div.ctools-modal-dialog h2, #modalContent div.ctools-modal-dialog .page-taxonomy-area .pane-term-name .pane-content, .page-taxonomy-area .pane-term-name #modalContent div.ctools-modal-dialog .pane-content, #modalContent div.ctools-modal-dialog .page-taxonomy-area .field-name-field-area-title-description, .page-taxonomy-area #modalContent div.ctools-modal-dialog .field-name-field-area-title-description,
-#modalContent div.ctools-modal-dialog .page-taxonomy-area .field-name-field-area-title-blog-posts,
-.page-taxonomy-area #modalContent div.ctools-modal-dialog .field-name-field-area-title-blog-posts,
-#modalContent div.ctools-modal-dialog .page-taxonomy-area .field-name-field-title-featured-properties,
-.page-taxonomy-area #modalContent div.ctools-modal-dialog .field-name-field-title-featured-properties {
+#modalContent div.ctools-modal-dialog h2 {
   font-size: 36px;
   font-weight: 300;
   color: #484848;
@@ -15049,21 +14854,7 @@ body.page-single-property-listing {
   @media (min-width: 992px) {
     body.page-single-property-listing .ui-tabs .ui-tabs-panel {
       padding: 90px; } }
-  body.page-single-property-listing .ui-tabs .ui-tabs-panel h1, body.page-single-property-listing .ui-tabs .ui-tabs-panel h2, body.page-single-property-listing .ui-tabs .ui-tabs-panel .page-taxonomy-area .pane-term-name .pane-content, .page-taxonomy-area .pane-term-name body.page-single-property-listing .ui-tabs .ui-tabs-panel .pane-content, body.page-single-property-listing .ui-tabs .ui-tabs-panel .page-taxonomy-area .field-name-field-area-title-description, .page-taxonomy-area body.page-single-property-listing .ui-tabs .ui-tabs-panel .field-name-field-area-title-description,
-  body.page-single-property-listing .ui-tabs .ui-tabs-panel .page-taxonomy-area .field-name-field-area-title-blog-posts,
-  .page-taxonomy-area body.page-single-property-listing .ui-tabs .ui-tabs-panel .field-name-field-area-title-blog-posts,
-  body.page-single-property-listing .ui-tabs .ui-tabs-panel .page-taxonomy-area .field-name-field-title-featured-properties,
-  .page-taxonomy-area body.page-single-property-listing .ui-tabs .ui-tabs-panel .field-name-field-title-featured-properties, body.page-single-property-listing .ui-tabs .ui-tabs-panel h3, body.page-single-property-listing .ui-tabs .ui-tabs-panel .page-listing .pane-roomify-property-name h1, .page-listing .pane-roomify-property-name body.page-single-property-listing .ui-tabs .ui-tabs-panel h1, body.page-single-property-listing .ui-tabs .ui-tabs-panel .page-checkout-review .checkout_review .pane-title td, .page-checkout-review .checkout_review .pane-title body.page-single-property-listing .ui-tabs .ui-tabs-panel td, body.page-single-property-listing .ui-tabs .ui-tabs-panel .page-activities-search .view-display-id-panel_pane_1 .views-row .views-field-name, .page-activities-search .view-display-id-panel_pane_1 .views-row body.page-single-property-listing .ui-tabs .ui-tabs-panel .views-field-name,
-  body.page-single-property-listing .ui-tabs .ui-tabs-panel .page-availability-search .view-display-id-panel_pane_1 .views-row .views-field-name,
-  .page-availability-search .view-display-id-panel_pane_1 .views-row body.page-single-property-listing .ui-tabs .ui-tabs-panel .views-field-name, body.page-single-property-listing .ui-tabs .ui-tabs-panel .page-activities-search .view-display-id-panel_pane_3 .property-row .views-field-name, .page-activities-search .view-display-id-panel_pane_3 .property-row body.page-single-property-listing .ui-tabs .ui-tabs-panel .views-field-name,
-  body.page-single-property-listing .ui-tabs .ui-tabs-panel .page-availability-search .view-display-id-panel_pane_3 .property-row .views-field-name,
-  .page-availability-search .view-display-id-panel_pane_3 .property-row body.page-single-property-listing .ui-tabs .ui-tabs-panel .views-field-name, body.page-single-property-listing .ui-tabs .ui-tabs-panel .page-blog .panel_sl_right .panel-pane .pane-title, .page-blog .panel_sl_right .panel-pane body.page-single-property-listing .ui-tabs .ui-tabs-panel .pane-title, body.page-single-property-listing .ui-tabs .ui-tabs-panel .node-type-blog .panel_sl_right .panel-pane .pane-title, .node-type-blog .panel_sl_right .panel-pane body.page-single-property-listing .ui-tabs .ui-tabs-panel .pane-title, body.page-single-property-listing .ui-tabs .ui-tabs-panel .page-things-to-do .panel_sl_right .panel-pane .pane-title, .page-things-to-do .panel_sl_right .panel-pane body.page-single-property-listing .ui-tabs .ui-tabs-panel .pane-title, body.page-single-property-listing .ui-tabs .ui-tabs-panel .node-type-activity .panel_sl_right .panel-pane .pane-title, .node-type-activity .panel_sl_right .panel-pane body.page-single-property-listing .ui-tabs .ui-tabs-panel .pane-title, body.page-single-property-listing .ui-tabs .ui-tabs-panel .page-taxonomy-area .field-name-field-area-description-subtitle, .page-taxonomy-area body.page-single-property-listing .ui-tabs .ui-tabs-panel .field-name-field-area-description-subtitle,
-  body.page-single-property-listing .ui-tabs .ui-tabs-panel .page-taxonomy-area .field-name-field-area-description-blog-post,
-  .page-taxonomy-area body.page-single-property-listing .ui-tabs .ui-tabs-panel .field-name-field-area-description-blog-post,
-  body.page-single-property-listing .ui-tabs .ui-tabs-panel .page-taxonomy-area .field-name-field-desc-featured-properities,
-  .page-taxonomy-area body.page-single-property-listing .ui-tabs .ui-tabs-panel .field-name-field-desc-featured-properities, body.page-single-property-listing .ui-tabs .ui-tabs-panel .page-room-type .panel_sl_left .panel-pane.pane-type-availability-search .pane-title, .page-room-type .panel_sl_left .panel-pane.pane-type-availability-search body.page-single-property-listing .ui-tabs .ui-tabs-panel .pane-title, body.page-single-property-listing .ui-tabs .ui-tabs-panel .page-room-type .panel_sl_left .panel-pane.pane-bat-type-field-st-amenities .pane-title, .page-room-type .panel_sl_left .panel-pane.pane-bat-type-field-st-amenities body.page-single-property-listing .ui-tabs .ui-tabs-panel .pane-title, body.page-single-property-listing .ui-tabs .ui-tabs-panel h4, body.page-single-property-listing .ui-tabs .ui-tabs-panel .pane-property-location .panel-content-right .pane-title, .pane-property-location .panel-content-right body.page-single-property-listing .ui-tabs .ui-tabs-panel .pane-title,
-  body.page-single-property-listing .ui-tabs .ui-tabs-panel .pane-property-location .panel-content-left .pane-title,
-  .pane-property-location .panel-content-left body.page-single-property-listing .ui-tabs .ui-tabs-panel .pane-title, body.page-single-property-listing .ui-tabs .ui-tabs-panel .page-listing .pane-roomify-property-field-sp-short-description, .page-listing body.page-single-property-listing .ui-tabs .ui-tabs-panel .pane-roomify-property-field-sp-short-description, body.page-single-property-listing .ui-tabs .ui-tabs-panel .node-type-blog .panel-content-bottom .pane-blog-panel-pane-9 .views-field-name, .node-type-blog .panel-content-bottom .pane-blog-panel-pane-9 body.page-single-property-listing .ui-tabs .ui-tabs-panel .views-field-name {
+  body.page-single-property-listing .ui-tabs .ui-tabs-panel h1, body.page-single-property-listing .ui-tabs .ui-tabs-panel h2, body.page-single-property-listing .ui-tabs .ui-tabs-panel h3, body.page-single-property-listing .ui-tabs .ui-tabs-panel h4 {
     line-height: 1.4em; }
   @media (min-width: 768px) {
     body.page-single-property-listing .main-container {
@@ -16229,34 +16020,32 @@ body.node-type-offer .panel_sl_right {
       width: 100%;
       max-width: calc(100% - 30px);
       margin-left: 15px; } }
+body.node-type-offer .pane-entityform-block-contact {
+  border-top: 1px solid #ccc;
+  padding-top: 15px;
+  margin-top: 15px; }
+  body.node-type-offer .pane-entityform-block-contact .form-group {
+    margin-bottom: 10px; }
+  body.node-type-offer .pane-entityform-block-contact input[type="checkbox"] {
+    font-size: 16px;
+    margin-top: 6px; }
 body.node-type-offer .pane-roomify-rate-offer-start-date,
 body.node-type-offer .pane-roomify-rate-offer-end-date {
   margin: 10px 0; }
-  body.node-type-offer .pane-roomify-rate-offer-start-date h4, body.node-type-offer .pane-roomify-rate-offer-start-date .pane-property-location .panel-content-right .pane-title, .pane-property-location .panel-content-right body.node-type-offer .pane-roomify-rate-offer-start-date .pane-title,
-  body.node-type-offer .pane-roomify-rate-offer-start-date .pane-property-location .panel-content-left .pane-title,
-  .pane-property-location .panel-content-left body.node-type-offer .pane-roomify-rate-offer-start-date .pane-title, body.node-type-offer .pane-roomify-rate-offer-start-date .page-listing .pane-roomify-property-field-sp-short-description, .page-listing body.node-type-offer .pane-roomify-rate-offer-start-date .pane-roomify-property-field-sp-short-description, body.node-type-offer .pane-roomify-rate-offer-start-date .node-type-blog .panel-content-bottom .pane-blog-panel-pane-9 .views-field-name, .node-type-blog .panel-content-bottom .pane-blog-panel-pane-9 body.node-type-offer .pane-roomify-rate-offer-start-date .views-field-name,
-  body.node-type-offer .pane-roomify-rate-offer-end-date h4,
-  body.node-type-offer .pane-roomify-rate-offer-end-date .pane-property-location .panel-content-right .pane-title,
-  .pane-property-location .panel-content-right body.node-type-offer .pane-roomify-rate-offer-end-date .pane-title,
-  body.node-type-offer .pane-roomify-rate-offer-end-date .pane-property-location .panel-content-left .pane-title,
-  .pane-property-location .panel-content-left body.node-type-offer .pane-roomify-rate-offer-end-date .pane-title,
-  body.node-type-offer .pane-roomify-rate-offer-end-date .page-listing .pane-roomify-property-field-sp-short-description,
-  .page-listing body.node-type-offer .pane-roomify-rate-offer-end-date .pane-roomify-property-field-sp-short-description,
-  body.node-type-offer .pane-roomify-rate-offer-end-date .node-type-blog .panel-content-bottom .pane-blog-panel-pane-9 .views-field-name,
-  .node-type-blog .panel-content-bottom .pane-blog-panel-pane-9 body.node-type-offer .pane-roomify-rate-offer-end-date .views-field-name {
-    margin-bottom: 10px;
+  body.node-type-offer .pane-roomify-rate-offer-start-date h4,
+  body.node-type-offer .pane-roomify-rate-offer-end-date h4 {
+    margin-bottom: 7px;
     font-weight: 400; }
   @media (min-width: 992px) {
     body.node-type-offer .pane-roomify-rate-offer-start-date,
     body.node-type-offer .pane-roomify-rate-offer-end-date {
-      margin: 0;
-      margin-bottom: 20px; } }
+      margin: 0 0 10px 0; } }
   body.node-type-offer .pane-roomify-rate-offer-start-date .field-name-offer-end-date,
   body.node-type-offer .pane-roomify-rate-offer-start-date .field-name-offer-start-date,
   body.node-type-offer .pane-roomify-rate-offer-end-date .field-name-offer-end-date,
   body.node-type-offer .pane-roomify-rate-offer-end-date .field-name-offer-start-date {
     width: 100%;
-    font-size: 25px; }
+    font-size: 22px; }
 body.node-type-offer .pane-node-field-offer-description {
   margin: 50px 0; }
 body.node-type-offer .pane-offer-panel-pane-2 .pane-title {

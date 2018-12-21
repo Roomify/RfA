@@ -78,25 +78,6 @@
           transform-origin: $origin;
 }
 
-@mixin h1() {
-  @extend h1;
-}
-@mixin h2() {
-  @extend h2;
-}
-@mixin h3() {
-  @extend h3;
-}
-@mixin h4() {
-  @extend h4;
-}
-@mixin h5() {
-  @extend h5;
-}
-@mixin h6() {
-  @extend h6;
-}
-
 @mixin make-edit-icon($path, $background) {
   background-image: url($path);
   background-position: center center;

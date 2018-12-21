@@ -184,7 +184,6 @@
         .pane-title {
           border-bottom: 1px solid #ececec;
           padding-bottom: 15px;
-          @include h3();
           .glyphicon {
             display: none;
           }
@@ -279,7 +278,6 @@
         .pane-title {
           border-bottom: 1px solid #ececec;
           padding-bottom: 15px;
-          @include h3();
           .glyphicon {
             display: none;
           }

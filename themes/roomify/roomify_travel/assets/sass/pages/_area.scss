@@ -42,7 +42,6 @@
       font-weight: 300;
       line-height: 1;
       margin-bottom: 0;
-      @include h2();
       margin-bottom: 0;
       @media (max-width: $screen-sm) {
         font-size: 18px;
@@ -145,7 +144,6 @@
   .field-name-field-area-title-description,
   .field-name-field-area-title-blog-posts,
   .field-name-field-title-featured-properties {
-    @include h2();
     font-weight: 400;
     width: 100%;
     text-align: center;
@@ -154,7 +152,6 @@
   .field-name-field-area-description-subtitle,
   .field-name-field-area-description-blog-post,
   .field-name-field-desc-featured-properities {
-    @include h3();
     width: 100%;
     text-align: center;
     font-weight: 300;

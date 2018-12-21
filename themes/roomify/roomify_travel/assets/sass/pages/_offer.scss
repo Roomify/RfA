@@ -26,21 +26,32 @@ body.node-type-offer {
       margin-left: 15px;
     }
   }
+  .pane-entityform-block-contact {
+    border-top: 1px solid #ccc;
+    padding-top: 15px;
+    margin-top: 15px;
+    .form-group {
+      margin-bottom: 10px;
+    }
+    input[type="checkbox"] {
+      font-size: 16px;
+      margin-top: 6px;
+    }
+  }
   .pane-roomify-rate-offer-start-date,
   .pane-roomify-rate-offer-end-date {
     margin: 10px 0;
     h4 {
-      margin-bottom: 10px;
+      margin-bottom: 7px;
       font-weight: 400;
     }
     @media (min-width: $screen-md) {
-      margin: 0;
-      margin-bottom: 20px;
+      margin: 0 0 10px 0;
     }
     .field-name-offer-end-date,
     .field-name-offer-start-date {
       width: 100%;
-      font-size: 25px;
+      font-size: 22px;
     }
   }
   .pane-node-field-offer-description {

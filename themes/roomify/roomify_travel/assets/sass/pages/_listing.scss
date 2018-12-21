@@ -64,9 +64,6 @@
   .panel-content-right,
   .panel-content-left {
     width: 100%;
-    .pane-title {
-      @include h4();
-    }
   }
   .panel-content-left {
     margin-top: 20px;
@@ -311,7 +308,6 @@
     }
   }
   .pane-roomify-property-name h1 {
-    @include h3();
     @media (max-width: $screen-sm-max) {
       text-align: center;
     }
@@ -319,7 +315,6 @@
   .pane-roomify-property-field-sp-short-description {
     text-align: justify;
     font-weight: 300;
-    @include h4();
     font-style: italic;
     margin-bottom: 20px;
     color: #989898;

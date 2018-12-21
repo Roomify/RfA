@@ -99,7 +99,6 @@
         }
       }
       .pane-title {
-        @include h3();
         .glyphicon {
           display: none;
         }
@@ -391,7 +390,6 @@
         }
       }
       .pane-title {
-      	@include h3();
       	.glyphicon {
       		display: none;
       	}
@@ -524,7 +522,6 @@
         border-radius: 5px;
       }
       .views-field-name {
-      	@include h4();
         text-transform: uppercase;
         padding-bottom: 15px;
         margin-bottom: 10px;

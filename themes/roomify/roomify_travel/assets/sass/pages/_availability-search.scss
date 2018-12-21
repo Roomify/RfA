@@ -138,7 +138,6 @@
         font-weight: 400;
         display: inline-block;
         width: 45%;
-        @include h3();
         @media (max-width: $screen-sm) {
           width: 100%;
           margin-bottom: 15px;
@@ -258,7 +257,6 @@
       .views-field-name {
         margin-bottom: 15px;
         font-weight: 400;
-        @include h3();
         @media (max-width: $screen-sm) {
           width: 100%;
           margin-bottom: 15px;
