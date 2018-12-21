@@ -59,7 +59,7 @@ function roomify_offers_create_special_offer_percentage_rate_type() {
     'type' => 'special_offer_percentage',
   ));
 
-  $rate_type->data['default_value_field'] = 'rate_discount';
+  $rate_type->data = array('default_value_field' => 'rate_discount');
 
   $rate_type->save();
 
