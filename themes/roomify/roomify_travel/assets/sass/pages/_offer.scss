@@ -27,11 +27,44 @@ body.node-type-offer {
     }
   }
   .pane-entityform-block-contact {
-    border-top: 1px solid #ccc;
-    padding-top: 15px;
-    margin-top: 15px;
     .form-group {
       margin-bottom: 10px;
+    }
+    .date-combo {
+      border: none;
+      -webkit-box-shadow: none;
+      box-shadow: none;
+      margin-bottom: 0;
+      legend {
+        background: none;
+        border: none;
+        width: auto;
+        float: left;
+        margin: 0;
+        padding-left: 0;
+        min-width: 100px;
+        padding: 0
+      }
+      .panel-title {
+        font-size: 16px;
+      }
+      .panel-body {
+        display: inline-block;
+        padding: 0;
+        .date-padding {
+          padding-top: 0;
+          padding-bottom: 0;
+        }
+      }
+      .container-inline-date {
+        label,
+        .help-block {
+          display: none;
+        }
+        .form-item {
+          margin-bottom: 0;
+        }
+      }
     }
     input[type="checkbox"] {
       font-size: 16px;
@@ -40,18 +73,17 @@ body.node-type-offer {
   }
   .pane-roomify-rate-offer-start-date,
   .pane-roomify-rate-offer-end-date {
-    margin: 10px 0;
-    h4 {
-      margin-bottom: 7px;
-      font-weight: 400;
-    }
-    @media (min-width: $screen-md) {
-      margin: 0 0 10px 0;
-    }
-    .field-name-offer-end-date,
-    .field-name-offer-start-date {
-      width: 100%;
+    display: inline-block;
+    float: left;
+    margin: 15px 4px 15px 0;
+    .pane-title,
+    .pane-content {
+      font-weight: 300;
       font-size: 22px;
+      display: inline-block;
+    }
+    .pane-content {
+      font-weight: 400;
     }
   }
   .pane-node-field-offer-description {

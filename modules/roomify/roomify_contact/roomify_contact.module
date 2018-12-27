@@ -75,7 +75,7 @@ function roomify_contact_pet_substitutions_alter(&$substitutions, $params) {
 }
 
 /**
- * Implements hook_pet_substitutions_alter().
+ * Implements hook_form_alter().
  */
 function roomify_contact_form_alter(&$form, &$form_state, $form_id) {
   // Remove default values from dates.
@@ -83,6 +83,8 @@ function roomify_contact_form_alter(&$form, &$form_state, $form_id) {
     $date_format = variable_get('bat_daily_date_format', 'Y-m-d');
     $form['field_contact_arrival'][LANGUAGE_NONE][0]['#default_value']['value'] = '';
     $form['field_contact_departure'][LANGUAGE_NONE][0]['#default_value']['value'] = '';
+
+    $form['#attached']['css'][] = drupal_get_path('module', 'roomify_contact') . '/skin/single-melon.datepicker.css';
   }
 }
 

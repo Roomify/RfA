@@ -16021,32 +16021,53 @@ body.node-type-offer .panel_sl_right {
       width: 100%;
       max-width: calc(100% - 30px);
       margin-left: 15px; } }
-body.node-type-offer .pane-entityform-block-contact {
-  border-top: 1px solid #ccc;
-  padding-top: 15px;
-  margin-top: 15px; }
-  body.node-type-offer .pane-entityform-block-contact .form-group {
-    margin-bottom: 10px; }
-  body.node-type-offer .pane-entityform-block-contact input[type="checkbox"] {
-    font-size: 16px;
-    margin-top: 6px; }
+body.node-type-offer .pane-entityform-block-contact .form-group {
+  margin-bottom: 10px; }
+body.node-type-offer .pane-entityform-block-contact .date-combo {
+  border: none;
+  -webkit-box-shadow: none;
+  box-shadow: none;
+  margin-bottom: 0; }
+  body.node-type-offer .pane-entityform-block-contact .date-combo legend {
+    background: none;
+    border: none;
+    width: auto;
+    float: left;
+    margin: 0;
+    padding-left: 0;
+    min-width: 100px;
+    padding: 0; }
+  body.node-type-offer .pane-entityform-block-contact .date-combo .panel-title {
+    font-size: 16px; }
+  body.node-type-offer .pane-entityform-block-contact .date-combo .panel-body {
+    display: inline-block;
+    padding: 0; }
+    body.node-type-offer .pane-entityform-block-contact .date-combo .panel-body .date-padding {
+      padding-top: 0;
+      padding-bottom: 0; }
+  body.node-type-offer .pane-entityform-block-contact .date-combo .container-inline-date label,
+  body.node-type-offer .pane-entityform-block-contact .date-combo .container-inline-date .help-block {
+    display: none; }
+  body.node-type-offer .pane-entityform-block-contact .date-combo .container-inline-date .form-item {
+    margin-bottom: 0; }
+body.node-type-offer .pane-entityform-block-contact input[type="checkbox"] {
+  font-size: 16px;
+  margin-top: 6px; }
 body.node-type-offer .pane-roomify-rate-offer-start-date,
 body.node-type-offer .pane-roomify-rate-offer-end-date {
-  margin: 10px 0; }
-  body.node-type-offer .pane-roomify-rate-offer-start-date h4,
-  body.node-type-offer .pane-roomify-rate-offer-end-date h4 {
-    margin-bottom: 7px;
+  display: inline-block;
+  float: left;
+  margin: 15px 4px 15px 0; }
+  body.node-type-offer .pane-roomify-rate-offer-start-date .pane-title,
+  body.node-type-offer .pane-roomify-rate-offer-start-date .pane-content,
+  body.node-type-offer .pane-roomify-rate-offer-end-date .pane-title,
+  body.node-type-offer .pane-roomify-rate-offer-end-date .pane-content {
+    font-weight: 300;
+    font-size: 22px;
+    display: inline-block; }
+  body.node-type-offer .pane-roomify-rate-offer-start-date .pane-content,
+  body.node-type-offer .pane-roomify-rate-offer-end-date .pane-content {
     font-weight: 400; }
-  @media (min-width: 992px) {
-    body.node-type-offer .pane-roomify-rate-offer-start-date,
-    body.node-type-offer .pane-roomify-rate-offer-end-date {
-      margin: 0 0 10px 0; } }
-  body.node-type-offer .pane-roomify-rate-offer-start-date .field-name-offer-end-date,
-  body.node-type-offer .pane-roomify-rate-offer-start-date .field-name-offer-start-date,
-  body.node-type-offer .pane-roomify-rate-offer-end-date .field-name-offer-end-date,
-  body.node-type-offer .pane-roomify-rate-offer-end-date .field-name-offer-start-date {
-    width: 100%;
-    font-size: 22px; }
 body.node-type-offer .pane-node-field-offer-description {
   margin: 50px 0; }
 body.node-type-offer .pane-offer-panel-pane-2 .pane-title {

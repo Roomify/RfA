@@ -169,7 +169,7 @@ function roomify_offers_default_page_manager_handlers() {
   $display->panels['left'][0] = 'new-d311fe52-8cbf-4fa2-9277-52cafbaf3c2e';
   $pane = new stdClass();
   $pane->pid = 'new-ae5d12d3-dc57-4ab1-a662-ee5bbf66f133';
-  $pane->panel = 'right';
+  $pane->panel = 'left';
   $pane->type = 'entity_field';
   $pane->subtype = 'roomify_rate:offer_start_date';
   $pane->shown = TRUE;
@@ -204,14 +204,14 @@ function roomify_offers_default_page_manager_handlers() {
   );
   $pane->css = array();
   $pane->extras = array();
-  $pane->position = 0;
+  $pane->position = 1;
   $pane->locks = array();
   $pane->uuid = 'ae5d12d3-dc57-4ab1-a662-ee5bbf66f133';
   $display->content['new-ae5d12d3-dc57-4ab1-a662-ee5bbf66f133'] = $pane;
-  $display->panels['right'][0] = 'new-ae5d12d3-dc57-4ab1-a662-ee5bbf66f133';
+  $display->panels['left'][1] = 'new-ae5d12d3-dc57-4ab1-a662-ee5bbf66f133';
   $pane = new stdClass();
   $pane->pid = 'new-84792e7b-5f77-4bec-a9b2-c52d4e258ed7';
-  $pane->panel = 'right';
+  $pane->panel = 'left';
   $pane->type = 'entity_field';
   $pane->subtype = 'roomify_rate:offer_end_date';
   $pane->shown = TRUE;
@@ -246,11 +246,11 @@ function roomify_offers_default_page_manager_handlers() {
   );
   $pane->css = array();
   $pane->extras = array();
-  $pane->position = 1;
+  $pane->position = 2;
   $pane->locks = array();
   $pane->uuid = '84792e7b-5f77-4bec-a9b2-c52d4e258ed7';
   $display->content['new-84792e7b-5f77-4bec-a9b2-c52d4e258ed7'] = $pane;
-  $display->panels['right'][1] = 'new-84792e7b-5f77-4bec-a9b2-c52d4e258ed7';
+  $display->panels['left'][2] = 'new-84792e7b-5f77-4bec-a9b2-c52d4e258ed7';
   $pane = new stdClass();
   $pane->pid = 'new-2249ab68-30fe-4b9d-9bf2-5f090f0cf620';
   $pane->panel = 'right';
@@ -260,7 +260,7 @@ function roomify_offers_default_page_manager_handlers() {
   $pane->access = array();
   $pane->configuration = array(
     'override_title' => 1,
-    'override_title_text' => 'Contact',
+    'override_title_text' => '',
     'override_title_heading' => 'h2',
   );
   $pane->cache = array();
@@ -269,11 +269,11 @@ function roomify_offers_default_page_manager_handlers() {
   );
   $pane->css = array();
   $pane->extras = array();
-  $pane->position = 2;
+  $pane->position = 0;
   $pane->locks = array();
   $pane->uuid = '2249ab68-30fe-4b9d-9bf2-5f090f0cf620';
   $display->content['new-2249ab68-30fe-4b9d-9bf2-5f090f0cf620'] = $pane;
-  $display->panels['right'][2] = 'new-2249ab68-30fe-4b9d-9bf2-5f090f0cf620';
+  $display->panels['right'][0] = 'new-2249ab68-30fe-4b9d-9bf2-5f090f0cf620';
   $pane = new stdClass();
   $pane->pid = 'new-61b079e7-7e72-49e1-b876-7902b0eadc48';
   $pane->panel = 'top';
