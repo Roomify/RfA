@@ -712,6 +712,7 @@ body.node-type-homepage {
 .node-type-homepage.homepage-tight {
   .pane-node-field-homepage-main-text {
     @include make-row();
+    margin: 0;
     background: white;
     display: flex;
     width: auto;
