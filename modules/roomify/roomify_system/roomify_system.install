@@ -1038,3 +1038,10 @@ function roomify_system_update_7067() {
 function roomify_system_update_7068() {
   variable_set('media_wysiwyg_external_link', TRUE);
 }
+
+/**
+ * Enable module "Views random seed".
+ */
+function roomify_system_update_7069() {
+  module_enable(array('views_random_seed'));
+}
