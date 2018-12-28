@@ -84,6 +84,7 @@ function roomify_contact_form_alter(&$form, &$form_state, $form_id) {
     $form['field_contact_arrival'][LANGUAGE_NONE][0]['#default_value']['value'] = '';
     $form['field_contact_departure'][LANGUAGE_NONE][0]['#default_value']['value'] = '';
 
+    $form['field_contact_more_informations']['und'][0]['value']['#rows'] = 3;
     $form['#attached']['css'][] = drupal_get_path('module', 'roomify_contact') . '/skin/single-melon.datepicker.css';
   }
 }

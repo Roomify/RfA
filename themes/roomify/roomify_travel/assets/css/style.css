@@ -16003,11 +16003,16 @@ body.node-type-offer .page-header {
   min-height: 1px;
   padding-left: 15px;
   padding-right: 15px; }
+body.node-type-offer #ui-datepicker-div {
+  font-size: 90%;
+  width: 20em !important; }
 body.node-type-offer .pane-manage-offer-link {
   display: inline-block;
   width: 100%;
   text-align: right;
   margin: 15px 0; }
+body.node-type-offer .form-actions {
+  text-align: right; }
 body.node-type-offer .panel_sl_right {
   margin-bottom: 15px;
   display: inline-block;
@@ -16022,7 +16027,18 @@ body.node-type-offer .panel_sl_right {
       max-width: calc(100% - 30px);
       margin-left: 15px; } }
 body.node-type-offer .pane-entityform-block-contact .form-group {
-  margin-bottom: 10px; }
+  margin-bottom: 7px; }
+@media (min-width: 768px) {
+  body.node-type-offer .pane-entityform-block-contact .field-name-field-contact-first-name,
+  body.node-type-offer .pane-entityform-block-contact .field-name-field-contact-last-name {
+    width: 50%;
+    padding-right: 5px;
+    float: left;
+    display: inline-block; } }
+@media (min-width: 768px) {
+  body.node-type-offer .pane-entityform-block-contact .field-name-field-contact-last-name {
+    padding-right: 0px;
+    padding-left: 5px; } }
 body.node-type-offer .pane-entityform-block-contact .date-combo {
   border: none;
   -webkit-box-shadow: none;
@@ -16057,7 +16073,7 @@ body.node-type-offer .pane-roomify-rate-offer-start-date,
 body.node-type-offer .pane-roomify-rate-offer-end-date {
   display: inline-block;
   float: left;
-  margin: 15px 4px 15px 0; }
+  margin: 30px 4px 10px 0; }
   body.node-type-offer .pane-roomify-rate-offer-start-date .pane-title,
   body.node-type-offer .pane-roomify-rate-offer-start-date .pane-content,
   body.node-type-offer .pane-roomify-rate-offer-end-date .pane-title,
@@ -16069,7 +16085,8 @@ body.node-type-offer .pane-roomify-rate-offer-end-date {
   body.node-type-offer .pane-roomify-rate-offer-end-date .pane-content {
     font-weight: 400; }
 body.node-type-offer .pane-node-field-offer-description {
-  margin: 50px 0; }
+  margin-top: 10px;
+  margin-bottom: 60px; }
 body.node-type-offer .pane-offer-panel-pane-2 .pane-title {
   text-align: center; }
 body.node-type-offer .pane-offer-panel-pane-2 .view-offer .view-filters {

@@ -4,6 +4,10 @@ body.node-type-offer {
   .page-header {
     @include make-xs-column(12);
   }
+  #ui-datepicker-div {
+    font-size: 90%;
+    width: 20em !important;
+  }
   .pane-manage-offer-link {
     display: inline-block;
     width: 100%;
@@ -11,6 +15,9 @@ body.node-type-offer {
     margin: 15px 0;
     a {
     }
+  }
+  .form-actions {
+    text-align: right;
   }
   .panel_sl_right {
     margin-bottom: 15px;
@@ -28,7 +35,22 @@ body.node-type-offer {
   }
   .pane-entityform-block-contact {
     .form-group {
-      margin-bottom: 10px;
+      margin-bottom: 7px;
+    }
+    .field-name-field-contact-first-name,
+    .field-name-field-contact-last-name {
+      @media (min-width: $screen-sm) {
+        width: 50%;
+        padding-right: 5px;
+        float: left;
+        display: inline-block;
+      }
+    }
+    .field-name-field-contact-last-name {
+      @media (min-width: $screen-sm) {
+        padding-right: 0px;
+        padding-left: 5px;
+      }
     }
     .date-combo {
       border: none;
@@ -75,7 +97,7 @@ body.node-type-offer {
   .pane-roomify-rate-offer-end-date {
     display: inline-block;
     float: left;
-    margin: 15px 4px 15px 0;
+    margin: 30px 4px 10px 0;
     .pane-title,
     .pane-content {
       font-weight: 300;
@@ -87,7 +109,8 @@ body.node-type-offer {
     }
   }
   .pane-node-field-offer-description {
-    margin: 50px 0;
+    margin-top: 10px;
+    margin-bottom: 60px;
   }
   // Participating properties
   .pane-offer-panel-pane-2 {
