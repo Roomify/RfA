@@ -67,14 +67,14 @@ function roomify_area_form_taxonomy_form_term_alter(&$form, &$form_state) {
 }
 
 /**
- *
+ * Custom submit function for the taxonomy_form_term form.
  */
 function custom_roomify_area_submit(&$form, &$form_state) {
   if (isset($form_state['term']->vocabulary_machine_name)) {
     if ($form_state['term']->vocabulary_machine_name == 'location') {
-
-      $form_state['redirect'] = drupal_get_path_alias('taxonomy/term/' . $form_state['tid']);
-
+      if (isset($form_state['tid'])) {
+        $form_state['redirect'] = drupal_get_path_alias('taxonomy/term/' . $form_state['tid']);
+      }
     }
   }
 }
@@ -165,7 +165,7 @@ function roomify_areas_block() {
 }
 
 /**
- * Hook on term insertion.
+ * Implements hook_taxonomy_term_presave().
  */
 function roomify_area_taxonomy_term_presave($term) {
   if ($term->vocabulary_machine_name == 'location') {
