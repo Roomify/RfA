@@ -397,9 +397,8 @@ projects[popup_field_group][version] = 1.1
 projects[popup_message][version] = 1.2
 projects[popup_message][patch][] = https://www.drupal.org/files/issues/popup_message-title-not-required-1854924-3.patch
 
-projects[profile2][version] = 1.5
-projects[profile2][patch][] = https://www.drupal.org/files/issues/profile2-entity_translation_support-1966640-25_0.patch
-projects[profile2][patch][] = patches/profile2.patch
+projects[profile2][version] = 1.6
+projects[profile2][patch][] = https://www.drupal.org/files/issues/2018-04-07/profile2-entity_translation_support-1966640-30.patch
 
 projects[publishcontent][version] = 1.3
 
