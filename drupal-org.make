@@ -62,15 +62,11 @@ projects[better_db_updates][subdir] = contrib
 
 ; bootstrap
 projects[bootstrap][type] = theme
-projects[bootstrap][version] = 3.22
+projects[bootstrap][version] = 3.23
 
 ; adminimal
 projects[adminimal_theme][type] = theme
-projects[adminimal_theme][version] = 1.24
-; Fix issue with module_filter not being detected.
-; See: https://www.drupal.org/node/2763581
-projects[adminimal_theme][patch][] = https://www.drupal.org/files/issues/adminimal_theme_1_24-2763581-34_0.patch
-projects[adminimal_theme][patch][] = https://www.drupal.org/files/issues/2018-09-28/adminimal_theme-php_72_count-2951412-9.patch
+projects[adminimal_theme][version] = 1.25
 
 ; +++++ Contrib Modules +++++
 
@@ -162,7 +158,7 @@ projects[content_menu][version] = 1.0
 
 projects[ctools][version] = 1.14
 
-projects[date][version] = 2.11-beta1
+projects[date][version] = 2.11-beta2
 projects[date][patch][] = https://www.drupal.org/files/issues/date-1190830-55.patch
 
 projects[date_restrictions][type] = module
@@ -447,7 +443,7 @@ projects[select2][version] = 1.x-dev
 
 projects[seo_checklist][version] = 4.1
 
-projects[services][version] = 3.20
+projects[services][version] = 3.21
 
 projects[services_api_key_auth][version] = 1.3
 
