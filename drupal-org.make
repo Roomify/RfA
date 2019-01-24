@@ -159,7 +159,7 @@ projects[content_menu][version] = 1.0
 projects[ctools][version] = 1.14
 
 projects[date][version] = 2.11-beta2
-projects[date][patch][] = https://www.drupal.org/files/issues/date-1190830-55.patch
+projects[date][patch][] = https://www.drupal.org/files/issues/2019-01-24/date-1190830-58.patch
 
 projects[date_restrictions][type] = module
 projects[date_restrictions][download][type] = git
