@@ -223,7 +223,7 @@ projects[features][version] = 2.11
 
 projects[ffc][version] = 1.0-beta2
 
-projects[field_collection][version] = 1.0-beta12
+projects[field_collection][version] = 1.0-beta13
 
 projects[field_group][version] = 1.6
 
