@@ -4,7 +4,7 @@
   text-align: center;
   padding: 6px 0;
   font-size: 12px;
-  line-height: 1.428571429;
+  line-height: 1.42857143;
   border-radius: 15px;
 }
 .btn-circle.btn-lg {
@@ -258,7 +258,7 @@ body .sidebar-nav .pane-roomify-sidebar-user-menu .user-account a.btn:hover,
 body .sidebar-nav .pane-roomify-sidebar-user-menu .property-owner-profile a.btn:hover,
 body .sidebar-nav .pane-roomify-sidebar-user-menu .guest-profile a.btn:hover {
   text-decoration: none;
-  opacity: .86;
+  opacity: 0.86;
 }
 body .sidebar-nav .pane-roomify-sidebar-user-menu .logout {
   display: inline-block;
@@ -701,6 +701,11 @@ body.adminimal-theme .autocomplete-deluxe-item {
 #accordion ul ul li a {
   transition: all 0.15s;
 }
+.fc-time-area .fc-rows table * {
+  -moz-box-sizing: inherit;
+  -webkit-box-sizing: inherit;
+  box-sizing: inherit;
+}
 .fc-time-area .fc-event-container {
   height: 100% !important;
 }
@@ -708,7 +713,7 @@ body.adminimal-theme .autocomplete-deluxe-item {
   height: 100%;
   border-radius: 0;
   top: 1px !important;
-  padding: .75em .75em;
+  padding: 0.75em 0.75em;
   font-size: 12px;
 }
 .fc-ltr .fc-timeline-event .fc-bg {
@@ -724,7 +729,7 @@ body.adminimal-theme .autocomplete-deluxe-item {
   height: 98%;
 }
 .fc-bgevent {
-  opacity: .4;
+  opacity: 0.4;
 }
 .fc-title {
   text-transform: uppercase;
@@ -1596,11 +1601,11 @@ body.page-admin.page-admin-bat-config-availability-calendar #page .page-title {
 }
 #glyphicons a,
 #glyphicons span {
-  margin-bottom: .5em;
+  margin-bottom: 0.5em;
   text-align: center;
 }
 #glyphicons a {
-  padding: .5em;
+  padding: 0.5em;
   display: block;
   float: left;
   width: 100px;
@@ -2962,7 +2967,7 @@ div.exposed-filters input#edit-submit {
   font-family: 'Lato', sans-serif !important;
 }
 .ui-datepicker table {
-  font-size: .8em;
+  font-size: 0.8em;
 }
 body.adminimal-theme.adminimal-skin-material.style-checkboxes input[type=checkbox],
 body.adminimal-theme.adminimal-skin-material.style-checkboxes input[type=radio] {
@@ -3752,7 +3757,7 @@ div.ctools-modal-content div.type-container .container-inline .form-item input[n
   font-style: italic;
 }
 .field-name-user-commerce-profile .references-dialog-links a {
-  padding: .5em 1.75em !important;
+  padding: 0.5em 1.75em !important;
 }
 #edit-commerce-cart-expiration-time-value,
 #edit-roomify-accommodation-booking-future-limit-value {
