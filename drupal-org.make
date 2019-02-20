@@ -156,7 +156,7 @@ projects[conditional_fields][version] = 3.0-alpha2
 
 projects[content_menu][version] = 1.0
 
-projects[ctools][version] = 1.14
+projects[ctools][version] = 1.15
 
 projects[date][version] = 2.11-beta2
 projects[date][patch][] = https://www.drupal.org/files/issues/2019-01-24/date-1190830-58.patch
@@ -416,7 +416,7 @@ projects[role_export][download][type] = git
 projects[role_export][download][url] = https://git.drupal.org/project/role_export.git
 projects[role_export][download][revision] = 0aef061b79a1dd0a949d504a238bf8b3f9f41b1b
 
-projects[rules][version] = 2.11
+projects[rules][version] = 2.12
 
 projects[rules_conditional][version] = 1.x-dev
 
@@ -496,7 +496,7 @@ projects[views_autocomplete_filters][download][revision] = 39443b0b95dbc50151ec0
 
 projects[views_bootstrap][version] = 3.2
 
-projects[views_contextual_filters_or][version] = 1.0
+projects[views_contextual_filters_or][version] = 1.1
 
 projects[views_data_export][version] = 3.2
 
