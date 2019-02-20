@@ -31,7 +31,7 @@ class roomify_system_handler_starting_price extends views_handler_field {
    */
   public function render($values) {
     $pid = $values->property_id;
-    $price = get_lower_default_price_property_types($pid);
+    $price = roomify_listing_get_lower_default_price_property_types($pid);
 
     $starting_from = '<div class="listing-base-price">
         <span class="starting-from">' . t('starting from') . ' </span>

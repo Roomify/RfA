@@ -48,7 +48,7 @@ function locanda_availability_search_form_render($subtype, $conf, $args, $pane_c
   $title = '';
   $content = drupal_get_form('locanda_search_availability_search_form');
 
-  $price = get_lower_default_price_property_types($args[0]);
+  $price = roomify_listing_get_lower_default_price_property_types($args[0]);
 
   if ($price) {
     $title = '<span class="title">' . t('Check Availability') . '</span>' . ' ' . '<span class="roomify-starting-price">' . t('Starting from') . ' ' . $price . ' ' . t('per night') . '</span>';

@@ -40,10 +40,10 @@ class roomify_search_handler_starting_type_price extends views_handler_field {
         $end_date = new DateTime(check_plain($_GET['bat_end_date']));
         $end_date->sub(new DateInterval('PT1M'));
 
-        $price = get_property_lower_booking_cost($pid, $start_date, $end_date, check_plain($_GET['group_size']));
+        $price = roomify_listing_get_property_lower_booking_cost($pid, $start_date, $end_date, check_plain($_GET['group_size']));
       }
       else {
-        $price = get_lower_default_price_property_types($pid);
+        $price = roomify_listing_get_lower_default_price_property_types($pid);
       }
 
       return '<span class="starting-from">' . t('from') . ' </span>' . $price;

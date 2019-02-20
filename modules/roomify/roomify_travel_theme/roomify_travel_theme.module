@@ -377,7 +377,7 @@ function roomify_travel_theme_form_alter(&$form, &$form_state, $form_id) {
     $menu_item = menu_get_item();
 
     $property = $menu_item['page_arguments'][1]->data;
-    $price = get_lower_default_price_property_types($property->property_id);
+    $price = roomify_listing_get_lower_default_price_property_types($property->property_id);
     $group_size = isset($_GET['group_size']) ? $_GET['group_size'] : 0;
 
     $book_text = t('Starting From');

@@ -40,7 +40,7 @@ function roomify_listing_availability_search_block_block_view($delta = '') {
 
     if (isset($menu_item['page_arguments'][1]->data)) {
       if (get_class($menu_item['page_arguments'][1]->data) == 'RoomifyProperty') {
-        $starting_price = get_lower_default_price_property_types($menu_item['page_arguments'][1]->data->property_id);
+        $starting_price = roomify_listing_get_lower_default_price_property_types($menu_item['page_arguments'][1]->data->property_id);
 
         if ($starting_price) {
           $block['subject'] = '<span class="title">' . t('Check Availability') . '</span>' . ' ' . '<span class="roomify-starting-price">' . t('Starting from') . ' ' . $starting_price . ' ' . t('per night') . '</span>';

@@ -56,7 +56,7 @@ class roomify_system_handler_areas_properties extends views_handler_field {
       }
       $list .= '<div class="property-featured-image">' . theme('image_style', $image) . '</div>';
 
-      $price = get_lower_default_price_property_types($property->property_id);
+      $price = roomify_listing_get_lower_default_price_property_types($property->property_id);
 
       $list .= '<div class="property-details">
         <table>

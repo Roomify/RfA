@@ -163,7 +163,7 @@ function roomify_accommodation_booking_line_item_configuration($line_item_type) 
  */
 function roomify_accommodation_booking_line_item_title($line_item) {
   // Use the line item's label for the title.
-  return ($line_item->line_item_label);
+  return $line_item->line_item_label;
 }
 
 /**
