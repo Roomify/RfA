@@ -302,7 +302,7 @@ projects[less][version] = 4.0
 
 projects[libraries][version] = 2.5
 
-projects[link][version] = 1.5
+projects[link][version] = 1.6
 
 projects[jsonlog][version] = 2.1
 
