@@ -40,7 +40,7 @@ class roomify_listing_handler_type_book_this_field extends bat_type_handler_link
 
       if ($validation1['error_count'] != 0 || $validation2['error_count'] != 0) {
         $return = l($text, '/listing/' . $property->property_id, array('attributes' => array('class' => array('btn btn-primary btn-info'), 'html' => 'true', 'disabled' => 'true')));
-        $return .= '<div class="info">' . t('define dates to check availability') . '<div>';
+        $return .= '<div class="info">' . t('define dates to check availability') . '</div>';
       }
       else {
         $start_date = new DateTime(check_plain($_GET['bat_start_date']));
@@ -54,12 +54,12 @@ class roomify_listing_handler_type_book_this_field extends bat_type_handler_link
         $group_size = $_GET['group_size'];
 
         if ($group_size > $type->field_st_max_capacity[LANGUAGE_NONE][0]['value']) {
-          $return = l($text, '/listing/' . $property->property_id, array('attributes' => array('class' => array('btn btn-primary btn-info'), 'html' => 'true', 'disabled' => 'true')));
-          $return .= '<div class="info">' . t('not enough space') . '<div>';
+          $return = l(t('Not available'), '/listing/' . $property->property_id, array('attributes' => array('class' => array('btn btn-primary btn-info'), 'html' => 'true', 'disabled' => 'true')));
+          $return .= '<div class="info">' . t('not enough space') . '</div>';
         }
         elseif (bat_event_get_matching_units($start_date, $end_date, array(AVAILABLE), $type->type_id, 'availability') === FALSE) {
-          $return = l($text, '/listing/' . $property->property_id, array('attributes' => array('class' => array('btn btn-primary btn-info'), 'html' => 'true', 'disabled' => 'true')));
-          $return .= '<div class="info">' . t('not available for these dates') . '<div>';
+          $return = l(t('Dates not available'), '/listing/' . $property->property_id, array('attributes' => array('class' => array('btn btn-primary btn-info'), 'html' => 'true', 'disabled' => 'true')));
+          $return .= '<div class="info not-available-dates">' . t('not available for these dates') . '</div>';
         }
         else {
           if ($instant_booking[0]['value']) {
