@@ -73,7 +73,7 @@ projects[adminimal_theme][version] = 1.25
 
 projects[addressfield][version] = 1.3
 
-projects[addtoany][version] = 4.15
+projects[addtoany][version] = 4.16
 
 projects[admin_menu][version] = 3.0-rc6
 
@@ -168,7 +168,7 @@ projects[date_restrictions][download][revision] = e2de47a66ea160aedca3d22fd1ab0a
 
 projects[date_datepicker_inline][version] = 1.1
 
-projects[devel][version] = 1.6
+projects[devel][version] = 1.7
 
 projects[diff][version] = 3.4
 
@@ -443,7 +443,7 @@ projects[select2][version] = 1.x-dev
 
 projects[seo_checklist][version] = 4.1
 
-projects[services][version] = 3.21
+projects[services][version] = 3.23
 
 projects[services_api_key_auth][version] = 1.3
 
@@ -481,13 +481,13 @@ projects[uuid][version] = 1.2
 
 projects[variable][version] = 2.5
 
-projects[video][version] = 2.13
+projects[video][version] = 2.14
 
 projects[video_embed_field][version] = 2.0-beta11
 
 projects[view_unpublished][version] = 1.2
 
-projects[views][version] = 3.20
+projects[views][version] = 3.21
 
 projects[views_autocomplete_filters][type] = module
 projects[views_autocomplete_filters][download][type] = git
