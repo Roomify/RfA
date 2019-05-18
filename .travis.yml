@@ -102,8 +102,8 @@ before_script:
 
   # Fetch and start selenium.
   - mkdir -p $HOME/.cache
-  - wget -nc -O $HOME/.cache/selenium-server-standalone-3.11.0.jar http://selenium-release.storage.googleapis.com/3.11/selenium-server-standalone-3.11.0.jar || true
-  - java -jar $HOME/.cache/selenium-server-standalone-3.11.0.jar -port 4444 &> /tmp/selenium.log &
+  - wget -nc -O $HOME/.cache/selenium-server-standalone-3.14.0.jar http://selenium-release.storage.googleapis.com/3.14/selenium-server-standalone-3.14.0.jar || true
+  - java -jar $HOME/.cache/selenium-server-standalone-3.14.0.jar -port 4444 &> /tmp/selenium.log &
   - sleep 5
 
 
