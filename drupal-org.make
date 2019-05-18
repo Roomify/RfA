@@ -62,7 +62,7 @@ projects[better_db_updates][subdir] = contrib
 
 ; bootstrap
 projects[bootstrap][type] = theme
-projects[bootstrap][version] = 3.23
+projects[bootstrap][version] = 3.25
 
 ; adminimal
 projects[adminimal_theme][type] = theme
@@ -105,8 +105,7 @@ projects[cer][download][type] = git
 projects[cer][download][url] = https://git.drupal.org/project/cer.git
 projects[cer][download][revision] = 886048a494a3d3c8fea79564b3a01e00ebed6754
 
-projects[chain_menu_access][version] = 2.0
-projects[chain_menu_access][patch][] = https://www.drupal.org/files/issues/2018-10-19/chain_menu_access-deprecated_function-D7-2995656-10.patch
+projects[chain_menu_access][version] = 2.1
 
 projects[charts][version] = 2.0-rc1
 
@@ -139,7 +138,7 @@ projects[commerce_features][version] = 1.1
 
 projects[commerce_fees][version] = 1.0-beta1
 
-projects[commerce_paypal][version] = 2.6
+projects[commerce_paypal][version] = 2.7
 
 projects[commerce_reports][version] = 4.0-beta2
 
@@ -340,7 +339,7 @@ projects[metatag][version] = 1.25
 
 projects[mimemail][version] = 1.1
 
-projects[module_filter][version] = 2.1
+projects[module_filter][version] = 2.2
 
 projects[multiupload_filefield_widget][version] = 1.13
 
@@ -427,7 +426,7 @@ projects[rrssb][download][revision] = 969397d5331003aa33869b53bd4ac94814f99852
 
 projects[s3fs][version] = 2.12
 
-projects[search_api][version] = 1.25
+projects[search_api][version] = 1.26
 
 projects[search_api_db][version] = 1.7
 projects[search_api_db][patch][] = https://www.drupal.org/files/issues/2219897-25--facets_for_empty_results.patch
@@ -443,7 +442,7 @@ projects[select2][version] = 1.x-dev
 
 projects[seo_checklist][version] = 4.1
 
-projects[services][version] = 3.23
+projects[services][version] = 3.24
 
 projects[services_api_key_auth][version] = 1.3
 
@@ -487,7 +486,7 @@ projects[video_embed_field][version] = 2.0-beta11
 
 projects[view_unpublished][version] = 1.2
 
-projects[views][version] = 3.21
+projects[views][version] = 3.23
 
 projects[views_autocomplete_filters][type] = module
 projects[views_autocomplete_filters][download][type] = git
