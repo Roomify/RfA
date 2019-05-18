@@ -59,7 +59,6 @@ function roomify_contact_notify_managers($entityform, $settings, $rules_state) {
 
   foreach ($managers as $manager) {
     pet_action_send_pet('new_email_from_contact_form', NULL, $manager, NULL, NULL, array(), $rules_state);
-
   }
 }
 
@@ -70,7 +69,6 @@ function roomify_contact_pet_substitutions_alter(&$substitutions, $params) {
   if (isset($params['rules_state']->currentArguments['entityform'])) {
     $entityform = $params['rules_state']->currentArguments['entityform']->value();
     $substitutions['entityform'] = $entityform;
-
   }
 }
 
@@ -136,4 +134,16 @@ function roomify_contact_page_text_form($form, &$form_state) {
  */
 function roomify_contact_page_text_form_submit($form, &$form_state) {
   drupal_set_message(t('The configuration options have been saved'));
+}
+
+/**
+ * Implements hook_mail_alter().
+ */
+function roomify_contact_mail_alter(&$message) {
+  if ($message['id'] == 'pet_new_email_from_contact_form') {
+    $entityform = $message['params']['rules_state']->currentArguments['entityform']->value();
+    if (!empty($entityform->field_contact_mail_address[LANGUAGE_NONE][0]['email'])) {
+      $message['headers']['Reply-To'] = $entityform->field_contact_mail_address[LANGUAGE_NONE][0]['email'];
+    }
+  }
 }
