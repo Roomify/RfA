@@ -565,7 +565,7 @@ libraries[ckeditor][directory_name] = ckeditor
 libraries[ckeditor][type] = library
 libraries[ckeditor][destination] = libraries
 libraries[ckeditor][download][type] = get
-libraries[ckeditor][download][url] = https://ckeditor.com/cke4/online-builder/releases/minified/4.11.3/icy_orange/0.9/ckeditor_4.11.3_44c246ecde54.zip
+libraries[ckeditor][download][url] = https://ckeditor.com/cke4/online-builder/releases/minified/4.11.4/icy_orange/0.9/ckeditor_4.11.4_22052b18f1e3.zip
 
 ; colorbox
 libraries[colorbox][directory_name] = colorbox
