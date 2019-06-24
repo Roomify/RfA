@@ -230,7 +230,7 @@ function roomify_accommodations_group_property_add(Group $group) {
  * Adds a Group vertical tab to the property form.
  *
  * You can only select those groups that you can create propertis of this type in.
- * It would not make sense if someone could move properties to a group where he does
+ * It would not make sense if someone could move properties to a group where does
  * not have creation rights.
  *
  * @see roomify_accommodations_group_property_validate()
@@ -322,7 +322,7 @@ function roomify_accommodations_group_form_alter(&$form, &$form_state, $form_id)
         : t('Because you are not allowed to create this content outside of a group, you are required to enter the name of one here.');
 
       // There is a special use case where a user may edit global properties, but
-      // not create them and also may bypass group access. In such a case, he
+      // not create them and also may bypass group access. In such a case,
       // could move an ungrouped property to a group, or leave it ungrouped.
       if (!empty($property->property_id) && empty($gid) && !$global_property_create_access) {
         $description = t('This property is not attached to a group. In order to keep it that way, leave this field blank. Alternatively, you may enter the name of the group to attach this property to.');
@@ -388,7 +388,7 @@ function roomify_accommodations_group_group_property_create_gids($type, $account
     }
   }
 
-  // Add all of the user's groups in which he has creation rights.
+  // Add all of the user's groups in which has creation rights.
   foreach (group_load_by_member($account->uid) as $group) {
     $has_access = group_access('administer group', $group, $account);
     $has_access = $has_access || group_access("create $type property", $group, $account);

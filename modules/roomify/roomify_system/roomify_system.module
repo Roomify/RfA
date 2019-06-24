@@ -1827,7 +1827,7 @@ function roomify_system_file_dir() {
 function roomify_system_form_user_profile_form_alter(&$form, &$form_state) {
   global $user;
 
-  // A manager can't update his role.
+  // A manager can't update role.
   if (strpos(current_path(), 'user/' . $user->uid . '/edit') === 0 &&
       !(in_array('administrator', $user->roles) || $user->uid == 1)) {
     $form['account']['status']['#access'] = FALSE;
