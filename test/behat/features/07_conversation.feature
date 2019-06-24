@@ -32,6 +32,8 @@ Feature: Conversation
     Then I visit last created property
     Then I fill in "arrival[date]" with "<<DATE1>>"
     Then I fill in "departure[date]" with "<<DATE2>>"
+    # Do this to remove the popup calendar
+    And I click on the text "accommodations"
     And I click on the text "Book Now"
     And I click on the text "Send an Enquiry"
     And I wait for AJAX to finish
