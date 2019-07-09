@@ -81,7 +81,7 @@ before_script:
   - php -d sendmail_path=$(which true) ~/.composer/vendor/bin/drush.php --yes site-install roomify roomify_install_welcome.roomify_product="${PRODUCT}" --db-url=mysql://drupal:drupal@127.0.0.1/drupal --account-name=admin --account-pass=admin --site-mail=webmaster@roomify.us --site-name="${PRODUCT}"
   # Install required libraries.
   - drush composer-json-rebuild
-  - drush composer-manager install
+  - drush composer-manager install --no-dev
   # Enable the theme for this build.
   - if [ "${THEME}" != 'default' ]; then drush -y en ${THEME}; drush -y vset theme_default ${THEME}; fi
   # Clear caches.
