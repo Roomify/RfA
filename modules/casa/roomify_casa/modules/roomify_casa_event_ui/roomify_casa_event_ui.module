@@ -789,10 +789,6 @@ function roomify_casa_event_ui_pricing_test_form($form, &$form_state, $property_
  * Ajax callback for the roomify_casa_event_ui_pricing_test_form form.
  */
 function roomify_casa_event_ui_pricing_test_form_callback($form, &$form_state) {
-  global $databases;
-
-  $prefix = (isset($databases['default']['default']['prefix'])) ? $databases['default']['default']['prefix'] : '';
-
   $values = $form_state['values'];
 
   $start_date = new DateTime($values['bat_start_date']);
@@ -1052,12 +1048,9 @@ function roomify_casa_event_ui_views_pre_view(&$view, &$display_id, &$args) {
  * @return array
  */
 function roomify_casa_event_ui_get_pricing_events($unit_type, $start_date, $end_date) {
-  global $databases;
-
   $controller = entity_get_controller('roomify_rate');
 
-  $prefix = (isset($databases['default']['default']['prefix'])) ? $databases['default']['default']['prefix'] : '';
-  $event_store = new DrupalDBStore('pricing', DrupalDBStore::BAT_EVENT, $prefix);
+  $event_store = new DrupalDBStore('pricing', DrupalDBStore::BAT_EVENT, bat_get_db_prefix());
 
   $entities = $controller->getReferencedIds($unit_type);
 
@@ -1104,12 +1097,8 @@ function roomify_casa_event_ui_get_pricing_events($unit_type, $start_date, $end_
  * @return int
  */
 function roomify_casa_event_ui_get_price($rates, $start_date, $end_date, $type, $index) {
-  global $databases;
-
-  $prefix = (isset($databases['default']['default']['prefix'])) ? $databases['default']['default']['prefix'] : '';
-
-  $state_store = new DrupalDBStore('pricing', DrupalDBStore::BAT_STATE, $prefix);
-  $event_store = new DrupalDBStore('pricing', DrupalDBStore::BAT_EVENT, $prefix);
+  $state_store = new DrupalDBStore('pricing', DrupalDBStore::BAT_STATE, bat_get_db_prefix());
+  $event_store = new DrupalDBStore('pricing', DrupalDBStore::BAT_EVENT, bat_get_db_prefix());
 
   $rate = roomify_rate_load($rates[$type][$index]);
 
