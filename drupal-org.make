@@ -66,7 +66,7 @@ projects[bootstrap][version] = 3.25
 
 ; adminimal
 projects[adminimal_theme][type] = theme
-projects[adminimal_theme][version] = 1.25
+projects[adminimal_theme][version] = 1.26
 
 ; +++++ Contrib Modules +++++
 
@@ -442,7 +442,7 @@ projects[select2][version] = 1.x-dev
 
 projects[seo_checklist][version] = 4.1
 
-projects[services][version] = 3.24
+projects[services][version] = 3.25
 
 projects[services_api_key_auth][version] = 1.3
 
@@ -476,7 +476,7 @@ projects[token][version] = 1.7
 
 projects[userone][version] = 1.0-beta1
 
-projects[uuid][version] = 1.2
+projects[uuid][version] = 1.3
 
 projects[variable][version] = 2.5
 
