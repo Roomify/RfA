@@ -62,7 +62,7 @@ projects[better_db_updates][subdir] = contrib
 
 ; bootstrap
 projects[bootstrap][type] = theme
-projects[bootstrap][version] = 3.25
+projects[bootstrap][version] = 3.26
 
 ; adminimal
 projects[adminimal_theme][type] = theme
@@ -117,7 +117,7 @@ projects[classy_paragraphs][version] = 1.0
 
 projects[colorbox] = 2.13
 
-projects[commerce][version] = 1.14
+projects[commerce][version] = 1.15
 projects[commerce][patch][] = https://www.drupal.org/files/issues/commerce-delete_line_items_without_products-2261289-4.patch
 
 projects[commerce_addressbook] = 3.0-rc4
@@ -322,7 +322,7 @@ projects[masonry][version] = 3.0-beta1
 
 projects[masonry_views][version] = 3.0
 
-projects[media][version] = 2.21
+projects[media][version] = 2.23
 
 projects[media_colorbox][version] = 1.0-rc4
 projects[media_colorbox][patch][] = https://www.drupal.org/files/issues/media_colorbox-visibility_settings-2232513-7.patch
@@ -408,7 +408,7 @@ projects[relation][version] = 1.2
 
 projects[robotstxt][version] = 1.3
 
-projects[role_delegation][version] = 1.1
+projects[role_delegation][version] = 1.2
 
 projects[role_export][type] = module
 projects[role_export][download][type] = git
@@ -417,7 +417,7 @@ projects[role_export][download][revision] = 0aef061b79a1dd0a949d504a238bf8b3f9f4
 
 projects[rules][version] = 2.12
 
-projects[rules_conditional][version] = 1.x-dev
+projects[rules_conditional][version] = 1.0
 
 projects[rrssb][type] = module
 projects[rrssb][download][type] = git
@@ -448,15 +448,9 @@ projects[services_api_key_auth][version] = 1.3
 
 projects[session_api][version] = 1.0-rc1
 
-projects[slick][type] = module
-projects[slick][download][type] = git
-projects[slick][download][url] = https://git.drupal.org/project/slick.git
-projects[slick][download][revision] = eba6411910e1adf2d027607f4dbeb294be9ccd4b
+projects[slick][version] = 2.1
 
-projects[slick_views][type] = module
-projects[slick_views][download][type] = git
-projects[slick_views][download][url] = https://git.drupal.org/project/slick_views.git
-projects[slick_views][download][revision] = 96cf95a9a58ace07dd576f24d9183e83fd0b3032
+projects[slick_views][version] = 2.1
 
 projects[smtp][version] = 1.7
 
@@ -517,7 +511,7 @@ projects[votingapi][version] = 2.15
 
 projects[vvf][version] = 1.2
 
-projects[wysiwyg][version] = 2.5
+projects[wysiwyg][version] = 2.6
 
 projects[xautoload][version] = 5.7
 
@@ -560,12 +554,12 @@ libraries[select2][download][url] = https://github.com/select2/select2/archive/4
 
 ; ckeditor with plugins for asset module
 ; To update the link, go to http://ckeditor.com/builder and select the
-; Full build of version 4 with the iFrame dialog field plugin, Icy Orange skin and all languages. (optimized version)
+; Full build of version 4 with the iFrame dialog field plugin, UI color picker plugin, Bootstrap glyphicon plugin, Table tools toolbar plugin, Icy Orange skin and all languages. (optimized version)
 libraries[ckeditor][directory_name] = ckeditor
 libraries[ckeditor][type] = library
 libraries[ckeditor][destination] = libraries
 libraries[ckeditor][download][type] = get
-libraries[ckeditor][download][url] = https://ckeditor.com/cke4/online-builder/releases/minified/4.12.1/icy_orange/0.9/ckeditor_4.12.1_9249ae8e4631.zip
+libraries[ckeditor][download][url] = https://ckeditor.com/cke4/online-builder/releases/minified/4.12.1/icy_orange/0.9/ckeditor_4.12.1_aaf21683983e.zip
 
 ; colorbox
 libraries[colorbox][directory_name] = colorbox
