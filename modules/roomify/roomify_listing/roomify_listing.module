@@ -1744,7 +1744,8 @@ function roomify_listing_bat_api_events_index_calendar_alter(&$events, $context)
   global $user;
 
   if ((is_array($user->roles) && !in_array('administrator', $user->roles) &&
-      !in_array('property owner', $user->roles) && !in_array('roomify manager', $user->roles)) ||
+      !user_access('update any bat_booking entity') && !in_array('property owner', $user->roles) &&
+      !in_array('roomify manager', $user->roles)) ||
       !is_array($user->roles) || $context['background'] === 'type-availability-calendar') {
     foreach ($events as $id => $event) {
       if ($event['blocking']) {
