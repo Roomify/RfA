@@ -35,16 +35,16 @@ class roomify_search_handler_property_capacity extends views_handler_field {
         $capacity = 0;
         foreach ($property_types as $type_id) {
           $type = bat_type_load($type_id['target_id']);
+
           if ($type->status) {
             $room_capacity = field_get_items('bat_type', $type, 'field_st_max_capacity');
             $capacity = $capacity + $room_capacity[0]['value'];
           }
         }
+
         return $capacity;
       }
     }
-    return;
-
   }
 
 }

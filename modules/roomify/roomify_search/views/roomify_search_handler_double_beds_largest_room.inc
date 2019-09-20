@@ -35,20 +35,21 @@ class roomify_search_handler_double_beds_largest_room extends views_handler_fiel
         $beds = 0;
         foreach ($property_types as $type_id) {
           $type = bat_type_load($type_id['target_id']);
+
           if ($type->status) {
             $double_beds = field_get_items('bat_type', $type, 'field_st_double_bed');
             $n_beds = $double_beds[0]['value'];
+
             // Select the type with the greater n. of beds.
             if ($n_beds >= $beds) {
               $beds = $n_beds;
             }
           }
         }
+
         return $beds;
       }
     }
-    return;
-
   }
 
 }

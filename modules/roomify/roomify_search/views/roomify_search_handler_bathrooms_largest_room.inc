@@ -35,14 +35,17 @@ class roomify_search_handler_bathrooms_largest_room extends views_handler_field 
         $bathrooms = 0;
         foreach ($property_types as $type_id) {
           $type = bat_type_load($type_id['target_id']);
+
           if ($type->status) {
             $n_bathrooms = field_get_items('bat_type', $type, 'field_st_bathrooms');
+
             // Select the type with the greater n. of bathrooms.
             if (isset($n_bathrooms[0]['value']) && $n_bathrooms[0]['value'] >= $bathrooms) {
               $bathrooms = $n_bathrooms[0]['value'];
             }
           }
         }
+
         return $bathrooms;
       }
     }

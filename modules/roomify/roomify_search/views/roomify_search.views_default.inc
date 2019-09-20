@@ -297,13 +297,6 @@ function roomify_search_views_default_views() {
       ),
     ),
   );
-  /* Field: Indexed Roomify Property: Types List */
-  $handler->display->display_options['fields']['property_types']['id'] = 'property_types';
-  $handler->display->display_options['fields']['property_types']['table'] = 'search_api_index_properties_index';
-  $handler->display->display_options['fields']['property_types']['field'] = 'property_types';
-  $handler->display->display_options['fields']['property_types']['label'] = '';
-  $handler->display->display_options['fields']['property_types']['exclude'] = TRUE;
-  $handler->display->display_options['fields']['property_types']['element_label_colon'] = FALSE;
   /* Field: Indexed Roomify Property: Location */
   $handler->display->display_options['fields']['field_sp_location']['id'] = 'field_sp_location';
   $handler->display->display_options['fields']['field_sp_location']['table'] = 'search_api_index_properties_index';
@@ -428,17 +421,6 @@ function roomify_search_views_default_views() {
       ),
     ),
   );
-  /* Field: Global: Custom text */
-  $handler->display->display_options['fields']['nothing']['id'] = 'nothing';
-  $handler->display->display_options['fields']['nothing']['table'] = 'views';
-  $handler->display->display_options['fields']['nothing']['field'] = 'nothing';
-  $handler->display->display_options['fields']['nothing']['label'] = '';
-  $handler->display->display_options['fields']['nothing']['exclude'] = TRUE;
-  $handler->display->display_options['fields']['nothing']['alter']['text'] = '<div class="property-info">
-            <div class="description">[field_sp_short_description]</div>
-            <div class="types">[property_types]</div>
-          </div>';
-  $handler->display->display_options['fields']['nothing']['element_label_colon'] = FALSE;
   $handler->display->display_options['allow']['use_pager'] = 0;
   $handler->display->display_options['allow']['items_per_page'] = 0;
   $handler->display->display_options['allow']['offset'] = 0;
@@ -816,10 +798,6 @@ function roomify_search_views_default_views() {
               <div class="property-types-table">[property_types]</div>
             </div>
           </div>'),
-    t('<div class="property-info">
-              <div class="description">[field_sp_short_description]</div>
-              <div class="types">[property_types]</div>
-            </div>'),
     t('Details View'),
     t('<div class="name">[name]</div>
       <div class="short-description">[field_sp_short_description]</div>

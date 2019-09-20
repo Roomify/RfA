@@ -918,25 +918,22 @@ function custom_roomify_property_validate(&$form, &$form_state) {
  */
 function roomify_listing_get_lower_default_price_property_types($property_id) {
   if ($property = entity_load_single('roomify_property', $property_id)) {
-
     // Extract the type with the lower price.
     $bat_types = field_get_items('roomify_property', $property, 'property_bat_type_reference');
-    $lower_price = 0;
 
-    reset($bat_types);
-    $first = key($bat_types);
+    $lower_price = FALSE;
+
     foreach ($bat_types as $key => $type_id) {
       $type = bat_type_load($type_id['target_id']);
 
       if ($default_price = field_get_items('bat_type', $type, 'field_st_default_price')) {
         $price_value = $default_price[0]['amount'];
 
-        if ($key === $first && isset($price_value)) {
-          // FIRST TYPE.
-          $lower_price = $price_value;
-        }
-        else {
-          if (isset($price_value) && $price_value < $lower_price) {
+        if (isset($price_value)) {
+          if ($lower_price === FALSE) {
+            $lower_price = $price_value;
+          }
+          elseif ($price_value < $lower_price) {
             $lower_price = $price_value;
           }
         }

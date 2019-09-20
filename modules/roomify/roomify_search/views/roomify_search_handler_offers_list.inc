@@ -47,11 +47,11 @@ class roomify_search_handler_offers_list extends views_handler_field {
             $offer_description = isset($offer->offer_description[LANGUAGE_NONE][0]['value']) ? $offer->offer_description[LANGUAGE_NONE][0]['value'] : '';
             $offer_help_text = '<strong>' . $offer->name . '</strong>' . '<br>' . $offer_description;
             $offer_participating .= '<div class="offer-icon offer-link yellow-tooltip" data-toggle="tooltip" data-html="true" title="' . $offer_help_text . '" data-placement="left"></div>';
-
           }
         }
       }
     }
+
     return $offer_participating;
   }
 
