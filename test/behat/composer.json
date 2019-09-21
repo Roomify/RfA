@@ -1,6 +1,6 @@
 {
     "require": {
-        "behat/behat": "3.4.3",
+        "behat/behat": "3.5.0",
         "behat/mink": "1.7.1",
         "behat/mink-goutte-driver": "*",
         "behat/mink-selenium2-driver": "*",
