@@ -191,20 +191,6 @@ function roomify_search_views_default_views() {
   $handler->display->display_options['fields']['property_types']['field'] = 'property_types';
   $handler->display->display_options['fields']['property_types']['label'] = '';
   $handler->display->display_options['fields']['property_types']['element_label_colon'] = FALSE;
-  /* Field: Indexed Roomify Property: Location */
-  $handler->display->display_options['fields']['field_sp_location']['id'] = 'field_sp_location';
-  $handler->display->display_options['fields']['field_sp_location']['table'] = 'search_api_index_properties_index';
-  $handler->display->display_options['fields']['field_sp_location']['field'] = 'field_sp_location';
-  $handler->display->display_options['fields']['field_sp_location']['exclude'] = TRUE;
-  $handler->display->display_options['fields']['field_sp_location']['click_sort_column'] = 'geom';
-  $handler->display->display_options['fields']['field_sp_location']['settings'] = array(
-    'data' => 'full',
-    'conditions' => array(
-      0 => array(
-        'condition' => '',
-      ),
-    ),
-  );
   $handler->display->display_options['allow']['use_pager'] = 0;
   $handler->display->display_options['allow']['items_per_page'] = 0;
   $handler->display->display_options['allow']['offset'] = 0;
@@ -401,20 +387,6 @@ function roomify_search_views_default_views() {
   $handler->display->display_options['fields']['field_sp_featured_image']['settings'] = array(
     'image_style' => 'roomify_4_3',
     'image_link' => '',
-    'conditions' => array(
-      0 => array(
-        'condition' => '',
-      ),
-    ),
-  );
-  /* Field: Indexed Roomify Property: Location */
-  $handler->display->display_options['fields']['field_sp_location']['id'] = 'field_sp_location';
-  $handler->display->display_options['fields']['field_sp_location']['table'] = 'search_api_index_properties_index';
-  $handler->display->display_options['fields']['field_sp_location']['field'] = 'field_sp_location';
-  $handler->display->display_options['fields']['field_sp_location']['exclude'] = TRUE;
-  $handler->display->display_options['fields']['field_sp_location']['click_sort_column'] = 'geom';
-  $handler->display->display_options['fields']['field_sp_location']['settings'] = array(
-    'data' => 'full',
     'conditions' => array(
       0 => array(
         'condition' => '',
