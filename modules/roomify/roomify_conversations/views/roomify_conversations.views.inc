@@ -61,7 +61,8 @@ function roomify_conversations_views_default_views() {
   $handler->display->display_options['use_more_always'] = FALSE;
   $handler->display->display_options['use_more_text'] = 'View All';
   $handler->display->display_options['link_display'] = 'owner_all_conversations';
-  $handler->display->display_options['access']['type'] = 'role';
+  $handler->display->display_options['access']['type'] = 'perm';
+  $handler->display->display_options['access']['perm'] = 'view own roomify_conversation entities';
   $handler->display->display_options['cache']['type'] = 'none';
   $handler->display->display_options['query']['type'] = 'views_query';
   $handler->display->display_options['query']['options']['contextual_filters_or'] = TRUE;
@@ -345,8 +346,6 @@ function roomify_conversations_views_default_views() {
 
   /* Display: Owner Conversations */
   $handler = $view->new_display('panel_pane', 'Owner Conversations', 'owner_conversations');
-  $handler->display->display_options['defaults']['access'] = FALSE;
-  $handler->display->display_options['access']['type'] = 'none';
   $handler->display->display_options['defaults']['pager'] = FALSE;
   $handler->display->display_options['pager']['type'] = 'some';
   $handler->display->display_options['pager']['options']['items_per_page'] = '4';
@@ -895,8 +894,6 @@ function roomify_conversations_views_default_views() {
   $handler = $view->new_display('panel_pane', 'Guest Conversations', 'guest_conversations');
   $handler->display->display_options['defaults']['link_display'] = FALSE;
   $handler->display->display_options['link_display'] = 'guest_all_conversations';
-  $handler->display->display_options['defaults']['access'] = FALSE;
-  $handler->display->display_options['access']['type'] = 'none';
   $handler->display->display_options['defaults']['pager'] = FALSE;
   $handler->display->display_options['pager']['type'] = 'some';
   $handler->display->display_options['pager']['options']['items_per_page'] = '4';
