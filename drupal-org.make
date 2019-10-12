@@ -157,7 +157,7 @@ projects[content_menu][version] = 1.0
 
 projects[ctools][version] = 1.15
 
-projects[date][version] = 2.11-beta2
+projects[date][version] = 2.11-beta3
 projects[date][patch][] = https://www.drupal.org/files/issues/2019-01-24/date-1190830-58.patch
 
 projects[date_restrictions][type] = module
@@ -208,9 +208,8 @@ projects[eu_cookie_compliance][version] = 1.17
 
 projects[facebook_tracking_pixel][version] = 1.1
 
-projects[facetapi][version] = 1.5
+projects[facetapi][version] = 1.6
 projects[facetapi][patch][] = https://www.drupal.org/files/issues/facetapi-cur-search-block-not-exported-1469002_2.patch
-projects[facetapi][patch][] = https://www.drupal.org/files/issues/facetapi-override_facet_label-1665164-22.patch
 
 projects[facetapi_pretty_paths][version] = 1.4
 
@@ -239,7 +238,7 @@ projects[field_formatter_settings][version] = 1.1
 projects[footable][version] = 1.0
 projects[footable][patch][] = https://www.drupal.org/files/issues/footable-add_striping_option-2307701-4.patch
 
-projects[file_entity][version] = 2.25
+projects[file_entity][version] = 2.26
 
 projects[geofield][version] = 2.4
 
@@ -283,7 +282,7 @@ projects[image_link_formatter][version] = 1.1
 
 projects[imageapi_optimize][version] = 1.3
 
-projects[inline_entity_form][version] = 1.8
+projects[inline_entity_form][version] = 1.9
 
 projects[interval][version] = 1.0
 
@@ -464,7 +463,7 @@ projects[taxonomy_access_fix][version] = 2.4
 
 projects[timefield][version] = 1.0-alpha2
 
-projects[title][version] = 1.0-alpha9
+projects[title][version] = 1.0-beta1
 
 projects[token][version] = 1.7
 
