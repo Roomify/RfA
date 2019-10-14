@@ -56,6 +56,11 @@ before_script:
   - cd $TRAVIS_BUILD_DIR
   # Install drush composer extension.
   - drush dl composer-8.x-1.x
+  - cd /home/travis/.drush/composer
+  - rm composer.lock
+  - rm -r vendor
+  - composer require "composer/composer:1.9.0"
+  - cd $TRAVIS_BUILD_DIR
   # Install drush registry_rebuild extension.
   - drush dl registry_rebuild-7.x-2.x
   # Install code sniffer.
