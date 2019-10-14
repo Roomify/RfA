@@ -470,6 +470,7 @@ projects[token][version] = 1.7
 projects[userone][version] = 1.0-beta1
 
 projects[uuid][version] = 1.3
+projects[uuid][patch][] = https://www.drupal.org/files/issues/2019-08-02/3061629-uuid_remove_composer.patch
 
 projects[variable][version] = 2.5
 
