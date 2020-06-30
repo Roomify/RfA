@@ -82,6 +82,7 @@ projects[adminimal_admin_menu][version] = 1.9
 projects[administerusersbyrole][version] = 2.0
 
 projects[advagg][version] = 2.34
+projects[advagg][patch][] = https://www.drupal.org/files/issues/2020-06-07/php7.4_notices-3145378_3.patch
 
 projects[agrcache][version] = 1.7
 
@@ -199,6 +200,7 @@ projects[entityform_block][patch][] = https://www.drupal.org/files/issues/entity
 projects[entityreference][version] = 1.5
 
 projects[entityreference_prepopulate][version] = 1.7
+projects[entityreference_prepopulate][patch][] = https://www.drupal.org/files/issues/2020-06-10/3115641-unparenthesized-ternary-deprecated.patch
 
 projects[environment_indicator][version] = 2.8
 
@@ -324,6 +326,7 @@ projects[masonry_views][version] = 3.0
 projects[media][version] = 2.26
 
 projects[media_colorbox][version] = 1.0-rc4
+projects[media_colorbox][patch][] = https://www.drupal.org/files/issues/2020-06-30/php-7_4-3155898-1.patch
 projects[media_colorbox][patch][] = https://www.drupal.org/files/issues/media_colorbox-visibility_settings-2232513-7.patch
 
 projects[menu_admin_per_menu][version] = 1.0
