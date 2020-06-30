@@ -106,8 +106,6 @@ before_script:
   # Link test dir into working dir.
   - ln -s $TRAVIS_BUILD_DIR/test .
 
-  - jdk_switcher use oraclejdk8
-
   # Fetch and start selenium.
   - mkdir -p $HOME/.cache
   - wget -nc -O $HOME/.cache/selenium-server-standalone-3.14.0.jar http://selenium-release.storage.googleapis.com/3.14/selenium-server-standalone-3.14.0.jar || true
