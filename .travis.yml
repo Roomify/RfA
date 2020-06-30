@@ -2,7 +2,7 @@
 language: php
 
 sudo: required
-dist: trusty
+dist: bionic
 
 php:
   - 7.0
@@ -12,6 +12,10 @@ php:
 
 addons:
   chrome: stable
+
+services:
+  - mysql
+  - xvfb
 
 env:
   # Specify which versions of the product we will build.
@@ -27,8 +31,7 @@ before_install:
   - export CHROME_BIN=/usr/bin/google-chrome
   - export DISPLAY=:99.0
   - sudo apt-get install -y libappindicator1 fonts-liberation
-  - sh -e /etc/init.d/xvfb start
-  - wget http://chromedriver.storage.googleapis.com/77.0.3865.40/chromedriver_linux64.zip && unzip chromedriver_linux64.zip && sudo mv chromedriver /usr/bin
+  - wget http://chromedriver.storage.googleapis.com/83.0.4103.39/chromedriver_linux64.zip && unzip chromedriver_linux64.zip && sudo mv chromedriver /usr/bin
 
 before_script:
   # Increase the MySQL connection timeout on the PHP end.
