@@ -81,7 +81,7 @@ projects[adminimal_admin_menu][version] = 1.9
 
 projects[administerusersbyrole][version] = 2.0
 
-projects[advagg][version] = 2.33
+projects[advagg][version] = 2.34
 
 projects[agrcache][version] = 1.7
 
@@ -91,7 +91,7 @@ projects[autocomplete_deluxe][patch][] = https://www.drupal.org/files/issues/ter
 
 projects[background_image_formatter][version] = 1.4
 
-projects[backup_migrate][version] = 3.6
+projects[backup_migrate][version] = 3.7
 
 projects[bean][version] = 1.9
 
@@ -115,7 +115,7 @@ projects[chosen][version] = 2.0
 
 projects[classy_paragraphs][version] = 1.0
 
-projects[colorbox] = 2.13
+projects[colorbox] = 2.15
 
 projects[commerce][version] = 1.15
 projects[commerce][patch][] = https://www.drupal.org/files/issues/commerce-delete_line_items_without_products-2261289-4.patch
@@ -187,7 +187,7 @@ projects[entityqueue][version] = 1.5
 
 projects[entity_rules][version] = 1.0-alpha4
 
-projects[entity_translation][version] = 1.0
+projects[entity_translation][version] = 1.1
 
 projects[entity2text][version] = 1.0-alpha3
 
@@ -204,7 +204,7 @@ projects[environment_indicator][version] = 2.8
 
 projects[epsacrop][version] = 2.4
 
-projects[eu_cookie_compliance][version] = 1.17
+projects[eu_cookie_compliance][version] = 1.32
 
 projects[facebook_tracking_pixel][version] = 1.1
 
@@ -227,7 +227,7 @@ projects[field_group][version] = 1.6
 
 projects[flag][version] = 3.9
 
-projects[fivestar][version] = 2.2
+projects[fivestar][version] = 2.3
 
 projects[filefield_sources][version] = 1.10
 
@@ -238,7 +238,7 @@ projects[field_formatter_settings][version] = 1.1
 projects[footable][version] = 1.0
 projects[footable][patch][] = https://www.drupal.org/files/issues/footable-add_striping_option-2307701-4.patch
 
-projects[file_entity][version] = 2.26
+projects[file_entity][version] = 2.30
 
 projects[geofield][version] = 2.4
 
@@ -251,7 +251,7 @@ projects[geophp][version] = 1.7
 
 projects[getdirections][version] = 3.2
 
-projects[google_analytics][version] = 2.3
+projects[google_analytics][version] = 2.6
 
 projects[google_recaptcha][version] = 1.2
 
@@ -267,11 +267,11 @@ projects[job_scheduler][download][type] = git
 projects[job_scheduler][download][url] = https://git.drupal.org/project/job_scheduler.git
 projects[job_scheduler][download][revision] = 9baaba6bebd34ad6842b1a5292d4d8b32dc9c65c
 
-projects[hreflang][version] = 1.4
+projects[hreflang][version] = 1.5
 
 projects[hotjar][version] = 1.2
 
-projects[i18n][version] = 1.26
+projects[i18n][version] = 1.27
 
 projects[i18nviews][version] = 3.0-alpha1
 projects[i18nviews][patch][] = https://www.drupal.org/files/issues/i18nviews-2245917-1-export-translatables-v1.patch
@@ -300,7 +300,7 @@ projects[less][version] = 4.0
 
 projects[libraries][version] = 2.5
 
-projects[link][version] = 1.6
+projects[link][version] = 1.7
 
 projects[jsonlog][version] = 2.1
 
@@ -321,7 +321,7 @@ projects[masonry][version] = 3.0-beta1
 
 projects[masonry_views][version] = 3.0
 
-projects[media][version] = 2.23
+projects[media][version] = 2.26
 
 projects[media_colorbox][version] = 1.0-rc4
 projects[media_colorbox][patch][] = https://www.drupal.org/files/issues/media_colorbox-visibility_settings-2232513-7.patch
@@ -334,7 +334,7 @@ projects[menu_token][version] = 1.0-beta7
 projects[message][version] = 1.12
 projects[message][patch][] = https://www.drupal.org/files/issues/text-sanitized.patch
 
-projects[metatag][version] = 1.25
+projects[metatag][version] = 1.27
 
 projects[mimemail][version] = 1.1
 
@@ -441,7 +441,7 @@ projects[select2][version] = 1.x-dev
 
 projects[seo_checklist][version] = 4.1
 
-projects[services][version] = 3.25
+projects[services][version] = 3.27
 
 projects[services_api_key_auth][version] = 1.3
 
@@ -463,7 +463,7 @@ projects[taxonomy_access_fix][version] = 2.4
 
 projects[timefield][version] = 1.0-alpha2
 
-projects[title][version] = 1.0-beta1
+projects[title][version] = 1.0-beta3
 
 projects[token][version] = 1.7
 
@@ -480,7 +480,7 @@ projects[video_embed_field][version] = 2.0-beta11
 
 projects[view_unpublished][version] = 1.2
 
-projects[views][version] = 3.23
+projects[views][version] = 3.24
 
 projects[views_autocomplete_filters][type] = module
 projects[views_autocomplete_filters][download][type] = git
@@ -495,11 +495,11 @@ projects[views_data_export][version] = 3.2
 
 projects[views_date_format_sql][version] = 3.1
 
-projects[views_infinite_scroll][version] = 2.1
+projects[views_infinite_scroll][version] = 2.3
 
 projects[views_load_more][version] = 1.5
 
-projects[views_bulk_operations][version] = 3.5
+projects[views_bulk_operations][version] = 3.6
 
 projects[views_megarow][version] = 1.7
 
@@ -513,7 +513,7 @@ projects[vvf][version] = 1.2
 
 projects[wysiwyg][version] = 2.6
 
-projects[xautoload][version] = 5.7
+projects[xautoload][version] = 5.8
 
 projects[xmlsitemap][type] = module
 projects[xmlsitemap][download][type] = git
