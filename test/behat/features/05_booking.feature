@@ -28,9 +28,9 @@ Feature: Booking
     And I press "Save Property"
     Then I close the better messages dialog
     Then I click "Availability" in the "My casa for bookings" row
-    And i wait 5 seconds
+    And I wait 5 seconds
     Then I select dates between "<<DATE1>>" and "<<DATE2>>" for the last unit
-    And i wait 5 seconds
+    And I wait 5 seconds
     Then I press "Create booking"
     And I wait for AJAX to finish
     Then I press "Save Booking"
@@ -54,9 +54,9 @@ Feature: Booking
     And I press "Save Property"
     Then I close the better messages dialog
     Then I click "Availability" in the "My casa2 for bookings" row
-    And i wait 5 seconds
+    And I wait 5 seconds
     Then I select dates between "<<DATE1>>" and "<<DATE2>>" for the last unit
-    And i wait 5 seconds
+    And I wait 5 seconds
     Then I press "Create booking"
     And I wait for AJAX to finish
     Then I press "Save Booking"

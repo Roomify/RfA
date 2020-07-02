@@ -21,15 +21,15 @@ Feature: Special offers
     And I fill in "bat_end_date[date]" with "<<DATE2>>"
     And I fill in "bat_end_date[time]" with "00:00"
     Then I press "Create"
-    And i wait 5 seconds
+    And I wait 5 seconds
 
     Given dates "+1 month" and "+2 months" in format big-endian
     And we save that into "DATE1,DATE2"
 
     Then I visit "admin/bat/config/global/offers/calendar"
-    And i wait 5 seconds
+    And I wait 5 seconds
     Then I select dates between "<<DATE1>>" and "<<DATE2>>" for the last rate
-    And i wait 5 seconds
+    And I wait 5 seconds
     Then I fill in "pricing_event_price[und][0][amount]" with "5"
     And I press "Update value"
     And I wait for AJAX to finish
@@ -64,15 +64,15 @@ Feature: Special offers
     And I fill in "bat_end_date[date]" with "<<DATE2>>"
     And I fill in "bat_end_date[time]" with "00:00"
     Then I press "Create"
-    And i wait 5 seconds
+    And I wait 5 seconds
 
     Given dates "+3 months" and "+4 months" in format big-endian
     And we save that into "DATE1,DATE2"
 
     Then I visit "admin/bat/config/global/offers/calendar"
-    And i wait 5 seconds
+    And I wait 5 seconds
     Then I select dates between "<<DATE1>>" and "<<DATE2>>" for the last rate
-    And i wait 5 seconds
+    And I wait 5 seconds
     Then I fill in "pricing_discount[und][0][value]" with "50"
     And I press "Update value"
     And I wait for AJAX to finish
