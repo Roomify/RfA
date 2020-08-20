@@ -4,8 +4,8 @@ This is the Roomify distribution for vacation rentals, hotels and multi-property
 ## Quickstart
 * Just go to the [latest release page](https://github.com/Roomify/RfA/releases/latest) and download the roomify-accommodations-default.{version}.zip file. You will find a completely built codebase and database dump to use on any hosting provider that supports PHP.
 * Alternatively, you may use our [docker container](https://github.com/Roomify/rfa-docker) to quickly create a local demo environment.
-* See our [full installation instructions here](http://docs.roomify.us/accommodations_selfhost/index.html).
-* Once you have installed your site, sign in and use the [quick setup tool](http://docs.roomify.us/roomify_accommodations/configuration/quicksetup.html#roomify-accommodations-quicksetup).
+* See our [full installation instructions here](http://roomify.github.io/docs/accommodations_selfhost/index.html).
+* Once you have installed your site, sign in and use the [quick setup tool](http://roomify.github.io/docs/roomify_accommodations/configuration/quicksetup.html#roomify-accommodations-quicksetup).
 
 ## Developer Information
 
@@ -23,7 +23,7 @@ If you'd like to make a donation to help support on-going development you may do
 
 #### Is there documentation?
 
-Absolutely! Full end user documentation [is available here](http://docs.roomify.us/roomify/index.html).
+Absolutely! Full end user documentation [is available here](http://roomify.github.io/docs/roomify/index.html).
 
 #### How can I get support?
 
