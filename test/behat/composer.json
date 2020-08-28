@@ -36,7 +36,9 @@
         "instaclick/php-webdriver": "1.4.5",
         "rdx/behat-variables": "~1.0.3",
         "roomify/roomify-extension": "~1.0",
-        "php": ">=5.6"
+        "php": ">=5.6",
+        "bex/behat-screenshot": "dev-master",
+        "bex/behat-screenshot-image-driver-unsee": "dev-master"
     },
     "minimum-stability": "dev",
     "config": {
