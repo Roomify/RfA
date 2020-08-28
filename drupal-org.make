@@ -467,6 +467,7 @@ projects[taxonomy_access_fix][version] = 2.4
 projects[timefield][version] = 1.0-alpha2
 
 projects[title][version] = 1.0-beta3
+projects[title][patch][] = https://www.drupal.org/files/issues/2020-08-11/title_field_views_data_alter-check-for-empty-field.patch.txt
 
 projects[token][version] = 1.7
 
