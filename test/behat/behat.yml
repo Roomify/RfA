@@ -14,7 +14,7 @@ default:
       base_url:  'http://127.0.0.1:8888'
       files_path:  '%paths.base%/testing_files'
       selenium2:
-        capabilities: { "browser": "chrome", "version": "*", "marionette": true, "extra_capabilities": { "chromeOptions": { "w3c": false, "args": ["headless"] } } }
+        capabilities: { "browser": "chrome", "version": "*", "marionette": true, "extra_capabilities": { "chromeOptions": { "w3c": false, "args": ["headless", "window-size=1280,1024"] } } }
       javascript_session: 'selenium2'
     Drupal\DrupalExtension:
       blackbox: ~
