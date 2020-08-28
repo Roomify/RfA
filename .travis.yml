@@ -87,6 +87,8 @@ before_script:
   # Install the selected product.
   - cd drupal
   - php -d sendmail_path=$(which true) ~/.composer/vendor/bin/drush.php --yes site-install roomify roomify_install_welcome.roomify_product="${PRODUCT}" --db-url=mysql://drupal:drupal@127.0.0.1/drupal --account-name=admin --account-pass=admin --site-mail=webmaster@roomify.us --site-name="${PRODUCT}"
+  # Do not output warnings to screen
+  - drush vset error_level hide
   # Install required libraries.
   - drush composer-json-rebuild
   - drush composer-manager install --no-dev
