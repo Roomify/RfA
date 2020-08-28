@@ -112,6 +112,18 @@ JS;
   }
 
   /**
+   * @When I press the escape key
+   */
+  public function pressEscapeKey() {
+    try {
+      $this->getSession()->evaluateScript('var esc = jQuery.Event("keydown", { keyCode: 27 }); jQuery("body").trigger(esc);');
+    }
+    catch(Exception $e) {
+      throw new \Exception("Escape press failed");
+    }
+  }
+
+  /**
    * @Then /^(?:|I )select dates between "(?P<start>.+)" and "(?P<end>.+)" for the last unit$/
    */
   public function selectDatesOfLastUnitOnFullcalendar($start, $end) {

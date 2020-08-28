@@ -12,6 +12,7 @@ Feature: Book Property
 
     Then I fill in "arrival[date]" with "<<DATE1>>"
     Then I fill in "departure[date]" with "<<DATE2>>"
+    Then I press the escape key
     And I click on the text "Book Now"
     Then I should see "Booking for Casa Sul Mare"
     And I should see "$100.00" in the "TOTAL COST" row
@@ -22,6 +23,7 @@ Feature: Book Property
 
     Then I fill in "arrival[date]" with "<<DATE1>>"
     Then I fill in "departure[date]" with "<<DATE2>>"
+    Then I press the escape key
     And I click on the text "Book Now"
     Then I should see "Booking for Casa Sul Mare"
     And I should see "$120.00" in the "TOTAL COST" row
@@ -39,6 +41,7 @@ Feature: Book Property
     And I should see "Starting from $20.00"
     Then I fill in "arrival[date]" with "<<DATE1>>"
     Then I fill in "departure[date]" with "<<DATE2>>"
+    Then I press the escape key
     And I click on the text "Book Now"
     Then I should see "Booking for Casa Sul Mare"
     And I click on the text "Send an Enquiry"
@@ -63,6 +66,7 @@ Feature: Book Property
     And I should see "Starting from $20.00"
     Then I fill in "arrival[date]" with "<<DATE1>>"
     Then I fill in "departure[date]" with "<<DATE2>>"
+    Then I press the escape key
     And I click on the text "Book Now"
     Then I should see "Booking for Casa Sul Mare"
     And I click on the text "Send an Enquiry"
