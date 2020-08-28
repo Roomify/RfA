@@ -27,10 +27,11 @@ default:
         error_message_selector: '.messages.messages-error'
         success_message_selector: '.messages.messages-status'
     Bex\Behat\ScreenshotExtension:
-      active_image_drivers: unsee
+      screenshot_taking_mode: failed_scenarios
+      active_image_drivers: local
       image_drivers:
-        unsee:
-          expire: '1h' # possible values: '10m', '30m', '1h'
+        local:
+          screenshot_directory: /tmp/screenshots
 
 imports:
   - behat.local.yml
