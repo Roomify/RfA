@@ -523,8 +523,8 @@ projects[xautoload][version] = 5.8
 projects[xmlsitemap][type] = module
 projects[xmlsitemap][download][type] = git
 projects[xmlsitemap][download][url] = https://git.drupal.org/project/xmlsitemap.git
-projects[xmlsitemap][download][revision] = eaaf1dd750c17ccca9c58cf40d1cda815b77cbb2
-projects[xmlsitemap][patch][] = https://www.drupal.org/files/issues/xmlsitemap-entity-integration-1461670-41.patch
+projects[xmlsitemap][download][revision] = c23b9c7d7317b6a80b52e90648876fe72827d1b4
+projects[xmlsitemap][patch][] = https://www.drupal.org/files/issues/2018-11-07/xmlsitemap-add-files-to-sitemap-1461670-64_0.patch
 
 projects[yoast_seo][type] = module
 projects[yoast_seo][download][type] = git
