@@ -12,7 +12,7 @@ Feature: Book Property
 
     Then I fill in "arrival[date]" with "<<DATE1>>"
     Then I fill in "departure[date]" with "<<DATE2>>"
-    Then I press the escape key
+    Then I hide the datepicker
     And I wait 2 seconds
     And I click on the text "Book Now"
     Then I should see "Booking for Casa Sul Mare"
@@ -24,7 +24,7 @@ Feature: Book Property
 
     Then I fill in "arrival[date]" with "<<DATE1>>"
     Then I fill in "departure[date]" with "<<DATE2>>"
-    Then I press the escape key
+    Then I hide the datepicker
     And I wait 2 seconds
     And I click on the text "Book Now"
     Then I should see "Booking for Casa Sul Mare"
@@ -43,7 +43,7 @@ Feature: Book Property
     And I should see "Starting from $20.00"
     Then I fill in "arrival[date]" with "<<DATE1>>"
     Then I fill in "departure[date]" with "<<DATE2>>"
-    Then I press the escape key
+    Then I hide the datepicker
     And I wait 2 seconds
     And I click on the text "Book Now"
     Then I should see "Booking for Casa Sul Mare"
@@ -69,7 +69,7 @@ Feature: Book Property
     And I should see "Starting from $20.00"
     Then I fill in "arrival[date]" with "<<DATE1>>"
     Then I fill in "departure[date]" with "<<DATE2>>"
-    Then I press the escape key
+    Then I hide the datepicker
     And I wait 2 seconds
     And I click on the text "Book Now"
     Then I should see "Booking for Casa Sul Mare"

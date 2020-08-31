@@ -6,6 +6,7 @@ Feature: Manage Rates
 
   Scenario: Manage Rates as user with role "Roomify manager"
     Given I am logged in as a user with the "roomify manager" role
+    And I visit "user"
     Then I scroll "views-table" into view
     Then I click "Pricing" in the "Casa Azzurra" row
     And I wait 5 seconds

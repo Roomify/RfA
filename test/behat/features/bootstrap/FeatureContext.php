@@ -124,6 +124,18 @@ JS;
   }
 
   /**
+   * @When I hide the datepicker
+   */
+  public function hideDatepicker() {
+    try {
+      $this->getSession()->executeScript('jQuery(".ui-datepicker").hide();');
+    }
+    catch(Exception $e) {
+      throw new \Exception("Could not close datepicker.");
+    }
+  }
+
+  /**
    * @Then /^(?:|I )select dates between "(?P<start>.+)" and "(?P<end>.+)" for the last unit$/
    */
   public function selectDatesOfLastUnitOnFullcalendar($start, $end) {
