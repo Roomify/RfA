@@ -5,7 +5,7 @@ Feature: Manage Property
     Given I am logged in as a user with the "roomify manager" role
     And I visit "user"
     Then I click on the text "Your Properties"
-    And I click on the text "+ add property"
+    And I click on the text "+ Add Property"
     And I wait for AJAX to finish
     Then I fill in "property_name" with "Roomify manager locanda"
     And I select the radio button "Multi-Unit (multiple rooms / types within a property)"
@@ -76,9 +76,9 @@ Feature: Manage Property
     Given I am logged in as a user with the "roomify manager" role
     And I visit "user"
     Then I click on the text "Your Properties"
-    And I should see the link "add property"
+    And I should see the link "Add Property"
 
     Given I am logged in as a user with the "roomify manager,property owner" role
     And I visit "user"
     Then I click on the text "Your Properties"
-    And I should see the link "add property"
+    And I should see the link "Add Property"

@@ -144,10 +144,10 @@ function roomify_dashboard_views_pre_render(&$view) {
 
   if ($view->name == 'properties') {
     if (!empty($view->header)) {
-      $view->header['area']->options['content'] = l(t('+ add property'), 'admin/bat/config/property/wizard/nojs', array('attributes' => array('class' => 'button add-property-button ctools-use-modal ctools-modal-roomify-dashboard-modal-style')));
+      $view->header['area']->options['content'] = l(t('+ Add Property'), 'admin/bat/config/property/wizard/nojs', array('attributes' => array('class' => 'button add-property-button ctools-use-modal ctools-modal-roomify-dashboard-modal-style')));
     }
     if (!empty($view->footer)) {
-      $view->footer['area']->options['content'] = l(t('+ add property'), 'admin/bat/config/property/wizard/nojs', array('attributes' => array('class' => 'button add-property-button ctools-use-modal ctools-modal-roomify-dashboard-modal-style')));
+      $view->footer['area']->options['content'] = l(t('+ Add Property'), 'admin/bat/config/property/wizard/nojs', array('attributes' => array('class' => 'button add-property-button ctools-use-modal ctools-modal-roomify-dashboard-modal-style')));
     }
     if (empty($view->result) && isset($view->exposed_widgets)) {
       $view->exposed_widgets = FALSE;

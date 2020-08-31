@@ -14,7 +14,7 @@ Feature: Booking
     Given I am logged in as "_roomify_manager"
     And I visit "user"
     Then I click on the text "Your Properties"
-    And I click on the text "+ add property"
+    And I click on the text "+ Add Property"
     And I wait for AJAX to finish
     Then I fill in "property_name" with "My casa for bookings"
     And I select the radio button "Single-Unit (entire home)"
@@ -40,7 +40,7 @@ Feature: Booking
 
     Then I visit "user"
     And I click on the text "Your Properties"
-    Then I click on the text "+ add property"
+    Then I click on the text "+ Add Property"
     And I wait for AJAX to finish
     Then I fill in "property_name" with "My casa2 for bookings"
     And I select the radio button "Single-Unit (entire home)"
