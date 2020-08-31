@@ -479,7 +479,7 @@ projects[uuid][patch][] = https://www.drupal.org/files/issues/2019-08-02/3061629
 projects[variable][version] = 2.5
 
 projects[video][version] = 2.14
-projects[video][patch][] = https://www.drupal.org/project/video/issues/3042169
+projects[video][patch][] = https://www.drupal.org/files/issues/2019-08-20/continue_in_switch-3042169-2.patch
 
 projects[video_embed_field][version] = 2.0-beta11
 
