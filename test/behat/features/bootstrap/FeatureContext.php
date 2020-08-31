@@ -116,7 +116,7 @@ JS;
    */
   public function pressEscapeKey() {
     try {
-      $this->getSession()->evaluateScript('var esc = jQuery.Event("keydown", { keyCode: 27 }); jQuery("body").trigger(esc);');
+      $this->getSession()->executeScript('var esc = jQuery.Event("keydown", { keyCode: 27 }); jQuery("body").trigger(esc);');
     }
     catch(Exception $e) {
       throw new \Exception("Escape press failed");
